@@ -1,0 +1,182 @@
+import { EvidenceItem } from '@/types/evidence';
+
+export const evidenceItems: EvidenceItem[] = [
+  // === STALKING EVIDENCE (11 items) ===
+  {
+    id: 'sportief_analysis',
+    name: '@sportief_zh Account Analysis',
+    description: 'Alt account created 3 days after breakup',
+    category: 'stalking',
+    source: 'Player investigation',
+    detail: 'Account @sportief_zh was created exactly 3 days after Thomas and Noor broke up. It follows ONLY Noor\'s inner circle: @noor_creates, @lisa_bakker, @mila_x03, @anouk_drawings, @david_chen, @sophie_janssen, @yara_el_amrani. No original content \u2014 only generic fitness reposts. Liked every Noor post within minutes of posting.',
+  },
+  {
+    id: 'deleted_posts',
+    name: 'Deleted Post Screenshots',
+    description: 'Anouk\'s archive of Noor\'s deleted posts about being watched',
+    category: 'stalking',
+    source: 'Anouk Smeets',
+    detail: 'Anouk screenshotted all of Noor\'s posts. Several were deleted from the account after the disappearance: posts about being followed, receiving weird DMs, someone watching outside the studio, and "someone walked past your window." These were deleted by whoever had access to Noor\'s account.',
+  },
+  {
+    id: 'cafe_photo',
+    name: 'Caf\u00e9 Photo (Thomas & De Vries)',
+    description: 'Thomas and De Vries seen together at caf\u00e9',
+    category: 'stalking',
+    source: "Caf\u00e9 't Morgenrood",
+    detail: 'A photo posted by the caf\u00e9 shows Thomas Groot and Hans de Vries sitting at the same table in the background. Both claimed not to know each other well. Thomas trains De Vries at the gym \u2014 but this suggests a closer relationship.',
+  },
+  {
+    id: 'thomas_cafe_angry',
+    name: 'Thomas Leaving Caf\u00e9 Angry',
+    description: 'Witnessed storming out at 22:00 on night of disappearance',
+    category: 'stalking',
+    source: 'Bas Dekker',
+    detail: 'Bas was at the open mic night at \'t Morgenrood. Around 22:00, Thomas Groot "stormed out looking mad." He had been drinking with Henk Mulder earlier. His anger preceded the confrontation at the art centre by approximately 30 minutes.',
+  },
+  {
+    id: 'silver_golf',
+    name: 'Silver Golf at Art Centre',
+    description: 'Thomas\'s car spotted at art centre at 22:15',
+    category: 'stalking',
+    source: 'Jan de Wit',
+    detail: 'Jan de Wit was working late and noticed a silver Volkswagen Golf parked outside the art centre at approximately 22:15. Thomas drives a silver Golf. He had no legitimate reason to be at the art centre. The car park is around back \u2014 he parked on the street, suggesting urgency or confrontation intent.',
+  },
+  {
+    id: 'shouting_art_centre',
+    name: 'Shouting at Art Centre',
+    description: 'Man shouting, woman crying heard at ~22:30',
+    category: 'stalking',
+    source: 'David Chen',
+    detail: 'David Chen has a studio next to Noor\'s at the art centre. He heard shouting at approximately 22:30: a man\'s raised voice and a woman who sounded distressed or crying. This was the confrontation between Thomas and Noor.',
+  },
+  {
+    id: 'art_centre_watcher',
+    name: 'Person Watching Art Centre',
+    description: 'Someone of athletic build seen watching the art centre at night',
+    category: 'stalking',
+    source: 'Emma Visser',
+    detail: 'Emma Visser reported seeing someone standing across from the art centre "just watching" on at least two occasions while walking home from ballet practice. The person was tall with an athletic build \u2014 matching Thomas\'s description.',
+  },
+  {
+    id: 'lisa_testimony',
+    name: 'Lisa\'s Testimony',
+    description: 'Thomas was controlling; Noor was scared',
+    category: 'stalking',
+    source: 'Lisa Bakker',
+    detail: 'Lisa, Noor\'s best friend, reveals that Thomas was controlling during their relationship. He checked Noor\'s phone, questioned who she was meeting, and showed up unexpectedly at places Noor mentioned. After the breakup, Noor told Lisa she was scared because Thomas "wouldn\'t stop."',
+  },
+  {
+    id: 'ahmed_testimony',
+    name: 'Ahmed\'s Observation',
+    description: 'Thomas was jittery next morning; had Noor\'s photo as wallpaper',
+    category: 'stalking',
+    source: 'Ahmed Yilmaz',
+    detail: 'Barber Ahmed Yilmaz saw Thomas the morning after the disappearance. Thomas was "jittery, couldn\'t sit still, kept checking his phone." Ahmed noticed Thomas still had Noor\'s photo as his phone wallpaper \u2014 months after the breakup. Ahmed has been cutting hair for 30 years and "knows when someone has something to hide."',
+  },
+  {
+    id: 'vandijk_report',
+    name: 'Van Dijk\'s Police Report',
+    description: 'Thomas showed up unprompted and knew too much',
+    category: 'stalking',
+    source: 'Pieter van Dijk',
+    detail: 'Officer Van Dijk noted that Thomas came to the police station unprompted to "help." He knew details about Noor\'s recent movements that an ex-boyfriend shouldn\'t know \u2014 where she\'d been, who she\'d met with, her schedule. Van Dijk flagged this as suspicious but the case was deprioritized by the chief.',
+  },
+  {
+    id: 'reverend_hint',
+    name: 'Reverend Bakels\' Nudge',
+    description: 'Pastoral hint that Thomas carries guilt',
+    category: 'stalking',
+    source: 'Ds. Herman Bakels',
+    detail: 'Reverend Bakels cannot break pastoral confidence, but his posts and careful conversation suggest Thomas came to him in distress before the disappearance. He speaks of "those who carry pain and direct it at others." He nudges toward investigating Thomas without explicitly breaking his oath.',
+  },
+
+  // === CORRUPTION EVIDENCE (9 items) ===
+  {
+    id: 'agenda_14b',
+    name: 'Council Agenda Item 14b',
+    description: 'Land sale buried in council agenda',
+    category: 'corruption',
+    source: 'Jan Willemsen / Public Records',
+    detail: 'Agenda item 14b: "Disposition of municipal property \u2014 Waterfront parcel ZH-2023-14b." Listed between routine grants and traffic measures. De Vries recorded as "abstained" rather than recused \u2014 a legal distinction that allowed him to participate in discussion.',
+  },
+  {
+    id: 'valuation_discrepancy',
+    name: 'Land Valuation Discrepancy',
+    description: 'Sold for \u20ac1.6M, worth \u20ac2.5-2.8M',
+    category: 'corruption',
+    source: 'Market analysis',
+    detail: 'Waterfront land at \u20ac2,500-3,200/m\u00b2 in Zuidhaven (per Sander Post, estate agent). The parcel sold for \u20ac1.6M \u2014 approximately \u20ac1.2M below market value. The valuation was commissioned by the buyer\'s recommended firm, Veritas Vastgoed.',
+  },
+  {
+    id: 'veritas_vastgoed',
+    name: 'Veritas Vastgoed',
+    description: 'Valuation firm: 3 years old, one client',
+    category: 'corruption',
+    source: 'Business records',
+    detail: 'Veritas Vastgoed, the firm that valued the waterfront land, was incorporated only 3 years ago. Chamber of Commerce records show only one significant client: Van Bergen Ontwikkeling. The valuation was commissioned by the buyer\'s legal team, not the municipality.',
+  },
+  {
+    id: 'university_connection',
+    name: 'De Vries & Marco University Link',
+    description: 'Same graduating class, Delft 1993',
+    category: 'corruption',
+    source: 'Alumni records / Ruud Bakels',
+    detail: 'Hans de Vries and Marco van Bergen graduated in the same class from TU Delft in 1993. This was not disclosed during the land sale proceedings. Ruud Bakels (@wakker_nederland) identified this first, though he framed it in conspiracy language.',
+  },
+  {
+    id: 'golf_club',
+    name: 'Golf Club Connection',
+    description: 'De Vries and Marco in same golf club',
+    category: 'corruption',
+    source: 'Golf club newsletter',
+    detail: 'Photos in the Zuidhaven Golf Club newsletter show De Vries and Marco van Bergen at club events together. Combined with the university connection, this establishes a personal friendship predating the land deal.',
+  },
+  {
+    id: 'community_survey',
+    name: 'Community Survey Results',
+    description: '72% opposed marina plan',
+    category: 'corruption',
+    source: 'Dorpsraad Zuidhaven',
+    detail: 'The community council survey found 72% of respondents opposed the current marina development plan. De Vries publicly described the project as "broadly supported by the community" \u2014 a direct contradiction of the evidence.',
+  },
+  {
+    id: 'lotte_documents',
+    name: 'Lotte\'s Backup Documents',
+    description: 'Original valuation, emails, amended records',
+    category: 'corruption',
+    source: 'Lotte de Jong (as @anoniem_tipgever)',
+    detail: 'Lotte de Jong, terrified civil servant, has backup copies of: the original (higher) municipal valuation, the false Veritas valuation, emails between De Vries and Marco\'s lawyers, and the amended council abstention record. She runs @anoniem_tipgever to leak breadcrumbs without exposing herself.',
+  },
+  {
+    id: 'usb_drive',
+    name: 'Mila\'s USB Drive',
+    description: 'Noor\'s photographed copies of corruption documents',
+    category: 'corruption',
+    source: 'Mila Jansen',
+    detail: 'Noor gave Mila a USB drive with instructions: "If anything happens to me, give this to Pim." It contains Noor\'s photographs of the corruption documents she found in the art centre filing cabinet \u2014 meeting minutes, valuation reports, emails. Critical backup evidence.',
+  },
+  {
+    id: 'pim_envelope',
+    name: 'Pim\'s Sealed Envelope',
+    description: 'Investigation notes at Nina\'s bookshop',
+    category: 'corruption',
+    source: 'Nina Verhoeven',
+    detail: 'Pim left a sealed envelope with bookseller Nina, saying: "If someone asks with the right question, give it to them." Contains his investigation notes pointing to all evidence. The right question is about what Noor found at the art centre.',
+  },
+
+  // === PHYSICAL EVIDENCE ===
+  {
+    id: 'noor_phone',
+    name: 'Noor\'s Phone',
+    description: 'Contains document photos, messages with Pim, deletion log',
+    category: 'physical',
+    source: 'Thomas Groot (recovered)',
+    detail: 'Noor\'s phone was taken by Thomas during the confrontation. It contains: photos of corruption documents, encrypted messages with Pim about the investigation, and the account activity log showing posts were deleted from Thomas\'s location. This is recovered when Thomas is arrested (Ending A only).',
+  },
+];
+
+export const evidenceMap: Record<string, EvidenceItem> = {};
+for (const item of evidenceItems) {
+  evidenceMap[item.id] = item;
+}
