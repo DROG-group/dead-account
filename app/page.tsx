@@ -61,7 +61,7 @@ export default function IntroPage() {
               <span className="text-accent font-bold shrink-0">1.</span>
               <span className="text-text-secondary">
                 <strong className="text-text-primary">Read the timeline.</strong> Posts are sorted newest-first.
-                Pay attention to dates, mentions, and details. Some posts contain evidence &mdash;
+                Pay attention to dates, mentions, and details. Some posts contain evidence -
                 <strong className="text-evidence"> like them</strong> to collect it.
               </span>
             </li>
@@ -78,7 +78,7 @@ export default function IntroPage() {
               <span className="text-text-secondary">
                 <strong className="text-text-primary">Send direct messages.</strong> Go to <strong>Messages</strong> to
                 talk privately with NPCs. They&apos;ll reveal more as they trust you. Choose your
-                dialogue options carefully &mdash; some unlock new information and evidence.
+                dialogue options carefully - some unlock new information and evidence.
               </span>
             </li>
             <li className="flex gap-3">

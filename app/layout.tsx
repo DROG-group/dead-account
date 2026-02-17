@@ -3,7 +3,7 @@ import './globals.css';
 import { GameProvider } from '@/contexts/GameContext';
 
 export const metadata: Metadata = {
-  title: 'Dead Account — zuidhaven.social',
+  title: 'Dead Account - zuidhaven.social',
   description: 'An investigation game on a Mastodon instance. Find out what happened to Noor.',
 };
 

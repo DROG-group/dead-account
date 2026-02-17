@@ -46,7 +46,7 @@ const lisaDialogue: DialogueTree = {
     },
     {
       id: 'lisa-suspect', npcId: 'lisa',
-      text: 'I... I don\'t want to accuse anyone without evidence. But something is very wrong. The black square — that wasn\'t Noor. She would never post something meaningless. Someone had access to her account.',
+      text: 'I... I don\'t want to accuse anyone without evidence. But something is very wrong. The black square - that wasn\'t Noor. She would never post something meaningless. Someone had access to her account.',
       choices: [
         { id: 'lisa-c11', text: 'I\'ll find the evidence. Thank you, Lisa.', nextNodeId: null, trustChange: 5 },
       ],

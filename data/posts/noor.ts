@@ -16,7 +16,7 @@ export const noorPosts: Post[] = [
   { id: 'noor-10', authorId: 'noor', content: 'Late night at the studio. The harbour lights through my window. This town is beautiful when it\'s quiet.', day: -30, likes: 18, boosts: 2 },
   { id: 'noor-11', authorId: 'noor', content: 'Working on something important. Can\'t share yet. But it matters.', day: -25, likes: 12, boosts: 1 },
 
-  // === DELETED POSTS (removed by Thomas — revealed through Anouk) ===
+  // === DELETED POSTS (removed by Thomas - revealed through Anouk) ===
   { id: 'noor-del-1', authorId: 'noor', content: 'Weird DM from an account I don\'t recognise. Blocked. Fourth one this month.', day: -19, isDeleted: true, evidenceId: 'deleted_posts', likes: 3 },
   { id: 'noor-del-2', authorId: 'noor', content: 'Meeting a friend for coffee later. Not at the usual place. Somewhere quieter.', day: -14, isDeleted: true, likes: 4 },
   { id: 'noor-del-3', authorId: 'noor', content: 'Locking up the studio and there\'s someone across the street just standing there. Third time this week.', day: -11, isDeleted: true, evidenceId: 'deleted_posts', likes: 2 },
