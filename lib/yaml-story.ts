@@ -61,6 +61,59 @@ function parseChoice(raw: string): YamlChoice {
   };
 }
 
+/**
+ * Pre-process YAML text to fix non-standard choice syntax.
+ *
+ * The story YAML uses a custom DSL where choices are strings with `->` arrows,
+ * and some have `when:` conditions as nested mappings under the string. This is
+ * invalid standard YAML (you can't put a mapping under a scalar string).
+ *
+ * This transforms:
+ *   - Choice text -> target
+ *     when:
+ *       state: foo
+ *       gte: 3
+ *
+ * Into valid YAML:
+ *   - "Choice text -> target":
+ *     when:
+ *       state: foo
+ *       gte: 3
+ *
+ * Which parses as a mapping: {"Choice text -> target": null, when: {state: "foo", gte: 3}}
+ */
+function preprocessYaml(text: string): string {
+  const lines = text.split('\n');
+  const result: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const nextLine = i + 1 < lines.length ? lines[i + 1] : '';
+
+    // Check if this is a list item containing "->" (a choice)
+    // and the next line contains "when:" at deeper indentation
+    const choiceMatch = line.match(/^(\s*-\s+)(.+?->.+)$/);
+    if (choiceMatch) {
+      const prefix = choiceMatch[1]; // e.g. "      - "
+      const choiceText = choiceMatch[2].trim();
+      const prefixIndent = prefix.replace(/-\s+$/, '').length; // spaces before the "-"
+
+      // Check if next line is "when:" indented deeper than this list item
+      const whenMatch = nextLine.match(/^(\s+)when:\s*$/);
+      if (whenMatch && whenMatch[1].length > prefixIndent) {
+        // Convert string choice to mapping key so when: becomes a sibling key
+        const escaped = choiceText.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+        result.push(`${prefix}"${escaped}":`);
+        continue;
+      }
+    }
+
+    result.push(line);
+  }
+
+  return result.join('\n');
+}
+
 interface RawNode {
   type?: string;
   text?: string;
@@ -70,9 +123,9 @@ interface RawNode {
 }
 
 export function parseStory(yamlText: string): YamlStory {
-  // Pre-process: the YAML uses a custom "when:" syntax on choices
-  // We need to handle choice arrays that mix strings and objects
-  const doc = yaml.load(yamlText) as Record<string, unknown>;
+  // Pre-process: fix non-standard "when:" syntax on choices
+  const processed = preprocessYaml(yamlText);
+  const doc = yaml.load(processed) as Record<string, unknown>;
 
   const meta = doc.meta as YamlStoryMeta;
   const entry = doc.entry as string;

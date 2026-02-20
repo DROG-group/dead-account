@@ -8,10 +8,11 @@ interface StoryManifestEntry {
   id: string;
   file: string;
   country: string;
-  city: string;
-  victim_name: string;
-  victim_role: string;
-  mastodon_instance: string;
+  town: string;
+  instance: string;
+  victim: string;
+  role: string;
+  threads: string[];
 }
 
 interface Manifest {
@@ -156,20 +157,20 @@ export default function StoriesPage() {
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0">
                             <p className="text-text-primary text-sm font-medium truncate">
-                              {s.victim_name}
+                              {s.victim}
                             </p>
                             <p className="text-text-muted text-xs truncate">
-                              {s.victim_role} &middot; {s.city}
+                              {s.role} &middot; {s.town}
                             </p>
-                            <p className="text-text-muted text-xs mt-1">
-                              {s.mastodon_instance}
+                            <p className="text-text-muted text-xs mt-1 truncate">
+                              {s.instance}
                             </p>
                           </div>
                           <div className="shrink-0">
                             {isPlayed ? (
-                              <span className="text-success text-xs">&#10003; Played</span>
+                              <span className="text-success text-xs">&#10003; Done</span>
                             ) : (
-                              <span className="text-accent text-xs">{s.id.replace('story-', '#')}</span>
+                              <span className="text-accent text-xs">{s.town}</span>
                             )}
                           </div>
                         </div>
