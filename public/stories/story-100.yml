@@ -1,0 +1,1560 @@
+# DEAD ACCOUNT — Story 100: Jūraskrasti (Latvia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-100.yml
+#
+# Player investigates the disappearance of fisherwoman Aija Ozoliņa
+# in the fictional Vidzeme coastal village of Jūraskrasti.
+
+meta:
+  title: "Dead Account — Jūraskrasti"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marta: 0
+    trust_kristaps: 0
+    trust_biruta: 0
+    trust_guntis: 0
+    trust_laima: 0
+    trust_edgars: 0
+    trust_elina: 0
+    trust_vizma: 0
+    trust_janis: 0
+    trust_sandra: 0
+    trust_aldis: 0
+    trust_ilze: 0
+    trust_arturs: 0
+    trust_dace: 0
+    trust_karlis: 0
+    trust_normunds: 0
+    trust_zane: 0
+    trust_inga: 0
+    trust_policija: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    construction_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "tikko pārcēlos uz jūraskrastiem. iepazīstu vidzemes piekrasti"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Juraskrasti.social"
+    description: "Laipni lūgti Jūraskrastu kopienas Mastodon instancē"
+    avatar_url: /gamepatch/assets/dead-account/juraskrasti_bot.png
+
+  npcs:
+    # === Aija's Inner Circle ===
+    aija:
+      name: "Aija Ozoliņa"
+      bio: "zvejniece | jūras fotogrāfe | jūraskrastu krasts ir mana dzīve"
+      avatar: avatars/aija.jpg
+    marta:
+      name: "Mārta Ozoliņa"
+      bio: "aijas māsa | feldšere jūraskrastu ambulancē | uztraucos"
+      avatar: avatars/marta.jpg
+    kristaps:
+      name: "Kristaps Bērziņš"
+      bio: "aijas labākais draugs | laivbūvētājs | jūraskrasti | te uzaudzis"
+      avatar: avatars/kristaps.jpg
+    sandra:
+      name: "Sandra Kalniņa"
+      bio: "jūras bioloģe | vidzemes piekrastes stacija | aijas kolēģe"
+      avatar: avatars/sandra.jpg
+
+    # === Local Government ===
+    guntis:
+      name: "Guntis Liepiņš"
+      bio: "Jūraskrastu pagasta pārvaldnieks | Vidzemes attīstība | #JūraskrastiAug"
+      avatar: avatars/guntis.jpg
+    inga:
+      name: "Inga Ozola"
+      bio: "Vides komitejas priekšsēdētāja | Jūraskrastu pagasts | dabas aizsardzība"
+      avatar: avatars/inga.jpg
+    pagasts:
+      name: "Jūraskrastu pagasts"
+      bio: "Oficiālais konts | Pagasta ziņas | Darba laiks: P-Pk 8-17"
+      avatar: avatars/pagasts.jpg
+
+    # === Local Business & Community ===
+    biruta:
+      name: "Biruta Vanaga"
+      bio: "Kafejnīca Bāka | kafija un zivju zupa | atvērta kopš 1993"
+      avatar: avatars/biruta.jpg
+    kafejnica:
+      name: "Kafejnīca Bāka"
+      bio: "Jūraskrastu kafejnīca | vietējie ēdieni | dzīvā mūzika piektdienās"
+      avatar: avatars/kafejnica.jpg
+    janis:
+      name: "Jānis Kalējs"
+      bio: "zvejnieks | 45 gadus uz jūras | šī krasta dzīve ir mana"
+      avatar: avatars/janis.jpg
+    vizma:
+      name: "Vizma Siļķe"
+      bio: "kopienas priekšsēdētāja | Jūraskrasti | kopā mēs esam stipri"
+      avatar: avatars/vizma.jpg
+    aldis:
+      name: "Aldis Grīnbergs"
+      bio: "mednieks & makšķernieks | jūraskrasti | dabas cilvēks 50 gadus"
+      avatar: avatars/aldis.jpg
+    ilze:
+      name: "Ilze Medne"
+      bio: "aptiekāre | Jūraskrastu aptieka | darba dienās 9-17"
+      avatar: avatars/ilze.jpg
+    arturs:
+      name: "Artūrs Sproģis"
+      bio: "bibliotekārs | Jūraskrastu bibliotēka | grāmatas & internets | O-Se 10-18"
+      avatar: avatars/arturs.jpg
+
+    # === Journalist ===
+    zane:
+      name: "Zane Puriņa"
+      bio: "žurnāliste | Vidzemes Vēstis | vide & vietējās ziņas | padomi: zane@vidzemesvests.lv"
+      avatar: avatars/zane.jpg
+
+    # === BalticBuild (corporate) ===
+    balticbuild:
+      name: "BalticBuild SIA"
+      bio: "Ilgtspējīga būvniecība Baltijā | Jūraskrastu projekts | ISO 14001"
+      avatar: avatars/balticbuild.jpg
+    normunds:
+      name: "Normunds Lācis"
+      bio: "projekta vadītājs BalticBuild SIA | Jūraskrastu attīstības projekts | sadarbība"
+      avatar: avatars/normunds.jpg
+    advokats:
+      name: "Advokātu birojs Kalnbērziņš & Partneri"
+      bio: "Komerctiesības | Vides tiesības | Rīga | birojs@kalnberzins.lv"
+      avatar: avatars/advokats.jpg
+
+    # === Teens ===
+    laima:
+      name: "Laima"
+      bio: "17 | jūraskrasti | sērfošana & daba | aija iemācīja man zvejot"
+      avatar: avatars/laima.jpg
+    edgars:
+      name: "Edgars"
+      bio: "16 | motocikls & jūra | jūraskrasti | krasts ir mājas"
+      avatar: avatars/edgars.jpg
+    elina:
+      name: "Elīna"
+      bio: "15 | foto & zīmēšana | jūraskrastu daba | aija ir mans paraugs"
+      avatar: avatars/elina.jpg
+
+    # === Media & Community ===
+    vidzemes_vests:
+      name: "Vidzemes Vēstis"
+      bio: "Vidzemes reģiona ziņas | Padomi: redakcija@vidzemesvests.lv"
+      avatar: avatars/vidzemes_vests.jpg
+    laika_zinojums:
+      name: "Laiks Jūraskrasti"
+      bio: "Vietējā laika prognoze un brīdinājumi | Automātiskā stacija"
+      avatar: avatars/laika_zinojums.jpg
+    dabas_biedriba:
+      name: "Jūraskrastu Dabas Aizsardzības Biedrība"
+      bio: "Vidzemes piekraste & jūra | Brīvprātīgie | Novērojumi & ziņojumi"
+      avatar: avatars/dabas_biedriba.jpg
+
+    # === Suspicious / Other ===
+    dace:
+      name: "Dace Skujiņa"
+      bio: "fotogrāfe | dabas foto | aija zina kāpēc esmu te."
+      avatar: avatars/dace.jpg
+    ena:
+      name: "Ēna Krastā"
+      bio: "."
+      avatar: avatars/anon.jpg
+    policija:
+      name: "Inspektors Vanags"
+      bio: "Valsts policija Jūraskrasti | Vidzemes reģions | Neatliekamā palīdzība: 110"
+      avatar: avatars/policija.jpg
+
+    # === Karlis (corporate whistleblower) ===
+    karlis:
+      name: "Kārlis Zālītis"
+      bio: "būvinženieris | BalticBuild | daru savu darbu un viss"
+      avatar: avatars/karlis.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN JŪRASKRASTI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Juraskrasti.social — the community Mastodon instance for
+      the coastal village of Jūraskrasti, on the Vidzeme shore of Latvia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see one name repeated everywhere:
+      @aija_ozolina.
+
+      A fisherwoman. Coastal photographer. She documented the shoreline
+      and the sea. People are worried. She hasn't posted in five days.
+    choices:
+      - Look at her profile -> aija_profile
+
+  aija_profile:
+    type: tweet
+    from: aija
+    text: "Jūraskrastu krasts sabrūk. Būvniecība iznīcina kāpas. Man ir pierādījumi."
+    choices:
+      - That's her last real post... -> grey_sea
+
+  grey_sea:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a grey sea. Blurred, overexposed, shot from a strange angle.
+      Posted at 3am. No caption.
+
+      Her friends say that's not her style. The police say she probably
+      went travelling. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: policija
+    text: >
+      Esam saņēmuši ziņojumu par Jūraskrastu iedzīvotāju. Šobrīd
+      nekas neliecina par noziedzīgu nodarījumu. Visa noderīgā
+      informācija var tikt ziņota pa tālruni 110 vai vietējā
+      policijas iecirknī.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her sister @marta_ozolina is
+      desperate. Her best friend @kristaps_berzins is posting furious
+      messages. Her colleague @sandra_kalnina is asking for any
+      information. The fisherman @janis_kalejs says she was right
+      about the coastline.
+
+      And the journalist @zane_purina is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Aija just
+      "went travelling."
+    effects: { trust_marta: "+5", trust_kristaps: "+5" }
+    choices:
+      - Start following Aija's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Jūraskrasti. Follow Aija's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Biruta (café owner, knows everyone) -> biruta_intro
+      - Talk to Jānis (fisherman, saw the coast change) -> janis_intro
+      - Talk to Laima (teen, seems shaken) -> laima_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Aija with the rhythms of a small
+      Vidzeme coastal village: weather warnings, fishing reports,
+      mushroom season updates, sunset photos.
+
+      Key names surface: Mārta (sister, paramedic), Kristaps (best
+      friend, boat builder, furious), Sandra (marine biologist
+      colleague, rattled), and the teens — Laima, Edgars, Elīna —
+      who loved Aija's coastal nature courses.
+
+      Also prominent: BalticBuild SIA, the construction company
+      building a resort development on the dunes. Their posts are
+      corporate PR. Aija's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Biruta -> biruta_intro
+      - Talk to Jānis -> janis_intro
+      - Talk to Laima -> laima_intro
+
+  # --- Biruta (social map) ---
+
+  biruta_intro:
+    type: tweet
+    from: biruta
+    text: >
+      Kafejnīca ir atvērta, bet sirds ir smaga. @aija_ozolina, tavs
+      galdiņš gaida. Nāc mājās.
+    effects: { trust_biruta: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Biruta -> biruta_talk
+
+  biruta_talk:
+    type: message
+    text: >
+      BIRUTA: Ak, tu esi jauns te? Laipni lūgti. Slikts laiks, lai
+      ierastos. Visi ir nervozi par Aiju.
+
+      Es tev pastāstīšu, kas ir kas. Mārta ir Aijas māsa — feldšere
+      ambulancē. Laba meitene, tagad pilnīgi sagrauta. Kristaps
+      Bērziņš ir Aijas labākais draugs, laivbūvētājs. Viņi pazīst
+      viens otru kopš bērnības. Sandra Kalniņa strādā piekrastes
+      stacijā ar Aiju. Gudra sieviete.
+
+      Un tad ir šī Dace Skujiņa. Fotogrāfe no Rīgas. Ieradās te
+      pirms pusgada. Nāk uz visām Aijas ekskursijām. Vienmēr tajā
+      pašā galdiņā kafejnīcā. Aija man reiz teica: "tā sieviete
+      man neļauj mierā."
+
+      Un turi tālāk no BalticBuild reklāmām. Meli, kas iesaiņoti
+      ISO sertifikātos.
+    effects: { trust_biruta: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Dace -> biruta_dace
+      - Ask about BalticBuild -> biruta_balticbuild
+      - Thank her and move on -> quest1_hub
+
+  biruta_dace:
+    type: message
+    text: >
+      BIRUTA: Dace? Viņa ieradās pagājušajā pavasarī. Teica, ka
+      ir dabas fotogrāfe, grib sadarboties ar Aiju. Aija bija
+      pieklājīga, bet es redzēju, ka viņai bija neērti. Dace bija
+      vienmēr tur, kur Aija. Tajā pašā pludmalē, tajā pašā takā.
+
+      Reiz Aija ienāca kafejnīcā un teica "sūds, tā seko man
+      visur." Es domāju, ka viņa pārspīlē. Tagad vairs neesmu
+      pārliecināta.
+
+      Un Daces profils — @dace_skujina — tur ir tikai Aija. Katrs
+      attēls, katra ekskursija. Tas ir bļe creepy.
+    effects: { trust_biruta: "+5" }
+    choices:
+      - Ask about BalticBuild -> biruta_balticbuild
+      - Move on -> quest1_hub
+
+  biruta_balticbuild:
+    type: message
+    text: >
+      BIRUTA: BalticBuild SIA. Viņi ieradās pirms diviem gadiem.
+      Grib būvēt kūrorta kompleksu kāpās. Teica, ka tas ir
+      ilgtspējīgs — tūrisms, darbavietas, attīstība.
+
+      Bet zvejnieki redzēja, kas notiek. Kāpas sabrūk. Krasts
+      erodē. Pludmale pazūd. Būvniecības tehnika iznīcina dabisko
+      aizsardzību.
+
+      Aija bija pirmā, kas aizgāja tur ar kameru un mērījumiem.
+      Viņai bija pierādījumi — reāli pierādījumi. Divas nedēļas
+      vēlāk viņa pazuda.
+    effects: { trust_biruta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jānis (the coast, witness tease) ---
+
+  janis_intro:
+    type: tweet
+    from: janis
+    text: >
+      četrdesmit piecus gadus esmu zvejojis šajā krastā. krasts
+      vairs nav tāds pats. @aija_ozolina bija taisnība. un tagad
+      viņa ir pazudusi. domājiet paši.
+    effects: { trust_janis: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jānis -> janis_talk
+
+  janis_talk:
+    type: message
+    text: >
+      JĀNIS: Es esmu zvejojis šo krastu kopš piecpadsmit gadu
+      vecuma. Es zinu katru līci, katru straumi, katru smilšu
+      krāsu. Un es tev saku — krasts pie būvlaukuma ir iznīcināts.
+      Kāpas sabrūk. Pludmale pazūd katru vētru.
+
+      Aija mērīja krastu katru mēnesi. Viņa dokumentēja eroziju.
+      Viņa fotografēja visu. Viņa būvēja lietu. Un tad — puf —
+      pazudusi.
+
+      Tu domā, ka tā ir sakritība? Es neticu sakritībām uz jūras.
+    effects: { trust_janis: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> janis_night
+      - Move on -> quest1_hub
+
+  janis_night:
+    type: message
+    text: >
+      JĀNIS: Tajā naktī, kad viņa pazuda — es atgriezos no nakts
+      zvejas, ap vieniem naktī. Es redzēju gaismas pie Aijas mājas.
+      Nav nekas neparasts, viņa bieži strādā vēlu. Bet tur bija
+      divas mašīnas. Viena bija Aijas vecais Volkswagen. Otra bija
+      melns BMW ar BalticBuild uzlīmēm.
+
+      Vienos naktī. Pie zvejnieces mājas.
+
+      Toreiz nedomāju neko. Tagad domāju par to katru nakti.
+    effects: { trust_janis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Laima (teen, witness tease) ---
+
+  laima_intro:
+    type: tweet
+    from: laima
+    text: >
+      sūds es tik ļoti uztraucos. @aija_ozolina iemācīja man zvejot
+      un sērfot. viņa ir labākais cilvēks šajā ciematā. nav iespējams
+      ka viņa vienkārši aizbrauca. ja kāds ko zina tad bļe sakiet
+    effects: { trust_laima: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Laima -> laima_talk_early
+
+  laima_talk_early:
+    type: message
+    text: >
+      LAIMA: kas tu esi? jauns te? nu labi, laipni lūgti ellē.
+      aija ir tipa labākā pieaugusī šajā ciematā. viņa mums
+      mācīja zvejot, sērfot, fotografēt dabu. viņa patiešām
+      rūpējās.
+
+      un tagad es flipoju jo edgars redzēja kaut ko dīvainu tajā
+      vakarā bet negrib par to runāt. saka ka nav nekas bet bļe...
+      tas ir kaut kas
+    effects: { trust_laima: "+10" }
+    choices:
+      - What did Edgars see? -> laima_edgars_hint
+      - Move on -> quest1_hub
+
+  laima_edgars_hint:
+    type: message
+    text: >
+      LAIMA: precīzi nezinu. viņš braukāja ar moci pa pludmali
+      vakarā un redzēja kādu pie aijas mājas. vai tipa viņas
+      pagalmā. kādu sievieti. edgars flipoja bet negrib runāt ar
+      svešiem. pamēģini vispirms parunāt par moci vai zveju tad
+      varbūt atvērsies haha
+    effects: { trust_laima: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Jūraskrasti. A Vidzeme coastal
+      village built around the sea and the dunes. A fisherwoman who
+      was exposing coastal destruction. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Mārta (Aija's sister) -> marta_q1
+      - Talk to Kristaps (Aija's best friend) -> kristaps_q1
+      - Check what Sandra (Aija's colleague) is saying -> sandra_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Mārta Q1 ---
+
+  marta_q1:
+    type: tweet
+    from: marta
+    text: >
+      ja kādam ir informācija par @aija_ozolina zvaniet man uzreiz.
+      viņas zvejnieku tērps ir mājās. viņas kamera ir tur. viņa
+      nekad nebūtu aizbraukusi bez aprīkojuma.
+    effects: { trust_marta: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mārta -> marta_q1_talk
+
+  marta_q1_talk:
+    type: message
+    text: >
+      MĀRTA: Paldies, ka uzrakstīji, bet es tevi nepazīstu. Aijai
+      ir daudz draugu te. Es esmu pārliecināta, ka viņa atgriezīsies.
+
+      ...es turpinu tā teikt. Vairs tam neticu.
+
+      [Mārta is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_marta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kristaps Q1 ---
+
+  kristaps_q1:
+    type: tweet
+    from: kristaps
+    text: >
+      mana labākā draudzene ir PAZUDUSI un policija saka ka viņa
+      varbūt ceļo?? AIJA NECEĻO NEKO NEPASAKOT. piz*ec. kāds ko
+      zina.
+    effects: { trust_kristaps: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Kristaps -> kristaps_q1_talk
+
+  kristaps_q1_talk:
+    type: message
+    text: >
+      KRISTAPS: Kas tu bļe esi? Vēl viens, kas teiks lai
+      nomierinos? Aija man piezvanīja tajā vakarā. Viņa teica ka
+      viņai ir kaut kas liels. Viņa teica "ja man kaut kas notiks,
+      skaties uz BalticBuild." Tad nolika klausuli.
+
+      Tas ir pēdējais, ko no viņas dzirdēju.
+    effects: { trust_kristaps: "+10" }
+    choices:
+      - What do you think happened? -> kristaps_theory
+      - Move on -> quest1_hub
+
+  kristaps_theory:
+    type: message
+    text: >
+      KRISTAPS: Es domāju, ka Aija atrada pierādījumus, ka
+      BalticBuild iznīcina krastu, un viņi to apklusināja. Bet
+      es arī domāju, ka tā Dace Skujiņa — fotogrāfe no Rīgas —
+      zina vairāk nekā stāsta. Viņa seko Aijai visur. Kad vien
+      es atnācu pie Aijas, Dace jau bija tur. Vai tikko aizgājusi.
+
+      Aija man teica pirms mēnešiem, ka kāds bija viņas mājā,
+      kad viņa nebija mājās. Lietas bija pārvietotas. Kamera bija
+      citā vietā. Viņa domāja, ka iedomājas. Es nedomāju, ka viņa
+      iedomājās.
+    effects: { trust_kristaps: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sandra Q1 ---
+
+  sandra_q1:
+    type: tweet
+    from: sandra
+    text: >
+      @aija_ozolina nav atbildējusi uz ziņām piecas dienas.
+      mēs bijām kolēģes piekrastes stacijā. aijas dati par
+      krastu eroziju ir neaizstājami. lūdzu, ja kāds zina ko,
+      sazinieties.
+    effects: { trust_sandra: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Sandra -> sandra_q1_talk
+
+  sandra_q1_talk:
+    type: message
+    text: >
+      SANDRA: Aija un es strādājām kopā divus gadus. Viņa ir
+      visveltītākā pētniece, ko pazīstu. Šī krastu erozijas
+      izmeklēšana — tā bija viņas viss. Viņai bija dati, fotogrāfijas,
+      mērījumi. Viņa bija tik tuvu, lai publicētu.
+
+      Es piedāvāju palīdzēt. Daudzas reizes. Viņa teica, ka viss
+      ir kontrolē. Viņa teica, ka strādā ar žurnālisti. Es tikai
+      gribēju atbalstīt.
+
+      [Sandra seems earnest. Or is there something more?]
+    effects: { trust_sandra: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Aija went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Edgars (was riding his motorcycle on the beach) -> edgars_interview
+      - Find Jānis (fisherman, was out at night) -> janis_interview
+      - Find Aldis (hunter, early morning on the coast) -> aldis_interview
+      - Find Vizma (community chair, heard a car) -> vizma_interview
+
+  # --- Edgars (saw someone at Aija's house) ---
+
+  edgars_interview:
+    type: tweet
+    from: edgars
+    text: >
+      braucu ar moci vakar vakarā un pludmalē bija kaut kas dīvains.
+      tipa kāds tur nepiederēja. nezinu kā paskaidrot.
+    effects: { trust_edgars: "+5" }
+    choices:
+      - Ask Edgars about that evening -> edgars_talk
+
+  edgars_talk:
+    type: message
+    text: >
+      EDGARS: okei bet tu nevienam nesaki. es braucu ar moci pa
+      pludmali ap septiņiem vakarā un aizbraucu garām aijas mājai.
+      un es redzēju to — daci skujiņu — aijas pagalmā. viņa kaut
+      ko darīja pie aijas mašīnas. tipa noliecās zem tās vai kaut
+      ko.
+
+      kad viņa mani ieraudzīja aizgāja bļe ātri. es neko neteicu jo
+      kurš noticēs pusaudzim kas apsūdz pieaugušo. sūds. man vajadzēja
+      kaut ko teikt.
+    effects:
+      trust_edgars: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jānis (saw late-night meeting) ---
+
+  janis_interview:
+    type: tweet
+    from: janis
+    text: >
+      Atgādinājums: pludmale naktī nav droša. Pēdējās naktīs
+      bija neparasta kustība piekrastes ceļā.
+    effects: { trust_janis: "+5" }
+    choices:
+      - Ask Jānis what he saw -> janis_talk_night
+
+  janis_talk_night:
+    type: message
+    text: >
+      JĀNIS: Es biju nakts zvejā, ap pusvienupadsmit vakarā. Redzēju
+      gaismas pie Aijas mājas — nav nekas neparasts. Bet tad uz
+      piekrastes ceļa apstājās melns BMW. BalticBuild uzlīmes uz
+      durvīm. Divi vīri izkāpa un gāja uz Aijas durvīm.
+
+      Pusvienupadsmit. Pie zvejnieces mājas. Tas nav normāli.
+
+      Es to pierakstīju savā zvejas žurnālā. Neviens nav prasījis
+      to redzēt.
+    effects:
+      trust_janis: "+10"
+      night_witnesses: "+1"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Aldis (saw Aija fleeing) ---
+
+  aldis_interview:
+    type: tweet
+    from: aldis
+    text: >
+      četros no rīta mežā kā vienmēr. bet šorīt kāds skrēja pa
+      pludmales taku. tumsā. tas nebija skrējējs.
+    effects: { trust_aldis: "+5" }
+    choices:
+      - Ask Aldis what he saw -> aldis_talk
+
+  aldis_talk:
+    type: message
+    text: >
+      ALDIS: Es cellos četros no rīta medībām. Tajā rītā — rītā
+      pēc Aijas pēdējā ieraksta — es redzēju kādu uz piekrastes
+      takas. Skrēja. Sieviete ar somu, virzienā uz vecajām zvejnieku
+      būdām pie Smilšukāpas. Bija vēl tumšs. Viņa kustējās ātri,
+      it kā baidītos no kaut kā.
+
+      Es iesaucos, bet viņa neapstājās. Domāju, ka skrējēja, bet...
+      kurš skrien četros no rīta ar somu plecos tumsā?
+
+      Kad uzzināju par Aiju, sapratu. Domāju, ka tā bija viņa.
+      Bēga no kaut kā.
+    effects:
+      trust_aldis: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Vizma (heard car chase) ---
+
+  vizma_interview:
+    type: tweet
+    from: vizma
+    text: >
+      Tajā rītā mašīna brauca pa ciema ceļu pārāk ātri. Piecos
+      no rīta. Pamodos no tā. Te tā nenotiek.
+    effects: { trust_vizma: "+5" }
+    choices:
+      - Ask Vizma what she heard -> vizma_talk
+
+  vizma_talk:
+    type: message
+    text: >
+      VIZMA: Es pamodos piecos no rīta no mašīnas, kas brauca pa
+      ciema ceļu — pārāk ātri, daudz par ātru šim ceļam. Liela
+      mašīna, tumša. Tad varbūt divas minūtes vēlāk otra mašīna.
+      Mazāka. Vai dzinās pakaļ? Nezinu.
+
+      Mazākā mašīna pagriezās uz vecajām zvejnieku būdām pie
+      Smilšukāpas. Lielākā turpināja uz šoseju.
+
+      Es teicu policijai. Viņi pierakstīja. Tas arī viss.
+    effects:
+      trust_vizma: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Mārta (sister)
+      and Elīna (saw Dace watching the house).
+    choices:
+      - Talk to Mārta about that night -> marta_interview
+      - Talk to Elīna -> elina_interview
+      - Find Edgars -> edgars_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Jānis -> janis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Aldis -> aldis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Vizma -> vizma_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Mārta (last to see Aija) ---
+
+  marta_interview:
+    type: tweet
+    from: marta
+    text: >
+      tā bilde aijas kontā. tā nav viņas. aija nekad nepublicē
+      bez paraksta. aija nepublicē trijos no rīta. kāds cits to
+      izdarīja.
+    effects: { trust_marta: "+5" }
+    choices:
+      - DM Mārta -> marta_talk_low
+        when:
+          state: trust_marta
+          lt: 50
+      - DM Mārta -> marta_talk_high
+        when:
+          state: trust_marta
+          gte: 50
+
+  marta_talk_low:
+    type: message
+    text: >
+      MĀRTA: Es novērtēju rūpes, bet tiešām negribu runāt ar
+      svešiem par to tagad.
+
+      [Mārta needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_marta: "+5" }
+    choices:
+      - Share what you've learned about the night -> marta_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marta_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the house, the
+      company men, the running figure. Mārta is silent for a while.
+
+      MĀRTA: Tu patiešām mēģini viņu atrast. Labi. Es runāšu.
+    effects: { trust_marta: "+25" }
+    choices:
+      - What happened that night? -> marta_talk_high
+
+  marta_talk_high:
+    type: message
+    text: >
+      MĀRTA: Viņa atnāca pie manis ap vienpadsmitiem vakarā. Es
+      gatavoju nakts maiņai. Viņa bija bāla, trīcēja. Viņa teica
+      "viņi zina, kas man ir." Viņa paķēra savu portatīvo un
+      kameras diskus.
+
+      Es jautāju, kas. Viņa teica "būvfirma. Viņi atsūtīja cilvēkus
+      uz manu māju." Tad viņa teica vēl ko — "un viņa atkal bija
+      tur. Viņa vienmēr ir tur."
+
+      Viņa negribēja teikt, kas ir "viņa." Viņa mani apskāva, teica
+      "neuztraucies," un aizgāja ar somu. Tas bija viss. Līdz rītam
+      viņas mašīna bija pazudusi un pelēkā bilde bija kontā.
+    effects:
+      trust_marta: "+15"
+      night_witnesses: "+1"
+      construction_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Elīna (saw Dace watching the house) ---
+
+  elina_interview:
+    type: message
+    text: >
+      ELĪNA: labi tā tas ir bļe creepy bet tā dace skujiņa — es
+      viņu redzēju pie aijas mājas tipa trīs reizes vakaros.
+      vienkārši stāv un skatās. pilnīgi sūds cik outi.
+
+      pēdējo reizi tipa divas dienas pirms aija pazuda. viņa
+      sēdēja savā mašīnā ceļmalā. lukturi izslēgti. vienkārši
+      sēdēja tur.
+    effects:
+      trust_elina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Dace seen at Aija's car at her house (Edgars)
+      22:30 — BalticBuild car at Aija's house, two men at the door (Jānis)
+      23:00 — Aija arrives at Mārta's, shaken, grabs laptop and drives (Mārta)
+      04:00 — Woman running on coastal path toward Smilšukāpa (Aldis)
+      05:00 — Two cars on village road, one toward Smilšukāpa (Vizma)
+
+      BalticBuild confronted Aija at her house. She fled, grabbed her
+      evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is BalticBuild hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Dace really doing? Why was she
+        at her car?
+    choices:
+      - Investigate the construction cover-up -> corruption_hub
+      - Investigate Dace -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CONSTRUCTION THREAD: Evidence collected: ${construction_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the construction thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: construction_evidence, gte: 3 }
+
+  # =====================================================================
+  # CONSTRUCTION COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CONSTRUCTION THREAD
+
+      BalticBuild is hiding something. Aija had proof. Now she's
+      gone and her evidence is missing from her house.
+
+      Construction evidence: ${construction_evidence}
+    choices:
+      - Search the permit records -> permit_records
+      - Talk to Zane the journalist -> zane_interview
+      - Talk to Kārlis (BalticBuild engineer) -> karlis_interview
+      - Talk to Inga (environment committee chair) -> inga_interview
+      - Check the Dabas Aizsardzības Biedrība -> dabas_investigation
+      - Talk to Jānis about the coastal damage -> janis_damage
+      - Back to hub -> investigation_hub
+
+  # --- Permit Records ---
+
+  permit_records:
+    type: message
+    text: >
+      The regional environmental authority's public database shows
+      BalticBuild's construction permit for Jūraskrasti. The permit
+      allows "sustainable coastal resort development" in three zones
+      along the dune line. One zone — Zone C near Smilšukāpa — is
+      marked "PENDING REVIEW."
+
+      Aija's coastal monitoring log, shared with the Dabas Biedrība
+      for documentation, shows she made 20 measurement sessions near
+      the construction sites in the past two months. The last entry:
+      "Photographed illegal dune excavation at Zone C. Protective
+      dune ridge breached. Storm surge will now reach village. They
+      lied about the environmental impact assessment."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Zane ---
+
+  zane_interview:
+    type: message
+    text: >
+      ZANE: I don't talk about sources. Period.
+    effects: { trust_zane: "+5" }
+    choices:
+      - Show Zane the evidence you have -> zane_with_evidence
+        when:
+          state: construction_evidence
+          gte: 3
+      - Back to construction thread -> corruption_hub
+
+  zane_with_evidence:
+    type: message
+    text: >
+      ZANE: ...tev ir vairāk nekā gaidīju.
+
+      Labi. Aija un es strādājām kopā. Viņai bija fotogrāfijas
+      par nelegālu kāpu izrakšanu — BalticBuild ir izrakuši
+      aizsargkāpas, kuras neparādās nevienā atļaujā. Viņai bija
+      mērījumi, kas parāda, ka erozija ir pieaugusi desmit reizes
+      kopš būvniecības sākuma.
+
+      Mēs grasījāmies publicēt kopā. Tad viņa apklusa. Un divas
+      dienas vēlāk kāds uzlauza manu mašīnu un nozaga manu
+      rezerves disku.
+
+      Aija ir dzīva. Viņa man sazinājās vienu reizi no priekšapmaksas
+      telefona. Viņa teica, ka slēpjas. Viņa teica "viņi man
+      draudēja mājās un kāda cita neaiziet projām."
+
+      Es nevaru teikt, kur viņa ir. Bet ar pietiekamiem pierādījumiem
+      es varu publicēt un padarīt drošu viņai atgriezties.
+    effects:
+      trust_zane: "+25"
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> zane_hint
+      - Back to investigation hub -> investigation_hub
+
+  zane_hint:
+    type: message
+    text: >
+      ZANE: Būvfirma atsūtīja savu projekta vadītāju — Lāci — un
+      kādu advokātu pie Aijas tajā vakarā. Viņi teica, ka Aijai
+      jānodod viss vai arī sekos tiesiskās sekas. Iebiedēšana,
+      kas ietērpta juridiskā veidā.
+
+      Bet viņa arī teica kaut ko par kādu citu. Kādu, kas bija
+      piekļuvusi viņas failiem. Kādu, kas vienmēr zināja, kur viņa
+      ir. Tā ir cita problēma.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Kārlis (BalticBuild whistleblower) ---
+
+  karlis_interview:
+    type: message
+    text: >
+      KĀRLIS: Es strādāju BalticBuild. Esmu tikai būvinženieris.
+      Es rasu aprēķinus, es iesniedzu atskaites.
+
+      Bet atskaites, ko es iesniedzu... ne vienmēr ir tās atskaites,
+      kas nonāk pie iestādēm.
+    effects: { trust_karlis: "+10" }
+    choices:
+      - What do you mean? -> karlis_detail
+
+  karlis_detail:
+    type: message
+    text: >
+      KĀRLIS: Es aprēķinu erozijas riskus. Kāpu stabilitāti.
+      Vētras uzplūdu modelēšanu. Mani skaitļi rāda, ka būvniecība
+      Zone C ir katastrofa — kāpas sabrūks, ciemats būs neaizsargāts.
+      Mani skaitļi nonāk pie vadītāja. Kaut kur starp manu galdu
+      un iestādi tie mainās. Labāki. Vienmēr labāki.
+
+      Aijas mērījumi no ārpuses sakrita ar MANIEM oriģinālajiem
+      skaitļiem, nevis ar tiem oficiālajos ziņojumos. Viņai bija
+      neatkarīgi pierādījumi, ka BalticBuild falsificē savus
+      erozijas datus.
+
+      Man ir bail. Man ir ģimene. Bet es saglabāju savas oriģinālās
+      atskaites. Ja kāds var mani aizsargāt, es tās dalīšu.
+    effects:
+      trust_karlis: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to construction thread -> corruption_hub
+
+  # --- Inga ---
+
+  inga_interview:
+    type: message
+    text: >
+      INGA: Kā vides komitejas priekšsēdētāja es uztveru šīs
+      apsūdzības nopietni. Bet BalticBuild nodarbina 40 cilvēkus
+      būvniecības fāzē. Kūrorts sola 150 darbavietas. Pagasta
+      pārvaldnieks uzstāj uz "dialogu."
+
+      Neoficiāli? Es esmu redzējusi VARAM inspekciju atskaites.
+      BalticBuild katru reizi iziet cauri. Bet par inspekcijām
+      paziņo divas nedēļas iepriekš. Viņi sakārto visu pirms
+      inspektori ierodas.
+
+      Aijai bija nepieteiktas inspekcijas dati. Tāpēc tas ir
+      bīstami.
+    effects:
+      trust_inga: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to construction thread -> corruption_hub
+
+  # --- Dabas Aizsardzības Biedrība ---
+
+  dabas_investigation:
+    type: tweet
+    from: dabas_biedriba
+    text: >
+      BRĪDINĀJUMS: Anomāla piekrastes erozija Jūraskrastu
+      Smilšukāpas posmā. Mērījumi un fotogrāfijas tiek apkopotas.
+      Prasām VARAM nepieteiktu inspekciju BalticBuild būvlaukumā.
+    choices:
+      - Check their data -> dabas_data
+
+  dabas_data:
+    type: message
+    text: >
+      The Dabas Aizsardzības Biedrība has been monitoring coastal
+      erosion for three years. Their data shows a clear pattern:
+      erosion rates that spiked dramatically when BalticBuild began
+      construction. The dune ridge at Zone C has retreated 12 meters
+      in 18 months — compared to 0.3 meters per year historically.
+
+      The pattern is unmistakable. This is accelerated coastal
+      destruction caused by illegal excavation of protective dune
+      formations.
+
+      Aija was a founding member. She contributed most of the
+      photographic documentation.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to construction thread -> corruption_hub
+
+  # --- Jānis coastal damage ---
+
+  janis_damage:
+    type: message
+    text: >
+      JĀNIS: Es tev kaut ko parādīšu. Pagājušajā mēnesī pēc
+      vētras es atradu pludmalē betona gabalus un metāla stiegrojumu.
+      No būvlaukuma. Viļņi bija izskalojoši to uz ciemata pludmali.
+
+      Es to nofotografēju un nosūtīju Aijai. Viņa teica, ka tas ir
+      trūkstošais gabals — pierādījums, ka viņi ir izjaukuši kāpu
+      aizsardzību un tagad jūra ienāk iekšā. Nav tikai erozija —
+      tā ir apzināta kāpu nojaukšana.
+
+      Man vēl ir fotogrāfijas. Un betona gabalu numuri.
+    effects:
+      trust_janis: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Dace Skujiņa. Photographer. Collaborator? Something more?
+      Someone was entering Aija's house. Someone was watching her.
+      Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Dace's online presence -> dace_online
+      - Talk to Mārta about Dace -> marta_dace
+        when:
+          state: trust_marta
+          gte: 20
+      - Talk to Edgars (more detail on the car incident) -> edgars_detail
+      - Talk to Ilze the pharmacist -> ilze_interview
+      - Check the anonymous account @ena_krasta -> ena_investigation
+      - Talk to Artūrs the librarian -> arturs_interview
+        when:
+          state: trust_arturs
+          gte: 40
+      - Talk to Inspektors Vanags -> policija_interview
+        when:
+          state: trust_policija
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Dace Online ---
+
+  dace_online:
+    type: message
+    text: >
+      Dace Skujiņa's Juraskrasti.social profile: created 7 months ago.
+      Every post is about Aija's work, Aija's routes, Aija's
+      photographs. She comments on everything Aija posts. She shares
+      Aija's location updates. She posts photos from the same beaches —
+      taken at the same time.
+
+      Cross-referencing timestamps: on 25 occasions, Dace posted a
+      photo from the same location as Aija within 20 minutes of her
+      post. She was following Aija's movements in real time.
+
+      Her followers: 3. Her following: 1. Aija.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mārta on Dace ---
+
+  marta_dace:
+    type: message
+    text: >
+      MĀRTA: Dace? Viņa darīja Aijai neērti. Viņa nāca uz katru
+      ekskursiju. Viņa piedāvāja palīdzēt it visā. Viņa komentēja
+      katru ierakstu dažu minūšu laikā.
+
+      Aija viņai skaidri pateica, ka nav interese sadarboties.
+      Pieklājīgi, bet skaidri. Dace teica, ka saprot. Tad nekas
+      nemainījās. Viņa vienmēr bija tur. Vienmēr.
+
+      Pirms mēneša Aija pamanīja, ka kāds ir bijis viņas mājā,
+      kad viņa nebija. Fotogrāfiju albumus bija atvērti, kamera
+      pārvietota. Viņa aizdomājās par Daci, bet nevarēja pierādīt.
+    effects:
+      trust_marta: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Edgars detail ---
+
+  edgars_detail:
+    type: message
+    text: >
+      EDGARS: labi tā es nepateicu visu. kad redzēju daci pie aijas
+      mašīnas viņai bija mazs kastītis rokā. viņa to pielīmēja zem
+      mašīnas. tipa apakšā pie vadītāja puses.
+
+      es neesmu eksperts bet tas izskatījās pēc gps izsekotāja.
+      tāds kā filmās redz.
+
+      man vajadzēja kaut ko teikt bet bļe kurš noticēs pusaudzim
+      kas apsūdz pieaugušu sievieti. piz*ec es esmu stulbs.
+    effects:
+      trust_edgars: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ilze ---
+
+  ilze_interview:
+    type: message
+    text: >
+      ILZE: Tas ir konfidenciāli, bet es esmu aptiekāre, nevis
+      mācītājs. Dace Skujiņa nāk te regulāri. Viņa pērk lietas,
+      kas norāda, ka viņa neguļ. Trauksmes zāles, miega līdzekļus,
+      enerģijas piedevas. Tas ir cilvēka profils, kas ir ārkārtīgi
+      stresā.
+
+      Viņa man arī reiz jautāja, pilnīgi nejauši, vai mēs pārdodam
+      GPS izsekotājus. Es teicu "šī ir aptieka, nevis Ksanadu."
+      Viņa pasmējās. Es par to vairs nedomāju līdz Aija pazuda.
+    effects:
+      trust_ilze: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ēna Krastā (anonymous account) ---
+
+  ena_investigation:
+    type: tweet
+    from: ena
+    text: >
+      Viņai vajadzēja klausīties. Es mēģināju viņu aizsargāt. Neviens
+      cits nesaprata viņas darbu tā kā es.
+    choices:
+      - Look at this account's history -> ena_posts
+
+  ena_posts:
+    type: message
+    text: >
+      @ena_krasta: account created 6 months ago. Posts are all
+      about Aija's work. Comments on every coastal photo, every
+      fish catch, every nature update. The tone shifts over time:
+
+      Month 1: "Neticams darbs. Tu dari to, ko neviens cits neuzdrīkstās."
+      Month 2: "Kāpēc tu neatbildi uz manām ziņām? Es tikai gribu
+      sadarboties."
+      Month 4: "Es redzu tevi kafejnīcā ar citiem. Tev pietiek laika
+      viņiem, bet ne man?"
+      Month 5: "Es zinu, kur tu ej. Es zinu tavu grafiku. Esmu
+      vienmēr tuvu."
+
+      The account has no photos, no personal details. Just Aija.
+      Only Aija.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> ena_style
+
+  ena_style:
+    type: message
+    text: >
+      Comparing @ena_krasta with @dace_skujina:
+
+      Same use of photography and coastal terminology. Same Latvian
+      dialect — the specific Rīga-area way she structures sentences.
+      Same knowledge of Aija's coastal routes that only someone who'd
+      been on her trips would have.
+
+      And one post from @ena_krasta: "Tava ekskursija uz Sektoru 5
+      bija skaista." Sektors 5 is Aija's internal numbering for her
+      monitoring sections. Not public.
+
+      It's Dace. The anonymous account is Dace.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Artūrs ---
+
+  arturs_interview:
+    type: message
+    text: >
+      ARTŪRS: Aija man kaut ko atstāja. Ūdensdrošu kasti. Viņa
+      teica "ja kāds jautā, kas notiek ar Jūraskrastu krastu,
+      atdod viņam to."
+
+      Viņa izskatījās nobijusies. Viņa teica, ka ir izveidojusi
+      kopijas no visa, bet vajag vienu komplektu citur, vietā, kur
+      neviens nedomātu meklēt. Bibliotēka šķita ideāla.
+    effects: { trust_arturs: "+10" }
+    choices:
+      - What's happening to the Jūraskrasti coast? -> arturs_case
+
+  arturs_case:
+    type: message
+    text: >
+      Artūrs izvelk no zem letes ūdensdrošu Pelican kasti.
+
+      ARTŪRS: Viņa teica, ka tu atnāksi. Ņem to.
+
+      Iekšā: USB zibatmiņa un drukātas fotogrāfijas. Fotogrāfijās
+      redzama nelegāla kāpu izrakšana — nevis atļautā būvniecības
+      zona, bet otrs, slepens izrakumu laukums — un aizsargkāpu
+      grautiņš, kas pakļauj ciematu vētrām. USB diskā ir erozijas
+      mērījumu dati, ģeoloģiskā analīze un Aijas detalizētais
+      ziņojums.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspektors Vanags ---
+
+  policija_interview:
+    type: message
+    text: >
+      INSPEKTORS VANAGS: Neoficiāli — un es domāju pilnīgi
+      neoficiāli — es gribēju izmeklēt BalticBuild. Mans priekšnieks
+      lika apstāties. Viņš teica, ka VARAM ir "jurisdikcija." Tas
+      nozīmē "neaiztiec."
+
+      Daces situācija ir citāda. Es par to nezināju līdz tagad. Ja
+      tev ir pierādījumi par vajāšanu, es varu rīkoties. Tā ir
+      skaidri mana jurisdikcija.
+
+      Atnes man kaut ko konkrētu un es atvēršu lietu no jauna.
+    effects:
+      trust_policija: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Aija than anyone in Jūraskrasti. Who is responsible?
+    choices:
+      - Confront Dace Skujiņa (the obsessive stalker) -> confront_dace
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Normunds Lācis (the project manager) -> confront_normunds
+        when:
+          state: construction_evidence
+          gte: 3
+      - Confront Guntis Liepiņš (political protection) -> confront_guntis
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Dace (Best Ending) ---
+
+  confront_dace:
+    type: message
+    text: >
+      You present your evidence to Dace:
+
+      "I know @ena_krasta is your account. I know you put a GPS
+      tracker on Aija's car. I know you entered her house when she
+      wasn't there. I know you watched her from the road. I have
+      witnesses and I have the posting patterns."
+    choices:
+      - Send -> dace_response
+
+  dace_response:
+    type: message
+    text: >
+      Dace doesn't reply for a long time. Then:
+
+      DACE: Tu nesaproti. Es viņu aizsargāju. Viņa bija briesmās
+      no būvfirmas un viņa neļāva man palīdzēt. Man vajadzēja
+      zināt, ka viņa ir drošībā. Viss, ko es darīju, bija tāpēc,
+      ka man rūp.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Inspektors Vanags.
+      And to Zane Puriņa.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektors Vanags reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the home intrusions, the
+      witness testimonies — Dace is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Aija's car
+      at the old fishing huts near Smilšukāpa.
+
+      Zane Puriņa, finally in possession of Aija's full evidence
+      package, publishes the BalticBuild story in Latvijas Avīze.
+      The VARAM orders an unannounced inspection. The construction
+      site is shut down pending environmental remediation. Normunds
+      Lācis faces criminal charges for falsifying environmental
+      impact assessments.
+
+      And Aija Ozoliņa, reading the story from a friend's house in
+      Cēsis, calls her sister for the first time in eight days.
+
+      "Es braucu mājās."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: aija
+    text: >
+      jūra nemelo. un jūraskrastu cilvēki arī ne. paldies, ka
+      nepadevāties.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Normunds (Partial Ending) ---
+
+  confront_normunds:
+    type: message
+    text: >
+      You present the construction evidence to Normunds Lācis:
+
+      "I have photographs of illegal dune excavation. I have erosion
+      measurements showing rates ten times the natural baseline. I have
+      your original engineering reports showing the data was falsified.
+      I have the construction debris on the village beach."
+    choices:
+      - Send -> normunds_response
+
+  normunds_response:
+    type: message
+    text: >
+      NORMUNDS: Šī saruna tiks pārsūtīta mūsu juridiskajai
+      nodaļai. BalticBuild SIA vienmēr ir darbojusies saskaņā ar
+      vides atļaujām. Jebkāda difamējoša materiāla publicēšana
+      radīs tūlītējas tiesiskas sekas.
+
+      But it's too late. You've sent the evidence to Zane, to
+      the Dabas Biedrība, and to VARAM.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The coastal destruction story breaks. BalticBuild is ordered
+      to halt construction pending investigation. The resort may
+      never be built. One hundred fifty promised jobs evaporate.
+      The village is divided.
+
+      But Aija?
+
+      Without the stalking evidence, Dace is never investigated.
+      She continues to walk the same beaches. She continues to
+      monitor Aija's accounts. She creates a new anonymous profile.
+
+      Three months later, Aija reads about BalticBuild online.
+      She returns quietly. She changes her routes. She stops
+      fishing alone. She checks her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Aija walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: aija
+    text: "esmu atpakaļ. krasts ir drošāks. pārējais... redzēsim."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Guntis (Wrong Ending) ---
+
+  confront_guntis:
+    type: message
+    text: >
+      You confront Pagasta pārvaldnieks Liepiņš with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> guntis_response
+
+  guntis_response:
+    type: tweet
+    from: advokats
+    text: >
+      Mūsu klients ir pieņēmis zināšanai jūsu apgalvojumus.
+      Jebkāda difamējoša materiāla publiska izplatīšana radīs
+      tūlītējas tiesiskas sekas. — Advokātu birojs Kalnbērziņš
+      & Partneri, Rīga
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The parish manager's lawyers bury your accusation. Without
+      a direct link between Liepiņš and BalticBuild's illegal
+      excavation — and there isn't one beyond political protection —
+      your evidence is insufficient.
+
+      BalticBuild continues to build. Dace continues to watch. Aija
+      stays in hiding.
+
+      Six months later, @ena_krasta creates a new account. It follows
+      Aija's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: JŪRASKRASTI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Construction evidence: ${construction_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Aija's story explores themes of
+      corporate destruction of natural landscapes, environmental
+      crime, obsessive behaviour, community solidarity, and the
+      courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Cietušo atbalsta tālrunis: 116 006 (bezmaksas)
+      Krīzes tālrunis: 8006 2322 (bezmaksas)
+      Vides pārkāpumu ziņošana: VARAM 67026533

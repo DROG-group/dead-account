@@ -1,0 +1,1635 @@
+# DEAD ACCOUNT — Story 058: Areira de Mar (Spain 3 — Galicia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-058.yml
+#
+# Player investigates the disappearance of young percebeiro Brais Oubiña
+# in the fictional Galician fishing village of Areira de Mar.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_nerea: 0
+    trust_uxio: 0
+    trust_sabela: 0
+    trust_xoan: 0
+    trust_antia: 0
+    trust_roi: 0
+    trust_iria: 0
+    trust_moncho: 0
+    trust_carmela: 0
+    trust_aldara: 0
+    trust_bieito: 0
+    trust_lois: 0
+    trust_dorinda: 0
+    trust_anxo: 0
+    trust_rosalia: 0
+    trust_amaro: 0
+    trust_suso: 0
+    trust_marta: 0
+    trust_mariña: 0
+    trust_sargento: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Novo Veciño
+    bio: "acabo de llegar a areira de mar. descubriendo galicia entre mareas"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Areira.social"
+    description: "Benvidos á instancia comunitaria de Areira de Mar"
+    avatar_url: /gamepatch/assets/dead-account/areira_bot.png
+
+  npcs:
+    # === Brais's Inner Circle ===
+    brais:
+      name: "Brais Oubiña"
+      bio: "percebeiro | a ría é a miña vida | fotos do cantil | se o mar non mata, a fábrica matará"
+      avatar: avatars/brais.jpg
+    nerea:
+      name: "Nerea Toimil"
+      bio: "ex de brais | barista no porto | non podo deixar de pensar nel"
+      avatar: avatars/nerea.jpg
+    uxio:
+      name: "Uxío Oubiña"
+      bio: "irmán maior de brais | mariscador | vigo | vai aparecer, ten que aparecer"
+      avatar: avatars/uxio.jpg
+    sabela:
+      name: "Sabela Doval"
+      bio: "amiga de brais | bióloga mariña | estación de areira | a ría está morrendo"
+      avatar: avatars/sabela.jpg
+
+    # === Local Government ===
+    moncho:
+      name: "Moncho Feijóo"
+      bio: "Alcalde de Areira de Mar | Ao servizo do concello desde 2011 | #AreiraAvanza"
+      avatar: avatars/moncho.jpg
+    aldara:
+      name: "Aldara Lema"
+      bio: "Concelleira de Medio Ambiente | Concello de Areira | protección da ría"
+      avatar: avatars/aldara.jpg
+    concello:
+      name: "Concello de Areira de Mar"
+      bio: "Conta oficial | Novas do concello | Horario: Lun-Ven 9h-14h"
+      avatar: avatars/concello.jpg
+
+    # === Local Business & Community ===
+    carmela:
+      name: "Carmela Vilas"
+      bio: "Taberna do Porto | pulpo | albariño | onde se xunta todo o pobo"
+      avatar: avatars/carmela.jpg
+    taberna:
+      name: "Taberna do Porto"
+      bio: "Pulpo á feira | Albariño da terra | Música os xoves | O corazón de Areira"
+      avatar: avatars/taberna.jpg
+    xoan:
+      name: "Xoán Carballo"
+      bio: "patrón maior | cofradía de areira | 35 anos no mar | esta costa é sagrada"
+      avatar: avatars/xoan.jpg
+    bieito:
+      name: "Bieito Rial"
+      bio: "lonxista | lonja de areira | prezos xustos ou nada | madrugón eterno"
+      avatar: avatars/bieito.jpg
+    dorinda:
+      name: "Dorinda Salgado"
+      bio: "farmacéutica | Areira de Mar | saúde e consello | gardas os domingos"
+      avatar: avatars/dorinda.jpg
+    amaro:
+      name: "Amaro Nóvoa"
+      bio: "carpinteiro de ribeira | restauración de dornas | o oficio non morre"
+      avatar: avatars/amaro.jpg
+    lois:
+      name: "Loís Canosa"
+      bio: "mariscador | ameixas e berberechos | a ría dá de comer se a coidas"
+      avatar: avatars/lois.jpg
+    rosalia:
+      name: "Rosalía Fraga"
+      bio: "librería A Gaivota | libros en galego | lecturas os mércores"
+      avatar: avatars/rosalia.jpg
+
+    # === Journalist ===
+    iria:
+      name: "Iria Bouzas"
+      bio: "xornalista independente | medio ambiente & litoral | tips: iria@bouzas-prensa.gal"
+      avatar: avatars/iria.jpg
+
+    # === CelGalicia (paper mill / corporate) ===
+    celgalicia:
+      name: "CelGalicia S.A."
+      bio: "Solucións celulósicas industriais | Planta de Areira | ISO 14001 | Compromiso co territorio"
+      avatar: avatars/celgalicia.jpg
+    suso:
+      name: "Suso Barreiro"
+      bio: "director planta CelGalicia Areira | industria & emprego local"
+      avatar: avatars/suso.jpg
+    marta:
+      name: "Marta Pazos"
+      bio: "Avogada | Despacho Pazos & Asociados | Dereito mercantil | Santiago"
+      avatar: avatars/marta.jpg
+
+    # === Teens ===
+    antia:
+      name: "Antía"
+      bio: "16 | bodyboard | areira born | o mar mola mazo rapaces"
+      avatar: avatars/antia.jpg
+    roi:
+      name: "Roi"
+      bio: "17 | surf & graffiti | sesión amencer | brais é o puto amo"
+      avatar: avatars/roi.jpg
+    mariña:
+      name: "Mariña"
+      bio: "15 | foto & poesía | a costa en branco e negro | brais ensinounos o cantil"
+      avatar: avatars/marina.jpg
+
+    # === Media & Community ===
+    actu_areira:
+      name: "Novas Areira"
+      bio: "Actualidade de Areira e da ría | Tips: redaccion@novas-areira.gal"
+      avatar: avatars/actu_areira.jpg
+    meteo_galicia:
+      name: "Meteo Areira"
+      bio: "Previsións e alertas | Estación automática | Actualización cada hora"
+      avatar: avatars/meteo_galicia.jpg
+    asso_ria:
+      name: "Asociación Gardas da Ría"
+      bio: "Protección da ría e do litoral | Voluntarios | Denuncias contaminación"
+      avatar: avatars/asso_ria.jpg
+
+    # === Suspicious / Other ===
+    anxo:
+      name: "Anxo Regueira"
+      bio: "técnico laboratorio | CelGalicia | eu fago o meu traballo e xa"
+      avatar: avatars/anxo.jpg
+    mariña_anon:
+      name: "costa_escura"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sargento:
+      name: "Sarxento Valcárcel"
+      bio: "Garda Civil de Areira de Mar | Posto territorial | urxencias: 062"
+      avatar: avatars/sargento.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN AREIRA DE MAR
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to areira.social — the community Mastodon instance for
+      the coastal village of Areira de Mar, Galicia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @brais_oubina.
+
+      A percebeiro — barnacle harvester. Youngest in the cofradía. He
+      documented the ría, the cliffs, the tides. People are worried.
+      He hasn't posted in six days.
+    choices:
+      - Look at his profile -> brais_profile
+
+  brais_profile:
+    type: tweet
+    from: brais
+    text: "a auga da ría xa non cheira a sal. cheira a cloro e a morte. a fábrica está vertendo e teño probas. #CelGaliciaContamina"
+    choices:
+      - That's his last real post... -> grey_cliff
+
+  grey_cliff:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a grey cliff face. Blurred, shot from a strange angle. Posted
+      at 4am. No caption.
+
+      His friends say that's not his style. Brais always wrote
+      captions in Galician, always tagged the location. The Garda
+      Civil says he probably went to work in another port. Something
+      doesn't add up.
+    choices:
+      - Read the Garda Civil statement -> guardia_statement
+      - Look at what people are saying -> community_reaction
+
+  guardia_statement:
+    type: tweet
+    from: sargento
+    text: >
+      Recibimos unha denuncia relativa a un residente de Areira de Mar.
+      Neste momento non existen indicios de acto delituoso. Calquera
+      información útil pode comunicarse ao 062 ou ao posto.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His ex-girlfriend @nerea_toimil is
+      posting frantic messages. His brother @uxio_oubina is driving
+      down from Vigo. His friend @sabela_doval says the ría samples
+      prove he was right. The patrón maior @xoan_carballo says the
+      cofradía is terrified.
+
+      And the journalist @iria_bouzas is strangely silent.
+
+      Nobody buys the Garda Civil's line. Nobody thinks Brais just
+      "went to work in another port." A percebeiro doesn't leave
+      his coast. The cliffs are his life.
+    effects: { trust_nerea: "+5", trust_uxio: "+5" }
+    choices:
+      - Start following Brais's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Areira de Mar. Follow Brais's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Carmela (taberna owner, knows everyone) -> carmela_intro
+      - Talk to Xoán (patrón maior, head of the cofradía) -> xoan_intro
+      - Talk to Antía (teen bodyboarder, seems shaken) -> antia_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Brais with the rhythms of a small
+      fishing village: tide tables, lonja prices, weather warnings,
+      festa schedules.
+
+      Key names surface: Nerea (ex-girlfriend, barista, can't stop
+      posting about him), Sabela (marine biologist, seems rattled),
+      Iria (journalist, oddly quiet), and the teens — Antía, Roi,
+      Mariña — who idolised Brais for teaching them the cliffs.
+
+      Also prominent: CelGalicia S.A., the paper mill up the ría.
+      Their posts are corporate PR. Brais's posts were accusations.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Carmela -> carmela_intro
+      - Talk to Xoán -> xoan_intro
+      - Talk to Antía -> antia_intro
+
+  # --- Carmela (social map) ---
+
+  carmela_intro:
+    type: tweet
+    from: carmela
+    text: >
+      A taberna está aberta pero o corazón non. @brais_oubina, a túa
+      mesa está aquí. Volta, rapaz.
+    effects: { trust_carmela: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Carmela -> carmela_talk
+
+  carmela_talk:
+    type: message
+    text: >
+      CARMELA: Ay, you're new? Welcome. Bad time to arrive, the whole
+      village is upside down about Brais.
+
+      Let me tell you who's who. Nerea is his ex — they broke up four
+      months ago but she's still... around. Always around. Sweet girl
+      but hostia, she cannot let go. Sabela Doval works at the marine
+      station with Brais, she helped him with the water samples. Uxío
+      is Brais's older brother, he's coming from Vigo.
+
+      And Iria Bouzas — the journalist — she and Brais were working
+      on something together. Something about the fábrica. Iria hasn't
+      said a word since Brais vanished. That's not like her at all.
+
+      Oh, and don't bother reading CelGalicia's posts. Lies wrapped
+      in corporate certificates, tío. That mill has been killing the
+      ría for years.
+    effects: { trust_carmela: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Nerea -> carmela_nerea
+      - Ask about CelGalicia -> carmela_celgalicia
+      - Thank her and move on -> quest1_hub
+
+  carmela_nerea:
+    type: message
+    text: >
+      CARMELA: Nerea? Mira, she's a good girl, but coño... since Brais
+      broke up with her, she's been impossible. At the café every time
+      he was here. Walking past the docks when he was working. Commenting
+      on every photo he posted. He was polite about it but I could see
+      it bothered him.
+
+      After he started the pollution investigation, she got worse.
+      Said she was worried about him, that the cliffs were dangerous,
+      that he needed someone watching his back. He told me once, "she
+      doesn't accept that it's over." I thought he meant the usual
+      heartbreak. Now I wonder if it was something more.
+    effects: { trust_carmela: "+5" }
+    choices:
+      - Ask about CelGalicia -> carmela_celgalicia
+      - Move on -> quest1_hub
+
+  carmela_celgalicia:
+    type: message
+    text: >
+      CARMELA: That paper mill has been there since the 70s. Cellulose,
+      bleaching, chemical processing — the whole ría stinks of chlorine
+      when the wind turns. The village tolerated them because they
+      brought jobs. But the mariscadores have been complaining for
+      years — the shellfish beds are dying, the water is brown near
+      the discharge pipe, dead fish float in every morning.
+
+      Brais was the first person to actually climb down to the outfall
+      with a camera and sample bottles. Joder, the boy had balls. He
+      had proof, he said. Real proof. Water samples, photos, chemical
+      data. Three weeks later he's gone.
+
+      You tell me that's a coincidence. Me cago en dios.
+    effects: { trust_carmela: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Xoán (patrón maior, witness tease) ---
+
+  xoan_intro:
+    type: tweet
+    from: xoan
+    text: >
+      trinta e cinco anos traballando esta costa. a ría xa non é a
+      mesma. @brais_oubina tiña razón. e agora desapareceu. facede
+      a conta vós.
+    effects: { trust_xoan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Xoán -> xoan_talk
+
+  xoan_talk:
+    type: message
+    text: >
+      XOÁN: I've been working this coast since I was a rapaz of
+      fifteen. I know every rock, every current, every colour the ría
+      makes. And I'm telling you — the water near the mill outfall
+      is wrong. Has been for months. The percebes are dying. The
+      barnacle beds at Punta Lobeira that fed three generations of
+      percebeiros are empty.
+
+      Brais took water samples. He climbed down cliffs that would
+      kill most men to photograph the discharge pipe. He was building
+      a case against CelGalicia. And then — gone.
+
+      You think that's a coincidence? A percebeiro doesn't leave
+      his coast, tío. The cliffs are in our blood.
+    effects: { trust_xoan: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> xoan_night
+      - Move on -> quest1_hub
+
+  xoan_night:
+    type: message
+    text: >
+      XOÁN: The night before he vanished — I was coming back from
+      checking the crab traps, around midnight. I saw lights at the
+      marine station. Not unusual, researchers work late. But there
+      were two vehicles in the car park. One was Brais's old Citroën.
+      The other was a black SUV with CelGalicia plates.
+
+      At midnight. At the marine station.
+
+      I noted it in my cofradía log. Nobody's asked to see it.
+    effects: { trust_xoan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Antía (teen bodyboarder, witness tease) ---
+
+  antia_intro:
+    type: tweet
+    from: antia
+    text: >
+      joder tío estoy flipando @brais_oubina fue el que nos enseñó
+      a respetar el mar y los cantiles. no es posible que se haya
+      ido así. si alguien sabe algo que lo diga coño
+    effects: { trust_antia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Antía -> antia_talk_early
+
+  antia_talk_early:
+    type: message
+    text: >
+      ANTÍA: tío eres nuevo aquí?? menudo timing de mierda. en plan
+      brais es lo mejor que tiene este pueblo. nos enseñó a bajar los
+      cantiles, nos enseñaba los percebes, nos contaba historias del
+      mar. mola mazo el rapaz.
+
+      y ahora estoy flipando porque roi vio algo raro la otra noche
+      en el puerto pero no quiere hablar. dice que no es nada pero
+      hostia puta que sí es algo. se le nota en la cara tío
+    effects: { trust_antia: "+10" }
+    choices:
+      - What did Roi see? -> antia_roi_hint
+      - Move on -> quest1_hub
+
+  antia_roi_hint:
+    type: message
+    text: >
+      ANTÍA: no sé exactamente. estaba haciendo skate por el puerto
+      y vio a alguien toqueteando el coche de brais?? o algo así. está
+      cagado y no quiere hablar del tema. tienes que hablar con él
+      directamente pero es desconfiado con la gente que no conoce.
+      intenta hablarle de surf o de grafiti primero jajaja. es buen
+      tío pero tímido de cojones
+    effects: { trust_antia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Areira de Mar. A Galician fishing
+      village built around the ría and the cliffs. A young percebeiro
+      who was exposing pollution. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Nerea (Brais's ex-girlfriend) -> nerea_q1
+      - Talk to Sabela (Brais's friend at the marine station) -> sabela_q1
+      - Check what Uxío (Brais's brother) is saying -> uxio_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Nerea Q1 ---
+
+  nerea_q1:
+    type: tweet
+    from: nerea
+    text: >
+      se alguien ten noticias de @brais_oubina chamádeme por favor.
+      o seu cuarto está igual. as súas cordas de escalada están aí.
+      el non se iría sen o seu material. non pode ser.
+    effects: { trust_nerea: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nerea -> nerea_q1_talk
+
+  nerea_q1_talk:
+    type: message
+    text: >
+      NEREA: Who are you? Another person from outside who's going to
+      tell me to calm down? Brais and I... we were together for two
+      years. I know him better than anyone. He wouldn't just leave.
+
+      ...I keep saying that. I keep saying he'll come back.
+
+      [Nerea seems emotionally raw. She's guarded but desperate.
+      You'll need to build more trust before she opens up fully.]
+    effects: { trust_nerea: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sabela Q1 ---
+
+  sabela_q1:
+    type: tweet
+    from: sabela
+    text: >
+      A estación está baleira sen @brais_oubina. As súas mostras de
+      auga seguen na neveira. Os seus datos de campo están no seu
+      escritorio. El nunca abandonaría unha investigación aberta.
+      Algo pasou.
+    effects: { trust_sabela: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Sabela -> sabela_q1_talk
+
+  sabela_q1_talk:
+    type: message
+    text: >
+      SABELA: Brais and I have worked together at the station for
+      over a year. He's a percebeiro but he understood marine biology
+      better than half the scientists. This pollution investigation —
+      it was everything to him. He had data, photos, chemical analysis.
+      He was so close to going public with the journalist.
+
+      I helped him with the lab work. The water samples from the
+      outfall — the heavy metals are off the charts. Cadmium, mercury.
+      The ría is dying and CelGalicia is killing it.
+
+      I just want him to come back, tío. This village needs him.
+    effects: { trust_sabela: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Uxío Q1 ---
+
+  uxio_q1:
+    type: tweet
+    from: uxio
+    text: >
+      meu irmán DESAPARECEU e a garda civil dime que se foi a outro
+      porto??? EL NON SE VAI SEN AVISAR. veño de Vigo. alguén vai
+      explicarme que coño pasou.
+    effects: { trust_uxio: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Uxío -> uxio_q1_talk
+
+  uxio_q1_talk:
+    type: message
+    text: >
+      UXÍO: Who are you? Another gilipollas who's going to tell me
+      everything's fine? My brother called me the night before he
+      disappeared. He said he had something big. He said "if anything
+      happens to me, look at CelGalicia." Then he hung up.
+
+      That's the last I heard from him. Hostia puta, tío. He sounded
+      scared. Brais doesn't get scared. He hangs off cliffs over the
+      Atlantic for a living.
+    effects: { trust_uxio: "+10" }
+    choices:
+      - What do you think happened? -> uxio_theory
+      - Move on -> quest1_hub
+
+  uxio_theory:
+    type: message
+    text: >
+      UXÍO: I think he found proof that CelGalicia is dumping toxic
+      waste in the ría and they shut him up. But I also think his
+      ex — Nerea — knows more than she's saying. The way she talks
+      about him... joder, tío, they broke up four months ago and
+      she's acting like they're still together.
+
+      Brais told me weeks ago that someone was following him. He'd
+      see the same car parked near the cliffs when he was working.
+      He'd find stuff moved in his room. He thought it was nothing.
+      I don't think it was nothing.
+    effects: { trust_uxio: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Brais went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Roi (was skating at the port at sunset) -> roi_interview
+      - Find Bieito (lonxista, works late at the lonja) -> bieito_interview
+      - Find Loís (mariscador, early morning at the shore) -> lois_interview
+      - Find Amaro (boat carpenter, workshop near the dock) -> amaro_interview
+
+  # --- Roi (saw someone at Brais's car) ---
+
+  roi_interview:
+    type: tweet
+    from: roi
+    text: >
+      buena sesión esta tarde pero el rollo en el puerto está raro
+      últimamente. hay algo que no cuadra tío. no sé cómo explicarlo
+    effects: { trust_roi: "+5" }
+    choices:
+      - Ask Roi about that evening -> roi_talk
+
+  roi_talk:
+    type: message
+    text: >
+      ROI: tío vale pero no se lo digas a nadie eh. estaba en el
+      puerto sobre las 7 de la tarde haciendo skate y vi a la nerea
+      al lado del coche de brais. estaba como buscando algo dentro o
+      metiendo algo, no sé. cuando me vio se fue corriendo.
+
+      o sea yo no dije nada porque no quería movidas pero hostia
+      puta tío ahora es diferente. no es normal eso. me cago en
+      dios que no es normal
+    effects:
+      trust_roi: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Bieito (lonxista, saw late-night meeting) ---
+
+  bieito_interview:
+    type: tweet
+    from: bieito
+    text: >
+      Lembrade: a lonxa pecha ás 22h. Últimamente hai movemento raro
+      no peirao despois da hora. Coches que non son de aquí.
+    effects: { trust_bieito: "+5" }
+    choices:
+      - Ask Bieito what he saw -> bieito_talk
+
+  bieito_talk:
+    type: message
+    text: >
+      BIEITO: I was closing the lonja around 22h30. I saw Brais's
+      Citroën still parked at the marine station. And a black SUV —
+      CelGalicia plates — right next to it. Two men in suits standing
+      by the station entrance. One I recognised: Suso Barreiro, the
+      mill director.
+
+      At 22h30. At the marine station. Suits don't come to Areira at
+      night, tío. Something was wrong.
+
+      I noted it in the lonja log. Nobody's asked to see it.
+    effects:
+      trust_bieito: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Loís (saw Brais fleeing) ---
+
+  lois_interview:
+    type: tweet
+    from: lois
+    text: >
+      ás 4 da mañá na praia. a marea baixa non estaba baleira. había
+      alguén correndo polo sendeiro do cantil. no escuro. non era un
+      corredor.
+    effects: { trust_lois: "+5" }
+    choices:
+      - Ask Loís what he saw -> lois_talk
+
+  lois_talk:
+    type: message
+    text: >
+      LOÍS: I get up at 4am for the shellfish beds, every morning.
+      That morning — the morning after Brais's last post — I saw
+      someone on the cliff path. Running. A man, carrying a bag,
+      heading toward Punta Lobeira. Still dark. Moving fast, like he
+      was afraid.
+
+      I called out but he didn't stop. I figured it was a jogger
+      but... who jogs at 4am on a cliff path carrying a rucksack?
+
+      When I heard about Brais, it hit me. Me cago en dios. That
+      was him. Running from something.
+    effects:
+      trust_lois: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Amaro (saw car chase) ---
+
+  amaro_interview:
+    type: tweet
+    from: amaro
+    text: >
+      No taller ás 5h como sempre. Pero esa mañá un vehículo ía a
+      toda hostia pola estrada da costa. Demasiado rápido.
+    effects: { trust_amaro: "+5" }
+    choices:
+      - Ask Amaro what he saw -> amaro_talk
+
+  amaro_talk:
+    type: message
+    text: >
+      AMARO: I start in the workshop at 5am every day. That morning
+      I was opening the shutters and a car went past — fast, much
+      too fast for the coast road. Dark SUV. Then maybe two minutes
+      later a second vehicle. Smaller, older. Following? Chasing?
+      I don't know.
+
+      The second car turned off toward the old percebeiro huts at
+      Punta Lobeira. The first kept going toward the autopista.
+
+      I told the Garda Civil. They wrote it down. That was it. Joder.
+    effects:
+      trust_amaro: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Nerea (ex) and
+      Mariña (saw Nerea watching the flat).
+    choices:
+      - Talk to Nerea about that night -> nerea_interview
+      - Talk to Mariña -> marina_interview
+      - Find Roi -> roi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Bieito -> bieito_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Loís -> lois_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Amaro -> amaro_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Nerea (last to see Brais) ---
+
+  nerea_interview:
+    type: tweet
+    from: nerea
+    text: >
+      esa foto na conta de brais. non é el. brais nunca publica sen
+      lenda. brais non publica ás 4 da mañá. outra persoa fixo iso.
+      alguén ten o seu teléfono.
+    effects: { trust_nerea: "+5" }
+    choices:
+      - DM Nerea -> nerea_talk_low
+        when:
+          state: trust_nerea
+          lt: 50
+      - DM Nerea -> nerea_talk_high
+        when:
+          state: trust_nerea
+          gte: 50
+
+  nerea_talk_low:
+    type: message
+    text: >
+      NEREA: I appreciate you reaching out but I don't know you. Brais
+      has a lot of people asking about him. I can't talk to everyone.
+
+      ...Look, I'm sorry. I'm just... I can't eat. I can't sleep. He's
+      out there somewhere.
+
+      [Nerea is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_nerea: "+5" }
+    choices:
+      - Share what you've learned about the night -> nerea_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  nerea_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the station, the
+      suits, the running figure on the cliff path. Nerea is silent
+      for a while.
+
+      NEREA: You're actually looking for him. Not just talking about
+      it. Okay. I'll tell you what I know.
+    effects: { trust_nerea: "+25" }
+    choices:
+      - What happened that night? -> nerea_talk_high
+
+  nerea_talk_high:
+    type: message
+    text: >
+      NEREA: I saw him around 23h. I was... walking past his place. I
+      know how that sounds. I just needed to know he was okay. He came
+      out looking white as a ghost. Shaking. He was carrying his laptop
+      and a waterproof case with his hard drives.
+
+      I asked what was wrong. He said "they know what I have. The mill
+      sent people." Then he said "and you need to stop this, Nerea. You
+      need to stop following me. It's not safe for either of us."
+
+      I tried to hug him. He pushed me away. He said "I'm sorry but
+      it's over and you have to accept that." Then he got in his car
+      and left. That was it. By morning the cliff photo was on his
+      account.
+
+      I should have stopped him. I should have gone with him. Joder,
+      I should have done something.
+    effects:
+      trust_nerea: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Mariña (saw Nerea watching the flat) ---
+
+  marina_interview:
+    type: message
+    text: >
+      MARIÑA: tío vale esto es un poco creepy pero es que la nerea...
+      yo la he visto como tres veces delante de la casa de brais por
+      la noche. o sea literal parada en la calle mirando las ventanas.
+      super raro hostia.
+
+      la última vez fue como dos días antes de que desapareciera. estaba
+      en su coche aparcado enfrente. las luces apagadas. solo sentada
+      ahí. me cago en dios qué mal rollo tío.
+
+      y mira que le tengo cariño a nerea eh. pero eso no es normal.
+    effects:
+      trust_mariña: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Nerea seen at Brais's car at the port (Roi)
+      22:30 — CelGalicia SUV at the marine station, Suso Barreiro present (Bieito)
+      23:00 — Brais leaves home shaken, tells Nerea to stop following him (Nerea)
+      04:00 — Man running on cliff path toward Punta Lobeira (Loís)
+      05:00 — Two vehicles speeding on coast road, one toward the huts (Amaro)
+
+      CelGalicia confronted Brais at the marine station. He fled home,
+      grabbed his evidence, and ran along the cliffs. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is CelGalicia hiding? Who ordered the
+        confrontation? Why is the alcalde silent?
+      — The obsession: What is Nerea really doing? Why was she at
+        his car? Why is she watching his flat?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Nerea -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      CelGalicia is hiding something. Brais had proof. Now he's
+      gone and his evidence is missing from the marine station.
+
+      The alcalde, Moncho Feijóo, has been suspiciously silent about
+      the biggest story in the village.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the marine station records -> station_records
+      - Talk to Iria the journalist -> iria_interview
+      - Talk to Anxo (CelGalicia technician) -> anxo_interview
+      - Talk to Aldara (environment councillor) -> aldara_interview
+      - Check the Gardas da Ría association -> asso_investigation
+      - Talk to Xoán about the dumping -> xoan_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Station Records ---
+
+  station_records:
+    type: message
+    text: >
+      The marine station's public database shows Brais's recent work:
+      water quality samples from eight sites along the ría. The data
+      for Punta Lobeira is marked "PENDENTE DE REVISIÓN" — the only
+      site with that status.
+
+      His field log, shared with the station for safety, shows he
+      made 15 climbs near the CelGalicia outfall pipe in the past
+      month. The last entry: "Fotografei unión de tubos. Vertido
+      secundario non declarado. A descarga non é o que declaran."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Iria ---
+
+  iria_interview:
+    type: message
+    text: >
+      IRIA: I don't talk about sources. Period. I'm a journalist, not
+      a gossip.
+    effects: { trust_iria: "+5" }
+    choices:
+      - Show Iria the evidence you have -> iria_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  iria_with_evidence:
+    type: message
+    text: >
+      IRIA: ...you have more than I expected. Coño.
+
+      Okay. Brais and I were working together. He had photos of an
+      undeclared waste pipe — CelGalicia has a second outfall that
+      doesn't appear on any permit. He had water samples showing
+      heavy metal and chlorine levels fifteen times the legal limit.
+      The ría is being poisoned.
+
+      We were going to publish together. Then he went dark. And two
+      days later, someone broke into my office and took my backup
+      drive.
+
+      Brais is alive. He contacted me once, from a burner phone. He
+      said he was hiding in the mountains. He said "they threatened
+      me at the station and someone else won't leave me alone."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come back.
+    effects:
+      trust_iria: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> iria_hint
+      - Back to investigation hub -> investigation_hub
+
+  iria_hint:
+    type: message
+    text: >
+      IRIA: The mill sent their director — Barreiro — and some lawyer
+      from Santiago to the station that night. Told him to hand over
+      everything or face legal consequences. Intimidation dressed up
+      as cease and desist letters.
+
+      But here's what really matters: the alcalde knew. Moncho Feijóo
+      has been taking money from CelGalicia for years. "Donations to
+      the concello." "Sponsorship of local events." Hostia puta, tío,
+      it's bribes. He ordered the Garda Civil to drop the investigation.
+      That's why Sarxento Valcárcel is sitting on his hands.
+
+      And Brais also said something about someone from his personal
+      life. Someone who'd been following him. Someone who always knew
+      where he was. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Anxo (CelGalicia whistleblower) ---
+
+  anxo_interview:
+    type: message
+    text: >
+      ANXO: I work at CelGalicia. I'm just a lab tech. I run tests,
+      I file reports. I keep my head down.
+
+      But the reports I file... are not always the reports that get
+      sent to the Xunta.
+    effects: { trust_anxo: "+10" }
+    choices:
+      - What do you mean? -> anxo_detail
+
+  anxo_detail:
+    type: message
+    text: >
+      ANXO: I measure effluent discharge. Cadmium, mercury, chlorine,
+      dioxins. My numbers go to my supervisor. Somewhere between my
+      desk and the regulatory filing, they change. Lower. Always lower.
+
+      Brais's samples from outside the pipe matched MY original
+      numbers, not the ones in the official reports. He had independent
+      proof that CelGalicia is falsifying discharge data.
+
+      And the alcalde signs off on the environmental permits every
+      year. Rubber-stamps them. Never questions the numbers. Because
+      CelGalicia paid for the new sports centre, the new road, the
+      festa patronal. Me cago en dios, they basically own the concello.
+
+      I'm scared. I have kids. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_anxo: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Aldara ---
+
+  aldara_interview:
+    type: message
+    text: >
+      ALDARA: As environment councillor, I take these allegations
+      seriously. But CelGalicia employs 300 people in this concello.
+      The alcalde insists we need to "maintain dialogue" with them.
+
+      Off the record? I've seen the Xunta inspection reports.
+      CelGalicia passes every time. But those inspections are
+      announced a month in advance. They reduce production, clean
+      up the outfall, and run minimum discharge. The inspectors come,
+      they see clean numbers, they leave. Then the pipes open again.
+
+      I confronted Moncho about it. He told me to mind my portfolio.
+      He said "CelGalicia keeps this village alive." Joder, it's
+      killing the ría that actually keeps this village alive.
+
+      Brais had unannounced data. Real samples. That's what makes it
+      dangerous.
+    effects:
+      trust_aldara: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gardas da Ría ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_ria
+    text: >
+      ALERTA: Denuncia de coloración anormal da auga na zona da Punta
+      Lobeira. Fotos e mostras en curso. Esiximos unha inspección non
+      anunciada da planta de CelGalicia.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Gardas da Ría have been documenting water quality for five
+      years. Their data shows a clear pattern: heavy metal and chlorine
+      spikes that correspond to CelGalicia's production schedule.
+      Higher on weekdays, lower on weekends. Higher at night, lower
+      during the day. Highest after rain, when the runoff carries the
+      waste further into the ría.
+
+      The pattern is unmistakable. Ongoing, deliberate illegal
+      discharge timed to avoid detection.
+
+      Brais was a founding member. He contributed most of the cliff-
+      face photography and the outfall documentation.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Xoán dumping ---
+
+  xoan_dumping:
+    type: message
+    text: >
+      XOÁN: I'll show you something. Last month I pulled my traps
+      near the outfall and found this — a chemical drum, corroded,
+      leaking into the water. The label was half gone but I could
+      read "disolvente" and a CelGalicia batch number.
+
+      They're not just discharging through the pipe, tío. They're
+      dumping barrels into the ría. Solid waste. In the water where
+      our shellfish grow. Where our children swim.
+
+      I photographed it and sent it to Brais. He said it was the
+      missing piece — proof of solid waste dumping, not just liquid
+      discharge. I still have the photos. And the batch number.
+
+      And you know what the alcalde said when I told him? "Don't
+      make trouble, Xoán." Me cago en dios.
+    effects:
+      trust_xoan: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Nerea Toimil. Ex-girlfriend. Four months since the breakup.
+      Someone was at Brais's car. Someone was watching his flat.
+      Someone always knew where he was.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Check Nerea's posting patterns -> nerea_patterns
+      - Talk to Sabela about Nerea -> sabela_nerea
+        when:
+          state: trust_sabela
+          gte: 20
+      - Talk to Roi (more detail on the car incident) -> roi_detail
+      - Talk to Dorinda the pharmacist -> dorinda_interview
+      - Check the anonymous account @costa_escura -> anon_investigation
+      - Talk to Rosalía the bookseller -> rosalia_interview
+        when:
+          state: trust_rosalia
+          gte: 40
+      - Talk to Sarxento Valcárcel -> sargento_interview
+        when:
+          state: trust_sargento
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Nerea's Posting Patterns ---
+
+  nerea_patterns:
+    type: message
+    text: >
+      You go through Nerea's posting history on the instance.
+
+      Since the breakup, Nerea has commented on every single post
+      Brais made. Every cliff photo, every tide update, every
+      pollution report. Within minutes. Every time.
+
+      She's also posted photos from locations where Brais was
+      working — the same cliffs, the same coves — taken from a
+      distance. As if she was there, watching, but not approaching.
+
+      One post from two weeks ago: "the sunset from Punta Lobeira
+      is beautiful tonight." Brais was harvesting percebes at Punta
+      Lobeira that evening. She tagged the location but not him.
+
+      She was there. Every time. Watching.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sabela on Nerea ---
+
+  sabela_nerea:
+    type: message
+    text: >
+      SABELA: Nerea? Ay, tío. She made Brais really uncomfortable.
+      After they broke up, she'd show up at the taberna whenever he
+      was there. She'd walk past the docks during his shifts. She'd
+      send him long messages at 2am that he'd show me — walls of
+      text about how they were meant to be together.
+
+      He told her it was over. Clearly, kindly. Multiple times. She
+      said she understood. Then nothing changed. She just... kept
+      being there. Always there.
+
+      A month ago Brais told me someone had been in his room at the
+      boarding house. Nothing taken, but things moved. His papers
+      rearranged. His dive schedule — the one he kept pinned to the
+      wall — had been photographed. The pin marks were different. He
+      suspected Nerea but couldn't prove it.
+    effects:
+      trust_sabela: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Roi detail ---
+
+  roi_detail:
+    type: message
+    text: >
+      ROI: tío vale en plan no lo conté todo. cuando vi a nerea en el
+      coche de brais tenía algo en la mano. como un aparato pequeño.
+      lo metió debajo del coche, por el lado del conductor. como
+      pegado abajo.
+
+      a mí no me preguntes pero eso parecía un localizador GPS de
+      los que salen en las pelis. hostia puta.
+
+      debería haber dicho algo pero tío quién me iba a creer. un
+      chaval de 17 acusando a una tía mayor. me cago en dios que
+      ahora no puedo dormir pensando en eso
+    effects:
+      trust_roi: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Dorinda ---
+
+  dorinda_interview:
+    type: message
+    text: >
+      DORINDA: This is confidential but I'm a pharmacist, not a
+      priest. Nerea Toimil comes in regularly. She's been buying
+      things that... suggest she's not well. Anti-anxiety medication,
+      sleep aids, energy supplements. The pattern is someone who's
+      not sleeping, who's obsessing.
+
+      She also asked me once, very casually, if we sold "those little
+      tracking devices." I said "Nerea, this is a farmacia, not a
+      tech shop." She laughed it off. But the way she asked...
+
+      I didn't think about it again until Brais disappeared. Joder,
+      now I can't stop thinking about it.
+    effects:
+      trust_dorinda: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: mariña_anon
+    text: >
+      He should have listened. I was trying to protect him. Nobody
+      else loves him like I do. Nobody.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @costa_escura: account created 3 months ago. Right after the
+      breakup. Posts are all about Brais's work. Comments on every
+      cliff photo, every water sample, every dive report. The tone
+      shifts over time:
+
+      Month 1: "Be careful on those cliffs. I worry about you."
+      Month 2: "Why won't you respond? I just want to know you're
+      safe. You owe me that much."
+      Month 3: "I see you at the taberna with other people. You have
+      time for them but not for me? After everything?"
+      Last week: "I know your schedule. I know every cliff you climb.
+      I'm always close. You'll understand one day."
+
+      The account has no photos, no personal details. Just Brais.
+      Only Brais.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @costa_escura with @nerea_toimil:
+
+      Same patterns. The same way she structures sentences in Galician.
+      The same specific slang — "rapaz" used as a term of endearment.
+      Same knowledge of Brais's daily schedule that only someone
+      watching him closely would have.
+
+      And one post from @costa_escura: "Your climb at Sector 4 today
+      looked dangerous." Sector 4 is an internal cofradía designation
+      for a cliff section. Not public. Only someone who'd seen the
+      cofradía schedule — or been physically present — would know.
+
+      It's Nerea. The anonymous account is Nerea.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rosalía ---
+
+  rosalia_interview:
+    type: message
+    text: >
+      ROSALÍA: Brais left something with me. A sealed waterproof
+      case. The kind they use for diving equipment. He said "if
+      someone asks about what's in the water at Punta Lobeira, give
+      them this."
+
+      He looked frightened. He said he'd made copies of everything
+      but needed one set somewhere nobody would look. A bookshop in
+      a fishing village seemed safe enough.
+
+      Poor rapaz. He was shaking when he brought it in.
+    effects: { trust_rosalia: "+10" }
+    choices:
+      - What's in the water at Punta Lobeira? -> rosalia_case
+
+  rosalia_case:
+    type: message
+    text: >
+      Rosalía reaches under the counter and produces a waterproof
+      Pelican case.
+
+      ROSALÍA: He said someone would come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show the underwater outfall — not the official discharge
+      point, but a second, hidden pipe — and corroded chemical drums
+      on the seabed. The USB drive contains water sample data,
+      chemical analysis, and Brais's detailed report. There's also
+      a document showing payments from CelGalicia to the concello —
+      not the official sponsorships, but private transfers to an
+      account controlled by Alcalde Feijóo.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sarxento Valcárcel ---
+
+  sargento_interview:
+    type: message
+    text: >
+      SARXENTO VALCÁRCEL: Off the record — and I mean completely off
+      the record — I wanted to investigate CelGalicia. My superior
+      in Pontevedra told me to stand down. He said the Xunta had
+      "jurisdiction." That's code for "don't touch it." And the
+      alcalde called me personally to say the concello "didn't want
+      to create alarm."
+
+      The Toimil situation is different. I didn't even know about
+      that until now. If you have evidence of stalking and harassment,
+      I can act on that. That's clearly my jurisdiction. Nobody can
+      order me to ignore criminal behaviour toward a person.
+
+      Bring me something solid and I'll reopen the case. Joder, bring
+      me anything. I'm tired of sitting here doing nothing.
+    effects:
+      trust_sargento: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Brais than anyone in Areira de Mar. Who is responsible?
+    choices:
+      - Confront Nerea Toimil (the obsessive ex) -> confront_nerea
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Suso Barreiro (the mill director) -> confront_suso
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Alcalde Feijóo (political protection) -> confront_moncho
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Nerea (Best Ending) ---
+
+  confront_nerea:
+    type: message
+    text: >
+      You present your evidence to Nerea:
+
+      "I know @costa_escura is your account. I know you put a GPS
+      tracker on Brais's car. I know you were in his room going
+      through his papers. I know you've been watching his flat every
+      night. I have witnesses and I have the posting history."
+    choices:
+      - Send -> nerea_response
+
+  nerea_response:
+    type: message
+    text: >
+      Nerea doesn't reply for a long time. Then:
+
+      NEREA: You don't understand. I love him. I was protecting him.
+      He was in danger from CelGalicia and he wouldn't let me help.
+      I needed to know he was safe. Everything I did was because I
+      love him. He'll understand. He has to understand.
+
+      That's not love. That's obsession.
+
+      You've already sent the evidence to Sarxento Valcárcel. And to
+      Iria Bouzas.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sarxento Valcárcel reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the break-ins, the witness
+      testimonies — Nerea is arrested for stalking and harassment.
+      A GPS tracker is recovered from under Brais's Citroën at the
+      old percebeiro huts near Punta Lobeira.
+
+      Iria Bouzas, finally in possession of Brais's full evidence
+      package, publishes the CelGalicia story in El País. She includes
+      the payment records to Alcalde Feijóo's private account. The
+      Xunta orders an unannounced inspection. The mill is shut down
+      pending environmental remediation. Suso Barreiro faces criminal
+      charges for falsifying discharge reports. Moncho Feijóo is
+      arrested for corruption.
+
+      And Brais Oubiña, reading the story from a shepherd's cottage
+      in the Serra do Courel, calls his brother for the first time
+      in nine days.
+
+      "Volvo á casa."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: brais
+    text: >
+      a ría non mente. e a xente de areira tampouco. grazas por non
+      deixar de buscar.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Suso (Partial Ending) ---
+
+  confront_suso:
+    type: message
+    text: >
+      You present the pollution evidence to Suso Barreiro:
+
+      "I have photographs of the undeclared outfall pipe. I have water
+      samples showing contamination levels fifteen times the legal
+      limit. I have your original lab reports showing the data was
+      falsified. I have the barrels with your batch numbers. And I
+      have the payment records to the alcalde."
+    choices:
+      - Send -> suso_response
+
+  suso_response:
+    type: message
+    text: >
+      SUSO: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. CelGalicia has always operated within
+      regulatory requirements and maintains the highest environmental
+      standards.
+
+      But it's too late. You've sent the evidence to Iria, to the
+      Gardas da Ría, and to the Xunta.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. CelGalicia is ordered to halt
+      discharge pending investigation. The mill may close permanently.
+      Three hundred jobs hang in the balance. The village is divided.
+      Alcalde Feijóo resigns before the corruption charges land.
+
+      But Brais?
+
+      Without the stalking evidence, Nerea is never investigated.
+      She continues to work at the café on the port. She continues
+      to monitor his accounts. She creates a new anonymous profile.
+      She waits.
+
+      Three months later, Brais reads about CelGalicia online. He
+      returns quietly. He moves to a different boarding house. He
+      stops harvesting alone. He checks his car every morning. He
+      changes his locks twice.
+
+      The corporation is exposed. The alcalde falls. But the person
+      who terrorised Brais walks free. And she's still watching.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: brais
+    text: "volvín. a ría está máis limpa. o resto... xa veremos."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Alcalde (Wrong Ending) ---
+
+  confront_moncho:
+    type: message
+    text: >
+      You confront Alcalde Feijóo with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> moncho_response
+
+  moncho_response:
+    type: tweet
+    from: marta
+    text: >
+      O meu cliente toma nota das súas acusacións. Calquera difusión
+      pública de afirmacións difamatorias dará lugar a procedementos
+      legais inmediatos. — Despacho Pazos & Asociados, Santiago
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The alcalde's lawyer buries your accusation. Without a direct
+      link between Feijóo and CelGalicia's dumping — and the payment
+      records alone aren't enough without Brais's full evidence
+      package — your case is insufficient.
+
+      CelGalicia continues to operate. The ría continues to die.
+      Nerea continues to watch. Brais stays in hiding.
+
+      Six months later, @costa_escura creates a new account. It
+      follows Brais's brother. The first post: "Tell him I'm still
+      here."
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: AREIRA DE MAR — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Brais's story explores themes of
+      corporate impunity, environmental crime, political corruption,
+      obsessive behaviour after a breakup, community solidarity,
+      and the courage to speak up when powerful interests want
+      silence.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or thoughts of self-harm, help is available:
+      Teléfono de la Esperanza: 717 003 717
+      Línea de Atención a la Conducta Suicida: 024
+      Denuncias medioambientales: 900 101 080

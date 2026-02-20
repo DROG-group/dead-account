@@ -1,0 +1,1574 @@
+# DEAD ACCOUNT — A TactCheck Gamepatch Scenario
+# Story 041: Czech Republic 2 — Rybnikov
+# An investigation game on a simulated Mastodon instance
+#
+# Player investigates the disappearance of craft brewer Filip Cerny
+# in the fictional South Bohemian town of Rybnikov.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_vojtech: 0
+    trust_lucie: 0
+    trust_radek: 0
+    trust_bozena: 0
+    trust_dominik: 0
+    trust_eliska: 0
+    trust_tomas: 0
+    trust_jana: 0
+    trust_pavel: 0
+    trust_marek: 0
+    trust_hana: 0
+    trust_miroslav: 0
+    trust_petra: 0
+    trust_jiri: 0
+    trust_zdenek: 0
+    trust_kamila: 0
+    trust_ondrej: 0
+    trust_ivan: 0
+    trust_lenka: 0
+    trust_daniela: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    water_evidence: 0
+    intimidation_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to rybnikov. getting settled in"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Rybnikov.social"
+    description: "Welcome to the Rybnikov community instance — South Bohemia"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    # === Filip's Inner Circle ===
+    filip:
+      name: "Filip Cerny"
+      bio: "craft brewer & food blogger | rybnikov pivovar | hops and honest water"
+      avatar: avatars/filip.jpg
+    vojtech:
+      name: "Vojtech Novak"
+      bio: "teaching biology at gymnazium | water quality nerd | filip's lab partner"
+      avatar: avatars/vojtech.jpg
+    lucie:
+      name: "Lucie Kralova"
+      bio: "photographer | south bohemia through my lens | filip's person"
+      avatar: avatars/lucie.jpg
+    radek:
+      name: "Radek Dvorak"
+      bio: "pub manager @hospoda_urybniku | live music fridays | beer is culture"
+      avatar: avatars/radek.jpg
+    jana:
+      name: "Jana Cerna"
+      bio: "filip's sister | prague | someone tell me what happened to my brother"
+      avatar: avatars/jana.jpg
+
+    # === Town Administration ===
+    marek:
+      name: "Marek Horak"
+      bio: "Starosta obce Rybnikov | Building a better community since 2020"
+      avatar: avatars/marek.jpg
+    hana:
+      name: "Hana Stepankova"
+      bio: "Mistostarostka | Rybnikov | Environment & infrastructure"
+      avatar: avatars/hana.jpg
+    miroslav:
+      name: "Miroslav Jelinek"
+      bio: "Obecni urad Rybnikov | admin | paperwork is my cardio"
+      avatar: avatars/miroslav.jpg
+    policie:
+      name: "Policie CR — Obvodne Rybnikov"
+      bio: "Oficalni ucet | Tisen 158 | Nouze 112"
+      avatar: avatars/policie.jpg
+    zdenek:
+      name: "Zdenek Maly"
+      bio: "Policejni dustojnik | Rybnikov obvod | Poradenske hodiny: st 9-11"
+      avatar: avatars/zdenek.jpg
+
+    # === Chemical Plant / Security ===
+    ivan:
+      name: "Ivan Kubat"
+      bio: "Bezpecnostni manazer | ChemBoh a.s. | Safety first"
+      avatar: avatars/ivan.jpg
+    chemboh:
+      name: "ChemBoh a.s."
+      bio: "Chemicky zavod | Tradice od 1965 | Zodpovedna vyroba"
+      avatar: avatars/chemboh.jpg
+    ondrej:
+      name: "Ondrej Fiala"
+      bio: "pravni poradce | Fiala & Partners | obchodni pravo"
+      avatar: avatars/ondrej.jpg
+
+    # === Local Business / Community ===
+    bozena:
+      name: "Babicka Bozena"
+      bio: "80 let v Rybnikove | pamatuji kdyz tady byly jen rybniky | kolace kazdy patek"
+      avatar: avatars/bozena.jpg
+    petra:
+      name: "Petra Svobodova"
+      bio: "lekarna Rybnikov | zdravi na prvnim miste | kava az potom"
+      avatar: avatars/petra.jpg
+    pavel:
+      name: "Pavel Kriz"
+      bio: "rybar | kapri a stiky | rybniky jsou muj domov"
+      avatar: avatars/pavel.jpg
+    kamila:
+      name: "Kamila Nemcova"
+      bio: "knihkupectvi u kapra | knihy a kava | cti a ziji"
+      avatar: avatars/kamila.jpg
+    jiri:
+      name: "Jiri Prochazka"
+      bio: "automechanik | opravy a servis | otevren do pozda"
+      avatar: avatars/jiri.jpg
+    daniela:
+      name: "Daniela Vlckova"
+      bio: "novinarka | Jihocesky denik | tipy: daniela@jihoceskydenik.cz"
+      avatar: avatars/daniela.jpg
+    lenka:
+      name: "Lenka Benesova"
+      bio: "ucitelka ZS | Rybnikov | deti jsou budoucnost"
+      avatar: avatars/lenka.jpg
+
+    # === Teens ===
+    dominik:
+      name: "Dominik"
+      bio: "16 | skater | rybniky jsou fakt hustej spot | nocni sessions"
+      avatar: avatars/dominik.jpg
+    eliska:
+      name: "Eliska"
+      bio: "17 | enviro aktivistka | voda je zivot | @filip_pivo je legenda"
+      avatar: avatars/eliska.jpg
+    tomas_teen:
+      name: "Tomas"
+      bio: "15 | rybari | drony | zachytil jsem neco divnyho tbh"
+      avatar: avatars/tomas_teen.jpg
+
+    # === Media / Misc ===
+    zpravy:
+      name: "Zpravy Rybnikov"
+      bio: "Mistni zpravy | Tipy: redakce@zpravyrybnikov.cz"
+      avatar: avatars/zpravy.jpg
+    pocasi:
+      name: "Pocasi Rybnikov"
+      bio: "Automaticka meteostanice | Kazdou hodinu aktualizace"
+      avatar: avatars/pocasi.jpg
+    knihovna:
+      name: "Knihovna Rybnikov"
+      bio: "Knihy | Akce | Wifi | Vedeni pro vsechny"
+      avatar: avatars/knihovna.jpg
+    tipster:
+      name: "Anonym"
+      bio: "."
+      avatar: avatars/anon.jpg
+    rybar_spolek:
+      name: "Rybarsky spolek Rybnikov"
+      bio: "Rybareni | ochrana vod | tradice | Schuze kazdy mesic"
+      avatar: avatars/rybar_spolek.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN RYBNIKOV
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to rybnikov.social — the community Mastodon instance for
+      the town of Rybnikov, South Bohemia.
+
+      The local feed is buzzing. Something is wrong.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps appearing: @filip_pivo.
+
+      A local craft brewer and food blogger. He ran a small brewery using
+      water from the town's famous ponds. People are panicking. He hasn't
+      posted in over a week.
+    choices:
+      - Look at his profile -> filip_profile
+
+  filip_profile:
+    type: tweet
+    from: filip
+    text: "The water tests came back. I need to tell someone. This is bigger than beer."
+    choices:
+      - That's his last real post... -> black_square
+
+  black_square:
+    type: message
+    text: >
+      Two days after that post, his account shared a single image:
+      a solid black square. No caption. Posted at 3am.
+
+      His friends say that's not Filip. The police say there's no crime.
+      But a brewer doesn't just vanish after posting about water tests.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: policie
+    text: >
+      Obdrzeli jsme hlaseni tykajici se pohresovaneho obcana Rybnikova.
+      V tuto chvili neni zadny dukaz trestneho cinu. Informace: 158.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The responses are chaotic. His girlfriend @lucie_foto is desperate.
+      His biology teacher friend @vojtech_bio is posting cryptic warnings
+      about water quality. His sister @jana_cerna is raging at the police
+      from Prague.
+
+      And old Babicka Bozena keeps posting about how "the factory
+      poisoned the ponds thirty years ago and everyone pretended it
+      didn't happen."
+
+      Nobody believes Filip just "needed space." He was onto something.
+    effects: { trust_lucie: "+5", trust_jana: "+5" }
+    choices:
+      - Start following Filip's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Rybnikov. Follow Filip's contacts and read their posts.
+      The more you engage with the community, the more they'll trust you.
+
+      Start with whoever seems most willing to talk.
+    choices:
+      - Talk to Babicka Bozena (she's been here forever) -> bozena_intro
+      - Talk to Pavel the fisherman (works at the ponds) -> pavel_intro
+      - Talk to Dominik (teen skater, says he saw something) -> dominik_intro
+      - Browse the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a mix of worried posts about Filip, daily life, pond
+      weather updates, and furious arguments about ChemBoh — the old
+      chemical plant on the edge of town.
+
+      Key names: Lucie (photographer, Filip's girlfriend), Vojtech
+      (biology teacher, helped Filip with water tests), Radek (pub
+      manager, Filip's best friend), Daniela (journalist, unusually
+      quiet about the whole thing).
+
+      And ChemBoh a.s. — their corporate account keeps posting about
+      "responsible manufacturing" and "community partnership."
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Babicka Bozena -> bozena_intro
+      - Talk to Pavel -> pavel_intro
+      - Talk to Dominik -> dominik_intro
+
+  # --- Babicka Bozena (history, social map) ---
+
+  bozena_intro:
+    type: tweet
+    from: bozena
+    text: >
+      pamatuji kdy ryby v Cernem rybniku umiraly. 1987. nikdo nic
+      nerekl. ted zase. filip mel pravdu. ten kluk mel pravdu.
+    effects: { trust_bozena: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Babicka Bozena -> bozena_talk
+
+  bozena_talk:
+    type: message
+    text: >
+      BOZENA: Ach, ty jsi novy! Sit down, have some kolac.
+
+      Let me tell you about this town. Rybnikov means "pond town."
+      We've had fish ponds for five hundred years. The water was
+      everything. Then in the sixties they built ChemBoh — the chemical
+      plant. For thirty years it leaked into the groundwater. Everyone
+      knew. Nobody said anything.
+
+      After the revolution they "cleaned it up." Or so they told us.
+      Filip didn't believe them. He tested the water. And now he's gone.
+    effects: { trust_bozena: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the chemical plant -> bozena_chemboh
+      - Ask who runs things in town -> bozena_politics
+      - Thank her and move on -> quest1_hub
+
+  bozena_chemboh:
+    type: message
+    text: >
+      BOZENA: ChemBoh was state-owned. After 1989 it was privatized.
+      The new owners promised cleanup. They got EU funds for remediation.
+      The mayor at the time — Marek Horak's father — signed off on the
+      certificates. "All clean." Property values went up. Everyone was
+      happy.
+
+      But the old storage tanks are still there. Underground. I can see
+      the pipes from my garden when the ground is wet. Nobody removed
+      anything. They just buried it deeper.
+    effects: { trust_bozena: "+5" }
+    choices:
+      - Ask who runs things -> bozena_politics
+      - Move on -> quest1_hub
+
+  bozena_politics:
+    type: message
+    text: >
+      BOZENA: Marek Horak is the mayor. His father was mayor before him.
+      The Horaks have run this town for forty years. Hana Stepankova is
+      the deputy — she handles environment. She's supposed to protect the
+      water. Instead she protects the property values.
+
+      Ivan Kubat runs security at ChemBoh. A nasty man. Big, loud. He
+      came to Filip's brewery two weeks ago. Filip told Lucie about it.
+      Said Ivan "warned" him to stop testing the water.
+
+      And Daniela at the newspaper? She knows everything but prints
+      nothing. Her editor is Marek's cousin.
+    effects: { trust_bozena: "+10", contacts_followed: "+2" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pavel (fisherman, water quality) ---
+
+  pavel_intro:
+    type: tweet
+    from: pavel
+    text: >
+      kapri v Cernem rybniku se chovaj divne. pomaly, tezce. za 30 let
+      jsem tohle nevidel. @filip_pivo mel pravdu o ty vode.
+    effects: { trust_pavel: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Pavel -> pavel_talk
+
+  pavel_talk:
+    type: message
+    text: >
+      PAVEL: The fish are dying. Not quickly — slowly. They stop eating.
+      They drift. I've been fishing these ponds my whole life. Something
+      is in the water.
+
+      Filip came to me two months ago with test tubes. He said the water
+      from the ponds near the old ChemBoh site had elevated heavy metals.
+      Cadmium, lead. Way above safe limits. I let him take samples from
+      my fishing spots.
+
+      Then three weeks ago, the town put up new "No Swimming" signs
+      around Cerny rybnik. They said it was for "construction safety."
+      There's no construction.
+    effects: { trust_pavel: "+10", contacts_followed: "+1" }
+    choices:
+      - Ask about the signs -> pavel_signs
+      - Move on -> quest1_hub
+
+  pavel_signs:
+    type: message
+    text: >
+      PAVEL: The signs went up overnight. Official signs, with the town
+      seal. Hana Stepankova authorized them. I asked her why and she said
+      "routine maintenance of the pond infrastructure." The ponds haven't
+      had maintenance in fifteen years.
+
+      Filip photographed the signs. He said it proved the town knew about
+      the contamination. You don't put up "no swimming" signs unless you
+      know the water is bad.
+    effects: { trust_pavel: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dominik (teen witness) ---
+
+  dominik_intro:
+    type: tweet
+    from: dominik
+    text: >
+      ty vole tak jsem videl neco u pivovaru tu noc a nevim jestli to
+      neco znamena. mam jit na policii?? vole ti me nikdy neposlouchaj
+    effects: { trust_dominik: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dominik -> dominik_talk_early
+
+  dominik_talk_early:
+    type: message
+    text: >
+      DOMINIK: cau tak jsem jezdil na skejtu u rybniku kolem jedenacty
+      v noci jo? a videl jsem jak k pivovaru prijelo auto. takovy
+      cerny SUV. vystoupili dva chlapy, sli dovnitr. pak je vidim jak
+      vynasej krabice. jako hodne krabic. nacpali to do auta a odjeli.
+
+      filip tam nebyl, jeho auto tam nebylo. kdo leze do cizyho
+      pivovaru ve 11 v noci vole?
+    effects: { trust_dominik: "+10" }
+    choices:
+      - Can you describe the men? -> dominik_describe
+      - Thanks Dominik, I'll come back to this -> quest1_hub
+
+  dominik_describe:
+    type: message
+    text: >
+      DOMINIK: jeden byl fakt velkej. jako siroky. druhy normalka.
+      ten velkej mel takovou bundu s napisem na zadech. nemoh jsem to
+      precist ve tme ale vypadalo to jako firemni logo nebo neco.
+
+      nj a to auto... cerny SUV, dost novej. na parkovisti u ChemBoh
+      parkujou uplne stejny. jen rikam.
+    effects: { trust_dominik: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Rybnikov. A small South Bohemian town
+      built around fish ponds. A brewer who tested the water and found
+      poison. A chemical plant that was supposed to be cleaned up. A town
+      administration protecting property values.
+
+      And now the brewer is gone.
+    choices:
+      - Talk to Lucie (Filip's girlfriend) -> lucie_q1
+      - Talk to Vojtech (biology teacher, water testing) -> vojtech_q1
+      - Talk to Radek (pub manager, Filip's best friend) -> radek_q1
+      - I'm ready to investigate the night Filip disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lucie Q1 ---
+
+  lucie_q1:
+    type: tweet
+    from: lucie
+    text: >
+      prosim kohokoliv kdo vi neco o @filip_pivo ozvete se mi. tohle
+      neni normalni. prosim. je to uz tyden.
+    effects: { trust_lucie: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lucie -> lucie_q1_talk
+
+  lucie_q1_talk:
+    type: message
+    text: >
+      LUCIE: I appreciate you reaching out but I don't know you. Filip
+      has a lot of people who care about him. I'm sure he'll turn up.
+
+      [Lucie is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_lucie: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Vojtech Q1 ---
+
+  vojtech_q1:
+    type: tweet
+    from: vojtech
+    text: >
+      i am not going to say what filip found. not yet. but if anyone
+      from the town administration is reading this — you know what's in
+      that water. you've always known.
+    effects: { trust_vojtech: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Vojtech -> vojtech_q1_talk
+
+  vojtech_q1_talk:
+    type: message
+    text: >
+      VOJTECH: Who are you? Another person from the internet? Filip
+      and I spent months on those water tests. Real science. Real data.
+      And now he's gone and I'm getting messages from strangers.
+
+      Unless you have something useful, leave me alone.
+
+      [Vojtech is scared. Build more trust.]
+    effects: { trust_vojtech: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Radek Q1 ---
+
+  radek_q1:
+    type: tweet
+    from: radek
+    text: >
+      filip's stool at the bar is empty. he hasn't missed a friday in
+      three years. somebody knows something. somebody always knows.
+    effects: { trust_radek: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Radek -> radek_q1_talk
+
+  radek_q1_talk:
+    type: message
+    text: >
+      RADEK: Yeah, I run the pub. Filip's my best mate. Last time I saw
+      him was the night before he disappeared. He was at the bar, quiet.
+      Nursing one beer instead of his usual three. He said "I might need
+      to leave town for a bit." I thought he was joking.
+
+      He wasn't joking.
+    effects: { trust_radek: "+10" }
+    choices:
+      - Did he say why? -> radek_why
+      - Move on -> quest1_hub
+
+  radek_why:
+    type: message
+    text: >
+      RADEK: He said someone came to the brewery. A "security guy." Told
+      Filip to stop testing the water or there would be "consequences for
+      his business." Filip laughed it off at first. But then he got quiet
+      and said "They know where Lucie lives."
+
+      That's when I knew he was actually scared.
+    effects: { trust_radek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Filip went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Radek (was at the pub that night) -> radek_interview
+      - Find Jiri (mechanic, works late near the brewery) -> jiri_interview
+      - Find Petra (pharmacist, saw Filip that afternoon) -> petra_interview
+      - Find Pavel (fisherman, was at the ponds that night) -> pavel_interview
+
+  # --- Radek (saw Filip leave the pub) ---
+
+  radek_interview:
+    type: tweet
+    from: radek
+    text: >
+      filip left the pub around 21:30. he barely touched his beer. said
+      he had to "check something at the brewery." that's the last time i
+      saw him. i should have gone with him.
+    effects: { trust_radek: "+5" }
+    choices:
+      - Ask Radek about that night -> radek_talk
+
+  radek_talk:
+    type: message
+    text: >
+      RADEK: He was on edge all evening. Kept checking his phone. At one
+      point he went outside for ten minutes and came back pale. I asked
+      what was wrong and he said "nothing." But his hands were shaking.
+
+      He left around 21:30. Said he needed to check on a batch at the
+      brewery. That's normal — fermentation needs monitoring. But the way
+      he said it... like he was going to do something else entirely.
+
+      I found out the next morning he never came home.
+    effects:
+      trust_radek: "+10"
+      night_witnesses: "+1"
+      intimidation_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jiri (mechanic, saw vehicles at brewery) ---
+
+  jiri_interview:
+    type: tweet
+    from: jiri
+    text: >
+      pracoval jsem do pozda vcera. kolem desety projelo cerny SUV
+      smerem k pivovaru. pak dalsi. dva SUVcka u pivovaru v noci?
+    effects: { trust_jiri: "+5" }
+    choices:
+      - Ask Jiri about the vehicles -> jiri_talk
+
+  jiri_talk:
+    type: message
+    text: >
+      JIRI: I was in the shop late — engine rebuild. Around 22:00 a
+      black SUV drove past toward Filip's brewery. Twenty minutes later,
+      a second one. Same model. Tinted windows.
+
+      Those are company vehicles. ChemBoh has a fleet of them. I service
+      two of them. I know the model. Same tires, same body kit.
+
+      Why would ChemBoh security be driving to a brewery at ten at night?
+      I told the police. They said "noted."
+    effects:
+      trust_jiri: "+10"
+      night_witnesses: "+1"
+      intimidation_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petra (saw Filip that afternoon) ---
+
+  petra_interview:
+    type: tweet
+    from: petra
+    text: >
+      filip was in the pharmacy that afternoon. he bought bandages and
+      antiseptic. he had a cut on his hand. he said he "dropped a
+      beaker." he looked terrified.
+    effects: { trust_petra: "+5" }
+    choices:
+      - Ask Petra what she noticed -> petra_talk
+
+  petra_talk:
+    type: message
+    text: >
+      PETRA: Filip came in around 16:00. He had a deep cut on his left
+      hand — glass, maybe. He said he broke a beaker in the lab. But
+      brewers don't use beakers. Biology teachers do.
+
+      He was pale. He kept looking out the window, like he was checking
+      if someone followed him. He bought bandages, antiseptic, and — this
+      was odd — a prepaid phone card. Who buys prepaid cards anymore?
+
+      He paid cash for everything.
+    effects:
+      trust_petra: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pavel (fisherman, heard something at the ponds) ---
+
+  pavel_interview:
+    type: message
+    text: >
+      PAVEL: I was night fishing at Cerny rybnik. Around 23:00 I heard
+      a vehicle at the brewery — which is only 200 metres from my spot.
+      Doors slamming. Men's voices. One was shouting: "Where are they?
+      Give us the samples."
+
+      Then a crash. Like something heavy being thrown. Then quiet. I
+      packed up and went home. I'm not a brave man.
+
+      The next morning, the brewery door was hanging open. Nobody inside.
+      Filip's car was still parked there.
+    effects:
+      trust_pavel: "+15"
+      night_witnesses: "+1"
+      intimidation_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to other sources.
+    choices:
+      - Talk to Lenka (teacher, saw Filip at school that day) -> lenka_interview
+      - Talk to Eliska (teen activist, has Filip's posts saved) -> eliska_interview
+      - Find Radek at the pub -> radek_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Jiri the mechanic -> jiri_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Petra the pharmacist -> petra_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Pavel the fisherman -> pavel_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lenka (teacher, additional context) ---
+
+  lenka_interview:
+    type: message
+    text: >
+      LENKA: Filip came to the school that day. He was looking for
+      Vojtech. They went into the biology lab and closed the door.
+      They were in there for two hours. When they came out, Vojtech
+      looked like he'd seen a ghost. Filip was carrying a folder of
+      printouts.
+
+      I asked Vojtech if everything was okay. He said "Not really.
+      Not at all."
+    effects:
+      trust_lenka: "+10"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Eliska (saved Filip's posts) ---
+
+  eliska_interview:
+    type: tweet
+    from: eliska
+    text: >
+      fakt jsem si ukladala vsechny filipovy posty o vode a nektery
+      z nich jsou SMAZANY z jeho uctu?? kdo maze cizi posty ty vole??
+    effects: { trust_eliska: "+5" }
+    choices:
+      - Ask Eliska for the saved posts -> eliska_posts
+
+  eliska_posts:
+    type: message
+    text: >
+      ELISKA: tady mas co jsem zachranila:
+
+      Den -1: "Results confirmed. This is not natural. Someone needs
+      to answer for this."
+      Den -3: "Another visit from our friends in the black SUVs.
+      Starting to feel like a movie I didn't sign up for."
+      Den -5: "If I go quiet, check my cloud storage. Vojtech has the
+      password."
+      Den -8: "Water samples from Cerny rybnik: cadmium 340% above
+      safe limits. Lead 280%. This is not historical contamination.
+      This is ongoing."
+      Den -12: "Someone broke into the brewery last night. Nothing
+      stolen. But my lab notebook was moved."
+
+      fakt vsechny smazany posty jsou o vode a o tech navstevach.
+      nekdo je schvalne vymazal. to je hustej.
+    effects:
+      trust_eliska: "+15"
+      water_evidence: "+1"
+      intimidation_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      16:00 — Filip at pharmacy, cut hand, bought prepaid phone (Petra)
+      16:30 — Filip at school biology lab with Vojtech (Lenka)
+      21:30 — Filip leaves pub, "checking something at brewery" (Radek)
+      22:00 — Black SUV drives toward brewery (Jiri)
+      22:20 — Second black SUV follows (Jiri)
+      23:00 — Shouting at brewery: "Give us the samples" (Pavel)
+      23:00 — Crash. Then silence (Pavel)
+      Next morning — Brewery open, Filip gone, car still there (Pavel)
+
+      Someone confronted Filip at his brewery. They wanted his water
+      samples. ChemBoh security vehicles were at the scene.
+
+      Two threads to pull:
+      — The water: What did Filip find? Where's the evidence?
+      — The intimidation: Who sent the security men? Who gave the order?
+    choices:
+      - Investigate the water contamination thread -> water_hub
+      - Investigate the intimidation thread -> intimidation_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      WATER THREAD: Evidence collected: ${water_evidence}
+      INTIMIDATION THREAD: Evidence collected: ${intimidation_evidence}
+    choices:
+      - Work on the water thread -> water_hub
+      - Work on the intimidation thread -> intimidation_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: water_evidence, gte: 5 }
+            - { state: intimidation_evidence, gte: 3 }
+
+  # =====================================================================
+  # WATER CONTAMINATION THREAD
+  # =====================================================================
+
+  water_hub:
+    type: message
+    text: >
+      THE WATER THREAD
+
+      Filip tested the ponds and found toxic heavy metals far above safe
+      limits. The contamination is ongoing — not historical. Someone is
+      still polluting the water and the town is covering it up.
+
+      Water evidence: ${water_evidence}
+    choices:
+      - Talk to Vojtech (has the test results) -> vojtech_water
+        when:
+          state: trust_vojtech
+          gte: 10
+      - Investigate the "No Swimming" signs -> signs_investigation
+      - Check the remediation records -> remediation_records
+      - Talk to Babicka Bozena about the old plant -> bozena_plant
+      - Talk to the fishing association -> rybar_investigation
+      - Check the anonymous tip account -> tipster_investigation
+      - Talk to Daniela (journalist) -> daniela_investigation
+      - Back to hub -> investigation_hub
+
+  # --- Vojtech (water test results) ---
+
+  vojtech_water:
+    type: message
+    text: >
+      VOJTECH: I'll tell you because Filip would want me to. We tested
+      water from six ponds over three months. The two ponds closest to
+      the ChemBoh site showed massive contamination. Cadmium, lead,
+      mercury — all way above EU safe limits.
+
+      But here's the thing: the contamination pattern shows RECENT
+      discharge. Not residual from the old days. Someone is actively
+      dumping waste into the groundwater. The old storage tanks under
+      the plant — they were supposed to be removed in 2005. They weren't.
+      And they're leaking. Or being drained.
+    effects:
+      trust_vojtech: "+15"
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask about the evidence -> vojtech_evidence
+      - Back to water thread -> water_hub
+
+  vojtech_evidence:
+    type: message
+    text: >
+      VOJTECH: Filip backed up everything. The test results, the
+      methodology, photos of the sampling sites. He put it on encrypted
+      cloud storage. I have the password. He said "if anything happens
+      to me, give this to a journalist. Not the local one — she's
+      compromised. A national one."
+
+      But I'm scared. The night after Filip disappeared, someone slashed
+      my tires. No proof it was anyone specific. But the message was
+      clear.
+    effects:
+      trust_vojtech: "+10"
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to water thread -> water_hub
+
+  # --- Signs Investigation ---
+
+  signs_investigation:
+    type: message
+    text: >
+      The "No Swimming" signs at Cerny rybnik are official — town seal,
+      proper formatting, signed by Hana Stepankova as deputy mayor for
+      environment.
+
+      But a search of council meeting minutes shows no motion to restrict
+      access to the ponds. No public health announcement. No water
+      testing report filed with the regional authority.
+
+      The signs appeared without any official process. Someone wanted
+      people away from that water without explaining why.
+    effects:
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to water thread -> water_hub
+
+  # --- Remediation Records ---
+
+  remediation_records:
+    type: message
+    text: >
+      The ChemBoh remediation project (2003-2005) received 12 million
+      CZK in EU structural funds. The final report, filed by mayor
+      Horak Sr. (father of current mayor Marek Horak), certifies
+      "complete removal of contaminated materials and underground
+      storage infrastructure."
+
+      But satellite images from 2010 show the ground over the old
+      storage area was never disturbed. No excavation marks. No
+      construction access roads. The storage tanks are still there.
+
+      The remediation was a paper exercise. The money was spent.
+      The cleanup never happened.
+    effects:
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to water thread -> water_hub
+
+  # --- Bozena on the plant ---
+
+  bozena_plant:
+    type: message
+    text: >
+      BOZENA: In 1987 half the fish in Cerny rybnik died overnight.
+      The plant said it was "unusual weather conditions." My husband
+      was a plumber. He said the drainage pipes from the plant went
+      straight into the pond system. No filters. No treatment.
+
+      After the revolution, they promised to fix everything. The mayor
+      — Marek's father — announced a big EU cleanup project. Workers
+      came. Machines came. They dug a few holes, filled them in again.
+      The money disappeared. Nothing changed.
+
+      Marek knows. He grew up watching his father sell this town's water
+      to keep property prices up. Now he's doing the same.
+    effects:
+      trust_bozena: "+10"
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to water thread -> water_hub
+
+  # --- Fishing Association ---
+
+  rybar_investigation:
+    type: tweet
+    from: rybar_spolek
+    text: >
+      Rybarsky spolek Rybnikov upozornuje na neobvykle uniky ryb v
+      Cernem rybniku a okolnich vodach. Vyzvame obec k provedeni
+      nezavisleho testovani vody.
+    choices:
+      - Check the town's response -> rybar_response
+
+  rybar_response:
+    type: message
+    text: >
+      The fishing association formally requested water testing. The
+      town responded that "water quality is within normal parameters
+      per our most recent assessment."
+
+      But there's no recent assessment on file. The last official water
+      test was conducted in 2019 — six years ago. The results? Filed
+      as "confidential — commercial sensitivity" because the testing
+      was done by a lab contracted by ChemBoh.
+
+      The company that's polluting the water hired the lab that tested it.
+    effects:
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to water thread -> water_hub
+
+  # --- Tipster ---
+
+  tipster_investigation:
+    type: tweet
+    from: tipster
+    text: >
+      Podzemni nadrze ChemBoh. 2005 "odstranovani." Kde jsou fotky?
+      Kde jsou faktury za odvoz? Sledujte penize.
+    choices:
+      - Look at this account's other posts -> tipster_posts
+
+  tipster_posts:
+    type: message
+    text: >
+      @anonym posts cryptic messages always between 18:00 and 20:00:
+
+      "Remediacni projekt 2003-2005. 12 milionu CZK. Kam sly?"
+      "Podpisovy vzor: Horak Sr. 2005. Horak Jr. 2024. Stejny rukopis."
+      "Certifikat o odstraneni: podepsano firmou, ktera neexistuje."
+      "Hana Stepankova vi o podzemni vode. Pta se ji nekdo?"
+
+      This is someone who knows municipal procedures. The posting
+      times suggest someone posting after work hours.
+
+      Who works at the town hall and would know about remediation files?
+    choices:
+      - Check Miroslav Jelinek (the admin clerk) -> miroslav_connection
+      - Back to water thread -> water_hub
+
+  miroslav_connection:
+    type: message
+    text: >
+      Comparing @anonym and Miroslav Jelinek's posting patterns:
+
+      Same evening hours. Same knowledge of filing systems. Same
+      frustration with procedures. Miroslav once posted "sometimes I
+      wonder why we even have environmental regulations if nobody
+      enforces them."
+
+      It's Miroslav. The town hall clerk is the anonymous leaker.
+    choices:
+      - Confront Miroslav -> miroslav_confront
+
+  miroslav_confront:
+    type: message
+    text: >
+      You DM Miroslav, mentioning the "2005 remediation certificates."
+
+      Long pause. Then:
+
+      MIROSLAV: How did you... please. If Marek finds out, I lose
+      everything. My pension. My house.
+
+      But yes. I have copies. The original remediation report and the
+      one they filed with Brussels. Two different documents. The real
+      one says "partial removal recommended — full extraction not
+      economically viable." The filed version says "complete removal
+      certified." Marek Sr. signed both. Marek Jr. renewed the
+      certification last year without any new testing.
+
+      I can give you everything. But protect me.
+    effects:
+      trust_miroslav: "+30"
+      water_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Keep them safe. I'll come back when ready -> investigation_hub
+
+  # --- Daniela (journalist) ---
+
+  daniela_investigation:
+    type: message
+    text: >
+      DANIELA: I know what you're going to ask. Why haven't I written
+      about Filip? Why isn't the newspaper covering this?
+
+      My editor is Marek's cousin. He killed every story I pitched about
+      the water quality. I have three years of notes. Three years of
+      sources refusing to go on record. Filip was the first person brave
+      enough to put his name on actual data.
+
+      I can't publish locally. But if you can get Filip's data to a
+      national outlet... I'll provide everything I have as background.
+    effects:
+      trust_daniela: "+15"
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to water thread -> water_hub
+
+  # =====================================================================
+  # INTIMIDATION THREAD
+  # =====================================================================
+
+  intimidation_hub:
+    type: message
+    text: >
+      THE INTIMIDATION THREAD
+
+      Someone sent security men to Filip's brewery. Someone stole his
+      samples. Someone posted the black square from his account. Who
+      gave the orders?
+
+      Intimidation evidence: ${intimidation_evidence}
+    choices:
+      - Investigate Ivan Kubat (ChemBoh security) -> ivan_investigation
+      - Talk to Lucie about the threats -> lucie_threats
+        when:
+          state: trust_lucie
+          gte: 20
+      - Talk to Radek about the brewery break-in -> radek_breakin
+      - Talk to Tomas (teen, has drone footage) -> tomas_investigation
+      - Talk to Zdenek (police officer) -> zdenek_interview
+        when:
+          state: trust_zdenek
+          gte: 20
+      - Talk to Kamila (bookseller, Daniela's source) -> kamila_interview
+      - Visit the brewery -> brewery_visit
+      - Back to hub -> investigation_hub
+
+  # --- Ivan Investigation ---
+
+  ivan_investigation:
+    type: tweet
+    from: ivan
+    text: >
+      ChemBoh a.s. zajistuje bezpecnost nasich objektu i okoli.
+      Nepovolany vstup na pozemky je trestny cin. Hlaste podezrele
+      aktivity na recepci.
+    choices:
+      - Look at Ivan's post history -> ivan_posts
+
+  ivan_posts:
+    type: message
+    text: >
+      Ivan Kubat posts corporate security updates. Bland stuff. But
+      between the lines:
+
+      Two weeks before Filip disappeared: "Perimeter checks increased
+      to nightly. Zero tolerance for unauthorized sampling."
+
+      One week before: "Security briefing with management. New protocols
+      for external threats to company reputation."
+
+      Three days before: "Reminder: all contact with media or bloggers
+      must go through legal department @fiala_pravnik."
+
+      "Unauthorized sampling." "External threats." "Bloggers." That's
+      Filip they're talking about.
+    effects:
+      intimidation_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to intimidation thread -> intimidation_hub
+
+  # --- Lucie on threats ---
+
+  lucie_threats:
+    type: message
+    text: >
+      LUCIE: The first visit was two months ago. A big man in a ChemBoh
+      jacket came to the brewery. He told Filip that "taking samples
+      from private land is trespassing." Filip pointed out the ponds are
+      public. The man said "Not for long."
+
+      The second visit was worse. Two men. Filip said the big one — Ivan
+      — stood too close. Said "Your girlfriend lives on Lipova street,
+      right? Nice area." That's when Filip started backing up his data.
+
+      He changed the locks on the brewery. Started parking in different
+      spots. He was scared. But he wouldn't stop. He said "If I stop
+      now, the water kills people in ten years."
+    effects:
+      trust_lucie: "+15"
+      intimidation_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Did Filip report this to the police? -> lucie_police
+      - Back to intimidation thread -> intimidation_hub
+
+  lucie_police:
+    type: message
+    text: >
+      LUCIE: He tried. Went to the station. Zdenek Maly took his
+      statement. But then Marek Horak called Filip personally. The mayor
+      called him and said "I hear you've been making complaints about
+      one of our largest employers. I'd hate for your brewery license
+      to come under review."
+
+      Filip's brewery license is issued by the town. The mayor controls
+      the licensing committee. That's when Filip knew the town and the
+      plant were working together.
+    effects:
+      intimidation_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to intimidation thread -> intimidation_hub
+
+  # --- Radek (brewery break-in) ---
+
+  radek_breakin:
+    type: message
+    text: >
+      RADEK: Two weeks before Filip disappeared, someone broke into the
+      brewery. Nothing was stolen — not beer, not equipment, not money.
+      But Filip's lab area was trashed. Notebooks gone. Sample jars
+      emptied. His laptop was still there but wiped — someone had reset
+      it to factory settings.
+
+      Filip didn't call the police after that. He said "The police are
+      Marek's." Instead he went to Vojtech and said "We need to get
+      everything off-site." That's when he backed up to the cloud.
+    effects:
+      trust_radek: "+10"
+      intimidation_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to intimidation thread -> intimidation_hub
+
+  # --- Tomas (drone footage) ---
+
+  tomas_investigation:
+    type: tweet
+    from: tomas_teen
+    text: >
+      ok tak jsem letel s dronem nad ChemBoh minulej tejden a neco tam
+      neni v pohode. mam to na videu ale nevim jestli to nekam dat
+    effects: { trust_tomas: "+5" }
+    choices:
+      - Ask Tomas about the footage -> tomas_footage
+
+  tomas_footage:
+    type: message
+    text: >
+      TOMAS: jedu. tak jsem letel s dronem protoze filip mi rik ze
+      tam jsou podzemni nadrze co nemaj bejt. a vole fakt. na videu
+      je videt jak ze zeme u starych budov tece takova hneda voda.
+      primo do kanalu co vede k rybnikum.
+
+      a taky jsem zachytil dva chlapy co vynaseli sudy z budovy a
+      nakladali je na nakladak. v noci. sudy se znacenim nebezpecny
+      odpad.
+
+      mam to vsechno na SD karte. filip rikal ze to bude dulezity.
+      dal mi ji den predtim nez zmizel.
+    effects:
+      trust_tomas: "+15"
+      intimidation_evidence: "+1"
+      water_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to intimidation thread -> intimidation_hub
+
+  # --- Zdenek (police officer) ---
+
+  zdenek_interview:
+    type: message
+    text: >
+      ZDENEK: Between us? Filip's report was thorough. Dates, names,
+      license plates of the SUVs. I filed it properly. My supervisor
+      reviewed it. Then Marek Horak called the station. Not officially —
+      just a "friendly conversation."
+
+      Next day my supervisor told me to reclassify the complaint as
+      "neighbourhood dispute — no further action." I protested. He said
+      "ChemBoh employs 200 people. Pick your battles."
+
+      If you can get enough evidence to take this to the regional
+      prosecutor, it bypasses the local police entirely. That's the
+      only path.
+    effects:
+      trust_zdenek: "+15"
+      intimidation_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to intimidation thread -> intimidation_hub
+
+  # --- Kamila (bookseller) ---
+
+  kamila_interview:
+    type: message
+    text: >
+      KAMILA: Filip used to come in every week. Science books, brewing
+      books. Smart man. Two weeks before he disappeared, he gave me a
+      sealed envelope. Said "If someone comes asking about Rybnikov's
+      water, give them this."
+
+      I asked what was in it. He said "The truth about this town."
+    effects: { trust_kamila: "+10" }
+    choices:
+      - I'm asking about Rybnikov's water -> kamila_envelope
+      - Back to intimidation thread -> intimidation_hub
+
+  kamila_envelope:
+    type: message
+    text: >
+      Kamila pauses. Then reaches under the counter.
+
+      KAMILA: Filip said you'd come. Here.
+
+      The envelope contains Filip's summary: a timeline of the cover-up
+      from 2003 to present, the names of everyone involved, and
+      instructions for accessing his encrypted cloud storage.
+    effects:
+      water_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Brewery Visit ---
+
+  brewery_visit:
+    type: message
+    text: >
+      FILIP'S BREWERY
+
+      Small building by Cerny rybnik. The door is unlocked — the lock
+      has been forced. Inside: fermentation tanks, bags of malt, a small
+      bar area. Everything looks normal until you reach the back room.
+
+      Filip's lab. Benches overturned. Glass on the floor. Sample jars
+      smashed. His notebook is gone. The computer is there but wiped.
+      A filing cabinet stands open — empty.
+
+      On the wall: a map of Rybnikov with the pond system marked in blue
+      and the ChemBoh site in red. Red arrows show underground water flow
+      from the plant to the ponds. Someone has written "ONGOING" in
+      marker across the bottom.
+    choices:
+      - Examine the map more closely -> brewery_map
+      - Look for hidden items -> brewery_hidden
+      - Continue -> intimidation_hub
+
+  brewery_map:
+    type: message
+    text: >
+      The map shows Filip's theory clearly. The old chemical storage
+      tanks sit directly above the water table. Underground flow
+      carries contamination northwest — directly into the Cerny rybnik
+      pond system and then into the smaller ponds downstream.
+
+      Red dots mark his sampling points. Numbers beside each one — the
+      contamination levels. They get worse the closer you are to ChemBoh.
+
+      Filip had this figured out. The question isn't what's happening.
+      It's who's preventing anyone from knowing.
+    effects:
+      water_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Look for hidden items -> brewery_hidden
+      - Continue -> intimidation_hub
+
+  brewery_hidden:
+    type: message
+    text: >
+      Under a loose floorboard beneath the bar — a brewer's trick for
+      hiding the good stuff — you find a small waterproof case. Inside:
+      three sealed water sample vials, labeled with dates and GPS
+      coordinates. And a USB drive.
+
+      Filip's backup backup. The most paranoid brewer in South Bohemia
+      hid physical evidence in his own floor.
+
+      The vials are marked with contamination readings. The numbers are
+      damning.
+    effects:
+      water_evidence: "+1"
+      intimidation_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know about the contamination, the
+      cover-up, and the intimidation. Who is responsible for Filip's
+      disappearance?
+    choices:
+      - Confront Ivan Kubat (ChemBoh security chief) -> confront_ivan
+        when:
+          state: intimidation_evidence
+          gte: 3
+      - Confront Marek Horak (the mayor) -> confront_marek
+        when:
+          state: water_evidence
+          gte: 5
+      - Confront Hana Stepankova (the deputy mayor) -> confront_hana
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Ivan (Best Ending) ---
+
+  confront_ivan:
+    type: message
+    text: >
+      You present your evidence publicly:
+
+      "Ivan Kubat sent ChemBoh security to Filip Cerny's brewery.
+      They stole his water samples. They intimidated him with threats
+      against his girlfriend. They broke into his brewery and destroyed
+      his lab. I have witness statements, drone footage, vehicle
+      identification, and physical water samples Filip hid."
+    choices:
+      - Post it -> ivan_response
+
+  ivan_response:
+    type: message
+    text: >
+      Ivan doesn't respond. But ChemBoh's lawyer does:
+
+      ONDREJ: These allegations are defamatory and will be pursued to
+      the full extent of the law. ChemBoh a.s. operates within all
+      regulatory frameworks.
+
+      But you've already sent everything to Zdenek at the local police,
+      to the regional prosecutor's office, and to a national journalist
+      Daniela connected you with. The physical water samples are the
+      key — they can't be denied or deleted.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE ENFORCER
+
+      The regional prosecutor opens an investigation. ChemBoh's premises
+      are raided. The underground storage tanks — supposed to have been
+      removed twenty years ago — are found intact and leaking. Ivan
+      Kubat is arrested for intimidation, breaking and entering, and
+      destruction of evidence. He cooperates with prosecutors.
+
+      Mayor Marek Horak is charged with filing false remediation
+      certificates and misuse of EU funds. Hana Stepankova resigns.
+
+      And Filip Cerny? He's found alive. He'd been hiding at a friend's
+      farm in Moravia since the night the security men came. Vojtech
+      had driven him there at 4am. Filip had been too scared to surface
+      without knowing the evidence was safe.
+
+      Three weeks later, a national newspaper publishes the full story.
+      "The Poisoned Ponds of Rybnikov" leads to an EU investigation
+      into remediation fraud across three regions.
+
+      Filip returns to Rybnikov. His first post:
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: filip
+    text: >
+      the water is getting tested. properly this time. the brewery
+      is getting fixed. and i'm not going anywhere. diky vsem.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Marek (Partial Ending) ---
+
+  confront_marek:
+    type: message
+    text: >
+      You present the water contamination evidence to Mayor Horak:
+
+      "The remediation was faked. Your father signed false certificates.
+      You renewed them. EU funds were misused. The water is poisoned and
+      you've known for years. I have the original reports, the satellite
+      images, and Filip's test data."
+    choices:
+      - Send -> marek_response
+
+  marek_response:
+    type: message
+    text: >
+      MAREK: These are serious allegations against my family and this
+      town. You will be hearing from our legal representatives. I will
+      not dignify conspiracy theories with a response.
+
+      But the evidence is already with the regional authority and a
+      national journalist.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE MAYOR
+
+      The contamination story breaks nationally. Marek Horak resigns.
+      The EU launches an audit of the remediation funds. The ponds are
+      officially declared contaminated and cleanup begins — real cleanup
+      this time.
+
+      But without the intimidation evidence, Ivan Kubat is never
+      charged. ChemBoh pays a fine and replaces its security contractor.
+      Nobody is held accountable for what happened to Filip.
+
+      Filip reads about the mayor's resignation from his hiding place.
+      He returns quietly two months later. He reopens the brewery but
+      the windows now have security bars. He doesn't post after dark
+      anymore.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: filip
+    text: "jsem zpet. pivovar je otevreny. o zbytek si nechci povidat."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Hana (Wrong Ending) ---
+
+  confront_hana:
+    type: message
+    text: >
+      You confront Deputy Mayor Hana Stepankova with your evidence.
+
+      Within hours, you receive a response from the town's legal office:
+    choices:
+      - Read the response -> ondrej_response
+
+  ondrej_response:
+    type: tweet
+    from: ondrej
+    text: >
+      Oznameni o pomlouvacnych tvrzenich proti vedeni obce Rybnikov.
+      Jakekoli dalsi sireni bude reseno soudne dle obcanskeho zakoniku.
+      — Fiala & Partners
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE DEPUTY
+
+      Hana is a bureaucrat, not a mastermind. She authorized the signs
+      because Marek told her to. She doesn't have the full picture and
+      can't meaningfully respond to your accusations.
+
+      Without targeting the right people — Ivan for the intimidation,
+      Marek for the cover-up — your evidence scatters. The town's lawyer
+      buries the complaint. ChemBoh issues a statement about "baseless
+      allegations." The local newspaper doesn't cover it.
+
+      Filip stays hidden. The ponds stay poisoned. Six months later,
+      the fishing association reports another mass fish die-off. Nobody
+      investigates.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Water contamination evidence: ${water_evidence}
+      Intimidation evidence: ${intimidation_evidence}
+
+      Thank you for playing. Filip's story explores themes of
+      environmental crime, institutional cover-ups, intimidation of
+      whistleblowers, and the courage it takes to tell the truth.
+
+      If you or someone you know is experiencing threats or intimidation,
+      help is available:
+      Linka bezpeci: 116 111
+      Policie CR: 158
+      Bila kruh bezpeci (victim support): 257 317 110

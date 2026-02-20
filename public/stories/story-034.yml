@@ -1,0 +1,1512 @@
+# DEAD ACCOUNT — Story 034: Rosscarrig (Ireland 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-034.yml
+#
+# Player investigates the disappearance of young traditional boat builder
+# Eoin Kelleher in the fictional West Cork village of Rosscarrig.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_cian: 0
+    trust_saoirse: 0
+    trust_oisin: 0
+    trust_niamh: 0
+    trust_roisin: 0
+    trust_cathal: 0
+    trust_donal: 0
+    trust_siobhan: 0
+    trust_tommy: 0
+    trust_aine: 0
+    trust_finbar: 0
+    trust_deirdre: 0
+    trust_micheal: 0
+    trust_grainne: 0
+    trust_tadhg: 0
+    trust_liam: 0
+    trust_nora: 0
+    trust_sean: 0
+    trust_aoife: 0
+    trust_garda: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just landed in rosscarrig. west cork is something else"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Rosscarrig.social"
+    description: "Failte go Rosscarrig - West Cork community instance"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    # === Eoin's Inner Circle ===
+    eoin:
+      name: "Eoin Kelleher"
+      bio: "boat builder | naomhog & currachs | the bay is home | rosscarrig born & bred"
+      avatar: avatars/eoin.jpg
+    cian:
+      name: "Cian Kelleher"
+      bio: "eoin's brother | fisherman | rosscarrig harbour | i'll find him myself if i have to"
+      avatar: avatars/cian.jpg
+    saoirse:
+      name: "Saoirse Driscoll"
+      bio: "eoin's ex | primary teacher | rosscarrig NS | still care about him no matter what"
+      avatar: avatars/saoirse.jpg
+    roisin:
+      name: "Roisin Kelleher"
+      bio: "eoin's mam | runs the post office | 30 years in rosscarrig | my boy would never just leave"
+      avatar: avatars/roisin.jpg
+
+    # === Local Community ===
+    niamh:
+      name: "Niamh O'Driscoll"
+      bio: "pub owner | The Anchor | trad sessions friday | the heart of rosscarrig"
+      avatar: avatars/niamh.jpg
+    donal:
+      name: "Donal McCarthy"
+      bio: "harbour master | rosscarrig pier | 6am-6pm | the bay is my office"
+      avatar: avatars/donal.jpg
+    siobhan:
+      name: "Siobhan Crowley"
+      bio: "pharmacist | rosscarrig | open 7 days | here if you need anything"
+      avatar: avatars/siobhan.jpg
+    tommy:
+      name: "Tommy O'Brien"
+      bio: "retired trawlerman | 45 years at sea | the salmon farms are killing this bay"
+      avatar: avatars/tommy.jpg
+    aine:
+      name: "Aine Hurley"
+      bio: "baker | Hurley's Bakery | soda bread & scones | 5am every morning rain or shine"
+      avatar: avatars/aine.jpg
+    finbar:
+      name: "Finbar O'Sullivan"
+      bio: "heritage officer | west cork | traditional boats are our culture"
+      avatar: avatars/finbar.jpg
+    nora:
+      name: "Nora Healy"
+      bio: "librarian | rosscarrig library | local history collection | book club thursdays"
+      avatar: avatars/nora.jpg
+    sean:
+      name: "Sean Og Daly"
+      bio: "sean-nos singer | rosscarrig | the old songs carry the truth"
+      avatar: avatars/sean.jpg
+
+    # === Teens ===
+    oisin:
+      name: "Oisin"
+      bio: "16 | hurling & fishing | eoin taught me to build a currach | this is fucked"
+      avatar: avatars/oisin.jpg
+    aoife:
+      name: "Aoife"
+      bio: "17 | tiktok & trad | west cork girl | eoin is sound out he wouldn't just vanish"
+      avatar: avatars/aoife.jpg
+    tadhg:
+      name: "Tadhg"
+      bio: "15 | gamer | kayaking | rosscarrig is grand but there's feck all to do"
+      avatar: avatars/tadhg.jpg
+
+    # === Journalist ===
+    deirdre:
+      name: "Deirdre Linehan"
+      bio: "journalist | Southern Star | environment & coast | tips: deirdre@southernstar.ie"
+      avatar: avatars/deirdre.jpg
+
+    # === Atlantic Salmon Corp (corporate) ===
+    atlantic_salmon:
+      name: "Atlantic Salmon Corp"
+      bio: "Sustainable aquaculture | West Cork operations | ISO certified | feeding the future"
+      avatar: avatars/atlantic_salmon.jpg
+    micheal:
+      name: "Micheal Hennessy"
+      bio: "operations director | Atlantic Salmon Corp | west cork facility | industry & community"
+      avatar: avatars/micheal.jpg
+    liam:
+      name: "Liam Burke"
+      bio: "solicitor | Burke & Associates | Cork | corporate & environmental law"
+      avatar: avatars/liam.jpg
+
+    # === County Council ===
+    grainne:
+      name: "Grainne Cotter"
+      bio: "county councillor | rosscarrig ward | development & jobs | #WestCorkForward"
+      avatar: avatars/grainne.jpg
+    cathal:
+      name: "Cathal Fitzgerald"
+      bio: "county council | planning dept | cork county | fair process for all"
+      avatar: avatars/cathal.jpg
+
+    # === Suspicious / Other ===
+    garda:
+      name: "Garda Sergeant Buckley"
+      bio: "An Garda Siochana | Rosscarrig Station | community policing | 999 for emergencies"
+      avatar: avatars/garda.jpg
+    anon:
+      name: "CorkBoatFan89"
+      bio: "traditional boats | wooden hulls | the old ways | following the masters"
+      avatar: avatars/anon.jpg
+
+    # === Media & Community ===
+    actu_ross:
+      name: "Rosscarrig News"
+      bio: "Local news & events | Rosscarrig & West Cork | tips: news@rosscarrig.ie"
+      avatar: avatars/actu_ross.jpg
+    meteo_cork:
+      name: "West Cork Weather"
+      bio: "Forecasts & warnings | Mizen to Kinsale | updated hourly"
+      avatar: avatars/meteo_cork.jpg
+    heritage_assoc:
+      name: "West Cork Heritage Boats"
+      bio: "Preserving traditional boat building | naomhoga & currachs | est. 2003"
+      avatar: avatars/heritage_assoc.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ROSSCARRIG
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to rosscarrig.social — the community Mastodon instance for
+      Rosscarrig, a small fishing village in West Cork, Ireland.
+
+      The local feed is buzzing. Something has happened in the village.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling the feed, one name keeps coming up: @eoin_kelleher.
+
+      A young boat builder. Currachs and naomhoga, traditional Irish
+      boats. He had a workshop down by the harbour. People loved him.
+      He hasn't posted in six days and nobody can find him.
+    choices:
+      - Look at his profile -> eoin_profile
+
+  eoin_profile:
+    type: tweet
+    from: eoin
+    text: "the bay is dying. dead fish in the nets again. the salmon farm discharge is poison and everyone in the council knows it. i have the water tests. going public."
+    choices:
+      - That's his last post... -> strange_post
+
+  strange_post:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single
+      photo: blurry open water. No boat, no context. Posted at 4am.
+      No caption.
+
+      His friends say that's not him. Eoin always wrote long captions.
+      The Gardai say he probably went travelling. His mam says his
+      passport is in the drawer.
+    choices:
+      - Read the Garda statement -> garda_statement
+      - Look at what people are saying -> community_reaction
+
+  garda_statement:
+    type: tweet
+    from: garda
+    text: >
+      We have received a report regarding a Rosscarrig resident.
+      At this stage there is no evidence of foul play. Mr Kelleher
+      is an adult and is entitled to his privacy. Anyone with
+      information can contact Rosscarrig Garda Station.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The village is losing its mind. His mam @roisin_kelleher posts
+      every hour. His brother @cian_kelleher is searching the coast
+      in his trawler. His ex @saoirse_driscoll is sharing his photo.
+
+      Tommy O'Brien says Eoin was right about the salmon farm. The
+      journalist @deirdre_linehan has gone quiet. And there's a
+      strange account — @CorkBoatFan89 — commenting on everything.
+
+      Nobody thinks Eoin just fecked off on holiday.
+    effects: { trust_cian: "+5", trust_roisin: "+5" }
+    choices:
+      - Start following Eoin's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Rosscarrig. Follow Eoin's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Niamh (pub owner, knows everyone) -> niamh_intro
+      - Talk to Tommy (retired fisherman, angry about the bay) -> tommy_intro
+      - Talk to Oisin (teen, Eoin's apprentice) -> oisin_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Eoin with the rhythms of West Cork:
+      tide times, GAA results, weather warnings off the Atlantic.
+
+      Key names: Cian (brother, fisherman), Roisin (mam, post office),
+      Saoirse (ex, teacher), Tommy (retired fisherman, furious about
+      the salmon farm). The teens — Oisin, Aoife, Tadhg — sharing
+      Eoin's photos everywhere.
+
+      Also prominent: Atlantic Salmon Corp. Their posts are pure
+      corporate shite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Niamh -> niamh_intro
+      - Talk to Tommy -> tommy_intro
+      - Talk to Oisin -> oisin_intro
+
+  # --- Niamh (social map) ---
+
+  niamh_intro:
+    type: tweet
+    from: niamh
+    text: >
+      The Anchor is open but it's not the same without Eoin in the
+      corner with his pint. Come home love. Your seat is waiting.
+    effects: { trust_niamh: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Niamh -> niamh_talk
+
+  niamh_talk:
+    type: message
+    text: >
+      NIAMH: Ah you're new? Welcome to Rosscarrig, desperate time
+      to arrive though. The whole village is in bits over Eoin.
+
+      Cian is his older brother, fisherman, demented with worry.
+      Roisin — their mam — runs the post office. Saoirse was Eoin's
+      girlfriend til about a year ago, still friends.
+
+      Tommy O'Brien — old trawlerman — says the salmon farm is
+      destroying the bay. Eoin backed him up with actual water tests.
+      Then there's CorkBoatFan89 — been commenting on everything
+      Eoin posts for months. Bit intense like.
+
+      And Deirdre Linehan from the Southern Star — she and Eoin were
+      working on something together. Gone fierce quiet since he
+      vanished.
+    effects: { trust_niamh: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about CorkBoatFan89 -> niamh_boatfan
+      - Ask about Atlantic Salmon Corp -> niamh_salmon
+      - Thank her and move on -> quest1_hub
+
+  niamh_boatfan:
+    type: message
+    text: >
+      NIAMH: CorkBoatFan89. Been around eight months? At first it
+      was "deadly work" and "class craftsmanship" — grand like. But
+      then it got much. Asking where his workshop was. Wanting to
+      visit. DMs about meeting up. Eoin showed me some and said
+      "this lad won't feck off."
+
+      Blocked the account twice. Came back both times.
+    effects: { trust_niamh: "+5" }
+    choices:
+      - Ask about Atlantic Salmon Corp -> niamh_salmon
+      - Move on -> quest1_hub
+
+  niamh_salmon:
+    type: message
+    text: >
+      NIAMH: Atlantic Salmon Corp. Bollocks to them. Set up three
+      years ago. Promised jobs, promised they'd be grand for the bay.
+      Council fast-tracked the planning. Grainne Cotter pushed it
+      through.
+
+      Fishermen noticed straight away. Dead fish. Chemical smell.
+      Tommy was shouting about it for years. Then Eoin started taking
+      water samples and sending them to labs in Cork. Real numbers.
+      Heavy metals, sea lice chemicals, the works.
+
+      Two weeks after he said he was going public, he's gone.
+    effects: { trust_niamh: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tommy (the water, witness tease) ---
+
+  tommy_intro:
+    type: tweet
+    from: tommy
+    text: >
+      45 years fishing this bay. never seen it like this. dead crabs
+      in the pots. fish with sores on them. @eoin_kelleher had the
+      proof and now he's gone. connect the fecking dots.
+    effects: { trust_tommy: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tommy -> tommy_talk
+
+  tommy_talk:
+    type: message
+    text: >
+      TOMMY: That salmon farm is poisoning the bay. The sea lice
+      chemicals — emamectin, cypermethrin — killing everything. And
+      the waste. Thousands of fish shitting into the bay with no
+      treatment.
+
+      Eoin actually did something. Took samples, sent them to UCC.
+      The numbers were bad. Heavy metals ten times what they should
+      be. And the council signed off on every fecking inspection.
+
+      The night before he vanished — I was at the pier around
+      midnight. Saw lights at his workshop. And a car I didn't
+      recognise.
+    effects: { trust_tommy: "+10" }
+    choices:
+      - What car? -> tommy_night
+      - Move on -> quest1_hub
+
+  tommy_night:
+    type: message
+    text: >
+      TOMMY: Black SUV. Company car. Atlantic Salmon Corp sticker
+      on the windscreen. Two fellas went to Eoin's workshop. There
+      twenty minutes. When they left one was carrying something.
+      Laptop bag.
+
+      Told the Guards. Buckley wrote it down. Feck all happened.
+    effects: { trust_tommy: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Oisin (teen, Eoin's apprentice) ---
+
+  oisin_intro:
+    type: tweet
+    from: oisin
+    text: >
+      eoin is sound out like he taught me everything about building
+      currachs and now he's just gone?? this is absolute bollocks
+      someone knows something. if anyone has info ffs say it
+    effects: { trust_oisin: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Oisin -> oisin_talk_early
+
+  oisin_talk_early:
+    type: message
+    text: >
+      OISIN: who are you?? ah right new here. deadly timing. look
+      eoin is the soundest lad in rosscarrig. was teaching me and
+      tadhg to build a proper currach. tarred canvas, lath frame.
+      fecking class.
+
+      now he's vanished and the guards say he's probably grand??
+      he's NOT grand. his workshop is locked up and there's shite
+      all over the floor like someone went through his stuff.
+
+      also right. aoife told me something. not gas — creepy. she
+      saw someone at the workshop the week before. just standing
+      there watching. at night. she's too scared to say it online
+    effects: { trust_oisin: "+10" }
+    choices:
+      - Who was watching? -> oisin_watcher_hint
+      - Move on -> quest1_hub
+
+  oisin_watcher_hint:
+    type: message
+    text: >
+      OISIN: she didn't get a proper look like it was dark. but she
+      said he was taking photos of the workshop with his phone. just
+      standing by the wall across the road clicking away.
+
+      she reckons it might be that CorkBoatFan89 weirdo from online.
+      the one who's been commenting on everything eoin does for
+      months. pure creepy shite.
+
+      talk to aoife if you can but she's fierce nervous about it.
+      she doesn't want drama like. tell her i sent you or whatever
+    effects: { trust_oisin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Rosscarrig. A West Cork fishing
+      village built around the harbour. A young boat builder who was
+      exposing pollution from a salmon farm. A disappearance that
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Roisin (Eoin's mam) -> roisin_q1
+      - Talk to Cian (Eoin's brother) -> cian_q1
+      - Talk to Saoirse (Eoin's ex) -> saoirse_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Roisin Q1 ---
+
+  roisin_q1:
+    type: tweet
+    from: roisin
+    text: >
+      Please if anyone has seen my son Eoin Kelleher please contact
+      the Guards or message me here. His passport is at home. His
+      tools are in the workshop. He did NOT go travelling. Please.
+    effects: { trust_roisin: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Roisin -> roisin_q1_talk
+
+  roisin_q1_talk:
+    type: message
+    text: >
+      ROISIN: I don't know you but I appreciate anyone who cares.
+      Eoin is a good boy. He loves this village. He loves the sea.
+      He would never leave without telling me.
+
+      The Guards say give it time. I'm his mother. I know when
+      something is wrong.
+
+      [Roisin is distraught. She'll open up more as you build trust.]
+    effects: { trust_roisin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Cian Q1 ---
+
+  cian_q1:
+    type: tweet
+    from: cian
+    text: >
+      spent all day searching the coast in the trawler. nothing.
+      i swear to god if someone has hurt eoin i'll tear this village
+      apart. the guards are doing FUCK ALL.
+    effects: { trust_cian: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Cian -> cian_q1_talk
+
+  cian_q1_talk:
+    type: message
+    text: >
+      CIAN: Who are you? Right. My brother called me two nights
+      before. Rattled. Said "the salmon crowd know I have the
+      results" and "there's some lad online who knows where I live."
+
+      Then nothing. Phone off. Account posts a blurry photo at 4am.
+      That's not Eoin. Someone else did that.
+    effects: { trust_cian: "+10" }
+    choices:
+      - Two threats? The company AND someone online? -> cian_theory
+      - Move on -> quest1_hub
+
+  cian_theory:
+    type: message
+    text: >
+      CIAN: There's the salmon crowd who want his evidence gone.
+      And there's this freak from the internet stalking him. One
+      of them got to him.
+
+      Eoin told me months ago someone was sending weird messages.
+      His boats, his workshop, where he goes. Reported it to the
+      Guards. "It's just the internet." Fuck sake.
+    effects: { trust_cian: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Saoirse Q1 ---
+
+  saoirse_q1:
+    type: tweet
+    from: saoirse
+    text: >
+      I know we broke up but Eoin is still one of my best friends.
+      He's the kindest person I know. Please share his photo. Please
+      help us find him.
+    effects: { trust_saoirse: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Saoirse -> saoirse_q1_talk
+
+  saoirse_q1_talk:
+    type: message
+    text: >
+      SAOIRSE: We were together two years. Broke up because he's
+      married to the boats, not because of anything bad. Still
+      friends.
+
+      But lately he was different. Anxious. Checking over his
+      shoulder. Someone from the boating forums found his real name
+      and was sending him stuff. And people from the salmon farm
+      came to his workshop and told him to drop it.
+
+      He didn't drop it. That's Eoin. Stubborn as a mule.
+    effects: { trust_saoirse: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Eoin went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Aoife (was near the workshop that evening) -> aoife_interview
+      - Find Donal (harbour master, works late) -> donal_interview
+      - Find Aine (baker, starts at 5am, heard something) -> aine_interview
+      - Find Sean Og (singer, was walking the pier late) -> sean_interview
+
+  # --- Aoife (saw someone at workshop) ---
+
+  aoife_interview:
+    type: tweet
+    from: aoife
+    text: >
+      i keep thinking about what i saw last week but like i don't
+      want to start drama. but also eoin is missing so fuck it
+    effects: { trust_aoife: "+5" }
+    choices:
+      - Ask Aoife what she saw -> aoife_talk
+
+  aoife_talk:
+    type: message
+    text: >
+      AOIFE: ok so don't go mental. walking home from trad session
+      around 11. someone outside eoin's workshop. not eoin. standing
+      in the dark taking photos of the workshop with his phone.
+
+      saw me and legged it. toward the pier. tallish, big jacket.
+      creepy as fuck.
+
+      oisin reckons it's CorkBoatFan89 but we've no proof. didn't
+      want to say it online in case i'm wrong
+    effects:
+      trust_aoife: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Donal (harbour master, saw late-night visitors) ---
+
+  donal_interview:
+    type: tweet
+    from: donal
+    text: >
+      Reminder: the harbour area is closed to public access between
+      11pm and 5am. I've noticed unauthorised vehicles at the pier
+      after hours recently.
+    effects: { trust_donal: "+5" }
+    choices:
+      - Ask Donal what he saw -> donal_talk
+
+  donal_talk:
+    type: message
+    text: >
+      DONAL: Locking up the harbour office around 11:30. Eoin's van
+      at the workshop — normal, he works late. But a black SUV beside
+      it. Atlantic Salmon Corp sticker.
+
+      Two men at Eoin's door. One I recognised — Micheal Hennessy,
+      operations director. At half eleven at night.
+
+      Logged it in the harbour record. Nobody's asked to see it.
+    effects:
+      trust_donal: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Aine (baker, heard argument) ---
+
+  aine_interview:
+    type: tweet
+    from: aine
+    text: >
+      Up at 4:30 as usual for the ovens. But that morning wasn't
+      usual. Heard shouting from down by the harbour around 5. Not
+      normal for Rosscarrig.
+    effects: { trust_aine: "+5" }
+    choices:
+      - Ask Aine what she heard -> aine_talk
+
+  aine_talk:
+    type: message
+    text: >
+      AINE: Start the bread at half four. That morning — voices from
+      the harbour. Raised. An argument.
+
+      Car engine, driving too fast for the pier road. Ten minutes
+      later a second vehicle — Eoin's van, that rattle in the
+      exhaust you can hear a mile away.
+
+      Told Buckley. "Could have been anyone." Absolute bollocks.
+    effects:
+      trust_aine: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sean Og (singer, late walk on pier) ---
+
+  sean_interview:
+    type: tweet
+    from: sean
+    text: >
+      was out walking the pier late after the session. the bay was
+      strange that night. lights where there shouldn't be lights.
+    effects: { trust_sean: "+5" }
+    choices:
+      - Ask Sean Og what he saw -> sean_talk
+
+  sean_talk:
+    type: message
+    text: >
+      SEAN OG: Walk the pier after sessions. That night around
+      midnight — lights on the water. Not fishing boats. A
+      spotlight moving along the salmon farm cages. Someone out
+      there at midnight.
+
+      On the way back I passed Eoin's workshop. Light on. I could
+      hear him talking to someone. Voice tight. Trying to keep calm.
+
+      Knocked. Eoin opened a crack — "grand, Sean, all grand." He
+      wasn't grand. Hands shaking.
+    effects:
+      trust_sean: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Roisin (his mam)
+      and Tadhg (saw someone watching the workshop before).
+    choices:
+      - Talk to Roisin about that night -> roisin_interview
+      - Talk to Tadhg -> tadhg_interview
+      - Find Aoife -> aoife_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Donal -> donal_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Aine -> aine_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sean Og -> sean_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Roisin (last to hear from Eoin) ---
+
+  roisin_interview:
+    type: tweet
+    from: roisin
+    text: >
+      that photo on eoin's account is NOT him. eoin writes about
+      every boat he builds, every plank he shapes. he would never
+      post a blurry nothing at 4am. someone else did that.
+    effects: { trust_roisin: "+5" }
+    choices:
+      - DM Roisin -> roisin_talk_low
+        when:
+          state: trust_roisin
+          lt: 50
+      - DM Roisin -> roisin_talk_high
+        when:
+          state: trust_roisin
+          gte: 50
+
+  roisin_talk_low:
+    type: message
+    text: >
+      ROISIN: I appreciate the concern but I don't know you. I'm
+      getting a lot of messages from strangers and I can't tell
+      who's genuine and who's a gawker.
+
+      [Roisin needs to trust you more. Show her you're actually
+      investigating, not just being nosy.]
+    effects: { trust_roisin: "+5" }
+    choices:
+      - Share what you've learned about the night -> roisin_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  roisin_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the workshop, the
+      company men, the argument at dawn. Roisin is quiet for a while.
+
+      ROISIN: You're actually trying to find him. Thank God. Okay,
+      I'll tell you what I know.
+    effects: { trust_roisin: "+25" }
+    choices:
+      - What happened that night? -> roisin_talk_high
+
+  roisin_talk_high:
+    type: message
+    text: >
+      ROISIN: He rang at half ten. Said he was at the workshop. But
+      his voice was off. Said "Mam, if anything happens, the samples
+      are at Finbar's." I said what do you mean? He said "I'm grand."
+
+      He always says he's grand. He's never grand.
+
+      At 4am his account posts that photo. By morning his van is
+      gone and the workshop is turned upside down. Someone searched
+      it.
+
+      He said one more thing — "there's a fella following me. Not
+      the salmon crowd. Someone else."
+    effects:
+      trust_roisin: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tadhg (saw someone watching workshop earlier) ---
+
+  tadhg_interview:
+    type: message
+    text: >
+      TADHG: right a week before eoin vanished i was walking back
+      from the GAA pitch. car on the verge, lights off. someone
+      sitting in it watching the workshop.
+
+      dodgy as fuck so i went closer. lad saw me, drove off. cork
+      plates. 192-C-something. next day same car at the pier — got
+      a photo with the full reg on my phone.
+
+      guards said "probably a tourist." at 11 at night watching a
+      workshop. right so.
+    effects:
+      trust_tadhg: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:30 — Eoin calls mam, says "samples at Finbar's" (Roisin)
+      23:00 — Stranger photographing workshop (Aoife)
+      23:30 — Atlantic Salmon Corp SUV, Hennessy present (Donal)
+      00:00 — Lights at farm cages, Eoin tense (Sean Og)
+      05:00 — Argument at harbour, cars leaving fast (Aine)
+
+      Two threats. Two investigations:
+      — The cover-up: What is Atlantic Salmon Corp hiding?
+      — The stalker: Who is CorkBoatFan89?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate the stalker -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Atlantic Salmon Corp is hiding something. Eoin had proof of
+      pollution. Now he's gone and his workshop has been searched.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search Eoin's public water test data -> water_test_data
+      - Talk to Deirdre the journalist -> deirdre_interview
+      - Talk to Finbar (heritage officer, has Eoin's file) -> finbar_interview
+      - Talk to Grainne (county councillor) -> grainne_interview
+      - Check the Heritage Boats association -> heritage_investigation
+      - Talk to Tommy about the dumping -> tommy_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Water Test Data ---
+
+  water_test_data:
+    type: message
+    text: >
+      Eoin's public blog has water quality updates. Six sample points
+      around the bay. Nearest the farm cages: emamectin thirty times
+      the limit. Copper off the charts. Ammonia has created a dead
+      zone on the seabed.
+
+      His dive log: "Found the pipe. Pumping untreated waste straight
+      into the bay. No settlement tank. Raw discharge."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Deirdre ---
+
+  deirdre_interview:
+    type: message
+    text: >
+      DEIRDRE: I don't discuss sources. Ever.
+    effects: { trust_deirdre: "+5" }
+    choices:
+      - Show Deirdre the evidence you have -> deirdre_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  deirdre_with_evidence:
+    type: message
+    text: >
+      DEIRDRE: ...Jesus. You've more than I expected.
+
+      Eoin and I were working together. He had footage of the
+      discharge pipe — raw waste into the bay. Lab results from
+      UCC. Everything.
+
+      We were going to publish and tip off RTE. Then he vanished.
+      Two days later someone broke into my car and took my backup
+      USB.
+
+      Eoin is alive. Contacted me from a phone I didn't recognise.
+      Said he's hiding. Said "they came to the workshop and someone
+      else has been following me." Two separate threats.
+
+      I can't say where he is. But with enough evidence I can
+      publish and make it safe for him to come home.
+    effects:
+      trust_deirdre: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> deirdre_hint
+      - Back to investigation hub -> investigation_hub
+
+  deirdre_hint:
+    type: message
+    text: >
+      DEIRDRE: Hennessy — the operations director — came to his
+      workshop that night with some solicitor fella from Cork.
+      Told him to hand over everything or they'd sue him into
+      oblivion. Intimidation dressed up as legal process.
+
+      But Eoin also said something about a fella who'd been
+      tracking him. Someone from the internet who'd found out where
+      he lives. That's a different kettle of fish entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Finbar (has Eoin's evidence file) ---
+
+  finbar_interview:
+    type: message
+    text: >
+      FINBAR: Eoin left a waterproof case with me. Said "if something
+      goes wrong, this is the backup." People leave maritime documents
+      with me all the time. Nobody would look here.
+
+      He was scared. Eoin doesn't scare easily — he's been out in
+      gales in a tarred canvas currach. But that night he was scared.
+    effects: { trust_finbar: "+10" }
+    choices:
+      - What's in the case? -> finbar_case
+
+  finbar_case:
+    type: message
+    text: >
+      Finbar produces a waterproof Pelican case.
+
+      Inside: USB drive, printed photographs, handwritten letter.
+      Photos show a pipe discharging brown waste directly into the
+      bay. USB has lab analysis from UCC and Eoin's full report.
+      The letter names names: Hennessy, Cotter, Fitzgerald.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Grainne (county councillor) ---
+
+  grainne_interview:
+    type: message
+    text: >
+      GRAINNE: I take these concerns seriously. But the farm provides
+      fifty jobs. Council has to balance environment and economy.
+
+      Off the record? The inspections are a joke. Two weeks notice.
+      They clean up before anyone arrives. The discharge numbers
+      bear no relation to reality.
+
+      Eoin had real numbers. That's what made him dangerous.
+    effects:
+      trust_grainne: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Heritage Boats association ---
+
+  heritage_investigation:
+    type: tweet
+    from: heritage_assoc
+    text: >
+      We are deeply concerned about the disappearance of our member
+      Eoin Kelleher. Eoin is one of the finest traditional boat
+      builders in Ireland. His naomhoga are works of art. Please
+      contact Gardai with any information.
+    choices:
+      - Check their records on Eoin -> heritage_records
+
+  heritage_records:
+    type: message
+    text: >
+      Heritage Boats records show Eoin reported the salmon farm's
+      impact six months ago. Pollution destroying natural materials
+      needed for traditional boat building.
+
+      He also reported in a private committee note that an online
+      follower had escalated from admiration to obsession. The
+      committee said contact the Gardai. He did. Nothing happened.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Tommy dumping ---
+
+  tommy_dumping:
+    type: message
+    text: >
+      TOMMY: Last month I pulled my lobster pots near the cages.
+      Seabed covered in dead crabs. And drums. Metal drums leaking
+      something black. Brought one up — half-corroded but you could
+      read "Atlantic Salmon Corp" and a batch number.
+
+      Not just pipe discharge. Solid waste. Chemical drums in the
+      bay. Eoin photographed them underwater.
+
+      I still have the drum in my shed.
+    effects:
+      trust_tommy: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      CorkBoatFan89. An anonymous account obsessed with Eoin's work.
+      Someone photographing the workshop at night. Someone who found
+      his real address from an online forum.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate CorkBoatFan89's posting history -> boatfan_posts
+      - Talk to Saoirse about the messages Eoin received -> saoirse_messages
+        when:
+          state: trust_saoirse
+          gte: 20
+      - Talk to Aoife (more detail on what she saw) -> aoife_detail
+      - Talk to Siobhan the pharmacist -> siobhan_interview
+      - Check the boating forum where CorkBoatFan89 is active -> forum_investigation
+      - Talk to Nora the librarian -> nora_interview
+        when:
+          state: trust_nora
+          gte: 40
+      - Talk to Garda Buckley -> buckley_interview
+        when:
+          state: trust_garda
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- CorkBoatFan89 Posts ---
+
+  boatfan_posts:
+    type: tweet
+    from: anon
+    text: >
+      Eoin Kelleher's latest naomhog is his finest work yet. The man
+      is an artist. I wish he would share more about his process.
+      I would give anything to watch him work.
+    choices:
+      - Look at this account's full history -> boatfan_history
+
+  boatfan_history:
+    type: message
+    text: >
+      @CorkBoatFan89: created 9 months ago. Every post about Eoin.
+      The tone shifts:
+
+      Month 1: "Beautiful craftsmanship. Keeping the tradition alive."
+      Month 3: "Why don't you reply? I just want to learn from you."
+      Month 5: "I was in Rosscarrig. Your workshop is smaller than
+      I imagined. The blue door is nice."
+      Month 7: "I see you at the pub Fridays. Same corner. I was
+      there too."
+      Month 8: "You blocked me again. I'll always find my way back."
+
+      No photos. No bio. Just Eoin. Only Eoin.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Analyse the writing style -> boatfan_analysis
+
+  boatfan_analysis:
+    type: message
+    text: >
+      Analysing @CorkBoatFan89 more carefully:
+
+      Uses specific boat building terminology beyond casual interest
+      — lath spacing, tarring techniques, gunwale profiles. Real
+      knowledge.
+
+      Several posts reference things only visible from inside: "The
+      way you arrange your tools on the north wall is efficient."
+      The north wall isn't visible from outside. This person has
+      been inside the workshop.
+
+      One post mentions "the new keel timber from Fitzgerald's
+      yard." Fitzgerald's is a private supplier. Not public info.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Saoirse on messages ---
+
+  saoirse_messages:
+    type: message
+    text: >
+      SAOIRSE: Eoin showed me the messages. Dozens. Started normal
+      — "love your boats, deadly work." Then personal. "I saw you
+      at Hurley's buying bread." "Your red jumper suits you." "You
+      were at the pier at 7am, I was watching."
+
+      Blocked the account. Came back. Blocked again. Came back.
+      Then the DMs — "you can't get rid of me." And "I know where
+      you live. Blue door, right?"
+
+      Guards said "it's online, we can't do much." Bollocks.
+
+      A month ago he found boot prints outside his workshop window.
+      Size 10 or 11. Not his.
+    effects:
+      trust_saoirse: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Aoife detail ---
+
+  aoife_detail:
+    type: message
+    text: >
+      AOIFE: ok so the lad at the workshop? when he legged it he
+      dropped something. went back next day and found it in the
+      grass.
+
+      a notebook. leather cover. full of notes about eoin. his
+      schedule, what time he opens the workshop, when he goes to
+      the pub, what route he walks home. sketches of his boats.
+      photographs printed and glued in.
+
+      it's like a fecking shrine. i have the notebook. was afraid
+      to give it to the guards because they do nothing.
+
+      you can have it. this shite has me scared to walk home
+    effects:
+      trust_aoife: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Siobhan (pharmacist) ---
+
+  siobhan_interview:
+    type: message
+    text: >
+      SIOBHAN: Confidential, but I'm a pharmacist not a priest.
+      There's a man been coming weekends. Always alone. Cork accent.
+      Buys nothing much but asks questions. About Eoin. The boats.
+      Where the workshop is.
+
+      First time — tourist. Third time — odd. Sixth time — dangerous.
+
+      I mentioned it to Eoin. He went white. Said "that's him.
+      That's the fella from online."
+    effects:
+      trust_siobhan: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Forum investigation ---
+
+  forum_investigation:
+    type: message
+    text: >
+      CorkBoatFan89 is most active on IrishTraditionalBoats.ie.
+      847 posts — almost all about naomhog and currach building.
+
+      Cross-referencing: CorkBoatFan89 was banned from two other
+      forums for "harassment" and "obsessive messaging." Both
+      times the target was a boat builder.
+
+      One admin shares a detail: when banned, they sent 47 messages
+      in one night. IP traced to Cork city. Throwaway email, but
+      the premium membership was paid with a card ending 4471.
+
+      That's traceable.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Nora (librarian) ---
+
+  nora_interview:
+    type: message
+    text: >
+      NORA: Eoin left something with me. An envelope. He said "if
+      I'm not around, give this to Deirdre or to whoever comes
+      asking the right questions."
+
+      He looked exhausted. Like he hadn't slept in days.
+    effects: { trust_nora: "+10" }
+    choices:
+      - What's in the envelope? -> nora_envelope
+
+  nora_envelope:
+    type: message
+    text: >
+      Nora hands over a thick manila envelope.
+
+      Inside: printouts of every message from CorkBoatFan89.
+      Annotated by Eoin in red pen. Dates, times, real-world
+      encounters. A timeline of escalation from online admiration
+      to physical surveillance.
+
+      Also: Eoin's Garda report, stamped "received" but no case
+      number assigned. And CCTV from Hurley's bakery showing a man
+      watching the workshop. Tall, bearded, dark jacket. Same
+      description Aoife gave.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Garda Buckley ---
+
+  buckley_interview:
+    type: message
+    text: >
+      GARDA BUCKLEY: Off the record — I wanted to investigate the
+      farm. Superintendent said leave it. Council has "oversight."
+      Code for "don't touch it."
+
+      The stalking report? Flagged to my super. He said "online
+      stuff isn't our department." Bollocks. If someone's at your
+      workshop at night, that's our department.
+
+      Bring me something solid and I'll reopen everything.
+    effects:
+      trust_garda: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Eoin than anyone in Rosscarrig. Who is responsible?
+    choices:
+      - Confront the stalker (present CorkBoatFan89 evidence) -> confront_stalker
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Micheal Hennessy (salmon farm director) -> confront_hennessy
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Councillor Cotter (political cover-up) -> confront_cotter
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Stalker (Best Ending) ---
+
+  confront_stalker:
+    type: message
+    text: >
+      You compile everything: posting history, notebook, CCTV, forum
+      bans, card number, ignored Garda report, Eoin's annotated
+      timeline.
+
+      You present it to Garda Buckley and post a public thread:
+      "Someone has been stalking Eoin Kelleher for nine months.
+      Online and in person. Here is the evidence."
+    choices:
+      - Post it -> stalker_response
+
+  stalker_response:
+    type: message
+    text: >
+      The community explodes. Three more people come forward — all
+      saw the same man watching the workshop at different times.
+
+      Garda Buckley traces the card number. A name emerges. Cork
+      city. Previous conviction for harassment. His flat: hundreds
+      of printed photos of Eoin's boats, a GPS tracker receipt,
+      a map of Rosscarrig with Eoin's routes in red.
+
+      You've also sent the salmon farm evidence to Deirdre.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE STALKER
+
+      Garda Buckley arrests the man from Cork. With the evidence —
+      notebook, CCTV, forum history, witnesses — he's charged with
+      stalking, harassment, and criminal surveillance. A GPS tracker
+      is found on Eoin's van.
+
+      Deirdre publishes the salmon farm story. RTE picks it up. The
+      EPA orders an unannounced inspection. The farm's licence is
+      suspended. Hennessy faces criminal charges. Cotter resigns.
+
+      And Eoin Kelleher, reading the news from a friend's house in
+      Kenmare, calls his mam for the first time in nine days.
+
+      "I'm coming home, Mam. Is the workshop okay?"
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: eoin
+    text: >
+      the bay is still here. the boats are still here. i'm still
+      here. thanks for not giving up. there's a currach to finish.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Hennessy (Partial Ending) ---
+
+  confront_hennessy:
+    type: message
+    text: >
+      You present the evidence to Micheal Hennessy:
+
+      "Underwater photos of the pipe. UCC lab results. Drums from
+      the seabed with your batch numbers. Eoin's full report
+      naming you personally."
+    choices:
+      - Send -> hennessy_response
+
+  hennessy_response:
+    type: message
+    text: >
+      HENNESSY: This communication has been forwarded to our legal
+      team. Any publication of defamatory material will result in
+      immediate legal proceedings. Atlantic Salmon Corp operates
+      within all regulatory requirements.
+
+      But it's too late. You've sent everything to Deirdre, to the
+      heritage association, and directly to the EPA.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. Atlantic Salmon Corp's licence is
+      suspended. The farm may close. Fifty jobs at stake.
+
+      But without the stalking evidence, the man from Cork is never
+      identified. New account. Finds Eoin's new location within a
+      month. Messages start again.
+
+      Three months later Eoin comes home. Changes the locks. Checks
+      over his shoulder every time he walks to the pier. Stops
+      working late.
+
+      The corporation is exposed. The person who terrorised Eoin
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: eoin
+    text: "i'm back. the bay is cleaner. but i still lock the door now. that's new."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Cotter (Wrong Ending) ---
+
+  confront_cotter:
+    type: message
+    text: >
+      You confront Councillor Cotter with your evidence.
+
+      Within the hour, you receive a message from her solicitor:
+    choices:
+      - Read the response -> cotter_response
+
+  cotter_response:
+    type: tweet
+    from: liam
+    text: >
+      My client notes your allegations with concern. Any public
+      dissemination of defamatory statements will be met with
+      immediate legal action. — Burke & Associates, Cork
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      Cotter's solicitor buries it. No direct link between her
+      and the disappearance. Insufficient for charges.
+
+      Atlantic Salmon Corp operates. The stalker watches. Eoin
+      hides.
+
+      Six months later, @CorkBoatFan89 creates a new account.
+      It follows Eoin's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: ROSSCARRIG — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Eoin's story explores themes of
+      corporate pollution, political negligence, online stalking,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or emotional distress, help is available:
+      Samaritans Ireland: 116 123 (free, 24 hours)
+      Women's Aid: 1800 341 900
+      An Garda Siochana: 999 / 112

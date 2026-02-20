@@ -1,0 +1,1682 @@
+# DEAD ACCOUNT — Story 080: Smilyan (Bulgaria 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-080.yml
+#
+# Player investigates the disappearance of young gaida (bagpipe) maker
+# and musician Kaloyan Daskalov in the fictional Rhodope mountain village
+# of Smilyan.
+
+meta:
+  title: "Dead Account — Smilyan"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_nevena: 0
+    trust_todor: 0
+    trust_hristo: 0
+    trust_elitsa: 0
+    trust_boyana: 0
+    trust_milena: 0
+    trust_dragomir: 0
+    trust_rumen: 0
+    trust_zornitsa: 0
+    trust_vasil: 0
+    trust_petya: 0
+    trust_dimitar: 0
+    trust_svetla: 0
+    trust_yanko: 0
+    trust_rada: 0
+    trust_nikola: 0
+    trust_gergana: 0
+    trust_stefan: 0
+    trust_inspector: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    collector_evidence: 0
+    resort_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Нов жител
+    bio: "пристигнах в Смилян. опознавам Родопите крачка по крачка"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Smilyan.social"
+    description: "Добре дошли в общностната инстанция на Смилян, Родопи"
+    avatar_url: /gamepatch/assets/dead-account/smilyan_bot.png
+
+  npcs:
+    # === Kaloyan's Inner Circle ===
+    kaloyan:
+      name: "Калоян Даскалов"
+      bio: "гайдар | майстор на гайди | родопски звук в XXI век | 🎵"
+      avatar: avatars/kaloyan.jpg
+    nevena:
+      name: "Невена Петрова"
+      bio: "гаджето на калоян | учителка в Смилян | родопска душа"
+      avatar: avatars/nevena.jpg
+    todor:
+      name: "Тодор Даскалов"
+      bio: "бащата на калоян | дърводелец | гайдата е в кръвта ни"
+      avatar: avatars/todor.jpg
+    hristo:
+      name: "Христо Ангелов"
+      bio: "най-добрият приятел на кало | барман в хана | планината лекува"
+      avatar: avatars/hristo.jpg
+
+    # === Local Government ===
+    dragomir:
+      name: "Драгомир Кехайов"
+      bio: "Кмет на Смилян | За развитието на общината | #СмилянНапред"
+      avatar: avatars/dragomir.jpg
+    rumen:
+      name: "Румен Балабанов"
+      bio: "Заместник-кмет | Инвестиции и инфраструктура | Смилян"
+      avatar: avatars/rumen.jpg
+    obshtina:
+      name: "Община Смилян"
+      bio: "Официален акаунт | Новини и обяви | Работно време: Пон-Пет 9-17ч"
+      avatar: avatars/obshtina.jpg
+
+    # === Local Community ===
+    boyana:
+      name: "Бояна Маринова"
+      bio: "хан Родопска Среща | домашна кухня | ракия | живата музика е в петък"
+      avatar: avatars/boyana.jpg
+    milena:
+      name: "Милена Стоянова"
+      bio: "аптекарка | Смилян | здраве и билки | открито и в неделя сутрин"
+      avatar: avatars/milena.jpg
+    vasil:
+      name: "Васил Гарджев"
+      bio: "овчар | 45 години в планината | родопската природа не е за продан"
+      avatar: avatars/vasil.jpg
+    svetla:
+      name: "Светла Чилингирова"
+      bio: "библиотекарка | читалище Просвета | книги и памет"
+      avatar: avatars/svetla.jpg
+    yanko:
+      name: "Янко Узунов"
+      bio: "горски | Родопи | защитавам гората от тези дето я смятат за тяхна"
+      avatar: avatars/yanko.jpg
+
+    # === Teens ===
+    elitsa:
+      name: "Елица"
+      bio: "17 | кало ме научи на кавал | Смилян е boring ама е home | яко"
+      avatar: avatars/elitsa.jpg
+    petya:
+      name: "Петя"
+      bio: "16 | снимки от планината | калоян ми беше вдъхновение tbh"
+      avatar: avatars/petya.jpg
+    nikola:
+      name: "Никола"
+      bio: "17 | ходя на риба | smilyan gang | кало е легенда брат"
+      avatar: avatars/nikola.jpg
+
+    # === Journalist ===
+    zornitsa:
+      name: "Зорница Димова"
+      bio: "журналистка | Родопски вестник | околна среда и местна политика | tips: zornitsa@rodopi-press.bg"
+      avatar: avatars/zornitsa.jpg
+
+    # === The Collector (Thread A suspect) ===
+    klaus:
+      name: "Klaus Weidemann"
+      bio: "ethnomusicologist | traditional instruments collector | Europe's living heritage"
+      avatar: avatars/klaus.jpg
+    collector_anon:
+      name: "RhodopeSoundHunter"
+      bio: "."
+      avatar: avatars/anon.jpg
+
+    # === Resort Developer (Thread B) ===
+    alpine_rhodope:
+      name: "Alpine Rhodope Resort"
+      bio: "Инвестиционен проект | Ски курорт Родопи | Модерен туризъм за региона"
+      avatar: avatars/alpine_rhodope.jpg
+    stefan:
+      name: "Стефан Въргов"
+      bio: "строителен предприемач | Въргов ЕООД | строим бъдещето на Родопите"
+      avatar: avatars/stefan.jpg
+
+    # === Media & Community ===
+    rada:
+      name: "Рада Белева"
+      bio: "фолклористка | записвам родопски песни | Калоян беше най-добрият от новото поколение"
+      avatar: avatars/rada.jpg
+    gergana:
+      name: "Гергана Хаджиева"
+      bio: "еколожка | Зелени Родопи | защита на планината"
+      avatar: avatars/gergana.jpg
+    dimitar:
+      name: "Димитър Карадимов"
+      bio: "фотограф | Родопи от високо | дронове и пейзажи"
+      avatar: avatars/dimitar.jpg
+
+    # === Law Enforcement ===
+    inspector:
+      name: "Инспектор Марков"
+      bio: "РПУ Смолян | Район Смилян | сигнали: 166"
+      avatar: avatars/inspector.jpg
+
+    # === Local media ===
+    rodopi_news:
+      name: "Родопски новини"
+      bio: "Актуално от Родопите | Новини и анализи | redakcia@rodopi-novini.bg"
+      avatar: avatars/rodopi_news.jpg
+    meteo_rhodope:
+      name: "Метео Родопи"
+      bio: "Прогноза и предупреждения | Автоматична станция | Обновяване на всеки час"
+      avatar: avatars/meteo_rhodope.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SMILYAN
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to smilyan.social — the community Mastodon instance for
+      the Rhodope mountain village of Smilyan, Bulgaria.
+
+      The local feed is full of worry today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name everywhere:
+      @kaloyan_daskalov.
+
+      A young gaida maker. Bagpipe musician. He was keeping the old
+      Rhodope sound alive, building instruments in his father's
+      workshop, playing at festivals across Bulgaria. People are
+      panicking. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> kaloyan_profile
+
+  kaloyan_profile:
+    type: tweet
+    from: kaloyan
+    text: "тая гайда е за планината, не за нечий частен колекция. отказах. пак ще откажа. родопският звук не се продава."
+    choices:
+      - That's his last real post... -> strange_post
+
+  strange_post:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single audio
+      clip: a distorted, badly recorded drone note. No melody, no
+      ornamentation — just a raw, ugly sound. Posted at 4am. No text.
+
+      His friends say that's not him. Kaloyan would never post
+      something that crude. The police in Smolyan say he probably
+      went to a festival somewhere. Nobody buys it.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: inspector
+    text: >
+      Получен е сигнал за изчезнал жител на Смилян. Към момента няма
+      данни за престъпление. Всяка полезна информация може да бъде
+      подадена на телефон 166 или в РПУ Смолян.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @nevena_petrova is
+      barely holding it together. His father @todor_daskalov hasn't
+      left the workshop. His best friend @hristo_angelov is posting
+      furious messages. The old shepherds say the mountain took him.
+
+      The folklorist @rada_beleva says he was the last real gaida
+      maker of his generation. The ecologist @gergana_hadzhieva links
+      his disappearance to the ski resort controversy.
+
+      And the journalist @zornitsa_dimova is asking questions nobody
+      in the кметство wants to answer.
+    effects: { trust_nevena: "+5", trust_todor: "+5" }
+    choices:
+      - Start following Kaloyan's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Smilyan. Follow Kaloyan's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Boyana (runs the local inn, knows everyone) -> boyana_intro
+      - Talk to Vasil (shepherd, saw things in the mountain) -> vasil_intro
+      - Talk to Elitsa (teen, Kaloyan taught her kavall) -> elitsa_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a mix of panic about Kaloyan and the slow pulse of
+      a mountain village: weather warnings for the high passes, the
+      library's weekend hours, a recipe for Rhodope kachamak.
+
+      Key names surface: Nevena (girlfriend, teacher), Hristo (best
+      friend, bartender at the inn), Zornitsa (journalist, digging),
+      and the teens — Elitsa, Petya, Nikola — who idolised Kaloyan's
+      music.
+
+      Also prominent: Alpine Rhodope Resort, some investment project
+      planning a ski resort on the protected mountain slopes. Their
+      posts are slick marketing. Kaloyan's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Boyana -> boyana_intro
+      - Talk to Vasil -> vasil_intro
+      - Talk to Elitsa -> elitsa_intro
+
+  # --- Boyana (social map) ---
+
+  boyana_intro:
+    type: tweet
+    from: boyana
+    text: >
+      Ханът е отворен, ама без музика. @kaloyan_daskalov, къде си бе
+      момче? В петък няма кой да свири.
+    effects: { trust_boyana: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Boyana -> boyana_talk
+
+  boyana_talk:
+    type: message
+    text: >
+      BOYANA: Oh, you're new? Welcome to Smilyan. Bad timing though.
+      Everyone's nervous about Kaloyan.
+
+      Let me tell you who's who. Nevena is his girlfriend — sweet
+      girl, teaches at the village school, completely devastated.
+      Hristo is his best friend, works the bar here at the inn.
+      Todor is Kaloyan's father, master woodworker, taught Kalo
+      everything about building gaidas.
+
+      Zornitsa Dimova — the journalist — she's been poking around
+      the кметство about the ski resort deal. Kaloyan was against
+      it. Very publicly against it.
+
+      And there's some foreigner who's been coming to the village.
+      German or Austrian, I think. Kept asking about Kaloyan's
+      instruments. Кало didn't like him one bit.
+    effects: { trust_boyana: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the foreigner -> boyana_foreigner
+      - Ask about the ski resort -> boyana_resort
+      - Thank her and move on -> quest1_hub
+
+  boyana_foreigner:
+    type: message
+    text: >
+      BOYANA: Klaus something. Weidemann? He says he's an
+      ethnomusicologist — studies traditional instruments. He's been
+      to Smilyan three times this year. Always found Kaloyan at the
+      workshop, always wanted to buy a gaida. Not just any gaida —
+      Kaloyan's personal instrument. The one his grandfather made.
+
+      Кало told him no. Politely the first time, firmly the second.
+      The third time... Кало told me Klaus offered 15,000 euros. For
+      a bagpipe. Who does that?
+
+      The last time Klaus was here was about a week before Кало
+      disappeared. He came to the inn, sat in the corner, drank
+      rakia, watched Kaloyan play. Didn't say a word to anyone.
+      Just... watched. Мамка му, creepy.
+    effects: { trust_boyana: "+5" }
+    choices:
+      - Ask about the ski resort -> boyana_resort
+      - Move on -> quest1_hub
+
+  boyana_resort:
+    type: message
+    text: >
+      BOYANA: Ебати тъпотията. Some company — Alpine Rhodope — wants
+      to build a ski resort on Голям Перелик. Protected area. Ancient
+      forests. Where the old shepherds still graze.
+
+      The кмет — Dragomir — is all for it. Says it'll bring jobs and
+      tourists. But half the village knows he's getting something from
+      the deal. His brother-in-law Stefan runs the construction
+      company that got the contract. Coincidence? Мамка му.
+
+      Kaloyan was the loudest voice against it. He organised
+      petitions, recorded protest songs, got the ecologists involved.
+      He said the mountain is sacred, the forest is our lungs, the
+      gaida wood comes from those trees.
+
+      Two weeks later he's gone.
+    effects: { trust_boyana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Vasil (shepherd, mountain witness) ---
+
+  vasil_intro:
+    type: tweet
+    from: vasil
+    text: >
+      45 години с овцете в тая планина. водата не е същата. дърветата
+      ги секат. @kaloyan_daskalov имаше право за всичко.
+    effects: { trust_vasil: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Vasil -> vasil_talk
+
+  vasil_talk:
+    type: message
+    text: >
+      VASIL: I've been walking these mountains since before you were
+      born. I know every path, every clearing, every spring. And
+      things are changing. They've been surveying Голям Перелик for
+      that cursed resort. Bulldozers on the logging road. Survey
+      stakes where the old beech forest stands.
+
+      Kaloyan came up to see me the week before he disappeared. He
+      was agitated. Said he found something in the forest — markers,
+      plans, things that showed the resort was going to be much
+      bigger than what the кметство told people.
+
+      He took photos. He said he was going to post them.
+    effects: { trust_vasil: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> vasil_night
+      - Move on -> quest1_hub
+
+  vasil_night:
+    type: message
+    text: >
+      VASIL: The night he disappeared — I was up on the ridge with
+      the flock. Around midnight I heard a vehicle on the old logging
+      road. Nobody uses that road at night. Too steep, too dangerous.
+
+      I saw headlights going up toward the old каменна колиба — the
+      stone hut above the tree line. Then nothing. The lights went
+      off.
+
+      In the morning I went up there. Fresh tyre tracks in the mud.
+      And something else — drag marks. Like someone pulled something
+      heavy across the ground.
+
+      I told the police. They wrote it down. That was it.
+    effects: { trust_vasil: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Elitsa (teen, kavall student) ---
+
+  elitsa_intro:
+    type: tweet
+    from: elitsa
+    text: >
+      яко ми е гадно брат @kaloyan_daskalov ме научи на кавал и сега
+      го няма. сериозно ако някой знае нещо кажете де. путка му на
+      тоя живот
+    effects: { trust_elitsa: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Elitsa -> elitsa_talk_early
+
+  elitsa_talk_early:
+    type: message
+    text: >
+      ELITSA: ти нов ли си тука? яко timing бе. кало е най-якият
+      човек в тва село. учеше ме на кавал, правеше гайди, свиреше
+      на всеки събор. тва село без него е нищо брат.
+
+      и сега съм флипната защото никола видя нещо strange горе в
+      планината ама не иска да говори. казва "нищо де" ама очите му
+      казват друго нещо ебати
+    effects: { trust_elitsa: "+10" }
+    choices:
+      - What did Nikola see? -> elitsa_nikola_hint
+      - Move on -> quest1_hub
+
+  elitsa_nikola_hint:
+    type: message
+    text: >
+      ELITSA: не знам точно. ходил на риба горе на езерото и видял
+      някакъв чужденец с кола близо до работилницата на кало. поне
+      тва ми каза. после се затвори и не каза повече.
+
+      трябва да го питаш директно ама той е мнооого мнителен с нови
+      хора. първо говори за риболов с него и после може да каже нещо
+      lmao
+    effects: { trust_elitsa: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Smilyan. A Rhodope mountain village
+      built around traditions — music, woodcraft, sheep. A young gaida
+      maker who was both keeping the old ways alive and fighting
+      against a ski resort that would destroy the mountain.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Nevena (Kaloyan's girlfriend) -> nevena_q1
+      - Talk to Hristo (Kaloyan's best friend) -> hristo_q1
+      - Check what Todor (Kaloyan's father) is saying -> todor_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Nevena Q1 ---
+
+  nevena_q1:
+    type: tweet
+    from: nevena
+    text: >
+      моля ви ако някой е виждал @kaloyan_daskalov обадете се.
+      работилницата е заключена. гайдата му е там. той НИКОГА не
+      тръгва без гайдата.
+    effects: { trust_nevena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nevena -> nevena_q1_talk
+
+  nevena_q1_talk:
+    type: message
+    text: >
+      NEVENA: I appreciate the concern but I don't know who you are.
+      Kaloyan has many friends here. I'm sure he'll come back.
+
+      ...I keep telling myself that. I don't believe it anymore.
+
+      [Nevena is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_nevena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Hristo Q1 ---
+
+  hristo_q1:
+    type: tweet
+    from: hristo
+    text: >
+      кало брат обади се бе. всички те търсим. ханът без теб е
+      мъртъв. ако някой му е направил нещо да му еба майката ще
+      го намеря
+    effects: { trust_hristo: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Hristo -> hristo_q1_talk
+
+  hristo_q1_talk:
+    type: message
+    text: >
+      HRISTO: Who are you? Another person who's going to tell me
+      to calm down? My best friend is GONE. The police don't give a
+      shit. The кмет pretends nothing happened.
+
+      Кало called me the night before he disappeared. He was scared.
+      He said "that German guy is back, he won't leave me alone."
+      Then he said something about the resort — that he found
+      documents that prove the кмет is taking money from the
+      construction company.
+
+      Then the line went dead.
+    effects: { trust_hristo: "+10" }
+    choices:
+      - What do you think happened? -> hristo_theory
+      - Move on -> quest1_hub
+
+  hristo_theory:
+    type: message
+    text: >
+      HRISTO: I think two things happened at once and they both
+      fucked him. That collector — Klaus — is obsessed with Kaloyan's
+      instruments. Not like a normal fan. Like a man who needs to
+      possess things. I saw how he looked at the gaida. Like it was
+      already his.
+
+      And the кмет? Dragomir has been selling this village out to
+      developers. The resort deal stinks. Kaloyan was the one person
+      standing in the way, publicly, loudly.
+
+      Мамка му, maybe both of them had reasons to want him gone.
+    effects: { trust_hristo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Todor Q1 ---
+
+  todor_q1:
+    type: tweet
+    from: todor
+    text: >
+      синът ми е ИЗЧЕЗНАЛ и полицията ми казва може да е отишъл на
+      събор?? КАЛОЯН НЕ ТРЪГВА БЕЗ ДА КАЖЕ. Аз го познавам. Това
+      не е нормално.
+    effects: { trust_todor: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Todor -> todor_q1_talk
+
+  todor_q1_talk:
+    type: message
+    text: >
+      TODOR: You're a stranger but at this point I'll talk to anyone
+      who'll listen.
+
+      My son built gaidas. Real ones — goatskin, cherry wood from
+      our mountain, hand-tuned. Not factory shit. He said every
+      instrument has the voice of the tree it came from. He was
+      twenty-three and he had more skill than men twice his age.
+
+      The night before he disappeared, he came to my workshop. He
+      said "tate, someone is going to try to take the дядова гайда."
+      His grandfather's bagpipe — the oldest instrument in our
+      family, over a hundred years old.
+
+      He hid it somewhere. He wouldn't tell me where. He said "if
+      they can't find it, they'll have to come through me."
+
+      Then he was gone.
+    effects: { trust_todor: "+10" }
+    choices:
+      - Who wanted the gaida? -> todor_who
+      - Move on -> quest1_hub
+
+  todor_who:
+    type: message
+    text: >
+      TODOR: That German. Klaus Weidemann. He came to my workshop
+      too. Very polite, very professional. Said he was preserving
+      European heritage. Offered money — more money than I've seen
+      in my life.
+
+      I said no. The gaida is not for sale. It's not a museum piece.
+      It's a living instrument. Kaloyan plays it. His children will
+      play it.
+
+      Klaus smiled and said "everything has a price." I told him to
+      get out.
+
+      But it's not just Klaus. The кмет also visited. Said Kaloyan's
+      opposition to the resort was "hurting the community." Said we
+      should think about "what's best for Smilyan." Sounded like a
+      threat.
+    effects: { trust_todor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Kaloyan went silent. Multiple
+      people saw or heard things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Nikola (was fishing near the workshop) -> nikola_interview
+      - Find Yanko (forest ranger, patrols at night) -> yanko_interview
+      - Find Milena (pharmacist, lives near the road) -> milena_interview
+      - Find Dimitar (photographer, was flying his drone) -> dimitar_interview
+
+  # --- Nikola (saw someone at the workshop) ---
+
+  nikola_interview:
+    type: tweet
+    from: nikola
+    text: >
+      ходих на риба горе ама атмосферата е тежка напоследък. нещо
+      не е наред в тва село брат
+    effects: { trust_nikola: "+5" }
+    choices:
+      - Ask Nikola about that evening -> nikola_talk
+
+  nikola_talk:
+    type: message
+    text: >
+      NIKOLA: ей брат ама на никой не казваш ок? бях горе на
+      езерото към 19ч, риболов. и видях тоя чужденец — немеца —
+      до работилницата на кало. имаше кола наета, с пловдивска
+      регистрация. стоеше и гледаше вратата.
+
+      после кало излезе и се скараха. не чух какво ама кало го
+      бутна. немеца падна. стана, изтупа се и си тръгна с колата.
+
+      ебати брат, кало никога не удря хора. значи е било сериозно.
+    effects:
+      trust_nikola: "+10"
+      night_witnesses: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Yanko (forest ranger, saw vehicles) ---
+
+  yanko_interview:
+    type: tweet
+    from: yanko
+    text: >
+      Напомняне: горският път над Смилян е затворен след 20ч.
+      Констатирал съм неразрешено движение в последните нощи.
+    effects: { trust_yanko: "+5" }
+    choices:
+      - Ask Yanko what he saw -> yanko_talk
+
+  yanko_talk:
+    type: message
+    text: >
+      YANKO: I was on patrol around 22h. I heard vehicles on the
+      old logging road — the one that goes up to Голям Перелик.
+      That road is closed at night. It's dangerous and it's a
+      protected area.
+
+      I saw two vehicles. One was a rental — Plovdiv plates — going
+      up. The other was a pickup truck I recognised: it belongs to
+      Stefan Vargov, the construction boss. The кмет's
+      brother-in-law.
+
+      Вargov's truck on a closed mountain road at 22h? That's not
+      legal. I filed a report. Nobody followed up. Surprise.
+    effects:
+      trust_yanko: "+10"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Milena (pharmacist, heard something) ---
+
+  milena_interview:
+    type: tweet
+    from: milena
+    text: >
+      снощи пак чух кола по горския път. много бързо за тоя наклон.
+      не спя добре от дни.
+    effects: { trust_milena: "+5" }
+    choices:
+      - Ask Milena what she heard -> milena_talk
+
+  milena_talk:
+    type: message
+    text: >
+      MILENA: My house is right by the road to the mountain. That
+      night — the night Kaloyan disappeared — I was up late, couldn't
+      sleep. Around midnight I heard a car go past fast, heading up.
+      Then maybe twenty minutes later, another vehicle. Heavier —
+      a truck.
+
+      Around 2am I heard the truck come back down. Slow this time.
+      Very slow, like it was carrying something heavy.
+
+      In the morning there were tyre tracks in the mud outside my
+      house. Deep ones. And something else — I found a piece of
+      goatskin caught on my fence. Like from a bag. Or from an
+      instrument.
+    effects:
+      trust_milena: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dimitar (photographer, drone footage) ---
+
+  dimitar_interview:
+    type: tweet
+    from: dimitar
+    text: >
+      летях с дрона снощи за нощни снимки на Перелик. уловил съм
+      нещо странно в записа. трябва да прегледам.
+    effects: { trust_dimitar: "+5" }
+    choices:
+      - Ask Dimitar about his footage -> dimitar_talk
+
+  dimitar_talk:
+    type: message
+    text: >
+      DIMITAR: I fly my drone at sunset and sometimes at night for
+      long-exposure shots of the mountain. That evening I was filming
+      the ridge above Smilyan.
+
+      When I reviewed the footage, I found something. Around 23h,
+      there's a vehicle with its lights off on the logging road.
+      It's parked near the old stone hut. And there are two figures
+      — one standing, one... on the ground? It's hard to tell from
+      the distance.
+
+      Then a second vehicle arrives. The figures move something into
+      the back of the truck. Something long. Heavy.
+
+      I have the footage. I haven't shown it to anyone yet because
+      honestly? I'm scared.
+    effects:
+      trust_dimitar: "+10"
+      night_witnesses: "+1"
+      collector_evidence: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Nevena (girlfriend)
+      and Petya (saw Klaus near Kaloyan's house).
+    choices:
+      - Talk to Nevena about that night -> nevena_interview
+      - Talk to Petya -> petya_interview
+      - Find Nikola -> nikola_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Yanko -> yanko_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Milena -> milena_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dimitar -> dimitar_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Nevena (last to talk to Kaloyan) ---
+
+  nevena_interview:
+    type: tweet
+    from: nevena
+    text: >
+      тоя звуков файл в акаунта на кало. това НЕ Е той. калоян не
+      свири така. калоян не пуска неща в 4 сутринта. някой друг е
+      направил това.
+    effects: { trust_nevena: "+5" }
+    choices:
+      - DM Nevena -> nevena_talk_low
+        when:
+          state: trust_nevena
+          lt: 50
+      - DM Nevena -> nevena_talk_high
+        when:
+          state: trust_nevena
+          gte: 50
+
+  nevena_talk_low:
+    type: message
+    text: >
+      NEVENA: I appreciate your concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Nevena needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_nevena: "+5" }
+    choices:
+      - Share what you've learned about the night -> nevena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  nevena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the vehicles on the logging
+      road, the drone footage, the figures at the stone hut. Nevena
+      is silent for a while.
+
+      NEVENA: You're actually trying to find him. Okay. I'll talk.
+    effects: { trust_nevena: "+25" }
+    choices:
+      - What happened that night? -> nevena_talk_high
+
+  nevena_talk_high:
+    type: message
+    text: >
+      NEVENA: He came to my house around 21h. He was scared — really
+      scared. He said Klaus had come back and confronted him at the
+      workshop. Offered 20,000 euros for the дядова гайда. When Кало
+      refused again, Klaus said "I'll get it one way or another."
+
+      But that's not all. Кало said he'd found documents at the
+      кметство — construction permits for the resort that were
+      signed BEFORE the public consultation. Proof that the whole
+      process was rigged. He took photos.
+
+      He said "I'm going to hide the gaida and then I'm going to
+      post everything." He kissed me and left. That was 22h.
+
+      By morning his phone was off and the drone note was on his
+      account.
+    effects:
+      trust_nevena: "+15"
+      night_witnesses: "+1"
+      collector_evidence: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petya (saw Klaus near Kaloyan's house) ---
+
+  petya_interview:
+    type: message
+    text: >
+      PETYA: ебати стресът ок ще кажа. видях тоя немец — klaus —
+      пред къщата на кало три пъти тая седмица. стоеше в колата и
+      гледаше. като в тъпите сериали.
+
+      последния път беше нощта преди кало да изчезне. седеше в
+      наетата кола отсреща. фаровете изгасени. просто чакаше.
+      мамка му колко creepy е тва
+    effects:
+      trust_petya: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Klaus confronts Kaloyan at the workshop, physical
+      altercation (Nikola)
+      21:00 — Kaloyan visits Nevena, scared, says he'll hide the
+      gaida and post documents (Nevena)
+      22:00 — Rental car (Plovdiv plates) and Stefan's truck on
+      closed logging road (Yanko)
+      00:00 — Car and truck at stone hut, figures moving something
+      heavy (Dimitar's drone)
+      00:20 — Heavy vehicle heading up the mountain road (Milena)
+      02:00 — Truck comes back down, slow, carrying weight (Milena)
+      04:00 — Strange audio clip posted to Kaloyan's account
+
+      Two threats converged on Kaloyan that night. A foreign
+      collector who wouldn't take no for an answer. And local powers
+      who needed him silenced.
+
+      Two threads to pull:
+      — The collector: What does Klaus Weidemann really want? How
+        far would he go?
+      — The resort: What is the кмет hiding? Who drove that truck?
+    choices:
+      - Investigate the collector -> collector_hub
+      - Investigate the resort corruption -> resort_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      COLLECTOR THREAD: Evidence collected: ${collector_evidence}
+      RESORT THREAD: Evidence collected: ${resort_evidence}
+    choices:
+      - Work on the collector thread -> collector_hub
+      - Work on the resort thread -> resort_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: collector_evidence, gte: 5 }
+            - { state: resort_evidence, gte: 3 }
+
+  # =====================================================================
+  # THE COLLECTOR THREAD
+  # =====================================================================
+
+  collector_hub:
+    type: message
+    text: >
+      THE COLLECTOR THREAD
+
+      Klaus Weidemann. Ethnomusicologist. Instrument collector.
+      Something more? He's been to Smilyan three times, offered
+      obscene money, was seen watching Kaloyan's house. He was at
+      the workshop the night of the disappearance.
+
+      Collector evidence: ${collector_evidence}
+    choices:
+      - Search Klaus's online presence -> klaus_online
+      - Talk to Rada the folklorist -> rada_interview
+      - Talk to Boyana about Klaus's visits -> boyana_klaus
+      - Check the anonymous account @RhodopeSoundHunter -> anon_investigation
+      - Talk to Svetla the librarian -> svetla_interview
+      - Talk to Todor about the gaida -> todor_gaida
+      - Back to hub -> investigation_hub
+
+  # --- Klaus Online ---
+
+  klaus_online:
+    type: message
+    text: >
+      Klaus Weidemann's public profile: Professor of Ethnomusicology
+      at a German university. Published papers on Balkan folk music.
+      Has a private collection of traditional instruments valued at
+      over 2 million euros.
+
+      But deeper searching reveals forum posts on collector websites.
+      Under a pseudonym, someone matching Klaus's profile writes
+      about "acquisition strategies" for instruments whose owners
+      refuse to sell. The language is disturbing:
+
+      "Some instruments belong in proper collections, not in the
+      hands of people who don't understand their historical value.
+      Acquisition sometimes requires... creative approaches."
+
+      And: "I've found a Rhodope gaida — possibly pre-1900 — in
+      extraordinary condition. The current owner is sentimental.
+      This will require patience and leverage."
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> collector_hub
+
+  # --- Rada ---
+
+  rada_interview:
+    type: message
+    text: >
+      RADA: Klaus Weidemann is well known in folk music circles. And
+      not in a good way. He buys instruments from poor villages across
+      the Balkans. He targets families who are struggling. He offers
+      money that seems huge to them but is nothing compared to the
+      instrument's value on the collector market.
+
+      A Macedonian kaval he "acquired" sold at auction in Vienna for
+      40,000 euros. He paid the family 800.
+
+      But Kaloyan wasn't poor and he wasn't selling. That's what
+      made Klaus dangerous. He couldn't understand someone who
+      wouldn't take the money. It broke his pattern.
+
+      I warned Kaloyan. He said "let him come. Родопската гайда stays
+      in the Rhodopes."
+    effects:
+      trust_rada: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> collector_hub
+
+  # --- Boyana on Klaus ---
+
+  boyana_klaus:
+    type: message
+    text: >
+      BOYANA: The last time Klaus was here, he was different. Before,
+      he was polite — smooth, charming, European manners. This time
+      he was tense. He drank too much rakia. He sat alone.
+
+      After the music, he cornered Hristo. Asked where Kaloyan kept
+      the дядова гайда — the grandfather's instrument. Hristo told
+      him to fuck off. Klaus said "that instrument is wasted here.
+      It needs proper conservation. It will deteriorate in a mountain
+      workshop."
+
+      Then he said something strange: "If Kaloyan won't sell, perhaps
+      circumstances will change." Hristo almost hit him.
+    effects:
+      trust_boyana: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> collector_hub
+
+  # --- Anonymous Account ---
+
+  anon_investigation:
+    type: tweet
+    from: collector_anon
+    text: >
+      The Rhodope gaida tradition is dying. Someone needs to preserve
+      these instruments before they rot in village workshops. The
+      owners don't understand what they have.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @RhodopeSoundHunter: account created 5 months ago. Posts are
+      all about traditional instruments, but the tone is possessive,
+      not academic:
+
+      Month 1: "Found a remarkable gaida in Smilyan. Pre-1900.
+      Perfect condition. The owner plays it — risky for conservation."
+      Month 2: "Made another offer. Refused again. These people don't
+      understand market value."
+      Month 4: "The instrument MUST be preserved properly. I will not
+      let sentiment destroy a cultural artefact."
+      Month 5: "If he won't sell, I'll find another way. Some things
+      are too important to leave to chance."
+
+      The account has photos of Kaloyan's workshop — taken from
+      outside, through the window. Surveillance photos.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @RhodopeSoundHunter with Klaus Weidemann's academic
+      papers:
+
+      Same distinctive phrasing — "acquisition," "preservation
+      imperative," "cultural patrimony." Same German-influenced
+      English syntax. Same obsessive cataloguing of instrument
+      specifications: bore diameter, chanter length, drone reed type.
+
+      One post references "a gaida with a rare double-bore chanter,
+      characteristic of the Smilyan school." That technical detail
+      isn't public. Klaus took measurements during his first visit.
+      Kaloyan told Hristo about it.
+
+      The anonymous account is Klaus.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> collector_hub
+
+  # --- Svetla ---
+
+  svetla_interview:
+    type: message
+    text: >
+      SVETLA: Klaus visited the reading room three times. He was
+      researching property records — land ownership around Smilyan.
+      He was particularly interested in who owns the workshop where
+      Todor and Kaloyan work.
+
+      He also asked about Kaloyan's family — whether there were debts,
+      whether the father was in good health. Strange questions for
+      someone who claims to be studying music.
+
+      And he photocopied old photographs of gaida makers. Including
+      one of Kaloyan's grandfather. He seemed very interested in the
+      instrument in that photo — the дядова гайда.
+    effects:
+      trust_svetla: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> collector_hub
+
+  # --- Todor on the gaida ---
+
+  todor_gaida:
+    type: message
+    text: >
+      TODOR: The дядова гайда is special. My father made it in
+      1947 from a cherry tree that was struck by lightning. The
+      legend is that lightning wood sings differently. Maybe it's
+      true — that gaida has a voice like no other.
+
+      Kaloyan hid it the night he disappeared. I've searched the
+      workshop, the house, the winter stable. Nothing. He knew
+      someone would come looking.
+
+      But here's what scares me: two days after Kaloyan vanished,
+      someone broke into the workshop. Professionally — picked the
+      lock, didn't break anything. They searched everywhere but
+      took nothing. Because the gaida wasn't there.
+
+      If they didn't find what they wanted... what did they do to
+      my son?
+    effects:
+      trust_todor: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # RESORT CORRUPTION THREAD
+  # =====================================================================
+
+  resort_hub:
+    type: message
+    text: >
+      THE RESORT THREAD
+
+      Alpine Rhodope Resort. A ski development on protected mountain
+      land. The кмет's brother-in-law got the construction contract.
+      Kaloyan had proof the process was rigged.
+
+      Resort evidence: ${resort_evidence}
+    choices:
+      - Search the public planning records -> planning_records
+      - Talk to Zornitsa the journalist -> zornitsa_interview
+      - Talk to Gergana the ecologist -> gergana_interview
+      - Talk to Yanko about illegal logging -> yanko_logging
+      - Check the Alpine Rhodope Resort posts -> resort_posts
+      - Talk to Vasil about what he found -> vasil_mountain
+      - Back to hub -> investigation_hub
+
+  # --- Planning Records ---
+
+  planning_records:
+    type: message
+    text: >
+      The public records at the кметство show the Alpine Rhodope
+      Resort project timeline:
+
+      Public consultation: March 15
+      Environmental impact assessment: March 20
+      Construction permit issued: March 25
+
+      But Kaloyan's photos — the ones he told Nevena about — show
+      construction permits dated February 10. A full month BEFORE
+      the public consultation.
+
+      The permits were pre-signed by кмет Dragomir Kehayov. The
+      environmental assessment was filed by a company that doesn't
+      appear to have any other projects. The consultation was theatre.
+
+      The contractor listed: Vargov EOOD. Stefan Vargov. The кмет's
+      brother-in-law.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> resort_hub
+
+  # --- Zornitsa ---
+
+  zornitsa_interview:
+    type: message
+    text: >
+      ZORNITSA: I don't reveal sources. Ever.
+    effects: { trust_zornitsa: "+5" }
+    choices:
+      - Show Zornitsa the evidence you have -> zornitsa_with_evidence
+        when:
+          state: resort_evidence
+          gte: 3
+      - Back to resort thread -> resort_hub
+
+  zornitsa_with_evidence:
+    type: message
+    text: >
+      ZORNITSA: ...you have more than I expected.
+
+      Okay. Kaloyan and I were working together. He found the
+      pre-dated permits in a filing cabinet at the кметство — a
+      friend who works there let him in after hours. He photographed
+      everything.
+
+      The resort deal is worth 12 million leva. Stefan Vargov's
+      company got the contract without a real tender. The кмет's
+      personal bank account received three large deposits from a
+      company registered in the same building as Alpine Rhodope's
+      Sofia office.
+
+      Kaloyan was going to be my primary source. Then he disappeared.
+      And my laptop was stolen from my car two days later.
+
+      But Kaloyan is alive. I think. He sent me one text from an
+      unknown number: "те ме държат. планината." Then nothing.
+    effects:
+      trust_zornitsa: "+25"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - "They're holding me. The mountain." What does that mean? -> zornitsa_hint
+      - Back to investigation hub -> investigation_hub
+
+  zornitsa_hint:
+    type: message
+    text: >
+      ZORNITSA: I think he's somewhere on the mountain. The stone
+      hut, the old logging camp, one of the abandoned mine tunnels
+      — there are a hundred places to hide someone up there.
+
+      But here's the thing — I don't think the кмет has the nerve
+      to kidnap someone. He's corrupt, not violent. Someone else
+      was involved. Someone who was already up on that mountain
+      that night.
+
+      The drone footage you mentioned — two vehicles, two figures.
+      One was local. The other wasn't. I think Klaus and the кмет's
+      people crossed paths that night. Maybe they had different
+      reasons, but Kaloyan was the target for both.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Gergana ---
+
+  gergana_interview:
+    type: message
+    text: >
+      GERGANA: The environmental impact assessment for the resort is
+      a joke. It was filed by "EcoConsult BG" — a company with no
+      website, no office, no employees listed in the commercial
+      register. Just a name and a signature.
+
+      The resort plans include cutting 200 hectares of old-growth
+      beech forest in a Natura 2000 zone. That's illegal under EU
+      law. The assessment says "minimal environmental impact." Two
+      hundred hectares of ancient forest. Minimal.
+
+      Kaloyan showed me the real survey markers — the resort is
+      three times larger than what was presented to the public. Ski
+      lifts, hotels, parking lots, a golf course. On protected land.
+
+      I reported it to the Environment Ministry. They said they'd
+      investigate. That was four months ago. Nothing.
+    effects:
+      trust_gergana: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> resort_hub
+
+  # --- Yanko on logging ---
+
+  yanko_logging:
+    type: message
+    text: >
+      YANKO: I'll tell you what I know because I'm sick of staying
+      quiet. There's illegal logging on the resort site. Stefan
+      Vargov's crew has been cutting trees at night — old beeches,
+      the kind it takes 300 years to grow. They're clearing the
+      slopes for ski runs before the permits are even finalised.
+
+      I've reported it five times. My reports go to the кметство.
+      The кметство files them. Nothing happens.
+
+      Kaloyan helped me document it. We went up together and
+      photographed the stumps, the truck tracks, the cut wood
+      stacked in a clearing. He geo-tagged everything.
+
+      That evidence is on his phone. Which disappeared with him.
+    effects:
+      trust_yanko: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> resort_hub
+
+  # --- Resort Posts ---
+
+  resort_posts:
+    type: tweet
+    from: alpine_rhodope
+    text: >
+      Alpine Rhodope Resort — модерен ски курорт в сърцето на
+      Родопите! 500 работни места. Устойчив туризъм. Бъдещето на
+      региона. #РодопиНапред #Инвестиция
+    choices:
+      - Check the comments -> resort_comments
+
+  resort_comments:
+    type: message
+    text: >
+      The comments are a warzone:
+
+      @gergana_hadzhieva: "Устойчив туризъм" означава да изсечете
+      200 хектара стара гора? Курва работа.
+
+      @vasil_gardzhev: Тая планина не е ваша. Овцете ми пасат там
+      от 45 години.
+
+      @dragomir_kehayov: Инвестицията ще създаде работни места за
+      младите хора. Смилян има нужда от развитие.
+
+      @hristo_angelov: @dragomir_kehayov и ти имаш нужда от нова
+      кола, нали кмете? питай зет ти кога ще ти я купи
+
+      The кмет's reply to that: silence. But Hristo's post was
+      reported and temporarily hidden.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> resort_hub
+
+  # --- Vasil on the mountain ---
+
+  vasil_mountain:
+    type: message
+    text: >
+      VASIL: I went up to the stone hut after the night I heard
+      the vehicles. I found things.
+
+      Tyre tracks — two different sets. Boot prints. And marks on
+      the ground like someone was dragged. Inside the hut: a chair,
+      rope, food wrappers. Someone was kept there.
+
+      And on the wall, scratched into the stone with a nail or
+      a knife: "КД." Kaloyan Daskalov.
+
+      He was there. They held him there. But when I went back two
+      days later, everything was cleaned up. The chair, the rope,
+      the food — all gone. Even the tyre tracks were swept over
+      with branches.
+
+      Someone moved him. The question is where.
+    effects:
+      trust_vasil: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspector Markov ---
+
+  inspector_interview:
+    type: message
+    text: >
+      INSPECTOR MARKOV: Off the record — completely off the record —
+      I wanted to investigate the resort connection. My superior in
+      Smolyan told me to stand down. He said the кметство had
+      "jurisdiction over planning matters." That's not how it works.
+      Someone made a call.
+
+      The collector angle is different. A foreign national harassing
+      a Bulgarian citizen, possible involvement in a disappearance —
+      that's clearly criminal. If you have evidence, I can act on
+      that.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_inspector: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Kaloyan than anyone in Smilyan. Who is responsible?
+    choices:
+      - Confront Klaus Weidemann (the obsessive collector) -> confront_klaus
+        when:
+          state: collector_evidence
+          gte: 5
+      - Confront кмет Dragomir (the corrupt mayor) -> confront_dragomir
+        when:
+          state: resort_evidence
+          gte: 3
+      - Confront Stefan Vargov (the construction boss) -> confront_stefan
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Klaus (Best Ending) ---
+
+  confront_klaus:
+    type: message
+    text: >
+      You present your evidence to Klaus Weidemann:
+
+      "I know @RhodopeSoundHunter is your account. I know you were
+      surveilling Kaloyan's workshop. I know you confronted him the
+      evening he disappeared. I know your rental car was on the
+      mountain road that night. I have drone footage and witnesses."
+    choices:
+      - Send -> klaus_response
+
+  klaus_response:
+    type: message
+    text: >
+      Klaus doesn't reply for a long time. Then:
+
+      KLAUS: You don't understand. I am trying to SAVE these
+      instruments. They belong in climate-controlled environments
+      where they can be studied and preserved. Leaving a pre-1900
+      gaida in a mountain workshop is cultural vandalism. Everything
+      I did was for the preservation of heritage.
+
+      That's not preservation. That's obsession. That's theft
+      disguised as scholarship.
+
+      You've already sent the evidence to Inspector Markov and to
+      Zornitsa Dimova.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE COLLECTOR
+
+      Three things happen in quick succession.
+
+      Inspector Markov reopens the case. With your evidence — the
+      anonymous account, the surveillance photos, the drone footage,
+      the witness testimonies — Klaus Weidemann is detained at
+      Sofia Airport attempting to leave the country. In his luggage:
+      lockpicking tools and a GPS tracker registered to a Plovdiv
+      rental company. His hotel room in Smolyan yields maps of
+      Kaloyan's workshop with entry points marked.
+
+      Under interrogation, Klaus reveals he followed Kaloyan up the
+      mountain that night intending to find where he hid the gaida.
+      He saw Kaloyan intercepted by Stefan Vargov's men and followed
+      at a distance. He watched them take Kaloyan to the stone hut.
+      He did nothing to help. He searched the area for the gaida
+      while a man was being held captive.
+
+      Stefan Vargov's truck is traced to an abandoned logging camp
+      higher up the mountain. Kaloyan is found there — alive, dehydrated,
+      his hands injured from trying to escape. He was held for six
+      days.
+
+      Zornitsa publishes everything: the resort corruption, the
+      pre-dated permits, the кмет's bank deposits, the illegal
+      logging. The Environment Ministry orders the resort project
+      suspended. Dragomir Kehayov resigns. Stefan Vargov faces
+      kidnapping and illegal logging charges.
+
+      Klaus Weidemann is charged with stalking, breaking and
+      entering, and failure to render assistance. His university
+      suspends him. His instrument collection is investigated.
+
+      Kaloyan comes home. The дядова гайда is recovered from a
+      hollow tree above the workshop — exactly where lightning
+      struck a century ago.
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: kaloyan
+    text: >
+      гайдата пее пак. планината е тука. смилян е тука.
+      родопският звук не се продава и не се спира.
+      благодаря на всички.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Dragomir (Partial Ending) ---
+
+  confront_dragomir:
+    type: message
+    text: >
+      You present the resort corruption evidence to кмет Dragomir:
+
+      "I have photos of pre-dated construction permits signed by
+      you. I have bank records showing payments from Alpine Rhodope
+      to your accounts. I have evidence of illegal logging on
+      protected land by your brother-in-law's company. And I have
+      witnesses who saw his truck on the mountain the night Kaloyan
+      disappeared."
+    choices:
+      - Send -> dragomir_response
+
+  dragomir_response:
+    type: message
+    text: >
+      DRAGOMIR: These are fabricated accusations designed to undermine
+      the development of Smilyan. Any publication of defamatory
+      material will result in legal action. The resort project has
+      followed all proper procedures.
+
+      But it's too late. You've sent the evidence to Zornitsa, to
+      Gergana's environmental organisation, and to the prosecutors
+      in Smolyan.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE RESORT
+
+      The corruption story breaks. The resort project is suspended
+      pending investigation. Dragomir is forced to resign. Stefan
+      Vargov is arrested. Under pressure, Vargov reveals where
+      Kaloyan is being held. He's found alive in the abandoned
+      logging camp.
+
+      The mountain is saved. The old forest stands.
+
+      But Klaus Weidemann?
+
+      Without the stalking evidence, he's never investigated. He
+      returns to Germany. He continues collecting. He publishes a
+      paper about "the Smilyan gaida tradition" that reads like a
+      shopping catalogue.
+
+      Six months later, Todor receives a letter from a "heritage
+      foundation" offering to "safeguard" the family's instruments.
+      The letterhead address traces back to Klaus's university.
+
+      The resort is stopped. But the man who stalked Kaloyan, who
+      watched him being taken and did nothing, who tried to steal
+      from him while he was captive — walks free. And he's still
+      looking.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: kaloyan
+    text: "върнах се. планината е спасена. но някой все още гледа към работилницата."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Stefan (Wrong Ending) ---
+
+  confront_stefan:
+    type: message
+    text: >
+      You confront Stefan Vargov directly with your evidence.
+
+      Within the hour, you receive a message:
+    choices:
+      - Read the response -> stefan_response
+
+  stefan_response:
+    type: message
+    text: >
+      STEFAN: Нямам представа за какво говориш. Аз съм строител.
+      Строя неща. Ако имаш проблем, обърни се към адвоката ми.
+
+      Stefan's lawyer sends a formal warning. Without a direct link
+      between Stefan and Kaloyan's disappearance — and your evidence
+      points to the кмет and Klaus more than to Stefan personally —
+      the accusation doesn't stick.
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE CONTRACTOR
+
+      Stefan Vargov's lawyer buries your accusation. He's the hired
+      muscle, not the mastermind. Without targeting the people who
+      gave the orders — the кмет who authorised everything, Klaus
+      who was there that night — the evidence is misdirected.
+
+      The resort project continues. The logging continues. Klaus
+      continues to circle.
+
+      Two months later, @RhodopeSoundHunter creates a new account.
+      It follows Todor Daskalov.
+
+      Six months later, a construction crew arrives at Голям Перелик
+      with heavy machinery.
+
+      Kaloyan is not found.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SMILYAN — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Collector evidence: ${collector_evidence}
+      Resort evidence: ${resort_evidence}
+
+      Thank you for playing. Kaloyan's story explores themes of
+      cultural exploitation, obsessive collecting, political
+      corruption, environmental destruction, and the courage of
+      small communities defending what matters.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or threats, help is available:
+      Национална линия: 0035 924 981 676

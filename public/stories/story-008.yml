@@ -1,0 +1,1524 @@
+# DEAD ACCOUNT — Story 008: Silverby (Sweden)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-008.yml
+#
+# Player investigates the disappearance of climate activist and
+# nature photographer Astrid Lindqvist in the fictional northern
+# Swedish town of Silverby.
+
+meta:
+  title: "Dead Account"
+  state:
+    trust_erik: 0
+    trust_linnea: 0
+    trust_gustav: 0
+    trust_birgitta: 0
+    trust_saga: 0
+    trust_albin: 0
+    trust_wilma: 0
+    trust_anders: 0
+    trust_hanna: 0
+    trust_lars: 0
+    trust_ingrid: 0
+    trust_per: 0
+    trust_karin: 0
+    trust_mattias: 0
+    trust_sofia: 0
+    trust_niklas: 0
+    trust_ella: 0
+    trust_sven: 0
+    trust_aslak: 0
+    trust_oskar: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    pollution_evidence: 0
+    surveillance_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to silverby. exploring the north"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Silverby.social"
+    description: "Welcome to the Silverby community instance - northern Sweden"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    astrid:
+      name: "Astrid Lindqvist"
+      bio: "climate activist | nature photographer | the forest does not lie | @rena_alven"
+      avatar: avatars/astrid.jpg
+    erik:
+      name: "Erik Lindqvist"
+      bio: "astrid's brother | park ranger | norrbotten county | WHERE IS SHE"
+      avatar: avatars/erik.jpg
+    linnea:
+      name: "Linnea Johansson"
+      bio: "biologist | University of Umea | water quality research | Astrid's colleague"
+      avatar: avatars/linnea.jpg
+    gustav:
+      name: "Gustav Nilsson"
+      bio: "editor | Silverby Tidning | local news since 1923 | tips: redaktion@silverbytidning.se"
+      avatar: avatars/gustav.jpg
+    birgitta:
+      name: "Birgitta Holm"
+      bio: "Konditori Birgitta | kanelbullar & kaffe | Silverby's living room since 1978"
+      avatar: avatars/birgitta.jpg
+    saga:
+      name: "Saga"
+      bio: "16 | asssa typ besatt av naturen | photography & activism | astrid ar min idol"
+      avatar: avatars/saga.jpg
+    albin:
+      name: "Albin"
+      bio: "17 | hockey & musik | silverby ik | typ den enda som bryr sig"
+      avatar: avatars/albin.jpg
+    wilma:
+      name: "Wilma"
+      bio: "15 | konst & djur | typ varfor forsvann astrid ingen fattar"
+      avatar: avatars/wilma.jpg
+    anders:
+      name: "Anders Bergman"
+      bio: "CEO | Norrland Mineral AB | mining for Sweden's future | #GreenMining"
+      avatar: avatars/anders.jpg
+    hanna:
+      name: "Hanna Eriksson"
+      bio: "Kommunalrad | Silverby kommun | jobs & growth | #SilverbyVaxer"
+      avatar: avatars/hanna.jpg
+    lars:
+      name: "Lars Forsberg"
+      bio: "police | Silverby station | community safety"
+      avatar: avatars/lars.jpg
+    ingrid:
+      name: "Ingrid Nystrom"
+      bio: "librarian | Silverby bibliotek | books change worlds | fika fridays"
+      avatar: avatars/ingrid.jpg
+    per:
+      name: "Per Gustafsson"
+      bio: "teacher | Silverskolan | geography & environment | hiking club"
+      avatar: avatars/per.jpg
+    karin:
+      name: "Karin Svensson"
+      bio: "vet | Silverby djurklinik | reindeer health specialist"
+      avatar: avatars/karin.jpg
+    mattias:
+      name: "Mattias Ek"
+      bio: "Astrid's ex | photographer | freelance | Stockholm & the north"
+      avatar: avatars/mattias.jpg
+    sofia:
+      name: "Sofia Dahl"
+      bio: "Lansstyrelsen Norrbotten | environmental permits | official account"
+      avatar: avatars/sofia.jpg
+    niklas:
+      name: "Niklas Borg"
+      bio: "Norrland Mineral AB | site manager | Silverby operation"
+      avatar: avatars/niklas.jpg
+    ella:
+      name: "Ella Lund"
+      bio: "pharmacy | Silverby apotek | open weekdays | health advice"
+      avatar: avatars/ella.jpg
+    sven:
+      name: "Sven"
+      bio: "."
+      avatar: avatars/anon.jpg
+    aslak:
+      name: "Aslak Inga"
+      bio: "Sami reindeer herder | Gabna sameby | the land is our life"
+      avatar: avatars/aslak.jpg
+    oskar:
+      name: "Oskar Holm"
+      bio: "mechanic | Holms Verkstad | if it has an engine I can fix it"
+      avatar: avatars/oskar.jpg
+    rena_alven:
+      name: "Rena Alven"
+      bio: "Clean Water Norrbotten | protecting rivers & lakes | report pollution"
+      avatar: avatars/rena_alven.jpg
+    polisen:
+      name: "Polisen Silverby"
+      bio: "Official | Emergency: 112 | Report: 114 14 | polisen.se"
+      avatar: avatars/polisen.jpg
+    kommun:
+      name: "Silverby Kommun"
+      bio: "Official account | Services | News | #Silverby"
+      avatar: avatars/kommun.jpg
+    norrland_mineral:
+      name: "Norrland Mineral AB"
+      bio: "Sustainable mining for a green transition | Silverby project | #GreenMineral"
+      avatar: avatars/norrland_mineral.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SILVERBY
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to silverby.social — the community Mastodon instance for
+      Silverby, a small town in northern Sweden. Pine forests, frozen
+      lakes, and the dark of the polar winter.
+
+      The feed is troubled. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      One name keeps appearing: @astrid_lindqvist.
+
+      A climate activist and nature photographer. She ran a clean water
+      campaign called Rena Alven. She documented pollution from a
+      mining company operating near Sami reindeer land.
+
+      She hasn't posted in eleven days.
+    choices:
+      - Look at her profile -> astrid_profile
+
+  astrid_profile:
+    type: tweet
+    from: astrid
+    text: "The water samples don't lie. The company's reports do. I'm publishing everything on Friday."
+    choices:
+      - That was her last real post... -> dead_post
+
+  dead_post:
+    type: message
+    text: >
+      Friday came. Nothing was published. Three days later, her account
+      posted a single image: a photo of the northern lights. Beautiful.
+      Empty. Posted at 4am.
+
+      Her brother says she would never post without a message. The
+      police say she is "traveling voluntarily." Her car was found at
+      the trailhead near Kungsleden.
+    choices:
+      - Read the police statement -> police_statement
+      - See what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: polisen
+    text: >
+      Polisen has received a report regarding a Silverby resident. The
+      individual's vehicle has been located. There is currently no
+      indication of a criminal matter. Anyone with information is asked
+      to contact Polisen on 114 14.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The feed is anxious. Erik, her brother, is posting daily
+      demands for action. Linnea from the university is worried about
+      the research data. Aslak from the Sami community says Astrid
+      was the only outsider who listened.
+
+      And an anonymous account, @sven, posts: "She should have left
+      the mine alone. The north does not forgive interference."
+
+      Birgitta at the konditori says she has never seen the town so
+      divided.
+    effects: { trust_erik: "+5", trust_linnea: "+5" }
+    choices:
+      - Start following Astrid's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Silverby. A northern town divided between the jobs
+      the mine brings and the damage it causes. Follow Astrid's
+      contacts and understand the conflict.
+    choices:
+      - Talk to Birgitta at the konditori -> birgitta_intro
+      - Talk to Aslak (Sami herder) -> aslak_intro
+      - Check what the teens are saying -> saga_intro
+      - Browse the feed -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a mix of northern life — aurora photos, hockey
+      scores, weather complaints, moose sightings — and worry about
+      Astrid. The mine divides everything: half the town works there,
+      the other half fears what it's doing to the water and the land.
+
+      Key names: Erik (her brother, ranger), Linnea (researcher, has
+      data), Gustav (newspaper editor, cautious), Mattias (her ex,
+      Stockholm photographer, posting worried selfies).
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Birgitta -> birgitta_intro
+      - Talk to Aslak -> aslak_intro
+      - Check the teens -> saga_intro
+
+  # --- Birgitta (social map) ---
+
+  birgitta_intro:
+    type: tweet
+    from: birgitta
+    text: >
+      Konditoriet is open as always. Kanelbullar are warm. But Astrid's
+      table is empty. She always sat by the window. Always ordered
+      lingonberry tea.
+    effects: { trust_birgitta: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Birgitta -> birgitta_talk
+
+  birgitta_talk:
+    type: message
+    text: >
+      BIRGITTA: You're new? Welcome to Silverby. Sit. Have a bulle.
+
+      Let me tell you about this town. The mine is everything and
+      nothing. Half the families here depend on it for work. The other
+      half watched their reindeer grazing land and their fishing lakes
+      get poisoned.
+
+      Astrid tried to bridge that divide. She wasn't against mining.
+      She was against lying about the environmental impact. She took
+      water samples that showed heavy metal contamination in the river
+      downstream from the mine. The company's own reports said the
+      water was fine.
+
+      She had the data. She had the photographs. And now she's gone.
+    effects: { trust_birgitta: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the mine company -> birgitta_mine
+      - Ask about Mattias -> birgitta_mattias
+      - Move on -> quest1_hub
+
+  birgitta_mine:
+    type: message
+    text: >
+      BIRGITTA: Norrland Mineral AB. Anders Bergman runs it from
+      Stockholm. Niklas Borg is the local site manager. They talk
+      about "green mining" and "sustainable extraction" but the river
+      tells a different story.
+
+      The kommun depends on the tax revenue. Hanna Eriksson, the
+      kommunalrad, approved the expansion permit last year. The
+      environmental impact assessment was done by a consultancy
+      Anders recommended. Surprise: they found no problems.
+
+      Astrid got independent samples tested at the university in Umea.
+      Cadmium, lead, arsenic — all above safe levels. She was going
+      to publish everything.
+    effects: { trust_birgitta: "+5" }
+    choices:
+      - Ask about Mattias -> birgitta_mattias
+      - Move on -> quest1_hub
+
+  birgitta_mattias:
+    type: message
+    text: >
+      BIRGITTA: Mattias is her ex-boyfriend. Photographer from
+      Stockholm. They were together for two years. He moved up here
+      for her, then moved back when it ended. That was six months ago.
+
+      He didn't take it well. He still posts about her — photos from
+      when they were together, quotes from her posts. He's in Silverby
+      now, supposedly "looking for her." But he knows her passwords
+      from when they were together.
+
+      He was always jealous of her work. She spent more time with the
+      river than with him, he used to say. Not as a joke.
+    effects: { trust_birgitta: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Aslak (Sami perspective) ---
+
+  aslak_intro:
+    type: tweet
+    from: aslak
+    text: >
+      The reindeer will not drink from the river near the mine. Animals
+      know what we pretend not to. Astrid understood this.
+    effects: { trust_aslak: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Aslak -> aslak_talk
+
+  aslak_talk:
+    type: message
+    text: >
+      ASLAK: Astrid was the first person from the town who came to us,
+      sat in our tent, drank our coffee, and listened. Really listened.
+
+      Our reindeer grazing land extends to the river. For three
+      generations, they drank from that water. Now they refuse. They
+      know. The mine's tailings pond leaks into the groundwater. We
+      reported it to Lansstyrelsen. They sent an inspector who looked
+      at the mine's own data and said everything was fine.
+
+      Astrid took her own samples. She walked the river for sixty
+      kilometres, sampling every tributary. She found contamination
+      at seven points, all downstream from the mine's operations.
+
+      If her data is published, the mine cannot continue to lie.
+    effects: { trust_aslak: "+10", contacts_followed: "+1" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Saga (teen witness) ---
+
+  saga_intro:
+    type: tweet
+    from: saga
+    text: >
+      asssa typ ingen fattar hur viktigt astrids jobb var?? hon
+      dokumenterade allt. sicken hjaltinna. och nu ar hon borta och
+      alla bara "ah hon reser val" NEJ typ ngt ar fel
+    effects: { trust_saga: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Saga -> saga_talk
+
+  saga_talk:
+    type: message
+    text: >
+      SAGA: hej!! ar du ny har? fett. asssa astrid var typ den enda
+      vuxna som brydde sig om miljon har. hon lat oss folja med pa
+      faltarbete och allt. ba visade oss hur man tar vattenprover.
+
+      albin sag ngt konstigt vid gruvan i helgen. typ nagon som
+      grävde vid dammen pa natten. med lampor. skapskumt.
+
+      och wilma har screenshots fran astrids telefon. astrid visade
+      henne innan hon forsvann. typ nagon som skickade massa msgs
+      fran en fake profil
+    effects: { trust_saga: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      Silverby is a town caught between industry and nature. A mine
+      that provides jobs but poisons water. A woman who had the
+      evidence to prove it. And a silence that feels rehearsed.
+    choices:
+      - Talk to Erik (Astrid's brother) -> erik_q1
+      - Talk to Linnea (research partner) -> linnea_q1
+      - Talk to Gustav (newspaper editor) -> gustav_q1
+      - I'm ready to investigate the night she vanished -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Erik Q1 ---
+
+  erik_q1:
+    type: tweet
+    from: erik
+    text: >
+      11 days. My sister has been gone 11 days. Her car is at
+      Kungsleden trailhead. She would NEVER leave her camera behind.
+      It was in the car. Astrid does not go anywhere without her camera.
+    effects: { trust_erik: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Erik -> erik_q1_talk
+
+  erik_q1_talk:
+    type: message
+    text: >
+      ERIK: I'm a ranger. I know the forest. I've searched every trail
+      within 30 kilometres of the trailhead. Nothing. No tracks, no
+      campsite, no sign of her.
+
+      She didn't go hiking. Someone left her car there to make it
+      look like she did. And they left her camera in the car — Astrid's
+      most valuable possession. That's not someone going for a walk.
+      That's someone being taken.
+
+      The police say there's no evidence of foul play. I say the
+      evidence IS the foul play.
+    effects: { trust_erik: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Linnea Q1 ---
+
+  linnea_q1:
+    type: tweet
+    from: linnea
+    text: >
+      The water quality data Astrid collected is significant. Peer
+      review is underway. The findings will be published with or
+      without her. Science does not stop.
+    effects: { trust_linnea: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Linnea -> linnea_q1_talk
+
+  linnea_q1_talk:
+    type: message
+    text: >
+      LINNEA: Astrid and I co-authored a paper on heavy metal
+      contamination in the Silverby river system. Her field data is
+      devastating — cadmium at 40 times the safe level, arsenic at 15
+      times. All downstream from the mine.
+
+      The paper was accepted for review. Publication was scheduled for
+      next month. Now Astrid is gone and the mine's lawyers are
+      contacting the journal claiming the data is "unverified."
+
+      I still have my copies of the analysis. But Astrid's raw field
+      data — the original sample logs, GPS coordinates, photographs —
+      was on her laptop. Which is missing.
+    effects: { trust_linnea: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Gustav Q1 ---
+
+  gustav_q1:
+    type: tweet
+    from: gustav
+    text: >
+      Silverby Tidning reports: local environmental researcher Astrid
+      Lindqvist has not been in contact with family or colleagues for
+      over a week. Police describe the situation as non-criminal.
+    effects: { trust_gustav: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Gustav -> gustav_q1_talk
+
+  gustav_q1_talk:
+    type: message
+    text: >
+      GUSTAV: I've run this paper for 20 years. I know when a story
+      is being managed. This one is being managed.
+
+      Astrid came to me with her findings three weeks ago. I was
+      preparing a feature. Then she disappeared and my biggest
+      advertiser — Norrland Mineral — reminded me of the value of
+      "balanced reporting."
+
+      I want to publish. I need evidence that will withstand the
+      legal pressure they will bring. Give me that and I'll run it.
+    effects: { trust_gustav: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Astrid was last seen at Konditori Birgitta at 19:00 on a
+      Tuesday. She told Birgitta she was "going to the river for
+      final samples." Her car was found the next morning at Kungsleden
+      trailhead, 30 km away.
+
+      Collect witness accounts. You need at least 4.
+    choices:
+      - Find Albin (was near the mine that night) -> albin_interview
+      - Find Per (hiking club, was on the trail) -> per_interview
+      - Find Oskar (mechanic, works late) -> oskar_interview
+      - Find Ingrid (library, overlooking the road) -> ingrid_interview
+
+  # --- Albin (saw activity at the mine) ---
+
+  albin_interview:
+    type: tweet
+    from: albin
+    text: >
+      asssa jag vet att ingen lyssnar pa en 17aring men jag sag ngt
+      vid gruvan den kvallen. typ lampor vid dammen. och en bil som
+      jag kande igen
+    effects: { trust_albin: "+5" }
+    choices:
+      - Ask Albin what he saw -> albin_talk
+
+  albin_talk:
+    type: message
+    text: >
+      ALBIN: ja typ jag var ute med hunden vid attan. gick forbi
+      grusvägen mot gruvan. sag lampor vid tailings-dammen. typ
+      nagon som jobbade dar. men det var efter arbetstid.
+
+      och sen sag jag en bil komma ut fran gruvområdet. fett fort.
+      en svart volvo suv. niklas borgs bil. varfor ar sitemanagern
+      vid gruvan klockan 10 pa kvallen?
+
+      och en annan grej. det luktade konstigt fran dammen. typ kemiskt.
+      som nar dom gor utsläpp pa natten. astrid berattade for mig att
+      dom gor det ibland. pumpar ut processvattnet nar ingen ser.
+    effects:
+      trust_albin: "+10"
+      night_witnesses: "+1"
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Per (saw Astrid at the river) ---
+
+  per_interview:
+    type: tweet
+    from: per
+    text: >
+      I was on the northern trail that evening. I saw Astrid at the
+      river bend near kilometre marker 7. She was collecting samples.
+      She was not alone.
+    effects: { trust_per: "+5" }
+    choices:
+      - Ask Per what he saw -> per_talk
+
+  per_talk:
+    type: message
+    text: >
+      PER: I saw Astrid at the river around 20:00. She had her
+      sampling equipment. But there was someone on the other bank.
+      Watching her. Not fishing, not hiking — just standing in the
+      trees, looking at her.
+
+      When Astrid noticed them, she packed up quickly and left. She
+      drove north, away from town. The person on the other bank got
+      into a car parked on the logging road. A dark car. They followed
+      the same direction.
+
+      I should have done something. I told myself it was nothing.
+    effects:
+      trust_per: "+10"
+      night_witnesses: "+1"
+      surveillance_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Oskar (heard the argument) ---
+
+  oskar_interview:
+    type: tweet
+    from: oskar
+    text: >
+      I was in the workshop until midnight. I heard a car stop on the
+      road outside. Voices. Not happy voices.
+    effects: { trust_oskar: "+5" }
+    choices:
+      - Ask Oskar what happened -> oskar_talk
+
+  oskar_talk:
+    type: message
+    text: >
+      OSKAR: Around 22:00 a car pulled up outside the workshop. Then
+      a second car. Two people got out and talked. A man and a woman.
+      The woman was upset — I could hear her voice, sharp and angry.
+
+      The man kept saying "Astrid, listen. Just listen."
+
+      I recognised his voice. It was Mattias. Her ex-boyfriend from
+      Stockholm. He was here in Silverby. That surprised me.
+
+      They argued for maybe ten minutes. Then she got back in her car
+      and drove off fast, heading north toward the trailhead. He stood
+      there for a minute, then followed in his car.
+    effects:
+      trust_oskar: "+10"
+      night_witnesses: "+1"
+      surveillance_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ingrid (saw Mattias earlier) ---
+
+  ingrid_interview:
+    type: tweet
+    from: ingrid
+    text: >
+      I close the library at 19:00 on Tuesdays. That evening I saw
+      someone I didn't expect. Sitting in a car outside, watching the
+      konditori where Astrid was having fika.
+    effects: { trust_ingrid: "+5" }
+    choices:
+      - Ask Ingrid what she saw -> ingrid_talk
+
+  ingrid_talk:
+    type: message
+    text: >
+      INGRID: It was Mattias. Astrid's ex-boyfriend. He was sitting
+      in a rental car — I could see the Hertz sticker — watching the
+      konditori through the window. He didn't go in. He just sat there.
+
+      When Astrid left the konditori and drove toward the river, he
+      waited a few minutes and then followed her.
+
+      I know Mattias. He came to fika fridays at the library when he
+      lived here. He was always intense. After the breakup, he called
+      me twice asking where Astrid was staying, what she was working on.
+      I told him to contact her directly. He said "She blocked me."
+    effects:
+      trust_ingrid: "+10"
+      night_witnesses: "+1"
+      surveillance_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      Keep collecting testimonies or talk to key contacts.
+    choices:
+      - Find Albin -> albin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Per -> per_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Oskar -> oskar_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ingrid -> ingrid_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Wilma (has screenshots) -> wilma_early
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Wilma early ---
+
+  wilma_early:
+    type: tweet
+    from: wilma
+    text: >
+      typ astrid visade mig sin telefon veckan innan. hon hade fatt
+      typ sjukt creepy msgs. nagon som visste var hon var hela tiden
+    effects: { trust_wilma: "+5" }
+    choices:
+      - Ask Wilma about the messages -> wilma_messages
+      - Come back later -> quest2_hub
+
+  wilma_messages:
+    type: message
+    text: >
+      WILMA: asssa astrid visade mig typ 10 meddelanden fran en
+      anonym profil. saker som "jag sag dig vid alven idag" och
+      "den dar jackan klär dig" och "varfor pratar du med aslak
+      och inte med mig"
+
+      typ nagon som foljer efter henne irl och skriver om det.
+      skapskumt. astrid sa att hon visste vem det var. hon sa "det
+      ar nagon jag brukade lita pa."
+
+      jag tog screenshots. jag har dom pa min telefon. vill du se?
+
+      dom ar typ... intima. som om personen tror att dom fortfarande
+      ar tillsammans.
+    effects:
+      trust_wilma: "+10"
+      surveillance_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Astrid at Konditori Birgitta, says she's going to the river
+      19:00 — Mattias seen watching the konditori from a rental car (Ingrid)
+      20:00 — Astrid collecting samples at the river. Someone watching from far bank (Per)
+      20:00 — Activity at mine tailings pond, Niklas's car leaving (Albin)
+      22:00 — Astrid and Mattias argue on the road. She drives north. He follows. (Oskar)
+      06:00 — Astrid's car found at Kungsleden trailhead, camera inside
+
+      Two threads to pull:
+      - Environmental cover-up: What is the mine hiding at the tailings pond?
+      - Ex-partner surveillance: Why is Mattias following Astrid?
+    choices:
+      - Investigate the mine -> pollution_hub
+      - Investigate Mattias -> surveillance_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      POLLUTION THREAD: Evidence collected: ${pollution_evidence}
+      SURVEILLANCE THREAD: Evidence collected: ${surveillance_evidence}
+    choices:
+      - Work on the pollution thread -> pollution_hub
+      - Work on the surveillance thread -> surveillance_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: pollution_evidence, gte: 5 }
+            - { state: surveillance_evidence, gte: 3 }
+
+  # =====================================================================
+  # POLLUTION THREAD
+  # =====================================================================
+
+  pollution_hub:
+    type: message
+    text: >
+      THE POLLUTION THREAD
+
+      A mine contaminating water. Falsified environmental reports. Night
+      discharges into the river. Who ordered the cover-up?
+
+      Pollution evidence: ${pollution_evidence}
+    choices:
+      - Investigate the water samples -> water_investigation
+      - Talk to Aslak about the reindeer -> aslak_reindeer
+      - Check the environmental permits -> permit_investigation
+      - Talk to Sofia at Lansstyrelsen -> sofia_interview
+      - Talk to Karin the vet -> karin_interview
+      - Talk to Niklas Borg (site manager) -> niklas_interview
+      - Talk to Hanna (kommunalrad) -> hanna_interview
+      - Talk to Gustav about publishing -> gustav_evidence
+        when:
+          state: trust_gustav
+          gte: 20
+      - Talk to Per about the landscape -> per_deeper
+      - Talk to Linnea about the science -> linnea_deeper
+        when:
+          state: trust_linnea
+          gte: 20
+      - Talk to the anonymous account @sven -> sven_investigation
+      - Back to hub -> investigation_hub
+
+  # --- Water Investigation ---
+
+  water_investigation:
+    type: message
+    text: >
+      Astrid's published water quality data — what she shared before
+      she disappeared — shows contamination at seven sampling points.
+      The mine's official reports show the same points as clean.
+
+      The discrepancy is not ambiguous. One set of data is correct
+      and the other is fabricated. Independent lab analysis from
+      Umea University confirms Astrid's readings.
+
+      The mine's environmental reports were prepared by "Arctic
+      Environmental Consulting AB." The company's registered address
+      is the same building as Norrland Mineral's Stockholm office.
+
+      They tested their own water and found it clean. Surprising
+      nobody except the regulators.
+    effects:
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Aslak reindeer ---
+
+  aslak_reindeer:
+    type: message
+    text: >
+      ASLAK: Last spring we lost four reindeer calves. They drank
+      from the river. The vet — Karin — found heavy metal poisoning.
+      We reported it. The mine said it was "natural mineral deposits."
+
+      Our sameby has grazed these lands for generations. There were
+      no "natural mineral deposits" before the mine.
+
+      Astrid tested the water where the calves died. Cadmium at
+      levels that would kill a human child. She cried when she saw
+      the results. She said "I will make them answer for this."
+
+      She was the first outsider who treated our knowledge as equal
+      to their science. She listened to our elders. She walked the
+      land with us.
+
+      And now she is gone.
+    effects:
+      trust_aslak: "+15"
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Permit Investigation ---
+
+  permit_investigation:
+    type: message
+    text: >
+      The mine's environmental permit was renewed 18 months ago.
+      The renewal required an independent environmental assessment.
+      The assessment was done by Arctic Environmental Consulting — the
+      mine's own consultancy.
+
+      Condition 14 of the permit requires quarterly water sampling at
+      downstream monitoring points. The mine self-certifies compliance.
+      Nobody checks.
+
+      Hanna Eriksson, the kommunalrad, signed the renewal. The kommun
+      receives 3 million kronor annually in mining taxes. The renewal
+      hearing had no public comment period — it was published in the
+      kommun bulletin for 14 days during midsommar. Nobody noticed.
+    effects:
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Sofia ---
+
+  sofia_interview:
+    type: message
+    text: >
+      SOFIA: I process environmental permits for Lansstyrelsen. The
+      Norrland Mineral file has been on my desk twice. Both times I
+      flagged concerns about the monitoring data. Both times I was
+      told to "prioritize other cases."
+
+      My supervisor has a meeting with Anders Bergman every quarter.
+      He calls it "stakeholder engagement." I call it regulatory
+      capture.
+
+      Astrid sent me her data three weeks ago. Formally, through
+      official channels. My supervisor acknowledged receipt and then
+      it disappeared from our system. Literally — the file was deleted
+      from our case management software.
+
+      I have a personal backup. If you need it, I need a guarantee
+      that my name stays out of it.
+    effects:
+      trust_sofia: "+20"
+      pollution_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Karin ---
+
+  karin_interview:
+    type: message
+    text: >
+      KARIN: I treated the reindeer calves. The blood work was clear:
+      heavy metal toxicity. Cadmium and lead. I wrote a report for
+      the sameby and filed one with the county vet office.
+
+      Two weeks later I received a call from a lawyer representing
+      Norrland Mineral. He suggested my findings were "premature" and
+      that further analysis was needed. He offered to fund it — through
+      a lab of their choosing.
+
+      I declined. My report stands. Astrid used it in her research.
+    effects:
+      trust_karin: "+10"
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Niklas ---
+
+  niklas_interview:
+    type: message
+    text: >
+      NIKLAS: I manage the Silverby operation. Everything we do is
+      within permit conditions. Our environmental monitoring meets all
+      regulatory requirements.
+
+      Astrid Lindqvist trespassed on company property multiple times.
+      We filed complaints. The police issued warnings. She continued.
+
+      Her disappearance is unfortunate but unrelated to our operations.
+      We cooperate fully with authorities.
+    effects: { trust_niklas: "+5" }
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Hanna (kommunalrad) ---
+
+  hanna_interview:
+    type: message
+    text: >
+      HANNA: As kommunalrad I must balance environmental concerns
+      with economic reality. The mine provides 300 jobs directly and
+      supports another 500 through the supply chain. That is 40% of
+      Silverby's employment.
+
+      Astrid's concerns were noted and forwarded to the appropriate
+      authorities. The environmental permit was renewed through proper
+      channels. Public consultation was held as required.
+
+      I am sorry she is missing. But suggesting that the kommun had
+      any involvement in her disappearance is irresponsible and
+      harmful to the community.
+
+      [Hanna's talking points are polished. But the public
+      consultation was held during midsommar when nobody was
+      paying attention. And she signed the renewal despite Orla's
+      objections.]
+    effects: { trust_hanna: "+5" }
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Gustav (deeper investigation) ---
+
+  gustav_evidence:
+    type: message
+    text: >
+      GUSTAV: I have been an editor for twenty years. I have never
+      been afraid to publish a story. Until now.
+
+      Norrland Mineral is not just our biggest advertiser. They
+      sponsor the hockey team, the midsommar festival, the school
+      library. They fund the kommun's cultural programme. If I publish
+      this story, every one of those sponsorships disappears.
+
+      That is how they operate. Not with threats — with money. They
+      make themselves indispensable. Then the truth becomes too
+      expensive.
+
+      But Astrid is missing. And if her data is real — and Linnea says
+      it is — then children in this town are drinking contaminated
+      water. That is bigger than advertising revenue.
+
+      Give me the evidence. I will publish. Whatever it costs.
+    effects:
+      trust_gustav: "+15"
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Sven ---
+
+  sven_investigation:
+    type: tweet
+    from: sven
+    text: >
+      The tailings pond was repaired last month. Night work. Ask
+      yourself why environmental maintenance happens in the dark.
+    choices:
+      - Look at Sven's other posts -> sven_posts
+
+  sven_posts:
+    type: message
+    text: >
+      @sven's posts are sparse and careful. Not threatening — more
+      like warnings from someone who knows the mine's operations.
+
+      "The discharge happens after midnight. Sample the water at 06:00
+      and you'll find the truth."
+      "Condition 14 is never checked. The kommun trusts the company.
+      The company trusts itself."
+      "Some people who work at the mine have families who drink the
+      water downstream."
+
+      This is an insider. Someone at the mine who knows about the
+      pollution but fears losing their job.
+
+      Posting times: after midnight, when mine shifts change.
+    effects:
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # =====================================================================
+  # SURVEILLANCE THREAD
+  # =====================================================================
+
+  surveillance_hub:
+    type: message
+    text: >
+      THE SURVEILLANCE THREAD
+
+      Mattias, Astrid's ex, followed her from the konditori. He
+      argued with her. She drove away. He followed. Now she's gone
+      and he's in Silverby "looking for her."
+
+      Surveillance evidence: ${surveillance_evidence}
+    choices:
+      - Investigate Mattias's social media -> mattias_social
+      - Talk to Birgitta about Mattias -> birgitta_mattias_detail
+      - Talk to Erik about the breakup -> erik_breakup
+      - Talk to Ella (pharmacist) -> ella_interview
+      - Talk to Aslak about the night -> aslak_night
+        when:
+          state: trust_aslak
+          gte: 20
+      - Talk to Lars (police officer) -> lars_interview
+        when:
+          state: trust_lars
+          gte: 30
+      - Talk to Saga (Astrid gave her something) -> saga_usb
+        when:
+          state: trust_saga
+          gte: 20
+      - Back to hub -> investigation_hub
+
+  # --- Mattias social ---
+
+  mattias_social:
+    type: tweet
+    from: mattias
+    text: >
+      Missing you. The forest isn't the same without you. I'm here in
+      Silverby looking. I won't stop until I find you.
+    choices:
+      - Analyse Mattias's posting patterns -> mattias_analysis
+
+  mattias_analysis:
+    type: message
+    text: >
+      Mattias's posting pattern is revealing. After the breakup, he
+      posted daily about Astrid. Photos of her, quotes from her posts,
+      references to places they'd been together.
+
+      He visited Silverby at least four times since the breakup.
+      Each time, his posts geolocated to places Astrid frequented:
+      the konditori, the river trail, the library.
+
+      And an analysis of the anonymous messages Wilma showed you —
+      the ones about knowing where Astrid was, what she was wearing —
+      they correspond exactly to Mattias's visits. Every time he was
+      in Silverby, anonymous messages arrived.
+
+      His Stockholm account liked Astrid's posts within seconds of
+      posting. He created a second account, @arctic_photographer,
+      that followed only Astrid and her close contacts.
+    effects:
+      surveillance_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to surveillance thread -> surveillance_hub
+
+  # --- Birgitta Mattias detail ---
+
+  birgitta_mattias_detail:
+    type: message
+    text: >
+      BIRGITTA: Mattias came to the konditori yesterday. Sat in
+      Astrid's seat. Ordered her tea. Looked at me and said "She'll
+      come back. She always comes back."
+
+      That is not how a worried ex talks. That is how someone who
+      thinks they own another person talks.
+
+      He asked me if I knew where she stored her files. Her research.
+      "For safekeeping," he said. I didn't tell him anything. But the
+      question itself was wrong.
+    effects:
+      trust_birgitta: "+10"
+      surveillance_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to surveillance thread -> surveillance_hub
+
+  # --- Erik breakup ---
+
+  erik_breakup:
+    type: message
+    text: >
+      ERIK: The breakup was not amicable. Mattias was controlling.
+      He monitored her phone. He got angry when she spent time with
+      colleagues. He accused her of being "obsessed with the river
+      instead of us."
+
+      After she ended it, he showed up in Silverby three times
+      unannounced. She told me he went through her laptop when she
+      was in the shower. She changed all her passwords after that.
+
+      The night before she disappeared, Mattias called me. He said
+      "I know Astrid is meeting someone. Who is it?" I told him it
+      was none of his business. He hung up.
+
+      His phone was still on her lock screen the last time I saw it.
+      Her wallpaper. Six months after the breakup.
+    effects:
+      trust_erik: "+15"
+      surveillance_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to surveillance thread -> surveillance_hub
+
+  # --- Ella ---
+
+  ella_interview:
+    type: message
+    text: >
+      ELLA: Astrid came in two weeks before she disappeared. She
+      asked about personal safety devices. I sold her a personal alarm.
+
+      She looked exhausted. She said someone was following her. Not
+      the mine people — someone else. "Someone who won't accept that
+      it's over," she said.
+
+      I asked if she wanted me to call someone. She said "The police
+      can't help. He hasn't done anything illegal. Yet."
+    effects:
+      trust_ella: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to surveillance thread -> surveillance_hub
+
+  # --- Aslak (deeper testimony about the night) ---
+
+  aslak_night:
+    type: message
+    text: >
+      ASLAK: The night Astrid disappeared, one of our herders was
+      on the ridge above the river. He saw headlights on the logging
+      road — two cars, one following the other.
+
+      The first car stopped at the river bend. A woman got out and
+      walked toward the water with a torch. Sampling, probably.
+
+      The second car stopped further back. A man got out and walked
+      toward her. They talked. Then she got in her car and drove fast
+      toward the north. He followed.
+
+      Our herder knows the land. He knows Astrid's car. And he knows
+      the rental car that has been appearing on our roads for months.
+
+      When Astrid didn't come back the next day, we searched. We found
+      her tracks on the Kungsleden trail. She went off-path at
+      kilometre marker 12. Into the old forest. Toward our summer
+      camp.
+
+      We found her at the cabin. Exhausted. Frightened. But alive.
+      We kept her safe. We owe her that.
+    effects:
+      trust_aslak: "+15"
+      surveillance_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Linnea (deeper evidence) ---
+
+  linnea_deeper:
+    type: message
+    text: >
+      LINNEA: I want you to understand what Astrid's data means.
+
+      The cadmium levels she found would cause kidney damage in
+      children who drink the water regularly. Arsenic at those
+      levels is a carcinogen. Lead affects neurological development.
+
+      The town's drinking water comes from wells upstream of the
+      worst contamination point. But the wells are not far upstream.
+      A wet spring, a high water table, and the plume reaches them.
+
+      This is not abstract environmental science. This is children
+      getting sick. This is reindeer dying. This is a town being
+      slowly poisoned for quarterly profit reports.
+
+      Astrid understood the stakes. That's why she wouldn't stop.
+      And that's why the mine needed her to stop.
+
+      Our paper will be published. With or without the mine's consent.
+      I need Astrid's raw data to make the peer review unassailable.
+      Find her data and we win this.
+    effects:
+      trust_linnea: "+15"
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Per (deeper testimony) ---
+
+  per_deeper:
+    type: message
+    text: >
+      PER: I teach geography. I know this landscape better than anyone
+      in Silverby except maybe the Sami herders.
+
+      The mine's expansion plan covers an area that includes three
+      tributaries feeding the main river. If those tributaries are
+      contaminated — and Astrid's data suggests they already are —
+      the entire downstream ecosystem is compromised. Fish, plants,
+      drinking water for the town.
+
+      Astrid brought her data to my hiking club presentation two
+      months ago. She overlaid the contamination points on the
+      topographic map. The pattern was undeniable — every contamination
+      point was directly downstream from a mine operation.
+
+      After that presentation, two parents withdrew their children
+      from the hiking club. They said the mine management told them
+      the club was "spreading misinformation." The mine called a
+      teacher's after-school activity misinformation.
+
+      That's the kind of pressure this community faces. Astrid faced
+      it alone. She shouldn't have had to.
+    effects:
+      trust_per: "+10"
+      pollution_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to pollution thread -> pollution_hub
+
+  # --- Lars ---
+
+  lars_interview:
+    type: message
+    text: >
+      LARS: Off the record? This case was closed too fast. My
+      superior received a call from the kommun about "managing
+      community anxiety." That's code for stop investigating.
+
+      Astrid reported harassment from an ex-partner twice. We couldn't
+      act because she didn't have his name — just anonymous accounts.
+      But the descriptions matched someone specific.
+
+      I checked the rental car agencies. A Hertz rental in a Stockholm
+      man's name — Mattias Ek — was returned the morning after Astrid
+      disappeared. With 400 extra kilometres on it. Silverby to the
+      trailhead and back is about that distance.
+
+      I put this in my report. My superior said "He was visiting. Not
+      a crime."
+    effects:
+      trust_lars: "+15"
+      surveillance_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Saga USB ---
+
+  saga_usb:
+    type: message
+    text: >
+      SAGA: ok asssa typ tva dagar innan hon forsvann gav astrid mig
+      en usb-sticka. hon sa "om ngt hander mig, ge den har till
+      gustav pa tidningen. ingen annan."
+
+      jag har inte oppnat den. jag ar typ radd. men om det kan
+      hjalpa astrid...
+
+      hon sag pa mig typ pa riktigt och sa "det har ar viktigare an
+      ngt jag nagonsin gjort." sen kramade hon mig.
+    choices:
+      - I'll make sure it gets to Gustav. Let me take it -> saga_usb_yes
+      - Keep it safe for now -> saga_usb_wait
+
+  saga_usb_yes:
+    type: message
+    text: >
+      Saga gives you the USB stick with trembling hands.
+
+      SAGA: snalla var forsiktig. och hjalp henne komma hem.
+    effects:
+      pollution_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  saga_usb_wait:
+    type: message
+    text: >
+      SAGA: ok. men lova mig att du kommer tillbaka for den. astrid
+      litade pa mig. jag vill inte svika henne.
+    effects: { trust_saga: "+10" }
+    choices:
+      - Back to surveillance thread -> surveillance_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      A mining company covering up pollution. An ex-partner who
+      wouldn't let go. Astrid was caught between both. Who do you
+      pursue?
+    choices:
+      - Present full case: pollution + surveillance -> confront_both
+        when:
+          all:
+            - { state: pollution_evidence, gte: 5 }
+            - { state: surveillance_evidence, gte: 3 }
+      - Expose the mine (pollution case) -> confront_mine
+        when:
+          state: pollution_evidence
+          gte: 5
+      - Confront Mattias (surveillance case) -> confront_mattias
+        when:
+          state: surveillance_evidence
+          gte: 3
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Both (Best Ending) ---
+
+  confront_both:
+    type: message
+    text: >
+      You compile everything. The USB stick goes to Gustav. The
+      pollution data and permit fraud go to Lansstyrelsen with Sofia's
+      backup. The surveillance evidence and rental car records go to
+      polisen in Lulea — above the Silverby station.
+
+      You send it all simultaneously.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE FULL PICTURE
+
+      The pollution story breaks in Silverby Tidning and is picked up
+      nationally. The Lansstyrelsen orders an immediate environmental
+      audit. The mine's permit is suspended. Anders Bergman is
+      summoned for questioning. Niklas Borg cooperates — he was @sven,
+      the anonymous insider, trying to expose the discharge without
+      losing his job.
+
+      The polisen trace Mattias's movements. The rental car records,
+      the anonymous messages, the surveillance pattern — enough for
+      an arrest. He is charged with ofredande and stalking.
+
+      And Astrid? She has been staying with Linnea in Umea. Mattias
+      found her at the trailhead that night. She ran into the forest.
+      She knows these woods better than anyone. She walked 40 kilometres
+      through the night to a cabin on Aslak's land. The Sami community
+      kept her safe.
+
+      With Mattias arrested and the mine exposed, Astrid calls Erik.
+
+      "I'm coming home. Tell Birgitta to put the kettle on."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: astrid
+    text: >
+      the river will be clean again. it will take time but it will
+      heal. so will i. the paper is being published. the truth flows
+      downhill. thank you.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Mine Only (Partial Ending) ---
+
+  confront_mine:
+    type: message
+    text: >
+      You present the pollution evidence to Gustav and the authorities.
+      The mine is exposed. The environmental fraud is confirmed.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE MINE
+
+      The mine's permit is revoked. Anders Bergman faces criminal
+      charges for environmental fraud. The river will recover in time.
+
+      But without the surveillance evidence, Mattias is never
+      investigated. He remains in Silverby, posting concerned messages,
+      visiting the konditori, sitting in her chair.
+
+      Three months later, Astrid learns about the mine's closure
+      online. She is relieved but not ready to return. Mattias is
+      still there. She moves to Stockholm. She stops photographing
+      nature.
+
+      The mine is stopped. But the person who drove Astrid away walks
+      free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: astrid
+    text: "the river is safe. that's what matters. i'm somewhere else now."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mattias Only (Partial Ending) ---
+
+  confront_mattias:
+    type: message
+    text: >
+      You present the surveillance evidence to the police. Mattias is
+      investigated.
+    choices:
+      - Wait for the result -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE EX
+
+      Mattias is arrested and charged. Astrid's immediate fear is
+      addressed.
+
+      But without the pollution evidence, the mine continues. The
+      tailings pond keeps leaking. The river stays poisoned. Aslak's
+      reindeer continue to avoid the water.
+
+      Astrid returns to Silverby. She sits by the river and takes
+      new samples. The numbers are the same. Worse, maybe. She starts
+      the research again, alone this time.
+
+      She is home. But the battle she was winning is now back to zero.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Pollution evidence: ${pollution_evidence}
+      Surveillance evidence: ${surveillance_evidence}
+
+      Thank you for playing. Astrid's story explores themes of
+      environmental destruction, indigenous rights, stalking, corporate
+      capture of regulators, and the cost of truth-telling.
+
+      If you or someone you know is experiencing stalking or threats,
+      help is available:
+      Kvinnofridslinjen: 020-50 50 50
+      Brottsofferjouren: 116 006
+      Polisen: 114 14
+      Emergency: 112

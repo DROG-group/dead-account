@@ -1,0 +1,1575 @@
+# DEAD ACCOUNT — Story 075: Mullerthal-les-Bains (Luxembourg)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-075.yml
+#
+# Player investigates the disappearance of potter Sophie Muller
+# in the fictional Müllerthal village of Mullerthal-les-Bains.
+
+meta:
+  title: "Dead Account — Mullerthal-les-Bains"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_josy: 0
+    trust_marc: 0
+    trust_fernand: 0
+    trust_mireille: 0
+    trust_thierry: 0
+    trust_carine: 0
+    trust_gilles: 0
+    trust_nicole: 0
+    trust_patrick: 0
+    trust_annick: 0
+    trust_romain: 0
+    trust_charel: 0
+    trust_pit: 0
+    trust_laura: 0
+    trust_sam: 0
+    trust_ben: 0
+    trust_liz: 0
+    trust_jeff: 0
+    trust_claude: 0
+    trust_anon: 0
+    trust_brigadier: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    quarry_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to mullerthal-les-bains. discovering the little switzerland one trail at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "MullerthalLesBains.social"
+    description: "Wëllkomm op der Gemeinschaftsinstanz vu Mullerthal-les-Bains"
+    avatar_url: /gamepatch/assets/dead-account/mullerthal_bot.png
+
+  npcs:
+    # === Sophie's Inner Circle ===
+    sophie:
+      name: "Sophie Muller"
+      bio: "keramikerin | atelier an der schluecht | d'äerd leit net"
+      avatar: avatars/sophie.jpg
+    josy:
+      name: "Josy Kieffer"
+      bio: "bescht frëndin vun der sophie | coiffeuse am duerf | café virun allem"
+      avatar: avatars/josy.jpg
+    marc:
+      name: "Marc Muller"
+      bio: "de brudder vun der sophie | mécanicien | lëtzebuerg-stad | si verschwënnt net esou"
+      avatar: avatars/marc.jpg
+    thierry:
+      name: "Thierry Lentz"
+      bio: "galeriste | art contemporain | représente sophie depuis 5 ans | passionné de céramique"
+      avatar: avatars/thierry.jpg
+
+    # === Local Government ===
+    fernand:
+      name: "Fernand Schmit"
+      bio: "Buergermeeschter vu Mullerthal-les-Bains | Am Déngscht vun der Gemeng zënter 2011 | #MullerthalViraus"
+      avatar: avatars/fernand.jpg
+    mireille:
+      name: "Mireille Thill"
+      bio: "Schäffin fir Ëmwelt | Gemeng Mullerthal-les-Bains | Natur an Tourismus"
+      avatar: avatars/mireille.jpg
+    gemeng:
+      name: "Gemeng Mullerthal-les-Bains"
+      bio: "Offiziellen Kont | Gemeinformatiounen | Ëffnungszäiten: Méi-Fre 8h-16h"
+      avatar: avatars/gemeng.jpg
+
+    # === Local Business & Community ===
+    carine:
+      name: "Carine Weber"
+      bio: "Bistro um Maartplaz | quetschetaart | crémant | terrasse mat vue op de fiels | zënter 1994"
+      avatar: avatars/carine.jpg
+    bistro:
+      name: "Bistro um Maartplaz"
+      bio: "Lëtzebuerger Kichen | Crémant | Concerten de Freideg | D'Häerz vu Mullerthal"
+      avatar: avatars/bistro.jpg
+    gilles:
+      name: "Gilles Reding"
+      bio: "wanderguide | 30 joer op de mullerthal trail | all fiels, all pad"
+      avatar: avatars/gilles.jpg
+    nicole:
+      name: "Nicole Braun"
+      bio: "apdikt | mullerthal-les-bains | gesondheet & berodung | sonndes moies op"
+      avatar: avatars/nicole.jpg
+    annick:
+      name: "Annick Majerus"
+      bio: "bäckerei majerus | kachkéis | brot | 5 auer moies all dag"
+      avatar: avatars/annick.jpg
+    patrick:
+      name: "Patrick Hoffmann"
+      bio: "bëschfërster | fiels a bësch sinn alles | d'natur vergësst näischt"
+      avatar: avatars/patrick.jpg
+    romain:
+      name: "Romain Faber"
+      bio: "bicher & kaarten | librairie an der schluecht | liesungen de mëttwochs"
+      avatar: avatars/romain.jpg
+
+    # === Journalist ===
+    claude:
+      name: "Claude Reuter"
+      bio: "journalist indépendant | ëmwelt & patrimoine | tips: claude@reuter-presse.lu"
+      avatar: avatars/claude_r.jpg
+
+    # === Quarry Company (corporate) ===
+    steinbroch:
+      name: "Steinbroch Éislek SA"
+      bio: "Solutiounen fir Baumaterial | Site Mullerthal-les-Bains | ISO 14001 zertifizéiert"
+      avatar: avatars/steinbroch.jpg
+    jeff:
+      name: "Jeff Meyers"
+      bio: "directeur steinbroch éislek | site mullerthal | industrie & territoire"
+      avatar: avatars/jeff.jpg
+    avocat:
+      name: "Maître Schaus"
+      bio: "Avocat | Cabinet Schaus & Associés | Droit des affaires | Luxembourg-Ville"
+      avatar: avatars/avocat.jpg
+
+    # === Teens ===
+    laura:
+      name: "Laura"
+      bio: "16 | klëmmen an der schluecht | mullerthal born | d'natur ass alles frr"
+      avatar: avatars/laura.jpg
+    sam:
+      name: "Sam"
+      bio: "17 | trail running & bouldering | sunrise session | de bësch heelt alles"
+      avatar: avatars/sam.jpg
+    ben:
+      name: "Ben"
+      bio: "15 | photo & grafittis | de fiels a schwaarzt-wäiss | sophie ass mäi inspi"
+      avatar: avatars/ben.jpg
+
+    # === Media & Community ===
+    actu_mullerthal:
+      name: "Actu Mullerthal"
+      bio: "Aktualitéite vu Mullerthal-les-Bains an Ëmgéigend | Tips: redaktioun@actu-mullerthal.lu"
+      avatar: avatars/actu_mullerthal.jpg
+    meteo_letzebuerg:
+      name: "Météo Mullerthal"
+      bio: "Previsiounen an Alarmer | Automatesch Statioun | All Stonn aktualiséiert"
+      avatar: avatars/meteo_letzebuerg.jpg
+    asso_fiels:
+      name: "Frënn vum Mullerthal Trail"
+      bio: "Schutz vun de Fielsen a Schlëffer | Bénévolen | Meldung vu Schied"
+      avatar: avatars/asso_fiels.jpg
+
+    # === Suspicious / Other ===
+    charel:
+      name: "Charel Stein"
+      bio: "technicien sprengstoff | steinbroch éislek | ech maachen mäi job dat ass alles"
+      avatar: avatars/charel.jpg
+    pit:
+      name: "Pit Wey"
+      bio: "."
+      avatar: avatars/anon.jpg
+    liz:
+      name: "Liz"
+      bio: "17 | art & keramik | sophie huet mir alles gewisen | wou ass si"
+      avatar: avatars/liz.jpg
+    brigadier:
+      name: "Brigadier Kayser"
+      bio: "Police Grand-Ducale Mullerthal-les-Bains | Commissariat local | Noutfall: 113"
+      avatar: avatars/brigadier.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN MULLERTHAL-LES-BAINS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to MullerthalLesBains.social — the community Mastodon instance
+      for the village of Mullerthal-les-Bains, nestled among the sandstone
+      cliffs and forests of Luxembourg's Little Switzerland.
+
+      The local feed is unsettled today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @sophie_muller.
+
+      A potter. Ceramicist. She documented the landscape in clay and glaze.
+      People are worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> sophie_profile
+
+  sophie_profile:
+    type: tweet
+    from: sophie
+    text: "De Fiels hannert mengem Atelier ass gesprongen. D'Steinbroch spréngt d'Landschaft. Ech hunn Beweiser."
+    choices:
+      - That's her last real post... -> broken_shelf
+
+  broken_shelf:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a photo of a cracked ceramic bowl on a dusty shelf. Shot at 2am.
+      No caption. Overexposed, blurred.
+
+      Her friends say that's not her style. Sophie documented her work
+      meticulously. Every piece had a story, a caption, a location.
+      The police say she probably went on holiday. Something doesn't
+      add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: brigadier
+    text: >
+      Mir hu e Signalement kritt betreffend eng Awunnerin vu
+      Mullerthal-les-Bains. Op dësem Stade weist näischt op eng
+      Stroftat hin. All nëtzlech Informatiounen kënnt Dir un de
+      Commissariat mellen oder den 113 uruffen.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @josy_kieffer is
+      desperate. Her brother @marc_muller is driving down from the
+      city. Her gallerist @thierry_lentz is posting obsessively.
+      The trail guide @gilles_reding says she was right about
+      the blasting damage.
+
+      And the journalist @claude_reuter is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Sophie just
+      "went on holiday."
+    effects: { trust_josy: "+5", trust_marc: "+5" }
+    choices:
+      - Start following Sophie's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Mullerthal-les-Bains. Follow Sophie's contacts and read
+      their posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Carine (bistro owner, knows everyone) -> carine_intro
+      - Talk to Gilles (trail guide, saw the damage) -> gilles_intro
+      - Talk to Laura (teen climber, seems shaken) -> laura_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Sophie with the rhythms of a small
+      village in the sandstone gorge: trail conditions, bakery specials,
+      weather warnings, crémant tastings.
+
+      Key names surface: Josy (best friend, hairdresser), Thierry
+      (gallerist, seems rattled), Claude (journalist, oddly quiet),
+      and the teens — Laura, Sam, Ben, Liz — who loved Sophie's
+      pottery workshops.
+
+      Also prominent: Steinbroch Éislek SA, the quarry company at the
+      edge of town. Their posts are corporate PR. Sophie's posts were
+      the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Carine -> carine_intro
+      - Talk to Gilles -> gilles_intro
+      - Talk to Laura -> laura_intro
+
+  # --- Carine (social map) ---
+
+  carine_intro:
+    type: tweet
+    from: carine
+    text: >
+      De Bistro ass op mee d'Häerz ass net derbäi. @sophie_muller,
+      däin Dësch waart op dech. Komm séier zréck.
+    effects: { trust_carine: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Carine -> carine_talk
+
+  carine_talk:
+    type: message
+    text: >
+      CARINE: Ah, you're new? Wëllkomm. Terrible time to arrive.
+      Everyone's on edge about Sophie.
+
+      Let me tell you who's who. Josy is Sophie's best friend — they
+      grew up together, Josy runs the hair salon on Rue de la Gorge.
+      Sweet girl, devastated right now. Thierry Lentz is Sophie's
+      gallerist from the city. Smart man, but... intense about her
+      work. Very intense about her. Marc is Sophie's older brother,
+      he's coming down from Luxembourg-Ville.
+
+      And Claude Reuter — the journalist — he and Sophie were working
+      on something together. Something about the quarry. Claude hasn't
+      said a word since Sophie vanished. That's not like him at all.
+
+      Oh, and ignore Steinbroch Éislek's PR posts. Lies wrapped in
+      ISO certifications, as always.
+    effects: { trust_carine: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Thierry -> carine_thierry
+      - Ask about Steinbroch -> carine_steinbroch
+      - Thank her and move on -> quest1_hub
+
+  carine_thierry:
+    type: message
+    text: >
+      CARINE: Thierry? He's represented Sophie's ceramics for five
+      years. Built a gallery around her work. But since her pieces
+      started selling internationally, he's been... orbiting her.
+      At the bistro every time she was here. Called constantly. Wanted
+      to be part of everything, not just the art.
+
+      She told me once, "He thinks he owns me because he sells my
+      pots." I thought she meant professionally. Now I'm not so sure.
+
+      After she started the quarry investigation, he got worse.
+      Wanted to control where she went, who she talked to. Said it
+      was about "protecting the brand."
+    effects: { trust_carine: "+5" }
+    choices:
+      - Ask about Steinbroch -> carine_steinbroch
+      - Move on -> quest1_hub
+
+  carine_steinbroch:
+    type: message
+    text: >
+      CARINE: That quarry has been expanding since the 90s. They
+      blast sandstone for construction aggregate. The cliffs are
+      our heritage — the Mullerthal Trail, the rock formations, the
+      grottos. Tourists come from all over Europe.
+
+      But Steinbroch keeps getting permits to blast closer to the
+      village. The vibrations crack foundations. The landscape is
+      being destroyed. Sophie was the first person to actually
+      document the damage with measurements and photos.
+
+      She had proof, she said. Real proof that the blasting was
+      destabilising the gorge. Two weeks later she's gone.
+    effects: { trust_carine: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Gilles (the landscape, witness tease) ---
+
+  gilles_intro:
+    type: tweet
+    from: gilles
+    text: >
+      30 joer op dësen trail. de fiels bréckelt. d'schluecht rëscht.
+      @sophie_muller hat recht. an elo ass si fort.
+      maacht de lien.
+    effects: { trust_gilles: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Gilles -> gilles_talk
+
+  gilles_talk:
+    type: message
+    text: >
+      GILLES: I've been guiding people through this gorge since I was
+      twenty. I know every cliff face, every overhang, every crack in
+      the rock. And I'm telling you — the formations near the quarry
+      boundary are fracturing. The blasting shakes the ground twice a
+      week. New cracks appear after every detonation.
+
+      Sophie measured it. She set up vibration sensors, photographed
+      every new crack, mapped the damage with GPS coordinates. She
+      was building a case. And then poof — gone.
+
+      You think that's a coincidence? Herrgottsack, I don't believe
+      in coincidences in these woods.
+    effects: { trust_gilles: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> gilles_night
+      - Move on -> quest1_hub
+
+  gilles_night:
+    type: message
+    text: >
+      GILLES: The night before she vanished — I was coming back from
+      a late patrol of the trail, around midnight. I saw lights at
+      Sophie's atelier. Not unusual, she worked late with the kiln.
+      But there were two vehicles in the lane. One was Sophie's old
+      Citroën. The other was a black SUV with Steinbroch Éislek
+      plates.
+
+      At midnight. At a potter's studio in the gorge.
+
+      I noted it in my trail log. Nobody's asked to see it.
+    effects: { trust_gilles: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Laura (teen climber, witness tease) ---
+
+  laura_intro:
+    type: tweet
+    from: laura
+    text: >
+      putain @sophie_muller c'est elle qui m'a appris à respecter
+      de fiels genre c'est pas possible qu'elle soit partie comme
+      ça. si qqn weess eppes dann sot et svp
+    effects: { trust_laura: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Laura -> laura_talk_early
+
+  laura_talk_early:
+    type: message
+    text: >
+      LAURA: merde t'es nouveau ici? c chaud comme timing. en vrai
+      sophie c'est genre la meilleure personne vu dësem duerf. si
+      huet eis gewisen wéi ee klëmmt, si huet eis d'fiels gewisen
+      mat hirer kamera. trop stylé.
+
+      an la ech si geflippt well de sam huet eppes bizar gesinn
+      deen owend beim atelier mee hie wëll net driwwer schwätzen.
+      hie seet dat et näischt ass mee genre... c'est pas rien sah
+    effects: { trust_laura: "+10" }
+    choices:
+      - What did Sam see? -> laura_sam_hint
+      - Move on -> quest1_hub
+
+  laura_sam_hint:
+    type: message
+    text: >
+      LAURA: ech weess et net genee. hien war op engem trail run
+      beim atelier an hien huet gesinn wéi iergendeen saachen an
+      dem sophie säi auto geluecht huet?? oder sou eppes. hie
+      flippt total, hie wëll net driwwer schwätzen. frot hien
+      direkt mee hien ass mësstréinesch mat leit déi en net kennt.
+      versich éischt iwwert klëmmen ze schwätzen ptdr
+    effects: { trust_laura: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Mullerthal-les-Bains. A village
+      carved into sandstone gorges. A potter who was documenting
+      quarry damage. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Josy (Sophie's best friend) -> josy_q1
+      - Talk to Thierry (Sophie's gallerist) -> thierry_q1
+      - Check what Marc (Sophie's brother) is saying -> marc_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Josy Q1 ---
+
+  josy_q1:
+    type: tweet
+    from: josy
+    text: >
+      wann iergendeen eppes vun @sophie_muller héiert rufft mech
+      un svp. hir stuff ass ongeriicht. hir offenofen ass nach un.
+      si wier ni ouni hir wierk fortgaang.
+    effects: { trust_josy: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Josy -> josy_q1_talk
+
+  josy_q1_talk:
+    type: message
+    text: >
+      JOSY: I appreciate you reaching out but I don't know you.
+      Sophie has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Josy is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_josy: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Thierry Q1 ---
+
+  thierry_q1:
+    type: tweet
+    from: thierry
+    text: >
+      L'atelier est vide sans @sophie_muller. Ses pièces sont encore
+      dans le four. Ses carnets de croquis sur la table. Elle
+      n'abandonnerait jamais une cuisson en cours. Something happened.
+    effects: { trust_thierry: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Thierry -> thierry_q1_talk
+
+  thierry_q1_talk:
+    type: message
+    text: >
+      THIERRY: Sophie and I have worked together for over five years.
+      She's the most talented ceramicist in Luxembourg. This quarry
+      investigation — it was putting her work at risk. The vibrations
+      were cracking her pieces in the kiln. She had measurements,
+      photos, vibration data.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to protect her. And her work.
+
+      [Thierry seems earnest. Or obsessive?]
+    effects: { trust_thierry: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marc Q1 ---
+
+  marc_q1:
+    type: tweet
+    from: marc
+    text: >
+      meng schwëster ass VERSCHWONNEN an d'police seet mir si ass
+      vläicht op vakanz??? SI GEET NET OP VAKANZ OUNI BESCHEED ZE
+      SOEN. ech kommen elo vun der stad. iergendeen wäert mer
+      erkläeren.
+    effects: { trust_marc: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marc -> marc_q1_talk
+
+  marc_q1_talk:
+    type: message
+    text: >
+      MARC: Who are you? Another person from that village who's going
+      to tell me to calm down? My sister called me the night before
+      she disappeared. She said she had something big. She said "if
+      anything happens, look at Steinbroch Éislek." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_marc: "+10" }
+    choices:
+      - What do you think happened? -> marc_theory
+      - Move on -> quest1_hub
+
+  marc_theory:
+    type: message
+    text: >
+      MARC: I think she found proof that Steinbroch Éislek is blasting
+      illegally and destabilising the gorge, and they shut her up. But
+      I also think that creepy gallerist of hers — Thierry — knows more
+      than he's saying. The way he talks about her... it's not just
+      professional. It's something else. Possessive.
+
+      Sophie told me months ago that someone had been going through her
+      studio when she wasn't there. Things moved, sketches rearranged.
+      She thought it was the wind through the door. I don't think it
+      was the wind.
+    effects: { trust_marc: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Sophie went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Sam (was trail running near the atelier) -> sam_interview
+      - Find Gilles (trail guide, patrols late) -> gilles_interview
+      - Find Patrick (forest ranger, early morning) -> patrick_interview
+      - Find Annick (baker, starts at 5am, saw something) -> annick_interview
+
+  # --- Sam (saw someone at Sophie's car) ---
+
+  sam_interview:
+    type: tweet
+    from: sam
+    text: >
+      gudd session haut owend mee d'ambiance am duerf ass komësch.
+      genre et ass eppes net an der rei. ech weess net wéi ech et
+      soen soll
+    effects: { trust_sam: "+5" }
+    choices:
+      - Ask Sam about that evening -> sam_talk
+
+  sam_talk:
+    type: message
+    text: >
+      SAM: wsh frr ok mee du sees et kengem hein. ech war beim
+      atelier géint 19h, trail run. an ech hunn de gars vun der
+      galerie — thierry — niewent dem sophie säi auto gesinn. hien
+      hat d'air wéi wann en dra géif wullen oder eppes dra leeën.
+      wéi en mech gesinn huet ass e vill ze séier fort.
+
+      genre mech, ech hu näischt gesot well ech wollt keng
+      embrouilles mee la c'est quoi ce bordel. dat ass net
+      normal seng behuelen sah
+    effects:
+      trust_sam: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Gilles (trail guide, saw late-night meeting) ---
+
+  gilles_interview:
+    type: tweet
+    from: gilles
+    text: >
+      Erënnerung: de Mullerthal Trail ass verbueden tëschent 22h an 6h.
+      Ech hu fir d'lescht Nuets net autorisiert Passagen festgestallt.
+    effects: { trust_gilles: "+5" }
+    choices:
+      - Ask Gilles what he saw -> gilles_talk_night
+
+  gilles_talk_night:
+    type: message
+    text: >
+      GILLES: I was finishing my last round of the trail around 22h30.
+      I saw Sophie's Citroën still parked by the atelier. And a black
+      SUV — Steinbroch Éislek plates — next to it. Two men were
+      standing at the studio entrance. One of them I recognised:
+      Jeff Meyers, the quarry director.
+
+      At 22h30. At a potter's studio in the gorge. That's not normal.
+
+      I noted it in my trail log. Nobody's asked to see it.
+    effects:
+      trust_gilles: "+10"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Patrick (saw Sophie fleeing) ---
+
+  patrick_interview:
+    type: tweet
+    from: patrick
+    text: >
+      um 4 auer moies am bësch. de pad war net eidel haut. do
+      war een dee gelaf ass um klëmmpad. am däischteren. kee jogger.
+    effects: { trust_patrick: "+5" }
+    choices:
+      - Ask Patrick what he saw -> patrick_talk
+
+  patrick_talk:
+    type: message
+    text: >
+      PATRICK: I start my rounds at 4am, checking the forest for
+      storm damage. That morning — the morning after Sophie's last
+      post — I saw someone on the gorge path. Running. A woman,
+      carrying a bag, heading toward the old mill ruins. It was
+      still dark. She was moving fast, like she was afraid.
+
+      I called out but she didn't stop. I figured it was a hiker
+      but... who hikes at 4am carrying a rucksack like they're
+      fleeing something?
+
+      When I heard about Sophie, I put it together. I think that
+      was her. Running from something in the gorge.
+    effects:
+      trust_patrick: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Annick (saw car chase) ---
+
+  annick_interview:
+    type: tweet
+    from: annick
+    text: >
+      Backwueren um 5 auer wéi all dag. Mee dëse Moien ass en
+      Auto vill ze séier op der Schluechtstrooss gefuer.
+    effects: { trust_annick: "+5" }
+    choices:
+      - Ask Annick what she saw -> annick_talk
+
+  annick_talk:
+    type: message
+    text: >
+      ANNICK: I start baking at 5am every day. That morning I was
+      opening the shutters and a vehicle went past — fast, much too
+      fast for the gorge road. Dark SUV. Then maybe two minutes later,
+      a second car. Smaller, older. Chasing? I don't know.
+
+      The second car turned off toward the old limestone caves at
+      Hohllay. The first kept going toward the N10 motorway.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_annick: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Josy (best friend)
+      and Liz (saw Thierry watching the studio).
+    choices:
+      - Talk to Josy about that night -> josy_interview
+      - Talk to Liz -> liz_interview
+      - Find Sam -> sam_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Gilles -> gilles_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Patrick -> patrick_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Annick -> annick_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Josy (last to see Sophie) ---
+
+  josy_interview:
+    type: tweet
+    from: josy
+    text: >
+      dat foto op dem sophie hirem kont. dat ass net si. sophie
+      post ni ouni beschreiwung. sophie post net um 2 auer moies.
+      een aneren huet dat gemaach.
+    effects: { trust_josy: "+5" }
+    choices:
+      - DM Josy -> josy_talk_low
+        when:
+          state: trust_josy
+          lt: 50
+      - DM Josy -> josy_talk_high
+        when:
+          state: trust_josy
+          gte: 50
+
+  josy_talk_low:
+    type: message
+    text: >
+      JOSY: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Josy needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_josy: "+5" }
+    choices:
+      - Share what you've learned about the night -> josy_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  josy_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the studio, the
+      quarry men, the running figure in the gorge. Josy is silent
+      for a while.
+
+      JOSY: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_josy: "+25" }
+    choices:
+      - What happened that night? -> josy_talk_high
+
+  josy_talk_high:
+    type: message
+    text: >
+      JOSY: She came to my flat around 23h. She was shaking. Pale.
+      She said "they know what I have." She grabbed her camera bag
+      and the hard drives from my shelf — she'd been keeping backups
+      at my place.
+
+      I asked who. She said "the quarry. They sent people to the
+      studio." Then she said something else — "and he was there too.
+      He's always there."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry," and left with a bag. That was it. By morning her car
+      was gone and that stupid bowl photo was on her account.
+    effects:
+      trust_josy: "+15"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Liz (saw Thierry watching the studio) ---
+
+  liz_interview:
+    type: message
+    text: >
+      LIZ: ok en vrai c'est chelou wat ech elo soen mee genre de
+      gars vun der galerie — thierry — ech hunn en genre 3 mol owes
+      virum atelier vun der sophie gesinn. just do ze stoen an op
+      d'fënsteren ze kucken. trop creepy sah.
+
+      d'lescht kéier war genre 2 deeg ier si verschwonnen ass. hien
+      souz a sengem auto vis-à-vis. just do ze sëtzen. d'luuchten aus.
+    effects:
+      trust_liz: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Thierry seen at Sophie's car by the atelier (Sam)
+      22:30 — Steinbroch Éislek SUV at the studio, Jeff Meyers present (Gilles)
+      23:00 — Sophie arrives at Josy's, shaken, grabs drives (Josy)
+      04:00 — Woman running on gorge path toward old mill (Patrick)
+      05:00 — Two vehicles on gorge road, one toward Hohllay (Annick)
+
+      Steinbroch Éislek confronted Sophie at the studio. She fled to
+      Josy's, grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the quarry company AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is Steinbroch Éislek hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Thierry really doing? Why was he
+        at her car?
+    choices:
+      - Investigate the quarry cover-up -> corruption_hub
+      - Investigate Thierry -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      QUARRY THREAD: Evidence collected: ${quarry_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the quarry thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: quarry_evidence, gte: 3 }
+
+  # =====================================================================
+  # QUARRY COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE QUARRY THREAD
+
+      Steinbroch Éislek is hiding something. Sophie had proof. Now she's
+      gone and her measurements are missing from the studio.
+
+      Quarry evidence: ${quarry_evidence}
+    choices:
+      - Search the studio records -> studio_records
+      - Talk to Claude the journalist -> claude_interview
+      - Talk to Charel (Steinbroch technician) -> charel_interview
+      - Talk to Mireille (environment deputy) -> mireille_interview
+      - Check the Frënn vum Mullerthal Trail association -> asso_investigation
+      - Talk to Gilles about the blasting -> gilles_blasting
+      - Back to hub -> investigation_hub
+
+  # --- Studio Records ---
+
+  studio_records:
+    type: message
+    text: >
+      Sophie kept a meticulous logbook in her atelier, now accessible
+      through a shared drive she used for collaborators. Her recent
+      entries document vibration readings from six sites along the
+      gorge. The data for the Hohllay cliff face is marked "CRITICAL
+      — REPORT PENDING" — the only site with that status.
+
+      Her sensor log shows she placed monitoring equipment at 12
+      points near the quarry boundary in the past month. The last
+      entry: "Measured displacement of 4mm in sandstone face after
+      Thursday blast. This exceeds permitted limits by 300%. Crack
+      propagation documented."
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Claude ---
+
+  claude_interview:
+    type: message
+    text: >
+      CLAUDE: I don't talk about sources. Period.
+    effects: { trust_claude: "+5" }
+    choices:
+      - Show Claude the evidence you have -> claude_with_evidence
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Back to quarry thread -> corruption_hub
+
+  claude_with_evidence:
+    type: message
+    text: >
+      CLAUDE: ...you have more than I expected.
+
+      Okay. Sophie and I were working together. She had vibration data
+      showing Steinbroch Éislek is blasting beyond their permitted
+      charge limits — routinely, deliberately. She had before-and-after
+      photos of cliff faces showing progressive destabilisation. She
+      had geological reports proving the gorge is at risk of collapse.
+
+      We were going to publish together in the Tageblatt. Then she went
+      dark. And two days later, someone broke into my office and stole
+      my backup files.
+
+      Sophie is alive. She contacted me once, from a burner phone.
+      She said she was hiding. She said "they threatened me at the
+      studio and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_claude: "+25"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> claude_hint
+      - Back to investigation hub -> investigation_hub
+
+  claude_hint:
+    type: message
+    text: >
+      CLAUDE: The quarry sent their director — Meyers — and some
+      lawyer to the studio that night. They told her to hand over
+      everything or face legal consequences. Intimidation dressed
+      up as legal process.
+
+      But she also said something about someone in her professional
+      circle. Someone who'd been accessing her studio. Someone who
+      always seemed to know where she was. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Charel (Steinbroch whistleblower) ---
+
+  charel_interview:
+    type: message
+    text: >
+      CHAREL: I work at Steinbroch Éislek. I'm just a blasting
+      technician. I set charges, I follow orders.
+
+      But the charges I set... are not always the charges that
+      appear on the permits.
+    effects: { trust_charel: "+10" }
+    choices:
+      - What do you mean? -> charel_detail
+
+  charel_detail:
+    type: message
+    text: >
+      CHAREL: I calculate blast loads. Kilograms of explosive per
+      delay. My calculations go to my supervisor. Somewhere between
+      my desk and the permit filing, the numbers change. Lower.
+      Always lower on paper, always higher in the ground.
+
+      Sophie's vibration readings from outside the boundary matched
+      MY original blast calculations, not the ones on the official
+      permits. She had independent proof that Steinbroch is routinely
+      exceeding its permitted blast limits.
+
+      I'm scared. I have a family. But I kept copies of my original
+      calculations. If someone can protect me, I'll share them.
+    effects:
+      trust_charel: "+15"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Mireille ---
+
+  mireille_interview:
+    type: message
+    text: >
+      MIREILLE: As deputy mayor for the environment, I take these
+      allegations seriously. But Steinbroch Éislek employs 150 people
+      in this commune. The mayor insists we need to "maintain dialogue."
+
+      Off the record? I've seen the geological inspection reports.
+      Steinbroch passes every time. But those inspections are
+      announced three weeks in advance. They reduce their charges
+      before the inspectors arrive.
+
+      Sophie had unannounced data. That's what makes it dangerous.
+    effects:
+      trust_mireille: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Frënn vum Mullerthal Trail ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_fiels
+    text: >
+      ALARM: Nei Réss gemellt um Hohllay Fiels no der leschter
+      Sprengung. Fotoen a Moossunge lafen. Mir fuerderen eng net
+      ugekënnegt Inspektioun vun der Steinbroch Éislek.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Frënn vum Mullerthal Trail have been documenting rock
+      stability for four years. Their data shows a clear pattern:
+      new cracks and displacements that correspond to Steinbroch
+      Éislek's blasting schedule. Worse on blast days, stable on
+      rest days. Progressive destabilisation over months.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      over-blasting that is destroying protected geological
+      formations.
+
+      Sophie was a key member. She contributed most of the vibration
+      measurements and geological photography.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Gilles blasting ---
+
+  gilles_blasting:
+    type: message
+    text: >
+      GILLES: I'll show you something. Last month I was on the trail
+      near the quarry boundary during a blast. The ground shook so
+      hard a section of overhanging rock broke off and fell across
+      the path. Two metres of sandstone. If a hiker had been there...
+
+      I photographed the collapse site and sent it to Sophie. She
+      said it was the missing piece — proof that the blasting was
+      creating an imminent public safety hazard. Not just cracks.
+      Actual rockfalls on a public trail.
+
+      I still have the photos. And the GPS coordinates.
+    effects:
+      trust_gilles: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Thierry Lentz. Gallerist. Representative. Something more?
+      Someone was accessing Sophie's studio. Someone was watching
+      her atelier at night. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Thierry's gallery access records -> gallery_access
+      - Talk to Josy about Thierry -> josy_thierry
+        when:
+          state: trust_josy
+          gte: 20
+      - Talk to Sam (more detail on the car incident) -> sam_detail
+      - Talk to Nicole the pharmacist -> nicole_interview
+      - Check the anonymous account @pit_wey -> pit_investigation
+      - Talk to Romain the bookseller -> romain_interview
+        when:
+          state: trust_romain
+          gte: 40
+      - Talk to Brigadier Kayser -> brigadier_interview
+        when:
+          state: trust_brigadier
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Gallery Access Records ---
+
+  gallery_access:
+    type: message
+    text: >
+      Thierry's gallery in Luxembourg-Ville has a digital security
+      system. Records show he made 38 trips to Mullerthal-les-Bains
+      last month. Sophie's studio visitor log — which she kept for
+      insurance — shows 12 official visits from Thierry during that
+      same period.
+
+      That leaves 26 unaccounted trips to the village. Cross-referencing
+      with local fuel station CCTV timestamps: on 19 of those trips,
+      his car passed through the village between 21h and midnight.
+
+      His gallery closes at 18h. He lives in the city.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Josy on Thierry ---
+
+  josy_thierry:
+    type: message
+    text: >
+      JOSY: Thierry? He made Sophie uncomfortable. He'd show up
+      unannounced at the studio. He'd insist on walking her to
+      the bistro. He'd comment on every single one of her posts
+      within minutes. He tracked her sales obsessively.
+
+      She told him the relationship was professional only. Clearly,
+      kindly. He said he understood. Then nothing changed. He just...
+      kept being there. Always there.
+
+      A month ago she found that someone had been in her studio
+      overnight. Clay moved, sketches rearranged, her kiln schedule
+      notebook opened to a different page. She suspected Thierry but
+      couldn't prove it.
+    effects:
+      trust_josy: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sam detail ---
+
+  sam_detail:
+    type: message
+    text: >
+      SAM: ok frr en vrai ech hunn net alles gesot. wéi ech den
+      thierry beim sophie säi auto gesinn hunn hat en eppes an der
+      hand. genre e klenge boîtier. hien huet en ënnert den auto
+      gemaach, côté chauffeur. genre drunner gekollekt.
+
+      mech ech sinn keen expert mee dat huet trop wéi en gps
+      traceur ausgesinn sah. de genre vu saach déi een an de
+      filmer gesäit.
+
+      ech hätt missen eppes soen mee genre wien hätt mir gegleeft
+      ptdr. en ado deen e galeriste beschëllegt. merde non.
+    effects:
+      trust_sam: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Nicole ---
+
+  nicole_interview:
+    type: message
+    text: >
+      NICOLE: This is confidential but I'm a pharmacist, not a
+      priest. Thierry Lentz comes in regularly. He's been buying
+      things that... suggest he's not sleeping. Anxiety medication,
+      sleep aids, energy supplements. The pattern of someone under
+      extreme stress.
+
+      He also asked me once, very casually, if we sold GPS trackers.
+      I said "this is a pharmacy, Thierry, not Saturn." He laughed
+      it off. I didn't think about it again until Sophie disappeared.
+    effects:
+      trust_nicole: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Pit (anonymous account) ---
+
+  pit_investigation:
+    type: tweet
+    from: pit
+    text: >
+      Si hätt misse lauschteren. Ech hu probéiert si ze schützen.
+      Keen aneren huet hiert Wierk verstanen wéi ech.
+    choices:
+      - Look at this account's history -> pit_posts
+
+  pit_posts:
+    type: message
+    text: >
+      @pit_wey: account created 10 months ago. Posts are all about
+      Sophie's work. Comments on every kiln photo, every glaze
+      experiment, every exhibition update. The tone shifts over time:
+
+      Month 1: "Incredible craftsmanship. You're doing what nobody
+      else dares."
+      Month 3: "Why won't you respond to my messages? I just want to
+      curate a retrospective."
+      Month 6: "I see you at the bistro with other people. You have
+      time for them but not for your gallerist?"
+      Month 8: "I know your schedule. I know when the kiln cools.
+      I'm always close."
+
+      The account has no photos, no personal details. Just Sophie.
+      Only Sophie.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> pit_style
+
+  pit_style:
+    type: message
+    text: >
+      Comparing @pit_wey with @thierry_lentz:
+
+      Same use of ceramic art terminology. Same French-Luxembourgish
+      code-switching patterns — the specific way he mixes the two
+      languages in art descriptions. Same knowledge of Sophie's firing
+      schedules that only her gallerist would have.
+
+      And one post from @pit_wey: "Your reduction firing at Cone 10
+      was sublime." Cone 10 is a technical detail from Sophie's
+      private kiln log. Not public information.
+
+      It's Thierry. The anonymous account is Thierry.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Romain ---
+
+  romain_interview:
+    type: message
+    text: >
+      ROMAIN: Sophie left something with me. A sealed waterproof
+      case. She said "if someone asks about what's happening to
+      the gorge, give them this."
+
+      She looked frightened. She said she'd made copies of
+      everything but needed one set off-site, somewhere nobody
+      would think to look. A bookshop in the gorge seemed perfect.
+    effects: { trust_romain: "+10" }
+    choices:
+      - What's happening to the gorge? -> romain_case
+
+  romain_case:
+    type: message
+    text: >
+      Romain reaches under the counter and produces a waterproof
+      Pelican case.
+
+      ROMAIN: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show crack progression on cliff faces, vibration
+      sensor readings, and geological analysis. The USB drive
+      contains blast calculations, comparison data proving the
+      permits were falsified, and Sophie's detailed report with
+      mapped coordinates of every damaged formation.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Brigadier Kayser ---
+
+  brigadier_interview:
+    type: message
+    text: >
+      BRIGADIER KAYSER: Off the record — and I mean completely off
+      the record — I wanted to investigate Steinbroch Éislek. My
+      superior told me to stand down. He said the Ministry had
+      "jurisdiction." That's code for "don't touch it."
+
+      The Lentz situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act
+      on that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_brigadier: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Sophie than anyone in Mullerthal-les-Bains. Who is responsible?
+    choices:
+      - Confront Thierry Lentz (the obsessive gallerist) -> confront_thierry
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Jeff Meyers (the quarry director) -> confront_jeff
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Confront Mayor Schmit (political protection) -> confront_fernand
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Thierry (Best Ending) ---
+
+  confront_thierry:
+    type: message
+    text: >
+      You present your evidence to Thierry:
+
+      "I know @pit_wey is your account. I know you put a GPS
+      tracker on Sophie's car. I know you accessed her studio at
+      night. I know you were watching her atelier. I have witnesses
+      and I have the records."
+    choices:
+      - Send -> thierry_response
+
+  thierry_response:
+    type: message
+    text: >
+      Thierry doesn't reply for a long time. Then:
+
+      THIERRY: You don't understand. I was protecting her. She was
+      in danger from the quarry and she wouldn't let me help. I
+      needed to know she was safe. Her work is extraordinary — I
+      couldn't let anything happen to her. Everything I did was
+      because I care about her art. About her.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Brigadier Kayser. And to
+      Claude Reuter.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Brigadier Kayser reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access records, the
+      witness testimonies — Thierry is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Sophie's
+      Citroën at the old limestone caves near Hohllay.
+
+      Claude Reuter, finally in possession of Sophie's full evidence
+      package, publishes the Steinbroch story in the Tageblatt. The
+      Ministry orders an unannounced inspection. The quarry is shut
+      down pending geological assessment. Jeff Meyers faces criminal
+      charges for falsifying blast permits and endangering public
+      safety.
+
+      And Sophie Muller, reading the story from a friend's house in
+      Echternach, calls her brother for the first time in nine days.
+
+      "Ech kommen heem."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: sophie
+    text: >
+      d'äerd leit net. an d'leit vu mullerthal-les-bains och net.
+      merci datt dir net opgehalen hutt.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Jeff (Partial Ending) ---
+
+  confront_jeff:
+    type: message
+    text: >
+      You present the quarry evidence to Jeff Meyers:
+
+      "I have vibration data showing you exceed permitted blast limits
+      by 300%. I have before-and-after photos of cliff destabilisation.
+      I have your technician's original blast calculations showing the
+      permits were falsified. I have documented rockfalls on a public
+      trail."
+    choices:
+      - Send -> jeff_response
+
+  jeff_response:
+    type: message
+    text: >
+      JEFF: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Steinbroch Éislek has always operated
+      within regulatory requirements.
+
+      But it's too late. You've sent the evidence to Claude, to the
+      Frënn vum Mullerthal Trail, and to the Ministry.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE QUARRY
+
+      The blasting story breaks. Steinbroch Éislek is ordered to halt
+      operations pending geological review. The quarry may close
+      permanently. One hundred and fifty jobs hang in the balance. The
+      village is divided.
+
+      But Sophie?
+
+      Without the stalking evidence, Thierry is never investigated.
+      He continues to run his gallery. He continues to monitor her
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Sophie reads about Steinbroch online. She
+      returns quietly. She moves her studio. She stops working alone
+      at night. She checks her car every morning.
+
+      The quarry is exposed. But the person who terrorised Sophie
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: sophie
+    text: "ech sinn zréck. de fiels ass sécher. de rescht... mir gesinn."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_fernand:
+    type: message
+    text: >
+      You confront Mayor Schmit with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> fernand_response
+
+  fernand_response:
+    type: tweet
+    from: avocat
+    text: >
+      Mon client prend note de vos allégations. Toute diffusion
+      publique de propos diffamatoires fera l'objet de poursuites
+      immédiates. — Cabinet Schaus & Associés, Luxembourg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Schmit and Steinbroch Éislek's illegal blasting —
+      and there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      Steinbroch continues to blast. Thierry continues to watch.
+      Sophie stays in hiding.
+
+      Six months later, @pit_wey creates a new account. It follows
+      Sophie's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: MULLERTHAL-LES-BAINS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Quarry evidence: ${quarry_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Sophie's story explores themes of
+      corporate destruction of natural heritage, obsessive behaviour
+      disguised as professional devotion, community solidarity, and
+      the courage to document what others want hidden.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Helpline Violence Domestique Luxembourg: 2060 1060
+      BEE SECURE Helpline (cyberharcèlement): 8002 1234
+      Signalement environnemental: Administration de l'environnement 40 56 56-1

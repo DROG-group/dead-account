@@ -1,0 +1,1543 @@
+# DEAD ACCOUNT — Story 068: Modřanské Sady (Czech Republic)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-068.yml
+#
+# Player investigates the disappearance of beekeeper Petra Nováková
+# in the fictional South Bohemian village of Modřanské Sady.
+
+meta:
+  title: "Dead Account — Modřanské Sady"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lenka: 0
+    trust_tomas: 0
+    trust_mirka: 0
+    trust_karel: 0
+    trust_zuzana: 0
+    trust_jakub: 0
+    trust_marek: 0
+    trust_bozena: 0
+    trust_frantisek: 0
+    trust_radek: 0
+    trust_tereza: 0
+    trust_honza: 0
+    trust_dagmar: 0
+    trust_lukas: 0
+    trust_pavla: 0
+    trust_milan: 0
+    trust_eva: 0
+    trust_ondrej: 0
+    trust_simona: 0
+    trust_vladislav: 0
+    trust_nadporucik: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nový Soused
+    bio: "právě se přistěhoval do modřanských sadů. objevuju jižní čechy"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "ModranskeSady.social"
+    description: "Vítejte na komunitní instanci Modřanských Sadů"
+    avatar_url: /gamepatch/assets/dead-account/modranskesady_bot.png
+
+  npcs:
+    # === Petra's Inner Circle ===
+    petra:
+      name: "Petra Nováková"
+      bio: "včelařka | krajina jižních čech | med a pravda mají jedno společné — nedají se zfalšovat"
+      avatar: avatars/petra.jpg
+    lenka:
+      name: "Lenka Nováková"
+      bio: "petřina sestra | učitelka v českém krumlově | ta by nikdy jen tak nezmizela"
+      avatar: avatars/lenka.jpg
+    tomas:
+      name: "Tomáš Dvořák"
+      bio: "petřin partner | truhlář | dílna u rybníka | dva roky spolu a teď tohle"
+      avatar: avatars/tomas.jpg
+    mirka:
+      name: "Mirka Procházková"
+      bio: "kamarádka petry | bylinky a přírodní kosmetika | modřanské sady"
+      avatar: avatars/mirka.jpg
+
+    # === Local Government ===
+    frantisek:
+      name: "František Pokorný"
+      bio: "Starosta Modřanských Sadů | ve funkci od roku 2018 | #SadyProVšechny"
+      avatar: avatars/frantisek.jpg
+    dagmar:
+      name: "Dagmar Šimková"
+      bio: "Místostarostka | životní prostředí a zemědělství | Obec Modřanské Sady"
+      avatar: avatars/dagmar.jpg
+    obecniurad:
+      name: "Obecní úřad Modřanské Sady"
+      bio: "Oficiální účet | Informace pro občany | Po-Pá 8:00-16:00"
+      avatar: avatars/obecniurad.jpg
+
+    # === Local Business & Community ===
+    bozena:
+      name: "Božena Králová"
+      bio: "Hospoda U Lípy | domácí kuchyně | pivo | tradice od roku 1952"
+      avatar: avatars/bozena.jpg
+    hospoda:
+      name: "Hospoda U Lípy"
+      bio: "Domácí česká kuchyně | Točené Budvar | Živá muzika v pátek | Srdce Modřanských Sadů"
+      avatar: avatars/hospoda.jpg
+    karel:
+      name: "Karel Novotný"
+      bio: "sedlák | třetí generace na tomhle poli | tahle půda je můj život"
+      avatar: avatars/karel.jpg
+    radek:
+      name: "Radek Jelínek"
+      bio: "lesák | správa lesů modřanské sady | v lese vím o každým stromu"
+      avatar: avatars/radek.jpg
+    pavla:
+      name: "Pavla Horáková"
+      bio: "lékárnice | Modřanské Sady | zdraví a péče | i v neděli dopoledne"
+      avatar: avatars/pavla.jpg
+    eva:
+      name: "Eva Benešová"
+      bio: "pekařství Benešová | koláče | chleba kváskový | od čtyř ráno každej den"
+      avatar: avatars/eva.jpg
+    milan:
+      name: "Milan Kučera"
+      bio: "rybář a rybníkář | sady a okolí | kapři tě neobelžou"
+      avatar: avatars/milan.jpg
+    ondrej:
+      name: "Ondřej Fiala"
+      bio: "knihkupec | Knihy U Studny | nové i staré | čtení ve středu odpoledne"
+      avatar: avatars/ondrej.jpg
+
+    # === Journalist ===
+    tereza:
+      name: "Tereza Marková"
+      bio: "novinářka | ekologie a venkov | tipy: tereza@markova-press.cz"
+      avatar: avatars/tereza.jpg
+
+    # === AgroChem Šumava (corporate) ===
+    agrochemsumava:
+      name: "AgroChem Šumava s.r.o."
+      bio: "Agrochemické řešení pro moderní zemědělství | Závod Modřanské Sady | ISO 14001"
+      avatar: avatars/agrochemsumava.jpg
+    vladislav:
+      name: "Vladislav Horák"
+      bio: "ředitel závodu AgroChem Šumava | průmysl & region"
+      avatar: avatars/vladislav.jpg
+    simona:
+      name: "Simona Říhová"
+      bio: "Advokátka | Kancelář Říhová & partneři | Obchodní právo | České Budějovice"
+      avatar: avatars/simona.jpg
+
+    # === Teens ===
+    zuzana:
+      name: "Zuzana"
+      bio: "16 | fotky přírody | modřanský sady born | včely jsou cute vole"
+      avatar: avatars/zuzana.jpg
+    jakub:
+      name: "Jakub"
+      bio: "17 | kytara & skate | západ slunce u rybníka | příroda léčí"
+      avatar: avatars/jakub.jpg
+    marek:
+      name: "Marek"
+      bio: "15 | graffiti & drony | krajina z ptačí perspektivy | petra je legenda"
+      avatar: avatars/marek.jpg
+
+    # === Media & Community ===
+    zpravysady:
+      name: "Zprávy Modřanské Sady"
+      bio: "Zprávy z obce a okolí | Tipy: redakce@zpravy-sady.cz"
+      avatar: avatars/zpravysady.jpg
+    meteojc:
+      name: "Počasí Jižní Čechy"
+      bio: "Předpovědi a výstrahy | Automatická stanice | Aktualizace každou hodinu"
+      avatar: avatars/meteojc.jpg
+    spolekvcely:
+      name: "Spolek Za živou krajinu"
+      bio: "Ochrana včel a krajiny | Dobrovolníci | Hlášení úhynů"
+      avatar: avatars/spolekvcely.jpg
+
+    # === Suspicious / Other ===
+    honza:
+      name: "Honza Malý"
+      bio: "technik | AgroChem Šumava | dělám svou práci a hotovo"
+      avatar: avatars/honza.jpg
+    lukas:
+      name: "Lukáš Černý"
+      bio: "."
+      avatar: avatars/anon.jpg
+    nadporucik:
+      name: "Nadporučík Beneš"
+      bio: "Policie ČR | Obvodní oddělení Modřanské Sady | tísňové volání: 158"
+      avatar: avatars/nadporucik.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN MODŘANSKÉ SADY
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to ModranskeSady.social — the community Mastodon instance for
+      the South Bohemian village of Modřanské Sady.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @petra_novakova.
+
+      A beekeeper. Nature photographer. She documented the meadows, the
+      hives, the health of the local ecosystem. People are worried.
+      She hasn't posted in six days.
+    choices:
+      - Look at her profile -> petra_profile
+
+  petra_profile:
+    type: tweet
+    from: petra
+    text: "Včely u sadového rybníka umírají. Někdo postřikuje pole za noci. Mám důkazy a nedám pokoj."
+    choices:
+      - That's her last real post... -> dead_bees
+
+  dead_bees:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of an empty beehive. Shot at night, overexposed,
+      no caption. Posted at 2am.
+
+      Her friends say that's not how Petra posts. She always wrote long
+      captions about the bees and the land. The police say she probably
+      "went to Prague for a few days." Nobody in Modřanské Sady
+      believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: nadporucik
+    text: >
+      Obdrželi jsme oznámení o pohřešované obyvatelce Modřanských Sadů.
+      V tuto chvíli nemáme důvod k podezření na trestný čin. Případné
+      informace předávejte na linku 158 nebo na obvodní oddělení.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her partner @tomas_dvorak hasn't slept.
+      Her sister @lenka_novakova is driving down from Český Krumlov.
+      Her friend @mirka_prochazkova keeps posting photos of Petra's
+      empty hives. The farmer @karel_novotny says Petra was right
+      about the spraying.
+
+      And the journalist @tereza_markova is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Petra just "went to
+      Prague."
+    effects: { trust_tomas: "+5", trust_lenka: "+5" }
+    choices:
+      - Start following Petra's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Modřanské Sady. Follow Petra's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Božena (pub owner, knows everyone) -> bozena_intro
+      - Talk to Karel (farmer, knows about the spraying) -> karel_intro
+      - Talk to Zuzana (teen, seems shaken) -> zuzana_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Petra with the rhythms of a small
+      South Bohemian village: mushroom season updates, the bakery's
+      fresh koláče, weather warnings for frost.
+
+      Key names surface: Tomáš (partner, carpenter), Mirka (friend,
+      herbalist, seems terrified), Tereza (journalist, oddly quiet),
+      and the teens — Zuzana, Jakub, Marek — who loved Petra's
+      nature work.
+
+      Also prominent: AgroChem Šumava s.r.o., the agrochemical plant
+      at the edge of the village. Their posts are corporate PR.
+      Petra's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Božena -> bozena_intro
+      - Talk to Karel -> karel_intro
+      - Talk to Zuzana -> zuzana_intro
+
+  # --- Božena (social map) ---
+
+  bozena_intro:
+    type: tweet
+    from: bozena
+    text: >
+      Hospoda je otevřená ale nálada je pod psa. @petra_novakova, tvůj
+      stůl čeká. Vrať se nám.
+    effects: { trust_bozena: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Božena -> bozena_talk
+
+  bozena_talk:
+    type: message
+    text: >
+      BOŽENA: Jo, seš novej? Vítej. Hrozný načasování. Celá ves je
+      z toho vedle kvůli Petře.
+
+      Řeknu ti, kdo je kdo. Tomáš je petřin chlap — truhlář, bydlí
+      s ní v tom domku u rybníka. Hodnej kluk, teď je zničenej. Mirka
+      Procházková je její nejlepší kamarádka, dělá bylinky a masti.
+      Lenka je Petřina sestra, ta jede z Krumlova.
+
+      A Tereza Marková — novinářka — s Petrou na něčem dělaly. Na
+      něčem o tý chemičce. Tereza neřekla ani slovo, co Petra zmizela.
+      To vůbec není normální.
+
+      Jo, a na příspěvky AgroChem Šumava se vyser. Lži zabalený
+      v certifikátech.
+    effects: { trust_bozena: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Radek Jelínek -> bozena_radek
+      - Ask about AgroChem -> bozena_agrochem
+      - Thank her and move on -> quest1_hub
+
+  bozena_radek:
+    type: message
+    text: >
+      BOŽENA: Radek? Lesák. Celej život v lese, zná tady každej strom.
+      Ale taky zná Petru. Moc dobře. Až moc dobře, jestli mi rozumíš.
+      Bývalej soused, předtim než se přestěhovala k Tomášovi. Vždycky
+      se na ni díval... jinak. Jako by mu patřila.
+
+      Petra mi jednou řekla — "Radek nechápe, že ne znamená ne." Myslela
+      jsem, že mluví o sousedskejch sporech. Teď si nejsem jistá.
+
+      A co je divný — od tý doby, co Petra zmizela, Radek chodí do
+      hospody každej večer a ptá se, jestli už se někdo něco dozvěděl.
+      Starostlivej nebo nervózní? Posuď sám.
+    effects: { trust_bozena: "+5" }
+    choices:
+      - Ask about AgroChem -> bozena_agrochem
+      - Move on -> quest1_hub
+
+  bozena_agrochem:
+    type: message
+    text: >
+      BOŽENA: Ta fabrika tu stojí od devadesátek. Dělaj pesticidy,
+      herbicidy, co já vím. Obec to tolerovala, protože dávali práci.
+      Ale sedláci si stěžujou léta — mrtvý včely u polí, ryby v rybníce
+      břichem nahoru, zvířata se chovaj divně.
+
+      Petra byla první, kdo šel a natočil to. Šla s kamerou a odebírala
+      vzorky z polí, z vody, od úlů. Říkala, že má důkazy. Pořádný
+      důkazy. A za dva tejdny zmizela.
+    effects: { trust_bozena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Karel (farmer, the spraying witness tease) ---
+
+  karel_intro:
+    type: tweet
+    from: karel
+    text: >
+      třicet let na tomhle poli. pole jsou otrávený. @petra_novakova
+      měla pravdu. a teď je pryč. spojte si to.
+    effects: { trust_karel: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Karel -> karel_talk
+
+  karel_talk:
+    type: message
+    text: >
+      KAREL: Třicet let dělám na téhle půdě. Znám každou brázdu,
+      každej záhon. A řeknu ti — ta půda umírá. Poslední rok nacházím
+      mrtvý hmyz po celým poli. Včely, čmeláci, všechno. A vždycky
+      po nocích, kdy je slyšet ty postřikovače.
+
+      Petra odebírala vzorky z mejch polí. Ponořila ruce do hlíny a
+      říkala "tady jsou rezidua, která tam nemaj co dělat." Stavěla
+      případ. A pak — frnk — pryč.
+
+      Náhoda? Na náhody já nevěřím.
+    effects: { trust_karel: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> karel_night
+      - Move on -> quest1_hub
+
+  karel_night:
+    type: message
+    text: >
+      KAREL: Noc předtím, než zmizela — nemoh jsem spát, tak jsem šel
+      podívat na pole. Kolem jedný v noci. U cesty k Petřiným úlům stál
+      auto. Tmavý kombi s logem AgroChem Šumava. A někdo tam chodil
+      s baterkou po louce.
+
+      V jednu v noci. U včelích úlů.
+
+      Tehdy jsem si nemyslel, že je to důležitý. Teď na to myslím
+      pořád.
+    effects: { trust_karel: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Zuzana (teen, witness tease) ---
+
+  zuzana_intro:
+    type: tweet
+    from: zuzana
+    text: >
+      do prdele lidi @petra_novakova mě naučila fotit přírodu a teď
+      jen tak zmizí?? kurva to snad není možný. prosím jestli někdo
+      něco ví tak řekněte
+    effects: { trust_zuzana: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Zuzana -> zuzana_talk_early
+
+  zuzana_talk_early:
+    type: message
+    text: >
+      ZUZANA: co seš novej tady? no teda to máš načasování vole. hele
+      petra je fakt nejlepší člověk v celý vesnici. brala nás na výlety,
+      ukazovala nám včely zblízka, učila nás jak fotit motýly a tak.
+      mega.
+
+      a teď jsem vyděšená protože jakub viděl něco divnýho u rybníka
+      ale nechce o tom mluvit. říká že to nic nebylo ale vole... to
+      nebylo nic sah
+    effects: { trust_zuzana: "+10" }
+    choices:
+      - What did Jakub see? -> zuzana_jakub_hint
+      - Move on -> quest1_hub
+
+  zuzana_jakub_hint:
+    type: message
+    text: >
+      ZUZANA: přesně nevím. byl večer u rybníka hrát na kytaru a viděl
+      někoho jak se motá kolem petřina domku?? nebo jako u jejího auta.
+      fakt nevím. ale on se z toho posral a nechce o tom mluvit. musíš
+      ho zkusit oslovit sám ale je paranoidní na lidi co nezná. zkus
+      nejdřív pokecovat o hudbě nebo o rybníku lol
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Modřanské Sady. A South Bohemian
+      village built around meadows and fish ponds. A beekeeper who was
+      exposing illegal pesticide spraying. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Tomáš (Petra's partner) -> tomas_q1
+      - Talk to Mirka (Petra's best friend) -> mirka_q1
+      - Check what Lenka (Petra's sister) is saying -> lenka_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Tomáš Q1 ---
+
+  tomas_q1:
+    type: tweet
+    from: tomas
+    text: >
+      jestli někdo viděl @petra_novakova prosím zavolejte. její
+      včelařský věci jsou doma. její boty jsou u dveří. nikam by
+      neodešla bez svejch včel.
+    effects: { trust_tomas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Tomáš -> tomas_q1_talk
+
+  tomas_q1_talk:
+    type: message
+    text: >
+      TOMÁŠ: Kdo jsi? Další, kdo mi řekne, ať se uklidním? Petra mi
+      volala tu noc, než zmizela. Říkala, že má něco velkýho. Říkala,
+      že "kdyby se něco stalo, koukej na AgroChem." Pak zavěsila.
+
+      To je poslední, co jsem od ní slyšel.
+    effects: { trust_tomas: "+10" }
+    choices:
+      - What do you think happened? -> tomas_theory
+      - Move on -> quest1_hub
+
+  tomas_theory:
+    type: message
+    text: >
+      TOMÁŠ: Myslím, že našla důkaz, že AgroChem postřikuje ilegálně
+      a oni ji umlčeli. Ale taky si myslím, že ten divnej soused —
+      Radek — ví víc, než říká. Jak o ní mluvil... to nebylo normální.
+      Jako by mu patřila.
+
+      Petra mi před měsícema řekla, že jí někdo prohledává včelín.
+      Že věci nejsou na svým místě. Myslela si, že je to zvíře. Já
+      si to nemyslím.
+    effects: { trust_tomas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mirka Q1 ---
+
+  mirka_q1:
+    type: tweet
+    from: mirka
+    text: >
+      Petřiny úly jsou tichý. To nikdy předtím nebyly. @petra_novakova
+      prosím ozvi se. komukoliv.
+    effects: { trust_mirka: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mirka -> mirka_q1_talk
+
+  mirka_q1_talk:
+    type: message
+    text: >
+      MIRKA: Děkuju, že se zajímáš, ale neznám tě. Petra má spoustu
+      přátel. Určitě se vrátí.
+
+      ...Tohle si pořád říkám. Už tomu nevěřím.
+
+      [Mirka is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_mirka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lenka Q1 ---
+
+  lenka_q1:
+    type: tweet
+    from: lenka
+    text: >
+      moje sestra ZMIZELA a policie mi říká že si možná odjela na
+      výlet??? ONA NIKAM NEJEZDÍ BEZ SLOVA. jedu z krumlova. někdo
+      mi to vysvětlí.
+    effects: { trust_lenka: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lenka -> lenka_q1_talk
+
+  lenka_q1_talk:
+    type: message
+    text: >
+      LENKA: Kdo jsi? Další z tý vesnice, kdo mi řekne, ať si dám
+      kafíčko a počkám? Petra mi psala esemesku ten večer. Napsala
+      "kdybys o mně neslyšela, podívej se na AgroChem a na toho,
+      kdo mě sleduje." To je všechno. Pak ticho.
+
+      Co to je za píčovinu? Kdo ji sleduje?
+    effects: { trust_lenka: "+10" }
+    choices:
+      - Who do you think is following her? -> lenka_theory
+      - Move on -> quest1_hub
+
+  lenka_theory:
+    type: message
+    text: >
+      LENKA: Petra mi říkala, že Radek Jelínek — ten lesák, její
+      bývalej soused — se chová divně. Že ho potkává na místech,
+      kde nemá co dělat. U jejích úlů, u rybníka, u jejich domu
+      v noci. Říkala, že to bude náhoda. Ale dvacet náhod za měsíc
+      už náhoda není.
+
+      A k tomu ta fabrika. Dva problémy najednou. Proto zmizela.
+    effects: { trust_lenka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Petra went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Jakub (was at the pond at sunset) -> jakub_interview
+      - Find Milan (fish farmer, works late at the pond) -> milan_interview
+      - Find Eva (baker, starts at 4am, saw something) -> eva_interview
+      - Find Radek (forester, claims he was on night patrol) -> radek_interview
+
+  # --- Jakub (saw someone at Petra's car) ---
+
+  jakub_interview:
+    type: tweet
+    from: jakub
+    text: >
+      hrál jsem večer u rybníka ale atmosféra v tý vesnici je fakt
+      divná. jako něco nesedí. neumím to popsat vole
+    effects: { trust_jakub: "+5" }
+    choices:
+      - Ask Jakub about that evening -> jakub_talk
+
+  jakub_talk:
+    type: message
+    text: >
+      JAKUB: vole ok ale nikomu to neříkej jo. byl jsem u rybníka
+      kolem sedmý, hrál jsem na kytaru. a viděl jsem radka —
+      toho lesáka — u petřina auta. vypadalo to jako by tam něco
+      strkal. nebo hledal. a když mě uviděl tak se sbalil a zdrhl
+      fakt rychle.
+
+      já jsem nic neřek protože jsem nechtěl průser ale teď je to
+      fakt hustý. to není normální chování kurva
+    effects:
+      trust_jakub: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Milan (fish farmer, saw late-night meeting) ---
+
+  milan_interview:
+    type: tweet
+    from: milan
+    text: >
+      Připomínám: rybník je po 22:00 uzavřený pro veřejnost.
+      Zaznamenal jsem neobvyklý pohyb v posledních nocích.
+    effects: { trust_milan: "+5" }
+    choices:
+      - Ask Milan what he saw -> milan_talk
+
+  milan_talk:
+    type: message
+    text: >
+      MILAN: Zavíral jsem u rybníka kolem desátý večer. A viděl jsem
+      u cesty k Petřiným úlům dvě auta. Jedno bylo Petřina stará
+      Fabia. To druhý bylo tmavý kombi s logem AgroChem Šumava. Dva
+      chlapi stáli u úlů s baterkou.
+
+      Jednoho jsem poznal — Vladislav Horák, ředitel závodu.
+
+      Ve deset večer. U včelích úlů. To je všechno, co potřebuješ
+      vědět.
+
+      Zapsal jsem si to. Nikdo se na to neptal.
+    effects:
+      trust_milan: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Eva (baker, saw car chase) ---
+
+  eva_interview:
+    type: tweet
+    from: eva
+    text: >
+      Pekla jsem od čtyř jako vždycky. Ale tenhle den — po tý silnici
+      někdo jel jako blázen. V půl pátý ráno.
+    effects: { trust_eva: "+5" }
+    choices:
+      - Ask Eva what she saw -> eva_talk
+
+  eva_talk:
+    type: message
+    text: >
+      EVA: Ve čtyři ráno otevírám pekárnu. To ráno jsem zrovna
+      vytahovala koláče a slyšela auto — rychle, moc rychle na tu
+      silnici k lesu. Tmavý kombi. A asi dvě minuty potom druhý auto.
+      Menší, starší. Jako by ho honil.
+
+      To menší auto zabočilo k chatám u Černého rybníka. To první
+      jelo dál směr České Budějovice.
+
+      Řekla jsem to policajtům. Zapsali si to. Tím to skončilo.
+    effects:
+      trust_eva: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Radek (forester, claims night patrol) ---
+
+  radek_interview:
+    type: tweet
+    from: radek
+    text: >
+      noční kontrola lesa proběhla v pořádku. žádný pytláci.
+      normální noc. nic zvláštního.
+    effects: { trust_radek: "+5" }
+    choices:
+      - Ask Radek about that night -> radek_talk
+
+  radek_talk:
+    type: message
+    text: >
+      RADEK: Noční obchůzka, jako vždycky. Les je můj rajón. Byl
+      jsem na trase od devíti do půlnoci. Nic neobvyklýho.
+
+      Petra? Ne, tu jsem neviděl. Vím, že zmizela. Je to... je to
+      hrozný. Znám ji od doby, co se sem přistěhovala. Sousedili
+      jsme. Dobrá ženská. Moc dobrá ženská.
+
+      [Radek's hands are shaking. He seems nervous. His account
+      of the night is suspiciously vague.]
+    effects:
+      trust_radek: "+5"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Tomáš (partner)
+      and Marek (saw Radek watching the house).
+    choices:
+      - Talk to Tomáš about that night -> tomas_interview
+      - Talk to Marek -> marek_interview
+      - Find Jakub -> jakub_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Milan -> milan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Eva -> eva_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Radek -> radek_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Tomáš (last to see Petra) ---
+
+  tomas_interview:
+    type: tweet
+    from: tomas
+    text: >
+      ta fotka na petřiným účtu. to není ona. petra nikdy nepíše
+      bez popisku. petra nepostuje ve dvě ráno. to udělal někdo jinej.
+    effects: { trust_tomas: "+5" }
+    choices:
+      - DM Tomáš -> tomas_talk_low
+        when:
+          state: trust_tomas
+          lt: 50
+      - DM Tomáš -> tomas_talk_high
+        when:
+          state: trust_tomas
+          gte: 50
+
+  tomas_talk_low:
+    type: message
+    text: >
+      TOMÁŠ: Díky za zájem, ale fakt nechci mluvit s cizíma lidma
+      o tomhle.
+
+      [Tomáš needs to trust you more. Show him you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_tomas: "+5" }
+    choices:
+      - Share what you've learned about the night -> tomas_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  tomas_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the hives, the
+      company men, the car chase at dawn. Tomáš is silent for a while.
+
+      TOMÁŠ: Ty to fakt řešíš. Ok. Povím ti to.
+    effects: { trust_tomas: "+25" }
+    choices:
+      - What happened that night? -> tomas_talk_high
+
+  tomas_talk_high:
+    type: message
+    text: >
+      TOMÁŠ: Přišla domů kolem jedenáctý. Byl jsem v dílně, dodělával
+      jsem zakázku. Byla bledá, třásla se. Řekla "oni vědí, co mám."
+      Popadla notebook a záložní disky.
+
+      Ptal jsem se kdo. Řekla "fabrika. Poslali lidi k úlům." Pak
+      řekla ještě něco — "a on tam byl taky. On tam je vždycky."
+
+      Neřekla kdo je "on." Objala mě, řekla "neboj se," a odešla
+      s taškou. Ráno bylo její auto pryč a na účtu ta fotka
+      prázdnýho úlu.
+    effects:
+      trust_tomas: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marek (saw Radek watching the house) ---
+
+  marek_interview:
+    type: message
+    text: >
+      MAREK: vole ok hele je to divný co řeknu ale ten lesák —
+      radek — já ho viděl tak třikrát v noci u petřina baráku.
+      prostě tam stál a koukal na okna. mega creepy kurva.
+
+      naposledy to bylo tak dva dny předtím než zmizela. seděl
+      v autě naproti. světla zhasnutý. prostě tam čuměl. do
+      prdele to je fakt šílený ne?
+    effects:
+      trust_marek: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Radek seen at Petra's car near the pond (Jakub)
+      22:00 — AgroChem car at the hives, Vladislav Horák present (Milan)
+      23:00 — Petra arrives home, shaken, grabs laptop and drives (Tomáš)
+      04:00 — Radek claims routine patrol, suspicious behaviour (Radek)
+      04:30 — Two cars speeding toward the forest, one to Černý rybník (Eva)
+
+      AgroChem confronted Petra at her hives. She fled home, grabbed
+      her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AgroChem Šumava hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Radek really doing? Why was he at
+        her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Radek -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AgroChem Šumava is hiding something. Petra had proof. Now she's
+      gone and her samples are missing from the beehives.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the beekeeping records -> hive_records
+      - Talk to Tereza the journalist -> tereza_interview
+      - Talk to Honza (AgroChem technician) -> honza_interview
+      - Talk to Dagmar (environment deputy) -> dagmar_interview
+      - Check the Za živou krajinu association -> spolek_investigation
+      - Talk to Karel about the spraying -> karel_spraying
+      - Back to hub -> investigation_hub
+
+  # --- Hive Records ---
+
+  hive_records:
+    type: message
+    text: >
+      Petra's public beekeeping blog shows detailed records: hive
+      health monitoring at eight sites across the meadows. The data
+      for the fields adjacent to AgroChem is marked "CRITICAL — MASS
+      DIE-OFF" — the only site flagged red.
+
+      Her field notes, shared with the spolek for transparency, show
+      she made 15 visits to the AgroChem perimeter in the past month.
+      The last entry: "Night spraying confirmed. Unregistered
+      neonicotinoid detected. This is not what they report to ČIŽP."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Tereza ---
+
+  tereza_interview:
+    type: message
+    text: >
+      TEREZA: O zdrojích nemluvím. Tečka.
+    effects: { trust_tereza: "+5" }
+    choices:
+      - Show Tereza the evidence you have -> tereza_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  tereza_with_evidence:
+    type: message
+    text: >
+      TEREZA: ...máš toho víc, než jsem čekala.
+
+      Ok. Petra a já jsme na tom dělaly spolu. Měla fotky nočního
+      postřiku — drony AgroChemu stříkaj pole neonikotinoidy po tmě,
+      kdy to nikdo nevidí. Měla vzorky půdy s desateronásobkem
+      povolenejch reziduí. Měla záznamy, že AgroChem falšuje hlášení
+      pro inspekci.
+
+      Chystaly jsme to vydat společně. Pak Petra zmlkla. A o dva
+      dny později mi někdo vykradl auto a ukradl záložní disk.
+
+      Petra žije. Ozvala se mi jednou z cizího čísla. Řekla, že se
+      schovává. Řekla "vyhrožovali mi u úlů a ještě někdo mě
+      nenechá na pokoji."
+
+      Nemůžu ti říct, kde je. Ale s dost důkazama můžu publikovat
+      a bude bezpečný se vrátit.
+    effects:
+      trust_tereza: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> tereza_hint
+      - Back to investigation hub -> investigation_hub
+
+  tereza_hint:
+    type: message
+    text: >
+      TEREZA: Fabrika poslala ředitele — Horáka — a nějakýho právníka
+      k jejím úlům tu noc. Řekli jí, ať všechno vydá nebo bude čelit
+      právním následkům. Zastrašování v obleku.
+
+      Ale taky mluvila o někom z vesnice. Někdo, kdo jí chodí do
+      včelína. Někdo, kdo vždycky ví, kde je. To je jinej problém.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Honza (AgroChem whistleblower) ---
+
+  honza_interview:
+    type: message
+    text: >
+      HONZA: Dělám v AgroChemu. Jsem jenom technik. Dělám testy,
+      píšu protokoly.
+
+      Ale protokoly, co píšu... nejsou vždycky protokoly, co se
+      odesílaj na inspekci.
+    effects: { trust_honza: "+10" }
+    choices:
+      - What do you mean? -> honza_detail
+
+  honza_detail:
+    type: message
+    text: >
+      HONZA: Měřím rezidua pesticidů. Neonikotinoidy, glyfosát,
+      chlorpyrifos. Moje čísla jdou nadřízenýmu. Někde mezi mým
+      stolem a hlášením pro ČIŽP se změní. Nižší. Vždycky nižší.
+
+      Petřiny vzorky z polí odpovídaly MEJM původním číslům, ne
+      těm v oficiálních hlášeních. Měla nezávislej důkaz, že
+      AgroChem falšuje data o postřiku.
+
+      Bojím se. Mám rodinu. Ale schoval jsem si kopie originálních
+      protokolů. Pokud mě někdo ochrání, dám je k dispozici.
+    effects:
+      trust_honza: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Dagmar ---
+
+  dagmar_interview:
+    type: message
+    text: >
+      DAGMAR: Jako místostarostka pro životní prostředí beru tyhle
+      věci vážně. Ale AgroChem zaměstnává 150 lidí v obci. Starosta
+      trvá na tom, že musíme "udržovat dialog."
+
+      Mimo záznam? Viděla jsem inspekční zprávy ČIŽP. AgroChem
+      projde pokaždý. Jenže ty inspekce jsou ohlášený dva týdny
+      předem. Než přijdou inspektoři, je všechno čistý.
+
+      Petra měla neohlášený data. Proto je to nebezpečný.
+    effects:
+      trust_dagmar: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Spolek Za živou krajinu ---
+
+  spolek_investigation:
+    type: tweet
+    from: spolekvcely
+    text: >
+      UPOZORNĚNÍ: Hlášení masového úhynu včelstev v okolí Modřanských
+      Sadů. Vzorky odebrány. Žádáme neohlášenou inspekci závodu
+      AgroChem Šumava.
+    choices:
+      - Check their data -> spolek_data
+
+  spolek_data:
+    type: message
+    text: >
+      The Spolek Za živou krajinu has been documenting bee health for
+      four years. Their data shows a clear pattern: mass die-offs
+      that correlate with AgroChem's production schedule. Higher
+      mortality on weekdays, lower on weekends. Spikes after nights
+      when the drone sprayers are heard.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal spraying timed to avoid detection.
+
+      Petra was a core member. She contributed most of the field
+      samples and photographs.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Karel spraying ---
+
+  karel_spraying:
+    type: message
+    text: >
+      KAREL: Ukážu ti něco. Minulej měsíc jsem našel na svým poli
+      prázdnej kanystr. Etiketa napůl odleptaná, ale přečetl jsem
+      "neonikotinoid" a šarži AgroChem Šumava.
+
+      Vyfotil jsem to a poslal Petře. Říkala, že to je ten chybějící
+      kousek — důkaz, že postřikujou nezapsanejma přípravkama. Ne
+      jen legální postřik ve špatnou dobu, ale úplně zakázanou
+      chemii.
+
+      Fotky i číslo šarže pořád mám.
+    effects:
+      trust_karel: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Radek Jelínek. Forester. Former neighbour. Something more?
+      Someone was going through Petra's beehives. Someone was
+      watching her house. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Radek's patrol logs -> patrol_logs
+      - Talk to Mirka about Radek -> mirka_radek
+        when:
+          state: trust_mirka
+          gte: 20
+      - Talk to Jakub (more detail on the car incident) -> jakub_detail
+      - Talk to Pavla the pharmacist -> pavla_interview
+      - Check the anonymous account @lukas_cerny -> lukas_investigation
+      - Talk to Ondřej the bookseller -> ondrej_interview
+        when:
+          state: trust_ondrej
+          gte: 40
+      - Talk to Nadporučík Beneš -> nadporucik_interview
+        when:
+          state: trust_nadporucik
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Patrol Logs ---
+
+  patrol_logs:
+    type: message
+    text: >
+      The forest administration's patrol system is logged digitally.
+      Radek's GPS patrol tracker shows his routes for the past month.
+      Official patrol routes are in the forest — north of the village.
+
+      But 23 of his 30 patrols deviate. His GPS track passes Petra's
+      house. Every time. He walks past, pauses for 10-15 minutes
+      within 50 meters of her property, then continues into the
+      forest.
+
+      His official route doesn't go anywhere near her house.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mirka on Radek ---
+
+  mirka_radek:
+    type: message
+    text: >
+      MIRKA: Radek? Ten dělal Petře nepohodlí. Potkával ji "náhodou"
+      u úlů. Nabízel se, že jí pomůže s dřívím. Komentoval každej
+      její příspěvek do pár minut.
+
+      Řekla mu, že nemá zájem. Jasně, slušně. Říkal, že chápe.
+      A pak se nic nezměnilo. Prostě... byl tam pořád. Vždycky tam.
+
+      Před měsícem Petra zjistila, že jí někdo chodí do včelína
+      v noci. Rámky byly přeházený, víčka posunutý. Podezřívala
+      Radka, ale nemohla to dokázat.
+    effects:
+      trust_mirka: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Jakub detail ---
+
+  jakub_detail:
+    type: message
+    text: >
+      JAKUB: vole ok hele já jsem neřek všechno. když jsem viděl
+      radka u petřina auta tak měl něco v ruce. malej přístroj.
+      a dal to pod auto. jako připlácnul to zespodu.
+
+      mně to přišlo jak gps tracker kurva. jako v kriminálce.
+
+      měl jsem něco říct ale vole kdo by mi uvěřil. puberťák
+      obviňuje lesáka. do prdele s tím.
+    effects:
+      trust_jakub: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Pavla ---
+
+  pavla_interview:
+    type: message
+    text: >
+      PAVLA: Tohle je důvěrný, ale jsem lékárnice, ne farář. Radek
+      Jelínek chodí pravidelně. Kupuje věci, co naznačujou, že
+      nespí. Léky na úzkost, prášky na spaní, energetický doplňky.
+      Vzorec člověka pod extrémním stresem.
+
+      Taky se mě jednou jakoby mimochodem zeptal, jestli prodáváme
+      GPS trackery. Řekla jsem "tohle je lékárna, ne Alza." Zasmál
+      se. Nemyslela jsem na to, dokud Petra nezmizela.
+    effects:
+      trust_pavla: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lukáš (anonymous account) ---
+
+  lukas_investigation:
+    type: tweet
+    from: lukas
+    text: >
+      Měla poslouchat. Snažil jsem se ji chránit. Nikdo jinej její
+      práci nechápal jako já.
+    choices:
+      - Look at this account's history -> lukas_posts
+
+  lukas_posts:
+    type: message
+    text: >
+      @lukas_cerny: account created 9 months ago. Posts are all about
+      Petra's work. Comments on every hive photo, every meadow shot,
+      every nature post. The tone shifts over time:
+
+      Month 1: "Úžasná práce. Děláš to, co se nikdo jinej neodváží."
+      Month 3: "Proč mi neodpovídáš? Chci jenom spolupracovat."
+      Month 5: "Vidím tě v hospodě s jinýma lidma. Na ně čas máš?"
+      Month 7: "Vím, kam chodíš. Znám tvůj rozvrh. Jsem vždycky
+      blízko."
+      Month 9: "Měla jsi mě poslechnout. Teď je pozdě."
+
+      The account has no photos, no personal details. Just Petra.
+      Only Petra.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> lukas_style
+
+  lukas_style:
+    type: message
+    text: >
+      Comparing @lukas_cerny with @radek_jelinek:
+
+      Same use of forestry and ecology terminology. Same specific
+      Czech spelling quirks — the way he writes compound words with
+      hyphens where most people wouldn't. Same knowledge of Petra's
+      field sites that only someone with forest access would have.
+
+      And one post from @lukas_cerny: "Tvoje včely na stanovišti
+      3 jsou krásný." Stanoviště 3 is Petra's internal numbering.
+      Not public.
+
+      It's Radek. The anonymous account is Radek.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ondřej ---
+
+  ondrej_interview:
+    type: message
+    text: >
+      ONDŘEJ: Petra mi tu nechala něco. Zalepený vodotěsný pouzdro.
+      Řekla "až se někdo bude ptát na to, co se děje na polích,
+      dej mu tohle."
+
+      Vypadala vyděšeně. Říkala, že si udělala kopie všeho, ale
+      potřebuje jednu sadu někde, kde by to nikoho nenapadlo hledat.
+      Knihkupectví se zdálo ideální.
+    effects: { trust_ondrej: "+10" }
+    choices:
+      - What's happening on the fields? -> ondrej_case
+
+  ondrej_case:
+    type: message
+    text: >
+      Ondřej sahá pod pult a vytáhne vodotěsné pouzdro Pelican.
+
+      ONDŘEJ: Říkala, že přijdeš. Vezmi si to.
+
+      Inside: a USB drive and printed photographs. The photos show
+      drone sprayers operating at night over fields — AgroChem
+      equipment with visible company logos — and dead bees in rows
+      by the hives. The USB drive contains soil samples, chemical
+      analysis, and Petra's detailed report documenting months of
+      illegal neonicotinoid application.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Nadporučík Beneš ---
+
+  nadporucik_interview:
+    type: message
+    text: >
+      NADPORUČÍK BENEŠ: Mimo záznam — a myslím úplně mimo záznam —
+      chtěl jsem AgroChem prošetřit. Nadřízený mi řekl, ať to
+      nechám být. Prý to "řeší kraj." To je kód pro "nesahej na to."
+
+      Případ Jelínka je jiná věc. O tom jsem do teď nevěděl. Pokud
+      máte důkazy o stalkingu, s tím můžu pracovat. To je jasně
+      moje jurisdikce.
+
+      Přineste mi něco pevnýho a případ otevřu znovu.
+    effects:
+      trust_nadporucik: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Petra than anyone in Modřanské Sady. Who is responsible?
+    choices:
+      - Confront Radek Jelínek (the obsessive neighbour) -> confront_radek
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Vladislav Horák (the plant director) -> confront_vladislav
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Starosta Pokorný (political protection) -> confront_frantisek
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Radek (Best Ending) ---
+
+  confront_radek:
+    type: message
+    text: >
+      You present your evidence to Radek:
+
+      "I know @lukas_cerny is your account. I know you put a GPS
+      tracker on Petra's car. I know you deviated your patrol routes
+      to pass her house every night. I know you went through her
+      beehives. I have witnesses and I have the GPS logs."
+    choices:
+      - Send -> radek_response
+
+  radek_response:
+    type: message
+    text: >
+      Radek doesn't reply for a long time. Then:
+
+      RADEK: Ty nechápeš. Chránil jsem ji. Byla v nebezpečí kvůli
+      AgroChemu a nechtěla přijmout pomoc. Musel jsem vědět, že je
+      v bezpečí. Všechno, co jsem dělal, bylo protože mi na ní záleží.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Nadporučík Beneš. And to
+      Tereza Marková.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Nadporučík Beneš reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the patrol logs, the
+      witness testimonies — Radek is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Petra's
+      Fabia at the chaty near Černý rybník.
+
+      Tereza Marková, finally in possession of Petra's full evidence
+      package, publishes the AgroChem story in Respekt magazine. The
+      ČIŽP orders an unannounced inspection. The plant is shut down
+      pending environmental remediation. Vladislav Horák faces
+      criminal charges for falsifying pesticide reports and illegal
+      application of banned substances.
+
+      And Petra Nováková, reading the story from a friend's house
+      in Tábor, calls her sister for the first time in nine days.
+
+      "Jedu domů."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Bílý kruh bezpečí (oběti trestných činů): 116 006
+      Linka bezpečí (děti a mladiství): 116 111
+      Česká inspekce životního prostředí: 800 100 554
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: petra
+    text: >
+      včely nelžou. a lidi z modřanských sadů taky ne. díky, že jste
+      to nevzdali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Vladislav (Partial Ending) ---
+
+  confront_vladislav:
+    type: message
+    text: >
+      You present the pesticide evidence to Vladislav Horák:
+
+      "I have photographs of the illegal night spraying. I have soil
+      samples showing neonicotinoid levels ten times the legal limit.
+      I have your original lab reports showing the data was falsified.
+      I have the canister with your batch number."
+    choices:
+      - Send -> vladislav_response
+
+  vladislav_response:
+    type: message
+    text: >
+      VLADISLAV: Tato konverzace bude předána našemu právnímu
+      oddělení. Jakékoli zveřejnění pomlouvačných materiálů
+      povede k okamžitému právnímu řízení. AgroChem Šumava vždy
+      jednal v souladu s regulatorními požadavky.
+
+      But it's too late. You've sent the evidence to Tereza, to the
+      Spolek Za živou krajinu, and to the ČIŽP.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pesticide story breaks. AgroChem Šumava is ordered to halt
+      all spraying pending investigation. The factory may close. A
+      hundred and fifty jobs hang in the balance. The village is
+      divided.
+
+      But Petra?
+
+      Without the stalking evidence, Radek is never investigated. He
+      continues to work in the forest. He continues to monitor her
+      movements. He creates a new anonymous account.
+
+      Three months later, Petra reads about AgroChem online. She
+      returns quietly. She moves her hives to a different location.
+      She stops walking alone at dusk. She checks under her car
+      every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Petra walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: petra
+    text: "jsem zpátky. vzduch je čistší. zbytek... uvidíme."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_frantisek:
+    type: message
+    text: >
+      You confront Starosta Pokorný with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> frantisek_response
+
+  frantisek_response:
+    type: tweet
+    from: simona
+    text: >
+      Můj klient bere vaše tvrzení na vědomí. Jakékoli veřejné
+      šíření pomlouvačného obsahu bude mít okamžité právní následky.
+      — Kancelář Říhová & partneři, České Budějovice
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Pokorný and AgroChem's spraying — and there isn't
+      one beyond political protection — your evidence is insufficient.
+
+      AgroChem continues to operate. Radek continues to watch. Petra
+      stays in hiding.
+
+      Six months later, @lukas_cerny creates a new account. It
+      follows Petra's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: MODŘANSKÉ SADY — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Petra's story explores themes of
+      corporate impunity, environmental destruction, obsessive
+      behaviour, community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Bílý kruh bezpečí (oběti trestných činů): 116 006
+      Linka bezpečí (děti a mladiství): 116 111
+      Česká inspekce životního prostředí: 800 100 554

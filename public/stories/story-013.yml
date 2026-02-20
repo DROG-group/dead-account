@@ -1,0 +1,1635 @@
+# DEAD ACCOUNT — Story 013: Kamenica (Croatia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-013.yml
+#
+# Player investigates the disappearance of young freedive instructor
+# Nikola Jurić in the fictional Dalmatian coastal village of Kamenica.
+
+meta:
+  title: "Dead Account — Kamenica"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_ana: 0
+    trust_marko: 0
+    trust_ivana: 0
+    trust_luka: 0
+    trust_petra: 0
+    trust_josip: 0
+    trust_maja: 0
+    trust_ante: 0
+    trust_vesna: 0
+    trust_damir: 0
+    trust_nina: 0
+    trust_ivan: 0
+    trust_marina: 0
+    trust_zoran: 0
+    trust_katarina: 0
+    trust_branko: 0
+    trust_tena: 0
+    trust_karlo: 0
+    trust_narednik: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    trawling_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "tek stigao u kamenicu. otkrivam dalmaciju uvalu po uvalu"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Kamenica.social"
+    description: "Dobrodošli na zajedničku instancu Kamenice"
+    avatar_url: /gamepatch/assets/dead-account/kamenica_bot.png
+
+  npcs:
+    # === Nikola's Inner Circle ===
+    nikola:
+      name: "Nikola Jurić"
+      bio: "freediving | instruktor | kamenica | more ne laže | 🤿"
+      avatar: avatars/nikola.jpg
+    ana:
+      name: "Ana Jurić"
+      bio: "sestra od nikole | studira biologiju u splitu | pronaći ću ga"
+      avatar: avatars/ana.jpg
+    marko:
+      name: "Marko Perić"
+      bio: "najbolji frend nikole | riba i barke | kamenica born | tražim ga"
+      avatar: avatars/marko.jpg
+    ivana:
+      name: "Ivana Kovač"
+      bio: "ex od nikole | konobarica u konoba morski vuk | kamenica"
+      avatar: avatars/ivana.jpg
+
+    # === Local Government ===
+    zoran:
+      name: "Zoran Babić"
+      bio: "Načelnik Općine Kamenica | u službi zajednice od 2017. | #KamenicaNaprijed"
+      avatar: avatars/zoran.jpg
+    katarina:
+      name: "Katarina Vlašić"
+      bio: "Pročelnica za zaštitu okoliša | Općina Kamenica | održivi razvoj"
+      avatar: avatars/katarina.jpg
+    opcina:
+      name: "Općina Kamenica"
+      bio: "Službeni račun | Obavijesti | Radno vrijeme: Pon-Pet 8:00-15:00"
+      avatar: avatars/opcina.jpg
+
+    # === Local Business & Community ===
+    ante:
+      name: "Ante Tomić"
+      bio: "Konoba Morski Vuk | riba s roštilja | lokalno vino | riva od 1985."
+      avatar: avatars/ante.jpg
+    konoba:
+      name: "Konoba Morski Vuk"
+      bio: "Svježa riba | Domaće vino | Živa muzika petkom | Srce Kamenice"
+      avatar: avatars/konoba.jpg
+    vesna:
+      name: "Vesna Radić"
+      bio: "ljekarna Radić | Kamenica | zdravlje i savjeti | otvoreno i nedjeljom ujutro"
+      avatar: avatars/vesna.jpg
+    damir:
+      name: "Damir Matić"
+      bio: "ribar | 35 godina na moru | ova obala je moj život"
+      avatar: avatars/damir.jpg
+    nina:
+      name: "Nina Horvat"
+      bio: "učiteljica | OŠ Kamenica | ronilačka sekcija | djeca su budućnost"
+      avatar: avatars/nina.jpg
+    ivan:
+      name: "Ivan Šimić"
+      bio: "lučki kapetan | Kamenica | dežurstvo uto-sub"
+      avatar: avatars/ivan.jpg
+    marina:
+      name: "Marina Petrović"
+      bio: "pekara Petrović | kruh i burek | svaki dan od 5 ujutro"
+      avatar: avatars/marina.jpg
+
+    # === Journalist ===
+    maja:
+      name: "Maja Krstić"
+      bio: "novinarka freelance | okoliš i more | tips: maja@krstic-press.hr"
+      avatar: avatars/maja.jpg
+
+    # === JadranRib (corporate/political) ===
+    jadranrib:
+      name: "JadranRib d.o.o."
+      bio: "Ribarstvo i akvakultura | Sjedište: Kamenica | ISO 14001 certificirano"
+      avatar: avatars/jadranrib.jpg
+    branko:
+      name: "Branko Vuković"
+      bio: "direktor JadranRib d.o.o. | ribarstvo i razvoj | zaštita radnih mjesta"
+      avatar: avatars/branko.jpg
+    tena:
+      name: "Tena Grgić"
+      bio: "Odvjetnica | Ured Grgić i partneri | Gospodarsko pravo | Split"
+      avatar: avatars/tena.jpg
+
+    # === Teens ===
+    luka:
+      name: "Luka"
+      bio: "17 | ronjenje & surf | kamenica born | nikola je legenda buraz"
+      avatar: avatars/luka.jpg
+    petra:
+      name: "Petra"
+      bio: "16 | foto & video | podvodni svijet | fakat sve za more"
+      avatar: avatars/petra.jpg
+    josip:
+      name: "Josip"
+      bio: "15 | kajak & ronjenje | kamenica zauvijek | boh"
+      avatar: avatars/josip.jpg
+
+    # === Media & Community ===
+    glas_kamenice:
+      name: "Glas Kamenice"
+      bio: "Vijesti iz Kamenice i okolice | Tips: redakcija@glas-kamenice.hr"
+      avatar: avatars/glas_kamenice.jpg
+    meteo_dalmacija:
+      name: "Meteo Kamenica"
+      bio: "Prognoze i upozorenja | Automatska postaja | Ažuriranje svaki sat"
+      avatar: avatars/meteo_dalmacija.jpg
+    udruga_plavi:
+      name: "Udruga Plavi Horizont"
+      bio: "Zaštita mora i obale | Volonteri | Prijave zagađenja"
+      avatar: avatars/udruga_plavi.jpg
+
+    # === Suspicious / Other ===
+    karlo:
+      name: "Karlo Mandić"
+      bio: "voditelj broda | JadranRib | radim svoj posao i to je to"
+      avatar: avatars/karlo.jpg
+    dubina:
+      name: "dubina_bez_dna"
+      bio: "."
+      avatar: avatars/anon.jpg
+    narednik:
+      name: "Narednik Klarić"
+      bio: "Policijska postaja Kamenica | Hitni pozivi: 192"
+      avatar: avatars/narednik.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN KAMENICA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to kamenica.social — the community Mastodon instance for
+      the Dalmatian coastal village of Kamenica.
+
+      The local feed is restless. The sea around this village is crystal
+      clear and the locals are proud of it. But something is wrong.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps appearing:
+      @nikola_juric.
+
+      A young freedive instructor. He taught tourists and locals to
+      dive the Dalmatian coast. He documented the underwater world
+      with cameras. People loved him. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> nikola_profile
+
+  nikola_profile:
+    type: tweet
+    from: nikola
+    text: "koćarice u uvali sv. Petra. noćni ribolov. mrežama čupaju dno. imam dokaze. ovo se mora zaustaviti."
+    choices:
+      - That's his last real post... -> grey_sea
+
+  grey_sea:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      murky grey water. No light, no fish, no coral. Shot from
+      underwater at a strange angle. Posted at 3am. No caption.
+
+      His friends say that's the opposite of Nikola's style — he only
+      posted crystal-clear water, vibrant sea life, the beauty of the
+      deep. The police say he probably went travelling. Something
+      doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: narednik
+    text: >
+      Zaprimljena je prijava o nestanku stanovnika Kamenice. U ovom
+      trenutku nema elemenata koji upućuju na kazneno djelo. Svaka
+      korisna informacija može se dostaviti na broj 192 ili osobno
+      na policijsku postaju.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @ana_juric is desperate.
+      His best friend @marko_peric is furious. His ex-girlfriend
+      @ivana_kovac is posting worried messages. The old fisherman
+      @damir_matic says Nikola was right about the trawlers.
+
+      And the journalist @maja_krstic has gone completely silent.
+
+      Nobody buys the police line. Nobody thinks Nikola just "went
+      travelling."
+    effects: { trust_ana: "+5", trust_marko: "+5" }
+    choices:
+      - Start following Nikola's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Kamenica. Follow Nikola's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Ante (konoba owner, knows everyone) -> ante_intro
+      - Talk to Damir (fisherman, saw the trawlers) -> damir_intro
+      - Talk to Luka (teen diver, seems shaken) -> luka_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Nikola with the rhythms of a small
+      Dalmatian village: ferry schedules, the konoba's daily catch,
+      weather warnings for the Bura wind.
+
+      Key names surface: Ana (sister, biology student in Split),
+      Marko (best friend, fisherman), Ivana (ex-girlfriend, works
+      at Konoba Morski Vuk), and the teens — Luka, Petra, Josip —
+      who worshipped Nikola's diving.
+
+      Also prominent: JadranRib d.o.o., the fishing company that
+      operates trawlers out of the village. Their posts are slick
+      corporate PR. Nikola's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Ante -> ante_intro
+      - Talk to Damir -> damir_intro
+      - Talk to Luka -> luka_intro
+
+  # --- Ante (social map) ---
+
+  ante_intro:
+    type: tweet
+    from: ante
+    text: >
+      Konoba je otvorena ali srce nije tu. @nikola_juric, tvoj stol
+      te čeka. Vrati se doma.
+    effects: { trust_ante: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ante -> ante_talk
+
+  ante_talk:
+    type: message
+    text: >
+      ANTE: Ah, novi si? Dobrodošao. Loše vrijeme za dolazak.
+      Svi su nervozni zbog Nikole.
+
+      Da ti objasnim tko je tko. Ana je sestra od Nikole — studira
+      biologiju u Splitu, proludi od brige. Marko Perić je najbolji
+      prijatelj, od djetinjstva, riba s njim svaki dan. Ivana Kovač
+      je bivša — ostavila ga prije dva mjeseca ali još uvijek dolazi
+      u konobu pitati za njega. Radi kod mene.
+
+      I onda imaš tog nekog — pričam ti to jer nisam lik koji šuti.
+      Ivana ima nekog novog, tip se zove... ma ne zna se točno. Ali
+      Nikola mi je rekao da ga bivša muči. Da ga netko prati. Da mu
+      netko šalje poruke. Nije htio reći više.
+
+      I steer clear of JadranRib. Branko Vuković — the director —
+      he eats here sometimes. He and the načelnik are like this.
+      Nikola was making them both nervous.
+    effects: { trust_ante: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Ivana's situation -> ante_ivana
+      - Ask about JadranRib -> ante_jadranrib
+      - Thank him and move on -> quest1_hub
+
+  ante_ivana:
+    type: message
+    text: >
+      ANTE: Ivana? Jebote, ta priča je komplicirana. Ona i Nikola
+      su bili zajedno godinu i pol. Onda ga je ostavila. Nikola to
+      nije dobro podnio ali se pokupio. Normalno, lik je OK.
+
+      Ali onda — Ivana je počela viđati nekog. Ne znam točno koga.
+      Ali Nikola mi je rekao nešto čudno. Rekao je: "Ante, neko me
+      prati. Stalno je tu. Zna gdje sam. Ostavlja mi poruke."
+
+      Mislio sam da pretjeruje. Sad mislim da je možda imao pravo.
+
+      I Ivana — ona se čudno ponaša. Nervozna je. Izbjegava temu.
+      Kao da nešto krije.
+    effects: { trust_ante: "+5" }
+    choices:
+      - Ask about JadranRib -> ante_jadranrib
+      - Move on -> quest1_hub
+
+  ante_jadranrib:
+    type: message
+    text: >
+      ANTE: JadranRib. Sranje od firme. Imaju tri koćarice i love
+      svaku noć. Službeno, love daleko od obale, u skladu s dozvolama.
+      Realnost? Ribari poput Damira godinama govore da koćarice dolaze
+      u zabranjene zone noću. Čupaju dno. Uništavaju sve.
+
+      Nikola je ronio tamo. Vidio je dno — mrtvo, počupano, prazan
+      pustinja. Snimao je sve. Rekao je da ima dokaze da JadranRib
+      lovi u zabranjenim vodama, u zaštićenom području.
+
+      Dva tjedna nakon toga — nestao.
+    effects: { trust_ante: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Damir (fisherman, saw the trawlers) ---
+
+  damir_intro:
+    type: tweet
+    from: damir
+    text: >
+      trideset pet godina lovim u ovom moru. dno više nije isto.
+      @nikola_juric je imao pravo. koćarice uništavaju sve.
+      povežite stvari.
+    effects: { trust_damir: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Damir -> damir_talk
+
+  damir_talk:
+    type: message
+    text: >
+      DAMIR: Lovim u ovom moru otkad sam bio dečko. Poznajem svaku
+      struju, svaki greben, svaku ribu. I kažem ti — more u uvali
+      Sv. Petra više nije isto. Mreže mi se vraćaju prazne. Dno je
+      razrušeno. Posidonia — trava koja drži sve na okupu — iščupana.
+
+      Nikola je ronio dolje. Snimao je sve. Koćarice JadranRiba
+      dolaze noću, gase svjetla, love u zabranjenom pojasu. Nikola
+      je imao snimke. Gradio je slučaj.
+
+      I onda — puf. Nestao.
+
+      Misliš da je slučajnost? Ja ne vjerujem u slučajnosti na moru.
+    effects: { trust_damir: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> damir_night
+      - Move on -> quest1_hub
+
+  damir_night:
+    type: message
+    text: >
+      DAMIR: Noć prije nego je nestao — vraćao sam se s noćnog
+      ribolova, oko 1 ujutro. Vidio sam svjetla u luci. Nikolin
+      kombi bio je parkiran kod mola. I pored njega — crni SUV.
+      Tablice JadranRib.
+
+      U 1 ujutro. Na molu.
+
+      I vidio sam nekoga na rivi. Sjedio je u autu, ugašenih svjetala.
+      Čekao. Nije bio iz JadranRiba — to je bio netko drugi. Manji
+      auto. Ali nisam mogao vidjeti tko.
+
+      Nisam razmišljao o tome tada. Sad razmišljam stalno.
+    effects: { trust_damir: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Luka (teen diver, witness tease) ---
+
+  luka_intro:
+    type: tweet
+    from: luka
+    text: >
+      buraz jebote @nikola_juric ne nestaje ovak. on nas je naučio
+      roniti, disati, poštovati more. fakat ako neko zna nešto
+      recite jebemu mater
+    effects: { trust_luka: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Luka -> luka_talk_early
+
+  luka_talk_early:
+    type: message
+    text: >
+      LUKA: ej lik novi si? sranje timing. uglavnom nikola je fakat
+      legenda. naučio nas roniti, mene petru josipa, svih nas. tip
+      je razlog zašto volim more.
+
+      i sad sam u totalnoj panici jer petra je vidjela nešto čudno
+      kod mol te večeri ali neće pričati. kaže da se boji. buraz
+      fakat ne kužim kaj se događa
+    effects: { trust_luka: "+10" }
+    choices:
+      - What did Petra see? -> luka_petra_hint
+      - Move on -> quest1_hub
+
+  luka_petra_hint:
+    type: message
+    text: >
+      LUKA: fakat ne znam detalje. bila je na molu kasno, snimala
+      nešto za instagram — podvodne snimke u zalazu sunca, tak nekaj.
+      i kaže da je vidjela nekog kraj nikolinog kombija. nekog ko je
+      stavio nešto u kombi ili uzeo nešto, nešto tak.
+
+      kaže da je prepoznala osobu ali ne želi reći. fakat se boji.
+      probaj pričati s njom ali polako, ono — nemoj je pritiskat.
+      pričaj joj o ronjenju ili fotki, znaš
+    effects: { trust_luka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Kamenica. A Dalmatian coastal village
+      built around the sea and fishing. A freedive instructor who was
+      exposing illegal trawling. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Ana (Nikola's sister) -> ana_q1
+      - Talk to Marko (Nikola's best friend) -> marko_q1
+      - Check what Ivana (Nikola's ex) is saying -> ivana_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Ana Q1 ---
+
+  ana_q1:
+    type: tweet
+    from: ana
+    text: >
+      moj brat je NESTAO a policija mi kaže da je možda otišao na
+      put??? NIKOLA NE IDE NIGDJE BEZ DA JAVI. dolazim iz splita.
+      netko će mi objasniti.
+    effects: { trust_ana: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ana -> ana_q1_talk
+
+  ana_q1_talk:
+    type: message
+    text: >
+      ANA: Tko si ti? Još jedan koji želi tračeve o mom bratu?
+      Nikola me nazvao večer prije nego je nestao. Bio je uzbuđen.
+      Rekao je da ima nešto veliko. Rekao je "ako mi se nešto dogodi,
+      gledaj u JadranRib." Onda je prekinuo.
+
+      To je zadnje što sam čula od njega.
+    effects: { trust_ana: "+10" }
+    choices:
+      - What do you think happened? -> ana_theory
+      - Move on -> quest1_hub
+
+  ana_theory:
+    type: message
+    text: >
+      ANA: Mislim da je Nikola našao dokaze da JadranRib ilegalno
+      lovi u zaštićenom području i da su ga ušutkali. Ali ima i
+      druga stvar.
+
+      Jebote, on mi je rekao da ga neko prati. Mjesecima. Netko
+      mu šalje poruke s anonimnog računa. Netko ga čeka ispred
+      kuće. Netko zna njegov raspored ronjenja. Mislio je da je
+      to u vezi s Ivanom — s bivšom.
+
+      Ne znam što to znači. Ali me plaši.
+    effects: { trust_ana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marko Q1 ---
+
+  marko_q1:
+    type: tweet
+    from: marko
+    text: >
+      nikola ne odgovara. na ništa. buraz ja i on pričamo SVAKI DAN
+      od kad smo mali. nešto se dogodilo. siguran sam.
+    effects: { trust_marko: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marko -> marko_q1_talk
+
+  marko_q1_talk:
+    type: message
+    text: >
+      MARKO: Nikola i ja se poznajemo od vrtića. Ronimo zajedno,
+      lovimo zajedno, sve zajedno. I kažem ti — on ne nestaje ovak.
+      Nikad. Ni kad mu je bilo najgore nakon raskida s Ivanom.
+
+      Zadnji put sam ga vidio na rivi. Bio je napet. Imao je
+      kameru i laptop u ruksaku. Rekao je da ide snimiti nešto
+      "veliko" u uvali Sv. Petra. Rekao sam "idem s tobom" a on
+      je rekao ne, preopasno.
+
+      Jebote, trebao sam ići za njim.
+
+      [Marko izgleda iskreno. Slomljen.]
+    effects: { trust_marko: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ivana Q1 ---
+
+  ivana_q1:
+    type: tweet
+    from: ivana
+    text: >
+      znam da smo se razišli. znam da ne bi trebala ovako brinuti.
+      ali @nikola_juric je dobra osoba i zaslužuje da ga netko traži.
+      jebote.
+    effects: { trust_ivana: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ivana -> ivana_q1_talk
+
+  ivana_q1_talk:
+    type: message
+    text: >
+      IVANA: Ja i Nikola smo se razišli prije dva mjeseca. Moji
+      razlozi. Ali mu još uvijek želim sve najbolje. I ovo me
+      ubija.
+
+      Čudna stvar je da... nakon raskida, netko mi je počeo slati
+      poruke. Anonimni račun. "Slobodna si." "On te nije zaslužio."
+      "Netko bolji čeka." Mislila sam da je troll ali...
+
+      I Nikola mi je rekao da i njemu dolaze poruke. Tip mu šalje
+      poruke o ronjenju. "Jednog dana ćeš zaroniti preduboko."
+      "Dubina je tiha. Tiša od tebe." Sranje je to. Gadno sranje.
+
+      [Ivana je potresena. Nešto je muči osim nestanka.]
+    effects: { trust_ivana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Nikola went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Petra (was at the dock taking photos) -> petra_interview
+      - Find Ivan (harbour master, works late) -> ivan_interview
+      - Find Marina (baker, starts at 5am, saw something) -> marina_interview
+      - Find Damir (fisherman, saw the boats that night) -> damir_interview_q2
+
+  # --- Petra (saw someone at Nikola's van) ---
+
+  petra_interview:
+    type: tweet
+    from: petra
+    text: >
+      fakat ne mogu spavati. vidjela sam nešto te noći i ne znam
+      što da radim. bojim se. jebote sve.
+    effects: { trust_petra: "+5" }
+    choices:
+      - Ask Petra about that evening -> petra_talk
+
+  petra_talk:
+    type: message
+    text: >
+      PETRA: ok ali fakat to ne smiješ nikome reći. bila sam na
+      molu oko 20h, snimala podvodni zalazak za projekt. i vidjela
+      sam nekog kod nikolinog kombija. lik je otvorio vrata i nešto
+      stavio unutra. ili uzeo. nešto malo, tipa uređaj.
+
+      i buraz — prepoznala sam ga. bio je to Karlo Mandić. onaj
+      šef broda od JadranRiba. što on radi u nikolinom kombiju?
+
+      a onda je vidio mene. pogledao me. ja sam pobjegala. fakat
+      sam se usrala od straha.
+    effects:
+      trust_petra: "+10"
+      night_witnesses: "+1"
+      trawling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ivan (harbour master, saw late-night meeting) ---
+
+  ivan_interview:
+    type: tweet
+    from: ivan
+    text: >
+      Podsjetnik: luka je zatvorena za javnost od 22h do 6h.
+      Zadnjih noći primijetio sam neovlaštena kretanja.
+    effects: { trust_ivan: "+5" }
+    choices:
+      - Ask Ivan what he saw -> ivan_talk
+
+  ivan_talk:
+    type: message
+    text: >
+      IVAN: Zatvarao sam lučki ured oko 22:30. Vidio sam Nikolin
+      kombi još parkiran na molu. I pored njega — crni Mercedes
+      SUV. Registracija JadranRib. I jednu manju koćaricu privezanu
+      na strani — nije iz Kamenice, nije u registru.
+
+      Dva čovjeka su stajala kod Nikolinog kombija. Jednog sam
+      prepoznao: Branko Vuković, direktor JadranRiba.
+
+      U 22:30. Na molu. To nije normalno.
+
+      Zapisao sam to u lučki dnevnik. Nitko nije tražio da ga vidi.
+    effects:
+      trust_ivan: "+10"
+      night_witnesses: "+1"
+      trawling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marina (baker, saw boat leaving) ---
+
+  marina_interview:
+    type: tweet
+    from: marina
+    text: >
+      Peć upaljena u 5 kao i svaki dan. Ali jutro je bilo drugačije.
+      Brod je izlazio iz luke. U mraku. Bez svjetala.
+    effects: { trust_marina: "+5" }
+    choices:
+      - Ask Marina what she saw -> marina_talk
+
+  marina_talk:
+    type: message
+    text: >
+      MARINA: I start baking at 5am every day. That morning, I was
+      opening the shutters and I saw a boat leaving the harbour.
+      Small trawler, no lights. Moving fast toward the open sea.
+      Behind it — a trail in the water. Something being dragged or
+      towed.
+
+      Ten minutes later, a second boat. Bigger. JadranRib markings.
+      Following the first one toward uvala Sv. Petra.
+
+      I told the police. They wrote it down. Nothing happened.
+
+      And one more thing — there was a car on the riva. Someone
+      sitting inside, watching the boats leave. Small car, dark.
+      Not a JadranRib car. Someone else. Just watching.
+    effects:
+      trust_marina: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Damir Q2 (heard the trawlers) ---
+
+  damir_interview_q2:
+    type: tweet
+    from: damir
+    text: >
+      opet koćarice. opet noću. i sad je dečko koji ih je prijavio
+      nestao. pička im materina.
+    effects: { trust_damir: "+5" }
+    choices:
+      - Ask Damir what he heard that night -> damir_talk_q2
+
+  damir_talk_q2:
+    type: message
+    text: >
+      DAMIR: That night — the night Nikola vanished — I was out
+      checking my pots around midnight. Calm sea. And then I heard
+      them. Engines. Heavy diesel. Coming from the direction of
+      uvala Sv. Petra — the protected cove.
+
+      I turned my boat. Saw the lights — two boats, working the
+      bottom. Trawl nets down. In a marine protected area. At
+      midnight.
+
+      Then I heard shouting. Over the water, voices carry. A young
+      voice — scared. Then engines revving hard. Then silence.
+
+      In the morning, the water in the cove was brown. Stirred up
+      from the bottom. Dead posidonia floating everywhere. And
+      Nikola's diving buoy — the orange one he always used — was
+      drifting empty.
+    effects:
+      trust_damir: "+10"
+      night_witnesses: "+1"
+      trawling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marko (best friend)
+      and Ivana (ex, knows about the anonymous messages).
+    choices:
+      - Talk to Marko about that night -> marko_interview
+      - Talk to Ivana about the stalking -> ivana_interview
+      - Find Petra -> petra_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ivan -> ivan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Marina -> marina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Damir -> damir_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marko (last to see Nikola) ---
+
+  marko_interview:
+    type: tweet
+    from: marko
+    text: >
+      zadnje što mi je rekao je "buraz, večeras sve mijenjam."
+      mislio sam da priča o ronjenju. sad više ništa ne znam.
+    effects: { trust_marko: "+5" }
+    choices:
+      - DM Marko -> marko_talk_low
+        when:
+          state: trust_marko
+          lt: 50
+      - DM Marko -> marko_talk_high
+        when:
+          state: trust_marko
+          gte: 50
+
+  marko_talk_low:
+    type: message
+    text: >
+      MARKO: Hvala na brizi ali fakat te ne poznajem. Ne želim
+      pričati o tome s nekim koga ne znam.
+
+      [Marko ti mora vjerovati. Pokaži mu da ozbiljno istražuješ.]
+    effects: { trust_marko: "+5" }
+    choices:
+      - Share what you've learned about the night -> marko_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marko_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the trawlers in the protected
+      cove, the company men at the dock, the shouting over the water.
+      Marko is quiet for a long time.
+
+      MARKO: Jebote. Fakat ga tražiš. OK. Pričam.
+    effects: { trust_marko: "+25" }
+    choices:
+      - What happened that night? -> marko_talk_high
+
+  marko_talk_high:
+    type: message
+    text: >
+      MARKO: Zadnji put sam ga vidio oko 21h na rivi. Bio je spreman
+      — ronilačko odijelo, kamera, podvodni dron. Rekao je da ide
+      u uvalu Sv. Petra snimiti koćarice na djelu. Dokaz da love u
+      zaštićenom pojasu noću.
+
+      Rekao sam mu "buraz nemoj sam" ali znate kakav je — tvrdoglav
+      ko magarac. Rekao je da je javio novinarki Maji i da treba
+      samo snimke.
+
+      I onda je rekao nešto čudno. Rekao je "i onda imam onog
+      drugog problema. onog koji me prati. moram saznati tko je
+      jebote prije nego bude kasno." Netko ga je pratio tjednima.
+      Ne samo JadranRib. Netko drugi.
+    effects:
+      trust_marko: "+15"
+      night_witnesses: "+1"
+      trawling_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ivana (anonymous messages, stalker reveal) ---
+
+  ivana_interview:
+    type: message
+    text: >
+      IVANA: OK, pokazat ću ti poruke. Otkad smo se Nikola i ja
+      razišli, ovaj račun — @dubina_bez_dna — mi piše svaki tjedan.
+      "Zaslužuješ bolje." "On je uvijek bio ispod tebe." "Netko te
+      gleda, netko čeka."
+
+      Ali najgore — šalje i Nikoli. "Jednog dana ćeš zaroniti i
+      nećeš se vratiti." "More uzima ono što želi." "Ona je moja.
+      Prestani disati."
+
+      "Prestani disati." To je napisao freediving instruktoru.
+      Jebote. Fakat me strah.
+
+      I zadnja poruka — poslana te noći: "Večeras dubina pobjeđuje."
+    effects:
+      trust_ivana: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Petra sees Karlo Mandić (JadranRib) at Nikola's van on
+      the dock (Petra)
+      21:00 — Nikola on the riva with dive gear, tells Marko he's going
+      to uvala Sv. Petra (Marko)
+      22:30 — Branko Vuković (JadranRib director) and black SUV at the
+      dock next to Nikola's van (Ivan)
+      00:00 — Trawlers working in protected cove, shouting heard, then
+      silence (Damir)
+      05:00 — Boat leaving harbour without lights, second boat following,
+      someone watching from a car on the riva (Marina)
+
+      Nikola went diving to document JadranRib's illegal trawling. They
+      found him. Someone also had access to his van. And someone was
+      watching from the shore.
+
+      Two threats: the trawling operation AND someone personal.
+
+      Two threads to pull:
+      — The trawling: What is JadranRib doing? Who protects them?
+      — The stalker: Who is @dubina_bez_dna? Who was watching from
+        the car?
+    choices:
+      - Investigate the illegal trawling -> corruption_hub
+      - Investigate the stalker -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      TRAWLING THREAD: Evidence collected: ${trawling_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the trawling thread -> corruption_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: trawling_evidence, gte: 3 }
+
+  # =====================================================================
+  # TRAWLING / CORPORATE THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE TRAWLING THREAD
+
+      JadranRib is hiding something. Nikola had proof. Now he's gone
+      and his cameras are missing.
+
+      Trawling evidence: ${trawling_evidence}
+    choices:
+      - Search harbour records and permits -> harbour_records
+      - Talk to Maja the journalist -> maja_interview
+      - Talk to Karlo (JadranRib boat captain) -> karlo_interview
+      - Talk to Katarina (environment official) -> katarina_interview
+      - Check the Plavi Horizont association -> plavi_investigation
+      - Talk to Damir about the seabed damage -> damir_seabed
+      - Back to hub -> investigation_hub
+
+  # --- Harbour Records ---
+
+  harbour_records:
+    type: message
+    text: >
+      The harbour's public registry shows JadranRib operates three
+      trawlers. Their fishing permits specify zones at least 3 nautical
+      miles from shore and explicitly exclude the uvala Sv. Petra
+      marine protected area.
+
+      But the AIS tracking data — publicly available — shows gaps.
+      JadranRib's boats switch off their transponders between 22:00
+      and 04:00, three or four nights per week. When they reappear
+      in the morning, they're loaded with catch.
+
+      Nikola's dive logs, shared with the local diving club for
+      safety, show he made 15 dives in the protected cove in the past
+      month. Last entry: "Trawl scars on posidonia meadow. Bottom
+      destroyed. Estimated 200m of illegal drag marks. Photographed
+      everything."
+    effects:
+      trawling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Maja ---
+
+  maja_interview:
+    type: message
+    text: >
+      MAJA: Ne govorim o izvorima. Točka.
+    effects: { trust_maja: "+5" }
+    choices:
+      - Show Maja the evidence you have -> maja_with_evidence
+        when:
+          state: trawling_evidence
+          gte: 3
+      - Back to trawling thread -> corruption_hub
+
+  maja_with_evidence:
+    type: message
+    text: >
+      MAJA: ...imaš više nego sam očekivala.
+
+      OK. Nikola i ja smo radili zajedno. On je ronio i snimao,
+      ja sam pisala. JadranRib ne lovi samo u zabranjenim vodama —
+      imaju dogovor s lokalnim političarima. Načelnik Babić dobiva
+      "donacije" za stranku. Zauzvrat, inspekcije se najavljuju
+      tjedan unaprijed.
+
+      Nikola je imao sve — podvodne snimke koćarica u zaštićenom
+      pojasu, GPS logove s drona, even footage broda koji istresa
+      ulovljenu ribu noću u drugom pristaništu da izbjegnu evidenciju.
+
+      Htjeli smo objaviti zajedno. Onda je nestao. I dan nakon toga
+      netko mi je provalio u auto i uzeo laptop.
+
+      Nikola je živ. Javio mi se jednom, s nepoznatog broja. Rekao
+      je da se skriva. Rekao je "JadranRib me našao u uvali a ima
+      i netko drugi koji me ne ostavlja na miru."
+
+      Ne mogu ti reći gdje je. Ali s dovoljno dokaza, mogu objaviti
+      i učiniti sigurnim da se vrati.
+    effects:
+      trust_maja: "+25"
+      trawling_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who found him in the cove? -> maja_hint
+      - Back to investigation hub -> investigation_hub
+
+  maja_hint:
+    type: message
+    text: >
+      MAJA: JadranRib je te noći poslao ljude. Branko Vuković osobno
+      i svog kapetana Karla. Našli su Nikolu dok je ronio u uvali.
+      Izvukli su ga iz vode. Zaprijetili mu. Rekli mu da preda sve
+      snimke ili da će "more biti njegovo posljednje mjesto."
+
+      Ali Nikola je rekao i nešto drugo. Rekao je da ga netko prati
+      mjesecima. Netko tko zna kad roni, kad je sam, kad se vraća
+      kući. Netko tko mu šalje poruke na anonimni račun. To je
+      drugi problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Karlo (JadranRib insider) ---
+
+  karlo_interview:
+    type: message
+    text: >
+      KARLO: Radim za JadranRib. Vozim brod. Radim svoj posao.
+
+      Ali...
+
+      Zapovijedi koje dobivam... nisu uvijek u skladu s dozvolama.
+    effects: { trust_karlo: "+10" }
+    choices:
+      - What do you mean? -> karlo_detail
+
+  karlo_detail:
+    type: message
+    text: >
+      KARLO: Vuković mi kaže gdje loviti. Ja lovim. Ali koordinate
+      koje mi daje — znam da su unutar zaštićenog pojasa. Gasimo AIS,
+      gasimo svjetla, lovimo noću. Svaki put.
+
+      Dečko — Nikola — ronio je tamo. Vidio je što radimo dnu.
+      Fotografirao je sve. Te noći — Vuković je rekao da ga
+      "riješimo." Mislim da je mislio prestrašiti ga. Ali...
+
+      Bojim se. Imam obitelj. Ali imam i logove s GPS-a broda
+      koji pokazuju da smo lovili u zabranjenom pojasu. Imam ih
+      spremljene. Ako me netko može zaštititi, dam ih.
+    effects:
+      trust_karlo: "+15"
+      trawling_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to trawling thread -> corruption_hub
+
+  # --- Katarina ---
+
+  katarina_interview:
+    type: message
+    text: >
+      KATARINA: Kao pročelnica za okoliš, ozbiljno shvaćam ove
+      optužbe. Ali JadranRib zapošljava 80 ljudi u ovoj općini.
+      Načelnik inzistira da moramo "održati dijalog."
+
+      Off the record? Vidjela sam inspekcijske izvještaje. JadranRib
+      prolazi svaki put. Ali inspekcije se najavljuju dva tjedna
+      unaprijed. Znaju točno kad dolaze.
+
+      Nikola je imao nenajavjene podatke. Podvodne snimke koje
+      pokazuju štetu na dnu mora. To je opasno za njih.
+    effects:
+      trust_katarina: "+10"
+      trawling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trawling thread -> corruption_hub
+
+  # --- Plavi Horizont ---
+
+  plavi_investigation:
+    type: tweet
+    from: udruga_plavi
+    text: >
+      UZBUNA: Prijava masovnog uništenja podmorja u uvali Sv. Petra.
+      Posidonia iščupana na površini od 500m². Tražimo hitnu
+      nenajavjenu inspekciju JadranRiba.
+    choices:
+      - Check their data -> plavi_data
+
+  plavi_data:
+    type: message
+    text: >
+      Plavi Horizont has been monitoring the marine protected area
+      for three years. Their data shows a devastating pattern: the
+      posidonia meadows in uvala Sv. Petra have decreased by 60%
+      since JadranRib expanded its operations.
+
+      Trawl damage correlates perfectly with JadranRib's operating
+      schedule — damage appears after nights when their boats are
+      active, never on their days off.
+
+      The pattern is unmistakable. This is systematic destruction
+      of a protected marine habitat for profit.
+
+      Nikola was their most active volunteer. He contributed all
+      the underwater surveys.
+    effects:
+      trawling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trawling thread -> corruption_hub
+
+  # --- Damir seabed ---
+
+  damir_seabed:
+    type: message
+    text: >
+      DAMIR: Pokazat ću ti nešto. Prošli mjesec, zaronio sam u uvalu
+      Sv. Petra. Ono što sam vidio... jebote. Kao da je bomba pala.
+      Posidonia — trava stara stotinu godina — iščupana. Brazde u
+      pijesku od mreža. Mrtvi ježevi, mrtve zvjezdače. Sve mrtvo.
+
+      I u blatu sam našao ovo — komad čelične mreže s brojem serije.
+      JadranRib serija. Otpao je s jedne od njihovih koćarica dok
+      su vukli dno.
+
+      Fotografirao sam sve. Poslao Nikoli. Rekao je da je to
+      posljednji komad slagalice — fizički dokaz da njihove mreže
+      dodiruju zaštićeno dno.
+
+      Još imam fotke. I serijski broj.
+    effects:
+      trust_damir: "+10"
+      trawling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Someone has been following Nikola for months. Anonymous messages.
+      Someone at his van. Someone watching from a car. Someone who
+      knows his dive schedule.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate the anonymous account @dubina_bez_dna -> dubina_investigation
+      - Talk to Ivana about her new relationship -> ivana_relationship
+        when:
+          state: trust_ivana
+          gte: 20
+      - Talk to Petra (more detail about who was at the van) -> petra_detail
+      - Talk to Nina the teacher -> nina_interview
+      - Talk to Ante about who was watching Nikola -> ante_watching
+      - Talk to Narednik Klarić -> narednik_interview
+        when:
+          state: trust_narednik
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Dubina investigation ---
+
+  dubina_investigation:
+    type: tweet
+    from: dubina
+    text: >
+      More uzima. More daje. More pamti. Tko roni predugo, more ga
+      zadrži.
+    choices:
+      - Look at this account's history -> dubina_posts
+
+  dubina_posts:
+    type: message
+    text: >
+      @dubina_bez_dna: account created 4 months ago. Every post is
+      about diving, the sea, and Nikola — obliquely. The tone
+      escalates:
+
+      Month 1: "There is a diver in Kamenica who thinks the sea
+      belongs to him. The sea belongs to no one."
+      Month 2: "I watch him dive. He doesn't see me. Freediving is
+      about surrender. He will learn."
+      Month 3: "She left him because she saw the truth. The sea
+      takes everything. People take everything. I only wait."
+      Month 4: "Tonight the depth wins. Tonight silence."
+
+      That last post was the night Nikola disappeared.
+
+      The account also sent DMs to Ivana. Possessive, romantic,
+      claiming Nikola "didn't deserve her."
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> dubina_style
+
+  dubina_style:
+    type: message
+    text: >
+      Comparing @dubina_bez_dna with known accounts in Kamenica:
+
+      The writing style is distinctive — poetic, obsessive,
+      mixing diving metaphors with possessive language about Ivana.
+      References to specific dive sites that only someone with local
+      knowledge would know.
+
+      One post mentions "the cave at 18 meters in Sv. Petra." That
+      cave is not marked on any public chart. Only experienced local
+      divers know about it.
+
+      Cross-referencing with diving club records: only four people
+      have logged dives at that cave. Nikola. Marko. Luka. And one
+      more: a man who joined the diving club six months ago, right
+      after Ivana broke up with Nikola.
+
+      His name is on the club register. He signed up as a "returning
+      diver." He listed his emergency contact as Ivana Kovač.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Who is he? -> dubina_reveal
+
+  dubina_reveal:
+    type: message
+    text: >
+      The diving club register shows the name: Filip Novak. But
+      there is no @filip_novak on kamenica.social. No social media
+      presence at all. The address he gave the diving club is
+      fake — a vacant lot outside Split.
+
+      But the phone number he gave is real. And it matches the
+      number that sent anonymous SMS messages to both Nikola and
+      Ivana.
+
+      Someone is using a false identity to insert themselves into
+      Nikola's world. Someone obsessed with Ivana. Someone who saw
+      Nikola as an obstacle.
+
+      And Ante said Ivana was "seeing someone new." Someone she
+      met recently. Someone nobody in Kamenica seems to know.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Ivana relationship ---
+
+  ivana_relationship:
+    type: message
+    text: >
+      IVANA: Jebote... OK. Da. Viđam se s nekim. Filip. Upoznali
+      smo se na Tinderu par tjedana nakon raskida. Rekao je da je
+      iz Splita, da roni, da voli more. Činilo se savršeno.
+
+      Ali... počeo je pitati o Nikoli. Stalno. Gdje roni, kad roni,
+      s kim roni. Rekla sam mu da prestane ali on kaže da je samo
+      znatiželjan.
+
+      I onda je počeo dolaziti u Kamenicu. Bez najave. Viđala bih
+      ga na rivi, u luci, blizu Nikolinog kombija. Rekao je da
+      "provjera situaciju."
+
+      Sad kad razmislim... on se pojavio točno kad je Nikola počeo
+      primati anonimne poruke. Jebote. Jebote jebote jebote.
+
+      Ja sam ga dovela u Nikolin život. Kurac.
+    effects:
+      trust_ivana: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Petra detail ---
+
+  petra_detail:
+    type: message
+    text: >
+      PETRA: ok buraz u redu, nisam ti sve rekla. kad sam vidjela
+      Karla kod kombija, pobjegala sam, ne? ali dok sam trčala
+      vidjela sam još nekoga. lik je sjedio u malom autu na rivi.
+      tamno, ugašenih svjetala.
+
+      i prepoznala sam ga. vidjela sam ga prije — viđao se s ivanom.
+      mislim da joj je dečko ili nešto. visok lik, kratka kosa.
+      gledao je prema molu. prema nikolinom kombiju. samo sjedio
+      i gledao.
+
+      dva različita lika — karlo u kombiju, ovaj u autu. dva
+      problema istovremeno za nikolu te noći. jebote.
+    effects:
+      trust_petra: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Nina ---
+
+  nina_interview:
+    type: message
+    text: >
+      NINA: I run the diving section at the school. Nikola was my
+      assistant instructor — amazing with the kids. Patient,
+      careful, passionate.
+
+      A few months ago, a new man showed up at the diving club.
+      Said his name was Filip. Wanted to join. Nikola certified him.
+      But something was off — Filip asked a lot of questions. About
+      Nikola's schedule, his favorite dive sites, when he went
+      alone.
+
+      And then Filip started showing up at the same times as Nikola.
+      Same sites. Always nearby. Nikola noticed. He told me: "That
+      new guy is everywhere I go. It's starting to freak me out."
+
+      After Nikola disappeared, Filip stopped coming to the club.
+      He hasn't been seen since.
+    effects:
+      trust_nina: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Ante watching ---
+
+  ante_watching:
+    type: message
+    text: >
+      ANTE: Sjeti se što sam ti rekao — Ivana viđa nekog novog.
+      E sad — taj tip je dolazio u konobu. Naručivao kavu, sjedio
+      satima. Uvijek za stolom s pogledom na rivu. Na Nikolin kombi.
+
+      Jednom sam ga vidio kako fotka Nikolu — telefonom, iz konobe,
+      kroz prozor. Kao da ga dokumentira.
+
+      Pitao sam Ivanu: "Tko je taj lik?" Rekla je "Filip, upoznali
+      smo se online." Ali kad sam pitao odakle je, što radi — ništa
+      konkretno. "Iz Splita. Nešto s kompjuterima." Nitko u
+      Kamenici ga ne poznaje osim Ivane.
+
+      Tip je duh. Pojavio se niotkuda i sad je nestao zajedno s
+      Nikolom.
+    effects:
+      trust_ante: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Narednik Klarić ---
+
+  narednik_interview:
+    type: message
+    text: >
+      NAREDNIK KLARIĆ: Off the record — i mislim potpuno off the
+      record — htio sam istražiti JadranRib. Moj nadređeni mi je
+      rekao da odustanem. Rekao je da "Županija ima nadležnost."
+      Što na policijskom znači "ne diraj."
+
+      Ova stvar sa stalkerom — to je drugo. Za to nisam ni znao
+      do sad. Ako imate dokaze o proganjanju, ja mogu djelovati.
+      To je jasno moja nadležnost.
+
+      Donesite mi nešto čvrsto i ponovno otvaram slučaj.
+    effects:
+      trust_narednik: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Nikola than anyone in Kamenica. Who is responsible?
+    choices:
+      - Confront the stalker "Filip Novak" through Ivana -> confront_stalker
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Branko Vuković (JadranRib director) -> confront_branko
+        when:
+          state: trawling_evidence
+          gte: 3
+      - Confront Načelnik Babić (political protection) -> confront_zoran
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Stalker (Best Ending) ---
+
+  confront_stalker:
+    type: message
+    text: >
+      You present your evidence to Ivana and ask her to confront Filip:
+
+      "The anonymous account @dubina_bez_dna is Filip. He joined
+      the diving club to track Nikola. He followed Nikola's dive
+      schedule. He was at the dock that night watching. He sent
+      threatening messages to both of you. His identity is fake —
+      the address he gave is a vacant lot. He's been stalking Nikola
+      for months because of his obsession with you."
+    choices:
+      - Send -> stalker_response
+
+  stalker_response:
+    type: message
+    text: >
+      Ivana reads your message. Then writes back:
+
+      IVANA: Jebote... imam mu broj. Zvala sam ga. Nije se javio.
+      Onda sam mu poslala sve što si mi pokazao. Rekla sam mu da
+      znam.
+
+      Odgovorio je sat vremena kasnije. Jedan jedini message:
+      "Sve sam radio za tebe. On ti nije trebao. Dubina ga je
+      uzela."
+
+      To nije ljubav. To je bolest.
+
+      You've already sent everything to Narednik Klarić. And to
+      Maja Krstić.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Narednik Klarić reopens the case. With your evidence — the
+      anonymous account, the fake identity, the diving club records,
+      the witness testimonies — "Filip Novak" is identified as Dino
+      Babić, 28, from Kaštela. Previous conviction for stalking.
+      Restraining order from a previous relationship. He is arrested
+      at a rental apartment in Split.
+
+      On his laptop: hundreds of photographs of Nikola and Ivana.
+      GPS tracking logs. A burner phone with threatening messages.
+      And something else — he had tipped off JadranRib about
+      Nikola's dive that night, knowing they would confront him.
+      He wanted Nikola to disappear.
+
+      Maja Krstić, with Nikola's full evidence package, publishes
+      the JadranRib story in Jutarnji List. The Županija orders
+      an immediate investigation. The trawlers are impounded. Branko
+      Vuković faces criminal charges for illegal fishing in a
+      protected area and witness intimidation. Načelnik Babić
+      resigns when his "donations" become public.
+
+      And Nikola Jurić, reading the story from a friend's boat
+      in Korčula, calls his sister for the first time in ten days.
+
+      "Ana, dolazim kući."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: nikola
+    text: >
+      more ne laže. i ljudi kamenice ne lažu. hvala svima koji
+      nisu odustali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Branko (Partial Ending) ---
+
+  confront_branko:
+    type: message
+    text: >
+      You present the trawling evidence to Branko Vuković:
+
+      "I have underwater footage of your boats trawling in the
+      marine protected area. I have AIS data showing your boats
+      going dark every night. I have GPS logs from your own captain.
+      I have physical evidence from the seabed with your serial
+      numbers. I have soil core samples showing posidonia destruction
+      consistent with bottom trawling."
+    choices:
+      - Send -> branko_response
+
+  branko_response:
+    type: message
+    text: >
+      BRANKO: Ovu komunikaciju prosljeđujem našem pravnom odjelu.
+      Svako objavljivanje kleveta bit će predmet trenutnog sudskog
+      postupka. JadranRib je uvijek poslovao u skladu s propisima.
+
+      But it's too late. You've sent the evidence to Maja, to
+      Plavi Horizont, and to the Županija.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The trawling story breaks. JadranRib's operations are
+      suspended. The trawlers sit idle in the harbour. Eighty jobs
+      in the balance. The village is divided — fishermen against
+      company workers, families against families.
+
+      But Nikola?
+
+      Without the stalking evidence, "Filip" is never identified.
+      He deletes his accounts and disappears. Three months later,
+      a new anonymous account follows Ivana. Then a new one follows
+      Ana.
+
+      Nikola comes back eventually. He dives again. But he checks
+      behind him constantly. He never dives alone. He changes his
+      schedule every week.
+
+      One night, he finds a note on his van: "Miss you."
+
+      The trawling is stopped. The sea will recover. But the person
+      who terrorised Nikola is still out there.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: nikola
+    text: "vratio sam se. more se oporavlja. ostalo... vidjet ćemo."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Načelnik (Wrong Ending) ---
+
+  confront_zoran:
+    type: message
+    text: >
+      You confront Načelnik Babić with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> zoran_response
+
+  zoran_response:
+    type: tweet
+    from: tena
+    text: >
+      Moj klijent prima na znanje Vaše navode. Svako javno
+      objavljivanje kleveta bit će predmet trenutnog sudskog
+      postupka. — Ured Grgić i partneri, Split
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The načelnik's lawyer buries your accusation. Without a direct
+      link between Babić and JadranRib's illegal trawling — and
+      there isn't one beyond political donations — your evidence
+      is insufficient for a conviction.
+
+      JadranRib continues to operate. The stalker continues to
+      watch. Nikola stays in hiding.
+
+      Six months later, the posidonia meadow in uvala Sv. Petra
+      is gone. The fish are gone. The tourists stop coming.
+      Kamenica becomes quieter.
+
+      @dubina_bez_dna creates a new account. It follows Nikola's
+      sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: KAMENICA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Trawling evidence: ${trawling_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Nikola's story explores themes of
+      environmental crime, political corruption, obsessive stalking,
+      community solidarity, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or threats, help is available:
+      Plavi telefon: 0800 0551
+      Policija: 192
+      SOS telefon za žrtve nasilja: 0800 655 222

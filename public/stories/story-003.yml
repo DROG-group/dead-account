@@ -1,0 +1,1406 @@
+# DEAD ACCOUNT — Story 003: Grünwald (Germany)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-003.yml
+#
+# Player investigates the disappearance of music student Lena Hoffmann
+# in the fictional Saxon university town of Grünwald.
+
+meta:
+  title: "Dead Account — Grünwald"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_fatima: 0
+    trust_niklas: 0
+    trust_hartmann: 0
+    trust_weber: 0
+    trust_emre: 0
+    trust_zoe: 0
+    trust_finn: 0
+    trust_jonas: 0
+    trust_clara: 0
+    trust_stefan: 0
+    trust_annette: 0
+    trust_dieter: 0
+    trust_petra: 0
+    trust_kai: 0
+    trust_felix: 0
+    trust_maren: 0
+    trust_heinrich: 0
+    trust_anon: 0
+    trust_olga: 0
+    trust_becker: 0
+    trust_lars: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    fraud_evidence: 0
+    stalking_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to grünwald. finding my way around campus and town"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Gruenwald.social"
+    description: "Willkommen auf der Community-Instanz von Grünwald"
+    avatar_url: /gamepatch/assets/dead-account/gruenwald_bot.png
+
+  npcs:
+    # === Lena's Inner Circle ===
+    lena:
+      name: "Lena Hoffmann"
+      bio: "musikstudentin | producerin | kellernacht collective | sound is truth"
+      avatar: avatars/lena.jpg
+    fatima:
+      name: "Fatima Al-Rashid"
+      bio: "lenas beste | medizinstudentin | kaffee & klausuren | WO IST LENA"
+      avatar: avatars/fatima.jpg
+    niklas:
+      name: "Niklas Berger"
+      bio: "dj | producer | kellernacht collective mit lena | techno heilt"
+      avatar: avatars/niklas.jpg
+
+    # === University ===
+    hartmann:
+      name: "Prof. Dr. Hartmann"
+      bio: "Lehrstuhl für Musikwissenschaft | Universität Grünwald | Forschung & Lehre"
+      avatar: avatars/hartmann.jpg
+    weber:
+      name: "Frau Weber"
+      bio: "Universitätsbibliothek Grünwald | Seit 1994 | Wissen ordnen ist meine Berufung"
+      avatar: avatars/weber.jpg
+    jonas:
+      name: "Jonas Richter"
+      bio: "AStA-Vorsitzender | Universität Grünwald | Deine Stimme zählt"
+      avatar: avatars/jonas.jpg
+    clara:
+      name: "Clara Neumann"
+      bio: "Dekanat Musikwissenschaft | Verwaltung | Sprechstunde Di 10-12"
+      avatar: avatars/clara.jpg
+    felix:
+      name: "Felix Krause"
+      bio: "musikstudent | pianist | hartmanns assistent | forschung & deadlines"
+      avatar: avatars/felix.jpg
+    uni_account:
+      name: "Universität Grünwald"
+      bio: "Offizieller Account | Seit 1823 | Lehre, Forschung, Verantwortung"
+      avatar: avatars/uni.jpg
+
+    # === Local Community ===
+    stefan:
+      name: "Stefan Böhm"
+      bio: "Café Sonntag | Kuchen & Kaffee | live jazz freitags | seit 2005"
+      avatar: avatars/stefan.jpg
+    cafe_sonntag:
+      name: "Café Sonntag"
+      bio: "Kaffee | Kuchen | Jazz | Das Wohnzimmer von Grünwald"
+      avatar: avatars/cafe_sonntag.jpg
+    annette:
+      name: "Annette Schulz"
+      bio: "Buchladen Schulz | Neue & antiquarische Bücher | Lesungen donnerstags"
+      avatar: avatars/annette.jpg
+    dieter:
+      name: "Dieter Kramer"
+      bio: "hausmeister | unigebäude | 25 jahre | ich seh alles"
+      avatar: avatars/dieter.jpg
+    petra:
+      name: "Petra Vogel"
+      bio: "Apothekerin | Rats-Apotheke | Gesundheit & Beratung | Mo-Sa"
+      avatar: avatars/petra.jpg
+    maren:
+      name: "Maren Winkler"
+      bio: "journalistin | Grünwalder Tageblatt | uni & kultur | tipps: maren@tageblatt-gw.de"
+      avatar: avatars/maren.jpg
+    heinrich:
+      name: "Heinrich Lange"
+      bio: "Bürgermeister Grünwald | Im Dienst der Gemeinde seit 2016"
+      avatar: avatars/heinrich.jpg
+
+    # === Suspicious / Rejected Collaborator ===
+    kai:
+      name: "Kai Drescher"
+      bio: "producer | ex-kellernacht | my beats my rules | sie weiß was sie getan hat"
+      avatar: avatars/kai.jpg
+
+    # === Teens ===
+    emre:
+      name: "Emre"
+      bio: "17 | kellernacht fan #1 | bass drops & broken headphones | lena ist legende"
+      avatar: avatars/emre.jpg
+    zoe:
+      name: "Zoe"
+      bio: "16 | synths & sketchbooks | kellernacht changed my life fr"
+      avatar: avatars/zoe.jpg
+    finn:
+      name: "Finn"
+      bio: "15 | drummer | open mics | lena hat mir das erste mal nen platz auf der bühne gegeben"
+      avatar: avatars/finn.jpg
+
+    # === Media & Community ===
+    tageblatt:
+      name: "Grünwalder Tageblatt"
+      bio: "Nachrichten aus Grünwald und Umgebung | Seit 1891"
+      avatar: avatars/tageblatt.jpg
+    wetter_gw:
+      name: "Wetter Grünwald"
+      bio: "Automatische Wetterstation | Stündliche Updates"
+      avatar: avatars/wetter_gw.jpg
+    kulturbuero:
+      name: "Kulturbüro Grünwald"
+      bio: "Veranstaltungen | Förderung | Kultur in Grünwald"
+      avatar: avatars/kulturbuero.jpg
+
+    # === Other ===
+    olga:
+      name: "Olga Petrov"
+      bio: "doktorandin musikwissenschaft | hartmanns lehrstuhl | fertig wenn fertig"
+      avatar: avatars/olga.jpg
+    becker:
+      name: "Kommissar Becker"
+      bio: "Polizeiinspektion Grünwald | Anzeigen: 110 | Bürgertelefon: Mo-Fr 8-16"
+      avatar: avatars/becker.jpg
+    lars:
+      name: "Lars"
+      bio: "."
+      avatar: avatars/anon.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN GRÜNWALD
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to gruenwald.social — the community Mastodon instance
+      for the university town of Grünwald, Saxony.
+
+      The local feed is agitated today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name dominates: @lena_hoffmann.
+
+      A music student and producer who ran an underground club night
+      called Kellernacht. People are worried. She hasn't posted in
+      six days.
+    choices:
+      - Look at her profile -> lena_profile
+
+  lena_profile:
+    type: tweet
+    from: lena
+    text: "I have proof that half the papers coming out of this department are not original work. Screenshots coming."
+    choices:
+      - That's her last real post... -> static_post
+
+  static_post:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single audio
+      clip: 30 seconds of static. No caption. Posted at 4am.
+
+      Her friends say that's not her. The police say she probably
+      took a break from social media. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: becker
+    text: >
+      Wir haben eine Vermisstenanzeige bezüglich einer Studentin
+      der Universität Grünwald aufgenommen. Derzeit liegen keine
+      Hinweise auf eine Straftat vor. Hinweise bitte an die
+      Polizeiinspektion: 110.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are everywhere. Her best friend @fatima_alrashid
+      is panicking. Her DJ partner @niklas_berger is trying to stay
+      calm but failing. The student union president @jonas_richter
+      is demanding the university respond.
+
+      And an account called @kai_drescher — an ex-collaborator from
+      Kellernacht — is posting cryptic, bitter messages.
+
+      Nobody buys the police line. Nobody thinks Lena just "took a
+      break."
+    effects: { trust_fatima: "+5", trust_niklas: "+5" }
+    choices:
+      - Start following Lena's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Grünwald. Follow Lena's contacts and read their
+      posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Stefan (café owner, knows everyone) -> stefan_intro
+      - Talk to Dieter (caretaker, sees everything) -> dieter_intro
+      - Talk to Emre (teen fan, saw something) -> emre_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Lena with university gossip,
+      café specials, and weather complaints. Grünwald is a small
+      university town — the campus and town are inseparable.
+
+      Key names surface: Fatima (best friend, med student), Niklas
+      (DJ partner, Kellernacht co-founder), Professor Hartmann
+      (musicology chair, Lena accused him of something), and Kai
+      Drescher (ex-collaborator, removed from Kellernacht, angry).
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Stefan -> stefan_intro
+      - Talk to Dieter -> dieter_intro
+      - Talk to Emre -> emre_intro
+
+  # --- Stefan (social map) ---
+
+  stefan_intro:
+    type: tweet
+    from: stefan
+    text: >
+      Lenas Stammplatz ist leer. Der Cappuccino wird kalt. Komm
+      zurück, @lena_hoffmann. Wir brauchen die Musik.
+    effects: { trust_stefan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Stefan -> stefan_talk
+
+  stefan_talk:
+    type: message
+    text: >
+      STEFAN: New in town? Welcome to Grünwald. Bad timing though.
+      Everyone's upset about Lena.
+
+      Let me tell you the landscape. Fatima is Lena's best friend —
+      they're inseparable, or were. Niklas is her DJ partner at
+      Kellernacht — he's keeping it together but barely. Professor
+      Hartmann runs the musicology department and Lena was about to
+      blow up his career. And then there's Kai Drescher.
+
+      Kai was part of Kellernacht until Lena kicked him out six
+      months ago. Creative differences, she said. He didn't take it
+      well. He's been posting nasty stuff ever since. Some of it...
+      honestly, some of it's threatening.
+    effects: { trust_stefan: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Kai -> stefan_kai
+      - Ask about Professor Hartmann -> stefan_hartmann
+      - Thank him and move on -> quest1_hub
+
+  stefan_kai:
+    type: message
+    text: >
+      STEFAN: Kai is talented but unstable. When Lena told him to
+      leave Kellernacht, he showed up here at the café screaming
+      at her. I had to ask him to leave. He stood outside for an
+      hour staring through the window.
+
+      Since then he's been posting about her constantly. Passive-
+      aggressive stuff. "She stole my sound." "She'll regret this."
+      And he's been showing up at Kellernacht events even though
+      he's not welcome.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Ask about Professor Hartmann -> stefan_hartmann
+      - Move on -> quest1_hub
+
+  stefan_hartmann:
+    type: message
+    text: >
+      STEFAN: Hartmann is old school. Respected, powerful in the
+      department. Lena was his student until she started making
+      accusations. Said he was running a plagiarism ring — taking
+      student work, publishing it under his name or his favourites'
+      names. She had evidence, she said.
+
+      The university didn't want to hear it. Hartmann has brought
+      in millions in grants. He's untouchable. Or he was, until
+      Lena started posting.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dieter (caretaker, sees everything) ---
+
+  dieter_intro:
+    type: tweet
+    from: dieter
+    text: >
+      25 jahre in diesem gebäude. ich seh alles. ich sag nix. aber
+      wegen @lena_hoffmann... vielleicht sollte ich mal was sagen.
+    effects: { trust_dieter: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dieter -> dieter_talk
+
+  dieter_talk:
+    type: message
+    text: >
+      DIETER: I'm the caretaker at the music building. I've been
+      here since before Hartmann arrived. I see who comes, who goes,
+      who stays late.
+
+      Lena was in her practice room every night until midnight.
+      Working on music, yes, but also going through papers. The
+      recycling from Hartmann's office — she was pulling documents
+      out of it. Shredded stuff too. She had tape and patience.
+
+      And the last week before she disappeared? Someone was in the
+      building after hours who shouldn't have been. I found the side
+      door propped open twice. Not students — they use their cards.
+    effects: { trust_dieter: "+10" }
+    choices:
+      - Who was it? -> dieter_suspect
+      - Move on -> quest1_hub
+
+  dieter_suspect:
+    type: message
+    text: >
+      DIETER: I didn't see a face. But I found a lighter in the
+      stairwell. Black Zippo with a scratched skull design. I know
+      that lighter. Kai Drescher used to sit on the fire escape
+      smoking with that exact lighter when he was still part of
+      Kellernacht.
+
+      He has no reason to be in the music building at 2am. His
+      student access was revoked.
+    effects: { trust_dieter: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Emre (teen fan, witness) ---
+
+  emre_intro:
+    type: tweet
+    from: emre
+    text: >
+      ey alter @lena_hoffmann ist weg und keinen interessierts??
+      die hat mir erst letzte woche noch nen set beigebracht. sowas
+      macht man nicht einfach und verschwindet digga. safe ist da
+      was passiert
+    effects: { trust_emre: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Emre -> emre_talk_early
+
+  emre_talk_early:
+    type: message
+    text: >
+      EMRE: ey jo ich war am freitagabend am kellernacht-eingang
+      weil ich dachte es gibt ne session oder so. war aber nix. und
+      dann seh ich den kai drescher da stehen. der steht einfach da
+      und glotzt aufs gebäude. ich schwöre der typ ist creepy alter.
+
+      hab ich mich nicht getraut was zu sagen ngl. der hat mich
+      angeguckt und ich bin einfach weiter. krass unangenehm digga
+    effects: { trust_emre: "+10" }
+    choices:
+      - Can you describe exactly when this was? -> emre_timing
+      - Thanks Emre, I might come back to this -> quest1_hub
+
+  emre_timing:
+    type: message
+    text: >
+      EMRE: das war so gegen 22 uhr freitagabend. also der abend
+      bevor lena weg war. safe. ich weiß das weil ich danach noch
+      bei zoe war und die hat mir nen screenshot geschickt von
+      lenas letztem post. der über die plagiate. das war noch
+      online da. jetzt ist er weg. gelöscht.
+
+      vallah wer löscht den post von jemand anderem?? das ist doch
+      sus
+    effects: { trust_emre: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Grünwald. A university town where
+      the campus IS the town. A music student who was exposing
+      academic fraud. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Fatima (Lena's best friend) -> fatima_q1
+      - Talk to Niklas (DJ partner) -> niklas_q1
+      - Check what Jonas (student union) is saying -> jonas_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Fatima Q1 ---
+
+  fatima_q1:
+    type: tweet
+    from: fatima
+    text: >
+      lena ist nicht der typ mensch der einfach verschwindet. sie
+      war mittendrin. sie hatte pläne. WER HAT IHR DAS ANGETAN.
+      @polizei_gruenwald MACHT EUREN JOB
+    effects: { trust_fatima: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Fatima -> fatima_q1_talk
+
+  fatima_q1_talk:
+    type: message
+    text: >
+      FATIMA: I appreciate you reaching out but I don't know you.
+      Lena has a lot of people who care about her. She wouldn't
+      just vanish.
+
+      [Fatima is guarded. You'll need to build more trust.]
+    effects: { trust_fatima: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Niklas Q1 ---
+
+  niklas_q1:
+    type: tweet
+    from: niklas
+    text: >
+      kellernacht ist auf eis bis lena zurück ist. ohne sie hat
+      das keinen sinn. wer infos hat — meldet euch. bitte.
+    effects: { trust_niklas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Niklas -> niklas_q1_talk
+
+  niklas_q1_talk:
+    type: message
+    text: >
+      NIKLAS: Lena and I built Kellernacht together. She's the
+      heart of it. She's also my friend and I'm scared.
+
+      She told me she had something on Hartmann. Something big.
+      But she also told me someone was following her. She thought
+      it was Kai at first, then she said "maybe it's not just Kai."
+
+      I should have taken it more seriously.
+
+      [Niklas seems genuinely worried.]
+    effects: { trust_niklas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jonas Q1 ---
+
+  jonas_q1:
+    type: tweet
+    from: jonas
+    text: >
+      Der AStA fordert die Universität auf, zur Situation von
+      @lena_hoffmann Stellung zu nehmen. Eine Studentin ist
+      verschwunden. Schweigen ist keine Option.
+    effects: { trust_jonas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Jonas -> jonas_q1_talk
+
+  jonas_q1_talk:
+    type: message
+    text: >
+      JONAS: The university won't say a word. Hartmann's office
+      referred us to the press department. The press department
+      said "this is a police matter." The police said "there's no
+      crime."
+
+      The circle of silence is perfect.
+
+      Lena came to the AStA three weeks ago with plagiarism
+      allegations against Hartmann. We started an internal review.
+      Then she disappeared. Coincidence? I don't believe in
+      academic coincidences.
+    effects: { trust_jonas: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Lena went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Zoe (was near the music building that night) -> zoe_interview
+      - Find Finn (heard sounds from the practice room) -> finn_interview
+      - Find Petra (pharmacist, saw someone outside her window) -> petra_interview
+      - Find Annette (bookshop, working late, saw a confrontation) -> annette_interview
+
+  # --- Zoe (saw Kai lurking) ---
+
+  zoe_interview:
+    type: tweet
+    from: zoe
+    text: >
+      alter ich hab am freitag den kai drescher am musikgebäude
+      gesehen. so gegen 23 uhr. der hat da nix verloren?? krass
+      creepy safe
+    effects: { trust_zoe: "+5" }
+    choices:
+      - Ask Zoe what she saw -> zoe_talk
+
+  zoe_talk:
+    type: message
+    text: >
+      ZOE: ich schwöre ich hab den kai um 23 uhr am musikgebäude
+      gesehen. er stand an der seitentür. hatte nen hoodie an und
+      hat sich umgeguckt als ob er nicht gesehen werden will. dann
+      ist er rein. durch die seitentür die eigentlich zu sein
+      sollte.
+
+      der hat da kein zutritt mehr alter. das ist sus. ich hab nen
+      screenshot von meiner uhr gemacht als beweis lol. 23:07.
+    effects:
+      trust_zoe: "+10"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Finn (heard sounds) ---
+
+  finn_interview:
+    type: tweet
+    from: finn
+    text: >
+      ey war freitagabend im proberaum nebenan und hab krassen
+      lärm gehört. nicht musik. eher streit. läuft nicht in dem
+      gebäude gerade
+    effects: { trust_finn: "+5" }
+    choices:
+      - Ask Finn what he heard -> finn_talk
+
+  finn_talk:
+    type: message
+    text: >
+      FINN: ich war so bis 23:30 im proberaum am üben. und dann
+      hör ich nebenan — das ist lenas raum — jemanden schreien. ein
+      typ. aggressiv. und dann lena die sagt "geh raus" oder so.
+      dann ne tür die knallt.
+
+      ich hab mich nicht rausgetraut ehrlich gesagt. als ich dann
+      nach ner viertelstunde rausgeguckt hab war alles dunkel. ihr
+      raum war leer. ihre tasche war noch da aber sie war weg.
+
+      alter ich hätte was machen sollen. ich schwöre.
+    effects:
+      trust_finn: "+10"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petra (saw someone running) ---
+
+  petra_interview:
+    type: tweet
+    from: petra
+    text: >
+      Freitagabend gegen Mitternacht: eine junge Frau ist an meiner
+      Wohnung vorbeigerannt. In Richtung Bahnhof. Ohne Jacke.
+    effects: { trust_petra: "+5" }
+    choices:
+      - Ask Petra what she saw -> petra_talk
+
+  petra_talk:
+    type: message
+    text: >
+      PETRA: I live above the pharmacy, overlooking Marktplatz.
+      Around midnight I heard running. A young woman, dark hair,
+      no jacket — it was 3 degrees that night. She was running
+      toward the train station. Not jogging. Fleeing.
+
+      A few minutes later, someone else walked the same direction.
+      Slower, determined. A man in a dark hoodie.
+
+      I nearly called the police. I should have. I told them
+      afterwards. They said "noted."
+    effects:
+      trust_petra: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Annette (saw confrontation) ---
+
+  annette_interview:
+    type: tweet
+    from: annette
+    text: >
+      Ich war Freitagabend spät im Laden. Vor dem Musikgebäude
+      standen zwei Personen. Eine Diskussion. Laut. Unangenehm.
+    effects: { trust_annette: "+5" }
+    choices:
+      - Ask Annette what she saw -> annette_talk
+
+  annette_talk:
+    type: message
+    text: >
+      ANNETTE: I was doing inventory until about 22:30. Through my
+      window I saw two people outside the music building. A man and
+      a woman. He was in her space — leaning in, pointing. She was
+      backing up. She had papers or a folder in her hands.
+
+      He grabbed at the folder. She pulled away. Then he raised his
+      voice — I could hear it through the glass even though I
+      couldn't make out words. She turned and went back inside.
+      He stood there for a moment, then followed her in.
+
+      The woman could have been Lena. The man — I couldn't tell.
+    effects:
+      trust_annette: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Fatima
+      (best friend) and Niklas (DJ partner).
+    choices:
+      - Talk to Fatima about that night -> fatima_interview
+      - Talk to Niklas about Kai -> niklas_interview
+      - Find Zoe -> zoe_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Finn -> finn_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Petra -> petra_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Annette -> annette_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Fatima (last contact with Lena) ---
+
+  fatima_interview:
+    type: tweet
+    from: fatima
+    text: >
+      lenas letzte nachricht an mich: "ich hab alles dokumentiert.
+      wenn mir was passiert, guck in meinen cloud-ordner." DAS WAR
+      VOR SECHS TAGEN.
+    effects: { trust_fatima: "+5" }
+    choices:
+      - DM Fatima -> fatima_talk_low
+        when:
+          state: trust_fatima
+          lt: 50
+      - DM Fatima -> fatima_talk_high
+        when:
+          state: trust_fatima
+          gte: 50
+
+  fatima_talk_low:
+    type: message
+    text: >
+      FATIMA: I want to help but I don't know if I can trust you
+      yet. There are people watching this situation.
+
+      [Fatima needs more trust. Share what you've found about that
+      night.]
+    effects: { trust_fatima: "+5" }
+    choices:
+      - Share what you've learned -> fatima_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  fatima_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the lurking figure, the
+      shouting, the running woman. Fatima goes quiet.
+
+      FATIMA: You're actually doing something. Okay. I'll talk.
+    effects: { trust_fatima: "+25" }
+    choices:
+      - What happened? -> fatima_talk_high
+
+  fatima_talk_high:
+    type: message
+    text: >
+      FATIMA: Lena called me at midnight. She was at the train
+      station. Crying. She said someone had confronted her in the
+      practice room. He tried to take her research files. She
+      managed to keep her laptop but he got some of the printed
+      documents.
+
+      She said "I can't stay here." I drove to the station. She
+      got in my car. I drove her to my cousin's place in Leipzig.
+      She's been there since.
+
+      She's alive. She's safe. But she's terrified. She said two
+      different people are after her — someone from the department
+      and someone from Kellernacht. She won't say more.
+    effects:
+      trust_fatima: "+15"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Niklas on Kai ---
+
+  niklas_interview:
+    type: message
+    text: >
+      NIKLAS: Kai was part of Kellernacht from the beginning. He's
+      a good producer. But he got possessive. Started acting like
+      the whole thing was his. Lena said no to one of his tracks
+      and he lost it. Called her every name. So she kicked him out.
+
+      Since then he's been spiralling. Showing up at events,
+      messaging her constantly, posting about how she "stole his
+      art." Last month he turned up at her practice room at 2am.
+      She told me. I said call the police. She said "they won't
+      do anything about a guy who just stands there."
+    effects:
+      trust_niklas: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Kai Drescher seen at the music building (Emre)
+      22:30 — Confrontation outside: man grabs at woman's papers (Annette)
+      23:00 — Kai enters through propped side door (Zoe)
+      23:30 — Shouting in Lena's practice room, door slam (Finn)
+      00:00 — Woman running toward station, man following (Petra)
+      00:15 — Lena calls Fatima from the station, driven to Leipzig
+
+      Someone confronted Lena. He tried to take her evidence. She
+      ran. She's alive but in hiding.
+
+      Two threads to pull:
+      — The stalker: Kai Drescher — rejected collaborator turned
+        obsessive pursuer
+      — The fraud: Professor Hartmann — what was Lena about to
+        expose?
+    choices:
+      - Investigate Kai -> stalker_hub
+      - Investigate the academic fraud -> fraud_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      STALKING THREAD: Evidence collected: ${stalking_evidence}
+      FRAUD THREAD: Evidence collected: ${fraud_evidence}
+    choices:
+      - Work on the stalking thread -> stalker_hub
+      - Work on the fraud thread -> fraud_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalking_evidence, gte: 5 }
+            - { state: fraud_evidence, gte: 3 }
+
+  # =====================================================================
+  # STALKING THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKING THREAD
+
+      Kai Drescher. Rejected collaborator. Increasingly erratic.
+      He was in the building that night. But how deep does the
+      obsession go?
+
+      Stalking evidence: ${stalking_evidence}
+    choices:
+      - Investigate Kai's social media -> kai_social
+      - Talk to Stefan about Kai's behaviour -> stefan_kai_detail
+      - Talk to Zoe (Kai messaged her) -> zoe_kai
+      - Talk to Emre (more detail) -> emre_kai
+      - Check the anonymous account @lars -> lars_investigation
+      - Talk to Kommissar Becker -> becker_interview
+        when:
+          state: trust_becker
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Kai's Social Media ---
+
+  kai_social:
+    type: message
+    text: >
+      Kai's posts over the past six months tell a story:
+
+      Month 1 after Kellernacht exit: "creative differences. i'll
+      be fine."
+      Month 2: "she took everything. the sound was mine."
+      Month 3: "i see you at café sonntag. with him. laughing.
+      you owe me."
+      Month 4: "every beat you play has my DNA in it. you know it."
+      Month 5: "i will be heard. one way or another."
+      Month 6 (last week): "she'll learn what happens when you
+      erase someone."
+
+      The progression is textbook escalation.
+    effects:
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Stefan on Kai ---
+
+  stefan_kai_detail:
+    type: message
+    text: >
+      STEFAN: Kai's been in here three times this week asking if
+      I've seen Lena. Not "have you heard from her" — "have you
+      SEEN her." Like he's tracking her movements.
+
+      Last month he sat at her table for two hours. Just sat there.
+      When I asked what he was doing, he said "waiting." For what?
+      "For her to come back."
+
+      I told him to leave. He did. Came back the next day. Same
+      table. Same word: "waiting."
+    effects:
+      trust_stefan: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Zoe on Kai ---
+
+  zoe_kai:
+    type: message
+    text: >
+      ZOE: ey der kai hat mir geschrieben!! nach dem kellernacht
+      rauswurf. hat mich gefragt ob ich lenas übungszeitenplan
+      kenne. und ob ich wüsste wann sie allein im gebäude ist.
+      ich schwöre das war so creepy. hab nicht geantwortet.
+
+      und dann hat er mich nochmal angeschrieben: "wenn du ein
+      echtes kellernacht willst sag bescheid. lena hat die seele
+      rausgenommen." alter was soll das. ich hab ihn geblockt
+    effects:
+      trust_zoe: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Emre detail ---
+
+  emre_kai:
+    type: message
+    text: >
+      EMRE: ok alter ich hab noch was. der kai war nicht nur am
+      freitagabend da. ich hab den die ganze woche immer wieder am
+      musikgebäude gesehen. er steht da einfach. manchmal raucht er.
+      manchmal sitzt er in seinem auto. immer so dass er die tür
+      sehen kann.
+
+      und digga — ich hab letztens sein auto gesehen. auf dem
+      beifahrersitz lagen fotos. von lena. gedruckte fotos. nicht
+      irgendwelche — die waren von weitem geschossen. so mit zoom
+      und so. am musikgebäude, am café, auf der straße.
+
+      ich schwöre alter das ist ein stalker. safe.
+    effects:
+      trust_emre: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Lars (anonymous account) ---
+
+  lars_investigation:
+    type: tweet
+    from: lars
+    text: >
+      She thinks she can just erase people. But people don't
+      disappear. They become something else.
+    choices:
+      - Look at this account's history -> lars_posts
+
+  lars_posts:
+    type: message
+    text: >
+      @lars: account created 4 months ago. No profile photo. Posts
+      are all about music production and Kellernacht. The tone:
+
+      "The real Kellernacht died when she killed the sound."
+      "I stood in the rain outside the club. She walked past me
+      like I was nothing."
+      "One day she'll play my track and not even know it's mine."
+      "I know her schedule better than she does."
+
+      Same music terminology as Kai. Same bitterness. Same
+      obsessive focus on one person.
+
+      @lars is Kai.
+    effects:
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Becker ---
+
+  becker_interview:
+    type: message
+    text: >
+      KOMMISSAR BECKER: Off the record? The Hoffmann case sits wrong
+      with me. My superior classified it as "voluntarily absent"
+      within 48 hours. That's fast. Suspiciously fast.
+
+      And I'll say this: the university's legal office called us
+      the morning after the report was filed. That never happens.
+      They wanted to know what was in the report. I told them to
+      file a formal request.
+
+      If you bring me solid evidence of stalking, I can act. My
+      hands are tied on the academic stuff — that's "internal" —
+      but stalking is criminal.
+    effects:
+      trust_becker: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # =====================================================================
+  # ACADEMIC FRAUD THREAD
+  # =====================================================================
+
+  fraud_hub:
+    type: message
+    text: >
+      THE FRAUD THREAD
+
+      Professor Hartmann is running a plagiarism ring. Lena had
+      proof. Now she's gone and her printed evidence was taken.
+
+      Fraud evidence: ${fraud_evidence}
+    choices:
+      - Search the university publications database -> publications_search
+      - Talk to Olga (Hartmann's PhD student) -> olga_interview
+      - Talk to Felix (Hartmann's assistant) -> felix_interview
+      - Talk to Frau Weber (librarian, found discrepancies) -> weber_interview
+      - Talk to Clara (department admin) -> clara_interview
+      - Talk to Maren (journalist) -> maren_interview
+      - Back to hub -> investigation_hub
+
+  # --- Publications ---
+
+  publications_search:
+    type: message
+    text: >
+      The university's publication database is public. Hartmann
+      has 147 publications. Sorting by co-author reveals a pattern:
+
+      12 papers co-authored with students who later left the
+      program. In 8 of those papers, the student's thesis topic
+      became Hartmann's research area within a year. The students
+      are listed as second author — the academic kiss of death.
+
+      Three of those students filed complaints. All three complaints
+      were "resolved internally." None of those students finished
+      their degrees.
+    effects:
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> fraud_hub
+
+  # --- Olga ---
+
+  olga_interview:
+    type: message
+    text: >
+      OLGA: I have been Hartmann's doctoral student for four years.
+      My dissertation was supposed to be finished two years ago.
+      Every time I submit a chapter, he takes it, "revises" it,
+      and publishes a paper based on my work. With his name first.
+
+      Lena figured it out. She compared my thesis drafts with his
+      publications. Paragraph for paragraph. The same work, his
+      name on top.
+
+      I was too afraid to speak up. I'm on a visa. If I lose my
+      position, I lose my right to stay. He knows this.
+    effects:
+      trust_olga: "+15"
+      fraud_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Felix ---
+
+  felix_interview:
+    type: message
+    text: >
+      FELIX: I'm Hartmann's research assistant. I know what he does.
+      I compile his citations, format his papers. Sometimes the
+      "drafts" he gives me are clearly written by someone else.
+      Different style, different level. Student work.
+
+      Lena confronted me about it. She said I was complicit. She's
+      right. I am. But what am I supposed to do? He writes my
+      recommendation letters.
+
+      The night she disappeared, Hartmann was in his office until
+      late. Very late. I know because he sent me an email at 23:45
+      asking me to "secure the research archive." That means delete
+      things. I didn't do it.
+    effects:
+      trust_felix: "+15"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Frau Weber ---
+
+  weber_interview:
+    type: message
+    text: >
+      FRAU WEBER: I have worked in this library for thirty years.
+      I notice things.
+
+      Six months ago, a student asked me to find the original
+      submission dates for several of Hartmann's papers. The dates
+      didn't match what was in the system. Some had been backdated.
+      You can't backdate a library record — but you can backdate a
+      journal submission.
+
+      That student was Lena Hoffmann. I showed her where to look.
+      I showed her the microfiche archive. She was there for days.
+
+      She found everything she needed. And then some.
+    effects:
+      trust_weber: "+10"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Clara ---
+
+  clara_interview:
+    type: message
+    text: >
+      CLARA: I handle the department's administration. Complaints,
+      grade disputes, personnel files. I see everything that passes
+      through.
+
+      Three students have filed plagiarism complaints against
+      Hartmann in the past six years. Each time, the Dean's office
+      conducted an "internal review." Each time, the review found
+      "insufficient evidence." Each time, the student left the
+      program within a semester.
+
+      Lena was building the fourth complaint. But she wasn't going
+      through the Dean. She was going to the press.
+    effects:
+      trust_clara: "+10"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Maren ---
+
+  maren_interview:
+    type: message
+    text: >
+      MAREN: I don't reveal sources. But I will say this: someone
+      contacted me weeks ago with a detailed dossier on academic
+      fraud at the university. Publication comparisons, dates,
+      student testimonies. Thorough work.
+
+      I was fact-checking it. Then my source went silent.
+
+      If you can get me the rest of the evidence — the original
+      documents — I can publish. And once it's public, the
+      university can't bury it.
+    effects:
+      trust_maren: "+15"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Lena than anyone in Grünwald. Who is responsible?
+    choices:
+      - Confront Kai Drescher (the stalker) -> confront_kai
+        when:
+          state: stalking_evidence
+          gte: 5
+      - Confront Prof. Hartmann (the fraud) -> confront_hartmann
+        when:
+          state: fraud_evidence
+          gte: 3
+      - Confront the university administration -> confront_uni
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Kai (Best Ending) ---
+
+  confront_kai:
+    type: message
+    text: >
+      You present your evidence to Kai:
+
+      "I know @lars is your account. I know you were in the
+      building the night Lena disappeared. I know about the photos
+      in your car. I know you propped the side door. I have
+      witnesses who saw you, heard you, and are ready to talk."
+    choices:
+      - Send -> kai_response
+
+  kai_response:
+    type: message
+    text: >
+      Kai doesn't reply for a long time. Then:
+
+      KAI: She destroyed everything I built. Kellernacht was mine.
+      I just wanted her to acknowledge that. I just wanted her to
+      see me.
+
+      That's not wanting to be seen. That's wanting to control.
+
+      You've already sent the evidence to Kommissar Becker. And
+      to Maren at the Tageblatt.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE STALKER
+
+      Three things happen in quick succession.
+
+      Kommissar Becker reopens the case. With your evidence — the
+      anonymous account, the photos, the building access, the
+      witness testimonies — Kai is arrested for stalking and
+      criminal trespass. The photos from his car are seized as
+      evidence.
+
+      Maren Winkler, armed with Lena's plagiarism dossier,
+      publishes a front-page investigation in the Grünwalder
+      Tageblatt. The story is picked up nationally. Professor
+      Hartmann is suspended pending investigation. Three former
+      students come forward. The Dean resigns.
+
+      And Lena Hoffmann, reading the story from Leipzig, calls
+      Fatima for the first time in a week.
+
+      "Ich komme nach Hause."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lena
+    text: >
+      kellernacht is back. louder than ever. danke dass ihr nicht
+      aufgegeben habt.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Hartmann (Partial Ending) ---
+
+  confront_hartmann:
+    type: message
+    text: >
+      You present the plagiarism evidence to Professor Hartmann:
+
+      "I have publication comparisons showing paragraph-level
+      copying from student work. I have backdated submission
+      records. I have testimonies from three former students. I have
+      the original drafts and your published versions side by side."
+    choices:
+      - Send -> hartmann_response
+
+  hartmann_response:
+    type: message
+    text: >
+      HARTMANN: These allegations are baseless and defamatory.
+      Academic collaboration involves shared intellectual
+      contribution. My legal counsel has been notified.
+
+      But it's too late. You've sent the evidence to the AStA,
+      to Maren, and to the ministry of education.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE PROFESSOR
+
+      The plagiarism story breaks. Hartmann is suspended. An
+      external review committee is appointed. The university
+      scrambles to contain the damage.
+
+      But Lena?
+
+      Without the stalking evidence, Kai is never investigated.
+      He continues to live in Grünwald. He continues to watch
+      the music building. He creates a new anonymous account.
+
+      Two months later, Lena reads about Hartmann online. She
+      returns quietly. She changes her practice room schedule.
+      She never works alone at night again.
+
+      The fraud is exposed. But the person who terrorised Lena
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lena
+    text: "ich bin zurück. leiser diesmal."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: University Admin (Wrong Ending) ---
+
+  confront_uni:
+    type: message
+    text: >
+      You contact the university administration directly with your
+      evidence.
+
+      Within hours, you receive a response from the press office:
+    choices:
+      - Read the response -> uni_response
+
+  uni_response:
+    type: tweet
+    from: uni_account
+    text: >
+      The university takes all allegations seriously. An internal
+      review process has been initiated. We ask for patience and
+      discretion while due process takes its course.
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE INSTITUTION
+
+      The university buries your evidence in an "internal review"
+      that will take eighteen months and conclude with "insufficient
+      evidence for further action." Hartmann remains in his chair.
+
+      Kai is never investigated. Lena stays in Leipzig.
+
+      Six months later, @lars creates a new account. It follows
+      Fatima.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: GRÜNWALD — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Stalking evidence: ${stalking_evidence}
+      Fraud evidence: ${fraud_evidence}
+
+      Thank you for playing. Lena's story explores themes of
+      academic power abuse, stalking, institutional silence,
+      and the courage to speak truth to power.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Hilfetelefon Gewalt gegen Frauen: 116 016 (kostenlos, 24/7)
+      Weisser Ring Opfertelefon: 116 006
+      Polizei: 110

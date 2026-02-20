@@ -1,0 +1,1600 @@
+# DEAD ACCOUNT — Story 091: Ampelakia (Greece)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-091.yml
+#
+# Player investigates the death of winemaker Stavros Economou
+# in the fictional Thessaly village of Ampelakia.
+
+meta:
+  title: "Dead Account — Ampelakia"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_eleni: 0
+    trust_nikos: 0
+    trust_despina: 0
+    trust_petros: 0
+    trust_marina: 0
+    trust_alexandros: 0
+    trust_dimitra: 0
+    trust_thanasis: 0
+    trust_georgia: 0
+    trust_vasilis: 0
+    trust_sofia: 0
+    trust_kostas: 0
+    trust_artemis: 0
+    trust_yiannis: 0
+    trust_fotini: 0
+    trust_panagiotis: 0
+    trust_chrysa: 0
+    trust_spyros: 0
+    trust_lefteris: 0
+    trust_astynomia: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    hotel_evidence: 0
+    critic_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "μόλις ήρθα στην Αμπελάκια. ανακαλύπτω τη Θεσσαλία ένα κρασί τη φορά"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Ampelakia.social"
+    description: "Καλώς ήρθατε στην κοινοτική πλατφόρμα της Αμπελακίας"
+    avatar_url: /gamepatch/assets/dead-account/ampelakia_bot.png
+
+  npcs:
+    # === Stavros's Inner Circle ===
+    stavros:
+      name: "Σταύρος Οικονόμου"
+      bio: "οινοποιός | αμπελώνες Αμπελακίας | το κρασί λέει πάντα την αλήθεια"
+      avatar: avatars/stavros.jpg
+    eleni:
+      name: "Ελένη Οικονόμου"
+      bio: "γυναίκα του Σταύρου | δασκάλα στο δημοτικό | κρασί & βιβλία"
+      avatar: avatars/eleni.jpg
+    nikos:
+      name: "Νίκος Οικονόμου"
+      bio: "γιος του Σταύρου | 22 | σπουδές γεωπονίας Λάρισα | θα γυρίσω στο κτήμα"
+      avatar: avatars/nikos.jpg
+    despina:
+      name: "Δέσποινα Καραγιάννη"
+      bio: "βοηθός οινοποιείου | 15 χρόνια δίπλα στον Σταύρο | τρύγος = ζωή"
+      avatar: avatars/despina.jpg
+
+    # === Local Government ===
+    petros:
+      name: "Πέτρος Μαυρογιάννης"
+      bio: "Δήμαρχος Αμπελακίας | Ανάπτυξη & Παράδοση | #ΑμπελάκιαΜπροστά"
+      avatar: avatars/petros.jpg
+    georgia:
+      name: "Γεωργία Παππά"
+      bio: "Αντιδήμαρχος Πολιτισμού | Δήμος Αμπελακίας | αρχαιολογία & τουρισμός"
+      avatar: avatars/georgia.jpg
+    dimarhio:
+      name: "Δήμος Αμπελακίας"
+      bio: "Επίσημος λογαριασμός | Ανακοινώσεις | Ωράριο: Δευ-Παρ 8:00-15:00"
+      avatar: avatars/dimarhio.jpg
+
+    # === Local Business & Community ===
+    thanasis:
+      name: "Θανάσης Ζιώγας"
+      bio: "καφενείο Ζιώγα | εδώ πίνουμε ελληνικό & λύνουμε τα προβλήματα του κόσμου"
+      avatar: avatars/thanasis.jpg
+    vasilis:
+      name: "Βασίλης Τσιούκας"
+      bio: "κτηνοτρόφος | αιγοπρόβατα στα βουνά | παραδοσιακά τυριά"
+      avatar: avatars/vasilis.jpg
+    fotini:
+      name: "Φωτεινή Δήμου"
+      bio: "φαρμακείο Δήμου | Αμπελάκια | υγεία & φροντίδα | ανοιχτά Κυριακή πρωί"
+      avatar: avatars/fotini.jpg
+    kostas:
+      name: "Κώστας Παπαδόπουλος"
+      bio: "αρχαιολόγος | Εφορεία Αρχαιοτήτων Λάρισας | η γη έχει μνήμη"
+      avatar: avatars/kostas.jpg
+    yiannis:
+      name: "Γιάννης Βλάχος"
+      bio: "παπάς | εκκλησία Αγίου Δημητρίου | πνευματική καθοδήγηση"
+      avatar: avatars/yiannis.jpg
+
+    # === Journalist ===
+    marina:
+      name: "Μαρίνα Αλεξίου"
+      bio: "δημοσιογράφος | ΘεsPress | περιβάλλον & τοπική πολιτική | tips: marina@thesspress.gr"
+      avatar: avatars/marina.jpg
+
+    # === Hotel Development (corporate) ===
+    helios_resort:
+      name: "Helios Thessaly Resort SA"
+      bio: "Τουριστικές επενδύσεις | Θεσσαλία | Βιώσιμη ανάπτυξη | ISO 14001"
+      avatar: avatars/helios.jpg
+    alexandros:
+      name: "Αλέξανδρος Ρούσσος"
+      bio: "CEO Helios Thessaly Resort | επιχειρηματίας | ο τουρισμός φέρνει ζωή"
+      avatar: avatars/alexandros.jpg
+    spyros:
+      name: "Σπύρος Δεληγιάννης"
+      bio: "δικηγόρος | Δεληγιάννης & Συνεργάτες | εταιρικό δίκαιο | Αθήνα"
+      avatar: avatars/spyros.jpg
+
+    # === Wine Critic (obsessive) ===
+    dimitra:
+      name: "Δήμητρα Κονταξή"
+      bio: "κριτικός κρασιού | WineVoice.gr | 12.000 followers | η αλήθεια στο ποτήρι"
+      avatar: avatars/dimitra.jpg
+
+    # === Teens ===
+    artemis:
+      name: "Άρτεμις"
+      bio: "17 | αμπελάκια born | φωτογραφία & ορειβασία | ρε φίλε η Θεσσαλία είναι άλλο πράγμα"
+      avatar: avatars/artemis.jpg
+    lefteris:
+      name: "Λευτέρης"
+      bio: "16 | μπάσκετ & gaming | ampelakia gang | τι σκατά γίνεται εδώ"
+      avatar: avatars/lefteris.jpg
+    chrysa:
+      name: "Χρύσα"
+      bio: "15 | ζωγραφική | τα αμπέλια τα βράδια > ό,τι δήποτε | chloé but for wine"
+      avatar: avatars/chrysa.jpg
+
+    # === Media & Community ===
+    nea_ampelakia:
+      name: "Νέα Αμπελακίας"
+      bio: "Ειδήσεις & ανακοινώσεις | tips: redaction@nea-ampelakia.gr"
+      avatar: avatars/nea_ampelakia.jpg
+    kairos_thessalia:
+      name: "Καιρός Θεσσαλία"
+      bio: "Προγνώσεις & ειδοποιήσεις | Αυτόματος σταθμός | Ενημέρωση κάθε ώρα"
+      avatar: avatars/kairos_thessalia.jpg
+    syllogos_ampelakia:
+      name: "Σύλλογος Προστασίας Αμπελώνων"
+      bio: "Προστασία αμπελώνων & αρχαιολογικών χώρων | Εθελοντές | Αμπελάκια"
+      avatar: avatars/syllogos.jpg
+
+    # === Suspicious / Other ===
+    sofia:
+      name: "Σοφία Ντούρου"
+      bio: "τεχνικός εργαστηρίου | Helios Thessaly | κάνω τη δουλειά μου κι αυτό"
+      avatar: avatars/sofia.jpg
+    panagiotis:
+      name: "Παναγιώτης"
+      bio: "."
+      avatar: avatars/anon.jpg
+    astynomia:
+      name: "Αστυνόμος Κατσαρός"
+      bio: "Αστυνομικό Τμήμα Αμπελακίας | Τοπική Ασφάλεια | εκτάκτα: 100"
+      avatar: avatars/astynomia.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN AMPELAKIA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Ampelakia.social — the community Mastodon instance for
+      the village of Ampelakia, nestled among the vineyards and hills
+      of Thessaly, Greece.
+
+      The local feed is unsettled. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling the feed, you see the same name everywhere:
+      @stavros_economou.
+
+      A winemaker. Third generation. He grew the village's most
+      celebrated xinomavro. People are panicking. He was found dead
+      this morning, collapsed among his vines.
+    choices:
+      - Look at his profile -> stavros_profile
+
+  stavros_profile:
+    type: tweet
+    from: stavros
+    text: "Τα αμπέλια στο Κτήμα Λιθάρι δεν πωλούνται. Ούτε σήμερα, ούτε αύριο, ούτε ποτέ. Αυτή η γη δεν είναι εμπόρευμα."
+    choices:
+      - That's one of his final posts... -> found_dead
+
+  found_dead:
+    type: message
+    text: >
+      Three days after that post, Stavros was found by his assistant
+      Despina at dawn, face-down in the vineyard's oldest plot. The
+      police say cardiac arrest. Natural causes.
+
+      But his family says he had no heart condition. His wine barrels
+      had been tampered with — contaminated with something chemical.
+      And someone had been sending him threatening messages for weeks.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: astynomia
+    text: >
+      Ενημερώνουμε ότι ο θάνατος του κ. Οικονόμου αποδίδεται σε
+      καρδιακό επεισόδιο σύμφωνα με την αρχική ιατροδικαστική εξέταση.
+      Δεν υπάρχουν ενδείξεις εγκληματικής ενέργειας. Πληροφορίες
+      στο 100.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are furious. His wife @eleni_economou is demanding
+      a second autopsy. His son @nikos is driving down from Larissa.
+      His assistant @despina_karagianni says the barrels were poisoned.
+      The farmer @vasilis_tsioukas says Stavros had enemies.
+
+      And the wine critic @dimitra_kontaxi, who had been publicly
+      feuding with Stavros for months, has gone silent.
+
+      Nobody believes "cardiac arrest." Not in a village where
+      everyone knows everyone's heartbeat.
+    effects: { trust_eleni: "+5", trust_nikos: "+5" }
+    choices:
+      - Start following Stavros's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Ampelakia. Follow Stavros's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people most willing to talk.
+    choices:
+      - Talk to Thanasis (café owner, knows everyone) -> thanasis_intro
+      - Talk to Vasilis (farmer, knew Stavros well) -> vasilis_intro
+      - Talk to Artemis (teen photographer, saw things) -> artemis_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief over Stavros with village life: harvest
+      schedules, a church festival, weather warnings for the hills.
+
+      Key names surface: Eleni (wife, teacher), Nikos (son, furious),
+      Despina (assistant, loyal), Marina (journalist, digging), and the
+      teens — Artemis, Lefteris, Chrysa — who adored Stavros's stories
+      about the land.
+
+      Also prominent: Helios Thessaly Resort SA, a development company
+      that wants to build a luxury hotel on the hillside above the
+      vineyards. Stavros was the loudest voice against them.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Thanasis -> thanasis_intro
+      - Talk to Vasilis -> vasilis_intro
+      - Talk to Artemis -> artemis_intro
+
+  # --- Thanasis (social map) ---
+
+  thanasis_intro:
+    type: tweet
+    from: thanasis
+    text: >
+      Σήμερα δεν παίζει μουσική στο καφενείο. Σταύρο μου, σου κρατάω
+      το τραπέζι σου. Πάντα.
+    effects: { trust_thanasis: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Thanasis -> thanasis_talk
+
+  thanasis_talk:
+    type: message
+    text: >
+      THANASIS: Ah, you're the new one? Welcome, but bad timing.
+      Everyone's destroyed over Stavros.
+
+      Let me tell you who's who. Eleni is Stavros's wife — she teaches
+      at the primary school. Strong woman, holding it together for the
+      boy. Nikos is their son, studying agronomy in Larissa, wants to
+      take over the vineyard. Despina has been Stavros's right hand at
+      the winery for fifteen years.
+
+      And then there's Dimitra Kontaxi — the wine critic. She wrote a
+      devastating review of Stavros's xinomavro last year. He fired
+      back publicly. It escalated. She came to Ampelakia three months
+      ago and has been... around. Too much around.
+
+      Oh, and the Helios people. They want to build a hotel on the
+      Lithari hillside. That's Stavros's land. Was. He said no. They
+      didn't accept no.
+    effects: { trust_thanasis: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Dimitra -> thanasis_dimitra
+      - Ask about Helios Resort -> thanasis_helios
+      - Thank him and move on -> quest1_hub
+
+  thanasis_dimitra:
+    type: message
+    text: >
+      THANASIS: Dimitra? She's famous online. Wine critic, big
+      following. She reviewed Stavros's 2022 xinomavro and tore it
+      apart. Said it was "a relic of amateur winemaking." Stavros was
+      furious. He posted his chemical analysis showing it was clean,
+      traditional, excellent.
+
+      She doubled down. Wrote three more articles. It became personal.
+      Then she showed up in person. Rented a room at the pension. She's
+      been here three months. Photographing the vineyard. Posting about
+      Stavros every day. Even after he asked her to stop.
+
+      People in the kafeneio started calling her "the shadow." She was
+      always where he was. Always watching. Thanasis pauses. That's not
+      criticism. That's obsession.
+    effects: { trust_thanasis: "+5" }
+    choices:
+      - Ask about Helios -> thanasis_helios
+      - Move on -> quest1_hub
+
+  thanasis_helios:
+    type: message
+    text: >
+      THANASIS: Helios Thessaly Resort. Big company from Athens. They
+      want to build a 200-room luxury hotel on the hillside above the
+      vineyards. Problem is, that hillside is agricultural land AND
+      there are ruins underneath — old Roman-era stuff, maybe older.
+
+      The archaeologist Kostas says it's significant. Stavros said it
+      was sacred. The mayor says it's "development."
+
+      Stavros was the only landowner who refused to sell. He had the
+      key parcel — without it, the access road can't be built. The
+      project is dead without his land.
+
+      Now Stavros is dead. And his land is in his wife's hands.
+    effects: { trust_thanasis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Vasilis (the farmer, witness tease) ---
+
+  vasilis_intro:
+    type: tweet
+    from: vasilis
+    text: >
+      σαράντα χρόνια γείτονας του Σταύρου. τα αμπέλια του δεν γερνούσαν
+      ποτέ. αυτός γέρασε πρώτα. δεν πιστεύω σε καρδιακό. ΔΕΝ πιστεύω.
+    effects: { trust_vasilis: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Vasilis -> vasilis_talk
+
+  vasilis_talk:
+    type: message
+    text: >
+      VASILIS: I've been Stavros's neighbour for forty years. Our land
+      shares a border up on the Lithari slope. I know that man's health
+      like I know my goats. He walked those hills every morning. No
+      heart problems. Nothing.
+
+      Two weeks before he died, his wine barrels — the ones aging in
+      the cellar — were contaminated. Some chemical substance. Ruined
+      the entire vintage. Stavros was devastated but he said, "Someone
+      wants to break me. They won't."
+
+      And the week before that, someone poisoned his oldest vine. The
+      one his grandfather planted. You don't do that by accident. You
+      do that to send a message.
+    effects: { trust_vasilis: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> vasilis_night
+      - Move on -> quest1_hub
+
+  vasilis_night:
+    type: message
+    text: >
+      VASILIS: The night before they found him — I was up late with a
+      sick goat. Around midnight, I saw car lights on the road to the
+      Lithari vineyard. Two cars. One was small, maybe a rental. The
+      other was a black SUV. Expensive.
+
+      Nobody drives to the vineyard at midnight. Nobody.
+
+      I thought maybe Stavros was checking something, but his truck
+      was at his house. Those cars didn't belong.
+    effects: { trust_vasilis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Artemis (teen photographer, witness tease) ---
+
+  artemis_intro:
+    type: tweet
+    from: artemis
+    text: >
+      ρε φίλε δεν γίνεται αυτό. ο κύριος Σταύρος μας μάθαινε για τα
+      αμπέλια, μας έδειχνε τα αστέρια. δεν πέθανε έτσι απλά. γαμώ τα
+      ρε, κάποιος ξέρει κάτι
+    effects: { trust_artemis: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Artemis -> artemis_talk_early
+
+  artemis_talk_early:
+    type: message
+    text: >
+      ARTEMIS: ρε φίλε είσαι νέος εδώ; τι σκατά timing μαλάκα.
+      ο Σταύρος ήταν ο πιο σωστός άνθρωπος του χωριού. μας άφηνε
+      να φωτογραφίζουμε τα αμπέλια, μας μιλούσε για την ιστορία της
+      γης. legend.
+
+      κι ο Λευτέρης είδε κάτι περίεργο πριν λίγες μέρες αλλά δεν
+      θέλει να μιλήσει. λέει "άσ' τα ρε" αλλά εγώ ξέρω ότι φοβάται.
+      τι σκατά γίνεται σ' αυτό το χωριό;
+    effects: { trust_artemis: "+10" }
+    choices:
+      - What did Lefteris see? -> artemis_lefteris_hint
+      - Move on -> quest1_hub
+
+  artemis_lefteris_hint:
+    type: message
+    text: >
+      ARTEMIS: δεν ξέρω ακριβώς. ήταν στο γήπεδο που κάνει μπάσκετ
+      μόνος του τα βράδια, βλέπει κάτω στο οινοποιείο, κι είδε κάποιον
+      να μπαίνει μέσα. νύχτα, χωρίς φώτα. ο Λευτέρης λέει ήταν
+      γυναίκα αλλά σκοτεινά ήταν δεν είδε καλά.
+
+      αν του μιλήσεις μη τον πιέσεις, θα κλείσει. πες του κάτι
+      για μπάσκετ πρώτα χαχα
+    effects: { trust_artemis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Ampelakia. A Thessalian village
+      built around wine and land. A winemaker who refused to sell.
+      A death nobody believes was natural.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Eleni (Stavros's wife) -> eleni_q1
+      - Talk to Despina (Stavros's assistant) -> despina_q1
+      - Check what Nikos (Stavros's son) is saying -> nikos_q1
+      - I'm ready to investigate the night he died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Eleni Q1 ---
+
+  eleni_q1:
+    type: tweet
+    from: eleni
+    text: >
+      ο Σταύρος δεν είχε καρδιακό πρόβλημα. ΠΟΤΕ. ζητάω δεύτερη
+      νεκροψία. αν κάποιος ξέρει κάτι, ΜΙΛΗΣΤΕ.
+    effects: { trust_eleni: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Eleni -> eleni_q1_talk
+
+  eleni_q1_talk:
+    type: message
+    text: >
+      ELENI: I appreciate you reaching out but I'm cautious of
+      strangers right now. Stavros had too many enemies at the end.
+
+      ...but nobody in this village seems willing to ask the real
+      questions.
+
+      [Eleni is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_eleni: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Despina Q1 ---
+
+  despina_q1:
+    type: tweet
+    from: despina
+    text: >
+      δεκαπέντε χρόνια στο πλάι του. τα βαρέλια ήταν μια χαρά τη
+      Δευτέρα. την Τετάρτη κάτι βρόμαγε. κυριολεκτικά. κάποιος
+      μπήκε στο κελάρι. ΚΆΠΟΙΟΣ.
+    effects: { trust_despina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Despina -> despina_q1_talk
+
+  despina_q1_talk:
+    type: message
+    text: >
+      DESPINA: I've worked with Stavros since I was twenty-five.
+      I know that winery like my own hands. The barrels were perfect
+      on Monday. By Wednesday, the xinomavro smelled chemical. Not
+      vinegar — chemical. Like solvent.
+
+      Someone broke in and contaminated them. I told the police.
+      They said "no signs of forced entry." Well, the cellar door
+      hasn't had a proper lock since 2018. Everyone in the village
+      knows that.
+
+      [Despina seems trustworthy but rattled.]
+    effects: { trust_despina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nikos Q1 ---
+
+  nikos_q1:
+    type: tweet
+    from: nikos
+    text: >
+      ο ΠΑΤΕΡΑΣ ΜΟΥ ΠΕΘΑΝΕ κι η αστυνομία μου λέει "φυσικά αίτια"???
+      ΔΕΝ ΕΙΧΕ ΤΙΠΟΤΑ ΡΕ ΜΑΛΑΚΑ. ΤΟΝ ΣΚΟΤΩΣΑΝ. Έρχομαι από Λάρισα.
+      κάποιος θα μου εξηγήσει.
+    effects: { trust_nikos: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nikos -> nikos_q1_talk
+
+  nikos_q1_talk:
+    type: message
+    text: >
+      NIKOS: Who are you? Another person from this village who's going
+      to tell me to calm down? My father called me two days before he
+      died. He said "they're trying everything now." He said the
+      Helios people sent someone to the house. He said "and that woman
+      won't leave me alone."
+
+      That's the last real conversation I had with him.
+    effects: { trust_nikos: "+10" }
+    choices:
+      - Which woman? -> nikos_theory
+      - Move on -> quest1_hub
+
+  nikos_theory:
+    type: message
+    text: >
+      NIKOS: Dimitra Kontaxi. The wine critic. She destroyed him
+      online, then showed up in person. Dad said she was everywhere.
+      At the vineyard, at the kafeneio, photographing his cellar. She
+      said it was "research." It didn't feel like research.
+
+      But honestly? I also think Helios killed him. Without his land,
+      their hotel is finished. And dad wouldn't sell. He kept saying
+      "over my dead body."
+
+      Well. Here we are.
+    effects: { trust_nikos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Stavros died. Multiple people saw
+      or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Lefteris (was playing basketball near the winery) -> lefteris_interview
+      - Find Vasilis (farmer, was up late) -> vasilis_interview
+      - Find Fotini (pharmacist, keeps late hours) -> fotini_interview
+      - Find Yiannis (priest, early morning walk) -> yiannis_interview
+
+  # --- Lefteris (saw someone at the winery) ---
+
+  lefteris_interview:
+    type: tweet
+    from: lefteris
+    text: >
+      μαλάκα τι γίνεται στο χωριό. δεν μπορώ να κοιμηθώ. πάω γήπεδο
+      να ρίξω μπάλες αλλά βλέπω τα αμπέλια κι αναρωτιέμαι
+    effects: { trust_lefteris: "+5" }
+    choices:
+      - Ask Lefteris about that night -> lefteris_talk
+
+  lefteris_talk:
+    type: message
+    text: >
+      LEFTERIS: ρε φίλε ok αλλά δεν το λες σε κανέναν ε; ήμουν στο
+      γήπεδο εκείνο το βράδυ, κάτι 10 η ώρα, κι έριχνα μπάσκετ
+      μόνος μου. βλέπω κάτω στο οινοποιείο κι είδε κάποιον με
+      φακό. μπήκε μέσα. μετά βγήκε μετά από κάνα δεκάλεπτο.
+
+      ήταν γυναίκα νομίζω. αλλά σκοτάδι ήταν ρε μαλάκα. μπορεί
+      να κάνω λάθος. αλλά δεν ήταν ο Σταύρος, αυτό σίγουρα.
+
+      γαμώ τα ρε δεν έπρεπε να κάτσω σπίτι;
+    effects:
+      trust_lefteris: "+10"
+      night_witnesses: "+1"
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Vasilis (saw cars at midnight) ---
+
+  vasilis_interview:
+    type: tweet
+    from: vasilis
+    text: >
+      Υπενθύμιση: η αγροτική οδός προς Λιθάρι κλείνει μετά τις 22:00.
+      Τελευταίες νύχτες είδα κίνηση. Δεν μου αρέσει.
+    effects: { trust_vasilis: "+5" }
+    choices:
+      - Ask Vasilis what he saw -> vasilis_talk_night
+
+  vasilis_talk_night:
+    type: message
+    text: >
+      VASILIS: I told you before about the cars. But there's more.
+      Around midnight, I saw the black SUV park at the edge of the
+      Lithari plot. Two men got out. Suits. In a vineyard at midnight,
+      wearing suits.
+
+      One of them I recognised from the village council meeting:
+      Alexandros Roussos, the Helios CEO. He was standing by
+      Stavros's fence, taking photographs. Measuring things.
+
+      At midnight. Like they already owned the place.
+
+      I wrote it down in my farm diary. Date, time, plate number.
+      Nobody's asked to see it.
+    effects:
+      trust_vasilis: "+10"
+      night_witnesses: "+1"
+      hotel_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Fotini (pharmacist, saw argument) ---
+
+  fotini_interview:
+    type: tweet
+    from: fotini
+    text: >
+      ξαγρυπνούσα με χαρτιά στο φαρμακείο. η πλατεία δεν ήταν
+      άδεια εκείνο το βράδυ. ήταν φωνές.
+    effects: { trust_fotini: "+5" }
+    choices:
+      - Ask Fotini what she heard -> fotini_talk
+
+  fotini_talk:
+    type: message
+    text: >
+      FOTINI: I was doing paperwork at the pharmacy until late — around
+      11pm. The pharmacy overlooks the plateia. I heard voices. Loud.
+
+      Stavros was there, and a woman. Arguing. She was saying something
+      about "the truth about your wine" and "you can't silence me."
+      He was saying "leave me alone, I have nothing to say to you."
+
+      Then a car horn — someone waiting for her. She got in and they
+      drove off toward the pension. He stood in the plateia for a long
+      time. Just standing.
+
+      That was the last time I saw him alive.
+    effects:
+      trust_fotini: "+10"
+      night_witnesses: "+1"
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Yiannis (priest, early morning) ---
+
+  yiannis_interview:
+    type: tweet
+    from: yiannis
+    text: >
+      Ο Θεός γνωρίζει. Η αυγή εκείνη ήταν διαφορετική. Περπατούσα
+      στο μονοπάτι και κάτι δεν πήγαινε καλά.
+    effects: { trust_yiannis: "+5" }
+    choices:
+      - Ask Father Yiannis what he saw -> yiannis_talk
+
+  yiannis_talk:
+    type: message
+    text: >
+      YIANNIS: I walk to the chapel on the hill every morning at 5am
+      for orthros. That morning, the path goes past the vineyard. I
+      saw Stavros lying in the vines. At first I thought he was
+      checking the roots — he did that sometimes, kneeling.
+
+      But he wasn't moving. I went closer. He was cold.
+
+      What I haven't told anyone: there was a glass next to him.
+      A wine glass, half full. Stavros never drank in the vineyard.
+      He was strict about that. Wine is for tasting in the cellar,
+      he always said. Not outside.
+
+      Someone brought him that glass. Or left it there.
+    effects:
+      trust_yiannis: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Eleni (wife)
+      and Chrysa (saw Dimitra at the vineyard).
+    choices:
+      - Talk to Eleni about that night -> eleni_interview
+      - Talk to Chrysa -> chrysa_interview
+      - Find Lefteris -> lefteris_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Vasilis -> vasilis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Fotini -> fotini_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Yiannis -> yiannis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Eleni (last to see Stavros) ---
+
+  eleni_interview:
+    type: tweet
+    from: eleni
+    text: >
+      εκείνο το ποτήρι κρασί δίπλα του. ΔΕΝ ΗΤΑΝ ΔΙΚΟ ΤΟΥ. ο
+      Σταύρος δεν έπινε ποτέ στο αμπέλι. ΠΟΤΕ. κάποιος του
+      έδωσε κάτι.
+    effects: { trust_eleni: "+5" }
+    choices:
+      - DM Eleni -> eleni_talk_low
+        when:
+          state: trust_eleni
+          lt: 50
+      - DM Eleni -> eleni_talk_high
+        when:
+          state: trust_eleni
+          gte: 50
+
+  eleni_talk_low:
+    type: message
+    text: >
+      ELENI: I appreciate that you care. But I've had reporters and
+      developers and all sorts of people messaging me. I don't know
+      who to trust.
+
+      [Eleni needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_eleni: "+5" }
+    choices:
+      - Share what you've learned about the night -> eleni_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  eleni_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the cars at midnight, the
+      argument in the plateia, the glass in the vineyard. Eleni
+      is quiet for a while.
+
+      ELENI: You're actually trying to find out what happened. Okay.
+      I'll talk.
+    effects: { trust_eleni: "+25" }
+    choices:
+      - What happened that night? -> eleni_talk_high
+
+  eleni_talk_high:
+    type: message
+    text: >
+      ELENI: He came home around 10pm. He was upset. He said "that
+      woman cornered me in the plateia again." He meant Dimitra. He
+      said she's not just a critic, she's sick.
+
+      Then his phone rang. He looked at it and his face changed. He
+      said "I have to go to the vineyard." I said it's midnight,
+      what's wrong? He said "they found something. The archaeologist
+      wants to show me."
+
+      He left. He never came back.
+
+      The thing is — I called Kostas the archaeologist the next day.
+      He said he never called Stavros that night. He never asked to
+      meet at the vineyard.
+
+      Someone lured him there.
+    effects:
+      trust_eleni: "+15"
+      night_witnesses: "+1"
+      hotel_evidence: "+1"
+      critic_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Chrysa (saw Dimitra at the vineyard) ---
+
+  chrysa_interview:
+    type: message
+    text: >
+      CHRYSA: ρε μαλάκα ok κοίτα εγώ ζωγραφίζω τα αμπέλια τα βράδια
+      γιατί το φως είναι αλλιώς. κι εκείνο το βράδυ, δυο μέρες πριν
+      πεθάνει ο κύριος Σταύρος, είδα τη γυναίκα αυτή — τη Δήμητρα —
+      στο αμπέλι. μόνη. νύχτα.
+
+      φωτογράφιζε τα βαρέλια στο κελάρι. είχε μπει μέσα. η πόρτα
+      δεν κλειδώνει, το ξέρουν όλοι. αλλά γιατί να μπεις νύχτα;
+
+      άντε γαμήσου ρε, τι σκατά ήθελε εκεί;
+    effects:
+      trust_chrysa: "+10"
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Lefteris sees a figure with a torch enter the winery
+      23:00 — Fotini hears Stavros and Dimitra arguing in the plateia
+      00:00 — Vasilis sees Helios CEO at the vineyard with an SUV
+      00:30 — Stavros gets a fake call, leaves home for vineyard (Eleni)
+      05:00 — Father Yiannis finds Stavros dead with a wine glass beside him
+
+      Someone lured Stavros to the vineyard at night. A glass of wine
+      was left beside him — wine he'd never drink outdoors.
+
+      But there are two threats: the hotel developers AND someone
+      closer.
+
+      Two threads to pull:
+      — The land grab: What is Helios hiding? Who lured him?
+      — The obsession: What is Dimitra really doing? Why was she at
+        the winery at night?
+    choices:
+      - Investigate the hotel development -> corruption_hub
+      - Investigate Dimitra -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      HOTEL THREAD: Evidence collected: ${hotel_evidence}
+      OBSESSION THREAD: Evidence collected: ${critic_evidence}
+    choices:
+      - Work on the hotel thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: critic_evidence, gte: 5 }
+            - { state: hotel_evidence, gte: 3 }
+
+  # =====================================================================
+  # HOTEL DEVELOPMENT / LAND GRAB THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE HOTEL THREAD
+
+      Helios Thessaly Resort needs Stavros's land for their project.
+      Stavros refused to sell. Now he's dead.
+
+      Hotel evidence: ${hotel_evidence}
+    choices:
+      - Search the municipal records -> municipal_records
+      - Talk to Marina the journalist -> marina_interview
+      - Talk to Sofia (Helios technician) -> sofia_interview
+      - Talk to Georgia (culture deputy) -> georgia_interview
+      - Check the Vineyard Protection Association -> syllogos_investigation
+      - Talk to Kostas the archaeologist -> kostas_interview
+      - Back to hub -> investigation_hub
+
+  # --- Municipal Records ---
+
+  municipal_records:
+    type: message
+    text: >
+      The municipality's public records show the Helios Thessaly Resort
+      project was submitted 18 months ago. Environmental impact
+      assessment: "approved." Archaeological survey: "no significant
+      findings."
+
+      But a footnote: the archaeological survey was conducted by a
+      private firm hired by Helios, not by the public Ephorate. The
+      real archaeologist, Kostas Papadopoulos, submitted an objection
+      six months ago. Status: "under review."
+
+      Under review for six months. While Helios broke ground on
+      preliminary works.
+    effects:
+      hotel_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Marina ---
+
+  marina_interview:
+    type: message
+    text: >
+      MARINA: I don't talk about sources. Period.
+    effects: { trust_marina: "+5" }
+    choices:
+      - Show Marina the evidence you have -> marina_with_evidence
+        when:
+          state: hotel_evidence
+          gte: 3
+      - Back to hotel thread -> corruption_hub
+
+  marina_with_evidence:
+    type: message
+    text: >
+      MARINA: ...you have more than I expected.
+
+      Okay. Stavros and I were working together. He had documents
+      showing that Mayor Mavrogiannis received campaign donations from
+      Helios before approving the project. He also had the real
+      archaeological survey — showing Roman-era ruins on the hillside
+      that the private firm conveniently missed.
+
+      We were going to publish in ThessPress. Then he died. And my
+      office was broken into — my laptop stolen.
+
+      Stavros was murdered. I'm sure of it. The wine in that glass
+      was poisoned. The question is who — the developers or the
+      woman who was obsessed with him.
+    effects:
+      trust_marina: "+25"
+      hotel_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who lured him to the vineyard? -> marina_hint
+      - Back to investigation hub -> investigation_hub
+
+  marina_hint:
+    type: message
+    text: >
+      MARINA: The fake call — someone pretending to be Kostas the
+      archaeologist. That's sophisticated. That's not a wine critic
+      acting on emotion. That's planned.
+
+      Helios knew Stavros would come running for an archaeological
+      find — it would strengthen his case against the hotel. They
+      used his passion against him.
+
+      But the poison in the wine? That's intimate. That's someone
+      who knows wine. Someone who could get close enough to hand
+      him a glass.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sofia (Helios whistleblower) ---
+
+  sofia_interview:
+    type: message
+    text: >
+      SOFIA: I work at Helios. I'm just a site technician. I do soil
+      tests, I file reports.
+
+      But the reports I file... don't always match what gets sent to
+      the prefecture.
+    effects: { trust_sofia: "+10" }
+    choices:
+      - What do you mean? -> sofia_detail
+
+  sofia_detail:
+    type: message
+    text: >
+      SOFIA: I measure soil composition. Archaeological indicators.
+      Ceramic fragments, structural remains. My tests showed
+      significant findings on the Lithari hillside — consistent with
+      a Roman-era settlement.
+
+      That data was changed before it went to the authorities. The
+      private firm Helios hired wrote "no significant findings."
+      My originals say the opposite.
+
+      And last month, I overheard Alexandros on the phone. He said:
+      "The old man is the only obstacle. Remove the obstacle and the
+      widow will sell." I don't know who he was talking to.
+
+      I'm scared. But I kept copies of my original reports.
+    effects:
+      trust_sofia: "+15"
+      hotel_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to hotel thread -> corruption_hub
+
+  # --- Georgia ---
+
+  georgia_interview:
+    type: message
+    text: >
+      GEORGIA: As deputy mayor for culture, I take archaeological
+      protection seriously. But the mayor pushed this project through
+      without consulting me. He said it was "economic development."
+
+      Off the record? The archaeological survey Helios submitted is
+      fraudulent. I've seen Kostas's real findings. There are Roman
+      ruins under that hillside — maybe a villa, maybe a workshop.
+      If properly excavated, it could be a significant site.
+
+      The mayor doesn't care. He cares about the money Helios
+      brings. Stavros was the only one fighting.
+    effects:
+      trust_georgia: "+10"
+      hotel_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to hotel thread -> corruption_hub
+
+  # --- Vineyard Protection Association ---
+
+  syllogos_investigation:
+    type: tweet
+    from: syllogos_ampelakia
+    text: >
+      ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Παράνομες εκσκαφές εντοπίστηκαν στην περιοχή
+      Λιθάρι. Ζητάμε άμεση διακοπή εργασιών και αρχαιολογική
+      αυτοψία.
+    choices:
+      - Check their data -> syllogos_data
+
+  syllogos_data:
+    type: message
+    text: >
+      The Vineyard Protection Association has been documenting the
+      Helios project for over a year. Their records show: preliminary
+      construction began before final permits were issued. Heavy
+      machinery damaged century-old vine roots on adjacent plots.
+      Test trenches were dug and then quickly backfilled — likely
+      to hide archaeological finds.
+
+      Most damning: drone photographs showing construction markers
+      on Stavros's land — placed before his death. As if someone
+      was already planning what would happen to that parcel.
+    effects:
+      hotel_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to hotel thread -> corruption_hub
+
+  # --- Kostas the archaeologist ---
+
+  kostas_interview:
+    type: message
+    text: >
+      KOSTAS: I've been trying to protect the Lithari site for two
+      years. My survey found Roman-era remains. Pottery, foundations,
+      what might be an ancient wine press — which would be extraordinary,
+      connecting Ampelakia's winemaking tradition to antiquity.
+
+      Helios hired their own archaeologist who wrote a blank report.
+      The prefecture accepted it. My objection has been "under review"
+      for six months. Someone is blocking it.
+
+      And Stavros — he was my ally. He said, "This land has been making
+      wine for two thousand years. It won't become a swimming pool."
+
+      I never called him that night. I was in Larissa at a conference.
+      Someone used my name to lure him out.
+    effects:
+      trust_kostas: "+10"
+      hotel_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Dimitra Kontaxi. Wine critic. Arrived three months ago. Posts
+      about Stavros constantly. Was seen at the winery at night.
+      Argued with him hours before his death.
+
+      Obsession evidence: ${critic_evidence}
+    choices:
+      - Investigate Dimitra's online history -> dimitra_history
+      - Talk to Eleni about Dimitra -> eleni_dimitra
+        when:
+          state: trust_eleni
+          gte: 20
+      - Talk to Lefteris (more detail on the winery intruder) -> lefteris_detail
+      - Talk to Fotini about Dimitra's purchases -> fotini_dimitra
+      - Check the anonymous account @panagiotis -> panagiotis_investigation
+      - Talk to Thanasis about Dimitra's behaviour -> thanasis_dimitra_detail
+        when:
+          state: trust_thanasis
+          gte: 40
+      - Talk to Astynomia Katsaros -> astynomia_interview
+        when:
+          state: trust_astynomia
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Dimitra Online History ---
+
+  dimitra_history:
+    type: message
+    text: >
+      Dimitra Kontaxi's public profile: 12,000 followers on
+      WineVoice.gr. Professional wine critic. Respected, sharp,
+      sometimes brutal.
+
+      But tracking her posting history reveals a pattern. Over the
+      past year, 73% of her posts mention Stavros Economou. Not just
+      reviews — personal observations. "Saw him at the vineyard today."
+      "His hands when he pours." "He doesn't know what he has."
+
+      The reviews themselves shifted from professional criticism to
+      something personal. "A wine made by a man who refuses to
+      evolve." "Stubbornness disguised as tradition." "If he won't
+      listen, someone must make him."
+    effects:
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Eleni on Dimitra ---
+
+  eleni_dimitra:
+    type: message
+    text: >
+      ELENI: Dimitra? She terrified Stavros. Not physically — he was
+      a big man. But the way she was always there. At the vineyard
+      gates. At the kafeneio. She'd comment on every post within
+      minutes. She photographed our house.
+
+      He told her, clearly, to stop. She said "I'm a journalist,
+      it's my right." That's not journalism. It's fixation.
+
+      A month before he died, someone sent him wine samples with a
+      note: "Taste what your wine should be." The samples were laced
+      with something — Stavros spat it out, said it tasted chemical.
+      He threw them away. I wish he'd kept them.
+
+      The handwriting on the note was elegant. Like a woman's.
+    effects:
+      trust_eleni: "+10"
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lefteris detail ---
+
+  lefteris_detail:
+    type: message
+    text: >
+      LEFTERIS: μαλάκα ok δεν είπα τα πάντα. αυτή που μπήκε στο
+      οινοποιείο εκείνο το βράδυ — είχε κάτι στο χέρι. μπουκάλι
+      νομίζω. ή φιάλη. κάτι μικρό. το κράταγε σαν να ήταν σημαντικό.
+
+      κι όταν βγήκε, δεν το είχε πια. το άφησε μέσα.
+
+      μαλάκα αν αυτή δηλητηρίασε τα βαρέλια... γαμώ τα ρε.
+      τι σκατά ρε, αυτό λέει ότι βρήκε η Δέσποινα; η χημική
+      μυρωδιά στα βαρέλια;
+    effects:
+      trust_lefteris: "+10"
+      critic_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Fotini on Dimitra ---
+
+  fotini_dimitra:
+    type: message
+    text: >
+      FOTINI: Dimitra Kontaxi comes to my pharmacy. She buys things
+      that concern me. Sleep medication. Anti-anxiety pills. And
+      once — this is what worried me — she asked about agricultural
+      chemicals. Which ones are undetectable in wine.
+
+      I said "this is a pharmacy, not an agrochemical supplier." She
+      laughed and said it was for an article. But she came back the
+      next week asking about potassium cyanide. For "research."
+
+      I refused and reported it to the police. They said they'd
+      look into it. I don't think they did.
+    effects:
+      trust_fotini: "+10"
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Panagiotis (anonymous account) ---
+
+  panagiotis_investigation:
+    type: tweet
+    from: panagiotis
+    text: >
+      He never appreciated what I tried to show him. I could have
+      made his wine immortal. He chose to stay small.
+    choices:
+      - Look at this account's history -> panagiotis_posts
+
+  panagiotis_posts:
+    type: message
+    text: >
+      @panagiotis: account created 10 months ago. Posts are entirely
+      about Stavros and his wine. The tone shifts over time:
+
+      Month 1: "A fascinating winemaker. Traditional methods deserve
+      respect and critique."
+      Month 3: "Why won't you engage with my analysis? I could
+      elevate your work."
+      Month 6: "I've been to your vineyard. The vines speak to me
+      the way they speak to you."
+      Month 8: "You ignore me in person too. I can see your cellar
+      from the road. I know what you're ageing."
+      Month 10: "If you won't listen to expertise, you don't
+      deserve what you have."
+
+      No photos, no personal details. Just Stavros. Only Stavros.
+    effects:
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> panagiotis_style
+
+  panagiotis_style:
+    type: message
+    text: >
+      Comparing @panagiotis with @dimitra_kontaxi:
+
+      Same oenological vocabulary — specific Greek wine terms used
+      identically. Same sentence rhythm. Same use of em-dashes.
+      Same intimate knowledge of Stavros's vineyard layout and
+      cellar operations.
+
+      And one post from @panagiotis: "The 2022 batch in barrel 7 is
+      better than he thinks." Barrel 7 is an internal numbering
+      system. Only someone who'd been inside the cellar would know.
+
+      It's Dimitra. The anonymous account is Dimitra.
+    effects:
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Thanasis on Dimitra ---
+
+  thanasis_dimitra_detail:
+    type: message
+    text: >
+      THANASIS: Dimitra left something at my kafeneio. She forgot her
+      notebook one evening. I looked — forgive me, I'm a curious man.
+
+      It's not just wine notes. It's a diary. Pages about Stavros.
+      His daily routines. What time he goes to the vineyard. What
+      time he comes to the kafeneio. What he orders. Who he talks to.
+
+      There are photographs tucked in the back. Stavros in the
+      vineyard. Stavros at his cellar. Stavros through his kitchen
+      window.
+
+      This woman is not a critic. She's a stalker wearing a press
+      credential.
+    effects:
+      trust_thanasis: "+10"
+      critic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Astynomia Katsaros ---
+
+  astynomia_interview:
+    type: message
+    text: >
+      ASTYNOMIA KATSAROS: Off the record — completely off the record
+      — I wanted to investigate the death as suspicious. My superior
+      in Larissa told me to close it. He said the coroner ruled
+      natural causes and that was that.
+
+      The Helios situation is political. I can't touch it without
+      orders from above. But the stalking — the Dimitra situation —
+      that I didn't even know about until now. If you have evidence,
+      I can act on that. Harassment, breaking and entering, possible
+      poisoning — that's clearly criminal.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_astynomia: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Stavros than anyone in Ampelakia. Who is responsible?
+    choices:
+      - Confront Dimitra Kontaxi (the obsessive critic) -> confront_dimitra
+        when:
+          state: critic_evidence
+          gte: 5
+      - Confront Alexandros Roussos (the Helios CEO) -> confront_alexandros
+        when:
+          state: hotel_evidence
+          gte: 3
+      - Confront Mayor Mavrogiannis (political protection) -> confront_petros
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Dimitra (Best Ending) ---
+
+  confront_dimitra:
+    type: message
+    text: >
+      You present your evidence to Dimitra:
+
+      "I know @panagiotis is your account. I know you broke into the
+      winery and contaminated the barrels. I know you were stalking
+      Stavros — photographing his house, tracking his movements. I
+      know you asked about undetectable chemicals. I have the
+      notebook from the kafeneio. I have witnesses."
+    choices:
+      - Send -> dimitra_response
+
+  dimitra_response:
+    type: message
+    text: >
+      Dimitra doesn't reply for a long time. Then:
+
+      DIMITRA: You don't understand. He was wasting his gift. That
+      xinomavro was extraordinary and he was hiding it in a village
+      nobody's heard of. I wanted to make him famous. I wanted to
+      help him. Everything I did was because his wine deserved
+      better.
+
+      That's not helping. That's obsession. That's murder.
+
+      You've already sent the evidence to Astynomia Katsaros. And to
+      Marina Alexiou.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Katsaros reopens the case. A second autopsy reveals traces of
+      potassium cyanide in Stavros's blood — consistent with poisoned
+      wine. The glass found beside him is recovered from the evidence
+      locker and tested. Positive. Dimitra Kontaxi is arrested for
+      murder, stalking, and criminal poisoning. Her rental room
+      contains hundreds of photographs of Stavros and bottles of
+      agricultural chemicals.
+
+      Marina Alexiou, with the Helios evidence package, publishes
+      in ThessPress. The fraudulent archaeological survey is exposed.
+      The prefecture orders a proper excavation. Roman ruins are
+      confirmed. The hotel project is cancelled. Alexandros Roussos
+      faces fraud charges. Mayor Mavrogiannis resigns.
+
+      Eleni stands in the vineyard where her husband died. Nikos
+      is beside her. The oldest vine — the one Stavros's grandfather
+      planted — is scarred but alive.
+
+      "Θα συνεχίσουμε. Για αυτόν."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Γραμμή SOS 15900 (24ωρη, δωρεάν)
+      Γραμμή Παιδιού 1056 (Χαμόγελο του Παιδιού)
+      Ευρωπαϊκός αριθμός έκτακτης ανάγκης: 112
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: eleni
+    text: >
+      τα αμπέλια δεν πεθαίνουν. ούτε η μνήμη. ο Σταύρος είναι σε
+      κάθε σταφύλι. σας ευχαριστώ που δεν τα παρατήσατε.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Alexandros (Partial Ending) ---
+
+  confront_alexandros:
+    type: message
+    text: >
+      You present the development evidence to Alexandros Roussos:
+
+      "I have the real archaeological survey showing Roman ruins. I
+      have the falsified reports your hired firm produced. I have
+      phone records and a witness who heard you say 'remove the
+      obstacle.' I have drone photos showing you marked Stavros's
+      land before he died."
+    choices:
+      - Send -> alexandros_response
+
+  alexandros_response:
+    type: message
+    text: >
+      ALEXANDROS: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Helios Thessaly Resort operates within
+      all applicable regulations.
+
+      But it's too late. You've sent the evidence to Marina, to
+      the Vineyard Protection Association, and to the prefecture.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE DEVELOPMENT
+
+      The hotel story breaks. Helios Thessaly is ordered to halt
+      construction pending investigation. The archaeological survey
+      is declared fraudulent. Roman ruins are confirmed on the site.
+      The project collapses. Mayor Mavrogiannis faces corruption
+      charges.
+
+      But Stavros?
+
+      Without the stalking and poisoning evidence, Dimitra is never
+      investigated. The death remains "cardiac arrest." She writes a
+      tribute article: "The Winemaker Who Refused to Change."
+
+      She keeps her photographs. She moves to another village. She
+      finds another winemaker to admire. The pattern continues.
+
+      Six months later, @panagiotis creates a new account. It
+      follows a young vintner in Nemea.
+
+      The land is saved. But Stavros's killer walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: nikos
+    text: "το κτήμα σώθηκε. ο πατέρας μου όχι. αυτό δεν είναι δικαιοσύνη."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_petros:
+    type: message
+    text: >
+      You confront Mayor Mavrogiannis with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> petros_response
+
+  petros_response:
+    type: tweet
+    from: spyros
+    text: >
+      Ο πελάτης μου λαμβάνει γνώση των ισχυρισμών σας. Οποιαδήποτε
+      δημόσια διάδοση συκοφαντικού υλικού θα επισύρει άμεσες νομικές
+      ενέργειες. — Δεληγιάννης & Συνεργάτες, Αθήνα
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Mavrogiannis and Stavros's death — and there
+      isn't one beyond political protection — your evidence is
+      insufficient.
+
+      Helios Thessaly continues construction. Dimitra Kontaxi
+      continues to watch. The vineyard is sold to developers by a
+      grieving Eleni who can't bear to look at it anymore.
+
+      The oldest vine in Ampelakia is uprooted to make room for a
+      swimming pool.
+
+      A year later, @panagiotis creates a new account. It follows
+      Nikos.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: AMPELAKIA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Hotel evidence: ${hotel_evidence}
+      Obsession evidence: ${critic_evidence}
+
+      Thank you for playing. Stavros's story explores themes of
+      corporate greed, archaeological destruction, obsessive behaviour,
+      community solidarity, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Γραμμή SOS 15900 (24ωρη, δωρεάν κλήση)
+      Γραμμή Παιδιού 1056 (Χαμόγελο του Παιδιού)
+      Ευρωπαϊκός αριθμός έκτακτης ανάγκης: 112

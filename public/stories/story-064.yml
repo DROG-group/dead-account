@@ -1,0 +1,1607 @@
+# DEAD ACCOUNT — Story 064: Petra Loutra (Greece)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-064.yml
+#
+# Player investigates the death of olive farmer Nikos Papadakis
+# in the fictional Peloponnese village of Petra Loutra.
+
+meta:
+  title: "Dead Account — Petra Loutra"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marina: 0
+    trust_stavros: 0
+    trust_eleni: 0
+    trust_dimitris: 0
+    trust_sofia: 0
+    trust_yannis: 0
+    trust_katerina: 0
+    trust_panos: 0
+    trust_thalia: 0
+    trust_kostas: 0
+    trust_angeliki: 0
+    trust_petros: 0
+    trust_ioanna: 0
+    trust_michalis: 0
+    trust_despoina: 0
+    trust_giorgos: 0
+    trust_nefeli: 0
+    trust_andreas: 0
+    trust_chrysa: 0
+    trust_vasilis: 0
+    trust_astynomia: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "μόλις ήρθα στην Πέτρα Λουτρά. ανακαλύπτω την Πελοπόννησο σιγά σιγά"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "PetraLoutra.social"
+    description: "Καλώς ήρθατε στο κοινοτικό instance της Πέτρας Λουτράς"
+    avatar_url: /gamepatch/assets/dead-account/petraloutra_bot.png
+
+  npcs:
+    # === Nikos's Inner Circle ===
+    nikos:
+      name: "Νίκος Παπαδάκης"
+      bio: "ελαιοπαραγωγός | η γη δεν ψεύδεται | Πέτρα Λουτρά εδώ και 4 γενιές"
+      avatar: avatars/nikos.jpg
+    marina:
+      name: "Μαρίνα Παπαδάκη"
+      bio: "γυναίκα του Νίκου | δασκάλα στο δημοτικό | μάνα δύο παιδιών | δεν μπορώ να πιστέψω ότι έφυγε"
+      avatar: avatars/marina.jpg
+    stavros:
+      name: "Σταύρος Παπαδάκης"
+      bio: "ξάδελφος του Νίκου | φωτογράφος | Πέτρα Λουτρά born & raised | #ΟιΕλιέςΜας"
+      avatar: avatars/stavros.jpg
+    eleni:
+      name: "Ελένη Δημητρίου"
+      bio: "αγρονόμος | συνεταιρισμός ελαιολάδου Πέτρας Λουτράς | η ποιότητα πάνω απ' όλα"
+      avatar: avatars/eleni.jpg
+
+    # === Local Government ===
+    dimitris:
+      name: "Δημήτρης Αντωνόπουλος"
+      bio: "Δήμαρχος Πέτρας Λουτράς | Ανάπτυξη με σεβασμό στην παράδοση | #ΠέτραΛουτράΜπροστά"
+      avatar: avatars/dimitris.jpg
+    sofia:
+      name: "Σοφία Καραγιάννη"
+      bio: "Αντιδήμαρχος Περιβάλλοντος | Δήμος Πέτρας Λουτράς | νερό για όλους"
+      avatar: avatars/sofia.jpg
+    dimotiko:
+      name: "Δήμος Πέτρας Λουτράς"
+      bio: "Επίσημος λογαριασμός | Ανακοινώσεις | Ωράριο: Δευ-Παρ 8π.μ.-3μ.μ."
+      avatar: avatars/dimotiko.jpg
+
+    # === Local Business & Community ===
+    yannis:
+      name: "Γιάννης Λιακόπουλος"
+      bio: "καφενείο Ο Πλάτανος | καφέ | τσίπουρο | μεζέδες | η καρδιά του χωριού από το 1965"
+      avatar: avatars/yannis.jpg
+    kafeneio:
+      name: "Καφενείο Ο Πλάτανος"
+      bio: "Παραδοσιακό καφενείο | Μεζέδες | Ζωντανή μουσική Σάββατο | Η πλατεία σας περιμένει"
+      avatar: avatars/kafeneio.jpg
+    katerina:
+      name: "Κατερίνα Νικολάου"
+      bio: "φαρμακοποιός | Πέτρα Λουτρά | υγεία & συμβουλές | ανοιχτά και Κυριακή πρωί"
+      avatar: avatars/katerina.jpg
+    panos:
+      name: "Πάνος Μαυρίδης"
+      bio: "υδραυλικός | 30 χρόνια στα σωλήνια | αυτό το νερό είναι η ζωή μας"
+      avatar: avatars/panos.jpg
+    thalia:
+      name: "Θαλία Κωνσταντίνου"
+      bio: "αρτοποιείο Κωνσταντίνου | κουλούρια | τυρόπιτες | 5 το πρωί κάθε μέρα"
+      avatar: avatars/thalia.jpg
+    kostas:
+      name: "Κώστας Βασιλείου"
+      bio: "κτηνοτρόφος | κατσίκια & πρόβατα | η κοιλάδα είναι το σπίτι μου"
+      avatar: avatars/kostas.jpg
+    angeliki:
+      name: "Αγγελική Παππά"
+      bio: "βιβλιοπωλείο Η Πηγή | βιβλία | εφημερίδες | αναγνώσεις κάθε Τετάρτη"
+      avatar: avatars/angeliki.jpg
+
+    # === Journalist ===
+    petros:
+      name: "Πέτρος Σωτηρίου"
+      bio: "δημοσιογράφος | περιβάλλον & τοπική αυτοδιοίκηση | tips: petros@sotiriou-press.gr"
+      avatar: avatars/petros.jpg
+
+    # === AquaPeloponnese (corporate) ===
+    aquapelop:
+      name: "AquaPeloponnese AE"
+      bio: "Λύσεις διαχείρισης υδάτων | Μονάδα Πέτρας Λουτράς | ISO 9001 πιστοποίηση"
+      avatar: avatars/aquapelop.jpg
+    ioanna:
+      name: "Ιωάννα Ρουσσοπούλου"
+      bio: "διευθύντρια AquaPeloponnese Πέτρα Λουτρά | βιώσιμη ανάπτυξη & υδατικοί πόροι"
+      avatar: avatars/ioanna.jpg
+    michalis:
+      name: "Μιχάλης Τσαούσης"
+      bio: "Δικηγόρος | Γραφείο Τσαούση & Συνεργάτες | Εμπορικό Δίκαιο | Τρίπολη"
+      avatar: avatars/michalis.jpg
+
+    # === Teens ===
+    despoina:
+      name: "Δέσποινα"
+      bio: "16 | βόλεϊ | Πέτρα Λουτρά για πάντα | ο Νίκος ήταν ο καλύτερος γείτονας ρε"
+      avatar: avatars/despoina.jpg
+    giorgos:
+      name: "Γιώργος"
+      bio: "17 | μηχανάκι & μουσική | sunset στην κοιλάδα | τι σκατά γίνεται εδώ"
+      avatar: avatars/giorgos.jpg
+    nefeli:
+      name: "Νεφέλη"
+      bio: "15 | ζωγραφική & φωτογραφία | τα ελαιόδεντρα σε watercolor | ο Νίκος με μάθαινε"
+      avatar: avatars/nefeli.jpg
+
+    # === Media & Community ===
+    actu_petra:
+      name: "Νέα Πέτρας Λουτράς"
+      bio: "Τοπικά νέα της Πέτρας Λουτράς και περιοχής | Tips: redaction@nea-petras.gr"
+      avatar: avatars/actu_petra.jpg
+    meteo_pelop:
+      name: "Καιρός Πέτρα Λουτρά"
+      bio: "Προβλέψεις & ειδοποιήσεις | Αυτόματος σταθμός | Ενημέρωση κάθε ώρα"
+      avatar: avatars/meteo_pelop.jpg
+    syneterismos:
+      name: "Συνεταιρισμός Ελαιοπαραγωγών Πέτρας"
+      bio: "Ποιοτικό ελαιόλαδο | 120 μέλη | Εξαγωγές | Προστασία γης & νερού"
+      avatar: avatars/syneterismos.jpg
+
+    # === Suspicious / Other ===
+    andreas:
+      name: "Ανδρέας Φλώρος"
+      bio: "τεχνικός υδάτων | AquaPeloponnese | κάνω τη δουλειά μου τίποτα παραπάνω"
+      avatar: avatars/andreas.jpg
+    chrysa:
+      name: "Χρύσα Νοτάρη"
+      bio: "."
+      avatar: avatars/anon.jpg
+    vasilis:
+      name: "Υπαρχιφύλακας Βασίλης Δράκος"
+      bio: "Αστυνομικός Σταθμός Πέτρας Λουτράς | Τοπική αστυνομία | Εκτακτα: 100"
+      avatar: avatars/vasilis.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PETRA LOUTRA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to PetraLoutra.social — the community Mastodon instance for
+      the village of Petra Loutra, Peloponnese.
+
+      The local feed is dark today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @nikos_papadakis.
+
+      An olive farmer. Fourth generation. He tended the oldest grove in
+      the valley. People are in shock. His body was found at dawn in
+      the irrigation channel that runs through his land.
+    choices:
+      - Look at his profile -> nikos_profile
+
+  nikos_profile:
+    type: tweet
+    from: nikos
+    text: "Αυτό το νερό δεν ανήκει σε καμία εταιρεία. Ανήκει στη γη. Και η γη ανήκει σε αυτούς που τη δουλεύουν. Έχω αποδείξεις."
+    choices:
+      - That's his last real post... -> grey_grove
+
+  grey_grove:
+    type: message
+    text: >
+      One day after that post, his account uploaded a single image:
+      a blurred photo of olive trees in grey morning light. Shot from
+      a strange angle. Posted at 4am. No caption.
+
+      His wife Marina says that is not his style. Nikos never posted
+      without a caption. The police say he slipped and drowned in the
+      irrigation channel. Something does not add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: vasilis
+    text: >
+      Ενημερώνουμε ότι ο θάνατος κατοίκου της Πέτρας Λουτράς φαίνεται να
+      οφείλεται σε ατύχημα. Η έρευνα είναι σε εξέλιξη. Οποιαδήποτε
+      πληροφορία μπορεί να κοινοποιηθεί στο τμήμα. Τηλ: 100.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His wife @marina_papadaki is
+      devastated. His cousin @stavros_papadakis is furious and posting
+      constantly. His colleague @eleni_dimitriou at the olive cooperative
+      is asking hard questions.
+
+      The old fisherman turned farmer @kostas_vasiliou says Nikos was
+      right about the water. The teens are losing their minds. And the
+      journalist @petros_sotiriou has gone strangely silent.
+
+      Nobody buys the police line. Nobody thinks Nikos just "slipped."
+    effects: { trust_marina: "+5", trust_stavros: "+5" }
+    choices:
+      - Start following Nikos's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Petra Loutra. Follow Nikos's contacts and read their
+      posts. The more you engage with the community, the more they will
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Yannis (kafeneio owner, knows everyone) -> yannis_intro
+      - Talk to Panos (plumber, saw the water change) -> panos_intro
+      - Talk to Despoina (teen, seems shaken) -> despoina_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief for Nikos with the rhythms of a Peloponnese
+      village: olive harvest schedules, the bakery's daily specials,
+      weather warnings for the valley.
+
+      Key names surface: Marina (wife, teacher), Stavros (cousin,
+      photographer, seems obsessive), Eleni (agronomist, seems rattled),
+      and the teens — Despoina, Giorgos, Nefeli — who looked up to
+      Nikos like an uncle.
+
+      Also prominent: AquaPeloponnese AE, the water management company
+      that has been buying up local water rights. Their posts are
+      corporate PR. Nikos's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Yannis -> yannis_intro
+      - Talk to Panos -> panos_intro
+      - Talk to Despoina -> despoina_intro
+
+  # --- Yannis (social map) ---
+
+  yannis_intro:
+    type: tweet
+    from: yannis
+    text: >
+      Το καφενείο είναι ανοιχτό αλλά η πλατεία είναι άδεια. @nikos_papadakis,
+      η θέση σου σε περιμένει. Δεν θα σε ξεχάσουμε ποτέ.
+    effects: { trust_yannis: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Yannis -> yannis_talk
+
+  yannis_talk:
+    type: message
+    text: >
+      YANNIS: Ah, you are new here? Welcome. Terrible time to arrive.
+      Everyone is broken about Nikos.
+
+      Let me tell you who is who. Marina is Nikos's wife — she teaches
+      at the village school. Sweet woman, destroyed right now. Stavros
+      is Nikos's cousin — they grew up together, but things between
+      them got strange the last year. Stavros became obsessed with the
+      family land, kept saying it was his birthright too. Eleni works
+      at the olive cooperative with Nikos. Smart woman.
+
+      And Petros Sotiriou — the journalist — he and Nikos were working
+      on something together. Something about the water. Petros has not
+      said a word since Nikos died. That is not like him at all.
+
+      Oh, and do not trust AquaPeloponnese's PR posts. Lies wrapped
+      in ISO certifications. They want our water and they do not care
+      who gets hurt.
+    effects: { trust_yannis: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Stavros -> yannis_stavros
+      - Ask about AquaPeloponnese -> yannis_aqua
+      - Thank him and move on -> quest1_hub
+
+  yannis_stavros:
+    type: message
+    text: >
+      YANNIS: Stavros? He is family but... listen, I have seen things.
+      Since old Papadakis died — that is Nikos's father — the land
+      inheritance has been a war. Nikos got the main grove because he
+      was the son. Stavros got nothing. His mother was Nikos's father's
+      sister. He felt cheated.
+
+      The last year, Stavros has been at the kafeneio every night,
+      drinking too much, talking about how the land should be his. He
+      said Nikos was wasting it. He said "that grove needs someone who
+      appreciates it." He followed Nikos around with his camera,
+      documenting everything, saying he was making a photo project. But
+      it felt like surveillance, ρε.
+
+      Nikos told me once, "Stavros does not take no for an answer."
+    effects: { trust_yannis: "+5" }
+    choices:
+      - Ask about AquaPeloponnese -> yannis_aqua
+      - Move on -> quest1_hub
+
+  yannis_aqua:
+    type: message
+    text: >
+      YANNIS: AquaPeloponnese has been here two years. They bought the
+      old municipal water rights in a deal nobody understood. Now they
+      control the irrigation channels, the wells, everything. They want
+      to build a bottling plant in the valley.
+
+      The farmers fought back. Nikos led the resistance. He had
+      documents showing the privatization deal was corrupt — the mayor
+      sold the rights for nothing. He had water quality tests showing
+      the company was diverting water from the farmers to sell
+      commercially.
+
+      Two weeks before he died, he posted those documents publicly. Then
+      someone found him face down in the irrigation channel. Γαμώτο.
+    effects: { trust_yannis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Panos (the water, witness tease) ---
+
+  panos_intro:
+    type: tweet
+    from: panos
+    text: >
+      τριάντα χρόνια δουλεύω με σωλήνες. το νερό στην κοιλάδα δεν είναι
+      το ίδιο. @nikos_papadakis είχε δίκιο. και τώρα είναι νεκρός.
+      κάντε τη σύνδεση.
+    effects: { trust_panos: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Panos -> panos_talk
+
+  panos_talk:
+    type: message
+    text: >
+      PANOS: I have been the plumber in this village since I was twenty.
+      I know every pipe, every well, every spring. And I am telling you
+      — the water has changed. AquaPeloponnese installed new valves on
+      the main irrigation channel six months ago. Since then, the flow
+      to the olive groves has dropped by half.
+
+      Nikos measured it. He documented everything. He showed the water
+      was being diverted to the new bottling plant construction site.
+      The farmers' trees are dying of thirst while AquaPeloponnese
+      fills tanker trucks.
+
+      You think that is a coincidence? Μαλάκα, I do not believe in
+      coincidences.
+    effects: { trust_panos: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> panos_night
+      - Move on -> quest1_hub
+
+  panos_night:
+    type: message
+    text: >
+      PANOS: The night before they found Nikos — I was up late fixing
+      a pipe at Kostas's farm. Around midnight. I saw lights at the
+      irrigation channel near Nikos's grove. Not a flashlight — car
+      headlights. Two cars. One was Nikos's old pickup truck. The other
+      was a dark SUV with AquaPeloponnese company plates.
+
+      At midnight. At the irrigation channel.
+
+      I noted it mentally. Nobody has asked me about it until now.
+    effects: { trust_panos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Despoina (teen, witness tease) ---
+
+  despoina_intro:
+    type: tweet
+    from: despoina
+    text: >
+      ρε τι σκατά γίνεται. ο @nikos_papadakis μας μάθαινε για τις ελιές
+      κάθε καλοκαίρι. ήταν σαν θείος μου. δεν γίνεται να γλίστρησε
+      και να πνίγηκε ρε. αν κάποιος ξέρει κάτι πείτε το επιτέλους
+    effects: { trust_despoina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Despoina -> despoina_talk_early
+
+  despoina_talk_early:
+    type: message
+    text: >
+      DESPOINA: ρε εσύ ποιος είσαι; νέος εδώ; σκατά timing. τέλος
+      πάντων, ο Νίκος ήταν ο καλύτερος άνθρωπος σε αυτό το χωριό.
+      μας μάθαινε πώς να μαζεύουμε ελιές, πώς να φτιάχνουμε λάδι.
+      ο Γιώργος τον βοηθούσε κάθε Σαββατοκύριακο.
+
+      και τώρα φρικάρω γιατί ο Γιώργος είδε κάτι περίεργο εκείνο
+      το βράδυ αλλά δεν θέλει να μιλήσει. λέει ότι δεν είναι τίποτα
+      αλλά ρε... δεν είναι τίποτα σα;
+    effects: { trust_despoina: "+10" }
+    choices:
+      - What did Giorgos see? -> despoina_giorgos_hint
+      - Move on -> quest1_hub
+
+  despoina_giorgos_hint:
+    type: message
+    text: >
+      DESPOINA: δεν ξέρω ακριβώς. ήταν με το μηχανάκι στον δρόμο
+      για τη κοιλάδα και είδε κάποιον κοντά στο κανάλι του Νίκου.
+      σαν να τσακωνόταν κάποιος;; ή κάτι τέτοιο. φρικάρει τελείως
+      και δεν θέλει να μιλήσει. πρέπει να του μιλήσεις αλλά δεν
+      εμπιστεύεται τους ξένους. πες του ότι αγαπάς τις ελιές ή κάτι
+      τέτοιο χαχα
+    effects: { trust_despoina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You are getting a picture of Petra Loutra. A Peloponnese village
+      built around olive groves and water. A farmer who was exposing
+      water privatization. A death nobody believes was an accident.
+
+      You have made contacts. Now dig deeper.
+    choices:
+      - Talk to Marina (Nikos's wife) -> marina_q1
+      - Talk to Stavros (Nikos's cousin) -> stavros_q1
+      - Check what Eleni (Nikos's colleague) is saying -> eleni_q1
+      - I'm ready to investigate the night he died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marina Q1 ---
+
+  marina_q1:
+    type: tweet
+    from: marina
+    text: >
+      αν κάποιος έχει νέα για το τι συνέβη στον @nikos_papadakis
+      καλέστε με. τα ρούχα του ήταν στεγνά στην κρεμάστρα. τα
+      παπούτσια του στο σπίτι. δεν πήγε στο κανάλι με τα καλά του.
+    effects: { trust_marina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marina -> marina_q1_talk
+
+  marina_q1_talk:
+    type: message
+    text: >
+      MARINA: I appreciate you reaching out but I do not know you.
+      Nikos had many friends here. The funeral is tomorrow.
+
+      ...I keep telling myself to be strong for the children. I am
+      not strong.
+
+      [Marina is guarded. You will need to build more trust before
+      she opens up.]
+    effects: { trust_marina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Stavros Q1 ---
+
+  stavros_q1:
+    type: tweet
+    from: stavros
+    text: >
+      Ο @nikos_papadakis ήταν αίμα μου. Ξάδελφος. Αδελφός. Φωτογραφίζω
+      κάθε ελαιόδεντρο που φύτεψε. Αυτό το κτήμα πρέπει να ζήσει.
+      Ό,τι χρειαστεί.
+    effects: { trust_stavros: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Stavros -> stavros_q1_talk
+
+  stavros_q1_talk:
+    type: message
+    text: >
+      STAVROS: You are interested in Nikos's story? Good. Someone needs
+      to care. I have been documenting the grove for two years — photos,
+      drone footage, every tree. This land is the Papadakis legacy. It
+      is in our blood.
+
+      Nikos and I had our disagreements, sure. What family doesn't? But
+      at the end of the day, the grove matters more than any argument.
+
+      I offered to help him fight AquaPeloponnese. Many times. He said
+      he had it under control. He said he was working with a journalist.
+      He just did not want my help.
+
+      [Stavros seems earnest. Or obsessive?]
+    effects: { trust_stavros: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Eleni Q1 ---
+
+  eleni_q1:
+    type: tweet
+    from: eleni
+    text: >
+      ο @nikos_papadakis ήταν ο καλύτερος ελαιοπαραγωγός στο συνεταιρισμό.
+      τα δείγματα νερού του είναι ακόμα στο γραφείο. η έρευνά του για
+      την AquaPeloponnese δεν τελείωσε. κάποιος πρέπει να τη συνεχίσει.
+    effects: { trust_eleni: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Eleni -> eleni_q1_talk
+
+  eleni_q1_talk:
+    type: message
+    text: >
+      ELENI: Nikos and I worked together at the cooperative for five
+      years. He was the most dedicated farmer I have ever known. This
+      water privatization fight — it consumed him. He had data, documents,
+      water measurements. He was building a case that AquaPeloponnese
+      was systematically diverting irrigation water.
+
+      He called me the night before he died. He said "they know what
+      I have." He said "if anything happens, look at AquaPeloponnese."
+      Then he said something strange — "and keep Stavros away from the
+      grove."
+
+      I did not understand that last part. Now I cannot stop thinking
+      about it.
+    effects: { trust_eleni: "+10" }
+    choices:
+      - What do you think happened? -> eleni_theory
+      - Move on -> quest1_hub
+
+  eleni_theory:
+    type: message
+    text: >
+      ELENI: I think AquaPeloponnese killed him because he had proof
+      their water privatization deal was illegal. But I also think
+      Stavros — his own cousin — knows more than he admits. The way
+      Stavros talks about the grove... it is not grief. It is
+      possession.
+
+      Nikos told me months ago that someone was coming to the grove at
+      night, taking photos, measuring the trees. He thought it was
+      AquaPeloponnese scouting the land. But the footprints he found
+      matched hiking boots, not corporate shoes. Stavros wears hiking
+      boots every day.
+    effects: { trust_eleni: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Nikos died. Multiple people saw or
+      heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Giorgos (was on his motorbike near the valley) -> giorgos_interview
+      - Find Kostas (farmer, was up late with sick goat) -> kostas_interview
+      - Find Thalia (baker, starts at 5am, saw something) -> thalia_interview
+      - Find Katerina (pharmacist, was driving home late) -> katerina_interview
+
+  # --- Giorgos (saw argument at the channel) ---
+
+  giorgos_interview:
+    type: tweet
+    from: giorgos
+    text: >
+      γαμώτο η ατμόσφαιρα στο χωριό είναι βαριά. δεν ξέρω τι να πω.
+      δεν ξέρω τι γίνεται. απλά θέλω να ηρεμήσουν τα πράγματα
+    effects: { trust_giorgos: "+5" }
+    choices:
+      - Ask Giorgos about that evening -> giorgos_talk
+
+  giorgos_talk:
+    type: message
+    text: >
+      GIORGOS: ρε μαλάκα εντάξει αλλά δεν το λες σε κανέναν. ήμουν
+      με το μηχανάκι στον δρόμο της κοιλάδας γύρω στις 11 το βράδυ.
+      και είδα τον Σταύρο — τον ξάδελφο — κοντά στο κανάλι. τσακωνόταν
+      με κάποιον. φώναζαν. δεν μπορούσα να δω ποιος ήταν ο άλλος αλλά
+      νομίζω ήταν ο Νίκος.
+
+      μετά ο Σταύρος έφυγε τρέχοντας προς το αυτοκίνητό του. γαμώτο
+      φρίκαρα τελείως. δεν είπα τίποτα γιατί ποιος θα με πίστευε σα;
+      ένας 17χρονος εναντίον ενήλικα.
+    effects:
+      trust_giorgos: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Kostas (saw late-night company vehicle) ---
+
+  kostas_interview:
+    type: tweet
+    from: kostas
+    text: >
+      ήμουν ξύπνιος με άρρωστη κατσίκα. είδα φώτα στην κοιλάδα
+      τα μεσάνυχτα. δεν είναι κανονικό. κανένας δεν πάει εκεί
+      τη νύχτα.
+    effects: { trust_kostas: "+5" }
+    choices:
+      - Ask Kostas what he saw -> kostas_talk
+
+  kostas_talk:
+    type: message
+    text: >
+      KOSTAS: I was up at midnight with a sick goat. From my barn I can
+      see the valley road. I saw headlights — two vehicles heading
+      toward the irrigation channel. One was Nikos's pickup. The other
+      was a dark SUV — I could not read the plates from that distance,
+      but it looked like one of those AquaPeloponnese company cars.
+      Black with the blue logo on the door.
+
+      They stopped near the channel. The lights went off. About an
+      hour later, only one vehicle drove back. The SUV. Nikos's truck
+      was still there in the morning when they found him.
+    effects:
+      trust_kostas: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Thalia (saw car speeding at dawn) ---
+
+  thalia_interview:
+    type: tweet
+    from: thalia
+    text: >
+      Ζυμώνω στις 5 όπως κάθε πρωί. Αλλά εκείνο το πρωί ένα
+      αυτοκίνητο πέρασε τρελά γρήγορα στο δρόμο της κοιλάδας.
+    effects: { trust_thalia: "+5" }
+    choices:
+      - Ask Thalia what she saw -> thalia_talk
+
+  thalia_talk:
+    type: message
+    text: >
+      THALIA: I start baking at 5am every day. That morning I was
+      opening the shutters and a car went past — fast, much too fast
+      for the valley road. A dark SUV. Then maybe five minutes later,
+      another car — smaller, I think it was Stavros's Suzuki. Going
+      the same direction, toward the channel.
+
+      Stavros came into the bakery at 6am. He looked terrible. His
+      hands were muddy. He bought a coffee and said nothing. Stavros
+      always talks. That morning, nothing.
+
+      I told the police. They wrote it down. Τίποτα.
+    effects:
+      trust_thalia: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Katerina (saw meeting at the grove) ---
+
+  katerina_interview:
+    type: tweet
+    from: katerina
+    text: >
+      Γυρνούσα αργά από την Τρίπολη εκείνο το βράδυ. Είδα κάτι
+      στο δρόμο κοντά στο κτήμα Παπαδάκη. Σκέφτηκα να σταματήσω.
+      Μακάρι να είχα σταματήσει.
+    effects: { trust_katerina: "+5" }
+    choices:
+      - Ask Katerina what she saw -> katerina_talk
+
+  katerina_talk:
+    type: message
+    text: >
+      KATERINA: I was driving back from Tripoli around 23h30. On the
+      road past Nikos's grove, I saw two people standing by the
+      irrigation channel. One was Nikos — I recognised his cap and
+      his build. The other was a woman in a dark suit. She was
+      pointing at documents. They seemed to be arguing.
+
+      There was a company car parked on the verge. AquaPeloponnese.
+      I slowed down but Nikos waved me on, like everything was fine.
+
+      It was the last time I saw him alive.
+    effects:
+      trust_katerina: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marina (wife)
+      and Nefeli (saw Stavros watching the grove at night).
+    choices:
+      - Talk to Marina about that night -> marina_interview
+      - Talk to Nefeli -> nefeli_interview
+      - Find Giorgos -> giorgos_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Kostas -> kostas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Thalia -> thalia_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Katerina -> katerina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marina (last to see Nikos) ---
+
+  marina_interview:
+    type: tweet
+    from: marina
+    text: >
+      η φωτογραφία στο λογαριασμό του Νίκου. δεν είναι δική του.
+      ο Νίκος δεν ανεβάζει ποτέ χωρίς λεζάντα. ο Νίκος δεν ανεβάζει
+      στις 4 το πρωί. κάποιος άλλος το έκανε αυτό.
+    effects: { trust_marina: "+5" }
+    choices:
+      - DM Marina -> marina_talk_low
+        when:
+          state: trust_marina
+          lt: 50
+      - DM Marina -> marina_talk_high
+        when:
+          state: trust_marina
+          gte: 50
+
+  marina_talk_low:
+    type: message
+    text: >
+      MARINA: I appreciate the concern but I really do not want to
+      talk to strangers about this right now. Please.
+
+      [Marina needs to trust you more. Show her you are investigating
+      seriously, not just gossiping.]
+    effects: { trust_marina: "+5" }
+    choices:
+      - Share what you've learned about the night -> marina_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marina_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the company SUV at the channel,
+      the argument, the speeding car at dawn. Marina is silent for a
+      long time.
+
+      MARINA: You are actually trying to find the truth. Okay. I will
+      talk to you.
+    effects: { trust_marina: "+25" }
+    choices:
+      - What happened that night? -> marina_talk_high
+
+  marina_talk_high:
+    type: message
+    text: >
+      MARINA: He came home around 21h. We had dinner together. The
+      children were already in bed. He was nervous. He said
+      "AquaPeloponnese wants a meeting tonight. They want to negotiate."
+      He laughed but it was not a real laugh.
+
+      I asked him not to go. He said "I have to. If I do not show up,
+      they will say I refused dialogue." He took his phone, his
+      documents, and his flashlight.
+
+      Around 23h I heard a car pull up. A different car — not the
+      company SUV. It was Stavros. He came to the door, asked where
+      Nikos was. I said at the channel. He looked furious. He said
+      "that idiot is going to give away our land." And he drove off.
+
+      By morning Nikos was dead and the grey photo was on his account.
+    effects:
+      trust_marina: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nefeli (saw Stavros watching the grove) ---
+
+  nefeli_interview:
+    type: message
+    text: >
+      NEFELI: εντάξει θα πω κάτι αλλά θα φανεί περίεργο. ο Σταύρος —
+      ο ξάδελφος του Νίκου — τον έχω δει τουλάχιστον 5 φορές τις
+      τελευταίες εβδομάδες να στέκεται στο κτήμα τη νύχτα. απλά
+      στέκεται εκεί και κοιτάει τα ελαιόδεντρα. τραβάει φωτογραφίες.
+      μετράει δέντρα. τι στο διάολο;
+
+      την τελευταία φορά ήταν δύο μέρες πριν πεθάνει ο Νίκος.
+      καθόταν στο αυτοκίνητό του στο δρόμο. με τα φώτα σβηστά.
+      creepy σα.
+    effects:
+      trust_nefeli: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Nikos leaves home for a meeting at the channel (Marina)
+      23:00 — Stavros arrives at Nikos's house, furious, drives to channel (Marina)
+      23:00 — Giorgos sees Stavros arguing with someone at the channel (Giorgos)
+      23:30 — Katerina sees Nikos arguing with a woman by company car (Katerina)
+      00:00 — Two vehicles at the channel, lights go off (Kostas)
+      01:00 — Only the SUV drives back; Nikos's truck stays (Kostas)
+      05:00 — Dark SUV speeds through village, Stavros follows (Thalia)
+      05:30 — Stavros in bakery, muddy hands, says nothing (Thalia)
+
+      AquaPeloponnese confronted Nikos at the channel. They wanted his
+      documents. Stavros was also there, with his own agenda.
+
+      Two threats converged that night: the corporation AND the cousin.
+
+      Two threads to pull:
+      — The privatization: What is AquaPeloponnese hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Stavros really after? Why was he at
+        the grove every night?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Stavros -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AquaPeloponnese is hiding something. Nikos had proof of illegal
+      water diversion. Now he is dead and his documents are missing.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the cooperative records -> coop_records
+      - Talk to Petros the journalist -> petros_interview
+      - Talk to Andreas (AquaPeloponnese technician) -> andreas_interview
+      - Talk to Sofia (environment deputy) -> sofia_interview
+      - Check the Olive Cooperative's water data -> syneterismos_investigation
+      - Talk to Panos about the water diversion -> panos_diversion
+      - Back to hub -> investigation_hub
+
+  # --- Cooperative Records ---
+
+  coop_records:
+    type: message
+    text: >
+      The olive cooperative's public database shows Nikos's recent work:
+      water flow measurements from twelve points along the irrigation
+      system. The data for the main valve near the bottling plant is
+      marked "UNDER REVIEW" — the only point with that status.
+
+      His field notes, shared with the cooperative for records, show he
+      made 20 visits to the AquaPeloponnese valve station in the past
+      month. The last entry: "Photographed secondary valve. Undeclared
+      diversion. Flow is not what they report to the municipality."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Petros ---
+
+  petros_interview:
+    type: message
+    text: >
+      PETROS: I do not talk about sources. Period.
+    effects: { trust_petros: "+5" }
+    choices:
+      - Show Petros the evidence you have -> petros_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  petros_with_evidence:
+    type: message
+    text: >
+      PETROS: ...you have more than I expected.
+
+      Okay. Nikos and I were working together. He had documents showing
+      AquaPeloponnese's water diversion exceeded their license by 400
+      percent. He had photos of an undeclared valve that diverts
+      irrigation water directly to the bottling plant site. He had the
+      original municipal contract showing the mayor sold the water
+      rights for a fraction of their value.
+
+      We were going to publish together. Then he died. And two days
+      later, someone broke into my office and stole my backup drive.
+
+      Here is the thing nobody knows — Nikos made a voice recording
+      the night he died. He sent it to me at 23:47, just an audio
+      file. You can hear two voices arguing with him. One is a woman —
+      I believe Ioanna Roussopoulou, the AquaPeloponnese director. The
+      other... the other is Stavros.
+    effects:
+      trust_petros: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Stavros was there too? -> petros_hint
+      - Back to investigation hub -> investigation_hub
+
+  petros_hint:
+    type: message
+    text: >
+      PETROS: That is what makes this complicated. AquaPeloponnese
+      went there to intimidate Nikos into handing over his documents.
+      But Stavros was there too — for his own reasons. On the
+      recording, you can hear Stavros shouting about inheritance,
+      about the land being half his, about Nikos "betraying the
+      family" by fighting the company.
+
+      Two threats collided at the same place, the same night. One
+      wanted the documents. The other wanted the land. Nikos did not
+      survive the collision.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Andreas (AquaPeloponnese whistleblower) ---
+
+  andreas_interview:
+    type: message
+    text: >
+      ANDREAS: I work at AquaPeloponnese. I am just a water technician.
+      I operate valves, I monitor pressure.
+
+      But the valve settings I am told to use... are not always the
+      settings that match the municipal license.
+    effects: { trust_andreas: "+10" }
+    choices:
+      - What do you mean? -> andreas_detail
+
+  andreas_detail:
+    type: message
+    text: >
+      ANDREAS: I measure water flow. Cubic meters per hour. My readings
+      go to my supervisor. Somewhere between my desk and the regulatory
+      filing, the numbers change. Lower. Always lower. The irrigation
+      allocation looks normal on paper. In reality, sixty percent of the
+      water goes to the bottling plant.
+
+      Nikos's measurements from outside the valve station matched MY
+      original readings, not the official reports. He had independent
+      proof that AquaPeloponnese is stealing water.
+
+      I am scared. I have children. But I kept copies of my original
+      logs. If someone can protect me, I will share them.
+    effects:
+      trust_andreas: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sofia ---
+
+  sofia_interview:
+    type: message
+    text: >
+      SOFIA: As deputy mayor for the environment, I take these
+      allegations seriously. But AquaPeloponnese provides water
+      infrastructure for the entire municipality. The mayor insists
+      we need to "maintain the partnership."
+
+      Off the record? I have seen the municipal inspection reports.
+      AquaPeloponnese passes every time. But those inspections are
+      announced two weeks in advance. They adjust the valve settings
+      before the inspectors arrive.
+
+      Nikos had unannounced measurements. That is what makes them
+      dangerous. Γαμώτο, that is what got him killed.
+    effects:
+      trust_sofia: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Syneterismos (olive cooperative) ---
+
+  syneterismos_investigation:
+    type: tweet
+    from: syneterismos
+    text: >
+      ΠΡΟΣΟΧΗ: Καταγραφή ασυνήθιστα χαμηλής ροής νερού στα αρδευτικά
+      κανάλια. Μετρήσεις και τεκμηρίωση σε εξέλιξη. Ζητάμε έκτακτη
+      επιθεώρηση στη μονάδα AquaPeloponnese.
+    choices:
+      - Check their data -> syneterismos_data
+
+  syneterismos_data:
+    type: message
+    text: >
+      The olive cooperative has been documenting water flow for three
+      years. Their data shows a clear pattern: irrigation levels that
+      drop sharply during AquaPeloponnese's bottling production schedule.
+      Lower during the week, slightly better on weekends. Lower in
+      summer when bottling demand peaks, better in winter.
+
+      The pattern is unmistakable. This is ongoing, deliberate water
+      diversion timed to maximize profit while starving the farms.
+
+      Nikos was the cooperative's water monitor. He contributed most of
+      the field measurements.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Panos water diversion ---
+
+  panos_diversion:
+    type: message
+    text: >
+      PANOS: I will show you something. Last month I was called to fix
+      a broken pipe near the valley floor. I found something that was
+      not supposed to be there — a secondary underground pipe, new PVC,
+      professional installation. It runs from the main irrigation
+      channel directly to AquaPeloponnese's construction site.
+
+      I photographed it. I showed Nikos. He said it was the missing
+      piece — proof they were diverting water underground, not just
+      through the valve station. A hidden pipe.
+
+      I still have the photos. And GPS coordinates.
+    effects:
+      trust_panos: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Stavros Papadakis. Cousin. Photographer. Something more? Someone
+      was visiting the grove at night. Someone was measuring the trees.
+      Someone was at the channel the night Nikos died.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Stavros's land registry searches -> land_records
+      - Talk to Marina about Stavros -> marina_stavros
+        when:
+          state: trust_marina
+          gte: 20
+      - Talk to Giorgos (more detail on the argument) -> giorgos_detail
+      - Talk to Katerina (what Stavros buys) -> katerina_stavros
+      - Check the anonymous account @chrysa_notari -> chrysa_investigation
+      - Talk to Angeliki the bookseller -> angeliki_interview
+        when:
+          state: trust_angeliki
+          gte: 40
+      - Talk to the police officer Vasilis -> vasilis_interview
+        when:
+          state: trust_vasilis
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Land Registry Records ---
+
+  land_records:
+    type: message
+    text: >
+      The municipal land registry is public. Stavros Papadakis has
+      filed seven separate inquiries about the Papadakis grove in the
+      past year. Ownership history, boundary surveys, inheritance law
+      questions, agricultural zoning.
+
+      He also filed a formal challenge to Nikos's sole ownership six
+      months ago, claiming shared family inheritance rights. The claim
+      was rejected. He filed an appeal. It is still pending.
+
+      And one detail: three weeks before Nikos died, Stavros requested
+      a property valuation. He was not selling. He was not buying.
+      He was pricing the grove.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marina on Stavros ---
+
+  marina_stavros:
+    type: message
+    text: >
+      MARINA: Stavros? He made Nikos deeply uncomfortable. He would
+      show up at the grove unannounced. He would photograph every tree,
+      every wall, every boundary stone. He commented on every single
+      one of Nikos's posts about the olive harvest.
+
+      Nikos told him the land was not for sale. Not to family, not to
+      anyone. Stavros said he understood. Then nothing changed. He
+      just... kept appearing. Always there. Always with the camera.
+
+      Two months ago Nikos found that someone had been in his storage
+      shed at the grove. His documents were rearranged. His water
+      measurement equipment was moved. He suspected Stavros but could
+      not prove it. He started locking everything with new padlocks.
+    effects:
+      trust_marina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Giorgos detail ---
+
+  giorgos_detail:
+    type: message
+    text: >
+      GIORGOS: εντάξει ρε δεν είπα τα πάντα. όταν είδα τον Σταύρο
+      στο κανάλι να τσακώνεται, τον άκουσα να φωνάζει κάτι. είπε
+      "αυτό το κτήμα είναι μισό δικό μου και θα το πάρω." και μετά
+      κάτι σαν "αν δεν μου το δώσεις, θα βρω τρόπο."
+
+      ρε μαλάκα μετά άκουσα σαν σπρώξιμο. σαν κάποιος να έπεσε.
+      και μετά σιωπή. φρίκαρα και έφυγα τρέχοντας με το μηχανάκι.
+
+      τι στο διάολο ρε τι στο διάολο. δεν ξέρω αν τον έσπρωξε
+      ή αν γλίστρησε αλλά... γαμώτο.
+    effects:
+      trust_giorgos: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Katerina on Stavros ---
+
+  katerina_stavros:
+    type: message
+    text: >
+      KATERINA: This is confidential but I am a pharmacist, not a
+      priest. Stavros Papadakis comes in regularly. He has been buying
+      things that suggest he is not sleeping. Anti-anxiety medication,
+      sleep aids, energy supplements. The pattern is someone under
+      extreme stress — or extreme obsession.
+
+      He also asked me once, very casually, if I knew any good
+      surveyors. Land surveyors. I said "ask the municipality." He
+      said it was "a family matter." I thought it was strange. Now
+      I think about it constantly.
+    effects:
+      trust_katerina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Chrysa (anonymous account) ---
+
+  chrysa_investigation:
+    type: tweet
+    from: chrysa
+    text: >
+      Δεν έπρεπε να πολεμήσει μόνος. Έπρεπε να με δεχτεί. Κανείς
+      δεν αγαπάει αυτή τη γη όσο εγώ.
+    choices:
+      - Look at this account's history -> chrysa_posts
+
+  chrysa_posts:
+    type: message
+    text: >
+      @chrysa_notari: account created 10 months ago. Posts are all
+      about the Papadakis grove and Nikos's olive work. Comments on
+      every harvest photo, every oil pressing update, every grove
+      maintenance post. The tone shifts over time:
+
+      Month 1: "Beautiful trees. This grove is a treasure."
+      Month 3: "Why won't you let family help? This is our heritage
+      too."
+      Month 6: "I watch the grove at night. The trees are not being
+      cared for properly. I could do better."
+      Month 8: "I have measured every tree. I know this land better
+      than you do. You do not deserve it."
+
+      The account has no personal photos. Just the grove. Only the
+      grove.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> chrysa_style
+
+  chrysa_style:
+    type: message
+    text: >
+      Comparing @chrysa_notari with @stavros_papadakis:
+
+      Same use of agricultural terminology. Same Greek dialect markers
+      — the Peloponnese way of shortening certain words. Same knowledge
+      of the grove's layout that only a family member would have.
+
+      And one post from @chrysa_notari: "The third row from the stone
+      wall needs pruning." That is a detail only someone who walks the
+      grove regularly would know. Not public information.
+
+      It is Stavros. The anonymous account is Stavros.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Angeliki ---
+
+  angeliki_interview:
+    type: message
+    text: >
+      ANGELIKI: Nikos left something with me. A sealed plastic bag with
+      a USB drive inside. He said "if someone comes asking about the
+      water in the valley, give them this."
+
+      He looked frightened. He said he had made copies of everything
+      but needed one set off-site, somewhere nobody would think to
+      look. A bookshop in a village seemed perfect.
+    effects: { trust_angeliki: "+10" }
+    choices:
+      - What is in the valley? -> angeliki_case
+
+  angeliki_case:
+    type: message
+    text: >
+      Angeliki reaches under the counter and produces a zip-lock bag
+      with a USB drive.
+
+      ANGELIKI: He said you would come. Take it.
+
+      The USB drive contains water flow measurements, photographs of
+      the hidden underground pipe, the original municipal contract
+      showing the corrupt sale of water rights, and Nikos's detailed
+      report on AquaPeloponnese's illegal diversion. There is also a
+      folder labeled "STAVROS" containing photos of footprints in the
+      grove, a log of nighttime visits, and a copy of the inheritance
+      challenge filing.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Vasilis (police officer) ---
+
+  vasilis_interview:
+    type: message
+    text: >
+      VASILIS: Off the record — and I mean completely off the record —
+      I wanted to investigate AquaPeloponnese. My superior told me to
+      stand down. He said the prefecture had "jurisdiction." That is
+      code for "do not touch it."
+
+      The Stavros situation is different. I did not even know about the
+      nighttime visits, the anonymous account, the argument at the
+      channel. If you have evidence of threats and suspicious presence
+      at a death scene, I can act on that. That is clearly my
+      jurisdiction.
+
+      Bring me something solid and I will reopen the case as a
+      homicide investigation.
+    effects:
+      trust_vasilis: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You have gathered evidence. You know more about what happened
+      to Nikos than anyone in Petra Loutra. Who is responsible?
+    choices:
+      - Confront Stavros Papadakis (the obsessive cousin) -> confront_stavros
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Ioanna Roussopoulou (the company director) -> confront_ioanna
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Antonopoulos (political protection) -> confront_dimitris
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Stavros (Best Ending) ---
+
+  confront_stavros:
+    type: message
+    text: >
+      You present your evidence to Stavros:
+
+      "I know @chrysa_notari is your account. I know you were at the
+      grove every night. I know you filed inheritance challenges. I
+      know you were at the irrigation channel the night Nikos died.
+      I have a witness who heard you threaten him and heard someone
+      fall. I have the audio recording."
+    choices:
+      - Send -> stavros_response
+
+  stavros_response:
+    type: message
+    text: >
+      Stavros does not reply for a long time. Then:
+
+      STAVROS: You do not understand. That grove is my family too.
+      My blood. Nikos was going to lose it all fighting AquaPeloponnese.
+      I was trying to save it. Everything I did was because I love
+      that land.
+
+      I went there that night to talk sense into him. We argued. I
+      pushed him. He fell into the channel. I did not mean... I called
+      for help but he... the current... γαμώτο.
+
+      I panicked. I cleaned up. I posted the photo from his phone.
+      I thought if it looked like an accident, nobody would ask
+      questions. I was wrong about everything.
+
+      You have already sent the evidence to Vasilis. And to Petros
+      Sotiriou.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Vasilis reopens the case as a homicide investigation. With your
+      evidence — the anonymous account, the nighttime visits, the land
+      registry searches, the witness testimonies, and the audio
+      recording — Stavros is arrested for involuntary manslaughter. He
+      confesses fully. The irrigation channel is drained and forensic
+      evidence confirms the struggle.
+
+      Petros Sotiriou, finally in possession of Nikos's full evidence
+      package, publishes the AquaPeloponnese story in Kathimerini. The
+      prefecture orders an emergency audit. The water privatization
+      contract is declared void due to corruption. AquaPeloponnese's
+      license is revoked. Ioanna Roussopoulou faces criminal charges
+      for falsifying water distribution reports and intimidation.
+
+      And Marina Papadaki, reading the story at her kitchen table while
+      the children sleep, calls Eleni at the cooperative.
+
+      "Ο Νίκος νίκησε. Το νερό επιστρέφει στη γη."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: marina
+    text: >
+      η γη δεν ψεύδεται. και οι άνθρωποι της Πέτρας Λουτράς δεν
+      ξεχνάνε. ευχαριστούμε που δεν τα παρατήσατε. #ΓιαΤονΝίκο
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Ioanna (Partial Ending) ---
+
+  confront_ioanna:
+    type: message
+    text: >
+      You present the water diversion evidence to Ioanna Roussopoulou:
+
+      "I have photographs of the hidden underground pipe. I have water
+      flow measurements showing diversion four times the licensed
+      amount. I have your original technician reports showing the data
+      was falsified. I have the corrupt municipal contract."
+    choices:
+      - Send -> ioanna_response
+
+  ioanna_response:
+    type: message
+    text: >
+      IOANNA: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. AquaPeloponnese has always operated
+      within its licensing agreements.
+
+      But it is too late. You have sent the evidence to Petros, to
+      the olive cooperative, and to the prefecture.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The water privatization story breaks. AquaPeloponnese is ordered
+      to halt construction on the bottling plant. The contract is
+      under review. Water begins flowing back to the farms. The valley
+      starts to recover.
+
+      But Nikos?
+
+      Without the evidence of Stavros's obsession and presence that
+      night, the death remains classified as an accident. Stavros
+      inherits his share of the grove through the pending legal
+      challenge. He walks the rows every morning. He photographs
+      every tree.
+
+      Marina moves to Tripoli with the children. She cannot bear to
+      see Stavros tending the trees her husband planted.
+
+      The corporation is exposed. But the person who killed Nikos
+      walks free among the olives.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marina
+    text: "το νερό επέστρεψε. αλλά ο Νίκος δεν θα επιστρέψει ποτέ. η αλήθεια είναι μισή."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_dimitris:
+    type: message
+    text: >
+      You confront Mayor Antonopoulos with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> dimitris_response
+
+  dimitris_response:
+    type: tweet
+    from: michalis
+    text: >
+      Ο πελάτης μου λαμβάνει γνώση των ισχυρισμών σας. Οποιαδήποτε
+      δημόσια διάδοση συκοφαντικού υλικού θα οδηγήσει σε άμεσες
+      νομικές ενέργειες. — Γραφείο Τσαούση & Συνεργάτες, Τρίπολη
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct link
+      between Antonopoulos and AquaPeloponnese's illegal diversion —
+      and there is not one beyond political protection — your evidence
+      is insufficient.
+
+      AquaPeloponnese continues to operate. Stavros continues to walk
+      the grove. Nikos's death remains an accident.
+
+      Six months later, @chrysa_notari creates a new account. It
+      follows Marina's children.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PETRA LOUTRA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Nikos's story explores themes of
+      corporate water privatization, family obsession, land inheritance,
+      community solidarity, and the courage to defend shared resources.
+
+      If you or someone you know is experiencing threats or
+      harassment, help is available:
+      Γραμμή SOS: 15900 (24ωρη λειτουργία)
+      Γραμμή βοήθειας για εφήβους: 116 111
+      Περιβαλλοντική καταγγελία: 1595

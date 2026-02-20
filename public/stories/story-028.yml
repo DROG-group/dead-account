@@ -1,0 +1,1591 @@
+# DEAD ACCOUNT — Story 028: Aldtsjerk (Netherlands 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-028.yml
+#
+# Player investigates the disappearance of young speed skater/coach
+# Sjoerd Visser in the fictional Frisian village of Aldtsjerk.
+
+meta:
+  title: "Dead Account — Aldtsjerk"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_femke: 0
+    trust_wiebe: 0
+    trust_nienke: 0
+    trust_jelmer: 0
+    trust_aukje: 0
+    trust_thijs: 0
+    trust_marrit: 0
+    trust_douwe: 0
+    trust_rixt: 0
+    trust_bram: 0
+    trust_griet: 0
+    trust_hendrik: 0
+    trust_jildou: 0
+    trust_klaas: 0
+    trust_stijn: 0
+    trust_lotte: 0
+    trust_taco: 0
+    trust_ids: 0
+    trust_anon: 0
+    trust_rechercheur: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "net verhuisd naar aldtsjerk. friesland ontdekken op het ijs"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Aldtsjerk.social"
+    description: "Wolkom op it ynstânsje fan Aldtsjerk — Fryslân"
+    avatar_url: /gamepatch/assets/dead-account/aldtsjerk_bot.png
+
+  npcs:
+    # === Sjoerd's Inner Circle ===
+    sjoerd:
+      name: "Sjoerd Visser"
+      bio: "schaatscoach | 22 | de polder is mijn baan | als het ijs draagt, leef ik"
+      avatar: avatars/sjoerd.jpg
+    femke:
+      name: "Femke de Boer"
+      bio: "sjoerds zus | fysiotherapeut in leeuwarden | hij belt elke dag. nu niet meer."
+      avatar: avatars/femke.jpg
+    wiebe:
+      name: "Wiebe Hoekstra"
+      bio: "sjoerds beste maat | ijs & wielrennen | aldtsjerk born and raised"
+      avatar: avatars/wiebe.jpg
+    nienke:
+      name: "Nienke Zijlstra"
+      bio: "schaatsclub aldtsjerk | 17 | sjoerd is mijn coach | dit klopt niet"
+      avatar: avatars/nienke.jpg
+
+    # === Skating World ===
+    jelmer:
+      name: "Jelmer Terpstra"
+      bio: "schaatser | gewest fryslân selectie | trainen trainen trainen"
+      avatar: avatars/jelmer.jpg
+    aukje:
+      name: "Aukje Dijkstra"
+      bio: "bestuur schaatsclub aldtsjerk | 30 jaar ijs | wedstrijdorganisatie"
+      avatar: avatars/aukje.jpg
+    ids:
+      name: "Ids Faber"
+      bio: "oud-schaatser | materiaalman club aldtsjerk | ik ken elke scheur in het ijs"
+      avatar: avatars/ids.jpg
+
+    # === Local Government ===
+    hendrik:
+      name: "Hendrik Postma"
+      bio: "Wethouder milieuzaken Aldtsjerk | CDA | duurzaam bouwen aan morgen"
+      avatar: avatars/hendrik.jpg
+    griet:
+      name: "Griet Monsma"
+      bio: "Gemeenteraadslid Aldtsjerk | GroenLinks | natuur & waterbeheer"
+      avatar: avatars/griet.jpg
+    gemeente:
+      name: "Gemeente Aldtsjerk"
+      bio: "Officieel account | Gemeentenieuws | Ma-Vr 8:30-17:00"
+      avatar: avatars/gemeente.jpg
+
+    # === Local Business & Community ===
+    douwe:
+      name: "Douwe Bakker"
+      bio: "café de ijsbaan | stamppot & bier | het dorpshuis van aldtsjerk"
+      avatar: avatars/douwe.jpg
+    rixt:
+      name: "Rixt van der Meer"
+      bio: "huisarts aldtsjerk | spreekuur ma-vr | ook voor zorgen die niet lichamelijk zijn"
+      avatar: avatars/rixt.jpg
+    bram:
+      name: "Bram Wierda"
+      bio: "boer | melkvee & veenweide | al vier generaties op dezelfde grond"
+      avatar: avatars/bram.jpg
+    klaas:
+      name: "Klaas Feenstra"
+      bio: "ijsmeester aldtsjerk | als ik zeg niet schaatsen, dan niet schaatsen"
+      avatar: avatars/klaas.jpg
+    jildou:
+      name: "Jildou Kamstra"
+      bio: "journaliste friesch dagblad | milieu & regio | tips welkom"
+      avatar: avatars/jildou.jpg
+
+    # === Teens ===
+    thijs:
+      name: "Thijs"
+      bio: "16 | schaatsen & gamen | aldtsjerk | sjoerd is de beste coach ooit"
+      avatar: avatars/thijs.jpg
+    marrit:
+      name: "Marrit"
+      bio: "15 | schaatsen | tiktok | ik ga sws door met trainen"
+      avatar: avatars/marrit.jpg
+    lotte:
+      name: "Lotte"
+      bio: "17 | fotografie | natuur friesland | de veengronden verdwijnen"
+      avatar: avatars/lotte.jpg
+
+    # === Peat Extraction (corporate) ===
+    veenstra_bv:
+      name: "Veenstra Grondwerken BV"
+      bio: "Turfwinning & grondverzet | Regio Fryslân | ISO 14001 | Duurzame winning"
+      avatar: avatars/veenstra_bv.jpg
+    stijn:
+      name: "Stijn Veenstra"
+      bio: "directeur Veenstra Grondwerken | ondernemen in fryslân | sponsor schaatsclub"
+      avatar: avatars/stijn.jpg
+    taco:
+      name: "Taco Brouwer"
+      bio: "advocaat | kantoor Brouwer & Zn | ondernemingsrecht | leeuwarden"
+      avatar: avatars/taco.jpg
+
+    # === Suspicious / Other ===
+    anon_skater:
+      name: "ijs_en_bloed"
+      bio: "."
+      avatar: avatars/anon.jpg
+    rechercheur:
+      name: "Rechercheur De Vries"
+      bio: "Politie Fryslân | Recherche | meldingen: 0900-8844"
+      avatar: avatars/rechercheur.jpg
+
+    # === Media & Community ===
+    actu_aldtsjerk:
+      name: "Aldtsjerk Nieuws"
+      bio: "Lokaal nieuws uit Aldtsjerk en omstreken | tips: redactie@aldtsjerknieuws.frl"
+      avatar: avatars/actu_aldtsjerk.jpg
+    weer_friesland:
+      name: "Weer Aldtsjerk"
+      bio: "Weersverwachting & ijscondities | automatisch station | elk uur bijgewerkt"
+      avatar: avatars/weer_friesland.jpg
+    natuurclub:
+      name: "Natuurvereniging It Fryske Gea"
+      bio: "Natuurbescherming Fryslân | veenweide | weidevogels | vrijwilligers welkom"
+      avatar: avatars/natuurclub.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ALDTSJERK
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to aldtsjerk.social — the community Mastodon instance for
+      the village of Aldtsjerk, Friesland.
+
+      It's winter. The canals are frozen. The village should be alive
+      with skating. Instead, the local feed is full of worry.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps coming back:
+      @sjoerd_visser.
+
+      A 22-year-old speed skater and youth coach. The village's pride.
+      He hasn't posted in six days. His phone is off. His skates are
+      still in his locker at the club.
+    choices:
+      - Look at his profile -> sjoerd_profile
+
+  sjoerd_profile:
+    type: tweet
+    from: sjoerd
+    text: "de veengronden bij het kanaal zinken steeds verder. straks is er geen ijs meer. iemand moet dit stoppen. ik heb foto's."
+    choices:
+      - That's his last real post... -> grey_ice
+
+  grey_ice:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      grey ice. Cracked, shot from a strange low angle. Posted at 4am.
+      No caption.
+
+      His friends say Sjoerd never posts without some dumb joke in the
+      caption. The politie says he probably went travelling. Nobody in
+      Aldtsjerk buys that for a second.
+    choices:
+      - Read the politie statement -> politie_statement
+      - Look at what people are saying -> community_reaction
+
+  politie_statement:
+    type: tweet
+    from: rechercheur
+    text: >
+      De politie heeft een melding ontvangen betreffende een inwoner
+      van Aldtsjerk. Op dit moment zijn er geen aanwijzingen voor een
+      strafbaar feit. Informatie kan worden gedeeld via 0900-8844.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @femke_de_boer is driving
+      up from Leeuwarden. His best friend @wiebe_hoekstra is furious.
+      His skaters — @nienke_zijlstra, @thijs, @marrit — are posting
+      panicked messages.
+
+      The ice master @klaas_feenstra says Sjoerd was right about the
+      sinking ground. The journalist @jildou_kamstra is asking
+      uncomfortable questions about Veenstra Grondwerken.
+
+      And @jelmer_terpstra — Sjoerd's training rival — hasn't said
+      a word.
+    effects: { trust_femke: "+5", trust_wiebe: "+5" }
+    choices:
+      - Start following Sjoerd's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Aldtsjerk. Follow Sjoerd's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Douwe (café owner, knows everyone) -> douwe_intro
+      - Talk to Klaas (ice master, knows the land) -> klaas_intro
+      - Talk to Nienke (teen skater, clearly upset) -> nienke_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Sjoerd with the rhythms of a Frisian
+      village: ice conditions, skating routes, the café's stamppot
+      menu, weather warnings for the weekend.
+
+      Key names surface: Femke (sister, physio in Leeuwarden), Wiebe
+      (best friend, seems angry), Jelmer (rival skater, suspiciously
+      quiet), and the teens — Nienke, Thijs, Marrit — who trained with
+      Sjoerd every day.
+
+      Also prominent: Veenstra Grondwerken BV, the peat extraction
+      company digging up the wetlands east of the village. Their posts
+      are corporate greenwash. Sjoerd's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Douwe -> douwe_intro
+      - Talk to Klaas -> klaas_intro
+      - Talk to Nienke -> nienke_intro
+
+  # --- Douwe (social map) ---
+
+  douwe_intro:
+    type: tweet
+    from: douwe
+    text: >
+      café is open maar het is stil vandaag. sjoerd z'n stoel is leeg.
+      jongen, kom terug. de erwtensoep staat klaar.
+    effects: { trust_douwe: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Douwe -> douwe_talk
+
+  douwe_talk:
+    type: message
+    text: >
+      DOUWE: Ah, nieuw hier? Welkom. Klote timing, dat wel. Het hele
+      dorp is in rep en roer om Sjoerd.
+
+      Even wie wie is. Femke is z'n zus, fysiotherapeut in Leeuwarden.
+      Goeie meid, helemaal kapot hiervan. Wiebe is z'n beste vriend
+      sinds de basisschool. Nienke, Thijs, Marrit — dat zijn z'n
+      schaatsertjes, die coacht hij. Hartstikke gek van die jongen.
+
+      En dan heb je Jelmer Terpstra. Die schaatst ook, maar heel
+      anders. Jelmer wil winnen. Sjoerd wil iedereen beter maken. Dat
+      botst al jaren. De laatste maanden werd het erger. Jelmer was
+      echt nie normaal bezig met die selectie.
+
+      Oh ja — en Veenstra Grondwerken. Laat me niet beginnen over die
+      klootzakken. Ze graven het veen weg en het hele land zakt. De
+      ijsbaan scheurt. De kanalen worden onberijdbaar. Sjoerd was de
+      enige die er iets van zei.
+    effects: { trust_douwe: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Jelmer -> douwe_jelmer
+      - Ask about Veenstra -> douwe_veenstra
+      - Thank him and move on -> quest1_hub
+
+  douwe_jelmer:
+    type: message
+    text: >
+      DOUWE: Jelmer? Die jongen is geobsedeerd. Sjoerd werd vorig
+      jaar geselecteerd voor het gewest, Jelmer niet. Sindsdien is het
+      tering koud tussen die twee.
+
+      Jelmer trainde twee keer zo veel. Was elke ochtend op de baan.
+      Volgde Sjoerd op alle socials. Kopieerde z'n trainingsschema.
+      En als Sjoerd op het ijs was met z'n leerlingen, stond Jelmer
+      toe te kijken. Gwn staan. Kijken.
+
+      Aukje van het bestuur heeft ze een keer uit elkaar moeten halen
+      na een training. Jelmer zei dat Sjoerd z'n baan had gestolen.
+      Sjoerd zei gwn niks. Dat is Sjoerd.
+    effects: { trust_douwe: "+5" }
+    choices:
+      - Ask about Veenstra -> douwe_veenstra
+      - Move on -> quest1_hub
+
+  douwe_veenstra:
+    type: message
+    text: >
+      DOUWE: Veenstra Grondwerken. Ze winnen turf ten oosten van het
+      dorp. Al jaren. Maar de laatste twee jaar zijn ze flink
+      uitgebreid. Nieuw terrein, nieuwe vergunningen, dieper graven.
+
+      Het probleem: het veen houdt het water vast. Haal je het weg,
+      dan zakt de grond. De sloten draineren. Het kanaal wordt
+      ondieper. En als het vriest? Het ijs is niet meer te vertrouwen.
+      Scheuren overal.
+
+      Sjoerd fotografeerde het. Elke week nieuwe schade. Hij had een
+      heel dossier opgebouwd. Twee weken later is hij weg.
+
+      Godverdomme, reken maar uit.
+    effects: { trust_douwe: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Klaas (ice master, the land) ---
+
+  klaas_intro:
+    type: tweet
+    from: klaas
+    text: >
+      WAARSCHUWING: kanaal-oost is AFGESLOTEN. scheuren in het ijs ter
+      hoogte van veenstra-terrein. te gevaarlijk. niet schaatsen.
+      herhaal: NIET SCHAATSEN.
+    effects: { trust_klaas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Klaas -> klaas_talk
+
+  klaas_talk:
+    type: message
+    text: >
+      KLAAS: Ik ben al veertig jaar ijsmeester. Ik ken elke
+      centimeter van deze vaarten en kanalen. En ik zeg je: het ijs is
+      kapot. Niet door het weer. Door de turfwinning.
+
+      Het grondwaterpeil daalt. De oevers verschuiven. Het ijs
+      scheurt waar het nooit scheurde. Vorige winter is een kind er
+      bijna doorheen gezakt bij het bruggetje.
+
+      Sjoerd begreep het. Hij mat het op. Elke week. Waterstanden,
+      ijsdikte, bodemverzakking. Hij had alles op z'n laptop. En hij
+      stuurde het naar de gemeente. Weet je wat de gemeente deed?
+      Niks. Kut niks.
+    effects: { trust_klaas: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> klaas_night
+      - Move on -> quest1_hub
+
+  klaas_night:
+    type: message
+    text: >
+      KLAAS: De avond voor z'n verdwijning. Ik was laat op het ijs,
+      rond middernacht. Ik meet altijd 's nachts als het stil is.
+
+      Er stond een auto bij de clubgebouw. Motor draaide. Lichten
+      uit. Ik kon niet zien wie erin zat. Maar het was geen auto die
+      ik kende — donkere SUV, groot ding. Toen ik dichterbij kwam,
+      reed ie weg. Richting het Veenstra-terrein.
+
+      Sjoerds fiets stond nog bij het hek. Om middernacht.
+    effects: { trust_klaas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nienke (teen skater, witness tease) ---
+
+  nienke_intro:
+    type: tweet
+    from: nienke
+    text: >
+      ik kan echt nie geloven dat sjoerd gwn weg is??? hij zou ons
+      nooit zomaar laten zitten. hij had vandaag training met ons.
+      hij mist NOOIT training. godverdomme dit klopt niet
+    effects: { trust_nienke: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Nienke -> nienke_talk_early
+
+  nienke_talk_early:
+    type: message
+    text: >
+      NIENKE: ja hallo wie ben je? ok whatever. sjoerd is de beste
+      coach die er is. hij traint ons elke dag na school. gratis. hij
+      doet het omdat hij van schaatsen houdt en omdat hij wil dat wij
+      beter worden.
+
+      en nu is hij gwn weg?? echt nie. hij zou nooit weggaan zonder
+      iets te zeggen. sws nie met de wedstrijden volgende week.
+
+      en weet je wat kut is? jelmer stond gister weer bij de baan.
+      gwn staan kijken naar ons. zonder sjoerd. creepy as fuck. thijs
+      zag het ook.
+    effects: { trust_nienke: "+10" }
+    choices:
+      - What was Jelmer doing? -> nienke_jelmer_hint
+      - Move on -> quest1_hub
+
+  nienke_jelmer_hint:
+    type: message
+    text: >
+      NIENKE: ik weet niet precies. thijs zegt dat jelmer de laatste
+      weken vaker bij de baan was als sjoerd er was. dan stond hij
+      aan de kant. filmen op z'n telefoon. trainingen analyseren ofzo.
+      maar het was meer dan dat. hij volgde sjoerd gwn overal.
+
+      en die ene keer na de selectiewedstrijd? jelmer kwam naar
+      sjoerd toe en zei iets van "dit is nog niet voorbij." tering
+      eng. sjoerd deed alsof het niks was maar je zag dat hij het
+      niet chill vond.
+
+      praat met thijs. die weet meer.
+    effects: { trust_nienke: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Aldtsjerk. A Frisian village built
+      around ice and water. A young coach who was documenting
+      environmental damage. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Femke (Sjoerd's sister) -> femke_q1
+      - Talk to Wiebe (Sjoerd's best friend) -> wiebe_q1
+      - Check what Jelmer (the rival) is posting -> jelmer_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Femke Q1 ---
+
+  femke_q1:
+    type: tweet
+    from: femke
+    text: >
+      als iemand informatie heeft over @sjoerd_visser BEL ME. zijn
+      kamer is onaangeroerd. zijn schaatsen staan er nog. mijn broer
+      gaat niet weg zonder zijn schaatsen. NOOIT.
+    effects: { trust_femke: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Femke -> femke_q1_talk
+
+  femke_q1_talk:
+    type: message
+    text: >
+      FEMKE: Wie ben je? Sorry, ik ben een beetje... ik vertrouw nu
+      even niemand. Sjoerd belde me elke avond. Elke. Avond. En toen
+      ineens niet meer.
+
+      De politie zegt dat hij misschien is gaan reizen. Mijn broer
+      heeft in z'n hele leven nog nooit een vakantie genomen. Die
+      jongen leeft voor het ijs.
+
+      [Femke is op haar hoede. Je moet meer vertrouwen opbouwen
+      voordat ze echt gaat praten.]
+    effects: { trust_femke: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Wiebe Q1 ---
+
+  wiebe_q1:
+    type: tweet
+    from: wiebe
+    text: >
+      ik zweer het als iemand sjoerd iets heeft aangedaan dan vind ik
+      ze. de politie doet niks. de gemeente doet niks. dan doe IK het
+      wel godverdomme.
+    effects: { trust_wiebe: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Wiebe -> wiebe_q1_talk
+
+  wiebe_q1_talk:
+    type: message
+    text: >
+      WIEBE: Sjoerd is mijn beste maat. Sinds groep 3. We hebben
+      samen leren schaatsen op de sloot achter z'n huis.
+
+      Hij belde me de avond voor hij verdween. Hij klonk gespannen.
+      Hij zei: "als er iets gebeurt, kijk naar het Veenstra-terrein.
+      Ik heb dingen gevonden die ze niet willen dat iemand ziet."
+
+      Dat was het. Daarna niks meer. Telefoon uit. Weg.
+
+      En die Jelmer? Die klootzak loopt nu rond alsof er niks aan
+      de hand is. Terwijl hij Sjoerd al maanden stalkte. Iedereen
+      weet het maar niemand zegt er iets van.
+    effects: { trust_wiebe: "+10" }
+    choices:
+      - What do you think happened? -> wiebe_theory
+      - Move on -> quest1_hub
+
+  wiebe_theory:
+    type: message
+    text: >
+      WIEBE: Twee opties. Eén: Veenstra Grondwerken heeft hem de
+      mond gesnoerd. Die gasten sponsoren de halve gemeente. Als
+      Sjoerd z'n dossier publiek had gemaakt, waren ze hun
+      vergunningen kwijt. Miljoenen euro's.
+
+      Twee: Jelmer is doorgedraaid. Die gast was echt nie normaal
+      meer. Volgde Sjoerd overal. Filmde hem. Stond 's avonds bij
+      z'n huis. Sjoerd vertelde me dat iemand z'n trainingsdata van
+      z'n laptop had gekopieerd. Wie doet zoiets?
+
+      Misschien allebei. Misschien heeft de een de ander de kans
+      gegeven.
+    effects: { trust_wiebe: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jelmer Q1 ---
+
+  jelmer_q1:
+    type: tweet
+    from: jelmer
+    text: >
+      Goeie training vandaag. Tijden worden beter. Focus op de
+      selectie in maart. #schaatsen #grind #noexcuses
+    effects: { trust_jelmer: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Jelmer -> jelmer_q1_talk
+
+  jelmer_q1_talk:
+    type: message
+    text: >
+      JELMER: Sjoerd? Ja, jammer dat hij weg is. Maar mensen
+      verdwijnen soms even. Druk ofzo. Het is niet zo bijzonder als
+      iedereen ervan maakt.
+
+      Ik heb het druk met trainen. De selectiewedstrijden zijn over
+      vijf weken. Nu Sjoerd er niet is, is er een plek vrij. Dat
+      klinkt hard maar het is de realiteit.
+
+      [Jelmer lijkt opmerkelijk onbezorgd.]
+    effects: { trust_jelmer: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Sjoerd went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Thijs (was at the rink that evening) -> thijs_interview
+      - Find Bram (farmer, early morning on the polder) -> bram_interview
+      - Find Ids (materials manager, saw lights) -> ids_interview
+      - Find Rixt (village doctor, was called out late) -> rixt_interview
+
+  # --- Thijs (saw Jelmer following Sjoerd) ---
+
+  thijs_interview:
+    type: tweet
+    from: thijs
+    text: >
+      ik zeg niks meer online. dm me als je echt wil weten wat er aan
+      de hand is.
+    effects: { trust_thijs: "+5" }
+    choices:
+      - DM Thijs -> thijs_talk
+
+  thijs_talk:
+    type: message
+    text: >
+      THIJS: oke man luister. die avond was ik bij de baan. sjoerd
+      was er ook, solo training. rond een uur of acht zie ik jelmer
+      aankomen. hij gaat niet het ijs op. hij staat gwn in het donker
+      bij de kleedkamers. met z'n telefoon. filmt sjoerd.
+
+      toen sjoerd klaar was en wegging op z'n fiets, stapte jelmer in
+      z'n auto en reed achter hem aan. echt nie normaal man. ik dacht
+      nog wtf maar ja. ik ben 16. wie luistert er naar mij.
+
+      kanker eng was het. sws niet de eerste keer. marrit heeft het
+      ook gezien.
+    effects:
+      trust_thijs: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Bram (farmer, saw vehicles on polder road) ---
+
+  bram_interview:
+    type: tweet
+    from: bram
+    text: >
+      vanmorgen weer verzakking in het weiland. het derde gat deze
+      maand. de grond zakt weg onder m'n voeten. letterlijk.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Ask Bram about that night -> bram_talk
+
+  bram_talk:
+    type: message
+    text: >
+      BRAM: Ik was om vijf uur op. Melken. De koeien moeten om half
+      zes naar de stal. En ik zag twee dingen.
+
+      Eerste: een SUV op het polderpad richting het Veenstra-terrein.
+      Geen lichten. Om vijf uur 's ochtends op een onverhard pad.
+      Met een Veenstra-logo op de zijkant.
+
+      Tweede: een fiets in de sloot bij de kruising. Ligfiets, zwart
+      frame. Ik dacht: weer zo'n dronken student. Maar die fiets
+      leek op die van Sjoerd. Zelfde type. Zelfde kleur.
+
+      Ik heb het gemeld bij de politie. Die zeiden dat ze het zouden
+      checken. Ze hebben de fiets niet eens opgehaald.
+    effects:
+      trust_bram: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ids (saw lights at the skating club) ---
+
+  ids_interview:
+    type: tweet
+    from: ids
+    text: >
+      materiaalcheck gedaan. sjoerds schaatsen staan er nog. zijn
+      slijpset ook. die jongen gaat nergens heen zonder zijn spullen.
+    effects: { trust_ids: "+5" }
+    choices:
+      - Ask Ids about that night -> ids_talk
+
+  ids_talk:
+    type: message
+    text: >
+      IDS: Ik was rond tien uur 's avonds bij het clubgebouw. Ik had
+      een slijpmachine laten staan en wilde die ophalen.
+
+      Er brandde licht in het kantoortje van Aukje. Ik dacht: die is
+      laat bezig. Maar toen ik dichterbij kwam, hoorde ik stemmen.
+      Twee mannen. Geen vrouwen, dus niet Aukje.
+
+      Eén stem herkende ik: Stijn Veenstra. De baas van het
+      grondwerkbedrijf. Die andere man kende ik niet. Ze hadden het
+      over "dat joch" en "het dossier." Stijn zei: "dit moet
+      opgelost worden voor vrijdag."
+
+      Ik ben weggegaan. Ik wilde niet gezien worden. Achteraf denk ik:
+      godverdomme, ik had moeten luisteren.
+    effects:
+      trust_ids: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rixt (village doctor, late call) ---
+
+  rixt_interview:
+    type: tweet
+    from: rixt
+    text: >
+      Herinnering: de praktijk is open ma-vr. Spoed buiten
+      kantooruren: huisartsenpost leeuwarden. Ik maak me ook zorgen
+      om @sjoerd_visser.
+    effects: { trust_rixt: "+5" }
+    choices:
+      - Ask Rixt about that night -> rixt_talk
+
+  rixt_talk:
+    type: message
+    text: >
+      RIXT: Dit is vertrouwelijk, maar het is te belangrijk om stil
+      te houden. Die avond werd ik om half één 's nachts gebeld.
+      Niet voor een patiënt — door Jelmer Terpstra.
+
+      Hij was in paniek. Hij zei dat hij gewond was, een snee in z'n
+      hand. Ik vroeg hoe. Hij zei dat hij gevallen was op het ijs.
+      Om half één 's nachts.
+
+      Ik heb hem behandeld. Diepe snee, maar niet van een val op ijs.
+      Het leek meer op een... handgemeen. Gescheurde knokkel. Blauwe
+      plekken op z'n onderarmen.
+
+      Hij zei dat het niks was. Betaalde cash. Wilde geen registratie.
+    effects:
+      trust_rixt: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Femke (sister)
+      and Marrit (saw Jelmer watching training sessions).
+    choices:
+      - Talk to Femke about that night -> femke_interview
+      - Talk to Marrit -> marrit_interview
+      - Find Thijs -> thijs_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Bram -> bram_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ids -> ids_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Rixt -> rixt_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Femke (last to talk to Sjoerd) ---
+
+  femke_interview:
+    type: tweet
+    from: femke
+    text: >
+      die foto op sjoerds account. dat is hij niet. sjoerd post
+      altijd met een tekst erbij. altijd een grap. dit is niet zijn
+      stijl. iemand anders heeft dit geplaatst.
+    effects: { trust_femke: "+5" }
+    choices:
+      - DM Femke -> femke_talk_low
+        when:
+          state: trust_femke
+          lt: 50
+      - DM Femke -> femke_talk_high
+        when:
+          state: trust_femke
+          gte: 50
+
+  femke_talk_low:
+    type: message
+    text: >
+      FEMKE: Ik waardeer je bezorgdheid maar ik ken je niet. Sorry.
+
+      [Femke moet je meer vertrouwen. Laat zien dat je serieus
+      onderzoek doet.]
+    effects: { trust_femke: "+5" }
+    choices:
+      - Share what you've learned -> femke_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  femke_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV on the polder, the
+      fiets in the sloot, the voices at the club. Femke is quiet
+      for a while.
+
+      FEMKE: Je probeert echt te helpen. Oké. Ik praat.
+    effects: { trust_femke: "+25" }
+    choices:
+      - What happened that night? -> femke_talk_high
+
+  femke_talk_high:
+    type: message
+    text: >
+      FEMKE: Hij belde me om elf uur. Dat was normaal. Maar hij was
+      anders. Gespannen. Hij zei: "ik heb vanavond iemand op het
+      terrein van Veenstra betrapt. Ze dumpen 's nachts. Ik heb het
+      gefilmd."
+
+      Ik zei: ga naar de politie. Hij zei: "de politie doet niks.
+      Hendrik Postma zit in Veenstra's zak." De wethouder. Hij zei
+      dat hij het naar de krant zou sturen.
+
+      En toen zei hij nog iets. "Jelmer was er weer. Bij mijn huis.
+      In z'n auto. Lichten uit. Ik word gek van die gast."
+
+      Dat was het laatste wat ik van hem hoorde.
+    effects:
+      trust_femke: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marrit (saw Jelmer watching training) ---
+
+  marrit_interview:
+    type: message
+    text: >
+      MARRIT: oke dit is echt kut om te zeggen maar jelmer is creepy
+      af. hij stond de afgelopen weken bij ELKE training van ons. en
+      hij keek niet naar ons. hij keek naar sjoerd.
+
+      ik heb het gefilmd. op mn telefoon. drie keer. dezelfde plek,
+      dezelfde houding. gewoon staan. staren. soms filmen.
+
+      en die ene keer? toen sjoerd naar de kleedkamer ging, liep
+      jelmer naar sjoerds fiets en deed iets met het achterwiel. ik
+      kon niet zien wat. maar sjoerd had de volgende dag een lekke
+      band. toeval? echt nie.
+    effects:
+      trust_marrit: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Sjoerd trains solo. Jelmer watches from the dark,
+      follows him when he leaves (Thijs)
+      22:00 — Stijn Veenstra and unknown man at club office discussing
+      "dat joch" and "het dossier" (Ids)
+      23:00 — Sjoerd calls Femke. Says he filmed illegal dumping at
+      Veenstra. Says Jelmer is outside his house again (Femke)
+      00:30 — Jelmer calls doctor Rixt with injuries consistent with
+      a fight, not a fall (Rixt)
+      05:00 — Veenstra SUV on polder road, no lights. Sjoerd's fiets
+      in the sloot (Bram)
+
+      Veenstra Grondwerken was threatened by Sjoerd's evidence.
+      Jelmer was obsessed with Sjoerd. Both were active that night.
+
+      Two threads to pull:
+      — The cover-up: What is Veenstra hiding? Who protects them?
+      — The obsession: What did Jelmer actually do that night?
+    choices:
+      - Investigate the peat extraction cover-up -> corruption_hub
+      - Investigate Jelmer -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Veenstra Grondwerken is extracting peat from protected wetlands.
+      The ground is sinking. The waterways are collapsing. Sjoerd had
+      evidence. Now he's gone.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search for Sjoerd's environmental data -> env_data
+      - Talk to Jildou the journalist -> jildou_interview
+      - Talk to Griet (council member, GroenLinks) -> griet_interview
+      - Talk to Bram about the land damage -> bram_land
+      - Check the Natuurvereniging -> natuur_investigation
+      - Talk to Klaas about the ice conditions -> klaas_ice
+      - Back to hub -> investigation_hub
+
+  # --- Environmental Data ---
+
+  env_data:
+    type: message
+    text: >
+      Sjoerd posted his environmental monitoring data publicly. Weekly
+      measurements: ground level at twelve points around the
+      extraction site, water levels in three canals, ice thickness at
+      six locations.
+
+      The data is damning. In the past two years, ground levels have
+      dropped 15 centimeters near the Veenstra site. Canal water
+      levels have dropped 40 centimeters. Ice thickness in January is
+      half what it was five years ago.
+
+      His most recent file: aerial drone photos showing Veenstra
+      digging OUTSIDE their permitted area, into the buffer zone
+      around the protected wetland. Dated three days before he
+      disappeared.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Jildou ---
+
+  jildou_interview:
+    type: message
+    text: >
+      JILDOU: Ik praat niet over bronnen. Punt.
+    effects: { trust_jildou: "+5" }
+    choices:
+      - Show Jildou the evidence you have -> jildou_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  jildou_with_evidence:
+    type: message
+    text: >
+      JILDOU: ...je hebt meer dan ik verwachtte.
+
+      Oké. Sjoerd en ik werkten samen. Hij had dronefoto's van
+      illegale winning buiten het vergunde terrein. Hij had
+      grondwaterdata die liet zien dat de schade veel erger was dan
+      Veenstra rapporteerde. En hij had iets anders — geluidsopnames.
+
+      Vergaderingen van de gemeenteraad. Niet-openbare sessies.
+      Hendrik Postma — de wethouder — die Veenstra's vergunningen
+      doordrukten ondanks bezwaren van de waterschappen.
+
+      Sjoerd stuurde me alles. Ik was het aan het verifiëren. Toen
+      verdween hij. En twee dagen later werd mijn auto opengebroken.
+      Laptop weg.
+
+      Maar Sjoerd leeft. Hij heeft me één keer gebeld, van een
+      onbekend nummer. Hij zei dat hij zich verstopte. Hij zei:
+      "ze hebben me bedreigd op het terrein en er is nog iemand die
+      me niet met rust laat."
+
+      Ik kan niet zeggen waar hij is. Maar met genoeg bewijs kan ik
+      publiceren en wordt het veilig voor hem om terug te komen.
+    effects:
+      trust_jildou: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> jildou_hint
+      - Back to investigation hub -> investigation_hub
+
+  jildou_hint:
+    type: message
+    text: >
+      JILDOU: Stijn Veenstra zelf. En een man die ik niet ken — groot,
+      kaal, leek op beveiliging. Ze betrapten Sjoerd op het terrein
+      toen hij aan het filmen was. Ze namen z'n camera af. Ze zeiden:
+      "als je hier nog één keer komt, zorgen we dat je niet meer
+      schaatst."
+
+      Maar hij zei ook iets over iemand van de schaatsclub. Iemand
+      die z'n trainingsschema's stal. Iemand die altijd wist waar
+      hij was. Dat is een ander probleem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Griet ---
+
+  griet_interview:
+    type: message
+    text: >
+      GRIET: Als raadslid van GroenLinks neem ik dit heel serieus.
+      Maar Veenstra Grondwerken is de grootste werkgever in de regio.
+      Hendrik Postma — de wethouder — zegt dat we "de dialoog moeten
+      onderhouden."
+
+      Off the record? Ik heb de vergunningsdossiers gezien. Veenstra
+      wint al twee jaar buiten het vergunde gebied. De provinciale
+      inspectie komt één keer per jaar en wordt twee maanden van
+      tevoren aangekondigd. Ze ruimen alles op voor de inspecteurs
+      komen.
+
+      Sjoerd had onaangekondigde data. Dronefoto's. Dat maakt het
+      gevaarlijk.
+    effects:
+      trust_griet: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Bram on land damage ---
+
+  bram_land:
+    type: message
+    text: >
+      BRAM: Kom mee naar mijn land. Ik laat je zien wat turfwinning
+      doet.
+
+      Zie je die scheur? Die liep er vorige maand niet. Het hele
+      weiland zakt. M'n sloten draineren leeg. De koeien zakken
+      weg in de modder. Vier generaties boeren op dit land en nu
+      gaat het kapot.
+
+      En de gemeente? Die kijkt de andere kant op. Wethouder Postma
+      tekent elke vergunning die Veenstra voorlegt. Weet je waarom?
+      Omdat Veenstra de schaatsclub sponsort. Het dorpshuis. De
+      jaarmarkt. De hele gemeente hangt aan hun geld.
+
+      Sjoerd was de enige die het durfde te zeggen. En kijk wat er
+      met hem is gebeurd.
+    effects:
+      trust_bram: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Natuurvereniging ---
+
+  natuur_investigation:
+    type: tweet
+    from: natuurclub
+    text: >
+      WAARSCHUWING: bodemdaling nabij Veenstra-terrein bereikt
+      kritieke waarden. Weidevogelpopulatie daalt met 40%. Wij eisen
+      een onafhankelijk onderzoek.
+    choices:
+      - Check their data -> natuur_data
+
+  natuur_data:
+    type: message
+    text: >
+      It Fryske Gea has been monitoring the wetlands for a decade.
+      Their data shows a clear pattern: since Veenstra expanded two
+      years ago, groundwater levels have dropped catastrophically.
+
+      The peatlands — centuries old, irreplaceable — are drying out.
+      Birds are disappearing. The traditional skating routes are
+      becoming dangerous because the ice no longer forms properly.
+
+      Sjoerd contributed most of the recent ground-level measurements.
+      His data matched the Natuurvereniging's satellite analysis
+      perfectly.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Klaas ice conditions ---
+
+  klaas_ice:
+    type: message
+    text: >
+      KLAAS: Ik heb mijn ijsdagboek hier. Veertig jaar data. Wil je
+      het zien?
+
+      Kijk. Tien jaar geleden: gemiddelde ijsdikte in januari, 18
+      centimeter. Veilig. Vijf jaar geleden: 14 centimeter. Nog
+      steeds oké. Dit jaar? 8 centimeter. En bij het
+      Veenstra-terrein? 4 centimeter. Dat is levensgevaarlijk.
+
+      Sjoerd mat het elke week. Hij zag het verband. De grond zakt,
+      het water verdwijnt, het ijs wordt dunner. Het is geen
+      klimaatverandering. Het is Veenstra die het veen weggraaft.
+
+      Hij had een rapport geschreven. Met grafieken. Alles. En dat
+      stuurde hij naar de provincie. Weet je wat de provincie deed?
+      Ze stuurden het door naar de gemeente. En de gemeente is
+      Hendrik Postma. Kut.
+    effects:
+      trust_klaas: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Jelmer Terpstra. Rival. Skater. Something more?
+      Someone was following Sjoerd. Someone was filming his training.
+      Someone was at his house in the dark.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Jelmer's training logs -> training_logs
+      - Talk to Aukje (club board member) about Jelmer -> aukje_jelmer
+      - Talk to Wiebe (more detail on the stalking) -> wiebe_detail
+      - Talk to the anonymous account @ijs_en_bloed -> anon_investigation
+      - Talk to Douwe about Jelmer's behaviour -> douwe_jelmer_deep
+      - Talk to Rechercheur De Vries -> rechercheur_interview
+        when:
+          state: trust_rechercheur
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Training Logs ---
+
+  training_logs:
+    type: message
+    text: >
+      The skating club's public booking system shows training slot
+      reservations. Sjoerd booked 5 sessions per week, always the
+      same times.
+
+      Jelmer booked the slot DIRECTLY AFTER Sjoerd's. Every time.
+      For the past four months. Before that, Jelmer trained mornings.
+      He switched his entire schedule to shadow Sjoerd.
+
+      The GPS data from the club's Strava-linked training app is
+      worse: Jelmer's warm-up routes mirror Sjoerd's cool-down
+      routes. He followed the exact same paths. Every day.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Aukje on Jelmer ---
+
+  aukje_jelmer:
+    type: message
+    text: >
+      AUKJE: Ik zit al tien jaar in het bestuur. Ik heb veel
+      rivaliteiten gezien. Maar wat Jelmer doet is geen rivaliteit.
+      Het is een obsessie.
+
+      Na de selectiewedstrijd vorig jaar heb ik ze uit elkaar moeten
+      halen. Jelmer greep Sjoerd bij z'n jas en schreeuwde dat hij
+      z'n plek had gestolen. Sjoerd duwde hem weg en zei niks. Dat
+      is Sjoerd.
+
+      Ik heb Jelmer een officiële waarschuwing gegeven. Hij
+      verontschuldigde zich. Maar het werd erger, niet beter. Hij
+      begon Sjoerd te volgen. Te filmen. Z'n trainingsmethodes te
+      kopiëren tot in het kleinste detail.
+
+      Een maand geleden vond Sjoerd dat iemand z'n kleedkamerkastje
+      had opengebroken. Z'n trainingsnotities waren weg. Wie anders
+      dan Jelmer?
+    effects:
+      trust_aukje: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Wiebe detail ---
+
+  wiebe_detail:
+    type: message
+    text: >
+      WIEBE: Oké, ik heb niet alles verteld. Twee weken voor Sjoerd
+      verdween, reden we samen naar huis na het trainen. Sjoerd
+      stopte ineens en zei: "kijk achter ons."
+
+      Jelmer. In z'n auto. Honderd meter achter ons. Lichten uit.
+
+      Sjoerd zei dat het al weken zo ging. Jelmer volgde hem naar
+      huis. Stond voor z'n deur. Soms uren. Sjoerd had er foto's van
+      gemaakt met z'n telefoon. Jelmer's auto, elke avond, op dezelfde
+      plek.
+
+      Sjoerd wilde geen aangifte doen. Hij zei: "het is gewoon een
+      gefrustreerde schaatser, het gaat wel over." Maar het ging niet
+      over. Het werd erger.
+
+      Godverdomme, ik had harder moeten aandringen.
+    effects:
+      trust_wiebe: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_skater
+    text: >
+      hij denkt dat hij beter is. hij is niet beter. hij heeft
+      gewoon geluk gehad. ik ken elke stap die hij zet. elke bocht.
+      elke fout. binnenkort is het mijn beurt.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @ijs_en_bloed: account aangemaakt 6 maanden geleden. Alle posts
+      gaan over Sjoerd's schaatsen. Commentaar op elke training, elke
+      wedstrijd, elke technische keuze. De toon verschuift:
+
+      Maand 1: "Goede race. Maar de bocht bij 600m was slordig.
+      Ik zou het beter doen."
+      Maand 3: "Hij traint de kinderen verkeerd. Mijn methode is
+      beter. Waarom luistert niemand?"
+      Maand 5: "Ik weet waar hij traint. Ik weet wanneer. Ik ben er
+      altijd."
+      Maand 6: "Het ijs is van mij. Niet van hem. Binnenkort begrijpt
+      iedereen dat."
+
+      Geen foto's. Geen persoonlijke details. Alleen Sjoerd. Alleen
+      obsessie.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @ijs_en_bloed with @jelmer_terpstra:
+
+      Same use of skating terminology — specific references to "de
+      kruising" (the crossover technique) that only competitive
+      skaters use. Same spelling habits — "sws" as abbreviation,
+      double spaces after periods.
+
+      And one post from @ijs_en_bloed: "Z'n split bij het 3000m
+      kwalificatiemoment was 4:02.7." That exact split time was never
+      posted publicly. It was only visible on the club's internal
+      timing system.
+
+      It's Jelmer. The anonymous account is Jelmer.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Douwe on Jelmer ---
+
+  douwe_jelmer_deep:
+    type: message
+    text: >
+      DOUWE: Jelmer komt elke avond in mijn café. Al maanden.
+      Altijd hetzelfde tafeltje — bij het raam. Waar je de straat
+      kunt zien. Sjoerds route naar huis.
+
+      Hij bestelt één biertje en zit daar twee uur. Op z'n telefoon.
+      Ik keek een keer mee — hij had Sjoerds Strava open. Volgde
+      z'n route in realtime.
+
+      Vorige week vroeg ik: "Jelmer, gaat het wel goed met je?" Hij
+      keek me aan alsof ik gek was en zei: "ik train. Dat is alles."
+
+      Dat is niet alles. Dat weet ik. Dat weet iedereen.
+
+      En de avond dat Sjoerd verdween? Jelmer was hier niet. Voor
+      het eerst in maanden. Dat is pas echt verdacht.
+    effects:
+      trust_douwe: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rechercheur De Vries ---
+
+  rechercheur_interview:
+    type: message
+    text: >
+      RECHERCHEUR DE VRIES: Off the record — en ik meen het, helemaal
+      off the record — ik wilde deze zaak onderzoeken. Mijn
+      leidinggevende zei: laat het liggen. De gemeente wil geen
+      gedoe met Veenstra Grondwerken. Te veel banen, te veel geld,
+      te veel donaties aan de lokale politiek.
+
+      De Jelmer-situatie is anders. Daar wist ik niks van. Als je
+      bewijs hebt van stalking, kan ik daar wél iets mee. Dat valt
+      onder mijn bevoegdheid.
+
+      Breng me iets concreets en ik heropen de zaak.
+    effects:
+      trust_rechercheur: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Sjoerd than anyone in Aldtsjerk. Who is responsible?
+    choices:
+      - Confront Jelmer Terpstra (the obsessive rival) -> confront_jelmer
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Stijn Veenstra (the extraction director) -> confront_stijn
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Wethouder Hendrik Postma (political protection) -> confront_hendrik
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Jelmer (Best Ending) ---
+
+  confront_jelmer:
+    type: message
+    text: >
+      You present your evidence to Jelmer:
+
+      "I know @ijs_en_bloed is your account. I know you followed
+      Sjoerd home every night. I know you broke into his locker. I
+      know you filmed his training. I know you went to the doctor at
+      00:30 with injuries from a fight. I have witnesses, training
+      logs, and the anonymous posts."
+    choices:
+      - Send -> jelmer_response
+
+  jelmer_response:
+    type: message
+    text: >
+      Jelmer doesn't reply for a long time. Then:
+
+      JELMER: Je snapt het niet. Sjoerd is niet beter dan ik. Hij
+      had gewoon geluk bij de selectie. Ik moest weten hoe hij
+      trainde. Ik moest hem bestuderen. Het was geen stalking. Het
+      was research.
+
+      Die avond — ik volgde hem naar het Veenstra-terrein. Ik zag
+      dat hij problemen kreeg met die mannen. Ik probeerde te helpen.
+      We vochten. Daarna is hij weggerend. Ik weet niet waarheen.
+      Ik zweer het.
+
+      That's not research. That's obsession.
+
+      You've already sent the evidence to Rechercheur De Vries. And
+      to Jildou Kamstra.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Rechercheur De Vries heropent de zaak. With your evidence —
+      the anonymous account, the training logs, the Strava data, the
+      doctor's testimony, the witness statements — Jelmer is arrested
+      for stalking and belaging. His phone contains hundreds of
+      photos of Sjoerd. His car GPS confirms he followed Sjoerd every
+      night for months.
+
+      Jildou Kamstra, with Sjoerd's full evidence package, publishes
+      the Veenstra story in the Friesch Dagblad and it gets picked
+      up by NOS. The province orders an independent investigation.
+      Veenstra Grondwerken's extraction permit is suspended. Stijn
+      Veenstra faces criminal charges for illegal winning in a
+      protected wetland. Wethouder Postma treedt af.
+
+      And Sjoerd Visser, reading the article from a friend's attic
+      in Sneek, calls his sister for the first time in nine days.
+
+      "Ik kom naar huis, Femke."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: sjoerd
+    text: >
+      het ijs draagt weer. niet overal. maar genoeg. bedankt dat
+      jullie niet opgaven. de polder vergeet niet.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Stijn Veenstra (Partial Ending) ---
+
+  confront_stijn:
+    type: message
+    text: >
+      You present the extraction evidence to Stijn Veenstra:
+
+      "I have drone photos showing you digging outside your permitted
+      area. I have groundwater data proving the damage is ten times
+      what you report. I have audio from closed council meetings
+      where Wethouder Postma pushed through your permits. I have
+      the testimony of a farmer whose land is collapsing."
+    choices:
+      - Send -> stijn_response
+
+  stijn_response:
+    type: message
+    text: >
+      STIJN: Dit gesprek wordt doorgestuurd naar onze juridische
+      afdeling. Elke publicatie van lasterlijke uitspraken zal leiden
+      tot directe juridische stappen. Veenstra Grondwerken opereert
+      volledig binnen de vergunningsvoorwaarden.
+
+      But it's too late. You've sent everything to Jildou, to It
+      Fryske Gea, and to the province.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The extraction story breaks. Veenstra Grondwerken is ordered to
+      halt all operations pending investigation. The company may close.
+      Eighty jobs in the balance. The village is divided.
+
+      But Sjoerd?
+
+      Without the stalking evidence, Jelmer is never investigated. He
+      continues to train. He continues to follow Sjoerd's old routes
+      on Strava. He gets Sjoerd's spot in the gewest selectie.
+
+      Three months later, Sjoerd reads the Veenstra story online. He
+      returns quietly. He stops coaching alone. He changes his
+      training times to unpredictable schedules. He checks behind him
+      constantly.
+
+      The corporation is exposed. But the person who terrorised
+      Sjoerd skates free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: sjoerd
+    text: "ik ben terug. het veen herstelt. de rest... we zien wel."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Wethouder (Wrong Ending) ---
+
+  confront_hendrik:
+    type: message
+    text: >
+      You confront Wethouder Hendrik Postma with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> hendrik_response
+
+  hendrik_response:
+    type: tweet
+    from: taco
+    text: >
+      Mijn cliënt neemt kennis van uw beschuldigingen. Elke openbare
+      verspreiding van lasterlijke beweringen zal leiden tot directe
+      juridische stappen. — Kantoor Brouwer & Zn, Leeuwarden
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The wethouder's lawyer buries your accusation. Without a direct
+      link between Postma and Veenstra's illegal extraction — and
+      there isn't one beyond political favouritism — your evidence
+      is insufficient for a criminal case.
+
+      Veenstra continues to dig. Jelmer continues to watch. Sjoerd
+      stays in hiding.
+
+      Six months later, @ijs_en_bloed creates a new account. It
+      follows Sjoerd's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: ALDTSJERK — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Sjoerd's story explores themes of
+      environmental destruction, corporate impunity, obsessive
+      rivalry, community silence, and the courage to stand up for
+      the land you love.
+
+      If you or someone you know is struggling with stalking,
+      harassment, or dark thoughts, help is available:
+
+      113 Zelfmoordpreventie: 113 (gratis, 24/7)
+      Slachtofferhulp Nederland: 0900-0101
+      Politie (niet-spoed): 0900-8844

@@ -1,0 +1,1637 @@
+# DEAD ACCOUNT — Story 066: Hoeve-aan-Zee (Belgium)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-066.yml
+#
+# Player investigates the death of mussel farmer Jules Vanderberghe
+# in the fictional Flemish coastal village of Hoeve-aan-Zee.
+
+meta:
+  title: "Dead Account — Hoeve-aan-Zee"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lies: 0
+    trust_wout: 0
+    trust_griet: 0
+    trust_filip: 0
+    trust_sofie: 0
+    trust_jan: 0
+    trust_mieke: 0
+    trust_bram: 0
+    trust_hilde: 0
+    trust_dirk: 0
+    trust_annelies: 0
+    trust_pieter: 0
+    trust_leen: 0
+    trust_thomas: 0
+    trust_noor: 0
+    trust_stef: 0
+    trust_fien: 0
+    trust_luc: 0
+    trust_els: 0
+    trust_koen: 0
+    trust_commissaris: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "net verhuisd naar Hoeve-aan-Zee. de kust ontdekken, post voor post"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "HoeveAanZee.social"
+    description: "Welkom op de community-instance van Hoeve-aan-Zee"
+    avatar_url: /gamepatch/assets/dead-account/hoeveaanzee_bot.png
+
+  npcs:
+    # === Jules's Inner Circle ===
+    jules:
+      name: "Jules Vanderberghe"
+      bio: "mosselkweker | derde generatie | de zee liegt niet | Hoeve-aan-Zee"
+      avatar: avatars/jules.jpg
+    lies:
+      name: "Lies Vanderberghe"
+      bio: "vrouw van Jules | leerkracht lagere school | mama van twee | dit kan niet waar zijn"
+      avatar: avatars/lies.jpg
+    wout:
+      name: "Wout Claes"
+      bio: "foodblogger | @smaakvandeKust | culinaire fotografie | mosselen zijn mijn leven"
+      avatar: avatars/wout.jpg
+    griet:
+      name: "Griet Peeters"
+      bio: "biologe | mosselkwekerij Hoeve-aan-Zee | collega van Jules | wateronderzoek"
+      avatar: avatars/griet.jpg
+
+    # === Local Government ===
+    filip:
+      name: "Filip Wouters"
+      bio: "Burgemeester Hoeve-aan-Zee | Vooruitgang met respect voor traditie | #HoeveVooruit"
+      avatar: avatars/filip.jpg
+    sofie:
+      name: "Sofie Janssens"
+      bio: "Schepen van Milieu | Gemeente Hoeve-aan-Zee | duurzame kust"
+      avatar: avatars/sofie.jpg
+    gemeente:
+      name: "Gemeente Hoeve-aan-Zee"
+      bio: "Officieel account | Gemeenteberichten | Openingsuren: Ma-Vr 9u-17u"
+      avatar: avatars/gemeente.jpg
+
+    # === Local Business & Community ===
+    jan:
+      name: "Jan Maes"
+      bio: "café 't Getij | bier | garnaalkroketten | zicht op zee | open sinds 1978"
+      avatar: avatars/jan.jpg
+    cafe_getij:
+      name: "Café 't Getij"
+      bio: "Ambachtelijk bier | Verse vis | Live muziek vrijdag | Het hart van Hoeve-aan-Zee"
+      avatar: avatars/cafe_getij.jpg
+    mieke:
+      name: "Mieke De Smet"
+      bio: "apotheker | Hoeve-aan-Zee | gezondheid & advies | ook open op zondag"
+      avatar: avatars/mieke.jpg
+    bram:
+      name: "Bram Willems"
+      bio: "visser | 35 jaar op zee | deze kust is mijn thuis"
+      avatar: avatars/bram.jpg
+    hilde:
+      name: "Hilde Coppens"
+      bio: "bakkerij Coppens | pistolets | mattentaarten | 5 uur 's ochtends elke dag"
+      avatar: avatars/hilde.jpg
+    dirk:
+      name: "Dirk Hendrickx"
+      bio: "havenmeester | Hoeve-aan-Zee | permanentie di-za"
+      avatar: avatars/dirk.jpg
+    annelies:
+      name: "Annelies Van Damme"
+      bio: "boekhandel De Vuurtoren | boeken | kranten | leesavonden woensdag"
+      avatar: avatars/annelies.jpg
+
+    # === Journalist ===
+    pieter:
+      name: "Pieter Vermeersch"
+      bio: "journalist | milieu & kustbeleid | tips: pieter@vermeersch-pers.be"
+      avatar: avatars/pieter.jpg
+
+    # === NordKust Vastgoed (corporate) ===
+    nordkust:
+      name: "NordKust Vastgoed NV"
+      bio: "Kustontwikkeling | Project Hoeve-aan-Zee | ISO 14001 gecertificeerd"
+      avatar: avatars/nordkust.jpg
+    leen:
+      name: "Leen De Ridder"
+      bio: "directeur NordKust Vastgoed Hoeve-aan-Zee | duurzame kustprojecten"
+      avatar: avatars/leen.jpg
+    thomas:
+      name: "Thomas Mertens"
+      bio: "Advocaat | Kantoor Mertens & Partners | Vastgoedrecht | Brugge"
+      avatar: avatars/thomas.jpg
+
+    # === Teens ===
+    noor:
+      name: "Noor"
+      bio: "16 | surfen & fotografie | Hoeve-aan-Zee born | de kust is alles amai"
+      avatar: avatars/noor.jpg
+    stef:
+      name: "Stef"
+      bio: "17 | skateboard & muziek | sunset sessions | wa is da nu met Jules"
+      avatar: avatars/stef.jpg
+    fien:
+      name: "Fien"
+      bio: "15 | tekenen & schilderen | de zee in waterverf | Jules leerde mij over mosselen"
+      avatar: avatars/fien.jpg
+
+    # === Media & Community ===
+    actu_hoeve:
+      name: "Nieuws Hoeve-aan-Zee"
+      bio: "Lokaal nieuws Hoeve-aan-Zee en de kust | Tips: redactie@nieuws-hoeve.be"
+      avatar: avatars/actu_hoeve.jpg
+    meteo_kust:
+      name: "Weer Hoeve-aan-Zee"
+      bio: "Voorspellingen & waarschuwingen | Automatisch station | Update elk uur"
+      avatar: avatars/meteo_kust.jpg
+    mosselcooperatie:
+      name: "Mosselcoöperatie Hoeve-aan-Zee"
+      bio: "Verse mosselen | 45 leden | Export | Bescherming van zee & kust"
+      avatar: avatars/mosselcooperatie.jpg
+
+    # === Suspicious / Other ===
+    luc:
+      name: "Luc Verhoeven"
+      bio: "milieutechnicus | NordKust Vastgoed | ik doe gewoon mijn werk"
+      avatar: avatars/luc.jpg
+    els:
+      name: "Els Bogaert"
+      bio: "."
+      avatar: avatars/anon.jpg
+    koen:
+      name: "Koen Martens"
+      bio: "smaakvandeKust | culinair | recepten | de perfecte mossel bestaat"
+      avatar: avatars/koen.jpg
+    commissaris:
+      name: "Commissaris De Graef"
+      bio: "Politiezone Hoeve-aan-Zee | Lokale politie | Noodgevallen: 101"
+      avatar: avatars/commissaris.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN HOEVE-AAN-ZEE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to HoeveAanZee.social — the community Mastodon instance
+      for the coastal village of Hoeve-aan-Zee, Flanders.
+
+      The local feed is dark today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @jules_vanderberghe.
+
+      A mussel farmer. Third generation. He worked the beds his
+      grandfather built. People are in shock. His body was found at
+      dawn, washed up on the breakwater near his mussel farm.
+    choices:
+      - Look at his profile -> jules_profile
+
+  jules_profile:
+    type: tweet
+    from: jules
+    text: "Die bouwproject gaat onze mosselbanken vernietigen. NordKust Vastgoed liegt tegen het gemeentebestuur. Ik heb bewijzen."
+    choices:
+      - That's his last real post... -> grey_shore
+
+  grey_shore:
+    type: message
+    text: >
+      One day after that post, his account uploaded a single image:
+      a grey shore, foggy, overexposed, shot from a strange angle.
+      Posted at 3am. No caption.
+
+      His wife Lies says that is not his style. Jules never posted
+      without a caption. The police say he fell from the breakwater
+      while checking his mussel lines at night. Something does not
+      add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: commissaris
+    text: >
+      We informeren dat het overlijden van een inwoner van Hoeve-aan-Zee
+      vermoedelijk het gevolg is van een ongeluk. Het onderzoek loopt.
+      Alle nuttige informatie kan worden meegedeeld aan het
+      politiekantoor. Tel: 101.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His wife @lies_vanderberghe is
+      devastated. The food blogger @wout_claes is posting obsessively
+      about Jules's mussels. His colleague @griet_peeters at the
+      farm is asking hard questions.
+
+      The old fisherman @bram_willems says Jules was right about the
+      construction project. The teens are losing their minds. And the
+      journalist @pieter_vermeersch has gone strangely silent.
+
+      Nobody buys the police line. Nobody thinks Jules just "fell off
+      the breakwater."
+    effects: { trust_lies: "+5", trust_griet: "+5" }
+    choices:
+      - Start following Jules's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Hoeve-aan-Zee. Follow Jules's contacts and read their
+      posts. The more you engage with the community, the more they will
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Jan (café owner, knows everyone) -> jan_intro
+      - Talk to Bram (fisherman, saw the construction damage) -> bram_intro
+      - Talk to Noor (teen surfer, seems shaken) -> noor_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief for Jules with the rhythms of a Flemish
+      coastal village: tide schedules, the bakery's daily specials,
+      weather warnings for the North Sea.
+
+      Key names surface: Lies (wife, teacher), Wout (food blogger,
+      seems obsessed with Jules's mussels), Griet (marine biologist,
+      seems rattled), and the teens — Noor, Stef, Fien — who
+      practically grew up at Jules's mussel farm.
+
+      Also prominent: NordKust Vastgoed NV, the real estate developer
+      that wants to build luxury apartments on the dunes next to the
+      mussel beds. Their posts are corporate PR. Jules's posts were
+      the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Jan -> jan_intro
+      - Talk to Bram -> bram_intro
+      - Talk to Noor -> noor_intro
+
+  # --- Jan (social map) ---
+
+  jan_intro:
+    type: tweet
+    from: jan
+    text: >
+      Het café is open maar het hart is er niet bij. @jules_vanderberghe,
+      uw vaste stoel staat klaar. Rust zacht, vriend.
+    effects: { trust_jan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jan -> jan_talk
+
+  jan_talk:
+    type: message
+    text: >
+      JAN: Ah, you are new here? Welcome. Terrible time to arrive.
+      Everyone is devastated about Jules.
+
+      Let me tell you who is who. Lies is Jules's wife — she teaches
+      at the village school. Wonderful woman, broken right now. Wout
+      Claes is that food blogger — "Smaak van de Kust" — he is
+      obsessed with Jules's mussels. Not in a healthy way if you ask
+      me. He has been filming Jules for months, following him to the
+      beds, showing up unannounced. Griet Peeters is the marine
+      biologist at the mussel farm.
+
+      And Pieter Vermeersch — the journalist — he and Jules were
+      working on something together. Something about the building
+      project. Pieter has not said a word since Jules died. That is
+      not like him.
+
+      Oh, and do not trust NordKust Vastgoed's PR posts. Lies wrapped
+      in sustainability reports. They want to build on the dunes and
+      they do not care what they destroy.
+    effects: { trust_jan: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Wout -> jan_wout
+      - Ask about NordKust Vastgoed -> jan_nordkust
+      - Thank him and move on -> quest1_hub
+
+  jan_wout:
+    type: message
+    text: >
+      JAN: Wout? He calls himself a food blogger but amai, that man
+      is not well. He arrived in the village a year ago. Started his
+      "Smaak van de Kust" blog. Immediately fixated on Jules's mussels.
+      Said they were "the purest expression of the North Sea." Poetic,
+      sure. But then he was at the mussel beds every day. Filming
+      Jules at work. Posting about Jules's techniques, his schedule,
+      his routes.
+
+      Jules was polite about it at first. Free publicity. But Wout
+      got worse. Wanted to be part of everything. Wanted exclusive
+      access. Jules told me once, "Die vent laat me niet met rust."
+      That guy does not leave me alone.
+
+      After Jules started fighting NordKust, Wout got angry. He said
+      Jules was "ruining the culinary heritage of the coast" by
+      making enemies with developers. Godverdomme, what kind of logic
+      is that?
+    effects: { trust_jan: "+5" }
+    choices:
+      - Ask about NordKust Vastgoed -> jan_nordkust
+      - Move on -> quest1_hub
+
+  jan_nordkust:
+    type: message
+    text: >
+      JAN: NordKust Vastgoed bought the dune plots three years ago.
+      They want to build a luxury apartment complex — "Residence
+      Zeewind" — right next to the mussel beds. The construction would
+      destroy the tidal flats that the mussels need.
+
+      The village tolerated the idea because they promised jobs and
+      tourism money. But the fishermen and mussel farmers fought back.
+      Jules led the resistance. He had documents showing the
+      environmental impact assessment was falsified. He had proof the
+      construction would contaminate the water with sediment and
+      chemicals.
+
+      Two weeks before he died, he posted those documents. Then
+      someone found him on the breakwater. Godverdomme.
+    effects: { trust_jan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bram (the construction, witness tease) ---
+
+  bram_intro:
+    type: tweet
+    from: bram
+    text: >
+      35 jaar op zee. het water is niet meer hetzelfde sinds die
+      bouwwerken. @jules_vanderberghe had gelijk. en nu is hij dood.
+      maak de link.
+    effects: { trust_bram: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Bram -> bram_talk
+
+  bram_talk:
+    type: message
+    text: >
+      BRAM: I have been fishing this coast since I was sixteen. I know
+      every current, every sandbank. And I am telling you — the water
+      near the construction site is wrong. My nets come up with
+      concrete dust. The seabed is turning grey.
+
+      Jules took water samples. He documented the sediment runoff from
+      NordKust's preliminary works. He photographed the illegal
+      dumping of construction waste on the tidal flats. He was building
+      a case. And then — gone.
+
+      You think that is a coincidence? Serieus, I do not believe in
+      coincidences at sea.
+    effects: { trust_bram: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> bram_night
+      - Move on -> quest1_hub
+
+  bram_night:
+    type: message
+    text: >
+      BRAM: The night before they found Jules — I was coming back from
+      night fishing, around 1am. I saw lights at the mussel farm
+      office. Not unusual, Jules works late sometimes. But there were
+      two cars in the car park. One was Jules's old Volvo. The other
+      was a black Mercedes with NordKust company plates.
+
+      At 1am. At the mussel farm.
+
+      I noted it in my fishing log. Nobody has asked to see it.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Noor (teen surfer, witness tease) ---
+
+  noor_intro:
+    type: tweet
+    from: noor
+    text: >
+      amai dit is niet oké. @jules_vanderberghe leerde ons alles
+      over de zee. hij was de beste mens in dit dorp. als iemand
+      iets weet zeg het aub. dit klopt niet.
+    effects: { trust_noor: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Noor -> noor_talk_early
+
+  noor_talk_early:
+    type: message
+    text: >
+      NOOR: ej ge zijt nieuw hier? kut timing. maar oké, Jules was
+      echt de beste. hij leerde ons hoe de mosselen groeien, hoe de
+      getijden werken. we mochten altijd op de boerderij komen.
+
+      en nu ben ik bang want Stef heeft iets gezien die avond maar
+      hij wilt er niet over praten. hij zegt dat het niks is maar
+      amai... het is niet niks eh.
+    effects: { trust_noor: "+10" }
+    choices:
+      - What did Stef see? -> noor_stef_hint
+      - Move on -> quest1_hub
+
+  noor_stef_hint:
+    type: message
+    text: >
+      NOOR: ik weet niet exact. hij was aan het skaten bij de dijk
+      en hij zag iemand bij Jules zijn boot. serieus alsof die
+      persoon iets deed met de boot of zo. en toen die persoon Stef
+      zag is die snel weggelopen.
+
+      Stef is bang. hij wilt niet praten met mensen die hij niet kent.
+      probeer eerst over surfen of skaten te praten ofzo haha
+    effects: { trust_noor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You are getting a picture of Hoeve-aan-Zee. A Flemish coastal
+      village built around mussel farming and the sea. A mussel farmer
+      who was exposing construction fraud. A death nobody believes
+      was an accident.
+
+      You have made contacts. Now dig deeper.
+    choices:
+      - Talk to Lies (Jules's wife) -> lies_q1
+      - Talk to Wout (the food blogger) -> wout_q1
+      - Check what Griet (Jules's colleague) is saying -> griet_q1
+      - I'm ready to investigate the night he died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lies Q1 ---
+
+  lies_q1:
+    type: tweet
+    from: lies
+    text: >
+      als iemand weet wat er is gebeurd met @jules_vanderberghe bel
+      mij alstublieft. zijn laarzen stonden thuis. zijn jas hing aan
+      de kapstok. hij ging niet naar de golfbreker in het donker.
+    effects: { trust_lies: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lies -> lies_q1_talk
+
+  lies_q1_talk:
+    type: message
+    text: >
+      LIES: I appreciate you reaching out but I do not know you.
+      Jules had many friends here. The funeral is Thursday.
+
+      ...I keep telling myself to stay strong for the children. I
+      cannot.
+
+      [Lies is guarded. You will need to build more trust before she
+      opens up.]
+    effects: { trust_lies: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Wout Q1 ---
+
+  wout_q1:
+    type: tweet
+    from: wout
+    text: >
+      De mosselen van @jules_vanderberghe waren kunst. Elke schelp een
+      verhaal. Ik heb alles gedocumenteerd. Dit culinair erfgoed mag
+      niet verloren gaan. Ik zal zijn werk voortzetten. Wat het ook kost.
+    effects: { trust_wout: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Wout -> wout_q1_talk
+
+  wout_q1_talk:
+    type: message
+    text: >
+      WOUT: You are interested in Jules's story? Good. His mussels
+      were extraordinary. I have been documenting his methods for a
+      year — video, photography, tasting notes. This is the most
+      important culinary story on the Belgian coast.
+
+      Jules and I had our disagreements about publicity, sure. I
+      wanted the world to know about his mussels. He wanted to be
+      left alone. Typical farmer mentality. But at the end of the day,
+      his legacy matters more than his preference for privacy.
+
+      I offered to help him fight NordKust. Many times. He said he had
+      it under control. He said he was working with a journalist. I
+      could have amplified his message to thousands of followers.
+
+      [Wout seems earnest. Or obsessive?]
+    effects: { trust_wout: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Griet Q1 ---
+
+  griet_q1:
+    type: tweet
+    from: griet
+    text: >
+      de watermonsters van @jules_vanderberghe liggen nog in het labo.
+      zijn meetlogboek ligt op zijn bureau. hij zou nooit lopend
+      onderzoek achterlaten. er is iets gebeurd.
+    effects: { trust_griet: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Griet -> griet_q1_talk
+
+  griet_q1_talk:
+    type: message
+    text: >
+      GRIET: Jules and I worked together at the mussel farm for three
+      years. He was the most dedicated farmer I have ever known. This
+      fight against NordKust — it consumed him. He had water quality
+      data, sediment samples, environmental reports. He was building
+      a case that the construction would destroy the mussel beds.
+
+      He called me the night before he died. He said "they know what
+      I have." He said "if anything happens, look at NordKust." Then
+      he said something strange — "and keep that blogger away from
+      my boats."
+
+      I did not understand the last part then. Now I cannot stop
+      thinking about it.
+    effects: { trust_griet: "+10" }
+    choices:
+      - What do you think happened? -> griet_theory
+      - Move on -> quest1_hub
+
+  griet_theory:
+    type: message
+    text: >
+      GRIET: I think NordKust killed him because he had proof their
+      environmental impact assessment was fabricated. But I also think
+      Wout — that blogger — knows more than he admits. The way Wout
+      talks about Jules's mussels... it is not admiration. It is
+      possession.
+
+      Jules told me months ago that someone was coming to the mussel
+      beds at night, filming, taking samples. He thought it was
+      NordKust scouting the land. But the footprints he found were
+      from expensive hiking shoes, not construction boots. Wout wears
+      exactly those shoes. Every single day.
+    effects: { trust_griet: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Jules died. Multiple people saw or
+      heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Stef (was skating near the dike) -> stef_interview
+      - Find Dirk (harbour master, works late) -> dirk_interview
+      - Find Hilde (baker, starts at 5am, saw something) -> hilde_interview
+      - Find Bram (fisherman, was coming back late) -> bram_interview
+
+  # --- Stef (saw someone at Jules's boat) ---
+
+  stef_interview:
+    type: tweet
+    from: stef
+    text: >
+      kut sfeer in het dorp. er klopt iets niet. ik weet niet wat ik
+      moet doen. gewoon skaten en proberen niet na te denken
+    effects: { trust_stef: "+5" }
+    choices:
+      - Ask Stef about that evening -> stef_talk
+
+  stef_talk:
+    type: message
+    text: >
+      STEF: ej oké maar ge zegt het tegen niemand hé. ik was bij
+      de dijk rond 19u, sunset session. en ik zag die foodblogger —
+      Wout — bij de boot van Jules. hij was serieus iets aan het
+      doen met de boot. alsof hij iets installeerde of vastmaakte
+      onder het dek. toen hij mij zag is hij direct weggelopen.
+
+      amai ik heb niks gezegd want ik wilde geen problemen maar nu
+      is het serieus fucked up. dat is niet normaal wa is da nu
+    effects:
+      trust_stef: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dirk (harbour master, saw late-night meeting) ---
+
+  dirk_interview:
+    type: tweet
+    from: dirk
+    text: >
+      Herinnering: de haven is verboden terrein tussen 22u en 6u.
+      De laatste nachten waren er ongeoorloofde bewegingen.
+    effects: { trust_dirk: "+5" }
+    choices:
+      - Ask Dirk what he saw -> dirk_talk
+
+  dirk_talk:
+    type: message
+    text: >
+      DIRK: I was closing up the harbour office around 22h30. I saw
+      Jules's Volvo still in the mussel farm car park. And a black
+      Mercedes — NordKust company plates — parked next to it. Two
+      people were standing by the farm office entrance. One of them
+      I recognised: Leen De Ridder, the project director.
+
+      At 22h30. At the mussel farm. That is not normal.
+
+      I noted it in my harbour log. Nobody has asked to see it.
+    effects:
+      trust_dirk: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Hilde (saw car speeding at dawn) ---
+
+  hilde_interview:
+    type: tweet
+    from: hilde
+    text: >
+      Deeg kneden om 5u zoals altijd. Maar die ochtend reed er een
+      auto veel te snel over de kustweg. Midden in de nacht.
+    effects: { trust_hilde: "+5" }
+    choices:
+      - Ask Hilde what she saw -> hilde_talk
+
+  hilde_talk:
+    type: message
+    text: >
+      HILDE: I start baking at 5am every day. That morning I was
+      opening the shutters and a car went past — fast, much too fast
+      for the coast road. A black Mercedes. Then maybe three minutes
+      later, another car. Smaller. I think it was Wout's little
+      Peugeot. Going the same direction, toward the breakwater.
+
+      Wout came into the bakery at 6am. He looked terrible. His shoes
+      were wet, covered in sand. He bought a coffee and said nothing.
+      Wout always talks about food. That morning, nothing.
+
+      I told the police. They wrote it down. Nothing happened.
+    effects:
+      trust_hilde: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Bram (saw boat heading out) ---
+
+  bram_interview:
+    type: tweet
+    from: bram
+    text: >
+      ik was laat terug van het vissen. zag lichten op het water waar
+      geen lichten horen te zijn. om 3 uur 's nachts. dat klopt niet.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Ask Bram what he saw -> bram_talk_night
+
+  bram_talk_night:
+    type: message
+    text: >
+      BRAM: I was coming back from night fishing around 3am. I saw
+      Jules's boat heading out. In the dark. No running lights. That
+      is not Jules — he is the most careful man on the water. He would
+      never go out without lights.
+
+      Someone else was driving that boat. The silhouette was wrong.
+      Jules is tall, broad. This person was smaller. Moving strangely,
+      like they did not know the controls well.
+
+      I tried to radio but got no response. By morning the boat was
+      back at the dock and Jules was on the breakwater.
+    effects:
+      trust_bram: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lies (wife)
+      and Fien (saw Wout watching the farm at night).
+    choices:
+      - Talk to Lies about that night -> lies_interview
+      - Talk to Fien -> fien_interview
+      - Find Stef -> stef_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dirk -> dirk_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Hilde -> hilde_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Bram -> bram_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lies (last to see Jules) ---
+
+  lies_interview:
+    type: tweet
+    from: lies
+    text: >
+      die foto op Jules zijn account. dat is hij niet. Jules post
+      nooit zonder bijschrift. Jules post niet om 3 uur 's nachts.
+      iemand anders heeft dat gedaan.
+    effects: { trust_lies: "+5" }
+    choices:
+      - DM Lies -> lies_talk_low
+        when:
+          state: trust_lies
+          lt: 50
+      - DM Lies -> lies_talk_high
+        when:
+          state: trust_lies
+          gte: 50
+
+  lies_talk_low:
+    type: message
+    text: >
+      LIES: I appreciate the concern but I really do not want to talk
+      to strangers about this right now. Please.
+
+      [Lies needs to trust you more. Show her you are investigating
+      seriously, not just gossiping.]
+    effects: { trust_lies: "+5" }
+    choices:
+      - Share what you've learned about the night -> lies_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lies_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the company Mercedes at the
+      farm, the boat without lights, the speeding car at dawn. Lies
+      is silent for a long time.
+
+      LIES: You are actually trying to find the truth. Okay. I will
+      talk.
+    effects: { trust_lies: "+25" }
+    choices:
+      - What happened that night? -> lies_talk_high
+
+  lies_talk_high:
+    type: message
+    text: >
+      LIES: He came home around 21h. We ate dinner with the children.
+      He was nervous. He said "NordKust wants a meeting tonight at the
+      farm. They want to negotiate." He laughed but it was forced.
+
+      I asked him not to go. He said "I have to. If I do not show up,
+      they will say I refused dialogue."
+
+      Around 22h I heard a car pull up. It was not the NordKust car.
+      It was Wout. He came to the door, asked where Jules was. I said
+      at the farm. Wout looked furious. He said "that idiot is going
+      to ruin everything I have built around his mussels." And he
+      drove off.
+
+      By morning Jules was dead and that grey photo was on his account.
+    effects:
+      trust_lies: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Fien (saw Wout watching the farm) ---
+
+  fien_interview:
+    type: message
+    text: >
+      FIEN: oké ik ga iets zeggen maar het klinkt raar. die foodblogger
+      — Wout — ik heb hem minstens 5 keer gezien de laatste weken bij
+      de mosselboerderij 's avonds. gewoon daar staan. filmen. foto's
+      maken. om 10 uur 's avonds. wa is da nu serieus.
+
+      de laatste keer was twee dagen voor Jules stierf. hij zat in
+      zijn auto aan de rand van het parkeerterrein. lichten uit. gewoon
+      zitten en naar de boerderij kijken. echt creepy amai.
+    effects:
+      trust_fien: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Wout seen at Jules's boat, installing something (Stef)
+      22:00 — Wout arrives at Jules's house, furious, drives to farm (Lies)
+      22:30 — NordKust Mercedes at the farm, Leen De Ridder present (Dirk)
+      23:00 — Jules and NordKust people at the farm office (Dirk)
+      03:00 — Jules's boat heading out without lights, wrong person driving (Bram)
+      05:00 — Mercedes speeds along coast road, Wout follows (Hilde)
+      05:30 — Wout in bakery, wet shoes, says nothing (Hilde)
+
+      NordKust confronted Jules at the farm. They wanted his documents.
+      Wout was also there that night, with his own agenda.
+
+      Two threats converged: the developer AND the blogger.
+
+      Two threads to pull:
+      — The development: What is NordKust Vastgoed hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Wout really doing? Why was he at
+        Jules's boat?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Wout -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      NordKust Vastgoed is hiding something. Jules had proof their
+      environmental impact assessment was fabricated. Now he is dead
+      and his documents are missing from the farm office.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the farm records -> farm_records
+      - Talk to Pieter the journalist -> pieter_interview
+      - Talk to Luc (NordKust technician) -> luc_interview
+      - Talk to Sofie (environment alderman) -> sofie_interview
+      - Check the Mussel Cooperative's data -> mosselcooperatie_investigation
+      - Talk to Bram about the construction dumping -> bram_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Farm Records ---
+
+  farm_records:
+    type: message
+    text: >
+      The mussel farm's public database shows Jules's recent water
+      quality monitoring: sediment samples from eight points along the
+      coast near the construction site. The data for the site closest
+      to NordKust's works is marked "PENDING REVIEW" — the only point
+      with that status.
+
+      His monitoring log, shared with the cooperative, shows he made
+      15 sampling trips to the NordKust construction perimeter in the
+      past month. The last entry: "Photographed illegal waste dump on
+      tidal flat. Construction waste, not inert. Contains heavy metals.
+      Not what they report in the EIA."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Pieter ---
+
+  pieter_interview:
+    type: message
+    text: >
+      PIETER: I do not talk about sources. Period.
+    effects: { trust_pieter: "+5" }
+    choices:
+      - Show Pieter the evidence you have -> pieter_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  pieter_with_evidence:
+    type: message
+    text: >
+      PIETER: ...you have more than I expected.
+
+      Okay. Jules and I were working together. He had documents showing
+      NordKust's environmental impact assessment was copy-pasted from
+      a different project in Knokke with the location names changed.
+      He had photos of illegal construction waste dumped on the tidal
+      flats at night. He had sediment samples showing heavy metal
+      contamination ten times the permitted level.
+
+      We were going to publish together. Then he died. And two days
+      later, someone broke into my car and stole my backup drive.
+
+      Here is the thing — Jules is not the only threat they
+      eliminated. The night he died, he sent me an audio message at
+      23:52. You can hear voices arguing. One is a woman — Leen De
+      Ridder, I am certain. They are threatening him. And in the
+      background, you can hear another voice. Not NordKust. Someone
+      else was there. I believe it was Wout.
+    effects:
+      trust_pieter: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Wout was there too? -> pieter_hint
+      - Back to investigation hub -> investigation_hub
+
+  pieter_hint:
+    type: message
+    text: >
+      PIETER: That is what makes this complicated. NordKust went there
+      to intimidate Jules into handing over his evidence. Standard
+      corporate thuggery. But Wout was there too — for entirely
+      different reasons.
+
+      On the audio, you can hear Wout shouting about "his project"
+      and "his content" and Jules "destroying everything he built."
+      The man has built his entire blog, his entire identity, around
+      Jules's mussels. And now Jules was going to war with a developer
+      that could shut down the farm.
+
+      Two threats collided at the same place, the same night. One
+      wanted the documents. The other wanted the mussels. Jules did
+      not survive the collision.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Luc (NordKust whistleblower) ---
+
+  luc_interview:
+    type: message
+    text: >
+      LUC: I work at NordKust Vastgoed. I am just an environmental
+      technician. I monitor construction impact, I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the Flemish Environmental Agency.
+    effects: { trust_luc: "+10" }
+    choices:
+      - What do you mean? -> luc_detail
+
+  luc_detail:
+    type: message
+    text: >
+      LUC: I measure sediment contamination. Heavy metals, pH,
+      turbidity. My numbers go to my supervisor. Somewhere between my
+      desk and the regulatory filing, they change. Lower. Always lower.
+      The environmental impact looks acceptable on paper. In reality,
+      the construction is poisoning the tidal flats.
+
+      Jules's samples from outside the construction perimeter matched
+      MY original numbers, not the official reports. He had independent
+      proof that NordKust is falsifying their environmental data.
+
+      I am scared. I have a mortgage. But I kept copies of my original
+      reports. If someone can protect me, I will share them.
+    effects:
+      trust_luc: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sofie ---
+
+  sofie_interview:
+    type: message
+    text: >
+      SOFIE: As alderman for the environment, I take these allegations
+      seriously. But NordKust has promised sixty new jobs and twelve
+      million euros in investment. The mayor insists we need to
+      "maintain the partnership."
+
+      Off the record? I have seen the provincial inspection reports.
+      NordKust passes every time. But those inspections are announced
+      three weeks in advance. They clean up the site before the
+      inspectors arrive.
+
+      Jules had unannounced samples. That is what makes them dangerous.
+      Godverdomme, that is what got him killed.
+    effects:
+      trust_sofie: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Mussel Cooperative ---
+
+  mosselcooperatie_investigation:
+    type: tweet
+    from: mosselcooperatie
+    text: >
+      WAARSCHUWING: Abnormale sedimentwaarden geregistreerd nabij de
+      mosselbanken. Monsters en documentatie in uitvoering. Wij vragen
+      een onaangekondigde inspectie van de NordKust bouwwerf.
+    choices:
+      - Check their data -> mosselcooperatie_data
+
+  mosselcooperatie_data:
+    type: message
+    text: >
+      The mussel cooperative has been documenting water quality for
+      four years. Their data shows a clear pattern: sediment and
+      contamination spikes that correspond to NordKust's construction
+      schedule. Worse on weekdays, better on weekends. Worse at night,
+      better during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate illegal
+      dumping timed to avoid detection.
+
+      Jules was the cooperative's water quality monitor. He contributed
+      most of the sampling data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Bram dumping ---
+
+  bram_dumping:
+    type: message
+    text: >
+      BRAM: I will show you something. Last month I was checking my
+      nets near the construction site at low tide. I found something
+      that should not be there — concrete rubble mixed with asbestos
+      sheeting, dumped directly onto the mussel beds. Fresh. Still wet
+      from the mixer.
+
+      I photographed it. I showed Jules. He said it was the missing
+      piece — proof they were dumping hazardous construction waste
+      directly on the tidal flats, not just sediment runoff. Deliberate
+      contamination.
+
+      I still have the photos. And GPS coordinates.
+    effects:
+      trust_bram: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Wout Claes. Food blogger. "Smaak van de Kust." Something more?
+      Someone was visiting the mussel beds at night. Someone was at
+      Jules's boat. Someone followed Jules to the farm that night.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Wout's blog analytics -> blog_records
+      - Talk to Lies about Wout -> lies_wout
+        when:
+          state: trust_lies
+          gte: 20
+      - Talk to Stef (more detail on the boat incident) -> stef_detail
+      - Talk to Mieke the pharmacist -> mieke_interview
+      - Check the anonymous account @els_bogaert -> els_investigation
+      - Talk to Annelies the bookseller -> annelies_interview
+        when:
+          state: trust_annelies
+          gte: 40
+      - Talk to Commissaris De Graef -> commissaris_interview
+        when:
+          state: trust_commissaris
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Blog Analytics ---
+
+  blog_records:
+    type: message
+    text: >
+      Wout's blog "Smaak van de Kust" is publicly accessible. The
+      analytics tell a disturbing story. In one year, he has published
+      187 posts. Of those, 143 are about Jules Vanderberghe's mussels.
+      76 percent of his entire output.
+
+      His posting schedule mirrors Jules's work schedule. When Jules
+      was at the beds at 6am, Wout posted a "dawn harvest" photo by
+      7am. When Jules checked his lines at low tide, Wout was there
+      with his camera. He has metadata-tagged 2,400 photos of Jules
+      at work.
+
+      There is also a private subscriber area: "Jules Exclusive."
+      Premium content about Jules's techniques. Fifty subscribers at
+      nine euros per month. Wout was monetizing Jules without his
+      knowledge.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lies on Wout ---
+
+  lies_wout:
+    type: message
+    text: >
+      LIES: Wout? That man made Jules deeply uncomfortable. He would
+      show up at the mussel beds every morning. He would film
+      everything — Jules sorting mussels, Jules repairing lines,
+      Jules eating his lunch. He commented on every single one of
+      Jules's posts within minutes.
+
+      Jules told him politely to back off. Wout said he understood.
+      Nothing changed. He just kept appearing. Always there. Always
+      with the camera.
+
+      A month ago Jules found his boat had been entered. His private
+      logbook was open to a different page. Equipment had been moved.
+      Nothing stolen, but someone had been through everything. He
+      suspected Wout but could not prove it. He started locking the
+      wheelhouse with a new padlock.
+    effects:
+      trust_lies: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Stef detail ---
+
+  stef_detail:
+    type: message
+    text: >
+      STEF: ej oké ik heb niet alles gezegd. toen ik Wout bij de boot
+      van Jules zag, had hij iets in zijn hand. serieus het leek op
+      een klein apparaatje. hij plakte het ergens onder het dashboard.
+      alsof hij een tracker installeerde of een camera of zo.
+
+      amai ik ben geen expert maar ik heb genoeg films gezien om te
+      weten wat een GPS-tracker is. die gast is gestoord.
+
+      ik had iets moeten zeggen maar wie gelooft nu een 17-jarige
+      tegen een volwassene met 10.000 volgers. kut.
+    effects:
+      trust_stef: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mieke ---
+
+  mieke_interview:
+    type: message
+    text: >
+      MIEKE: This is confidential but I am a pharmacist, not a priest.
+      Wout Claes comes in regularly. He has been buying things that
+      suggest he is not sleeping. Anti-anxiety medication, caffeine
+      supplements, energy tablets. The pattern is someone under extreme
+      stress — or extreme obsession.
+
+      He also asked me once, very casually, if we sold waterproof
+      cameras. Small ones. Hidden ones. I said "this is a pharmacy,
+      not MediaMarkt." He laughed it off. I did not think about it
+      again until Jules died.
+    effects:
+      trust_mieke: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Els (anonymous account) ---
+
+  els_investigation:
+    type: tweet
+    from: els
+    text: >
+      Hij had moeten luisteren. Ik probeerde zijn verhaal te vertellen.
+      Niemand anders begreep zijn werk zoals ik.
+    choices:
+      - Look at this account's history -> els_posts
+
+  els_posts:
+    type: message
+    text: >
+      @els_bogaert: account created 9 months ago. Posts are all about
+      Jules's mussels and the mussel farm. Comments on every harvest
+      photo, every water quality post, every mussel-related update.
+      The tone shifts over time:
+
+      Month 1: "Extraordinary mussels. This man is an artist."
+      Month 3: "Why won't you let me tell your story properly? I just
+      want to collaborate."
+      Month 6: "I see you at the café with other journalists. You have
+      time for them but not for me?"
+      Month 8: "I know your routes. I know your schedule. I am always
+      close. Your mussels deserve better than silence."
+
+      The account has no personal photos. Just mussels. Only Jules's
+      mussels.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> els_style
+
+  els_style:
+    type: message
+    text: >
+      Comparing @els_bogaert with @wout_claes:
+
+      Same food writing vocabulary. Same Belgian Dutch spelling habits
+      — the specific Flemish way of using diminutives. Same knowledge
+      of mussel farming that only someone who spent extensive time at
+      the beds would have.
+
+      And one post from @els_bogaert: "The second row of palen near
+      the red buoy had the best mosselen today." That level of detail
+      about specific line positions is not public knowledge. Only
+      someone who was physically there would know.
+
+      It is Wout. The anonymous account is Wout.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Annelies ---
+
+  annelies_interview:
+    type: message
+    text: >
+      ANNELIES: Jules left something with me. A waterproof bag with
+      a USB drive and printed documents. He said "if someone comes
+      asking about the construction at the dunes, give them this."
+
+      He looked frightened. He said he had made copies of everything
+      but needed one set off-site, somewhere nobody would think to
+      look. A bookshop seemed perfect.
+    effects: { trust_annelies: "+10" }
+    choices:
+      - What is at the dunes? -> annelies_case
+
+  annelies_case:
+    type: message
+    text: >
+      Annelies reaches under the counter and produces a waterproof
+      bag.
+
+      ANNELIES: He said you would come. Take it.
+
+      Inside: a USB drive and printed photographs. The photos show the
+      NordKust construction site at night — dump trucks depositing
+      construction waste on the tidal flats, the fabricated
+      environmental impact assessment with tracked changes showing how
+      it was altered, and Jules's detailed report. There is also a
+      folder labeled "WOUT" containing photos of footprints at the
+      mussel beds, a log of Wout's unauthorized visits, and screenshots
+      of the anonymous account.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Commissaris De Graef ---
+
+  commissaris_interview:
+    type: message
+    text: >
+      COMMISSARIS DE GRAEF: Off the record — and I mean completely off
+      the record — I wanted to investigate NordKust. My superior told
+      me to stand down. He said the province had "jurisdiction." That
+      is code for "do not touch it."
+
+      The Wout situation is different. I did not even know about the
+      nighttime visits, the anonymous account, the tracker on the boat.
+      If you have evidence of stalking and suspicious presence at a
+      death scene, I can act on that. That is clearly my jurisdiction.
+
+      Bring me something solid and I will reopen the case as a
+      homicide investigation.
+    effects:
+      trust_commissaris: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You have gathered evidence. You know more about what happened
+      to Jules than anyone in Hoeve-aan-Zee. Who is responsible?
+    choices:
+      - Confront Wout Claes (the obsessive blogger) -> confront_wout
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Leen De Ridder (the company director) -> confront_leen
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Wouters (political protection) -> confront_filip
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Wout (Best Ending) ---
+
+  confront_wout:
+    type: message
+    text: >
+      You present your evidence to Wout:
+
+      "I know @els_bogaert is your account. I know you put a GPS
+      tracker on Jules's boat. I know you were at the mussel beds
+      every night. I know you were selling premium content about Jules
+      without his knowledge. I know you were at the farm the night
+      he died. I have witnesses and I have the audio recording."
+    choices:
+      - Send -> wout_response
+
+  wout_response:
+    type: message
+    text: >
+      Wout does not reply for a long time. Then:
+
+      WOUT: You do not understand. Jules was extraordinary. His mussels
+      were the purest food I have ever tasted. I was preserving his
+      legacy. He was going to destroy it all by fighting NordKust —
+      if the farm closed, the mussels would be gone forever. Everything
+      I did was to protect the mussels.
+
+      I went to the farm that night to reason with him. NordKust was
+      already there, threatening him. After they left, Jules and I
+      argued on the breakwater. I pushed him. He fell. The water...
+      godverdomme, the water took him.
+
+      I panicked. I took his phone. I posted the photo so it would
+      look like he was still active. I moved his boat to make it look
+      like he went out alone.
+
+      You have already sent the evidence to Commissaris De Graef. And
+      to Pieter Vermeersch.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Commissaris De Graef reopens the case as a homicide investigation.
+      With your evidence — the anonymous account, the GPS tracker, the
+      blog monetization, the witness testimonies, and the audio
+      recording — Wout is arrested for involuntary manslaughter and
+      stalking. He confesses fully. Forensic evidence from the
+      breakwater confirms the struggle.
+
+      Pieter Vermeersch, finally in possession of Jules's full evidence
+      package, publishes the NordKust story in De Standaard. The
+      Flemish Environmental Agency orders an emergency inspection. The
+      construction permit is revoked. NordKust's environmental impact
+      assessment is declared fraudulent. Leen De Ridder faces criminal
+      charges for document falsification and environmental crime.
+
+      And Lies Vanderberghe, reading the story at her kitchen table
+      after the children have gone to bed, calls Griet at the mussel
+      farm.
+
+      "Jules heeft gewonnen. De mosselen blijven."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lies
+    text: >
+      de zee liegt niet. en de mensen van Hoeve-aan-Zee vergeten niet.
+      bedankt dat ge niet hebt opgegeven. #VoorJules
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Leen (Partial Ending) ---
+
+  confront_leen:
+    type: message
+    text: >
+      You present the construction evidence to Leen De Ridder:
+
+      "I have photographs of illegal dumping on the tidal flats. I
+      have sediment samples showing contamination ten times the limit.
+      I have your original technician reports showing the data was
+      falsified. I have proof the environmental impact assessment was
+      copied from another project."
+    choices:
+      - Send -> leen_response
+
+  leen_response:
+    type: message
+    text: >
+      LEEN: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. NordKust Vastgoed has always operated
+      within its permits.
+
+      But it is too late. You have sent the evidence to Pieter, to the
+      mussel cooperative, and to the Flemish Environmental Agency.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The construction fraud story breaks. NordKust Vastgoed is ordered
+      to halt all works. The permit is under review. The tidal flats
+      begin to recover. The mussels survive.
+
+      But Jules?
+
+      Without the evidence of Wout's obsession and presence that night,
+      the death remains classified as an accident. Wout continues to
+      blog. He rebrands — "In Memory of Jules: A Culinary Legacy." He
+      has more subscribers than ever. He walks the mussel beds every
+      morning, filming, photographing, narrating.
+
+      Lies cannot bear to look at the blog. She sells the farm. She
+      moves to Bruges with the children.
+
+      The developer is exposed. But the person who killed Jules
+      profits from his death.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lies
+    text: "de mosselen zijn gered. maar Jules komt nooit meer terug. de waarheid is maar half verteld."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_filip:
+    type: message
+    text: >
+      You confront Mayor Wouters with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> filip_response
+
+  filip_response:
+    type: tweet
+    from: thomas
+    text: >
+      Mijn cliënt neemt kennis van uw beweringen. Elke publieke
+      verspreiding van lasterlijk materiaal zal aanleiding geven tot
+      onmiddellijke gerechtelijke stappen. — Kantoor Mertens &
+      Partners, Brugge
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Wouters and NordKust's illegal dumping — and
+      there is not one beyond political protection — your evidence
+      is insufficient.
+
+      NordKust continues to build. Wout continues to blog. Jules's
+      death remains an accident.
+
+      Six months later, @els_bogaert creates a new account. It
+      follows Lies's children.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: HOEVE-AAN-ZEE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Jules's story explores themes of coastal
+      development, environmental fraud, obsessive behaviour, community
+      solidarity, and the courage to defend what the sea provides.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Hulplijn 1712 (gratis, 24u/24)
+      Tele-Onthaal: 106 (luisterend oor)
+      Milieuklacht Vlaanderen: 1700

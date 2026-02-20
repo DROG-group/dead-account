@@ -1,0 +1,1581 @@
+# DEAD ACCOUNT — Story 055: Mosselkerke (Netherlands 3, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-055.yml
+#
+# Player investigates the disappearance of young mussel farmer Bram Willemse
+# in the fictional Zeeland fishing village of Mosselkerke.
+
+meta:
+  title: "Dead Account — Mosselkerke"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_joost: 0
+    trust_fleur: 0
+    trust_thijs: 0
+    trust_roos: 0
+    trust_sander: 0
+    trust_daan: 0
+    trust_maaike: 0
+    trust_gertjan: 0
+    trust_anouk: 0
+    trust_henk: 0
+    trust_lotte: 0
+    trust_piet: 0
+    trust_sofie: 0
+    trust_wim: 0
+    trust_nienke: 0
+    trust_bas: 0
+    trust_els: 0
+    trust_jaap: 0
+    trust_marijn: 0
+    trust_kees: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    stalker_evidence: 0
+    dumping_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "net verhuisd naar mosselkerke. zeeland ontdekken stap voor stap"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Mosselkerke.social"
+    description: "Welkom op de Mastodon-instance van Mosselkerke, Zeeland"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    # === Bram's Inner Circle ===
+    bram:
+      name: "Bram Willemse"
+      bio: "mosselkweker | de schelde is m'n kantoor | eerlijk voedsel uit eerlijk water"
+      avatar: avatars/bram.jpg
+    fleur:
+      name: "Fleur de Vries"
+      bio: "bram z'n vriendin | viswinkel de zeemeermin | als hij niet terugkomt weet ik niet meer"
+      avatar: avatars/fleur.jpg
+    thijs:
+      name: "Thijs Willemse"
+      bio: "bram z'n broer | timmerman | goes | die jongen verdwijnt niet zomaar"
+      avatar: avatars/thijs.jpg
+    roos:
+      name: "Roos Klaassen"
+      bio: "19 | biologie student | bram leerde me alles over het water | ik ga dit niet laten rusten"
+      avatar: avatars/roos.jpg
+
+    # === Local Government ===
+    gertjan:
+      name: "Gert-Jan van den Berg"
+      bio: "Wethouder milieu & economie | Gemeente Mosselkerke | Zeeland verdient beter"
+      avatar: avatars/gertjan.jpg
+    maaike:
+      name: "Maaike Goedhart"
+      bio: "Burgemeester Mosselkerke | samen sterk voor onze gemeente"
+      avatar: avatars/maaike.jpg
+    gemeente:
+      name: "Gemeente Mosselkerke"
+      bio: "Officieel account | Gemeentenieuws | Balie: ma-vr 9:00-17:00"
+      avatar: avatars/gemeente.jpg
+
+    # === Local Business & Community ===
+    henk:
+      name: "Henk Dekker"
+      bio: "visser | 35 jaar op de schelde | de zee vergeet niks"
+      avatar: avatars/henk.jpg
+    piet:
+      name: "Piet Luteijn"
+      bio: "havenmeester mosselkerke | kantoor di-za | alles wat het water raakt gaat door mij"
+      avatar: avatars/piet.jpg
+    els:
+      name: "Els Risseeuw"
+      bio: "cafe de schelp | mosselen & bier | open sinds 1978 | het hart van het dorp"
+      avatar: avatars/els.jpg
+    jaap:
+      name: "Jaap Minderhoud"
+      bio: "bakker | brood van de dag | 04:30 op | mosselkerke draait op brood en koffie"
+      avatar: avatars/jaap.jpg
+    nienke:
+      name: "Nienke Brouwer"
+      bio: "apotheker mosselkerke | advies & medicijnen | ook op zondag"
+      avatar: avatars/nienke.jpg
+    lotte:
+      name: "Lotte Huijsman"
+      bio: "boekwinkel het getij | tweedehands & nieuw | lezing elke woensdag"
+      avatar: avatars/lotte.jpg
+    kees:
+      name: "Kees Westdorp"
+      bio: "oesterkweker | mosselkerke | eb en vloed bepalen m'n leven"
+      avatar: avatars/kees.jpg
+
+    # === Journalist ===
+    sofie:
+      name: "Sofie Tramper"
+      bio: "journalist | PZC freelancer | milieu & kust | tips: sofie@tramper-media.nl"
+      avatar: avatars/sofie.jpg
+
+    # === DeltaChem (corporate) ===
+    deltachem:
+      name: "DeltaChem BV"
+      bio: "Chemische industrie | Vestiging Mosselkerke | ISO 14001 gecertificeerd | Duurzaam ondernemen"
+      avatar: avatars/deltachem.jpg
+    wim:
+      name: "Wim Kaljee"
+      bio: "directeur DeltaChem vestiging Mosselkerke | industrie & regio hand in hand"
+      avatar: avatars/wim.jpg
+    bas:
+      name: "Bas Vermue"
+      bio: "advocaat | Vermue & Partners | ondernemingsrecht | middelburg"
+      avatar: avatars/bas.jpg
+
+    # === Teens ===
+    joost:
+      name: "Joost"
+      bio: "17 | zeilen & vissen | mosselkerke geboren | de schelde is gwn alles sws"
+      avatar: avatars/joost.jpg
+    daan:
+      name: "Daan"
+      bio: "16 | skate & surf | kustlife | bram was echt een held man"
+      avatar: avatars/daan.jpg
+    anouk:
+      name: "Anouk"
+      bio: "15 | fotografie | de kust in alle seizoenen | bram's mosselverhalen waren t mooist"
+      avatar: avatars/anouk.jpg
+
+    # === Stalker Boat Neighbor ===
+    sander:
+      name: "Sander Geschiere"
+      bio: "bootonderhoud | ligplaats 14 | de haven is m'n thuis"
+      avatar: avatars/sander.jpg
+
+    # === Media & Community ===
+    actu_mosselkerke:
+      name: "Mosselkerke Nieuws"
+      bio: "Lokaal nieuws uit Mosselkerke en omgeving | tips: redactie@mosselkerke-nieuws.nl"
+      avatar: avatars/actu_mosselkerke.jpg
+    weer_zeeland:
+      name: "Weer Zeeland"
+      bio: "Weersverwachting & waarschuwingen | Automatisch weerstation | Elk uur bijgewerkt"
+      avatar: avatars/weer_zeeland.jpg
+    natuur_schelde:
+      name: "Stichting Scheldebehoud"
+      bio: "Bescherming Westerschelde | Vrijwilligers | Meld vervuiling"
+      avatar: avatars/natuur_schelde.jpg
+
+    # === Suspicious / Other ===
+    marijn:
+      name: "Marijn Poppe"
+      bio: "."
+      avatar: avatars/anon.jpg
+    agent:
+      name: "Wijkagent Van Houten"
+      bio: "Politie Zeeland-West | wijkagent Mosselkerke e.o. | 0900-8844 | noodgevallen: 112"
+      avatar: avatars/agent.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN MOSSELKERKE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welkom op mosselkerke.social — de Mastodon-instance van het
+      vissersdorp Mosselkerke, Zeeland.
+
+      De lokale tijdlijn is onrustig. Er is iets gebeurd.
+    choices:
+      - Check de feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Als je door de feed scrollt, zie je overal dezelfde naam:
+      @bram_willemse.
+
+      Een jonge mosselkweker. 22 jaar. Hij documenteerde het water
+      van de Westerschelde, filmde de mosselpercelen, deelde alles
+      online. Mensen maken zich zorgen. Hij heeft zes dagen niet
+      gepost.
+    choices:
+      - Bekijk z'n profiel -> bram_profile
+
+  bram_profile:
+    type: tweet
+    from: bram
+    text: "het water bij de oostdam is niet normaal. grijze troep. de mosselen gaan dood. iemand loost hier illegaal en ik ga het bewijzen."
+    choices:
+      - Dat is z'n laatste echte post... -> grey_water
+
+  grey_water:
+    type: message
+    text: >
+      Drie dagen na die post verscheen er een enkel beeld op z'n
+      account: een wazig, overbelicht shot van de haven bij nacht.
+      Gepost om 04:12. Geen tekst.
+
+      Z'n vrienden zeggen dat dit niet z'n stijl is. De politie zegt
+      dat hij waarschijnlijk een paar dagen weg is. Iets klopt niet.
+    choices:
+      - Lees het politiebericht -> politie_statement
+      - Bekijk de reacties -> community_reaction
+
+  politie_statement:
+    type: tweet
+    from: agent
+    text: >
+      Wij hebben een melding ontvangen betreffende een inwoner van
+      Mosselkerke. Op dit moment is er geen aanleiding om uit te gaan
+      van een misdrijf. Informatie kan worden gedeeld via 0900-8844
+      of bij het wijkbureau.
+    choices:
+      - Wat zeggen mensen? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      De reacties zijn chaotisch. Z'n vriendin @fleur_devries is
+      wanhopig. Z'n broer @thijs_willemse komt uit Goes. Z'n
+      buurman in de haven @sander_geschiere post vage berichten.
+      De oude visser @henk_dekker zegt dat Bram gelijk had over
+      het water.
+
+      En de journaliste @sofie_tramper is verdacht stil.
+
+      Niemand gelooft de politie. Niemand denkt dat Bram zomaar
+      "even weg" is.
+    effects: { trust_fleur: "+5", trust_thijs: "+5" }
+    choices:
+      - Begin met het volgen van Bram's contacten -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: EERSTE INDRUKKEN
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: EERSTE INDRUKKEN
+
+      Leer Mosselkerke kennen. Volg Bram's contacten en lees hun
+      berichten. Hoe meer je met de gemeenschap praat, hoe meer
+      ze je vertrouwen.
+
+      Begin met de mensen die het meest bereid lijken om te praten.
+    choices:
+      - Praat met Els (cafe eigenaar, kent iedereen) -> els_intro
+      - Praat met Henk (visser, zag het water) -> henk_intro
+      - Praat met Joost (tiener zeiler, is van slag) -> joost_intro
+      - Check eerst de lokale feed -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      De feed mixt paniek over Bram met het ritme van een klein
+      vissersdorp: getijdentabellen, het dagmenu van de bakker,
+      weerwaarschuwingen voor de kust.
+
+      Belangrijke namen komen naar boven: Fleur (vriendin, viswinkel),
+      Sander (buurman in de haven, gedraagt zich vreemd), Sofie
+      (journaliste, vreemd stil), en de tieners — Joost, Daan,
+      Anouk — die Bram's werk bewonderden.
+
+      Ook opvallend: DeltaChem BV, de chemische fabriek aan de rand
+      van het dorp. Hun posts zijn corporate PR. Bram's posts waren
+      het tegenovergestelde.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Praat met Els -> els_intro
+      - Praat met Henk -> henk_intro
+      - Praat met Joost -> joost_intro
+
+  # --- Els (social map) ---
+
+  els_intro:
+    type: tweet
+    from: els
+    text: >
+      het cafe is open maar het voelt leeg. @bram_willemse, je
+      stamtafel staat klaar jongen. kom terug.
+    effects: { trust_els: "+5", contacts_followed: "+1" }
+    choices:
+      - Reageer op Els -> els_talk
+
+  els_talk:
+    type: message
+    text: >
+      ELS: Ah, je bent nieuw hier? Welkom. Slecht moment om te
+      komen. Iedereen is overstuur door Bram.
+
+      Laat me je even op de hoogte brengen. Fleur is z'n vriendin —
+      ze runt de viswinkel aan de haven. Lief meisje, helemaal kapot
+      nu. Sander Geschiere heeft z'n boot naast Bram's kotter
+      liggen. Enge vent als je 't mij vraagt. Altijd aan het
+      gluren, altijd vragen stellen over Bram's routes.
+
+      Thijs is Bram's oudere broer, komt uit Goes. En Sofie Tramper
+      — de journaliste — zij en Bram werkten samen aan iets. Iets
+      over het water. Sofie heeft geen woord gezegd sinds Bram weg
+      is. Dat is niks voor haar.
+
+      En geloof niks van DeltaChem's mooie praatjes. ISO-certificaten
+      m'n reet.
+    effects: { trust_els: "+10", contacts_followed: "+2" }
+    choices:
+      - Vraag over Sander -> els_sander
+      - Vraag over DeltaChem -> els_deltachem
+      - Bedank haar en ga verder -> quest1_hub
+
+  els_sander:
+    type: message
+    text: >
+      ELS: Sander? Die kerel heeft z'n boot naast Bram liggen
+      sinds twee jaar. Eerst leek het normaal — twee buren in de
+      haven. Maar het werd steeds vreemder. Hij stond altijd op
+      de kade als Bram vertrok. Altijd vragen: waar ga je heen,
+      welk perceel, wanneer ben je terug.
+
+      Bram zei een keer tegen me: "die gozer volgt me op het
+      water, Els. Ik zie z'n boot altijd in m'n kielzog." Ik
+      dacht dat ie overdreef. Nu weet ik het niet meer.
+
+      En 's avonds zit Sander op z'n boot met een verrekijker.
+      Naar Bram's kotter te staren. Godverdomme, dat is toch
+      niet normaal?
+    effects: { trust_els: "+5" }
+    choices:
+      - Vraag over DeltaChem -> els_deltachem
+      - Ga verder -> quest1_hub
+
+  els_deltachem:
+    type: message
+    text: >
+      ELS: Die fabriek staat er al sinds de jaren tachtig. Industriele
+      oplosmiddelen, schoonmaakmiddelen, dat soort troep. Het dorp
+      accepteerde het want het bracht banen. Maar de vissers klagen
+      al jaren — raar kleuren in het water bij de uitlaatpijp, dode
+      vissen bij de oostdam.
+
+      Bram was de eerste die echt ging kijken. Met z'n camera en
+      z'n flesjes. Hij had bewijs, zei ie. Echt bewijs. Twee weken
+      later is ie weg.
+
+      En die wethouder — Gert-Jan van den Berg — die heeft aandelen
+      in DeltaChem. Dat weet het hele dorp. Maar niemand zegt er wat
+      van want hij bepaalt wie subsidie krijgt voor de vissers.
+    effects: { trust_els: "+5" }
+    choices:
+      - Ga verder -> quest1_hub
+
+  # --- Henk (the water, witness tease) ---
+
+  henk_intro:
+    type: tweet
+    from: henk
+    text: >
+      vijfendertig jaar vis ik hier. het water is niet meer hetzelfde.
+      @bram_willemse had gelijk. en nu is ie weg. trek je eigen
+      conclusie.
+    effects: { trust_henk: "+5", contacts_followed: "+1" }
+    choices:
+      - Reageer op Henk -> henk_talk
+
+  henk_talk:
+    type: message
+    text: >
+      HENK: Ik vis op de Westerschelde sinds m'n vijftiende. Ik ken
+      elke stroming, elke kleur die het water maakt. En ik zeg je —
+      het water bij de oostdam klopt niet. Al maanden niet. M'n
+      netten komen omhoog met dooie krabben. De bodem stinkt naar
+      chemicalien.
+
+      Bram nam watermonsters. Hij dook naar de uitlaatpijp. Hij
+      filmde alles. Hij was een zaak aan het opbouwen. En toen —
+      paf — weg.
+
+      Denk je dat dat toeval is? Op zee geloof ik niet in toeval.
+    effects: { trust_henk: "+10" }
+    choices:
+      - Heb je recent iets ongewoons gezien? -> henk_night
+      - Ga verder -> quest1_hub
+
+  henk_night:
+    type: message
+    text: >
+      HENK: De nacht voordat ie verdween — ik kwam terug van nacht
+      vissen, rond een uur of een. Ik zag licht bij Bram's kotter.
+      Niet heel gek, soms werkt ie laat. Maar er stond iemand op de
+      kade naast z'n boot. Geen Bram. Iemand groter. Stond daar
+      maar gewoon te kijken.
+
+      En er stond een busje bij het havenkantoor. DeltaChem logo
+      op de zijkant. Om een uur 's nachts. Bij de haven.
+
+      Ik dacht er toen niks van. Nu denk ik er de hele tijd aan.
+    effects: { trust_henk: "+5" }
+    choices:
+      - Ga verder -> quest1_hub
+
+  # --- Joost (teen sailor, witness tease) ---
+
+  joost_intro:
+    type: tweet
+    from: joost
+    text: >
+      echt nie man @bram_willemse die gast heeft me gwn leren zeilen
+      en alles over de schelde geleerd. kanker kut dat ie weg is.
+      als iemand iets weet sws zeg het gewoon
+    effects: { trust_joost: "+5", contacts_followed: "+1" }
+    choices:
+      - Reageer op Joost -> joost_talk_early
+
+  joost_talk_early:
+    type: message
+    text: >
+      JOOST: yo ben je nieuw hier ofzo? sws kut timing man. bram is
+      echt de chillste gast van het hele dorp. hij leerde ons zeilen,
+      nam ons mee op z'n kotter, liet ons zien wat er onder water
+      leeft. echt held.
+
+      en nu ben ik gwn bang want daan heeft iets raars gezien bij de
+      haven maar hij wil er niet over praten. hij zegt dat t niks is
+      maar het is sws wel iets man
+    effects: { trust_joost: "+10" }
+    choices:
+      - Wat heeft Daan gezien? -> joost_daan_hint
+      - Ga verder -> quest1_hub
+
+  joost_daan_hint:
+    type: message
+    text: >
+      JOOST: weet ik nie precies. hij was aan het skaten bij de haven
+      en hij zag iemand die in bram z'n boot aan het zoeken was ofzo.
+      niet bram zelf. iemand anders. hij flipte echt maar hij wil t
+      niet zeggen want hij is bang dat niemand hem gelooft. probeer
+      eerst een beetje normaal met hem te praten over skaten ofzo
+      dan vertelt ie t misschien
+    effects: { trust_joost: "+5" }
+    choices:
+      - Ga verder -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      Je krijgt een beeld van Mosselkerke. Een Zeeuws vissersdorp
+      gebouwd rond het water. Een jonge mosselkweker die vervuiling
+      aan het licht bracht. Een verdwijning die niemand gelooft.
+
+      Je hebt contacten gelegd. Nu dieper graven.
+    choices:
+      - Praat met Fleur (Bram's vriendin) -> fleur_q1
+      - Praat met Sander (Bram's buurman in de haven) -> sander_q1
+      - Check wat Thijs (Bram's broer) zegt -> thijs_q1
+      - Ik ben klaar om de nacht van z'n verdwijning te onderzoeken -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Fleur Q1 ---
+
+  fleur_q1:
+    type: tweet
+    from: fleur
+    text: >
+      als iemand iets weet over @bram_willemse bel me alsjeblieft.
+      z'n laarzen staan nog bij de deur. z'n regenjas hangt er nog.
+      hij zou nooit weggaan zonder z'n spullen.
+    effects: { trust_fleur: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Fleur -> fleur_q1_talk
+
+  fleur_q1_talk:
+    type: message
+    text: >
+      FLEUR: Ik waardeer het maar ik ken je niet. Bram heeft veel
+      vrienden hier. Hij komt wel terug.
+
+      ...Ik blijf dat maar zeggen. Ik geloof het zelf niet meer.
+
+      [Fleur is op haar hoede. Je moet meer vertrouwen opbouwen
+      voordat ze openlijk praat.]
+    effects: { trust_fleur: "+5" }
+    choices:
+      - Ga verder -> quest1_hub
+
+  # --- Sander Q1 ---
+
+  sander_q1:
+    type: tweet
+    from: sander
+    text: >
+      hoop dat bram snel terug is. rustig hier in de haven zonder
+      hem. te rustig.
+    effects: { trust_sander: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Sander -> sander_q1_talk
+
+  sander_q1_talk:
+    type: message
+    text: >
+      SANDER: Bram en ik? Ja gewoon buren in de haven toch? M'n
+      boot ligt naast de zijne. We klesten wel eens. Over het water,
+      de mosselen, dat soort dingen. Verder niks bijzonders.
+
+      Ik maak me zorgen. Net als iedereen.
+
+      [Sander klinkt te kalm. Te neutraal. Alsof hij een script
+      voorleest.]
+    effects: { trust_sander: "+5" }
+    choices:
+      - Ga verder -> quest1_hub
+
+  # --- Thijs Q1 ---
+
+  thijs_q1:
+    type: tweet
+    from: thijs
+    text: >
+      m'n broer is VERDWENEN en de politie zegt dat ie misschien een
+      paar dagen weg is??? HIJ GAAT NIET ZOMAAR WEG ZONDER HET TE
+      ZEGGEN. ik kom eraan vanuit goes. iemand gaat me uitleggen wat
+      er is gebeurd.
+    effects: { trust_thijs: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Thijs -> thijs_q1_talk
+
+  thijs_q1_talk:
+    type: message
+    text: >
+      THIJS: Wie ben jij? Weer iemand uit dat dorp die me gaat
+      vertellen dat ik me niet druk moet maken? M'n broer belde me
+      de avond voordat ie verdween. Hij zei dat ie iets groots had.
+      Hij zei "als er iets gebeurt, kijk naar DeltaChem." Toen
+      hing ie op.
+
+      Dat is het laatste wat ik van hem gehoord heb.
+    effects: { trust_thijs: "+10" }
+    choices:
+      - Wat denk je dat er is gebeurd? -> thijs_theory
+      - Ga verder -> quest1_hub
+
+  thijs_theory:
+    type: message
+    text: >
+      THIJS: Ik denk dat ie bewijs heeft gevonden dat DeltaChem
+      giftig afval in de Schelde dumpt en dat ze hem het zwijgen
+      hebben opgelegd. Maar ik denk ook dat die enge buurman van
+      hem — Sander — meer weet dan ie zegt. De manier waarop die
+      gast over Bram praat... het is niet normaal. Het is iets
+      anders.
+
+      Bram vertelde me maanden geleden dat iemand z'n boot was
+      binnengegaan terwijl ie er niet was. Spullen waren verplaatst.
+      Z'n logboek was opengeslagen op een andere pagina. Hij dacht
+      dat het niks was. Ik denk dat het wel iets was.
+    effects: { trust_thijs: "+5" }
+    choices:
+      - Ga verder -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: DE LAATSTE NACHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: DE LAATSTE NACHT
+
+      Er is iets gebeurd de nacht dat Bram verdween. Meerdere
+      mensen hebben iets gezien of gehoord. Puzzel de tijdlijn
+      in elkaar met getuigenissen.
+
+      Je hebt minstens 4 getuigenissen nodig.
+    choices:
+      - Vind Daan (was aan het skaten bij de haven) -> daan_interview
+      - Vind Piet (havenmeester, werkt laat) -> piet_interview
+      - Vind Kees (oesterkweker, vroege ochtend aan het water) -> kees_interview
+      - Vind Jaap (bakker, begint om 04:30, zag iets) -> jaap_interview
+
+  # --- Daan (saw someone on Bram's boat) ---
+
+  daan_interview:
+    type: tweet
+    from: daan
+    text: >
+      lekker gesessiond vandaag maar de vibe bij de haven is echt
+      off. gwn een raar gevoel. lastig uit te leggen
+    effects: { trust_daan: "+5" }
+    choices:
+      - Vraag Daan over die avond -> daan_talk
+
+  daan_talk:
+    type: message
+    text: >
+      DAAN: yo oke maar je zegt het tegen niemand he. ik was bij de
+      haven rond een uur of zeven, skaten bij de kade. en ik zag die
+      gast — sander — op bram z'n boot. niet z'n eigen boot. bram
+      z'n boot. hij was gwn aan het rommelen met iets. toen ie mij
+      zag ging ie kanker snel weg.
+
+      ik heb niks gezegd want ik wou geen gedoe maar nu is het echt
+      nie normaal meer sws. dat is gwn creepy man
+    effects:
+      trust_daan: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ga door met onderzoeken -> quest2_hub
+
+  # --- Piet (harbour master, saw late-night activity) ---
+
+  piet_interview:
+    type: tweet
+    from: piet
+    text: >
+      Herinnering: de haven is afgesloten tussen 22:00 en 06:00.
+      Er zijn de afgelopen nachten ongeautoriseerde toegangen
+      geconstateerd.
+    effects: { trust_piet: "+5" }
+    choices:
+      - Vraag Piet wat hij heeft gezien -> piet_talk
+
+  piet_talk:
+    type: message
+    text: >
+      PIET: Ik was het havenkantoor aan het afsluiten rond half elf.
+      Ik zag Bram's kotter nog aan de kade liggen. En er stond een
+      wit busje bij de loskade — DeltaChem logo op de zijkant. Twee
+      mannen in werkkleding stonden bij het hek.
+
+      Om half elf 's avonds. Bij de haven. Dat is niet normaal.
+
+      Ik heb het in m'n havenlogboek genoteerd. Niemand heeft
+      ernaar gevraagd.
+    effects:
+      trust_piet: "+10"
+      night_witnesses: "+1"
+      dumping_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ga door met onderzoeken -> quest2_hub
+
+  # --- Kees (saw Bram fleeing) ---
+
+  kees_interview:
+    type: tweet
+    from: kees
+    text: >
+      om vier uur op voor de oesterputten. de dijk was niet leeg
+      vanmorgen. er rende iemand op het scheldepad. in het donker.
+      geen jogger.
+    effects: { trust_kees: "+5" }
+    choices:
+      - Vraag Kees wat hij zag -> kees_talk
+
+  kees_talk:
+    type: message
+    text: >
+      KEES: Ik sta elke dag om vier uur op voor de oesterputten. Die
+      ochtend — de ochtend na Bram's laatste post — zag ik iemand op
+      de dijk. Rennend. Een man, met een tas, richting de oostdam.
+      Het was nog donker. Hij bewoog snel, alsof ie bang was.
+
+      Ik riep maar hij stopte niet. Ik dacht aan een jogger maar...
+      wie jogt er om vier uur 's ochtends met een schoudertas?
+
+      Toen ik over Bram hoorde, legde ik het verband. Ik denk dat
+      hij het was. Op de vlucht voor iets.
+    effects:
+      trust_kees: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ga door met onderzoeken -> quest2_hub
+
+  # --- Jaap (saw van speeding) ---
+
+  jaap_interview:
+    type: tweet
+    from: jaap
+    text: >
+      Deeg in de oven om half vijf zoals altijd. Maar die ochtend
+      reed er een voertuig veel te hard over de kustweg.
+    effects: { trust_jaap: "+5" }
+    choices:
+      - Vraag Jaap wat hij zag -> jaap_talk
+
+  jaap_talk:
+    type: message
+    text: >
+      JAAP: Ik begin elke dag om half vijf met bakken. Die ochtend
+      deed ik de luiken open en er reed een busje voorbij — snel,
+      veel te snel voor de kustweg. Wit busje, donkere ramen. Toen
+      misschien twee minuten later een tweede voertuig. Kleiner.
+      Een bestelauto. Achtervolging? Ik weet het niet.
+
+      Het busje sloeg af richting de oude loodsen bij de oostdam.
+      De bestelauto reed door richting de N57.
+
+      Ik heb het aan de politie verteld. Ze schreven het op. Dat
+      was het.
+    effects:
+      trust_jaap: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ga door met onderzoeken -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Getuigen gevonden: ${night_witnesses} van 4 nodig.
+
+      Je kunt getuigenissen blijven verzamelen of praten met Fleur
+      (vriendin) en Anouk (zag Sander bij de boot staren).
+    choices:
+      - Praat met Fleur over die nacht -> fleur_interview
+      - Praat met Anouk -> anouk_interview
+      - Vind Daan -> daan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Vind Piet -> piet_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Vind Kees -> kees_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Vind Jaap -> jaap_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Stel de tijdlijn samen -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Fleur (last to see Bram) ---
+
+  fleur_interview:
+    type: tweet
+    from: fleur
+    text: >
+      die foto op bram z'n account. dat is hij niet. bram post nooit
+      zonder tekst. bram post niet om vier uur 's nachts. iemand
+      anders heeft dat gedaan.
+    effects: { trust_fleur: "+5" }
+    choices:
+      - DM Fleur -> fleur_talk_low
+        when:
+          state: trust_fleur
+          lt: 50
+      - DM Fleur -> fleur_talk_high
+        when:
+          state: trust_fleur
+          gte: 50
+
+  fleur_talk_low:
+    type: message
+    text: >
+      FLEUR: Ik waardeer de bezorgdheid maar ik wil nu echt niet
+      met vreemden praten hierover.
+
+      [Fleur moet je meer vertrouwen. Laat zien dat je serieus
+      onderzoekt, niet alleen roddelt.]
+    effects: { trust_fleur: "+5" }
+    choices:
+      - Deel wat je weet over die nacht -> fleur_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Kom later terug -> quest2_hub
+
+  fleur_trust_build:
+    type: message
+    text: >
+      Je deelt de getuigenverklaringen — het busje bij de haven, de
+      DeltaChem mannen, de rennende figuur. Fleur is lang stil.
+
+      FLEUR: Je probeert hem echt te vinden. Oke. Ik praat.
+    effects: { trust_fleur: "+25" }
+    choices:
+      - Wat is er die nacht gebeurd? -> fleur_talk_high
+
+  fleur_talk_high:
+    type: message
+    text: >
+      FLEUR: Hij kwam rond elf uur thuis. Ik was tv aan het kijken.
+      Hij was bleek, z'n handen trilden. Hij zei "ze weten wat ik
+      heb." Hij greep z'n laptop en z'n harde schijven met de
+      onderwaterbeelden.
+
+      Ik vroeg wie. Hij zei "de fabriek. Ze hebben mensen naar de
+      haven gestuurd." Toen zei hij nog iets — "en hij was er ook
+      weer. Hij is er altijd."
+
+      Hij wilde niet zeggen wie "hij" was. Hij omhelsde me, zei
+      "maak je geen zorgen," en vertrok met een tas. Dat was het.
+      De volgende ochtend was z'n auto weg en stond die vage foto
+      op z'n account.
+    effects:
+      trust_fleur: "+15"
+      night_witnesses: "+1"
+      dumping_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Ga door met onderzoeken -> quest2_hub
+
+  # --- Anouk (saw Sander watching the boat) ---
+
+  anouk_interview:
+    type: message
+    text: >
+      ANOUK: oke dit is echt creepy maar die sander — de bootbuurman
+      — ik heb hem sws drie keer gezien bij bram z'n kotter 's avonds
+      laat. gwn daar staan staren. echt nie normaal.
+
+      de laatste keer was twee dagen voor bram verdween. hij zat in
+      z'n eigen boot met een verrekijker. gwn zitten kijken naar
+      bram z'n boot. in het donker. godverdomme wie doet dat
+    effects:
+      trust_anouk: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ga door met onderzoeken -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIJDLIJN SAMENGESTELD
+
+      19:00 — Sander gezien op Bram's boot, rommelend met iets (Daan)
+      22:30 — DeltaChem busje bij de haven, twee mannen in werkkleding (Piet)
+      23:00 — Bram komt thuis, geschrokken, pakt laptop en schijven (Fleur)
+      04:00 — Man rennend op de dijk richting oostdam (Kees)
+      04:30 — Twee voertuigen te snel op de kustweg, een richting loodsen (Jaap)
+
+      DeltaChem confronteerde Bram bij de haven. Hij vluchtte naar
+      huis, greep z'n bewijs, en rende. Iemand achtervolgde hem.
+
+      Maar er zijn twee dreigingen: de fabriek EN iemand dichterbij.
+
+      Twee draden om aan te trekken:
+      — Het doofpotaffaire: Wat verbergt DeltaChem? Wie gaf opdracht
+        voor de confrontatie? En wat is de rol van de wethouder?
+      — De stalker: Wat doet Sander echt? Waarom was hij op Bram's
+        boot?
+    choices:
+      - Onderzoek de corporate doofpot -> corruption_hub
+      - Onderzoek Sander -> stalker_hub
+      - Volg beiden -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Twee onderzoeken lopen parallel.
+
+      CORPORATE DRAAD: Bewijs verzameld: ${dumping_evidence}
+      STALKER DRAAD: Bewijs verzameld: ${stalker_evidence}
+    choices:
+      - Werk aan de corporate draad -> corruption_hub
+      - Werk aan de stalker draad -> stalker_hub
+      - Confronteer een verdachte -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: dumping_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      DE CORPORATE DRAAD
+
+      DeltaChem verbergt iets. Bram had bewijs. Nu is hij weg en
+      z'n bestanden zijn verdwenen van z'n boot.
+
+      Wethouder Gert-Jan van den Berg heeft aandelen in DeltaChem.
+      Hij controleert de milieuvergunningen.
+
+      Dumpingbewijs: ${dumping_evidence}
+    choices:
+      - Doorzoek de havenregisters -> haven_records
+      - Praat met Sofie de journaliste -> sofie_interview
+      - Praat met Roos (biologiestudent, Bram's protege) -> roos_interview
+      - Praat met wethouder Gert-Jan -> gertjan_interview
+      - Check Stichting Scheldebehoud -> stichting_investigation
+      - Praat met Henk over de dumping -> henk_dumping
+      - Terug naar hub -> investigation_hub
+
+  # --- Haven Records ---
+
+  haven_records:
+    type: message
+    text: >
+      De openbare havenlogs laten Bram's recente activiteiten zien:
+      watermonsters van acht locaties langs de Westerschelde. De
+      data voor de oostdam is gemarkeerd als "IN BEHANDELING" — de
+      enige locatie met die status.
+
+      Z'n duiklog, gedeeld met de havenmeester voor veiligheid, laat
+      zien dat hij 15 duiken maakte bij de DeltaChem uitlaatpijp in
+      de afgelopen maand. De laatste vermelding: "Pijpaansluiting
+      gefotografeerd. Niet-aangegeven tweede uitlaat. Lozing is niet
+      wat ze rapporteren."
+    effects:
+      dumping_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ga verder -> corruption_hub
+
+  # --- Sofie ---
+
+  sofie_interview:
+    type: message
+    text: >
+      SOFIE: Ik praat niet over bronnen. Punt.
+    effects: { trust_sofie: "+5" }
+    choices:
+      - Laat Sofie het bewijs zien dat je hebt -> sofie_with_evidence
+        when:
+          state: dumping_evidence
+          gte: 3
+      - Terug naar corporate draad -> corruption_hub
+
+  sofie_with_evidence:
+    type: message
+    text: >
+      SOFIE: ...je hebt meer dan ik verwacht had.
+
+      Oke. Bram en ik werkten samen. Hij had foto's van een
+      niet-aangegeven afvalpijp — DeltaChem heeft een tweede
+      uitlaat die op geen enkele vergunning staat. Hij had
+      watermonsters met zware metalen tien keer boven de
+      wettelijke norm.
+
+      We zouden samen publiceren. Toen werd het stil. En twee dagen
+      later brak iemand in m'n auto in en stal m'n backup-schijf.
+
+      Bram leeft. Hij heeft me een keer gebeld, vanaf een
+      prepaidtelefoon. Hij zei dat ie zich verstopt. Hij zei "ze
+      hebben me bedreigd bij de haven en iemand anders laat me niet
+      met rust."
+
+      Ik kan je niet vertellen waar ie is. Maar met genoeg bewijs
+      kan ik publiceren en het veilig maken voor hem om terug te
+      komen.
+    effects:
+      trust_sofie: "+25"
+      dumping_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Wie heeft hem bedreigd? -> sofie_hint
+      - Terug naar investigation hub -> investigation_hub
+
+  sofie_hint:
+    type: message
+    text: >
+      SOFIE: De fabriek stuurde hun directeur — Kaljee — en een
+      advocaat naar de haven die nacht. Ze zeiden dat ie alles moest
+      inleveren of juridische consequenties kon verwachten.
+      Intimidatie verpakt als juridisch proces.
+
+      Maar de wethouder — Gert-Jan van den Berg — die regelde het.
+      Hij belde Kaljee. Dat weet ik van een bron binnen de gemeente.
+      Van den Berg heeft voor driehonderdduizend euro aan aandelen
+      in DeltaChem. Als het bedrijf valt, gaat ie mee.
+
+      En Bram zei ook iets over iemand bij de haven. Iemand die
+      altijd in de buurt was. Dat is een ander probleem.
+    choices:
+      - Terug naar investigation hub -> investigation_hub
+
+  # --- Roos (biology student, Bram's protege) ---
+
+  roos_interview:
+    type: message
+    text: >
+      ROOS: Bram leerde me alles over de Schelde. Ik ben
+      biologiestudent in Middelburg en hij liet me z'n
+      watermonsters zien. De cijfers waren schrikbarend.
+
+      Hij had een dossier. Alles netjes gedocumenteerd. Foto's
+      van de pijp, chemische analyses, datumstempels. Hij zei: "als
+      ik dit publiceer, gaat DeltaChem dicht."
+
+      Een week voor ie verdween vertelde ie me dat er 's nachts
+      iemand op z'n boot was geweest. Spullen waren verplaatst. Z'n
+      USB-sticks met de data waren weg. Hij was kanker boos maar ook
+      bang. Ik had hem nog nooit bang gezien.
+    effects:
+      trust_roos: "+10"
+      dumping_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar corporate draad -> corruption_hub
+
+  # --- Wethouder Gert-Jan ---
+
+  gertjan_interview:
+    type: message
+    text: >
+      GERT-JAN: Als wethouder voor milieu en economie neem ik deze
+      beschuldigingen serieus. Maar DeltaChem biedt werkgelegenheid
+      aan 180 mensen in deze gemeente. De burgemeester benadrukt dat
+      we "dialoog moeten behouden."
+
+      Mijn persoonlijke financiele belangen? Irrelevant. Ik heb een
+      bescheiden beleggingsportefeuille zoals elke verantwoordelijke
+      burger. Dat heeft geen invloed op mijn functie.
+
+      [Hij liegt. Z'n ogen knijpen samen als je DeltaChem noemt.]
+    effects:
+      trust_gertjan: "+5"
+      dumping_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar corporate draad -> corruption_hub
+
+  # --- Stichting Scheldebehoud ---
+
+  stichting_investigation:
+    type: tweet
+    from: natuur_schelde
+    text: >
+      WAARSCHUWING: Abnormale waterkleuring geconstateerd bij de
+      oostdam Mosselkerke. Foto's en monsters genomen. Wij eisen
+      een onaangekondigde inspectie van DeltaChem BV.
+    choices:
+      - Bekijk hun data -> stichting_data
+
+  stichting_data:
+    type: message
+    text: >
+      Stichting Scheldebehoud documenteert waterkwaliteit al vier
+      jaar. Hun data laat een duidelijk patroon zien: pieken in
+      zware metalen die overeenkomen met het productieschema van
+      DeltaChem. Hoger op werkdagen, lager in het weekend. Hoger
+      's nachts, lager overdag.
+
+      Het patroon is onmiskenbaar. Dit is doorlopende, opzettelijke
+      illegale lozing, getimed om detectie te ontwijken.
+
+      Bram was lid. Hij leverde het meeste onderwatermateriaal.
+
+      En er is nog iets: de vergunningsaanvraag van DeltaChem is
+      mede-ondertekend door wethouder Van den Berg. Die had het
+      moeten tegenhouden.
+    effects:
+      dumping_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar corporate draad -> corruption_hub
+
+  # --- Henk dumping ---
+
+  henk_dumping:
+    type: message
+    text: >
+      HENK: Ik laat je wat zien. Vorige maand trok ik m'n netten
+      omhoog bij de uitlaat en vond dit — een metalen vat, verroest,
+      lekkend. Het etiket was half weg maar ik kon "oplosmiddel"
+      lezen en een DeltaChem batchnummer.
+
+      Ik heb het gefotografeerd en naar Bram gestuurd. Hij zei dat
+      het het ontbrekende puzzelstukje was — bewijs dat ze vast
+      afval dumpen, niet alleen lozing. Vaten in de Schelde.
+
+      Ik heb de foto's nog. En het batchnummer.
+    effects:
+      trust_henk: "+10"
+      dumping_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      DE STALKER DRAAD
+
+      Sander Geschiere. Bootbuurman. Ligplaats 14. Iets meer?
+      Iemand ging Bram's boot binnen. Iemand stond met een
+      verrekijker te kijken. Iemand was altijd in de buurt.
+
+      Stalkerbewijs: ${stalker_evidence}
+    choices:
+      - Onderzoek Sander's havengegevens -> haven_access
+      - Praat met Fleur over Sander -> fleur_sander
+        when:
+          state: trust_fleur
+          gte: 20
+      - Praat met Daan (meer detail over het bootincident) -> daan_detail
+      - Praat met Nienke de apotheker -> nienke_interview
+      - Check het anonieme account @marijn_poppe -> marijn_investigation
+      - Praat met Lotte de boekhandelaar -> lotte_interview
+        when:
+          state: trust_lotte
+          gte: 40
+      - Praat met Wijkagent Van Houten -> agent_interview
+        when:
+          state: trust_agent
+          gte: 30
+      - Terug naar hub -> investigation_hub
+
+  # --- Haven Access Logs ---
+
+  haven_access:
+    type: message
+    text: >
+      Het haventoegangsysteem wordt elektronisch gelogd. Bram's
+      havenpas werd 52 keer gebruikt afgelopen maand. Sander's
+      pas: 97 keer. Bijna het dubbele.
+
+      Kruisverwijzing: bij 38 van Sander's 97 toegangen, was hij
+      binnen twintig minuten na Bram in de haven. Hij kwam na Bram
+      en vertrok na Bram. Elke keer.
+
+      Sander's boot lag stil. Hij maakte geen visreizen. Waar was
+      hij dan al die tijd?
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar stalker draad -> stalker_hub
+
+  # --- Fleur on Sander ---
+
+  fleur_sander:
+    type: message
+    text: >
+      FLEUR: Sander? Die gast maakte Bram ongemakkelijk. Hij stond
+      altijd op de kade als Bram vertrok. Hij bood altijd aan om mee
+      te varen. Hij reageerde op elke post binnen minuten.
+
+      Bram zei tegen hem dat ie z'n eigen ding deed. Dat ie liever
+      alleen op het water was. Sander zei dat ie het begreep. Maar
+      niks veranderde. Hij was er gewoon... altijd.
+
+      Een maand geleden ontdekte Bram dat iemand in z'n stuurhut
+      was geweest. Z'n navigatieapparatuur was aangepast. De
+      GPS-coordinaten van z'n mosselpercelen waren gekopieerd. Hij
+      verdacht Sander maar kon het niet bewijzen.
+    effects:
+      trust_fleur: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar stalker draad -> stalker_hub
+
+  # --- Daan detail ---
+
+  daan_detail:
+    type: message
+    text: >
+      DAAN: oke man in echt ik heb niet alles gezegd. toen ik sander
+      op bram z'n boot zag had ie iets in z'n hand. een soort klein
+      kastje. hij deed het ergens onder het dashboard in de stuurhut.
+      gwn vastgeplakt ofzo.
+
+      ik ben sws geen expert maar dat leek kanker veel op een
+      GPS-tracker man. net als in die films.
+
+      ik had wat moeten zeggen maar wie gelooft mij nou. een skater
+      die een volwassen man beschuldigt. echt nie man.
+    effects:
+      trust_daan: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Terug naar stalker draad -> stalker_hub
+
+  # --- Nienke ---
+
+  nienke_interview:
+    type: message
+    text: >
+      NIENKE: Dit is vertrouwelijk maar ik ben apotheker, geen
+      priester. Sander Geschiere komt regelmatig. Hij koopt dingen
+      die... suggereren dat ie niet slaapt. Anti-angstmedicatie,
+      slaapmiddelen, energiesupplementen. Het patroon is van iemand
+      onder extreme stress.
+
+      Hij vroeg me ook een keer, heel terloops, of we verrekijkers
+      met nachtzicht verkochten. Ik zei "dit is een apotheek, geen
+      Bever." Hij lachte het weg. Ik dacht er niet meer aan tot
+      Bram verdween.
+    effects:
+      trust_nienke: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar stalker draad -> stalker_hub
+
+  # --- Marijn (anonymous account) ---
+
+  marijn_investigation:
+    type: tweet
+    from: marijn
+    text: >
+      hij had moeten luisteren. ik probeerde hem te beschermen.
+      niemand anders begreep z'n werk zoals ik.
+    choices:
+      - Bekijk de geschiedenis van dit account -> marijn_posts
+
+  marijn_posts:
+    type: message
+    text: >
+      @marijn_poppe: account aangemaakt 10 maanden geleden. Posts
+      gaan allemaal over Bram's werk. Reacties op elke foto van
+      het water, elk watermonster, elk verslag. De toon verschuift
+      in de loop van de tijd:
+
+      Maand 1: "Ongelooflijk werk. Je doet wat niemand anders durft."
+      Maand 4: "Waarom reageer je niet op m'n berichten? Ik wil
+      gewoon samenwerken."
+      Maand 7: "Ik zie je in het cafe met andere mensen. Je hebt
+      tijd voor hen maar niet voor mij?"
+      Maand 9: "Ik weet waar je vaart. Ik ken je schema. Ik ben
+      altijd dichtbij."
+
+      Het account heeft geen foto's, geen persoonlijke details.
+      Alleen Bram. Alleen maar Bram.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check de schrijfstijl -> marijn_style
+
+  marijn_style:
+    type: message
+    text: >
+      Vergelijking @marijn_poppe met @sander_geschiere:
+
+      Dezelfde maritieme terminologie. Dezelfde Zeeuwse uitdrukkingen
+      — specifiek gebruik van dialectwoorden die alleen iemand uit
+      de haven zou kennen. Dezelfde kennis van Bram's routes die
+      alleen een havengenoot zou hebben.
+
+      En een post van @marijn_poppe: "Je duik bij punt 7 was
+      prachtig." Punt 7 is een interne aanduiding van Bram's
+      mosselpercelen. Niet openbaar.
+
+      Het is Sander. Het anonieme account is van Sander.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Terug naar stalker draad -> stalker_hub
+
+  # --- Lotte ---
+
+  lotte_interview:
+    type: message
+    text: >
+      LOTTE: Bram heeft iets bij me achtergelaten. Een waterdichte
+      koffer. Hij zei "als iemand je vraagt over wat er onder water
+      bij de oostdam ligt, geef ze dit."
+
+      Hij zag er bang uit. Hij zei dat ie kopieen had gemaakt van
+      alles maar dat ie een set buiten de haven nodig had, ergens
+      waar niemand zou zoeken. Een boekwinkel leek hem perfect.
+    effects: { trust_lotte: "+10" }
+    choices:
+      - Wat ligt er onder water bij de oostdam? -> lotte_case
+
+  lotte_case:
+    type: message
+    text: >
+      Lotte reikt onder de toonbank en haalt een waterdichte
+      Pelican-koffer tevoorschijn.
+
+      LOTTE: Hij zei dat je zou komen. Neem het mee.
+
+      Erin: een USB-stick en een set geprinte foto's. De foto's
+      laten een onderwaterpijp zien — niet het officiele lozingspunt
+      maar een tweede, verborgen uitlaat — en vaten op de bodem van
+      de Schelde. De USB-stick bevat watermonsterdata, chemische
+      analyses, en Bram's gedetailleerde rapport. Plus: screenshots
+      van een financieel document waarop de aandelenportefeuille van
+      wethouder Van den Berg staat. DeltaChem: €312.000.
+    effects:
+      dumping_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Terug naar investigation hub -> investigation_hub
+
+  # --- Wijkagent Van Houten ---
+
+  agent_interview:
+    type: message
+    text: >
+      WIJKAGENT VAN HOUTEN: Off the record — en ik meen echt off the
+      record — ik wilde DeltaChem onderzoeken. M'n leidinggevende
+      zei dat ik moest stoppen. Hij zei dat de provincie
+      "bevoegd" was. Dat is code voor "niet aankomen."
+
+      De wethouder belde het bureau. Dat weet ik van een collega.
+      Van den Berg zei dat het onderzoek "schadelijk was voor de
+      lokale economie."
+
+      De Sander-situatie is anders. Daar wist ik niks van tot nu.
+      Als je bewijs hebt van stalking, kan ik daar wel mee aan de
+      slag. Dat is duidelijk mijn bevoegdheid.
+
+      Breng me iets stevigs en ik heropen de zaak.
+    effects:
+      trust_agent: "+15"
+      evidence_total: "+1"
+    choices:
+      - Terug naar stalker draad -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      DE BESCHULDIGING
+
+      Je hebt bewijs verzameld. Je weet meer over wat er met Bram
+      is gebeurd dan wie dan ook in Mosselkerke. Wie is
+      verantwoordelijk?
+    choices:
+      - Confronteer Sander Geschiere (de obsessieve buurman) -> confront_sander
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confronteer Wim Kaljee (de fabrieksdirecteur) -> confront_wim
+        when:
+          state: dumping_evidence
+          gte: 3
+      - Confronteer Wethouder Van den Berg (politieke bescherming) -> confront_gertjan
+      - Ik heb meer bewijs nodig -> investigation_hub
+
+  # --- ENDING A: Sander (Best Ending) ---
+
+  confront_sander:
+    type: message
+    text: >
+      Je presenteert je bewijs aan Sander:
+
+      "Ik weet dat @marijn_poppe jouw account is. Ik weet dat je
+      een GPS-tracker in Bram's stuurhut hebt geplaatst. Ik weet
+      dat je z'n boot bent binnengegaan en z'n navigatie hebt
+      gekopieerd. Ik weet dat je elke avond met een verrekijker
+      naar z'n boot staarde. Ik heb getuigen en ik heb de
+      havengegevens."
+    choices:
+      - Verstuur -> sander_response
+
+  sander_response:
+    type: message
+    text: >
+      Sander reageert lang niet. Dan:
+
+      SANDER: Je snapt het niet. Ik beschermde hem. Hij was in
+      gevaar door DeltaChem en hij wilde me niet laten helpen. Ik
+      moest weten dat ie veilig was. Alles wat ik deed was omdat
+      ik om hem geef.
+
+      Dat is geen zorg. Dat is obsessie.
+
+      Je hebt het bewijs al naar Wijkagent Van Houten gestuurd. En
+      naar Sofie Tramper.
+    choices:
+      - Wacht op het resultaat -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      EINDE A: DE OBSESSIE
+
+      Drie dingen gebeuren snel achter elkaar.
+
+      Wijkagent Van Houten heropent de zaak. Met jouw bewijs — het
+      anonieme account, de GPS-tracker, de havengegevens, de
+      getuigenverklaringen — wordt Sander gearresteerd voor stalking
+      en intimidatie. Een GPS-tracker wordt uit Bram's stuurhut
+      verwijderd.
+
+      Sofie Tramper, eindelijk in bezit van Bram's volledige
+      bewijsmateriaal, publiceert het DeltaChem-verhaal in de PZC
+      en het Algemeen Dagblad. De provincie gelast een
+      onaangekondigde inspectie. De fabriek wordt stilgelegd in
+      afwachting van milieusanering. Wim Kaljee wordt strafrechtelijk
+      vervolgd voor het vervalsen van lozingsrapporten. Wethouder
+      Van den Berg treedt af wanneer z'n aandelenbelang in DeltaChem
+      openbaar wordt. Het OM onderzoekt belangenverstrengeling.
+
+      En Bram Willemse, die het verhaal leest vanuit het huis van
+      een vriend in Middelburg, belt z'n broer voor het eerst in
+      negen dagen.
+
+      "Ik kom naar huis."
+    choices:
+      - Bekijk de epiloog -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: bram
+    text: >
+      de schelde liegt niet. en de mensen van mosselkerke ook niet.
+      bedankt dat jullie niet hebben opgegeven.
+    choices:
+      - Einde -> game_complete
+
+  # --- ENDING B: Wim (Partial Ending) ---
+
+  confront_wim:
+    type: message
+    text: >
+      Je presenteert het vervuilingsbewijs aan Wim Kaljee:
+
+      "Ik heb foto's van de niet-aangegeven uitlaatpijp. Ik heb
+      watermonsters die zware metalen laten zien tien keer boven de
+      wettelijke norm. Ik heb jullie originele labrapporten die
+      laten zien dat de data is vervalst. Ik heb het vat met jullie
+      batchnummer. En ik heb de aandelenportefeuille van de
+      wethouder."
+    choices:
+      - Verstuur -> wim_response
+
+  wim_response:
+    type: message
+    text: >
+      WIM: Dit gesprek wordt doorgestuurd naar onze juridische
+      afdeling. Elke publicatie van lasterlijk materiaal zal leiden
+      tot onmiddellijke procedures. DeltaChem heeft altijd binnen
+      de wettelijke kaders geopereerd.
+
+      Maar het is te laat. Je hebt het bewijs naar Sofie gestuurd,
+      naar Stichting Scheldebehoud, en naar de provincie.
+    choices:
+      - Wacht op het resultaat -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      EINDE B: DE FABRIEK
+
+      Het vervuilingsverhaal breekt. DeltaChem wordt bevolen de
+      lozingen te staken in afwachting van onderzoek. De fabriek
+      sluit misschien definitief. Honderdtachtig banen hangen in
+      de lucht. Het dorp is verdeeld. Wethouder Van den Berg treedt
+      af onder druk.
+
+      Maar Bram?
+
+      Zonder het stalkingbewijs wordt Sander nooit onderzocht. Hij
+      blijft in de haven. Hij blijft Bram's accounts volgen. Hij
+      maakt een nieuw anoniem profiel aan.
+
+      Drie maanden later leest Bram over DeltaChem online. Hij
+      keert stilletjes terug. Hij verplaatst z'n boot naar een
+      andere haven. Hij vaart niet meer alleen. Hij controleert z'n
+      stuurhut elke ochtend.
+
+      De fabriek is ontmaskerd. De wethouder is weg. Maar de
+      persoon die Bram terroriseerde loopt vrij rond.
+    choices:
+      - Bekijk de epiloog -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: bram
+    text: "ik ben terug. het water wordt schoner. de rest... we zien wel."
+    choices:
+      - Einde -> game_complete
+
+  # --- ENDING C: Wethouder (Wrong Ending) ---
+
+  confront_gertjan:
+    type: message
+    text: >
+      Je confronteert wethouder Van den Berg met je bewijs.
+
+      Binnen het uur ontvang je een bericht van z'n advocaat:
+    choices:
+      - Lees het antwoord -> gertjan_response
+
+  gertjan_response:
+    type: tweet
+    from: bas
+    text: >
+      Mijn client neemt kennis van uw beschuldigingen. Elke
+      openbare verspreiding van lasterlijke uitingen zal leiden tot
+      onmiddellijke gerechtelijke stappen. — Vermue & Partners,
+      Middelburg
+    choices:
+      - Wat gebeurt er nu? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      EINDE C: DE POLITICUS
+
+      De advocaat van de wethouder begraaft je beschuldiging. Zonder
+      een direct verband tussen Van den Berg en de illegale lozing —
+      en dat is er niet, buiten politieke bescherming — is je bewijs
+      onvoldoende. De aandelen alleen zijn niet strafbaar; ze zijn
+      "transparant gedeclareerd" in een register dat niemand leest.
+
+      DeltaChem gaat door met lozen. Sander blijft kijken. Bram
+      blijft zich verstoppen.
+
+      Zes maanden later maakt @marijn_poppe een nieuw account. Het
+      volgt Bram's broer.
+    choices:
+      - Einde -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: MOSSELKERKE — GAME VOLTOOID
+
+      Bewijs verzameld: ${evidence_total}
+      Dumpingbewijs: ${dumping_evidence}
+      Stalkerbewijs: ${stalker_evidence}
+
+      Bedankt voor het spelen. Bram's verhaal behandelt thema's van
+      bedrijfsimpuniteit, milieucriminaliteit, obsessief gedrag,
+      politieke corruptie, gemeenschapssolidariteit, en de moed om
+      op te staan.
+
+      Als jij of iemand die je kent te maken heeft met stalking,
+      intimidatie, of suicidale gedachten, is hulp beschikbaar:
+      113 Zelfmoordpreventie: 113 (bel of chat op 113.nl)
+      Slachtofferhulp Nederland: 0900-0101
+      Meldpunt milieucriminaliteit: 0900-8844

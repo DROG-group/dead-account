@@ -1,0 +1,1559 @@
+# DEAD ACCOUNT — Story 084: Schwarzbach (Germany — Erzgebirge)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-084.yml
+#
+# Player investigates the disappearance of potter Annika Bauer
+# in the fictional Erzgebirge mountain village of Schwarzbach.
+
+meta:
+  title: "Dead Account — Schwarzbach"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lena: 0
+    trust_felix: 0
+    trust_gisela: 0
+    trust_ralf: 0
+    trust_mia: 0
+    trust_jan: 0
+    trust_sophie: 0
+    trust_bernd: 0
+    trust_petra: 0
+    trust_thorsten: 0
+    trust_ines: 0
+    trust_erik: 0
+    trust_carla: 0
+    trust_detlef: 0
+    trust_katja: 0
+    trust_niklas: 0
+    trust_heike: 0
+    trust_uwe: 0
+    trust_silke: 0
+    trust_kommissar: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Neuer Bewohner
+    bio: "frisch nach schwarzbach gezogen. das erzgebirge entdecken, einen berg nach dem anderen"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Schwarzbach.social"
+    description: "Willkommen auf der Gemeinschaftsinstanz von Schwarzbach, Erzgebirge"
+    avatar_url: /gamepatch/assets/dead-account/schwarzbach_bot.png
+
+  npcs:
+    # === Annika's Inner Circle ===
+    annika:
+      name: "Annika Bauer"
+      bio: "töpferin | werkstatt am bachweg | erzgebirgische tradition trifft auf moderne | ton lügt nicht"
+      avatar: avatars/annika.jpg
+    lena:
+      name: "Lena Richter"
+      bio: "beste freundin von annika | erzieherin in der kita sonnenschein | kaffee ist mein lebenselixier"
+      avatar: avatars/lena.jpg
+    felix:
+      name: "Felix Bauer"
+      bio: "annikas bruder | forstwirt | dresden | sie verschwindet nicht einfach so"
+      avatar: avatars/felix.jpg
+    jan:
+      name: "Jan Kessler"
+      bio: "fotograf & blogger | landschaftsfotografie erzgebirge | annikas kunst in bildern"
+      avatar: avatars/jan.jpg
+
+    # === Local Government ===
+    ralf:
+      name: "Ralf Zimmermann"
+      bio: "Bürgermeister von Schwarzbach | Gemeinde mit Zukunft | #SchwarzbachLebt"
+      avatar: avatars/ralf.jpg
+    gisela:
+      name: "Gisela Hartmann"
+      bio: "Gemeinderätin Umwelt & Naturschutz | Schwarzbach | unser Tal schützen"
+      avatar: avatars/gisela.jpg
+    gemeinde:
+      name: "Gemeinde Schwarzbach"
+      bio: "Offizieller Account | Gemeindenachrichten | Öffnungszeiten: Mo-Fr 8-16 Uhr"
+      avatar: avatars/gemeinde.jpg
+
+    # === Local Business & Community ===
+    bernd:
+      name: "Bernd Schuster"
+      bio: "Gasthaus Zum Schwarzbach | Erzgebirgische Küche seit 1953 | Sauerbraten & Bier"
+      avatar: avatars/bernd.jpg
+    gasthaus:
+      name: "Gasthaus Zum Schwarzbach"
+      bio: "Traditionsgaststätte | Erzgebirgische Spezialitäten | Biergarten | Mi-So ab 11 Uhr"
+      avatar: avatars/gasthaus.jpg
+    petra:
+      name: "Petra Vogel"
+      bio: "apothekerin | schwarzbach | gesundheit & beratung | auch samstags offen"
+      avatar: avatars/petra.jpg
+    thorsten:
+      name: "Thorsten Wendt"
+      bio: "wanderführer | naturpark erzgebirge | 30 jahre auf diesen wegen | die berge vergessen nichts"
+      avatar: avatars/thorsten.jpg
+    ines:
+      name: "Ines Krüger"
+      bio: "bäckerei krüger | stollenrezept von oma | jeden morgen ab 5 uhr | alles handarbeit"
+      avatar: avatars/ines.jpg
+    erik:
+      name: "Erik Hoffmann"
+      bio: "schreiner | holzkunst | schnitzwerkstatt hoffmann | tradition & handwerk"
+      avatar: avatars/erik.jpg
+    heike:
+      name: "Heike Winkler"
+      bio: "lehrerin grundschule schwarzbach | heimatkunde & naturerleben | die kinder lieben den wald"
+      avatar: avatars/heike.jpg
+
+    # === Journalist ===
+    katja:
+      name: "Katja Seidel"
+      bio: "freie journalistin | umwelt & regionalthemen | tipps: katja@seidel-presse.de"
+      avatar: avatars/katja.jpg
+
+    # === Erzgebirge Kies GmbH (corporate) ===
+    erzkies:
+      name: "Erzgebirge Kies GmbH"
+      bio: "Kies- und Schotterwerk | Standort Schwarzbach | Zertifiziert nach DIN EN 12620"
+      avatar: avatars/erzkies.jpg
+    detlef:
+      name: "Detlef Krause"
+      bio: "Geschäftsführer Erzgebirge Kies GmbH | Standort Schwarzbach | Wirtschaft & Region"
+      avatar: avatars/detlef.jpg
+    uwe:
+      name: "Uwe Fischer"
+      bio: "Rechtsanwalt | Kanzlei Fischer & Partner | Wirtschaftsrecht | Chemnitz"
+      avatar: avatars/uwe.jpg
+
+    # === Teens ===
+    mia:
+      name: "Mia"
+      bio: "16 | schwarzbach born | skateboard & kunst | annika ist mein vorbild fr"
+      avatar: avatars/mia.jpg
+    sophie:
+      name: "Sophie"
+      bio: "17 | wandern & fotografie | erzgebirge für immer | der wald ist alles"
+      avatar: avatars/sophie.jpg
+    niklas:
+      name: "Niklas"
+      bio: "15 | mountainbike | trails im wald | schwarzbach gang"
+      avatar: avatars/niklas.jpg
+
+    # === Media & Community ===
+    nachrichten_schwarzbach:
+      name: "Nachrichten Schwarzbach"
+      bio: "Lokalnachrichten aus Schwarzbach und dem Erzgebirge | Tipps: redaktion@nachrichten-schwarzbach.de"
+      avatar: avatars/nachrichten_schwarzbach.jpg
+    wetter_erzgebirge:
+      name: "Wetter Schwarzbach"
+      bio: "Vorhersagen & Warnungen | Automatische Wetterstation | Stündliches Update"
+      avatar: avatars/wetter_erzgebirge.jpg
+    buergerinitiative:
+      name: "Bürgerinitiative Schwarzbachtal"
+      bio: "Schutz des Schwarzbachtals | Gegen den Kiesabbau | Ehrenamtlich | Mitmachen!"
+      avatar: avatars/buergerinitiative.jpg
+
+    # === Suspicious / Other ===
+    carla:
+      name: "Carla Engel"
+      bio: "laborantin | erzgebirge kies gmbh | ich mach nur meinen job"
+      avatar: avatars/carla.jpg
+    silke:
+      name: "Silke Meier"
+      bio: "."
+      avatar: avatars/anon.jpg
+    kommissar:
+      name: "Kommissar Brandt"
+      bio: "Polizeiposten Schwarzbach | Bezirksdienst | Notruf: 110"
+      avatar: avatars/kommissar.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SCHWARZBACH
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Schwarzbach.social — the community Mastodon instance for
+      the mountain village of Schwarzbach, Erzgebirge.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @annika_bauer.
+
+      A potter. Artist. She documented the landscape and the traditions
+      of the Erzgebirge through her craft. People are worried. She hasn't
+      posted in six days.
+    choices:
+      - Look at her profile -> annika_profile
+
+  annika_profile:
+    type: tweet
+    from: annika
+    text: "Der Steinbruch frisst sich ins Tal. Der Bach ist trüb. Die alten Wanderwege verschwinden. Ich hab alles dokumentiert."
+    choices:
+      - That's her last real post... -> grey_clay
+
+  grey_clay:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a grey, unfired lump of clay. Smashed. Shot from an odd angle.
+      Posted at 4am. No caption.
+
+      Her friends say that's not her. Annika never posted without a
+      careful description of her work. The police say she probably
+      needed time away. Something doesn't add up.
+    choices:
+      - Read the police statement -> polizei_statement
+      - Look at what people are saying -> community_reaction
+
+  polizei_statement:
+    type: tweet
+    from: kommissar
+    text: >
+      Wir haben eine Vermisstenanzeige bezüglich einer Bewohnerin von
+      Schwarzbach aufgenommen. Derzeit liegen keine Hinweise auf eine
+      Straftat vor. Sachdienliche Hinweise bitte an den Polizeiposten
+      oder unter 110.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @lena_richter is
+      desperate. Her brother @felix_bauer is driving down from Dresden.
+      The photographer @jan_kessler who documented her work is posting
+      worried messages. The hiking guide @thorsten_wendt says she was
+      right about the quarry.
+
+      And the journalist @katja_seidel is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Annika just
+      "needed some time off."
+    effects: { trust_lena: "+5", trust_felix: "+5" }
+    choices:
+      - Start following Annika's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Schwarzbach. Follow Annika's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Bernd (Gasthaus owner, knows everyone) -> bernd_intro
+      - Talk to Thorsten (hiking guide, saw the quarry damage) -> thorsten_intro
+      - Talk to Mia (teen, seems upset) -> mia_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Annika with the rhythms of a small
+      mountain village: weather warnings, bakery specials, hiking trail
+      updates, woodcarving workshop schedules.
+
+      Key names surface: Lena (best friend, kindergarten teacher), Jan
+      (photographer, seems obsessed with her), Katja (journalist, oddly
+      quiet), and the teens — Mia, Sophie, Niklas — who loved Annika's
+      pottery workshops.
+
+      Also prominent: Erzgebirge Kies GmbH, the gravel quarry eating
+      into the valley. Their posts are corporate PR. Annika's posts
+      were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Bernd -> bernd_intro
+      - Talk to Thorsten -> thorsten_intro
+      - Talk to Mia -> mia_intro
+
+  # --- Bernd (social map) ---
+
+  bernd_intro:
+    type: tweet
+    from: bernd
+    text: >
+      Gasthaus ist offen, aber das Herz ist schwer. @annika_bauer,
+      dein Stammtisch wartet. Komm bald zurück.
+    effects: { trust_bernd: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Bernd -> bernd_talk
+
+  bernd_talk:
+    type: message
+    text: >
+      BERND: Ach, du bist neu hier? Willkommen. Schlechter Zeitpunkt
+      zum Ankommen. Alle sind wegen Annika total durch den Wind.
+
+      Ich sag dir, wer hier wer ist. Lena ist Annikas beste Freundin —
+      die beiden sind unzertrennlich. Jan Kessler, der Fotograf, hat
+      ihre Keramik fotografiert, ihre Ausstellungen gemacht. Netter
+      Kerl, aber... der hängt ziemlich an ihr. Felix ist Annikas
+      großer Bruder, kommt gerade aus Dresden runtergefahren.
+
+      Und Katja Seidel — die Journalistin — die hat mit Annika an
+      was gearbeitet. An der Story über den Kiesabbau. Seit Annika weg
+      ist, sagt Katja kein Wort. Das passt nicht zu ihr.
+
+      Ach ja, und die Sprüche von Erzgebirge Kies kannst du vergessen.
+      Greenwashing vom Feinsten.
+    effects: { trust_bernd: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Jan -> bernd_jan
+      - Ask about the quarry -> bernd_kies
+      - Thank him and move on -> quest1_hub
+
+  bernd_jan:
+    type: message
+    text: >
+      BERND: Jan? Der ist seit zwei Jahren hier. Kam aus Leipzig,
+      wollte Landschaftsfotografie machen. Hat Annika auf dem Töpfermarkt
+      kennengelernt und danach war sie sein einziges Thema. Jedes
+      Foto, jeder Blogpost — Annika hier, Annika da. Hunderte Bilder
+      von ihr, von ihrer Werkstatt, von ihrem Ton.
+
+      Sie fand's am Anfang schmeichelhaft. Dann wurde es ihr zu viel.
+      Sie hat mir mal gesagt: "Der versteht nicht, dass nein auch nein
+      heißt." Ich dachte, sie meint beruflich. Jetzt bin ich mir da
+      nicht mehr so sicher.
+    effects: { trust_bernd: "+5" }
+    choices:
+      - Ask about the quarry -> bernd_kies
+      - Move on -> quest1_hub
+
+  bernd_kies:
+    type: message
+    text: >
+      BERND: Die Kiesgrube ist seit den Neunzigern da. Aber seit
+      Krause der Chef ist, wird das immer schlimmer. Die sprengen sich
+      durchs Tal, der Bach ist trüb, die alten Wanderwege werden
+      gesperrt. Und jetzt wollen die erweitern — direkt bis an den
+      Waldrand, wo die geschützten Quellen sind.
+
+      Annika war die Erste, die das richtig dokumentiert hat. Fotos,
+      Wasserproben, Lärmmessungen. Sie hatte Beweise, hat sie gesagt.
+      Echte Beweise. Zwei Wochen später ist sie weg.
+    effects: { trust_bernd: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Thorsten (the landscape, witness tease) ---
+
+  thorsten_intro:
+    type: tweet
+    from: thorsten
+    text: >
+      dreißig jahre wandere ich diese wege. das tal stirbt. der bach
+      ist grau. @annika_bauer hatte recht. und jetzt ist sie weg.
+      denkt mal drüber nach.
+    effects: { trust_thorsten: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Thorsten -> thorsten_talk
+
+  thorsten_talk:
+    type: message
+    text: >
+      THORSTEN: Ich kenne jeden Stein in diesem Tal. Und ich sage dir —
+      was die Kiesgrube hier anrichtet, ist kriminell. Die Quellen
+      oberhalb des Steinbruchs führen jetzt Sediment. Der Schwarzbach
+      hat seinen Namen nicht von ungefähr, aber jetzt ist er grau statt
+      klar. Die Fische sind weg.
+
+      Annika hat Wasserproben genommen. Sie ist mit der Kamera in den
+      Steinbruch rein, nachts, hat alles fotografiert. Sie hat eine
+      Akte aufgebaut. Und dann — puff — weg.
+
+      Zufall? Ich glaube nicht an Zufälle in den Bergen.
+    effects: { trust_thorsten: "+10" }
+    choices:
+      - Have you seen anything unusual lately? -> thorsten_night
+      - Move on -> quest1_hub
+
+  thorsten_night:
+    type: message
+    text: >
+      THORSTEN: Die Nacht bevor sie verschwand — ich war auf dem
+      Kammweg, Sonnenaufgangstour für den nächsten Tag vorbereiten.
+      Gegen Mitternacht. Ich hab Licht in Annikas Werkstatt gesehen.
+      Normal, die arbeitet spät. Aber davor stand ein schwarzer
+      Geländewagen. Erzgebirge Kies Logo auf der Tür.
+
+      Um Mitternacht. Vor der Töpferwerkstatt.
+
+      Ich hab mir damals nichts dabei gedacht. Jetzt denke ich
+      ständig daran.
+    effects: { trust_thorsten: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mia (teen, witness tease) ---
+
+  mia_intro:
+    type: tweet
+    from: mia
+    text: >
+      alter ich bin so fertig @annika_bauer hat mir töpfern beigebracht
+      die ist wie ne große schwester für mich. sie verschwindet nicht
+      einfach so. wenn wer was weiß dann sagt es bitte
+    effects: { trust_mia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Mia -> mia_talk_early
+
+  mia_talk_early:
+    type: message
+    text: >
+      MIA: ey bist du neu hier? boah ey krasses timing alter. also
+      annika ist echt die beste person in diesem kaff. sie hat uns
+      töpfern beigebracht, hat uns gezeigt wie man ton macht, wie man
+      die glasur mischt. voll cool halt.
+
+      und jetzt bin ich voll am ausrasten weil sophie was gesehen hat
+      letzte woche am steinbruch aber die will nicht drüber reden. die
+      sagt es ist nix aber alter das IST was sah
+    effects: { trust_mia: "+10" }
+    choices:
+      - What did Sophie see? -> mia_sophie_hint
+      - Move on -> quest1_hub
+
+  mia_sophie_hint:
+    type: message
+    text: >
+      MIA: keine ahnung genau. sie war mountainbiken mit niklas beim
+      steinbruch und hat gesehen wie jan — der fotograf — irgendwas an
+      annikas werkstatt gemacht hat. so am fenster oder so. total
+      creepy digga. sophie hat schiss das ihr keiner glaubt. probier
+      erst mal über fahrräder oder so mit ihr zu reden lol
+    effects: { trust_mia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Schwarzbach. An Erzgebirge mountain
+      village built around craft and forest. A potter who was exposing
+      quarry destruction. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lena (Annika's best friend) -> lena_q1
+      - Talk to Jan (photographer) -> jan_q1
+      - Check what Felix (Annika's brother) is saying -> felix_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lena Q1 ---
+
+  lena_q1:
+    type: tweet
+    from: lena
+    text: >
+      hat jemand was von @annika_bauer gehört? bitte meldet euch. ihre
+      werkstatt steht offen. der ofen ist aus. ihr ton trocknet ein.
+      sie würde niemals ihren ton eintrocknen lassen.
+    effects: { trust_lena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lena -> lena_q1_talk
+
+  lena_q1_talk:
+    type: message
+    text: >
+      LENA: Danke dass du schreibst, aber ich kenn dich nicht. Annika
+      hat viele Freunde hier. Die kommt bestimmt wieder.
+
+      ...Ich sag das die ganze Zeit. Ich glaub's nicht mehr.
+
+      [Lena is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jan Q1 ---
+
+  jan_q1:
+    type: tweet
+    from: jan
+    text: >
+      Die Werkstatt ist leer ohne @annika_bauer. Ihre letzten Stücke
+      stehen noch auf dem Regal. Unglasiert. Sie würde nie unfertige
+      Arbeit stehen lassen. Irgendetwas ist passiert.
+    effects: { trust_jan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Jan -> jan_q1_talk
+
+  jan_q1_talk:
+    type: message
+    text: >
+      JAN: Annika und ich arbeiten seit über einem Jahr zusammen. Sie
+      töpfert, ich fotografiere. Ihre Kunst festzuhalten, das ist mein
+      Projekt. Dieses Umweltding — der Kiesabbau — das war ihr alles.
+      Sie hatte Daten, Fotos, Analysen. Kurz vor der Veröffentlichung.
+
+      Ich wollte ihr helfen. Immer wieder. Sie meinte, sie hat das im
+      Griff. Sie hat mit einer Journalistin zusammengearbeitet. Ich
+      wollte sie nur unterstützen.
+
+      [Jan seems earnest. Or obsessive?]
+    effects: { trust_jan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Felix Q1 ---
+
+  felix_q1:
+    type: tweet
+    from: felix
+    text: >
+      meine schwester ist VERSCHWUNDEN und die polizei erzählt mir sie
+      braucht vielleicht einfach ne auszeit??? SIE FÄHRT NICHT EINFACH
+      WEG OHNE BESCHEID ZU SAGEN. ich fahr jetzt aus dresden runter.
+      jemand wird mir das erklären.
+    effects: { trust_felix: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Felix -> felix_q1_talk
+
+  felix_q1_talk:
+    type: message
+    text: >
+      FELIX: Wer bist du? Noch so einer aus dem Dorf, der mir sagen
+      will, ich soll mich beruhigen? Meine Schwester hat mich am
+      Abend bevor sie verschwunden ist angerufen. Sie hat gesagt, sie
+      hat was Großes. Sie hat gesagt: "Wenn was passiert, guck dir
+      Erzgebirge Kies an." Dann hat sie aufgelegt.
+
+      Das war das Letzte, was ich von ihr gehört hab.
+    effects: { trust_felix: "+10" }
+    choices:
+      - What do you think happened? -> felix_theory
+      - Move on -> quest1_hub
+
+  felix_theory:
+    type: message
+    text: >
+      FELIX: Ich glaube, sie hat Beweise gefunden, dass Erzgebirge Kies
+      illegal abbaut und die haben sie mundtot gemacht. Aber ich denke
+      auch, dass dieser Fotograf — Jan — mehr weiß als er sagt. Wie der
+      über sie redet... das ist nicht nur Beruf. Das ist was anderes.
+
+      Annika hat mir vor Monaten erzählt, dass jemand an ihren Sachen
+      war in der Werkstatt. An ihrem Rechner. Sie meinte, ist bestimmt
+      nichts. Ich glaube, es war was.
+    effects: { trust_felix: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Annika went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Sophie (was mountain biking near the quarry) -> sophie_interview
+      - Find Thorsten (hiking guide, was on the ridge) -> thorsten_interview
+      - Find Erik (woodcarver, early morning at the workshop) -> erik_interview
+      - Find Ines (baker, starts at 5am, saw something) -> ines_interview
+
+  # --- Sophie (saw Jan at the workshop) ---
+
+  sophie_interview:
+    type: tweet
+    from: sophie
+    text: >
+      war gestern mit dem rad unterwegs und die stimmung im tal ist
+      einfach komisch. irgendwas stimmt hier nicht. kann das nicht
+      erklären aber ich spürs
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Ask Sophie about that evening -> sophie_talk
+
+  sophie_talk:
+    type: message
+    text: >
+      SOPHIE: alter ok aber du sagst das keinem ja? ich war mit niklas
+      am steinbruch, mountainbike halt. und ich hab jan gesehen — den
+      fotografen — der war an annikas werkstatt. der hat durchs fenster
+      geguckt und dann hat er irgendwas unter die fensterbank geklebt.
+      als er mich gesehen hat, ist der voll schnell abgehauen.
+
+      digga ich hab nix gesagt weil wer glaubt schon ner siebzehnjährigen
+      die nen erwachsenen beschuldigt. scheiße alter das ist nicht normal
+    effects:
+      trust_sophie: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Thorsten (hiking guide, saw late-night meeting) ---
+
+  thorsten_interview:
+    type: tweet
+    from: thorsten
+    text: >
+      Erinnerung: Der Steinbruchweg ist ab 18 Uhr gesperrt.
+      Trotzdem waren gestern Nacht wieder Fahrzeuge unterwegs.
+    effects: { trust_thorsten: "+5" }
+    choices:
+      - Ask Thorsten what he saw -> thorsten_talk_q2
+
+  thorsten_talk_q2:
+    type: message
+    text: >
+      THORSTEN: Ich war auf dem Kammweg, gegen 22 Uhr. Von oben siehst
+      du ins ganze Tal. Vor Annikas Werkstatt standen zwei Fahrzeuge.
+      Ihr kleiner roter Polo. Und ein schwarzer Geländewagen — mit
+      Erzgebirge Kies Logo. Zwei Männer standen am Eingang. Einer
+      davon war Detlef Krause, der Geschäftsführer. Ich kenn den.
+
+      Um 22 Uhr. An der Töpferwerkstatt. Das ist nicht normal.
+
+      Ich hab's in mein Tourenbuch eingetragen. Keiner hat mich
+      danach gefragt.
+    effects:
+      trust_thorsten: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Erik (saw Annika fleeing) ---
+
+  erik_interview:
+    type: tweet
+    from: erik
+    text: >
+      heute morgen um vier in der werkstatt gewesen. die gasse war
+      nicht leer. da war jemand unterwegs. im dunkeln. kein spaziergänger.
+    effects: { trust_erik: "+5" }
+    choices:
+      - Ask Erik what he saw -> erik_talk
+
+  erik_talk:
+    type: message
+    text: >
+      ERIK: Ich steh immer um vier auf, Holz vorbereiten für die
+      Schnitzerei. An dem Morgen — dem Morgen nach Annikas letztem
+      Post — hab ich jemanden gesehen. Eine Frau, mit einer Tasche,
+      den Waldweg hoch Richtung Hoher Stein. Es war stockdunkel. Die
+      ist gerannt. Wie auf der Flucht.
+
+      Ich hab gerufen, aber die hat nicht angehalten. Ich dachte
+      erst, Joggerin, aber wer joggt um vier mit einer Umhängetasche?
+
+      Als ich von Annika gehört hab, hab ich eins und eins zusammengezählt.
+      Das war sie. Vor irgendwas ist die weggerannt.
+    effects:
+      trust_erik: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ines (saw car chase) ---
+
+  ines_interview:
+    type: tweet
+    from: ines
+    text: >
+      Stollen und Brötchen wie immer ab fünf. Aber an dem Morgen
+      ist ein Auto viel zu schnell über die Talstraße gerast.
+    effects: { trust_ines: "+5" }
+    choices:
+      - Ask Ines what she saw -> ines_talk
+
+  ines_talk:
+    type: message
+    text: >
+      INES: Ich fang jeden Morgen um fünf an. An dem Tag hab ich die
+      Fensterläden aufgemacht und ein Auto ist vorbeigerast — viel
+      zu schnell für die Talstraße. Schwarzer Geländewagen. Dann
+      vielleicht zwei Minuten später ein zweites Auto. Kleiner, rot.
+      Hinterher?
+
+      Das kleine Auto ist auf den Forstweg abgebogen, Richtung
+      Alte Mühle. Der Geländewagen weiter auf die B174.
+
+      Ich hab's der Polizei gesagt. Die haben's aufgeschrieben.
+      Das war's.
+    effects:
+      trust_ines: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lena (best friend)
+      and Niklas (saw Jan watching the workshop).
+    choices:
+      - Talk to Lena about that night -> lena_interview
+      - Talk to Niklas -> niklas_interview
+      - Find Sophie -> sophie_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Thorsten -> thorsten_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Erik -> erik_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ines -> ines_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lena (last to see Annika) ---
+
+  lena_interview:
+    type: tweet
+    from: lena
+    text: >
+      dieses foto auf annikas account. das ist nicht von ihr. annika
+      postet nie ohne beschreibung. annika postet nicht um vier uhr
+      morgens. das war jemand anderes.
+    effects: { trust_lena: "+5" }
+    choices:
+      - DM Lena -> lena_talk_low
+        when:
+          state: trust_lena
+          lt: 50
+      - DM Lena -> lena_talk_high
+        when:
+          state: trust_lena
+          gte: 50
+
+  lena_talk_low:
+    type: message
+    text: >
+      LENA: Ich weiß es zu schätzen, aber ich will gerade echt nicht
+      mit Fremden darüber reden.
+
+      [Lena needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Share what you've learned about the night -> lena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the workshop, the
+      company men, the fleeing figure. Lena is silent for a while.
+
+      LENA: Du versuchst wirklich sie zu finden. Okay. Ich rede.
+    effects: { trust_lena: "+25" }
+    choices:
+      - What happened that night? -> lena_talk_high
+
+  lena_talk_high:
+    type: message
+    text: >
+      LENA: Sie kam gegen 23 Uhr zu mir. Ich war noch wach, Sachen
+      für die Kita vorbereiten. Sie war weiß im Gesicht, hat gezittert.
+      Sie hat gesagt: "Die wissen, was ich habe." Sie hat ihren Laptop
+      gegriffen und die externe Festplatte mit den Fotos.
+
+      Ich hab gefragt, wer. Sie hat gesagt: "Die vom Kieswerk. Die
+      standen auf einmal in der Werkstatt." Und dann hat sie noch
+      was gesagt — "und er war auch wieder da. Der ist immer da."
+
+      Sie wollte nicht sagen, wer "er" ist. Sie hat mich umarmt,
+      gesagt "mach dir keine Sorgen," und ist mit einer Tasche los.
+      Das war's. Am Morgen war ihr Auto weg und das Foto war auf
+      ihrem Account.
+    effects:
+      trust_lena: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Niklas (saw Jan watching the workshop) ---
+
+  niklas_interview:
+    type: message
+    text: >
+      NIKLAS: digga ok das ist weird aber der jan — der fototyp — den
+      hab ich drei mal abends vor annikas werkstatt gesehen. einfach da
+      gestanden und auf die fenster gestarrt. mega creepy alter.
+
+      das letzte mal war zwei tage bevor sie weg war. der saß in seinem
+      auto gegenüber. motor aus. licht aus. einfach nur da gesessen.
+      was geht ab bei dem
+    effects:
+      trust_niklas: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Jan seen tampering at Annika's workshop window (Sophie)
+      22:00 — Erzgebirge Kies SUV at the workshop, Detlef Krause present (Thorsten)
+      23:00 — Annika arrives at Lena's, shaken, grabs laptop and drives (Lena)
+      04:00 — Woman running up forest path toward Hoher Stein (Erik)
+      05:00 — Two cars speeding on valley road, one toward Alte Mühle (Ines)
+
+      Erzgebirge Kies confronted Annika at her workshop. She fled to
+      her friend, grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is Erzgebirge Kies hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Jan really doing? Why was he at
+        her window?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Jan -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Erzgebirge Kies is hiding something. Annika had proof. Now she's
+      gone and her evidence is missing from the workshop.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the workshop records -> workshop_records
+      - Talk to Katja the journalist -> katja_interview
+      - Talk to Carla (Erzgebirge Kies lab tech) -> carla_interview
+      - Talk to Gisela (environment councillor) -> gisela_interview
+      - Check the Bürgerinitiative Schwarzbachtal -> buergerinitiative_investigation
+      - Talk to Thorsten about the quarry expansion -> thorsten_quarry
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Records ---
+
+  workshop_records:
+    type: message
+    text: >
+      Annika's workshop has a shared folder with the Bürgerinitiative
+      where she stored her documentation. The folder for the quarry
+      expansion zone is marked "UNDER REVIEW" — the only folder with
+      that status.
+
+      Her photo log, shared with the initiative for transparency, shows
+      she made 14 visits to the quarry perimeter in the past month.
+      The last entry: "Photographed blasting zone. Undeclared expansion
+      into protected watershed. Sediment discharge not what they report."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Katja ---
+
+  katja_interview:
+    type: message
+    text: >
+      KATJA: Ich rede nicht über Quellen. Punkt.
+    effects: { trust_katja: "+5" }
+    choices:
+      - Show Katja the evidence you have -> katja_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  katja_with_evidence:
+    type: message
+    text: >
+      KATJA: ...du hast mehr als ich erwartet hätte.
+
+      Okay. Annika und ich haben zusammengearbeitet. Sie hatte Fotos
+      vom illegalen Erweiterungsgebiet — Erzgebirge Kies baut in einem
+      Bereich ab, der in keiner Genehmigung steht. Sie hatte
+      Wasserproben, die zehnfach überhöhte Sedimentwerte nachweisen.
+
+      Wir wollten zusammen veröffentlichen. Dann war sie weg. Und zwei
+      Tage später hat jemand in mein Auto eingebrochen und meine
+      Backup-Festplatte gestohlen.
+
+      Annika lebt. Sie hat mich einmal kontaktiert, von einem
+      Prepaid-Handy. Sie hat gesagt, sie versteckt sich. Sie hat
+      gesagt: "Die haben mich in der Werkstatt bedroht und da ist noch
+      jemand, der mich nicht in Ruhe lässt."
+
+      Ich kann dir nicht sagen, wo sie ist. Aber mit genug Beweisen
+      kann ich veröffentlichen und sie kann sicher zurückkommen.
+    effects:
+      trust_katja: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> katja_hint
+      - Back to investigation hub -> investigation_hub
+
+  katja_hint:
+    type: message
+    text: >
+      KATJA: Krause hat seinen Geschäftsführer-Kumpel und irgendeinen
+      Anwalt zur Werkstatt geschickt an dem Abend. Die haben ihr gesagt,
+      sie soll alles rausrücken oder es gibt rechtliche Konsequenzen.
+      Einschüchterung als Rechtsberatung getarnt.
+
+      Aber sie hat auch was über jemanden in ihrer Nähe gesagt. Jemand,
+      der an ihren Sachen war. Jemand, der immer wusste, wo sie ist.
+      Das ist ein anderes Problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Carla (Erzgebirge Kies whistleblower) ---
+
+  carla_interview:
+    type: message
+    text: >
+      CARLA: Ich arbeite bei Erzgebirge Kies. Nur als Laborantin. Ich
+      mach Proben, schreib Berichte.
+
+      Aber die Berichte, die ich schreibe... sind nicht immer die
+      Berichte, die an die Behörde gehen.
+    effects: { trust_carla: "+10" }
+    choices:
+      - What do you mean? -> carla_detail
+
+  carla_detail:
+    type: message
+    text: >
+      CARLA: Ich messe Sedimentwerte. Schwebstoffe, Schwermetalle im
+      Grundwasser, Feinstaubbelastung. Meine Zahlen gehen an meinen
+      Vorgesetzten. Irgendwo zwischen meinem Schreibtisch und dem
+      Bericht ans Bergamt werden die geändert. Niedriger. Immer
+      niedriger.
+
+      Annikas Proben von außerhalb des Steinbruchs haben mit MEINEN
+      Originalzahlen übereingestimmt, nicht mit den offiziellen
+      Berichten. Sie hatte unabhängige Beweise, dass Erzgebirge Kies
+      die Umweltdaten fälscht.
+
+      Ich hab Angst. Ich hab Familie. Aber ich hab Kopien von meinen
+      Originalberichten. Wenn mich jemand schützen kann, geb ich die
+      raus.
+    effects:
+      trust_carla: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gisela ---
+
+  gisela_interview:
+    type: message
+    text: >
+      GISELA: Als Gemeinderätin für Umwelt nehme ich diese Vorwürfe
+      ernst. Aber Erzgebirge Kies beschäftigt 150 Leute in der
+      Gemeinde. Der Bürgermeister besteht auf "Dialog."
+
+      Unter uns? Ich hab die Berichte vom Bergamt gesehen. Erzgebirge
+      Kies besteht jede Prüfung. Aber die Prüfungen werden zwei Wochen
+      vorher angekündigt. Die räumen vorher auf.
+
+      Annika hatte unangekündigte Daten. Das macht es gefährlich.
+    effects:
+      trust_gisela: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Bürgerinitiative Schwarzbachtal ---
+
+  buergerinitiative_investigation:
+    type: tweet
+    from: buergerinitiative
+    text: >
+      ALARM: Trübung des Schwarzbachs oberhalb der Quellfassung
+      nachgewiesen. Proben genommen. Wir fordern eine unangekündigte
+      Inspektion des Kieswerks Erzgebirge Kies GmbH.
+    choices:
+      - Check their data -> buergerinitiative_data
+
+  buergerinitiative_data:
+    type: message
+    text: >
+      The Bürgerinitiative Schwarzbachtal has been documenting water
+      quality for four years. Their data shows a clear pattern: sediment
+      and heavy metal spikes that match Erzgebirge Kies's blasting
+      schedule. Higher on weekdays, lower on weekends. Higher during
+      blasting hours, lower at night.
+
+      The pattern is unmistakable. This is ongoing, deliberate illegal
+      expansion into protected watershed timed to avoid detection.
+
+      Annika was a founding member. She contributed most of the
+      photographic evidence.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Thorsten quarry ---
+
+  thorsten_quarry:
+    type: message
+    text: >
+      THORSTEN: Ich zeig dir was. Letzten Monat bin ich auf dem alten
+      Kammweg gewesen, der offiziell gesperrt ist. Von oben siehst du
+      es: die Kiesgrube hat sich dreihundert Meter ins Schutzgebiet
+      reingefressen. Der Wald ist weg. Die Quelle ist verschüttet.
+      Das steht in keiner Genehmigung.
+
+      Ich hab Fotos gemacht und die Annika geschickt. Sie hat gesagt,
+      das ist das fehlende Puzzlestück — Beweis, dass die nicht nur
+      die Werte fälschen, sondern auch das Gebiet überschreiten.
+      Schwarzabbau. Ohne Genehmigung.
+
+      Ich hab die Fotos noch. Und die GPS-Koordinaten.
+    effects:
+      trust_thorsten: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Jan Kessler. Photographer. Colleague. Something more?
+      Someone was accessing Annika's files. Someone was watching
+      her workshop. Someone was at her window.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Jan's access to the workshop -> workshop_access
+      - Talk to Lena about Jan -> lena_jan
+        when:
+          state: trust_lena
+          gte: 20
+      - Talk to Sophie (more detail on the window incident) -> sophie_detail
+      - Talk to Petra the pharmacist -> petra_interview
+      - Check the anonymous account @silke_meier -> silke_investigation
+      - Talk to Erik the woodcarver -> erik_interview_2
+        when:
+          state: trust_erik
+          gte: 40
+      - Talk to Kommissar Brandt -> kommissar_interview
+        when:
+          state: trust_kommissar
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Access ---
+
+  workshop_access:
+    type: message
+    text: >
+      Annika's workshop has a simple electronic lock with a log. Her
+      code was used 52 times last month. Jan's guest code — she gave
+      him one for photo shoots — was used 91 times. Nearly double.
+
+      Cross-referencing: on 34 of Jan's 91 entries, he accessed the
+      workshop within 20 minutes of Annika. He arrived after her and
+      left after her. Every time.
+
+      The guest code has no reason to be used when Annika isn't doing
+      a shoot.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lena on Jan ---
+
+  lena_jan:
+    type: message
+    text: >
+      LENA: Jan? Der hat Annika unheimlich genervt. Der ist immer
+      aufgetaucht wenn sie im Gasthaus war. Der wollte sie immer nach
+      Hause begleiten. Der hat auf jeden einzelnen Post von ihr
+      innerhalb von Minuten kommentiert.
+
+      Sie hat ihm gesagt, sie will das nicht. Klar und deutlich und
+      nett. Er hat gesagt, er versteht. Und dann hat sich nichts
+      geändert. Der war einfach... immer da. Immer.
+
+      Vor einem Monat hat sie gemerkt, dass jemand nachts an ihren
+      Rechner in der Werkstatt war. Ihre Dateien waren geöffnet
+      worden. Sie hat Jan verdächtigt, konnte es aber nicht beweisen.
+    effects:
+      trust_lena: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sophie detail ---
+
+  sophie_detail:
+    type: message
+    text: >
+      SOPHIE: ok alter in echt hab ich nicht alles gesagt. als ich jan
+      am fenster gesehen hab hatte der was in der hand. so ein kleines
+      teil. der hat das unter die fensterbank geklebt. von außen.
+
+      digga das sah aus wie so ne minikamera oder sowas. wie in filmen
+      halt. ich schwörs.
+
+      ich hätte was sagen sollen aber scheiße wer glaubt denn einer
+      siebzehnjährigen die nen erwachsenen mann beschuldigt. was geht
+      ab in dem kopf von dem
+    effects:
+      trust_sophie: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Petra ---
+
+  petra_interview:
+    type: message
+    text: >
+      PETRA: Das ist eigentlich vertraulich, aber ich bin Apothekerin,
+      kein Priester. Jan Kessler kommt regelmäßig. Er kauft Sachen
+      die... darauf hindeuten, dass er nicht schläft. Beruhigungsmittel,
+      Schlaftabletten, Energieergänzungen. Das Muster ist jemand unter
+      extremem Stress.
+
+      Und er hat mich einmal ganz beiläufig gefragt, ob wir
+      Minikameras verkaufen. Ich hab gesagt: "Das ist eine Apotheke,
+      kein MediaMarkt." Er hat gelacht und abgewunken. Hab nicht weiter
+      drüber nachgedacht bis Annika verschwunden ist.
+    effects:
+      trust_petra: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Silke (anonymous account) ---
+
+  silke_investigation:
+    type: tweet
+    from: silke
+    text: >
+      Sie hätte auf mich hören sollen. Ich wollte sie doch nur
+      beschützen. Niemand sonst hat ihre Kunst so verstanden wie ich.
+    choices:
+      - Look at this account's history -> silke_posts
+
+  silke_posts:
+    type: message
+    text: >
+      @silke_meier: account created 9 months ago. Posts are all
+      about Annika's work. Comments on every pottery photo, every
+      workshop post, every exhibition update. The tone shifts over time:
+
+      Month 1: "Unglaubliche Arbeit. Du machst was sich sonst keiner traut."
+      Month 3: "Warum antwortest du nicht auf meine Nachrichten? Ich
+      will doch nur zusammenarbeiten."
+      Month 6: "Ich sehe dich im Gasthaus mit anderen Leuten. Für die
+      hast du Zeit, aber nicht für mich?"
+      Month 8: "Ich weiß wo du hingehst. Ich kenne deinen Zeitplan.
+      Ich bin immer in der Nähe."
+
+      The account has no photos, no personal details. Just Annika.
+      Only Annika.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> silke_style
+
+  silke_style:
+    type: message
+    text: >
+      Comparing @silke_meier with @jan_kessler:
+
+      Same use of photography terminology. Same German punctuation
+      habits — the specific way he uses dashes and ellipses. Same
+      knowledge of Annika's firing schedules that only someone with
+      workshop access would have.
+
+      And one post from @silke_meier: "Deine Raku-Serie vom
+      Dienstagabend war atemberaubend." Annika's Tuesday evening firings
+      are not public. She never posts about her schedule.
+
+      It's Jan. The anonymous account is Jan.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Erik interview 2 ---
+
+  erik_interview_2:
+    type: message
+    text: >
+      ERIK: Annika hat mir was dagelassen. Einen wasserdichten Koffer.
+      Sie hat gesagt: "Wenn jemand fragt, was im Steinbruch passiert,
+      gib ihm das."
+
+      Sie sah verängstigt aus. Sie meinte, sie hat von allem Kopien
+      gemacht, aber ein Set musste an einen Ort, wo niemand suchen
+      würde. Eine Schnitzwerkstatt schien perfekt.
+    effects: { trust_erik: "+10" }
+    choices:
+      - What's happening at the quarry? -> erik_case
+
+  erik_case:
+    type: message
+    text: >
+      Erik reaches under his workbench and produces a waterproof
+      Pelican case.
+
+      ERIK: Sie hat gesagt, du würdest kommen. Hier, nimm.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show the quarry expansion — not the permitted extraction
+      zone, but a massive undeclared extension into protected watershed
+      — and heavy equipment operating at night. The USB drive contains
+      water sample data, sediment analysis, and Annika's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Kommissar Brandt ---
+
+  kommissar_interview:
+    type: message
+    text: >
+      KOMMISSAR BRANDT: Unter uns — und ich meine wirklich unter uns —
+      ich wollte gegen Erzgebirge Kies ermitteln. Mein Vorgesetzter
+      hat gesagt, ich soll die Finger davon lassen. Das Bergamt hätte
+      "Zuständigkeit." Das heißt übersetzt: lass es.
+
+      Die Sache mit Kessler ist was anderes. Davon wusste ich bis jetzt
+      nichts. Wenn Sie Beweise für Stalking haben, kann ich handeln.
+      Das ist eindeutig meine Zuständigkeit.
+
+      Bringen Sie mir was Handfestes und ich öffne den Fall wieder.
+    effects:
+      trust_kommissar: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Annika than anyone in Schwarzbach. Who is responsible?
+    choices:
+      - Confront Jan Kessler (the obsessive photographer) -> confront_jan
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Detlef Krause (the quarry director) -> confront_detlef
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Zimmermann (political protection) -> confront_ralf
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Jan (Best Ending) ---
+
+  confront_jan:
+    type: message
+    text: >
+      You present your evidence to Jan:
+
+      "I know @silke_meier is your account. I know you put a camera
+      on Annika's workshop window. I know you accessed her workshop
+      at night. I know you were watching from your car. I have
+      witnesses and I have the access logs."
+    choices:
+      - Send -> jan_response
+
+  jan_response:
+    type: message
+    text: >
+      Jan doesn't reply for a long time. Then:
+
+      JAN: Du verstehst das nicht. Ich hab sie beschützt. Sie war in
+      Gefahr wegen dem Kieswerk und sie hat meine Hilfe nicht
+      angenommen. Ich musste wissen, dass sie sicher ist. Alles was
+      ich getan habe, war weil ich mich um sie sorge.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Kommissar Brandt. And to
+      Katja Seidel.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Kommissar Brandt reopens the case. With your evidence — the
+      anonymous account, the hidden camera, the access logs, the
+      witness testimonies — Jan is arrested for stalking and
+      harassment. A miniature camera is recovered from Annika's
+      workshop windowsill.
+
+      Katja Seidel, finally in possession of Annika's full evidence
+      package, publishes the Erzgebirge Kies story in the Freie Presse
+      and it's picked up nationally. The Bergamt orders an unannounced
+      inspection. The quarry expansion is halted and the illegal zone
+      is ordered to be recultivated. Detlef Krause faces criminal
+      charges for falsifying environmental reports and operating
+      without permits.
+
+      And Annika Bauer, reading the story from a friend's house in
+      Annaberg-Buchholz, calls her brother for the first time in
+      nine days.
+
+      "Ich komm nach Hause."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: annika
+    text: >
+      der ton lügt nicht. und die leute von schwarzbach auch nicht.
+      danke, dass ihr nicht aufgegeben habt.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Detlef (Partial Ending) ---
+
+  confront_detlef:
+    type: message
+    text: >
+      You present the quarry evidence to Detlef Krause:
+
+      "I have photographs of the undeclared expansion zone. I have
+      water samples showing sediment levels ten times the legal limit.
+      I have your original lab reports showing the data was falsified.
+      I have GPS coordinates of illegal blasting in protected
+      watershed."
+    choices:
+      - Send -> detlef_response
+
+  detlef_response:
+    type: message
+    text: >
+      DETLEF: Dieses Gespräch wird an unsere Rechtsabteilung
+      weitergeleitet. Jede Veröffentlichung verleumderischer
+      Informationen wird unmittelbare rechtliche Schritte nach sich
+      ziehen. Erzgebirge Kies hat stets innerhalb der behördlichen
+      Vorgaben gearbeitet.
+
+      But it's too late. You've sent the evidence to Katja, to the
+      Bürgerinitiative, and to the Bergamt.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The quarry story breaks. Erzgebirge Kies is ordered to halt
+      expansion pending investigation. The quarry may close entirely.
+      One hundred and fifty jobs hang in the balance. The village
+      is divided.
+
+      But Annika?
+
+      Without the stalking evidence, Jan is never investigated. He
+      continues to photograph the village. He continues to monitor her
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Annika reads about Erzgebirge Kies online.
+      She returns quietly. She moves her workshop. She installs new
+      locks. She checks her windows every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Annika walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: annika
+    text: "ich bin zurück. das tal erholt sich. der rest... mal sehen."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_ralf:
+    type: message
+    text: >
+      You confront Mayor Zimmermann with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> ralf_response
+
+  ralf_response:
+    type: tweet
+    from: uwe
+    text: >
+      Mein Mandant nimmt Ihre Anschuldigungen zur Kenntnis. Jede
+      öffentliche Verbreitung verleumderischer Äußerungen wird
+      unverzüglich rechtlich verfolgt. — Kanzlei Fischer & Partner,
+      Chemnitz
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Zimmermann and Erzgebirge Kies's illegal quarrying —
+      and there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      Erzgebirge Kies continues to operate. Jan continues to watch.
+      Annika stays in hiding.
+
+      Six months later, @silke_meier creates a new account. It
+      follows Annika's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SCHWARZBACH — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Annika's story explores themes of
+      corporate impunity, environmental destruction, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Hilfetelefon Gewalt gegen Frauen: 116 016 (kostenlos, 24/7)
+      Weisser Ring (Opferhilfe): 116 006
+      Polizei-Notruf: 110
+      Umwelt-Hotline: Umweltbundesamt 0800 7800 800

@@ -1,0 +1,1566 @@
+# DEAD ACCOUNT — Story 095: Šumavské Pláně (Czech Republic, 4th)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-095.yml
+#
+# Player investigates the disappearance of mushroom forager & herbalist
+# Jana Procházková in the fictional Šumava highlands village of Šumavské Pláně.
+
+meta:
+  title: "Dead Account — Šumavské Pláně"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marek: 0
+    trust_ludmila: 0
+    trust_pavel: 0
+    trust_radek: 0
+    trust_tereza: 0
+    trust_vojta: 0
+    trust_adela: 0
+    trust_miroslav: 0
+    trust_hana: 0
+    trust_zdenek: 0
+    trust_bozena: 0
+    trust_ondrej: 0
+    trust_iva: 0
+    trust_jaromir: 0
+    trust_klara: 0
+    trust_tomas: 0
+    trust_renata: 0
+    trust_libor: 0
+    trust_petra: 0
+    trust_filip: 0
+    trust_straznik: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    logging_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nový obyvatel
+    bio: "právě jsem se přestěhoval/a do šumavských plání. objevuju šumavu krok za krokem"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "SumavskePlane.social"
+    description: "Vítejte na komunitní instanci Šumavských Plání"
+    avatar_url: /gamepatch/assets/dead-account/sumavskeplane_bot.png
+
+  npcs:
+    # === Jana's Inner Circle ===
+    jana:
+      name: "Jana Procházková"
+      bio: "bylinkářka & houbařka | šumavské lesy jsou moje lékárna | příroda nelže"
+      avatar: avatars/jana.jpg
+    marek:
+      name: "Marek Procházka"
+      bio: "bratr jany | tesař v klatovech | sestra nezmizí jen tak"
+      avatar: avatars/marek.jpg
+    ludmila:
+      name: "Ludmila Sedláčková"
+      bio: "spolubydlící jany | učitelka ZŠ šumavské pláně | miluji hory a klid"
+      avatar: avatars/ludmila.jpg
+    pavel:
+      name: "Pavel Hrubý"
+      bio: "průvodce šumavou | turista | znám každou stezku | kolega jany"
+      avatar: avatars/pavel.jpg
+
+    # === Local Government ===
+    miroslav:
+      name: "Miroslav Černý"
+      bio: "Starosta Šumavských Plání | Sloužím obci od roku 2018 | #PláněVpřed"
+      avatar: avatars/miroslav.jpg
+    hana:
+      name: "Hana Dvořáková"
+      bio: "Místostarostka | životní prostředí a rozvoj | Šumavské Pláně"
+      avatar: avatars/hana.jpg
+    obec:
+      name: "Obec Šumavské Pláně"
+      bio: "Oficiální účet | Obecní zprávy | Úřední hodiny: Po-Pá 8-16h"
+      avatar: avatars/obec.jpg
+
+    # === Local Business & Community ===
+    bozena:
+      name: "Božena Kratochvílová"
+      bio: "Hospoda U Medvěda | domácí kuchyně | šumavské knedlíky | od roku 1994"
+      avatar: avatars/bozena.jpg
+    hospoda:
+      name: "Hospoda U Medvěda"
+      bio: "Tradiční šumavská kuchyně | Domácí pivo | Živá muzika v pátek | Srdce Plání"
+      avatar: avatars/hospoda.jpg
+    zdenek:
+      name: "Zdeněk Kolář"
+      bio: "lesní dělník | 30 let v šumavských lesích | tyhle stromy jsou můj život"
+      avatar: avatars/zdenek.jpg
+    iva:
+      name: "Iva Malá"
+      bio: "lékárnice | Šumavské Pláně | zdraví & poradenství | otevřeno i v sobotu"
+      avatar: avatars/iva.jpg
+    jaromir:
+      name: "Jaromír Fiala"
+      bio: "řezník & uzenář | Šumavské speciality | klobásy jak od babičky"
+      avatar: avatars/jaromir.jpg
+    ondrej:
+      name: "Ondřej Blažek"
+      bio: "správce chaty na Jezerní | nocleh & svačiny | výhledy na celou šumavu"
+      avatar: avatars/ondrej.jpg
+    renata:
+      name: "Renata Horáková"
+      bio: "knihkupectví & papírnictví | Pláňská čítárna | čtení pro děti ve středu"
+      avatar: avatars/renata.jpg
+
+    # === Journalist ===
+    klara:
+      name: "Klára Veselá"
+      bio: "novinářka | Šumavský deník | životní prostředí & region | tipy: klara@sumavskydenik.cz"
+      avatar: avatars/klara.jpg
+
+    # === ŠumaváDřevo (logging company) ===
+    sumavadrevo:
+      name: "ŠumavaDřevo s.r.o."
+      bio: "Těžba a zpracování dřeva | Provoz Šumavské Pláně | FSC certifikace"
+      avatar: avatars/sumavadrevo.jpg
+    libor:
+      name: "Libor Tůma"
+      bio: "ředitel provozu ŠumavaDřevo | Šumavské Pláně | průmysl & region"
+      avatar: avatars/libor.jpg
+    tomas:
+      name: "Tomáš Krejčí"
+      bio: "Advokát | Kancelář Krejčí & partneři | Obchodní právo | Plzeň"
+      avatar: avatars/tomas.jpg
+
+    # === Teens ===
+    tereza:
+      name: "Tereza"
+      bio: "16 | fotky přírody | šumava born | les je všechno ty vole"
+      avatar: avatars/tereza.jpg
+    vojta:
+      name: "Vojtěch"
+      bio: "17 | MTB & turistika | sunrise výšlapy | hory léčí"
+      avatar: avatars/vojta.jpg
+    adela:
+      name: "Adéla"
+      bio: "15 | kresba & bylinky | jana je moje inspo | příroda v černobílé"
+      avatar: avatars/adela.jpg
+
+    # === Media & Community ===
+    aktuality_plane:
+      name: "Aktuality Šumavských Plání"
+      bio: "Zprávy z Plání a okolí | Tipy: redakce@aktuality-plane.cz"
+      avatar: avatars/aktuality_plane.jpg
+    pocasi_sumava:
+      name: "Počasí Šumava"
+      bio: "Předpovědi a výstrahy | Automatická stanice | Aktualizace každou hodinu"
+      avatar: avatars/pocasi_sumava.jpg
+    spolek_les:
+      name: "Spolek Šumavský les"
+      bio: "Ochrana šumavských lesů | Dobrovolníci | Hlášení nelegální těžby"
+      avatar: avatars/spolek_les.jpg
+
+    # === Suspicious / Other ===
+    radek:
+      name: "Radek Novotný"
+      bio: "amatérský mykolog | průvodce houbařské túry | expert na šumavské houby"
+      avatar: avatars/radek.jpg
+    petra:
+      name: "Petra Nová"
+      bio: "."
+      avatar: avatars/anon.jpg
+    filip:
+      name: "Filip Bartoš"
+      bio: "technik | ŠumavaDřevo | dělám svou práci a hotovo"
+      avatar: avatars/filip.jpg
+    straznik:
+      name: "Strážník Holub"
+      bio: "Policie ČR | Obvodní oddělení Šumavské Pláně | Tísňové volání: 158"
+      avatar: avatars/straznik.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ŠUMAVSKÉ PLÁNĚ
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to SumavskePlane.social — the community Mastodon instance
+      for the highland village of Šumavské Pláně, Šumava, Czech Republic.
+
+      The local feed is unsettled today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @jana_prochazkova.
+
+      A mushroom forager. Herbalist. She documented the forests, the
+      fungi, the old remedies. People are worried. She hasn't posted
+      in six days.
+    choices:
+      - Look at her profile -> jana_profile
+
+  jana_profile:
+    type: tweet
+    from: jana
+    text: "Těžba u Jezerního hřbetu je mimo povolení. Kácejí zdravé stromy a vydávají to za kůrovcovou kalamitu. Mám důkazy."
+    choices:
+      - That's her last real post... -> strange_photo
+
+  strange_photo:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurry photo of fog over a clearcut hillside. Posted at 2am.
+      No caption. No hashtags.
+
+      Her friends say that's not her style. Jana always wrote long
+      captions about what she found in the forest. The police say she
+      probably went hiking and lost signal. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: straznik
+    text: >
+      Obdrželi jsme oznámení o pohřešované obyvatelce Šumavských Plání.
+      V současné chvíli nemáme důvod se domnívat, že došlo k trestnému
+      činu. Případné informace sdělte na lince 158 nebo na obvodním
+      oddělení.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her roommate @ludmila_sedlackova is
+      desperate. Her brother @marek_prochazka is driving from Klatovy.
+      Her colleague @pavel_hruby is posting worried messages. The
+      forester @zdenek_kolar says she was right about the logging.
+
+      And the journalist @klara_vesela is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Jana just "went
+      hiking."
+    effects: { trust_marek: "+5", trust_ludmila: "+5" }
+    choices:
+      - Start following Jana's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Šumavské Pláně. Follow Jana's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Božena (pub owner, knows everyone) -> bozena_intro
+      - Talk to Zdeněk (forester, saw the logging) -> zdenek_intro
+      - Talk to Tereza (teen photographer, seems shaken) -> tereza_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Jana with the rhythms of a small
+      highland village: weather warnings, mushroom season updates,
+      Jaromír's weekend sausage specials, trail conditions.
+
+      Key names surface: Ludmila (roommate, teacher), Pavel (hiking
+      guide, seems rattled), Klára (journalist, oddly quiet), and
+      the teens — Tereza, Vojtěch, Adéla — who idolised Jana's
+      forest knowledge.
+
+      Also prominent: ŠumavaDřevo s.r.o., the logging company at
+      the edge of the forest. Their posts are corporate greenwashing.
+      Jana's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Božena -> bozena_intro
+      - Talk to Zdeněk -> zdenek_intro
+      - Talk to Tereza -> tereza_intro
+
+  # --- Božena (social map) ---
+
+  bozena_intro:
+    type: tweet
+    from: bozena
+    text: >
+      Hospoda je otevřená ale nálada je na hovno. @jana_prochazkova,
+      tvůj guláš čeká. Vrať se nám.
+    effects: { trust_bozena: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Božena -> bozena_talk
+
+  bozena_talk:
+    type: message
+    text: >
+      BOŽENA: Ty jsi nový? Vítej. Strašný čas přijít. Všichni jsou
+      z Jany na nervy.
+
+      Translated: You're new? Welcome. Terrible time to arrive.
+      Everyone's on edge about Jana.
+
+      Let me tell you who's who. Ludmila is Jana's roommate — they
+      share a cottage near the church. Sweet woman, devastated right
+      now. Pavel Hrubý is a hiking guide — he and Jana did forest
+      tours together. Smart man, but... intense about her. Marek is
+      Jana's older brother, coming from Klatovy.
+
+      And Klára Veselá — the journalist — she and Jana were working
+      on something together. Something about the logging. Klára hasn't
+      said a word since Jana vanished. That's not like her at all.
+
+      Oh, and don't bother reading ŠumavaDřevo's posts. Lži zabalený
+      do FSC certifikátů. Lies wrapped in FSC certificates.
+    effects: { trust_bozena: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Radek Novotný -> bozena_radek
+      - Ask about ŠumavaDřevo -> bozena_drevo
+      - Thank her and move on -> quest1_hub
+
+  bozena_radek:
+    type: message
+    text: >
+      BOŽENA: Radek? That mushroom guy? He showed up about two years
+      ago. Started running competing foraging tours. He's obsessed with
+      mushrooms — okay, lots of people are — but he's obsessed with
+      Jana too. Sits in the pub every time she's here. Asks me which
+      trails she's on that day.
+
+      She told him to stop following her routes. He said he wasn't.
+      But everybody saw him turning up at her spots ten minutes after
+      her. Every time.
+
+      Jana told me once, "Ten chlap mě děsí." That man scares me.
+      I thought she was exaggerating. Now I'm not sure.
+    effects: { trust_bozena: "+5" }
+    choices:
+      - Ask about ŠumavaDřevo -> bozena_drevo
+      - Move on -> quest1_hub
+
+  bozena_drevo:
+    type: message
+    text: >
+      BOŽENA: That company has been here since the 90s. Logging, timber
+      processing, whatever. The village tolerated them because they
+      brought jobs. But the old foresters have been complaining for
+      years — clearcuts where there should be selective felling,
+      healthy trees marked as bark beetle damage, trucks running at
+      night.
+
+      Jana was the first person to actually go into the restricted
+      zones with a camera and GPS. She had proof, she said. Real proof
+      that they were logging healthy forest under cover of the bark
+      beetle emergency. Two weeks later she's gone.
+
+      Do prdele, use your brain. To přece není náhoda.
+    effects: { trust_bozena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Zdeněk (the forest, witness tease) ---
+
+  zdenek_intro:
+    type: tweet
+    from: zdenek
+    text: >
+      třicet let chodím do těhle lesů. stromy mizí. @jana_prochazkova
+      měla pravdu. a teď zmizela i ona. spojte si to.
+    effects: { trust_zdenek: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Zdeněk -> zdenek_talk
+
+  zdenek_talk:
+    type: message
+    text: >
+      ZDENĚK: I've been working these forests since I was eighteen.
+      I know every ridge, every clearing, every stream. And I'm telling
+      you — the logging at Jezerní hřbet is wrong. They're cutting
+      healthy spruce and marking it as bark beetle salvage. The stumps
+      are green inside. No beetle galleries. Nothing.
+
+      Jana took GPS coordinates. She photographed the stumps, the
+      permits, the truck plates. She was building a case. And then
+      poof — gone.
+
+      You think that's a coincidence? Ty vole, I don't believe in
+      coincidences in the forest.
+    effects: { trust_zdenek: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> zdenek_night
+      - Move on -> quest1_hub
+
+  zdenek_night:
+    type: message
+    text: >
+      ZDENĚK: The night before she vanished — I was coming back from
+      checking a deer feeding station, around midnight. I saw lights
+      on the forest road near Jezerní. Not the logging trucks — they
+      run with headlights. This was a car, parked, lights off. Engine
+      running.
+
+      And another car nearby. Jana's old green Škoda Fabia. Parked at
+      the trailhead.
+
+      At midnight. At the restricted logging zone.
+
+      I didn't think much of it then. Now I think about it constantly.
+    effects: { trust_zdenek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tereza (teen photographer, witness tease) ---
+
+  tereza_intro:
+    type: tweet
+    from: tereza
+    text: >
+      to je v piči lidi @jana_prochazkova mě naučila poznávat houby
+      a bylinky a teď je prostě pryč?? to jako fakt není možný.
+      jestli někdo něco ví tak to řekněte kurva
+    effects: { trust_tereza: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tereza -> tereza_talk_early
+
+  tereza_talk_early:
+    type: message
+    text: >
+      TEREZA: ty jsi novej? ty vole to je hustý timing. hele jana
+      je jako nejlepší člověk v týhle vesnici. brala nás do lesa,
+      ukazovala nám houby, učila nás rozeznávat jedlý od jedovatejch.
+      mega.
+
+      a teď jsem z toho v prdeli protože vojta viděl něco divnýho
+      tu noc u hřbitova ale nechce o tom mluvit. říká že to nic
+      nebylo ale jako... to nic nebylo jak prdel
+    effects: { trust_tereza: "+10" }
+    choices:
+      - What did Vojta see? -> tereza_vojta_hint
+      - Move on -> quest1_hub
+
+  tereza_vojta_hint:
+    type: message
+    text: >
+      TEREZA: nevim přesně. byl na noční vyjížďce na kole a viděl
+      jak někdo něco dává do auta jany?? nebo tak něco. fakt se
+      z toho posral a nechce o tom mluvit. musíš za nim jít přímo
+      ale je opatrnej s lidma co nezná. zkus nejdřív mluvit o
+      kolech a horách a tak lol
+    effects: { trust_tereza: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Šumavské Pláně. A highland village
+      in the Šumava forests. An herbalist who was exposing illegal
+      logging. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Ludmila (Jana's roommate) -> ludmila_q1
+      - Talk to Pavel (Jana's colleague) -> pavel_q1
+      - Check what Marek (Jana's brother) is saying -> marek_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Ludmila Q1 ---
+
+  ludmila_q1:
+    type: tweet
+    from: ludmila
+    text: >
+      prosím jestli máte nějaké zprávy o @jana_prochazkova zavolejte
+      mi. její pokoj je nedotčený. bylinkový sušák je plný. nikdy
+      by neodešla bez svých věcí.
+    effects: { trust_ludmila: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ludmila -> ludmila_q1_talk
+
+  ludmila_q1_talk:
+    type: message
+    text: >
+      LUDMILA: I appreciate you reaching out but I don't know you.
+      Jana has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Ludmila is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_ludmila: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pavel Q1 ---
+
+  pavel_q1:
+    type: tweet
+    from: pavel
+    text: >
+      Les je prázdný bez @jana_prochazkova. Její mapy jsou na stole.
+      Sušené houby v chatě. Nikdy by neopustila rozdělanou práci.
+      Něco se stalo.
+    effects: { trust_pavel: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Pavel -> pavel_q1_talk
+
+  pavel_q1_talk:
+    type: message
+    text: >
+      PAVEL: Jana and I have worked together for over a year. She's
+      the most knowledgeable forager I've ever met. This logging
+      investigation — it was everything to her. She had GPS data,
+      photos, permit numbers. She was so close to going public.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to support her.
+
+      [Pavel seems earnest. Or obsessive?]
+    effects: { trust_pavel: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marek Q1 ---
+
+  marek_q1:
+    type: tweet
+    from: marek
+    text: >
+      moje sestra ZMIZELA a policajti mi říkají že si možná šla na
+      túru??? ONA NECHODÍ NA TÚRU BEZ TOHO ABY SE OZVALA. jedu
+      z klatov. někdo mi to vysvětlí.
+    effects: { trust_marek: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marek -> marek_q1_talk
+
+  marek_q1_talk:
+    type: message
+    text: >
+      MAREK: Who are you? Another person from that village who's going
+      to tell me to calm down? My sister called me the night before
+      she disappeared. She said she had something big. She said "jestli
+      se mi něco stane, podívej se na ŠumavaDřevo." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_marek: "+10" }
+    choices:
+      - What do you think happened? -> marek_theory
+      - Move on -> quest1_hub
+
+  marek_theory:
+    type: message
+    text: >
+      MAREK: I think she found proof that ŠumavaDřevo is illegally
+      logging healthy forest and they shut her up. But I also think
+      that creepy mushroom guy — Radek — knows more than he's saying.
+      The way he talks about her... it's not just professional
+      interest. It's something else.
+
+      Jana told me months ago that someone was following her on her
+      foraging routes. She thought it was nothing. Kurva, I don't
+      think it was nothing.
+    effects: { trust_marek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Jana went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Vojta (was night cycling near the cemetery) -> vojta_interview
+      - Find Ondřej (mountain hut warden, works late) -> ondrej_interview
+      - Find Jaromír (butcher, early morning deliveries) -> jaromir_interview
+      - Find Iva (pharmacist, insomnia, saw something from window) -> iva_interview
+
+  # --- Vojta (saw someone at Jana's car) ---
+
+  vojta_interview:
+    type: tweet
+    from: vojta
+    text: >
+      dobrá vyjížďka ale ta atmosféra v pláních je fakt divná. jako
+      něco je špatně. neumim to popsat
+    effects: { trust_vojta: "+5" }
+    choices:
+      - Ask Vojta about that evening -> vojta_talk
+
+  vojta_talk:
+    type: message
+    text: >
+      VOJTA: ty vole ok ale nikomu to neříkej jo. byl jsem na kole
+      u hřbitova kolem sedmý večer. a viděl jsem toho týpka —
+      radka — u auta jany. jako šmejdil kolem toho nebo něco
+      dával dovnitř. když mě viděl tak zdrhnul mega rychle.
+
+      jako já jsem nic neřek protože jsem nechtěl problémy ale
+      teď je to fakt v piči. to není normální chování kurva
+    effects:
+      trust_vojta: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ondřej (mountain hut warden, saw late-night meeting) ---
+
+  ondrej_interview:
+    type: tweet
+    from: ondrej
+    text: >
+      Připomínám: lesní cesty po 22h jsou uzavřené. Zaznamenal jsem
+      neoprávněný pohyb vozidel v posledních nocích.
+    effects: { trust_ondrej: "+5" }
+    choices:
+      - Ask Ondřej what he saw -> ondrej_talk
+
+  ondrej_talk:
+    type: message
+    text: >
+      ONDŘEJ: I was closing up the hut around 22:30. From the lookout
+      I could see the forest road below. Jana's green Škoda was
+      parked at the Jezerní trailhead. And next to it — a black SUV.
+      ŠumavaDřevo company plates. Two men standing by the trailhead
+      gate. One of them I recognised even from up there: Libor Tůma,
+      the operations director. Big guy, unmistakable.
+
+      At 22:30. At the restricted logging zone access point.
+
+      I noted it in my hut logbook. Nobody's asked to see it.
+    effects:
+      trust_ondrej: "+10"
+      night_witnesses: "+1"
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jaromír (butcher, early morning, saw fleeing figure) ---
+
+  jaromir_interview:
+    type: tweet
+    from: jaromir
+    text: >
+      vstávám ve čtyři na přípravu. dneska ráno ale na silnici
+      k mostu někdo běžel. ve tmě. to nebyl běžec.
+    effects: { trust_jaromir: "+5" }
+    choices:
+      - Ask Jaromír what he saw -> jaromir_talk
+
+  jaromir_talk:
+    type: message
+    text: >
+      JAROMÍR: I get up at 4am for the meat prep. That morning — the
+      morning after Jana's last post — I saw someone on the road
+      toward the old stone bridge. Running. A woman, carrying a bag,
+      heading toward the Otava valley. It was still dark. She was
+      moving fast, like she was afraid.
+
+      I called out but she didn't stop. I figured it was a jogger
+      but... who jogs at 4am carrying a backpack on that road?
+
+      When I heard about Jana, I put it together. To byla ona.
+      Running from something.
+    effects:
+      trust_jaromir: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Iva (pharmacist, saw car chase) ---
+
+  iva_interview:
+    type: tweet
+    from: iva
+    text: >
+      Nemůžu spát. A to ráno jsem nemohla spát taky. Z okna jsem
+      viděla něco co mě znepokojilo.
+    effects: { trust_iva: "+5" }
+    choices:
+      - Ask Iva what she saw -> iva_talk
+
+  iva_talk:
+    type: message
+    text: >
+      IVA: I have insomnia. That night I was at my window around
+      4:30am. A vehicle went past — fast, way too fast for the
+      village road. Dark SUV. Then maybe two minutes later, a second
+      car. Smaller, green. Chasing? I don't know.
+
+      The smaller car turned off toward the forest chapel at
+      Mechový vrch. The SUV kept going toward the main road to
+      Klatovy.
+
+      I told the police. They wrote it down. Hotovo. That was it.
+    effects:
+      trust_iva: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Ludmila
+      (roommate) and Adéla (saw Radek watching the cottage).
+    choices:
+      - Talk to Ludmila about that night -> ludmila_interview
+      - Talk to Adéla -> adela_interview
+      - Find Vojta -> vojta_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ondřej -> ondrej_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Jaromír -> jaromir_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Iva -> iva_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Ludmila (last to see Jana) ---
+
+  ludmila_interview:
+    type: tweet
+    from: ludmila
+    text: >
+      ta fotka na účtu jany. to není ona. jana nikdy nedá fotku bez
+      popisu. jana nepostuje ve 2 ráno. někdo jiný to udělal.
+    effects: { trust_ludmila: "+5" }
+    choices:
+      - DM Ludmila -> ludmila_talk_low
+        when:
+          state: trust_ludmila
+          lt: 50
+      - DM Ludmila -> ludmila_talk_high
+        when:
+          state: trust_ludmila
+          gte: 50
+
+  ludmila_talk_low:
+    type: message
+    text: >
+      LUDMILA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Ludmila needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_ludmila: "+5" }
+    choices:
+      - Share what you've learned about the night -> ludmila_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  ludmila_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the trailhead, the
+      company men, the running figure. Ludmila is silent for a while.
+
+      LUDMILA: You're actually trying to find her. Dobře. I'll talk.
+    effects: { trust_ludmila: "+25" }
+    choices:
+      - What happened that night? -> ludmila_talk_high
+
+  ludmila_talk_high:
+    type: message
+    text: >
+      LUDMILA: She came home around 23h. I was grading papers so I
+      was still up. She was pale, shaking. She said "oni vědí co mám."
+      They know what I have. She grabbed her laptop and her USB drives.
+
+      I asked who. She said "firma. Poslali lidi na cestu." The
+      company. They sent people to the trail. Then she said something
+      else — "a on tam taky byl. On tam je vždycky."
+
+      She wouldn't say who "he" was. She hugged me, said "neboj se,"
+      and left with a bag. That was it. By morning her car was gone
+      and that blurry photo was on her account.
+    effects:
+      trust_ludmila: "+15"
+      night_witnesses: "+1"
+      logging_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Adéla (saw Radek watching the cottage) ---
+
+  adela_interview:
+    type: message
+    text: >
+      ADÉLA: ok hele je to fakt divný co ti řeknu ale ten týpek —
+      radek — jsem ho viděla tak třikrát jak stojí před chatou jany
+      večer. jako stál tam a koukal na okna. mega creepy ty vole.
+
+      posledně to bylo tak dva dny před tím než zmizela. seděl
+      v autě naproti. prostě seděl. světla zhasnutý.
+    effects:
+      trust_adela: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Radek seen at Jana's car near the cemetery (Vojta)
+      22:30 — ŠumavaDřevo SUV at Jezerní trailhead, Libor Tůma present (Ondřej)
+      23:00 — Jana arrives home, shaken, grabs laptop and drives (Ludmila)
+      04:00 — Woman running on road toward Otava valley (Jaromír)
+      04:30 — Two cars speeding through village, one toward Mechový vrch (Iva)
+
+      ŠumavaDřevo confronted Jana in the forest. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is ŠumavaDřevo hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Radek really doing? Why was he at
+        her car?
+    choices:
+      - Investigate the logging cover-up -> corruption_hub
+      - Investigate Radek -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      LOGGING THREAD: Evidence collected: ${logging_evidence}
+      OBSESSION THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the logging thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: logging_evidence, gte: 3 }
+
+  # =====================================================================
+  # LOGGING COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE LOGGING THREAD
+
+      ŠumavaDřevo is hiding something. Jana had proof. Now she's
+      gone and her evidence is missing from her cottage.
+
+      Logging evidence: ${logging_evidence}
+    choices:
+      - Search the forestry permit records -> permit_records
+      - Talk to Klára the journalist -> klara_interview
+      - Talk to Filip (ŠumavaDřevo technician) -> filip_interview
+      - Talk to Hana (environment deputy mayor) -> hana_interview
+      - Check the Spolek Šumavský les association -> spolek_investigation
+      - Talk to Zdeněk about the illegal cuts -> zdenek_cuts
+      - Back to hub -> investigation_hub
+
+  # --- Permit Records ---
+
+  permit_records:
+    type: message
+    text: >
+      The regional forestry authority's public database shows the
+      permits for Jezerní hřbet: "Salvage felling — bark beetle
+      calamity, Picea abies, 47 hectares." Status: APPROVED.
+
+      But Jana's GPS logs, shared with the hiking guide network for
+      safety, show she visited 12 sites in the approved zone in the
+      past month. Her last entry: "Zdravé stromy. Žádný kůrovec.
+      Pařezy zelené. Povolení je podvod." Healthy trees. No beetle.
+      Green stumps. The permit is a fraud.
+    effects:
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Klára ---
+
+  klara_interview:
+    type: message
+    text: >
+      KLÁRA: I don't talk about sources. Period.
+    effects: { trust_klara: "+5" }
+    choices:
+      - Show Klára the evidence you have -> klara_with_evidence
+        when:
+          state: logging_evidence
+          gte: 3
+      - Back to logging thread -> corruption_hub
+
+  klara_with_evidence:
+    type: message
+    text: >
+      KLÁRA: ...you have more than I expected.
+
+      Okay. Jana and I were working together. She had GPS coordinates
+      of healthy trees felled as bark beetle salvage — hundreds of
+      them. She had photos of green stumps with no beetle galleries.
+      She had the actual permit applications showing falsified forest
+      health surveys.
+
+      We were going to publish together in Šumavský deník. Then she
+      went dark. And two days later, someone broke into my car and
+      stole my backup drive.
+
+      Jana is alive. She contacted me once, from a payphone in Sušice.
+      She said she was hiding. She said "vyhrožovali mi v lese a
+      ještě někdo mě nenechá na pokoji."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_klara: "+25"
+      logging_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> klara_hint
+      - Back to investigation hub -> investigation_hub
+
+  klara_hint:
+    type: message
+    text: >
+      KLÁRA: The company sent their director — Tůma — and some muscle
+      to the forest that night. They told her to hand over everything
+      or they'd make her life impossible. Zastrašování v hávu práva.
+      Intimidation dressed as legal process.
+
+      But she also said something about someone else. Someone who
+      always seemed to know which trails she was on. Someone who
+      showed up at every one of her foraging spots. That's a different
+      problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Filip (ŠumavaDřevo whistleblower) ---
+
+  filip_interview:
+    type: message
+    text: >
+      FILIP: I work at ŠumavaDřevo. I'm just a technician. I mark
+      trees, I run the GPS equipment, I file the survey reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the forestry authority.
+    effects: { trust_filip: "+10" }
+    choices:
+      - What do you mean? -> filip_detail
+
+  filip_detail:
+    type: message
+    text: >
+      FILIP: I survey forest health. I mark trees with beetle damage.
+      My data goes to my supervisor. Somewhere between my tablet and
+      the permit application, the numbers change. More trees marked.
+      Always more.
+
+      Healthy zones get reclassified as infested. My original surveys
+      show maybe 15% beetle damage. The permits say 80%. That's how
+      they get approval to clearcut.
+
+      Jana's GPS data matched MY original survey numbers, not the
+      ones in the official permits. She had independent proof that
+      ŠumavaDřevo is falsifying their forest health assessments.
+
+      Mám strach. I have a family. But I kept copies of my original
+      surveys. If someone can protect me, I'll share them.
+    effects:
+      trust_filip: "+15"
+      logging_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to logging thread -> corruption_hub
+
+  # --- Hana ---
+
+  hana_interview:
+    type: message
+    text: >
+      HANA: As deputy mayor for the environment, I take these
+      allegations seriously. But ŠumavaDřevo employs 120 people
+      in this obec. The starosta insists we need to "udržet dialog."
+      Maintain dialogue.
+
+      Off the record? I've seen the regional inspection reports.
+      ŠumavaDřevo passes every time. But those inspections are
+      announced two weeks in advance. They replant saplings before
+      the inspectors arrive.
+
+      Jana had unannounced data. Actual field surveys. That's what
+      makes it dangerous.
+    effects:
+      trust_hana: "+10"
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to logging thread -> corruption_hub
+
+  # --- Spolek Šumavský les ---
+
+  spolek_investigation:
+    type: tweet
+    from: spolek_les
+    text: >
+      UPOZORNĚNÍ: Hlášení neoprávněné těžby v oblasti Jezerního
+      hřbetu. Fotodokumentace a GPS záznamy probíhají. Požadujeme
+      neohlášenou inspekci provozu ŠumavaDřevo.
+    choices:
+      - Check their data -> spolek_data
+
+  spolek_data:
+    type: message
+    text: >
+      The Spolek Šumavský les has been documenting forest cover for
+      five years. Their satellite imagery analysis shows a clear
+      pattern: clearcut areas that don't match beetle damage maps.
+      Healthy canopy disappearing where no infestation was recorded.
+
+      The pattern is unmistakable. This is systematic, deliberate
+      over-logging disguised as pest management.
+
+      Jana was a member. She contributed most of the ground-truth
+      photography — matching the satellite images to actual conditions
+      on the forest floor.
+    effects:
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to logging thread -> corruption_hub
+
+  # --- Zdeněk illegal cuts ---
+
+  zdenek_cuts:
+    type: message
+    text: >
+      ZDENĚK: I'll show you something. Last month I was checking a
+      section near Mechový vrch and found a stump — a massive beech,
+      maybe 200 years old. Cut clean. No permit marker. No beetle
+      damage. Pure, healthy wood.
+
+      I photographed it and sent it to Jana. She said it was the
+      missing piece — proof they were cutting protected old-growth,
+      not just spruce. Ancient trees that should never be touched.
+
+      I still have the photos. And I counted the rings. Dvě stě
+      osmnáct let. 218 years. That tree was alive before Beethoven
+      was born. And they cut it for timber.
+    effects:
+      trust_zdenek: "+10"
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Radek Novotný. Rival forager. Mushroom expert. Something more?
+      Someone was following Jana's routes. Someone was watching her
+      cottage. Someone was at her car.
+
+      Obsession evidence: ${stalker_evidence}
+    choices:
+      - Investigate Radek's trail activity logs -> trail_logs
+      - Talk to Ludmila about Radek -> ludmila_radek
+        when:
+          state: trust_ludmila
+          gte: 20
+      - Talk to Vojta (more detail on the car incident) -> vojta_detail
+      - Talk to Iva the pharmacist -> iva_radek
+      - Check the anonymous account @petra_nova -> petra_investigation
+      - Talk to Renata the bookseller -> renata_interview
+        when:
+          state: trust_renata
+          gte: 40
+      - Talk to Strážník Holub -> straznik_interview
+        when:
+          state: trust_straznik
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Trail Activity Logs ---
+
+  trail_logs:
+    type: message
+    text: >
+      The Šumava hiking app tracks registered guides. Jana logged
+      187 trips in the last six months. Radek logged 214 trips —
+      nearly 15% more than someone who claims foraging is just a
+      hobby.
+
+      Cross-referencing: on 94 of Radek's trips, he visited the same
+      trail segments as Jana within two hours. He arrived after her
+      and left after her. Every time.
+
+      His registered home base is on the opposite side of the forest.
+      There's no reason for him to be on Jana's routes. Ever.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ludmila on Radek ---
+
+  ludmila_radek:
+    type: message
+    text: >
+      LUDMILA: Radek? He made Jana uncomfortable. He'd show up at
+      the pub when she was there. He'd offer to walk her home through
+      the forest. He'd comment on every single one of her mushroom
+      posts within minutes.
+
+      She told him she wasn't interested in collaborating. Clearly,
+      kindly. He said he understood. Then nothing changed. He just...
+      kept appearing. On her trails. At her spots. Always there.
+
+      A month ago she found that someone had been in her drying shed.
+      Her notes had been moved. Her foraging maps had been
+      photographed — she could see the flash reflection on the
+      laminated ones. She suspected Radek but couldn't prove it.
+    effects:
+      trust_ludmila: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Vojta detail ---
+
+  vojta_detail:
+    type: message
+    text: >
+      VOJTA: ty vole ok hele já jsem ti neřek všechno. když jsem
+      viděl radka u toho auta tak měl v ruce nějakej přístroj.
+      malej černej. a dal ho pod auto. jako přilepil zespodu.
+
+      já nejsem expert ale vypadalo to jak GPS lokátor kurva. jako
+      ten shit co vidíš ve filmech.
+
+      měl jsem něco říct ale jako kdo by mi věřil lol. náctiletej
+      co obviňuje dospělýho. do prdele ne.
+    effects:
+      trust_vojta: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Iva on Radek ---
+
+  iva_radek:
+    type: message
+    text: >
+      IVA: This is confidential but I'm a pharmacist, not a priest.
+      Radek Novotný comes in regularly. He's been buying things
+      that... suggest he's not sleeping. Anti-anxiety medication,
+      energy supplements, caffeine pills. The pattern is someone
+      under extreme stress. Or someone who stays up all night.
+
+      He also asked me once if we sold binoculars. Binoculars. In a
+      pharmacy. I said "tohle je lékárna, ne optika." He laughed.
+      I didn't think about it until Jana disappeared.
+    effects:
+      trust_iva: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Petra Nová (anonymous account) ---
+
+  petra_investigation:
+    type: tweet
+    from: petra
+    text: >
+      Měla poslouchat. Snažil jsem se ji chránit. Nikdo jiný
+      nerozuměl její práci jako já.
+    choices:
+      - Look at this account's history -> petra_posts
+
+  petra_posts:
+    type: message
+    text: >
+      @petra_nova: account created 10 months ago. Posts are all about
+      Jana's foraging work. Comments on every mushroom photo, every
+      herb identification, every forest walk. The tone shifts over
+      time:
+
+      Month 1: "Neuvěřitelná práce. Děláte co si ostatní netroufnou."
+      Month 3: "Proč neodpovídáte na moje zprávy? Chci jen spolupracovat."
+      Month 6: "Vidím vás v hospodě s jinými lidmi. Na ně máte čas ale na mě ne?"
+      Month 8: "Vím kam chodíte. Znám váš rozvrh. Jsem vždycky blízko."
+
+      The account has no photos, no personal details. Just Jana.
+      Only Jana.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> petra_style
+
+  petra_style:
+    type: message
+    text: >
+      Comparing @petra_nova with @radek_novotny:
+
+      Same use of mycological terminology. Same Czech spelling
+      habits — the specific way he abbreviates latin species names.
+      Same knowledge of Jana's routes that only someone tracking
+      her would have.
+
+      And one post from @petra_nova: "Váš nález na Lokalitě 12 byl
+      nádherný." Lokalita 12 is Jana's private numbering system for
+      her foraging spots. Not public. Never shared online.
+
+      It's Radek. The anonymous account is Radek.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Renata ---
+
+  renata_interview:
+    type: message
+    text: >
+      RENATA: Jana left something with me. A sealed waterproof bag.
+      She said "jestli se někdo zeptá na to, co se děje u Jezerního
+      hřbetu, dej mu tohle."
+
+      She looked frightened. She said she'd made copies of
+      everything but needed one set somewhere nobody would look.
+      A village bookshop seemed perfect.
+    effects: { trust_renata: "+10" }
+    choices:
+      - What's happening at Jezerní hřbet? -> renata_bag
+
+  renata_bag:
+    type: message
+    text: >
+      Renata reaches under the counter and produces a waterproof
+      dry bag.
+
+      RENATA: She said you'd come. Vezmi si to.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show healthy spruce with official "beetle damage" tags —
+      green wood, no galleries, no bore holes — and clearcut areas
+      with replanting stakes already in the ground. The USB drive
+      contains GPS survey data, forestry permit comparisons, and
+      Jana's detailed report documenting systematic fraud.
+    effects:
+      logging_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Strážník Holub ---
+
+  straznik_interview:
+    type: message
+    text: >
+      STRÁŽNÍK HOLUB: Off the record — and I mean completely off the
+      record — I wanted to investigate ŠumavaDřevo. My nadřízený told
+      me to stand down. He said the krajský úřad had "jurisdiction."
+      That's code for "nesahej na to." Don't touch it.
+
+      The Radek situation is different. I didn't even know about that
+      until now. If you have evidence of stalking, I can act on that.
+      That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_straznik: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Jana than anyone in Šumavské Pláně. Who is responsible?
+    choices:
+      - Confront Radek Novotný (the obsessive rival) -> confront_radek
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Libor Tůma (the logging director) -> confront_libor
+        when:
+          state: logging_evidence
+          gte: 3
+      - Confront Starosta Černý (political protection) -> confront_miroslav
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Radek (Best Ending) ---
+
+  confront_radek:
+    type: message
+    text: >
+      You present your evidence to Radek:
+
+      "I know @petra_nova is your account. I know you put a GPS
+      tracker on Jana's car. I know you've been following her routes
+      for months. I know you broke into her drying shed. I have
+      witnesses and I have the trail logs."
+    choices:
+      - Send -> radek_response
+
+  radek_response:
+    type: message
+    text: >
+      Radek doesn't reply for a long time. Then:
+
+      RADEK: You don't understand. I was protecting her. She was in
+      danger from ŠumavaDřevo and she wouldn't let me help. I needed
+      to know she was safe. The forest is dangerous and she went
+      alone. Everything I did was because I care about her work.
+      About her.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Strážník Holub. And to
+      Klára Veselá.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Strážník Holub reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the trail logs, the
+      witness testimonies — Radek is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Jana's
+      Škoda Fabia at the forest chapel near Mechový vrch.
+
+      Klára Veselá, finally in possession of Jana's full evidence
+      package, publishes the ŠumavaDřevo story in Šumavský deník
+      and it's picked up by iDNES. The krajský úřad orders an
+      unannounced inspection. The logging operation is halted pending
+      environmental review. Libor Tůma faces criminal charges for
+      falsifying forest health surveys.
+
+      And Jana Procházková, reading the story from a friend's cottage
+      in Sušice, calls her brother for the first time in nine days.
+
+      "Vracím se domů."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: jana
+    text: >
+      příroda nelže. a lidi ze šumavských plání taky ne. díky že
+      jste to nevzdali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Libor (Partial Ending) ---
+
+  confront_libor:
+    type: message
+    text: >
+      You present the logging evidence to Libor Tůma:
+
+      "I have GPS coordinates of healthy trees felled as beetle
+      salvage. I have photos of green stumps with no beetle damage.
+      I have the original survey data showing the permits were
+      falsified. I have the 218-year-old beech stump."
+    choices:
+      - Send -> libor_response
+
+  libor_response:
+    type: message
+    text: >
+      LIBOR: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. ŠumavaDřevo has always operated
+      within forestry regulations.
+
+      But it's too late. You've sent the evidence to Klára, to the
+      Spolek Šumavský les, and to the krajský úřad.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The logging story breaks. ŠumavaDřevo is ordered to halt all
+      felling pending investigation. The operation may shut down.
+      A hundred and twenty jobs hang in the balance. The village is
+      divided.
+
+      But Jana?
+
+      Without the stalking evidence, Radek is never investigated. He
+      continues to roam the forest. He continues to monitor her
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Jana reads about ŠumavaDřevo online. She
+      returns quietly. She changes her foraging routes. She stops
+      going into the forest alone. She checks under her car every
+      morning.
+
+      The corporation is exposed. But the person who terrorised Jana
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: jana
+    text: "jsem zpátky. les se uzdravuje. zbytek... uvidíme."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Starosta (Wrong Ending) ---
+
+  confront_miroslav:
+    type: message
+    text: >
+      You confront Starosta Černý with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> miroslav_response
+
+  miroslav_response:
+    type: tweet
+    from: tomas
+    text: >
+      Můj klient bere na vědomí vaše tvrzení. Jakékoliv veřejné
+      šíření difamačních materiálů bude předmětem okamžitého právního
+      řízení. — Kancelář Krejčí & partneři, Plzeň
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The starosta's lawyer buries your accusation. Without a direct
+      link between Černý and ŠumavaDřevo's fraud — and there isn't
+      one beyond political protection — your evidence is insufficient.
+
+      ŠumavaDřevo continues to operate. Radek continues to watch.
+      Jana stays in hiding.
+
+      Six months later, @petra_nova creates a new account. It follows
+      Jana's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: ŠUMAVSKÉ PLÁNĚ — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Logging evidence: ${logging_evidence}
+      Obsession evidence: ${stalker_evidence}
+
+      Thank you for playing. Jana's story explores themes of
+      environmental crime, corporate impunity, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Bílý kruh bezpečí (pomoc obětem): 116 006 (nonstop, zdarma)
+      Linka bezpečí (děti a mládež): 116 111
+      Linka pro ženy: 800 120 820
+      Policie ČR: 158

@@ -1,0 +1,1514 @@
+# DEAD ACCOUNT — Story 054: Demanovske Jaskyne (Slovakia, Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-054.yml
+#
+# Player investigates the death of cave guide Lukas Novak
+# in the fictional Low Tatras village of Demanovske Jaskyne.
+
+meta:
+  title: "Dead Account — Demanovske Jaskyne"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_zuzana: 0
+    trust_marek: 0
+    trust_petra: 0
+    trust_jan: 0
+    trust_simona: 0
+    trust_milan: 0
+    trust_katarina: 0
+    trust_jozef: 0
+    trust_eva: 0
+    trust_tibor: 0
+    trust_dominik: 0
+    trust_nina: 0
+    trust_stefan: 0
+    trust_lenka: 0
+    trust_roman: 0
+    trust_andrej: 0
+    trust_daniela: 0
+    trust_viktor: 0
+    trust_brano: 0
+    trust_major: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    mining_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Novy Obyvatel
+    bio: "prave som sa prestahoval do demanovskych jaskyni. objavujem nizke tatry"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "DemanovskeJaskyne.social"
+    description: "Vitajte na komunitnej instancii obce Demanovske Jaskyne"
+    avatar_url: /gamepatch/assets/dead-account/demanovskejaskyne_bot.png
+
+  npcs:
+    # === Lukas's Inner Circle ===
+    lukas:
+      name: "Lukas Novak"
+      bio: "jaskyniar | sprievodca demanovskymi jaskyniami | pod zemou je krajsie nez nad nou"
+      avatar: avatars/lukas.jpg
+    zuzana:
+      name: "Zuzana Novakova"
+      bio: "lukasova sestra | ucitelka na zakladke | liptovsky mikulas | brat by takto neodisiel"
+      avatar: avatars/zuzana.jpg
+    marek:
+      name: "Marek Holan"
+      bio: "najlepsi kamarad lukasa | horsky zachranar | hzs nizke tatry | hladam ho"
+      avatar: avatars/marek.jpg
+    petra:
+      name: "Petra Kucerova"
+      bio: "lukasova pritelka | veterinarka | jaskyniarske macky su moje srdce"
+      avatar: avatars/petra.jpg
+
+    # === Local Government ===
+    jan:
+      name: "Jan Gaborik"
+      bio: "Starosta obce Demanovske Jaskyne | V sluzbach obce od 2018 | #NasaDedina"
+      avatar: avatars/jan.jpg
+    katarina:
+      name: "Katarina Benova"
+      bio: "Zastupitelka pre zivotne prostredie | Obec Demanovske Jaskyne | ochrana jaskyni"
+      avatar: avatars/katarina.jpg
+    obec:
+      name: "Obec Demanovske Jaskyne"
+      bio: "Oficialny ucet | Obecne spravy | Uradne hodiny: Po-Pia 8:00-16:00"
+      avatar: avatars/obec.jpg
+
+    # === Local Business & Community ===
+    simona:
+      name: "Simona Vlckova"
+      bio: "Koliba u Simony | bryndzove halusky | zincica | pod jaskyniami od 2003"
+      avatar: avatars/simona.jpg
+    koliba:
+      name: "Koliba u Simony"
+      bio: "Tradicna slovenska kuchyna | Domace pivo | Zive heligonky v piatok | Srdce Demanoviec"
+      avatar: avatars/koliba.jpg
+    jozef:
+      name: "Jozef Kubik"
+      bio: "lesnik | sprava np nizke tatry | 30 rokov v lesoch | tie jaskyne su moj zivot"
+      avatar: avatars/jozef.jpg
+    eva:
+      name: "Eva Stastna"
+      bio: "lekarnicka | Demanovske Jaskyne | zdravie a poradna | aj v sobotu rano"
+      avatar: avatars/eva.jpg
+    tibor:
+      name: "Tibor Mraz"
+      bio: "penzion Horsky Duch | ubytovanie | turistika | priamo pri jaskyniach"
+      avatar: avatars/tibor.jpg
+    lenka:
+      name: "Lenka Sedlakova"
+      bio: "knihkupectvo U Stalaktitu | knihy nove aj stare | citanie v stredu | pod jaskyniami"
+      avatar: avatars/lenka.jpg
+    roman:
+      name: "Roman Polak"
+      bio: "speleolog | jaskyniarsky klub nizke tatry | mapujeme neznamu tmu"
+      avatar: avatars/roman.jpg
+
+    # === Journalist ===
+    stefan:
+      name: "Stefan Halas"
+      bio: "novinar | Liptovsky Kurier | zivotne prostredie a korupcia | tipy: stefan@liptovskykurier.sk"
+      avatar: avatars/stefan.jpg
+
+    # === LimeTatra (corporate) ===
+    limetatra:
+      name: "LimeTatra s.r.o."
+      bio: "Tazba vapenca a stavebnych materialov | Prevadzka Demanovce | ISO 14001 certifikat"
+      avatar: avatars/limetatra.jpg
+    andrej:
+      name: "Andrej Kovac"
+      bio: "riaditel prevadzky LimeTatra Demanovce | priemysel a region"
+      avatar: avatars/andrej.jpg
+    daniela:
+      name: "Daniela Oravcova"
+      bio: "Pravnicka | Kancelaria Oravcova & Partneri | Obchodne pravo | Banska Bystrica"
+      avatar: avatars/daniela.jpg
+
+    # === Teens ===
+    nina:
+      name: "Nina"
+      bio: "16 | lezenie a jaskyne | demanovce born | hory su moj zivot fr"
+      avatar: avatars/nina.jpg
+    dominik:
+      name: "Dominik"
+      bio: "17 | mtb & turistika | podzemne session | tatry liecim kazdou ranu"
+      avatar: avatars/dominik.jpg
+    milan:
+      name: "Milan"
+      bio: "15 | foto & video | jaskyne v ciernobielom | lukas je moj vzor"
+      avatar: avatars/milan.jpg
+
+    # === Media & Community ===
+    spravy_liptov:
+      name: "Spravy Liptov"
+      bio: "Regionalne spravy z Liptova a okolia | Tipy: redakcia@spravyliptov.sk"
+      avatar: avatars/spravy_liptov.jpg
+    pocasie_tatry:
+      name: "Pocasie Nizke Tatry"
+      bio: "Predpovede a vystrahy | Automaticka stanica | Aktualizacia kazdu hodinu"
+      avatar: avatars/pocasie_tatry.jpg
+    ochrana_jaskyni:
+      name: "Spolok Strazcovia Jaskyni"
+      bio: "Ochrana jaskynnych systemov | Dobrovolnici | Hlasenie poskodeni"
+      avatar: avatars/ochrana_jaskyni.jpg
+
+    # === Suspicious / Other ===
+    viktor:
+      name: "Viktor Nemec"
+      bio: "fotograf | krajina a priroda | nizke tatry su moj atelie"
+      avatar: avatars/viktor.jpg
+    brano:
+      name: "Brano Tichak"
+      bio: "."
+      avatar: avatars/anon.jpg
+    major:
+      name: "Major Horvath"
+      bio: "Policajny zbor SR | Obvodne oddelenie Liptovsky Mikulas | tiesne volanie: 158"
+      avatar: avatars/major.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN DEMANOVSKE JASKYNE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to DemanovskeJaskyne.social — the community Mastodon instance
+      for the Low Tatras village of Demanovske Jaskyne, Slovakia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @lukas_novak.
+
+      A cave guide. Underground photographer. He mapped passages nobody
+      else dared enter. People are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> lukas_profile
+
+  lukas_profile:
+    type: tweet
+    from: lukas
+    text: "V severnom tuneli su praskliny ktore tam minuly rok neboli. Niekto odstreluje prilis blizko jaskynneho systemu. Mam doklad."
+    choices:
+      - That's his last real post... -> dark_photo
+
+  dark_photo:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurred photo of darkness. Shot from a strange angle. A smear
+      of light across wet limestone. Posted at 2am. No caption.
+
+      His friends say that's not his style. Lukas always captioned his
+      cave photos with geological detail. The police say he probably
+      went hiking alone and got lost. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: major
+    text: >
+      Obdrzali sme oznamenie o nezvestnej osobe z obce Demanovske Jaskyne.
+      V sucasnosti nie su zistene okolnosti nasvedcujuce trestnemu cinu.
+      Akekolvek uzitocne informacie zasielajte na cislo 158 alebo na
+      obvodne oddelenie.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @petra_kucerova is
+      desperate. His sister @zuzana_novakova is driving from Liptovsky
+      Mikulas. His best friend @marek_holan is posting furious messages.
+      The forester @jozef_kubik says Lukas was right about the blasting.
+
+      And the photographer @viktor_nemec is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Lukas just
+      "went hiking alone."
+    effects: { trust_zuzana: "+5", trust_marek: "+5" }
+    choices:
+      - Start following Lukas's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Demanovske Jaskyne. Follow Lukas's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Simona (koliba owner, knows everyone) -> simona_intro
+      - Talk to Jozef (forester, heard the blasting) -> jozef_intro
+      - Talk to Nina (teen climber, seems shaken) -> nina_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Lukas with the rhythms of a small
+      mountain village: hiking trail conditions, the koliba's daily
+      specials, weather warnings for the peaks.
+
+      Key names surface: Petra (girlfriend, vet), Marek (mountain
+      rescue, furious), Stefan (journalist, oddly quiet), and the
+      teens — Nina, Dominik, Milan — who idolised Lukas's cave work.
+
+      Also prominent: LimeTatra s.r.o., the limestone quarry at the
+      edge of the valley. Their posts are corporate PR. Lukas's posts
+      were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Simona -> simona_intro
+      - Talk to Jozef -> jozef_intro
+      - Talk to Nina -> nina_intro
+
+  # --- Simona (social map) ---
+
+  simona_intro:
+    type: tweet
+    from: simona
+    text: >
+      Koliba je otvorena ale atmosfera je smutna. @lukas_novak, tvoj stol
+      caka. Vrat sa nam cim skor.
+    effects: { trust_simona: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Simona -> simona_talk
+
+  simona_talk:
+    type: message
+    text: >
+      SIMONA: Aha, ty si novy? Vitaj. Zle obdobie na prichodza.
+      Vsetci su v napati kvoli Lukasovi.
+
+      Poviem ti kto je kto. Petra je Lukasova pritelka — byvaju v byte
+      nad veterinou. Dobre dievca, znicena. Marek Holan je jeho najlepsi
+      kamarad, pracuje pri horskej zachranke. Zuzana je sestra, ide
+      z Liptaku.
+
+      A Stefan Halas — novinar — on a Lukas pracovali na niecom spolu.
+      Nieco o tych trhacinach. Stefan nepovedal ani slovo odkedy Lukas
+      zmizol. To nie je jeho styl vobec.
+
+      A ty posty od LimeTatry? Klamstva zabalene v ISO certifikatoch.
+      Kurva, ludia tu z toho maju dost.
+    effects: { trust_simona: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Viktor -> simona_viktor
+      - Ask about LimeTatra -> simona_limetatra
+      - Thank her and move on -> quest1_hub
+
+  simona_viktor:
+    type: message
+    text: >
+      SIMONA: Viktor Nemec? Ten fotograf? Chodi sem uz dva roky. Fotka
+      krajinu, hovorit. Ale hlavne fotka Lukasa. Vsade kde bol Lukas,
+      bol aj Viktor. Na jaskyniach, na chodnikoch, v kolibe. Vzdy so
+      svojim fotoaparatom.
+
+      Lukas mi raz povedal: "Ten chlap ma nervy. Fotka ma aj ked ho
+      prosim aby prestal." Myslela som ze to je normalne — turisti.
+      Teraz uz si nie som ista.
+
+      Jebat, ked o tom teraz premyslam, to bolo dost desive.
+    effects: { trust_simona: "+5" }
+    choices:
+      - Ask about LimeTatra -> simona_limetatra
+      - Move on -> quest1_hub
+
+  simona_limetatra:
+    type: message
+    text: >
+      SIMONA: Ten lom je tu od osemdesiatych rokov. Taziu vapenec na
+      stavebne materialy. Obec to tolerovala kvoli pracovnym miestam.
+      Ale jaskyniari sa stazuju uz roky — praskliny v tuneloch,
+      vibracne skody, prach v podzemnych vodach.
+
+      Lukas bol prvy kto isiel dole s kamerou a dokumentoval to.
+      Mal fotky, mal merania, mal doklady. Ze odstrelovanie poskodzuje
+      jaskynny system.
+
+      Dva tyzdne na to zmizol. Do pice, to predsa nemoze byt nahoda.
+    effects: { trust_simona: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jozef (forester, heard the blasting) ---
+
+  jozef_intro:
+    type: tweet
+    from: jozef
+    text: >
+      tridsiat rokov v tychto lesoch. vibracne od lomu su silnejsie nez
+      kedykolvek. @lukas_novak mal pravdu. a teraz je prec. zamyslite sa.
+    effects: { trust_jozef: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jozef -> jozef_talk
+
+  jozef_talk:
+    type: message
+    text: >
+      JOZEF: V tychto lesoch som tridsiat rokov. Poznam kazdy strom,
+      kazdy potok, kazdu jaskynnu dychavicu. A hovorim ti — tie
+      odstrely su silnejsie nez kedykolvek. Lom LimeTatry sa rozsiril.
+      Odstreluju blizsie k jaskynnemu systemu nez povoluje zakon.
+
+      Lukas robil merania. Isiel do jaskyni s vibracnym snimacom.
+      Dokumentoval praskliny. Zhromazdoval doklady. Bol tesne pred
+      tym aby to zverejnil.
+
+      A potom — zmizol. Vole, myslis ze tomu verim? Ze sa len tak
+      stratil v horach? Lukas pozna tieto jaskyne lepsie nez
+      hocikto zivy.
+    effects: { trust_jozef: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> jozef_night
+      - Move on -> quest1_hub
+
+  jozef_night:
+    type: message
+    text: >
+      JOZEF: Noc predtym nez zmizol — obchadzal som les okolo jedenastej.
+      Videl som svetla pri vstupe do severneho tunela. Nie cielky,
+      dobre som videl. Baterky. Dvaja, mozno traja ludia.
+
+      Jeden z nich mal kluece od prevadzkovej brany lomu LimeTatry.
+      Poznam ten zvuk — specificke kovove klucenie. A potom som pocul
+      hlas. Lukasov hlas. Povedal nieco ako "nechajte ma na pokoji."
+
+      Nenapadalo mi co s tym. Teraz nad tym premyslam neustale.
+    effects: { trust_jozef: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nina (teen climber, witness tease) ---
+
+  nina_intro:
+    type: tweet
+    from: nina
+    text: >
+      kurva co sa deje @lukas_novak je ten najlepsi clovek v tejto
+      dedine on ma naucil liezst on ma naucil respektovat jaskyne
+      nieco sa stalo a nikto nic nerobi do pice
+    effects: { trust_nina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Nina -> nina_talk_early
+
+  nina_talk_early:
+    type: message
+    text: >
+      NINA: ty si tu novy? hrozne nacasovanie vole. fakt lukas je
+      najlepsi na svete. naucil nas lezenie po skalach, vodil nas
+      do jaskyni, ukazoval nam stalaktity a vsetko. strasne cool.
+
+      a teraz sa bojim lebo dominik videl nieco divne pri vstupe
+      do jaskyni ale nechce o tom hovorit. hovori ze to nic nebolo
+      ale kurva ja viem ze nieco bolo
+    effects: { trust_nina: "+10" }
+    choices:
+      - What did Dominik see? -> nina_dominik_hint
+      - Move on -> quest1_hub
+
+  nina_dominik_hint:
+    type: message
+    text: >
+      NINA: presne neviem. bol na bike pri jaskyniach a videl
+      niekoho kto nieco robil pri lukasovom aute?? alebo nieco
+      take. flipuje z toho a nechce o tom hovorit. musit sa ho
+      spytat priamo ale je podozrievavy voci ludom co nepozna.
+      najprv skus hovorit o bikoch s nim lol
+
+      co za picovinu sa to tu deje
+    effects: { trust_nina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Demanovske Jaskyne. A Slovak mountain
+      village built around a cave system. A cave guide who was exposing
+      quarry damage. A disappearance nobody believes is an accident.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Petra (Lukas's girlfriend) -> petra_q1
+      - Talk to Marek (Lukas's best friend) -> marek_q1
+      - Check what Zuzana (Lukas's sister) is saying -> zuzana_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Petra Q1 ---
+
+  petra_q1:
+    type: tweet
+    from: petra
+    text: >
+      ak ma niekto spravy o @lukas_novak zavolajte mi prosim. jeho
+      veci su v byte. jeho jaskyniarska vystroj je tam. nikdy by
+      neodisiel bez nej.
+    effects: { trust_petra: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Petra -> petra_q1_talk
+
+  petra_q1_talk:
+    type: message
+    text: >
+      PETRA: Dakujem ze si napisal ale nepoznam ta. Lukas ma vela
+      priatelov tu. Urcite sa vrati.
+
+      ...Stale to opakujem. Uz tomu neverim.
+
+      [Petra is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_petra: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marek Q1 ---
+
+  marek_q1:
+    type: tweet
+    from: marek
+    text: >
+      Lukas pozna kazdy meter tychto jaskyni. NESTRATI SA. Uz 15 rokov
+      chodime spolu pod zem. Nieco sa stalo a ja to zistim.
+    effects: { trust_marek: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marek -> marek_q1_talk
+
+  marek_q1_talk:
+    type: message
+    text: >
+      MAREK: Kto si? Dalsi clovek z dediny co mi bude hovorit nech
+      sa ukludnim? Moj najlepsi kamarad mi volal noc predtym nez
+      zmizol. Povedal ze ma nieco velke. Povedal "keby sa nieco
+      stalo, pozri sa na LimeTatru." Potom zavesil.
+
+      To je posledne co som od neho pocul. Kurva, to nemoze byt
+      normalne.
+    effects: { trust_marek: "+10" }
+    choices:
+      - What do you think happened? -> marek_theory
+      - Move on -> quest1_hub
+
+  marek_theory:
+    type: message
+    text: >
+      MAREK: Myslim ze nasiel dokaz ze LimeTatra svojim odstrelovanim
+      nicim jaskynny system a oni ho umlcali. Ale taky myslim ze
+      ten creepy fotograf — Viktor — vie viac nez hovori. Sposob
+      akym sa na Lukasa pozeral... to nebolo normalne. To nebolo
+      len o fotografii.
+
+      Lukas mi pred mesiacmi hovoril ze ho niekto sleduje v jaskyniach.
+      Ze pocuva kroky za sebou. Ze vidi svetlo baterky za zatacikou.
+      Myslel ze sa mu to zda. Ja si nemyslim ze sa mu to zdalo.
+    effects: { trust_marek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Zuzana Q1 ---
+
+  zuzana_q1:
+    type: tweet
+    from: zuzana
+    text: >
+      moj brat ZMIZOL a policajti mi hovoria ze sa asi stratil na
+      turistike??? ON SA NESTRATI. idem z liptaku. niekto mi
+      vysvetli co sa tu deje.
+    effects: { trust_zuzana: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Zuzana -> zuzana_q1_talk
+
+  zuzana_q1_talk:
+    type: message
+    text: >
+      ZUZANA: Kto si ty? Dalsi co mi bude hovorit ze sa mam ukludnit?
+      Moj brat mi volal noc predtym nez zmizol. Povedal ze ma nieco
+      velke. Povedal "keby sa nieco stalo, pozri sa na LimeTatru."
+      A potom povedal este nieco — "a on tam bol zase. Stale tam je."
+
+      Nechcela povedat kto "on" je. Hlas sa mu trasol.
+    effects: { trust_zuzana: "+10" }
+    choices:
+      - What do you think "he" means? -> zuzana_theory
+      - Move on -> quest1_hub
+
+  zuzana_theory:
+    type: message
+    text: >
+      ZUZANA: Neviem presne. Ale Lukas mi pred dvoma mesiacmi
+      hovoril o nejakom fotografovi co ho sleduje. Vsade kde isiel,
+      ten chlap tam bol. V jaskyniach, na chodnikoch, aj v obci.
+      S fotoaparatom namiernym na neho.
+
+      Lukas mu povedal nech prestane. Neprestal. Lukas mu napisal
+      spravu. Ziadna odpoved. Len dalsia fotka Lukasa zdialky.
+
+      Do pice, to je stalkingovy spravanie. A policajti to ignoruju.
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Lukas went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Dominik (was biking near the caves) -> dominik_interview
+      - Find Tibor (pension owner, works late) -> tibor_interview
+      - Find Roman (speleologist, early morning at the cave entrance) -> roman_interview
+      - Find Eva (pharmacist, starts early, saw something) -> eva_interview
+
+  # --- Dominik (saw someone at Lukas's car) ---
+
+  dominik_interview:
+    type: tweet
+    from: dominik
+    text: >
+      dobra session dnes ale ta atmosfera pri jaskyniach je divna
+      v poslednom case. kurva nieco je zle. neviem vysvetlit
+    effects: { trust_dominik: "+5" }
+    choices:
+      - Ask Dominik about that evening -> dominik_talk
+
+  dominik_talk:
+    type: message
+    text: >
+      DOMINIK: vole ok ale nikomu to nehovor. bol som na bike pri
+      jaskyniach okolo siedmej vecer. a videl som toho fotografa —
+      viktora — pri lukasovom aute. vyzeral ze v nom nieco hlada
+      alebo nieco tam dava. ked ma zbadal odisiel mega rychlo.
+
+      ja som nic nepovedal lebo som nechcel problemy ale kurva
+      teraz je to vazne. to nie je normalne jeho spravanie
+    effects:
+      trust_dominik: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tibor (pension owner, saw late-night meeting) ---
+
+  tibor_interview:
+    type: tweet
+    from: tibor
+    text: >
+      Pripomienka: oblast pri vstupe do jaskyni je uzavrena medzi
+      22:00 a 6:00. Zaznamenal som neopravneny pohyb v poslednych
+      nociach.
+    effects: { trust_tibor: "+5" }
+    choices:
+      - Ask Tibor what he saw -> tibor_talk
+
+  tibor_talk:
+    type: message
+    text: >
+      TIBOR: Zavieral som penzion okolo pol jedenastej. Videl som
+      Lukasovo auto este na parkovisku pri jaskyniach. A vedla neho
+      cierny SUV — s limetarovskymi znackami. Dvaja chlapi stali
+      pri vstupe do severneho tunela. Jedneho som spoznal: Andrej
+      Kovac, riaditel lomu.
+
+      O pol jedenastej. Pri jaskyniach. To nie je normalne.
+
+      Zapisal som to do knihy hosti. Nikto sa na to nepytal.
+    effects:
+      trust_tibor: "+10"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Roman (saw Lukas fleeing) ---
+
+  roman_interview:
+    type: tweet
+    from: roman
+    text: >
+      hore o stvrtej na obhliadku jaskyni. vstup nebol prazdny.
+      niekto bezal po chodnicku smerom k lesu. v tme.
+      to nebol turista.
+    effects: { trust_roman: "+5" }
+    choices:
+      - Ask Roman what he saw -> roman_talk
+
+  roman_talk:
+    type: message
+    text: >
+      ROMAN: Vstavem o stvrtej na kontrolu jaskyni. To rano — rano
+      po Lukasovom poslednom poste — som videl niekoho na chodnicku.
+      Bezal. Chlap, s batohom, smerom k horskemu sedlu. Bola este
+      tma. Pohyboval sa rychlo, akoby sa bal.
+
+      Zavolal som ale nezastavil. Myslel som ze je to turisticky
+      maniakr ale... kto bezi o stvrtej s batohom cez les?
+
+      Ked som sa dozvedel o Lukasovi, poskladal som si to.
+      To bol on. Utekal pred niecim.
+    effects:
+      trust_roman: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Eva (pharmacist, saw car chase) ---
+
+  eva_interview:
+    type: tweet
+    from: eva
+    text: >
+      Otvaranie lekarni o piatej ako vzdy. Ale to rano islo auto
+      privelkou rychlostou po ceste k sedlu. Ovela prirychlo na
+      horsku cestu.
+    effects: { trust_eva: "+5" }
+    choices:
+      - Ask Eva what she saw -> eva_talk
+
+  eva_talk:
+    type: message
+    text: >
+      EVA: Otvarala som lekaren o piatej ako kazdy den. To rano
+      islo auto okolo — rychlo, ovela prirychlo na horsku cestu.
+      Cierny SUV. Potom asi o dve minuty neskor dalsi. Mensi,
+      svetlejsi. Nahanacka? Neviem.
+
+      To druhe auto odbocilo k starej turistickej chatke pod sedlom.
+      Prvy pokracoval smerom na Liptovsky Mikulas.
+
+      Povedala som to policajtom. Zapisali si to. Tym to skoncilo.
+    effects:
+      trust_eva: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Petra (girlfriend)
+      and Milan (saw Viktor watching the flat).
+    choices:
+      - Talk to Petra about that night -> petra_interview
+      - Talk to Milan -> milan_interview
+      - Find Dominik -> dominik_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tibor -> tibor_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Roman -> roman_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Eva -> eva_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Petra (last to see Lukas) ---
+
+  petra_interview:
+    type: tweet
+    from: petra
+    text: >
+      ta fotka na lukasovom ucte. to nie je on. lukas nikdy nepostuje
+      bez popisu. lukas nepostuje o druhej rano. niekto iny to
+      urobil.
+    effects: { trust_petra: "+5" }
+    choices:
+      - DM Petra -> petra_talk_low
+        when:
+          state: trust_petra
+          lt: 50
+      - DM Petra -> petra_talk_high
+        when:
+          state: trust_petra
+          gte: 50
+
+  petra_talk_low:
+    type: message
+    text: >
+      PETRA: Vazim si zaujem ale naozaj sa nechcem bavit s cudzimi
+      ludmi o tomto.
+
+      [Petra needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_petra: "+5" }
+    choices:
+      - Share what you've learned about the night -> petra_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  petra_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the caves, the
+      quarry men, the running figure. Petra is silent for a while.
+
+      PETRA: Ty to naozaj skusas zistit. Dobre. Budem hovorit.
+    effects: { trust_petra: "+25" }
+    choices:
+      - What happened that night? -> petra_talk_high
+
+  petra_talk_high:
+    type: message
+    text: >
+      PETRA: Prisiel domov okolo jedenastej. Mala som nocnu slubu
+      na klinike takze som sa chystala. Bol bledy, triasol sa.
+      Povedal "vedia co mam." Chytil laptop a externe disky s
+      fotkami.
+
+      Pytala som sa kto. Povedal "z lomu. Prisli k jaskyni."
+      Potom povedal este nieco — "a on tam bol tiez. Stale
+      tam je."
+
+      Nechcel povedat kto "on" bol. Objal ma, povedal "neboj sa,"
+      a odisiel s batohom. To bolo vsetko. Do rana bolo auto prec
+      a ta divna fotka na jeho ucte.
+    effects:
+      trust_petra: "+15"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Milan (saw Viktor watching the flat) ---
+
+  milan_interview:
+    type: message
+    text: >
+      MILAN: vole ok toto je creepy ale ten fotograf — viktor —
+      videl som ho asi trikrat pred lukasovym bytom vecer. len
+      tak stale sedel a pozeral na okna. mega creepy.
+
+      posledny raz to bolo dva dni pred tym nez lukas zmizol.
+      sedel v aute naproti. len tak. svetla zhasnute.
+
+      co za picovinu je toto
+    effects:
+      trust_milan: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Viktor seen at Lukas's car near the caves (Dominik)
+      22:30 — LimeTatra SUV at the cave entrance, Andrej Kovac present (Tibor)
+      23:00 — Lukas arrives home, shaken, grabs laptop and photo drives (Petra)
+      04:00 — Man running on forest path toward mountain pass (Roman)
+      05:00 — Two cars speeding on mountain road, one toward old cabin (Eva)
+
+      LimeTatra confronted Lukas at the cave entrance. He fled home,
+      grabbed his evidence, and ran. Someone chased him.
+
+      But there are two threats: the quarry corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is LimeTatra hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Viktor really doing? Why was he
+        at Lukas's car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Viktor -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${mining_evidence}
+      OBSESSION THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: mining_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      LimeTatra is hiding something. Lukas had proof. Now he's
+      gone and his evidence is missing from the cave monitoring station.
+
+      Mining evidence: ${mining_evidence}
+    choices:
+      - Search the cave monitoring records -> cave_records
+      - Talk to Stefan the journalist -> stefan_interview
+      - Talk to Katarina (environment deputy) -> katarina_interview
+      - Check the Strazcovia Jaskyni association -> asso_investigation
+      - Talk to Jozef about the blasting -> jozef_blasting
+      - Back to hub -> investigation_hub
+
+  # --- Cave Monitoring Records ---
+
+  cave_records:
+    type: message
+    text: >
+      The cave monitoring system's public database shows Lukas's recent
+      work: vibration measurements from twelve points inside the cave
+      system. The data for the northern tunnel is marked "CAKAJUCE NA
+      SCHVALENIE" — the only section with that status.
+
+      His cave log, shared with the Spravca Jaskyni for safety, shows
+      he made 15 monitoring visits to the area nearest the quarry in
+      the past month. The last entry: "Novy system prasklin. Porovnal
+      som s meraniami z minuleho roka. Vibracne posuny su 300% nad
+      normou. Odstrely LimeTatry su pricinou."
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Stefan ---
+
+  stefan_interview:
+    type: message
+    text: >
+      STEFAN: O zdrojoch nehovorim. Bodka.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Show Stefan the evidence you have -> stefan_with_evidence
+        when:
+          state: mining_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  stefan_with_evidence:
+    type: message
+    text: >
+      STEFAN: ...mas viac nez som cakal.
+
+      Dobre. Lukas a ja sme spolupracovali. Mal fotky prasklin
+      v jaskynnom systeme ktore sa zhoduju s odstrelovymi
+      harmonogramami LimeTatry. Mal vibracne merania desatnabsobne
+      nad povolenym limitom. Mal doklady ze lom sa rozsiruje bez
+      riadneho EIA posudenia.
+
+      Chceli sme to publikovat spolu. Potom zmizol. A dva dni na
+      to mi niekto vlomil do auta a ukradol zalohu.
+
+      Lukas je nazivu. Kontaktoval ma raz z neznameho cisla. Povedal
+      ze sa skryva. Povedal "vyhrazali sa mi pri jaskyni a este
+      niekto iny ma necha na pokoji."
+
+      Nemozem ti povedat kde je. Ale s dostocnym dokazom mozem
+      publikovat a bude bezpecne sa vratit.
+    effects:
+      trust_stefan: "+25"
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> stefan_hint
+      - Back to investigation hub -> investigation_hub
+
+  stefan_hint:
+    type: message
+    text: >
+      STEFAN: Z lomu poslali riaditela — Kovaca — a nejakeho pravnika
+      k jaskyni tu noc. Povedali mu nech odovzda vsetko alebo bude
+      celit pravnym nasledkom. Zastraseovanie oblecene v pravnickom
+      jazyku.
+
+      Ale Lukas hovoril aj o niekom inom. O niekom kto ho sledoval
+      pod zemou. Kto vzdy vedel kde je. To je iny problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Katarina ---
+
+  katarina_interview:
+    type: message
+    text: >
+      KATARINA: Ako zastupitelka pre zivotne prostredie beriem tieto
+      obvinenia vazne. Ale LimeTatra zamestanava 150 ludi v obci.
+      Starosta trva na tom ze musime "udrzat dialog."
+
+      Neoficialne? Videla som inspekce spracy z okresu. LimeTatra
+      prechadza zakazdym. Ale tie inspeckie su ohlasene dva tyzdne
+      vopred. Cistia pred prichodom.
+
+      Lukas mal neohlasene udaje. To je to co z toho robi nebezpecne.
+    effects:
+      trust_katarina: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Strazcovia Jaskyni ---
+
+  asso_investigation:
+    type: tweet
+    from: ochrana_jaskyni
+    text: >
+      VAROVANIE: Zaznamenane nove praskliny v severnom tuneli
+      Demanovskych jaskyni. Fotodokumentacia a merania prebiehaju.
+      Ziadame neohlasenu inspekciu lomu LimeTatra.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Strazcovia Jaskyni dokumentuju stav jaskynneho systemu tri roky.
+      Ich udaje ukazuju jasny vzorec: vibracne skody ktore koreluju
+      s odstrelovym harmonogramom LimeTatry. Silnejsie v pracovnych
+      dnoch, slabsie cez vikendy. Silnejsie cez den, slabsie v noci.
+
+      Vzorec je neomaritelny. Toto je pretrvavajuce, umyselne
+      poskodzovanie chraneneho jaskynneho systemu casovo riadene
+      tak aby sa vyhlo detekcii.
+
+      Lukas bol clenom. Prispel vacsinou fotografii z podzemnych
+      priestorov.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Jozef blasting ---
+
+  jozef_blasting:
+    type: message
+    text: >
+      JOZEF: Ukazem ti nieco. Minuly mesiac som pri obchadzke nasiel
+      toto — cistu stenu praskliny v severnom tuneli. Cerstva. Musis
+      sa dotknut — este je mokra od priesaku. Presne v smere od lomu.
+
+      Vyfotil som to a poslal Lukasovi. Povedal ze to je posledny
+      kusok — dokaz ze odstrelovanie priamo ohrozuje stabilitu
+      jaskynneho systemu. Praskliny veduce od lomu az do chraneneho
+      uzemia.
+
+      Este mam fotky. A presne GPS suradnice.
+    effects:
+      trust_jozef: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Viktor Nemec. Photographer. Nature lover. Something more?
+      Someone was following Lukas underground. Someone was watching
+      his flat. Someone was at his car.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate Viktor's cave access -> cave_access
+      - Talk to Petra about Viktor -> petra_viktor
+        when:
+          state: trust_petra
+          gte: 20
+      - Talk to Dominik (more detail on the car incident) -> dominik_detail
+      - Talk to Eva the pharmacist about Viktor -> eva_viktor
+      - Check the anonymous account @brano_tichak -> brano_investigation
+      - Talk to Lenka the bookseller -> lenka_interview
+        when:
+          state: trust_lenka
+          gte: 40
+      - Talk to Major Horvath -> major_interview
+        when:
+          state: trust_major
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Cave Access Logs ---
+
+  cave_access:
+    type: message
+    text: >
+      The cave system's electronic access log tracks all authorised
+      entries. Lukas's access card was used 52 times last month.
+      Viktor had no access card — but guest entries show a "V. Nemec,
+      fotograf" signed in 38 times. Nearly as often as the official
+      guide.
+
+      Cross-referencing: on 29 of Viktor's 38 entries, he entered
+      the cave within 20 minutes of Lukas. He went in after him and
+      came out after him. Every time.
+
+      His stated photography project was about surface landscapes.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Petra on Viktor ---
+
+  petra_viktor:
+    type: message
+    text: >
+      PETRA: Viktor? Lukasovi z neho liezli nervy. Objavoval sa
+      vsade kde bol Lukas. V jaskyniach, na chodnikoch, v kolibe.
+      Stale s fotoaparatom namiernym na neho.
+
+      Lukas mu povedal ze nema zaujem byt foteny. Jasne, slusne.
+      Viktor povedal ze rozumie. Potom sa nic nezmenilo. Len...
+      pokracoval. Stale tam bol. Vzdy tam bol.
+
+      Pred mesiacom Lukas zistil ze niekto mu pristupoval k zamku
+      jaskyniarskej skrinky kde mal ukladat merania. Podozrieval
+      Viktora ale nemohol to dokazat.
+
+      Jebat, mala som to brat vazsiejsie.
+    effects:
+      trust_petra: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Dominik detail ---
+
+  dominik_detail:
+    type: message
+    text: >
+      DOMINIK: vole ok fakt som nepovedal vsetko. ked som videl
+      viktora pri lukasovom aute mal nieco v ruke. maly kraby.
+      dal to pod auto na strane vodica. prilepil to dospodu.
+
+      ja nie som expert ale vyzeralo to jak gps tracker. presne
+      tak ako v tych serialoch na netflixe.
+
+      mal som nieco povedat ale kurva kto by mi uveril? tynedzer
+      co obviuluje fotografa. do pice nie.
+    effects:
+      trust_dominik: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Eva on Viktor ---
+
+  eva_viktor:
+    type: message
+    text: >
+      EVA: Toto je doverne ale som lekarnicka, nie fararka. Viktor
+      Nemec chodi pravidelne. Kupuje veci ktore... naznacuju ze
+      nespi. Lieky proti uzkosti, uspavatdla, energeticke doplnky.
+      Vzorec niekoho pod extremnym stresom.
+
+      Raz sa ma pytial, uplne bezne, ci predavame GPS trackery.
+      Povedala som "toto je lekaren, nie elektro." Zasmial sa.
+      Nemyslela som na to az kym Lukas nezmizol.
+    effects:
+      trust_eva: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Brano (anonymous account) ---
+
+  brano_investigation:
+    type: tweet
+    from: brano
+    text: >
+      Mal pocuvat. Snazil som sa ho chranit. Nikto iny nerozumel
+      jeho praci tak ako ja.
+    choices:
+      - Look at this account's history -> brano_posts
+
+  brano_posts:
+    type: message
+    text: >
+      @brano_tichak: ucet vytvoreny pred 9 mesiacmi. Posty su
+      vsetky o Lukasovej praci. Komentare ku kazdej jaskynnej
+      fotke, ku kazdemu meraniu, ku kazdemu postu. Ton sa meni:
+
+      Mesiac 1: "Neuveritelna praca. Robis co sa nikto iny neodvazi."
+      Mesiac 3: "Preco neodpovedas na moje spravy? Chcem len
+      spolupracovat."
+      Mesiac 6: "Vidim ta v kolibe s inymi ludmi. Na nich mas cas
+      ale na mna nie?"
+      Mesiac 8: "Viem kam chodis. Poznam tvoj rozvrh. Som stale
+      blizko."
+
+      Ucet nema ziadne fotky, ziadne osobne udaje. Len Lukas.
+      Iba Lukas.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> brano_style
+
+  brano_style:
+    type: message
+    text: >
+      Porovnanie @brano_tichak s @viktor_nemec:
+
+      Rovnaka pouzitie geologickej a jaskyniarskej terminologie.
+      Rovnake pravopisne zvyky — specificky sposob akym pise
+      zlozene terminy. Rovnake znalosti o Lukasovom vyskume
+      ktore by mal len niekto kto ho sledoval zblizka.
+
+      A jeden post od @brano_tichak: "Tvoj prieskum v sektore 7
+      bol uzasny." Sektor 7 je interne oznacenie jaskyniarskej
+      spravy. Nie je verejne.
+
+      To je Viktor. Anonymny ucet je Viktor.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lenka ---
+
+  lenka_interview:
+    type: message
+    text: >
+      LENKA: Lukas u mna nechal nieco. Vodotesny kufor. Povedal
+      "ak sa ta niekto spyta na praskliny v severnom tuneli, daj
+      mu toto."
+
+      Vyzeral vydeseny. Povedal ze si urobil kopie vsetkeho ale
+      potreboval jednu sadu mimo — niekde kde by nikto nenapadlo
+      hladat. Knihkupectvo sa zdalo idealne.
+    effects: { trust_lenka: "+10" }
+    choices:
+      - What's in the case? -> lenka_case
+
+  lenka_case:
+    type: message
+    text: >
+      Lenka siahne pod pult a vytiahne vodotesny Pelican kufor.
+
+      LENKA: Vedela som ze pridas. Ber to.
+
+      Vnutri: USB kluc a sada vytlacenych fotografii. Fotky ukazuju
+      system prasklin v jaskynnom tuneli — presne koreluujce s
+      odstrelovymi bodmi lomu LimeTatry. USB kluc obsahuje vibracne
+      merania, geologicku analyzu a podrobnu spravu od Lukasa.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Major Horvath ---
+
+  major_interview:
+    type: message
+    text: >
+      MAJOR HORVATH: Neoficialne — a myslim naozaj uplne neoficialne —
+      chcel som vysetrit LimeTatru. Moj nadriadeny mi povedal
+      nech od toho dam ruky prec. Ze "okres ma jurisdikciu." To je
+      kod pre "nechytaj sa toho."
+
+      Situacia s Nemcom je ina. O tom som doteraz nevedel. Ak
+      mas dokazy o stalkingu, mozem konat. To je jasne moja
+      pravomoc.
+
+      Prines mi nieco konkretne a pripad znovu otvorim.
+    effects:
+      trust_major: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Lukas than anyone in Demanovske Jaskyne. Who is responsible?
+    choices:
+      - Confront Viktor Nemec (the obsessive photographer) -> confront_viktor
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Andrej Kovac (the quarry director) -> confront_andrej
+        when:
+          state: mining_evidence
+          gte: 3
+      - Confront Mayor Gaborik (political protection) -> confront_jan
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Viktor (Best Ending) ---
+
+  confront_viktor:
+    type: message
+    text: >
+      You present your evidence to Viktor:
+
+      "I know @brano_tichak is your account. I know you put a GPS
+      tracker on Lukas's car. I know you followed him into the caves.
+      I know you were watching his flat. I have witnesses and
+      I have the access logs."
+    choices:
+      - Send -> viktor_response
+
+  viktor_response:
+    type: message
+    text: >
+      Viktor doesn't reply for a long time. Then:
+
+      VIKTOR: Nerozumies. Chranil som ho. Bol v nebezpecenstve kvoli
+      LimeTatre a nechcel prijat pomoc. Musel som vediet ze je v
+      bezpeci. Vsetko co som robil bolo preto ze mi na nom zalezi.
+
+      To nie je starostlivost. To je obsedsija.
+
+      Dokazy si uz poslal Majorovi Horvathovi. A Stefanovi Halasovi.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Major Horvath reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witness testimonies — Viktor is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Lukas's
+      car at the old mountain cabin below the pass.
+
+      Stefan Halas, finally in possession of Lukas's full evidence
+      package, publishes the LimeTatra story in SME. The inspektorat
+      zivotneho prostredia orders an unannounced inspection. The
+      quarry is shut down pending environmental remediation. Andrej
+      Kovac faces criminal charges for operating without proper EIA
+      and damaging a protected natural monument.
+
+      And Lukas Novak, reading the story from a friend's house in
+      Martin, calls his sister for the first time in nine days.
+
+      "Idem domov."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lukas
+    text: >
+      jaskyne neklamou. a ludia z demanoviec tiez nie.
+      dakujem ze ste to nevzdali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Andrej (Partial Ending) ---
+
+  confront_andrej:
+    type: message
+    text: >
+      You present the quarry evidence to Andrej Kovac:
+
+      "I have photographs of cracks in the cave system correlating
+      with your blasting schedule. I have vibration measurements
+      ten times over legal limits. I have your original inspection
+      reports showing the data was falsified. I have GPS coordinates
+      of damage inside the protected zone."
+    choices:
+      - Send -> andrej_response
+
+  andrej_response:
+    type: message
+    text: >
+      ANDREJ: Tato konverzacia sa preposiela nasmu pravnemu
+      oddeleniu. Akekolvek zverejnenie difamacnych materialov
+      bude mat za nasledok okamzite pravne kroky. LimeTatra
+      vzdy prevadzkovala v sulade s regulacnymi poziadavkami.
+
+      Ale je neskoro. Dokazy si poslal Stefanovi, Strazcom
+      Jaskyni aj na inspektorat.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The quarry story breaks. LimeTatra is ordered to halt all
+      blasting pending investigation. The quarry may close
+      permanently. Stopadesiat pracovnych miest visi na vazach.
+      Obec je rozdelena.
+
+      But Lukas?
+
+      Without the stalking evidence, Viktor is never investigated.
+      He continues to roam the caves with his camera. He creates a
+      new anonymous account. He finds new ways to track.
+
+      Three months later, Lukas reads about LimeTatra online. He
+      returns quietly. He changes his routes. He stops going
+      underground alone. He checks his car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Lukas walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lukas
+    text: "som spat. jaskyne su v bezpeci. zvysok... uvidime."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_jan:
+    type: message
+    text: >
+      You confront Mayor Gaborik with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> jan_response
+
+  jan_response:
+    type: tweet
+    from: daniela
+    text: >
+      Nas klient berie na vedomie vase obvinenia. Akekolvek verejne
+      sirenie difamacnych vyrokov bude mat za nasledok okamzite
+      pravne kroky. — Kancelaria Oravcova & Partneri, Banska Bystrica
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Gaborik and LimeTatra's blasting — and there
+      isn't one beyond political protection — your evidence is
+      insufficient.
+
+      LimeTatra continues to operate. Viktor continues to follow.
+      Lukas stays in hiding.
+
+      Six months later, @brano_tichak creates a new account.
+      It follows Lukas's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: DEMANOVSKE JASKYNE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Mining evidence: ${mining_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Lukas's story explores themes of
+      corporate impunity, environmental destruction, obsessive
+      behaviour, community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Linka pomoci: 0800 500 333 (bezplatna linka)
+      Narodna linka pre zeny zazivajuce nasilie: 0800 212 212
+      Linka detskej dovery: 116 111
+      Environmentalny inspektorat SR: 02/59 562 165

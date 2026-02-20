@@ -1,0 +1,1515 @@
+# DEAD ACCOUNT — Story 004: Caleta del Faro (Spain)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-004.yml
+#
+# Player investigates the disappearance of flamenco teacher Carmen Ruiz
+# in the fictional Andalusian coastal town of Caleta del Faro.
+
+meta:
+  title: "Dead Account — Caleta del Faro"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lucia: 0
+    trust_pablo: 0
+    trust_dolores: 0
+    trust_rafael: 0
+    trust_alejandro: 0
+    trust_ines: 0
+    trust_mari: 0
+    trust_pepe: 0
+    trust_concepcion: 0
+    trust_javier: 0
+    trust_rocio: 0
+    trust_antonio: 0
+    trust_miguel: 0
+    trust_pilar: 0
+    trust_nuria: 0
+    trust_alba: 0
+    trust_dani: 0
+    trust_zara: 0
+    trust_sargento: 0
+    trust_sombra: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corruption_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "recién llegado a caleta del faro. descubriendo andalucía paso a paso"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "CaletaDelFaro.social"
+    description: "Bienvenidos a la instancia comunitaria de Caleta del Faro"
+    avatar_url: /gamepatch/assets/dead-account/caleta_bot.png
+
+  npcs:
+    # === Carmen's Inner Circle ===
+    carmen:
+      name: "Carmen Ruiz"
+      bio: "bailaora | profesora de flamenco | el compás no miente | caleta del faro"
+      avatar: avatars/carmen.jpg
+    lucia:
+      name: "Lucía Navarro"
+      bio: "mejor amiga de carmen | fisioterapeuta | café con leche y olas | caleta del faro"
+      avatar: avatars/lucia.jpg
+    pablo:
+      name: "Pablo Ruiz"
+      bio: "hermano de carmen | mecánico en cádiz | si le ha pasado algo alguien lo va a pagar"
+      avatar: avatars/pablo.jpg
+    rocio:
+      name: "Rocío Vega"
+      bio: "guitarrista flamenca | acompaño a carmen desde los 15 | el arte es resistencia"
+      avatar: avatars/rocio.jpg
+
+    # === Local Government ===
+    concepcion:
+      name: "Concepción Márquez"
+      bio: "Alcaldesa de Caleta del Faro | Transformando nuestro pueblo | #CaletaAvanza"
+      avatar: avatars/concepcion.jpg
+    javier:
+      name: "Javier Ortega"
+      bio: "Concejal de Cultura | Ayuntamiento de Caleta del Faro | patrimonio y tradición"
+      avatar: avatars/javier.jpg
+    ayuntamiento:
+      name: "Ayuntamiento de Caleta del Faro"
+      bio: "Cuenta oficial | Noticias municipales | Horarios: Lun-Vie 9h-14h"
+      avatar: avatars/ayuntamiento.jpg
+
+    # === Local Business & Community ===
+    dolores:
+      name: "Dolores Heredia"
+      bio: "Bar La Peña | tapas | fino | cante jondo los viernes | desde 1978"
+      avatar: avatars/dolores.jpg
+    pepe:
+      name: "Pepe Camacho"
+      bio: "pescador | 45 años en la mar | esta costa es mi vida"
+      avatar: avatars/pepe.jpg
+    mari:
+      name: "Mari Carmen Díaz"
+      bio: "farmacéutica | Caleta del Faro | salud y consejo | guardia los domingos"
+      avatar: avatars/mari.jpg
+    antonio:
+      name: "Antonio Reyes"
+      bio: "panadería Reyes | pan cateto | tortas de aceite | desde las 4 de la mañana"
+      avatar: avatars/antonio.jpg
+    miguel:
+      name: "Miguel Ángel Torres"
+      bio: "librería El Faro | libros nuevos y usados | tertulias los miércoles"
+      avatar: avatars/miguel.jpg
+
+    # === Journalist ===
+    pilar:
+      name: "Pilar Mendoza"
+      bio: "periodista independiente | medio ambiente y costa | contacto: pilar@mendoza-prensa.es"
+      avatar: avatars/pilar.jpg
+
+    # === Costa Dorada Resorts (corporate antagonist) ===
+    costadorada:
+      name: "Costa Dorada Resorts S.L."
+      bio: "Turismo premium | Proyecto Caleta Beach Resort | Compromiso con el desarrollo sostenible"
+      avatar: avatars/costadorada.jpg
+    rafael:
+      name: "Rafael Montero"
+      bio: "director de desarrollo | Costa Dorada Resorts | turismo y territorio"
+      avatar: avatars/rafael.jpg
+    nuria:
+      name: "Nuria Salazar"
+      bio: "Abogada | Bufete Salazar & Vega | Derecho urbanístico | Sevilla"
+      avatar: avatars/nuria.jpg
+
+    # === Teens ===
+    alba:
+      name: "Alba"
+      bio: "16 | baile y playa | caleta born | carmen es la reina tío"
+      avatar: avatars/alba.jpg
+    dani:
+      name: "Dani"
+      bio: "17 | skate & surf | atardeceres desde el faro | aquí no hay nada pero mola"
+      avatar: avatars/dani.jpg
+    zara:
+      name: "Zara"
+      bio: "15 | fotos & poesía | la costa en blanco y negro | carmen me enseñó a sentir"
+      avatar: avatars/zara.jpg
+
+    # === Media & Community ===
+    actu_caleta:
+      name: "Caleta Noticias"
+      bio: "Noticias de Caleta del Faro y la costa | contacto: redaccion@caletanoticias.es"
+      avatar: avatars/actu_caleta.jpg
+    meteo_caleta:
+      name: "Meteo Caleta"
+      bio: "Previsiones y alertas | Estación automática | Actualización cada hora"
+      avatar: avatars/meteo_caleta.jpg
+    asso_costa:
+      name: "Plataforma Salvemos la Costa"
+      bio: "Protección del litoral | Contra la especulación urbanística | Voluntarios bienvenidos"
+      avatar: avatars/asso_costa.jpg
+
+    # === Suspicious / Other ===
+    ines:
+      name: "Inés Carrillo"
+      bio: "relaciones públicas | Costa Dorada Resorts | hago mi trabajo y punto"
+      avatar: avatars/ines.jpg
+    sombra:
+      name: "El Farero"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sargento:
+      name: "Sargento Delgado"
+      bio: "Guardia Civil de Caleta del Faro | Puesto principal | urgencias: 062"
+      avatar: avatars/sargento.jpg
+    alejandro:
+      name: "Alejandro Vidal"
+      bio: "fotógrafo | ex de carmen | 'todavía pienso en ella' | cádiz"
+      avatar: avatars/alejandro.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN CALETA DEL FARO
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to caletadelfaro.social — the community Mastodon instance
+      for the coastal town of Caleta del Faro, Andalusia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @carmen_ruiz.
+
+      A flamenco teacher. Performer. She taught half the town to dance.
+      People are worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> carmen_profile
+
+  carmen_profile:
+    type: tweet
+    from: carmen
+    text: "Van a arrasar con el barrio de los pescadores para hacer otro hotel de mierda. Tengo documentos. Esto no lo callo."
+    choices:
+      - That's her last real post... -> broken_seguiriya
+
+  broken_seguiriya:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single video:
+      a blurry clip of someone dancing seguiriyas in the dark. No sound.
+      Shot from a strange angle. Posted at 4am. No caption.
+
+      Her friends say that's not her style. Carmen always posts with
+      the compás, with sound, with fire. The Guardia Civil says she
+      probably went to visit family. Something doesn't add up.
+    choices:
+      - Read the Guardia Civil statement -> guardia_statement
+      - Look at what people are saying -> community_reaction
+
+  guardia_statement:
+    type: tweet
+    from: sargento
+    text: >
+      Se ha recibido una denuncia relativa a una vecina de Caleta del
+      Faro. En este momento no existen indicios de actividad delictiva.
+      Cualquier información relevante puede comunicarse al 062 o al
+      puesto de la Guardia Civil.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @lucia_navarro is
+      desperate. Her brother @pablo_ruiz is driving down from Cádiz.
+      Her guitarist @rocio_vega is posting worried messages. The
+      fisherman @pepe_camacho says she was right about the developers.
+
+      And the journalist @pilar_mendoza is strangely silent.
+
+      Nobody buys the Guardia Civil's line. Nobody thinks Carmen just
+      "went to visit family."
+    effects: { trust_lucia: "+5", trust_pablo: "+5" }
+    choices:
+      - Start following Carmen's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Caleta del Faro. Follow Carmen's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Dolores (bar owner, knows everyone) -> dolores_intro
+      - Talk to Pepe (fisherman, saw the developers) -> pepe_intro
+      - Talk to Alba (teen dancer, seems shaken) -> alba_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Carmen with the rhythms of a small
+      Andalusian coastal town: fishing schedules, the bakery's daily
+      specials, weather warnings, feria planning.
+
+      Key names surface: Lucía (best friend, physio), Rocío (guitarist,
+      seems rattled), Pilar (journalist, oddly quiet), and the teens
+      — Alba, Dani, Zara — who worshipped Carmen's flamenco classes.
+
+      Also prominent: Costa Dorada Resorts S.L., the tourism developer
+      buying up the coast. Their posts are glossy PR. Carmen's posts
+      were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Dolores -> dolores_intro
+      - Talk to Pepe -> pepe_intro
+      - Talk to Alba -> alba_intro
+
+  # --- Dolores (social map) ---
+
+  dolores_intro:
+    type: tweet
+    from: dolores
+    text: >
+      El bar está abierto pero hoy no hay alegría. @carmen_ruiz, tu
+      silla te espera. Vuelve ya, niña.
+    effects: { trust_dolores: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dolores -> dolores_talk
+
+  dolores_talk:
+    type: message
+    text: >
+      DOLORES: Ay, you're new? Welcome. Joder, terrible time to arrive.
+      Everyone's on edge about Carmen.
+
+      Let me tell you who's who. Lucía is her best friend — they share
+      a flat above the pharmacy. Rocío plays guitar for her — together
+      since kids. Pablo is her brother, coming from Cádiz.
+
+      Pilar Mendoza — the journalist — was working on something with
+      Carmen. About the hotel project. Pilar hasn't said a word since
+      Carmen vanished. Not like her.
+
+      And Alejandro — her ex — showed up two weeks ago. Nobody invited
+      him. Carmen broke up with him a year ago and he can't accept it.
+    effects: { trust_dolores: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Alejandro -> dolores_alejandro
+      - Ask about Costa Dorada -> dolores_costa
+      - Thank her and move on -> quest1_hub
+
+  dolores_alejandro:
+    type: message
+    text: >
+      DOLORES: Alejandro Vidal. Photographer from Cádiz. Together two
+      years. Obsessive — always photographing her. Said it was "art."
+      Carmen said it was control.
+
+      She broke it off, he didn't take it well. But two weeks ago he
+      was back, sitting on the malecón with his camera pointed at the
+      dance school. Hostia, that man gives me escalofríos.
+    effects: { trust_dolores: "+5" }
+    choices:
+      - Ask about Costa Dorada -> dolores_costa
+      - Move on -> quest1_hub
+
+  dolores_costa:
+    type: message
+    text: >
+      DOLORES: Puta madre, don't get me started. They want to build a
+      mega-resort on Punta del Faro. Already bought three houses in
+      the barrio. The alcaldesa says "progress." We say soulless hotel
+      for guiris.
+
+      Carmen was the loudest voice against it. She had documents —
+      dodgy permits, money changing hands. Two weeks later she's gone.
+    effects: { trust_dolores: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pepe (fisherman, witness tease) ---
+
+  pepe_intro:
+    type: tweet
+    from: pepe
+    text: >
+      cuarenta y cinco años pescando aquí. quieren tirar nuestras casas
+      para hacer un hotel. @carmen_ruiz tenía razón. y ahora ha
+      desaparecido. echadle cuentas.
+    effects: { trust_pepe: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Pepe -> pepe_talk
+
+  pepe_talk:
+    type: message
+    text: >
+      PEPE: I've fished this coast since I was a boy. Now they want to
+      tear down the barrio de los pescadores — my grandfather's house —
+      to build a resort for tourists who don't give a damn.
+
+      Carmen had proof. Documents showing Costa Dorada got permits
+      through bribes. She was going to publish. Then — poof — gone.
+
+      You think that's a coincidence? Coño, I'm not stupid.
+    effects: { trust_pepe: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> pepe_night
+      - Move on -> quest1_hub
+
+  pepe_night:
+    type: message
+    text: >
+      PEPE: The night before she vanished — I was coming back from
+      night fishing, around 2am. I saw a car parked outside Carmen's
+      dance school. Engine off, lights off. Just sitting there. And
+      I could see someone inside, watching the building.
+
+      It wasn't a Costa Dorada car. It was a rental — you can tell by
+      the plates. Cádiz rental plates.
+
+      I didn't think much of it then. Joder, now I can't stop thinking
+      about it.
+    effects: { trust_pepe: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Alba (teen dancer, witness tease) ---
+
+  alba_intro:
+    type: tweet
+    from: alba
+    text: >
+      tío no puedo con esto @carmen_ruiz es la persona más guay de
+      este pueblo, me enseñó a bailar, a sentir, a todo. no se ha ido
+      por las buenas, es imposible. si alguien sabe algo q lo diga ya joder
+    effects: { trust_alba: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Alba -> alba_talk_early
+
+  alba_talk_early:
+    type: message
+    text: >
+      ALBA: eres nuevo? mazo mal timing tío. en plan carmen es lo mejor
+      que tiene este pueblo. nos enseñaba a bailar en la escuela, hacía
+      clases gratis pa los niños, tío era increíble.
+
+      y ahora estoy flipando porque dani vio algo raro la otra noche
+      en el puerto pero no quiere hablar. dice q no es nada pero tío
+      es q no es nada sah
+    effects: { trust_alba: "+10" }
+    choices:
+      - What did Dani see? -> alba_dani_hint
+      - Move on -> quest1_hub
+
+  alba_dani_hint:
+    type: message
+    text: >
+      ALBA: ni idea exactamente. estaba con el skate por el malecón y
+      vio a un tío sacando fotos de la escuela de baile por la noche??
+      o algo así. dice q flipó mazo pero no quiere decir nada. tienes
+      q hablar con él directo pero es borde con la gente q no conoce.
+      háblale de surf o skate y se abre jajaja
+    effects: { trust_alba: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Caleta del Faro. An Andalusian
+      coastal town built around fishing and flamenco. A teacher who
+      was fighting developers. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lucía (Carmen's best friend) -> lucia_q1
+      - Talk to Rocío (Carmen's guitarist) -> rocio_q1
+      - Check what Pablo (Carmen's brother) is saying -> pablo_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lucía Q1 ---
+
+  lucia_q1:
+    type: tweet
+    from: lucia
+    text: >
+      si alguien tiene noticias de @carmen_ruiz por favor llamadme.
+      su ropa está aquí. sus zapatos de baile están aquí. no se habría
+      ido sin sus zapatos de baile jamás.
+    effects: { trust_lucia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lucía -> lucia_q1_talk
+
+  lucia_q1_talk:
+    type: message
+    text: >
+      LUCÍA: Thanks for reaching out but I don't know you. Carmen has
+      a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Lucía is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_lucia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Rocío Q1 ---
+
+  rocio_q1:
+    type: tweet
+    from: rocio
+    text: >
+      El viernes no hubo cante en el bar. La silla de @carmen_ruiz
+      vacía. Mi guitarra no suena igual sin ella. Esto no es normal.
+    effects: { trust_rocio: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rocío -> rocio_q1_talk
+
+  rocio_q1_talk:
+    type: message
+    text: >
+      ROCÍO: Carmen and I have been playing together since we were
+      fifteen. She's fire when she dances. You can't fake that and
+      you can't contain it. She would never just leave.
+
+      Something scared her. She told me two weeks ago — "tengo miedo,
+      Rocío. Someone's watching me and someone wants to shut me up.
+      I don't know which is worse."
+
+      I should have done something. Joder, I should have done
+      something.
+    effects: { trust_rocio: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pablo Q1 ---
+
+  pablo_q1:
+    type: tweet
+    from: pablo
+    text: >
+      mi hermana ha DESAPARECIDO y la guardia civil me dice que se
+      habrá ido de viaje??? PERO EN QUÉ MUNDO VIVE ESTA GENTE. voy
+      desde cádiz ahora mismo. como no me den respuestas la lío.
+    effects: { trust_pablo: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Pablo -> pablo_q1_talk
+
+  pablo_q1_talk:
+    type: message
+    text: >
+      PABLO: Who are you? Another person from that town who's going to
+      tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "if anything
+      happens, look at Costa Dorada." Then she hung up.
+
+      And one more thing — she said "he's back." I asked who. She said
+      "Alejandro." She sounded scared. Not angry. Scared.
+
+      That's the last I heard from her.
+    effects: { trust_pablo: "+10" }
+    choices:
+      - What do you think happened? -> pablo_theory
+      - Move on -> quest1_hub
+
+  pablo_theory:
+    type: message
+    text: >
+      PABLO: I think there are two things going on. Costa Dorada wants
+      her evidence destroyed — she had proof of corruption with the
+      building permits. And that hijo de puta Alejandro is back being
+      a psycho. He never accepted the breakup. He used to show up at
+      her flat at 3am. She got a restraining order but it expired.
+
+      Carmen told me months ago that someone was following her. She
+      thought it was the developers. But now I think it was him.
+      Joder, it was him.
+    effects: { trust_pablo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Carmen went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Dani (was skating near the port at sunset) -> dani_interview
+      - Find Pepe (fisherman, coming back late at night) -> pepe_interview
+      - Find Antonio (baker, starts at 4am, saw something) -> antonio_interview
+      - Find Rocío (was at the bar late, heard something) -> rocio_interview
+
+  # --- Dani (saw someone photographing the school) ---
+
+  dani_interview:
+    type: tweet
+    from: dani
+    text: >
+      buena sesión hoy pero el ambiente en el pueblo está raro. mola
+      cero tío. hay algo q no va bien y nadie dice nada
+    effects: { trust_dani: "+5" }
+    choices:
+      - Ask Dani about that evening -> dani_talk
+
+  dani_talk:
+    type: message
+    text: >
+      DANI: tío ok pero no le digas a nadie vale. estaba con el skate
+      por el malecón tipo a las 20h y vi a un pavo con una cámara
+      delante de la escuela de baile de carmen. y no era un turista
+      tío, estaba ahí parado sacando fotos de las ventanas. cuando me
+      vio se fue mazo rápido.
+
+      le vi la cara. era ese tío — alejandro — el ex de carmen. seguro
+      tío. le he visto en fotos. qué asco de persona joder
+    effects:
+      trust_dani: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pepe (fisherman, saw confrontation at school) ---
+
+  pepe_interview:
+    type: tweet
+    from: pepe
+    text: >
+      Aviso: el puerto está cerrado de noche. He visto gente rara por
+      la zona estas últimas noches. Esto no me gusta nada.
+    effects: { trust_pepe: "+5" }
+    choices:
+      - Ask Pepe what he saw -> pepe_talk_night
+
+  pepe_talk_night:
+    type: message
+    text: >
+      PEPE: I was coming back from night fishing, around 1am. I saw
+      two cars parked outside Carmen's dance school. One was a big
+      black SUV — I've seen it before, it's the Costa Dorada company
+      car. The other was Carmen's old Seat Ibiza.
+
+      There were people inside the school. I could see lights moving
+      around. Then two men came out — suits, even at that hour. One
+      of them I recognised: Rafael Montero, the development director.
+
+      At 1am. At a dance school. Coño, that's not a business meeting.
+    effects:
+      trust_pepe: "+10"
+      night_witnesses: "+1"
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Antonio (baker, saw car chase) ---
+
+  antonio_interview:
+    type: tweet
+    from: antonio
+    text: >
+      Horno encendido a las 4 como siempre. Pero esta mañana un coche
+      pasó volando por la carretera de la costa. Demasiado rápido.
+    effects: { trust_antonio: "+5" }
+    choices:
+      - Ask Antonio what he saw -> antonio_talk
+
+  antonio_talk:
+    type: message
+    text: >
+      ANTONIO: I start baking at 4am every day. That morning I was
+      opening the shutters and a car went past — flying, way too fast
+      for the coast road. Carmen's old Seat, I know that car. Then
+      maybe a minute later, a second car. Black SUV. Chasing? I
+      don't know.
+
+      Carmen's car turned off toward the old lighthouse at Punta del
+      Faro. The SUV kept going toward the highway.
+
+      I told the Guardia Civil. They wrote it down. That was it. Joder.
+    effects:
+      trust_antonio: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rocío (heard argument at the school) ---
+
+  rocio_interview:
+    type: tweet
+    from: rocio
+    text: >
+      No he podido dormir. Aquella noche oí algo y no hice nada.
+      Me odio por eso.
+    effects: { trust_rocio: "+5" }
+    choices:
+      - Ask Rocío what she heard -> rocio_talk_night
+
+  rocio_talk_night:
+    type: message
+    text: >
+      ROCÍO: I live two streets from the dance school. That night,
+      around midnight, I heard shouting. Men's voices. And then
+      Carmen — I know her voice anywhere — screaming "no me toquéis
+      los documentos, son míos!"
+
+      Then a car door slammed. Then silence.
+
+      I went to my window but I couldn't see anything. I should have
+      gone down. Joder, I should have gone down. I called her phone.
+      No answer. I called again at 6am. Nothing. That's when I knew.
+    effects:
+      trust_rocio: "+10"
+      night_witnesses: "+1"
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lucía (best friend)
+      and Zara (saw Alejandro watching the flat).
+    choices:
+      - Talk to Lucía about that night -> lucia_interview
+      - Talk to Zara -> zara_interview
+      - Find Dani -> dani_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Pepe -> pepe_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Antonio -> antonio_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Rocío -> rocio_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lucía (last to see Carmen) ---
+
+  lucia_interview:
+    type: tweet
+    from: lucia
+    text: >
+      ese vídeo en la cuenta de carmen. no es ella. carmen nunca sube
+      nada sin sonido. carmen no publica a las 4 de la mañana. alguien
+      hizo eso.
+    effects: { trust_lucia: "+5" }
+    choices:
+      - DM Lucía -> lucia_talk_low
+        when:
+          state: trust_lucia
+          lt: 50
+      - DM Lucía -> lucia_talk_high
+        when:
+          state: trust_lucia
+          gte: 50
+
+  lucia_talk_low:
+    type: message
+    text: >
+      LUCÍA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Lucía needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_lucia: "+5" }
+    choices:
+      - Share what you've learned about the night -> lucia_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lucia_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the confrontation at the school,
+      the car chase, the photographer. Lucía is silent for a while.
+
+      LUCÍA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_lucia: "+25" }
+    choices:
+      - What happened that night? -> lucia_talk_high
+
+  lucia_talk_high:
+    type: message
+    text: >
+      LUCÍA: She came home around midnight. I was on the sofa. She was
+      white as a ghost, shaking. She said "they came to the school.
+      Costa Dorada sent people. They wanted the documents."
+
+      She grabbed her laptop and the folder she kept in the wardrobe —
+      the one with all the permits and receipts. Then she said something
+      else — "and he was outside again. Watching. Always watching."
+
+      She wouldn't say who. She hugged me, said "I'll call you," and
+      left with a bag. By morning her car was gone and that creepy
+      video was on her account.
+    effects:
+      trust_lucia: "+15"
+      night_witnesses: "+1"
+      corruption_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Zara (saw Alejandro watching the flat) ---
+
+  zara_interview:
+    type: message
+    text: >
+      ZARA: tío vale esto es raro lo sé pero el ex de carmen — alejandro
+      — le he visto como 3 veces delante del piso de carmen por la
+      noche. ahí plantado mirando las ventanas. creepy mazo tío.
+
+      la última vez fue tipo 2 días antes de q desapareciera. estaba
+      en su coche aparcado enfrente. sin luces. solo ahí sentado.
+      flipé mazo
+    effects:
+      trust_zara: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Alejandro seen photographing the dance school (Dani)
+      00:00 — Shouting heard at the school, men demanding documents (Rocío)
+      01:00 — Costa Dorada SUV and Carmen's car at the school (Pepe)
+      01:30 — Carmen arrives home shaken, grabs evidence (Lucía)
+      04:00 — Carmen's car speeding on coast road, SUV following (Antonio)
+
+      Costa Dorada confronted Carmen at the school. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is Costa Dorada hiding? Who ordered the
+        confrontation?
+      — The stalker: What is Alejandro really doing? Why was he back
+        in town?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Alejandro -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corruption_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: corruption_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Costa Dorada Resorts wants to build on Punta del Faro. Carmen
+      had proof of corruption in the permits. Now she's gone and her
+      documents are missing from the school.
+
+      Corporate evidence: ${corruption_evidence}
+    choices:
+      - Search the planning records -> planning_records
+      - Talk to Pilar the journalist -> pilar_interview
+      - Talk to Inés (Costa Dorada PR) -> ines_interview
+      - Talk to Javier (culture councillor) -> javier_interview
+      - Check the Salvemos la Costa platform -> asso_investigation
+      - Talk to Pepe about the fishermen's quarter -> pepe_barrio
+      - Back to hub -> investigation_hub
+
+  # --- Planning Records ---
+
+  planning_records:
+    type: message
+    text: >
+      The town hall planning records are partially online. The Punta
+      del Faro development permit was approved in a special session —
+      at 8am on a Saturday, with only three councillors present. The
+      environmental impact study is marked "PENDING" but the permit
+      was approved anyway.
+
+      The approval document is signed by Alcaldesa Concepción Márquez.
+      The environmental study contract was awarded to a firm in Sevilla:
+      Vega & Asociados. The same surname as Costa Dorada's lawyer.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Pilar ---
+
+  pilar_interview:
+    type: message
+    text: >
+      PILAR: I don't talk about sources. Period.
+    effects: { trust_pilar: "+5" }
+    choices:
+      - Show Pilar the evidence you have -> pilar_with_evidence
+        when:
+          state: corruption_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  pilar_with_evidence:
+    type: message
+    text: >
+      PILAR: ...you have more than I expected.
+
+      Carmen and I were working together. She had the real environmental
+      report — the one Costa Dorada buried. Protected species,
+      contaminated soil. Building there is illegal under three
+      regulations.
+
+      We were going to publish together. Then she went dark. Someone
+      broke into my car and stole my backup drive.
+
+      Carmen is alive. She contacted me from a burner phone. She's
+      hiding. She said "they threatened me at the school and someone
+      else won't leave me alone."
+
+      With enough evidence, I can publish and make it safe for her
+      to come back.
+    effects:
+      trust_pilar: "+25"
+      corruption_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> pilar_hint
+      - Back to investigation hub -> investigation_hub
+
+  pilar_hint:
+    type: message
+    text: >
+      PILAR: Costa Dorada sent their development director — Montero —
+      and a lawyer to the school that night. They told her to hand
+      over everything or face legal action. Intimidation dressed up
+      as a cease and desist.
+
+      But she also told me about someone else. Someone who'd been
+      following her for weeks. Someone who always seemed to know
+      where she was. That's a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inés (Costa Dorada whistleblower) ---
+
+  ines_interview:
+    type: message
+    text: >
+      INÉS: I work at Costa Dorada. I'm just PR. I write press
+      releases and manage the social media.
+
+      But the press releases I write... are not always based on the
+      reports I've read.
+    effects: { trust_ines: "+10" }
+    choices:
+      - What do you mean? -> ines_detail
+
+  ines_detail:
+    type: message
+    text: >
+      INÉS: I've seen the real environmental study. Protected marine
+      habitats, contaminated soil. Building there is illegal.
+
+      They commissioned a second study — friendly conclusions. That's
+      the one they submitted to the town hall. Carmen got copies of
+      both. That's what they wanted back.
+
+      I'm scared. But I kept screenshots. If someone can protect me,
+      I'll share them.
+    effects:
+      trust_ines: "+15"
+      corruption_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Javier ---
+
+  javier_interview:
+    type: message
+    text: >
+      JAVIER: As culture councillor, I opposed the Punta del Faro
+      project from the start. That area is heritage — the lighthouse,
+      the fishermen's quarter, the old almadrabas. You can't bulldoze
+      that for a hotel.
+
+      But the alcaldesa has the votes. She rammed the permit through
+      in a special Saturday session. Three councillors, no debate.
+      I wasn't even notified.
+
+      Off the record? I've seen receipts. Payments from Costa Dorada
+      to a company owned by the alcaldesa's brother-in-law. Millions.
+      Carmen had copies of those receipts.
+    effects:
+      trust_javier: "+10"
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Salvemos la Costa ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_costa
+    text: >
+      ALERTA: El proyecto Caleta Beach Resort amenaza hábitats protegidos
+      en Punta del Faro. Exigimos la paralización inmediata de las obras
+      y una auditoría ambiental independiente.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Salvemos la Costa has documented the site for two years: nesting
+      sea turtles, Posidonia seagrass, contaminated soil from the old
+      tuna factory. Costa Dorada's official study mentions none of this,
+      calling it "previously developed land with minimal ecological
+      value."
+
+      Carmen was a member. She contributed the analysis comparing both
+      environmental studies.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Pepe on the barrio ---
+
+  pepe_barrio:
+    type: message
+    text: >
+      PEPE: I'll show you something. Last month Costa Dorada sent
+      people to "inspect" the houses in the barrio. They said it was
+      for safety. Then they offered everyone buyouts — way below
+      market value. Three families took the money. They were scared.
+
+      Carmen photographed the documents — the buyout contracts have
+      clauses that make it illegal for the families to talk about
+      the sale publicly. Gag orders on fishermen. Mierda.
+
+      She had copies of everything. The contracts, the inspection
+      reports, the threatening letters. I still have photos she
+      sent me.
+    effects:
+      trust_pepe: "+10"
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Alejandro Vidal. Ex-boyfriend. Photographer. Back in town after
+      a year. Someone was watching Carmen's flat. Someone was
+      photographing the school. Someone was always there.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate Alejandro's social media -> alejandro_social
+      - Talk to Lucía about Alejandro -> lucia_alejandro
+        when:
+          state: trust_lucia
+          gte: 20
+      - Talk to Dani (more detail on the school) -> dani_detail
+      - Talk to Mari the pharmacist -> mari_interview
+      - Check the anonymous account @el_farero -> sombra_investigation
+      - Talk to Miguel the bookseller -> miguel_interview
+        when:
+          state: trust_miguel
+          gte: 40
+      - Talk to Sargento Delgado -> sargento_interview
+        when:
+          state: trust_sargento
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Alejandro's Social Media ---
+
+  alejandro_social:
+    type: message
+    text: >
+      Alejandro's public photography account tells a story. His
+      portfolio is mostly street photography, beaches, architecture.
+      But in the past three months, a pattern emerges:
+
+      Photos of Caleta del Faro. The dance school. The malecón. The
+      fishermen's quarter. All taken from hidden angles — behind walls,
+      through car windows. And in several of them, barely visible in
+      the background: Carmen. Dancing. Walking. Sitting at a café.
+
+      He's been photographing her without her knowledge for months.
+      His captions call it "the muse series."
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Lucía on Alejandro ---
+
+  lucia_alejandro:
+    type: message
+    text: >
+      LUCÍA: Hostia, that man made Carmen's life hell. Possessive —
+      always needing to know where she was. Photographed her constantly.
+      Said it was "inspiration." She said it felt like surveillance.
+
+      She broke up with him a year ago. He showed up five times after.
+      She got a restraining order. It expired four months ago.
+
+      Two weeks ago he was back. Rented an apartment. Carmen was
+      terrified. She said "he's never going to let me go."
+    effects:
+      trust_lucia: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Dani detail ---
+
+  dani_detail:
+    type: message
+    text: >
+      DANI: vale tío en realidad no te conté todo. cuando vi a
+      alejandro en la escuela tenía algo en la mano. como una caja
+      pequeña. y la pegó debajo de la puerta de la escuela. como un
+      micro o un rastreador o algo así tío.
+
+      flipé mazo pero quién me iba a creer. un chaval con un skate
+      contra un tío adulto. gilipollas como él siempre se salen con
+      la suya joder
+    effects:
+      trust_dani: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Mari ---
+
+  mari_interview:
+    type: message
+    text: >
+      MARI: This is confidential but I'm a pharmacist, not a priest.
+      A man matching Alejandro Vidal's description has been coming to
+      the pharmacy. Buying sleeping pills, anxiety medication, energy
+      drinks. The pattern of someone who's barely sleeping.
+
+      He also asked me, very casually, where the best viewpoint of
+      the dance school was. I said "why?" He said "for photography."
+      The way he said it made my skin crawl. Qué asco.
+    effects:
+      trust_mari: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- El Farero (anonymous account) ---
+
+  sombra_investigation:
+    type: tweet
+    from: sombra
+    text: >
+      She should have listened. I was trying to protect her. Nobody
+      understands her art like I do.
+    choices:
+      - Look at this account's history -> sombra_posts
+
+  sombra_posts:
+    type: message
+    text: >
+      @el_farero: account created 6 months ago. Posts are all about
+      Carmen's performances. Comments on every dance video, every show
+      announcement. The tone shifts over time:
+
+      Month 1: "Incredible artistry. You dance like nobody else."
+      Month 2: "Why won't you respond to my messages? I just want to
+      talk about your work."
+      Month 4: "I see you at the bar with other people. You have time
+      for them but not for me?"
+      Month 5: "I know your schedule. I know where you go. I'm always
+      close. The lighthouse watches."
+
+      No photos, no personal details. Just Carmen. Only Carmen.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> sombra_style
+
+  sombra_style:
+    type: message
+    text: >
+      Comparing @el_farero with Alejandro Vidal's photography captions:
+
+      Same pretentious art terminology. Same way of describing light
+      and movement. Same obsessive focus on Carmen as "muse." And one
+      post from @el_farero: "Your bulerías at the private class on
+      Tuesday were magnificent." Carmen only teaches private classes
+      on Tuesdays. That information isn't public.
+
+      It's Alejandro. The anonymous account is Alejandro.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Miguel ---
+
+  miguel_interview:
+    type: message
+    text: >
+      MIGUEL: Carmen left something with me. A sealed envelope. She
+      said "if someone comes asking about what Costa Dorada is doing
+      to the coast, give them this."
+
+      She looked frightened. She said she'd made copies of everything
+      but needed one set somewhere nobody would look. A bookshop in
+      a pueblo? Perfect.
+    effects: { trust_miguel: "+10" }
+    choices:
+      - What's inside? -> miguel_envelope
+
+  miguel_envelope:
+    type: message
+    text: >
+      Miguel reaches under the counter and produces a thick manila
+      envelope.
+
+      MIGUEL: She said you'd come. Take it.
+
+      Inside: a USB drive and printed documents. The documents show
+      both environmental impact studies — the real one and the fake.
+      Bank transfers from Costa Dorada to a shell company linked to
+      the alcaldesa's family. The building permits approved in the
+      secret Saturday session. Carmen's detailed timeline of the
+      corruption.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sargento Delgado ---
+
+  sargento_interview:
+    type: message
+    text: >
+      SARGENTO DELGADO: Off the record — and I mean completely off the
+      record — I wanted to investigate Costa Dorada. My commander told
+      me to stand down. He said the Junta had "jurisdiction." That's
+      code for "don't touch it."
+
+      The Vidal situation is different. If you have evidence of stalking,
+      I can act on that. The expired restraining order is still on file.
+      With new evidence I can reopen it immediately.
+
+      Bring me something solid and I'll move.
+    effects:
+      trust_sargento: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Carmen than anyone in Caleta del Faro. Who is responsible?
+    choices:
+      - Confront Alejandro Vidal (the obsessive ex) -> confront_alejandro
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Rafael Montero (the development director) -> confront_rafael
+        when:
+          state: corruption_evidence
+          gte: 3
+      - Confront Alcaldesa Márquez (political protection) -> confront_concepcion
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Alejandro (Best Ending) ---
+
+  confront_alejandro:
+    type: message
+    text: >
+      You present your evidence to Alejandro:
+
+      "I know @el_farero is your account. I know you planted a
+      listening device at the school. I know you've been photographing
+      Carmen for months. I know you were watching her flat. I have
+      witnesses and I have the photos."
+    choices:
+      - Send -> alejandro_response
+
+  alejandro_response:
+    type: message
+    text: >
+      Alejandro doesn't reply for a long time. Then:
+
+      ALEJANDRO: You don't understand. She's my muse. Everything I
+      create is because of her. I was protecting her — she was in
+      danger from those developers and she wouldn't let me help. I
+      needed to be close. Everything I did was out of love.
+
+      That's not love. That's obsession.
+
+      You've already sent the evidence to Sargento Delgado. And to
+      Pilar Mendoza.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sargento Delgado reopens the case. With your evidence — the
+      anonymous account, the listening device, the surveillance photos,
+      the witness testimonies — Alejandro is arrested for stalking and
+      violation of the expired restraining order. A GPS tracker is
+      found on Carmen's car near the old lighthouse.
+
+      Pilar Mendoza, with Carmen's full evidence package, publishes
+      the Costa Dorada story in El País. The Junta orders a halt to
+      all construction at Punta del Faro. The environmental fraud is
+      exposed. Alcaldesa Márquez faces criminal charges for corruption.
+      Rafael Montero is arrested for bribery and intimidation.
+
+      And Carmen Ruiz, reading the story from a friend's house in
+      Jerez, calls her brother for the first time in nine days.
+
+      "Pablo, me vuelvo a casa."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: carmen
+    text: >
+      el compás no miente. y la gente de caleta del faro tampoco.
+      gracias por no rendiros.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Rafael (Partial Ending) ---
+
+  confront_rafael:
+    type: message
+    text: >
+      You present the corruption evidence to Rafael Montero:
+
+      "I have both environmental studies — the real one and the fake.
+      I have the bank transfers to the alcaldesa's family. I have
+      the secret Saturday permits. I have everything Carmen had."
+    choices:
+      - Send -> rafael_response
+
+  rafael_response:
+    type: message
+    text: >
+      RAFAEL: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Costa Dorada Resorts operates within
+      all regulatory requirements.
+
+      But it's too late. You've sent the evidence to Pilar, to
+      Salvemos la Costa, and to the Junta de Andalucía.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The corruption story breaks. Costa Dorada is ordered to halt
+      construction. The alcaldesa is investigated. The fishermen's
+      quarter is saved.
+
+      But Carmen?
+
+      Without the stalking evidence, Alejandro is never investigated.
+      He stays in his rented apartment. He keeps photographing the
+      dance school. He creates a new anonymous account.
+
+      Three months later, Carmen reads about Costa Dorada online. She
+      returns quietly. She changes the locks. She stops walking alone
+      at night. She checks her mirrors constantly.
+
+      The corporation is exposed. But the person who terrorised
+      Carmen walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: carmen
+    text: "he vuelto. la costa está a salvo. lo demás... ya veremos."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Alcaldesa (Wrong Ending) ---
+
+  confront_concepcion:
+    type: message
+    text: >
+      You confront Alcaldesa Márquez with your evidence.
+
+      Within the hour, you receive a message from her office:
+    choices:
+      - Read the response -> concepcion_response
+
+  concepcion_response:
+    type: tweet
+    from: nuria
+    text: >
+      Mi cliente toma nota de sus alegaciones. Cualquier difusión
+      pública de contenido difamatorio será objeto de acciones legales
+      inmediatas. — Bufete Salazar & Vega, Sevilla
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The alcaldesa's lawyer buries your accusation. Without a direct
+      operational link between Márquez and Costa Dorada's illegal
+      activities — and there isn't one beyond political favours — your
+      evidence is insufficient.
+
+      Costa Dorada continues building. Alejandro continues watching.
+      Carmen stays in hiding.
+
+      Six months later, @el_farero creates a new account. It follows
+      Carmen's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: CALETA DEL FARO — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corruption_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Carmen's story explores themes of
+      corporate greed, environmental destruction, cultural erasure,
+      obsessive behaviour, community solidarity, and the courage
+      to fight back.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Teléfono de la Esperanza: 717 003 717
+      Atención a víctimas de violencia de género: 016
+      Emergencias: 112

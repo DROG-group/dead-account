@@ -1,0 +1,1579 @@
+# DEAD ACCOUNT — Story 079: Triglavski Kot (Slovenia, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-079.yml
+#
+# Player investigates the disappearance of beekeeper Maja Horvat
+# in the fictional Julian Alps village of Triglavski Kot.
+
+meta:
+  title: "Dead Account — Triglavski Kot"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_anja: 0
+    trust_bostjan: 0
+    trust_vida: 0
+    trust_matej: 0
+    trust_zala: 0
+    trust_nik: 0
+    trust_petra: 0
+    trust_joze: 0
+    trust_irena: 0
+    trust_roman: 0
+    trust_tina: 0
+    trust_drago: 0
+    trust_franc: 0
+    trust_lucija: 0
+    trust_gasper: 0
+    trust_branko: 0
+    trust_eva: 0
+    trust_jan: 0
+    trust_lara: 0
+    trust_insp: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    researcher_evidence: 0
+    highway_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to triglavski kot. discovering the julian alps one trail at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "TriglavskiKot.social"
+    description: "Dobrodošli na skupnostni Mastodon strežnik Triglavskega Kota"
+    avatar_url: /gamepatch/assets/dead-account/triglavskikot_bot.png
+
+  npcs:
+    # === Maja's Inner Circle ===
+    maja:
+      name: "Maja Horvat"
+      bio: "čebelarka | kranjska čebela je zaklad | triglavski kot od rojstva"
+      avatar: avatars/maja.jpg
+    anja:
+      name: "Anja Horvat"
+      bio: "majina sestra | medicinska sestra v zdravstvenem domu | kje je moja sestra"
+      avatar: avatars/anja.jpg
+    bostjan:
+      name: "Boštjan Horvat"
+      bio: "majin oče | upokojen gozdar | te gore so moj dom"
+      avatar: avatars/bostjan.jpg
+    vida:
+      name: "Vida Kos"
+      bio: "majina najboljša prijateljica | tudi čebelarka | skupaj na tržnici vsako soboto"
+      avatar: avatars/vida.jpg
+
+    # === Local Government ===
+    matej:
+      name: "Matej Zupan"
+      bio: "Župan Triglavskega Kota | Za skupnost in razvoj | #TriglavskiKotNaprej"
+      avatar: avatars/matej.jpg
+    drago:
+      name: "Drago Vidmar"
+      bio: "Občinski svetnik za okolje | Občina Triglavski Kot | varstvo narave"
+      avatar: avatars/drago.jpg
+    obcina:
+      name: "Občina Triglavski Kot"
+      bio: "Uradni račun | Občinske novice | Pon-Pet 8-15h"
+      avatar: avatars/obcina.jpg
+
+    # === Local Business & Community ===
+    joze:
+      name: "Jože Potočnik"
+      bio: "gostilna pri medvedu | žganci | šnops | pogled na gore | odprto od 1968"
+      avatar: avatars/joze.jpg
+    irena:
+      name: "Irena Novak"
+      bio: "lekarna | triglavski kot | zdravje in nasvet | dobrodošli vedno"
+      avatar: avatars/irena.jpg
+    franc:
+      name: "Franc Šuštar"
+      bio: "gozdar | 30 let v gozdu | ta gozd je moje življenje"
+      avatar: avatars/franc.jpg
+    lucija:
+      name: "Lucija Perko"
+      bio: "pekarna perko | kruh in potica | od 4h zjutraj | triglavski kot"
+      avatar: avatars/lucija.jpg
+    gasper:
+      name: "Gašper Oblak"
+      bio: "planinski vodnik | gorski reševalec | triglavski kot | varno v gore"
+      avatar: avatars/gasper.jpg
+
+    # === Journalist ===
+    tina:
+      name: "Tina Kavčič"
+      bio: "novinarka | okolje in narava | tips: tina@kavcic-press.si"
+      avatar: avatars/tina.jpg
+
+    # === AlpTransit Slovenija (corporate) ===
+    alptransit:
+      name: "AlpTransit Slovenija d.o.o."
+      bio: "Cestna infrastruktura | Projekt avtoceste Triglavski Kot | #PovezujemoSlovenijo"
+      avatar: avatars/alptransit.jpg
+    roman:
+      name: "Roman Kranjc"
+      bio: "direktor projekta AlpTransit Slovenija | infrastruktura za prihodnost"
+      avatar: avatars/roman.jpg
+    branko:
+      name: "Branko Mlakar"
+      bio: "Odvetnik | Mlakar & Partnerji | Gospodarsko pravo | Ljubljana"
+      avatar: avatars/branko.jpg
+
+    # === Teens ===
+    zala:
+      name: "Zala"
+      bio: "17 | plezanje | triglavski kot | gore so moj playground ej"
+      avatar: avatars/zala.jpg
+    jan:
+      name: "Jan"
+      bio: "16 | trail running & foto | triglavski kot | narava je vse"
+      avatar: avatars/jan.jpg
+    lara:
+      name: "Lara"
+      bio: "15 | risanje & čebele | maja me je naučila vse | triglavski kot"
+      avatar: avatars/lara.jpg
+
+    # === Media & Community ===
+    novice_kot:
+      name: "Novice Triglavski Kot"
+      bio: "Lokalne novice za Triglavski Kot in Julijske Alpe | Tips: info@novice-kot.si"
+      avatar: avatars/novice_kot.jpg
+    vreme_alpe:
+      name: "Vreme Triglavski Kot"
+      bio: "Napovedi in opozorila | Samodejno postajo | Posodobitev vsako uro"
+      avatar: avatars/vreme_alpe.jpg
+    drustvo_cebelarjev:
+      name: "Čebelarsko društvo Triglavski Kot"
+      bio: "Varstvo kranjske čebele | Prostovoljci | Prijava onesnaževanja"
+      avatar: avatars/drustvo_cebelarjev.jpg
+
+    # === Suspicious / Other ===
+    eva:
+      name: "Eva Rupnik"
+      bio: "okoljska tehnica | AlpTransit | delam svoje delo in to je to"
+      avatar: avatars/eva.jpg
+    petra:
+      name: "Petra Likar"
+      bio: "."
+      avatar: avatars/anon.jpg
+    nik:
+      name: "Dr. Nik Bertoncelj"
+      bio: "researcher | apis mellifera carnica genetics | university of ljubljana | fieldwork: triglavski kot"
+      avatar: avatars/nik.jpg
+    insp:
+      name: "Inšpektor Kovač"
+      bio: "Policijska postaja Triglavski Kot | Območna enota | nujni klici: 113"
+      avatar: avatars/insp.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN TRIGLAVSKI KOT
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to TriglavskiKot.social — the community Mastodon instance
+      for the village of Triglavski Kot, Julian Alps.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @maja_horvat.
+
+      A beekeeper. Keeper of the Carniolan bee. She documented the
+      alpine meadows and the old apiaries. People are worried. She
+      hasn't posted in six days.
+    choices:
+      - Look at her profile -> maja_profile
+
+  maja_profile:
+    type: tweet
+    from: maja
+    text: "They want to build the highway through Medvedji gozd. Through the oldest bee forest in the valley. I have the environmental survey that proves it will destroy everything."
+    choices:
+      - That's her last real post... -> grey_hive
+
+  grey_hive:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a blurred photo of an empty beehive. Harsh flash, shot at a
+      strange angle. Posted at 3am. No caption.
+
+      Her friends say that's not her style. Maja photographed her bees
+      in golden morning light, always with a story about the colony.
+      The police say she probably went hiking. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: insp
+    text: >
+      Prejeli smo prijavo glede prebivalke Triglavskega Kota. V tej
+      fazi ni elementov, ki bi nakazovali na kaznivo dejanje.
+      Koristne informacije sporočite na postajo ali na 113.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her sister @anja_horvat is desperate.
+      Her father @bostjan_horvat is searching the mountain trails. Her
+      best friend @vida_kos says Maja would never leave during swarming
+      season.
+
+      The forester @franc_sustar says something is wrong with the
+      forest since AlpTransit started surveying. And the journalist
+      @tina_kavcic has gone strangely quiet.
+
+      There's also a researcher — @nik_bertoncelj — who's been on
+      the instance for months. He seemed to be around Maja constantly.
+
+      Nobody buys the police line. Nobody thinks Maja just "went
+      hiking."
+    effects: { trust_anja: "+5", trust_bostjan: "+5" }
+    choices:
+      - Start following Maja's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Triglavski Kot. Follow Maja's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Jože (gostilna owner, knows everyone) -> joze_intro
+      - Talk to Franc (forester, worried about the forest) -> franc_intro
+      - Talk to Zala (teen climber, seems shaken) -> zala_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Maja with the rhythms of a small
+      alpine village: weather warnings, trail conditions, the bakery's
+      daily potica, mountain rescue updates.
+
+      Key names surface: Anja (sister, nurse), Vida (best friend,
+      fellow beekeeper), Tina (journalist, oddly silent), and the
+      teens — Zala, Jan, Lara — who loved Maja's bee workshops.
+
+      Also prominent: AlpTransit Slovenija d.o.o., the company building
+      a highway through the valley. Their posts are infrastructure PR.
+      Maja's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Jože -> joze_intro
+      - Talk to Franc -> franc_intro
+      - Talk to Zala -> zala_intro
+
+  # --- Jože (social map) ---
+
+  joze_intro:
+    type: tweet
+    from: joze
+    text: >
+      Gostilna odprta ampak srce ni zraven. @maja_horvat, tvoja miza
+      te čaka. Vrni se nam.
+    effects: { trust_joze: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jože -> joze_talk
+
+  joze_talk:
+    type: message
+    text: >
+      JOŽE: Ah, you're new? Dobrodošli. Bad timing to arrive. Everyone
+      is on edge about Maja.
+
+      Let me tell you who's who. Anja is Maja's younger sister — she's
+      a nurse at the health centre. Good girl, terrified right now.
+      Boštjan is their father, retired forester, tough man but he's
+      falling apart. Vida Kos is Maja's best friend, they keep bees
+      together and sell honey at the Saturday market.
+
+      And there's this researcher — Dr. Nik Bertoncelj. From Ljubljana.
+      Been here eight months studying Carniolan bee genetics. He zeroed
+      in on Maja's apiaries straight away. She told me once it was
+      getting intense. He doesn't understand boundaries.
+
+      Oh, and stay away from AlpTransit's PR posts. Laži wrapped in
+      infrastructure promises.
+    effects: { trust_joze: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Nik -> joze_nik
+      - Ask about AlpTransit -> joze_alptransit
+      - Thank him and move on -> quest1_hub
+
+  joze_nik:
+    type: message
+    text: >
+      JOŽE: Nik? He showed up eight months ago from the university.
+      Said he was studying Carniolan bee genetics. Maja was excited at
+      first — ej no, someone from the university interested in her
+      bees! But then it got weird.
+
+      He'd be at her apiary every morning. He'd sit in my gostilna
+      waiting for her. He'd walk past her house three, four times a day.
+      She told him she needed space. He said he was just "being thorough
+      with fieldwork."
+
+      Kaj za vraga. That's not fieldwork. That's something else.
+    effects: { trust_joze: "+5" }
+    choices:
+      - Ask about AlpTransit -> joze_alptransit
+      - Move on -> quest1_hub
+
+  joze_alptransit:
+    type: message
+    text: >
+      JOŽE: AlpTransit. Where do I start. They want to build a highway
+      section through Medvedji gozd — the Bear Forest. That's the oldest
+      forest in the valley. It's where Maja keeps her mountain apiaries.
+      It's where the wild Carniolan bees nest.
+
+      The highway would cut straight through. Destroy the forest. Kill
+      the bee colonies. Maja had an environmental survey — independent,
+      not the one AlpTransit commissioned — proving the damage would be
+      irreversible.
+
+      Two weeks after she started fighting them publicly, she's gone.
+      You do the maths.
+    effects: { trust_joze: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Franc (the forest, witness tease) ---
+
+  franc_intro:
+    type: tweet
+    from: franc
+    text: >
+      30 let v tem gozdu. drevesa so drugačna. @maja_horvat je imela
+      prav. in zdaj je izginila. naredite povezavo.
+    effects: { trust_franc: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Franc -> franc_talk
+
+  franc_talk:
+    type: message
+    text: >
+      FRANC: I've been a forester here for 30 years. I know every tree,
+      every path in Medvedji gozd. And I'm telling you — something is
+      happening. AlpTransit has been doing "survey work" — cutting
+      access roads, drilling test holes. They're preparing construction
+      before the permits are approved.
+
+      Maja documented everything. She had photos of the illegal survey
+      roads, the drill cores, the disturbed bee colonies. She was
+      building a case with that journalist, Tina. And then — izginila.
+
+      You think that's a coincidence? Jaz ne verjamem v naključja v
+      gozdu.
+    effects: { trust_franc: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> franc_night
+      - Move on -> quest1_hub
+
+  franc_night:
+    type: message
+    text: >
+      FRANC: The night before she vanished — I was checking the deer
+      fences on the eastern ridge, around 11pm. I saw lights at Maja's
+      apiary shed in Medvedji gozd. Not unusual, she sometimes checks
+      the hives at night during swarming season. But there was a company
+      SUV parked on the forest road. AlpTransit plates.
+
+      At 11pm. At a bee apiary in the forest.
+
+      I noted it in my forest log. Nobody's asked to see it.
+    effects: { trust_franc: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Zala (teen climber, witness tease) ---
+
+  zala_intro:
+    type: tweet
+    from: zala
+    text: >
+      jebemti sej @maja_horvat ona me je naučila spoštovat naravo tuki.
+      ni možno da je kar šla. če kdo ve kej pls povejte
+    effects: { trust_zala: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Zala -> zala_talk_early
+
+  zala_talk_early:
+    type: message
+    text: >
+      ZALA: ej no si nov tuki? u pičku kakšen timing. sej maja je
+      najboljša oseba v tej vasi. ona nas je naučila za čebele, za
+      gozd, za vse te stare stvari. ful hudo.
+
+      in zdej sm prestrašena ker jan je vidu nek čuden tip zravn
+      majinega čebelnjaka ampak noče govort o tem. pravi da ni nč
+      ampak ej no... ni nč sej ja
+    effects: { trust_zala: "+10" }
+    choices:
+      - What did Jan see? -> zala_jan_hint
+      - Move on -> quest1_hub
+
+  zala_jan_hint:
+    type: message
+    text: >
+      ZALA: ne vem točno. bil je na trail runningu zravn gozda in je
+      vidu tistga raziskovalca — nika — zravn majinih panjev. je kar
+      tam sedel in pisal nekaj v zvezek. ko ga je jan vidu je fajn
+      hitro zbrisu.
+
+      dej nehaj kdo to dela?? zala je prestrašena govort ker je nik
+      taki odrasel tip od univerze in kdo bo njej verjel. dej probej
+      ti govort z janom ampak bodi kul ja
+    effects: { trust_zala: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Triglavski Kot. A Julian Alps village
+      built around forest and bees. A beekeeper who was fighting a
+      highway project. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Anja (Maja's sister) -> anja_q1
+      - Talk to Vida (Maja's best friend) -> vida_q1
+      - Check what Boštjan (Maja's father) is saying -> bostjan_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Anja Q1 ---
+
+  anja_q1:
+    type: tweet
+    from: anja
+    text: >
+      če kdo ima novice o @maja_horvat prosim pokličite. njena soba je
+      nedotaknjena. njena čebelarska oprema je tukaj. nikoli ne bi šla
+      brez svoje opreme.
+    effects: { trust_anja: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Anja -> anja_q1_talk
+
+  anja_q1_talk:
+    type: message
+    text: >
+      ANJA: I appreciate you reaching out but I don't know you. Maja
+      has many friends here. I'm sure she'll come back.
+
+      ...I keep saying that. Ne verjamem več.
+
+      [Anja is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_anja: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Vida Q1 ---
+
+  vida_q1:
+    type: tweet
+    from: vida
+    text: >
+      sobotna tržnica brez @maja_horvat. njena miza prazna. med je še
+      na pol v kozarcih. ona nikoli ne pusti dela na pol.
+    effects: { trust_vida: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Vida -> vida_q1_talk
+
+  vida_q1_talk:
+    type: message
+    text: >
+      VIDA: Maja and I have kept bees together for twelve years. I know
+      her better than anyone. She would NEVER leave during swarming
+      season. Never. That's how I know something happened.
+
+      And she was scared, the last week. She told me someone was
+      following her to the apiaries. And she told me AlpTransit sent
+      people to threaten her.
+
+      [Vida seems willing to talk more later.]
+    effects: { trust_vida: "+10" }
+    choices:
+      - Who was following her? -> vida_follower
+      - Move on -> quest1_hub
+
+  vida_follower:
+    type: message
+    text: >
+      VIDA: That researcher. Nik Bertoncelj. He started as a
+      colleague — interested in her bees, asked about queen genetics.
+      Fine. But then he kept coming back. Every day. Sitting at her
+      apiary taking notes even when she wasn't there. Setting up
+      cameras near her hives.
+
+      She told him to coordinate with her. He said he "needed
+      uncontaminated data." Kaj za vraga. Uncontaminated? She's the
+      beekeeper. They're her bees.
+
+      The last week before she disappeared, she found him inside her
+      apiary shed. He said the door was unlocked. It wasn't.
+    effects: { trust_vida: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Boštjan Q1 ---
+
+  bostjan_q1:
+    type: tweet
+    from: bostjan
+    text: >
+      MOJA HČERKA JE IZGINILA in policija mi pravi da je mogoče šla
+      na pohod??? NIKOLI NE GRE BREZ BESEDE. pridem na postajo.
+      nekdo mi bo razložil.
+    effects: { trust_bostjan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Boštjan -> bostjan_q1_talk
+
+  bostjan_q1_talk:
+    type: message
+    text: >
+      BOŠTJAN: Who are you? Another person from this village who's going
+      to tell me to calm down? My daughter called me the night before
+      she disappeared. She said she had something big. She said "če se
+      kaj zgodi, poglej AlpTransit." Then she hung up.
+
+      To je zadnje kar sem slišal od nje.
+    effects: { trust_bostjan: "+10" }
+    choices:
+      - What do you think happened? -> bostjan_theory
+      - Move on -> quest1_hub
+
+  bostjan_theory:
+    type: message
+    text: >
+      BOŠTJAN: I think she found proof that AlpTransit is destroying the
+      forest illegally and they shut her up. But I also think that
+      researcher — Nik — knows more than he's saying. The way he talks
+      about her bees... it's not just science. It's something else.
+
+      Maja told me weeks ago that someone was accessing her apiary shed
+      at night. She found her hive frames rearranged. She thought it
+      was an animal. I don't think it was an animal.
+    effects: { trust_bostjan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Maja went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Jan (was trail running near the forest) -> jan_interview
+      - Find Franc (forester, was checking fences late) -> franc_interview
+      - Find Lucija (baker, starts at 4am, saw something) -> lucija_interview
+      - Find Gašper (mountain guide, was descending at dusk) -> gasper_interview
+
+  # --- Jan (saw Nik at the apiary) ---
+
+  jan_interview:
+    type: tweet
+    from: jan
+    text: >
+      dober trening danes ampak atmosfera zravn gozda je čudna.
+      nek filing da nekaj ni ok. ne znam razložit
+    effects: { trust_jan: "+5" }
+    choices:
+      - Ask Jan about that evening -> jan_talk
+
+  jan_talk:
+    type: message
+    text: >
+      JAN: ej no ok ampak nikomur ne povej ja. bil sem na trail
+      runningu zravn medvedjega gozda okol 7ih zvečer. in sem vidu
+      nika — tistga raziskovalca — zravn majinega čebelnjaka. je
+      nekaj premetavu po njenem orodju. ko me je vidu je fajn hitro
+      zbrisu.
+
+      jebemti sej jaz nism nč reku ker nisem hotu problemov ampak
+      zdej je pa hudo. to ni normalno kif int pogleda
+    effects:
+      trust_jan: "+10"
+      night_witnesses: "+1"
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Franc (saw late-night meeting at apiary) ---
+
+  franc_interview:
+    type: tweet
+    from: franc
+    text: >
+      Opomnik: Medvedji gozd je zaprt ponoči. Opazil sem nedovoljen
+      promet na gozdni cesti te zadnje noči.
+    effects: { trust_franc: "+5" }
+    choices:
+      - Ask Franc what he saw -> franc_talk_night
+
+  franc_talk_night:
+    type: message
+    text: >
+      FRANC: I was checking the deer fences on the eastern ridge around
+      11pm. I saw Maja's shed light on. And a black company SUV —
+      AlpTransit plates — parked on the forest road. Two men were
+      standing by the shed entrance. One of them I recognised: Roman
+      Kranjc, the AlpTransit project director.
+
+      At 11pm. At a bee apiary in the forest. That's not normal.
+
+      I noted it in my forest log. Nobody's asked to see it.
+    effects:
+      trust_franc: "+10"
+      night_witnesses: "+1"
+      highway_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lucija (saw car at dawn) ---
+
+  lucija_interview:
+    type: tweet
+    from: lucija
+    text: >
+      pekarna odprta od 4h kot vedno. ampak tisto jutro je avto šel
+      mimo preveč hitro za vaško cesto. ni normalno.
+    effects: { trust_lucija: "+5" }
+    choices:
+      - Ask Lucija what she saw -> lucija_talk
+
+  lucija_talk:
+    type: message
+    text: >
+      LUCIJA: I start baking at 4am every day. That morning I was
+      opening the shutters and a car went past — fast, much too fast
+      for the village road. Small car, green. Then maybe three minutes
+      later, a bigger vehicle. SUV, dark. Chasing? I don't know.
+
+      The small car turned onto the mountain road toward Vršič. The
+      SUV kept going toward the main valley road.
+
+      I told the policija. They wrote it down. That was it.
+    effects:
+      trust_lucija: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Gašper (saw Maja fleeing) ---
+
+  gasper_interview:
+    type: tweet
+    from: gasper
+    text: >
+      bil sem na poti navzdol z grebena. v temi sem videl nekoga na
+      gozdni poti. ni bil pohodnik.
+    effects: { trust_gasper: "+5" }
+    choices:
+      - Ask Gašper what he saw -> gasper_talk
+
+  gasper_talk:
+    type: message
+    text: >
+      GAŠPER: I was descending from the ridge at about 3am — late
+      return from a rescue callout. On the forest path near Medvedji
+      gozd I saw someone. A woman, carrying a backpack, moving fast
+      through the trees. Not on the path — through the forest itself.
+
+      I called out — standard mountain safety — but she didn't stop.
+      She was moving like someone who knows the forest blindfolded.
+      And like someone who was afraid.
+
+      When I heard about Maja, I put it together. I think that was her.
+      Running from something.
+    effects:
+      trust_gasper: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Anja (sister)
+      and Lara (saw Nik watching Maja's house).
+    choices:
+      - Talk to Anja about that night -> anja_interview
+      - Talk to Lara -> lara_interview
+      - Find Jan -> jan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Franc -> franc_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Lucija -> lucija_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Gašper -> gasper_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Anja (last to see Maja) ---
+
+  anja_interview:
+    type: tweet
+    from: anja
+    text: >
+      tista slika na majinem računu. to ni ona. maja nikoli ne objavi
+      brez zgodbe. maja ne objavlja ob 3h zjutraj. nekdo drug je to
+      naredil.
+    effects: { trust_anja: "+5" }
+    choices:
+      - DM Anja -> anja_talk_low
+        when:
+          state: trust_anja
+          lt: 50
+      - DM Anja -> anja_talk_high
+        when:
+          state: trust_anja
+          gte: 50
+
+  anja_talk_low:
+    type: message
+    text: >
+      ANJA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Anja needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_anja: "+5" }
+    choices:
+      - Share what you've learned about the night -> anja_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  anja_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the apiary, the
+      company men, the running figure in the forest. Anja is silent for
+      a while.
+
+      ANJA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_anja: "+25" }
+    choices:
+      - What happened that night? -> anja_talk_high
+
+  anja_talk_high:
+    type: message
+    text: >
+      ANJA: She came to my flat around midnight. I was on night shift
+      preparation. She was shaking, white as snow. She said "prišli so
+      v gozd." They came to the forest. She grabbed her laptop and
+      the environmental survey documents.
+
+      I asked who. She said "AlpTransit. Kranjc himself. With a lawyer."
+      Then she said something else — "in on je bil spet tam. Pred njimi.
+      Vedno pred njimi."
+
+      She wouldn't say who "he" was. She hugged me, said "ne skrbi,"
+      and left with a pack. By morning her car was gone and that photo
+      was on her account.
+    effects:
+      trust_anja: "+15"
+      night_witnesses: "+1"
+      highway_evidence: "+1"
+      researcher_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lara (saw Nik watching Maja's house) ---
+
+  lara_interview:
+    type: message
+    text: >
+      LARA: ej no ok to je čudno kar bom rekla ampak tisti
+      raziskovalec — nik — sem ga vidla kak trikrat zvečer pred
+      majino hišo. sam tam je stal in gledal okna. ful creepy sej.
+
+      zadnjič je blo nek dva dni preden je izginila. bil je v avtu
+      na parkingu nasproti. sam sedel. brez luči.
+    effects:
+      trust_lara: "+10"
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Nik seen at Maja's apiary, handling her equipment (Jan)
+      23:00 — AlpTransit SUV at the apiary, Roman Kranjc present (Franc)
+      00:00 — Maja arrives at Anja's, shaken, grabs documents (Anja)
+      03:00 — Woman running through Medvedji gozd with backpack (Gašper)
+      04:00 — Two vehicles speeding through the village at dawn (Lucija)
+
+      AlpTransit confronted Maja at her apiary. She fled home, grabbed
+      her evidence, and ran into the forest. Someone followed.
+
+      But there are two threats: the highway company AND someone closer.
+
+      Two threads to pull:
+      — The obsession: What is Nik really doing in Triglavski Kot?
+        Why was he at her apiary?
+      — The cover-up: What is AlpTransit hiding? Who ordered the
+        confrontation?
+    choices:
+      - Investigate Nik the researcher -> stalker_hub
+      - Investigate the highway cover-up -> corruption_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      RESEARCHER THREAD: Evidence collected: ${researcher_evidence}
+      HIGHWAY THREAD: Evidence collected: ${highway_evidence}
+    choices:
+      - Work on the researcher thread -> stalker_hub
+      - Work on the highway thread -> corruption_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: researcher_evidence, gte: 5 }
+            - { state: highway_evidence, gte: 3 }
+
+  # =====================================================================
+  # RESEARCHER OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE RESEARCHER THREAD
+
+      Dr. Nik Bertoncelj. Geneticist. Fieldworker. Something more?
+      Someone was at Maja's apiary at night. Someone was watching her
+      house. Someone was rearranging her hive frames.
+
+      Researcher evidence: ${researcher_evidence}
+    choices:
+      - Search Nik's academic profile -> nik_academic
+      - Talk to Vida about Nik -> vida_nik
+        when:
+          state: trust_vida
+          gte: 20
+      - Talk to Jan (more detail on the apiary incident) -> jan_detail
+      - Talk to Irena the pharmacist -> irena_interview
+      - Check the anonymous account @petra_likar -> petra_investigation
+      - Talk to Jože about Nik's habits -> joze_nik_habits
+        when:
+          state: trust_joze
+          gte: 40
+      - Talk to Inšpektor Kovač -> insp_interview
+        when:
+          state: trust_insp
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Nik's Academic Profile ---
+
+  nik_academic:
+    type: message
+    text: >
+      Dr. Nik Bertoncelj's university page shows a list of publications
+      on Apis mellifera carnica genetics. But his fieldwork log,
+      shared with the university for oversight, shows something else.
+
+      Of 142 field visits logged in eight months, 98 were to Maja's
+      apiaries specifically. He has 16 other beekeepers in the study.
+      None received more than 8 visits.
+
+      His latest research note: "Subject MH's queen-rearing methods
+      represent a unique genetic lineage. Full documentation requires
+      extended close observation. Have requested unlimited apiary
+      access. Request denied."
+    effects:
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to researcher thread -> stalker_hub
+
+  # --- Vida on Nik ---
+
+  vida_nik:
+    type: message
+    text: >
+      VIDA: Nik made Maja uncomfortable. He'd appear at her apiary at
+      dawn before she arrived. He'd offer to help with the hives —
+      uninvited. He'd comment on every single one of her bee posts
+      within minutes.
+
+      She told him clearly: "Please coordinate with me. Don't come to
+      my apiaries without asking." He said he understood. Then nothing
+      changed. He just kept appearing. Always there.
+
+      A month ago she found that someone had opened her apiary shed at
+      night. Her hive frames had been rearranged — the queen cells she
+      was cultivating had been sampled. She suspected Nik but couldn't
+      prove it.
+    effects:
+      trust_vida: "+10"
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to researcher thread -> stalker_hub
+
+  # --- Jan detail ---
+
+  jan_detail:
+    type: message
+    text: >
+      JAN: ej no ok sej nisem vse povedal. ko sem vidu nika zravn
+      čebelnjaka je imel nek mali aparat v roki. nek senzor al pa
+      kamera. jo je pritrdil na panj — majin glavni panj — na
+      spodnji strani.
+
+      jebemti sej jaz nism ekspert ampak to je zgledal kot neka
+      sledilna naprava al pa kamera. taki stvari ko jih vidš v filmih.
+
+      bi mogu rečt ampak kdo bo najstniku vrjeu da obtožuje
+      univerzitetnega profesorja. u pičku ne sej.
+    effects:
+      trust_jan: "+10"
+      researcher_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to researcher thread -> stalker_hub
+
+  # --- Irena ---
+
+  irena_interview:
+    type: message
+    text: >
+      IRENA: This is confidential but I'm a pharmacist, not a priest.
+      Dr. Bertoncelj comes in regularly. He's been buying things that
+      suggest he's not sleeping. Anti-anxiety medication, melatonin,
+      caffeine pills. The pattern is someone under extreme stress.
+
+      He also asked me once, very casually, if I knew Maja's daily
+      schedule. I said "this is a pharmacy, not an information office."
+      He laughed it off. But there was nothing casual about that
+      question.
+
+      And once he bought a hunting camera — we sell them for the
+      foresters. He said it was for "nocturnal bee activity monitoring."
+      Dej nehaj. Bees don't fly at night.
+    effects:
+      trust_irena: "+10"
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to researcher thread -> stalker_hub
+
+  # --- Petra (anonymous account) ---
+
+  petra_investigation:
+    type: tweet
+    from: petra
+    text: >
+      She should have collaborated. I was trying to advance the science.
+      Nobody else understands her bees the way I do.
+    choices:
+      - Look at this account's history -> petra_posts
+
+  petra_posts:
+    type: message
+    text: >
+      @petra_likar: account created 7 months ago. Posts are all about
+      Maja's beekeeping. Comments on every hive photo, every honey
+      harvest, every queen-rearing update. The tone shifts over time:
+
+      Month 1: "Remarkable genetics. Your queens are scientifically
+      invaluable."
+      Month 3: "Why won't you share your breeding records? I just want
+      to collaborate."
+      Month 5: "I see you at the market talking to everyone. You have
+      time for them but not for real science?"
+      Month 7: "I know your schedule. I know your apiaries. I'm always
+      close to the bees."
+
+      The account has no photos, no personal details. Just Maja's bees.
+      Only Maja.
+    effects:
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> petra_style
+
+  petra_style:
+    type: message
+    text: >
+      Comparing @petra_likar with @nik_bertoncelj:
+
+      Same apiology terminology. Same Slovenian academic conventions —
+      the specific way he cites queen genetics. Same knowledge of
+      Maja's breeding program that only a geneticist studying her
+      colonies would have.
+
+      And one post from @petra_likar: "Your F3 cross-bred queen at
+      Apiary Site 7 is extraordinary." Apiary Site 7 is Nik's internal
+      research designation. Not public.
+
+      It's Nik. The anonymous account is Nik.
+    effects:
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to researcher thread -> stalker_hub
+
+  # --- Jože on Nik's habits ---
+
+  joze_nik_habits:
+    type: message
+    text: >
+      JOŽE: Ej no, I'll tell you about Nik. He sits in my gostilna
+      every afternoon. Same table — the one with a view of the forest
+      path Maja takes to her apiaries. He orders one kava and sits for
+      three hours. Always has his laptop open but he's watching the
+      window.
+
+      Last month I asked him straight: "Doktor, kaj pravzaprav počnete?"
+      He said he was "processing field data." Field data of staring at
+      a path?
+
+      And I found something. He left his field notebook once. I looked.
+      Pages and pages about Maja. Her schedule. What time she goes to
+      the apiaries. How long she stays. Which hives she inspects on
+      which days. Notes about her clothing, her mood.
+
+      That's not science. That's a stalker's diary.
+    effects:
+      trust_joze: "+10"
+      researcher_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inšpektor Kovač ---
+
+  insp_interview:
+    type: message
+    text: >
+      INŠPEKTOR KOVAČ: Off the record — and I mean completely off the
+      record — I wanted to investigate AlpTransit. My superior told me
+      to stand down. He said the Ministry had "jurisdiction." That's
+      code for "don't touch it."
+
+      The Bertoncelj situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_insp: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to researcher thread -> stalker_hub
+
+  # =====================================================================
+  # HIGHWAY COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE HIGHWAY THREAD
+
+      AlpTransit is hiding something. Maja had the independent
+      environmental survey. Now she's gone and the documents are
+      missing from her shed.
+
+      Highway evidence: ${highway_evidence}
+    choices:
+      - Search the environmental records -> env_records
+      - Talk to Tina the journalist -> tina_interview
+      - Talk to Eva (AlpTransit environmental technician) -> eva_interview
+      - Talk to Drago (environment councillor) -> drago_interview
+      - Check the Čebelarsko društvo -> drustvo_investigation
+      - Talk to Franc about the illegal survey roads -> franc_roads
+      - Back to hub -> investigation_hub
+
+  # --- Environmental Records ---
+
+  env_records:
+    type: message
+    text: >
+      The Environmental Agency of Slovenia database shows Medvedji
+      gozd is classified as a Natura 2000 protected area. Any
+      construction requires a full Environmental Impact Assessment.
+
+      AlpTransit's planning application lists the forest as "degraded
+      secondary growth — limited ecological value." The EIA was
+      commissioned from a firm owned by AlpTransit's parent company.
+
+      Maja's independent survey — conducted with university biologists —
+      found 14 protected species, ancient growth trees, and the last
+      wild Carniolan bee nesting site in the Julian Alps. Her EIA
+      directly contradicts AlpTransit's.
+    effects:
+      highway_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Tina ---
+
+  tina_interview:
+    type: message
+    text: >
+      TINA: I don't talk about sources. Period.
+    effects: { trust_tina: "+5" }
+    choices:
+      - Show Tina the evidence you have -> tina_with_evidence
+        when:
+          state: highway_evidence
+          gte: 3
+      - Back to highway thread -> corruption_hub
+
+  tina_with_evidence:
+    type: message
+    text: >
+      TINA: ...you have more than I expected.
+
+      Okay. Maja and I were working together. She had the independent
+      environmental survey — signed by three university professors —
+      proving Medvedji gozd is irreplaceable. That document makes
+      AlpTransit's highway route illegal under EU habitat directives.
+
+      We were going to publish together. Then she went dark. And two
+      days later, someone broke into my car and stole my backup copies.
+
+      Maja is alive. She contacted me once, from a number I didn't
+      recognise. She said she was hiding. She said "grozili so mi v
+      gozdu in nekdo drug me ne pusti pri miru."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_tina: "+25"
+      highway_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> tina_hint
+      - Back to investigation hub -> investigation_hub
+
+  tina_hint:
+    type: message
+    text: >
+      TINA: AlpTransit sent Roman Kranjc himself with a lawyer to the
+      apiary that night. They told her to hand over the survey or face
+      legal consequences for "interfering with a state infrastructure
+      project." Intimidation dressed up as legal process.
+
+      But she also said something about someone at her apiaries. Someone
+      who'd been sampling her queen cells without permission. Someone
+      who always knew where she'd be working. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Eva (AlpTransit whistleblower) ---
+
+  eva_interview:
+    type: message
+    text: >
+      EVA: I work for AlpTransit. I'm just an environmental technician.
+      I run impact assessments, I write reports.
+
+      But the reports I write... are not always the reports that get
+      submitted to the Ministry.
+    effects: { trust_eva: "+10" }
+    choices:
+      - What do you mean? -> eva_detail
+
+  eva_detail:
+    type: message
+    text: >
+      EVA: I survey biodiversity. Species counts, habitat quality, tree
+      age. My data goes to my supervisor. Somewhere between my desk and
+      the Environmental Agency, the numbers change. Species disappear.
+      Tree ages shrink. Habitat quality drops from "excellent" to "poor."
+
+      Maja's independent survey matched MY original data, not what
+      AlpTransit filed. She had parallel proof that the company is
+      falsifying environmental assessments.
+
+      I'm scared. I have a family. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_eva: "+15"
+      highway_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to highway thread -> corruption_hub
+
+  # --- Drago ---
+
+  drago_interview:
+    type: message
+    text: >
+      DRAGO: As councillor for the environment, I take this seriously.
+      But AlpTransit's highway brings 150 construction jobs and a
+      faster road to the coast. The župan insists we need to "maintain
+      dialogue."
+
+      Off the record? I've seen the Ministry inspection files.
+      AlpTransit's environmental assessment was rubber-stamped. The
+      usual process takes two years. This one took three months.
+
+      Maja had the independent data that proved it was all a lie.
+      That's what makes it dangerous.
+    effects:
+      trust_drago: "+10"
+      highway_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to highway thread -> corruption_hub
+
+  # --- Čebelarsko društvo ---
+
+  drustvo_investigation:
+    type: tweet
+    from: drustvo_cebelarjev
+    text: >
+      OPOZORILO: Poškodbe čebeljih habitatov prijavljene v Medvedjem
+      gozdu. Fotografije in dokumentacija zbrana. Zahtevamo takojšnjo
+      preiskavo Okoljske agencije.
+    choices:
+      - Check their data -> drustvo_data
+
+  drustvo_data:
+    type: message
+    text: >
+      The Čebelarsko društvo has been documenting the destruction of
+      bee habitats in the valley for two years. Their data shows a
+      clear pattern: AlpTransit surveys disturb nesting sites, access
+      roads destroy foraging meadows, and drill vibrations cause colony
+      collapse.
+
+      They've documented 12 destroyed wild bee colonies since AlpTransit
+      began operations. The company was fined €5,000 each time. The
+      highway project is worth €200 million.
+
+      Maja was the society's lead field monitor. She contributed most
+      of the documentation.
+    effects:
+      highway_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to highway thread -> corruption_hub
+
+  # --- Franc forest roads ---
+
+  franc_roads:
+    type: message
+    text: >
+      FRANC: I'll show you something. Last month I found fresh bulldozer
+      tracks in Medvedji gozd. An access road being cut through
+      protected forest — no permits, no markers, nothing. Ancient beech
+      trees felled and pushed aside.
+
+      I photographed everything. GPS coordinates, tree diameters, the
+      AlpTransit equipment serial numbers painted on the bulldozer.
+
+      But here's the thing. While I was documenting, I heard a phone
+      conversation. Roman Kranjc was on the forest road, talking to
+      someone. He said: "Čebelarka bo podpisala ali bo izginila. Tako
+      ali drugače začnemo kopat spomladi."
+
+      The beekeeper will sign or she'll disappear. Either way we start
+      digging in spring.
+
+      I have the recording. My phone was running.
+    effects:
+      trust_franc: "+10"
+      highway_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Maja than anyone in Triglavski Kot. Who is responsible?
+    choices:
+      - Confront Dr. Nik Bertoncelj (the obsessive researcher) -> confront_nik
+        when:
+          state: researcher_evidence
+          gte: 5
+      - Confront Roman Kranjc (the project director) -> confront_roman
+        when:
+          state: highway_evidence
+          gte: 3
+      - Confront Župan Zupan (political protection) -> confront_matej
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Nik (Best Ending) ---
+
+  confront_nik:
+    type: message
+    text: >
+      You present your evidence to Nik:
+
+      "I know @petra_likar is your account. I know you placed a camera
+      on Maja's hive. I know you sampled her queen cells without
+      permission. I know you watched her house at night. I have
+      witnesses, your field notebook, and your access logs."
+    choices:
+      - Send -> nik_response
+
+  nik_response:
+    type: message
+    text: >
+      Nik doesn't reply for a long time. Then:
+
+      NIK: You don't understand. Her bees are genetically unique. A
+      once-in-a-generation lineage. She was letting it go undocumented.
+      I needed access to preserve something precious for science.
+      Everything I did was in the interest of the species.
+
+      That's not science. That's obsession.
+
+      You've already sent the evidence to Inšpektor Kovač. And to
+      Tina Kavčič.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inšpektor Kovač reopens the case. With your evidence — the
+      anonymous account, the hidden camera, the unauthorised sampling,
+      the surveillance, the witness testimonies — Dr. Nik Bertoncelj is
+      arrested for stalking, harassment, and illegal entry. A trail
+      camera is recovered from Maja's main beehive, recording footage
+      going back five months.
+
+      Tina Kavčič, finally in possession of Maja's full environmental
+      survey, publishes the AlpTransit story in Delo. The European
+      Commission opens an infringement proceeding under the Habitats
+      Directive. AlpTransit is ordered to halt all work in Medvedji
+      gozd. Roman Kranjc faces criminal charges for falsifying
+      environmental assessments and threatening a protected area
+      monitor.
+
+      And Maja Horvat, reading the story from a friend's mountain hut
+      near Bovec, calls her sister for the first time in ten days.
+
+      "Pridem domov."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: maja
+    text: >
+      čebele vedo kdaj je nevarno. in vedo kdaj je varno priti nazaj.
+      hvala da niste odnehali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Roman (Partial Ending) ---
+
+  confront_roman:
+    type: message
+    text: >
+      You present the highway evidence to Roman Kranjc:
+
+      "I have the independent environmental survey proving Medvedji
+      gozd is a Natura 2000 site with 14 protected species. I have
+      your original technician's data showing you falsified the
+      assessment. I have a recording of you saying Maja would
+      'disappear.' I have photos of your illegal access roads."
+    choices:
+      - Send -> roman_response
+
+  roman_response:
+    type: message
+    text: >
+      ROMAN: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. AlpTransit has always operated within
+      regulatory requirements.
+
+      But it's too late. You've sent the evidence to Tina, to the
+      Čebelarsko društvo, and to the Environmental Agency.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE HIGHWAY
+
+      The environmental story breaks. AlpTransit is ordered to halt
+      construction pending investigation. The highway route may be
+      rerouted. A hundred and fifty jobs hang in the balance. The
+      village is divided.
+
+      But Maja?
+
+      Without the stalking evidence, Nik is never investigated. He
+      continues his "fieldwork." He continues to visit her apiaries.
+      He creates a new anonymous account. He starts publishing papers
+      about "the beekeeper of the Julian Alps."
+
+      Three months later, Maja reads about AlpTransit online. She
+      returns quietly. She moves her apiaries. She installs cameras.
+      She checks her shed every morning before opening.
+
+      The highway company is exposed. But the person who terrorised
+      Maja walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: maja
+    text: "sem nazaj. gozd je varen. ostalo... bomo videli."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_matej:
+    type: message
+    text: >
+      You confront Župan Zupan with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> matej_response
+
+  matej_response:
+    type: tweet
+    from: branko
+    text: >
+      Moja stranka se je seznanila z vašimi obtožbami. Vsaka javna
+      distribucija obrekljivega materiala bo rezultirala v takojšnjem
+      postopku. — Mlakar & Partnerji, Ljubljana
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The župan's lawyer buries your accusation. Without a direct link
+      between Zupan and AlpTransit's threats — and there isn't one
+      beyond political protection — your evidence is insufficient.
+
+      AlpTransit continues to build. Nik continues to watch. Maja
+      stays in hiding.
+
+      Six months later, @petra_likar creates a new account. It follows
+      Maja's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: TRIGLAVSKI KOT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Researcher evidence: ${researcher_evidence}
+      Highway evidence: ${highway_evidence}
+
+      Thank you for playing. Maja's story explores themes of
+      infrastructure destroying natural heritage, obsessive behaviour
+      disguised as scientific interest, environmental protection,
+      community solidarity, and the courage to defend what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Žrtev nasilja v družini: 080 1552 (brezplačno)
+      Društvo za nenasilno komunikacijo: 031 770 120
+      SOS telefon: 080 11 55
+      Okoljska agencija prijave: 01 478 7400

@@ -1,0 +1,1545 @@
+# DEAD ACCOUNT — Story 002: Port-Lunel (France)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-002.yml
+#
+# Player investigates the disappearance of marine biologist Chloé Moreau
+# in the fictional Breton coastal town of Port-Lunel.
+
+meta:
+  title: "Dead Account — Port-Lunel"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_manon: 0
+    trust_theo: 0
+    trust_brigitte: 0
+    trust_jeanpierre: 0
+    trust_lea: 0
+    trust_hugo: 0
+    trust_oceane: 0
+    trust_sylvie: 0
+    trust_bertrand: 0
+    trust_yannick: 0
+    trust_corentin: 0
+    trust_nolwenn: 0
+    trust_gwenaelle: 0
+    trust_loic: 0
+    trust_elodie: 0
+    trust_ronan: 0
+    trust_armelle: 0
+    trust_patrick: 0
+    trust_fabien: 0
+    trust_maiwenn: 0
+    trust_capitaine: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to port-lunel. discovering brittany one tide at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "PortLunel.social"
+    description: "Bienvenue sur l'instance communautaire de Port-Lunel"
+    avatar_url: /gamepatch/assets/dead-account/portlunel_bot.png
+
+  npcs:
+    # === Chloé's Inner Circle ===
+    chloe:
+      name: "Chloé Moreau"
+      bio: "biologiste marine | photos sous-marines | l'océan ne ment pas"
+      avatar: avatars/chloe.jpg
+    manon:
+      name: "Manon Leclercq"
+      bio: "coloc de chloé | infirmière au centre médical | café avant tout"
+      avatar: avatars/manon.jpg
+    theo:
+      name: "Théo Moreau"
+      bio: "le frère de chloé | mécanicien naval | brest | elle ne disparaît pas comme ça"
+      avatar: avatars/theo.jpg
+    corentin:
+      name: "Corentin Jégou"
+      bio: "chercheur en biologie marine | labo côtier port-lunel | collègue de chloé"
+      avatar: avatars/corentin.jpg
+
+    # === Local Government ===
+    bertrand:
+      name: "Bertrand Delacroix"
+      bio: "Maire de Port-Lunel | Au service de la commune depuis 2014 | #PortLunelAvance"
+      avatar: avatars/bertrand.jpg
+    gwenaelle:
+      name: "Gwenaëlle Kervran"
+      bio: "Adjointe à l'environnement | Commune de Port-Lunel | transition écologique"
+      avatar: avatars/gwenaelle.jpg
+    mairie:
+      name: "Mairie de Port-Lunel"
+      bio: "Compte officiel | Actualités communales | Horaires: Lun-Ven 9h-17h"
+      avatar: avatars/mairie.jpg
+
+    # === Local Business & Community ===
+    brigitte:
+      name: "Brigitte Le Gall"
+      bio: "Café de la Jetée | crêpes | cidre | vue sur mer | ouvert depuis 1987"
+      avatar: avatars/brigitte.jpg
+    cafe_jetee:
+      name: "Café de la Jetée"
+      bio: "Crêpes artisanales | Cidre breton | Concerts le vendredi | Le cœur de Port-Lunel"
+      avatar: avatars/cafe_jetee.jpg
+    jeanpierre:
+      name: "Jean-Pierre Guyader"
+      bio: "pêcheur | 40 ans en mer | cette côte est ma vie"
+      avatar: avatars/jeanpierre.jpg
+    yannick:
+      name: "Yannick Corre"
+      bio: "capitaine du port | Port-Lunel | permanence mar-sam"
+      avatar: avatars/yannick.jpg
+    nolwenn:
+      name: "Nolwenn Riou"
+      bio: "pharmacienne | Port-Lunel | santé & conseil | ouverte le dimanche matin"
+      avatar: avatars/nolwenn.jpg
+    armelle:
+      name: "Armelle Prigent"
+      bio: "boulangerie Prigent | kouign-amann | pain au levain | 5h du mat tous les jours"
+      avatar: avatars/armelle.jpg
+    loic:
+      name: "Loïc Madec"
+      bio: "ostréiculteur | huîtres de Port-Lunel | marée basse, marée haute, c'est ma vie"
+      avatar: avatars/loic.jpg
+    ronan:
+      name: "Ronan Quéré"
+      bio: "libraire | La Vigie | livres neufs & occasions | lectures le mercredi"
+      avatar: avatars/ronan.jpg
+
+    # === Journalist ===
+    sylvie:
+      name: "Sylvie Tanguy"
+      bio: "journaliste indépendante | environnement & littoral | tips: sylvie@tanguy-presse.fr"
+      avatar: avatars/sylvie.jpg
+
+    # === ChimiBretagne (corporate) ===
+    chimibretagne:
+      name: "ChimiBretagne SA"
+      bio: "Solutions chimiques industrielles | Site de Port-Lunel | ISO 14001 certifié"
+      avatar: avatars/chimibretagne.jpg
+    fabien:
+      name: "Fabien Hénaff"
+      bio: "directeur usine ChimiBretagne Port-Lunel | industrie & territoire"
+      avatar: avatars/fabien.jpg
+    patrick:
+      name: "Patrick Le Bihan"
+      bio: "Avocat | Cabinet Le Bihan & Associés | Droit des affaires | Rennes"
+      avatar: avatars/patrick.jpg
+
+    # === Teens ===
+    lea:
+      name: "Léa"
+      bio: "16 | surfeuse | port-lunel born | l'océan c'est la vie frr"
+      avatar: avatars/lea.jpg
+    hugo:
+      name: "Hugo"
+      bio: "17 | surf & skate | session sunrise | la mer soigne tout"
+      avatar: avatars/hugo.jpg
+    oceane:
+      name: "Océane"
+      bio: "15 | photo & dessin | la côte en noir et blanc | chloé est mon inspi"
+      avatar: avatars/oceane.jpg
+
+    # === Media & Community ===
+    actu_lunel:
+      name: "Actu Port-Lunel"
+      bio: "Actualités de Port-Lunel et du littoral | Tips: redaction@actu-portlunel.fr"
+      avatar: avatars/actu_lunel.jpg
+    meteo_bretagne:
+      name: "Météo Port-Lunel"
+      bio: "Prévisions et alertes | Station automatique | Mise à jour toutes les heures"
+      avatar: avatars/meteo_bretagne.jpg
+    asso_littoral:
+      name: "Association Sentinelles du Littoral"
+      bio: "Protection du littoral breton | Bénévoles | Signalements pollution"
+      avatar: avatars/asso_littoral.jpg
+
+    # === Suspicious / Other ===
+    elodie:
+      name: "Élodie Martel"
+      bio: "technicienne labo | ChimiBretagne | je fais mon travail c'est tout"
+      avatar: avatars/elodie.jpg
+    maiwenn:
+      name: "Maïwenn Perrot"
+      bio: "."
+      avatar: avatars/anon.jpg
+    capitaine:
+      name: "Capitaine Morin"
+      bio: "Gendarmerie de Port-Lunel | Brigade territoriale | urgences: 17"
+      avatar: avatars/capitaine.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PORT-LUNEL
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to portlunel.social — the community Mastodon instance for
+      the coastal town of Port-Lunel, Brittany.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @chloe_moreau.
+
+      A marine biologist. Underwater photographer. She documented the
+      coast. People are worried. She hasn't posted in five days.
+    choices:
+      - Look at her profile -> chloe_profile
+
+  chloe_profile:
+    type: tweet
+    from: chloe
+    text: "The water off Pointe de Kerbihan is not the right colour. Someone is dumping. I have proof."
+    choices:
+      - That's her last real post... -> grey_wave
+
+  grey_wave:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a grey wave. Blurred, overexposed, shot from a strange angle.
+      Posted at 3am. No caption.
+
+      Her friends say that's not her style. The gendarmerie says she
+      probably went travelling. Something doesn't add up.
+    choices:
+      - Read the gendarmerie statement -> gendarmerie_statement
+      - Look at what people are saying -> community_reaction
+
+  gendarmerie_statement:
+    type: tweet
+    from: capitaine
+    text: >
+      Nous avons reçu un signalement concernant une résidente de
+      Port-Lunel. À ce stade, aucun élément ne permet de conclure à
+      un acte délictueux. Toute information utile peut être communiquée
+      au 17 ou à la brigade.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her roommate @manon_leclercq is
+      desperate. Her brother @theo_moreau is driving down from Brest.
+      Her colleague @corentin_jegou is posting worried messages.
+      The fisherman @jeanpierre_guyader says she was right about the
+      water.
+
+      And the journalist @sylvie_tanguy is strangely silent.
+
+      Nobody buys the gendarmerie's line. Nobody thinks Chloé just
+      "went travelling."
+    effects: { trust_manon: "+5", trust_theo: "+5" }
+    choices:
+      - Start following Chloé's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Port-Lunel. Follow Chloé's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Brigitte (café owner, knows everyone) -> brigitte_intro
+      - Talk to Jean-Pierre (fisherman, saw the water) -> jeanpierre_intro
+      - Talk to Léa (teen surfer, seems shaken) -> lea_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Chloé with the rhythms of a small
+      coastal town: tide schedules, the bakery's daily specials,
+      weather warnings.
+
+      Key names surface: Manon (roommate, nurse), Corentin (lab
+      colleague, seems rattled), Sylvie (journalist, oddly quiet),
+      and the teens — Léa, Hugo, Océane — who worshipped Chloé's
+      ocean work.
+
+      Also prominent: ChimiBretagne SA, the chemical plant at the
+      edge of town. Their posts are corporate PR. Chloé's posts
+      were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Brigitte -> brigitte_intro
+      - Talk to Jean-Pierre -> jeanpierre_intro
+      - Talk to Léa -> lea_intro
+
+  # --- Brigitte (social map) ---
+
+  brigitte_intro:
+    type: tweet
+    from: brigitte
+    text: >
+      Le café est ouvert mais le cœur n'y est pas. @chloe_moreau,
+      ta table t'attend. Reviens nous vite.
+    effects: { trust_brigitte: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Brigitte -> brigitte_talk
+
+  brigitte_talk:
+    type: message
+    text: >
+      BRIGITTE: Ah, you're new? Welcome. Terrible time to arrive.
+      Everyone's on edge about Chloé.
+
+      Let me tell you who's who. Manon is Chloé's roommate — they
+      share a flat above the pharmacy. Sweet girl, devastated right
+      now. Corentin Jégou works at the marine lab with Chloé. Smart
+      man, but... intense about her. Théo is Chloé's older brother,
+      he's coming down from Brest.
+
+      And Sylvie Tanguy — the journalist — she and Chloé were working
+      on something together. Something about the water. Sylvie hasn't
+      said a word since Chloé vanished. That's not like her at all.
+
+      Oh, and steer clear of ChimiBretagne's PR posts. Lies wrapped
+      in ISO certifications.
+    effects: { trust_brigitte: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Corentin -> brigitte_corentin
+      - Ask about ChimiBretagne -> brigitte_chimi
+      - Thank her and move on -> quest1_hub
+
+  brigitte_corentin:
+    type: message
+    text: >
+      BRIGITTE: Corentin? He's been at the lab two years longer than
+      Chloé. Brilliant researcher. But since she arrived, he's been...
+      orbiting her. At the café every time she was there. Offered to
+      help with every project. She was polite about it but I could
+      tell it made her uncomfortable.
+
+      After she started the pollution investigation, he got worse.
+      Wanted to be part of everything. She told me once, "He doesn't
+      take no for an answer." I thought she meant professionally.
+      Now I'm not so sure.
+    effects: { trust_brigitte: "+5" }
+    choices:
+      - Ask about ChimiBretagne -> brigitte_chimi
+      - Move on -> quest1_hub
+
+  brigitte_chimi:
+    type: message
+    text: >
+      BRIGITTE: That factory has been there since the 80s. They make
+      industrial solvents, cleaning agents, whatever. The town
+      tolerated them because they brought jobs. But the fishermen
+      have been complaining for years — strange colours in the water
+      near the outfall pipe, dead fish washing up at Pointe de
+      Kerbihan.
+
+      Chloé was the first person to actually go down there with a
+      camera and sample bottles. She had proof, she said. Real proof.
+      Two weeks later she's gone.
+    effects: { trust_brigitte: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jean-Pierre (the water, witness tease) ---
+
+  jeanpierre_intro:
+    type: tweet
+    from: jeanpierre
+    text: >
+      quarante ans que je pêche ici. l'eau n'est plus la même.
+      @chloe_moreau avait raison. et maintenant elle a disparu.
+      faites le lien.
+    effects: { trust_jeanpierre: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jean-Pierre -> jeanpierre_talk
+
+  jeanpierre_talk:
+    type: message
+    text: >
+      JEAN-PIERRE: I've been fishing this coast since I was fifteen.
+      I know every current, every colour the sea makes. And I'm
+      telling you — the water near Kerbihan is wrong. Has been for
+      months. My nets come up with dead crabs. The seabed smells
+      chemical.
+
+      Chloé took water samples. She dove down to the outfall pipe.
+      She photographed everything. She was building a case. And then
+      poof — gone.
+
+      You think that's a coincidence? I don't believe in coincidences
+      at sea.
+    effects: { trust_jeanpierre: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> jeanpierre_night
+      - Move on -> quest1_hub
+
+  jeanpierre_night:
+    type: message
+    text: >
+      JEAN-PIERRE: The night before she vanished — I was coming back
+      from night fishing, around 1am. I saw lights at the lab.
+      Not unusual, researchers work late. But there were two cars
+      in the car park. One was Chloé's little blue Peugeot. The
+      other was a black company car with ChimiBretagne plates.
+
+      At 1am. At the marine research lab.
+
+      I didn't think much of it then. Now I think about it
+      constantly.
+    effects: { trust_jeanpierre: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Léa (teen surfer, witness tease) ---
+
+  lea_intro:
+    type: tweet
+    from: lea
+    text: >
+      jsuis deg la frr @chloe_moreau c elle qui m'a appris à
+      respecter l'océan genre sah c'est pas possible qu'elle soit
+      partie comme ça. si qqn sait qqch dites le svp
+    effects: { trust_lea: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Léa -> lea_talk_early
+
+  lea_talk_early:
+    type: message
+    text: >
+      LÉA: mdr t'es nouveau ici? c chaud comme timing. en vrai
+      chloé c'est genre la meilleure personne de cette ville. elle
+      nous a appris à surfer safe, elle nous montrait les trucs sous
+      l'eau avec sa caméra. trop stylé.
+
+      et la jsuis flippée pcq hugo il a vu un truc bizarre l'autre
+      soir au port mais il veut pas en parler. il dit que c rien
+      mais genre... c'est pas rien sah
+    effects: { trust_lea: "+10" }
+    choices:
+      - What did Hugo see? -> lea_hugo_hint
+      - Move on -> quest1_hub
+
+  lea_hugo_hint:
+    type: message
+    text: >
+      LÉA: jsp exactement. il était en session sunset au port et
+      il a vu genre qqn qui mettait des trucs dans la voiture de
+      chloé?? ou qqch comme ça. il flippe trop il veut pas en
+      parler. faut lui demander direct mais il est mefiant avec
+      les gens qu'il connaît pas. essaie d'abord de parler surf
+      avec lui ptdr
+    effects: { trust_lea: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Port-Lunel. A Breton coastal town
+      built around the sea. A marine biologist who was exposing
+      pollution. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Manon (Chloé's roommate) -> manon_q1
+      - Talk to Corentin (Chloé's colleague) -> corentin_q1
+      - Check what Théo (Chloé's brother) is saying -> theo_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Manon Q1 ---
+
+  manon_q1:
+    type: tweet
+    from: manon
+    text: >
+      si quelqu'un a des nouvelles de @chloe_moreau appelez moi svp.
+      sa chambre est intacte. son sac de plongée est là. elle ne
+      serait jamais partie sans son matériel.
+    effects: { trust_manon: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Manon -> manon_q1_talk
+
+  manon_q1_talk:
+    type: message
+    text: >
+      MANON: I appreciate you reaching out but I don't know you.
+      Chloé has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Manon is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_manon: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Corentin Q1 ---
+
+  corentin_q1:
+    type: tweet
+    from: corentin
+    text: >
+      The lab is empty without @chloe_moreau. Her samples are still
+      in the fridge. Her dive logs are on her desk. She would never
+      abandon ongoing research. Something happened.
+    effects: { trust_corentin: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Corentin -> corentin_q1_talk
+
+  corentin_q1_talk:
+    type: message
+    text: >
+      CORENTIN: Chloé and I have worked together for over a year.
+      She's the most dedicated researcher I know. This pollution
+      investigation — it was everything to her. She had data, photos,
+      chemical analysis. She was so close to going public.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to support her.
+
+      [Corentin seems earnest. Or obsessive?]
+    effects: { trust_corentin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Théo Q1 ---
+
+  theo_q1:
+    type: tweet
+    from: theo
+    text: >
+      ma sœur a DISPARU et la gendarmerie me dit qu'elle est
+      peut-être partie en vacances??? ELLE NE PART PAS EN VACANCES
+      SANS PRÉVENIR. j'arrive de brest. quelqu'un va m'expliquer.
+    effects: { trust_theo: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Théo -> theo_q1_talk
+
+  theo_q1_talk:
+    type: message
+    text: >
+      THÉO: Who are you? Another person from that town who's going to
+      tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "if
+      anything happens, look at ChimiBretagne." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_theo: "+10" }
+    choices:
+      - What do you think happened? -> theo_theory
+      - Move on -> quest1_hub
+
+  theo_theory:
+    type: message
+    text: >
+      THÉO: I think she found proof that ChimiBretagne is dumping
+      toxic waste and they shut her up. But I also think that creepy
+      colleague of hers — Corentin — knows more than he's saying.
+      The way he talks about her... it's not just professional
+      concern. It's something else.
+
+      Chloé told me months ago that someone at the lab was going
+      through her files. She thought it was nothing. I don't think
+      it was nothing.
+    effects: { trust_theo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Chloé went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Hugo (was surfing at sunset near the port) -> hugo_interview
+      - Find Yannick (harbour master, works late) -> yannick_interview
+      - Find Loïc (oyster farmer, early morning at the shore) -> loic_interview
+      - Find Armelle (baker, starts at 5am, saw something) -> armelle_interview
+
+  # --- Hugo (saw someone at Chloé's car) ---
+
+  hugo_interview:
+    type: tweet
+    from: hugo
+    text: >
+      bonne session ce soir mais l'ambiance au port c'est chelou en
+      ce moment. genre y'a un truc qui va pas. jsp comment expliquer
+    effects: { trust_hugo: "+5" }
+    choices:
+      - Ask Hugo about that evening -> hugo_talk
+
+  hugo_talk:
+    type: message
+    text: >
+      HUGO: wsh frr ok mais tu le dis à personne hein. j'étais au
+      port vers 19h, session sunset. et j'ai vu le gars du labo —
+      corentin — à côté de la voiture de chloé. il avait l'air de
+      fouiller dedans ou genre mettre un truc. quand il m'a vu il
+      est parti trop vite.
+
+      genre moi j'ai rien dit pcq je voulais pas d'embrouilles mais
+      la c'est chaud. c'est pas normal son comportement sah
+    effects:
+      trust_hugo: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Yannick (harbour master, saw late-night meeting) ---
+
+  yannick_interview:
+    type: tweet
+    from: yannick
+    text: >
+      Rappel: le port est interdit d'accès entre 22h et 6h.
+      J'ai constaté des passages non autorisés ces dernières nuits.
+    effects: { trust_yannick: "+5" }
+    choices:
+      - Ask Yannick what he saw -> yannick_talk
+
+  yannick_talk:
+    type: message
+    text: >
+      YANNICK: I was closing up the harbour office around 22h30. I
+      saw Chloé's car still in the lab car park. And a black sedan —
+      ChimiBretagne plates — parked next to it. Two men were standing
+      by the lab entrance. One of them I recognised: Fabien Hénaff,
+      the plant director.
+
+      At 22h30. At the marine lab. That's not normal.
+
+      I noted it in my harbour log. Nobody's asked to see it.
+    effects:
+      trust_yannick: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Loïc (saw Chloé fleeing) ---
+
+  loic_interview:
+    type: tweet
+    from: loic
+    text: >
+      debout à 4h pour les parcs. la grève était pas vide ce matin.
+      y'avait quelqu'un qui courait sur le sentier côtier. dans le
+      noir. pas un joggeur.
+    effects: { trust_loic: "+5" }
+    choices:
+      - Ask Loïc what he saw -> loic_talk
+
+  loic_talk:
+    type: message
+    text: >
+      LOÏC: I get up at 4am for the oyster beds. That morning — the
+      morning after Chloé's last post — I saw someone on the coastal
+      path. Running. A woman, carrying a bag, heading toward the
+      Pointe. It was still dark. She was moving fast, like she was
+      afraid.
+
+      I called out but she didn't stop. I figured it was a jogger
+      but... who jogs at 4am carrying a messenger bag?
+
+      When I heard about Chloé, I put it together. I think that was
+      her. Running from something.
+    effects:
+      trust_loic: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Armelle (saw car chase) ---
+
+  armelle_interview:
+    type: tweet
+    from: armelle
+    text: >
+      Fournée du jour à 5h comme d'habitude. Mais ce matin-là,
+      un véhicule roulait beaucoup trop vite sur la route côtière.
+    effects: { trust_armelle: "+5" }
+    choices:
+      - Ask Armelle what she saw -> armelle_talk
+
+  armelle_talk:
+    type: message
+    text: >
+      ARMELLE: I start baking at 5am every day. That morning I was
+      opening the shutters and a car went past — fast, much too fast
+      for the coast road. Dark sedan. Then maybe two minutes later,
+      a second car. Smaller, lighter. Chasing? I don't know.
+
+      The second car turned off toward the old fishing huts at
+      Kerbihan. The first kept going toward the N165.
+
+      I told the gendarmes. They wrote it down. That was it.
+    effects:
+      trust_armelle: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Manon (roommate)
+      and Océane (saw Corentin watching the flat).
+    choices:
+      - Talk to Manon about that night -> manon_interview
+      - Talk to Océane -> oceane_interview
+      - Find Hugo -> hugo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Yannick -> yannick_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Loïc -> loic_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Armelle -> armelle_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Manon (last to see Chloé) ---
+
+  manon_interview:
+    type: tweet
+    from: manon
+    text: >
+      cette photo sur le compte de chloé. ce n'est pas elle. chloé
+      ne poste jamais sans légende. chloé ne poste pas à 3h du
+      matin. quelqu'un d'autre a fait ça.
+    effects: { trust_manon: "+5" }
+    choices:
+      - DM Manon -> manon_talk_low
+        when:
+          state: trust_manon
+          lt: 50
+      - DM Manon -> manon_talk_high
+        when:
+          state: trust_manon
+          gte: 50
+
+  manon_talk_low:
+    type: message
+    text: >
+      MANON: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Manon needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_manon: "+5" }
+    choices:
+      - Share what you've learned about the night -> manon_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  manon_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the lab, the
+      company men, the running figure. Manon is silent for a while.
+
+      MANON: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_manon: "+25" }
+    choices:
+      - What happened that night? -> manon_talk_high
+
+  manon_talk_high:
+    type: message
+    text: >
+      MANON: She came home around 23h. I was on the night shift so
+      I was getting ready. She was pale, shaking. She said "they
+      know what I have." She grabbed her laptop and her camera hard
+      drives.
+
+      I asked who. She said "the plant. They sent people to the
+      lab." Then she said something else — "and he was there too.
+      He's always there."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry," and left with a bag. That was it. By morning her car
+      was gone and the grey wave was on her account.
+    effects:
+      trust_manon: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Océane (saw Corentin watching the flat) ---
+
+  oceane_interview:
+    type: message
+    text: >
+      OCÉANE: mdr ok en vrai c'est chelou ce que je vais dire mais
+      genre le gars du labo — corentin — je l'ai vu genre 3 fois
+      devant l'appart de chloé le soir. juste posé la à regarder
+      les fenêtres. trop creepy sah.
+
+      la dernière fois c'était genre 2 jours avant qu'elle
+      disparaisse. il était dans sa voiture garée en face. juste
+      assis. les phares éteints.
+    effects:
+      trust_oceane: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Corentin seen at Chloé's car at the port (Hugo)
+      22:30 — ChimiBretagne car at the lab, Fabien Hénaff present (Yannick)
+      23:00 — Chloé arrives home, shaken, grabs laptop and drives (Manon)
+      04:00 — Woman running on coastal path toward Pointe (Loïc)
+      05:00 — Two cars speeding on coast road, one toward Kerbihan (Armelle)
+
+      ChimiBretagne confronted Chloé at the lab. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is ChimiBretagne hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Corentin really doing? Why was he
+        at her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Corentin -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      ChimiBretagne is hiding something. Chloé had proof. Now she's
+      gone and her evidence is missing from the lab.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the lab records -> lab_records
+      - Talk to Sylvie the journalist -> sylvie_interview
+      - Talk to Élodie (ChimiBretagne technician) -> elodie_interview
+      - Talk to Gwenaëlle (environment deputy) -> gwenaelle_interview
+      - Check the Sentinelles du Littoral association -> asso_investigation
+      - Talk to Jean-Pierre about the dumping -> jeanpierre_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Lab Records ---
+
+  lab_records:
+    type: message
+    text: >
+      The marine lab's public database shows Chloé's recent work:
+      water quality samples from six sites along the coast. The
+      data for Pointe de Kerbihan is marked "PENDING REVIEW" — the
+      only site with that status.
+
+      Her dive log, shared with the lab for safety, shows she made
+      12 dives near the ChimiBretagne outfall pipe in the past
+      month. The last entry: "Photographed pipe junction. Undeclared
+      secondary outfall. Discharge is not what they report."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Sylvie ---
+
+  sylvie_interview:
+    type: message
+    text: >
+      SYLVIE: I don't talk about sources. Period.
+    effects: { trust_sylvie: "+5" }
+    choices:
+      - Show Sylvie the evidence you have -> sylvie_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  sylvie_with_evidence:
+    type: message
+    text: >
+      PIM: ...you have more than I expected.
+
+      SYLVIE: Okay. Chloé and I were working together. She had
+      photos of an undeclared waste pipe — ChimiBretagne has a
+      second outfall that doesn't appear on any permit. She had
+      water samples showing heavy metal levels ten times the legal
+      limit.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my car and stole my backup
+      drive.
+
+      Chloé is alive. She contacted me once, from a burner phone.
+      She said she was hiding. She said "they threatened me at the
+      lab and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_sylvie: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> sylvie_hint
+      - Back to investigation hub -> investigation_hub
+
+  sylvie_hint:
+    type: message
+    text: >
+      SYLVIE: The factory sent their director — Hénaff — and some
+      lawyer to the lab that night. They told her to hand over
+      everything or face legal consequences. Intimidation dressed
+      up as legal process.
+
+      But she also said something about someone at the lab. Someone
+      who'd been accessing her files. Someone who always seemed to
+      know where she was. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Élodie (ChimiBretagne whistleblower) ---
+
+  elodie_interview:
+    type: message
+    text: >
+      ÉLODIE: I work at ChimiBretagne. I'm just a lab tech. I run
+      tests, I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the prefecture.
+    effects: { trust_elodie: "+10" }
+    choices:
+      - What do you mean? -> elodie_detail
+
+  elodie_detail:
+    type: message
+    text: >
+      ÉLODIE: I measure heavy metals. Cadmium, mercury, lead. My
+      numbers go to my supervisor. Somewhere between my desk and the
+      regulatory filing, they change. Lower. Always lower.
+
+      Chloé's samples from outside the pipe matched MY original
+      numbers, not the ones in the official reports. She had
+      independent proof that ChimiBretagne is falsifying their
+      discharge data.
+
+      I'm scared. I have a family. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_elodie: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gwenaëlle ---
+
+  gwenaelle_interview:
+    type: message
+    text: >
+      GWENAËLLE: As deputy mayor for the environment, I take these
+      allegations seriously. But ChimiBretagne employs 200 people in
+      this commune. The mayor insists we need to "maintain dialogue."
+
+      Off the record? I've seen the prefectural inspection reports.
+      ChimiBretagne passes every time. But those inspections are
+      announced two weeks in advance. They clean up before the
+      inspectors arrive.
+
+      Chloé had unannounced data. That's what makes it dangerous.
+    effects:
+      trust_gwenaelle: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sentinelles du Littoral ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_littoral
+    text: >
+      ALERTE: Signalement de coloration anormale de l'eau à la
+      Pointe de Kerbihan. Photos et prélèvements en cours. Nous
+      demandons une inspection non annoncée de l'usine ChimiBretagne.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Sentinelles du Littoral have been documenting water quality
+      for three years. Their data shows a clear pattern: heavy metal
+      spikes that correspond to ChimiBretagne's production schedule.
+      Higher on weekdays, lower on weekends. Higher at night, lower
+      during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal discharge timed to avoid detection.
+
+      Chloé was a member. She contributed most of the underwater
+      photography.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Jean-Pierre dumping ---
+
+  jeanpierre_dumping:
+    type: message
+    text: >
+      JEAN-PIERRE: I'll show you something. Last month I pulled my
+      nets near the outfall and found this — a metal drum, corroded,
+      leaking. The label was half gone but I could read "solvant" and
+      a ChimiBretagne batch number.
+
+      I photographed it and sent it to Chloé. She said it was the
+      missing piece — proof they were dumping solid waste, not just
+      discharge. Barrels in the sea.
+
+      I still have the photos. And the batch number.
+    effects:
+      trust_jeanpierre: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Corentin Jégou. Colleague. Researcher. Something more?
+      Someone was accessing Chloé's files. Someone was watching
+      her flat. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Corentin's lab access logs -> lab_access
+      - Talk to Manon about Corentin -> manon_corentin
+        when:
+          state: trust_manon
+          gte: 20
+      - Talk to Hugo (more detail on the car incident) -> hugo_detail
+      - Talk to Nolwenn the pharmacist -> nolwenn_interview
+      - Check the anonymous account @maiwenn_perrot -> maiwenn_investigation
+      - Talk to Ronan the bookseller -> ronan_interview
+        when:
+          state: trust_ronan
+          gte: 40
+      - Talk to Capitaine Morin -> capitaine_interview
+        when:
+          state: trust_capitaine
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Lab Access Logs ---
+
+  lab_access:
+    type: message
+    text: >
+      The marine lab's door access system is logged electronically.
+      Chloé's access card was used at the lab 47 times last month.
+      Corentin's card: 83 times. Nearly double.
+
+      Cross-referencing: on 31 of Corentin's 83 entries, he accessed
+      the lab within 15 minutes of Chloé. He arrived after her and
+      left after her. Every time.
+
+      His own office is on a different floor.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Manon on Corentin ---
+
+  manon_corentin:
+    type: message
+    text: >
+      MANON: Corentin? He made Chloé uncomfortable. He'd show up at
+      the café when she was there. He'd offer to walk her home. He'd
+      comment on every single one of her posts within minutes.
+
+      She told him she wasn't interested. Clearly, kindly. He said
+      he understood. Then nothing changed. He just... kept being
+      there. Always there.
+
+      A month ago she found that someone had accessed her lab
+      computer after hours. Her research files had been opened. She
+      suspected Corentin but couldn't prove it.
+    effects:
+      trust_manon: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Hugo detail ---
+
+  hugo_detail:
+    type: message
+    text: >
+      HUGO: ok frr en vrai j'ai pas tout dit. quand j'ai vu
+      corentin à la voiture de chloé il avait un truc à la main.
+      genre un petit boîtier. il l'a mis sous la voiture, côté
+      conducteur. genre collé en dessous.
+
+      moi jsuis pas expert mais ça ressemblait trop à un traceur
+      gps sah. le genre de truc qu'on voit dans les films.
+
+      j'aurais du dire qqch mais genre qui m'aurait cru ptdr. un
+      ado qui accuse un chercheur. mdr non.
+    effects:
+      trust_hugo: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Nolwenn ---
+
+  nolwenn_interview:
+    type: message
+    text: >
+      NOLWENN: This is confidential but I'm a pharmacist, not a
+      priest. Corentin Jégou comes in regularly. He's been buying
+      things that... suggest he's not sleeping. Anti-anxiety
+      medication, sleep aids, energy supplements. The pattern is
+      someone under extreme stress.
+
+      He also asked me once, very casually, if we sold GPS trackers.
+      I said "this is a pharmacy, not Darty." He laughed it off.
+      I didn't think about it again until Chloé disappeared.
+    effects:
+      trust_nolwenn: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Maïwenn (anonymous account) ---
+
+  maiwenn_investigation:
+    type: tweet
+    from: maiwenn
+    text: >
+      She should have listened. I was trying to protect her. Nobody
+      else understood her work like I do.
+    choices:
+      - Look at this account's history -> maiwenn_posts
+
+  maiwenn_posts:
+    type: message
+    text: >
+      @maiwenn_perrot: account created 8 months ago. Posts are all
+      about Chloé's work. Comments on every dive photo, every water
+      sample, every research update. The tone shifts over time:
+
+      Month 1: "Incredible work. You're doing what nobody else dares."
+      Month 3: "Why won't you respond to my messages? I just want
+      to collaborate."
+      Month 6: "I see you at the café with other people. You have
+      time for them but not for me?"
+      Month 7: "I know where you go. I know your schedule. I'm
+      always close."
+
+      The account has no photos, no personal details. Just Chloé.
+      Only Chloé.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> maiwenn_style
+
+  maiwenn_style:
+    type: message
+    text: >
+      Comparing @maiwenn_perrot with @corentin_jegou:
+
+      Same use of marine biology terminology. Same French spelling
+      conventions — the specific way he hyphenates compound terms.
+      Same knowledge of Chloé's research that only a lab colleague
+      would have.
+
+      And one post from @maiwenn_perrot: "Your dive at Site 7 was
+      beautiful." Site 7 is an internal lab designation. Not public.
+
+      It's Corentin. The anonymous account is Corentin.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ronan ---
+
+  ronan_interview:
+    type: message
+    text: >
+      RONAN: Chloé left something with me. A sealed waterproof
+      case. She said "if someone asks you about what's under the
+      water at Kerbihan, give them this."
+
+      She looked frightened. She said she'd made copies of
+      everything but needed one set off-site, somewhere nobody
+      would think to look. A bookshop seemed perfect.
+    effects: { trust_ronan: "+10" }
+    choices:
+      - What's under the water at Kerbihan? -> ronan_case
+
+  ronan_case:
+    type: message
+    text: >
+      Ronan reaches under the counter and produces a waterproof
+      Pelican case.
+
+      RONAN: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show an underwater pipe — not the official discharge
+      point, but a second, hidden outfall — and barrels on the
+      seabed. The USB drive contains water sample data, chemical
+      analysis, and Chloé's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Capitaine Morin ---
+
+  capitaine_interview:
+    type: message
+    text: >
+      CAPITAINE MORIN: Off the record — and I mean completely off
+      the record — I wanted to investigate ChimiBretagne. My
+      superior told me to stand down. He said the prefecture had
+      "jurisdiction." That's code for "don't touch it."
+
+      The Jégou situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act
+      on that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_capitaine: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Chloé than anyone in Port-Lunel. Who is responsible?
+    choices:
+      - Confront Corentin Jégou (the obsessive colleague) -> confront_corentin
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Fabien Hénaff (the plant director) -> confront_fabien
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Delacroix (political protection) -> confront_bertrand
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Corentin (Best Ending) ---
+
+  confront_corentin:
+    type: message
+    text: >
+      You present your evidence to Corentin:
+
+      "I know @maiwenn_perrot is your account. I know you put a GPS
+      tracker on Chloé's car. I know you accessed her files at the
+      lab. I know you were watching her flat. I have witnesses and
+      I have the access logs."
+    choices:
+      - Send -> corentin_response
+
+  corentin_response:
+    type: message
+    text: >
+      Corentin doesn't reply for a long time. Then:
+
+      CORENTIN: You don't understand. I was protecting her. She was
+      in danger from ChimiBretagne and she wouldn't let me help. I
+      needed to know she was safe. Everything I did was because I
+      care about her.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Capitaine Morin. And to
+      Sylvie Tanguy.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Capitaine Morin reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witness testimonies — Corentin is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Chloé's
+      car at the old fishing huts in Kerbihan.
+
+      Sylvie Tanguy, finally in possession of Chloé's full evidence
+      package, publishes the ChimiBretagne story in Le Monde. The
+      prefecture orders an unannounced inspection. The factory is
+      shut down pending environmental remediation. Fabien Hénaff
+      faces criminal charges for falsifying discharge reports.
+
+      And Chloé Moreau, reading the story from a friend's house in
+      Quimper, calls her brother for the first time in eight days.
+
+      "Je rentre à la maison."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: chloe
+    text: >
+      l'océan ne ment pas. et les gens de port-lunel non plus.
+      merci de ne pas avoir lâché.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Fabien (Partial Ending) ---
+
+  confront_fabien:
+    type: message
+    text: >
+      You present the pollution evidence to Fabien Hénaff:
+
+      "I have photographs of the undeclared outfall pipe. I have
+      water samples showing heavy metal levels ten times the legal
+      limit. I have your original lab reports showing the data was
+      falsified. I have the barrel with your batch number."
+    choices:
+      - Send -> fabien_response
+
+  fabien_response:
+    type: message
+    text: >
+      FABIEN: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will
+      result in immediate proceedings. ChimiBretagne has always
+      operated within regulatory requirements.
+
+      But it's too late. You've sent the evidence to Sylvie, to
+      the Sentinelles du Littoral, and to the prefecture.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. ChimiBretagne is ordered to halt
+      discharge pending investigation. The factory may close. Two
+      hundred jobs hang in the balance. The town is divided.
+
+      But Chloé?
+
+      Without the stalking evidence, Corentin is never investigated.
+      He continues to work at the lab. He continues to monitor her
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Chloé reads about ChimiBretagne online.
+      She returns quietly. She changes labs. She stops diving alone.
+      She checks her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Chloé walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: chloe
+    text: "je suis rentrée. l'eau est plus propre. le reste... on verra."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_bertrand:
+    type: message
+    text: >
+      You confront Mayor Delacroix with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> bertrand_response
+
+  bertrand_response:
+    type: tweet
+    from: patrick
+    text: >
+      Mon client prend note de vos allégations. Toute diffusion
+      publique de propos diffamatoires fera l'objet de poursuites
+      immédiates. — Cabinet Le Bihan & Associés, Rennes
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Delacroix and ChimiBretagne's dumping — and
+      there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      ChimiBretagne continues to operate. Corentin continues to
+      watch. Chloé stays in hiding.
+
+      Six months later, @maiwenn_perrot creates a new account. It
+      follows Chloé's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PORT-LUNEL — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Chloé's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Violences Femmes Info: 3919 (appel gratuit)
+      Association e-Enfance (cyberharcèlement): 3018
+      Signalement environnemental: 0 800 130 000

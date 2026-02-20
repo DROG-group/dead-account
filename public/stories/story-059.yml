@@ -1,0 +1,1571 @@
+# DEAD ACCOUNT — Story 059: Borgo di Luna (Italy, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-059.yml
+#
+# Player investigates the disappearance of truffle hunter Marco Bianchi
+# in the fictional Umbrian hill town of Borgo di Luna.
+
+meta:
+  title: "Dead Account — Borgo di Luna"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_giulia: 0
+    trust_luca: 0
+    trust_nonna: 0
+    trust_enzo: 0
+    trust_chiara: 0
+    trust_tommaso: 0
+    trust_valentina: 0
+    trust_piero: 0
+    trust_agnese: 0
+    trust_sergio: 0
+    trust_elena: 0
+    trust_massimo: 0
+    trust_francesca: 0
+    trust_dario: 0
+    trust_ilaria: 0
+    trust_matteo: 0
+    trust_rosa: 0
+    trust_filippo: 0
+    trust_benedetta: 0
+    trust_maresciallo: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nuovo Residente
+    bio: "appena trasferito a borgo di luna. scopro l'umbria un tartufo alla volta"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "BorgoDiLuna.social"
+    description: "Benvenuti sull'istanza comunitaria di Borgo di Luna"
+    avatar_url: /gamepatch/assets/dead-account/borgodiluna_bot.png
+
+  npcs:
+    # === Marco's Inner Circle ===
+    marco:
+      name: "Marco Bianchi"
+      bio: "tartufaio | i boschi parlano se sai ascoltare | la terra non mente"
+      avatar: avatars/marco.jpg
+    giulia:
+      name: "Giulia Bianchi"
+      bio: "sorella di marco | insegnante elementare | borgo di luna | il silenzio non è una risposta"
+      avatar: avatars/giulia.jpg
+    luca:
+      name: "Luca Conti"
+      bio: "miglior amico di marco | meccanico | officina conti | birra e tartufi"
+      avatar: avatars/luca.jpg
+    nonna:
+      name: "Nonna Adele"
+      bio: "83 anni | marco è il mio nipote preferito (non ditelo agli altri) | i tartufi li trovavo prima di tutti voi"
+      avatar: avatars/nonna.jpg
+
+    # === Local Government ===
+    piero:
+      name: "Piero Castellani"
+      bio: "Sindaco di Borgo di Luna | al servizio della comunità dal 2019 | #BorgoCresce"
+      avatar: avatars/piero.jpg
+    agnese:
+      name: "Agnese Moretti"
+      bio: "Assessora all'ambiente | Comune di Borgo di Luna | tutela del territorio"
+      avatar: avatars/agnese.jpg
+    comune:
+      name: "Comune di Borgo di Luna"
+      bio: "Account ufficiale | Notizie comunali | Orari: Lun-Ven 8:30-13:30"
+      avatar: avatars/comune.jpg
+
+    # === Local Business & Community ===
+    valentina:
+      name: "Valentina Rossi"
+      bio: "Trattoria La Quercia | cucina umbra | tartufi e strangozzi | aperto dal 1974"
+      avatar: avatars/valentina.jpg
+    trattoria:
+      name: "Trattoria La Quercia"
+      bio: "Cucina tipica umbra | Tartufo fresco | Vino locale | Il cuore di Borgo di Luna"
+      avatar: avatars/trattoria.jpg
+    sergio:
+      name: "Sergio Fabbri"
+      bio: "tartufaio | 30 anni nei boschi | borgo di luna | il tartufo è mio e me lo gestisco io"
+      avatar: avatars/sergio.jpg
+    elena:
+      name: "Elena Marchetti"
+      bio: "farmacista | Borgo di Luna | consiglio e salute | aperta anche la domenica mattina"
+      avatar: avatars/elena.jpg
+    massimo:
+      name: "Massimo Gentili"
+      bio: "agricoltore | olio d'oliva | Borgo di Luna | la terra prima di tutto"
+      avatar: avatars/massimo.jpg
+    francesca:
+      name: "Francesca Lombardi"
+      bio: "fiorista | I Fiori di Borgo | bouquet e piante | colore per il borgo"
+      avatar: avatars/francesca.jpg
+    dario:
+      name: "Dario Pellegrini"
+      bio: "proprietario bar centrale | caffè e cornetti | aperitivi al tramonto"
+      avatar: avatars/dario.jpg
+
+    # === Journalist ===
+    chiara:
+      name: "Chiara De Luca"
+      bio: "giornalista indipendente | ambiente e territorio | segnalazioni: chiara@delucastampa.it"
+      avatar: avatars/chiara.jpg
+
+    # === UmbriaVerde (corporate) ===
+    umbriaverde:
+      name: "UmbriaVerde Sviluppo S.r.l."
+      bio: "Sviluppo sostenibile | Progetti energetici e territoriali | Certificazione ISO 14001"
+      avatar: avatars/umbriaverde.jpg
+    filippo:
+      name: "Filippo Marini"
+      bio: "direttore progetto UmbriaVerde | sviluppo e territorio | Perugia"
+      avatar: avatars/filippo.jpg
+    benedetta:
+      name: "Avv. Benedetta Caruso"
+      bio: "Avvocato | Studio Caruso & Associati | Diritto ambientale e societario | Perugia"
+      avatar: avatars/benedetta.jpg
+
+    # === Teens ===
+    tommaso:
+      name: "Tommaso"
+      bio: "16 | skate e boschi | borgo di luna born | la natura è tutto fra"
+      avatar: avatars/tommaso.jpg
+    ilaria:
+      name: "Ilaria"
+      bio: "17 | foto e disegno | i tramonti di borgo di luna | marco mi ha insegnato i funghi"
+      avatar: avatars/ilaria.jpg
+    matteo:
+      name: "Matteo"
+      bio: "15 | mountain bike | sentieri e fango | il borgo è underrated"
+      avatar: avatars/matteo.jpg
+
+    # === Media & Community ===
+    eco_borgo:
+      name: "EcoBorgo"
+      bio: "Notizie ambientali di Borgo di Luna e dintorni | Tips: redazione@ecoborgo.it"
+      avatar: avatars/eco_borgo.jpg
+    meteo_umbria:
+      name: "Meteo Borgo di Luna"
+      bio: "Previsioni e allerte | Stazione automatica | Aggiornamento ogni ora"
+      avatar: avatars/meteo_umbria.jpg
+    asso_boschi:
+      name: "Associazione Sentinelle dei Boschi"
+      bio: "Tutela dei boschi e del territorio umbro | Volontari | Segnalazioni disboscamento"
+      avatar: avatars/asso_boschi.jpg
+
+    # === Suspicious / Other ===
+    rosa:
+      name: "Rosa Ferretti"
+      bio: "tecnica ambientale | UmbriaVerde | faccio il mio lavoro e basta"
+      avatar: avatars/rosa.jpg
+    ombra_tartufo:
+      name: "L'Ombra del Tartufo"
+      bio: "."
+      avatar: avatars/anon.jpg
+    maresciallo:
+      name: "Maresciallo Ferrara"
+      bio: "Carabinieri di Borgo di Luna | Stazione territoriale | emergenze: 112"
+      avatar: avatars/maresciallo.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN BORGO DI LUNA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to BorgoDiLuna.social — the community Mastodon instance for
+      the Umbrian hill town of Borgo di Luna.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @marco_bianchi.
+
+      A truffle hunter. The best in the region. He knew every oak, every
+      hazel, every secret hollow in the hills above Borgo di Luna. People
+      are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> marco_profile
+
+  marco_profile:
+    type: tweet
+    from: marco
+    text: "Qualcuno sta tagliando i querceti sopra Colle Nero. Ho le foto. Ho le coordinate GPS. Questa roba non è legale."
+    choices:
+      - That's his last real post... -> grey_photo
+
+  grey_photo:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurry photo of fog between oak trees. Shot from an odd angle.
+      Posted at 4am. No caption.
+
+      His friends say that is not his style. Marco always wrote long
+      captions about the forest, the soil, the season. The Carabinieri
+      say he probably went on a trip. Something does not add up.
+    choices:
+      - Read the Carabinieri statement -> carabinieri_statement
+      - Look at what people are saying -> community_reaction
+
+  carabinieri_statement:
+    type: tweet
+    from: maresciallo
+    text: >
+      Abbiamo ricevuto una segnalazione riguardante un residente di
+      Borgo di Luna. Al momento non emergono elementi che configurino
+      un reato. Chiunque abbia informazioni utili contatti il 112
+      o si rechi presso la stazione.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @giulia_bianchi is desperate.
+      His best friend @luca_conti is posting furious messages. His
+      grandmother @nonna_adele is heartbroken. The rival truffle hunter
+      @sergio_fabbri has gone suspiciously quiet.
+
+      And the journalist @chiara_deluca is strangely silent.
+
+      Nobody buys the Carabinieri's line. Nobody thinks Marco just
+      "went on a trip."
+    effects: { trust_giulia: "+5", trust_luca: "+5" }
+    choices:
+      - Start following Marco's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Borgo di Luna. Follow Marco's contacts and read their
+      posts. The more you engage with the community, the more they will
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Valentina (trattoria owner, knows everyone) -> valentina_intro
+      - Talk to Massimo (farmer, saw the deforestation) -> massimo_intro
+      - Talk to Tommaso (teen, seems shaken) -> tommaso_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Marco with the rhythms of a small
+      Umbrian hill town: olive harvest updates, the bar's aperitivo
+      specials, weather warnings for the hills.
+
+      Key names surface: Giulia (sister, teacher), Luca (best friend,
+      seems furious), Chiara (journalist, oddly quiet), and the
+      teens — Tommaso, Ilaria, Matteo — who idolised Marco's
+      knowledge of the forest.
+
+      Also prominent: UmbriaVerde Sviluppo S.r.l., the development
+      company buying land around town. Their posts are slick PR.
+      Marco's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Valentina -> valentina_intro
+      - Talk to Massimo -> massimo_intro
+      - Talk to Tommaso -> tommaso_intro
+
+  # --- Valentina (social map) ---
+
+  valentina_intro:
+    type: tweet
+    from: valentina
+    text: >
+      La trattoria è aperta ma il cuore no. @marco_bianchi, il tuo
+      tavolo ti aspetta. I tuoi strangozzi al tartufo non li faccio
+      per nessun altro.
+    effects: { trust_valentina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Valentina -> valentina_talk
+
+  valentina_talk:
+    type: message
+    text: >
+      VALENTINA: Ah, sei nuovo? Benvenuto. Brutto momento per arrivare.
+      Sono tutti con i nervi a pezzi per Marco.
+
+      Ti dico chi è chi. Giulia è la sorella — insegnante, una donna
+      forte ma adesso è distrutta. Luca Conti è il migliore amico,
+      meccanico, quei due sono cresciuti insieme. Nonna Adele ha 83
+      anni e Marco è tutto per lei.
+
+      Poi c'è Sergio Fabbri — l'altro tartufaio. Quei due si odiano
+      da anni. Stesso bosco, stesse querce, e Sergio non sopporta che
+      Marco trovi sempre i tartufi migliori. L'ossessione, ti dico.
+
+      E Chiara De Luca — la giornalista — lei e Marco stavano
+      lavorando insieme su qualcosa. Qualcosa sui disboscamenti. Da
+      quando è sparito, Chiara non ha detto una parola. Non è da lei.
+
+      Ah, e stai alla larga dai post di UmbriaVerde. Bugie con il
+      bollino ISO.
+    effects: { trust_valentina: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Sergio -> valentina_sergio
+      - Ask about UmbriaVerde -> valentina_umbriaverde
+      - Thank her and move on -> quest1_hub
+
+  valentina_sergio:
+    type: message
+    text: >
+      VALENTINA: Sergio? Madonna, quello è malato. Il tartufo per lui
+      non è un lavoro, è una guerra. Da quando Marco ha trovato quel
+      tartufo bianco da due etti l'anno scorso — venduto a Milano per
+      quattromila euro — Sergio è impazzito. Lo seguiva nei boschi,
+      cercava di capire le sue zone segrete.
+
+      Marco mi ha detto una volta: "Quello non accetta un no. Se non
+      può avere i miei tartufi, vuole distruggere i miei alberi."
+      Pensavo parlasse in senso figurato. Adesso non ne sono più sicura.
+    effects: { trust_valentina: "+5" }
+    choices:
+      - Ask about UmbriaVerde -> valentina_umbriaverde
+      - Move on -> quest1_hub
+
+  valentina_umbriaverde:
+    type: message
+    text: >
+      VALENTINA: Quella società è arrivata due anni fa. Comprano
+      terreni, parlano di "sviluppo sostenibile" e "parchi energetici."
+      In pratica vogliono disboscare mezzo Colle Nero per metterci
+      pannelli solari. Ma cazzo, quei querceti hanno trecento anni.
+      Ci trovi il tartufo bianco pregiato.
+
+      Marco era il primo a denunciare. Aveva foto dei camion che
+      portavano via gli alberi di notte. Aveva coordinate GPS. Stava
+      costruendo un caso. Due settimane dopo è sparito.
+    effects: { trust_valentina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Massimo (farmer, witness tease) ---
+
+  massimo_intro:
+    type: tweet
+    from: massimo
+    text: >
+      trent'anni che coltivo questa terra. i querceti sopra colle nero
+      li stanno ammazzando. @marco_bianchi aveva ragione. e adesso è
+      sparito. fate due più due.
+    effects: { trust_massimo: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Massimo -> massimo_talk
+
+  massimo_talk:
+    type: message
+    text: >
+      MASSIMO: Conosco ogni sentiero di queste colline. E ti dico che
+      qualcosa non va. Da mesi passano camion di notte sulla strada
+      forestale verso Colle Nero. Io li sento dalla mia cascina. Motori
+      pesanti, alle 2, alle 3 di notte.
+
+      Marco è andato a controllare. Ha fotografato tutto — le piante
+      tagliate, le radici strappate, il terreno preparato per qualcosa.
+      Stava costruendo un dossier. E poi puf — sparito.
+
+      Pensi sia una coincidenza? Io non credo nelle coincidenze
+      in campagna.
+    effects: { trust_massimo: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> massimo_night
+      - Move on -> quest1_hub
+
+  massimo_night:
+    type: message
+    text: >
+      MASSIMO: La notte prima che sparisse — ero sveglio per le olive,
+      devo irrigare di notte in quel periodo. Verso l'una ho visto luci
+      nel bosco sopra Colle Nero. Non una torcia da tartufaio, roba
+      più grossa. Fari di macchina.
+
+      E poi ho visto la macchina di Marco — quel Pandino verde che
+      tutti conoscono — parcheggiata al bivio della forestale. E
+      accanto c'era un SUV scuro con targa di Perugia.
+
+      All'una di notte. Sulla forestale. Non è normale.
+    effects: { trust_massimo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tommaso (teen, witness tease) ---
+
+  tommaso_intro:
+    type: tweet
+    from: tommaso
+    text: >
+      raga sono sotto shock @marco_bianchi è tipo la persona più brava
+      del borgo cioè mi ha insegnato a riconoscere i funghi madonna è
+      impossibile che sia partito così. se qualcuno sa qualcosa parlate
+      cazzo
+    effects: { trust_tommaso: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tommaso -> tommaso_talk_early
+
+  tommaso_talk_early:
+    type: message
+    text: >
+      TOMMASO: ah sei nuovo? boh che palle come timing. comunque marco
+      è tipo il più grande di sto borgo. ci portava nei boschi, ci
+      insegnava i sentieri, i funghi, le tracce degli animali. uno
+      della madonna.
+
+      e la sono in fissa perché matteo ha visto una roba strana l'altra
+      sera alla forestale ma non vuole parlarne. dice che non è niente
+      ma cioè... non è niente un cazzo
+    effects: { trust_tommaso: "+10" }
+    choices:
+      - What did Matteo see? -> tommaso_matteo_hint
+      - Move on -> quest1_hub
+
+  tommaso_matteo_hint:
+    type: message
+    text: >
+      TOMMASO: boh non lo so esattamente. era in mountain bike sulla
+      forestale al tramonto e ha visto tipo sergio — il tartufaio —
+      che frugava nel Pandino di marco?? o qualcosa del genere. si è
+      cagato addosso e non vuole parlarne. devi chiedergli tu ma è
+      diffidente con quelli che non conosce. prova prima a parlargli
+      di bici ahah
+    effects: { trust_tommaso: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You are getting a picture of Borgo di Luna. An Umbrian hill town
+      built around olive groves and truffle oaks. A truffle hunter who
+      was exposing illegal deforestation. A disappearance nobody
+      believes is voluntary.
+
+      You have made contacts. Now dig deeper.
+    choices:
+      - Talk to Giulia (Marco's sister) -> giulia_q1
+      - Talk to Luca (Marco's best friend) -> luca_q1
+      - Check what Nonna Adele is saying -> nonna_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Giulia Q1 ---
+
+  giulia_q1:
+    type: tweet
+    from: giulia
+    text: >
+      se qualcuno ha notizie di @marco_bianchi chiamatemi vi prego.
+      casa sua è intatta. il suo cane Briciola è ancora qui. non
+      sarebbe mai partito senza Briciola. mai.
+    effects: { trust_giulia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Giulia -> giulia_q1_talk
+
+  giulia_q1_talk:
+    type: message
+    text: >
+      GIULIA: Grazie del messaggio ma non ti conosco. Marco ha tanti
+      amici qui. Sono sicura che tornerà.
+
+      ...Me lo ripeto da sei giorni. Non ci credo più.
+
+      [Giulia is guarded. You will need to build more trust before she
+      opens up.]
+    effects: { trust_giulia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Luca Q1 ---
+
+  luca_q1:
+    type: tweet
+    from: luca
+    text: >
+      marco non è "partito per un viaggio" minchia i carabinieri sono
+      dei deficienti. il suo cane è a casa. le sue chiavi sono a casa.
+      il suo tartufo è nel frigo. VI SEMBRA NORMALE???
+    effects: { trust_luca: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Luca -> luca_q1_talk
+
+  luca_q1_talk:
+    type: message
+    text: >
+      LUCA: Chi cazzo sei? Un altro che mi dice di calmarmi? Il mio
+      migliore amico è sparito. Mi ha chiamato la sera prima. Ha detto
+      che aveva qualcosa di grosso. Ha detto "se succede qualcosa,
+      guarda UmbriaVerde." Poi ha riattaccato.
+
+      È l'ultima volta che l'ho sentito.
+    effects: { trust_luca: "+10" }
+    choices:
+      - What do you think happened? -> luca_theory
+      - Move on -> quest1_hub
+
+  luca_theory:
+    type: message
+    text: >
+      LUCA: Penso che ha trovato le prove che UmbriaVerde sta
+      disboscando illegalmente e quelli l'hanno fatto sparire. Ma
+      penso anche che quel coglione di Sergio — il tartufaio rivale
+      — sa più di quello che dice. Come parla di Marco... non è
+      solo rivalità professionale. È un'ossessione cazzo.
+
+      Marco mi aveva detto mesi fa che qualcuno gli rovinava le zone
+      di raccolta. Tronchi segati, terreno scavato. Pensava fosse uno
+      scherzo. Io non penso fosse uno scherzo per niente.
+    effects: { trust_luca: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nonna Q1 ---
+
+  nonna_q1:
+    type: tweet
+    from: nonna
+    text: >
+      il mio marco. 83 anni e non ho mai avuto tanta paura.
+      @marco_bianchi torna a casa. la nonna ti aspetta. briciola
+      ti aspetta. il tartufo ti aspetta.
+    effects: { trust_nonna: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nonna Adele -> nonna_q1_talk
+
+  nonna_q1_talk:
+    type: message
+    text: >
+      NONNA ADELE: Ah, figlio mio. Sei buono a scrivermi. Sai, io
+      facevo la tartufaia prima di Marco. Gli ho insegnato tutto io —
+      i sentieri, le querce, come sentire il terreno con le mani.
+
+      Marco è il migliore. E quel Sergio lo sa. Per anni ha cercato di
+      rubargli i segreti, di seguirlo, di corrompere i suoi informatori.
+      Una volta l'ho visto io — col binocolo — appostato sopra Colle
+      Nero a spiare Marco col cane.
+
+      Ho 83 anni ma non sono scema. Qualcosa di brutto è successo al
+      mio nipote.
+    effects: { trust_nonna: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Marco went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Matteo (was biking on the forest road) -> matteo_interview
+      - Find Massimo (farmer, was up late irrigating) -> massimo_interview
+      - Find Dario (bar owner, saw something after closing) -> dario_interview
+      - Find Francesca (florist, early morning delivery) -> francesca_interview
+
+  # --- Matteo (saw someone at Marco's car) ---
+
+  matteo_interview:
+    type: tweet
+    from: matteo
+    text: >
+      giro in bici stasera ma l'atmosfera sulla forestale è strana
+      raga. tipo che c'è qualcosa che non va. boh non so spiegare
+    effects: { trust_matteo: "+5" }
+    choices:
+      - Ask Matteo about that evening -> matteo_talk
+
+  matteo_talk:
+    type: message
+    text: >
+      MATTEO: vabbè ok fra ma non dirlo a nessuno eh. ero sulla
+      forestale verso le 19 tipo, giro al tramonto. e ho visto sergio
+      — il tartufaio — vicino al Pandino di marco. stava tipo frugando
+      dentro o mettendo qualcosa. quando mi ha visto è schizzato via
+      che manco in downhill.
+
+      cioè io non ho detto niente perché chi cazzo mi crede, ho 15
+      anni. ma quella roba non era normale minchia
+    effects:
+      trust_matteo: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Massimo (saw late-night meeting) ---
+
+  massimo_interview:
+    type: tweet
+    from: massimo
+    text: >
+      Promemoria: la forestale verso Colle Nero è chiusa al traffico
+      dopo le 20. Negli ultimi giorni ci passano mezzi pesanti di
+      notte. Qualcuno mi spiega?
+    effects: { trust_massimo: "+5" }
+    choices:
+      - Ask Massimo what he saw -> massimo_talk_q2
+
+  massimo_talk_q2:
+    type: message
+    text: >
+      MASSIMO: Ero sveglio per l'irrigazione, verso le 23. Ho visto
+      il Pandino di Marco ancora parcheggiato al bivio della forestale.
+      E accanto c'era un SUV nero — targa di Perugia — con il logo
+      UmbriaVerde sul fianco. Due uomini stavano vicino alla jeep.
+      Uno l'ho riconosciuto: Filippo Marini, il direttore del progetto.
+
+      Alle 23. Sulla forestale. Non è normale.
+
+      L'ho segnato nel mio quaderno. Nessuno me l'ha chiesto.
+    effects:
+      trust_massimo: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dario (saw Marco fleeing) ---
+
+  dario_interview:
+    type: tweet
+    from: dario
+    text: >
+      chiuso il bar alle 2 come sempre. ma stamattina la piazza non
+      era vuota. c'era qualcuno che correva verso la forestale.
+      nel buio. non era un jogger.
+    effects: { trust_dario: "+5" }
+    choices:
+      - Ask Dario what he saw -> dario_talk
+
+  dario_talk:
+    type: message
+    text: >
+      DARIO: Chiudo il bar alle 2 ogni notte. Quella notte — la notte
+      dell'ultimo post di Marco — stavo tirando giù la serranda e ho
+      visto qualcuno in piazza. Un uomo con uno zaino, che correva
+      verso la strada della forestale. Di corsa, come se avesse paura.
+
+      Ho chiamato ma non si è fermato. Ho pensato fosse un ubriaco ma...
+      chi corre alle 2 di notte con uno zaino verso il bosco?
+
+      Quando ho saputo di Marco, ho capito. Secondo me era lui. Che
+      scappava da qualcosa.
+    effects:
+      trust_dario: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Francesca (saw car chase) ---
+
+  francesca_interview:
+    type: tweet
+    from: francesca
+    text: >
+      Consegna fiori alle 5 come sempre. Ma stamattina una macchina
+      andava troppo forte sulla provinciale. Troppo forte per quelle
+      curve.
+    effects: { trust_francesca: "+5" }
+    choices:
+      - Ask Francesca what she saw -> francesca_talk
+
+  francesca_talk:
+    type: message
+    text: >
+      FRANCESCA: Mi alzo alle 5 per preparare le consegne. Stavo
+      caricando il furgone e una macchina è passata — veloce,
+      troppo veloce per la provinciale. Un SUV scuro. Poi forse
+      due minuti dopo, un'altra macchina più piccola. Un Pandino
+      verde. Lo inseguiva? Non lo so.
+
+      Il Pandino ha svoltato verso i vecchi casolari di Colle Nero.
+      Il SUV ha proseguito verso la superstrada per Perugia.
+
+      L'ho detto ai carabinieri. Hanno scritto tutto. Fine.
+    effects:
+      trust_francesca: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Giulia (sister)
+      and Ilaria (saw Sergio watching Marco's house).
+    choices:
+      - Talk to Giulia about that night -> giulia_interview
+      - Talk to Ilaria -> ilaria_interview
+      - Find Matteo -> matteo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Massimo -> massimo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dario -> dario_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Francesca -> francesca_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Giulia (last to see Marco) ---
+
+  giulia_interview:
+    type: tweet
+    from: giulia
+    text: >
+      quella foto sul profilo di marco. non è lui. marco non posta
+      senza didascalia. marco non posta alle 4 di notte. qualcun
+      altro ha fatto questo.
+    effects: { trust_giulia: "+5" }
+    choices:
+      - DM Giulia -> giulia_talk_low
+        when:
+          state: trust_giulia
+          lt: 50
+      - DM Giulia -> giulia_talk_high
+        when:
+          state: trust_giulia
+          gte: 50
+
+  giulia_talk_low:
+    type: message
+    text: >
+      GIULIA: Apprezzo la preoccupazione ma non ho voglia di parlare
+      con sconosciuti adesso.
+
+      [Giulia needs to trust you more. Show her you are investigating
+      seriously, not just gossiping.]
+    effects: { trust_giulia: "+5" }
+    choices:
+      - Share what you've learned about the night -> giulia_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  giulia_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV on the forest road,
+      the men from UmbriaVerde, the running figure, the car chase.
+      Giulia is silent for a while.
+
+      GIULIA: Stai davvero cercando di trovarlo. Ok. Parlo.
+    effects: { trust_giulia: "+25" }
+    choices:
+      - What happened that night? -> giulia_talk_high
+
+  giulia_talk_high:
+    type: message
+    text: >
+      GIULIA: È passato da me verso le 22. Ero ancora sveglia, stavo
+      correggendo compiti. Era pallido, tremava. Ha detto "sanno cosa
+      ho." Ha preso il suo portatile e gli hard disk con le foto.
+
+      Gli ho chiesto chi. Ha detto "quelli della società. Sono venuti
+      nel bosco." Poi ha detto un'altra cosa — "e lui c'era pure.
+      C'è sempre."
+
+      Non ha voluto dirmi chi fosse "lui." Mi ha abbracciata, ha
+      detto "non ti preoccupare," e se n'è andato con lo zaino.
+      La mattina dopo il Pandino non c'era più e quella foto
+      assurda era sul suo profilo.
+    effects:
+      trust_giulia: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ilaria (saw Sergio watching the house) ---
+
+  ilaria_interview:
+    type: message
+    text: >
+      ILARIA: ok vabbe in realtà è strana sta roba che dico ma tipo
+      sergio — il tartufaio — l'ho visto tipo 3 volte davanti a casa
+      di marco la sera. stava lì fermo a guardare le finestre. troppo
+      creepy cazzo.
+
+      l'ultima volta tipo 2 giorni prima che sparisse. era nella sua
+      macchina parcheggiata davanti. fermo. con i fari spenti.
+    effects:
+      trust_ilaria: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Sergio seen at Marco's Pandino on the forest road (Matteo)
+      23:00 — UmbriaVerde SUV at the forest road junction, Filippo Marini present (Massimo)
+      22:00 — Marco arrives at Giulia's, shaken, grabs laptop and drives (Giulia)
+      02:00 — Man running with backpack toward the forest road (Dario)
+      05:00 — Two cars speeding on the provincial road, one toward Colle Nero (Francesca)
+
+      UmbriaVerde confronted Marco in the woods. He fled to his sister,
+      grabbed his evidence, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is UmbriaVerde hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Sergio really doing? Why was he
+        at Marco's car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Sergio -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD (Deforestation)
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      UmbriaVerde is hiding something. Marco had proof of illegal
+      deforestation. Now he is gone and his evidence is missing
+      from his house.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the forestry records -> forestry_records
+      - Talk to Chiara the journalist -> chiara_interview
+      - Talk to Rosa (UmbriaVerde technician) -> rosa_interview
+      - Talk to Agnese (environment assessor) -> agnese_interview
+      - Check the Sentinelle dei Boschi association -> asso_investigation
+      - Talk to Massimo about the deforestation -> massimo_deforestation
+      - Back to hub -> investigation_hub
+
+  # --- Forestry Records ---
+
+  forestry_records:
+    type: message
+    text: >
+      The regional forestry database shows logging permits for the
+      Colle Nero area. UmbriaVerde has a permit for "selective thinning"
+      on 5 hectares. But satellite images from the Sentinelle dei Boschi
+      show clear-cutting on over 30 hectares — six times the permitted
+      area.
+
+      Marco's GPS coordinates, shared with the forestry association,
+      mark 47 points where protected oaks over 200 years old have
+      been felled. His last entry: "Found the staging area. Night
+      cutting operation. Not thinning — total removal. This is
+      not what the permit says."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Chiara ---
+
+  chiara_interview:
+    type: message
+    text: >
+      CHIARA: Non parlo delle mie fonti. Punto.
+    effects: { trust_chiara: "+5" }
+    choices:
+      - Show Chiara the evidence you have -> chiara_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  chiara_with_evidence:
+    type: message
+    text: >
+      CHIARA: ...hai più roba di quanto pensassi.
+
+      Ok. Marco e io stavamo lavorando insieme. Aveva foto del
+      disboscamento notturno — querce secolari abbattute con
+      motoseghe industriali che non compaiono su nessun registro.
+      Aveva campioni di terreno che dimostrano l'uso di dissecanti
+      chimici per accelerare la rimozione delle radici. Aveva le
+      coordinate GPS di tutto.
+
+      Stavamo per pubblicare insieme. Poi è sparito. E due giorni
+      dopo, qualcuno mi ha scassinato la macchina e rubato il mio
+      hard disk di backup.
+
+      Marco è vivo. Mi ha contattato una volta, da un telefono
+      prepagato. Ha detto che si nasconde. Ha detto "mi hanno
+      minacciato nel bosco e qualcun altro non mi lascia in pace."
+
+      Non posso dirti dov'è. Ma con abbastanza prove posso
+      pubblicare e rendergli sicuro il ritorno.
+    effects:
+      trust_chiara: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> chiara_hint
+      - Back to investigation hub -> investigation_hub
+
+  chiara_hint:
+    type: message
+    text: >
+      CHIARA: La società ha mandato il direttore del progetto —
+      Marini — e un avvocato nel bosco quella notte. Gli hanno
+      detto di consegnare tutto o affrontare conseguenze legali.
+      Intimidazione vestita da procedura legale.
+
+      Ma ha anche detto qualcosa su qualcuno del paese. Qualcuno
+      che gli rovinava le zone di raccolta. Qualcuno che sembrava
+      sempre sapere dove fosse. Quello è un problema diverso.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Rosa (UmbriaVerde whistleblower) ---
+
+  rosa_interview:
+    type: message
+    text: >
+      ROSA: Lavoro per UmbriaVerde. Sono solo una tecnica ambientale.
+      Faccio le valutazioni di impatto, compilo i report.
+
+      Ma i report che compilo... non sono sempre quelli che arrivano
+      alla Regione.
+    effects: { trust_rosa: "+10" }
+    choices:
+      - What do you mean? -> rosa_detail
+
+  rosa_detail:
+    type: message
+    text: >
+      ROSA: Io valuto l'impatto ambientale. Specie protette, habitat
+      sensibili, querce secolari. I miei numeri vanno al responsabile.
+      Da qualche parte tra la mia scrivania e il fascicolo regionale,
+      cambiano. Meno querce protette. Meno specie a rischio. Sempre
+      meno.
+
+      Le coordinate GPS di Marco coincidono con le zone che io avevo
+      segnalato come "intoccabili" nei miei report originali. Lui aveva
+      la prova indipendente che UmbriaVerde sta falsificando le
+      valutazioni ambientali.
+
+      Ho paura. Ho famiglia. Ma mi sono tenuta le copie dei miei
+      report originali. Se qualcuno mi protegge, li condivido.
+    effects:
+      trust_rosa: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Agnese ---
+
+  agnese_interview:
+    type: message
+    text: >
+      AGNESE: Come assessora all'ambiente, prendo queste accuse
+      seriamente. Ma UmbriaVerde porta lavoro e investimenti nel
+      comune. Il sindaco insiste che dobbiamo "mantenere il dialogo."
+
+      Fuori dal registro? Ho visto i sopralluoghi regionali.
+      UmbriaVerde li supera sempre. Ma quei sopralluoghi vengono
+      annunciati due settimane prima. Hanno tutto il tempo di
+      ripulire.
+
+      Marco aveva dati senza preavviso. Ecco perché è pericoloso.
+    effects:
+      trust_agnese: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sentinelle dei Boschi ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_boschi
+    text: >
+      ALLERTA: Segnalazione di abbattimento non autorizzato di querce
+      secolari nella zona di Colle Nero. Foto e rilevamenti in corso.
+      Chiediamo un'ispezione non annunciata di UmbriaVerde.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Sentinelle dei Boschi have been documenting the Colle Nero
+      forest for five years. Their data shows a clear pattern:
+      deforestation that accelerated dramatically after UmbriaVerde
+      acquired the land. Satellite images month by month show the
+      canopy disappearing.
+
+      The cutting happens at night, on weekdays, never on weekends
+      when hikers might see. The pattern is unmistakable. This is
+      ongoing, deliberate illegal deforestation timed to avoid
+      detection.
+
+      Marco was a member. He contributed most of the ground-level
+      photography and GPS mapping.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Massimo deforestation ---
+
+  massimo_deforestation:
+    type: message
+    text: >
+      MASSIMO: Ti faccio vedere una cosa. Il mese scorso stavo
+      controllando il confine dei miei olivi e ho trovato questo —
+      una quercia di trecento anni, tagliata a raso terra. Il
+      tronco aveva ancora il numero di catalogazione della Forestale.
+      Quell'albero era protetto. Vincolato.
+
+      Ho fotografato tutto e l'ho mandato a Marco. Lui ha detto che
+      era il pezzo mancante — la prova che UmbriaVerde abbatteva
+      alberi protetti per legge, non solo quelli del permesso.
+
+      Ho ancora le foto. E il numero di catalogazione.
+    effects:
+      trust_massimo: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD (Sergio)
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Sergio Fabbri. Rival truffle hunter. Something more?
+      Someone was sabotaging Marco's truffle zones. Someone was
+      watching his house. Someone was at his car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Sergio's truffle zone movements -> zone_tracking
+      - Talk to Giulia about Sergio -> giulia_sergio
+        when:
+          state: trust_giulia
+          gte: 20
+      - Talk to Matteo (more detail on the car incident) -> matteo_detail
+      - Talk to Elena the pharmacist -> elena_interview
+      - Check the anonymous account @ombra_tartufo -> ombra_investigation
+      - Talk to Nonna Adele about Sergio -> nonna_sergio
+        when:
+          state: trust_nonna
+          gte: 40
+      - Talk to Maresciallo Ferrara -> maresciallo_interview
+        when:
+          state: trust_maresciallo
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Zone Tracking ---
+
+  zone_tracking:
+    type: message
+    text: >
+      The truffle hunting association keeps GPS logs of authorised
+      collection zones. Marco's registered zones: 12, all around
+      Colle Nero. Sergio's registered zones: 8, on the opposite side
+      of the valley.
+
+      But cross-referencing the forestry camera traps — placed to
+      monitor wildlife — shows Sergio entering Marco's zones 23 times
+      in the last two months. Always at night. Always within hours of
+      Marco visiting.
+
+      The camera trap photos show Sergio with a shovel, a headlamp,
+      and what appears to be a signal jammer — the kind used to
+      block GPS dog collars.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Giulia on Sergio ---
+
+  giulia_sergio:
+    type: message
+    text: >
+      GIULIA: Sergio? Madonna quello è malato. Non accetta che Marco
+      sia più bravo. Per anni ha cercato di scoprire le zone segrete
+      di Marco — lo seguiva, corrompeva la gente, piazzava telecamere
+      nei boschi.
+
+      Marco gli ha detto chiaro e tondo di smetterla. Sergio ha detto
+      che aveva capito. Ma non è cambiato niente. Continuava a stargli
+      addosso. Sempre lì.
+
+      Un mese fa Marco ha scoperto che qualcuno aveva sabotato le sue
+      trappole da tartufo — terreno scavato, radici tagliate, le zone
+      rovinate apposta. Sospettava Sergio ma non poteva provarlo.
+    effects:
+      trust_giulia: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Matteo detail ---
+
+  matteo_detail:
+    type: message
+    text: >
+      MATTEO: ok fra in realtà non ho detto tutto. quando ho visto
+      sergio alla macchina di marco aveva una roba in mano. tipo un
+      aggeggio piccolo. l'ha messo sotto la macchina tipo incollato
+      sotto il paraurti.
+
+      io non sono esperto ma quella roba sembrava troppo un localizzatore
+      GPS tipo quelli dei film. minchia.
+
+      avrei dovuto dire qualcosa ma cioè chi mi crede, ho 15 anni e
+      accuso un adulto. che palle.
+    effects:
+      trust_matteo: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Elena ---
+
+  elena_interview:
+    type: message
+    text: >
+      ELENA: Questo è confidenziale ma sono una farmacista, non un
+      prete. Sergio Fabbri viene regolarmente. Compra cose che...
+      suggeriscono che non dorme. Ansiolitici, sonniferi, integratori
+      energetici. Il quadro è di qualcuno sotto stress estremo.
+
+      Una volta mi ha chiesto, così, casualmente, se vendevamo
+      localizzatori GPS. Gli ho detto "questa è una farmacia, non
+      MediaWorld." Ha riso e ha fatto finta di niente. Non ci ho
+      più pensato fino a quando Marco è sparito.
+    effects:
+      trust_elena: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- L'Ombra del Tartufo (anonymous account) ---
+
+  ombra_investigation:
+    type: tweet
+    from: ombra_tartufo
+    text: >
+      Avrebbe dovuto ascoltare. Cercavo solo di proteggerlo da se
+      stesso. Nessun altro capisce quei boschi come me.
+    choices:
+      - Look at this account's history -> ombra_posts
+
+  ombra_posts:
+    type: message
+    text: >
+      @ombra_tartufo: account created 10 months ago. Posts are all
+      about Marco's truffle hunting. Comments on every photo of
+      truffles, every post about the forest, every harvest update.
+      The tone shifts over time:
+
+      Month 1: "Bravo. Sei il migliore del borgo. Rispetto."
+      Month 3: "Perche non rispondi ai miei messaggi? Voglio solo
+      collaborare."
+      Month 6: "Ti vedo al bar con altri. Per loro hai tempo ma per
+      me no?"
+      Month 8: "So dove vai. Conosco i tuoi orari. Sono sempre vicino."
+
+      The account has no photos, no personal details. Just Marco.
+      Only Marco.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> ombra_style
+
+  ombra_style:
+    type: message
+    text: >
+      Comparing @ombra_tartufo with @sergio_fabbri:
+
+      Same use of truffle hunting terminology. Same dialect patterns —
+      the specific Umbrian contractions he uses. Same knowledge of
+      Marco's collection zones that only an experienced local
+      tartufaio would have.
+
+      And one post from @ombra_tartufo: "Il tuo tartufo alla Zona
+      12 era magnifico." Zona 12 is Marco's private designation
+      for a collection area. Not public. Not in any registry.
+
+      It is Sergio. The anonymous account is Sergio.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Nonna Sergio ---
+
+  nonna_sergio:
+    type: message
+    text: >
+      NONNA ADELE: Marco mi ha lasciato qualcosa. Una busta sigillata.
+      Ha detto "nonna, se qualcuno chiede del bosco a Colle Nero,
+      dagli questa."
+
+      Era spaventato. Ha detto che aveva fatto copie di tutto ma
+      ne serviva una fuori casa, in un posto dove nessuno avrebbe
+      cercato. Da una nonna di 83 anni, perfetto.
+    effects: { trust_nonna: "+10" }
+    choices:
+      - What's about Colle Nero? -> nonna_busta
+
+  nonna_busta:
+    type: message
+    text: >
+      Nonna Adele tira fuori una busta impermeabile dal cassetto
+      della biancheria.
+
+      NONNA ADELE: Ha detto che saresti venuto. Prendila.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show the Colle Nero deforestation — ancient oaks
+      felled at night, staging areas with UmbriaVerde equipment,
+      chemical drums for root removal. The USB drive contains GPS
+      coordinates, environmental impact data, and Marco's detailed
+      report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Maresciallo Ferrara ---
+
+  maresciallo_interview:
+    type: message
+    text: >
+      MARESCIALLO FERRARA: Off the record — e intendo completamente
+      off the record — volevo indagare su UmbriaVerde. Il mio
+      superiore mi ha detto di lasciar perdere. Ha detto che la
+      Regione aveva "competenza." Il che significa "non toccare."
+
+      La situazione di Sergio è diversa. Di quella non sapevo niente
+      fino a ora. Se hai prove di stalking, posso agire. Quella è
+      chiaramente competenza mia.
+
+      Portami qualcosa di solido e riapro il caso.
+    effects:
+      trust_maresciallo: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You have gathered evidence. You know more about what happened
+      to Marco than anyone in Borgo di Luna. Who is responsible?
+    choices:
+      - Confront Sergio Fabbri (the obsessive rival) -> confront_sergio
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Filippo Marini (the project director) -> confront_filippo
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Castellani (political protection) -> confront_piero
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Sergio (Best Ending) ---
+
+  confront_sergio:
+    type: message
+    text: >
+      You present your evidence to Sergio:
+
+      "I know @ombra_tartufo is your account. I know you put a GPS
+      tracker on Marco's car. I know you sabotaged his truffle zones.
+      I know you were watching his house. I have witnesses, camera trap
+      photos, and the access logs."
+    choices:
+      - Send -> sergio_response
+
+  sergio_response:
+    type: message
+    text: >
+      Sergio does not reply for a long time. Then:
+
+      SERGIO: Non capisci. Lo proteggevo. Era in pericolo con
+      UmbriaVerde e non voleva il mio aiuto. Dovevo sapere che stava
+      bene. Tutto quello che ho fatto era perché mi importa di quei
+      boschi. Di lui.
+
+      That is not care. That is obsession.
+
+      You have already sent the evidence to Maresciallo Ferrara.
+      And to Chiara De Luca.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Maresciallo Ferrara reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the camera trap photos, the
+      witness testimonies — Sergio is arrested for stalking, harassment,
+      and sabotage. A GPS tracker is recovered from under Marco's
+      Pandino at the old farmhouses near Colle Nero.
+
+      Chiara De Luca, finally in possession of Marco's full evidence
+      package, publishes the UmbriaVerde story in La Repubblica. The
+      Regione orders an unannounced inspection. The project is halted
+      pending environmental remediation. Filippo Marini faces criminal
+      charges for falsifying environmental impact assessments and
+      illegal deforestation of protected species.
+
+      And Marco Bianchi, reading the story from a friend's house in
+      Spoleto, calls his sister for the first time in nine days.
+
+      "Torno a casa."
+
+      If you or someone you know is experiencing stalking, harassment,
+      or intimidation, help is available:
+      Telefono Amico: 02 2327 2327
+      Numero Verde Antistalking: 800 014 009
+      Emergenze: 112
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: marco
+    text: >
+      la terra non mente. e la gente di borgo di luna nemmeno.
+      grazie di non aver mollato.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Filippo (Partial Ending) ---
+
+  confront_filippo:
+    type: message
+    text: >
+      You present the deforestation evidence to Filippo Marini:
+
+      "I have photographs of the illegal clear-cutting at Colle Nero.
+      I have GPS coordinates of 47 protected oaks that were felled.
+      I have the original environmental impact assessments showing
+      the data was falsified. I have satellite images month by month."
+    choices:
+      - Send -> filippo_response
+
+  filippo_response:
+    type: message
+    text: >
+      FILIPPO: Questa conversazione viene inoltrata al nostro ufficio
+      legale. Qualsiasi pubblicazione di materiale diffamatorio
+      risultera in procedimenti immediati. UmbriaVerde ha sempre
+      operato nel rispetto delle normative vigenti.
+
+      But it is too late. You have sent the evidence to Chiara, to
+      the Sentinelle dei Boschi, and to the Regione.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The deforestation story breaks. UmbriaVerde is ordered to halt
+      all activity pending investigation. The project may be cancelled.
+      Jobs and investment hang in the balance. The town is divided.
+
+      But Marco?
+
+      Without the stalking evidence, Sergio is never investigated.
+      He continues to hunt in the same woods. He continues to monitor
+      Marco's movements. He creates a new anonymous profile.
+
+      Three months later, Marco reads about UmbriaVerde online.
+      He returns quietly. He changes his truffle zones. He stops
+      going into the forest alone. He checks his car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Marco walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marco
+    text: "sono tornato. i boschi sono più sicuri. il resto... si vedrà."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_piero:
+    type: message
+    text: >
+      You confront Mayor Castellani with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> piero_response
+
+  piero_response:
+    type: tweet
+    from: benedetta
+    text: >
+      Il mio cliente prende atto delle Sue allegazioni. Qualsiasi
+      diffusione pubblica di affermazioni diffamatorie sara oggetto
+      di azione legale immediata. — Studio Caruso & Associati, Perugia
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Castellani and UmbriaVerde's deforestation — and
+      there is not one beyond political protection — your evidence
+      is insufficient.
+
+      UmbriaVerde continues to operate. Sergio continues to watch.
+      Marco stays in hiding.
+
+      Six months later, @ombra_tartufo creates a new account. It
+      follows Marco's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: BORGO DI LUNA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Marco's story explores themes of
+      corporate greed, environmental destruction, obsessive rivalry,
+      community solidarity, and the courage to defend the land.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Telefono Amico: 02 2327 2327
+      Numero Verde Antistalking: 800 014 009
+      Emergenze: 112
+      Segnalazioni ambientali: Corpo Forestale 1515

@@ -116,6 +116,16 @@ export default function IntroPage() {
           )}
         </div>
 
+        {/* Story Mode */}
+        <div className="mt-8 pt-8 border-t border-border">
+          <p className="text-text-secondary text-sm mb-3">
+            Or explore <strong>100 investigations</strong> across 27 EU countries
+          </p>
+          <Button onClick={() => router.push('/stories')} variant="outline" className="w-full">
+            Browse All Stories
+          </Button>
+        </div>
+
         <p className="text-text-muted text-xs mt-8">
           All characters and events are fictional. This is a game about social media investigation.
         </p>

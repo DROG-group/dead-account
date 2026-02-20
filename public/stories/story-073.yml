@@ -1,0 +1,1588 @@
+# DEAD ACCOUNT — Story 073: Priežkalns (Latvia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-073.yml
+#
+# Player investigates the death of herbalist Dace Bērziņa
+# in the fictional Kurzeme village of Priežkalns.
+
+meta:
+  title: "Dead Account — Priežkalns"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marta: 0
+    trust_janis: 0
+    trust_ilze: 0
+    trust_raimonds: 0
+    trust_elina: 0
+    trust_kristaps: 0
+    trust_liga: 0
+    trust_guntis: 0
+    trust_anita: 0
+    trust_valdis: 0
+    trust_zane: 0
+    trust_arvids: 0
+    trust_santa: 0
+    trust_edgars: 0
+    trust_ieva: 0
+    trust_agris: 0
+    trust_baiba: 0
+    trust_uldis: 0
+    trust_karlis: 0
+    trust_roberts: 0
+    trust_iecava: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    development_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "tikko pārcēlos uz priežkalniem. atklāju kurzemi soli pa solim"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Priezkalns.social"
+    description: "Laipni lūgti Priežkalnu kopienas Mastodon instancē"
+    avatar_url: /gamepatch/assets/dead-account/priezkalns_bot.png
+
+  npcs:
+    # === Dace's Inner Circle ===
+    dace:
+      name: "Dace Bērziņa"
+      bio: "zāļu sieva | meža veltes | dabas dziedniecība | priežkalni ir manas mājas"
+      avatar: avatars/dace.jpg
+    marta:
+      name: "Marta Liepiņa"
+      bio: "daces labākā draudzene | bibliotekāre | tēja un grāmatas | priežkalni"
+      avatar: avatars/marta.jpg
+    janis:
+      name: "Jānis Bērziņš"
+      bio: "daces brālis | mežsargs liepājā | viņa nepazūd vienkārši tā"
+      avatar: avatars/janis.jpg
+    raimonds:
+      name: "Raimonds Kalniņš"
+      bio: "ārsts | priežkalnu ambulance | daces kolēģis dabas medicīnā"
+      avatar: avatars/raimonds.jpg
+
+    # === Local Government ===
+    guntis:
+      name: "Guntis Ozoliņš"
+      bio: "Priežkalnu pagasta priekšsēdētājs | kopā ar jums kopš 2018 | #PriežkalniAug"
+      avatar: avatars/guntis.jpg
+    anita:
+      name: "Anita Vanaga"
+      bio: "pagasta sekretāre | Priežkalnu pašvaldība | pieņemšana: P-Pk 9-16"
+      avatar: avatars/anita.jpg
+    pagasts:
+      name: "Priežkalnu pagasts"
+      bio: "Oficiālais konts | Pašvaldības ziņas | Darba laiks: P-Pk 9:00-17:00"
+      avatar: avatars/pagasts.jpg
+
+    # === Local Business & Community ===
+    ilze:
+      name: "Ilze Kļaviņa"
+      bio: "Priežkalnu veikals & kafejnīca | mājas kūkas | kafija | kopš 1994"
+      avatar: avatars/ilze.jpg
+    valdis:
+      name: "Valdis Mednis"
+      bio: "mednieks | mežsaimnieks | 35 gadus šajos mežos | zinu katru koku"
+      avatar: avatars/valdis.jpg
+    liga:
+      name: "Līga Puriņa"
+      bio: "aptiekāre | Priežkalnu aptieka | konsultācijas | atvērts arī sestdienās"
+      avatar: avatars/liga.jpg
+    arvids:
+      name: "Ārvīds Siliņš"
+      bio: "galdnieks | mēbeles no vietējā koka | darbnīca pie mežmalas"
+      avatar: avatars/arvids.jpg
+    baiba:
+      name: "Baiba Jansone"
+      bio: "bioloģiskā saimniecība | sieru un medu | tirgus katru sestdienu"
+      avatar: avatars/baiba.jpg
+
+    # === Journalist ===
+    santa:
+      name: "Santa Grīnberga"
+      bio: "žurnāliste | Kurzemes Vārds | vide un kopiena | tips: santa@kurzemesvards.lv"
+      avatar: avatars/santa.jpg
+
+    # === KurzemeMežs (development company) ===
+    kurzememezvs:
+      name: "KurzemeMežs SIA"
+      bio: "Mežu apsaimniekošana un attīstība | Kurzemes reģions | ISO 14001"
+      avatar: avatars/kurzememezvs.jpg
+    agris:
+      name: "Agris Lācis"
+      bio: "KurzemeMežs valdes loceklis | mežsaimniecība un nekustamie īpašumi"
+      avatar: avatars/agris.jpg
+    karlis:
+      name: "Kārlis Dombrovskis"
+      bio: "Advokāts | Birojs Dombrovskis & Partneri | nekustamo īpašumu tiesības | Rīga"
+      avatar: avatars/karlis.jpg
+
+    # === Teens ===
+    elina:
+      name: "Elīna"
+      bio: "16 | sēņotāja | priežkalni dzimusī | mežs ir viss frr"
+      avatar: avatars/elina.jpg
+    kristaps:
+      name: "Kristaps"
+      bio: "17 | moto & mežs | bmx pa meža ceļiem | priežkalni nav garlaicīgi"
+      avatar: avatars/kristaps.jpg
+    zane:
+      name: "Zane"
+      bio: "15 | foto & daba | meža ainavas | dace bija mana iedvesma"
+      avatar: avatars/zane.jpg
+
+    # === Media & Community ===
+    kurzemes_zinas:
+      name: "Kurzemes Ziņas"
+      bio: "Priežkalnu un apkārtnes jaunumi | tips: redakcija@kurzemeszinas.lv"
+      avatar: avatars/kurzemes_zinas.jpg
+    laika_zinas:
+      name: "Laika Ziņas Priežkalni"
+      bio: "Laika apstākļi un brīdinājumi | Automātiskā stacija | Atjaunots katru stundu"
+      avatar: avatars/laika_zinas.jpg
+    mezvards:
+      name: "Biedrība Mežvārds"
+      bio: "Kurzemes mežu aizsardzība | Brīvprātīgie | Ziņot par izciršanu"
+      avatar: avatars/mezvards.jpg
+
+    # === Suspicious / Other ===
+    edgars:
+      name: "Edgars Sproģis"
+      bio: "pacients | daces zāļu tējas glāba manu dzīvi | viņa ir brīnums"
+      avatar: avatars/edgars.jpg
+    ieva:
+      name: "Ieva Mežsarga"
+      bio: "."
+      avatar: avatars/anon.jpg
+    uldis:
+      name: "Uldis Bērziņš"
+      bio: "Valsts policija Priežkalni | iecirknis | neatliekamie: 110"
+      avatar: avatars/uldis.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PRIEŽKALNI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Priezkalns.social — the community Mastodon instance for
+      the village of Priežkalni, deep in the forests of Kurzeme, Latvia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @dace_berzina.
+
+      An herbalist. Forest healer. She documented the old medicine of
+      Kurzeme's woods. People are worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> dace_profile
+
+  dace_profile:
+    type: tweet
+    from: dace
+    text: "Izcirtums pie Melnā purva. Viņi grib iznīcināt 200 gadus vecu mežu. Man ir pierādījumi, ka atļauja ir viltota."
+    choices:
+      - That's her last real post... -> grey_forest
+
+  grey_forest:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of pine bark. Shot at night, no focus. Posted
+      at 2am. No caption.
+
+      Her friends say that's not her style. Dace always wrote long,
+      detailed posts about every plant she found. The police say she
+      probably went to visit relatives. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: uldis
+    text: >
+      Saņemts iesniegums par Priežkalnu iedzīvotāju. Šobrīd nav
+      pamata uzskatīt, ka noticis noziedzīgs nodarījums. Jebkura
+      noderīga informācija var tikt paziņota pa tālruni 110 vai
+      iecirknim.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @marta_liepina is
+      desperate. Her brother @janis_berzins is driving from Liepāja.
+      The doctor @raimonds_kalnins says it makes no sense. The hunter
+      @valdis_mednis says the forest clearing is destroying everything.
+
+      And the journalist @santa_grinberga has gone strangely silent.
+
+      Nobody believes the police. Nobody thinks Dace just "went
+      visiting relatives."
+    effects: { trust_marta: "+5", trust_janis: "+5" }
+    choices:
+      - Start following Dace's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Priežkalni. Follow Dace's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Ilze (shop owner, knows everyone) -> ilze_intro
+      - Talk to Valdis (hunter, saw the forest clearing) -> valdis_intro
+      - Talk to Elīna (teen forager, seems shaken) -> elina_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Dace with the rhythms of a small
+      forest village: mushroom season updates, the shop's daily
+      specials, weather warnings about first frost.
+
+      Key names surface: Marta (best friend, librarian), Raimonds
+      (local doctor, seems uneasy), Santa (journalist, oddly quiet),
+      and the teens — Elīna, Kristaps, Zane — who loved Dace's
+      forest walks and herbal lessons.
+
+      Also prominent: KurzemeMežs SIA, the forestry development
+      company buying land around the village. Their posts are
+      corporate PR. Dace's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Ilze -> ilze_intro
+      - Talk to Valdis -> valdis_intro
+      - Talk to Elīna -> elina_intro
+
+  # --- Ilze (social map) ---
+
+  ilze_intro:
+    type: tweet
+    from: ilze
+    text: >
+      Veikals atvērts, bet sirds nav vietā. @dace_berzina, tava tēja
+      vēl stāv uz letes. Nāc mājās.
+    effects: { trust_ilze: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ilze -> ilze_talk
+
+  ilze_talk:
+    type: message
+    text: >
+      ILZE: Ai, tu esi jauns? Laipni lūgti. Briesmīgs laiks, lai
+      ierastos. Visi ir uz nerviem par Daci.
+
+      Let me tell you who's who. Marta is Dace's best friend — they
+      meet at the library every morning for tea. Raimonds Kalniņš is
+      the village doctor, he and Dace used to argue about traditional
+      versus modern medicine, but they respected each other. Jānis
+      is Dace's older brother, he's coming from Liepāja.
+
+      And Santa Grīnberga — the journalist — she and Dace were working
+      on something together. Something about the forest clearing. Santa
+      hasn't said a word since Dace vanished. That's not like her.
+
+      Oh, and one more thing. There's this man — Edgars Sproģis. He
+      was Dace's patient. Came to her with some chronic illness. She
+      treated him with herbs and he got better. Since then he's been...
+      devoted. Too devoted. Gives me the creeps.
+    effects: { trust_ilze: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Edgars -> ilze_edgars
+      - Ask about KurzemeMežs -> ilze_kurzeme
+      - Thank her and move on -> quest1_hub
+
+  ilze_edgars:
+    type: message
+    text: >
+      ILZE: Edgars? He showed up about a year ago. Some city guy from
+      Rīga with stomach problems and insomnia. Doctors couldn't help.
+      He found Dace through some blog. She made him her teas, her
+      tinctures. And he got better.
+
+      After that, he moved here. Rented a house near the forest. Started
+      coming to her workshop every day. He'd sit in her garden for hours.
+      She told me once, "Viņš neredz robežas" — he doesn't see
+      boundaries. She meant it as a joke. I don't think it was funny.
+
+      The last month before she disappeared, he was sending her messages
+      constantly. She showed me. Dozens a day. "Kā tu jūties? Kur tu
+      esi? Vai tev vajag kaut ko?"
+    effects: { trust_ilze: "+5" }
+    choices:
+      - Ask about KurzemeMežs -> ilze_kurzeme
+      - Move on -> quest1_hub
+
+  ilze_kurzeme:
+    type: message
+    text: >
+      ILZE: KurzemeMežs has been buying forest land around Priežkalni
+      for two years. They say it's "sustainable forestry management."
+      What it actually means is clear-cutting ancient forest and selling
+      the timber, then rezoning the land for holiday cabin development.
+
+      The clearing at Melnais purvs — that's three hundred hectares of
+      old-growth pine and birch. Home to orchids, medicinal plants,
+      lynx. Dace documented every species there. She found that the
+      environmental impact assessment was faked — they listed species
+      that don't exist in Kurzeme and missed the ones actually there.
+
+      Two weeks after she posted about it, she's gone.
+    effects: { trust_ilze: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Valdis (the forest, witness tease) ---
+
+  valdis_intro:
+    type: tweet
+    from: valdis
+    text: >
+      trīsdesmit pieci gadi šajos mežos. nekad neesmu redzējis tādu
+      izciršanu kā pie melnā purva. @dace_berzina bija taisnība.
+      un tagad viņa ir pazudusi. sakiet man ka tā ir sakritība.
+    effects: { trust_valdis: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Valdis -> valdis_talk
+
+  valdis_talk:
+    type: message
+    text: >
+      VALDIS: I've walked these forests since I was a boy. I know every
+      trail, every clearing, every animal path. And I'm telling you —
+      what they're doing at Melnais purvs is a crime. Ancient trees
+      marked for felling. Protected habitat ripped up. I found
+      surveyor's stakes half a kilometre inside the nature reserve
+      boundary.
+
+      Dace was mapping the old medicinal plants there. She was building
+      a case. Photographs, GPS coordinates, species lists. She was the
+      only one who had the knowledge to prove the environmental
+      assessment was fraud.
+
+      You think that's a coincidence? Nu bļe, I don't believe in
+      coincidences in the forest.
+    effects: { trust_valdis: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> valdis_night
+      - Move on -> quest1_hub
+
+  valdis_night:
+    type: message
+    text: >
+      VALDIS: The night before she vanished — I was checking my hunting
+      trail cameras near the clearing. Around midnight, I saw lights on
+      the forest road. Not headlights — handheld flashlights. Two
+      people walking toward Dace's workshop, which is at the edge of
+      the forest.
+
+      One of them I recognised by his walk: Agris Lācis, the KurzemeMežs
+      director. The other was shorter, moved strangely. I couldn't
+      identify him.
+
+      At midnight. Walking to Dace's workshop. With no lights on their
+      car. They didn't want to be seen.
+    effects: { trust_valdis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Elīna (teen forager, witness tease) ---
+
+  elina_intro:
+    type: tweet
+    from: elina
+    text: >
+      sūds man nav labi. @dace_berzina viņa man iemācīja atpazīt
+      katru augu mežā. viņa nevar vienkārši pazust. ja kāds kaut ko
+      zina lūdzu sakiet
+    effects: { trust_elina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Elīna -> elina_talk_early
+
+  elina_talk_early:
+    type: message
+    text: >
+      ELĪNA: tu esi jauns šeit? sūds nu kāds laiks lai ierastos. nu
+      dace ir vienkārši labākais cilvēks šajā ciemā. viņa mums mācīja
+      par augiem, par sēnēm, par visu. tāda kā meža skolotāja.
+
+      un tagad es esmu nobijusies jo kristaps redzēja kaut ko dīvainu
+      pie daces darbnīcas bet viņš negrib runāt. viņš saka ka tas ir
+      nekas bet nu bļe... tas nav nekas
+    effects: { trust_elina: "+10" }
+    choices:
+      - What did Kristaps see? -> elina_kristaps_hint
+      - Move on -> quest1_hub
+
+  elina_kristaps_hint:
+    type: message
+    text: >
+      ELĪNA: es nezinu tieši. viņš bija ar bmx pie meža celiņa un
+      redzēja kaut ko pie daces darbnīcas. viņš flipoja un aizbrauca.
+      viņš saka ka kāds tur bija vidū naktī un kaut ko darīja pie
+      durvīm. jārunā ar viņu bet viņš neuzticas svešiem. pamēģini
+      vispirms parunāt par moto vai bmx lol
+    effects: { trust_elina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Priežkalni. A Kurzeme forest village
+      built around ancient woods. An herbalist who was exposing illegal
+      forest clearing. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Marta (Dace's best friend) -> marta_q1
+      - Talk to Raimonds (village doctor) -> raimonds_q1
+      - Check what Jānis (Dace's brother) is saying -> janis_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marta Q1 ---
+
+  marta_q1:
+    type: tweet
+    from: marta
+    text: >
+      ja kādam ir ziņas par @dace_berzina lūdzu zvaniet. viņas
+      darbnīca ir neaiztikta. viņas zāļu grāmata ir tur. viņa
+      nekad neaiziet bez savas grāmatas.
+    effects: { trust_marta: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marta -> marta_q1_talk
+
+  marta_q1_talk:
+    type: message
+    text: >
+      MARTA: I appreciate you reaching out but I don't know you.
+      Dace has many friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Marta is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_marta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Raimonds Q1 ---
+
+  raimonds_q1:
+    type: tweet
+    from: raimonds
+    text: >
+      @dace_berzina nav parādījusies uz konsultāciju. viņas pacienti
+      zvana man. viņa nekad neatliek pacientus. kaut kas ir noticis.
+    effects: { trust_raimonds: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Raimonds -> raimonds_q1_talk
+
+  raimonds_q1_talk:
+    type: message
+    text: >
+      RAIMONDS: Dace and I didn't always agree — I'm a trained doctor,
+      she's a traditional healer. But she was careful and knowledgeable.
+      Her patients trusted her absolutely. She would never abandon them.
+
+      There's one patient who concerns me — Edgars Sproģis. He came
+      to Dace about a year ago. She helped him. But his attachment
+      to her became... clinical. I've seen this before. It's called
+      transference — the patient develops an obsessive emotional bond
+      with the healer. He doesn't see Dace as a person. He sees her
+      as salvation.
+
+      That's dangerous.
+
+      [Raimonds seems genuinely concerned.]
+    effects: { trust_raimonds: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jānis Q1 ---
+
+  janis_q1:
+    type: tweet
+    from: janis
+    text: >
+      mana māsa ir PAZUDUSI un policija man saka ka viņa varbūt
+      aizbrauca pie radiem??? VIŅA NEBRAUC PIE RADIEM BEZ
+      BRĪDINĀJUMA. es braucu no liepājas. kāds man paskaidros.
+    effects: { trust_janis: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Jānis -> janis_q1_talk
+
+  janis_q1_talk:
+    type: message
+    text: >
+      JĀNIS: Who are you? Another person from that village who's going
+      to tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "ja kaut
+      kas notiek, skaties uz KurzemeMežs." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_janis: "+10" }
+    choices:
+      - What do you think happened? -> janis_theory
+      - Move on -> quest1_hub
+
+  janis_theory:
+    type: message
+    text: >
+      JĀNIS: I think she found proof that KurzemeMežs falsified their
+      environmental permits and they shut her up. But I also think
+      that creepy patient of hers — Edgars — knows more than he's
+      saying. The way he talks about her... piz*ec, it's not normal.
+      It's like she's his whole world.
+
+      Dace told me months ago that someone was leaving things at her
+      workshop door. Herbs bundled the way she taught. Notes about
+      her health. She thought it was sweet at first. Then it got
+      darker. Notes about what she wore, where she walked.
+    effects: { trust_janis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Dace went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Kristaps (was biking near the workshop at night) -> kristaps_interview
+      - Find Valdis (hunter, checks cameras at night) -> valdis_interview
+      - Find Baiba (farmer, early morning at the fields) -> baiba_interview
+      - Find Ārvīds (carpenter, workshop neighbour) -> arvids_interview
+
+  # --- Kristaps (saw someone at Dace's door) ---
+
+  kristaps_interview:
+    type: tweet
+    from: kristaps
+    text: >
+      bija laba bmx sesija bet atmosfēra pie meža ir dīvaina. kaut
+      kas nav labi. ellē nesaprotu kas notiek
+    effects: { trust_kristaps: "+5" }
+    choices:
+      - Ask Kristaps about that evening -> kristaps_talk
+
+  kristaps_talk:
+    type: message
+    text: >
+      KRISTAPS: nu bļe ok bet tu nevienam nesaki. es biju pie meža
+      celiņa ar bmx ap 21 un redzēju to tipu — edgars — pie daces
+      darbnīcas. viņš bija pie durvīm un kaut ko lika tur. tādu kā
+      maisiņu. kad viņš mani pamanīja viņš aizgāja ātri af.
+
+      nu es neko neteicu jo negribēju drāmu bet tagad tas ir sūds.
+      tas nav normāli viņa uzvedība ej dirst
+    effects:
+      trust_kristaps: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Valdis (hunter, saw late-night visitors) ---
+
+  valdis_interview:
+    type: tweet
+    from: valdis
+    text: >
+      Atgādinājums: meža ceļi naktī ir slēgti. Esmu konstatējis
+      neatļautu pārvietošanos pēdējās naktīs.
+    effects: { trust_valdis: "+5" }
+    choices:
+      - Ask Valdis what he saw -> valdis_talk_night
+
+  valdis_talk_night:
+    type: message
+    text: >
+      VALDIS: I was checking my trail cameras around 23:00. I saw a
+      car on the forest road — no headlights, just parking lights.
+      It stopped near the clearing at Melnais purvs. Two men got out.
+      One was Agris Lācis from KurzemeMežs. The other I couldn't see
+      well but he was carrying a briefcase.
+
+      They walked toward Dace's workshop. At 23:00. In the dark. On
+      a forest road they had no reason to be on.
+
+      I have it on my trail camera. Two figures. Timestamp and all.
+    effects:
+      trust_valdis: "+10"
+      night_witnesses: "+1"
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Baiba (saw someone running) ---
+
+  baiba_interview:
+    type: tweet
+    from: baiba
+    text: >
+      piecelties 4:30 kā vienmēr. šorīt kāds skrēja pa meža celiņu.
+      tumsā. ne jogā. kāds kas bēg.
+    effects: { trust_baiba: "+5" }
+    choices:
+      - Ask Baiba what she saw -> baiba_talk
+
+  baiba_talk:
+    type: message
+    text: >
+      BAIBA: I get up at 4:30 for the animals. That morning — the
+      morning after Dace's last post — I saw someone on the forest
+      path toward the main road. Running. A woman, carrying a bag.
+      It was still dark but I could see her silhouette against the
+      birch trees.
+
+      I called out but she didn't stop. She was moving fast, like
+      a hunted animal.
+
+      When I heard about Dace, I knew. That was her. Running from
+      something. Or someone.
+    effects:
+      trust_baiba: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ārvīds (heard confrontation) ---
+
+  arvids_interview:
+    type: tweet
+    from: arvids
+    text: >
+      Strādāju darbnīcā līdz vēlam. Tajā naktī dzirdēju balsis no
+      Daces puses. Kāds kliedza. Nebija normāli.
+    effects: { trust_arvids: "+5" }
+    choices:
+      - Ask Ārvīds what he heard -> arvids_talk
+
+  arvids_talk:
+    type: message
+    text: >
+      ĀRVĪDS: My carpenter's workshop is about 200 metres from Dace's
+      place. I was working late, finishing a commission. Around midnight
+      I heard voices — loud voices. Men's voices. And Dace shouting
+      something. I couldn't make out words, but she was angry or
+      frightened.
+
+      Then a car door slammed. An engine started. And then silence.
+
+      I should have gone over. I should have checked. But I thought
+      maybe it was an argument, none of my business. Piz*ec, I should
+      have gone.
+    effects:
+      trust_arvids: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marta (best friend)
+      and Zane (saw Edgars watching Dace's house).
+    choices:
+      - Talk to Marta about that night -> marta_interview
+      - Talk to Zane -> zane_interview
+      - Find Kristaps -> kristaps_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Valdis -> valdis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Baiba -> baiba_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ārvīds -> arvids_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marta (last to speak with Dace) ---
+
+  marta_interview:
+    type: tweet
+    from: marta
+    text: >
+      tā bilde daces kontā. tā nav viņa. dace nekad nepublicē bez
+      apraksta. dace nepublicē 2 naktī. kāds cits to izdarīja.
+    effects: { trust_marta: "+5" }
+    choices:
+      - DM Marta -> marta_talk_low
+        when:
+          state: trust_marta
+          lt: 50
+      - DM Marta -> marta_talk_high
+        when:
+          state: trust_marta
+          gte: 50
+
+  marta_talk_low:
+    type: message
+    text: >
+      MARTA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Marta needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_marta: "+5" }
+    choices:
+      - Share what you've learned about the night -> marta_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marta_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the men at the workshop, the
+      trail camera footage, the running figure. Marta is silent for
+      a while.
+
+      MARTA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_marta: "+25" }
+    choices:
+      - What happened that night? -> marta_talk_high
+
+  marta_talk_high:
+    type: message
+    text: >
+      MARTA: She called me around 22:00. She was terrified. She said
+      "viņi zina ko es zinu" — they know what I know. She said men
+      from KurzemeMežs came to her workshop. They told her to hand
+      over her documentation or face legal consequences.
+
+      Then she said something else — "un viņš atkal bija tur. Viņš
+      vienmēr ir tur." He was there again. He's always there.
+
+      She wouldn't say who "he" was. She said she was taking her
+      notebooks and leaving. She said "neuztraucies." Don't worry.
+      That was the last I heard.
+
+      By morning her workshop was empty and that strange photo was
+      on her account.
+    effects:
+      trust_marta: "+15"
+      night_witnesses: "+1"
+      development_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Zane (saw Edgars watching Dace's house) ---
+
+  zane_interview:
+    type: message
+    text: >
+      ZANE: ok nu bļe tas ir creepy bet tas edgars — es viņu redzēju
+      trīs reizes pie daces mājas vakarā. vienkārši stāvēja un skatījās
+      logos. tāds kā spoks sūds.
+
+      pēdējo reizi bija divas dienas pirms viņa pazuda. viņš sēdēja
+      savā mašīnā pretī. vienkārši sēdēja. lukturi izslēgti. nu ellē
+      tas nav normāli
+    effects:
+      trust_zane: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Edgars seen leaving something at Dace's workshop door (Kristaps)
+      22:00 — Dace calls Marta, terrified, says "they know" (Marta)
+      23:00 — Agris Lācis and unknown man at the workshop, caught on trail cam (Valdis)
+      00:00 — Loud voices and shouting heard from Dace's workshop (Ārvīds)
+      04:30 — Woman running on forest path toward main road (Baiba)
+
+      KurzemeMežs confronted Dace at her workshop. She fled with her
+      evidence. Someone chased her.
+
+      But there are two threats: the development company AND someone
+      closer.
+
+      Two threads to pull:
+      — The cover-up: What is KurzemeMežs hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Edgars really doing? Why was he always
+        there?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Edgars -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      DEVELOPMENT THREAD: Evidence collected: ${development_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the development thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: development_evidence, gte: 3 }
+
+  # =====================================================================
+  # DEVELOPMENT COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE DEVELOPMENT THREAD
+
+      KurzemeMežs is hiding something. Dace had proof the environmental
+      permits were falsified. Now she's gone and her notebooks are
+      missing from the workshop.
+
+      Development evidence: ${development_evidence}
+    choices:
+      - Search the municipal records -> municipal_records
+      - Talk to Santa the journalist -> santa_interview
+      - Talk to Anita (municipal secretary, knows about permits) -> anita_interview
+      - Check the Mežvārds association -> mezvards_investigation
+      - Talk to Valdis about the felling -> valdis_felling
+      - Talk to Guntis the parish leader -> guntis_interview
+      - Back to hub -> investigation_hub
+
+  # --- Municipal Records ---
+
+  municipal_records:
+    type: message
+    text: >
+      The Priežkalni parish council's public records show the
+      KurzemeMežs development application. The environmental impact
+      assessment lists 47 plant species surveyed in the Melnais purvs
+      area. Cross-referencing with Dace's published botanical surveys,
+      at least 12 of those species don't exist in Kurzeme at all.
+
+      The assessment was signed by a consultant in Rīga who has done
+      work exclusively for KurzemeMežs for the past five years.
+
+      The approval vote was 3-2 in the parish council. The deciding
+      vote: parish leader Guntis Ozoliņš.
+    effects:
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Santa ---
+
+  santa_interview:
+    type: message
+    text: >
+      SANTA: I don't talk about sources. Period.
+    effects: { trust_santa: "+5" }
+    choices:
+      - Show Santa the evidence you have -> santa_with_evidence
+        when:
+          state: development_evidence
+          gte: 3
+      - Back to development thread -> corruption_hub
+
+  santa_with_evidence:
+    type: message
+    text: >
+      SANTA: ...you have more than I expected.
+
+      Okay. Dace and I were working together. She had photographs of
+      every protected species in the clearing, GPS-tagged, with
+      timestamps. She had proof the environmental assessment was
+      fabricated — species that don't grow in Kurzeme, habitats
+      described incorrectly, survey dates when there was a blizzard.
+
+      We were going to publish together in Kurzemes Vārds. Then she
+      went dark. And two days later, someone broke into my office and
+      took my backup files.
+
+      Dace is alive. She contacted me once, from a borrowed phone.
+      She said she was hiding in Talsi with an old friend. She said
+      "viņi man draudēja darbnīcā un kāds cits mani neatlaiž."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_santa: "+25"
+      development_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> santa_hint
+      - Back to investigation hub -> investigation_hub
+
+  santa_hint:
+    type: message
+    text: >
+      SANTA: KurzemeMežs sent their director — Agris Lācis — and some
+      lawyer to her workshop that night. They told her to surrender
+      her documentation or they'd sue her for defamation and
+      trespassing on their land. Intimidation dressed up as legal
+      process.
+
+      But she also told me about someone else. A patient. Someone
+      who'd been following her through the forest, who knew her
+      daily routes, who left things at her door. That's a different
+      problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Anita (municipal whistleblower) ---
+
+  anita_interview:
+    type: message
+    text: >
+      ANITA: I process the paperwork for the parish council. I'm just
+      a secretary. I type minutes, I file documents.
+
+      But the documents I file... are not always the documents that
+      were discussed.
+    effects: { trust_anita: "+10" }
+    choices:
+      - What do you mean? -> anita_detail
+
+  anita_detail:
+    type: message
+    text: >
+      ANITA: The KurzemeMežs development permit. The environmental
+      assessment that was submitted to the council is different from
+      the one that was filed with the Vides pārraudzības birojs — the
+      State Environmental Bureau. The council version mentions
+      protected species. The state version doesn't.
+
+      Someone edited the assessment between the council vote and the
+      state filing. I don't know who. But Guntis signed both versions.
+
+      I'm scared. I have children. But I kept copies of both documents.
+      If someone can protect me, I'll share them.
+    effects:
+      trust_anita: "+15"
+      development_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to development thread -> corruption_hub
+
+  # --- Mežvārds ---
+
+  mezvards_investigation:
+    type: tweet
+    from: mezvards
+    text: >
+      BRĪDINĀJUMS: Konstatēta neatļauta koku ciršana Melnā purva
+      teritorijā. Fotogrāfijas un dokumenti iesniegti. Pieprasām
+      nepieteiktu inspekciju KurzemeMežs darbībai.
+    choices:
+      - Check their data -> mezvards_data
+
+  mezvards_data:
+    type: message
+    text: >
+      The Mežvārds association has been documenting forestry activity
+      in Kurzeme for five years. Their data shows a clear pattern:
+      KurzemeMežs applies for "selective thinning" permits, then
+      clear-cuts the entire area. Satellite images from three sites
+      show the discrepancy.
+
+      At Melnais purvs, they've already begun felling outside the
+      permitted boundary. The surveyor's stakes Valdis found are 500
+      metres inside the nature reserve.
+
+      Dace was a member. She contributed most of the botanical
+      documentation. Her species lists were the strongest evidence
+      that the environmental assessment was fake.
+    effects:
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to development thread -> corruption_hub
+
+  # --- Valdis felling ---
+
+  valdis_felling:
+    type: message
+    text: >
+      VALDIS: I'll show you something. Last week I found fresh stumps
+      inside the nature reserve boundary. Old-growth pine, maybe 200
+      years old. Cut with a commercial harvester — you can tell by
+      the cut pattern. No forestry permit covers that area.
+
+      I photographed everything. GPS coordinates, tree diameters,
+      the harvester tracks leading back to the KurzemeMežs staging
+      area. Dace was going to include this in her report.
+
+      I still have the photos. And I know the machine registration
+      number — it's painted on the side. KM-2847. KurzemeMežs.
+    effects:
+      trust_valdis: "+10"
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Guntis ---
+
+  guntis_interview:
+    type: message
+    text: >
+      GUNTIS: As parish leader, I take these concerns seriously. But
+      KurzemeMežs employs 40 people from our area. The development
+      would bring tourism jobs. We need to "balance interests."
+
+      Off the record? I've seen what's happening at Melnais purvs.
+      The environmental assessment was... optimistic. But the State
+      Bureau approved it. If there's a problem, it's their
+      responsibility.
+
+      Dace had unannounced data. Species lists they couldn't have
+      faked. That's what made her dangerous to them.
+    effects:
+      trust_guntis: "+10"
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to development thread -> corruption_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Edgars Sproģis. Patient. Devotee. Something more?
+      Someone was leaving offerings at Dace's door. Someone was
+      watching her house. Someone was following her in the forest.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Edgars's movements -> edgars_movements
+      - Talk to Marta about Edgars -> marta_edgars
+        when:
+          state: trust_marta
+          gte: 20
+      - Talk to Kristaps (more detail on the workshop door) -> kristaps_detail
+      - Talk to Līga the pharmacist -> liga_interview
+      - Check the anonymous account @ieva_mezsarga -> ieva_investigation
+      - Talk to Ārvīds the carpenter -> arvids_more
+        when:
+          state: trust_arvids
+          gte: 40
+      - Talk to Uldis the police officer -> uldis_interview
+        when:
+          state: trust_uldis
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Edgars's movements ---
+
+  edgars_movements:
+    type: message
+    text: >
+      Edgars Sproģis moved to Priežkalni nine months ago. Before that,
+      he lived in Rīga. He rented a house 300 metres from Dace's
+      workshop — the closest available property.
+
+      His social media is almost entirely about Dace's work. He
+      reposts every herb photo, every plant identification, every
+      workshop announcement. He comments with lengthy, personal
+      messages praising her knowledge.
+
+      His location data — visible through geotagged posts — shows he
+      visits Dace's workshop area an average of three times per day.
+      Including late at night.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marta on Edgars ---
+
+  marta_edgars:
+    type: message
+    text: >
+      MARTA: Edgars? He terrified Dace. At first she was flattered —
+      he was so grateful for her healing. But then he started showing
+      up uninvited. He'd be at the library when she came for our
+      morning tea. He'd be at Ilze's shop when she bought supplies.
+      He'd appear on the forest path when she went to gather herbs.
+
+      She told him she needed space. Politely, clearly. He said he
+      understood. Nothing changed. He just kept appearing.
+
+      A month ago she found bundles of herbs at her workshop door.
+      Tied in the exact way she taught in her classes. With notes.
+      Long, emotional notes about how she saved his life, how she
+      was the only person who understood him, how they were connected.
+
+      The last note said "es vienmēr būšu blakus" — I will always
+      be beside you.
+    effects:
+      trust_marta: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kristaps detail ---
+
+  kristaps_detail:
+    type: message
+    text: >
+      KRISTAPS: ok frr nu bļe es neteicu visu. kad es redzēju edgaru
+      pie daces darbnīcas viņam rokās bija ne tikai maisiņš. viņam
+      bija arī tāds kā atslēgu komplekts. viņš mēģināja atvērt
+      durvis. nu piz*ec es domāju ka viņš vienkārši kaut ko atdeva
+      bet viņš mēģināja iekšā tikt.
+
+      kad viņš mani pamanīja viņš sāka smaidīt un teica ka dace
+      lūdza viņu kaut ko paņemt. bet bija 21 vakarā un dace nebija
+      mājās. nu sūds tas ir meli
+    effects:
+      trust_kristaps: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Līga ---
+
+  liga_interview:
+    type: message
+    text: >
+      LĪGA: This is confidential but I'm a pharmacist, not a priest.
+      Edgars Sproģis comes in regularly. He buys things that suggest
+      he's not sleeping — melatonin, valerian, energy supplements.
+      The pattern of someone under extreme emotional stress.
+
+      He also asked me once if I could get him a GPS tracking device.
+      Said it was for his dog. I said "this is a pharmacy, not an
+      electronics shop." He laughed. But he doesn't have a dog.
+
+      And once — this bothered me — he asked me what medications
+      Dace takes. I said I couldn't share that. He said "es tikai
+      gribu viņai palīdzēt" — I just want to help her. The look
+      in his eyes was not about helping.
+    effects:
+      trust_liga: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ieva (anonymous account) ---
+
+  ieva_investigation:
+    type: tweet
+    from: ieva
+    text: >
+      Viņai vajadzēja klausīties. Es mēģināju viņu aizsargāt. Neviens
+      cits nesaprata viņas darbu kā es.
+    choices:
+      - Look at this account's history -> ieva_posts
+
+  ieva_posts:
+    type: message
+    text: >
+      @ieva_mezsarga: account created 7 months ago. Posts are all about
+      Dace's work. Comments on every herb photo, every plant
+      identification, every workshop update. The tone shifts over time:
+
+      Month 1: "Incredible knowledge. You are a true healer."
+      Month 3: "Why don't you reply to my messages? I just want
+      to learn from you."
+      Month 5: "I see you at the library with your friend. You have
+      time for her but not for me?"
+      Month 6: "I know your paths in the forest. I walk them after
+      you. I can smell the herbs you touched."
+      Month 7: "I will always be near you. You are my medicine."
+
+      The account has no photos, no personal details. Just Dace.
+      Only Dace.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> ieva_style
+
+  ieva_style:
+    type: message
+    text: >
+      Comparing @ieva_mezsarga with @edgars_sprogis:
+
+      Same use of botanical terminology — the specific folk names
+      for plants that Dace teaches in her classes. Same grammatical
+      quirks — the way he uses accusative case incorrectly, a common
+      mistake for someone who grew up speaking Russian at home in Rīga.
+      Same detailed knowledge of Dace's daily routine that only someone
+      watching her closely would have.
+
+      And one post from @ieva_mezsarga: "Your gathering at the hidden
+      aspen grove was beautiful." The hidden aspen grove is a place
+      Dace only shared with her closest students. Edgars attended
+      three of her workshops.
+
+      It's Edgars. The anonymous account is Edgars.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ārvīds more ---
+
+  arvids_more:
+    type: message
+    text: >
+      ĀRVĪDS: There's something else I didn't mention. About two
+      weeks before Dace vanished, Edgars came to my workshop. He
+      wanted me to make a copy of a key. He showed me the key — it
+      was old, iron, the kind used on traditional Kurzeme door locks.
+      Like the one on Dace's workshop.
+
+      I asked him whose key it was. He said "mine." But I know every
+      house in this village and that key didn't match any modern lock.
+      It matched the old lock on Dace's workshop door.
+
+      I refused. He got angry. Said I was "standing between him and
+      his healing." Piz*ec, his eyes scared me.
+    effects:
+      trust_arvids: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Uldis ---
+
+  uldis_interview:
+    type: message
+    text: >
+      ULDIS: Off the record — and I mean completely off the record —
+      I wanted to investigate KurzemeMežs. My superior in Kuldīga
+      told me to stand down. He said the Vides pārraudzības birojs
+      had "jurisdiction." That's code for "don't touch it."
+
+      The Sproģis situation is different. I didn't even know about
+      the stalking until now. If you have evidence, I can act on
+      that. Stalking is clearly criminal. I don't need permission
+      from Kuldīga to arrest a stalker.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_uldis: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Dace than anyone in Priežkalni. Who is responsible?
+    choices:
+      - Confront Edgars Sproģis (the obsessive patient) -> confront_edgars
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Agris Lācis (the development director) -> confront_agris
+        when:
+          state: development_evidence
+          gte: 3
+      - Confront Parish Leader Ozoliņš (political protection) -> confront_guntis
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Edgars (Best Ending) ---
+
+  confront_edgars:
+    type: message
+    text: >
+      You present your evidence to Edgars:
+
+      "I know @ieva_mezsarga is your account. I know you tried to
+      copy Dace's workshop key. I know you followed her through the
+      forest. I know you were watching her house every night. I know
+      you were at her door the night she disappeared. I have witnesses
+      and I have the trail camera footage."
+    choices:
+      - Send -> edgars_response
+
+  edgars_response:
+    type: message
+    text: >
+      Edgars doesn't reply for a long time. Then:
+
+      EDGARS: You don't understand. She saved my life. Nobody else
+      could help me. The doctors, the hospitals — nothing worked.
+      She healed me. I needed to be near her. I needed to protect
+      her. Everything I did was because she is the most important
+      person in the world.
+
+      That's not gratitude. That's obsession.
+
+      You've already sent the evidence to Uldis. And to Santa
+      Grīnberga.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Uldis reopens the case. With your evidence — the anonymous
+      account, the key copying attempt, the nightly surveillance,
+      the workshop break-in attempt, the witness testimonies — Edgars
+      is arrested for stalking and harassment. A search of his rented
+      house reveals a wall covered in photographs of Dace, a notebook
+      detailing her daily movements for nine months, and a GPS tracker
+      he ordered online.
+
+      Santa Grīnberga, finally in possession of Dace's full botanical
+      documentation, publishes the KurzemeMežs story in Kurzemes Vārds
+      and Latvijas Avīze. The Vides pārraudzības birojs orders an
+      unannounced inspection of Melnais purvs. The felling is halted.
+      Agris Lācis faces criminal charges for environmental fraud and
+      falsifying the impact assessment.
+
+      And Dace Bērziņa, reading the story from a friend's kitchen in
+      Talsi, calls her brother for the first time in nine days.
+
+      "Es braucu mājās."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: dace
+    text: >
+      mežs nemelo. un priežkalnu ļaudis arī ne. paldies ka
+      nepadevāties.
+    choices:
+      - See the helpline information -> ending_a_helpline
+
+  ending_a_helpline:
+    type: message
+    text: >
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+
+      Krīzes tālrunis (crisis line): 116 006
+      Sieviešu tiesību institūts: 67 222 922
+      Valsts policija: 110
+      Vides pārraudzības birojs (environmental crime): 67 770 818
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Agris (Partial Ending) ---
+
+  confront_agris:
+    type: message
+    text: >
+      You present the environmental fraud evidence to Agris Lācis:
+
+      "I have photographs of protected species at Melnais purvs that
+      your assessment claims don't exist. I have two versions of the
+      environmental assessment — the one filed with the council and
+      the different one filed with the state. I have satellite images
+      of illegal felling inside the nature reserve. I have the
+      harvester registration number."
+    choices:
+      - Send -> agris_response
+
+  agris_response:
+    type: message
+    text: >
+      AGRIS: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will
+      result in immediate proceedings. KurzemeMežs has always
+      operated within regulatory requirements.
+
+      But it's too late. You've sent the evidence to Santa, to
+      Mežvārds, and to the Vides pārraudzības birojs.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The environmental fraud story breaks. KurzemeMežs is ordered
+      to halt all operations at Melnais purvs pending investigation.
+      The development project collapses. Forty jobs hang in the
+      balance. The village is divided.
+
+      But Dace?
+
+      Without the stalking evidence, Edgars is never investigated.
+      He continues to live in the village. He continues to watch
+      her house. He creates a new anonymous account.
+
+      Three months later, Dace reads about KurzemeMežs online.
+      She returns quietly. She moves her workshop to Kuldīga. She
+      stops leading forest walks alone. She checks the locks on her
+      doors three times before sleeping.
+
+      The forest is saved. But the person who terrorised Dace walks
+      free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: dace
+    text: "es esmu atpakaļ. mežs ir drošībā. pārējais... redzēsim."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Parish Leader (Wrong Ending) ---
+
+  confront_guntis:
+    type: message
+    text: >
+      You confront Parish Leader Ozoliņš with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> guntis_response
+
+  guntis_response:
+    type: tweet
+    from: karlis
+    text: >
+      Mans klients pieņem zināšanai Jūsu apgalvojumus. Jebkāda
+      publisku apmelojošu materiālu izplatīšana izraisīs tūlītēju
+      tiesvedību. — Birojs Dombrovskis & Partneri, Rīga
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The parish leader's lawyer buries your accusation. Without a
+      direct link between Ozoliņš and KurzemeMežs's fraud — and
+      there isn't one beyond a suspicious vote and political
+      protection — your evidence is insufficient.
+
+      KurzemeMežs continues to clear the forest. Edgars continues
+      to watch. Dace stays in hiding.
+
+      Six months later, @ieva_mezsarga creates a new account. It
+      follows Dace's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PRIEŽKALNI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Development evidence: ${development_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Dace's story explores themes of
+      environmental crime, obsessive attachment, community solidarity,
+      the vulnerability of healers, and the courage to protect what
+      matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Krīzes tālrunis: 116 006
+      Sieviešu tiesību institūts: 67 222 922
+      Valsts policija: 110
+      Vides pārraudzības birojs: 67 770 818

@@ -1,0 +1,1679 @@
+# DEAD ACCOUNT — Story 070: Metsavälja (Estonia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-070.yml
+#
+# Player investigates the disappearance of textile artist Liis Tamm
+# in the fictional Hiiumaa island village of Metsavälja.
+
+meta:
+  title: "Dead Account — Metsavälja"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marika: 0
+    trust_toomas: 0
+    trust_helgi: 0
+    trust_rein: 0
+    trust_kertu: 0
+    trust_rasmus: 0
+    trust_hanna: 0
+    trust_urmas: 0
+    trust_piret: 0
+    trust_ants: 0
+    trust_kadri: 0
+    trust_juhan: 0
+    trust_maret: 0
+    trust_taavi: 0
+    trust_ene: 0
+    trust_oliver: 0
+    trust_margus: 0
+    trust_lembit: 0
+    trust_siiri: 0
+    trust_politsei: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to metsavälja. island life, forest air, what could go wrong"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Metsavalja.social"
+    description: "Tere tulemast Metsavälja kogukonna serverisse"
+    avatar_url: /gamepatch/assets/dead-account/metsavalja_bot.png
+
+  npcs:
+    # === Liis's Inner Circle ===
+    liis:
+      name: "Liis Tamm"
+      bio: "tekstiilikunstnik | loodusvärvid & vilt | hiiumaa käsitöö | raba on mu muusa"
+      avatar: avatars/liis.jpg
+    marika:
+      name: "Marika Tamm"
+      bio: "liisi ema | pensionär | metsavälja | mu tütar ei kao niisama ära"
+      avatar: avatars/marika.jpg
+    toomas:
+      name: "Toomas Kask"
+      bio: "liisi parim sõber | puusepp | metsavälja | midagi on valesti"
+      avatar: avatars/toomas.jpg
+    rein:
+      name: "Rein Aare"
+      bio: "kunstikoguja | tallinn | liisi tööde suurim fänn | eksklusiivsed tellimused"
+      avatar: avatars/rein.jpg
+
+    # === Local Government ===
+    urmas:
+      name: "Urmas Põld"
+      bio: "Metsavälja vallavanem | Saare elu edendamine | #MetsaväljaMuutub"
+      avatar: avatars/urmas.jpg
+    piret:
+      name: "Piret Saar"
+      bio: "Keskkonnakomisjon | Metsavälja vald | loodus & kaitse"
+      avatar: avatars/piret.jpg
+    vald:
+      name: "Metsavälja Vald"
+      bio: "Ametlik konto | Uudised & üritused | E-R 9-16"
+      avatar: avatars/vald.jpg
+
+    # === Local Business & Community ===
+    helgi:
+      name: "Helgi Mägi"
+      bio: "Mägi Pubi | supp & õlu | küla elutuba aastast 1997"
+      avatar: avatars/helgi.jpg
+    pubi:
+      name: "Mägi Pubi"
+      bio: "Kodune toit | Reede karaoke | Pühapäeva hommikusöök | Metsavälja süda"
+      avatar: avatars/pubi.jpg
+    ants:
+      name: "Ants Rebane"
+      bio: "kalamees | 35 aastat merel | hiiumaa rannik on mu elu"
+      avatar: avatars/ants.jpg
+    kadri:
+      name: "Kadri Lill"
+      bio: "apteeker | metsavälja apteek | ka laupäeva hommikul avatud"
+      avatar: avatars/kadri.jpg
+    juhan:
+      name: "Juhan Veski"
+      bio: "mehaanik | veski auto | metsavälja | kõik mis sõidab"
+      avatar: avatars/juhan.jpg
+    ene:
+      name: "Ene Kalda"
+      bio: "raamatukoguhoidja | metsavälja raamatukogu | lugemisring kolmapäeviti"
+      avatar: avatars/ene.jpg
+
+    # === Journalist ===
+    maret:
+      name: "Maret Kivi"
+      bio: "ajakirjanik | hiiumaa leht | keskkond & kultuur | vihjed: maret@hiiumaaleht.ee"
+      avatar: avatars/maret.jpg
+
+    # === TurbaEesti (corporate) ===
+    turba:
+      name: "TurbaEesti OÜ"
+      bio: "Turbakaevandus & eksport | Hiiumaa tehas | ISO 14001 sertifitseeritud"
+      avatar: avatars/turba.jpg
+    lembit:
+      name: "Lembit Vaher"
+      bio: "TurbaEesti Hiiumaa tehase juht | 200 töökohta | areng läänes"
+      avatar: avatars/lembit.jpg
+    siiri:
+      name: "Siiri Ots"
+      bio: "Advokaat | Ots & Partnerid | Äriõigus | Tallinn"
+      avatar: avatars/siiri.jpg
+
+    # === Teens ===
+    kertu:
+      name: "Kertu"
+      bio: "16 | fotograaf & rabamatkaja | metsavälja sündinud | perse mis igav saar"
+      avatar: avatars/kertu.jpg
+    rasmus:
+      name: "Rasmus"
+      bio: "17 | bmx & kalastamine | saar kus pole midagi | aga mets on lahe nkn"
+      avatar: avatars/rasmus.jpg
+    hanna:
+      name: "Hanna"
+      bio: "15 | joonistaja | loodus siin on hull ilus | liis õpetas mulle kudumist"
+      avatar: avatars/hanna.jpg
+
+    # === Media & Community ===
+    saarnyt:
+      name: "MetsaväljaUudised"
+      bio: "Kohalikud uudised Metsaväljalt | Vihjed: toimetus@metsavaljauudised.ee"
+      avatar: avatars/saarnyt.jpg
+    ilm:
+      name: "Ilm Metsavälja"
+      bio: "Ilmaennustus & hoiatused | Automaatjaam | Uuendatakse iga tund"
+      avatar: avatars/ilm.jpg
+    selts:
+      name: "Metsavälja Looduskaitse Selts"
+      bio: "Vabatahtlikud | Raba & rannik | Vee- ja elustikuseire"
+      avatar: avatars/selts.jpg
+
+    # === Suspicious / Other ===
+    taavi:
+      name: "Taavi Rand"
+      bio: "keskkonnainspektor | TurbaEesti | aruanded & vastavus"
+      avatar: avatars/taavi.jpg
+    oliver:
+      name: "Oliver Mets"
+      bio: "."
+      avatar: avatars/anon.jpg
+    margus:
+      name: "Margus Tamm"
+      bio: "liisi vend | meremees | pärnu | ta ei kao lihtsalt ära"
+      avatar: avatars/margus.jpg
+    politsei:
+      name: "Konstaabel Kuusk"
+      bio: "Lääne prefektuur | Metsavälja konstaablijaoskond | 112"
+      avatar: avatars/politsei.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN METSAVÄLJA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Metsavalja.social — the community Mastodon instance
+      for the island village of Metsavälja, Hiiumaa.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name everywhere:
+      @liis_tamm.
+
+      A textile artist. Natural dyes from the bog. Her woven pieces
+      hung in galleries in Tallinn and Helsinki. She documented the
+      peat bogs obsessively — photographing, sampling, defending them
+      against industrial extraction. People are worried. She hasn't
+      posted in seven days.
+    choices:
+      - Look at her profile -> liis_profile
+
+  liis_profile:
+    type: tweet
+    from: liis
+    text: "turbakaevandus hävitab Männiraba. TurbaEesti laiendab ilma loata. mul on tõendid, fotod, proovid. see lõpeb NÜÜD."
+    choices:
+      - That's her last real post... -> grey_bog
+
+  grey_bog:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a grey landscape — fog on the bog. Blurred, overexposed, posted
+      at 3am. No caption. No hashtags.
+
+      Her friends say that's not her style. Liis always wrote long
+      captions about the plants, the light, the texture of the peat.
+      The police say she probably went to Tallinn. Nobody on this
+      island believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: politsei
+    text: >
+      Saime teate Metsavälja elaniku kohta. Praegusel hetkel puudub
+      alus arvata, et tegemist on kuriteoga. Info edastamiseks palume
+      pöörduda konstaablijaoskonda või helistada 112.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her mother @marika_tamm is posting
+      frantically. Her best friend @toomas_kask checked her studio —
+      looms still threaded, dye pots still steeping. Her brother
+      @margus_tamm is trying to get emergency leave from his ship.
+
+      The collector @rein_aare from Tallinn is strangely active,
+      posting concerned messages about "his artist." The fisherman
+      @ants_rebane says the bog water has been wrong for months.
+
+      And the journalist @maret_kivi is oddly silent.
+
+      TurbaEesti OÜ, the peat extraction company destroying the
+      bog next door, just posted about their "sustainable harvesting
+      practices."
+
+      Nobody thinks Liis just went to Tallinn.
+    effects: { trust_marika: "+5", trust_toomas: "+5" }
+    choices:
+      - Start following Liis's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Metsavälja. Follow Liis's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Helgi (pub owner, knows everyone) -> helgi_intro
+      - Talk to Ants (fisherman, knows the bog) -> ants_intro
+      - Talk to Kertu (teen photographer, walks the bog) -> kertu_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Liis with island rhythms: ferry
+      schedules, weather warnings, the pub's Friday karaoke, someone's
+      sheep on the road, mushroom season.
+
+      Key names surface: Marika (mother, retired, desperate), Toomas
+      (best friend, carpenter, angry), Rein Aare (Tallinn art
+      collector, obsessively interested in Liis's work), and the
+      teens — Kertu, Rasmus, Hanna — who hung out at Liis's studio.
+
+      Also prominent: TurbaEesti OÜ, the peat extraction company
+      at the edge of the bog. Their posts are corporate PR. Liis's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Helgi -> helgi_intro
+      - Talk to Ants -> ants_intro
+      - Talk to Kertu -> kertu_intro
+
+  # --- Helgi (social map) ---
+
+  helgi_intro:
+    type: tweet
+    from: helgi
+    text: >
+      Pubi on lahti aga tuju on all. @liis_tamm, su koht leti ääres
+      ootab. Tule tagasi.
+    effects: { trust_helgi: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Helgi -> helgi_talk
+
+  helgi_talk:
+    type: message
+    text: >
+      HELGI: You're new here? Welcome to the island. Bad timing
+      though. Everyone's on edge about Liis.
+
+      Let me tell you who's who. Marika is her mother — lives alone
+      now, worried sick. Toomas Kask is her best friend since
+      childhood, a carpenter. Good man, furious right now.
+
+      Rein Aare — that's the strange one. Rich art collector from
+      Tallinn. He discovered Liis's work two years ago and became her
+      biggest buyer. But he's... too interested. Flies to the island
+      unannounced. Sends gifts. Shows up at her studio without
+      warning. Liis told me he was becoming a problem.
+
+      "Ta ei mõista, et ei tähendab ei."
+
+      And then there's TurbaEesti. They're destroying the bog that
+      gives Liis her dyes, her inspiration, her whole artistic life.
+      She had evidence of illegal extraction. Now she's gone.
+    effects: { trust_helgi: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Rein -> helgi_rein
+      - Ask about TurbaEesti -> helgi_turba
+      - Thank her and move on -> quest1_hub
+
+  helgi_rein:
+    type: message
+    text: >
+      HELGI: Rein? Kurat, that man has more money than sense. He
+      bought everything Liis made. Full price, no haggling. At first
+      she was thrilled — artists need patrons. But then he started
+      wanting more. Private commissions. Exclusive rights. He wanted
+      her to stop selling to anyone else.
+
+      She said no. He didn't take it well. He started showing up on
+      the island without telling her. She'd find him at the pub
+      waiting for her. He'd walk by her studio at odd hours. She told
+      me once "ta jälitab mind, Helgi. Mis pask see on?"
+
+      Those were her words. Three weeks before she vanished.
+    effects: { trust_helgi: "+5" }
+    choices:
+      - Ask about TurbaEesti -> helgi_turba
+      - Move on -> quest1_hub
+
+  helgi_turba:
+    type: message
+    text: >
+      HELGI: TurbaEesti has been extracting peat from Männiraba for
+      three years. Before that it was a pristine bog — cloudberries,
+      sundew, cotton grass. Liis used everything from it for her dyes.
+      The sphagnum moss gave her those deep browns and reds that made
+      her famous.
+
+      Now half the bog is scraped bare. The water table has dropped.
+      Plants are dying. And Liis discovered they were extracting
+      beyond their permitted boundary — cutting into protected habitat.
+
+      She had drone photos, she had GPS coordinates, she had water
+      samples. Two weeks after she confronted them, she's gone.
+      Kurat, you don't need to be a detective.
+    effects: { trust_helgi: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ants (fisherman, knows the bog water) ---
+
+  ants_intro:
+    type: tweet
+    from: ants
+    text: >
+      35 aastat sellel rannikul. vesi pole enam sama. @liis_tamm
+      teadis seda. ja nüüd on ta kadunud. tehke järeldused.
+    effects: { trust_ants: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ants -> ants_talk
+
+  ants_talk:
+    type: message
+    text: >
+      ANTS: I've fished these waters my whole life. The streams that
+      drain the bog flow into the bay. For thirty years the water was
+      clear. Now it runs brown — not peat brown, chemical brown.
+      Dissolved humics, iron oxide, things that shouldn't be there in
+      those amounts.
+
+      Liis tested the water. She took samples at six points around
+      the extraction site. The numbers were terrible. She showed them
+      to me — pH levels that kill fish, heavy metals from the deep
+      peat layers TurbaEesti isn't supposed to be touching.
+
+      She was building a case. Drone photos, water data, botanical
+      surveys showing species decline. And then — gone.
+
+      There are no coincidences on an island this small.
+    effects: { trust_ants: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> ants_night
+      - Move on -> quest1_hub
+
+  ants_night:
+    type: message
+    text: >
+      ANTS: The night before she vanished — I was coming back from
+      night fishing, around 1am. I saw lights near the extraction
+      site. Not the usual security lights — car headlights. Two
+      vehicles. One was the TurbaEesti company pickup. The other was
+      a rental car — the kind you get off the ferry.
+
+      At 1am. At the peat bog. On an island where nothing happens
+      after dark.
+
+      I made a note of it. Fisherman's habit. Nobody has asked to see
+      my log book until now.
+    effects: { trust_ants: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kertu (teen photographer, walks the bog) ---
+
+  kertu_intro:
+    type: tweet
+    from: kertu
+    text: >
+      vittu @liis_tamm on ainus inimene sellel saarel kes pole
+      täielik tont. ta stuudio oli parim koht. mis pask siin
+      toimub??
+    effects: { trust_kertu: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kertu -> kertu_talk_early
+
+  kertu_talk_early:
+    type: message
+    text: >
+      KERTU: kes sa oled?? ok whatever. liis on nkn parim. ta lasi
+      meil stuudios pärast kooli käia, ta õpetas hannale kudumist,
+      ta andis mulle oma vana kaamera. see kaamera millega ma rabas
+      pilte teen.
+
+      ja nüüd on ta lihtsalt ära?? perse mis lugu.
+
+      rasmus nägi midagi imelikku sel õhtul btw aga ta ei julge
+      rääkida. ta ütleb et pole midagi aga on kurat küll midagi.
+    effects: { trust_kertu: "+10" }
+    choices:
+      - What did Rasmus see? -> kertu_rasmus_hint
+      - Move on -> quest1_hub
+
+  kertu_rasmus_hint:
+    type: message
+    text: >
+      KERTU: ei tea täpselt. ta oli bmxiga sadamas ja nägi ühte tüüpi.
+      meest. ta seisis liisi stuudio juures ja pildistas ust. pimedas.
+      rasmus ütles et see meelditas reinile aga ta pole kindel.
+
+      ta on sellest kurat närvis. proovi temaga rääkida aga ta on
+      mega kahtlustav võõraste suhtes. räägi enne bmxist või
+      millestki nkn
+    effects: { trust_kertu: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Metsavälja. A Hiiumaa island village
+      where the forest meets the bog. A textile artist who was
+      exposing illegal peat extraction. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Marika (Liis's mother) -> marika_q1
+      - Talk to Rein (the Tallinn collector) -> rein_q1
+      - Check what Toomas (Liis's best friend) is saying -> toomas_q1
+      - Check what Margus (Liis's brother) is saying -> margus_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marika Q1 ---
+
+  marika_q1:
+    type: tweet
+    from: marika
+    text: >
+      kui kellelgi on uudiseid @liis_tamm kohta palun helistage mulle.
+      ta telk on stuudios. ta värvid on potis. ta ei oleks kunagi
+      ilma tööta lahkunud.
+    effects: { trust_marika: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marika -> marika_q1_talk
+
+  marika_q1_talk:
+    type: message
+    text: >
+      MARIKA: Who are you? Another mainlander who thinks they know
+      something? My daughter called me the evening before she went
+      silent. She was frightened. She said "nad teavad, mis mul on,
+      ema." They know what I have.
+
+      I asked who. She said the peat company. Then she said something
+      else — "ja tema ka. Ta on alati siin." And him too. He's always
+      here.
+
+      She wouldn't say who. She told me not to worry. That's the last
+      I heard from my daughter.
+    effects: { trust_marika: "+10" }
+    choices:
+      - What do you think happened? -> marika_theory
+      - Move on -> quest1_hub
+
+  marika_theory:
+    type: message
+    text: >
+      MARIKA: I think TurbaEesti wanted her evidence destroyed. She
+      had everything — drone footage, water samples, GPS coordinates
+      showing extraction beyond the permitted zone. Lembit Vaher, the
+      plant manager, screamed at her in the village shop. Everyone
+      heard him: "Sa hävitad 200 inimese töökohad!"
+
+      But Rein Aare... that's the other thing. He wouldn't stop
+      contacting her. She blocked his number and he bought a new
+      phone. She told him to stop coming to the island and he came
+      anyway. He said he was her "biggest supporter." She said he
+      was her biggest nightmare.
+
+      The night she vanished, both threats were closing in.
+    effects: { trust_marika: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Rein Q1 ---
+
+  rein_q1:
+    type: tweet
+    from: rein
+    text: >
+      @liis_tamm on eesti üks suurimaid talente. tema tööd on
+      hindamatud. ma olen mures. kui keegi teab midagi, palun
+      kirjutage mulle otse.
+    effects: { trust_rein: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rein -> rein_q1_talk
+
+  rein_q1_talk:
+    type: message
+    text: >
+      REIN: I'm Liis's most important patron. I've bought seventeen
+      of her pieces. I was planning a solo exhibition for her in
+      Tallinn — Kumu Museum was interested. She has extraordinary
+      talent. This disappearance is devastating for Estonian art.
+
+      People say I'm too involved. That's unfair. I invest in
+      artists. I nurture them. Liis and I have a professional
+      relationship built on mutual respect.
+
+      [Rein speaks smoothly. But the concern feels possessive, not
+      professional.]
+    effects: { trust_rein: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Toomas Q1 ---
+
+  toomas_q1:
+    type: tweet
+    from: toomas
+    text: >
+      käisin liisi stuudios. kangastelg on lõime peal. värvipotid
+      keevad. tema saapad on ukse juures. SEE EI OLE INIMENE KES ON
+      TALLINNASSE SÕITNUD KURAT
+    effects: { trust_toomas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Toomas -> toomas_q1_talk
+
+  toomas_q1_talk:
+    type: message
+    text: >
+      TOOMAS: I've known Liis since we were children. She doesn't
+      leave her loom. She doesn't leave her dye pots. The woman
+      harvests moss at sunrise and weaves until midnight. You think
+      she just packed a bag?
+
+      Kurat, the police are useless. They took a statement and
+      caught the next ferry. I checked the studio — nothing stolen,
+      no sign of a break-in. But her laptop is gone. And the folder
+      she kept — her TurbaEesti evidence file with all the drone
+      photos and water data — that's gone too.
+
+      Someone took her proof. And someone took her. Or made her run.
+    effects: { trust_toomas: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Margus Q1 ---
+
+  margus_q1:
+    type: tweet
+    from: margus
+    text: >
+      mu õde on KADUNUD ja politsei ütleb et ta vist sõitis tallinna??
+      LIIS EI SÕIDA TALLINNA ILMA ETTE TEATAMATA. ta vihkab tallinna.
+      ma tulen pärnust kohe kui saan.
+    effects: { trust_margus: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Margus -> margus_q1_talk
+
+  margus_q1_talk:
+    type: message
+    text: >
+      MARGUS: Who are you? Look, my sister called me two days before
+      she went quiet. She was upset — not scared, angry. She said
+      TurbaEesti sent people to her studio. And she said that Tallinn
+      collector was on the island again. "Ta tuleb alati tagasi,
+      Margus. Ma ütlesin ei aga ta ei kuula."
+
+      He always comes back. She said no but he doesn't listen.
+
+      I'm stuck on a ship near Pärnu. I can't get there for two days.
+      If you're actually trying to help, find out what happened.
+    effects: { trust_margus: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Liis went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Rasmus (was BMXing at the harbour) -> rasmus_interview
+      - Find Ants (fisherman, was out late) -> ants_interview
+      - Find Juhan (mechanic, heard vehicles) -> juhan_interview
+      - Find Ene (librarian, early riser, saw something) -> ene_interview
+
+  # --- Rasmus (saw man at Liis's studio) ---
+
+  rasmus_interview:
+    type: tweet
+    from: rasmus
+    text: >
+      igav õhtu metsaväljal shocker. aga serikas on keegi näinud
+      midagi imelikku viimasel ajal?? ainult mina??
+    effects: { trust_rasmus: "+5" }
+    choices:
+      - Ask Rasmus about that evening -> rasmus_talk
+
+  rasmus_talk:
+    type: message
+    text: >
+      RASMUS: ok vittu sa ei räägi kellelegi. ma olin sadamas bmxiga
+      sel õhtul ja ma nägin seda tallinna tüüpi — rein. sada protsenti
+      tema. ta seisis liisi stuudio ukse juures ja pildistas telefoniga.
+      kõike. ust, aknaid, numbrisilti.
+
+      ja siis ta kõndis ümber maja ja vaatas aknast sisse. pimedas.
+      kurat see on hull creepy.
+
+      kui ta nägi mind läks ta minema hästi kiiresti. autorentaali
+      autoga. mis pask see on nkn
+    effects:
+      trust_rasmus: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ants (fisherman, saw TurbaEesti activity at night) ---
+
+  ants_interview:
+    type: tweet
+    from: ants
+    text: >
+      Öine kalalkäik. Männiraba poolt tulid tuled mida poleks pidanud
+      seal olema. Kell kaks öösel ei kaeva keegi turvast.
+    effects: { trust_ants: "+5" }
+    choices:
+      - Ask Ants what he saw -> ants_talk_q2
+
+  ants_talk_q2:
+    type: message
+    text: >
+      ANTS: I was coming back from night fishing around 02:00. The
+      road passes the TurbaEesti extraction site. There were lights
+      — vehicle headlights, not the usual security lamps. Two trucks
+      and a car. At 2am.
+
+      Peat extraction stops at sunset. Those machines are loud — you
+      don't run them at night unless you don't want anyone to see.
+
+      And when I passed Liis's studio on the road back, there was a
+      rental car parked in the shadow of the birch trees. Lights off.
+      Someone sitting inside. I could see the glow of a phone screen.
+
+      By next morning, Liis was gone and her dye pots had boiled dry.
+    effects:
+      trust_ants: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Juhan (heard confrontation) ---
+
+  juhan_interview:
+    type: tweet
+    from: juhan
+    text: >
+      Keegi sõitis kruusateedel keset ööd. Siin ei sõideta öösel
+      kui pole häda käes.
+    effects: { trust_juhan: "+5" }
+    choices:
+      - Ask Juhan what he heard -> juhan_talk
+
+  juhan_talk:
+    type: message
+    text: >
+      JUHAN: My workshop is on the road between the village and the
+      bog. I was working late — rebuilding an outboard motor. Around
+      23:00 I heard voices from the direction of Liis's studio. Loud.
+      A man and a woman. The man was shouting — I couldn't hear words
+      but the tone was aggressive.
+
+      Around 03:00, a vehicle came fast on the gravel road toward the
+      bog. No lights. Then maybe fifteen minutes later, another car.
+      Slower, like it was following.
+
+      On an island this size, you know every engine sound. The first
+      was a truck — could be TurbaEesti. The second was smaller.
+      Rental car type.
+    effects:
+      trust_juhan: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ene (early morning, saw Rein's car) ---
+
+  ene_interview:
+    type: tweet
+    from: ene
+    text: >
+      Olin vara üleval. Nain aknast: võõras auto liisi stuudio juures.
+      Enne koitu. See ei ole normaalne.
+    effects: { trust_ene: "+5" }
+    choices:
+      - Ask Ene what she saw -> ene_talk
+
+  ene_talk:
+    type: message
+    text: >
+      ENE: I wake at 05:00 every morning — librarian habit, I read
+      before work. From my kitchen window I can see the road past
+      Liis's studio. There was a car there — a rental, silver, the
+      kind you get off the Rohuküla ferry. A man was sitting in it.
+
+      He sat there for maybe forty minutes. Then he got out, walked
+      to Liis's door, stood there for a long time, walked around the
+      building, and drove away.
+
+      By then it was getting light. Liis's studio door was open. Her
+      bicycle was there but she wasn't.
+
+      I called Toomas at 07:00. He found the dye pots boiled dry.
+    effects:
+      trust_ene: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Toomas (best
+      friend) and Hanna (teen who saw Rein at the studio).
+    choices:
+      - Talk to Toomas about that night -> toomas_interview
+      - Talk to Hanna -> hanna_interview
+      - Find Rasmus -> rasmus_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ants -> ants_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Juhan -> juhan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ene -> ene_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Toomas (last to talk to Liis) ---
+
+  toomas_interview:
+    type: tweet
+    from: toomas
+    text: >
+      see hall raba pilt liisi kontol. see ei ole tema. liis ei posti
+      ilma tekstita. liis ei posti kell 3 öösel. keegi teine tegi
+      seda.
+    effects: { trust_toomas: "+5" }
+    choices:
+      - DM Toomas -> toomas_talk_low
+        when:
+          state: trust_toomas
+          lt: 50
+      - DM Toomas -> toomas_talk_high
+        when:
+          state: trust_toomas
+          gte: 50
+
+  toomas_talk_low:
+    type: message
+    text: >
+      TOOMAS: I appreciate it but I don't trust strangers. Especially
+      not mainlanders. Not right now.
+
+      [Toomas needs to trust you more. Show him you're actually
+      investigating, not just gawking.]
+    effects: { trust_toomas: "+5" }
+    choices:
+      - Share what you've learned about the night -> toomas_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  toomas_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the rental car at the studio,
+      the TurbaEesti trucks at 2am, the man photographing her
+      building, the shouting. Toomas is quiet for a while.
+
+      TOOMAS: Kurat. Sa tead tegelikult midagi. Okay. I'll talk.
+    effects: { trust_toomas: "+25" }
+    choices:
+      - What happened that night? -> toomas_talk_high
+
+  toomas_talk_high:
+    type: message
+    text: >
+      TOOMAS: Liis called me at 22:00. She was shaking. She said
+      Lembit Vaher from TurbaEesti had come to her studio with their
+      lawyer. They told her to hand over her evidence and stop
+      posting. They said "meil on ressursid mis sinul puuduvad."
+
+      She told them to get out. They left. But then she said something
+      else — she'd seen Rein's rental car on the road again. She'd
+      told him not to come. He came anyway.
+
+      She said "ma olen lõksus, Toomas. Firma ühelt poolt ja tema
+      teiselt poolt." I told her to come to my house. She said she'd
+      handle it. She said "nad ei saa mu tõendeid."
+
+      That's the last time I spoke to her.
+    effects:
+      trust_toomas: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Hanna (saw Rein watching the studio) ---
+
+  hanna_interview:
+    type: message
+    text: >
+      HANNA: ok see on creepy aga kurat see on tõsi. ma käin rattaga
+      liisi stuudiost iga päev kooli ja viimasel ajal on üks
+      autorentaali auto olnud seal lähedal. mitte ees — natuke
+      kaugemal, kaskede taga. tuled kustus. keegi lihtsalt istub
+      ja vaatab.
+
+      üks kord sõitsin lähedalt mööda ja see oli see tallinna mees —
+      rein. ta pildistas liisi stuudiot telefoniga. kell 7 hommikul.
+      vittu mis pask see on. nkn hull creepy.
+    effects:
+      trust_hanna: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Rein seen photographing Liis's studio, looking in
+      windows (Rasmus)
+      22:00 — TurbaEesti people confront Liis at her studio (Toomas)
+      23:00 — Shouting heard from direction of studio (Juhan)
+      02:00 — TurbaEesti trucks at extraction site, rental car near
+      studio (Ants)
+      03:00 — Vehicle speeding toward bog, followed by smaller car
+      (Juhan)
+      05:00 — Rental car at studio, man walks around building, Liis
+      is gone (Ene)
+
+      TurbaEesti confronted Liis and demanded her evidence. She
+      refused. Sometime after midnight, something happened. She's
+      gone, her laptop is gone, her evidence folder is gone.
+
+      But there are two threats: the corporation AND the stalker
+      buyer.
+
+      Two threads to pull:
+      — The cover-up: What is TurbaEesti hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Rein Aare really doing? How far did
+        his "patronage" go?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Rein -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      TurbaEesti is hiding something. Liis had proof. Now she's gone
+      and her evidence has vanished from the studio.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the extraction permits -> permit_records
+      - Talk to Maret the journalist -> maret_interview
+      - Talk to Taavi (TurbaEesti environmental inspector) -> taavi_interview
+      - Talk to Piret (environment committee) -> piret_interview
+      - Check the Looduskaitse Selts -> selts_investigation
+      - Talk to Ants about the bog damage -> ants_bog
+      - Back to hub -> investigation_hub
+
+  # --- Permit Records ---
+
+  permit_records:
+    type: message
+    text: >
+      Metsavälja Vald's public records show TurbaEesti's extraction
+      permit covers a defined area of Männiraba — 40 hectares. Their
+      quarterly reports show extraction consistently within limits.
+
+      But Liis posted her own drone surveys on Metsavalja.social. Her
+      GPS-tagged photos show extraction scars well beyond the 40-
+      hectare boundary — into the protected zone. An additional 15
+      hectares of bog destroyed without permits.
+
+      The official reports and Liis's drone footage can't both be
+      right.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Maret ---
+
+  maret_interview:
+    type: message
+    text: >
+      MARET: I don't discuss sources.
+    effects: { trust_maret: "+5" }
+    choices:
+      - Show Maret the evidence you have -> maret_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  maret_with_evidence:
+    type: message
+    text: >
+      MARET: ...you have more than I expected for a newcomer.
+
+      Okay. Liis and I were working together. She had drone footage
+      showing extraction beyond the permitted zone — 15 hectares of
+      protected bog destroyed. She had water samples showing pH and
+      metal levels that prove they're cutting into deep peat layers
+      they're not supposed to touch. She had before-and-after
+      botanical surveys showing species extinction.
+
+      We were going to publish in Hiiumaa Leht and Postimees. Then
+      she went dark. And someone broke into my office in Kärdla and
+      took my backup drives.
+
+      Liis is alive. She contacted me once from a number I didn't
+      know. She said she's hiding somewhere on the island. She said
+      "firma ähvardas mind ja tema ilmub kõikjale."
+
+      I can't say where she is. But with enough evidence, I can
+      publish and make it safe for her to come home.
+    effects:
+      trust_maret: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> maret_hint
+      - Back to investigation hub -> investigation_hub
+
+  maret_hint:
+    type: message
+    text: >
+      MARET: Lembit Vaher brought their lawyer from Tallinn to her
+      studio that evening. They told her to hand over everything or
+      they'd sue her into bankruptcy. Intimidation dressed up as
+      legal process.
+
+      But Liis also mentioned someone else. Someone who seemed to
+      always know when she was at the bog, at the studio, at the
+      pub. Someone who appeared on the island without warning.
+      That's a different kind of threat entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Taavi (TurbaEesti whistleblower) ---
+
+  taavi_interview:
+    type: message
+    text: >
+      TAAVI: I work at TurbaEesti. Environmental compliance. I make
+      sure the reports get filed.
+
+      But the reports I file... are not the same numbers I measure
+      in the field.
+    effects: { trust_taavi: "+10" }
+    choices:
+      - What do you mean? -> taavi_detail
+
+  taavi_detail:
+    type: message
+    text: >
+      TAAVI: I measure extraction depths, boundary markers, water
+      quality around the site. My numbers go to Lembit Vaher.
+      Somewhere between my field notes and the regulatory filing,
+      they change. The extraction boundary shrinks back to the
+      permitted zone. The depth numbers get shallower. The water
+      quality improves.
+
+      Liis's drone surveys matched MY original GPS readings — not
+      the ones in the official reports. She had independent proof
+      from above that matched what I was measuring on the ground.
+
+      I'm terrified. I have a wife in Kärdla. But I kept copies of
+      my original field data on a USB at home. If someone can protect
+      me, I'll share them.
+    effects:
+      trust_taavi: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Piret ---
+
+  piret_interview:
+    type: message
+    text: >
+      PIRET: As environment committee chair, I take this very
+      seriously. But TurbaEesti employs 200 people on this island.
+      The mayor insists we "säilitame töökohad."
+
+      Off the record? I've seen the state inspections. TurbaEesti
+      passes every time. But those inspections are announced two
+      weeks in advance. They pull equipment back to the permitted
+      zone, repair boundary markers, clean the drainage ditches.
+      Then resume when the inspectors leave on the ferry.
+
+      Liis had unannounced drone data. Continuous monitoring from
+      above. That's what makes it so dangerous for them.
+    effects:
+      trust_piret: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Looduskaitse Selts ---
+
+  selts_investigation:
+    type: tweet
+    from: selts
+    text: >
+      HOIATUS: Männiraba veetase langenud 40cm viimase aasta jooksul.
+      Kaitsealused taimeliigid hävinemas. Nõuame Keskkonnaametilt
+      etteteatamata kontrolli TurbaEesti kaevandusele.
+    choices:
+      - Check their data -> selts_data
+
+  selts_data:
+    type: message
+    text: >
+      Metsavälja Looduskaitse Selts has been monitoring Männiraba for
+      four years. Their data shows a clear pattern: water table
+      decline accelerating beyond what the permitted extraction should
+      cause. Species surveys show cloudberry, sundew, and three
+      species of sphagnum moss disappearing from areas outside the
+      extraction zone — meaning the damage extends far beyond the
+      permitted boundary.
+
+      The pattern is unmistakable. Illegal extraction destroying
+      protected habitat.
+
+      Liis was their most active volunteer. She contributed most of
+      the drone surveys and botanical data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Ants bog ---
+
+  ants_bog:
+    type: message
+    text: >
+      ANTS: I'll show you something. Last month I walked the bog
+      edge where TurbaEesti's site borders the protected area. The
+      boundary markers — the official ones from the extraction
+      permit — had been moved. Someone shifted them 200 metres into
+      the protected zone.
+
+      I photographed the old marker holes and the new positions. I
+      sent them to Liis. She said it was the missing piece — physical
+      proof they'd fraudulently expanded their extraction area by
+      moving the boundary markers.
+
+      I still have the photos. And the GPS coordinates of both the
+      old and new positions.
+    effects:
+      trust_ants: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Rein Aare. Art collector. Patron. Something more? Someone was
+      photographing Liis's studio at night. Someone was parked
+      outside in a rental car. Someone always appeared on the island
+      when she didn't expect him.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Check Rein's online activity -> rein_activity
+      - Talk to Helgi about Rein -> helgi_rein_deep
+        when:
+          state: trust_helgi
+          gte: 20
+      - Talk to Rasmus (more detail on the studio incident) -> rasmus_detail
+      - Talk to Kadri the pharmacist -> kadri_interview
+      - Check the anonymous account @oliver_mets -> oliver_investigation
+      - Talk to Ene about Rein's patterns -> ene_patterns
+        when:
+          state: trust_ene
+          gte: 40
+      - Talk to Konstaabel Kuusk -> politsei_interview
+        when:
+          state: trust_politsei
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Rein's Activity ---
+
+  rein_activity:
+    type: message
+    text: >
+      Rein Aare's activity on Metsavalja.social tells a story.
+
+      He joined 18 months ago — unusual for a Tallinn collector on an
+      island instance. His posts are almost entirely about Liis.
+
+      Month 1: Genuine art appreciation. Professional.
+      Month 3: "When can I visit the studio again? I miss watching
+      you work."
+      Month 6: Comments on Liis's posts within minutes, any hour.
+      Month 9: "I saw you at the bog today. You didn't see me. You
+      were beautiful in the light."
+      Month 12: "Why won't you answer my calls? I'm only trying to
+      help your career."
+      Month 16: "I'm on the ferry. See you soon."
+      Month 18 (last week): "Some people don't recognise devotion."
+
+      Ferry records show Rein visited Hiiumaa 23 times in the past
+      year. Liis invited him twice.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Helgi on Rein ---
+
+  helgi_rein_deep:
+    type: message
+    text: >
+      HELGI: Rein? Kurat, that man is worse than people realise.
+      After the first few purchases, he started expecting access.
+      Not just to the art — to Liis. He'd show up at the pub and sit
+      where he could watch her. If she talked to any man, Rein would
+      stare. Then he'd message her afterwards asking who the man was.
+
+      Liis told me he sent letters to her studio. Love letters
+      disguised as art criticism. Then angry letters when she stopped
+      responding. "Kui sa ei hinda mind, siis keegi ei saa sind
+      hinnata." If you don't value me, nobody will value you.
+
+      She showed me one. I told her to go to the police. She did.
+      They said it was "ambiguous" — could be read as professional
+      disappointment. Vittu, what kind of professional writes "I
+      know your schedule and I'm always watching"?
+    effects:
+      trust_helgi: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rasmus detail ---
+
+  rasmus_detail:
+    type: message
+    text: >
+      RASMUS: ok perse seal on rohkem. sel õhtul kui ma nägin reini
+      liisi stuudio juures... tal polnud ainult telefon. tal oli mingi
+      väike asi käes. ta kummardus liisi jalgratta juurde ja pani
+      midagi selle alla. nagu kleepis midagi raami külge.
+
+      see on ju kurat see gps jälitamise pask mida filmides näed.
+      ma mõtlesin vittu aga ta ei näinud mind. ja kui ta ära läks
+      vaatas ta telefoni nagu jälgiks mingit kaarti.
+
+      ma oleksin pidanud midagi ütlema aga kurat kes usub 17aastast
+      bmx poissi nkn
+    effects:
+      trust_rasmus: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kadri ---
+
+  kadri_interview:
+    type: message
+    text: >
+      KADRI: I shouldn't say this but I'm a pharmacist, not a priest.
+      A man named Rein Aare — I know him because he introduces himself
+      to everyone as "Liis's patron" — came to the pharmacy twice in
+      the past month. He asked about GPS tracking devices. At a
+      pharmacy. I said "see on apteek, mitte Euronics."
+
+      He also bought binoculars. High-magnification ones. Said they
+      were for birdwatching. On an island visit in November. And he
+      asked casually how far it was from the harbour to Liis's studio.
+      As if he didn't already know. He'd been here twenty-three times.
+    effects:
+      trust_kadri: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Oliver (anonymous account) ---
+
+  oliver_investigation:
+    type: tweet
+    from: oliver
+    text: >
+      Ta oleks pidanud kuulama. Ma üritasin teda kaitsta. Keegi teine
+      ei mõistnud tema tööd nagu mina.
+    choices:
+      - Look at this account's history -> oliver_posts
+
+  oliver_posts:
+    type: message
+    text: >
+      @oliver_mets: account created 10 months ago. Posts are all
+      about Liis's work. Comments on every textile photo, every bog
+      walk, every exhibition post. The tone shifts over time:
+
+      Month 1: "Extraordinary work. You are Estonia's greatest
+      living textile artist."
+      Month 3: "Why won't you accept my commission? I'm offering more
+      than fair value."
+      Month 5: "I see you at the pub with other people. You have time
+      for everyone except me."
+      Month 7: "I know where you gather your moss. I know your
+      schedule. I'm always close."
+      Month 9: "If you won't let me in willingly, I'll show you why
+      you need me."
+
+      No photos. No personal details. Just Liis. Only Liis.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> oliver_style
+
+  oliver_style:
+    type: message
+    text: >
+      Comparing @oliver_mets with @rein_aare:
+
+      Same formal Estonian mixed with art terminology. Same distinctive
+      way of describing textile techniques — terms only a serious
+      collector would use. Same pattern of posting from Tallinn on
+      weekdays, from Hiiumaa on weekends.
+
+      And one post from @oliver_mets: "Your new work with the
+      Sphagnum 4 series is breathtaking." The Sphagnum 4 series is
+      what Liis calls a set of pieces she hasn't exhibited yet. She
+      showed them only to buyers who visited the studio in person.
+
+      Rein visited the studio. Nobody else who follows @oliver_mets
+      had access to those pieces.
+
+      It's Rein. The anonymous account is Rein.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ene patterns ---
+
+  ene_patterns:
+    type: message
+    text: >
+      ENE: I live on the road with a clear view of Liis's studio. I
+      keep a reading diary — librarian habit — and I've noted things
+      in the margins.
+
+      A rental car near the studio: September 2nd, 8th, 15th, 22nd.
+      October 3rd, 6th, 10th, 14th, 17th, 21st, 24th, 28th.
+      November 1st, 3rd, 5th, 7th, 9th, 11th, 12th, 13th...
+
+      Every few days. Then every other day. Then every day. Usually
+      between 20:00 and 23:00. Sometimes again at 05:00.
+
+      He also followed her to the bog three times that I observed.
+      And sat in the pub every evening she was there.
+
+      I wrote it all down. Nobody asked for it until now.
+    effects:
+      trust_ene: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Konstaabel Kuusk ---
+
+  politsei_interview:
+    type: message
+    text: >
+      KONSTAABEL KUUSK: Off the record — completely off the record —
+      I wanted to investigate TurbaEesti. My superior in Kärdla said
+      the environmental agency had "jurisdiction." That's code for
+      "don't rock the boat."
+
+      As for Rein Aare — Liis filed a complaint. We spoke to him in
+      Tallinn. He was calm, charming, denied everything. Said he was
+      just a passionate collector. Without hard evidence of stalking,
+      our hands were tied.
+
+      But if you have evidence — GPS trackers, surveillance patterns,
+      the anonymous account — that changes everything. Bring me
+      something solid and I'll reopen the case.
+    effects:
+      trust_politsei: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Liis than anyone on this island. Who is responsible?
+    choices:
+      - Confront Rein Aare (the obsessive buyer) -> confront_rein
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Lembit Vaher (the plant manager) -> confront_lembit
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Põld (political protection) -> confront_urmas
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Rein (Best Ending) ---
+
+  confront_rein:
+    type: message
+    text: >
+      You present your evidence to Rein:
+
+      "I know @oliver_mets is your account. I know you put a GPS
+      tracker on Liis's bicycle. I know you photographed her studio
+      at night. I know you visited the island 23 times uninvited. I
+      have witnesses, ferry records, and Ene's diary with dates and
+      times."
+    choices:
+      - Send -> rein_response
+
+  rein_response:
+    type: message
+    text: >
+      Rein doesn't reply for a long time. Then:
+
+      REIN: You don't understand. I was protecting her art. Her
+      talent is too important to lose. She was in danger from
+      TurbaEesti and she wouldn't accept my help. I needed to be
+      close. Everything I did was out of devotion to her work.
+
+      That's not devotion. That's obsession.
+
+      You've already sent the evidence to Konstaabel Kuusk. And to
+      Maret Kivi.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Konstaabel Kuusk reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the surveillance diary, the
+      witness testimonies, the ferry records — Rein Aare is arrested
+      for stalking and harassment when he steps off the Rohuküla
+      ferry. A GPS tracker is recovered from Liis's bicycle, found
+      leaning against the wall of an abandoned fisherman's hut on the
+      north coast.
+
+      Maret Kivi, armed with Liis's full evidence package plus
+      Taavi's original field data, publishes the TurbaEesti story in
+      Postimees. Keskkonnaamet orders an unannounced inspection. The
+      extraction site is shut down pending environmental remediation.
+      Lembit Vaher faces criminal charges for falsifying extraction
+      reports and destroying protected habitat.
+
+      And Liis Tamm, reading the story from a fisherman's cottage
+      on the north shore, calls her mother for the first time in
+      ten days.
+
+      "Ma tulen koju, ema."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Ohvriabi: 116 006 (tasuta)
+      Politsei: 112
+      Keskkonnainspektsioon: 1313
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: liis
+    text: >
+      raba on alles. kangastelg ootab. aitäh, et ei loobunud.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Lembit (Partial Ending) ---
+
+  confront_lembit:
+    type: message
+    text: >
+      You present the extraction evidence to Lembit Vaher:
+
+      "I have drone footage showing extraction 15 hectares beyond the
+      permitted boundary. I have water samples showing contamination
+      from deep peat layers you're not permitted to touch. I have
+      your environmental inspector's original field data showing the
+      boundary markers were moved. I have GPS coordinates."
+    choices:
+      - Send -> lembit_response
+
+  lembit_response:
+    type: message
+    text: >
+      LEMBIT: See vestlus edastatakse meie juriidilisele osakonnale.
+      Laimava materjali avaldamine toob kaasa kohesed õiguslikud
+      sammud. TurbaEesti tegutseb kõigi kehtivate lubade raames.
+
+      But it's too late. You've sent the evidence to Maret, to the
+      Looduskaitse Selts, and to Keskkonnaamet.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The extraction story breaks. TurbaEesti is ordered to halt
+      operations pending investigation. The site may close permanently.
+      Two hundred jobs on an island with few alternatives. The village
+      is divided.
+
+      But Liis?
+
+      Without the stalking evidence, Rein is never investigated. He
+      continues to visit the island. He creates a new anonymous
+      account. He buys a new phone when she blocks the old one. He
+      books the same ferry, rents the same car.
+
+      Three months later, Liis reads about TurbaEesti in Postimees.
+      She returns quietly. She changes her studio locks. She stops
+      walking the bog alone. She checks the ferry schedule every
+      morning.
+
+      The corporation is exposed. But the person who terrorised Liis
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: liis
+    text: "ma olen tagasi. raba taastub. ülejäänu... vaatame."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_urmas:
+    type: message
+    text: >
+      You confront Mayor Põld with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> urmas_response
+
+  urmas_response:
+    type: tweet
+    from: siiri
+    text: >
+      Mu klient võtab teie väited teadmiseks. Laimava materjali
+      avalik levitamine toob kaasa kohesed õiguslikud sammud.
+      — Ots & Partnerid, Tallinn
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Põld and TurbaEesti's illegal extraction — and
+      there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      TurbaEesti continues to operate. Rein continues to visit.
+      Liis stays in hiding.
+
+      Six months later, @oliver_mets creates a new account. It
+      follows Liis's mother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: METSAVÄLJA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Liis's story explores themes of
+      corporate destruction of natural heritage, obsessive behaviour
+      disguised as patronage, island solidarity, and the courage to
+      defend what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Ohvriabi kriisitelefon: 116 006 (tasuta, 24h)
+      Politsei: 112
+      Keskkonnainspektsioon: 1313

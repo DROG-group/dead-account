@@ -1,0 +1,1518 @@
+# DEAD ACCOUNT — Story 035: Mezzocorona (Italy, Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-035.yml
+#
+# Player investigates the disappearance of vineyard worker Giulia Conti
+# in the fictional Abruzzo hill village of Mezzocorona.
+
+meta:
+  title: "Dead Account — Mezzocorona"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_elena: 0
+    trust_marco: 0
+    trust_rosaria: 0
+    trust_peppe: 0
+    trust_chiara: 0
+    trust_davide: 0
+    trust_tommaso: 0
+    trust_agnese: 0
+    trust_carlo: 0
+    trust_enzo: 0
+    trust_valentina: 0
+    trust_luciano: 0
+    trust_betta: 0
+    trust_mimmo: 0
+    trust_serena: 0
+    trust_filippo: 0
+    trust_don_renzo: 0
+    trust_luca: 0
+    trust_sandro: 0
+    trust_maresciallo: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nuovo Residente
+    bio: "appena arrivato a mezzocorona. scoprendo l'abruzzo un filare alla volta"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Mezzocorona.social"
+    description: "Benvenuti sull'istanza comunitaria di Mezzocorona"
+    avatar_url: /gamepatch/assets/dead-account/mezzocorona_bot.png
+
+  npcs:
+    # === Giulia's Inner Circle ===
+    giulia:
+      name: "Giulia Conti"
+      bio: "vignaiola | vino naturale | la terra non mente | mezzocorona DOC"
+      avatar: avatars/giulia.jpg
+    elena:
+      name: "Elena Ferrante"
+      bio: "coinquilina di giulia | ostetrica all'ospedale di sulmona | caffè prima di tutto"
+      avatar: avatars/elena.jpg
+    marco:
+      name: "Marco Conti"
+      bio: "fratello di giulia | operaio a pescara | sta cosa non ha senso"
+      avatar: avatars/marco.jpg
+    valentina:
+      name: "Valentina De Luca"
+      bio: "enologa | cantina sociale mezzocorona | collega di giulia | vino e scienza"
+      avatar: avatars/valentina.jpg
+
+    # === Local Government ===
+    peppe:
+      name: "Giuseppe 'Peppe' Santoro"
+      bio: "Sindaco di Mezzocorona | Al servizio del paese dal 2018 | #MezzocoronaCresce"
+      avatar: avatars/peppe.jpg
+    serena:
+      name: "Serena Colangelo"
+      bio: "Assessora all'ambiente | Comune di Mezzocorona | transizione ecologica"
+      avatar: avatars/serena.jpg
+    comune:
+      name: "Comune di Mezzocorona"
+      bio: "Account ufficiale | Notizie comunali | Orari: Lun-Ven 9-17"
+      avatar: avatars/comune.jpg
+
+    # === Local Business & Community ===
+    rosaria:
+      name: "Rosaria Greco"
+      bio: "Bar Bellavista | cornetti | caffè | vista sulla valle | dal 1992"
+      avatar: avatars/rosaria.jpg
+    bar_bellavista:
+      name: "Bar Bellavista"
+      bio: "Cornetti artigianali | Caffè napoletano | Musica il sabato | Il cuore di Mezzocorona"
+      avatar: avatars/bar_bellavista.jpg
+    carlo:
+      name: "Carlo Marinelli"
+      bio: "contadino | 45 anni tra i filari | questa collina è la mia vita"
+      avatar: avatars/carlo.jpg
+    enzo:
+      name: "Enzo Ruggiero"
+      bio: "vigile urbano | Mezzocorona | reperibile lun-sab"
+      avatar: avatars/enzo.jpg
+    agnese:
+      name: "Agnese Parisi"
+      bio: "farmacista | Mezzocorona | salute & consiglio | aperta la domenica mattina"
+      avatar: avatars/agnese.jpg
+    don_renzo:
+      name: "Don Renzo"
+      bio: "parroco | Chiesa di San Nicola | mezzocorona | porte sempre aperte"
+      avatar: avatars/don_renzo.jpg
+    luciano:
+      name: "Luciano Moretti"
+      bio: "frantoiano | olio DOP mezzocorona | raccolta a mano | tradizione e fatica"
+      avatar: avatars/luciano.jpg
+    mimmo:
+      name: "Mimmo Ferrara"
+      bio: "libraio | La Pergola | libri nuovi & usati | letture il mercoledì"
+      avatar: avatars/mimmo.jpg
+
+    # === Journalist ===
+    betta:
+      name: "Elisabetta 'Betta' Mancini"
+      bio: "giornalista freelance | ambiente & territorio | tips: betta@mancini-stampa.it"
+      avatar: avatars/betta.jpg
+
+    # === AgroVerde (corporate) ===
+    agroverde:
+      name: "AgroVerde S.p.A."
+      bio: "Soluzioni agrochimiche | Stabilimento di Mezzocorona | ISO 14001 certificato"
+      avatar: avatars/agroverde.jpg
+    filippo:
+      name: "Filippo Marchetti"
+      bio: "direttore stabilimento AgroVerde Mezzocorona | industria & territorio"
+      avatar: avatars/filippo.jpg
+    sandro:
+      name: "Sandro Basile"
+      bio: "Avvocato | Studio Basile & Associati | Diritto d'impresa | Roma"
+      avatar: avatars/sandro.jpg
+
+    # === Teens ===
+    chiara:
+      name: "Chiara"
+      bio: "16 | arrampicata | mezzocorona born | le colline sono vita fra"
+      avatar: avatars/chiara.jpg
+    davide:
+      name: "Davide"
+      bio: "17 | mtb & trail | alba in vigna | la montagna cura tutto"
+      avatar: avatars/davide.jpg
+    tommaso:
+      name: "Tommaso"
+      bio: "15 | foto & video | la collina in bianco e nero | giulia è la mia ispirazione"
+      avatar: avatars/tommaso.jpg
+
+    # === Media & Community ===
+    notizie_mezzocorona:
+      name: "Notizie Mezzocorona"
+      bio: "Attualità di Mezzocorona e della valle | Tips: redazione@notizie-mezzocorona.it"
+      avatar: avatars/notizie_mezzocorona.jpg
+    meteo_abruzzo:
+      name: "Meteo Mezzocorona"
+      bio: "Previsioni e allerte | Stazione automatica | Aggiornamento ogni ora"
+      avatar: avatars/meteo_abruzzo.jpg
+    terra_nostra:
+      name: "Associazione Terra Nostra"
+      bio: "Tutela del territorio abruzzese | Volontari | Segnalazioni inquinamento"
+      avatar: avatars/terra_nostra.jpg
+
+    # === Suspicious / Other ===
+    luca:
+      name: "Luca Ferretti"
+      bio: "geometra | proprietario immobiliare | mezzocorona | affitti & gestione"
+      avatar: avatars/luca.jpg
+    ombra_collina:
+      name: "Ombra della Collina"
+      bio: "."
+      avatar: avatars/anon.jpg
+    maresciallo:
+      name: "Maresciallo Ferraro"
+      bio: "Carabinieri di Mezzocorona | Stazione territoriale | emergenze: 112"
+      avatar: avatars/maresciallo.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN MEZZOCORONA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Mezzocorona.social — the community Mastodon instance for
+      the hill village of Mezzocorona, Abruzzo.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @giulia_conti.
+
+      A vineyard worker. Natural winemaker. She documented the land, the
+      soil, the old vines. People are worried. She hasn't posted in six
+      days.
+    choices:
+      - Look at her profile -> giulia_profile
+
+  giulia_profile:
+    type: tweet
+    from: giulia
+    text: "Il terreno dietro Vigna Vecchia puzza di chimico. Qualcuno sta scaricando pesticidi. Ho le prove."
+    choices:
+      - That's her last real post... -> grey_vine
+
+  grey_vine:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a blurred photo of dead vines. Overexposed, shot from a strange
+      angle. Posted at 4am. No caption.
+
+      Her friends say that's not her style. The carabinieri say she
+      probably went to visit relatives. Something doesn't add up.
+    choices:
+      - Read the carabinieri statement -> carabinieri_statement
+      - Look at what people are saying -> community_reaction
+
+  carabinieri_statement:
+    type: tweet
+    from: maresciallo
+    text: >
+      Abbiamo ricevuto una segnalazione riguardante una residente di
+      Mezzocorona. Al momento non emergono elementi che facciano
+      ipotizzare un reato. Eventuali informazioni utili possono essere
+      comunicate al 112 o alla stazione.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her flatmate @elena_ferrante is
+      desperate. Her brother @marco_conti is driving down from Pescara.
+      Her colleague @valentina_deluca is posting worried messages.
+      The farmer @carlo_marinelli says she was right about the
+      chemicals.
+
+      And the journalist @betta_mancini is strangely silent.
+
+      Nobody buys the carabinieri's line. Nobody thinks Giulia just
+      "went to visit relatives."
+    effects: { trust_elena: "+5", trust_marco: "+5" }
+    choices:
+      - Start following Giulia's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Mezzocorona. Follow Giulia's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Rosaria (café owner, knows everyone) -> rosaria_intro
+      - Talk to Carlo (farmer, saw the chemicals) -> carlo_intro
+      - Talk to Chiara (teen climber, seems shaken) -> chiara_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Giulia with the rhythms of a small
+      hill village: harvest schedules, the bakery's daily specials,
+      weather warnings for the valley.
+
+      Key names surface: Elena (flatmate, midwife), Valentina (winery
+      colleague, seems rattled), Betta (journalist, oddly quiet),
+      and the teens — Chiara, Davide, Tommaso — who worshipped
+      Giulia's work with the vines.
+
+      Also prominent: AgroVerde S.p.A., the agrochemical plant at the
+      edge of the valley. Their posts are corporate PR. Giulia's posts
+      were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Rosaria -> rosaria_intro
+      - Talk to Carlo -> carlo_intro
+      - Talk to Chiara -> chiara_intro
+
+  # --- Rosaria (social map) ---
+
+  rosaria_intro:
+    type: tweet
+    from: rosaria
+    text: >
+      Il bar è aperto ma il cuore non c'è. @giulia_conti, il tuo
+      tavolo ti aspetta. Torna presto.
+    effects: { trust_rosaria: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Rosaria -> rosaria_talk
+
+  rosaria_talk:
+    type: message
+    text: >
+      ROSARIA: Ah, sei nuovo? Benvenuto. Brutto momento per arrivare.
+      Sono tutti in ansia per Giulia.
+
+      Ti dico chi è chi. Elena è la coinquilina di Giulia — dividono
+      un appartamento sopra la farmacia. Brava ragazza, distrutta in
+      questo momento. Valentina De Luca lavora alla cantina sociale
+      con Giulia. In gamba, ma... strana quando parla di lei. Marco è
+      il fratello maggiore di Giulia, sta arrivando da Pescara.
+
+      E Betta Mancini — la giornalista — lei e Giulia stavano
+      lavorando insieme su qualcosa. Qualcosa sulla terra. Betta non
+      ha detto una parola da quando Giulia è sparita. Non è da lei.
+
+      Ah, e lascia perdere i post di AgroVerde. Bugie incartate in
+      certificazioni ISO.
+    effects: { trust_rosaria: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Luca Ferretti -> rosaria_luca
+      - Ask about AgroVerde -> rosaria_agroverde
+      - Thank her and move on -> quest1_hub
+
+  rosaria_luca:
+    type: message
+    text: >
+      ROSARIA: Luca Ferretti? Il geometra. Possiede mezza Mezzocorona
+      a questo punto. Affitta case ai braccianti, agli stagionali. Giulia
+      gli pagava l'affitto per il suo appartamento e per il magazzino
+      dove teneva le botti.
+
+      Da quando Giulia ha piantato le vigne vecchie su quel terreno
+      in collina, Luca è diventato... insistente. Voleva quel terreno
+      indietro, diceva che il contratto era scaduto. Lei gli ha mostrato
+      le carte, tutto in regola. Ma lui non mollava.
+
+      Passava sotto l'appartamento di Giulia a qualsiasi ora. Le mandava
+      messaggi. "Dobbiamo parlare del terreno." Madonna, che palle.
+      Giulia mi ha detto una volta: "Quello non capisce il no."
+    effects: { trust_rosaria: "+5" }
+    choices:
+      - Ask about AgroVerde -> rosaria_agroverde
+      - Move on -> quest1_hub
+
+  rosaria_agroverde:
+    type: message
+    text: >
+      ROSARIA: Quello stabilimento è lì dagli anni '90. Producono
+      pesticidi, diserbanti, roba chimica per l'agricoltura. Il paese
+      li ha tollerati perché portavano lavoro. Ma i contadini si
+      lamentano da anni — odori chimici di notte, terra bruciata
+      vicino ai canali di scolo, viti che muoiono senza motivo.
+
+      Giulia è stata la prima a prendere campioni del terreno con le
+      provette e portarli al laboratorio. Aveva prove, diceva. Prove
+      vere. Due settimane dopo è sparita.
+    effects: { trust_rosaria: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Carlo (the chemicals, witness tease) ---
+
+  carlo_intro:
+    type: tweet
+    from: carlo
+    text: >
+      quarantacinque anni che lavoro sta collina. la terra non è più la
+      stessa. @giulia_conti aveva ragione. e adesso è sparita. fate voi
+      il collegamento.
+    effects: { trust_carlo: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Carlo -> carlo_talk
+
+  carlo_talk:
+    type: message
+    text: >
+      CARLO: Io questa collina la lavoro da quando avevo quindici anni.
+      Conosco ogni filare, ogni colore che fa la terra. E ti dico — il
+      terreno vicino al canale di AgroVerde è sbagliato. Da mesi. Le viti
+      muoiono, le radici escono nere. La terra puzza di chimico.
+
+      Giulia ha preso campioni del suolo. È andata a controllare lo
+      scarico di notte. Ha fotografato tutto. Stava costruendo un caso.
+      E poi puf — sparita.
+
+      Tu pensi che sia una coincidenza? Io alle coincidenze in collina
+      non ci credo.
+    effects: { trust_carlo: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> carlo_night
+      - Move on -> quest1_hub
+
+  carlo_night:
+    type: message
+    text: >
+      CARLO: La notte prima che sparisse — stavo tornando dalla vigna,
+      saranno state le 23. Ho visto le luci accese alla cantina sociale.
+      Non è strano, a volte si lavora fino a tardi per le fermentazioni.
+      Ma c'erano due macchine nel parcheggio. Una era la vecchia Panda
+      di Giulia. L'altra era una berlina nera con le targhe AgroVerde.
+
+      Alle 23. Alla cantina sociale.
+
+      Non ci ho pensato troppo allora. Adesso ci penso in continuazione.
+    effects: { trust_carlo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Chiara (teen climber, witness tease) ---
+
+  chiara_intro:
+    type: tweet
+    from: chiara
+    text: >
+      minchia sono distrutta fra @giulia_conti è lei che mi ha insegnato
+      a rispettare la terra tipo non è possibile che sia partita così.
+      se qualcuno sa qualcosa parlate per favore
+    effects: { trust_chiara: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Chiara -> chiara_talk_early
+
+  chiara_talk_early:
+    type: message
+    text: >
+      CHIARA: ahah sei nuovo? che timing di merda. comunque giulia è tipo
+      la persona migliore di sto paese. ci ha insegnato a riconoscere le
+      piante, ci portava in vigna a vedere la vendemmia. troppo forte.
+
+      e adesso sono in paranoia perché davide ha visto una roba strana
+      l'altra sera al magazzino ma non vuole parlarne. dice che non è
+      niente ma tipo... non è niente sto cazzo
+    effects: { trust_chiara: "+10" }
+    choices:
+      - What did Davide see? -> chiara_davide_hint
+      - Move on -> quest1_hub
+
+  chiara_davide_hint:
+    type: message
+    text: >
+      CHIARA: boh non so esattamente. era al sentiero vicino al magazzino
+      di giulia e ha visto tipo uno che frugava nel furgone di giulia??
+      o qualcosa del genere. si è cagato sotto e non ne vuole parlare.
+      devi chiedergli diretto ma è diffidente con quelli che non conosce.
+      prova prima a parlare di mtb con lui ahah
+    effects: { trust_chiara: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Mezzocorona. An Abruzzo hill village
+      built around wine and olive oil. A vineyard worker who was exposing
+      pesticide dumping. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Elena (Giulia's flatmate) -> elena_q1
+      - Talk to Valentina (Giulia's colleague) -> valentina_q1
+      - Check what Marco (Giulia's brother) is saying -> marco_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Elena Q1 ---
+
+  elena_q1:
+    type: tweet
+    from: elena
+    text: >
+      se qualcuno ha notizie di @giulia_conti chiamatemi per favore.
+      la sua stanza è intatta. le sue botti sono lì. non sarebbe mai
+      partita senza controllare la fermentazione.
+    effects: { trust_elena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Elena -> elena_q1_talk
+
+  elena_q1_talk:
+    type: message
+    text: >
+      ELENA: Grazie per il pensiero ma non ti conosco. Giulia ha tanti
+      amici qui. Sono sicura che tornerà.
+
+      ...continuo a ripetermelo. Non ci credo più.
+
+      [Elena is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_elena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Valentina Q1 ---
+
+  valentina_q1:
+    type: tweet
+    from: valentina
+    text: >
+      La cantina è vuota senza @giulia_conti. I suoi campioni sono
+      ancora in laboratorio. I suoi appunti di vigna sono sulla
+      scrivania. Non avrebbe mai abbandonato una fermentazione in
+      corso. Qualcosa è successo.
+    effects: { trust_valentina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Valentina -> valentina_q1_talk
+
+  valentina_q1_talk:
+    type: message
+    text: >
+      VALENTINA: Giulia e io lavoriamo insieme da più di un anno.
+      È la vignaiola più appassionata che conosco. Questa indagine
+      sui pesticidi — era tutto per lei. Aveva dati, foto, analisi
+      chimiche del terreno. Era vicinissima a rendere tutto pubblico.
+
+      Mi ha chiesto di aiutarla. Tante volte ho provato. Lei diceva
+      che aveva tutto sotto controllo. Diceva che stava lavorando con
+      una giornalista. Io volevo solo supportarla.
+
+      [Valentina seems earnest. Almost too earnest.]
+    effects: { trust_valentina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marco Q1 ---
+
+  marco_q1:
+    type: tweet
+    from: marco
+    text: >
+      mia sorella è SPARITA e i carabinieri mi dicono che forse è
+      andata a trovare dei parenti??? MA NON PARTE SENZA AVVISARE
+      CAZZO. arrivo da pescara. qualcuno mi spiega.
+    effects: { trust_marco: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marco -> marco_q1_talk
+
+  marco_q1_talk:
+    type: message
+    text: >
+      MARCO: E tu chi cazzo sei? Un altro di quel paese che mi dice di
+      stare calmo? Mia sorella mi ha chiamato la sera prima di sparire.
+      Ha detto che aveva qualcosa di grosso. Ha detto "se succede
+      qualcosa, guarda AgroVerde." Poi ha riattaccato.
+
+      È l'ultima volta che l'ho sentita.
+    effects: { trust_marco: "+10" }
+    choices:
+      - What do you think happened? -> marco_theory
+      - Move on -> quest1_hub
+
+  marco_theory:
+    type: message
+    text: >
+      MARCO: Io penso che ha trovato le prove che AgroVerde scarica
+      pesticidi illegali e quelli l'hanno fatta sparire. Ma penso anche
+      che quel coglione del padrone di casa — Luca Ferretti — sa più di
+      quello che dice. Il modo in cui parla di lei... non è solo interesse
+      professionale. È qualcos'altro.
+
+      Giulia mi ha detto mesi fa che qualcuno entrava nel suo magazzino
+      di notte. Pensava fosse niente. Io non penso che fosse niente.
+    effects: { trust_marco: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Giulia went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Davide (was on the trail near the warehouse) -> davide_interview
+      - Find Enzo (municipal guard, works late) -> enzo_interview
+      - Find Luciano (olive farmer, early morning in the groves) -> luciano_interview
+      - Find Don Renzo (parish priest, insomnia, saw something) -> don_renzo_interview
+
+  # --- Davide (saw someone at Giulia's van) ---
+
+  davide_interview:
+    type: tweet
+    from: davide
+    text: >
+      uscita in mtb stasera ma l'atmosfera al magazzino è strana tipo.
+      c'è qualcosa che non va. non so come spiegarlo
+    effects: { trust_davide: "+5" }
+    choices:
+      - Ask Davide about that evening -> davide_talk
+
+  davide_talk:
+    type: message
+    text: >
+      DAVIDE: fra ok ma non lo dici a nessuno eh. ero al sentiero vicino
+      al magazzino di giulia verso le 19. e ho visto il geometra — luca
+      ferretti — vicino al furgone di giulia. aveva l'aria di frugare
+      dentro o tipo mettere qualcosa. quando mi ha visto è partito
+      troppo veloce.
+
+      tipo io non ho detto niente perché non volevo casini ma adesso
+      è grave. non è normale il suo comportamento madonna
+    effects:
+      trust_davide: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Enzo (municipal guard, saw late-night meeting) ---
+
+  enzo_interview:
+    type: tweet
+    from: enzo
+    text: >
+      Ricordo: il magazzino comunale è vietato l'accesso tra le 22 e
+      le 6. Ho notato passaggi non autorizzati nelle ultime notti.
+    effects: { trust_enzo: "+5" }
+    choices:
+      - Ask Enzo what he saw -> enzo_talk
+
+  enzo_talk:
+    type: message
+    text: >
+      ENZO: Stavo chiudendo l'ufficio verso le 22:30. Ho visto il
+      furgone di Giulia ancora parcheggiato alla cantina sociale.
+      E una berlina nera — targhe AgroVerde — parcheggiata di fianco.
+      Due uomini stavano all'ingresso della cantina. Uno l'ho
+      riconosciuto: Filippo Marchetti, il direttore dello stabilimento.
+
+      Alle 22:30. Alla cantina sociale. Non è normale.
+
+      L'ho segnato nel registro di ronda. Nessuno me l'ha chiesto.
+    effects:
+      trust_enzo: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Luciano (saw Giulia fleeing) ---
+
+  luciano_interview:
+    type: tweet
+    from: luciano
+    text: >
+      sveglio alle 4 per l'oliveto. la strada di collina non era
+      vuota stamattina. c'era qualcuno che correva sul sentiero.
+      nel buio. non era uno che fa jogging.
+    effects: { trust_luciano: "+5" }
+    choices:
+      - Ask Luciano what he saw -> luciano_talk
+
+  luciano_talk:
+    type: message
+    text: >
+      LUCIANO: Mi alzo alle 4 per gli olivi. Quella mattina — la
+      mattina dopo l'ultimo post di Giulia — ho visto qualcuno sul
+      sentiero della collina. Correva. Una donna, con una borsa,
+      andava verso le grotte vecchie. Era ancora buio. Si muoveva
+      veloce, come se avesse paura.
+
+      Ho chiamato ma non si è fermata. Ho pensato fosse una che fa
+      jogging ma... chi fa jogging alle 4 con una borsa a tracolla?
+
+      Quando ho saputo di Giulia, ho collegato tutto. Penso che fosse
+      lei. Che scappava da qualcosa.
+    effects:
+      trust_luciano: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Don Renzo (saw car lights) ---
+
+  don_renzo_interview:
+    type: tweet
+    from: don_renzo
+    text: >
+      L'insonnia è il mio compagno di notte. Quella notte ho visto
+      luci sulla strada della collina che non dovevano esserci.
+    effects: { trust_don_renzo: "+5" }
+    choices:
+      - Ask Don Renzo what he saw -> don_renzo_talk
+
+  don_renzo_talk:
+    type: message
+    text: >
+      DON RENZO: Non dormo bene da anni. Prego, leggo, guardo dalla
+      finestra della canonica. Quella notte — verso le 5 — una
+      macchina è passata troppo veloce sulla strada della collina.
+      Berlina scura. Poi forse due minuti dopo, un'altra. Più
+      piccola, più leggera. Un inseguimento? Non so.
+
+      La seconda ha svoltato verso le vecchie cantine abbandonate
+      sotto la Vigna Vecchia. La prima ha continuato verso la
+      statale.
+
+      L'ho detto ai carabinieri. Hanno scritto. Basta.
+    effects:
+      trust_don_renzo: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Elena (flatmate)
+      and Tommaso (saw Luca watching the flat).
+    choices:
+      - Talk to Elena about that night -> elena_interview
+      - Talk to Tommaso -> tommaso_interview
+      - Find Davide -> davide_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Enzo -> enzo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Luciano -> luciano_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Don Renzo -> don_renzo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Elena (last to see Giulia) ---
+
+  elena_interview:
+    type: tweet
+    from: elena
+    text: >
+      quella foto sull'account di giulia. non è lei. giulia non posta
+      mai senza didascalia. giulia non posta alle 4 di mattina.
+      qualcun altro l'ha fatto.
+    effects: { trust_elena: "+5" }
+    choices:
+      - DM Elena -> elena_talk_low
+        when:
+          state: trust_elena
+          lt: 50
+      - DM Elena -> elena_talk_high
+        when:
+          state: trust_elena
+          gte: 50
+
+  elena_talk_low:
+    type: message
+    text: >
+      ELENA: Apprezzo la preoccupazione ma non voglio parlare con
+      sconosciuti di questa cosa adesso.
+
+      [Elena needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_elena: "+5" }
+    choices:
+      - Share what you've learned about the night -> elena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  elena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the winery, the
+      company men, the running figure. Elena is silent for a while.
+
+      ELENA: Stai cercando davvero di trovarla. Ok. Parlo.
+    effects: { trust_elena: "+25" }
+    choices:
+      - What happened that night? -> elena_talk_high
+
+  elena_talk_high:
+    type: message
+    text: >
+      ELENA: È tornata verso le 23. Io stavo per andare al turno di
+      notte all'ospedale. Era pallida, tremava. Ha detto "sanno cosa
+      ho." Ha preso il portatile e gli hard disk delle foto.
+
+      Ho chiesto chi. Ha detto "lo stabilimento. Hanno mandato gente
+      alla cantina." Poi ha detto un'altra cosa — "e pure lui era lì.
+      È sempre lì."
+
+      Non ha detto chi era "lui." Mi ha abbracciata, ha detto "non ti
+      preoccupare," ed è uscita con una borsa. Basta. La mattina il
+      furgone non c'era e la foto delle viti morte era sul suo account.
+    effects:
+      trust_elena: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tommaso (saw Luca watching the flat) ---
+
+  tommaso_interview:
+    type: message
+    text: >
+      TOMMASO: ok in vero è strano quello che dico ma tipo il geometra
+      — luca ferretti — l'ho visto tipo 3 volte sotto casa di giulia
+      la sera. fermo lì a guardare le finestre. troppo creepy madonna.
+
+      l'ultima volta tipo 2 giorni prima che sparisse. era nella
+      macchina parcheggiata di fronte. fermo seduto. fari spenti.
+    effects:
+      trust_tommaso: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Luca seen at Giulia's van near the warehouse (Davide)
+      22:30 — AgroVerde car at the winery, Filippo Marchetti present (Enzo)
+      23:00 — Giulia arrives home, shaken, grabs laptop and drives (Elena)
+      04:00 — Woman running on hill path toward the old caves (Luciano)
+      05:00 — Two cars speeding on the hill road, one toward Vigna Vecchia (Don Renzo)
+
+      AgroVerde confronted Giulia at the winery. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AgroVerde hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Luca Ferretti really doing? Why was he
+        at her van?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Luca Ferretti -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AgroVerde is hiding something. Giulia had proof. Now she's
+      gone and her soil samples are missing from the winery lab.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the winery lab records -> lab_records
+      - Talk to Betta the journalist -> betta_interview
+      - Talk to Serena (environment assessor) -> serena_interview
+      - Check the Terra Nostra association -> asso_investigation
+      - Talk to Carlo about the dumping -> carlo_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Winery Lab Records ---
+
+  lab_records:
+    type: message
+    text: >
+      The winery's shared database shows Giulia's recent work:
+      soil quality samples from six sites across the hillside. The
+      data for Vigna Vecchia is marked "IN REVISIONE" — the only
+      site with that status.
+
+      Her vineyard log, shared with the cooperative for safety,
+      shows she made 14 soil digs near the AgroVerde drainage
+      channel in the past month. The last entry: "Fotografato
+      scarico secondario. Canale non dichiarato. I livelli non
+      corrispondono a quanto riportato."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Betta ---
+
+  betta_interview:
+    type: message
+    text: >
+      BETTA: Non parlo delle mie fonti. Punto.
+    effects: { trust_betta: "+5" }
+    choices:
+      - Show Betta the evidence you have -> betta_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  betta_with_evidence:
+    type: message
+    text: >
+      BETTA: ...hai più roba di quanto mi aspettassi.
+
+      Ok. Giulia e io stavamo lavorando insieme. Aveva foto di un canale
+      di scarico non dichiarato — AgroVerde ha un secondo sistema di
+      smaltimento che non appare in nessuna autorizzazione. Aveva campioni
+      di terra con livelli di pesticidi dieci volte il limite legale.
+
+      Dovevamo pubblicare insieme. Poi è sparita. E due giorni dopo
+      qualcuno ha forzato la mia macchina e ha rubato il mio disco
+      di backup.
+
+      Giulia è viva. Mi ha contattata una volta, da un telefono usa e
+      getta. Ha detto che si nasconde. Ha detto "mi hanno minacciata
+      alla cantina e qualcun altro non mi lascia in pace."
+
+      Non posso dirti dov'è. Ma con prove sufficienti posso pubblicare
+      e rendere sicuro il suo ritorno.
+    effects:
+      trust_betta: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> betta_hint
+      - Back to investigation hub -> investigation_hub
+
+  betta_hint:
+    type: message
+    text: >
+      BETTA: Lo stabilimento ha mandato il direttore — Marchetti — e un
+      avvocato alla cantina quella notte. Le hanno detto di consegnare
+      tutto o affrontare conseguenze legali. Intimidazione vestita da
+      procedura legale.
+
+      Ma ha anche detto qualcosa su qualcuno del paese. Qualcuno che
+      entrava nel suo magazzino. Qualcuno che sapeva sempre dove fosse.
+      Quello è un problema diverso.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Serena (environment assessor) ---
+
+  serena_interview:
+    type: message
+    text: >
+      SERENA: Come assessora all'ambiente prendo queste accuse
+      seriamente. Ma AgroVerde dà lavoro a 150 persone in questo
+      comune. Il sindaco insiste che dobbiamo "mantenere il dialogo."
+
+      Off the record? Ho visto i rapporti ispettivi della provincia.
+      AgroVerde passa ogni volta. Ma quelle ispezioni vengono
+      annunciate con due settimane di anticipo. Puliscono tutto prima
+      che arrivino gli ispettori.
+
+      Giulia aveva dati senza preavviso. Ecco perché è pericoloso.
+    effects:
+      trust_serena: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Terra Nostra ---
+
+  asso_investigation:
+    type: tweet
+    from: terra_nostra
+    text: >
+      ALLARME: Segnalazione di moria anomala di viti a Vigna Vecchia.
+      Foto e prelievi in corso. Chiediamo un'ispezione non annunciata
+      dello stabilimento AgroVerde.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Terra Nostra documenta la qualità del suolo da tre anni. I loro
+      dati mostrano un pattern chiaro: picchi di pesticidi che
+      corrispondono al calendario di produzione di AgroVerde. Più alti
+      nei giorni feriali, più bassi nel weekend. Più alti di notte,
+      più bassi di giorno.
+
+      Il pattern è inequivocabile. Si tratta di scarico illegale
+      continuativo e deliberato, programmato per evitare il rilevamento.
+
+      Giulia era socia. Ha contribuito la maggior parte delle foto
+      del terreno e delle analisi.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Carlo dumping ---
+
+  carlo_dumping:
+    type: message
+    text: >
+      CARLO: Ti faccio vedere una cosa. Il mese scorso stavo arando
+      vicino al canale di scolo e ho trovato dei fusti — corrosi,
+      che perdevano liquido. L'etichetta era mezza andata ma si leggeva
+      "diserbante" e un numero di lotto AgroVerde.
+
+      Li ho fotografati e ho mandato tutto a Giulia. Lei ha detto che
+      era il pezzo mancante — la prova che scaricavano rifiuti solidi,
+      non solo liquidi. Fusti nella terra.
+
+      Ho ancora le foto. E il numero di lotto.
+    effects:
+      trust_carlo: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Luca Ferretti. Landlord. Surveyor. Something more?
+      Someone was entering Giulia's warehouse at night. Someone was
+      watching her flat. Someone was at her van.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Luca's property records -> property_records
+      - Talk to Elena about Luca -> elena_luca
+        when:
+          state: trust_elena
+          gte: 20
+      - Talk to Davide (more detail on the van incident) -> davide_detail
+      - Talk to Agnese the pharmacist -> agnese_interview
+      - Check the anonymous account @ombra_della_collina -> ombra_investigation
+      - Talk to Mimmo the bookseller -> mimmo_interview
+        when:
+          state: trust_mimmo
+          gte: 40
+      - Talk to Maresciallo Ferraro -> maresciallo_interview
+        when:
+          state: trust_maresciallo
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Property Records ---
+
+  property_records:
+    type: message
+    text: >
+      Luca Ferretti's property portfolio in Mezzocorona is extensive.
+      He owns 14 rental properties, three warehouses, and the lease
+      on the land where Giulia planted her old vines — Vigna Vecchia.
+
+      The lease contract: Giulia signed a 9-year agricultural lease
+      in 2021. Legally binding, properly registered. Luca tried to
+      terminate it three times citing "changed conditions." Each time,
+      the provincial agricultural office rejected his request.
+
+      His latest filing, from two weeks before Giulia disappeared:
+      "Request for immediate eviction — unauthorized modifications
+      to agricultural land." Also rejected.
+
+      He wanted that land back. Badly. The question is why.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Elena on Luca ---
+
+  elena_luca:
+    type: message
+    text: >
+      ELENA: Luca? Ha messo Giulia a disagio. Si presentava alla cantina
+      quando lei era lì. Si offriva di accompagnarla a casa. Commentava
+      ogni singolo post di lei entro pochi minuti.
+
+      Lei gli ha detto che non era interessata. Chiaramente, gentilmente.
+      Lui ha detto che capiva. Poi niente è cambiato. Continuava a...
+      esserci. Sempre lì.
+
+      Un mese fa Giulia ha trovato che qualcuno era entrato nel suo
+      magazzino di notte. I suoi campioni del terreno erano stati
+      spostati. Sospettava di Luca ma non poteva provarlo.
+    effects:
+      trust_elena: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Davide detail ---
+
+  davide_detail:
+    type: message
+    text: >
+      DAVIDE: ok fra in realtà non ho detto tutto. quando ho visto luca
+      vicino al furgone di giulia aveva un coso in mano. tipo una
+      scatoletta. l'ha messa sotto il furgone, lato guidatore. tipo
+      attaccata sotto.
+
+      io non sono un esperto ma assomigliava troppo a un localizzatore
+      gps fra. tipo quelli dei film.
+
+      avrei dovuto dire qualcosa ma tipo chi mi avrebbe creduto ahah.
+      un ragazzino che accusa il geometra. minchia no.
+    effects:
+      trust_davide: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Agnese ---
+
+  agnese_interview:
+    type: message
+    text: >
+      AGNESE: Questo è confidenziale ma sono farmacista, non prete.
+      Luca Ferretti viene regolarmente. Compra roba che... suggerisce
+      che non dorme. Ansiolitici, sonniferi, integratori energetici.
+      Il pattern è quello di una persona sotto stress estremo.
+
+      Mi ha anche chiesto una volta, molto casualmente, se vendevamo
+      localizzatori GPS. Ho detto "questa è una farmacia, non
+      MediaWorld." Ha riso. Non ci ho più pensato fino a quando Giulia
+      è sparita.
+    effects:
+      trust_agnese: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ombra della Collina (anonymous account) ---
+
+  ombra_investigation:
+    type: tweet
+    from: ombra_collina
+    text: >
+      Avrebbe dovuto ascoltare. Cercavo di proteggerla. Nessun altro
+      capiva il suo lavoro come me.
+    choices:
+      - Look at this account's history -> ombra_posts
+
+  ombra_posts:
+    type: message
+    text: >
+      @ombra_della_collina: account creato 7 mesi fa. I post sono tutti
+      sul lavoro di Giulia. Commenti su ogni foto delle vigne, ogni
+      campione di terra, ogni aggiornamento sulla vendemmia. Il tono
+      cambia nel tempo:
+
+      Mese 1: "Lavoro incredibile. Fai quello che nessun altro osa."
+      Mese 3: "Perché non rispondi ai miei messaggi? Voglio solo
+      collaborare."
+      Mese 5: "Ti vedo al bar con altre persone. Hai tempo per loro
+      ma non per me?"
+      Mese 7: "So dove vai. Conosco i tuoi orari. Sono sempre vicino."
+
+      L'account non ha foto, nessun dettaglio personale. Solo Giulia.
+      Solo Giulia.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> ombra_style
+
+  ombra_style:
+    type: message
+    text: >
+      Comparing @ombra_della_collina with @luca_ferretti:
+
+      Same obsessive use of property terminology — "il terreno,"
+      "la parcella," "i confini." Same Italian dialect features —
+      the specific Abruzzese constructions he uses. Same knowledge
+      of Giulia's land contract that only a landlord would have.
+
+      And one post from @ombra_della_collina: "La parcella 7B è
+      magnifica con le nuove viti." 7B is the cadastral designation.
+      Not public information for a random follower.
+
+      It's Luca. The anonymous account is Luca.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mimmo ---
+
+  mimmo_interview:
+    type: message
+    text: >
+      MIMMO: Giulia mi ha lasciato qualcosa. Una scatola di metallo
+      sigillata. Mi ha detto "se qualcuno ti chiede cosa c'è sotto
+      la Vigna Vecchia, dagli questo."
+
+      Era spaventata. Ha detto che aveva fatto copie di tutto ma
+      aveva bisogno di un set fuori sede, da qualche parte dove
+      nessuno avrebbe pensato di cercare. Una libreria sembrava
+      perfetta.
+    effects: { trust_mimmo: "+10" }
+    choices:
+      - What's under the Vigna Vecchia? -> mimmo_case
+
+  mimmo_case:
+    type: message
+    text: >
+      Mimmo reaches under the counter and produces a sealed metal box.
+
+      MIMMO: Ha detto che saresti venuto. Prendila.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show underground drainage channels — not the official
+      waste system, but a second, hidden network — and corroded
+      drums buried in the hillside. The USB drive contains soil
+      sample data, chemical analysis, and Giulia's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Maresciallo Ferraro ---
+
+  maresciallo_interview:
+    type: message
+    text: >
+      MARESCIALLO FERRARO: Off the record — e intendo completamente
+      off the record — volevo indagare su AgroVerde. Il mio superiore
+      mi ha detto di lasciar perdere. Ha detto che la provincia aveva
+      "giurisdizione." Il che significa "non toccare."
+
+      La situazione Ferretti è diversa. Non ne sapevo niente fino ad
+      ora. Se hai prove di stalking, posso agire. Quello è
+      chiaramente nella mia giurisdizione.
+
+      Portami qualcosa di solido e riapro il caso.
+    effects:
+      trust_maresciallo: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Giulia than anyone in Mezzocorona. Who is responsible?
+    choices:
+      - Confront Luca Ferretti (the obsessive landlord) -> confront_luca
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Filippo Marchetti (the plant director) -> confront_filippo
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Santoro (political protection) -> confront_peppe
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Luca (Best Ending) ---
+
+  confront_luca:
+    type: message
+    text: >
+      You present your evidence to Luca:
+
+      "I know @ombra_della_collina is your account. I know you put a
+      GPS tracker on Giulia's van. I know you entered her warehouse
+      at night. I know you were watching her flat. I have witnesses
+      and I have the property records."
+    choices:
+      - Send -> luca_response
+
+  luca_response:
+    type: message
+    text: >
+      Luca doesn't reply for a long time. Then:
+
+      LUCA: Non capisci. La proteggevo. Era in pericolo con AgroVerde
+      e non mi lasciava aiutarla. Dovevo sapere che era al sicuro.
+      Tutto quello che ho fatto l'ho fatto perché ci tengo a lei.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Maresciallo Ferraro. And to
+      Betta Mancini.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Maresciallo Ferraro reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the property harassment,
+      the witness testimonies — Luca is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Giulia's
+      van near the old caves above Vigna Vecchia.
+
+      Betta Mancini, finally in possession of Giulia's full evidence
+      package, publishes the AgroVerde story in La Repubblica. The
+      provincia orders an unannounced inspection. The plant is shut
+      down pending environmental remediation. Filippo Marchetti faces
+      criminal charges for falsifying discharge reports and illegal
+      pesticide dumping.
+
+      And Giulia Conti, reading the story from her cousin's house in
+      L'Aquila, calls her brother for the first time in nine days.
+
+      "Torno a casa."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Numero antiviolenza e stalking: 1522 (gratuito, 24h)
+      Telefono Azzurro (cyberbullismo): 19696
+      Emergenza ambientale ISPRA: 800 861 061
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: giulia
+    text: >
+      la terra non mente. e la gente di mezzocorona nemmeno.
+      grazie di non aver mollato.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Filippo (Partial Ending) ---
+
+  confront_filippo:
+    type: message
+    text: >
+      You present the pollution evidence to Filippo Marchetti:
+
+      "I have photographs of the undeclared drainage channels. I have
+      soil samples showing pesticide levels ten times the legal
+      limit. I have your original lab reports showing the data was
+      falsified. I have the barrels with your batch numbers."
+    choices:
+      - Send -> filippo_response
+
+  filippo_response:
+    type: message
+    text: >
+      FILIPPO: Questa conversazione viene inoltrata al nostro ufficio
+      legale. Qualsiasi pubblicazione di materiale diffamatorio sarà
+      oggetto di procedimenti immediati. AgroVerde ha sempre operato
+      nel rispetto dei requisiti normativi.
+
+      But it's too late. You've sent the evidence to Betta, to
+      Terra Nostra, and to the provincia.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. AgroVerde is ordered to halt
+      production pending investigation. The plant may close. One
+      hundred and fifty jobs hang in the balance. The village is
+      divided.
+
+      But Giulia?
+
+      Without the stalking evidence, Luca is never investigated.
+      He continues to own the properties. He continues to monitor
+      her movements. He creates a new anonymous profile.
+
+      Three months later, Giulia reads about AgroVerde online.
+      She returns quietly. She changes wineries. She stops working
+      the vines alone. She checks her van every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Giulia walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: giulia
+    text: "sono tornata. la terra è più pulita. il resto... si vedrà."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_peppe:
+    type: message
+    text: >
+      You confront Mayor Santoro with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> peppe_response
+
+  peppe_response:
+    type: tweet
+    from: sandro
+    text: >
+      Il mio cliente prende atto delle vostre allegazioni. Qualsiasi
+      diffusione pubblica di contenuti diffamatori sarà oggetto di
+      procedimenti legali immediati. — Studio Basile & Associati, Roma
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Santoro and AgroVerde's dumping — and there isn't
+      one beyond political protection — your evidence is insufficient.
+
+      AgroVerde continues to operate. Luca continues to watch.
+      Giulia stays in hiding.
+
+      Six months later, @ombra_della_collina creates a new account.
+      It follows Giulia's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: MEZZOCORONA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Giulia's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Numero antiviolenza e stalking: 1522 (gratuito, 24h)
+      Telefono Azzurro (cyberbullismo): 19696
+      Emergenza ambientale ISPRA: 800 861 061

@@ -1,0 +1,1551 @@
+# DEAD ACCOUNT — Story 099: Paprikafalva (Hungary)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-099.yml
+#
+# Player investigates the disappearance of paprika farmer Zsófia Tóth
+# in the fictional Southern Great Plain village of Paprikafalva.
+
+meta:
+  title: "Dead Account — Paprikafalva"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_reka: 0
+    trust_bence: 0
+    trust_erzsebet: 0
+    trust_laszlo: 0
+    trust_petra: 0
+    trust_mate: 0
+    trust_dorka: 0
+    trust_janos: 0
+    trust_ilona: 0
+    trust_gabor: 0
+    trust_tamas: 0
+    trust_virag: 0
+    trust_sandor: 0
+    trust_noemi: 0
+    trust_attila: 0
+    trust_kitti: 0
+    trust_zoltan: 0
+    trust_csaba: 0
+    trust_andrea: 0
+    trust_agnes: 0
+    trust_rendor: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Új lakos
+    bio: "frissen költöztem paprikafalvára. ismerkedem az alfölddel"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Paprikafalva.social"
+    description: "Üdvözlünk a Paprikafalva közösségi Mastodon-példányán"
+    avatar_url: /gamepatch/assets/dead-account/paprikafalva_bot.png
+
+  npcs:
+    # === Zsófia's Inner Circle ===
+    zsofia:
+      name: "Zsófia Tóth"
+      bio: "paprikatermesztő | az alföld vörös aranya | a föld nem hazudik"
+      avatar: avatars/zsofia.jpg
+    reka:
+      name: "Réka Molnár"
+      bio: "zsófi legjobb barátnője | védőnő a falusi rendelőben | kávé nélkül nem indul a nap"
+      avatar: avatars/reka.jpg
+    bence:
+      name: "Bence Tóth"
+      bio: "zsófi bátyja | kamionsofőr | szeged | a húgom nem tűnik el csak úgy"
+      avatar: avatars/bence.jpg
+    tamas:
+      name: "Tamás Varga"
+      bio: "agrármérnök | paprikafalvai gazdaszövetkezet | zsófi szomszédja a földeken"
+      avatar: avatars/tamas.jpg
+
+    # === Local Government ===
+    laszlo:
+      name: "László Kovács"
+      bio: "Paprikafalva polgármestere | 2018 óta szolgálatban | #PaprikafalvaElőre"
+      avatar: avatars/laszlo.jpg
+    andrea:
+      name: "Andrea Fekete"
+      bio: "Alpolgármester | környezetvédelem | Paprikafalva önkormányzat"
+      avatar: avatars/andrea.jpg
+    onkormanyzat:
+      name: "Paprikafalva Önkormányzat"
+      bio: "Hivatalos oldal | Települési hírek | Ügyfélfogadás: H-P 8-16"
+      avatar: avatars/onkormanyzat.jpg
+
+    # === Local Business & Community ===
+    erzsebet:
+      name: "Erzsébet Szabó"
+      bio: "Vörös Csárda | házi gulyás | birkapörkölt | nyitva 1991 óta"
+      avatar: avatars/erzsebet.jpg
+    csarda:
+      name: "Vörös Csárda"
+      bio: "Házi magyar konyha | Fröccs | Élőzene pénteken | Paprikafalva szíve"
+      avatar: avatars/csarda.jpg
+    janos:
+      name: "János Horváth"
+      bio: "halász | 35 éve a Tiszán | ez a folyó az életem"
+      avatar: avatars/janos.jpg
+    gabor:
+      name: "Gábor Nagy"
+      bio: "gazdabolt tulajdonos | vetőmag, műtrágya, gépek | hétfőtől szombatig"
+      avatar: avatars/gabor.jpg
+    ilona:
+      name: "Ilona Kiss"
+      bio: "patikus | Paprikafalva | egészség & tanácsadás | vasárnap is nyitva reggel"
+      avatar: avatars/ilona.jpg
+    sandor:
+      name: "Sándor Papp"
+      bio: "pék | Papp Pékség | kenyér, lángos, kürtőskalács | hajnali 4-től minden nap"
+      avatar: avatars/sandor.jpg
+    virag:
+      name: "Virág Balogh"
+      bio: "méhész | házi méz | paprikafalvai akácméz | a méhek mindent tudnak"
+      avatar: avatars/virag.jpg
+    noemi:
+      name: "Noémi Szűcs"
+      bio: "könyvtáros | Paprikafalvai Művelődési Ház | olvasókör szerdán"
+      avatar: avatars/noemi.jpg
+
+    # === Journalist ===
+    csaba:
+      name: "Csaba Kertész"
+      bio: "független újságíró | agrár & környezetvédelem | tippek: csaba@kertesz-sajto.hu"
+      avatar: avatars/csaba.jpg
+
+    # === DunaAgro (corporate) ===
+    dunaagro:
+      name: "DunaAgro Kft."
+      bio: "Agrár-ipari megoldások | Paprikafalvai telephely | ISO 14001 tanúsított"
+      avatar: avatars/dunaagro.jpg
+    attila:
+      name: "Attila Barna"
+      bio: "üzemvezető DunaAgro Paprikafalva | ipar & helyi közösség"
+      avatar: avatars/attila.jpg
+    agnes:
+      name: "Ágnes Lakatos"
+      bio: "Ügyvéd | Lakatos & Társai Iroda | Gazdasági jog | Budapest"
+      avatar: avatars/agnes.jpg
+
+    # === Teens ===
+    petra:
+      name: "Petra"
+      bio: "16 | lovagolni imádok | paprikafalvai vagyok | az alföld az életem bazmeg"
+      avatar: avatars/petra.jpg
+    mate:
+      name: "Máté"
+      bio: "17 | motor & horgászat | hajnali kelés | a folyó gyógyít"
+      avatar: avatars/mate.jpg
+    dorka:
+      name: "Dorka"
+      bio: "15 | fotó & rajz | az alföld színben | zsófi az inspirációm"
+      avatar: avatars/dorka.jpg
+
+    # === Media & Community ===
+    hirek_paprikafalva:
+      name: "Paprikafalvai Hírek"
+      bio: "Helyi hírek | Tippek: szerkesztoseg@paprikafalvaihirek.hu"
+      avatar: avatars/hirek_paprikafalva.jpg
+    idojaras:
+      name: "Időjárás Paprikafalva"
+      bio: "Előrejelzés és riasztások | Automatikus állomás | Óránkénti frissítés"
+      avatar: avatars/idojaras.jpg
+    gazdakor:
+      name: "Paprikafalvai Gazdakör"
+      bio: "Helyi gazdák érdekvédelme | Talajvédelem | Szennyezés-bejelentés"
+      avatar: avatars/gazdakor.jpg
+
+    # === Suspicious / Other ===
+    kitti:
+      name: "Kitti Németh"
+      bio: "laboráns | DunaAgro | végzem a munkám, ennyi"
+      avatar: avatars/kitti.jpg
+    zoltan:
+      name: "Zoltán Farkas"
+      bio: "."
+      avatar: avatars/anon.jpg
+    rendor:
+      name: "Törzsőrmester Deák"
+      bio: "Paprikafalvai Rendőrőrs | Segélyhívó: 107"
+      avatar: avatars/rendor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PAPRIKAFALVA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Paprikafalva.social — the community Mastodon instance for
+      the Southern Great Plain village of Paprikafalva, Hungary.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @zsofia_toth.
+
+      A paprika farmer. Photographer of the Alföld landscape. She
+      documented the land and the water. People are worried. She
+      hasn't posted in five days.
+    choices:
+      - Look at her profile -> zsofia_profile
+
+  zsofia_profile:
+    type: tweet
+    from: zsofia
+    text: "A Tisza-ág mellett a talajvíz bűzlik. Valaki szándékosan szennyez. Van bizonyítékom."
+    choices:
+      - That's her last real post... -> red_dust
+
+  red_dust:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a blurry photo of a paprika field at dusk. Overexposed, tilted,
+      shot from a strange angle. Posted at 2am. No caption.
+
+      Her friends say that's not her style. The police say she probably
+      went to visit relatives. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: rendor
+    text: >
+      Bejelentést kaptunk egy paprikafalvai lakos eltűnéséről.
+      Jelenlegi ismereteink szerint bűncselekmény elkövetésére utaló
+      jel nem merült fel. Információval rendelkezők hívják a 107-es
+      számot vagy forduljanak az őrsre.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @reka_molnar is
+      desperate. Her brother @bence_toth is driving down from Szeged.
+      Her neighbour @tamas_varga is posting worried messages.
+      The fisherman @janos_horvath says she was right about the water.
+
+      And the journalist @csaba_kertesz is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Zsófia just
+      "went to visit relatives."
+    effects: { trust_reka: "+5", trust_bence: "+5" }
+    choices:
+      - Start following Zsófia's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Paprikafalva. Follow Zsófia's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Erzsébet (tavern owner, knows everyone) -> erzsebet_intro
+      - Talk to János (fisherman, saw the water) -> janos_intro
+      - Talk to Petra (teen rider, seems shaken) -> petra_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Zsófia with the rhythms of a small
+      Alföld village: harvest schedules, the bakery's daily specials,
+      weather warnings about the heat.
+
+      Key names surface: Réka (best friend, nurse), Tamás (neighbour
+      farmer, seems rattled), Csaba (journalist, oddly quiet),
+      and the teens — Petra, Máté, Dorka — who loved Zsófia's
+      paprika work and photography.
+
+      Also prominent: DunaAgro Kft., the agribusiness plant at the
+      edge of the village. Their posts are corporate PR. Zsófia's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Erzsébet -> erzsebet_intro
+      - Talk to János -> janos_intro
+      - Talk to Petra -> petra_intro
+
+  # --- Erzsébet (social map) ---
+
+  erzsebet_intro:
+    type: tweet
+    from: erzsebet
+    text: >
+      A csárda nyitva van, de az én szívem nem. @zsofia_toth,
+      a te asztalod vár. Gyere haza.
+    effects: { trust_erzsebet: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Erzsébet -> erzsebet_talk
+
+  erzsebet_talk:
+    type: message
+    text: >
+      ERZSÉBET: Új vagy itt? Isten hozott. Szörnyű időben érkeztél.
+      Mindenki ki van akadva Zsófi miatt.
+
+      Hadd meséljek, ki kicsoda. Réka a legjobb barátnője — a
+      rendelőben dolgozik védőnőként. Édes lány, most össze van
+      törve. Tamás Varga a szomszéd gazda, agrármérnök, zsófi
+      földjei mellett dolgozik. Okos ember, de... túl sokat
+      foglalkozik Zsófival. Bence a bátyja, Szegedről jön le.
+
+      És Csaba Kertész — az újságíró — ő és Zsófi dolgoztak
+      valamin együtt. Valami a vízzel kapcsolatban. Csaba egy szót
+      sem szólt, mióta Zsófi eltűnt. Ez nem jellemző rá.
+
+      Ja, és a DunaAgro PR-posztjait ne olvasd. Hazugság
+      ISO-tanúsítványba csomagolva.
+    effects: { trust_erzsebet: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Tamás -> erzsebet_tamas
+      - Ask about DunaAgro -> erzsebet_dunaagro
+      - Thank her and move on -> quest1_hub
+
+  erzsebet_tamas:
+    type: message
+    text: >
+      ERZSÉBET: Tamás? Két éve gazdálkodik Zsófi mellett. Ügyes
+      mérnök. De mióta Zsófi ideköltözött, azóta... mintha
+      keringene körülötte. A csárdában mindig ott volt, amikor ő
+      is. Felajánlotta, hogy segít minden projektben. Zsófi
+      udvarias volt, de láttam rajta, hogy kényelmetlenül érzi
+      magát.
+
+      Miután elkezdte a szennyezési vizsgálatot, Tamás még rosszabb
+      lett. Mindenbe bele akart szólni. Zsófi egyszer mondta nekem:
+      "Nem fogadja el a nemet." Azt hittem, szakmailag érti. Most
+      már nem vagyok benne biztos.
+    effects: { trust_erzsebet: "+5" }
+    choices:
+      - Ask about DunaAgro -> erzsebet_dunaagro
+      - Move on -> quest1_hub
+
+  erzsebet_dunaagro:
+    type: message
+    text: >
+      ERZSÉBET: Az üzem a 90-es évek óta ott van. Műtrágyát
+      gyártanak, növényvédő szereket, miegymást. A falu eltűrte,
+      mert munkát adott. De a halászok évek óta panaszkodnak —
+      furcsa szín a vízben a kifolyó csőnél, döglött halak a
+      Tisza-ágban.
+
+      Zsófi volt az első, aki tényleg lement oda mintákat venni
+      és lefotózni. Volt bizonyítéka, azt mondta. Igazi bizonyítéka.
+      Két hét múlva eltűnt.
+    effects: { trust_erzsebet: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- János (the water, witness tease) ---
+
+  janos_intro:
+    type: tweet
+    from: janos
+    text: >
+      harmincöt éve halászok itt. a víz nem az, ami volt.
+      @zsofia_toth igazat mondott. és most eltűnt.
+      kössétek össze a szálakat.
+    effects: { trust_janos: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to János -> janos_talk
+
+  janos_talk:
+    type: message
+    text: >
+      JÁNOS: Tizenöt éves korom óta halászok ezen a Tisza-ágon.
+      Ismerem minden áramlatát, minden színét. És mondom neked —
+      a víz a kifolyó csőnél nem normális. Hónapok óta. A hálóm
+      tele van döglött rákokkal. A meder vegyszer szagú.
+
+      Zsófi vízmintákat vett. Lefényképezte a kifolyó csövet.
+      Mindent dokumentált. Ügyet épített. Aztán bumm — eltűnt.
+
+      Szerinted ez véletlen? Én nem hiszek a véletlenben a
+      folyón.
+    effects: { trust_janos: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> janos_night
+      - Move on -> quest1_hub
+
+  janos_night:
+    type: message
+    text: >
+      JÁNOS: Az éjjel, mielőtt eltűnt — éjszakai horgászatból
+      jöttem haza, éjfél körül. Láttam, hogy világos van a
+      gazdaszövetkezet irodájában. Ez nem szokatlan, a gazdák
+      későn dolgoznak. De két autó állt a parkolóban. Az egyik
+      Zsófi kis kék Suzukija. A másik egy fekete céges autó
+      DunaAgro rendszámmal.
+
+      Éjfélkor. A gazdaszövetkezet irodájában.
+
+      Akkor nem gondoltam rá sokat. Most folyton ezen járt
+      az eszem.
+    effects: { trust_janos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Petra (teen rider, witness tease) ---
+
+  petra_intro:
+    type: tweet
+    from: petra
+    text: >
+      bazmeg mondjátok hogy nem igaz @zsofia_toth ő tanított meg
+      a paprikáról meg az alföldről mindent. nem lehet hogy csak
+      úgy eltűnt. ha valaki tud vmit szóljon már légyszi
+    effects: { trust_petra: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Petra -> petra_talk_early
+
+  petra_talk_early:
+    type: message
+    text: >
+      PETRA: mi a fasz te új vagy itt? hát szar időben jöttél.
+      amúgy zsófi tényleg a legkirályabb ember ebben a faluban.
+      megtanított nekünk mindent a földről, a paprikáról, elvitt
+      minket a Tiszához fotózni. nagyon menő volt.
+
+      és most ki vagyok akadva mert máté látott vmi furát az
+      este a szövetkezetnél de nem akar róla beszélni. azt mondja
+      semmi de... nem semmi az bazmeg
+    effects: { trust_petra: "+10" }
+    choices:
+      - What did Máté see? -> petra_mate_hint
+      - Move on -> quest1_hub
+
+  petra_mate_hint:
+    type: message
+    text: >
+      PETRA: nemtom pontosan. motorozott a szövetkezet mellett
+      és látta hogy vki turkált zsófi autójában?? vagy vmi
+      ilyesmi. szarik az egésztől nem akar beszélni róla.
+      kérdezd meg tőle direkt de ne gyere neki erősen mert
+      besokallt. inkább horgászatról meg motorról dumálj
+      vele előbb geci
+    effects: { trust_petra: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Paprikafalva. A Southern Great Plain
+      village built around paprika farming and the river. A farmer who
+      was exposing pollution. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Réka (Zsófia's best friend) -> reka_q1
+      - Talk to Tamás (Zsófia's neighbour) -> tamas_q1
+      - Check what Bence (Zsófia's brother) is saying -> bence_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Réka Q1 ---
+
+  reka_q1:
+    type: tweet
+    from: reka
+    text: >
+      ha vkinek van híre @zsofia_toth-ról hívjon légyszi.
+      a szobája érintetlen. a fényképezőgépe itt van. soha nem
+      ment volna el a gépe nélkül.
+    effects: { trust_reka: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Réka -> reka_q1_talk
+
+  reka_q1_talk:
+    type: message
+    text: >
+      RÉKA: Kösz, hogy írsz, de nem ismerlek. Zsófinak sok barátja
+      van itt. Biztos vagyok benne, hogy visszajön.
+
+      ...Ezt mondogatom. Már nem hiszem.
+
+      [Réka zárkózott. Több bizalomra van szükséged, mielőtt
+      megnyílna.]
+    effects: { trust_reka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tamás Q1 ---
+
+  tamas_q1:
+    type: tweet
+    from: tamas
+    text: >
+      Az iroda üres @zsofia_toth nélkül. A talajmintái még a
+      hűtőben vannak. A naplója az asztalán. Soha nem hagyná itt
+      a folyamatban lévő munkáját. Történt valami.
+    effects: { trust_tamas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Tamás -> tamas_q1_talk
+
+  tamas_q1_talk:
+    type: message
+    text: >
+      TAMÁS: Zsófival több mint egy éve dolgozunk egymás mellett.
+      Ő a legelkötelezettebb gazda, akit ismerek. Ez a szennyezési
+      vizsgálat — minden volt neki. Adatai voltak, fotói, vegyészeti
+      elemzések. Közel állt ahhoz, hogy nyilvánosságra hozza.
+
+      Felajánlottam, hogy segítek. Sokszor. Azt mondta, kézben
+      tartja. Mondta, hogy egy újságíróval dolgozik együtt. Csak
+      támogatni akartam.
+
+      [Tamás őszintének tűnik. Vagy megszállottnak?]
+    effects: { trust_tamas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bence Q1 ---
+
+  bence_q1:
+    type: tweet
+    from: bence
+    text: >
+      a húgom ELTŰNT és a rendőrség azt mondja talán elment
+      rokonokhoz??? NEM MEGY EL SZÓLÁS NÉLKÜL SEHOVA. megyek le
+      szegedről. valaki el fogja magyarázni mi a fasz történt.
+    effects: { trust_bence: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Bence -> bence_q1_talk
+
+  bence_q1_talk:
+    type: message
+    text: >
+      BENCE: Ki vagy te? Még egy ember abból a faluból, aki azt
+      fogja mondani, hogy nyugodjak le? A húgom hívott az éjjel,
+      mielőtt eltűnt. Azt mondta, van valami nagy dolog. Azt mondta,
+      "ha történik valami, nézd meg a DunaAgrót." Aztán letette.
+
+      Ez volt az utolsó, amit hallottam tőle.
+    effects: { trust_bence: "+10" }
+    choices:
+      - What do you think happened? -> bence_theory
+      - Move on -> quest1_hub
+
+  bence_theory:
+    type: message
+    text: >
+      BENCE: Szerintem bizonyítékot talált, hogy a DunaAgro mérgező
+      hulladékot enged a folyóba, és elhallgattatták. De azt is
+      gondolom, hogy az a fura szomszéd gazda — Tamás — többet
+      tud, mint amennyit mond. Ahogy beszél róla... az nem csak
+      szomszédi aggodalom. Az valami más.
+
+      Zsófi hónapokkal ezelőtt mesélte, hogy valaki az irodájában
+      turkált a fájljaiban. Azt hitte, semmiség. Én nem hiszem,
+      hogy semmiség volt.
+    effects: { trust_bence: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Zsófia went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Máté (was riding his motorbike near the co-op) -> mate_interview
+      - Find Gábor (farm shop owner, works late) -> gabor_interview
+      - Find Virág (beekeeper, up early checking hives) -> virag_interview
+      - Find Sándor (baker, starts at 4am, saw something) -> sandor_interview
+
+  # --- Máté (saw someone at Zsófia's car) ---
+
+  mate_interview:
+    type: tweet
+    from: mate
+    text: >
+      jó kis motoros kör volt tegnap de a szövetkezetnél valami
+      para volt. nem tudom elmagyarázni de valami nem stimmel
+    effects: { trust_mate: "+5" }
+    choices:
+      - Ask Máté about that evening -> mate_talk
+
+  mate_talk:
+    type: message
+    text: >
+      MÁTÉ: szarjál sünt oké de senkinek ne mondd el. a
+      szövetkezetnél motoroztam el este 7 körül. és láttam a
+      tamást — a szomszéd gazdát — zsófi autója mellett. úgy
+      nézett ki mintha turkálna benne vagy belerakott vmit.
+      mikor meglátott engem, felkapta magát és elment rohadt
+      gyorsan.
+
+      amúgy nem szóltam senkinek mert nem akartam balhét de
+      most durva. nem normális ez a csávó bazmeg
+    effects:
+      trust_mate: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Gábor (farm shop owner, saw late-night meeting) ---
+
+  gabor_interview:
+    type: tweet
+    from: gabor
+    text: >
+      Emlékeztető: az üzlet este 8 után zárva. De az utóbbi
+      napokban furcsa mozgást láttam a szövetkezet parkolójában.
+    effects: { trust_gabor: "+5" }
+    choices:
+      - Ask Gábor what he saw -> gabor_talk
+
+  gabor_talk:
+    type: message
+    text: >
+      GÁBOR: Zártam a boltot este fél 9 körül. Láttam, hogy
+      Zsófi autója még ott áll a szövetkezet parkolójában. Mellette
+      egy fekete kocsi — DunaAgro cégjelzéssel. Két ember állt az
+      iroda bejáratánál. Az egyiket felismertem: Attila Barna, az
+      üzemvezető.
+
+      Fél 9-kor. A gazdaszövetkezet irodájánál. Ez nem normális.
+
+      Beírtam a bolti naplóba. Senki nem kérte, hogy megmutassam.
+    effects:
+      trust_gabor: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Virág (saw Zsófia fleeing) ---
+
+  virag_interview:
+    type: tweet
+    from: virag
+    text: >
+      hajnali 4-kor keltem a kaptárak miatt. a dűlőút nem volt
+      üres azon a reggelen. valaki futott a gáton. a sötétben.
+      nem futó volt.
+    effects: { trust_virag: "+5" }
+    choices:
+      - Ask Virág what she saw -> virag_talk
+
+  virag_talk:
+    type: message
+    text: >
+      VIRÁG: Hajnali 4-kor kelek a méhek miatt. Azon a reggelen
+      — a reggel Zsófi utolsó posztja után — láttam valakit a
+      gáton. Futott. Egy nő, táskával, a folyópart felé. Még
+      sötét volt. Gyorsan ment, mintha félt volna.
+
+      Kiáltottam, de nem állt meg. Azt hittem, kocogó, de...
+      ki kocog hajnali 4-kor válltáskával?
+
+      Mikor meghallottam Zsófi hírét, összeraktam. Szerintem
+      ő volt az. Menekült valami elől.
+    effects:
+      trust_virag: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sándor (saw car chase) ---
+
+  sandor_interview:
+    type: tweet
+    from: sandor
+    text: >
+      A kemence hajnali 4-kor indul mint mindig. De azon a
+      reggelen egy autó rohant végig a gátúton. Túl gyorsan.
+    effects: { trust_sandor: "+5" }
+    choices:
+      - Ask Sándor what he saw -> sandor_talk
+
+  sandor_talk:
+    type: message
+    text: >
+      SÁNDOR: Hajnali 4-kor kezdek sütni minden nap. Azon a
+      reggelen kinyitottam a redőnyt, és egy autó száguldott el
+      a gátúton — gyorsan, sokkal túl gyorsan azon az úton.
+      Sötét szedán. Aztán két perccel később egy második autó.
+      Kisebb, világosabb. Üldözi? Nem tudom.
+
+      A második autó letért a halastavi dűlőútra. Az első
+      továbbment az 55-ös felé.
+
+      Mondtam a rendőröknek. Leírták. Ennyi volt.
+    effects:
+      trust_sandor: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Réka (best friend)
+      and Dorka (saw Tamás watching the house).
+    choices:
+      - Talk to Réka about that night -> reka_interview
+      - Talk to Dorka -> dorka_interview
+      - Find Máté -> mate_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Gábor -> gabor_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Virág -> virag_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sándor -> sandor_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Réka (last to see Zsófia) ---
+
+  reka_interview:
+    type: tweet
+    from: reka
+    text: >
+      az a fotó zsófi oldalán. az nem ő. zsófi soha nem posztol
+      felirat nélkül. zsófi nem posztol hajnali 2-kor. valaki
+      más csinálta.
+    effects: { trust_reka: "+5" }
+    choices:
+      - DM Réka -> reka_talk_low
+        when:
+          state: trust_reka
+          lt: 50
+      - DM Réka -> reka_talk_high
+        when:
+          state: trust_reka
+          gte: 50
+
+  reka_talk_low:
+    type: message
+    text: >
+      RÉKA: Köszönöm az érdeklődést, de tényleg nem akarok most
+      idegenekkel erről beszélni.
+
+      [Réka még nem bízik benned eléggé. Mutasd meg neki, hogy
+      komolyan nyomozol, nem csak pletykálsz.]
+    effects: { trust_reka: "+5" }
+    choices:
+      - Share what you've learned about the night -> reka_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  reka_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the co-op, the
+      company men, the running figure. Réka is silent for a while.
+
+      RÉKA: Te tényleg keresed őt. Oké. Beszélek.
+    effects: { trust_reka: "+25" }
+    choices:
+      - What happened that night? -> reka_talk_high
+
+  reka_talk_high:
+    type: message
+    text: >
+      RÉKA: Este 11 körül jött haza. Én épp indultam az éjszakás
+      műszakra. Sápadt volt, remegett. Azt mondta, "tudják, mi van
+      nálam." Fogta a laptopját meg a pendrive-jait.
+
+      Kérdeztem, kik. Azt mondta, "az üzem. Embereket küldtek az
+      irodába." Aztán mondott még valamit — "és ő is ott volt.
+      Mindig ott van."
+
+      Nem mondta meg, ki az az "ő." Megölelt, mondta, "ne
+      aggódj," és elment egy táskával. Ennyi. Reggel az autója
+      se volt ott és a szürke fotó fent volt a profilján.
+    effects:
+      trust_reka: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dorka (saw Tamás watching the house) ---
+
+  dorka_interview:
+    type: message
+    text: >
+      DORKA: a kurva anyját oké amúgy gáz amit mondok de
+      a tamás — a szomszéd gazda — háromszor láttam este
+      zsófi háza előtt. csak állt ott és nézte az ablakokat.
+      full creepy volt bazmeg.
+
+      utoljára két nappal azelőtt láttam hogy eltűnt. ott ült
+      az autójában szemben a házzal. csak ült. lámpa nélkül.
+    effects:
+      trust_dorka: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Tamás seen at Zsófia's car at the co-op (Máté)
+      20:30 — DunaAgro car at the co-op office, Attila Barna present (Gábor)
+      23:00 — Zsófia arrives home, shaken, grabs laptop and drives (Réka)
+      04:00 — Woman running on the levee toward the river (Virág)
+      04:15 — Two cars speeding on the levee road, one toward the fish ponds (Sándor)
+
+      DunaAgro confronted Zsófia at the co-op. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is DunaAgro hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Tamás really doing? Why was he
+        at her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Tamás -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      DunaAgro is hiding something. Zsófia had proof. Now she's
+      gone and her evidence is missing from the co-op office.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the co-op records -> coop_records
+      - Talk to Csaba the journalist -> csaba_interview
+      - Talk to Kitti (DunaAgro technician) -> kitti_interview
+      - Talk to Andrea (environment deputy mayor) -> andrea_interview
+      - Check the Gazdakör association -> gazdakor_investigation
+      - Talk to János about the dumping -> janos_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Co-op Records ---
+
+  coop_records:
+    type: message
+    text: >
+      The farming co-op's shared database shows Zsófia's recent work:
+      soil and water quality samples from six sites along the
+      river branch. The data for the DunaAgro outfall area is marked
+      "ELLENŐRZÉS ALATT" — the only site with that status.
+
+      Her field log, kept at the co-op for coordination, shows she
+      took 14 soil and water samples near the DunaAgro discharge
+      pipe in the past month. The last entry: "A kifolyó csőnél
+      be nem jelentett második cső. A kibocsátás nem az, amit
+      jelentenek."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Csaba ---
+
+  csaba_interview:
+    type: message
+    text: >
+      CSABA: Forrásokról nem beszélek. Pont.
+    effects: { trust_csaba: "+5" }
+    choices:
+      - Show Csaba the evidence you have -> csaba_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  csaba_with_evidence:
+    type: message
+    text: >
+      CSABA: ...többed van, mint gondoltam.
+
+      Oké. Zsófi és én együtt dolgoztunk. Volt fotója egy be
+      nem jelentett szennyezőcső-ről — a DunaAgrónak van egy
+      második kifolyója, ami semmilyen engedélyen nem szerepel.
+      Voltak vízmintái, amikben a nehézfém-szint tízszerese a
+      megengedettnek.
+
+      Együtt akartuk közölni. Aztán eltűnt. És két nappal
+      később valaki betörte az autóm ablakát és ellopta a
+      pendrive-omat.
+
+      Zsófi él. Egyszer felhívott egy eldobható telefonról.
+      Azt mondta, bujkál. Azt mondta, "az üzemből fenyegettek
+      a szövetkezetben és valaki más sem hagy békén."
+
+      Nem mondom meg, hol van. De elég bizonyítékkal
+      publikálhatok, és biztonságosan hazajöhet.
+    effects:
+      trust_csaba: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> csaba_hint
+      - Back to investigation hub -> investigation_hub
+
+  csaba_hint:
+    type: message
+    text: >
+      CSABA: Az üzem elküldte az igazgatójukat — Barnát — meg
+      valami ügyvédet az irodába aznap este. Mondták neki, adja
+      át az anyagot, vagy jogi következményekkel néz szembe.
+      Megfélemlítés, jogi köntösbe bújtatva.
+
+      De mondott valamit a szövetkezetnél dolgozó valakiről is.
+      Valakiről, aki hozzáfért a fájljaihoz. Valaki, aki mindig
+      tudta, merre jár. Az egy másik probléma.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Kitti (DunaAgro whistleblower) ---
+
+  kitti_interview:
+    type: message
+    text: >
+      KITTI: A DunaAgrónál dolgozom. Csak egy laboráns vagyok.
+      Teszteleket futtatok, jelentéseket írok.
+
+      De a jelentések, amiket írok... nem mindig azok a
+      jelentések, amiket a hatóságnak elküldenek.
+    effects: { trust_kitti: "+10" }
+    choices:
+      - What do you mean? -> kitti_detail
+
+  kitti_detail:
+    type: message
+    text: >
+      KITTI: Nehézfémeket mérek. Kadmium, higany, ólom. Az
+      eredményeim a felettesemhez kerülnek. Valahol az asztalom
+      és a hatósági beadvány között az adatok megváltoznak.
+      Alacsonyabbak lesznek. Mindig alacsonyabbak.
+
+      Zsófi mintái a csőnél kívülről az ÉN eredeti
+      adataimmal egyeztek, nem a hivatalos jelentésben
+      szereplőkkel. Független bizonyítéka volt, hogy a DunaAgro
+      hamisítja a kibocsátási adatokat.
+
+      Félek. Van családom. De megtartottam az eredeti
+      jelentéseim másolatait. Ha valaki megvéd, megosztom őket.
+    effects:
+      trust_kitti: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Andrea ---
+
+  andrea_interview:
+    type: message
+    text: >
+      ANDREA: Mint alpolgármester, komolyan veszem ezeket a
+      vádakat. De a DunaAgro kétszáz embert foglalkoztat ebben
+      a faluban. A polgármester ragaszkodik ahhoz, hogy
+      "fenntartsuk a párbeszédet."
+
+      Nem hivatalosan? Láttam a hatósági ellenőrzési
+      jelentéseket. A DunaAgro mindig átmegy. De az
+      ellenőrzéseket két héttel előre bejelentik. Kitakarítanak,
+      mielőtt jönnek az ellenőrök.
+
+      Zsófinak bejelentés nélküli adatai voltak. Ettől
+      veszélyes.
+    effects:
+      trust_andrea: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gazdakör ---
+
+  gazdakor_investigation:
+    type: tweet
+    from: gazdakor
+    text: >
+      RIASZTÁS: A DunaAgro kifolyójánál a Tisza-ág vize
+      elszíneződött. Fotók és mintavétel folyamatban. Be nem
+      jelentett hatósági ellenőrzést követelünk.
+    choices:
+      - Check their data -> gazdakor_data
+
+  gazdakor_data:
+    type: message
+    text: >
+      The Gazdakör has been documenting water and soil quality
+      for three years. Their data shows a clear pattern: heavy metal
+      spikes that correspond to DunaAgro's production schedule.
+      Higher on weekdays, lower on weekends. Higher at night, lower
+      during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal discharge timed to avoid detection.
+
+      Zsófia was a member. She contributed most of the field
+      photography.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- János dumping ---
+
+  janos_dumping:
+    type: message
+    text: >
+      JÁNOS: Mutatok valamit. Múlt hónapban a hálómba akadt a
+      kifolyó csőnél — egy rozsdás fémhordó, lyukas, folyt
+      belőle. A címke félig lekopott, de ki lehetett olvasni,
+      hogy "oldószer" meg egy DunaAgro tételszám.
+
+      Lefotóztam és elküldtem Zsófinak. Azt mondta, ez a
+      hiányzó darab — bizonyíték, hogy szilárd hulladékot is
+      ürítnek, nem csak folyékony kibocsátás. Hordók a
+      folyómederben.
+
+      Megvannak a fotók. És a tételszám.
+    effects:
+      trust_janos: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Tamás Varga. Neighbour. Agricultural engineer. Something more?
+      Someone was accessing Zsófia's files. Someone was watching
+      her house. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Tamás's co-op access logs -> coop_access
+      - Talk to Réka about Tamás -> reka_tamas
+        when:
+          state: trust_reka
+          gte: 20
+      - Talk to Máté (more detail on the car incident) -> mate_detail
+      - Talk to Ilona the pharmacist -> ilona_interview
+      - Check the anonymous account @zoltan_farkas -> zoltan_investigation
+      - Talk to Noémi the librarian -> noemi_interview
+        when:
+          state: trust_noemi
+          gte: 40
+      - Talk to Törzsőrmester Deák -> rendor_interview
+        when:
+          state: trust_rendor
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Co-op Access Logs ---
+
+  coop_access:
+    type: message
+    text: >
+      The farming co-op's building access system is logged
+      electronically. Zsófia's keycard was used 38 times last month.
+      Tamás's card: 71 times. Nearly double.
+
+      Cross-referencing: on 26 of Tamás's 71 entries, he accessed
+      the building within 15 minutes of Zsófia. He arrived after her
+      and left after her. Every time.
+
+      His own office is in a different wing.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Réka on Tamás ---
+
+  reka_tamas:
+    type: message
+    text: >
+      RÉKA: Tamás? Kényelmetlenül érezte magát miatta Zsófi.
+      A csárdában mindig ott termett, mikor Zsófi is ott volt.
+      Felajánlotta, hogy hazakíséri. Minden egyes posztjára
+      azonnal reagált.
+
+      Zsófi megmondta neki, hogy nem érdekli. Világosan,
+      kedvesen. Azt mondta, érti. Aztán semmi nem változott.
+      Csak... mindig ott volt. Mindig ott.
+
+      Egy hónapja Zsófi rájött, hogy valaki munkaidő után
+      bejelentkezett a szövetkezeti számítógépén. A kutatási
+      fájljait megnyitották. Tamást gyanította, de nem tudta
+      bizonyítani.
+    effects:
+      trust_reka: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Máté detail ---
+
+  mate_detail:
+    type: message
+    text: >
+      MÁTÉ: oké geci amúgy nem mondtam el mindent. mikor láttam
+      tamást zsófi autójánál volt a kezében vmi. egy kis doboz
+      féle. az autó alá tette, a sofőroldalnál. úgy ragasztotta
+      oda alulra.
+
+      nem vagyok szakértő de geci úgy nézett ki mint egy
+      gps nyomkövető. mint amiket a filmekben látsz.
+
+      kellett volna szólnom de ki hitt volna el egy tinédzsernek
+      aki egy gazdát vádol. ja persze bazmeg
+    effects:
+      trust_mate: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ilona ---
+
+  ilona_interview:
+    type: message
+    text: >
+      ILONA: Ez bizalmas, de patikus vagyok, nem pap. Tamás
+      Varga rendszeresen bejár. Olyan dolgokat vesz, amik...
+      arra utalnak, hogy nem alszik. Szorongásoldó, altató,
+      energiaitalok. Valaki, aki extrém stresszben van.
+
+      Egyszer megkérdezte, teljesen lazán, hogy árulunk-e
+      GPS nyomkövetőt. Mondtam, "ez gyógyszertár, nem
+      műszaki bolt." Nevetett. Nem gondoltam rá többet, amíg
+      Zsófi el nem tűnt.
+    effects:
+      trust_ilona: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Zoltán (anonymous account) ---
+
+  zoltan_investigation:
+    type: tweet
+    from: zoltan
+    text: >
+      Hallgatnia kellett volna rám. Meg akartam védeni. Senki más
+      nem értette a munkáját úgy, mint én.
+    choices:
+      - Look at this account's history -> zoltan_posts
+
+  zoltan_posts:
+    type: message
+    text: >
+      @zoltan_farkas: account created 9 months ago. Posts are all
+      about Zsófia's work. Comments on every field photo, every
+      soil sample, every harvest update. The tone shifts over time:
+
+      Month 1: "Hihetetlen munka. Azt csinálod, amire más nem mer."
+      Month 3: "Miért nem válaszolsz az üzeneteimre? Csak
+      együtt akarnék dolgozni."
+      Month 6: "Látlak a csárdában másokkal. Nekik van időd,
+      nekem nincs?"
+      Month 8: "Tudom, merre jársz. Ismerem a napirendedet.
+      Mindig közel vagyok."
+
+      The account has no photos, no personal details. Just Zsófia.
+      Only Zsófia.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> zoltan_style
+
+  zoltan_style:
+    type: message
+    text: >
+      Comparing @zoltan_farkas with @tamas_varga:
+
+      Same use of agricultural terminology. Same Hungarian spelling
+      habits — the specific way he abbreviates technical terms.
+      Same knowledge of Zsófia's field work that only a neighbouring
+      farmer would have.
+
+      And one post from @zoltan_farkas: "A 7-es parcellán gyönyörű
+      volt a termés." Parcel 7 is an internal co-op designation.
+      Not public.
+
+      It's Tamás. The anonymous account is Tamás.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Noémi ---
+
+  noemi_interview:
+    type: message
+    text: >
+      NOÉMI: Zsófi hagyott nálam valamit. Egy lezárt vízálló
+      dobozt. Azt mondta, "ha valaki a Tisza-ág melletti
+      szennyezésről kérdez, add oda nekik ezt."
+
+      Ijedt volt. Mondta, hogy mindent lemásolt, de kell egy
+      példány külső helyen, ahova senki nem gondolna. Egy
+      könyvtár tökéletesnek tűnt.
+    effects: { trust_noemi: "+10" }
+    choices:
+      - What's in the case? -> noemi_case
+
+  noemi_case:
+    type: message
+    text: >
+      Noémi a pult alól előhúz egy vízálló Pelican dobozt.
+
+      NOÉMI: Mondta, hogy jössz. Vidd.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show a discharge pipe — not the official outlet,
+      but a second, hidden outfall — and barrels on the
+      riverbed. The USB drive contains water sample data, chemical
+      analysis, and Zsófia's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Törzsőrmester Deák ---
+
+  rendor_interview:
+    type: message
+    text: >
+      TÖRZSŐRMESTER DEÁK: Nem hivatalosan — és úgy értem, teljesen
+      nem hivatalosan — ki akartam vizsgálni a DunaAgrót. A
+      felettesem azt mondta, álljak le. Azt mondta, a hatóságnak
+      van "illetékessége." Ez annyit jelent: ne nyúlj hozzá.
+
+      A Varga-ügyről nem is tudtam eddig. Ha van bizonyítékod
+      zaklatásra, azzal foglalkozhatok. Az egyértelműen az én
+      illetékességem.
+
+      Hozz valami szilárdat és újranyitom az ügyet.
+    effects:
+      trust_rendor: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Zsófia than anyone in Paprikafalva. Who is responsible?
+    choices:
+      - Confront Tamás Varga (the obsessive neighbour) -> confront_tamas
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Attila Barna (the plant director) -> confront_attila
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Kovács (political protection) -> confront_laszlo
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Tamás (Best Ending) ---
+
+  confront_tamas:
+    type: message
+    text: >
+      You present your evidence to Tamás:
+
+      "I know @zoltan_farkas is your account. I know you put a GPS
+      tracker on Zsófia's car. I know you accessed her files at the
+      co-op. I know you were watching her house. I have witnesses and
+      I have the access logs."
+    choices:
+      - Send -> tamas_response
+
+  tamas_response:
+    type: message
+    text: >
+      Tamás doesn't reply for a long time. Then:
+
+      TAMÁS: Nem érted. Megvédtem őt. Veszélyben volt a DunaAgro
+      miatt, és nem hagyta, hogy segítsek. Tudnom kellett, hogy
+      biztonságban van. Mindent azért tettem, mert törődöm vele.
+
+      That's not caring. That's obsession.
+
+      You've already sent the evidence to Törzsőrmester Deák. And to
+      Csaba Kertész.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Törzsőrmester Deák reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witness testimonies — Tamás is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Zsófia's
+      car at the old fishing huts by the river.
+
+      Csaba Kertész, finally in possession of Zsófia's full evidence
+      package, publishes the DunaAgro story in HVG. The authorities
+      order an unannounced inspection. The plant is shut down
+      pending environmental remediation. Attila Barna faces criminal
+      charges for falsifying discharge reports.
+
+      And Zsófia Tóth, reading the story from a friend's flat in
+      Kecskemét, calls her brother for the first time in nine days.
+
+      "Hazamegyek."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: zsofia
+    text: >
+      a föld nem hazudik. és paprikafalva emberei sem.
+      köszönöm, hogy nem adtátok fel.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Attila (Partial Ending) ---
+
+  confront_attila:
+    type: message
+    text: >
+      You present the pollution evidence to Attila Barna:
+
+      "I have photographs of the undeclared discharge pipe. I have
+      water samples showing heavy metal levels ten times the legal
+      limit. I have the original lab reports showing the data was
+      falsified. I have the barrel with your batch number."
+    choices:
+      - Send -> attila_response
+
+  attila_response:
+    type: message
+    text: >
+      ATTILA: Ezt a beszélgetést továbbítom a jogi osztályunknak.
+      Bármilyen rágalmazó anyag nyilvánosságra hozása azonnali
+      jogi eljárást von maga után. A DunaAgro mindig a hatósági
+      előírásoknak megfelelően működött.
+
+      But it's too late. You've sent the evidence to Csaba, to
+      the Gazdakör, and to the environmental authorities.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. DunaAgro is ordered to halt
+      discharge pending investigation. The plant may close. Two
+      hundred jobs hang in the balance. The village is divided.
+
+      But Zsófia?
+
+      Without the stalking evidence, Tamás is never investigated.
+      He continues to work next to her fields. He continues to
+      monitor her accounts. He creates a new anonymous profile.
+
+      Three months later, Zsófia reads about DunaAgro online.
+      She returns quietly. She changes her work schedule. She
+      stops walking to the fields alone. She checks her car
+      every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Zsófia walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: zsofia
+    text: "hazajöttem. a víz tisztább. a többi... majd meglátjuk."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_laszlo:
+    type: message
+    text: >
+      You confront Mayor Kovács with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> laszlo_response
+
+  laszlo_response:
+    type: tweet
+    from: agnes
+    text: >
+      Ügyfelünk tudomásul veszi az Ön állításait. Rágalmazó
+      tartalmak bármilyen nyilvánosságra hozása azonnali jogi
+      eljárást von maga után. — Lakatos & Társai Iroda, Budapest
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Kovács and DunaAgro's dumping — and there isn't
+      one beyond political protection — your evidence is
+      insufficient.
+
+      DunaAgro continues to operate. Tamás continues to watch.
+      Zsófia stays in hiding.
+
+      Six months later, @zoltan_farkas creates a new account. It
+      follows Zsófia's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PAPRIKAFALVA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Zsófia's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      NANE Segélyvonal (nők elleni erőszak): 06-80-505-101
+      Kék Vonal (gyermek- és ifjúságvédelem): 116-111
+      Környezeti szennyezés bejelentése: 06-80-201-301

@@ -1,0 +1,2716 @@
+meta:
+  title: "Dead Account"
+  state:
+    trust_georgi: 0
+    trust_tsvetana: 0
+    trust_dimitar: 0
+    trust_babayordanka: 0
+    trust_kaloyan: 0
+    trust_viktoria: 0
+    trust_boyan: 0
+    trust_milena: 0
+    trust_plamen: 0
+    trust_rositsa: 0
+    trust_nikolay: 0
+    trust_ivayla: 0
+    trust_stefan: 0
+    trust_petya: 0
+    trust_zhivko: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    trafficking_evidence: 0
+    threat_evidence: 0
+    evidence_total: 0
+  player:
+    name: New Resident
+    bio: "Just moved to Morska Polyana. Settling in by the Black Sea."
+    avatar: avatars/default_citizen.png
+  bot:
+    display_name: "MorskaPolyana.social"
+    description: "Welcome to Morska Polyana's local instance! A cozy Black Sea community. Be kind, share sunsets, and look after each other."
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+  npcs:
+    georgi:
+      name: "Georgi Petrov"
+      bio: "Owner of Cafe Korali. Proudly serving the best banitsa in Morska Polyana since 2005. Friend to all, gossip to none."
+      avatar: avatars/georgi.jpg
+    tsvetana:
+      name: "Tsvetana Nikolova"
+      bio: "Pharmacist. Neighbor. Mother of two. I keep this town healthy, whether it wants to be or not."
+      avatar: avatars/tsvetana.jpg
+    dimitar:
+      name: "Dimitar Kolev"
+      bio: "Retired Navy officer. Now I fish and mind my business. Mostly."
+      avatar: avatars/dimitar.jpg
+    babayordanka:
+      name: "Baba Yordanka"
+      bio: "82 years old. Seen everything. Forgot nothing. My garden has the best domati in town."
+      avatar: avatars/babayordanka.jpg
+    kaloyan:
+      name: "Kaloyan Georgiev"
+      bio: "16 | morska born & raised | skater | desi's yoga class was qko | #justicefordesi"
+      avatar: avatars/kaloyan.jpg
+    viktoria:
+      name: "Viktoria Stoyanova"
+      bio: "17 | photographer | beach life | desi taught me to breathe | something is wrong in this town"
+      avatar: avatars/viktoria.jpg
+    boyan:
+      name: "Boyan Hristov"
+      bio: "15 | gamer | night owl | i saw things i shouldnt have seen | morska polyana has secrets"
+      avatar: avatars/boyan.jpg
+    milena:
+      name: "Milena Todorova"
+      bio: "Desi's best friend. Co-instructor at Morska Yoga. I won't stop asking questions until I get answers."
+      avatar: avatars/milena.jpg
+    plamen:
+      name: "Plamen Draganov"
+      bio: "Real estate developer. Investing in Morska Polyana's future. Progress requires vision."
+      avatar: avatars/plamen.jpg
+    rositsa:
+      name: "Rositsa Marinova"
+      bio: "Reporter for Chernomorski Vestnik. The coast deserves honest journalism."
+      avatar: avatars/rositsa.jpg
+    nikolay:
+      name: "Nikolay Borisov"
+      bio: "Local police sergeant. Keeping Morska Polyana safe. My door is always open."
+      avatar: avatars/nikolay.jpg
+    ivayla:
+      name: "Ivayla Zheleva"
+      bio: "NGO worker with Open Door Foundation. Helping vulnerable people on the coast."
+      avatar: avatars/ivayla.jpg
+    stefan:
+      name: "Stefan Krastev"
+      bio: "Fisherman. Third generation. The sea gives and the sea takes."
+      avatar: avatars/stefan.jpg
+    petya:
+      name: "Petya Ivanova"
+      bio: "Desi's older sister. Came from Sofia when she disappeared. I need the truth."
+      avatar: avatars/petya.jpg
+    zhivko:
+      name: "Zhivko Metodiev"
+      bio: "Security guard at Villa Zarya. Just doing my job. Nothing to see."
+      avatar: avatars/zhivko.jpg
+
+entry: welcome
+
+nodes:
+  welcome:
+    type: message
+    text: >
+      Welcome to MorskaPolyana.social, the local Mastodon instance for our small Black Sea community.
+
+
+      You've just arrived in Morska Polyana -- a quiet coastal town known for its beaches, fishing boats, and laid-back atmosphere.
+
+
+      But something is wrong. A popular local yoga instructor named Desislava "Desi" Ivanova has gone missing. Her account @desi_yoga has been silent for nine days. Her last post was a cryptic message about "seeing too much."
+
+
+      The local police say she probably left town voluntarily. Her friends and family say otherwise.
+
+
+      You've been added to the instance. Start exploring.
+    choices:
+      - Look at Desi's last posts -> desi_last_posts
+      - Check the local timeline -> local_timeline
+      - Read your welcome DMs -> welcome_dms
+
+  desi_last_posts:
+    type: tweet
+    from: milena
+    text: >
+      I pinned Desi's last few posts before they get buried. Everyone needs to see these.
+
+
+      @desi_yoga [9 days ago]: "Something is happening at the villa next door. Lights at 3am. Vans. Voices. I'm not imagining this."
+
+
+      @desi_yoga [10 days ago]: "Got approached by two men outside the studio today. They didn't speak Bulgarian. They told me in English to 'mind my own business.' I'm shaking."
+
+
+      @desi_yoga [12 days ago]: "My retreat center shares a wall with Villa Zarya. The new tenants are... unsettling. Who are these people?"
+    effects:
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Follow Milena and ask about Desi -> follow_milena
+      - Look into Villa Zarya -> villa_zarya_intro
+      - Check the local timeline -> local_timeline
+
+  local_timeline:
+    type: tweet
+    from: georgi
+    text: >
+      Morning everyone. Coffee is brewing at Korali. The usual crowd is quiet today. Still no word about Desi.
+
+
+      If anyone has information, please speak up. This town is too small for silence.
+    choices:
+      - Follow Georgi -> follow_georgi
+      - Check other posts on the timeline -> timeline_more
+      - Go back and look at Desi's posts -> desi_last_posts
+
+  welcome_dms:
+    type: message
+    text: >
+      You have two direct messages waiting.
+
+
+      One is from @tsvetana_pharm: "Welcome to Morska Polyana. I noticed you're new. Be careful who you talk to about Desi. Not everyone here wants the truth found."
+
+
+      The other is from @kaloyan_sk8: "abe brat, you the new person right? if you want to know what happened to desi, hit me up. i know stuff but cant post it public. seriozno."
+    choices:
+      - Reply to Tsvetana -> reply_tsvetana
+      - Reply to Kaloyan -> reply_kaloyan
+      - Check the local timeline first -> local_timeline
+
+  reply_tsvetana:
+    type: tweet
+    from: tsvetana
+    text: >
+      I'm glad you reached out. Desi was my neighbor -- our houses share the street behind the yoga center.
+
+
+      The week before she disappeared, she came to my pharmacy three times. Not for medicine. She was scared. She said men were watching the yoga center. She said she heard crying at night from Villa Zarya.
+
+
+      I told her to go to the police. She said she did. Nikolay told her she was "stressed and imagining things."
+
+
+      I don't think she imagined anything.
+    effects:
+      trust_tsvetana: "+10"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask Tsvetana about Villa Zarya -> tsvetana_villa
+      - Ask about the police response -> tsvetana_police
+      - Follow up with Kaloyan instead -> reply_kaloyan
+
+  tsvetana_villa:
+    type: tweet
+    from: tsvetana
+    text: >
+      Villa Zarya has been empty for years. Old holiday property. Then about three months ago, someone rented it.
+
+
+      A company called "Sunrise Horizons Ltd." -- sounds fake, right? Plamen Draganov handled the rental. He handles most property in town.
+
+
+      The villa has blacked-out windows now. A security guard sits outside day and night. That's Zhivko -- he used to be a bouncer in Burgas. Not the kind of man you want as a neighbor.
+
+
+      Desi's yoga retreat shares the back garden wall. She could see and hear everything.
+    effects:
+      trust_tsvetana: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask about Plamen Draganov -> plamen_intro
+      - Ask about the security guard Zhivko -> zhivko_intro
+      - Talk to someone else -> hub_contacts
+
+  tsvetana_police:
+    type: tweet
+    from: tsvetana
+    text: >
+      Nikolay is not a bad man. But he is a lazy man. And maybe a scared man.
+
+
+      When Desi reported the men who threatened her, he wrote it down. But nothing happened. No investigation. No patrol of the area.
+
+
+      When she disappeared, he filed a missing persons report after three days -- Petya had to scream at him to do even that.
+
+
+      I think someone told him to leave Villa Zarya alone. I don't know who. But Nikolay suddenly bought a new car last month. A sergeant's salary doesn't buy a Skoda Octavia.
+    effects:
+      trust_tsvetana: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Confront Nikolay about this -> nikolay_confront
+      - Ask about Plamen Draganov -> plamen_intro
+      - Talk to other contacts -> hub_contacts
+
+  reply_kaloyan:
+    type: tweet
+    from: kaloyan
+    text: >
+      abe finally someone who listens. ok so look -- me and boyan, we skate at night near the harbor yeah? last month we saw a van pull up to villa zarya at like 2am.
+
+
+      people got out. not tourists brat. they looked scared. women mostly. someone was leading them inside.
+
+
+      boyan got his phone out and recorded some of it. then zhivko that security dude spotted us and chased us. we ran. boyan dropped his phone. zhivko picked it up.
+
+
+      boyan's been scared to talk about it since. but i saw what i saw. daj da ti kazha -- desi saw it too. thats why shes gone.
+    effects:
+      trust_kaloyan: "+15"
+      trafficking_evidence: "+2"
+      night_witnesses: "+1"
+      evidence_total: "+2"
+    choices:
+      - Ask Kaloyan to introduce you to Boyan -> meet_boyan
+      - Ask what else Kaloyan noticed -> kaloyan_more
+      - Follow up on the van -> van_investigation
+
+  meet_boyan:
+    type: tweet
+    from: boyan
+    text: >
+      kaloyan said you're cool so ok. but im not putting this on public timeline.
+
+
+      that night was messed up. the van had no plates. the people inside -- they werent speaking bulgarian. sounded like romanian maybe? or russian? idk.
+
+
+      zhivko grabbed my phone and said if i told anyone hed find me. and abe, he knows where i live. my mom works at the hotel, she cant afford trouble.
+
+
+      but desi... desi was nice to us. she let us use the yoga studio courtyard to skate when it was raining. she doesnt deserve what happened.
+
+
+      i want to help. but i need to know youre not gonna get me killed brat.
+    effects:
+      trust_boyan: "+10"
+      trafficking_evidence: "+1"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Promise to protect Boyan's identity -> boyan_promise
+      - Ask Boyan to describe the people he saw -> boyan_details
+      - Ask about the phone Zhivko took -> boyan_phone
+
+  boyan_promise:
+    type: tweet
+    from: boyan
+    text: >
+      ok... ok fine. look the video i took before zhivko grabbed my phone -- i backed it up to cloud. im not stupid. i just didnt know who to send it to.
+
+
+      it shows three women being walked from the van into villa zarya. one of them was crying. there was a man in a suit directing everything. not zhivko, someone else. someone important looking.
+
+
+      kaloyan thinks the man looked like that developer dude. plamen. but it was dark so nz honestly.
+
+
+      if you can find someone safe to give this to -- not nikolay, he's useless -- ill send you the link.
+    effects:
+      trust_boyan: "+10"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask Boyan to send the video -> boyan_video
+      - Find Rositsa the journalist -> rositsa_intro
+      - Contact Ivayla from the NGO -> ivayla_intro
+
+  boyan_details:
+    type: tweet
+    from: boyan
+    text: >
+      there were like 5 or 6 women. young. maybe 20s? one looked even younger, like our age tbh. they had bags like theyd been traveling.
+
+
+      the man leading them was tall, suit, short hair. spoke english to zhivko. zhivko was nodding and opening doors.
+
+
+      one woman tried to pull away and the suit guy grabbed her arm hard. thats when i started recording.
+
+
+      abe seriozno this is trafficking isnt it? like the stuff they teach us about in school? desi figured it out and they took her.
+    effects:
+      trust_boyan: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Promise to protect Boyan's identity -> boyan_promise
+      - Ask about the phone Zhivko took -> boyan_phone
+      - Talk to someone else about this -> hub_contacts
+
+  boyan_phone:
+    type: tweet
+    from: boyan
+    text: >
+      the phone is gone. zhivko probably smashed it or threw it in the sea.
+
+
+      but like i told kaloyan -- i had cloud backup turned on. the video uploaded before he took it. its only like 40 seconds but you can see the van, the women, and the suit guy.
+
+
+      im scared to share it tho. what if they trace it back to me? my IP or whatever?
+
+
+      if you find someone who knows how to handle this stuff safely, ill share it. not the police tho. nikolay is compromised for sure.
+    effects:
+      trust_boyan: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Promise to protect Boyan's identity -> boyan_promise
+      - Find Rositsa the journalist -> rositsa_intro
+      - Contact Ivayla from the NGO -> ivayla_intro
+
+  boyan_video:
+    type: message
+    text: >
+      Boyan sends you a cloud link. The video is 43 seconds of shaky nighttime footage. You can make out a white van with no plates, Villa Zarya's side entrance, and several women being ushered inside by a tall man in dark clothing.
+
+
+      At 0:31, the man turns briefly toward the light. The face is partially visible. It could be Plamen Draganov. It could be someone else. The quality is too poor to be certain.
+
+
+      This is significant evidence. But it needs context to be useful.
+    effects:
+      trafficking_evidence: "+3"
+      evidence_total: "+3"
+    choices:
+      - Show the video to Rositsa -> rositsa_video
+      - Show the video to Ivayla -> ivayla_video
+      - Investigate Plamen first -> plamen_intro
+
+  kaloyan_more:
+    type: tweet
+    from: kaloyan
+    text: >
+      brat theres more. after desi disappeared, viktoria -- you know her right? she takes photos at the beach -- she said she saw zhivko near desi's apartment. like the day after desi stopped posting.
+
+
+      and get this. desi's studio is locked now. milena cant get in. someone changed the locks. who does that? who has the keys?
+
+
+      also plamen draganov posted on the town council page saying villa zarya is a "private rehabilitation clinic" now. kef, right? a rehab clinic with blacked out windows and no patients walking around.
+
+
+      nz brat but this whole thing stinks. desi was onto something mnogo serious.
+    effects:
+      trust_kaloyan: "+5"
+      trafficking_evidence: "+1"
+      threat_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Meet Boyan about the video -> meet_boyan
+      - Talk to Viktoria about what she saw -> viktoria_intro
+      - Investigate Plamen -> plamen_intro
+
+  follow_milena:
+    type: tweet
+    from: milena
+    text: >
+      Thank you for caring. Most people here have gone quiet since Desi disappeared.
+
+
+      Desi and I built Morska Yoga together. She was the face, I was the organizer. She was fearless -- always speaking up, always questioning.
+
+
+      Two weeks before she vanished, she told me she was going to document what was happening at Villa Zarya. She was taking photos from the garden wall at night. I told her it was dangerous. She said someone had to do it.
+
+
+      Her last message to me was: "Milena, if anything happens, check the studio safe. The combination is our first class date."
+
+
+      I haven't been able to get into the studio. The locks were changed.
+    effects:
+      trust_milena: "+15"
+      trafficking_evidence: "+1"
+      threat_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Ask about getting into the studio -> studio_access
+      - Ask who changed the locks -> locks_question
+      - Ask about Villa Zarya from Milena's perspective -> milena_villa
+
+  studio_access:
+    type: tweet
+    from: milena
+    text: >
+      I've tried everything. The landlord says someone from Sunrise Horizons Ltd requested the lock change for "safety reasons." That's the same company renting Villa Zarya.
+
+
+      Plamen Draganov signed the paperwork. He's the property manager for half the town. When I confronted him, he said it was standard procedure when a tenant goes missing.
+
+
+      Standard procedure? Since when does a neighboring tenant get to change your locks?
+
+
+      Petya -- Desi's sister from Sofia -- is trying to get a court order. But you know how slow Bulgarian courts are.
+
+
+      If we could get into that safe, I think we'd find everything Desi collected. Photos. Notes. Maybe even names.
+    effects:
+      trust_milena: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Talk to Petya about the court order -> petya_intro
+      - Confront Plamen about the locks -> plamen_locks
+      - Ask Georgi if he knows another way in -> georgi_studio
+
+  locks_question:
+    type: tweet
+    from: milena
+    text: >
+      The locksmith was Hristo from Burgas. He told me Plamen Draganov called him directly. Paid cash. Said the studio needed "new security."
+
+
+      The landlord -- old Todor, he lives in Varna now -- confirmed he authorized it by phone. But when I called Todor myself, he sounded confused. He said he didn't remember authorizing anything. He's 79 and trusts whoever calls him.
+
+
+      Plamen basically conned an old man into signing off on locking us out of our own studio. That's not a coincidence. Whatever Desi had in that safe, someone doesn't want it found.
+    effects:
+      trust_milena: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Talk to Petya about legal options -> petya_intro
+      - Confront Plamen -> plamen_intro
+      - Check other leads -> hub_contacts
+
+  milena_villa:
+    type: tweet
+    from: milena
+    text: >
+      I could hear things through the garden wall too. Desi wasn't making it up.
+
+
+      Voices at night. Sometimes crying. The sound of vehicle doors. Always late -- after midnight.
+
+
+      One morning I came to the studio early and saw Zhivko dumping trash bags behind the wall. The bags had clothes in them. Women's clothes. Cheap stuff, like travel clothes.
+
+
+      I told Nikolay. He said Zhivko probably donated clothes and was dumping the leftovers. That's the level of investigation we're dealing with.
+    effects:
+      trust_milena: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask about the clothes specifically -> milena_clothes
+      - Talk to Ivayla from the NGO -> ivayla_intro
+      - Check other leads -> hub_contacts
+
+  milena_clothes:
+    type: tweet
+    from: milena
+    text: >
+      I picked up one of the bags before Zhivko came back for the rest. Inside: two cheap dresses, a pair of worn shoes, and a small notebook.
+
+
+      The notebook had writing in Romanian. I couldn't read it, but I photographed every page. Ivayla from the Open Door Foundation translated some of it for me.
+
+
+      It was a diary. A young woman writing about being promised a hotel job in Greece. Instead she was taken to a house by the sea in Bulgaria. She wrote about men controlling her movement. About having her phone taken away.
+
+
+      The last entry said: "They are moving us again tomorrow. I don't know where."
+
+
+      That's when I knew. This isn't about property disputes or noise complaints. This is trafficking.
+    effects:
+      trust_milena: "+10"
+      trafficking_evidence: "+3"
+      evidence_total: "+3"
+    choices:
+      - Talk to Ivayla about the diary -> ivayla_diary
+      - Find Rositsa the journalist -> rositsa_intro
+      - Confront Plamen -> plamen_intro
+
+  follow_georgi:
+    type: tweet
+    from: georgi
+    text: >
+      Welcome to Morska Polyana. I wish it were under better circumstances.
+
+
+      I've run Cafe Korali for twenty years. Everyone comes through here. Desi used to have her morning smoothie at my counter every single day. When she stopped coming, I knew something was wrong before anyone filed a report.
+
+
+      This town runs on relationships. If you want to understand what happened, you need to talk to people. Not just online -- come sit at the cafe, have a coffee, let the stories come to you.
+
+
+      I know things. But I need to know I can trust you first. This town has ears everywhere.
+    effects:
+      trust_georgi: "+10"
+      contacts_followed: "+1"
+    choices:
+      - Ask Georgi what he knows -> georgi_knows
+      - Ask who to trust in town -> georgi_trust
+      - Visit someone else first -> hub_contacts
+
+  georgi_knows:
+    type: tweet
+    from: georgi
+    text: >
+      Plamen Draganov came into my cafe the day after Desi disappeared. He was on the phone. He thought I was in the kitchen, but I was restocking behind the bar.
+
+
+      He said -- and I remember the exact words because they chilled me -- "The yoga woman has been handled. The property will be clear by the weekend."
+
+
+      Handled. Like she was a problem to be solved, not a person.
+
+
+      He was talking to someone in English. Not Bulgarian. The person on the other end had an accent I couldn't place.
+
+
+      I didn't tell the police because Nikolay and Plamen play cards together every Thursday. You think that's a coincidence?
+    effects:
+      trust_georgi: "+15"
+      threat_evidence: "+2"
+      trafficking_evidence: "+1"
+      evidence_total: "+3"
+    choices:
+      - Ask about Plamen and Nikolay's relationship -> georgi_plamen_nikolay
+      - Ask if anyone else heard the call -> georgi_witnesses
+      - Confront Plamen directly -> plamen_intro
+
+  georgi_trust:
+    type: tweet
+    from: georgi
+    text: >
+      Trust Milena -- she was Desi's rock. Trust Petya -- she's Desi's sister and she's fierce. Trust Baba Yordanka -- she may be old but she sees everything from her garden.
+
+
+      Be careful with Nikolay. He's police, but his loyalty is flexible.
+
+
+      The kids -- Kaloyan, Viktoria, Boyan -- they know more than you'd think. This generation lives online. They've been investigating on their own, which frankly terrifies me.
+
+
+      Don't trust Plamen. And definitely don't trust Zhivko.
+
+
+      Rositsa the journalist is good. But she's been threatened too. Last month someone slashed her tires.
+    effects:
+      trust_georgi: "+5"
+    choices:
+      - Ask about Baba Yordanka -> babayordanka_intro
+      - Talk to the teens -> reply_kaloyan
+      - Find Rositsa -> rositsa_intro
+
+  georgi_plamen_nikolay:
+    type: tweet
+    from: georgi
+    text: >
+      They've been close for years. Plamen helps Nikolay with "property consultations" -- basically Nikolay tells Plamen when properties come up for sale before they're listed, and Plamen gives him a cut.
+
+
+      Small-town corruption. Nobody talked about it because it wasn't hurting anyone. But now?
+
+
+      Plamen rented Villa Zarya to Sunrise Horizons. Nikolay made sure no one investigated the villa. Desi asked questions and now she's gone.
+
+
+      Connect the dots. I'm just a cafe owner. I can't say these things officially. But you can.
+    effects:
+      trust_georgi: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask who else might know about this corruption -> georgi_witnesses
+      - Confront Nikolay -> nikolay_confront
+      - Talk to Dimitar the retired navy officer -> dimitar_intro
+
+  georgi_witnesses:
+    type: tweet
+    from: georgi
+    text: >
+      Old Dimitar sits at my terrace every afternoon. Ex-Navy. Sharp eyes. He told me he's seen boats coming to the small cove east of town at night. Not fishing boats -- faster ones. Rigid inflatables.
+
+
+      Baba Yordanka lives on the hill above the harbor. She says her dog barks at 2 AM every few nights. Always in the same direction -- toward Villa Zarya.
+
+
+      Stefan the fisherman told me his nets got cut twice near the east cove. Someone doesn't want fishermen in that water.
+
+
+      Everyone has a piece. Nobody has the whole picture. Maybe you can put it together.
+    effects:
+      trust_georgi: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Talk to Dimitar about the boats -> dimitar_intro
+      - Visit Baba Yordanka -> babayordanka_intro
+      - Find Stefan the fisherman -> stefan_intro
+
+  georgi_studio:
+    type: tweet
+    from: georgi
+    text: >
+      The studio... listen, the building is old. I helped Desi renovate it when she first opened. There's a back window in the storage room that never locked properly. We always joked about it.
+
+
+      If the new locks are only on the main doors, that window might still be accessible from the alley.
+
+
+      But I didn't tell you that. And if anyone asks, we were talking about banitsa recipes.
+    effects:
+      trust_georgi: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Use this information to access the studio -> studio_break_in
+      - Too risky, find another way -> petya_intro
+      - Check other leads -> hub_contacts
+
+  studio_break_in:
+    type: message
+    text: >
+      Under cover of darkness, you approach the yoga studio from the back alley. The storage room window is exactly as Georgi described -- the latch is broken.
+
+
+      Inside, the studio is untouched. Mats still rolled, incense still on the shelf. But the office door is ajar, and the safe sits behind the desk.
+
+
+      Milena told you the combination is "their first class date." You check Desi's old posts -- her first yoga class was announced on March 15, 2019. You try 1-5-0-3-1-9.
+
+
+      The safe clicks open.
+
+
+      Inside: a USB drive, a printed stack of photographs, and a handwritten journal. The photographs show the van at Villa Zarya, people being led inside, and a clear shot of Plamen Draganov standing with an unidentified man in a suit.
+
+
+      The journal documents dates, times, and descriptions of everything Desi witnessed over six weeks.
+    effects:
+      trafficking_evidence: "+5"
+      threat_evidence: "+2"
+      evidence_total: "+7"
+    choices:
+      - Read the journal entries -> desi_journal
+      - Take everything to Rositsa -> rositsa_evidence
+      - Contact Ivayla at the NGO -> ivayla_evidence
+
+  desi_journal:
+    type: message
+    text: >
+      Desi's journal is meticulous. Selected entries:
+
+
+      "April 3 -- Third van this month. At least 4 women this time. One looked barely 18. Zhivko opened the gate. The suit man was there again."
+
+
+      "April 8 -- Photographed license plate on the van: CB 4517 AX. Traced to a rental company in Sofia. Company listed at the same address as Sunrise Horizons Ltd."
+
+
+      "April 12 -- Two men came to the studio. Not Zhivko. Foreigners. They said 'We know you watch. Stop watching or you will be sorry.' I filmed them leaving with the security camera."
+
+
+      "April 15 -- Told Nikolay about the threats. He said he would 'look into it.' His face went white. He knows."
+
+
+      "April 18 -- Plamen came to the studio offering to buy the lease. Offered three times what it's worth. I said no. He said 'You'll regret this.'"
+
+
+      "April 20 -- I'm scared. But I can't stop. These women need someone to see them."
+
+
+      The journal ends there. Desi disappeared on April 21.
+    effects:
+      trafficking_evidence: "+3"
+      threat_evidence: "+3"
+      evidence_total: "+6"
+    choices:
+      - Take everything to Rositsa -> rositsa_evidence
+      - Contact Ivayla at the NGO -> ivayla_evidence
+      - Confront Plamen with the evidence -> plamen_confront_evidence
+
+  hub_contacts:
+    type: message
+    text: >
+      Your contact list is growing. Who would you like to talk to?
+
+
+      Key contacts: Milena (Desi's friend), Georgi (cafe owner), Tsvetana (pharmacist), Dimitar (retired navy), Baba Yordanka (elderly neighbor), Petya (Desi's sister).
+
+
+      Teens: Kaloyan (skater, witness), Viktoria (photographer), Boyan (gamer, has video).
+
+
+      Officials and others: Nikolay (police), Rositsa (journalist), Ivayla (NGO worker), Stefan (fisherman), Plamen (developer), Zhivko (security guard).
+    choices:
+      - Talk to Dimitar -> dimitar_intro
+      - Visit Baba Yordanka -> babayordanka_intro
+      - Find Viktoria -> viktoria_intro
+      - Contact Rositsa the journalist -> rositsa_intro
+      - Talk to Ivayla from the NGO -> ivayla_intro
+      - Talk to Stefan the fisherman -> stefan_intro
+      - Talk to Petya, Desi's sister -> petya_intro
+      - Approach Plamen Draganov -> plamen_intro
+      - Approach Zhivko the guard -> zhivko_intro
+      - Confront Nikolay the sergeant -> nikolay_confront
+
+  dimitar_intro:
+    type: tweet
+    from: dimitar
+    text: >
+      Sit down. Have some rakia. Now listen.
+
+
+      I served in the Navy for thirty years. I know boats. I know the sea. And I know when something is wrong on the water.
+
+
+      For the past three months, fast boats have been coming to Zalivcheto -- the small cove east of town. Always between midnight and 4 AM. No lights. No radio chatter.
+
+
+      In the Navy, we called those ghost runs. Smugglers use the same pattern worldwide. Someone is moving people or cargo through our coast.
+
+
+      I reported it to the coast guard in Burgas. They said they'd investigate. That was two months ago. Nothing.
+    effects:
+      trust_dimitar: "+15"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask Dimitar about the boat patterns -> dimitar_boats
+      - Ask if this connects to Desi -> dimitar_desi
+      - Ask about the coast guard response -> dimitar_coastguard
+
+  dimitar_boats:
+    type: tweet
+    from: dimitar
+    text: >
+      The boats come from the east. Turkey, most likely. Rigid-hulled inflatable boats -- RHIBs. Military-grade, not civilian. Whoever runs this has money and connections.
+
+
+      They dock at Zalivcheto because the cove has no surveillance. No cameras, no harbor master. Just rocks and a dirt path that leads up to the coast road.
+
+
+      From there, it's a five-minute drive to Villa Zarya.
+
+
+      I mapped the arrivals. In three months: fourteen boat landings. Each time, between two and seven people are moved. Always at the new moon, when it's darkest.
+
+
+      This is a professional operation. Not some small-time smuggler. This is organized crime.
+    effects:
+      trust_dimitar: "+5"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask for Dimitar's evidence maps -> dimitar_maps
+      - Connect this to Villa Zarya -> dimitar_desi
+      - Talk to Stefan about the cove -> stefan_intro
+
+  dimitar_maps:
+    type: tweet
+    from: dimitar
+    text: >
+      I've kept detailed logs. Old Navy habit. Dates, times, estimated vessel speed, wind conditions, and what I could see through binoculars.
+
+
+      I also have photographs. Telephoto lens from the cliff path. The quality isn't great at night, but you can see the boats and the people on board.
+
+
+      I'm willing to share all of this. But not with Nikolay. I served this country for thirty years. I won't hand evidence to a corrupt man who plays cards with the enemy.
+
+
+      Find me someone trustworthy. The journalist, maybe. Or better yet, someone outside Morska Polyana entirely. GDBOP -- the organized crime unit in Sofia. That's who needs this.
+    effects:
+      trust_dimitar: "+10"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Find Rositsa the journalist -> rositsa_intro
+      - Contact Ivayla about national authorities -> ivayla_intro
+      - Talk to Petya about Sofia contacts -> petya_intro
+
+  dimitar_desi:
+    type: tweet
+    from: dimitar
+    text: >
+      Desi came to me a week before she disappeared. She'd seen the vans at Villa Zarya and wanted to understand the bigger picture.
+
+
+      I showed her my maps. Boat arrivals correlated exactly with van activity at the villa. She understood immediately -- the women are brought by sea to the cove, transported by van to the villa, and then... where? That's what she wanted to find out.
+
+
+      She said she was going to check the van's route. Follow it somehow. See where they take the women after the villa.
+
+
+      I told her absolutely not. I told her this was for professionals -- police, GDBOP, Interpol. Not a yoga instructor with a phone camera.
+
+
+      She smiled and said, "If the professionals won't act, someone has to."
+
+
+      That was the last time I saw her.
+    effects:
+      trust_dimitar: "+10"
+      threat_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask if Desi could still be alive -> dimitar_alive
+      - Get Dimitar's evidence to someone safe -> dimitar_maps
+      - Check other leads -> hub_contacts
+
+  dimitar_alive:
+    type: tweet
+    from: dimitar
+    text: >
+      In my experience, organized trafficking operations don't kill people unnecessarily. Murder brings attention. Attention brings police. Even corrupt police eventually respond to murder.
+
+
+      If Desi became a problem, they would have removed her. Taken her somewhere. Maybe threatened her into silence. Maybe transported her out of the country.
+
+
+      Or maybe she's closer than we think. The villa has a basement -- I've seen the architectural plans at the town hall. Original blueprints from 1978. Large underground storage area.
+
+
+      I pray she's alive. But every day that passes makes it less likely. We need to act, not just talk.
+    effects:
+      trust_dimitar: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Look into the villa's basement -> villa_basement
+      - Get help from outside Morska Polyana -> ivayla_intro
+      - Gather more evidence first -> hub_contacts
+
+  dimitar_coastguard:
+    type: tweet
+    from: dimitar
+    text: >
+      The Burgas coast guard took my report and filed it. Standard procedure. But no patrol boats came. No increased surveillance.
+
+
+      I have an old friend in the coast guard. He told me, off the record, that they received a directive to "deprioritize" the Morska Polyana area. He didn't know who issued it.
+
+
+      That tells me the corruption goes higher than Nikolay. Someone with influence over the coast guard is protecting this route. That's regional government level at minimum.
+
+
+      This is why we need national attention. Media. NGOs. GDBOP. Interpol. This town can't fix this alone.
+    effects:
+      trust_dimitar: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Find Rositsa the journalist -> rositsa_intro
+      - Contact Ivayla about escalating -> ivayla_intro
+      - Talk to other contacts -> hub_contacts
+
+  babayordanka_intro:
+    type: tweet
+    from: babayordanka
+    text: >
+      Come in, come in. Sit. Have some kompot. You're the new one asking about Desi, yes?
+
+
+      I'm 82 years old. I've lived on this hill since I was a bride. I watched this town grow from a fishing village to whatever it is now. I've seen good and bad.
+
+
+      What's happening now is bad. My Sharo -- my dog -- he barks at night. Every few nights. Always toward the villa. Dogs know things, child. They smell fear.
+
+
+      I can't walk down there anymore. My knees. But from my garden, I can see the harbor, the coast road, and the back of Villa Zarya. Would you like to know what I've seen?
+    effects:
+      trust_babayordanka: "+10"
+    choices:
+      - Yes, tell me everything -> babayordanka_story
+      - Ask about Desi specifically -> babayordanka_desi
+      - Ask about the night of Desi's disappearance -> babayordanka_night
+
+  babayordanka_story:
+    type: tweet
+    from: babayordanka
+    text: >
+      Two months ago, men came to Villa Zarya. Not Bulgarians. They painted the windows black. Who paints windows black? Even during communism, we didn't paint windows black.
+
+
+      Then the security man arrived. Big man. Zhivko. He sits outside like a dog guarding bones. But what bones?
+
+
+      Vans come at night. White vans. Sometimes from the coast road, sometimes from the harbor direction. People go in. Fewer people come out. Where do they go?
+
+
+      And lights. Lights in the basement. I can see the glow from the basement windows -- small windows at ground level. There are people down there. Living down there. In 2026, in a European country, people are living in a basement.
+
+
+      Desi saw it too. She was a good girl. She couldn't pretend she didn't see.
+    effects:
+      trust_babayordanka: "+10"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask about the basement lights -> villa_basement
+      - Ask about the night of Desi's disappearance -> babayordanka_night
+      - Ask if she's told anyone else -> babayordanka_told
+
+  babayordanka_desi:
+    type: tweet
+    from: babayordanka
+    text: >
+      Desi was an angel. Every week she brought me groceries. She taught me breathing exercises for my pain. Can you imagine? A young woman spending time with an old baba like me.
+
+
+      She started asking me about the villa maybe six weeks ago. "Baba Yordanka, do you hear anything at night?" I told her about Sharo barking.
+
+
+      She started coming to my garden in the evenings. Sitting on the bench, watching Villa Zarya through my binoculars. She said she was "birdwatching." At midnight. Birdwatching.
+
+
+      She was brave. Too brave. I told her -- "Desi, mila, some things are bigger than us." She said, "That's exactly why someone has to fight."
+    effects:
+      trust_babayordanka: "+10"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask about the night of Desi's disappearance -> babayordanka_night
+      - Ask what she saw from the garden -> babayordanka_story
+      - Check other leads -> hub_contacts
+
+  babayordanka_night:
+    type: tweet
+    from: babayordanka
+    text: >
+      The night Desi disappeared. April 21st. I will never forget it.
+
+
+      Sharo went mad barking around 1 AM. I looked out my window. A black car was parked outside Desi's apartment -- not on the street, in the alley behind. No lights.
+
+
+      Two men went to her door. I couldn't see faces. After maybe ten minutes, they came out. Desi was between them. She wasn't fighting, but she wasn't walking freely either. One man had her arm.
+
+
+      They put her in the car and drove toward the coast road. Not toward the highway. Toward the villa.
+
+
+      I called Nikolay at 1:30 AM. He answered on the fifth ring. I told him what I saw. He said, "Baba, go back to sleep. You're seeing things."
+
+
+      I am 82. My knees are bad. But my eyes and my mind are sharp. I know what I saw.
+    effects:
+      trust_babayordanka: "+15"
+      threat_evidence: "+3"
+      night_witnesses: "+1"
+      evidence_total: "+3"
+    choices:
+      - Ask about the car's description -> babayordanka_car
+      - Confront Nikolay with this testimony -> nikolay_baba_testimony
+      - This is enough to go to authorities -> final_evidence_check
+
+  babayordanka_car:
+    type: tweet
+    from: babayordanka
+    text: >
+      Black car. Big. German car, I think -- BMW or Mercedes. I couldn't read the plates from my window but it was not a Morska Polyana car. I know every car in this town.
+
+
+      I'll tell you what else. The next day, I saw the same type of car parked at Villa Zarya. Zhivko was cleaning it. Cleaning a car that isn't his, at a property where he works security.
+
+
+      And one more thing. The morning after, Plamen Draganov walked past my house. He never walks past my house -- his office is the other direction. He was on his phone, looking nervous.
+
+
+      He saw me watching from the window and he stopped. He looked right at me. Then he kept walking. That look... it wasn't friendly. It was a warning.
+    effects:
+      trust_babayordanka: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Take this testimony to the journalist -> rositsa_intro
+      - Confront Nikolay -> nikolay_baba_testimony
+      - Investigate Villa Zarya directly -> villa_zarya_intro
+
+  babayordanka_told:
+    type: tweet
+    from: babayordanka
+    text: >
+      I told Nikolay. Useless. I told Tsvetana -- she believed me but what can a pharmacist do? I told Father Ilian at the church. He said he would pray.
+
+
+      Prayers don't find missing women.
+
+
+      Rositsa the journalist came to interview me. I told her everything. She wrote it down but said she needs more evidence to publish. One old woman's testimony isn't enough, apparently.
+
+
+      You know who else knows? The fishermen. Stefan's boat goes past Zalivcheto every morning. He's seen things. But he's scared. His family depends on fishing permits. And who issues those permits? The municipality. And who controls the municipality? The same people who control everything in this town.
+    effects:
+      trust_babayordanka: "+5"
+    choices:
+      - Talk to Stefan the fisherman -> stefan_intro
+      - Find Rositsa -> rositsa_intro
+      - Check other leads -> hub_contacts
+
+  viktoria_intro:
+    type: tweet
+    from: viktoria
+    text: >
+      hey. you're the one asking about desi right?
+
+
+      look im gonna be straight with you. desi was my mentor. she taught me yoga, she helped me with my anxiety, she looked at my photos and said i had talent. she was the first adult who ever took me seriously.
+
+
+      after she disappeared i started my own investigation. im 17 and i have a camera with a telephoto lens. people underestimate teen girls and thats their mistake.
+
+
+      i have photos. timestamps. patterns. zhivko's movements, plamen's meetings, the van schedule. everything organized in a folder on my laptop.
+
+
+      but i need to trust you before i share any of it.
+    effects:
+      trust_viktoria: "+10"
+    choices:
+      - Tell Viktoria about evidence you've gathered -> viktoria_share
+      - Ask what she's photographed -> viktoria_photos
+      - Ask about Zhivko's movements -> viktoria_zhivko
+
+  viktoria_share:
+    type: tweet
+    from: viktoria
+    text: >
+      ok if you know about the vans and the women and the boats, then you're further along than i expected.
+
+
+      here's what i have that you might not: plamen meets with a man at the Burgas Marriott every tuesday. i followed him twice on the bus. the man is foreign -- tall, expensive suit, drives a Range Rover with UK plates.
+
+
+      i photographed them together. plamen was handing over an envelope. the man handed back a phone. like they were exchanging something.
+
+
+      also -- and this is important -- the day after desi vanished, zhivko was at her apartment. i have timestamped photos. he was carrying a bag out of her building. a laptop bag.
+
+
+      he took desi's laptop. i'm sure of it. whatever evidence she had on there, they have it now.
+    effects:
+      trust_viktoria: "+15"
+      trafficking_evidence: "+2"
+      threat_evidence: "+2"
+      evidence_total: "+4"
+    choices:
+      - Ask about the foreign man -> viktoria_foreign_man
+      - Ask about Zhivko at the apartment -> viktoria_zhivko_apartment
+      - Connect this with other evidence -> hub_contacts
+
+  viktoria_photos:
+    type: tweet
+    from: viktoria
+    text: >
+      290 photos over six weeks. timestamps, GPS data, everything.
+
+
+      the clearest ones: plamen entering villa zarya at night (he says he never goes there). zhivko loading bags into a van. women visible through a gap in the painted windows -- just for a second, when someone opened one.
+
+
+      one photo shows a woman pressing her hand against the glass. that one... that one i cant look at without crying.
+
+
+      desi would have wanted these photos to matter. i want to make sure they do.
+    effects:
+      trust_viktoria: "+10"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Tell Viktoria about evidence you've gathered -> viktoria_share
+      - Ask her to share the photos with Rositsa -> viktoria_rositsa
+      - Ask about her safety -> viktoria_safety
+
+  viktoria_zhivko:
+    type: tweet
+    from: viktoria
+    text: >
+      zhivko's schedule: he guards villa zarya 6pm to 6am. during the day a different guy takes over -- i dont know his name, he barely comes outside.
+
+
+      on tuesdays and fridays, zhivko leaves the villa at 11pm for exactly 30 minutes. he drives to zalivcheto. thats when the boats come.
+
+
+      he's the ground coordinator. he meets the boats, helps move the people to the van, drives them to the villa.
+
+
+      after desi disappeared, he changed his routine. now he also patrols the yoga studio area. like he's guarding two places. which makes me think... something of desi's is still there. or desi herself.
+    effects:
+      trust_viktoria: "+10"
+      trafficking_evidence: "+1"
+      threat_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Ask about the studio surveillance -> viktoria_studio
+      - Follow up on boat nights -> dimitar_intro
+      - Check other leads -> hub_contacts
+
+  viktoria_foreign_man:
+    type: tweet
+    from: viktoria
+    text: >
+      ive been researching the range rover plates. uk registration. the company listed is something called "Aegean Leisure Holdings" based in London.
+
+
+      i googled them. shell company. no real website. but they have a Bulgarian subsidiary. guess what its called? Sunrise Horizons Ltd. the same company renting villa zarya.
+
+
+      the man is the boss. plamen is the local fixer. zhivko is the muscle. and nikolay... nikolay is the blind eye.
+
+
+      this goes way beyond morska polyana. desi stumbled into an international operation and it swallowed her.
+    effects:
+      trust_viktoria: "+5"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - This needs to go national -> ivayla_intro
+      - Talk to Rositsa about publishing -> rositsa_intro
+      - Gather more evidence -> hub_contacts
+
+  viktoria_zhivko_apartment:
+    type: tweet
+    from: viktoria
+    text: >
+      he was there at 7am the morning after desi disappeared. i was doing sunrise photos from the beach and saw him.
+
+
+      he used a key. he was inside for about 20 minutes. came out with a laptop bag and a paper bag. got in his car and drove to villa zarya.
+
+
+      how did he have a key to desi's apartment? either someone gave it to him or he took desi's keys when they took her.
+
+
+      i reported this to nikolay. he said zhivko was probably "collecting personal items for safekeeping." safekeeping. right.
+    effects:
+      trust_viktoria: "+5"
+      threat_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Confront Nikolay -> nikolay_confront
+      - Share all evidence with Rositsa -> rositsa_evidence
+      - Check other leads -> hub_contacts
+
+  viktoria_rositsa:
+    type: tweet
+    from: viktoria
+    text: >
+      ive already shown rositsa some of the photos. she nearly cried when she saw the woman at the window.
+
+
+      she says she needs more corroboration before she can publish. editor at chernomorski vestnik is nervous about lawsuits from plamen. plamen has lawyers. lots of them.
+
+
+      but rositsa also has contacts at Capital magazine in sofia and at bTV. if we get enough evidence, she can go over the local editor's head and get national coverage.
+
+
+      national coverage means GDBOP gets involved. real police. not nikolay with his shiny new skoda.
+    effects:
+      trust_viktoria: "+5"
+    choices:
+      - Help build the evidence package -> rositsa_intro
+      - Talk to Ivayla about NGO channels -> ivayla_intro
+      - Check other leads -> hub_contacts
+
+  viktoria_safety:
+    type: tweet
+    from: viktoria
+    text: >
+      im careful. i use a telephoto from distance. i never go near villa zarya. i stay in public places.
+
+
+      but... last week someone followed me home from school. a car i didnt recognize. it slowed down when i walked, sped up when i stopped. my mom freaked out.
+
+
+      kaloyan walks me home now. him and his skateboard crew. they think theyre bodyguards lol. its sweet actually.
+
+
+      im not stopping though. desi wouldn't stop and neither will i. some things are worth the risk.
+    effects:
+      trust_viktoria: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Tell Viktoria to be careful and share evidence with adults -> viktoria_rositsa
+      - Ask about other evidence -> viktoria_photos
+      - Check other leads -> hub_contacts
+
+  viktoria_studio:
+    type: tweet
+    from: viktoria
+    text: >
+      zhivko patrols past the yoga studio every 2 hours after midnight. he checks the doors and windows.
+
+
+      why would a security guard from the property next door patrol a yoga studio? unless theres something inside he's protecting. or keeping locked in.
+
+
+      i told milena about this. she went white. she said desi's safe is in there. with everything desi collected.
+
+
+      we need to get into that studio.
+    effects:
+      trust_viktoria: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask Georgi about the studio window -> georgi_studio
+      - Talk to Milena about the safe -> studio_access
+      - Check other leads -> hub_contacts
+
+  rositsa_intro:
+    type: tweet
+    from: rositsa
+    text: >
+      You've been busy. Good. This town needs people who ask questions.
+
+
+      I'm Rositsa Marinova, journalist. I've been investigating Villa Zarya for a month. My editor at Chernomorski Vestnik is cautious -- Plamen Draganov is a major advertiser and his lawyers send threatening letters weekly.
+
+
+      But I have contacts at Capital magazine and bTV in Sofia. If we build an evidence package strong enough, I can bypass the local paper entirely and go national.
+
+
+      I need three things: eyewitness testimony, physical evidence, and documentation. How much do you have?
+    effects:
+      trust_rositsa: "+10"
+    choices:
+      - Share what you've gathered so far -> rositsa_evidence
+      - Ask what Rositsa has found independently -> rositsa_investigation
+      - Ask about her safety -> rositsa_threats
+
+  rositsa_investigation:
+    type: tweet
+    from: rositsa
+    text: >
+      I've confirmed that Sunrise Horizons Ltd is registered in Sofia with a forwarding address in London. The Bulgarian director is listed as a man named Vasil Marinov -- a known associate of organized crime groups in the Burgas region.
+
+
+      Plamen Draganov is listed as the "local property consultant" for Sunrise Horizons. He receives monthly payments from the company. I obtained bank records through... sources.
+
+
+      The payments started three months ago. Exactly when Villa Zarya was rented.
+
+
+      I also found that four women reported missing in Romania in the past three months match the timeline of Dimitar's boat sightings. Romanian police filed the reports but there's no active investigation.
+
+
+      This is trafficking. The evidence is clear. But publishing without enough proof means Plamen's lawyers shut me down and the operation moves somewhere else. We get one shot at this.
+    effects:
+      trust_rositsa: "+10"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Share your evidence with Rositsa -> rositsa_evidence
+      - Ask what she still needs -> rositsa_needs
+      - Ask about Desi specifically -> rositsa_desi
+
+  rositsa_evidence:
+    type: message
+    text: >
+      You share everything you've gathered with Rositsa. She listens carefully, takes notes, and her expression shifts from professional interest to barely contained outrage.
+
+
+      "This is it. Between Boyan's video, Viktoria's photos, Dimitar's boat logs, Baba Yordanka's eyewitness testimony, and the documentation you've gathered... we have enough. More than enough."
+
+
+      "I'm calling my contact at bTV tonight. And I'm sending a formal complaint to GDBOP -- the organized crime directorate. With this much evidence, they have to act."
+
+
+      "But we need to decide how to do this. Do we go public first and force their hand? Or do we go to GDBOP quietly and risk the operation being tipped off?"
+    effects:
+      trust_rositsa: "+15"
+    choices:
+      - Go public first -- media exposure protects everyone -> ending_public
+      - Go to GDBOP quietly -- police raid is more effective -> ending_raid
+      - We need to check on Desi first -- she might be in the villa -> ending_rescue
+
+  rositsa_needs:
+    type: tweet
+    from: rositsa
+    text: >
+      Ideally I need: physical evidence connecting Plamen to the trafficking operation. Eyewitness testimony from multiple independent sources confirming what happens at Villa Zarya. And something that proves Desi's disappearance is connected -- not a separate case.
+
+
+      The journal in the studio safe would be perfect if we can access it. Boyan's video helps but the face isn't clear enough. Viktoria's photos of Plamen at the villa are strong but he'll claim he was doing property management.
+
+
+      What would break this open is either a victim's testimony, or documentary evidence from inside the operation. Financial records, communications, anything.
+
+
+      Or finding Desi herself. Alive or... otherwise. That changes everything.
+    effects:
+      trust_rositsa: "+5"
+    choices:
+      - Help gather what she needs -> hub_contacts
+      - Share evidence you already have -> rositsa_evidence
+      - Try to find Desi directly -> villa_basement
+
+  rositsa_desi:
+    type: tweet
+    from: rositsa
+    text: >
+      Desi contacted me two weeks before she disappeared. She wanted to go public with what she'd found. She wanted me to write the story.
+
+
+      I told her I needed more evidence. I told her to be careful. I told her to let me handle the investigation.
+
+
+      She said she couldn't wait. Women were being moved through the villa every few weeks. Every delay meant more victims.
+
+
+      I should have moved faster. I should have published what I had. Maybe it wouldn't have been enough to bring charges, but it would have put a spotlight on Villa Zarya. It would have made it harder for them to operate.
+
+
+      Instead I was cautious. Professional. And now Desi is gone.
+
+
+      I won't make that mistake again.
+    effects:
+      trust_rositsa: "+10"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Share your evidence -> rositsa_evidence
+      - Ask what she needs to publish -> rositsa_needs
+      - Check other leads -> hub_contacts
+
+  rositsa_threats:
+    type: tweet
+    from: rositsa
+    text: >
+      My tires were slashed last month. Anonymous messages telling me to "focus on cooking festivals." A brick through my office window.
+
+
+      Standard intimidation. I've dealt with worse in Burgas. But here in Morska Polyana, it's personal. Everyone knows who the journalist is. There's nowhere to hide.
+
+
+      My editor received a legal threat from Plamen's lawyers. Defamation suit if we publish anything about Villa Zarya without "verified facts." That's why he's nervous.
+
+
+      But I won't be silenced. Not after Desi. If the local paper won't publish, bTV will. National media doesn't care about Plamen's small-town lawyers.
+    effects:
+      trust_rositsa: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Help build the evidence package -> rositsa_needs
+      - Share what you have -> rositsa_evidence
+      - Check other leads -> hub_contacts
+
+  rositsa_video:
+    type: tweet
+    from: rositsa
+    text: >
+      This video... the quality is poor but the content is damning. Women being led into Villa Zarya at 2 AM. The van. The security.
+
+
+      Combined with Dimitar's boat logs and Viktoria's daytime surveillance photos, this builds a timeline. A pattern.
+
+
+      I can work with this. But I want more. If we can get Desi's journal from the studio safe, that gives us the victim's own documentation. Her voice. That's what makes a story undeniable.
+
+
+      Can you get into the studio?
+    effects:
+      trust_rositsa: "+10"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Try to access the studio -> georgi_studio
+      - Share other evidence first -> rositsa_evidence
+      - Check other leads -> hub_contacts
+
+  ivayla_intro:
+    type: tweet
+    from: ivayla
+    text: >
+      Thank you for reaching out. I'm Ivayla Zheleva with the Open Door Foundation. We work with trafficking victims across the Black Sea coast.
+
+
+      I've been aware of suspicious activity in Morska Polyana for several weeks. Milena contacted me about the diary she found -- the one in Romanian. My colleague translated it.
+
+
+      What you and the others have uncovered confirms what we've feared: Morska Polyana is being used as a transit point for a trafficking network operating between Turkey, Bulgaria, and Western Europe.
+
+
+      Open Door has direct channels to GDBOP and to the EU's anti-trafficking coordinator. We can escalate this. But we need to be strategic.
+    effects:
+      trust_ivayla: "+15"
+    choices:
+      - Ask about the trafficking network -> ivayla_network
+      - Ask about Desi's chances -> ivayla_desi
+      - Share your evidence -> ivayla_evidence
+
+  ivayla_network:
+    type: tweet
+    from: ivayla
+    text: >
+      Based on the patterns we've seen across the coast, this network recruits women in Romania, Moldova, and Ukraine. They promise legitimate jobs -- hotel work, cleaning, childcare.
+
+
+      The women are brought by boat from Turkey to avoid land border controls. Bulgaria's Black Sea coast has hundreds of unmonitored coves. Morska Polyana's Zalivcheto is one of many.
+
+
+      Villa Zarya appears to be a transit house. Women stay briefly -- days, maybe a week -- before being moved to their final destination. Probably Western Europe. Germany, Netherlands, UK.
+
+
+      The organization is sophisticated. Shell companies, corrupt officials, professional logistics. Plamen Draganov is the local facilitator, but the people above him are international.
+    effects:
+      trust_ivayla: "+5"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask how to help -> ivayla_evidence
+      - Ask about Desi -> ivayla_desi
+      - Ask about contacting GDBOP -> ivayla_gdbop
+
+  ivayla_desi:
+    type: tweet
+    from: ivayla
+    text: >
+      I'll be honest with you. When civilians interfere with trafficking operations, the outcome depends on how the network perceives the threat.
+
+
+      If they see Desi as a minor nuisance, they might have intimidated her into silence and released her. But given that she accumulated extensive evidence and refused to stop... they would have seen her as a serious threat.
+
+
+      Best case: she's being held somewhere as leverage -- as long as she's alive, they can control the narrative. Worst case: she's been transported out of the country or... worse.
+
+
+      The villa's basement is our most likely lead. If she's in Morska Polyana, she's there.
+    effects:
+      trust_ivayla: "+5"
+    choices:
+      - Push for a raid on the villa -> ivayla_gdbop
+      - Share evidence to build the case -> ivayla_evidence
+      - Check other leads -> hub_contacts
+
+  ivayla_evidence:
+    type: message
+    text: >
+      You share your collected evidence with Ivayla. She reviews it with professional calm, but you can see her jaw tighten.
+
+
+      "This is comprehensive. Eyewitness testimony, surveillance photos, video evidence, boat arrival logs, financial connections, and documented threats. This is better than most cases I've brought to GDBOP."
+
+
+      "I'm contacting our national coordinator tonight. With this package, we can request an emergency intervention. GDBOP, coast guard, the works."
+
+
+      "But there's a risk. If Nikolay is as compromised as the evidence suggests, the network might be tipped off before the raid. We need to act fast."
+    effects:
+      trust_ivayla: "+10"
+    choices:
+      - Go to GDBOP for an emergency raid -> ending_raid
+      - Go public through media to prevent a cover-up -> ending_public
+      - Push for immediate action to save Desi -> ending_rescue
+
+  ivayla_gdbop:
+    type: tweet
+    from: ivayla
+    text: >
+      GDBOP -- Glavna Direktsia Borba s Organiziranata Prestapnost. Bulgaria's organized crime directorate. They handle trafficking cases at the national level.
+
+
+      I have a direct contact there. Inspector Petrov. He's handled three trafficking busts on the coast in the past two years. He's trustworthy and he's effective.
+
+
+      If we bring him everything we have, he can organize a raid within 48 hours. But it has to bypass local police entirely. Nikolay cannot know.
+
+
+      The question is: do we have time? If the network suspects we're building a case, they'll clear out Villa Zarya overnight. The women will be moved. Desi -- if she's there -- will disappear for good.
+    effects:
+      trust_ivayla: "+5"
+    choices:
+      - Push for immediate GDBOP action -> ending_raid
+      - Go public to prevent disappearance of evidence -> ending_public
+      - Try to find Desi first -> ending_rescue
+
+  ivayla_video:
+    type: tweet
+    from: ivayla
+    text: >
+      This video is crucial. Even at low quality, it clearly shows women being moved into a residential property under cover of darkness with security present.
+
+
+      Combined with the diary Milena found, this establishes a pattern of trafficking. Real victims. Real suffering.
+
+
+      I'm sending this to our legal team immediately. They can prepare an emergency filing with GDBOP.
+
+
+      We need to move quickly. How much more evidence do you have?
+    effects:
+      trust_ivayla: "+10"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Share everything -> ivayla_evidence
+      - Ask about next steps -> ivayla_gdbop
+      - Gather more evidence first -> hub_contacts
+
+  ivayla_diary:
+    type: tweet
+    from: ivayla
+    text: >
+      We translated the full diary. The writer is a 22-year-old Romanian woman named Elena. She was recruited in Bucharest with promises of a cleaning job in Athens.
+
+
+      Instead, she was transported through Turkey by boat to the Bulgarian coast. She spent four days in a "house by the sea" -- almost certainly Villa Zarya. She describes a basement with mattresses, limited food, and guards who took their phones.
+
+
+      Elena was moved on to an unknown destination. Her diary ends mid-sentence: "Tomorrow they say we go to--"
+
+
+      We've shared Elena's case with Romanian authorities. They're cooperating. But every day we wait, more women go through that villa.
+    effects:
+      trust_ivayla: "+10"
+      trafficking_evidence: "+3"
+      evidence_total: "+3"
+    choices:
+      - Push for immediate action -> ivayla_gdbop
+      - Build more evidence -> hub_contacts
+      - Find Rositsa to go public -> rositsa_intro
+
+  stefan_intro:
+    type: tweet
+    from: stefan
+    text: >
+      I fish. I've fished these waters since I was twelve, like my father and his father.
+
+
+      I know every rock, every current, every cove on this coast. And I know when something doesn't belong.
+
+
+      Fast boats at night. No running lights. Coming from the southeast -- Turkish waters. They dock at Zalivcheto and they're gone before dawn.
+
+
+      My nets got cut twice near that cove. Deliberate cuts. Someone is keeping fishermen away from the approach route.
+
+
+      I want to help. But I have a family. Three children. My fishing license comes from the municipality. If I talk publicly, I lose everything.
+    effects:
+      trust_stefan: "+10"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Promise discretion and ask for details -> stefan_details
+      - Ask about the night boats -> stefan_boats
+      - Understand his fears -> stefan_fears
+
+  stefan_details:
+    type: tweet
+    from: stefan
+    text: >
+      Alright. But no names, no quotes. You didn't hear this from me.
+
+
+      Three weeks ago I went out early -- 4 AM. Near Zalivcheto I saw a RHIB beached on the rocks. Engine still warm. Tracks in the sand leading up the path.
+
+
+      I found something on the rocks. A woman's shoe. Cheap, worn out. And a piece of paper with writing I couldn't read. Maybe Romanian. Maybe Russian.
+
+
+      I kept the shoe and the paper. They're in my shed. Old evidence maybe, but real.
+
+
+      Also -- the harbor master log shows no vessel traffic at night near Zalivcheto. Ever. Because no one reports it. And the harbor master doesn't check.
+    effects:
+      trust_stefan: "+10"
+      trafficking_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask to see the shoe and paper -> stefan_evidence
+      - Connect with Dimitar's boat logs -> dimitar_intro
+      - Take this to Ivayla -> ivayla_intro
+
+  stefan_boats:
+    type: tweet
+    from: stefan
+    text: >
+      The boats are RHIBs. Rigid-hulled inflatable. Fast, quiet, hard to detect on radar at low speed. Used by coast guard, navy, and... others.
+
+
+      They come roughly every two weeks. Always at new moon. Always from the southeast. They stay at Zalivcheto for 30 to 45 minutes, then leave.
+
+
+      Dimitar tracks them from the cliff. I've seen them from the water. Between us, we have a complete picture.
+
+
+      The route goes: Turkey to Zalivcheto, then vehicles to Villa Zarya. The logistics are military-grade. Whoever runs this has experience.
+    effects:
+      trust_stefan: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask about the van route -> stefan_vans
+      - Talk to Dimitar about coordinating -> dimitar_intro
+      - Check other leads -> hub_contacts
+
+  stefan_vans:
+    type: tweet
+    from: stefan
+    text: >
+      The vans take the coast road from Zalivcheto. It passes behind the harbor, through the old industrial area, and up to the residential section where Villa Zarya sits. Five minutes drive.
+
+
+      But I saw something else. Some vans don't go to the villa. Some keep driving. Toward the E87 highway. Toward Burgas or beyond.
+
+
+      Not all the women stop in Morska Polyana. Some pass straight through. The villa is one node in a chain. There are others.
+
+
+      This is bigger than our town. Much bigger.
+    effects:
+      trust_stefan: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - This needs national attention -> ivayla_intro
+      - Talk to Rositsa about the broader network -> rositsa_intro
+      - Check other leads -> hub_contacts
+
+  stefan_fears:
+    type: tweet
+    from: stefan
+    text: >
+      You don't understand what it's like. My wife works at the hotel. My eldest is starting university next year. We depend on this town.
+
+
+      If I talk publicly and Plamen finds out, he'll make sure my fishing license isn't renewed. He controls the municipal council. One word from him and I'm finished.
+
+
+      That's how they keep this town quiet. Everyone depends on something -- a job, a license, a permit. And everything goes through the same few people.
+
+
+      I want to help. I do. But I need protection. Anonymity. A guarantee that my family won't suffer.
+
+
+      Can you give me that?
+    effects:
+      trust_stefan: "+10"
+    choices:
+      - Connect Stefan with Ivayla for witness protection -> stefan_ivayla
+      - Promise anonymity through the journalist -> stefan_rositsa
+      - Understand and check other leads -> hub_contacts
+
+  stefan_evidence:
+    type: message
+    text: >
+      Stefan meets you at his shed near the harbor. He shows you a worn woman's shoe -- cheap, synthetic, the kind sold at markets across Eastern Europe. Inside the shoe, written in pen on the insole: "Elena B. Bucuresti."
+
+
+      The piece of paper is a torn fragment with handwritten text in Romanian. You photograph both items.
+
+
+      Later, Ivayla confirms: "Elena B. from Bucharest matches the diary writer. This places her physically at Zalivcheto. It corroborates the boat route."
+
+
+      The shoe and the diary. Two pieces of the same woman's journey. From Bucharest to a boat to a cove to a villa to... somewhere.
+    effects:
+      trafficking_evidence: "+3"
+      evidence_total: "+3"
+    choices:
+      - Take this to Rositsa -> rositsa_evidence
+      - Share with Ivayla -> ivayla_evidence
+      - Check other leads -> hub_contacts
+
+  stefan_ivayla:
+    type: tweet
+    from: ivayla
+    text: >
+      I've spoken with Stefan. The Open Door Foundation can provide witness protection support. We've done this before -- anonymous testimony, identity protection, legal representation.
+
+
+      Stefan has agreed to provide a written statement for GDBOP, on condition that his identity is protected. His evidence about the boats and the shoe corroborates our entire timeline.
+
+
+      We're building an airtight case. Every piece makes it stronger.
+    effects:
+      trust_stefan: "+5"
+      trust_ivayla: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Push for GDBOP raid -> ending_raid
+      - Go public through media -> ending_public
+      - Try to rescue Desi first -> ending_rescue
+
+  stefan_rositsa:
+    type: tweet
+    from: rositsa
+    text: >
+      I can protect Stefan's identity in any article. Anonymous source. "A local fisherman." No identifying details. I've done this before.
+
+
+      His testimony about the boat landings, combined with Dimitar's logs, gives us the maritime angle. This isn't just a local crime story anymore -- it's international trafficking using Bulgaria's coast.
+
+
+      bTV will run this. I'm sure of it now.
+    effects:
+      trust_stefan: "+5"
+      trust_rositsa: "+5"
+    choices:
+      - Push for publication -> ending_public
+      - Coordinate with GDBOP first -> ivayla_gdbop
+      - Gather final evidence -> hub_contacts
+
+  petya_intro:
+    type: tweet
+    from: petya
+    text: >
+      I'm Petya. Desi's sister. I came from Sofia the day after she was reported missing.
+
+
+      My sister is not the type to "just leave." She had classes scheduled. Bills paid. Her cat was left alone in the apartment -- Desi would never abandon Mila.
+
+
+      The police here are useless. Nikolay gave me a form to fill out and told me to "be patient." Patient? My sister is missing.
+
+
+      I'm a lawyer. I know how investigations should work. This is not it. Something is very wrong in Morska Polyana and the police are part of the problem.
+    effects:
+      trust_petya: "+15"
+    choices:
+      - Share what you've learned -> petya_evidence
+      - Ask about Desi's state of mind before disappearing -> petya_desi_mind
+      - Ask about legal options -> petya_legal
+
+  petya_evidence:
+    type: tweet
+    from: petya
+    text: >
+      Everything you're telling me confirms what I feared.
+
+
+      Desi called me the week before she disappeared. She was scared but determined. She said she'd found something terrible happening next door to her studio and she was going to expose it.
+
+
+      I told her to go to the police. She said she had. I told her to leave Morska Polyana. She said she couldn't abandon the women she'd seen.
+
+
+      That's my sister. She can't look away from suffering. It's what made her a wonderful yoga teacher and a terrible judge of danger.
+
+
+      I have contacts at the Sofia prosecutor's office. If your evidence is solid, I can file directly with them. Bypass Morska Polyana police entirely.
+    effects:
+      trust_petya: "+10"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask Petya to file with the prosecutor -> petya_prosecutor
+      - Ask about the court order for the studio -> petya_studio
+      - Coordinate with Ivayla and Rositsa -> final_evidence_check
+
+  petya_desi_mind:
+    type: tweet
+    from: petya
+    text: >
+      Desi was terrified. But she was also angry. The last time I spoke to her, she said something that haunts me:
+
+
+      "Petya, there are women in that building who have no voice. No phone. No freedom. If I stay quiet, I'm as guilty as the people keeping them there."
+
+
+      She knew the risk. She wasn't naive. She'd already been threatened twice. She knew Nikolay wasn't going to protect her.
+
+
+      But she chose to act anyway. Because that's who she was.
+
+
+      I need to find her. Please help me find her.
+    effects:
+      trust_petya: "+10"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Share evidence and coordinate rescue -> final_evidence_check
+      - Ask about legal options -> petya_legal
+      - Check other leads -> hub_contacts
+
+  petya_legal:
+    type: tweet
+    from: petya
+    text: >
+      As a lawyer, I can tell you: the evidence you've described would be sufficient for a criminal investigation. Multiple witnesses, documentary evidence, financial connections, and a missing person.
+
+
+      The problem is jurisdiction. Local police are compromised. The district prosecutor in Burgas might be clean, but I don't know them personally.
+
+
+      My best contact is at the Supreme Prosecutor's Office in Sofia. If I file there, it goes straight to GDBOP. No local interference.
+
+
+      I'm also preparing a civil suit against Plamen Draganov for unauthorized access to Desi's property -- the lock change. It's a smaller charge but it puts legal pressure on him.
+
+
+      We can attack this from multiple angles. Legal, media, and law enforcement simultaneously.
+    effects:
+      trust_petya: "+5"
+    choices:
+      - Coordinate a multi-front approach -> final_evidence_check
+      - Ask Petya to file immediately -> petya_prosecutor
+      - Check other leads -> hub_contacts
+
+  petya_prosecutor:
+    type: tweet
+    from: petya
+    text: >
+      I've contacted my colleague at the Supreme Prosecutor's Office. She's reviewing the evidence package now.
+
+
+      If she agrees to open a case, GDBOP will receive orders within 24 hours. A raid on Villa Zarya could happen within days.
+
+
+      But she warned me: if local police get wind of this, the subjects will flee. Everything in that villa will disappear. Including anyone who might be held there.
+
+
+      We need absolute secrecy until the raid happens. Can you make sure everyone involved understands that?
+    effects:
+      trust_petya: "+10"
+    choices:
+      - Coordinate secrecy and wait for the raid -> ending_raid
+      - Go public simultaneously to prevent escape -> ending_public
+      - Push for immediate rescue attempt -> ending_rescue
+
+  petya_studio:
+    type: tweet
+    from: petya
+    text: >
+      I filed for a court order to access the studio. Bulgarian courts are slow, but I called in a favor. A judge in Burgas issued an emergency order.
+
+
+      We can legally access the studio tomorrow. Whatever is in Desi's safe belongs to her estate -- and as her sister, I'm the representative.
+
+
+      Plamen's lawyers tried to block it. They lost. The judge saw through the "safety" excuse immediately.
+
+
+      Tomorrow morning, Milena and I open that safe. Whatever Desi left behind, we'll find it.
+    effects:
+      trust_petya: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wait for the legal route to the safe -> studio_legal_access
+      - Push for faster action -> final_evidence_check
+      - Check other leads -> hub_contacts
+
+  studio_legal_access:
+    type: message
+    text: >
+      The next morning, Petya arrives at the studio with the court order, a locksmith, and Milena. You accompany them.
+
+
+      The safe opens to reveal exactly what Milena expected: Desi's USB drive, photographs, and handwritten journal. Forty-six days of meticulous documentation.
+
+
+      Among the photos: a clear shot of Plamen Draganov handing a phone to the foreign man in the suit. Another showing women through the villa's briefly opened window. And one showing Nikolay's police car parked at Villa Zarya at 3 AM.
+
+
+      The journal names dates, license plates, and descriptions. It's a complete evidence package, built by a woman who knew she might not be around to present it herself.
+
+
+      Petya holds the journal and weeps quietly. Milena puts her arm around her. "She knew," Milena whispers. "She prepared for this."
+    effects:
+      trafficking_evidence: "+5"
+      threat_evidence: "+3"
+      evidence_total: "+8"
+    choices:
+      - Take everything to GDBOP -> ending_raid
+      - Go to national media -> ending_public
+      - Prioritize finding Desi -> ending_rescue
+
+  nikolay_confront:
+    type: tweet
+    from: nikolay
+    text: >
+      I know what people are saying about me. That I'm corrupt. That I ignored Desi's reports. That I'm in Plamen's pocket.
+
+
+      You want the truth? Yes, I took Desi's reports. Yes, I filed them. But when I asked my superiors in Burgas for backup to investigate Villa Zarya, I was told to stand down. Direct order.
+
+
+      I'm one sergeant in a small town. I don't have the resources or the authority to raid a property linked to organized crime. I'd be dead or fired within a week.
+
+
+      The car? I bought it used from my cousin. Check the paperwork if you don't believe me.
+
+
+      I'm not the villain here. I'm a coward, maybe. But not a villain.
+    effects:
+      trust_nikolay: "+5"
+    choices:
+      - Press Nikolay harder -> nikolay_press
+      - Ask about the stand-down order -> nikolay_order
+      - Ask about Baba Yordanka's call -> nikolay_baba_testimony
+
+  nikolay_press:
+    type: tweet
+    from: nikolay
+    text: >
+      Fine. You want full honesty? Plamen pays me. Not much -- 500 leva a month. For "consulting." I look the other way on building code violations, parking, noise complaints.
+
+
+      I didn't know about the trafficking. I swear on my mother's grave. When Desi first came to me about Villa Zarya, I thought it was a noise complaint. Foreigners renting a villa and being loud.
+
+
+      By the time I understood what was really happening, I was already on Plamen's payroll. I was trapped. If I investigated, Plamen would expose me. If I didn't investigate, Desi would be in danger.
+
+
+      I chose myself. And now a woman is missing and I can't sleep.
+
+
+      I'll cooperate. Tell me what you need. I want to make this right.
+    effects:
+      trust_nikolay: "+10"
+      threat_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Ask Nikolay to provide inside information -> nikolay_inside
+      - Ask about Villa Zarya's layout -> nikolay_villa
+      - Don't trust him, talk to others -> hub_contacts
+
+  nikolay_order:
+    type: tweet
+    from: nikolay
+    text: >
+      The stand-down order came from the Burgas district police commander. Commander Todorov. He said the villa was under "separate investigation" and local police should not interfere.
+
+
+      I checked. There is no separate investigation. No case file in the system. Todorov lied.
+
+
+      Either Todorov is part of the network, or someone pressured him. Either way, the corruption goes higher than Morska Polyana.
+
+
+      This is why you need GDBOP. National level. Independent of district command. They answer to Sofia, not Burgas.
+    effects:
+      trust_nikolay: "+5"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask Nikolay to help from inside -> nikolay_inside
+      - Take this to Ivayla -> ivayla_intro
+      - Check other leads -> hub_contacts
+
+  nikolay_baba_testimony:
+    type: tweet
+    from: nikolay
+    text: >
+      Baba Yordanka called me that night. She said she saw men take Desi. I... I told her to go back to sleep.
+
+
+      I knew. When she called, I knew what it meant. And I did nothing.
+
+
+      That call is the thing I can't forgive myself for. An 82-year-old woman reported a kidnapping and I told her she was imagining things.
+
+
+      I have to live with that. But I can try to fix it. If Desi is still alive, she's probably in Villa Zarya's basement. Plamen mentioned renovations down there. "Storage," he called it.
+
+
+      I have the authority to request entry for a welfare check. It's thin, legally. But it's something.
+    effects:
+      trust_nikolay: "+10"
+      threat_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Accept Nikolay's help for a welfare check -> nikolay_welfare
+      - Don't trust him, go to GDBOP instead -> ivayla_gdbop
+      - Gather more evidence -> hub_contacts
+
+  nikolay_inside:
+    type: tweet
+    from: nikolay
+    text: >
+      Here's what I can do: I have access to police databases. I can run the plates Desi recorded. I can check the Sunrise Horizons company registration. I can pull Plamen's financial records through official channels.
+
+
+      I can also access the municipal CCTV. There are two cameras that cover the road to Villa Zarya. If the footage hasn't been deleted, we can see every vehicle that went in and out.
+
+
+      Give me 24 hours. I'll get you everything I can access without alerting Plamen or Burgas command.
+
+
+      And if you're coordinating with GDBOP... don't tell them about me yet. Let me bring them something useful first. Maybe they'll consider my cooperation when the charges come.
+    effects:
+      trust_nikolay: "+10"
+      trafficking_evidence: "+1"
+      threat_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Accept Nikolay's help -> nikolay_delivers
+      - Don't trust him -> hub_contacts
+      - Push for faster action -> final_evidence_check
+
+  nikolay_villa:
+    type: tweet
+    from: nikolay
+    text: >
+      Villa Zarya is a two-story property with a large basement. Built in 1978 as a Communist Party retreat. The basement was originally a wine cellar and storage facility.
+
+
+      It has its own entrance from the garden -- a set of stairs going down. The windows are small, ground-level. Enough for light and air but you can't climb through them.
+
+
+      Since Sunrise Horizons took over, Plamen filed renovation permits for the basement. "Climate-controlled storage." The permits were approved by the municipality without inspection. Of course.
+
+
+      If anyone is being held in that building, they're in the basement. It's the only part that's truly hidden from view.
+    effects:
+      trust_nikolay: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Plan to access the basement -> villa_basement
+      - Push for a police raid -> ending_raid
+      - Check other leads -> hub_contacts
+
+  nikolay_welfare:
+    type: message
+    text: >
+      Nikolay calls you the next morning. "I went to Villa Zarya at 6 AM. Official welfare check. Zhivko tried to refuse me entry but I showed him the badge."
+
+
+      "The ground floor is clean. Normal-looking. But the basement door has a new lock -- industrial grade. Zhivko said it was 'storage' and he didn't have the key."
+
+
+      "I heard something. Through the door. Movement. Maybe voices. I couldn't be sure."
+
+
+      "I don't have probable cause for a forced entry. Not as a local sergeant. But if GDBOP comes with a warrant..."
+
+
+      "There's someone down there. I'd bet my badge on it."
+    effects:
+      trust_nikolay: "+10"
+      trafficking_evidence: "+2"
+      threat_evidence: "+1"
+      evidence_total: "+3"
+    choices:
+      - Rush to GDBOP with everything -> ending_raid
+      - Go public to force immediate action -> ending_public
+      - Attempt direct rescue -> ending_rescue
+
+  nikolay_delivers:
+    type: message
+    text: >
+      Twenty-four hours later, Nikolay sends you a file. CCTV footage showing vehicles entering and leaving Villa Zarya over six weeks. Plate numbers. Timestamps.
+
+
+      Most critically: footage from the night of April 21st. A black BMW approaching Desi's apartment at 12:47 AM. Two men exiting. The same car leaving at 1:14 AM with someone in the back seat.
+
+
+      The BMW's plates trace to a rental company in Sofia. The rental was paid by Sunrise Horizons Ltd.
+
+
+      Nikolay also pulled Plamen's phone records through the police database. Multiple calls to a UK number. The same number every week.
+
+
+      "This is everything I could get without raising flags," Nikolay messages. "Use it. Make this right."
+    effects:
+      trafficking_evidence: "+3"
+      threat_evidence: "+2"
+      evidence_total: "+5"
+    choices:
+      - Take everything to GDBOP -> ending_raid
+      - Send to Rositsa for publication -> ending_public
+      - Use it to find Desi -> ending_rescue
+
+  plamen_intro:
+    type: tweet
+    from: plamen
+    text: >
+      Ah, the new resident who's been asking questions about everything. Welcome to Morska Polyana. Beautiful town, isn't it?
+
+
+      I understand the concern about Desi. We all miss her. But people come and go. Especially artistic types -- they follow their inspiration.
+
+
+      Villa Zarya? It's a private rehabilitation clinic operated by Sunrise Horizons. Respectable company. I merely handled the property management. Standard business.
+
+
+      I'd be happy to answer your questions. I have nothing to hide.
+    effects:
+      trust_plamen: "+5"
+    choices:
+      - Ask about Sunrise Horizons -> plamen_sunrise
+      - Ask why he changed the yoga studio locks -> plamen_locks
+      - Challenge him directly about the trafficking -> plamen_confront_evidence
+
+  plamen_sunrise:
+    type: tweet
+    from: plamen
+    text: >
+      Sunrise Horizons is a UK-based wellness company. They're expanding into Eastern Europe -- Bulgaria, Greece, Romania. They contacted me about available properties.
+
+
+      Villa Zarya was perfect for their needs. Private, coastal, good road access. They signed a two-year lease and paid upfront.
+
+
+      The director is a British businessman named Martin Cole. Very professional. We've met several times to discuss the property.
+
+
+      The blacked-out windows? Patient privacy. The security guard? Patient safety. It's a rehabilitation clinic. These measures are standard.
+
+
+      I don't know what Desi thought she saw, but she was making unfounded accusations that could have damaged the clinic's reputation. I offered to buy out her studio lease to avoid conflict. She refused. That's her right.
+    effects:
+      trust_plamen: "+5"
+    choices:
+      - Press on the company details -> plamen_company
+      - Ask about the night Desi disappeared -> plamen_night
+      - Challenge him with evidence -> plamen_confront_evidence
+
+  plamen_locks:
+    type: tweet
+    from: plamen
+    text: >
+      The studio lock change was a security measure. When a tenant disappears, we have a responsibility to secure the property and its contents. Standard procedure.
+
+
+      I contacted the landlord, explained the situation, and he authorized it. It's all documented.
+
+
+      Milena can access the studio once the missing persons investigation is resolved. Until then, the property is secured for Desi's protection.
+
+
+      I'm acting in Desi's best interest. Her belongings are safe.
+    choices:
+      - Challenge the "best interest" claim -> plamen_challenge
+      - Ask about Sunrise Horizons -> plamen_sunrise
+      - Leave and talk to someone else -> hub_contacts
+
+  plamen_challenge:
+    type: tweet
+    from: plamen
+    text: >
+      I don't appreciate the accusation. I'm a businessman. I manage properties. I facilitate deals. That's what I do.
+
+
+      Whatever conspiracy theories are circulating on this instance, they're unfounded. And frankly, they're starting to concern my lawyers.
+
+
+      I would advise you to be very careful about what you post publicly. Defamation is a serious matter in Bulgarian law.
+
+
+      Now, if you'll excuse me, I have work to do.
+    choices:
+      - Back off for now -> hub_contacts
+      - Push harder with evidence -> plamen_confront_evidence
+      - Talk to others about Plamen -> georgi_knows
+
+  plamen_company:
+    type: tweet
+    from: plamen
+    text: >
+      Sunrise Horizons is registered in London. Their Bulgarian subsidiary is properly incorporated. All taxes paid. All permits filed.
+
+
+      Martin Cole is the director. You can look him up on Companies House if you want. Everything is transparent.
+
+
+      I don't know what else you want me to say. It's a legitimate business. I'm a legitimate property manager. There's no story here.
+
+
+      Perhaps your time would be better spent helping the police find Desi, rather than harassing local businessmen.
+    choices:
+      - You know she's not coming back, don't you? -> plamen_slip
+      - Back off for now -> hub_contacts
+      - Confront with evidence -> plamen_confront_evidence
+
+  plamen_slip:
+    type: tweet
+    from: plamen
+    text: >
+      What? I didn't say that. I said your time would be better spent looking for her. Obviously I hope she's found safe.
+
+
+      Don't twist my words. I'm not going to engage with this kind of manipulation.
+
+
+      This conversation is over. Contact my lawyer if you have further questions.
+    effects:
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Note his reaction and move on -> hub_contacts
+      - Confront with evidence -> plamen_confront_evidence
+      - Talk to others about Plamen's response -> rositsa_intro
+
+  plamen_night:
+    type: tweet
+    from: plamen
+    text: >
+      The night Desi disappeared? I was at home. Asleep. Like any normal person at 1 AM.
+
+
+      I learned about her disappearance the next day when Milena posted on the instance. I was shocked, naturally. I immediately offered my assistance to Nikolay.
+
+
+      I have no idea what happened to Desi. And I resent the implication.
+    choices:
+      - Press about the BMW -> plamen_bmw
+      - Back off -> hub_contacts
+      - Confront with evidence -> plamen_confront_evidence
+
+  plamen_bmw:
+    type: tweet
+    from: plamen
+    text: >
+      What BMW? I drive a Mercedes. I don't know what you're talking about.
+
+
+      Are you following me? Are you tracking my movements? Because that's called stalking and it's a criminal offense.
+
+
+      I think we're done here. My lawyers will be in touch if this harassment continues.
+    effects:
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Note his defensive reaction -> hub_contacts
+      - Confront with full evidence -> plamen_confront_evidence
+      - Talk to others -> rositsa_intro
+
+  plamen_confront_evidence:
+    type: tweet
+    from: plamen
+    text: >
+      ...
+
+
+      I don't know what you think you have. But you're playing a very dangerous game.
+
+
+      I'm a property manager. That's all. Whatever happens at Villa Zarya is the tenant's business, not mine.
+
+
+      If you go public with these allegations, I will sue you for everything you have. And I will win. I have the best lawyers in Burgas.
+
+
+      But let me give you some friendly advice: some doors, once opened, cannot be closed. Some people, once they become problems, are dealt with. Just like your friend Desi.
+
+
+      ...I didn't mean it like that. I meant she left town. Obviously.
+
+
+      Leave me alone. This conversation never happened.
+    effects:
+      threat_evidence: "+3"
+      evidence_total: "+3"
+    choices:
+      - He just threatened you -- document everything -> final_evidence_check
+      - Take this to Rositsa immediately -> rositsa_evidence
+      - Go to GDBOP now -> ivayla_gdbop
+
+  zhivko_intro:
+    type: tweet
+    from: zhivko
+    text: >
+      What do you want? I'm working.
+
+
+      I'm security for Villa Zarya. Private property. No visitors. That's my job.
+
+
+      I don't know anything about any missing yoga woman. I mind my own business. You should do the same.
+    choices:
+      - Ask about his background -> zhivko_background
+      - Ask about the night activity -> zhivko_nights
+      - Leave and investigate differently -> hub_contacts
+
+  zhivko_background:
+    type: tweet
+    from: zhivko
+    text: >
+      I worked security in Burgas for ten years. Clubs, hotels, events. Then Mr. Draganov offered me this position. Good pay, quiet location. I sit, I watch, I make sure no one enters without authorization.
+
+
+      That's it. That's the whole story.
+
+
+      I don't know what people are saying about me. I don't care. Let them talk.
+    choices:
+      - Ask about the property -> zhivko_nights
+      - Ask about Boyan's phone -> zhivko_phone
+      - Leave -> hub_contacts
+
+  zhivko_nights:
+    type: tweet
+    from: zhivko
+    text: >
+      Night activity? It's a rehabilitation clinic. Patients have different schedules. Sometimes deliveries come after hours. Medical supplies.
+
+
+      I don't ask questions about what comes in and out. I'm paid to guard the gate, not to inspect cargo.
+
+
+      Why are you so interested? Are you a journalist? Police? Because if you're either, you should go through official channels. Not interrogate a security guard.
+
+
+      We're done here.
+    choices:
+      - Press about the "cargo" comment -> zhivko_cargo
+      - Leave and talk to others -> hub_contacts
+
+  zhivko_phone:
+    type: tweet
+    from: zhivko
+    text: >
+      A phone? I don't know what you're talking about. Kids shouldn't be sneaking around private property at night. If some kid dropped his phone, that's his problem.
+
+
+      I'm not discussing this further.
+    effects:
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Note his reaction -> hub_contacts
+      - Press harder -> zhivko_cargo
+      - Leave -> hub_contacts
+
+  zhivko_cargo:
+    type: tweet
+    from: zhivko
+    text: >
+      I said deliveries. Supplies. That's all.
+
+
+      Listen. I don't know you. But I know the type. You come to a small town, you think you can play detective. Let me tell you something -- the people I work for don't play games.
+
+
+      Desi Ivanova thought she could play detective too. Look where that got her.
+
+
+      ...I mean she left town. Everyone knows she left town.
+
+
+      Go away. Now.
+    effects:
+      threat_evidence: "+2"
+      evidence_total: "+2"
+    choices:
+      - Document this threat -> final_evidence_check
+      - Report to Rositsa -> rositsa_evidence
+      - Get to safety and plan -> hub_contacts
+
+  villa_zarya_intro:
+    type: message
+    text: >
+      Villa Zarya sits at the eastern edge of Morska Polyana's residential area. A two-story building from the communist era, it would look abandoned if not for the freshly painted-over windows and the security camera mounted above the gate.
+
+
+      Zhivko sits in a plastic chair by the entrance, arms crossed. A white van is parked in the driveway.
+
+
+      Through a gap in the fence, you can see the back garden connects to the yoga studio's courtyard. A low wall separates them. Easy to see over. Easy to hear through.
+
+
+      The basement windows at ground level have a faint glow, even in daylight. Someone -- or something -- is down there.
+    choices:
+      - Try to talk to Zhivko -> zhivko_intro
+      - Observe from a distance -> villa_observe
+      - Ask around about the villa -> hub_contacts
+
+  villa_observe:
+    type: message
+    text: >
+      You spend an hour observing Villa Zarya from Baba Yordanka's garden on the hill above. Through binoculars, you note:
+
+
+      A white van with Sofia plates. Zhivko checking his phone frequently. A delivery of groceries -- far more food than one security guard would need. Six bags of bread, bulk rice, bottled water by the case.
+
+
+      At one point, Zhivko opens the side door and you hear something before it closes: voices. Multiple voices. Speaking a language that isn't Bulgarian.
+
+
+      There are people in that building. More than the "clinic" would suggest.
+    effects:
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Report observations to Rositsa -> rositsa_intro
+      - Share with Ivayla -> ivayla_intro
+      - Keep investigating -> hub_contacts
+
+  villa_basement:
+    type: message
+    text: >
+      From multiple sources, you've learned that Villa Zarya's basement is the key. Originally a wine cellar, now "climate-controlled storage." But the evidence points to something far worse.
+
+
+      Baba Yordanka sees lights at night. Nikolay heard movement through the locked door. The building receives enough food for dozens. Zhivko guards it around the clock.
+
+
+      Desi was last seen being taken toward the villa. The diary describes women being held in "a basement with mattresses."
+
+
+      If Desi is alive, she may be down there. If the trafficked women are still being held, they're there too.
+
+
+      But accessing the basement requires either stealth, legal authority, or force. None of which you have alone.
+    choices:
+      - Push for GDBOP raid with full evidence -> ending_raid
+      - Go public to force action -> ending_public
+      - Attempt rescue with local help -> ending_rescue
+
+  timeline_more:
+    type: tweet
+    from: viktoria
+    text: >
+      hey new person. if youre reading the timeline youll see a lot of people being careful about what they say. thats fear.
+
+
+      but some of us arent afraid anymore. check the #justicefordesi tag. kaloyan started it. we post what we know.
+
+
+      not everyone in this town is a coward. some of us remember that desi was a real person who helped people. and she deserves the truth.
+    choices:
+      - Follow Viktoria -> viktoria_intro
+      - Check the hashtag -> justice_hashtag
+      - Go back to main options -> hub_contacts
+
+  justice_hashtag:
+    type: tweet
+    from: kaloyan
+    text: >
+      #justicefordesi thread:
+
+
+      abe listen. desi wasnt just a yoga teacher. she was the person who started free classes for kids in summer. she cleaned the beach every sunday. she brought food to baba yordanka.
+
+
+      she was the best person in this town and now shes gone and the adults are doing NOTHING.
+
+
+      so we're doing something. me, viktoria, boyan. we're not gonna shut up. qko right? three teenagers against whatever is happening at that villa.
+
+
+      if youre reading this and you know something, DM me. anonymity guaranteed. seriozno.
+    effects:
+      trust_kaloyan: "+5"
+    choices:
+      - DM Kaloyan -> reply_kaloyan
+      - Talk to Viktoria -> viktoria_intro
+      - Talk to Boyan -> meet_boyan
+
+  final_evidence_check:
+    type: message
+    text: >
+      You review everything you've collected. The evidence points to a clear picture:
+
+
+      Villa Zarya is a transit point for a human trafficking network. Women are brought by boat from Turkey to Zalivcheto cove, transported to the villa, and moved onward to Western Europe.
+
+
+      Plamen Draganov is the local facilitator, working with an international organization through the shell company Sunrise Horizons Ltd. Zhivko provides security. Nikolay was paid to look the other way.
+
+
+      Desi Ivanova discovered the operation, documented it extensively, and was abducted when she refused to stop investigating. She may still be held in Villa Zarya's basement.
+
+
+      You have enough evidence to act. The question is how.
+    choices:
+      - Go to GDBOP for a professional raid -> ending_raid
+      - Go public through national media -> ending_public
+      - Attempt direct rescue with community support -> ending_rescue
+
+  ending_raid:
+    type: message
+    text: >
+      ENDING 1: THE RAID
+
+
+      Through Ivayla's contacts and Petya's legal connections, you deliver the complete evidence package to GDBOP Inspector Petrov in Sofia. The dossier includes: Desi's journal and photographs, Boyan's video, Viktoria's surveillance photos, Dimitar's boat logs, Stefan's physical evidence, Baba Yordanka's eyewitness testimony, Nikolay's CCTV footage, Rositsa's financial analysis, and Plamen's recorded threats.
+
+
+      Inspector Petrov mobilizes a joint operation. GDBOP, coast guard special operations, and the national police anti-trafficking unit converge on Morska Polyana at dawn, five days after you arrived.
+
+
+      At 5:47 AM, teams simultaneously raid Villa Zarya, Plamen's office, and Zalivcheto cove.
+
+
+      In the villa's basement, they find eleven women from Romania, Moldova, and Ukraine. Some have been held for weeks. They are malnourished, frightened, but alive.
+
+
+      In a locked room behind the wine cellar, they find Desi Ivanova. She is weak, dehydrated, and has been held in near-darkness for twelve days. But she is alive.
+
+
+      Zhivko is arrested at the villa. Plamen is arrested at his home trying to destroy documents. The British man, Martin Cole, is arrested at the Burgas Marriott through Interpol coordination.
+
+
+      Nikolay turns himself in voluntarily. His cooperation is noted. Commander Todorov in Burgas is suspended pending investigation.
+
+
+      Over the following weeks, the network is dismantled across three countries. Twenty-three arrests in Bulgaria, Turkey, and the UK. Forty-seven trafficking victims are identified and connected with support services.
+
+
+      Desi recovers in a Burgas hospital. Petya stays by her side. Milena reopens the yoga studio with a banner: "She saw. She spoke. She survived."
+
+
+      The teens -- Kaloyan, Viktoria, and Boyan -- are recognized by the Open Door Foundation for their bravery. Boyan gets a new phone.
+
+
+      Morska Polyana will never be the same. But for the first time in months, the town feels like it can breathe.
+
+
+      ---
+
+
+      If you or someone you know is affected by human trafficking, contact:
+
+
+      Bulgaria National Anti-Trafficking Commission Hotline: 0800 20 100 (free, 24/7)
+
+      Animus Association Helpline: 0800 18 676
+
+      European Anti-Trafficking Helpline: 116 006
+    choices:
+      - Play again -> welcome
+      - End -> end_screen
+
+  ending_public:
+    type: message
+    text: >
+      ENDING 2: THE BROADCAST
+
+
+      Rositsa publishes the story simultaneously through bTV national news and Capital magazine online. The headline: "Black Sea Village Conceals International Trafficking Network."
+
+
+      The evidence package is devastating: photos, video, financial records, eyewitness testimony, the Romanian diary, Desi's journal. Names are named. Plamen Draganov. Martin Cole. Sunrise Horizons Ltd.
+
+
+      Within hours, the story goes viral. Bulgarian social media erupts. Politicians issue statements. The Interior Minister orders an immediate investigation.
+
+
+      But the publicity has consequences. By the time GDBOP arrives in Morska Polyana the next morning, Villa Zarya is empty. Zhivko disappeared overnight. The basement has been hastily cleaned. The women are gone -- moved to another location before dawn.
+
+
+      Plamen is arrested at the border trying to flee to Turkey. His phone and documents provide crucial intelligence. Over the following month, most of the network is dismantled through international cooperation.
+
+
+      But Desi is not found at the villa. The search extends across the country. For two agonizing weeks, there is no trace.
+
+
+      Then: a tip from Romanian police. A woman matching Desi's description was dropped at a hospital in Constanta, Romania, disoriented and dehydrated. She had been moved when the villa was evacuated.
+
+
+      Desi is alive. She's brought home to Bulgaria. Recovery is slow.
+
+
+      Petya never leaves her side. "We found you," she whispers. "We didn't stop looking."
+
+
+      Seven of the eleven women held at the villa are eventually located and rescued through the ongoing investigation. Four remain missing. Their cases stay open.
+
+
+      The story wins Rositsa a national journalism award. She dedicates it to Desi and to the women still unfound.
+
+
+      Kaloyan, Viktoria, and Boyan become local heroes. "abe brat," Kaloyan posts, "never let them tell you kids cant change things."
+
+
+      Nikolay resigns from the police. He testifies against Plamen in exchange for reduced charges.
+
+
+      Morska Polyana begins to heal. But the empty beds in the villa's basement haunt the town. Not everyone was saved. Not this time.
+
+
+      ---
+
+
+      If you or someone you know is affected by human trafficking, contact:
+
+
+      Bulgaria National Anti-Trafficking Commission Hotline: 0800 20 100 (free, 24/7)
+
+      Animus Association Helpline: 0800 18 676
+
+      European Anti-Trafficking Helpline: 116 006
+    choices:
+      - Play again -> welcome
+      - End -> end_screen
+
+  ending_rescue:
+    type: message
+    text: >
+      ENDING 3: THE LONG NIGHT
+
+
+      You can't wait for bureaucracy. Every hour that passes puts Desi and the other women at risk. You rally the community for a direct intervention.
+
+
+      Dimitar provides his Navy experience and tactical planning. Stefan and three fishermen agree to block the cove with their boats, cutting off the sea escape route. Georgi mobilizes trusted locals to form a watch around the villa's perimeter. Milena, Petya, and Rositsa coordinate from the cafe. The teens -- against everyone's wishes -- set up a live stream from the hill above the villa.
+
+
+      At 2 AM, as a boat approaches Zalivcheto on schedule, the fishermen block the cove with spotlights blazing. The boat turns back.
+
+
+      Simultaneously, Nikolay -- his conscience finally overwhelming his fear -- approaches Villa Zarya's front door with his badge and a legal welfare check order. When Zhivko refuses entry, Nikolay radios for the Burgas emergency response unit he secretly contacted.
+
+
+      What follows is chaotic. Zhivko tries to flee through the back garden. Dimitar and Stefan are waiting. The Burgas team breaches the front door. The teens' live stream captures everything -- thousands of viewers in real-time.
+
+
+      In the basement, behind a locked reinforced door: nine women and Desi. They are alive. Desi is barely conscious, dehydrated, but when she sees Milena's face, she whispers: "You found the safe."
+
+
+      "We found you," Milena replies. "That's what matters."
+
+
+      The rescue is messy. It's not a clean operation. One of the fishermen is hurt when Zhivko fights back. The live stream means the network is instantly alerted -- cells across the country begin to scatter.
+
+
+      But in the following days, the public outrage from the live-streamed rescue forces a massive national response. GDBOP, Interpol, and Romanian police coordinate the largest anti-trafficking operation in Bulgarian history.
+
+
+      Not all the perpetrators are caught. Martin Cole disappears. The network's higher levels remain partially intact. But the Morska Polyana route is destroyed forever.
+
+
+      Desi's recovery is long. She has nightmares. She flinches at loud sounds. But she goes back to teaching yoga within three months.
+
+
+      Her first class back is standing room only. Baba Yordanka is in the front row. "I told you," the old woman says. "My eyes are sharp."
+
+
+      The nine women are connected with support services through Ivayla's foundation. Three choose to stay in Bulgaria. The others return home. All of them carry scars.
+
+
+      Morska Polyana's community action becomes a case study in citizen intervention. It inspires. It also warns -- of how close a small town came to looking the other way.
+
+
+      On the one-year anniversary, Desi posts on MorskaPolyana.social: "A year ago I saw something I couldn't unsee. Today I teach people to breathe, to be present, to notice the world around them. Notice everything. Even the things that scare you. Especially those."
+
+
+      ---
+
+
+      If you or someone you know is affected by human trafficking, contact:
+
+
+      Bulgaria National Anti-Trafficking Commission Hotline: 0800 20 100 (free, 24/7)
+
+      Animus Association Helpline: 0800 18 676
+
+      European Anti-Trafficking Helpline: 116 006
+    choices:
+      - Play again -> welcome
+      - End -> end_screen
+
+  end_screen:
+    type: message
+    text: >
+      Thank you for playing Dead Account: Morska Polyana.
+
+
+      Human trafficking affects millions of people worldwide. Bulgaria's Black Sea coast has been identified as a transit route for trafficking networks operating between Eastern Europe, Turkey, and Western Europe.
+
+
+      If you suspect trafficking activity, you can make a difference. Report it.
+
+
+      Bulgaria: 0800 20 100
+
+      EU: 116 006
+
+      International: contact your national anti-trafficking hotline.
+
+
+      Every voice matters. Every witness counts. Don't look away.
+    choices:
+      - Return to start -> welcome

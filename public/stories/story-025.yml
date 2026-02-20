@@ -1,0 +1,1573 @@
+# DEAD ACCOUNT — Story 025: Rovtarje (Slovenia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-025.yml
+#
+# Player investigates the disappearance of young caver/geologist Žan Kavčič
+# in the fictional alpine village of Rovtarje, near the caves of the Julian Alps.
+
+meta:
+  title: "Dead Account — Rovtarje"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_nina: 0
+    trust_luka: 0
+    trust_maja: 0
+    trust_bor: 0
+    trust_tilen: 0
+    trust_anja: 0
+    trust_jan: 0
+    trust_rok: 0
+    trust_meta: 0
+    trust_gregor: 0
+    trust_petra: 0
+    trust_ales: 0
+    trust_urska: 0
+    trust_matej: 0
+    trust_zala: 0
+    trust_hana: 0
+    trust_igor: 0
+    trust_vid: 0
+    trust_simona: 0
+    trust_policist: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    cave_witnesses: 0
+    quarry_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Novi Prebivalec
+    bio: "pravkar priseljen v rovtarje. raziskujem alpe en jamo naenkrat"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Rovtarje.social"
+    description: "Dobrodošli na instanci skupnosti Rovtarje"
+    avatar_url: /gamepatch/assets/dead-account/rovtarje_bot.png
+
+  npcs:
+    # === Žan's Inner Circle ===
+    zan:
+      name: "Žan Kavčič"
+      bio: "geolog | jamar | fotografije iz podzemlja | kras ne laže"
+      avatar: avatars/zan.jpg
+    nina:
+      name: "Nina Oblak"
+      bio: "žanova sestra | učiteljica v rovtarjah | kje si brat"
+      avatar: avatars/nina.jpg
+    luka:
+      name: "Luka Zupan"
+      bio: "jamar | žanov ekspedicijski partner | skupaj sva odkrivala rove"
+      avatar: avatars/luka.jpg
+    maja:
+      name: "Maja Horvat"
+      bio: "žanova punca | biologinja | narava je vse | pogrešam te"
+      avatar: avatars/maja.jpg
+
+    # === Local Government ===
+    gregor:
+      name: "Gregor Kovač"
+      bio: "Župan Rovtarij | Za razvoj naše skupnosti | #RovtarjeRaste"
+      avatar: avatars/gregor.jpg
+    petra:
+      name: "Petra Vidmar"
+      bio: "občinska svetnica za okolje | Rovtarje | narava je naša dediščina"
+      avatar: avatars/petra.jpg
+    obcina:
+      name: "Občina Rovtarje"
+      bio: "Uradni račun | Občinske novice | Pon-Pet 8:00-15:00"
+      avatar: avatars/obcina.jpg
+
+    # === Local Business & Community ===
+    bor:
+      name: "Bor Krajnc"
+      bio: "Gostilna pri Medvedu | domača hrana | žganje | odprti od '92"
+      avatar: avatars/bor.jpg
+    gostilna:
+      name: "Gostilna pri Medvedu"
+      bio: "Domači štruklji | Jabolčni zavitek | Žganje iz Tolminca | Srce Rovtarij"
+      avatar: avatars/gostilna.jpg
+    rok:
+      name: "Rok Šuštar"
+      bio: "gorski vodnik | 30 let v alpah | te gore so moje življenje"
+      avatar: avatars/rok.jpg
+    meta_k:
+      name: "Meta Kuhar"
+      bio: "lekarna rovtarje | zdravje & nasvet | tudi ob sobotah dopoldne"
+      avatar: avatars/meta.jpg
+    matej:
+      name: "Matej Pirnat"
+      bio: "gozdarski inženir | upravljanje z gozdovi | rovtarje"
+      avatar: avatars/matej.jpg
+    urska:
+      name: "Urška Dolenc"
+      bio: "čebelarka | med z julijskih alp | vsak kozarec je zgodba"
+      avatar: avatars/urska.jpg
+    simona:
+      name: "Simona Kastelic"
+      bio: "knjigarna pod lipo | knjige nove & rabljene | bralne urice ob sredah"
+      avatar: avatars/simona.jpg
+
+    # === Journalist ===
+    ales:
+      name: "Aleš Turk"
+      bio: "novinar | okolje & narava | namigi: ales@turk-press.si"
+      avatar: avatars/ales.jpg
+
+    # === Kamnolom Triglav (corporate) ===
+    kamnolom:
+      name: "Kamnolom Triglav d.o.o."
+      bio: "Agregati & gradbeni materiali | Obrat Rovtarje | ISO 14001 certificiran"
+      avatar: avatars/kamnolom.jpg
+    igor:
+      name: "Igor Černič"
+      bio: "direktor obrata Kamnolom Triglav Rovtarje | industrija & skupnost"
+      avatar: avatars/igor.jpg
+    vid:
+      name: "Vid Bergant"
+      bio: "Odvetnik | Pisarna Bergant & Partnerji | Gospodarsko pravo | Ljubljana"
+      avatar: avatars/vid.jpg
+
+    # === Teens ===
+    tilen:
+      name: "Tilen"
+      bio: "17 | plezalec | rovtarje born | gore so lajf stari"
+      avatar: avatars/tilen.jpg
+    anja:
+      name: "Anja"
+      bio: "16 | foto & risba | jame v črno-belem | žan je moj vzornik"
+      avatar: avatars/anja.jpg
+    jan:
+      name: "Jan"
+      bio: "15 | mtb & hribi | session sunrise | narava zdravi vse brt"
+      avatar: avatars/jan.jpg
+
+    # === Media & Community ===
+    novice_rovtarje:
+      name: "Novice Rovtarje"
+      bio: "Novice iz Rovtarij in Julijskih Alp | Namigi: urednistvo@novice-rovtarje.si"
+      avatar: avatars/novice_rovtarje.jpg
+    vremenska:
+      name: "Vreme Rovtarje"
+      bio: "Napovedi in opozorila | Samodejna postaja | Posodobljeno vsako uro"
+      avatar: avatars/vremenska.jpg
+    drustvo_jamarjev:
+      name: "Jamarsko društvo Rovtarje"
+      bio: "Zaščita kraških jam | Prostovoljci | Poročila o jamah"
+      avatar: avatars/drustvo_jamarjev.jpg
+
+    # === Suspicious / Other ===
+    zala:
+      name: "Zala Kern"
+      bio: "tehničarka | Kamnolom Triglav | delam svoje delo pa je to"
+      avatar: avatars/zala.jpg
+    hana:
+      name: "Hana Podgornik"
+      bio: "."
+      avatar: avatars/anon.jpg
+    policist:
+      name: "Inšpektor Novak"
+      bio: "Policijska postaja Rovtarje | Območna enota | nujni klici: 113"
+      avatar: avatars/policist.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ROVTARJE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to rovtarje.social — the community Mastodon instance for
+      the alpine village of Rovtarje, nestled beneath the Julian Alps in
+      northwestern Slovenia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @zan_kavcic.
+
+      A young geologist. Caver. Underground photographer. He mapped
+      the cave systems beneath the Alps. People are worried. He hasn't
+      posted in six days.
+    choices:
+      - Look at his profile -> zan_profile
+
+  zan_profile:
+    type: tweet
+    from: zan
+    text: "Kamnolom se širi v jamski sistem. Videl sem razpoke v galeriji C. To ni naravno. Nekdo minira preblizu. Imam dokaze."
+    choices:
+      - That's his last real post... -> dark_photo
+
+  dark_photo:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a pitch-black photograph. Blurred, shot from below. What might be
+      a cave ceiling, or might be nothing at all. Posted at 2am. No
+      caption.
+
+      His friends say that's not his style. The police say he probably
+      went on an unplanned expedition. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: policist
+    text: >
+      Prejeli smo prijavo o pogrešani osebi iz Rovtarij. Na tej
+      stopnji ni dokazov o kaznivem dejanju. Oseba je izkušen jamar
+      in se morda nahaja na terenu. Vse koristne informacije
+      sporočite na 113.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @nina_oblak is desperate.
+      His girlfriend @maja_horvat hasn't slept. His expedition partner
+      @luka_zupan is posting frantic messages. The mountain guide
+      @rok_sustar says the caves near the quarry have been unstable
+      for months.
+
+      And the journalist @ales_turk is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Žan just went on
+      an "unplanned expedition."
+    effects: { trust_nina: "+5", trust_maja: "+5" }
+    choices:
+      - Start following Žan's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Rovtarje. Follow Žan's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Bor (gostilna owner, knows everyone) -> bor_intro
+      - Talk to Rok (mountain guide, knows the caves) -> rok_intro
+      - Talk to Tilen (teen climber, seems shaken) -> tilen_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Žan with the rhythms of a small
+      alpine village: weather warnings for the mountains, the
+      gostilna's daily menu, beekeeping updates, trail conditions.
+
+      Key names surface: Nina (sister, teacher), Luka (expedition
+      partner, seems rattled), Maja (girlfriend, biologist), and
+      the teens — Tilen, Anja, Jan — who idolised Žan's
+      underground photography.
+
+      Also prominent: Kamnolom Triglav d.o.o., the quarry operation
+      at the edge of the village. Their posts are corporate PR. Žan's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Bor -> bor_intro
+      - Talk to Rok -> rok_intro
+      - Talk to Tilen -> tilen_intro
+
+  # --- Bor (social map) ---
+
+  bor_intro:
+    type: tweet
+    from: bor
+    text: >
+      Gostilna je odprta ampak srce ni. @zan_kavcic, tvoja miza te
+      čaka. Vrni se hitro, fant.
+    effects: { trust_bor: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Bor -> bor_talk
+
+  bor_talk:
+    type: message
+    text: >
+      BOR: A, ti si nov tu? Dobrodošel. Slab čas za prihod, stari.
+      Vsi so na trnih zaradi Žana.
+
+      Povem ti kdo je kdo. Nina je Žanova sestra, učiteljica. Luka
+      Zupan je Žanov ekspedicijski partner — ampak Luka je poseben
+      tip. Ful intenziven glede Žana. Obseden s tistimi jamami.
+      Maja je Žanova punca, biologinja. Žan je bil srečen z njo.
+
+      Pa Aleš Turk — novinar — on in Žan sta delala na nečem skupaj.
+      Neka zadeva z kamnolomom. Aleš ni spregovoril besede odkar je
+      Žan izginil. To ni normalno.
+
+      Ne zaupaj PR objavam od Kamnoloma Triglav. Laži zavite v ISO
+      certifikate, jebenti.
+    effects: { trust_bor: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Luka -> bor_luka
+      - Ask about Kamnolom Triglav -> bor_kamnolom
+      - Thank him and move on -> quest1_hub
+
+  bor_luka:
+    type: message
+    text: >
+      BOR: Luka? Žan ga je spoznal pred tremi leti na jamarskem
+      tečaju. Luka je bil takoj obseden. Ne s Žanom kot osebo,
+      razumeš — z jamami. Z odkritji. Hotel je bit prvi povsod.
+      Najtežji rovi, najgloblji prehodi. Žan je bil bolj previden,
+      Luka pa je tlačil naprej ne glede na tveganje.
+
+      Žan mi je enkrat rekel: "Luka ne razume besede ne. Če rečem,
+      da je preveč nevarno, gre sam." Mislil sem, da govori
+      profesionalno. Zdaj pa nisem več prepričan.
+
+      Po tistem ko je Žan začel raziskovat kamnolom, je Luka postal
+      še hujši. Hotel je bit del vsega. Žan ga je poskusil izključit
+      in Luka je ful popizdil.
+    effects: { trust_bor: "+5" }
+    choices:
+      - Ask about Kamnolom Triglav -> bor_kamnolom
+      - Move on -> quest1_hub
+
+  bor_kamnolom:
+    type: message
+    text: >
+      BOR: Kamnolom je tu od osemdesetih. Kopljejo apnenec, agregat,
+      karkoli. Vas ga je tolerirala ker daje službe. Ampak zadnja
+      leta se širijo. Kupili so novo koncesijo, bližje gori. In
+      miniranja so postala hujša — tresljaji, razpoke v hišah.
+
+      Žan je bil prvi ki je dejansko šel dol v jame z opremo in
+      dokumentiral škodo. Imel je slike razpok v galeriji C —
+      galeriji ki je na seznamu naravne dediščine. Imel je dokaze da
+      minirajo preblizu zaščitenega sistema. Dva tedna pozneje je
+      izginil.
+
+      Naredi si sam sliko, stari.
+    effects: { trust_bor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Rok (the caves, witness tease) ---
+
+  rok_intro:
+    type: tweet
+    from: rok
+    text: >
+      trideset let hodim po teh gorah. tresljaji od kamnoloma so
+      vsako leto hujši. @zan_kavcic je imel prav. in zdaj ga ni.
+      povezite si.
+    effects: { trust_rok: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Rok -> rok_talk
+
+  rok_talk:
+    type: message
+    text: >
+      ROK: Na teh gorah sem od petnajstega leta. Poznam vsako pot,
+      vsak vhod v jamo, vsak zvok ki ga gore naredijo. In povem ti —
+      tresljaji od kamnoloma tresejo stene jam. Stalaktiti padajo.
+      Prehodi se zapirajo.
+
+      Žan je dokumentiral vse. Šel je dol s kamero in merilno opremo.
+      Imel je dokaze da miniranja uničujejo jamski sistem, ki je star
+      sto tisoč let. Gradil je primer. In potem — puf — ga ni.
+
+      Misliš da je to naključje? Jaz ne verjamem v naključja v gorah.
+    effects: { trust_rok: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> rok_night
+      - Move on -> quest1_hub
+
+  rok_night:
+    type: message
+    text: >
+      ROK: Noč preden je izginil — vračal sem se z nočnega obhoda,
+      okoli enajstih. Videl sem luči pri vhodu v galerijo C. Ne
+      naglavne svetilke — avtomobilske žaromete. Dva avtomobila
+      parkirana pri gozdni cesti. Eden je bil Žanov stari Renault.
+      Drug pa črn SUV s tablicami Kamnolom Triglav.
+
+      Ob enajstih zvečer. Pri vhodu v jamo.
+
+      Zapisal sem si. Nihče me ni vprašal po tem.
+    effects: { trust_rok: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tilen (teen climber, witness tease) ---
+
+  tilen_intro:
+    type: tweet
+    from: tilen
+    text: >
+      stari to je ful hudo @zan_kavcic on je tist ki me je naučil
+      plezat varno in me pel v jame. ni šans da je sam odšel nekam
+      brez da komu pove. če kdo ve kej povejte pls
+    effects: { trust_tilen: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tilen -> tilen_talk_early
+
+  tilen_talk_early:
+    type: message
+    text: >
+      TILEN: lol a si nov tu? sranje timing stari. sej žan je
+      res najboljši človek v tej vasi. nas je učil plezat, nas je
+      peljal v jame, nam razlagal geologijo pa to. ful kul tip.
+
+      pa zdej sm ful v bedu ker jan je videl nek čuden kurac zadnič
+      pri kamnolomu ampak noče govort o tem. pravi da ni nič ampak
+      sej ni nič stari, to ni normalno sah
+    effects: { trust_tilen: "+10" }
+    choices:
+      - What did Jan see? -> tilen_jan_hint
+      - Move on -> quest1_hub
+
+  tilen_jan_hint:
+    type: message
+    text: >
+      TILEN: ne vem natančno. bil je na bajku pri kamnolomu zvečer in
+      je videl nekoga ki je prelagal zadeve iz žanovga avta?? al pa
+      nekej tazga. ful se boji pa noče govort. probej mu najprej
+      govort o bajkanju al pa plezanju lol pol se bo mogoče odprl.
+      ampak je ful nezaupljiv do folka ki ga ne pozna, veš
+    effects: { trust_tilen: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Rovtarje. A Slovenian alpine village
+      built around the mountains and their caves. A young geologist who
+      was exposing quarry damage. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Maja (Žan's girlfriend) -> maja_q1
+      - Talk to Luka (Žan's expedition partner) -> luka_q1
+      - Check what Nina (Žan's sister) is saying -> nina_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Maja Q1 ---
+
+  maja_q1:
+    type: tweet
+    from: maja
+    text: >
+      če ima kdorkoli novice o @zan_kavcic me prosim pokličite.
+      njegova oprema je doma. njegov nahrbtnik za jame je tu.
+      nikoli ne bi šel brez opreme.
+    effects: { trust_maja: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Maja -> maja_q1_talk
+
+  maja_q1_talk:
+    type: message
+    text: >
+      MAJA: Hvala da se javljaš ampak te ne poznam. Žan ima
+      veliko prijateljev tu. Prepričana sem da se bo vrnil.
+
+      ...to si ponavljam. Ne verjamem več.
+
+      [Maja is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_maja: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Luka Q1 ---
+
+  luka_q1:
+    type: tweet
+    from: luka
+    text: >
+      Laboratorij je prazen brez @zan_kavcic. Njegovi vzorci kamnin
+      so še na polici. Njegovi jamski dnevniki so na mizi. Nikoli ne
+      bi zapustil tekoče raziskave. Nekaj se je zgodilo.
+    effects: { trust_luka: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Luka -> luka_q1_talk
+
+  luka_q1_talk:
+    type: message
+    text: >
+      LUKA: Žan in jaz delava skupaj že tri leta. On je najboljši
+      jamar ki ga poznam. Ta zadeva s kamnolomom — vse mu je
+      pomenila. Imel je podatke, slike, geološke analize. Bil je
+      tako blizu da gre v javnost.
+
+      Ponudil sem se da mu pomagam. Večkrat. Rekel je da ima pod
+      kontrolo. Rekel je da dela z nekim novinarjem. Jaz sem samo
+      hotel podpret.
+
+      [Luka seems earnest. Or obsessive?]
+    effects: { trust_luka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nina Q1 ---
+
+  nina_q1:
+    type: tweet
+    from: nina
+    text: >
+      moj brat je IZGINIL in policija mi govori da je morda na
+      terenu??? NE GERE NA TEREN BREZ DA POVE. prihajam iz šole
+      takoj. nekdo mi bo razložil.
+    effects: { trust_nina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nina -> nina_q1_talk
+
+  nina_q1_talk:
+    type: message
+    text: >
+      NINA: Kdo si? Še en človek ki mi bo rekel naj se pomirim?
+      Moj brat me je poklical tisto noč preden je izginil. Rekel
+      je da ima nekaj velikega. Rekel je "če se karkoli zgodi,
+      poglej Kamnolom Triglav." Potem je odložil.
+
+      To je zadnje kar sem slišala od njega.
+    effects: { trust_nina: "+10" }
+    choices:
+      - What do you think happened? -> nina_theory
+      - Move on -> quest1_hub
+
+  nina_theory:
+    type: message
+    text: >
+      NINA: Mislim da je našel dokaze da Kamnolom Triglav uničuje
+      zaščiten jamski sistem in so ga utišali. Ampak mislim tudi da
+      tisti njegov partner — Luka — ve več kot govori. Način kako
+      govori o njem... to ni samo profesionalna skrb. Je nekaj
+      drugega.
+
+      Žan mi je pred meseci povedal da nekdo vdira v njegove datoteke
+      na univerzi. Mislil je da ni nič. Jaz mislim da je bilo.
+
+      In zadnje čase je Luka postal čuden. Ljubosumen. Na Majo, na
+      novinarja, na vse ki so imeli dostop do Žana ki ga Luka ni
+      imel. To ni normalno vedenje, sranje.
+    effects: { trust_nina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Žan went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Jan (was biking near the quarry at dusk) -> jan_interview
+      - Find Rok (mountain guide, was on night patrol) -> rok_interview
+      - Find Urška (beekeeper, early morning in the hills) -> urska_interview
+      - Find Matej (forester, heard explosions) -> matej_interview
+
+  # --- Jan (saw someone at Žan's car) ---
+
+  jan_interview:
+    type: tweet
+    from: jan
+    text: >
+      good session danes na bajku ampak vibes pri kamnolomu so ful
+      čudni zadnje cajte. nek sranje se dogaja tam stari ne vem
+      razložit
+    effects: { trust_jan: "+5" }
+    choices:
+      - Ask Jan about that evening -> jan_talk
+
+  jan_talk:
+    type: message
+    text: >
+      JAN: ok stari ampak nikomur ne povej ja? bil sm na bajku pri
+      kamnolomu okol sedmih zvečer. in sm videl tistga tipa — luko —
+      pri žanovem avtu. gledal je noter al pa dajal nek kurac not.
+      ko me je zagledal je odpizdil ful hitro.
+
+      mislm sej jst nism nič reku ker nism hotu problemov ampak to
+      je ful čudno sah. ni normalno to vedenje stari
+    effects:
+      trust_jan: "+10"
+      cave_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rok (saw late-night meeting at cave entrance) ---
+
+  rok_interview:
+    type: tweet
+    from: rok
+    text: >
+      Opomnik: gozdne ceste so zaprte po 20. uri. V zadnjih nočeh
+      sem opazil nedovoljen promet pri vhodu v galerijo C.
+    effects: { trust_rok: "+5" }
+    choices:
+      - Ask Rok what he saw -> rok_talk_q2
+
+  rok_talk_q2:
+    type: message
+    text: >
+      ROK: Zapiral sem gorsko kočo okrog enajstih zvečer. Videl sem
+      Žanov avto pri gozdni cesti do galerije C. In črn SUV s
+      tablicami Kamnolom Triglav parkiran poleg. Dva moška sta
+      stala pri vhodu v jamo. Enega sem prepoznal: Igor Černič,
+      direktor obrata.
+
+      Ob enajstih zvečer. Pri vhodu v zaščiteno jamo. To ni
+      normalno.
+
+      Zapisal sem v gorski dnevnik. Nihče me ni vprašal po tem.
+    effects:
+      trust_rok: "+10"
+      cave_witnesses: "+1"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Urška (saw Žan fleeing) ---
+
+  urska_interview:
+    type: tweet
+    from: urska
+    text: >
+      gor ob štirih za čebelnjak. steza ni bila prazna tisto jutro.
+      nekdo je tekel po gozdni poti. v temi. to ni bil tekač.
+    effects: { trust_urska: "+5" }
+    choices:
+      - Ask Urška what she saw -> urska_talk
+
+  urska_talk:
+    type: message
+    text: >
+      URŠKA: Vstajam ob štirih za čebele. Tisto jutro — jutro po
+      Žanovi zadnji objavi — sem videla nekoga na gozdni poti.
+      Tekel je. Moški, s torbo, proti planini. Bilo je še temno.
+      Premikal se je hitro, kot da se je bal.
+
+      Poklicala sem ampak se ni ustavil. Mislila sem da je
+      planinar ampak... kdo hodi ob štirih s torbo čez ramo?
+
+      Ko sem slišala za Žana, sem povezala. Mislim da je bil to
+      on. Bežal je pred nečim.
+    effects:
+      trust_urska: "+10"
+      cave_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Matej (heard night blasting) ---
+
+  matej_interview:
+    type: tweet
+    from: matej
+    text: >
+      Poročilo iz gozda: tisto noč sem slišal detonacije iz smeri
+      kamnoloma. Urnik miniranj je podnevi. Nočno miniranje ni
+      dovoljeno.
+    effects: { trust_matej: "+5" }
+    choices:
+      - Ask Matej what he heard -> matej_talk
+
+  matej_talk:
+    type: message
+    text: >
+      MATEJ: Sem gozdarski inženir. Poznam zvoke teh gora. Tisto
+      noč, okrog polnoči, sem slišal dve detonaciji iz smeri
+      kamnoloma. Ne naravni plaz — miniranje. Značilen zvok.
+
+      Miniranje je dovoljeno samo podnevi, od 8. do 16. ure. Nočno
+      miniranje krši koncesijo. In tiste detonacije so bile iz
+      smeri galerije C — ne iz uradnega kamnoloma.
+
+      Minirali so v zaščitenem območju. Ponoči. Brez dovoljenja.
+
+      Povedal sem policiji. Zapisali so si. To je bilo to.
+    effects:
+      trust_matej: "+10"
+      cave_witnesses: "+1"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${cave_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Maja (girlfriend)
+      and Anja (saw Luka watching the house).
+    choices:
+      - Talk to Maja about that night -> maja_interview
+      - Talk to Anja -> anja_interview
+      - Find Jan -> jan_interview
+        when:
+          all:
+            - { state: cave_witnesses, lt: 4 }
+      - Find Rok -> rok_interview
+        when:
+          all:
+            - { state: cave_witnesses, lt: 4 }
+      - Find Urška -> urska_interview
+        when:
+          all:
+            - { state: cave_witnesses, lt: 4 }
+      - Find Matej -> matej_interview
+        when:
+          all:
+            - { state: cave_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: cave_witnesses
+          gte: 4
+
+  # --- Maja (last to see Žan) ---
+
+  maja_interview:
+    type: tweet
+    from: maja
+    text: >
+      tista fotka na žanovem računu. to ni on. žan nikoli ne objavi
+      brez opisa. žan ne objavlja ob dveh ponoči. nekdo drug je to
+      naredil.
+    effects: { trust_maja: "+5" }
+    choices:
+      - DM Maja -> maja_talk_low
+        when:
+          state: trust_maja
+          lt: 50
+      - DM Maja -> maja_talk_high
+        when:
+          state: trust_maja
+          gte: 50
+
+  maja_talk_low:
+    type: message
+    text: >
+      MAJA: Cenim skrb ampak res ne želim govorit s tujci o tem
+      zdaj.
+
+      [Maja needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_maja: "+5" }
+    choices:
+      - Share what you've learned about the night -> maja_trust_build
+        when:
+          state: cave_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  maja_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the cave, the
+      quarry men, the running figure, the night blasting. Maja is
+      silent for a while.
+
+      MAJA: Res poskušaš najt ga. Ok. Bom govorila.
+    effects: { trust_maja: "+25" }
+    choices:
+      - What happened that night? -> maja_talk_high
+
+  maja_talk_high:
+    type: message
+    text: >
+      MAJA: Prišel je domov okrog enajstih. Bila sem že v postelji.
+      Bil je bled, tresel se je. Rekel je "vejo kaj imam." Zgrabil
+      je laptop in trde diske s fotkami.
+
+      Vprašala sem kdo. Rekel je "kamnolom. Poslali so ljudi v
+      jamo." Potem je rekel še nekaj — "in on je bil tam tudi. On
+      je vedno tam."
+
+      Ni hotel povedat kdo je "on". Objel me je, rekel "ne skrbi"
+      in odšel s torbo. To je bilo to. Do jutra je bil avto stran
+      in črna fotka na njegovem računu.
+
+      Kurac, sem tako besna in prestrašena hkrati.
+    effects:
+      trust_maja: "+15"
+      cave_witnesses: "+1"
+      quarry_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Anja (saw Luka watching the house) ---
+
+  anja_interview:
+    type: message
+    text: >
+      ANJA: ok to je ful creepy kar bom rekla ampak tisti tip iz
+      jam — luka — vidla sm ga trikrat pred žanovo hišo zvečer.
+      sam stal je tam pa gledal okna. ful bolano stari.
+
+      zadnjič je blo dva dni preden je žan izginil. bil je v avtu
+      parkiranem čez cesto. sam sedel je. luči ugasnjene. sranje
+      stari to ni normalno
+    effects:
+      trust_anja: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Luka seen at Žan's car near the quarry (Jan)
+      23:00 — Kamnolom Triglav SUV at cave entrance, Igor Černič present (Rok)
+      23:00 — Žan arrives home, shaken, grabs laptop and drives (Maja)
+      00:00 — Night blasting heard from direction of Gallery C (Matej)
+      04:00 — Man running on forest trail toward the mountains (Urška)
+
+      Kamnolom Triglav confronted Žan at the cave. He fled home,
+      grabbed his evidence, and ran. Someone chased him. And that
+      same night, illegal blasting — possibly to destroy the very
+      cave features Žan had documented.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is Kamnolom Triglav hiding? Who ordered
+        the nighttime blasting?
+      — The obsession: What is Luka really doing? Why was he at
+        Žan's car?
+    choices:
+      - Investigate the quarry cover-up -> corruption_hub
+      - Investigate Luka -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      QUARRY THREAD: Evidence collected: ${quarry_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the quarry thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: quarry_evidence, gte: 3 }
+
+  # =====================================================================
+  # QUARRY COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE QUARRY THREAD
+
+      Kamnolom Triglav is hiding something. Žan had proof. Now he's
+      gone and his evidence is missing from the university lab.
+
+      Quarry evidence: ${quarry_evidence}
+    choices:
+      - Search the geological records -> geo_records
+      - Talk to Aleš the journalist -> ales_interview
+      - Talk to Zala (Kamnolom technician) -> zala_interview
+      - Talk to Petra (environment councillor) -> petra_interview
+      - Check the Jamarsko društvo -> drustvo_investigation
+      - Talk to Rok about the blasting -> rok_blasting
+      - Back to hub -> investigation_hub
+
+  # --- Geological Records ---
+
+  geo_records:
+    type: message
+    text: >
+      The university's geological database shows Žan's recent work:
+      structural analysis of six cave sections near the quarry. The
+      data for Gallery C is marked "REVIEW PENDING" — the only
+      section with that status.
+
+      His cave survey log, shared with the caving society for
+      safety, shows he made 14 surveys in the quarry-adjacent caves
+      in the past month. The last entry: "Documented fresh blast
+      fractures in Gallery C ceiling. Undeclared expansion into
+      protected area. They are mining inside the cave system."
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Aleš ---
+
+  ales_interview:
+    type: message
+    text: >
+      ALEŠ: Ne govorim o virih. Pika.
+    effects: { trust_ales: "+5" }
+    choices:
+      - Show Aleš the evidence you have -> ales_with_evidence
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Back to quarry thread -> corruption_hub
+
+  ales_with_evidence:
+    type: message
+    text: >
+      ALEŠ: ...imaš več kot sem pričakoval.
+
+      Ok. Žan in jaz sva delala skupaj. Imel je fotografije
+      nedovoljenega širjenja kamnoloma v zaščiten jamski sistem.
+      Imel je geološke meritve ki dokazujejo da miniranja uničujejo
+      strop galerije C. Imel je dokaze da so podkupili inšpektorje
+      za pregled ki je dal zeleno luč.
+
+      Hotela sva skupaj objavit. Potem je utihnil. In dva dni
+      pozneje je nekdo vlomil v moj avto in ukradel moj rezervni
+      disk.
+
+      Žan je živ. Enkrat me je kontaktiral, s prepaida. Rekel je
+      da se skriva. Rekel je "grozili so mi pri jami in nekdo drug
+      me ne pusti pri miru."
+
+      Ne morem ti povedat kje je. Ampak z dovolj dokazi lahko
+      objavim in mu omogočim da se varno vrne.
+    effects:
+      trust_ales: "+25"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> ales_hint
+      - Back to investigation hub -> investigation_hub
+
+  ales_hint:
+    type: message
+    text: >
+      ALEŠ: Kamnolom je poslal direktorja — Černiča — in nekega
+      odvetnika v jamo tisto noč. Povedali so mu naj preda vse ali
+      pa se sooči s pravnimi posledicami. Ustrahovanje oblečeno v
+      pravni postopek.
+
+      Ampak rekel je tudi nekaj o nekom iz jamarskih krogov. Nekom
+      ki je dostopal do njegovih datotek. Nekom ki je vedno vedel
+      kje je. To je drug problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Zala (Kamnolom whistleblower) ---
+
+  zala_interview:
+    type: message
+    text: >
+      ZALA: Delam v Kamnolomu Triglav. Sem samo tehničarka. Izvajam
+      meritve, pišem poročila.
+
+      Ampak poročila ki jih napišem... niso vedno poročila ki
+      pridejo do inšpekcije.
+    effects: { trust_zala: "+10" }
+    choices:
+      - What do you mean? -> zala_detail
+
+  zala_detail:
+    type: message
+    text: >
+      ZALA: Merim tresljaje. Vibracije, razpoke, strukturno
+      integriteto. Moje številke gredo nadrejenemu. Nekje med mojo
+      mizo in regulativno vlogo se spremenijo. Nižje. Vedno nižje.
+
+      Žanove meritve iz jam so se ujemale z MOJIMI originalnimi
+      številkami, ne s tistimi v uradnih poročilih. Imel je
+      neodvisni dokaz da Kamnolom Triglav ponareja podatke o
+      vplivu na okolje.
+
+      Strah me je. Imam družino. Ampak hranim kopije originalnih
+      poročil. Če me nekdo zaščiti, jih delim.
+
+      Jebenti, nočem zgubit službe. Ampak to kar delajo je sranje.
+    effects:
+      trust_zala: "+15"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Petra ---
+
+  petra_interview:
+    type: message
+    text: >
+      PETRA: Kot občinska svetnica za okolje jemljem te obtožbe
+      resno. Ampak Kamnolom Triglav zaposluje 150 ljudi v tej
+      občini. Župan vztraja da moramo "ohranjat dialog."
+
+      Neuradno? Videla sem poročila okoljske inšpekcije. Kamnolom
+      Triglav vsakič pride skozi. Ampak inšpekcije so napovedane
+      dva tedna vnaprej. Vse počistijo preden pridejo.
+
+      Žan je imel nenapovedane podatke. Zato je nevarno.
+
+      In vem da je inšpektor ki je dal zadnje zeleno luč — Marko
+      Božič — prejel plačilo na račun ki ga ni prijavil. To je
+      korupcija. Ampak to nisem rekla, jasno?
+    effects:
+      trust_petra: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Jamarsko društvo ---
+
+  drustvo_investigation:
+    type: tweet
+    from: drustvo_jamarjev
+    text: >
+      OPOZORILO: Zaznane nove razpoke v galeriji C zaščitenega
+      jamskega sistema. Zahtevamo takojšnjo neodvisno inšpekcijo
+      kamnoloma. Kapniki stari 100.000 let so v nevarnosti.
+    choices:
+      - Check their data -> drustvo_data
+
+  drustvo_data:
+    type: message
+    text: >
+      The Jamarsko društvo has been documenting cave conditions for
+      five years. Their data shows a clear pattern: structural damage
+      that corresponds to the quarry's blasting schedule. More
+      fractures on workdays, fewer on weekends. Spikes after heavy
+      blasting reported by Matej.
+
+      The pattern is unmistakable. This is ongoing, deliberate damage
+      to a protected cave system timed to periods when inspectors
+      are not present.
+
+      Žan was their most active member. He contributed most of the
+      underground photography and geological surveys.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Rok blasting ---
+
+  rok_blasting:
+    type: message
+    text: >
+      ROK: Pokazal ti bom nekaj. Prejšnji mesec sem bil na poti
+      nad kamnolomom in videl tovornjak ki je šel po gozdni cesti
+      proti galeriji C. Niso kopali v uradnem kamnolomu — kopali
+      so v zaščitenem območju. Skrivaj.
+
+      Slikal sem tovornjak. Tablica: Kamnolom Triglav. Na
+      tovorniku oprema za miniranje.
+
+      Žan je to vedel. Zato je šel dokumentirat škodo. In zato
+      so ga utišali.
+
+      Še imam slike. In koordinate GPS.
+    effects:
+      trust_rok: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Luka Zupan. Expedition partner. Researcher. Something more?
+      Someone was accessing Žan's files. Someone was watching his
+      house. Someone was at his car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Luka's university access logs -> uni_access
+      - Talk to Maja about Luka -> maja_luka
+        when:
+          state: trust_maja
+          gte: 20
+      - Talk to Jan (more detail on the car incident) -> jan_detail
+      - Talk to Meta the pharmacist -> meta_interview
+      - Check the anonymous account @hana_podgornik -> hana_investigation
+      - Talk to Simona the bookseller -> simona_interview
+        when:
+          state: trust_simona
+          gte: 40
+      - Talk to Inšpektor Novak -> policist_interview
+        when:
+          state: trust_policist
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- University Access Logs ---
+
+  uni_access:
+    type: message
+    text: >
+      The university geology department's door access system is
+      logged electronically. Žan's card was used at the lab 52 times
+      last month. Luka's card: 91 times. Nearly double.
+
+      Cross-referencing: on 38 of Luka's 91 entries, he accessed the
+      lab within 10 minutes of Žan. He arrived after him and left
+      after him. Every time.
+
+      Luka's own research workspace is in a different building.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Maja on Luka ---
+
+  maja_luka:
+    type: message
+    text: >
+      MAJA: Luka? Žanu je bil neprijeten. Pojavljal se je na vsakem
+      mestu kjer je bil Žan. Ponujal se je da ga spremlja povsod.
+      Komentiral je vsako njegovo objavo v minutah.
+
+      Žan mu je jasno rekel da potrebuje prostor. Da nekateri
+      projekti niso skupni. Luka je rekel da razume. Pol se ni
+      nič spremenilo. Samo... naprej je bil tam. Vedno tam.
+
+      Pred mesecem dni je Žan odkril da nekdo dostopa do njegovega
+      laboratorijskega računalnika ponoči. Njegove raziskovalne
+      datoteke so bile odprte. Sumil je na Luko ampak ni mogel
+      dokazat.
+
+      In ko sem jaz začela hodit z Žanom je Luka postal ful čuden
+      do mene. Hladen. Ljubosumen. Kot da sem mu jaz vzela Žana.
+      Pizda, saj nisem njena last.
+    effects:
+      trust_maja: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Jan detail ---
+
+  jan_detail:
+    type: message
+    text: >
+      JAN: ok stari sej nism vsega povedal. ko sm videl luko pri
+      žanovem avtu je mel nek kurac v roki. nek majhen aparatček.
+      dal ga je pod avto, na voznikovo stran. tko prilepil spodaj.
+
+      brt to je blo kot gps sledilnik al pa nekej tazga. ko v
+      filmih veš.
+
+      sej bi mogu rečt ampak kdo bi mi verjel lol. najstnik ki
+      obtoži raziskovalca. ja sej stari zihr.
+    effects:
+      trust_jan: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Meta ---
+
+  meta_interview:
+    type: message
+    text: >
+      META: To je zaupno ampak sem lekarnarka, ne duhovnik. Luka
+      Zupan prihaja redno. Kupuje stvari ki kažejo da ne spi.
+      Pomirjevala, uspavala, energetske dodatke. Vzorec nekoga pod
+      ekstrenim stresom.
+
+      Enkrat me je tudi vprašal, čisto mimogrede, če prodajamo GPS
+      sledilnike. Rekla sem "to je lekarna, ne Mimovrste." Zasmejal
+      se je. Nisem razmišljala o tem dokler Žan ni izginil.
+    effects:
+      trust_meta: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Hana (anonymous account) ---
+
+  hana_investigation:
+    type: tweet
+    from: hana
+    text: >
+      Moral bi poslušat. Poskušal sem ga zaščitit. Nihče drug ni
+      razumel njegovega dela kot jaz.
+    choices:
+      - Look at this account's history -> hana_posts
+
+  hana_posts:
+    type: message
+    text: >
+      @hana_podgornik: account created 10 months ago. Posts are all
+      about Žan's work. Comments on every cave photo, every geological
+      survey, every research update. The tone shifts over time:
+
+      Month 1: "Neverjetno delo. Delaš kar si nihče drug ne upa."
+      Month 3: "Zakaj ne odgovarjaš na moja sporočila? Samo
+      sodelovat hočem."
+      Month 6: "Vidim te v gostilni z drugimi. Zanje imaš čas, zame
+      pa ne?"
+      Month 8: "Vem kje hodiš. Poznam tvoj urnik. Vedno sem blizu."
+
+      The account has no photos, no personal details. Just Žan. Only
+      Žan.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> hana_style
+
+  hana_style:
+    type: message
+    text: >
+      Comparing @hana_podgornik with @luka_zupan:
+
+      Same use of speleological terminology. Same Slovenian dialect
+      markers — specific Primorska expressions. Same knowledge of
+      Žan's research that only a caving partner would have.
+
+      And one post from @hana_podgornik: "Tvoj prečni rov v sektorju
+      7 je bil prelep." Sektor 7 is an internal university
+      designation. Not public.
+
+      It's Luka. The anonymous account is Luka.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Simona ---
+
+  simona_interview:
+    type: message
+    text: >
+      SIMONA: Žan mi je pustil nekaj. Zapečaten vodoodporen kovček.
+      Rekel je "če te kdo vpraša o tem kaj je pod galerijo C,
+      mu daj to."
+
+      Bil je prestrašen. Rekel je da je naredil kopije vsega ampak
+      da potrebuje en komplet izven dosega. Knjigarna se je zdela
+      popolna.
+    effects: { trust_simona: "+10" }
+    choices:
+      - What's under Gallery C? -> simona_case
+
+  simona_case:
+    type: message
+    text: >
+      Simona poseže pod pult in izvleče vodoodporen Pelican kovček.
+
+      SIMONA: Rekla je da boš prišel. Vzemi.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show blast damage inside Gallery C — fresh fractures
+      in the ceiling, destroyed stalactites, quarry drill holes in
+      protected cave walls. The USB drive contains geological survey
+      data, vibration measurements, and Žan's detailed report
+      including evidence of bribed inspectors and falsified
+      environmental impact assessments.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inšpektor Novak ---
+
+  policist_interview:
+    type: message
+    text: >
+      INŠPEKTOR NOVAK: Neuradno — in mislim res neuradno — hotel
+      sem preiskat Kamnolom Triglav. Nadrejeni so mi rekli naj se
+      ustavim. Rekel je da ima okrožno tožilstvo "pristojnost."
+      To je koda za "ne tiči se."
+
+      Situacija z Zupanom je drugačna. Za to pa sploh nisem vedel
+      do zdaj. Če imaš dokaze o zalezovanju, lahko ukrepam. To je
+      jasno moja pristojnost.
+
+      Prinesi mi nekaj trdnega in ponovno odprem primer.
+    effects:
+      trust_policist: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Žan than anyone in Rovtarje. Who is responsible?
+    choices:
+      - Confront Luka Zupan (the obsessive partner) -> confront_luka
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Igor Černič (the quarry director) -> confront_igor
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Confront Mayor Kovač (political protection) -> confront_gregor
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Luka (Best Ending) ---
+
+  confront_luka:
+    type: message
+    text: >
+      You present your evidence to Luka:
+
+      "I know @hana_podgornik is your account. I know you put a GPS
+      tracker on Žan's car. I know you accessed his files at the
+      university. I know you were watching his house. I have
+      witnesses and I have the access logs."
+    choices:
+      - Send -> luka_response
+
+  luka_response:
+    type: message
+    text: >
+      Luka doesn't reply for a long time. Then:
+
+      LUKA: Ne razumeš. Ščitil sem ga. V nevarnosti je bil od
+      kamnoloma in ni pustil da mu pomagam. Moral sem vedet da je
+      varen. Vse kar sem naredil je bilo ker mi je mar za njega.
+      Za jame. Za najino delo.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Inšpektor Novak. And to
+      Aleš Turk.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inšpektor Novak reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witness testimonies — Luka is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Žan's
+      Renault at a mountain hut parking lot above the village.
+
+      Aleš Turk, finally in possession of Žan's full evidence
+      package, publishes the Kamnolom Triglav story in Delo and
+      Dnevnik. The environmental agency orders an unannounced
+      inspection. The quarry is shut down pending environmental
+      remediation. Igor Černič faces criminal charges for illegal
+      mining in a protected area, falsifying impact assessments,
+      and bribing inspectors. The bribed inspector Marko Božič is
+      suspended.
+
+      And Žan Kavčič, reading the story from a friend's house in
+      Bled, calls his sister for the first time in nine days.
+
+      "Prihajam domov."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: zan
+    text: >
+      kras ne laže. in ljudje rovtarij tudi ne. hvala da niste
+      odnehali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Igor (Partial Ending) ---
+
+  confront_igor:
+    type: message
+    text: >
+      You present the quarry evidence to Igor Černič:
+
+      "I have photographs of blast damage inside Gallery C. I have
+      geological surveys showing your quarry is mining inside a
+      protected cave system. I have your original technician reports
+      showing the data was falsified. I have evidence of bribed
+      inspectors."
+    choices:
+      - Send -> igor_response
+
+  igor_response:
+    type: message
+    text: >
+      IGOR: Ta pogovor bo posredovan naši pravni službi. Vsaka
+      objava obrekljivih materialov bo imela takojšnje pravne
+      posledice. Kamnolom Triglav je vedno deloval v skladu z
+      regulativnimi zahtevami.
+
+      But it's too late. You've sent the evidence to Aleš, to the
+      Jamarsko društvo, and to the environmental agency.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The quarry story breaks. Kamnolom Triglav is ordered to halt
+      all blasting pending investigation. The quarry may close
+      permanently. A hundred and fifty jobs hang in the balance.
+      The village is divided.
+
+      But Žan?
+
+      Without the stalking evidence, Luka is never investigated.
+      He continues to work at the university. He continues to
+      monitor Žan's accounts. He creates a new anonymous profile.
+
+      Three months later, Žan reads about Kamnolom Triglav online.
+      He returns quietly. He changes research groups. He stops
+      caving alone. He checks his car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Žan walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: zan
+    text: "sem nazaj. jame so varnejše. ostalo... bomo vidli."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_gregor:
+    type: message
+    text: >
+      You confront Mayor Kovač with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> gregor_response
+
+  gregor_response:
+    type: tweet
+    from: vid
+    text: >
+      Naš klient je seznanjen z vašimi navedbami. Vsaka javna
+      objava obrekljivih izjav bo predmet takojšnjega pravnega
+      postopka. — Pisarna Bergant & Partnerji, Ljubljana
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Kovač and Kamnolom Triglav's illegal mining —
+      and there isn't one beyond political protection — your
+      evidence is insufficient.
+
+      Kamnolom Triglav continues to blast. Luka continues to watch.
+      Žan stays in hiding.
+
+      Six months later, @hana_podgornik creates a new account. It
+      follows Žan's sister.
+
+      The stalactites in Gallery C, a hundred thousand years old,
+      collapse from blasting vibrations. Nobody photographs them
+      this time.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: ROVTARJE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Quarry evidence: ${quarry_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Žan's story explores themes of
+      corporate impunity, environmental destruction, obsessive
+      behaviour, community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or needs someone to talk to:
+      Zaupni telefon: 116 123
+      Policija: 113
+      TOM telefon za otroke in mladostnike: 116 111

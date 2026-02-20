@@ -1,0 +1,1893 @@
+# DEAD ACCOUNT — A TactCheck Gamepatch Scenario
+# An investigation game on a simulated Mastodon instance
+# Import: bin/gamepatch import dead-account-game.yml
+#
+# Player investigates the disappearance of artist Noor El Amrani
+# in the fictional Dutch town of Zuidhaven.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lisa: 0
+    trust_thomas: 0
+    trust_pim: 0
+    trust_sophie: 0
+    trust_david: 0
+    trust_yara: 0
+    trust_mila: 0
+    trust_jordy: 0
+    trust_anouk: 0
+    trust_henk: 0
+    trust_ahmed: 0
+    trust_vandijk: 0
+    trust_devries: 0
+    trust_lotte: 0
+    trust_kuiper: 0
+    trust_nina: 0
+    trust_bakels: 0
+    trust_gerrit: 0
+    trust_jan: 0
+    trust_bas: 0
+    trust_emma: 0
+    trust_sander: 0
+    trust_ruud: 0
+    trust_marco: 0
+    trust_margriet: 0
+    trust_willem: 0
+    trust_smit: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    stalking_evidence: 0
+    corruption_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to zuidhaven. getting to know the place"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Zuidhaven.social"
+    description: "Welcome to the Zuidhaven community instance"
+    avatar_url: /gamepatch/assets/dead-account/zuidhaven_bot.png
+
+  npcs:
+    # === Noor's Inner Circle ===
+    noor:
+      name: "Noor El Amrani"
+      bio: "artist & illustrator | zuidhaven studio | painting what i see"
+      avatar: avatars/noor.jpg
+    lisa:
+      name: "Lisa Bakker"
+      bio: "baker @bakkerij_lisa | sourdough is a personality trait | noor's person"
+      avatar: avatars/lisa.jpg
+    thomas:
+      name: "Thomas Groot"
+      bio: "PT @FitZuid | morning runs | no excuses | grind don't stop"
+      avatar: avatars/thomas.jpg
+    sportief_zh:
+      name: "Sportief ZH"
+      bio: "fitness | running | healthy living in zuidhaven"
+      avatar: avatars/sportief.jpg
+    pim:
+      name: "Pim Veldkamp"
+      bio: "freelance journalist | local news matters | tips: pim@veldkamp.nl"
+      avatar: avatars/pim.jpg
+    yara:
+      name: "Yara El Amrani"
+      bio: "uva student | amsterdam | noor's sister | WHERE IS SHE"
+      avatar: avatars/yara.jpg
+    david:
+      name: "David Chen"
+      bio: "photographer | art collective | Surface Tension (coming soon)"
+      avatar: avatars/david.jpg
+    sophie:
+      name: "Sophie Janssen"
+      bio: "Retired teacher | 40 years in education | Book club Tuesdays"
+      avatar: avatars/sophie.jpg
+
+    # === Local Government ===
+    devries:
+      name: "Hans de Vries"
+      bio: "Wethouder Ruimtelijke Ordening | Gemeente Zuidhaven | #ZuidhavenGroeit"
+      avatar: avatars/devries.jpg
+    smit:
+      name: "Kees Smit"
+      bio: "Burgemeester van Zuidhaven | Serving our community since 2018"
+      avatar: avatars/smit.jpg
+    politie:
+      name: "Gemeente Politie Zuidhaven"
+      bio: "Officieel account | Meldingen: 0800-8844 | Nood: 112"
+      avatar: avatars/politie.jpg
+    vandijk:
+      name: "Pieter van Dijk"
+      bio: "Wijkagent Zuidhaven-Centrum | Spreekuur: di 10-12"
+      avatar: avatars/vandijk.jpg
+    kuiper:
+      name: "Bram Kuiper"
+      bio: "Raadslid | Transparantie & verantwoording | Uw stem in de raad"
+      avatar: avatars/kuiper.jpg
+    lotte:
+      name: "Lotte de Jong"
+      bio: "gemeente zuidhaven | admin | coffee first paperwork second"
+      avatar: avatars/lotte.jpg
+    willemsen:
+      name: "Jan Willemsen"
+      bio: "Griffier | Gemeente Zuidhaven | Agendas & minutes"
+      avatar: avatars/willemsen.jpg
+
+    # === Developer / Business ===
+    marco:
+      name: "Marco van Bergen"
+      bio: "CEO @vanbergen_bv | Real estate | Building communities"
+      avatar: avatars/marco.jpg
+    vanbergen_bv:
+      name: "Van Bergen Ontwikkeling"
+      bio: "Vastgoedontwikkeling | Haven Nieuw Zuidhaven | Investeren in de toekomst"
+      avatar: avatars/vanbergen_bv.jpg
+    visser:
+      name: "Gerard Visser"
+      bio: "Advocaat | Visser & Partners | Ondernemingsrecht"
+      avatar: avatars/visser.jpg
+    henk:
+      name: "Henk Mulder"
+      bio: "voorman | bouwen is leven | cafe after work"
+      avatar: avatars/henk.jpg
+    sander:
+      name: "Sander Post"
+      bio: "makelaar | zuidhaven & omstreken | de markt kent geen geheimen"
+      avatar: avatars/sander.jpg
+
+    # === Local Business ===
+    bakkerij:
+      name: "Bakkerij Lisa"
+      bio: "Vers brood | Croissants | Appeltaart | Di-Za 7:00-18:00"
+      avatar: avatars/bakkerij.jpg
+    ahmed:
+      name: "Ahmed Yilmaz"
+      bio: "kapper | 30 jaar in zuidhaven | verhalen en kapsels"
+      avatar: avatars/ahmed.jpg
+    willem:
+      name: "Willem Groen"
+      bio: "Apotheker | Apotheek Groen | Gezondheidsadvies"
+      avatar: avatars/willem.jpg
+    cafe:
+      name: "Cafe 't Morgenrood"
+      bio: "koffie | live muziek | quiz nights | het hart van zuidhaven"
+      avatar: avatars/cafe.jpg
+    nina:
+      name: "Nina Verhoeven"
+      bio: "boekhandel nina | sinds 1985 | boeken zijn antwoorden op vragen die je nog niet gesteld hebt"
+      avatar: avatars/nina.jpg
+    gerrit:
+      name: "Gerrit Pietersen"
+      bio: "slager | sinds 1996 | rookworst is een levensstijl"
+      avatar: avatars/gerrit.jpg
+    jan:
+      name: "Jan de Wit"
+      bio: "fietsenmaker | reparaties & verkoop | open tot laat"
+      avatar: avatars/jan.jpg
+    margriet:
+      name: "Margriet Hoekstra"
+      bio: "bloemen | markt | bruiloften | elke dag een beetje mooi"
+      avatar: avatars/margriet.jpg
+
+    # === Teens ===
+    mila:
+      name: "Mila"
+      bio: "17 | art student | learning to see | @noor_creates is literally my hero"
+      avatar: avatars/mila.jpg
+    jordy:
+      name: "Jordy"
+      bio: "16 | skater | harbour tiles go crazy | midnight sessions"
+      avatar: avatars/jordy.jpg
+    anouk:
+      name: "Anouk"
+      bio: "15 | drawing everything | hands are the enemy | ink & pencil"
+      avatar: avatars/anouk.jpg
+    bas:
+      name: "Bas"
+      bio: "18 | dj | @cafe_tmorgenrood thursdays | deep house & bad decisions"
+      avatar: avatars/bas.jpg
+    emma:
+      name: "Emma"
+      bio: "17 | ballet | discipline is freedom | walking home late again"
+      avatar: avatars/emma.jpg
+
+    # === Media & Community ===
+    lokaalnieuws:
+      name: "Lokaal Nieuws Zuidhaven"
+      bio: "Nieuws uit Zuidhaven en omstreken | Tips: redactie@lokaalnieuws-zh.nl"
+      avatar: avatars/lokaalnieuws.jpg
+    weerstation:
+      name: "Weerstation Zuidhaven"
+      bio: "Automatisch weerstation | Elk uur een update"
+      avatar: avatars/weerstation.jpg
+    bieb:
+      name: "Bibliotheek Zuidhaven"
+      bio: "Boeken | Activiteiten | Wifi | Kennis voor iedereen"
+      avatar: avatars/bieb.jpg
+    dorpsraad:
+      name: "Dorpsraad Zuidhaven"
+      bio: "Uw stem in de wijk | Vergaderingen | Enquetes | Meedoen!"
+      avatar: avatars/dorpsraad.jpg
+
+    # === Suspicious / Other ===
+    ruud:
+      name: "Wakker Nederland"
+      bio: "DE WAARHEID KOMT AAN HET LICHT | Volg het geld | #WakkerNederland"
+      avatar: avatars/ruud.jpg
+    tipgever:
+      name: "Anoniem"
+      bio: "."
+      avatar: avatars/anon.jpg
+    schaduwraad:
+      name: "De Schaduwraad"
+      bio: "GEHEIM | Wij besturen alles | Minuten worden niet gepubliceerd"
+      avatar: avatars/schaduwraad.jpg
+    bakels:
+      name: "Ds. Herman Bakels"
+      bio: "Predikant | Protestantse Gemeente Zuidhaven | Zondag 10:00"
+      avatar: avatars/bakels.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ZUIDHAVEN
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to zuidhaven.social — the community Mastodon instance for
+      the town of Zuidhaven, South Holland.
+
+      The local feed is busy today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice a pattern. A lot of posts
+      mention the same name: @noor_creates.
+
+      A local artist. People are worried. She hasn't posted in a week.
+    choices:
+      - Look at her profile -> noor_profile
+
+  noor_profile:
+    type: tweet
+    from: noor
+    text: "I think someone is watching me."
+    choices:
+      - That's her last real post... -> black_square
+
+  black_square:
+    type: message
+    text: >
+      Three days after that post, her account posted a single image:
+      a solid black square. No caption. No alt text. Posted at 2am.
+
+      Her friends say that's not her. The police say there's no crime.
+      Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: politie
+    text: >
+      We have received a report regarding the wellbeing of a Zuidhaven
+      resident. At this time there is no indication of a criminal matter.
+      Anyone with information can contact us at 0800-8844.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The responses are all over the place. Her best friend @lisa_bakker
+      is freaking out. Her ex @thomas_groot is posting worried messages.
+      Her sister @yara_el_amrani is going off at the police.
+
+      And someone called @wakker_nederland is ranting about a conspiracy.
+
+      One thing's clear: nobody buys the police statement. Nobody
+      thinks Noor just "needed space."
+    effects: { trust_lisa: "+5", trust_yara: "+5" }
+    choices:
+      - Start following Noor's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Zuidhaven. Follow Noor's contacts and read their posts.
+      The more you engage with the community, the more they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to the florist (Margriet seems friendly) -> margriet_intro
+      - Talk to the barber (Ahmed knows everyone) -> ahmed_intro
+      - Talk to the skateboarder (Jordy says he saw something) -> jordy_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a mix of worried posts about Noor, everyday stuff,
+      weather updates, and one very loud conspiracy account. Under all
+      the worry, this is a tight community. People tag each other
+      constantly. Everyone seems to know everyone.
+
+      Some names keep coming up: Lisa (baker, Noor's best friend),
+      Thomas (gym guy, Noor's ex), David (photographer, works next
+      to Noor at the art centre), Pim (journalist, weirdly quiet).
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Margriet -> margriet_intro
+      - Talk to Ahmed -> ahmed_intro
+      - Talk to Jordy -> jordy_intro
+
+  # --- Margriet (social map) ---
+
+  margriet_intro:
+    type: tweet
+    from: margriet
+    text: >
+      if anyone needs me i'll be at the shop arranging flowers and
+      worrying about @noor_creates. this town is not the same without her.
+    effects: { trust_margriet: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Margriet -> margriet_talk
+
+  margriet_talk:
+    type: message
+    text: >
+      MARGRIET: Oh, you're new! Welcome to Zuidhaven. Terrible timing
+      though. Everyone's upset about Noor.
+
+      Let me give you the rundown. Lisa at the bakery is Noor's best
+      friend — she's a mess right now. Thomas, the gym guy, is Noor's
+      ex — they broke up about four months ago. David Chen is a
+      photographer at the art centre where Noor has her studio. And Pim
+      Veldkamp is a journalist who's being really quiet about the whole
+      thing, which isn't like him at all.
+
+      Oh, and just ignore @wakker_nederland. He means well but he sees
+      conspiracies in his cornflakes.
+    effects: { trust_margriet: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the breakup with Thomas -> margriet_thomas
+      - Ask about the art centre -> margriet_artcentre
+      - Thank her and move on -> quest1_hub
+
+  margriet_thomas:
+    type: message
+    text: >
+      MARGRIET: Thomas and Noor? They were together for about eight
+      months. He seemed nice enough — charming, good-looking, always at
+      the gym. But Lisa never liked him. Said he was "too much." I didn't
+      think anything of it at the time. Noor seemed happy. Then suddenly
+      they split and Noor threw herself into her work.
+
+      Thomas was at the cafe after she disappeared, asking everyone if
+      they'd heard from her. Very concerned. Almost... too concerned?
+      No, I shouldn't say that. I'm sure he's just worried like everyone.
+    effects: { trust_margriet: "+5" }
+    choices:
+      - Ask about the art centre -> margriet_artcentre
+      - Move on -> quest1_hub
+
+  margriet_artcentre:
+    type: message
+    text: >
+      MARGRIET: The art centre is beautiful. Old building — the council
+      owns it. Noor has a studio there, David has the one next door.
+      I did the flowers for her last exhibition. "Local Voices." She
+      sold two pieces!
+
+      She loved that building. Said it had "layers." I think she meant
+      the character, the history. It's been a lot of things over the
+      years — council offices, a school, storage. Now it's mostly
+      studios and exhibition space.
+    effects: { trust_margriet: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ahmed (gossip, Thomas detail) ---
+
+  ahmed_intro:
+    type: tweet
+    from: ahmed
+    text: >
+      thirty years behind this chair and i've never known the town like
+      this. @noor_creates, wherever you are — we miss you.
+    effects: { trust_ahmed: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ahmed -> ahmed_talk
+
+  ahmed_talk:
+    type: message
+    text: >
+      AHMED: You're new! Come in, sit down. Coffee? Let me tell you
+      about this town.
+
+      Everyone comes through my shop. I know everyone's story. And I
+      know when something's off. This thing with Noor — something is
+      very off.
+    effects: { trust_ahmed: "+10" }
+    choices:
+      - Ask what he's noticed -> ahmed_noticed
+      - Ask about Thomas -> ahmed_thomas_early
+
+  ahmed_noticed:
+    type: message
+    text: >
+      AHMED: People are scared. Not just worried — scared. Lisa's
+      opening the bakery late, which she never does. Sophie upstairs
+      hasn't left her apartment. Even the kids — Mila, Anouk — they're
+      posting about Noor nonstop.
+
+      And you know what bugs me? The police. One statement. One. That's
+      not normal. When old Meneer Bakker wandered off last year, they
+      had three updates in a day. For Noor? Nothing.
+    effects: { trust_ahmed: "+5" }
+    choices:
+      - Ask about Thomas -> ahmed_thomas_early
+      - Move on -> quest1_hub
+
+  ahmed_thomas_early:
+    type: message
+    text: >
+      AHMED: Thomas? He's a regular. Good tipper, talks a lot. After
+      the breakup he was in here every week talking about the gym, his
+      clients, the usual. But lately... I don't know. Something's
+      shifted. He asks about Noor a lot. "Have you seen Noor?" "Does
+      Noor still come in?" For someone who's "moved on," he's very
+      interested.
+    effects: { trust_ahmed: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jordy (witness tease) ---
+
+  jordy_intro:
+    type: tweet
+    from: jordy
+    text: >
+      ok so that @noor_creates thing... i might have seen smth the other
+      night but idk if it even matters. should i go to the police?? they
+      never take me seriously anyway lol
+    effects: { trust_jordy: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jordy -> jordy_talk_early
+
+  jordy_talk_early:
+    type: message
+    text: >
+      JORDY: yo so i was skating near the harbour that night right?
+      like 11ish? and i saw this car pull up to sophie's building. some
+      dude got out, went to the door, and a woman came out and got in
+      the car mad fast. like FAST fast. then they just drove off.
+
+      i posted about it but literally nobody cared. now im thinking
+      maybe it was relevant?? idk. the police would just tell me to
+      stop skating at night tbh
+    effects: { trust_jordy: "+10" }
+    choices:
+      - That could be important. Can you describe the car? -> jordy_car_early
+      - Thanks Jordy, I might come back to this -> quest1_hub
+
+  jordy_car_early:
+    type: message
+    text: >
+      JORDY: dark hatchback. kinda beat up. dented bumper i think? the
+      guy was like thirties or whatever. didn't get a good look ngl. the
+      woman had something wrapped around her, like a big scarf or
+      blanket. she practically ran to the car.
+
+      honestly at the time i just thought it was some couple drama or
+      smth. but now with noor missing and that being right where she
+      lives...
+    effects: { trust_jordy: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Zuidhaven. A small town where everyone
+      knows everyone. An artist who was loved. A disappearance that
+      doesn't make sense. A black square nobody believes is hers.
+
+      You've made some contacts. Now dig deeper.
+    choices:
+      - Talk to Lisa (Noor's best friend) -> lisa_q1
+      - Talk to Thomas (Noor's ex) -> thomas_q1
+      - Check what Yara (Noor's sister) is saying -> yara_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lisa Q1 ---
+
+  lisa_q1:
+    type: tweet
+    from: lisa
+    text: >
+      if anyone has seen or heard from @noor_creates please DM me.
+      this is not like her. please. i'm begging.
+    effects: { trust_lisa: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lisa -> lisa_q1_talk
+
+  lisa_q1_talk:
+    type: message
+    text: >
+      LISA: I appreciate you reaching out but I don't really know you.
+      Noor has a lot of people who care about her. I'm sure she'll
+      turn up. She just needs space sometimes.
+
+      [Lisa is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_lisa: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Thomas Q1 ---
+
+  thomas_q1:
+    type: tweet
+    from: thomas
+    text: >
+      anyone heard from @noor_creates? getting worried fr. she's not
+      answering messages. if you see her lmk
+    effects: { trust_thomas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Thomas -> thomas_q1_talk
+
+  thomas_q1_talk:
+    type: message
+    text: >
+      THOMAS: Hey! Yeah, Noor and I dated for a bit. We split up a
+      few months ago, totally amicable. She's a great person. I hope
+      she's okay, really. Let me know if you hear anything?
+
+      We're all worried.
+
+      [Thomas seems genuine. Or is he performing?]
+    effects: { trust_thomas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Yara Q1 ---
+
+  yara_q1:
+    type: tweet
+    from: yara
+    text: >
+      my sister has been MISSING for a WEEK and the police keep telling
+      me there's "no indication of criminal activity" LIKE HELLO??
+      she didn't just vanish into thin air. SOMEONE DO SOMETHING.
+    effects: { trust_yara: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Yara -> yara_q1_talk
+
+  yara_q1_talk:
+    type: message
+    text: >
+      YARA: who are you? another person from that town with "thoughts
+      and prayers"? my sister is MISSING and nobody is doing ANYTHING.
+      unless you have actual info, don't waste my time.
+    effects: { trust_yara: "+5" }
+    choices:
+      - I want to help find out what happened -> yara_q1_soften
+      - Move on -> quest1_hub
+
+  yara_q1_soften:
+    type: message
+    text: >
+      YARA: ...sorry. i'm not sleeping. i'm not eating. i've called
+      the police four times. they keep saying the same thing.
+
+      i never trusted that town. and that ex of hers — Thomas. i met
+      him twice and both times he made my skin crawl.
+    effects: { trust_yara: "+10" }
+    choices:
+      - What didn't you like about Thomas? -> yara_thomas
+      - Move on -> quest1_hub
+
+  yara_thomas:
+    type: message
+    text: >
+      YARA: the way he'd answer questions FOR her. the way he'd check
+      her phone when he thought nobody was looking. the way he always
+      knew where she was. i told noor he was a walking red flag. she
+      said i was overreacting.
+    effects: { trust_yara: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Noor went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Bas (was at the cafe that night) -> bas_interview
+      - Find Jan (bike mechanic, works late near art centre) -> jan_interview
+      - Find David (photographer, studio next to Noor's) -> david_interview
+      - Find Gerrit (butcher, shop window faces the street) -> gerrit_interview
+
+  # --- Bas (saw Thomas leave cafe) ---
+
+  bas_interview:
+    type: tweet
+    from: bas
+    text: >
+      open mic at the 'rood tonight, decent crowd. thomas from the gym
+      just stormed out looking pissed lmao. some people cant handle
+      thursdays i guess
+    effects: { trust_bas: "+5" }
+    choices:
+      - Ask Bas about that night -> bas_talk
+
+  bas_talk:
+    type: message
+    text: >
+      BAS: yeah thomas was there, slammed his beer down and just
+      bounced. thought he was having a bad day or whatever. this was
+      around ten? maybe a bit before. he was on his phone the whole
+      evening, looking stressed. then he just got up and left. didn't
+      say bye to anyone.
+
+      he was with henk earlier — the construction guy. but henk stayed.
+      thomas just... left.
+    effects:
+      trust_bas: "+10"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jan (saw Thomas's car) ---
+
+  jan_interview:
+    type: tweet
+    from: jan
+    text: >
+      working late. someone's parked outside the art centre again.
+      silver golf. mate, the car park is around the back.
+    effects: { trust_jan: "+5" }
+    choices:
+      - Ask Jan about the car -> jan_talk
+
+  jan_talk:
+    type: message
+    text: >
+      JAN: Yeah, I saw Thomas's silver Golf parked outside the art
+      centre that night. Thought it was weird. I'd fixed his bike the
+      week before and we'd chatted about his car. Silver VW Golf, bit
+      scratched up.
+
+      The gym closes at nine. Thomas has no reason to be at the art
+      centre at half ten at night. He doesn't make art. He doesn't
+      have a studio there.
+
+      I told the police but they said it was "noted."
+    effects:
+      trust_jan: "+10"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- David (heard shouting) ---
+
+  david_interview:
+    type: tweet
+    from: david
+    text: >
+      i don't want to say things i can't take back. but something
+      happened and i think people should be asking harder questions.
+    effects: { trust_david: "+5" }
+    choices:
+      - DM David -> david_talk_low
+        when:
+          state: trust_david
+          lt: 50
+      - DM David -> david_talk_high
+        when:
+          state: trust_david
+          gte: 50
+
+  david_talk_low:
+    type: message
+    text: >
+      DAVID: I don't really know what's going on with Noor. We're
+      colleagues at the art centre. I hope she's okay.
+
+      [David isn't ready to talk. You need to build more trust. Try
+      engaging with his photography posts first.]
+    effects: { trust_david: "+5" }
+    choices:
+      - Engage with David's art posts -> david_trust_build
+      - Come back later -> quest2_hub
+
+  david_trust_build:
+    type: tweet
+    from: david
+    text: >
+      working on the "Surface Tension" series. about what we see vs
+      what's underneath. noor was supposed to be part of this show.
+    effects: { trust_david: "+15" }
+    choices:
+      - That sounds powerful. Tell me about it -> david_talk_mid
+
+  david_talk_mid:
+    type: message
+    text: >
+      DAVID: thanks. noor and i planned a joint exhibition — her
+      paintings, my photographs. she'd been hyped about it for months.
+      then she just... withdrew. stopped answering messages.
+
+      alright. i'll tell you. i was at the studio that night. working
+      late. i heard something around half ten. raised voices. a man
+      and a woman. he was shouting. she was crying.
+
+      i should have gone out there. i didn't. i put my headphones on.
+    effects:
+      trust_david: "+15"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Did you hear what he said? -> david_detail
+      - Continue investigating -> quest2_hub
+
+  david_detail:
+    type: message
+    text: >
+      DAVID: the voice was aggressive. not just angry — possessive.
+      "you think you can just—" something. i couldn't hear clearly
+      through the walls. but the tone... it was control, not
+      conversation.
+
+      then a door slam. running. then nothing. when i checked twenty
+      minutes later, her studio was dark. her bag was gone but her
+      jacket was still on the hook. you don't leave your jacket in
+      october unless you're running.
+    effects: { trust_david: "+5" }
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Gerrit (saw woman running) ---
+
+  gerrit_interview:
+    type: tweet
+    from: gerrit
+    text: >
+      didn't sleep well. kept thinking about what i saw last night.
+      someone running past the shop around quarter to eleven. a woman.
+      running like she was scared.
+    effects: { trust_gerrit: "+5" }
+    choices:
+      - Ask Gerrit what he saw -> gerrit_talk
+
+  gerrit_talk:
+    type: message
+    text: >
+      GERRIT: I saw a woman running past my shop. About quarter to
+      eleven. I was doing the books — I keep late hours. She was young,
+      dark hair. Not jogging. Running. Like something was after her.
+
+      I nearly went outside but by the time I got to the door she was
+      gone. Toward the residential streets near the harbour.
+
+      Told the police. They wrote it down. That was it.
+    effects:
+      trust_gerrit: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Sophie (Noor's
+      neighbour) and Jordy (saw the car pickup).
+    choices:
+      - Talk to Sophie (Noor's neighbour) -> sophie_interview
+      - Talk to Jordy about the car -> jordy_interview
+      - Find Bas at the cafe -> bas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Jan the bike mechanic -> jan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find David at the art centre -> david_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Gerrit the butcher -> gerrit_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Sophie (last person to see Noor) ---
+
+  sophie_interview:
+    type: tweet
+    from: sophie
+    text: >
+      That image on Noor's account. Someone posted that. Noor would
+      never post something so empty. She is an artist. Every image
+      means something. This one means nothing. Someone else did this.
+    effects: { trust_sophie: "+5" }
+    choices:
+      - DM Sophie -> sophie_talk_low
+        when:
+          state: trust_sophie
+          lt: 70
+      - DM Sophie -> sophie_talk_high
+        when:
+          state: trust_sophie
+          gte: 70
+
+  sophie_talk_low:
+    type: message
+    text: >
+      SOPHIE: I keep my affairs private and I expect others to do the
+      same. If you're concerned about Noor, speak to the police.
+
+      [Sophie is protective. She needs to trust you deeply before
+      she'll share what she knows. Show her you care about Noor's
+      safety, not just the story.]
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Share what you've learned about the night -> sophie_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  sophie_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the shouting, the car, the
+      running. Sophie is quiet for a long time.
+
+      SOPHIE: You've been paying attention. More than the police have.
+    effects: { trust_sophie: "+25" }
+    choices:
+      - I think Noor is in danger -> sophie_talk_high
+
+  sophie_talk_high:
+    type: message
+    text: >
+      SOPHIE: She came to my door that night. Around eleven. She was
+      shaking, crying. I made her tea and she sat at my kitchen table
+      for about an hour. She said a man had confronted her. She didn't
+      say who, but she was terrified. She said he took her phone.
+
+      Around midnight she said "a friend is coming to get me." I
+      watched from the window. A car pulled up and she got in. She
+      looked back at the building once. Then they drove away.
+
+      That was the last I saw of her.
+    effects:
+      trust_sophie: "+15"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jordy (full account of car pickup) ---
+
+  jordy_interview:
+    type: message
+    text: >
+      JORDY: ok so i was skating near sophie's building right? around
+      11ish? and this car pulls up. dark hatchback, kinda beat up,
+      dented bumper. a guy gets out, goes to the door, and a woman
+      comes out wrapped in a scarf or blanket and gets in FAST. like
+      they drove off toward the highway.
+
+      now im thinking... that was right when noor went missing. and
+      sophie's building IS where noor lives.
+    effects:
+      trust_jordy: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Thomas leaves Cafe 't Morgenrood, angry (Bas)
+      22:15 — Thomas's silver Golf parked at art centre (Jan)
+      22:30 — Man shouting, woman crying at art centre (David)
+      22:45 — Woman running past Gerrit's butcher shop
+      23:00 — Noor arrives at Sophie's door, distressed
+      23:00 — Car picks up Noor at Sophie's building (Jordy)
+
+      A man confronted Noor. She ran. She went to her neighbour.
+      Then someone picked her up and drove her away.
+
+      The question is: WHO confronted her? And WHY?
+
+      Two threads to pull:
+      — The stalker: Who is the man? Why was he at the art centre?
+      — The studio: What was Noor working on? What did she find?
+    choices:
+      - Investigate the stalker thread -> stalker_hub
+      - Investigate the studio (corruption thread) -> quest3_start
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      STALKER THREAD: Evidence collected: ${stalking_evidence}
+      CORRUPTION THREAD: Evidence collected: ${corruption_evidence}
+    choices:
+      - Work on the stalker thread -> stalker_hub
+      - Work on the corruption thread -> corruption_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalking_evidence, gte: 5 }
+            - { state: corruption_evidence, gte: 3 }
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Someone confronted Noor. Someone stole her phone. Someone posted
+      the black square. Who?
+
+      Stalking evidence: ${stalking_evidence}
+    choices:
+      - Investigate Thomas's alt account -> alt_account_investigation
+      - Talk to Lisa about Thomas -> lisa_stalker
+        when:
+          state: trust_lisa
+          gte: 20
+      - Talk to Ahmed (saw Thomas the morning after) -> ahmed_stalker
+      - Talk to Anouk (has Noor's deleted posts) -> anouk_investigation
+      - Talk to Emma (saw someone watching the art centre) -> emma_interview
+      - Talk to Agent van Dijk -> vandijk_interview
+        when:
+          state: trust_vandijk
+          gte: 30
+      - Talk to Henk (Thomas's drinking buddy) -> henk_interview
+      - Talk to Reverend Bakels -> bakels_interview
+      - Back to hub -> investigation_hub
+
+  # --- Alt Account Investigation ---
+
+  alt_account_investigation:
+    type: message
+    text: >
+      Looking at Noor's followers, one account stands out: @sportief_zh.
+
+      A fitness account. Only 15 posts. All generic motivation reposts.
+      But the following list is interesting...
+    choices:
+      - Check who @sportief_zh follows -> alt_following_list
+
+  alt_following_list:
+    type: message
+    text: >
+      @sportief_zh follows: @noor_creates, @lisa_bakker, @mila_x03,
+      @anouk_drawings, @david_chen, @sophie_janssen, @yara_el_amrani.
+
+      That's Noor's entire inner circle. Nobody else relevant.
+
+      Account created: exactly 3 days after Noor's breakup with Thomas.
+    choices:
+      - Check post timing -> alt_timing
+
+  alt_timing:
+    type: message
+    text: >
+      Every one of Noor's posts was liked by @sportief_zh within
+      minutes of posting. The account has no original content — just
+      reposts from generic fitness accounts.
+
+      This isn't a real fitness enthusiast. This is someone monitoring
+      Noor's entire social circle from behind a fake account.
+
+      Created right after the breakup. Follows only Noor's friends.
+      Likes her posts instantly.
+    effects:
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Lisa on Thomas ---
+
+  lisa_stalker:
+    type: message
+    text: >
+      LISA: Okay, between us? The breakup wasn't just "things didn't
+      work out." He was intense. Controlling. Had opinions about who
+      she talked to, where she went. When she finally ended it, he
+      didn't take it well.
+
+      The last time I saw Noor — coffee a few days before she
+      disappeared — she told me someone was following her. Not a
+      feeling, she was sure. She'd seen someone outside her studio
+      at night.
+
+      I asked if it was Thomas. She said "I don't know. Maybe."
+    effects:
+      trust_lisa: "+15"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Ahmed (morning after) ---
+
+  ahmed_stalker:
+    type: message
+    text: >
+      AHMED: The morning after Noor disappeared — I didn't know yet —
+      Thomas came in for a haircut. He was jittery. Talking fast, not
+      like himself. Kept checking his phone under the cape.
+
+      I asked "everything okay?" Too fast, too defensive: "Yeah, fine,
+      why?"
+
+      And his phone buzzed and I saw the lock screen. The wallpaper
+      was a photo of Noor. Four months after the breakup.
+    effects:
+      trust_ahmed: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Anouk (deleted post archive) ---
+
+  anouk_investigation:
+    type: tweet
+    from: anouk
+    text: >
+      ok wait i went back through my saved screenshots of @noor_creates
+      posts and some of them are literally GONE from her account?? posts
+      from the last few weeks just deleted. who deletes someone else's
+      posts???
+    effects: { trust_anouk: "+5" }
+    choices:
+      - Ask Anouk for the screenshots -> anouk_screenshots
+
+  anouk_screenshots:
+    type: message
+    text: >
+      ANOUK: i saved all her posts bc i wanted to study her style.
+      here are the ones that got deleted:
+
+      Day -1: "Haven't slept properly in days."
+      Day -2: "Does anyone else get that feeling someone walked past
+      your window but when you look there's no one?"
+      Day -5: "To the person who keeps making new accounts to follow
+      me: I see you. Please stop."
+      Day -7: "Locking up the studio and there's someone across the
+      street just standing there. Third time this week."
+      Day -11: "Weird DM from an account I don't recognise. Blocked.
+      Fourth one this month."
+
+      like EVERY deleted post is about being followed or watched.
+      whoever has noor's phone specifically erased the stalking stuff.
+      that's so messed up.
+    effects:
+      trust_anouk: "+15"
+      stalking_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Emma (the watcher) ---
+
+  emma_interview:
+    type: tweet
+    from: emma
+    text: >
+      walking home from dance practice and someone was standing across
+      from the art centre just... watching? no phone, not waiting for
+      anyone, just standing there staring at the windows. lowkey creepy
+    effects: { trust_emma: "+5" }
+    choices:
+      - Ask Emma about this -> emma_talk
+
+  emma_talk:
+    type: message
+    text: >
+      EMMA: i saw them twice. same spot, outside the art centre, just
+      standing there looking at the studio windows. first time i thought
+      maybe they were waiting for someone. second time — same person,
+      same spot — i crossed the street and walked faster.
+
+      i couldn't see their face. but they were tall. athletic build.
+      it was genuinely creepy.
+    effects:
+      trust_emma: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Van Dijk (the officer) ---
+
+  vandijk_interview:
+    type: message
+    text: >
+      VAN DIJK: Look, between us... something about this case bothers
+      me.
+
+      The boyfriend — Thomas Groot — showed up at the station the day
+      after we took the report. Unprompted. Said he wanted to "help."
+      Sat in the waiting area for two hours. Most exes call. This guy
+      showed up in person.
+
+      He seemed to know details about Noor's recent movements that an
+      ex broken up for four months shouldn't know. I noted it in my
+      report. My chief said "he's just concerned."
+    effects:
+      trust_vandijk: "+15"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Why didn't you investigate further? -> vandijk_why
+      - Back to stalker thread -> stalker_hub
+
+  vandijk_why:
+    type: message
+    text: >
+      VAN DIJK: The case was closed fast. Faster than normal. I filed
+      my report, my chief reviewed it, and it was classified as "person
+      voluntarily absent" within 24 hours. Usually that takes a few
+      days.
+
+      I wanted to follow up but was told to move on. I have forty
+      other cases. That's the reality.
+
+      But if you have enough to file a formal complaint... that changes
+      things. My chief can't ignore a formal complaint with evidence.
+    effects: { trust_vandijk: "+5" }
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Henk ---
+
+  henk_interview:
+    type: message
+    text: >
+      HENK: Thomas? Yeah, I know Thomas. We drink together at the
+      cafe. After his breakup he was a mess. Not sad — angry. Couldn't
+      stop talking about her. "She doesn't know what she's giving up."
+      "She'll come back." Then it was "I just want to make sure she's
+      okay."
+
+      He'd check her socials every five minutes. I told him to move on
+      but he'd get this look. Like a different conversation was
+      happening in his head.
+
+      Last time I saw him was the night she disappeared. Agitated.
+      On his phone the whole time. Then got up and left without a word.
+    effects:
+      trust_henk: "+15"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask Henk about the land deal -> henk_corruption
+      - Back to stalker thread -> stalker_hub
+
+  henk_corruption:
+    type: message
+    text: >
+      HENK: Marco? He's a piece of work. At the company barbecue,
+      him and De Vries were in the corner. I walked past for a beer
+      and heard Marco say "we got the land for nothing." De Vries
+      said "don't say that so loud" and they both laughed.
+
+      Make of that what you will.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Bakels ---
+
+  bakels_interview:
+    type: message
+    text: >
+      BAKELS: I will never reveal what was said in pastoral confidence.
+      But I will say this: sometimes the people who seem most concerned
+      about a missing person are the ones who should be looked at most
+      carefully.
+
+      Grief performed loudly is sometimes guilt disguised.
+
+      That is all I can say. I pray you understand what I'm telling
+      you.
+    effects:
+      trust_bakels: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 3: THE LOCKED STUDIO — CORRUPTION THREAD
+  # =====================================================================
+
+  quest3_start:
+    type: message
+    text: >
+      QUEST: THE LOCKED STUDIO
+
+      Noor spent her last normal days at her studio in the art centre.
+      What was she working on? Why was she meeting someone secretly?
+      What did she find?
+
+      First: get access to the studio.
+    choices:
+      - Ask David for access -> studio_david
+        when:
+          state: trust_david
+          gte: 40
+      - Ask Margriet for access -> studio_margriet
+      - Look for another way -> corruption_hub
+
+  studio_david:
+    type: message
+    text: >
+      DAVID: I'll take you. My studio is next to hers. The door...
+      well, it's been unlocked since that night. Nobody's locked it.
+
+      He leads you to the art centre. An old building that smells
+      of wood and turpentine.
+    choices:
+      - Enter Noor's studio -> studio_enter
+
+  studio_margriet:
+    type: message
+    text: >
+      MARGRIET: I have a key from the exhibition. I should give it
+      to the police but... they don't seem interested, do they?
+    effects: { trust_margriet: "+5" }
+    choices:
+      - Enter Noor's studio -> studio_enter
+
+  studio_enter:
+    type: message
+    text: >
+      NOOR'S STUDIO
+
+      Small, bright room. Paint and turpentine. Canvas everywhere.
+      Paintings of the harbour, portraits, abstract work in blues
+      and greys.
+
+      But something's wrong. A metal filing cabinet in the corner is
+      pulled open. Papers scattered on the floor. Her desk has been
+      rifled through. Drawers open, contents disturbed.
+
+      Her jacket still hangs on a hook. She left in a hurry.
+    choices:
+      - Examine the filing cabinet -> filing_cabinet
+      - Examine the desk -> studio_desk
+      - Look at the paintings -> studio_paintings
+
+  filing_cabinet:
+    type: message
+    text: >
+      Three drawers. Bottom two: old building records, maintenance,
+      heating bills. Top drawer: empty. But dust marks show folders
+      were stored here recently. Someone removed them.
+
+      A faded label: "Ruimtelijke Ordening" (Spatial Planning).
+      That's a council department.
+
+      Why were council planning documents in a filing cabinet at the
+      art centre?
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Examine the desk -> studio_desk
+      - Continue -> corruption_hub
+
+  studio_desk:
+    type: message
+    text: >
+      Under the art supplies: a phone charging cable (no phone), a
+      desk lamp positioned for photographing flat documents, and a
+      notepad:
+
+      "14b — waterfront — valuation doesn't match"
+      "V. and M. — university?"
+      "Pim says be careful"
+
+      Noor was photographing documents. She found something about a
+      waterfront deal. And she was working with Pim the journalist.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> corruption_hub
+
+  studio_paintings:
+    type: message
+    text: >
+      A large unfinished painting: abstract, dark blues and greys.
+      "Undercurrent" — about what's beneath the surface of a place.
+
+      On one wall, a series of small ink drawings of eyes. Hundreds
+      of eyes. Looking outward.
+
+      This is the work of someone who felt watched.
+    choices:
+      - Examine the filing cabinet -> filing_cabinet
+      - Examine the desk -> studio_desk
+      - Continue -> corruption_hub
+
+  # --- Corruption Investigation Hub ---
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORRUPTION THREAD
+
+      Noor found something about a waterfront land deal. "Item 14b."
+      A valuation that doesn't match. Two people connected: "V" and "M."
+
+      Corruption evidence: ${corruption_evidence}
+    choices:
+      - Search the council records -> council_records
+      - Talk to estate agent Sander Post -> sander_interview
+      - Check the anonymous tip account -> tipgever_investigation
+      - Talk to councillor Bram Kuiper -> kuiper_interview
+      - Talk to Mila (Noor gave her something) -> mila_interview
+        when:
+          state: trust_mila
+          gte: 30
+      - Talk to Nina the bookseller -> nina_interview
+        when:
+          state: trust_nina
+          gte: 40
+      - Talk to Pim the journalist -> pim_interview
+      - Back to investigation hub -> investigation_hub
+
+  # --- Council Records ---
+
+  council_records:
+    type: tweet
+    from: willemsen
+    text: >
+      Council meeting agenda published. Highlights: budget review,
+      traffic study, property disposals (14b), cultural grants.
+    choices:
+      - Look at item 14b -> agenda_14b
+
+  agenda_14b:
+    type: message
+    text: >
+      Item 14b: "Disposal of municipal land parcel, waterfront
+      district."
+
+      Buried in bureaucratic language between the traffic study and
+      cultural grants. The most boring possible framing for what turns
+      out to be the sale of prime public waterfront land to a private
+      developer.
+
+      The minutes say: "Approved unanimously. Alderman De Vries
+      abstained."
+
+      Abstained — not recused. There's a legal difference.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check who bought the land -> vanbergen_posts
+      - Back to corruption thread -> corruption_hub
+
+  vanbergen_posts:
+    type: tweet
+    from: vanbergen_bv
+    text: >
+      Van Bergen Ontwikkeling is proud to announce the acquisition of
+      waterfront development rights in Zuidhaven. Our vision: a
+      state-of-the-art marina and mixed-use residential complex.
+    choices:
+      - Check the community reaction -> dorpsraad_reaction
+
+  dorpsraad_reaction:
+    type: tweet
+    from: dorpsraad
+    text: >
+      Community survey results: 72% of respondents OPPOSED the current
+      marina plan, citing concerns about affordability, environmental
+      impact, and loss of public access.
+    choices:
+      - So 72% opposed, but De Vries says it was "broadly supported" -> corruption_hub
+
+  # --- Sander Post (valuation) ---
+
+  sander_interview:
+    type: message
+    text: >
+      SANDER: That waterfront parcel? Prime land. I'd value it at
+      minimum 2.5 million, probably closer to 2.8. You're looking at
+      2,500-3,200 per square metre with harbour views.
+
+      It sold for 1.6 million. That's not a discount. That's a gift.
+
+      The "independent" valuation came from a firm called Veritas
+      Vastgoed. Three years old. One client. Guess which developer.
+    effects:
+      trust_sander: "+15"
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corruption thread -> corruption_hub
+
+  # --- Anonymous Tipster ---
+
+  tipgever_investigation:
+    type: tweet
+    from: tipgever
+    text: >
+      Agenda item 14b. Read it. Read it carefully. Then ask yourself:
+      who benefits?
+    choices:
+      - Look at this account's other posts -> tipgever_posts
+
+  tipgever_posts:
+    type: message
+    text: >
+      @anoniem_tipgever posts are cryptic and always between 21:00
+      and midnight:
+
+      "Not everything sold by the gemeente goes for a fair price."
+      "When the buyer and seller go to the same gym, same golf course,
+      same university... coincidence or pattern?"
+      "The valuation was commissioned by the buyer's recommended firm."
+
+      This is an insider. Someone who knows gemeente procedures.
+      The posting times suggest someone posting after work hours.
+
+      Who works at the gemeente and might know about the land deal?
+    choices:
+      - Check @ambtenaar_dejong (Lotte, the civil servant) -> lotte_connection
+      - Back to corruption thread -> corruption_hub
+
+  lotte_connection:
+    type: message
+    text: >
+      Comparing @anoniem_tipgever and @ambtenaar_dejong:
+
+      Same posting hours (evening). Same Dutch spelling quirks. Same
+      knowledge of gemeente procedures. @ambtenaar_dejong once posted
+      "Sometimes I wonder what the point of procedures is if nobody
+      reads the documents" — the same frustration as the tipster.
+
+      It's Lotte de Jong. The civil servant is the anonymous leaker.
+    choices:
+      - Confront Lotte -> lotte_confront
+
+  lotte_confront:
+    type: message
+    text: >
+      You DM Lotte, mentioning "agenda item 14b."
+
+      There's a long pause. Then:
+
+      LOTTE: How did you... no one was supposed to know that was me.
+      Please. If De Vries finds out, I'm finished.
+
+      But since you already know... yes. I have copies of everything.
+      The original valuation and the one they used. The emails between
+      De Vries and Van Bergen's lawyers. The abstention record that
+      was quietly amended.
+
+      What do you want me to do with them?
+    effects:
+      trust_lotte: "+30"
+      corruption_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Keep them safe. I'll come back when I'm ready -> investigation_hub
+
+  # --- Kuiper ---
+
+  kuiper_interview:
+    type: message
+    text: >
+      KUIPER: Something about the waterfront deal doesn't smell right.
+      The valuation came from a firm I'd never heard of. The tender
+      period was unusually short. De Vries abstained instead of
+      recusing — there's an important legal difference.
+
+      If you want to understand: find the council agenda, item 14b.
+      Then find an independent valuation. Compare the numbers.
+    effects:
+      trust_kuiper: "+15"
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corruption thread -> corruption_hub
+
+  # --- Mila (USB drive) ---
+
+  mila_interview:
+    type: message
+    text: >
+      MILA: ok so like two weeks before she disappeared, noor gave me
+      something. she was like "hold onto this for me" and "don't tell
+      anyone."
+
+      it's a usb drive. she looked me dead in the eyes and said "if
+      anything happens to me, give this to pim veldkamp. no one else."
+
+      i haven't opened it. i'm too scared honestly. but if you think
+      it can help her... if you actually think you're gonna bring her
+      home...
+    choices:
+      - I'm going to bring her home. Let me take it to Pim -> mila_usb_yes
+      - Keep it safe for now -> mila_usb_wait
+
+  mila_usb_yes:
+    type: message
+    text: >
+      Mila reaches into her bag with shaking hands and gives you a
+      small USB drive.
+
+      MILA: please be careful. and please bring her back.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  mila_usb_wait:
+    type: message
+    text: >
+      MILA: okay. but promise me — when you're ready, you'll come
+      back for it. noor trusted me with this. i don't wanna let her
+      down.
+    effects: { trust_mila: "+10" }
+    choices:
+      - Back to corruption thread -> corruption_hub
+
+  # --- Nina (Pim's envelope) ---
+
+  nina_interview:
+    type: message
+    text: >
+      NINA: Pim asked me to hold a sealed envelope. He said "if
+      someone comes asking for this with the right question, give it
+      to them." I asked what the right question was. He said "They'll
+      ask about what Noor found at the art centre."
+    effects: { trust_nina: "+10" }
+    choices:
+      - What did Noor find at the art centre? -> nina_envelope
+      - Back to corruption thread -> corruption_hub
+
+  nina_envelope:
+    type: message
+    text: >
+      Nina goes quiet. Then reaches under the counter.
+
+      NINA: Pim said you'd come. Here. Don't open it here.
+
+      The envelope contains Pim's investigation notes: a summary of
+      the corruption evidence, the connection between De Vries and
+      Van Bergen, and which documents prove what.
+    effects:
+      corruption_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Pim ---
+
+  pim_interview:
+    type: message
+    text: >
+      PIM: I don't discuss ongoing matters with people I don't know.
+    effects: { trust_pim: "+5" }
+    choices:
+      - Show Pim corruption evidence -> pim_with_evidence
+        when:
+          state: corruption_evidence
+          gte: 3
+      - Back to corruption thread -> corruption_hub
+
+  pim_with_evidence:
+    type: message
+    text: >
+      PIM: You have them. You actually have the documents.
+
+      Listen carefully: Noor is alive. She's safe. I helped her get
+      out of Zuidhaven because she was afraid — not of the council
+      people, of someone closer.
+
+      I can't tell you where she is. But with these documents, I can
+      publish the story. And once it's published, it's safer for
+      everyone.
+    effects:
+      trust_pim: "+25"
+      evidence_total: "+1"
+    choices:
+      - Ask who she was afraid of -> pim_hint
+      - Back to investigation hub -> investigation_hub
+
+  pim_hint:
+    type: message
+    text: >
+      PIM: I can't... look. She was afraid of someone she used to
+      trust. Someone local. Someone who wouldn't let go.
+
+      That's all I can say. Figure out who that is and you'll have
+      the whole picture.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Noor than anyone in Zuidhaven. Who is responsible?
+    choices:
+      - Confront Thomas Groot (the ex-boyfriend) -> confront_thomas
+        when:
+          state: stalking_evidence
+          gte: 5
+      - Confront Hans de Vries (the alderman) -> confront_devries
+        when:
+          state: corruption_evidence
+          gte: 3
+      - Confront Marco van Bergen (the developer) -> confront_marco
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Thomas (Best Ending) ---
+
+  confront_thomas:
+    type: message
+    text: >
+      You present your evidence to Thomas:
+
+      "I know @sportief_zh is your account. I know your car was at the
+      art centre the night Noor disappeared. I know you took her phone
+      and deleted her posts. I know you posted the black square.
+      I have witnesses."
+    choices:
+      - Send -> thomas_response
+
+  thomas_response:
+    type: message
+    text: >
+      Thomas doesn't reply for a long time. Then:
+
+      THOMAS: You don't know what you're talking about. She's my ex.
+      I was worried about her. That's not a crime. I'm going to the
+      police about this harassment.
+
+      He blocks you.
+
+      But you've already sent the evidence to Agent van Dijk. And to
+      Pim Veldkamp.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE STALKER
+
+      Three things happen in quick succession.
+
+      Officer Van Dijk reopens the case. With your evidence — the alt
+      account, the car sighting, the deleted posts, the witness
+      testimonies — there's enough for an arrest warrant. Thomas is
+      brought in. Noor's phone is recovered from his apartment.
+
+      Pim Veldkamp, finally in possession of Noor's document photos,
+      publishes the corruption story in a national newspaper. Alderman
+      De Vries resigns. The land deal is referred to provincial
+      authorities.
+
+      And Noor El Amrani, reading about De Vries's resignation from
+      Rotterdam, calls her sister for the first time in ten days.
+
+      "I'm coming home."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: noor
+    text: >
+      i chose this place and i'd choose it again. thank you for not
+      giving up.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: De Vries (Partial Ending) ---
+
+  confront_devries:
+    type: message
+    text: >
+      You present the corruption evidence to De Vries:
+
+      "The waterfront land was sold to your university friend for 40%
+      below market value. The valuation was done by a firm with one
+      client: the buyer. You abstained from a vote you should have
+      recused yourself from. I have the documents."
+    choices:
+      - Send -> devries_response
+
+  devries_response:
+    type: message
+    text: >
+      DE VRIES: This conversation is being forwarded to my legal
+      counsel. You will be hearing from Visser & Partners. These
+      allegations are defamatory.
+
+      But it's too late. You've sent the evidence to Pim, Kuiper,
+      and the mayor.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE POLITICIAN
+
+      The corruption story breaks. De Vries resigns "to spend time
+      with family." Marco's project is suspended. The community
+      council demands an audit.
+
+      But Noor?
+
+      Without the stalking evidence, Thomas is never investigated.
+      He continues to live in Zuidhaven. He continues to carry
+      Noor's phone.
+
+      Three months later, Noor reads about De Vries online. She
+      quietly returns. She changes the locks on her studio. She
+      stops posting after dark.
+
+      The corruption is exposed. But the person who hurt Noor
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: noor
+    text: "i'm back. i'll explain one day. maybe."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Marco (Wrong Ending) ---
+
+  confront_marco:
+    type: message
+    text: >
+      You contact Marco van Bergen with your evidence.
+
+      Within minutes, you receive a message from his lawyer:
+    choices:
+      - Read the response -> visser_response
+
+  visser_response:
+    type: tweet
+    from: visser
+    text: >
+      My client is aware of your defamatory communications. Any
+      repetition will result in immediate legal proceedings under
+      Article 261 of the Dutch Criminal Code. Consider this your
+      formal notice. — Visser & Partners Advocaten
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE DEVELOPER
+
+      Marco's lawyer buries your accusation. Without proof of a
+      direct connection to Noor — and there is none — your evidence
+      crumbles.
+
+      De Vries remains in office. Marco's project continues. Noor
+      stays in hiding.
+
+      Six months later, @sportief_zh creates a new account. It
+      follows Noor's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Stalking evidence: ${stalking_evidence}
+      Corruption evidence: ${corruption_evidence}
+
+      Thank you for playing. Noor's story explores themes of stalking,
+      corruption, community trust, and the power of paying attention.
+
+      If you or someone you know is experiencing stalking or domestic
+      violence, help is available:
+      Veilig Thuis: 0800-2000
+      Slachtofferhulp: 0900-0101

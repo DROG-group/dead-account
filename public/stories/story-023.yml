@@ -1,0 +1,1616 @@
+# DEAD ACCOUNT — Story 023: Sălașul de Sus (Romania)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-023.yml
+#
+# Player investigates the disappearance of woodcarver Andrei Mihailescu
+# in the fictional Maramureș village of Sălașul de Sus.
+
+meta:
+  title: "Dead Account — Sălașul de Sus"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_ioana: 0
+    trust_dragos: 0
+    trust_maria: 0
+    trust_vasile: 0
+    trust_ana: 0
+    trust_radu: 0
+    trust_florina: 0
+    trust_gheorghe: 0
+    trust_ciprian: 0
+    trust_elena: 0
+    trust_bogdan: 0
+    trust_nicoleta: 0
+    trust_liviu: 0
+    trust_stefan: 0
+    trust_dana: 0
+    trust_cristina: 0
+    trust_petru: 0
+    trust_mircea: 0
+    trust_raluca: 0
+    trust_sorin: 0
+    trust_comisar: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Locuitor Nou
+    bio: "tocmai m-am mutat în sălașul de sus. descopăr maramureșul pas cu pas"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "SalasulDeSus.social"
+    description: "Bine ați venit pe instanța Mastodon a comunității din Sălașul de Sus"
+    avatar_url: /gamepatch/assets/dead-account/salasuldesus_bot.png
+
+  npcs:
+    # === Andrei's Inner Circle ===
+    andrei:
+      name: "Andrei Mihailescu"
+      bio: "sculptor în lemn | porțile maramureșene | lemnul nu minte"
+      avatar: avatars/andrei.jpg
+    ioana:
+      name: "Ioana Petrescu"
+      bio: "prietena cea mai bună a lui andrei | învățătoare | cafeaua dimineții e sacră"
+      avatar: avatars/ioana.jpg
+    dragos:
+      name: "Dragoș Mihailescu"
+      bio: "fratele lui andrei | mecanic auto | cluj | fratele meu nu dispare pur și simplu"
+      avatar: avatars/dragos.jpg
+    bogdan:
+      name: "Bogdan Cristescu"
+      bio: "colecționar de artă populară | bucurești | pasionat de sculptură tradițională"
+      avatar: avatars/bogdan.jpg
+
+    # === Local Government ===
+    gheorghe:
+      name: "Gheorghe Morar"
+      bio: "Primarul comunei Sălașul de Sus | În slujba comunității din 2016 | #SălașulCrește"
+      avatar: avatars/gheorghe.jpg
+    elena:
+      name: "Elena Bârsan"
+      bio: "consilier de mediu | Primăria Sălașul de Sus | protecția naturii & dezvoltare"
+      avatar: avatars/elena.jpg
+    primaria:
+      name: "Primăria Sălașul de Sus"
+      bio: "Cont oficial | Știri locale | Program: Luni-Vineri 8-16"
+      avatar: avatars/primaria.jpg
+
+    # === Local Business & Community ===
+    maria:
+      name: "Maria Coman"
+      bio: "Hanul de la Izvor | mâncare tradițională | țuică | deschis din 1985"
+      avatar: avatars/maria.jpg
+    hanul:
+      name: "Hanul de la Izvor"
+      bio: "Bucătărie maramureșeană | Țuică de prune | Muzică live vinerea | Sufletul satului"
+      avatar: avatars/hanul.jpg
+    vasile:
+      name: "Vasile Pop"
+      bio: "pădurar | 40 de ani în pădure | pământul ăsta e viața mea"
+      avatar: avatars/vasile.jpg
+    ciprian:
+      name: "Ciprian Mureșan"
+      bio: "proprietar pensiune | Sălașul de Sus | turism rural | deschis tot anul"
+      avatar: avatars/ciprian.jpg
+    florina:
+      name: "Florina Lazăr"
+      bio: "farmacistă | Sălașul de Sus | sănătate & sfaturi | deschis și sâmbăta"
+      avatar: avatars/florina.jpg
+    petru:
+      name: "Petru Moldovan"
+      bio: "fierar | Sălașul de Sus | fierărie tradițională | lucrări la comandă"
+      avatar: avatars/petru.jpg
+    stefan:
+      name: "Ștefan Blaga"
+      bio: "cioban | stâna de pe deal | brânză & lapte | tradiție de familie"
+      avatar: avatars/stefan.jpg
+    liviu:
+      name: "Liviu Lupescu"
+      bio: "bibliotecar | Biblioteca Sălașul de Sus | cărți & împrumuturi | club de lectură miercurea"
+      avatar: avatars/liviu.jpg
+
+    # === Journalist ===
+    nicoleta:
+      name: "Nicoleta Ardelean"
+      bio: "jurnalistă independentă | mediu & Maramureș | pont-uri: nicoleta@ardelean-presa.ro"
+      avatar: avatars/nicoleta.jpg
+
+    # === CarpatLemn SRL (corporate) ===
+    carpatlemn:
+      name: "CarpatLemn SRL"
+      bio: "Exploatare forestieră | Punct de lucru Sălașul de Sus | Certificare PEFC"
+      avatar: avatars/carpatlemn.jpg
+    mircea:
+      name: "Mircea Ionescu"
+      bio: "director general CarpatLemn SRL Sălașul de Sus | industrie & dezvoltare regională"
+      avatar: avatars/mircea.jpg
+    raluca:
+      name: "Raluca Dumitrescu"
+      bio: "Cabinetul de avocatură Dumitrescu | Drept comercial | Cluj-Napoca"
+      avatar: avatars/raluca.jpg
+
+    # === Teens ===
+    ana:
+      name: "Ana"
+      bio: "16 | fotografie | sălașul de sus born | natura e tot ce contează fr"
+      avatar: avatars/ana.jpg
+    radu:
+      name: "Radu"
+      bio: "17 | motocross & pescuit | apusuri în maramureș | sălbatic"
+      avatar: avatars/radu.jpg
+    cristina:
+      name: "Cristina"
+      bio: "15 | desen & pictură | lemnul în alb și negru | andrei e inspirația mea"
+      avatar: avatars/cristina.jpg
+
+    # === Media & Community ===
+    actu_salasul:
+      name: "Știri Sălașul de Sus"
+      bio: "Știrile din Sălașul de Sus și Maramureș | Pont-uri: redactia@stiri-salasul.ro"
+      avatar: avatars/actu_salasul.jpg
+    meteo_maramures:
+      name: "Meteo Sălașul de Sus"
+      bio: "Prognoze și avertizări | Stație automată | Actualizat la fiecare oră"
+      avatar: avatars/meteo_maramures.jpg
+    asociatia:
+      name: "Asociația Pădurea Bătrână"
+      bio: "Protecția pădurilor seculare din Maramureș | Voluntari | Raportare tăieri ilegale"
+      avatar: avatars/asociatia.jpg
+
+    # === Suspicious / Other ===
+    dana:
+      name: "Dana Nistor"
+      bio: "inginer silvic | CarpatLemn SRL | îmi fac treaba și atât"
+      avatar: avatars/dana.jpg
+    sorin:
+      name: "Sorin Dobre"
+      bio: "."
+      avatar: avatars/anon.jpg
+    comisar:
+      name: "Comisar Preda"
+      bio: "Postul de Poliție Sălașul de Sus | Urgențe: 112"
+      avatar: avatars/comisar.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SĂLAȘUL DE SUS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to SalasulDeSus.social — the community Mastodon instance
+      for the village of Sălașul de Sus, Maramureș.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @andrei_mihailescu.
+
+      A woodcarver. A craftsman who made Maramureș gates. He documented
+      the old forests and the traditional woodworking. People are
+      worried. He hasn't posted in seven days.
+    choices:
+      - Look at his profile -> andrei_profile
+
+  andrei_profile:
+    type: tweet
+    from: andrei
+    text: "Tăieri ilegale în pădurea seculară de la Vârful Pietros. Stejar de 500 de ani, tăiat. Am dovezi."
+    choices:
+      - That's his last real post... -> grey_forest
+
+  grey_forest:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      grey fog over bare trees. Blurred, overexposed, shot from a
+      strange angle. Posted at 3am. No caption.
+
+      His friends say that's not his style. The police say he probably
+      went to visit family. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: comisar
+    text: >
+      Am primit o sesizare privind un locuitor din Sălașul de Sus.
+      În acest stadiu, niciun element nu indică o faptă penală.
+      Orice informație utilă poate fi comunicată la 112 sau la
+      postul de poliție.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His best friend @ioana_petrescu is
+      desperate. His brother @dragos_mihailescu is driving up from
+      Cluj. The old forester @vasile_pop says Andrei was right about
+      the logging. His art collector client @bogdan_cristescu is
+      posting frantic messages.
+
+      And the journalist @nicoleta_ardelean is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Andrei just "went
+      visiting."
+    effects: { trust_ioana: "+5", trust_dragos: "+5" }
+    choices:
+      - Start following Andrei's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Sălașul de Sus. Follow Andrei's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Maria (inn owner, knows everyone) -> maria_intro
+      - Talk to Vasile (forester, saw the clear-cuts) -> vasile_intro
+      - Talk to Ana (teen photographer, seems shaken) -> ana_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Andrei with the rhythms of a small
+      Maramureș village: market days, the inn's daily specials,
+      weather warnings for the mountain passes.
+
+      Key names surface: Ioana (best friend, teacher), Bogdan
+      (art collector from București, seems rattled), Nicoleta
+      (journalist, oddly quiet), and the teens — Ana, Radu,
+      Cristina — who worshipped Andrei's woodcarving.
+
+      Also prominent: CarpatLemn SRL, the logging company cutting
+      on the mountainside above the village. Their posts are corporate
+      PR. Andrei's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Maria -> maria_intro
+      - Talk to Vasile -> vasile_intro
+      - Talk to Ana -> ana_intro
+
+  # --- Maria (social map) ---
+
+  maria_intro:
+    type: tweet
+    from: maria
+    text: >
+      Hanul e deschis da' nu mai e aceeași voie bună. @andrei_mihailescu,
+      masa ta te așteaptă. Vino înapoi.
+    effects: { trust_maria: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Maria -> maria_talk
+
+  maria_talk:
+    type: message
+    text: >
+      MARIA: You're new? Welcome. Terrible time to arrive. Everyone's
+      on edge about Andrei.
+
+      Let me tell you who's who. Ioana is Andrei's best friend — they
+      grew up together, her family's house is next to his workshop.
+      Lovely woman, devastated right now. Bogdan Cristescu is this art
+      collector from București who showed up a year ago saying he
+      wanted to buy Andrei's gates. Rich man, but... intense about
+      Andrei's work. Like obsessed. Dragoș is Andrei's brother,
+      coming up from Cluj.
+
+      And Nicoleta Ardelean — the journalist — she and Andrei were
+      working on something together. Something about the forest.
+      Nicoleta hasn't said a word since Andrei vanished. That's
+      not like her.
+
+      Oh, and don't believe CarpatLemn's "sustainable forestry"
+      posts. La naiba, those people are destroying the forest.
+    effects: { trust_maria: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Bogdan -> maria_bogdan
+      - Ask about CarpatLemn -> maria_carpatlemn
+      - Thank her and move on -> quest1_hub
+
+  maria_bogdan:
+    type: message
+    text: >
+      MARIA: Bogdan? He showed up about a year ago. Said he was a
+      folk art collector, wanted to commission a Maramureș gate from
+      Andrei. Fine, that's normal — Andrei gets commissions. But
+      Bogdan didn't leave. He rented a room at Ciprian's pension
+      and just... stayed. At the inn every time Andrei was there.
+      Always offering to visit the workshop. Always wanting to
+      watch him carve.
+
+      Andrei was polite about it but I could see it was too much.
+      He told me once, "omul ăsta nu înțelege cuvântul nu." He
+      meant about the commissions. Now I think he meant more.
+    effects: { trust_maria: "+5" }
+    choices:
+      - Ask about CarpatLemn -> maria_carpatlemn
+      - Move on -> quest1_hub
+
+  maria_carpatlemn:
+    type: message
+    text: >
+      MARIA: That company's been logging here since the 2000s. They
+      have permits for "selective cutting" but what they actually do
+      is clear-cut. Whole mountainsides stripped. The old oaks and
+      beeches that Andrei used for his carvings — gone. Ancient
+      forest, 500 years old, cut down for particle board.
+
+      Andrei was the first person to go up there with a camera and
+      GPS and document what they actually do versus what the permits
+      say. He had photos, coordinates, satellite images. Real proof
+      that they're cutting in protected areas.
+
+      Two weeks later he's gone. Ce pula mea.
+    effects: { trust_maria: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Vasile (the forester, witness tease) ---
+
+  vasile_intro:
+    type: tweet
+    from: vasile
+    text: >
+      patruzeci de ani am păzit pădurea asta. nu mai e aceeași.
+      @andrei_mihailescu avea dreptate. și acum a dispărut.
+      faceți legătura.
+    effects: { trust_vasile: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Vasile -> vasile_talk
+
+  vasile_talk:
+    type: message
+    text: >
+      VASILE: I've guarded this forest since I was a young man. Forty
+      years. I know every trail, every stream, every ancient oak. And
+      I'm telling you — the mountain above Vârful Pietros is
+      destroyed. CarpatLemn's "selective cutting" is a bad joke. They
+      take everything.
+
+      Andrei went up there with his camera. He photographed every
+      stump, every cleared slope, every boundary marker they crossed.
+      He was building a case. And then — gone.
+
+      You think that's a coincidence? I've lived too long to believe
+      in coincidences in these mountains.
+    effects: { trust_vasile: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> vasile_night
+      - Move on -> quest1_hub
+
+  vasile_night:
+    type: message
+    text: >
+      VASILE: The night before he vanished — I was doing a night
+      patrol, around midnight. Poachers, you know. I saw headlights
+      on the logging road above the village. Two vehicles. One was
+      Andrei's old Dacia Duster — I know that car, the exhaust is
+      loud. The other was a company truck. White, CarpatLemn logo
+      on the door.
+
+      At midnight. On a mountain logging road.
+
+      I didn't think much of it then. Andrei goes up at night
+      sometimes for photographs. But that company truck — that's
+      not normal.
+    effects: { trust_vasile: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ana (teen photographer, witness tease) ---
+
+  ana_intro:
+    type: tweet
+    from: ana
+    text: >
+      futu-i nu mai pot @andrei_mihailescu el m-a învățat tot despre
+      lemn și natură nu ar fi plecat fără să spună ceva. dacă știe
+      cineva ceva ziceți acum
+    effects: { trust_ana: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ana -> ana_talk_early
+
+  ana_talk_early:
+    type: message
+    text: >
+      ANA: ești nou pe aici? timing nasol lol. da' serios andrei e
+      cel mai tare om din sat. ne-a învățat să sculptăm, ne-a dus
+      în pădure, ne-a arătat copacii bătrâni. genu super mișto.
+
+      și acum mă sperii că radu a văzut ceva ciudat în seara aia
+      da nu vrea să vorbească. zice că nu-i nimic da eu văd că
+      minte bags pula
+    effects: { trust_ana: "+10" }
+    choices:
+      - What did Radu see? -> ana_radu_hint
+      - Move on -> quest1_hub
+
+  ana_radu_hint:
+    type: message
+    text: >
+      ANA: nu știu exact. era pe motocross prin sat seara târziu și
+      a văzut pe cineva lângă atelierul lui andrei?? sau ceva de
+      genul. freakează complet și nu vrea să zică. trebuie să
+      vorbești cu el da e super precaut cu oameni pe care nu-i
+      cunoaște. vorbește întâi de motoare sau de pescuit și se
+      relaxează lol
+    effects: { trust_ana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Sălașul de Sus. A Maramureș village
+      built around ancient forests and traditional woodcarving. A
+      craftsman who was exposing illegal logging. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Ioana (Andrei's best friend) -> ioana_q1
+      - Talk to Bogdan (the art collector) -> bogdan_q1
+      - Check what Dragoș (Andrei's brother) is saying -> dragos_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Ioana Q1 ---
+
+  ioana_q1:
+    type: tweet
+    from: ioana
+    text: >
+      dacă cineva are vești despre @andrei_mihailescu sunați-mă vă
+      rog. sculele sunt în atelier. lemnul e pe bancul de lucru.
+      n-ar fi plecat fără să termine o lucrare. niciodată.
+    effects: { trust_ioana: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ioana -> ioana_q1_talk
+
+  ioana_q1_talk:
+    type: message
+    text: >
+      IOANA: Thanks for reaching out but I don't know you. Andrei
+      has a lot of friends here. I'm sure he'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Ioana is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_ioana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bogdan Q1 ---
+
+  bogdan_q1:
+    type: tweet
+    from: bogdan
+    text: >
+      The workshop is silent without @andrei_mihailescu. His tools
+      are untouched. His half-finished gate is still on the bench.
+      He would never abandon a commission. Something happened.
+    effects: { trust_bogdan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Bogdan -> bogdan_q1_talk
+
+  bogdan_q1_talk:
+    type: message
+    text: >
+      BOGDAN: Andrei and I have been working together for almost a
+      year. He's the greatest living woodcarver in Maramureș —
+      perhaps in all Romania. The logging investigation — it was
+      personal for him. The old-growth oaks are his material, his
+      heritage. He had photos, GPS data, everything. He was so close
+      to going public.
+
+      I offered to help. I have connections in București, media
+      contacts. He said he had it under control. He said he was
+      working with a journalist. I just wanted to be part of
+      preserving this tradition.
+
+      [Bogdan seems earnest. Or obsessive?]
+    effects: { trust_bogdan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dragoș Q1 ---
+
+  dragos_q1:
+    type: tweet
+    from: dragos
+    text: >
+      fratele meu a DISPĂRUT și poliția îmi zice că poate e plecat
+      în vizită??? NU PLEACĂ ÎN VIZITĂ FĂRĂ SĂ SPUNĂ. vin de la
+      cluj acum. cineva o să-mi explice.
+    effects: { trust_dragos: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Dragoș -> dragos_q1_talk
+
+  dragos_q1_talk:
+    type: message
+    text: >
+      DRAGOȘ: Who the hell are you? Another person from that village
+      who's going to tell me to calm down? My brother called me the
+      night before he disappeared. He said he had something huge.
+      He said "dacă mi se întâmplă ceva, uită-te la CarpatLemn."
+      Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_dragos: "+10" }
+    choices:
+      - What do you think happened? -> dragos_theory
+      - Move on -> quest1_hub
+
+  dragos_theory:
+    type: message
+    text: >
+      DRAGOȘ: I think he found proof that CarpatLemn is cutting
+      illegally in the old-growth forest and they shut him up. But
+      I also think that creepy collector — Bogdan — knows more than
+      he's saying. The way he talks about Andrei... it's not normal
+      interest in woodcarving. It's something else entirely.
+
+      Andrei told me months ago someone was coming into his workshop
+      when he wasn't there. Tools moved, wood samples rearranged,
+      his notebook opened. He thought it was kids. I don't think it
+      was kids.
+    effects: { trust_dragos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Andrei went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Radu (was out on his motocross bike late) -> radu_interview
+      - Find Ciprian (pension owner, heard vehicles) -> ciprian_interview
+      - Find Ștefan (shepherd, was on the hill at dawn) -> stefan_interview
+      - Find Petru (blacksmith, starts early, saw something) -> petru_interview
+
+  # --- Radu (saw someone at Andrei's workshop) ---
+
+  radu_interview:
+    type: tweet
+    from: radu
+    text: >
+      tura bună cu motorul da atmosfera în sat e ciudată rău.
+      ceva nu e în regulă. nu știu cum să explic
+    effects: { trust_radu: "+5" }
+    choices:
+      - Ask Radu about that evening -> radu_talk
+
+  radu_talk:
+    type: message
+    text: >
+      RADU: bine da nu spui la nimeni ok. eram cu motorul pe la
+      nouă seara și am trecut pe lângă atelierul lui andrei. și
+      l-am văzut pe ăla — bogdan — la mașina lui andrei. căuta
+      ceva sau punea ceva acolo. când a văzut farul meu a plecat
+      nasol de repede.
+
+      adică eu n-am zis nimic că cine m-ar fi crezut pe mine un
+      puști vs un adult bogat din bucurești. da a fost super
+      suspect futu-i
+    effects:
+      trust_radu: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ciprian (pension owner, heard late-night meeting) ---
+
+  ciprian_interview:
+    type: tweet
+    from: ciprian
+    text: >
+      Atenție: circulația pe drumul forestier este interzisă între
+      22 și 6. Am constatat trafic neautorizat în ultimele nopți.
+    effects: { trust_ciprian: "+5" }
+    choices:
+      - Ask Ciprian what he saw -> ciprian_talk
+
+  ciprian_talk:
+    type: message
+    text: >
+      CIPRIAN: I was at the pension, about 23h, cleaning up after
+      the last guests. Two vehicles came down the forest road — one
+      was that CarpatLemn company truck, the white one with the logo.
+      The other was a dark BMW I didn't recognise, Cluj plates.
+
+      They stopped at the gate to the logging zone above Vârful
+      Pietros. Two men got out. One I recognised: Mircea Ionescu,
+      the CarpatLemn director. At 23h. On a mountain road.
+
+      I wrote it in my guest book — I log everything for insurance
+      purposes. Nobody's asked to see it.
+    effects:
+      trust_ciprian: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ștefan (shepherd, saw figure at dawn) ---
+
+  stefan_interview:
+    type: tweet
+    from: stefan
+    text: >
+      la stână la patru dimineața ca de obicei. da pe poteca spre
+      munte mergea cineva. în întuneric. cu rucsac mare. nu era
+      turist.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Ask Ștefan what he saw -> stefan_talk
+
+  stefan_talk:
+    type: message
+    text: >
+      ȘTEFAN: I get up at 4am for the sheep. That morning — the
+      morning after Andrei's last post — I saw someone on the
+      mountain trail. Walking fast. A man, carrying a heavy rucksack,
+      heading up toward the ridge. It was dark, barely any moonlight.
+      He was moving like he was afraid.
+
+      I called out but he didn't stop. I thought maybe a mushroom
+      picker but... who goes mushroom picking at 4am carrying that
+      kind of weight?
+
+      When I heard about Andrei, I put it together. That was him.
+      Running from something.
+    effects:
+      trust_stefan: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petru (blacksmith, heard chase) ---
+
+  petru_interview:
+    type: tweet
+    from: petru
+    text: >
+      La fierărie la cinci ca-n fiecare dimineață. Da în noaptea
+      aia o mașină a trecut pe drumul forestier mult prea repede.
+    effects: { trust_petru: "+5" }
+    choices:
+      - Ask Petru what he heard -> petru_talk
+
+  petru_talk:
+    type: message
+    text: >
+      PETRU: My forge is right by the junction where the forest road
+      meets the village road. At about 3am I woke up — engines, going
+      way too fast for a mountain gravel road. First one vehicle,
+      heavy, diesel — sounded like a truck. Then maybe two minutes
+      later, a second one. Lighter. That rattling Duster exhaust.
+
+      The first one headed down toward the main road. The second —
+      Andrei's car, I'd bet my anvil on it — went the other way, up
+      the mountain past the old logging camp.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_petru: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Ioana (best
+      friend) and Cristina (saw Bogdan watching the workshop).
+    choices:
+      - Talk to Ioana about that night -> ioana_interview
+      - Talk to Cristina -> cristina_interview
+      - Find Radu -> radu_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ciprian -> ciprian_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ștefan -> stefan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Petru -> petru_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Ioana (last to see Andrei) ---
+
+  ioana_interview:
+    type: tweet
+    from: ioana
+    text: >
+      poza aia de pe contul lui andrei. nu e a lui. andrei nu
+      postează niciodată fără text. andrei nu postează la 3
+      dimineața. altcineva a făcut asta.
+    effects: { trust_ioana: "+5" }
+    choices:
+      - DM Ioana -> ioana_talk_low
+        when:
+          state: trust_ioana
+          lt: 50
+      - DM Ioana -> ioana_talk_high
+        when:
+          state: trust_ioana
+          gte: 50
+
+  ioana_talk_low:
+    type: message
+    text: >
+      IOANA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Ioana needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_ioana: "+5" }
+    choices:
+      - Share what you've learned about the night -> ioana_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  ioana_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the company truck on the
+      forest road, the vehicles at night, the running figure on the
+      mountain. Ioana is silent for a while.
+
+      IOANA: You're actually trying to find him. Okay. I'll talk.
+    effects: { trust_ioana: "+25" }
+    choices:
+      - What happened that night? -> ioana_talk_high
+
+  ioana_talk_high:
+    type: message
+    text: >
+      IOANA: He came to my house around midnight. I was grading
+      papers for school. He was white as a sheet, shaking. He said
+      "ei știu ce am."
+
+      I asked who. He said "firma. Au trimis oameni la zona de
+      tăiere." Then he said something else — "și el a fost iar acolo.
+      E mereu acolo."
+
+      He wouldn't say who "he" was. He hugged me, said "nu-ți face
+      griji," grabbed his laptop and camera bag, and left with a
+      rucksack. That was it. By morning his car was gone and that
+      grey photo was on his account.
+    effects:
+      trust_ioana: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Cristina (saw Bogdan watching the workshop) ---
+
+  cristina_interview:
+    type: message
+    text: >
+      CRISTINA: bine deci asta e super creepy da ăla — bogdan
+      colecționarul — eu l-am văzut de trei ori lângă atelierul
+      lui andrei seara. stătea în mașină și se uita. farurile
+      stinse. ce pula mea e cu el.
+
+      ultima dată cu două zile înainte să dispară andrei. stătea
+      pe drumul de lângă atelier. doar stătea. în întuneric.
+    effects:
+      trust_cristina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Bogdan seen at Andrei's car near the workshop (Radu)
+      23:00 — CarpatLemn truck and BMW at logging zone gate, Mircea Ionescu present (Ciprian)
+      00:00 — Andrei arrives at Ioana's, shaken, grabs laptop and flees (Ioana)
+      03:00 — Two vehicles on forest road at high speed (Petru)
+      04:00 — Man with heavy rucksack heading up the mountain trail (Ștefan)
+
+      CarpatLemn confronted Andrei at the logging zone. He fled to
+      Ioana's, grabbed his evidence, and ran into the mountains.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is CarpatLemn hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Bogdan really doing? Why was he
+        at Andrei's car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Bogdan -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      CarpatLemn is hiding something. Andrei had proof. Now he's
+      gone and his camera memory cards are missing from the workshop.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the forestry permit records -> permit_records
+      - Talk to Nicoleta the journalist -> nicoleta_interview
+      - Talk to Dana (CarpatLemn engineer) -> dana_interview
+      - Talk to Elena (environment councillor) -> elena_interview
+      - Check the Asociația Pădurea Bătrână -> asociatia_investigation
+      - Talk to Vasile about the old-growth forest -> vasile_forest
+      - Back to hub -> investigation_hub
+
+  # --- Permit Records ---
+
+  permit_records:
+    type: message
+    text: >
+      The regional forestry authority's public database shows
+      CarpatLemn's cutting permits for the Sălașul de Sus area. The
+      permit for the Vârful Pietros zone covers 150 hectares of
+      "selective thinning."
+
+      Andrei's GPS data, shared with the local forestry guard for
+      monitoring, shows the actual clear-cut extends to 380 hectares —
+      more than double the permit. And the cut area overlaps with
+      a virgin forest reserve that should be completely off-limits.
+
+      His last survey note: "Walked to Section 7. They've crossed
+      into the virgin forest reserve. Oak, 500 years old, gone.
+      GPS confirms. This is criminal."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Nicoleta ---
+
+  nicoleta_interview:
+    type: message
+    text: >
+      NICOLETA: I don't talk about sources. Period.
+    effects: { trust_nicoleta: "+5" }
+    choices:
+      - Show Nicoleta the evidence you have -> nicoleta_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  nicoleta_with_evidence:
+    type: message
+    text: >
+      NICOLETA: ...you have more than I expected.
+
+      Okay. Andrei and I were working together. He had photographs
+      and GPS data showing CarpatLemn is clear-cutting inside a
+      virgin forest reserve — old-growth oak and beech, some of the
+      last untouched forest in Europe. The permits are fraudulent,
+      the actual cut area is more than double what's declared.
+
+      We were going to publish together on Recorder. Then he went
+      dark. And two days later, someone broke into my car in Sighetu
+      Marmației and stole my backup drive.
+
+      Andrei is alive. He contacted me once, from a prepaid phone.
+      He said he was hiding in a mountain cabin. He said "m-au
+      amenințat la zona de tăiere și mai e cineva care nu mă lasă
+      în pace."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come back.
+    effects:
+      trust_nicoleta: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> nicoleta_hint
+      - Back to investigation hub -> investigation_hub
+
+  nicoleta_hint:
+    type: message
+    text: >
+      NICOLETA: The company sent their director — Ionescu — and some
+      lawyer from Cluj to the logging zone that night. They told
+      Andrei to hand over all his photos and data or face legal
+      action for trespassing on a forestry site. Intimidation dressed
+      up as property law.
+
+      But he also mentioned someone else. Someone who always seemed
+      to know where he was going. Someone who showed up wherever he
+      went. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Dana (CarpatLemn whistleblower) ---
+
+  dana_interview:
+    type: message
+    text: >
+      DANA: I work at CarpatLemn. I'm just a forestry engineer.
+      I mark trees, I file cutting plans.
+
+      But the cutting plans I file... are not always the cutting
+      plans that get executed.
+    effects: { trust_dana: "+10" }
+    choices:
+      - What do you mean? -> dana_detail
+
+  dana_detail:
+    type: message
+    text: >
+      DANA: I mark the boundaries on GPS. My boundary lines go to
+      my supervisor. Somewhere between my desk and the chainsaw
+      operators, they change. Wider. Always wider. Into zones that
+      are supposed to be protected.
+
+      Andrei's photographs matched MY original boundary markings,
+      not the ones the operators followed. He had independent proof
+      that CarpatLemn is systematically exceeding their permits and
+      cutting inside the virgin forest reserve.
+
+      I'm scared. I have a family. But I kept copies of my original
+      plans. If someone can protect me, I'll share them.
+    effects:
+      trust_dana: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Elena ---
+
+  elena_interview:
+    type: message
+    text: >
+      ELENA: As the municipal environment councillor, I take these
+      allegations seriously. But CarpatLemn employs 60 people in
+      this area. The mayor insists we need to "maintain dialogue."
+
+      Off the record? I've seen the regional forestry inspections.
+      CarpatLemn passes every time. But those inspections are
+      announced a month in advance. They replant saplings in the
+      visible areas before the inspectors arrive. They clean up
+      the worst sites.
+
+      Andrei had unannounced data. Photos from random dates. GPS
+      tracks from inside the reserve. That's what makes it
+      dangerous.
+    effects:
+      trust_elena: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Asociația Pădurea Bătrână ---
+
+  asociatia_investigation:
+    type: tweet
+    from: asociatia
+    text: >
+      ALERTĂ: Tăieri ilegale confirmate în pădurea virgină de la
+      Vârful Pietros. Fotografii și coordonate GPS disponibile.
+      Cerem inspecție neanunțată la CarpatLemn SRL.
+    choices:
+      - Check their data -> asociatia_data
+
+  asociatia_data:
+    type: message
+    text: >
+      The Asociația Pădurea Bătrână has been documenting forest
+      destruction in Maramureș for ten years. Their data shows a
+      clear pattern: CarpatLemn's actual cutting area expands every
+      year beyond its permits. Satellite images from the last three
+      years show 400 hectares of virgin forest destroyed in the
+      Vârful Pietros area alone.
+
+      The pattern is unmistakable. Systematic, deliberate illegal
+      logging timed to avoid detection — heavy cutting between
+      inspections, replanting visible areas with fast-growing
+      saplings before inspectors arrive.
+
+      Andrei was a member. He contributed most of the ground-level
+      photography and stump counts.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Vasile old-growth ---
+
+  vasile_forest:
+    type: message
+    text: >
+      VASILE: I'll show you something. Last month I walked to the
+      boundary of the virgin forest reserve above Vârful Pietros.
+      The old boundary stones are still there — from the 1930s,
+      hand-carved. But the trees behind them are gone. CarpatLemn
+      cut past the stones.
+
+      I photographed the stumps. Some of those oaks were 500 years
+      old — you can count the rings. They survived five centuries
+      and CarpatLemn killed them in a day.
+
+      I sent the photos to Andrei. He said they were the missing
+      piece — proof of cutting inside the virgin forest reserve,
+      not just outside the permit boundary. Criminal offence under
+      Romanian law.
+
+      I still have those photos. And the GPS coordinates.
+    effects:
+      trust_vasile: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Bogdan Cristescu. Art collector. Self-described patron of
+      traditional crafts. Something more? Someone was entering
+      Andrei's workshop. Someone was watching from the road.
+      Someone was at his car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Bogdan's online collection -> collection_archive
+      - Talk to Ioana about Bogdan -> ioana_bogdan
+        when:
+          state: trust_ioana
+          gte: 20
+      - Talk to Radu (more detail on the car incident) -> radu_detail
+      - Talk to Florina the pharmacist -> florina_interview
+      - Check the anonymous account @sorin_dobre -> sorin_investigation
+      - Talk to Liviu the librarian -> liviu_interview
+        when:
+          state: trust_liviu
+          gte: 40
+      - Talk to Comisar Preda -> comisar_interview
+        when:
+          state: trust_comisar
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Collection Archive ---
+
+  collection_archive:
+    type: message
+    text: >
+      Bogdan's public posts on SalasulDeSus.social catalogue his
+      "collection." 1,800 posts over twelve months. Most are about
+      Romanian folk art: carved gates, painted eggs, wooden churches.
+      Professional-quality photos.
+
+      But a deeper look reveals something else. 620 of those posts
+      feature Andrei. Not posed portraits — candid shots. Andrei
+      from behind in the workshop. Andrei through the workshop
+      window. Andrei sleeping at his workbench during a late night.
+      Andrei's hands on the chisel, shot from close range without
+      his knowledge.
+
+      The metadata shows many were taken from across the street,
+      through windows, at distances suggesting Andrei didn't know
+      he was being photographed.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ioana on Bogdan ---
+
+  ioana_bogdan:
+    type: message
+    text: >
+      IOANA: Bogdan? He made Andrei deeply uncomfortable. He'd show
+      up at the workshop unannounced. He'd offer to drive Andrei to
+      the forest to select wood. He'd comment on every single post
+      within minutes — like he was just sitting there refreshing the
+      page.
+
+      Andrei told him the commission was finished and he should go
+      back to București. Bogdan said he understood. Then nothing
+      changed. He just... stayed. At the pension. At the inn. At the
+      workshop door.
+
+      Two months ago Andrei found that someone had been in the
+      workshop after hours. His notebook was open to a different
+      page. Wood samples rearranged. He suspected Bogdan but
+      couldn't prove it.
+    effects:
+      trust_ioana: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Radu detail ---
+
+  radu_detail:
+    type: message
+    text: >
+      RADU: bine deci n-am zis tot. când l-am văzut pe bogdan la
+      mașina lui andrei avea ceva în mână. un dispozitiv mic. l-a
+      pus sub mașină. gen l-a lipit sau cu magnet sau ceva.
+
+      eu nu sunt expert da arăta fix ca un GPS tracker. de-ăla
+      din filme futu-i.
+
+      ar fi trebuit să zic ceva da cine m-ar fi crezut pe mine
+      un puști care acuză un adult bogat. ce pula mea aș fi
+      putut face
+    effects:
+      trust_radu: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Florina ---
+
+  florina_interview:
+    type: message
+    text: >
+      FLORINA: This is confidential but I'm a pharmacist, not a
+      priest. Bogdan Cristescu is a regular customer. He's been
+      buying things that... suggest he's not sleeping. Anxiety
+      medication, sleeping pills, caffeine supplements. The pattern
+      is someone under extreme stress who doesn't sleep.
+
+      He also asked me once, very casually, if we sold tracking
+      devices. I said "this is a pharmacy, not Altex." He laughed.
+      I didn't think about it again until Andrei disappeared.
+    effects:
+      trust_florina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sorin (anonymous account) ---
+
+  sorin_investigation:
+    type: tweet
+    from: sorin
+    text: >
+      Ar fi trebuit să asculte. Încercam să-l protejez. Nimeni altcineva
+      nu-i înțelege arta ca mine.
+    choices:
+      - Look at this account's history -> sorin_posts
+
+  sorin_posts:
+    type: message
+    text: >
+      @sorin_dobre: account created 10 months ago. Posts are all
+      about Andrei's work. Comments on every carved gate, every
+      wood selection post, every workshop photo. The tone shifts
+      over time:
+
+      Month 1: "Extraordinary craftsmanship. You preserve what
+      nobody else can."
+      Month 3: "Why won't you respond to my messages? I just
+      want to discuss your technique."
+      Month 6: "I see you at the inn with other people. You have
+      time for them but not for me?"
+      Month 9: "I know your schedule. I know which trees you
+      visit. I'm always close."
+
+      The account has no photos, no personal details. Just Andrei.
+      Only Andrei.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> sorin_style
+
+  sorin_style:
+    type: message
+    text: >
+      Comparing @sorin_dobre with @bogdan_cristescu:
+
+      Same use of art history terminology. Same Romanian spelling
+      quirks — the specific way he describes wood grain using
+      collector terminology rather than craftsman language. Same
+      knowledge of Andrei's workshop schedule that only someone
+      watching daily would have.
+
+      And one post from @sorin_dobre: "Your work on the Section 4
+      oak was breathtaking." Section 4 is Andrei's private workshop
+      code for a commission piece. Not public.
+
+      It's Bogdan. The anonymous account is Bogdan.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Liviu ---
+
+  liviu_interview:
+    type: message
+    text: >
+      LIVIU: Andrei left something with me. A waterproof case. He
+      said "if someone asks about what's happening at Vârful Pietros,
+      give them this."
+
+      He looked frightened. He said he'd made copies of everything
+      but needed one set somewhere nobody would think to look. A
+      village library seemed perfect.
+    effects: { trust_liviu: "+10" }
+    choices:
+      - What's happening at Vârful Pietros? -> liviu_case
+
+  liviu_case:
+    type: message
+    text: >
+      Liviu reaches under the returns desk and produces a waterproof
+      case.
+
+      LIVIU: He said someone would come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show the clear-cut expansion over twelve months — from
+      within the permit boundary to far beyond it, into the virgin
+      forest reserve. The USB drive contains GPS tracks, before-and-
+      after satellite images, and Andrei's detailed report with
+      stump-ring counts proving old-growth destruction. 500-year-old
+      oaks, gone.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Comisar Preda ---
+
+  comisar_interview:
+    type: message
+    text: >
+      COMISAR PREDA: Off the record — and I mean completely off
+      the record — I wanted to investigate CarpatLemn. My superior
+      in Baia Mare told me to stand down. He said the regional
+      authority had "jurisdiction." That's code for "don't touch it."
+
+      The Cristescu situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_comisar: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Andrei than anyone in Sălașul de Sus. Who is responsible?
+    choices:
+      - Confront Bogdan Cristescu (the obsessive collector) -> confront_bogdan
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Mircea Ionescu (the company director) -> confront_mircea
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Primarul Morar (political protection) -> confront_gheorghe
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Bogdan (Best Ending) ---
+
+  confront_bogdan:
+    type: message
+    text: >
+      You present your evidence to Bogdan:
+
+      "I know @sorin_dobre is your account. I know you put a GPS
+      tracker on Andrei's car. I know you entered his workshop and
+      went through his things. I know you watched him from the road.
+      I have witnesses and I have the photo metadata."
+    choices:
+      - Send -> bogdan_response
+
+  bogdan_response:
+    type: message
+    text: >
+      Bogdan doesn't reply for a long time. Then:
+
+      BOGDAN: You don't understand. I was protecting him. He was in
+      danger from CarpatLemn and he wouldn't let me help. I needed
+      to know he was safe. Everything I did was because I care about
+      his art. About him.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Comisar Preda. And to
+      Nicoleta Ardelean.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Comisar Preda reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the workshop intrusions,
+      the photo metadata, the witness testimonies — Bogdan is
+      arrested for stalking and harassment. A GPS tracker is
+      recovered from under Andrei's Dacia Duster, abandoned on the
+      mountain road past the old logging camp.
+
+      Nicoleta Ardelean, finally in possession of Andrei's full
+      evidence package, publishes the CarpatLemn story on Recorder.
+      The regional forestry authority orders an unannounced
+      inspection. All cutting permits in the Sălașul de Sus area
+      are suspended pending investigation. Mircea Ionescu faces
+      criminal charges for permit fraud and destruction of a
+      protected virgin forest reserve.
+
+      And Andrei Mihailescu, reading the story from a friend's
+      house in Sighetu Marmației, calls his brother for the first
+      time in ten days.
+
+      "Mă întorc acasă."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Telefonul Sufletului: 0800 801 200 (gratuit)
+      Victimele Infracțiunilor: 116 006
+      Garda Forestieră (tăieri ilegale): 0800 800 508
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: andrei
+    text: >
+      lemnul nu minte. și nici oamenii din sălașul de sus. mulțumesc
+      că nu ați renunțat.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Mircea (Partial Ending) ---
+
+  confront_mircea:
+    type: message
+    text: >
+      You present the logging evidence to Mircea Ionescu:
+
+      "I have photographs showing clear-cutting inside a virgin
+      forest reserve. I have satellite images proving the cut area
+      is more than double the permit. I have your original boundary
+      plans showing the data was falsified. I have photos of
+      500-year-old stumps inside the protected area."
+    choices:
+      - Send -> mircea_response
+
+  mircea_response:
+    type: message
+    text: >
+      MIRCEA: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will
+      result in immediate proceedings. CarpatLemn SRL has always
+      operated within its cutting permits.
+
+      But it's too late. You've sent the evidence to Nicoleta, to
+      the Asociația Pădurea Bătrână, and to the regional forestry
+      authority.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The logging story breaks. CarpatLemn is ordered to halt all
+      cutting in the Sălașul de Sus area pending investigation. The
+      company may lose its PEFC certification. Sixty jobs hang in
+      the balance. The village is divided.
+
+      But Andrei?
+
+      Without the stalking evidence, Bogdan is never investigated.
+      He returns to București but continues to monitor Andrei's
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Andrei reads about CarpatLemn online. He
+      returns quietly. He changes the lock on his workshop. He stops
+      working with windows open. He checks his car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Andrei walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: andrei
+    text: "m-am întors. pădurea se va vindeca. restul... vom vedea."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Primar (Wrong Ending) ---
+
+  confront_gheorghe:
+    type: message
+    text: >
+      You confront Primarul Morar with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> gheorghe_response
+
+  gheorghe_response:
+    type: tweet
+    from: raluca
+    text: >
+      Clientul meu a luat act de acuzațiile dumneavoastră. Orice
+      publicare de materiale defăimătoare va fi urmată de acțiuni
+      legale imediate. — Cabinetul de avocatură Dumitrescu,
+      Cluj-Napoca
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Morar and CarpatLemn's illegal logging — and
+      there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      CarpatLemn continues to cut. Bogdan continues to watch.
+      Andrei stays in hiding in the mountains.
+
+      Six months later, @sorin_dobre creates a new account. It
+      follows Andrei's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SĂLAȘUL DE SUS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Andrei's story explores themes of
+      corporate destruction of ancient forests, illegal logging,
+      obsessive behaviour, community solidarity in rural places,
+      and the courage to protect heritage and nature.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Telefonul Sufletului: 0800 801 200 (gratuit)
+      Victimele Infracțiunilor: 116 006
+      Garda Forestieră (tăieri ilegale): 0800 800 508

@@ -1,0 +1,2249 @@
+meta:
+  title: "Dead Account - Story 046: The Silent Forest"
+  state:
+    trust_roberts: 0
+    trust_eliza: 0
+    trust_daniels: 0
+    trust_dace: 0
+    trust_aigars: 0
+    trust_raimonds: 0
+    trust_biruta: 0
+    trust_liga: 0
+    trust_janis: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    thread1_evidence: 0
+    thread2_evidence: 0
+    evidence_total: 0
+    confrontation_ready: 0
+    workshop_clue: 0
+    forest_clue: 0
+    permit_clue: 0
+  player:
+    name: New Resident
+    bio: "Just moved to Dzintarkrasti. Getting to know the community."
+    avatar: avatars/default_citizen.png
+  bot:
+    display_name: "Dzintarkrasti.social"
+    description: "Welcome to Dzintarkrasti - the amber coast community instance"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+  npcs:
+    maris:
+      name: "Māris Kalniņš"
+      bio: "Woodworker & traditional craftsman. Protecting Kurzeme forests. 🌲 My hands speak through oak and birch."
+      avatar: avatars/maris.jpg
+    roberts:
+      name: "Roberts Ozoliņš"
+      bio: "16 | skater | Māris taught me to carve | miss him every day"
+      avatar: avatars/roberts.jpg
+    eliza:
+      name: "Elīza Bērziņa"
+      bio: "17 | photography & forests | Māris was my mentor | truth matters"
+      avatar: avatars/eliza.jpg
+    daniels:
+      name: "Daniels Liepiņš"
+      bio: "15 | gamer | Dzintarkrasti born | something happened to Māris and nobody cares"
+      avatar: avatars/daniels.jpg
+    dace:
+      name: "Dace Kalniņa"
+      bio: "Māris's sister. Ceramics artist. I won't stop asking questions."
+      avatar: avatars/dace.jpg
+    aigars:
+      name: "Aigars Vanags"
+      bio: "Forest ranger, Kurzeme district. 30 years protecting these woods."
+      avatar: avatars/aigars.jpg
+    raimonds:
+      name: "Raimonds Krūmiņš"
+      bio: "Director, Baltic Timber Solutions. Sustainable forestry for Latvia's future."
+      avatar: avatars/raimonds.jpg
+    biruta:
+      name: "Vecmāmiņa Biruta"
+      bio: "Been in Dzintarkrasti since 1952. These forests remember everything."
+      avatar: avatars/biruta.jpg
+    liga:
+      name: "Līga Eglīte"
+      bio: "Town council, Dzintarkrasti. Working for our community."
+      avatar: avatars/liga.jpg
+    janis:
+      name: "Jānis Pētersons"
+      bio: "Journalist, Kurzeme Ziņas. Local news, local truths."
+      avatar: avatars/janis.jpg
+    edgars:
+      name: "Edgars Siliņš"
+      bio: "BTS site foreman. Just doing my job."
+      avatar: avatars/edgars.jpg
+    zane:
+      name: "Zane Ābele"
+      bio: "Māris's ex-girlfriend. Environmental law student in Rīga."
+      avatar: avatars/zane.jpg
+    ivars:
+      name: "Ivars Ozols"
+      bio: "Volunteer firefighter. Saw the smoke that night. Still can't sleep."
+      avatar: avatars/ivars.jpg
+    ilze:
+      name: "Ilze Kalniņa"
+      bio: "Māris and Dace's mother. My son loved these trees more than anything."
+      avatar: avatars/ilze.jpg
+    karlis:
+      name: "Kārlis Vītols"
+      bio: "Retired forester. I mapped every old-growth stand in this district."
+      avatar: avatars/karlis.jpg
+    guntis:
+      name: "Guntis Balodis"
+      bio: "Truck driver for BTS. Just drive where they tell me."
+      avatar: avatars/guntis.jpg
+    marta:
+      name: "Marta Liepa"
+      bio: "Owner, Dzintarkrasti café. Everyone talks here eventually."
+      avatar: avatars/marta.jpg
+    arturs:
+      name: "Artūrs Bērziņš"
+      bio: "Police constable, Dzintarkrasti. Investigating the workshop fire."
+      avatar: avatars/arturs.jpg
+    sandra:
+      name: "Sandra Priede"
+      bio: "County permits office. I process the paperwork."
+      avatar: avatars/sandra.jpg
+    uldis:
+      name: "Uldis Grīnbergs"
+      bio: "BTS security contractor. Private firm, private business."
+      avatar: avatars/uldis.jpg
+
+entry: welcome
+
+nodes:
+  welcome:
+    type: message
+    text: >
+      Welcome to Dzintarkrasti.social, the community instance for the amber coast
+      town of Dzintarkrasti, Latvia.
+
+
+      You've joined during a difficult time. Two weeks ago, local woodworker and
+      craftsman influencer Māris Kalniņš was found dead in the Kurzeme forest he
+      loved. The official ruling is accidental death -- exposure after a fall while
+      hiking at night. But many in the community don't believe it.
+
+
+      Māris had been posting about illegal clear-cutting in a protected old-growth
+      forest area. His workshop was targeted by arsonists days before his death.
+      Now his account is silent, and the logging continues.
+
+
+      Your feed is showing some recent posts. Start reading and following people to
+      learn more about what happened.
+    choices:
+      - "Check the local feed" -> local_feed
+      - "Look at Māris's last posts" -> maris_archive
+
+  local_feed:
+    type: message
+    text: >
+      The local timeline is busy today. Several community members are posting about
+      the two-week anniversary of Māris's death. There's a memorial walk planned
+      in the forest this weekend.
+    choices:
+      - "Read Roberts's post" -> roberts_intro_post
+      - "Read Elīza's post" -> eliza_intro_post
+      - "Read Dace's post" -> dace_intro_post
+      - "Look at Māris's last posts" -> maris_archive
+
+  maris_archive:
+    type: tweet
+    from: maris
+    text: >
+      [ARCHIVED POST - 18 days ago]
+
+      They're cutting the old oaks in Sector 7. Protected zone. I have photos.
+      These trees are 300+ years old. Someone forged the permits. I'm going to
+      the county office tomorrow.
+
+
+      [ARCHIVED POST - 16 days ago]
+
+      County office says the permits are "in order." But I KNOW Kārlis mapped
+      that stand as protected in 2003. The GPS coordinates don't match what's
+      on the permit. Something is very wrong.
+
+
+      [ARCHIVED POST - 15 days ago]
+
+      Workshop fire last night. "Electrical fault" according to police.
+      Funny how the only things destroyed were my files on the logging operation.
+      My carving tools survived because they were in the metal cabinet.
+
+
+      [FINAL POST - 14 days ago]
+
+      Meeting someone tonight who says they have proof about the forged permits.
+      If anything happens to me, check the hollow oak at the Sector 7 boundary
+      marker. I left copies of everything.
+
+
+      This account has been inactive for 14 days.
+    choices:
+      - "Follow Roberts" -> roberts_intro_post
+      - "Follow Elīza" -> eliza_intro_post
+      - "Follow Dace" -> dace_intro_post
+      - "Check the local feed" -> local_feed
+
+  roberts_intro_post:
+    type: tweet
+    from: roberts
+    text: >
+      čau, today is 2 weeks since Māris... nē nu es vairs nevaru.
+      he taught me everything about woodcarving. he was the only adult
+      who actually listened. if u think this was an "accident" ur blind.
+      #JusticeForMāris
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: I'm new here, what happened?" -> roberts_explain
+      - "Reply: I want to help find the truth" -> roberts_trust_start
+      - "Read Elīza's post" -> eliza_intro_post
+      - "Read Dace's post" -> dace_intro_post
+
+  roberts_explain:
+    type: tweet
+    from: roberts
+    text: >
+      ok so basically Māris was this baigi cool woodworker right? like
+      traditional Latvian stuff, massive following online. he found out
+      Baltic Timber Solutions was cutting down protected forest with fake
+      permits. then his workshop got torched and then he ended up dead
+      in the forest. "fell while hiking" lol sure. at night. in a forest
+      he knew better than anyone.
+    effects: { trust_roberts: "+5" }
+    choices:
+      - "That does sound suspicious. Who's Baltic Timber Solutions?" -> roberts_bts_info
+      - "Who do you think is responsible?" -> roberts_suspects
+      - "Check other posts" -> local_feed_2
+
+  roberts_trust_start:
+    type: tweet
+    from: roberts
+    text: >
+      forši, we need more people asking questions tbh. the adults in
+      this town are either scared or bought off. follow Elīza too,
+      she has photos from the forest. and Dace, Māris's sister, she's
+      been investigating on her own.
+    effects: { trust_roberts: "+10" }
+    choices:
+      - "Tell me more about the logging" -> roberts_bts_info
+      - "Follow Elīza" -> eliza_intro_post
+      - "Follow Dace" -> dace_intro_post
+
+  roberts_bts_info:
+    type: tweet
+    from: roberts
+    text: >
+      Baltic Timber Solutions. Raimonds Krūmiņš runs it. showed up like
+      2 years ago, got all these permits super fast. Māris said the permits
+      were for a different sector but BTS was cutting in the protected zone.
+      like they literally just changed GPS coordinates on the paperwork.
+      tīri criminal stuff.
+    effects: { trust_roberts: "+5", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Has anyone reported this to authorities?" -> roberts_authorities
+      - "What about the workshop fire?" -> roberts_fire
+      - "Check other posts" -> local_feed_2
+
+  roberts_suspects:
+    type: tweet
+    from: roberts
+    text: >
+      ok nē nu I don't wanna get sued or whatever but... Raimonds from BTS
+      threatened Māris in the café. like IN PUBLIC. Marta heard everything.
+      and there's this security guy Uldis who works for BTS, he was following
+      Māris around town the week before. Daniels saw him outside the workshop
+      the night of the fire.
+    effects: { trust_roberts: "+5", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Tell me about the fire" -> roberts_fire
+      - "I should talk to Daniels" -> daniels_intro
+      - "Check other posts" -> local_feed_2
+
+  roberts_authorities:
+    type: tweet
+    from: roberts
+    text: >
+      labi so Māris went to the county permits office and they said everything
+      was fine. he went to the police and Artūrs said it's a "civil matter."
+      Jānis from the local paper wrote one article and then his editor killed
+      the follow-up. it's like everyone is either paid off or scared. the only
+      one who actually helped was old Kārlis the retired forester.
+    effects: { trust_roberts: "+5", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "I should talk to Kārlis" -> karlis_intro
+      - "What about the fire?" -> roberts_fire
+      - "Check other posts" -> local_feed_2
+
+  roberts_fire:
+    type: tweet
+    from: roberts
+    text: >
+      baigi sketchy. fire started at like 2am. only the filing cabinet and
+      desk area burned. Māris kept all his evidence there -- photos, GPS
+      printouts, permit copies. his carving tools in the metal cabinet right
+      next to it? untouched. Ivars the firefighter said the burn pattern
+      was weird but police called it electrical. nē nu...
+    effects: { trust_roberts: "+10", thread2_evidence: "+1", evidence_total: "+1", workshop_clue: "+1" }
+    choices:
+      - "I need to talk to Ivars" -> ivars_intro
+      - "What happened after the fire?" -> roberts_after_fire
+      - "Check other posts" -> local_feed_2
+
+  roberts_after_fire:
+    type: tweet
+    from: roberts
+    text: >
+      Māris was shook but he didn't stop. he said he had backup copies hidden
+      somewhere. then 3 days after the fire he posted about meeting someone
+      with proof about the permits. that was his last post. next morning a
+      jogger found him at the bottom of a ravine in Sector 7. the SAME sector
+      where the illegal cutting was happening. but sure. "accident."
+    effects: { trust_roberts: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Did anyone see him that night?" -> roberts_night
+      - "Follow Elīza" -> eliza_intro_post
+      - "Follow Dace" -> dace_intro_post
+
+  roberts_night:
+    type: tweet
+    from: roberts
+    text: >
+      Daniels said he saw Māris's truck heading toward the forest around 10pm.
+      and Elīza... ok don't tell her I said this but she was out there too.
+      she does night photography in the forest sometimes. she might have seen
+      something. she's been weird about it tho. like she won't talk about
+      that night at all.
+    effects: { trust_roberts: "+10", night_witnesses: "+1" }
+    choices:
+      - "I need to talk to Elīza about that night" -> eliza_night_approach
+      - "Talk to Daniels" -> daniels_intro
+      - "Check other posts" -> local_feed_2
+
+  eliza_intro_post:
+    type: tweet
+    from: eliza
+    text: >
+      Posted new photos from Sector 7. The stumps are still fresh. You can
+      count the rings -- 280, 310, one was over 350 years old. These oaks
+      survived wars and Soviet occupation. They didn't survive Baltic Timber
+      Solutions.
+
+
+      Māris would have shared these. So I'm sharing them for him.
+
+      #ProtectKurzemeForests #JusticeForMāris
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: These photos are powerful evidence" -> eliza_evidence_reply
+      - "Reply: Can I help document what's happening?" -> eliza_help_offer
+      - "Read Roberts's post" -> roberts_intro_post
+      - "Read Dace's post" -> dace_intro_post
+
+  eliza_evidence_reply:
+    type: tweet
+    from: eliza
+    text: >
+      They are. I've been geotagging everything. The permit says they can cut
+      in Sector 4 which is a commercial zone. But these stumps are in Sector 7,
+      the protected old-growth reserve. I overlaid the GPS data on the county
+      map. It's not even close. Someone deliberately falsified the coordinates.
+    effects: { trust_eliza: "+10", thread1_evidence: "+1", evidence_total: "+1", forest_clue: "+1" }
+    choices:
+      - "Who had access to change the permits?" -> eliza_permits
+      - "Did Māris have this same evidence?" -> eliza_maris_evidence
+      - "Check other posts" -> local_feed_2
+
+  eliza_help_offer:
+    type: tweet
+    from: eliza
+    text: >
+      If you're serious, yes. I need someone to help me compare the county
+      permit records with the actual cutting sites. I can't go to the county
+      office myself because Sandra there already told me to stop asking
+      questions. But a new resident could request public records without
+      raising suspicion.
+    effects: { trust_eliza: "+10" }
+    choices:
+      - "I'll go to the county office" -> sandra_intro
+      - "What exactly should I look for?" -> eliza_permits
+      - "Check other posts" -> local_feed_2
+
+  eliza_permits:
+    type: tweet
+    from: eliza
+    text: >
+      The permits go through Sandra Priede at the county office. She processes
+      them. Līga on town council approved the local consultation. And Aigars
+      the forest ranger is supposed to verify the boundaries on the ground.
+      Three people who all said everything was fine. Either they're all in on it
+      or someone fooled all three of them. Māris thought it was option one.
+    effects: { trust_eliza: "+10", thread1_evidence: "+1", evidence_total: "+1", permit_clue: "+1" }
+    choices:
+      - "I should talk to Aigars" -> aigars_intro
+      - "What about Sandra?" -> sandra_intro
+      - "Talk to Līga" -> liga_intro
+      - "Check other posts" -> local_feed_2
+
+  eliza_maris_evidence:
+    type: tweet
+    from: eliza
+    text: >
+      He had way more than me. Months of documentation. GPS data, photos,
+      even a recording of Raimonds threatening him. All burned in the workshop
+      fire. But he told me he made copies. Said he hid them somewhere in the
+      forest. His last post mentioned the hollow oak at the Sector 7 boundary.
+      I've looked but I can't find it alone. The forest is huge.
+    effects: { trust_eliza: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Maybe Kārlis the old forester knows where the boundary marker is" -> karlis_intro
+      - "Ask about the night Māris died" -> eliza_night_approach
+      - "Check other posts" -> local_feed_2
+
+  eliza_night_approach:
+    type: tweet
+    from: eliza
+    text: >
+      ...how do you know I was in the forest that night?
+    choices:
+      - "Roberts mentioned you do night photography there" -> eliza_night_careful
+      - "Someone saw you heading that direction" -> eliza_night_defensive
+
+  eliza_night_careful:
+    type: tweet
+    from: eliza
+    text: >
+      ok. yeah. I was there. I was doing long-exposure shots of the old oaks
+      before they're all gone. I didn't... I didn't see Māris. but I heard
+      something. Voices, arguing. Near the Sector 7 boundary. I was too far
+      away to hear words but one voice was definitely Māris. The other...
+      I don't know. It was deep. Angry. Then I heard a crash, like something
+      falling through branches. I got scared and left.
+    effects: { trust_eliza: "+15", night_witnesses: "+1", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Did you tell the police?" -> eliza_police
+      - "Could you identify the other voice?" -> eliza_voice
+      - "Check other posts" -> local_feed_2
+
+  eliza_night_defensive:
+    type: tweet
+    from: eliza
+    text: >
+      I'm not going to talk about that night with someone I don't even know.
+      Maybe earn some trust first. Talk to Dace. Talk to Biruta. Show me
+      you're actually here to help, not just snoop.
+    effects: { trust_eliza: "-5" }
+    choices:
+      - "Follow Dace" -> dace_intro_post
+      - "Talk to Biruta" -> biruta_intro
+      - "Check other posts" -> local_feed_2
+
+  eliza_police:
+    type: tweet
+    from: eliza
+    text: >
+      I tried. Artūrs took my statement and then nothing. He said "hearing
+      voices in a forest at night" wasn't evidence. Didn't even check the area
+      where I pointed. By the time they actually investigated the scene it
+      had rained for two days. Any tracks or evidence on the ground was gone.
+      Convenient timing, right?
+    effects: { trust_eliza: "+5", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Could you identify the other voice?" -> eliza_voice
+      - "Talk to Artūrs" -> arturs_intro
+      - "Check other posts" -> local_feed_2
+
+  eliza_voice:
+    type: tweet
+    from: eliza
+    text: >
+      I keep going back and forth on this. Sometimes I think it sounded like
+      Uldis, the BTS security guy. He has that heavy, rough voice. But it was
+      far away and the forest distorts sound. I'm not sure enough to accuse
+      someone. But I'm not NOT sure either. If that makes sense.
+    effects: { trust_eliza: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Who is Uldis exactly?" -> uldis_intro
+      - "Talk to Dace about this" -> dace_new_info
+      - "Check other posts" -> local_feed_2
+
+  daniels_intro:
+    type: tweet
+    from: daniels
+    text: >
+      čau. yeah I know stuff. everyone thinks I'm just some kid who plays games
+      all night but that's exactly WHY I see things. my room faces the main road.
+      I see who drives where at 2am. I saw who was at the workshop the night
+      it burned. I see the BTS trucks going to the forest at weird hours.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "What did you see the night of the fire?" -> daniels_fire
+      - "What about the night Māris died?" -> daniels_maris_night
+      - "Tell me about the BTS trucks" -> daniels_trucks
+
+  daniels_fire:
+    type: tweet
+    from: daniels
+    text: >
+      ok so I was gaming, it was like 1:30am. I heard a car engine outside.
+      looked out the window. black SUV parked near the workshop. no lights on.
+      someone got out, couldn't see their face but they were big. like tall and
+      heavy. went around the back of the workshop. 20 minutes later the SUV
+      left. 30 minutes after that I saw the glow from the fire. I called the
+      fire brigade. nē nu nobody asked me what I saw before the fire tho.
+    effects: { trust_daniels: "+15", thread2_evidence: "+1", evidence_total: "+1", workshop_clue: "+1" }
+    choices:
+      - "A black SUV -- do you know who drives one?" -> daniels_suv
+      - "Did you tell the police?" -> daniels_police
+      - "What about the night Māris died?" -> daniels_maris_night
+
+  daniels_suv:
+    type: tweet
+    from: daniels
+    text: >
+      ok tīri obvious right? Uldis Grīnbergs drives a black Toyota Land
+      Cruiser. BTS security. everyone in town knows that car. I told Artūrs
+      and he said "lots of people have dark SUVs" which ok sure but at 1:30am
+      next to a workshop that burns down an hour later?? come ON.
+    effects: { trust_daniels: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "What about the night Māris died?" -> daniels_maris_night
+      - "I need to talk to Uldis" -> uldis_intro
+      - "Check other posts" -> local_feed_2
+
+  daniels_police:
+    type: tweet
+    from: daniels
+    text: >
+      yeah Artūrs wrote it down. then told me to "not spread rumors." I'm 15.
+      they don't take me seriously. but I KNOW what I saw. baigi frustrating.
+      even my parents told me to stop talking about it.
+    effects: { trust_daniels: "+5" }
+    choices:
+      - "Do you know who drives a black SUV?" -> daniels_suv
+      - "What about the night Māris died?" -> daniels_maris_night
+      - "Check other posts" -> local_feed_2
+
+  daniels_maris_night:
+    type: tweet
+    from: daniels
+    text: >
+      ok this is the big one. so around 10pm I saw Māris's truck go toward
+      the forest road. normal, he went out there all the time. but then
+      maybe 30 minutes later I saw another car go the same way. and guess
+      what. black SUV. no lights. same one as the fire night. I swear.
+    effects: { trust_daniels: "+15", night_witnesses: "+1", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Did you see the SUV come back?" -> daniels_suv_return
+      - "Did you tell anyone?" -> daniels_told
+      - "Check other posts" -> local_feed_2
+
+  daniels_suv_return:
+    type: tweet
+    from: daniels
+    text: >
+      I fell asleep around midnight. I don't know when it came back. but next
+      morning when I heard about Māris I checked the road from my window.
+      no SUV anywhere. whoever it was had come back during the night. I keep
+      thinking if I hadn't fallen asleep... maybe I would have seen more.
+      maybe I could have helped.
+    effects: { trust_daniels: "+10" }
+    choices:
+      - "It's not your fault" -> daniels_comfort
+      - "This is important evidence" -> daniels_important
+      - "Check other posts" -> local_feed_2
+
+  daniels_comfort:
+    type: tweet
+    from: daniels
+    text: >
+      ...thanks. nobody really says that. Roberts is all anger and Elīza is
+      all evidence but sometimes I just feel bad about it, you know? Māris
+      was cool. he let me hang out in the workshop and play on my phone
+      while he carved. didn't judge me for not wanting to learn woodworking.
+      just let me be there.
+    effects: { trust_daniels: "+10" }
+    choices:
+      - "He sounds like a good person" -> daniels_maris_memory
+      - "Check other posts" -> local_feed_2
+
+  daniels_important:
+    type: tweet
+    from: daniels
+    text: >
+      vau forši someone actually takes it seriously. ok look I also screenshot
+      the GPS tracker on the BTS trucks. I put a free tracking app on my phone
+      that picks up Bluetooth from their fleet management system. some of their
+      trucks go into Sector 7 at like 3-4am. I have logs. Māris helped me
+      set it up actually. he was smart about tech stuff.
+    effects: { trust_daniels: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "That's incredible evidence. Keep it safe." -> daniels_safe
+      - "Check other posts" -> local_feed_2
+
+  daniels_safe:
+    type: tweet
+    from: daniels
+    text: >
+      already backed up to the cloud. three different services. Māris taught
+      me that after the fire destroyed his stuff. "always have backups in
+      places they can't burn," he said. I think about that a lot.
+    effects: { trust_daniels: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  daniels_maris_memory:
+    type: tweet
+    from: daniels
+    text: >
+      he was the best. this whole town is worse without him. that's why
+      we gotta figure out what happened. not just for justice or whatever
+      but because if they can do this to Māris they can do it to anyone
+      who tries to stop them.
+    effects: { trust_daniels: "+5" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  daniels_told:
+    type: tweet
+    from: daniels
+    text: >
+      told Roberts and Elīza. Roberts wanted to go confront Uldis lol I
+      had to talk him down. Elīza said we need more proof. she's right
+      probably. also told Dace and she went really quiet. like scary quiet.
+      she's planning something I think.
+    effects: { trust_daniels: "+5" }
+    choices:
+      - "Talk to Dace" -> dace_intro_post
+      - "Check other posts" -> local_feed_2
+
+  dace_intro_post:
+    type: tweet
+    from: dace
+    text: >
+      My brother Māris didn't fall in a forest he'd walked since childhood.
+      He didn't have an "electrical fire" in a workshop he'd wired himself.
+      He didn't die by accident three days after someone tried to burn his
+      evidence. I am a patient woman but my patience is ending.
+
+
+      If you know something, message me. Anonymity guaranteed.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: I'm investigating what happened to Māris" -> dace_investigate
+      - "Reply: I have some information from other community members" -> dace_info_share
+      - "Read Roberts's post" -> roberts_intro_post
+      - "Read Elīza's post" -> eliza_intro_post
+
+  dace_investigate:
+    type: tweet
+    from: dace
+    text: >
+      Good. I need all the help I can get. The police aren't doing enough.
+      Artūrs is a decent man but he's out of his depth and I think someone
+      is pressuring him. Let me tell you what I know: Māris had been receiving
+      threats for weeks before the fire. Anonymous messages, slashed tires,
+      someone left a dead bird on his doorstep. He reported all of it. Nothing
+      happened.
+    effects: { trust_dace: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Anonymous threats -- any idea who?" -> dace_threats
+      - "Tell me about his investigation into the logging" -> dace_logging
+      - "Check other posts" -> local_feed_2
+
+  dace_info_share:
+    type: tweet
+    from: dace
+    text: >
+      Tell me. Everything. I don't care if it seems small. My brother is dead
+      and nobody is being held accountable. What have people told you?
+    effects: { trust_dace: "+5" }
+    choices:
+      - "The teens saw a black SUV both nights" -> dace_suv_info
+        when: { state: night_witnesses, gte: 1 }
+      - "Elīza heard voices arguing in the forest" -> dace_eliza_info
+        when: { state: trust_eliza, gte: 15 }
+      - "Tell me what you know first" -> dace_logging
+      - "Check other posts" -> local_feed_2
+
+  dace_suv_info:
+    type: tweet
+    from: dace
+    text: >
+      A black SUV. Uldis Grīnbergs. I knew it. Māris told me that man had been
+      following him. Parking outside the workshop, driving slowly past our
+      mother's house. Māris filed a report and Artūrs told him it was
+      "coincidence." How many coincidences until it's a pattern? How many
+      until it's murder?
+    effects: { trust_dace: "+15", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "We need solid proof connecting Uldis to the fire and the death" -> dace_proof
+      - "Is Uldis acting alone or on orders?" -> dace_orders
+      - "Check other posts" -> local_feed_2
+
+  dace_eliza_info:
+    type: tweet
+    from: dace
+    text: >
+      She heard arguing? And a crash? And she didn't tell me this? I...
+      I understand. She's 17. She's probably terrified. But this is important.
+      This confirms Māris wasn't alone out there. He went to meet someone and
+      there was a confrontation. This wasn't an accident. It can't be.
+    effects: { trust_dace: "+15", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "We need to find out who he was meeting" -> dace_meeting
+      - "What do you know about the logging angle?" -> dace_logging
+      - "Check other posts" -> local_feed_2
+
+  dace_threats:
+    type: tweet
+    from: dace
+    text: >
+      The messages came from burner accounts. Basic threatening stuff --
+      "stop asking questions," "accidents happen in forests," "think about
+      your family." Māris saved screenshots. They burned with everything
+      else. But I remember one said something specific about his mother's
+      house. Like they knew where Ilze lives. That's not random internet
+      trolling. That's local knowledge.
+    effects: { trust_dace: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Someone local with something to lose" -> dace_logging
+      - "I should talk to your mother" -> ilze_intro
+      - "Check other posts" -> local_feed_2
+
+  dace_logging:
+    type: tweet
+    from: dace
+    text: >
+      Here's what Māris told me. Baltic Timber Solutions got permits to harvest
+      in Sector 4, commercial forest zone. But they're actually cutting in
+      Sector 7, the old-growth protected zone. The permits have the wrong GPS
+      coordinates. Māris believed someone at the county office -- Sandra
+      Priede -- altered the coordinates after approval. And that Līga on
+      town council fast-tracked the consultation process.
+    effects: { trust_dace: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "What about Aigars the forest ranger?" -> dace_aigars
+      - "I should talk to Sandra" -> sandra_intro
+      - "Check other posts" -> local_feed_2
+
+  dace_aigars:
+    type: tweet
+    from: dace
+    text: >
+      Aigars is complicated. He's been the ranger here for 30 years. Māris
+      respected him. But when Māris showed him the GPS discrepancy, Aigars
+      got very uncomfortable. Said he'd "look into it" and then avoided
+      Māris for a week. Either he already knew and was afraid, or he was
+      told to look the other way. I've tried talking to him but he just
+      says "it's complicated" and changes the subject.
+    effects: { trust_dace: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "I should try talking to Aigars directly" -> aigars_intro
+      - "Who benefits from the illegal logging?" -> dace_money
+      - "Check other posts" -> local_feed_2
+
+  dace_money:
+    type: tweet
+    from: dace
+    text: >
+      Old-growth oak is incredibly valuable. We're talking thousands of euros
+      per tree for the right buyer. Sector 7 has hundreds of ancient oaks.
+      The total value could be in the millions. Raimonds Krūmiņš started
+      BTS with almost no capital two years ago. Now he drives a Porsche.
+      Do the math.
+    effects: { trust_dace: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Follow the money -- talk to Raimonds" -> raimonds_intro
+      - "Check other posts" -> local_feed_2
+
+  dace_proof:
+    type: tweet
+    from: dace
+    text: >
+      I know. Feelings aren't evidence. That's why I need Māris's backup
+      files -- the ones he mentioned hiding in the hollow oak. Kārlis Vītols
+      might know where the Sector 7 boundary marker is. He mapped every
+      tree in that forest before he retired. If we find those files, we
+      have everything.
+    effects: { trust_dace: "+10" }
+    choices:
+      - "Talk to Kārlis" -> karlis_intro
+      - "Check other posts" -> local_feed_2
+
+  dace_orders:
+    type: tweet
+    from: dace
+    text: >
+      Uldis is muscle. He does what Raimonds tells him. But Raimonds is
+      smart -- he wouldn't leave a trail to himself. The question is whether
+      Raimonds ordered Uldis to just scare Māris or... more than that.
+      And whether anyone else was involved. Someone had to alter those permits.
+      Someone had to tell the ranger to look away.
+    effects: { trust_dace: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Talk to Raimonds" -> raimonds_intro
+      - "Talk to Uldis" -> uldis_intro
+      - "Check other posts" -> local_feed_2
+
+  dace_meeting:
+    type: tweet
+    from: dace
+    text: >
+      Māris's last post said he was meeting someone with proof about the
+      forged permits. I don't know who. But think about it -- who would have
+      inside knowledge of permit fraud? Sandra at the county office. Aigars
+      in the forest. Edgars, the BTS site foreman. Or even Guntis, the truck
+      driver who'd know exactly where they were cutting.
+    effects: { trust_dace: "+10" }
+    choices:
+      - "Talk to Edgars" -> edgars_intro
+      - "Talk to Guntis" -> guntis_intro
+      - "Check other posts" -> local_feed_2
+
+  dace_new_info:
+    type: tweet
+    from: dace
+    text: >
+      You've been talking to Elīza? Good. She's brave for a 17-year-old.
+      Braver than most adults in this town. If she heard voices arguing that
+      night, that changes everything. The police said Māris was alone. They
+      were wrong or they lied. Either way, we need to push harder.
+    effects: { trust_dace: "+10" }
+    choices:
+      - "How do we push harder?" -> dace_proof
+      - "Check other posts" -> local_feed_2
+
+  local_feed_2:
+    type: message
+    text: >
+      The local feed has more activity. Several people you haven't spoken
+      to yet are posting, and there are some interesting threads developing.
+    choices:
+      - "Read Aigars's post" -> aigars_intro
+      - "Read Biruta's post" -> biruta_intro
+      - "Read Raimonds's post" -> raimonds_intro
+      - "Read Jānis's article" -> janis_intro
+      - "Check Marta's café thread" -> marta_intro
+      - "Read Artūrs's statement" -> arturs_intro
+      - "Talk to Kārlis" -> karlis_intro
+      - "Talk to Ilze" -> ilze_intro
+      - "Talk to Zane" -> zane_intro
+      - "Talk to Sandra" -> sandra_intro
+      - "Talk to Edgars" -> edgars_intro
+      - "Talk to Guntis" -> guntis_intro
+      - "Talk to Uldis" -> uldis_intro
+      - "Talk to Līga" -> liga_intro
+      - "Confront Raimonds with evidence" -> confront_raimonds
+        when: { state: evidence_total, gte: 12 }
+      - "Go to the forest to find the hidden files" -> forest_search
+        when: { state: thread1_evidence, gte: 5 }
+
+  aigars_intro:
+    type: tweet
+    from: aigars
+    text: >
+      Thirty years I've protected these forests. I know every trail, every
+      stand, every stream. People are asking me questions and I understand why.
+      But I need people to understand -- this situation is more complicated
+      than it looks. I have a family. I have a pension coming in two years.
+      Some things... I need to be careful about.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: What are you afraid of?" -> aigars_afraid
+      - "Reply: Māris is dead. Being careful didn't save him." -> aigars_harsh
+      - "Reply: I understand. Can you tell me what you CAN say?" -> aigars_careful
+
+  aigars_afraid:
+    type: tweet
+    from: aigars
+    text: >
+      I'm not afraid. I'm... strategic. When I reported the boundary
+      discrepancies to my supervisor in Rīga, I was told the permits had
+      been reviewed and were valid. When I pushed, I was reminded that my
+      position is "at the discretion of the regional director." Māris didn't
+      have a pension to lose. I do. That probably makes me a coward.
+    effects: { trust_aigars: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "You're not a coward. You're being threatened." -> aigars_threatened
+      - "Your supervisor in Rīga shut you down?" -> aigars_riga
+      - "Check other posts" -> local_feed_2
+
+  aigars_harsh:
+    type: tweet
+    from: aigars
+    text: >
+      ...you're right. And I have to live with that. I told Māris to be
+      careful. I told him to let the system handle it. The system didn't
+      handle it. The system is broken. Or bought.
+    effects: { trust_aigars: "+5" }
+    choices:
+      - "Help me fix it then" -> aigars_help
+      - "What do you know about the permits?" -> aigars_riga
+      - "Check other posts" -> local_feed_2
+
+  aigars_careful:
+    type: tweet
+    from: aigars
+    text: >
+      I can tell you that the cutting boundaries I was given do not match
+      what I see on the ground. I can tell you that when I raised this
+      concern I was told to mind my own business. I can tell you that Māris
+      came to me with the same concern and I... I failed him. I told him
+      to go through proper channels. The channels are the problem.
+    effects: { trust_aigars: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Who told you to mind your own business?" -> aigars_riga
+      - "Can you help us now?" -> aigars_help
+      - "Check other posts" -> local_feed_2
+
+  aigars_threatened:
+    type: tweet
+    from: aigars
+    text: >
+      Not directly threatened. Just... reminded of my position. But after
+      Māris died, something changed for me. I started keeping my own records.
+      Photographing the cutting sites. Documenting the truck movements.
+      Quietly. If someone trustworthy took this to the State Environmental
+      Service in Rīga, bypassing the regional office... that might work.
+    effects: { trust_aigars: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Zane is studying environmental law in Rīga" -> zane_intro
+      - "Keep gathering evidence" -> aigars_help
+      - "Check other posts" -> local_feed_2
+
+  aigars_riga:
+    type: tweet
+    from: aigars
+    text: >
+      Regional director Voldemārs Zālītis. He handles all the permit
+      approvals for the Kurzeme district. A week after I raised concerns,
+      Raimonds Krūmiņš donated a new patrol vehicle to the forestry service.
+      Brand new Land Rover. I was told to be grateful and stop asking
+      questions. I drive the old truck out of principle.
+    effects: { trust_aigars: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "So the corruption goes higher than the town" -> aigars_help
+      - "Check other posts" -> local_feed_2
+
+  aigars_help:
+    type: tweet
+    from: aigars
+    text: >
+      I've made my decision. I'm retiring in two years anyway. What's
+      the point of a pension if I can't look at these trees without seeing
+      Māris's face? I have GPS logs of every BTS truck movement in Sector 7.
+      Times, dates, coordinates. Māris would have wanted me to share them.
+      I'm sharing them with you now.
+    effects: { trust_aigars: "+20", thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - "This is exactly what we need" -> local_feed_2
+      - "Check other posts" -> local_feed_2
+
+  biruta_intro:
+    type: tweet
+    from: biruta
+    text: >
+      I am 91 years old. I've seen the Soviets cut our forests. I've seen
+      them grow back. I've seen Māris Kalniņš as a boy, running through those
+      oaks with his sister. Now the oaks are falling again and Māris is gone.
+      History doesn't repeat but it rhymes, they say. This is a very ugly
+      rhyme.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: Did you know Māris well?" -> biruta_maris
+      - "Reply: What do you think happened?" -> biruta_opinion
+      - "Check other posts" -> local_feed_2
+
+  biruta_maris:
+    type: tweet
+    from: biruta
+    text: >
+      He was like a grandson to me. Came every Sunday for coffee and
+      pīrādziņi. Such strong hands but such gentle work. He'd bring me small
+      carvings -- birds, flowers, a little oak leaf brooch I wear every day.
+      The last time he came, he was worried. He said powerful people were
+      angry with him. I told him to be careful. He said some things are
+      worth the risk.
+    effects: { trust_biruta: "+15" }
+    choices:
+      - "Did he say who was threatening him?" -> biruta_threats
+      - "What do you think happened?" -> biruta_opinion
+      - "Check other posts" -> local_feed_2
+
+  biruta_threats:
+    type: tweet
+    from: biruta
+    text: >
+      He mentioned "the timber man" -- Raimonds. And he said there was
+      someone on the town council helping them. He didn't say who but there
+      are only five council members and Līga Eglīte is the one who pushed
+      through the forestry consultation. I may be old but I'm not stupid.
+      Also, that security man, the big one with the black car -- Māris said
+      he was parked outside my house once. Watching. Even I felt afraid.
+    effects: { trust_biruta: "+15", thread1_evidence: "+1", thread2_evidence: "+1", evidence_total: "+2" }
+    choices:
+      - "Uldis was watching your house too?" -> biruta_uldis
+      - "Tell me about Līga" -> liga_intro
+      - "Check other posts" -> local_feed_2
+
+  biruta_opinion:
+    type: tweet
+    from: biruta
+    text: >
+      I think a young man discovered something dangerous and the people who
+      profited from that danger removed him. It's the oldest story in the
+      world. The powerful destroying the righteous. The Soviets did it
+      with paperwork and labor camps. These people do it with accidents
+      and fires. Different methods. Same evil.
+    effects: { trust_biruta: "+10" }
+    choices:
+      - "Did he tell you anything specific about the threats?" -> biruta_threats
+      - "Check other posts" -> local_feed_2
+
+  biruta_uldis:
+    type: tweet
+    from: biruta
+    text: >
+      Yes. A week before Māris died. I looked out my window and there
+      was the black car, engine running, for over an hour. I wrote down
+      the license plate because that's what you do when you've lived through
+      occupation -- you document everything. I gave it to Dace. It's
+      registered to Baltic Timber Solutions.
+    effects: { trust_biruta: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "That's important evidence" -> local_feed_2
+      - "Check other posts" -> local_feed_2
+
+  raimonds_intro:
+    type: tweet
+    from: raimonds
+    text: >
+      I want to address the irresponsible rumors circulating on this instance.
+      Baltic Timber Solutions operates with full legal permits, reviewed and
+      approved by county and regional authorities. Our hearts go out to the
+      Kalniņš family in their time of grief, but conspiracy theories help
+      no one. Māris was a talented craftsman who tragically had an accident.
+      Let him rest in peace.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: Your permits have the wrong GPS coordinates." -> raimonds_gps
+        when: { state: thread1_evidence, gte: 3 }
+      - "Reply: Why was your security contractor following Māris?" -> raimonds_uldis
+        when: { state: thread2_evidence, gte: 3 }
+      - "Reply: I just have some questions" -> raimonds_questions
+      - "Check other posts" -> local_feed_2
+
+  raimonds_gps:
+    type: tweet
+    from: raimonds
+    text: >
+      I have no idea what you're talking about. Our permits are public record.
+      If you have concerns, take them to the county permits office. I'm sure
+      Sandra will be happy to show you everything is in order. I don't
+      appreciate strangers making accusations based on social media gossip.
+    effects: { trust_raimonds: "+0" }
+    choices:
+      - "Sandra already confirmed the discrepancy to others" -> raimonds_pressure
+        when: { state: permit_clue, gte: 1 }
+      - "I will take it to the county office" -> sandra_intro
+      - "Check other posts" -> local_feed_2
+
+  raimonds_pressure:
+    type: tweet
+    from: raimonds
+    text: >
+      I think you'll find Sandra confirmed no such thing. Be very careful
+      about what you post online. Defamation is a serious matter. Baltic
+      Timber Solutions has excellent lawyers. I suggest you focus on settling
+      into your new community rather than involving yourself in matters you
+      don't understand.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Is that a threat?" -> raimonds_threat
+      - "Check other posts" -> local_feed_2
+
+  raimonds_threat:
+    type: tweet
+    from: raimonds
+    text: >
+      It's advice. Free advice. Take it or leave it.
+
+
+      [Raimonds has blocked you from viewing further posts]
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  raimonds_uldis:
+    type: tweet
+    from: raimonds
+    text: >
+      Uldis Grīnbergs is a licensed security professional who monitors
+      BTS property and equipment. If he happened to be in the same area as
+      Mr. Kalniņš, that's a small-town coincidence. Dzintarkrasti has three
+      main roads. Everyone is "following" everyone by that logic.
+    effects: { trust_raimonds: "+0" }
+    choices:
+      - "He was parked outside the workshop the night it burned" -> raimonds_pressure
+        when: { state: workshop_clue, gte: 1 }
+      - "Check other posts" -> local_feed_2
+
+  raimonds_questions:
+    type: tweet
+    from: raimonds
+    text: >
+      I'm always happy to answer reasonable questions from community members.
+      BTS employs 40 people in this region. We contribute to the tax base.
+      We sponsor the youth football team. What would you like to know?
+    effects: { trust_raimonds: "+5" }
+    choices:
+      - "Where exactly are you harvesting timber?" -> raimonds_gps
+      - "Did you know Māris personally?" -> raimonds_maris
+      - "Check other posts" -> local_feed_2
+
+  raimonds_maris:
+    type: tweet
+    from: raimonds
+    text: >
+      I knew him as a community member. Talented craftsman. We actually
+      discussed a partnership once -- using BTS timber for his traditional
+      furniture work. He declined. That's his right. The idea that I would
+      wish harm on someone I offered a business deal to is absurd.
+    effects: { trust_raimonds: "+5" }
+    choices:
+      - "What about the threats Marta overheard in the café?" -> marta_intro
+      - "Check other posts" -> local_feed_2
+
+  janis_intro:
+    type: tweet
+    from: janis
+    text: >
+      [KURZEME ZIŅAS - ARCHIVED ARTICLE]
+
+      "Local craftsman Māris Kalniņš, 34, found deceased in Kurzeme forest.
+      Police report accidental death due to fall and exposure. Kalniņš was
+      known for his traditional woodworking and popular social media presence.
+      An investigation into a recent fire at his workshop continues."
+
+
+      That's the article I was allowed to publish. The follow-up I wrote about
+      the permit discrepancies was killed by my editor. Draw your own
+      conclusions.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: Who killed the follow-up?" -> janis_editor
+      - "Reply: What was in the follow-up article?" -> janis_article
+      - "Check other posts" -> local_feed_2
+
+  janis_editor:
+    type: tweet
+    from: janis
+    text: >
+      My editor received a legal threat from BTS's law firm. A real one --
+      pages of it. Threatening defamation lawsuit, damages claim, the works.
+      Our little paper can't afford that fight. So the article died. I've
+      been doing what I can on social media but I have to be careful about
+      what I state as fact vs what I "ask questions about."
+    effects: { trust_janis: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Legal threats to silence journalism" -> janis_pattern
+      - "What was in the killed article?" -> janis_article
+      - "Check other posts" -> local_feed_2
+
+  janis_article:
+    type: tweet
+    from: janis
+    text: >
+      I FOI'd the original permit application. The GPS coordinates on the
+      application match Sector 4. The GPS coordinates on the APPROVED permit
+      match Sector 7. The change happened between application and approval.
+      Someone altered the coordinates during the approval process. I also
+      found that BTS made a 50,000 euro "community development donation"
+      to the town council two weeks before the permit was approved.
+    effects: { trust_janis: "+15", thread1_evidence: "+2", evidence_total: "+2", permit_clue: "+1" }
+    choices:
+      - "50,000 euro donation. That's a bribe." -> janis_bribe
+      - "Who altered the coordinates?" -> janis_who
+      - "Check other posts" -> local_feed_2
+
+  janis_bribe:
+    type: tweet
+    from: janis
+    text: >
+      "Donation." Legally very different from a bribe. Practically? You
+      decide. The donation was accepted by town council vote. Līga Eglīte
+      proposed accepting it. The vote was 3-2. The money went to "road
+      improvements" that happen to include the forest access road BTS uses
+      for their trucks.
+    effects: { trust_janis: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Līga keeps coming up" -> liga_intro
+      - "Check other posts" -> local_feed_2
+
+  janis_who:
+    type: tweet
+    from: janis
+    text: >
+      The permit passes through Sandra's office for processing. But the
+      approval signature is from the regional director, Voldemārs Zālītis.
+      Sandra says she just enters what she's told. Aigars says the boundaries
+      he was given match the permit, not the application. Someone between
+      Sandra and Zālītis made the change. Or Sandra is lying. Hard to know
+      from outside the system.
+    effects: { trust_janis: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Talk to Sandra" -> sandra_intro
+      - "Check other posts" -> local_feed_2
+
+  janis_pattern:
+    type: tweet
+    from: janis
+    text: >
+      Legal threats, arson, stalking, and now a death. You see the escalation
+      pattern, right? First they tried to buy Māris off (the partnership offer).
+      Then they tried to scare him (threats, Uldis). Then they destroyed his
+      evidence (fire). Then... well. I'm just a journalist. I ask questions.
+    effects: { trust_janis: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  marta_intro:
+    type: tweet
+    from: marta
+    text: >
+      I run the only café in Dzintarkrasti. Everyone comes through here.
+      Everyone talks. I hear things. I try to stay neutral but some things
+      you can't be neutral about.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "What did you hear between Raimonds and Māris?" -> marta_argument
+      - "What's the town mood like?" -> marta_mood
+      - "Check other posts" -> local_feed_2
+
+  marta_argument:
+    type: tweet
+    from: marta
+    text: >
+      Three weeks before Māris died. Raimonds came in, sat down at Māris's
+      table uninvited. I was close enough to hear. Raimonds said "name your
+      price." Māris said "these trees don't have a price." Raimonds said
+      "everything has a price. Even people." Māris told him to leave. Raimonds
+      stood up, leaned in close, and said something I couldn't hear. Māris
+      went white. Then Raimonds left.
+    effects: { trust_marta: "+15", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Māris went white? What could Raimonds have said?" -> marta_whisper
+      - "Did anyone else witness this?" -> marta_witnesses
+      - "Check other posts" -> local_feed_2
+
+  marta_whisper:
+    type: tweet
+    from: marta
+    text: >
+      I asked Māris after. He wouldn't tell me exactly. But he said Raimonds
+      mentioned his mother's address. Not a direct threat, just... "I know
+      where your mother lives on Liepu iela." That's when Māris got really
+      scared. Not for himself. For Ilze.
+    effects: { trust_marta: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Talk to Ilze" -> ilze_intro
+      - "Check other posts" -> local_feed_2
+
+  marta_witnesses:
+    type: tweet
+    from: marta
+    text: >
+      Biruta was there. She sees everything from her corner table. And
+      actually, Edgars was at the bar. The BTS foreman. He heard it too.
+      He looked uncomfortable. Left right after Raimonds. Didn't finish
+      his coffee.
+    effects: { trust_marta: "+10" }
+    choices:
+      - "Talk to Edgars" -> edgars_intro
+      - "Check other posts" -> local_feed_2
+
+  marta_mood:
+    type: tweet
+    from: marta
+    text: >
+      Split. Half the town thinks BTS killed Māris. The other half doesn't
+      want to believe it because BTS employs their husbands and sons. Money
+      makes people look away. But it's getting harder to look away. The
+      memorial walk this weekend... I think it's going to be big. People
+      are ready to talk.
+    effects: { trust_marta: "+5" }
+    choices:
+      - "What did you hear between Raimonds and Māris?" -> marta_argument
+      - "Check other posts" -> local_feed_2
+
+  arturs_intro:
+    type: tweet
+    from: arturs
+    text: >
+      Official statement: The investigation into the death of Māris Kalniņš
+      remains open. The workshop fire investigation is ongoing. I understand
+      community concerns. I am one officer covering a large area. If anyone
+      has evidence -- real evidence, not rumors -- please come forward through
+      proper channels.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: Multiple witnesses saw a black SUV both nights" -> arturs_suv
+        when: { state: night_witnesses, gte: 1 }
+      - "Reply: Why was Elīza's testimony about voices ignored?" -> arturs_eliza
+        when: { state: trust_eliza, gte: 15 }
+      - "Reply: What evidence do you actually have?" -> arturs_evidence
+      - "Check other posts" -> local_feed_2
+
+  arturs_suv:
+    type: tweet
+    from: arturs
+    text: >
+      I am aware of the SUV reports. I interviewed the witnesses. There are
+      issues with positive identification at night. I have requested traffic
+      camera data from the county road but the nearest camera is 12km away.
+      I'm doing what I can with the resources I have. I'm not ignoring
+      anything. I'm building a case that will actually hold up.
+    effects: { trust_arturs: "+10" }
+    choices:
+      - "What about the workshop fire?" -> arturs_fire
+      - "Are you being pressured to close the case?" -> arturs_pressure
+      - "Check other posts" -> local_feed_2
+
+  arturs_eliza:
+    type: tweet
+    from: arturs
+    text: >
+      Ms. Bērziņa's statement was recorded and included in the file. An
+      unidentified voice heard at an unknown distance in a forest at night
+      is difficult to act on. I'm not dismissing it. But I need more to go
+      on. I'm a constable, not a detective. I've requested CID support from
+      Liepāja but they said the case doesn't meet the threshold. Yet.
+    effects: { trust_arturs: "+10" }
+    choices:
+      - "What would meet the threshold?" -> arturs_threshold
+      - "Check other posts" -> local_feed_2
+
+  arturs_evidence:
+    type: tweet
+    from: arturs
+    text: >
+      I can't discuss active investigation details publicly. What I can say
+      is that the forensic report on the fire was... inconclusive. And the
+      pathology report on Māris lists cause of death as "blunt force trauma
+      consistent with a fall." Consistent with. Not confirmed as. There's
+      a difference. I'm pushing for a second opinion.
+    effects: { trust_arturs: "+15", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "You don't think it was an accident either" -> arturs_honest
+      - "Check other posts" -> local_feed_2
+
+  arturs_honest:
+    type: tweet
+    from: arturs
+    text: >
+      I think a man who was being threatened, whose workshop was burned,
+      who was investigating a crime, ended up dead in the exact location
+      of that crime. And I think calling that an accident requires ignoring
+      a lot of context. But what I think and what I can prove are different
+      things. Help me prove it. Bring me evidence I can use.
+    effects: { trust_arturs: "+15" }
+    choices:
+      - "We're working on it" -> local_feed_2
+      - "Check other posts" -> local_feed_2
+
+  arturs_fire:
+    type: tweet
+    from: arturs
+    text: >
+      The fire investigator's report says "probable electrical origin." But
+      I spoke to Ivars who was first on scene. He said the burn pattern
+      suggested an accelerant. I've requested a second opinion but the county
+      fire investigator is backed up for months. Welcome to rural policing.
+    effects: { trust_arturs: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Ivars saw accelerant evidence?" -> ivars_intro
+      - "Check other posts" -> local_feed_2
+
+  arturs_pressure:
+    type: tweet
+    from: arturs
+    text: >
+      ...I'm not going to answer that online. I'll say this: I received a
+      phone call from someone at the regional level suggesting the case was
+      "straightforward" and "didn't require extensive resources." I disagreed.
+      I'm still disagreeing. That's all I'm going to say about that.
+    effects: { trust_arturs: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "The regional level is compromised" -> local_feed_2
+      - "Check other posts" -> local_feed_2
+
+  arturs_threshold:
+    type: tweet
+    from: arturs
+    text: >
+      Physical evidence linking a suspect to the scene. Forensic confirmation
+      of foul play. A witness who can positively identify someone at the
+      location that night. Any one of those would trigger a full CID
+      investigation. All three and we'd have an arrest. I believe the
+      evidence exists. We just haven't found it yet.
+    effects: { trust_arturs: "+10" }
+    choices:
+      - "Māris hid backup evidence in the forest" -> arturs_backup
+      - "Check other posts" -> local_feed_2
+
+  arturs_backup:
+    type: tweet
+    from: arturs
+    text: >
+      Yes, his last post mentioned a hollow oak. I've searched the Sector 7
+      boundary area but it's vast. I don't have the manpower to search every
+      tree. If someone who knows the forest well -- Kārlis perhaps -- could
+      narrow it down, I'd go out there myself.
+    effects: { trust_arturs: "+10" }
+    choices:
+      - "Talk to Kārlis" -> karlis_intro
+      - "Check other posts" -> local_feed_2
+
+  karlis_intro:
+    type: tweet
+    from: karlis
+    text: >
+      I mapped every tree in this forest between 1985 and 2010. Oak by oak,
+      pine by pine. My maps are the baseline data for the protection orders.
+      When Māris came to me with the GPS discrepancy, I checked my original
+      maps. The coordinates on the BTS permit point to trees I personally
+      tagged as protected heritage oaks in 1998.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Do you know where the Sector 7 boundary marker hollow oak is?" -> karlis_oak
+      - "Your maps prove the permits are fraudulent?" -> karlis_maps
+      - "Check other posts" -> local_feed_2
+
+  karlis_oak:
+    type: tweet
+    from: karlis
+    text: >
+      The boundary marker is an ancient oak with a distinctive split trunk.
+      There IS a hollow in the east-facing side, about two meters up. You'd
+      need to know it was there. Māris knew because I showed him years ago
+      when he was collecting acorns for a carving project. The tree is at
+      coordinates 56.9847°N, 21.3215°E. About 400 meters past the old
+      logging road junction. I can mark it on a map for you.
+    effects: { trust_karlis: "+20", thread1_evidence: "+2", evidence_total: "+2", forest_clue: "+1" }
+    choices:
+      - "This is exactly what we need" -> forest_search
+        when: { state: thread1_evidence, gte: 5 }
+      - "Thank you. Your maps prove the fraud?" -> karlis_maps
+      - "Check other posts" -> local_feed_2
+
+  karlis_maps:
+    type: tweet
+    from: karlis
+    text: >
+      My original 1998 survey clearly shows Sector 7 as protected old-growth.
+      The GPS coordinates on the BTS permit fall within my protected zone.
+      The original permit application coordinates fall in Sector 4, commercial
+      zone. Someone changed the coordinates between application and approval.
+      My maps are lodged with the national forestry archive in Rīga. They
+      can't be altered or destroyed.
+    effects: { trust_karlis: "+15", thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - "That's definitive proof of fraud" -> karlis_definitive
+      - "Check other posts" -> local_feed_2
+
+  karlis_definitive:
+    type: tweet
+    from: karlis
+    text: >
+      It proves the permit coordinates don't match the protection zone. It
+      proves someone changed them. It doesn't prove who. But combined with
+      everything else -- the donation, the fire, the threats -- it paints a
+      picture. Māris saw the whole picture. That's why they silenced him.
+      I should have stood with him more. I'm too old to be brave but
+      too stubborn to be quiet.
+    effects: { trust_karlis: "+10" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  ilze_intro:
+    type: tweet
+    from: ilze
+    text: >
+      My son is dead. My daughter won't sleep. Someone mentioned my address
+      in a threat. I am not afraid of these people. Māris wasn't afraid either
+      and look what happened. But fear and surrender are different things.
+      I will never surrender.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: I'm so sorry for your loss" -> ilze_comfort
+      - "Reply: We're gathering evidence about what happened" -> ilze_evidence
+      - "Check other posts" -> local_feed_2
+
+  ilze_comfort:
+    type: tweet
+    from: ilze
+    text: >
+      Thank you. The hardest part is the silence. His account just sitting
+      there, no new posts. His workshop empty. The smell of oak and linseed
+      oil fading. He was going to make me a rocking chair for my birthday.
+      The wood was already cut. It's still in the workshop. Unfinished.
+      Like everything else.
+    effects: { trust_ilze: "+10" }
+    choices:
+      - "We'll finish what he started" -> ilze_evidence
+      - "Check other posts" -> local_feed_2
+
+  ilze_evidence:
+    type: tweet
+    from: ilze
+    text: >
+      Good. Because I found something. Cleaning Māris's apartment, I found
+      a USB drive taped under his desk drawer. It has some files on it
+      but they're encrypted. I gave it to Dace. She's trying to figure out
+      the password. If you talk to Zane in Rīga -- Māris's ex -- she might
+      know. They used to share passwords for everything.
+    effects: { trust_ilze: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Talk to Zane" -> zane_intro
+      - "Talk to Dace about the USB" -> dace_usb
+      - "Check other posts" -> local_feed_2
+
+  dace_usb:
+    type: tweet
+    from: dace
+    text: >
+      Mom found a USB drive. It's encrypted. I've tried every password I
+      can think of -- birthdays, pet names, favorite trees. Nothing works.
+      Zane might know. They were together for three years, they shared
+      everything digital. If we can unlock this, we might have all of
+      Māris's evidence backed up.
+    effects: { trust_dace: "+10" }
+    choices:
+      - "Talk to Zane" -> zane_intro
+      - "Check other posts" -> local_feed_2
+
+  zane_intro:
+    type: tweet
+    from: zane
+    text: >
+      I'm in Rīga but I'm following everything that's happening. Māris and I
+      broke up a year ago but we stayed friends. He called me two days before
+      he died. He was scared but determined. He said if anything happened,
+      I should contact the State Environmental Service directly. He didn't
+      trust anyone local anymore.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Ilze found an encrypted USB drive. Do you know the password?" -> zane_password
+      - "Can you contact the State Environmental Service?" -> zane_ses
+      - "Check other posts" -> local_feed_2
+
+  zane_password:
+    type: tweet
+    from: zane
+    text: >
+      His password for important things was always the same pattern -- the
+      name of his favorite oak tree followed by the year he first carved it.
+      The tree was called "Vecais Jānis" -- Old Jānis. He started carving
+      in 2008. Try "VecaisJānis2008" or some variation. If that doesn't work,
+      try his workshop motto: "KoksRunā" -- the wood speaks.
+    effects: { trust_zane: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "I'll pass this to Dace" -> dace_password
+      - "Can you help from Rīga?" -> zane_ses
+      - "Check other posts" -> local_feed_2
+
+  zane_ses:
+    type: tweet
+    from: zane
+    text: >
+      I've already been in contact with a professor at my law faculty who
+      works with the SES. She says if we can provide documentation of the
+      permit fraud -- GPS data, the original maps, and ideally Māris's
+      evidence files -- they can open a formal investigation that bypasses
+      the regional office entirely. The regional director Zālītis would
+      be investigated too. I need the evidence though. Digital, verifiable.
+    effects: { trust_zane: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "We're close to having everything" -> local_feed_2
+      - "Check other posts" -> local_feed_2
+
+  dace_password:
+    type: tweet
+    from: dace
+    text: >
+      KoksRunā. That was it. The USB is unlocked. Oh my god. There's
+      everything here. GPS logs. Photos with metadata. Screenshots of the
+      permit application AND the approved permit showing the coordinate
+      change. A RECORDING of Raimonds threatening Māris in the café --
+      Māris had his phone recording the whole time. And there's a document...
+      a bank transfer record. 50,000 euros from BTS to Līga Eglīte's
+      personal account. Not the town council. HER account.
+    effects: { trust_dace: "+20", thread1_evidence: "+3", evidence_total: "+3" }
+    choices:
+      - "That's the proof of bribery" -> dace_breakthrough
+      - "We need to get this to the right people" -> dace_breakthrough
+
+  dace_breakthrough:
+    type: tweet
+    from: dace
+    text: >
+      This is everything Māris died for. GPS proof of illegal cutting.
+      Permit fraud documentation. A recording of threats. A money trail to
+      a council member. Combined with Elīza's testimony, Daniels's SUV
+      sightings, Aigars's logs, and Kārlis's maps... we have a case. A real
+      case. Now we need to decide who to trust with this.
+    effects: { trust_dace: "+10", confrontation_ready: "+1" }
+    choices:
+      - "Confront Raimonds publicly" -> confront_raimonds
+      - "Give everything to Artūrs" -> confront_arturs
+      - "Send it all to Zane for the State Environmental Service" -> confront_ses
+
+  sandra_intro:
+    type: tweet
+    from: sandra
+    text: >
+      I process permits. That's my job. I enter the data I'm given into the
+      system. If there are discrepancies, that's a question for the people
+      above me, not for me. I've already been questioned by the police and
+      I told them everything I know. Which is nothing unusual. The permits
+      came through proper channels.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: Who gives you the data to enter?" -> sandra_data
+      - "Reply: The coordinates were changed between application and approval" -> sandra_changed
+        when: { state: permit_clue, gte: 1 }
+      - "Check other posts" -> local_feed_2
+
+  sandra_data:
+    type: tweet
+    from: sandra
+    text: >
+      Applications come from the company. They go through consultation
+      with the town council, then to the regional director for approval.
+      I enter the approved version into the system. I don't compare it
+      to the original application. That's not my job. Should it be?
+      Maybe. But it isn't.
+    effects: { trust_sandra: "+5" }
+    choices:
+      - "So you just enter what the regional director sends back?" -> sandra_director
+      - "Check other posts" -> local_feed_2
+
+  sandra_director:
+    type: tweet
+    from: sandra
+    text: >
+      Yes. Zālītis signs off and I process it. If the coordinates were
+      different from the application... I wouldn't know because I don't
+      cross-reference. Nobody asked me to. Look, I've worked this job for
+      15 years. Hundreds of permits. I never had a reason to check. Maybe
+      that makes me negligent. It doesn't make me corrupt.
+    effects: { trust_sandra: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Would you testify about the process?" -> sandra_testify
+      - "Check other posts" -> local_feed_2
+
+  sandra_changed:
+    type: tweet
+    from: sandra
+    text: >
+      If that's true, the change happened at the regional level. Not in
+      my office. I can show you my intake records -- the application GPS
+      matches what I received from the original filing. The approved version
+      came back from Zālītis with different coordinates. I never noticed.
+      I should have. But I didn't.
+    effects: { trust_sandra: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Would you provide those records officially?" -> sandra_testify
+      - "Check other posts" -> local_feed_2
+
+  sandra_testify:
+    type: tweet
+    from: sandra
+    text: >
+      If there's a formal investigation, yes. I'll cooperate fully. I'm
+      not going to prison for someone else's fraud. I have copies of
+      everything. Timestamped. I may not have caught the discrepancy but
+      I keep meticulous records. That's the one thing I do right.
+    effects: { trust_sandra: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  edgars_intro:
+    type: tweet
+    from: edgars
+    text: >
+      Look, I'm just the site foreman. I go where I'm told, cut what I'm
+      told to cut. I don't look at permits. I don't ask questions. I have
+      a wife and two kids.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: You know you're cutting in a protected zone" -> edgars_knows
+      - "Reply: Were you the one who was going to meet Māris?" -> edgars_meeting
+        when: { state: trust_dace, gte: 15 }
+      - "Check other posts" -> local_feed_2
+
+  edgars_knows:
+    type: tweet
+    from: edgars
+    text: >
+      ...I suspected. The trees were too old, too big for a commercial zone.
+      Some of them had old tags from the forestry service. Protected markers.
+      Raimonds told me the protections had been reclassified. I didn't check.
+      I should have checked.
+    effects: { trust_edgars: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Were you going to help Māris?" -> edgars_meeting
+      - "Check other posts" -> local_feed_2
+
+  edgars_meeting:
+    type: tweet
+    from: edgars
+    text: >
+      ...yes. I called Māris. I told him I had proof the protections hadn't
+      been reclassified. I had photos of the old tags still on the trees.
+      We were supposed to meet that night in the forest. At the boundary
+      marker. I went there at 10:30 but... Uldis called me. Said Raimonds
+      needed me at the depot urgently. By the time I got to the depot there
+      was nothing urgent. It was a distraction. When I tried to go back to
+      the forest it was midnight and I... I got scared. I went home.
+    effects: { trust_edgars: "+20", thread1_evidence: "+1", thread2_evidence: "+1", evidence_total: "+2" }
+    choices:
+      - "Uldis called you away. He knew about the meeting." -> edgars_uldis
+      - "Did you tell the police?" -> edgars_police
+      - "Check other posts" -> local_feed_2
+
+  edgars_uldis:
+    type: tweet
+    from: edgars
+    text: >
+      I think Raimonds monitors our phones. Or Uldis does. The call came
+      too perfectly timed to be coincidence. Which means they knew Māris
+      would be alone at the boundary marker. They knew because they were
+      listening. And whoever went to meet Māris instead of me... that
+      person killed him. I've been too afraid to say this to anyone. But
+      I can't keep silent anymore. Māris died because I wasn't there.
+    effects: { trust_edgars: "+20", thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - "It's not your fault. But we need you to testify." -> edgars_testify
+      - "Check other posts" -> local_feed_2
+
+  edgars_police:
+    type: tweet
+    from: edgars
+    text: >
+      No. I was afraid. If Raimonds found out I was going to help Māris,
+      I'd lose my job. Or worse. Look at what happened to Māris. But
+      keeping silent hasn't made me safe. It's just made me complicit.
+      What do I do?
+    effects: { trust_edgars: "+10" }
+    choices:
+      - "Talk to Artūrs. Tell him everything." -> edgars_testify
+      - "Check other posts" -> local_feed_2
+
+  edgars_testify:
+    type: tweet
+    from: edgars
+    text: >
+      Ok. I'll do it. For Māris. And because I can't look at those stumps
+      anymore without feeling sick. I have the photos of the protected tags
+      on the trees. I have my phone records showing Uldis's call timing.
+      And I know where they're planning to cut next. If we're going to
+      stop them, it has to be now.
+    effects: { trust_edgars: "+15", thread1_evidence: "+1", thread2_evidence: "+1", evidence_total: "+2" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  guntis_intro:
+    type: tweet
+    from: guntis
+    text: >
+      I drive trucks. Logs from forest to mill. That's it. I don't know
+      about permits or GPS coordinates or whatever. I drive where the GPS
+      in the truck tells me to go. I pick up what's cut. I deliver it.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: Your GPS logs show you driving into Sector 7 at 3am" -> guntis_logs
+        when: { state: trust_daniels, gte: 10 }
+      - "Reply: Something is bothering you, isn't it?" -> guntis_bothered
+      - "Check other posts" -> local_feed_2
+
+  guntis_logs:
+    type: tweet
+    from: guntis
+    text: >
+      ...how do you know that? Look, Raimonds schedules the night runs.
+      He says it's to avoid traffic on the forest roads. 3am, 4am runs.
+      I thought it was weird but the overtime pay is good. Now you're
+      telling me those runs are in a protected zone? I drove through
+      a protected zone carrying stolen heritage oaks?
+    effects: { trust_guntis: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Would you testify about the night runs?" -> guntis_testify
+      - "Check other posts" -> local_feed_2
+
+  guntis_bothered:
+    type: tweet
+    from: guntis
+    text: >
+      Māris waved at me once. On the forest road, early morning. I was
+      coming back from a night run. He saw the truck. He saw the logs.
+      He took a photo. A week later he was dead. And I keep thinking --
+      was it my truck in his photos? Am I part of the evidence he gathered?
+      Am I part of why he's dead?
+    effects: { trust_guntis: "+10" }
+    choices:
+      - "You can be part of the solution instead" -> guntis_testify
+      - "Check other posts" -> local_feed_2
+
+  guntis_testify:
+    type: tweet
+    from: guntis
+    text: >
+      I have every trip logged in my personal notebook. Dates, times, routes.
+      The truck's GPS is controlled by BTS but I keep my own records because
+      I'm old-fashioned. If it helps catch whoever killed that boy, take it.
+      Take all of it. I didn't know what I was carrying but now I do and
+      I won't carry it anymore.
+    effects: { trust_guntis: "+15", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  uldis_intro:
+    type: tweet
+    from: uldis
+    text: >
+      I'm not going to engage with conspiracy theorists online. I am a
+      licensed security professional working for a legitimate company.
+      Any further defamatory posts will be reported to the platform
+      administrators and our legal team.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: We know about the black SUV at the workshop and in the forest" -> uldis_caught
+        when: { state: thread2_evidence, gte: 5 }
+      - "Reply: Edgars told us about the phone call" -> uldis_edgars
+        when: { state: trust_edgars, gte: 15 }
+      - "Reply: Just asking questions" -> uldis_deflect
+      - "Check other posts" -> local_feed_2
+
+  uldis_caught:
+    type: tweet
+    from: uldis
+    text: >
+      I don't know what you're talking about. I was at home both nights.
+      My wife can confirm. This conversation is over.
+
+
+      [This account has limited who can reply]
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  uldis_edgars:
+    type: tweet
+    from: uldis
+    text: >
+      Edgars should be careful about what he says. People who spread lies
+      about their employers tend to find themselves unemployed. And
+      unemployable. I called Edgars about a legitimate work matter. End
+      of story.
+
+
+      [This account has limited who can reply]
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "That sounded like another threat" -> local_feed_2
+      - "Check other posts" -> local_feed_2
+
+  uldis_deflect:
+    type: tweet
+    from: uldis
+    text: >
+      No questions. No answers. Talk to our company's public communications
+      office. I have nothing to say to you.
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  liga_intro:
+    type: tweet
+    from: liga
+    text: >
+      As a council member, I welcome community engagement. The BTS
+      development has brought jobs and investment to Dzintarkrasti. The
+      permit process was followed correctly. The community development
+      donation was approved by council vote and used for road improvements
+      benefiting all residents.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: The 50,000 went to your personal account, not the council" -> liga_caught
+        when: { state: evidence_total, gte: 12 }
+      - "Reply: How did you vote on the BTS consultation?" -> liga_vote
+      - "Check other posts" -> local_feed_2
+
+  liga_vote:
+    type: tweet
+    from: liga
+    text: >
+      I proposed accepting the development because it was good for the
+      town. 40 jobs. Tax revenue. Infrastructure improvement. That's my
+      job as a council member -- to bring prosperity to Dzintarkrasti.
+      The environmental review was handled by the county level, not by me.
+    effects: { trust_liga: "+5" }
+    choices:
+      - "And the donation?" -> liga_donation
+      - "Check other posts" -> local_feed_2
+
+  liga_donation:
+    type: tweet
+    from: liga
+    text: >
+      A standard community development contribution. Many companies make
+      them. It went through proper channels and was used for the forest
+      access road, which benefits logging operations AND local hikers.
+      Win-win.
+    effects: { trust_liga: "+0" }
+    choices:
+      - "Check other posts" -> local_feed_2
+
+  liga_caught:
+    type: tweet
+    from: liga
+    text: >
+      That is a lie. The donation went to the council fund. I don't know
+      what you're talking about. I'll be consulting with my attorney about
+      these slanderous accusations.
+
+
+      [Līga has gone offline]
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "She panicked. We have the bank records." -> local_feed_2
+
+  ivars_intro:
+    type: tweet
+    from: ivars
+    text: >
+      I was first on scene at the workshop fire. Volunteer brigade, we were
+      there in 12 minutes. What I saw doesn't match "electrical fault."
+      I've been a firefighter for 8 years. I know what electrical fires
+      look like. This wasn't one.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - "Reply: What did you see?" -> ivars_details
+      - "Check other posts" -> local_feed_2
+
+  ivars_details:
+    type: tweet
+    from: ivars
+    text: >
+      Multiple origin points. At least two separate ignition locations.
+      Electrical fires have one origin -- the fault point. This fire started
+      at the desk AND the filing cabinet simultaneously. And the smell. I've
+      been around fires my whole life. This one smelled like diesel. Not
+      electrical insulation. Diesel. I told the fire investigator and he
+      wrote "probable electrical origin" anyway. I don't know why.
+    effects: { trust_ivars: "+20", thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - "Multiple origin points and accelerant. That's arson." -> ivars_arson
+      - "Check other posts" -> local_feed_2
+
+  ivars_arson:
+    type: tweet
+    from: ivars
+    text: >
+      I believe it was arson. I said so in my volunteer report. The official
+      investigator disagreed. Or was told to disagree. I don't know which.
+      But I kept my own photos from the scene. And I kept a sample of the
+      debris in a sealed bag because something felt wrong. If there's ever
+      a real investigation, I have physical evidence of accelerant use.
+    effects: { trust_ivars: "+15", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - "Keep that evidence safe. It's crucial." -> local_feed_2
+      - "Check other posts" -> local_feed_2
+
+  forest_search:
+    type: message
+    text: >
+      Armed with Kārlis's coordinates and the knowledge of where to look,
+      you organize a search party. Roberts, Elīza, and Daniels join you
+      along with Kārlis himself and Dace. It takes two hours of hiking
+      through the ancient forest -- past the fresh stumps that mark BTS's
+      illegal harvest -- before Kārlis stops at a massive split-trunked oak.
+
+
+      "Here. Vecais Jānis. This is the one."
+
+
+      Elīza boosts Roberts up. He reaches into the hollow on the east face.
+      His hand comes out holding a waterproof bag. Inside: a USB drive, a
+      notebook full of GPS coordinates, photographs, and a handwritten letter
+      from Māris.
+    choices:
+      - "Read the letter" -> maris_letter
+
+  maris_letter:
+    type: message
+    text: >
+      Māris's letter reads:
+
+
+      "If you're reading this, something has happened to me. The evidence
+      on this USB drive documents illegal clear-cutting of protected
+      old-growth forest in Sector 7 by Baltic Timber Solutions. The
+      permits were falsified -- GPS coordinates changed between application
+      and approval. I believe Raimonds Krūmiņš bribed council member
+      Līga Eglīte and that the regional forestry director Voldemārs
+      Zālītis is complicit. Uldis Grīnbergs has been threatening me on
+      Raimonds's orders. My workshop was burned to destroy my evidence.
+      This backup is my insurance. Please get it to someone who can act.
+      The trees can't speak for themselves. I tried to speak for them.
+      - Māris"
+
+
+      Dace is crying. Roberts puts his arm around her. The forest is silent
+      except for wind through the canopy of the surviving ancient oaks.
+    effects: { thread1_evidence: "+3", thread2_evidence: "+2", evidence_total: "+5" }
+    choices:
+      - "Take everything to Artūrs" -> confront_arturs
+      - "Send everything to Zane for the State Environmental Service" -> confront_ses
+      - "Confront Raimonds publicly with the evidence" -> confront_raimonds
+
+  confront_raimonds:
+    type: message
+    text: >
+      You decide to confront Raimonds publicly. At the memorial walk for
+      Māris, with the whole town watching, you present the evidence. The
+      GPS discrepancies. The bribery. The threats. The arson. Edgars steps
+      forward and testifies about the phone call that drew him away the
+      night Māris died. Guntis shows his truck logs proving the night runs
+      into Sector 7.
+
+
+      Raimonds tries to leave but the crowd blocks his car. He starts
+      making phone calls, getting more and more frantic. Uldis tries to
+      push through the crowd but Ivars and several fishermen hold him back.
+
+
+      Artūrs arrives with two officers from Liepāja. He arrests Raimonds
+      and Uldis on suspicion of arson, intimidation, and as persons of
+      interest in the death of Māris Kalniņš.
+
+
+      But the public confrontation also tips off Līga, who is already on
+      a bus to Rīga with her laptop. And Zālītis at the regional office
+      begins shredding documents.
+    choices:
+      - "Continue" -> ending_public
+
+  ending_public:
+    type: message
+    text: >
+      ENDING 1: THE PUBLIC RECKONING
+
+
+      The public confrontation results in the immediate arrest of Raimonds
+      and Uldis. Uldis eventually breaks under interrogation and confesses
+      to both the arson and to confronting Māris in the forest that night.
+      He claims Māris's death was an accident during a struggle, not
+      premeditated murder. Raimonds is charged as an accessory.
+
+
+      However, Līga escapes prosecution by cooperating with authorities and
+      testifying against Zālītis. She receives a suspended sentence while
+      the regional director faces corruption charges. Some in the community
+      feel justice was incomplete.
+
+
+      The logging in Sector 7 is permanently halted. The remaining old-growth
+      oaks are given enhanced protection status. Māris's workshop is rebuilt
+      as a community woodworking school in his name, run by Roberts and Dace.
+
+
+      Elīza's photographs of the ancient stumps are exhibited in Rīga and
+      spark a national conversation about forest protection.
+
+
+      But some evidence was destroyed when Zālītis shredded documents. The
+      full scope of the corruption may never be known.
+
+
+      ---
+
+      Māris Kalniņš spoke for the trees. The community found its voice.
+
+      Justice was served -- imperfectly, as it often is. But the forest
+      endures, and so does memory.
+    choices:
+      - "View credits and resources" -> credits
+
+  confront_arturs:
+    type: message
+    text: >
+      You bring everything to Artūrs -- the USB drives, the letter, the
+      photographs, the witness statements, Aigars's GPS logs, Guntis's
+      trip records, Ivars's fire debris sample. You also connect him with
+      Zane in Rīga and her environmental law professor.
+
+
+      Artūrs contacts the Criminal Investigation Division in Rīga directly,
+      bypassing the compromised regional office. Within 48 hours, a team
+      arrives in Dzintarkrasti. They execute simultaneous search warrants
+      on BTS offices, Raimonds's home, Uldis's vehicle, Līga's bank
+      records, and the regional forestry office.
+
+
+      Edgars provides his testimony. Sandra provides her processing records.
+      The net closes on everyone involved.
+    choices:
+      - "Continue" -> ending_legal
+
+  ending_legal:
+    type: message
+    text: >
+      ENDING 2: THE PROPER CHANNELS
+
+
+      The methodical approach pays off. Raimonds is arrested for corruption,
+      fraud, and conspiracy. Uldis is arrested for arson and murder after
+      DNA evidence from the fire debris and trace evidence from the forest
+      scene links him to both crimes. Forensic analysis of Uldis's SUV
+      finds fibers matching Māris's clothing.
+
+
+      Līga is arrested before she can flee, her bank records providing
+      irrefutable proof of bribery. Regional director Zālītis is arrested
+      at his office, where investigators recover the original unaltered
+      permits from a locked drawer -- he kept them as insurance against
+      Raimonds.
+
+
+      The trial takes eight months. Uldis receives 18 years for
+      manslaughter and arson. Raimonds receives 12 years for corruption
+      and conspiracy. Līga receives 5 years. Zālītis receives 7 years.
+
+
+      The old-growth forest receives national monument status. Māris's
+      workshop becomes a museum of traditional Latvian woodcraft. His
+      final carving -- unfinished, a great oak -- is displayed in the
+      Latvian National Museum.
+
+
+      ---
+
+      Māris Kalniņš believed in the system, even when it failed him.
+
+      In the end, the system worked. Not because it was perfect,
+
+      but because people of conscience refused to let it stay broken.
+    choices:
+      - "View credits and resources" -> credits
+
+  confront_ses:
+    type: message
+    text: >
+      You send everything to Zane, who delivers it directly to the State
+      Environmental Service and her professor's legal clinic. The evidence
+      package is comprehensive: Māris's files, Kārlis's maps, Aigars's
+      GPS logs, Daniels's Bluetooth tracking data, Edgars's testimony,
+      Guntis's trip records, Ivars's fire sample, Sandra's processing
+      records, Jānis's FOI documents, and the bank transfer evidence.
+
+
+      The SES opens a formal investigation and coordinates with the
+      Environmental Police. They notify the national police Anti-Corruption
+      Bureau. Within a week, a joint task force descends on Kurzeme.
+
+
+      Raimonds, Uldis, Līga, and Zālītis are all arrested in a coordinated
+      early-morning operation. None of them have time to destroy evidence
+      or flee.
+    choices:
+      - "Continue" -> ending_environmental
+
+  ending_environmental:
+    type: message
+    text: >
+      ENDING 3: THE FULL INVESTIGATION
+
+
+      The State Environmental Service investigation expands far beyond
+      Dzintarkrasti. It turns out BTS operated the same permit fraud scheme
+      in three other Latvian districts. Raimonds's operation had been
+      systematically destroying protected forests across the country for
+      two years, enabled by a network of corrupted officials.
+
+
+      Uldis confesses to Māris's murder in exchange for a reduced sentence
+      of 15 years. He reveals that Raimonds gave a direct order to "deal
+      with" Māris that night. Raimonds receives 20 years for organized
+      crime, corruption, environmental destruction, and ordering murder.
+
+
+      Līga cooperates and receives 4 years. Zālītis receives 10 years.
+      Three other regional officials across Latvia are also charged.
+
+
+      The case becomes a landmark in Latvian environmental law. New
+      legislation requires independent GPS verification of all forestry
+      permits. The "Māris Kalniņš Forest Protection Act" passes
+      parliament unanimously.
+
+
+      In Dzintarkrasti, the community plants new oaks in the cleared
+      areas. They won't be old-growth for another 300 years, but they're
+      a start. Roberts carves a memorial bench from salvaged timber and
+      places it at the Sector 7 boundary marker, next to Vecais Jānis.
+
+
+      The inscription reads: "Koks Runā -- The Wood Speaks."
+
+
+      ---
+
+      One man listened to the forest. A community amplified his voice.
+
+      What was silenced became a chorus that changed a nation.
+    choices:
+      - "View credits and resources" -> credits
+
+  credits:
+    type: message
+    text: >
+      DEAD ACCOUNT - Story 046: The Silent Forest
+
+      A TactCheck Gamepatch scenario.
+
+
+      This story is fiction but the issues are real. Illegal logging of
+      protected forests, permit fraud, intimidation of environmental
+      defenders, and violence against activists are documented problems
+      across Europe and the world.
+
+
+      ---
+
+
+      If you or someone you know is affected by the themes in this story:
+
+
+      - If you are in immediate danger, call 112 (European emergency number)
+
+      - Latvian Crisis Helpline: 116 123 (free, anonymous, 24/7)
+
+      - Child and Teen Helpline (Latvia): 116 111
+
+      - Environmental Crime Reporting (Latvia): State Environmental Service
+        +371 67 770 818
+
+      - Global Witness - protecting environmental defenders:
+        www.globalwitness.org
+
+      - EuroNatur - European nature conservation:
+        www.euronatur.org
+
+
+      You are not alone. Speaking up matters. Every voice counts.
+    choices:
+      - "Play again" -> welcome

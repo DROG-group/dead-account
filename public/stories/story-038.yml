@@ -1,0 +1,1560 @@
+# DEAD ACCOUNT — Story 038: Steinbach an der Donau (Austria 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-038.yml
+#
+# Player investigates the disappearance of young organic winemaker
+# Florian Lechner in the fictional Wachau wine valley village of
+# Steinbach an der Donau.
+
+meta:
+  title: "Dead Account — Steinbach an der Donau"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_anna: 0
+    trust_lukas: 0
+    trust_maximilian: 0
+    trust_lena: 0
+    trust_elisabeth: 0
+    trust_karl: 0
+    trust_sophie: 0
+    trust_heinrich: 0
+    trust_margit: 0
+    trust_thomas: 0
+    trust_nina: 0
+    trust_felix: 0
+    trust_petra: 0
+    trust_josef: 0
+    trust_emma: 0
+    trust_bastian: 0
+    trust_werner: 0
+    trust_claudia: 0
+    trust_inspektor: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to steinbach. discovering the wachau one vineyard at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Steinbach.social"
+    description: "Willkommen auf der Community-Instanz von Steinbach an der Donau"
+    avatar_url: /gamepatch/assets/dead-account/steinbach_bot.png
+
+  npcs:
+    # === Florian's Inner Circle ===
+    florian:
+      name: "Florian Lechner"
+      bio: "bio-winzer | naturwein | die donau lügt nicht | steinbach"
+      avatar: avatars/florian.jpg
+    anna:
+      name: "Anna Berger"
+      bio: "florians freundin | kellnerin beim heurigen | vermisst ihn so sehr"
+      avatar: avatars/anna.jpg
+    lukas:
+      name: "Lukas Lechner"
+      bio: "florians bruder | studiert in wien | wenn er nicht antwortet stimmt was nicht"
+      avatar: avatars/lukas.jpg
+    elisabeth:
+      name: "Elisabeth Lechner"
+      bio: "florians mama | weingut lechner seit 1962 | mein sohn ist kein aussteiger"
+      avatar: avatars/elisabeth.jpg
+
+    # === Local Government ===
+    heinrich:
+      name: "Heinrich Pichler"
+      bio: "Bürgermeister von Steinbach a.d. Donau | Gemeinderat seit 2010 | #SteinbachWächst"
+      avatar: avatars/heinrich.jpg
+    margit:
+      name: "Margit Steiner"
+      bio: "Vizebürgermeisterin | Umwelt & Tourismus | Steinbach a.d. Donau"
+      avatar: avatars/margit.jpg
+    gemeinde:
+      name: "Gemeinde Steinbach"
+      bio: "Offizieller Account | Gemeindenachrichten | Parteienverkehr: Mo-Fr 8-12 Uhr"
+      avatar: avatars/gemeinde.jpg
+
+    # === Local Business & Community ===
+    karl:
+      name: "Karl Wimmer"
+      bio: "heuriger wimmer | buschenschank | wachauer wein & jause | seit 1978"
+      avatar: avatars/karl.jpg
+    sophie:
+      name: "Sophie Gruber"
+      bio: "winzerin | weingut gruber | riesling & grüner veltliner | wachau dac"
+      avatar: avatars/sophie.jpg
+    josef:
+      name: "Josef Brandstätter"
+      bio: "donaufischer | 35 jahre am fluss | der strom erzählt mir alles"
+      avatar: avatars/josef.jpg
+    petra:
+      name: "Petra Hofer"
+      bio: "apotheke steinbach | gesundheit & beratung | auch samstag vormittag"
+      avatar: avatars/petra.jpg
+    werner:
+      name: "Werner Moser"
+      bio: "bäckerei moser | steinbacher laberl | semmerl ab 5 uhr früh | jeden tag"
+      avatar: avatars/werner.jpg
+
+    # === Wine Critic / Journalist ===
+    maximilian:
+      name: "Maximilian Kronenberg"
+      bio: "weinkritiker | journalist | terroir & wahrheit | kolumne im weinjournal | tips: max@kronenberg-wein.at"
+      avatar: avatars/maximilian.jpg
+
+    # === DonauChem (corporate) ===
+    donauchem:
+      name: "DonauChem GmbH"
+      bio: "Industriechemie | Standort Steinbach | ISO 14001 zertifiziert | Verantwortung für die Region"
+      avatar: avatars/donauchem.jpg
+    thomas:
+      name: "Thomas Reiter"
+      bio: "Werksdirektor DonauChem Steinbach | Industrie & Standort"
+      avatar: avatars/thomas.jpg
+    claudia:
+      name: "Claudia Fasching"
+      bio: "Rechtsanwältin | Kanzlei Fasching & Partner | Wirtschaftsrecht | Wien"
+      avatar: avatars/claudia.jpg
+
+    # === Teens ===
+    lena:
+      name: "Lena"
+      bio: "16 | fotografie | steinbach born | der fluss is mei leben oida"
+      avatar: avatars/lena.jpg
+    felix:
+      name: "Felix"
+      bio: "17 | mountainbike & skateboard | wachau trails | ride or die"
+      avatar: avatars/felix.jpg
+    emma:
+      name: "Emma"
+      bio: "15 | zeichnen & malen | die weingärten in aquarell | florian war mein held"
+      avatar: avatars/emma.jpg
+
+    # === Media & Community ===
+    actu_steinbach:
+      name: "Steinbach Aktuell"
+      bio: "Nachrichten aus Steinbach und dem Wachautal | Tipps: redaktion@steinbach-aktuell.at"
+      avatar: avatars/actu_steinbach.jpg
+    wetter_wachau:
+      name: "Wetter Steinbach"
+      bio: "Vorhersagen & Warnungen | Automatische Station | Stündliche Aktualisierung"
+      avatar: avatars/wetter_wachau.jpg
+    vinea_wachau:
+      name: "Vinea Wachau Nobilis Districtus"
+      bio: "Gebietsschutzverband | Steinfeder Federspiel Smaragd | Qualität seit 1983"
+      avatar: avatars/vinea_wachau.jpg
+
+    # === Suspicious / Other ===
+    nina:
+      name: "Nina Hartmann"
+      bio: "labortechnikerin | DonauChem | ich mach nur meinen job"
+      avatar: avatars/nina.jpg
+    bastian:
+      name: "Bastian Keller"
+      bio: "."
+      avatar: avatars/anon.jpg
+    inspektor:
+      name: "Inspektor Wallner"
+      bio: "Polizeiinspektion Steinbach | Bezirk Krems-Land | Notruf: 133"
+      avatar: avatars/inspektor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN STEINBACH AN DER DONAU
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to steinbach.social — the community Mastodon instance for
+      the wine village of Steinbach an der Donau, Wachau Valley,
+      Lower Austria.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @florian_lechner.
+
+      A young organic winemaker. Third generation. Known for his natural
+      wines and his fight to keep the Wachau chemical-free. People are
+      worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> florian_profile
+
+  florian_profile:
+    type: tweet
+    from: florian
+    text: "das wasser in der donau bei der einleitung riecht nach chemie. jemand kippt scheiße in den fluss. ich hab beweise."
+    choices:
+      - That's his last real post... -> grey_vine
+
+  grey_vine:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurred photo of dead grapevines. Shot at night. Overexposed.
+      No caption. Posted at 2am.
+
+      His friends say that's not his style. Florian documented every
+      vintage with care. The Polizeiinspektion says he probably took
+      off for a wine fair. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: inspektor
+    text: >
+      Wir haben eine Vermisstenanzeige bezüglich eines Bewohners von
+      Steinbach aufgenommen. Zum jetzigen Zeitpunkt liegen keine
+      Hinweise auf ein Verbrechen vor. Sachdienliche Hinweise bitte
+      an die PI Steinbach oder unter 133.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @anna_berger is falling
+      apart. His brother @lukas_lechner is taking the train from Vienna.
+      His mother @elisabeth_lechner posts old photos of Florian in the
+      vineyard. The Danube fisherman @josef_brandstaetter says Florian
+      was right about the water.
+
+      And the wine critic @maximilian_kronenberg is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Florian just went to
+      some Weinmesse.
+    effects: { trust_anna: "+5", trust_lukas: "+5" }
+    choices:
+      - Start following Florian's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Steinbach. Follow Florian's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Karl (Heuriger owner, knows everyone) -> karl_intro
+      - Talk to Josef (fisherman, saw the water) -> josef_intro
+      - Talk to Lena (teen photographer, seems shaken) -> lena_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Florian with the rhythms of a small
+      Wachau village: harvest schedules, Heuriger opening times, Danube
+      water levels, the bakery's daily Semmerl.
+
+      Key names surface: Anna (girlfriend, waitress), Lukas (brother,
+      student in Vienna), Elisabeth (mother, keeps the family Weingut
+      running alone now), and the teens — Lena, Felix, Emma — who
+      loved Florian's natural wine philosophy.
+
+      Also prominent: DonauChem GmbH, the chemical plant at the edge
+      of town. Their posts are corporate sustainability PR. Florian's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Karl -> karl_intro
+      - Talk to Josef -> josef_intro
+      - Talk to Lena -> lena_intro
+
+  # --- Karl (social map) ---
+
+  karl_intro:
+    type: tweet
+    from: karl
+    text: >
+      Heuriger is offen aber die Stimmung is am Oarsch. @florian_lechner,
+      dei Tisch wartet auf di. Kumm zruck.
+    effects: { trust_karl: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Karl -> karl_talk
+
+  karl_talk:
+    type: message
+    text: >
+      KARL: Ah, du bist neu? Servas. Schlechter Zeitpunkt zum
+      Herziehen. Alle drehen durch wegen Florian.
+
+      Let me tell you who's who. Anna is Florian's girlfriend — she
+      works here at the Heuriger, she's barely holding it together.
+      Elisabeth, his mother, runs the Lechner Weingut. It's been in
+      the family since '62. Lukas is his younger brother, coming down
+      from Vienna.
+
+      And then there's Maximilian Kronenberg — the wine critic. He's
+      written about every Wachau winery for twenty years. He and
+      Florian had a... complicated relationship. Kronenberg was
+      obsessed with Florian's wines. Like, beyond professional interest.
+      Called them "the future of Austrian wine" and wouldn't leave the
+      kid alone. Since Florian vanished, Kronenberg hasn't said a word.
+      That's not like him at all.
+
+      Oh, and DonauChem — that fucking chemical plant. Florian was the
+      only one with the balls to say what everyone knows: they're
+      poisoning the Donau.
+    effects: { trust_karl: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Kronenberg -> karl_kronenberg
+      - Ask about DonauChem -> karl_donauchem
+      - Thank him and move on -> quest1_hub
+
+  karl_kronenberg:
+    type: message
+    text: >
+      KARL: Kronenberg? Oida, der Typ ist creepy. He's been reviewing
+      Wachau wines since before Florian was born. But when Florian
+      started making natural wines — unfiltered, wild yeast, the whole
+      thing — Kronenberg went mental. Wrote a 5000-word essay calling
+      Florian a genius. Started showing up at every Lese, every
+      tasting. Wanted to co-author a book.
+
+      Florian said no. Politely at first, then firmly. Kronenberg
+      didn't take it well. He kept coming. Kept writing. Kept showing
+      up at the Weingut unannounced. Florian told me once: "Der nimmt
+      kein Nein an. Never."
+
+      I thought he meant professionally. Now I'm not sure.
+    effects: { trust_karl: "+5" }
+    choices:
+      - Ask about DonauChem -> karl_donauchem
+      - Move on -> quest1_hub
+
+  karl_donauchem:
+    type: message
+    text: >
+      KARL: That plant has been here since the 90s. Agrochemicals,
+      fertilisers, industrial solvents. The town tolerated them because
+      of the jobs — 150 people work there. But the fishermen have been
+      complaining for years. Dead fish near the outfall. Weird foam on
+      the water. The vineyards closest to the Donau — including
+      Florian's — started showing soil contamination.
+
+      Florian was the first one to actually take water samples and send
+      them to a real lab. He had results. Heavy metals, pesticide
+      residues — Scheiße that shouldn't be in a river next to a UNESCO
+      wine region. Two weeks later he's gone.
+
+      Oida, ich sag dir, das ist kein Zufall.
+    effects: { trust_karl: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Josef (the water, witness tease) ---
+
+  josef_intro:
+    type: tweet
+    from: josef
+    text: >
+      35 jahr fisch ich in der donau. des wasser is nimmer wie früher.
+      @florian_lechner hat recht ghabt. und jetzt is er weg.
+      denkts euch euren teil.
+    effects: { trust_josef: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Josef -> josef_talk
+
+  josef_talk:
+    type: message
+    text: >
+      JOSEF: I've fished the Donau since I was a boy. I know every
+      current, every sandbank. And I'm telling you — the water near
+      the DonauChem Einleitung is wrong. Has been for months. My nets
+      come up with dead carp. The riverbed stinks of chemicals.
+
+      Florian took water samples. He went down to the discharge pipe
+      in a boat at night. Photographed everything. He was building a
+      case. And then — weg. Gone.
+
+      You think that's a coincidence? I don't believe in coincidences
+      on the water. The Donau tells me everything, and right now she's
+      saying something stinks worse than dead fish.
+    effects: { trust_josef: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> josef_night
+      - Move on -> quest1_hub
+
+  josef_night:
+    type: message
+    text: >
+      JOSEF: The night before he vanished — I was checking my
+      Fischreusen around midnight. I saw lights at Florian's Weingut.
+      Not unusual, winemakers work late during vintage. But there was
+      a car I didn't recognise. Black Mercedes. Parked right at the
+      cellar door.
+
+      At midnight. At a small family Weingut.
+
+      I wrote it down in my fishing log. Nobody's asked to see it.
+    effects: { trust_josef: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lena (teen photographer, witness tease) ---
+
+  lena_intro:
+    type: tweet
+    from: lena
+    text: >
+      oida bitte @florian_lechner der is so a leiwander mensch der
+      hat mir fotografie beigebracht in den weingärten. des kann ned
+      sein dass er einfach weg is. wenn wer was weiß bitte sagts es
+    effects: { trust_lena: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lena -> lena_talk_early
+
+  lena_talk_early:
+    type: message
+    text: >
+      LENA: oida bist du neu hier? scheiß timing. egal, also florian
+      is echt der beste mensch in dem ganzen kaff. er hat uns gezeigt
+      wie man die weingärten fotografiert, hat uns erklärt warum
+      bio-wein wichtig is. voll geil.
+
+      und jetzt bin i voll am flippen weil der felix hat irgendwas
+      gsehen am abend beim weingut aber er will nix sagen. er sagt
+      es war nix aber oida... des war fix ned nix
+    effects: { trust_lena: "+10" }
+    choices:
+      - What did Felix see? -> lena_felix_hint
+      - Move on -> quest1_hub
+
+  lena_felix_hint:
+    type: message
+    text: >
+      LENA: ka ahnung genau. er war mit dem mountainbike am
+      donauradweg und hat gesehen wie irgendwer bei florians auto
+      herumtut?? oder so. er flippt voll aus und will ned drüber
+      reden. musst ihn direkt fragen aber er is mega misstrauisch
+      bei leit die er ned kennt. red zuerst übers biken mit ihm
+      hahaha
+    effects: { trust_lena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Steinbach. A Wachau wine village
+      built along the Danube. A young organic winemaker who was
+      exposing industrial pollution. A disappearance nobody believes
+      is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Anna (Florian's girlfriend) -> anna_q1
+      - Talk to Lukas (Florian's brother) -> lukas_q1
+      - Check what Elisabeth (Florian's mother) is saying -> elisabeth_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Anna Q1 ---
+
+  anna_q1:
+    type: tweet
+    from: anna
+    text: >
+      wenn irgendwer was von @florian_lechner weiß bitte rufts mi an.
+      sein keller is noch offen. die fässer warten. er würde niemals
+      mitten im ausbau einfach gehen. niemals.
+    effects: { trust_anna: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Anna -> anna_q1_talk
+
+  anna_q1_talk:
+    type: message
+    text: >
+      ANNA: I appreciate you writing but I don't know you. Florian
+      has a lot of friends here. I'm sure he'll come back.
+
+      ...I keep telling myself that. I don't believe it anymore.
+
+      [Anna is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_anna: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lukas Q1 ---
+
+  lukas_q1:
+    type: tweet
+    from: lukas
+    text: >
+      mein bruder is VERSCHWUNDEN und die polizei sagt er is
+      vielleicht auf einer weinmesse??? ER GEHT NICHT EINFACH OHNE
+      BESCHEID ZU GEBEN. i kumm von wien. irgendwer wird mir des
+      erklären.
+    effects: { trust_lukas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lukas -> lukas_q1_talk
+
+  lukas_q1_talk:
+    type: message
+    text: >
+      LUKAS: Who are you? Another person from this Kaff who's going
+      to tell me to calm down? My brother called me the night before
+      he disappeared. He said he had something big. He said "wenn
+      irgendwas passiert, schau dir DonauChem an." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_lukas: "+10" }
+    choices:
+      - What do you think happened? -> lukas_theory
+      - Move on -> quest1_hub
+
+  lukas_theory:
+    type: message
+    text: >
+      LUKAS: I think he found proof that DonauChem is dumping toxic
+      shit in the Donau and they shut him up. But I also think that
+      creepy wine critic — Kronenberg — knows more than he's saying.
+      The way he talks about Florian... oida, that's not just
+      professional admiration. That's something else.
+
+      Florian told me months ago that someone was going through his
+      cellar records. His tasting notes. Private stuff. He thought
+      it was nothing. I don't think it was nothing.
+
+      Scheiße, I should've listened to him.
+    effects: { trust_lukas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Elisabeth Q1 ---
+
+  elisabeth_q1:
+    type: tweet
+    from: elisabeth
+    text: >
+      Mein Florian. Dritte Generation Weingut Lechner. Er hat den
+      besten Grünen Veltliner der Wachau gemacht. Er würde nie seine
+      Reben allein lassen. Nie.
+    effects: { trust_elisabeth: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Elisabeth -> elisabeth_q1_talk
+
+  elisabeth_q1_talk:
+    type: message
+    text: >
+      ELISABETH: Thank you for your concern. Florian is a good boy.
+      He loves this land, these vines. His grandfather planted them.
+      He would never abandon them.
+
+      That man — the journalist — he was here again two days before
+      Florian disappeared. I saw him from the kitchen window. Standing
+      in our vineyard, just... looking at the cellar. When I went out
+      he drove away quickly. A silver Audi.
+
+      I told the police. They wrote it down. That was it.
+    effects: { trust_elisabeth: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Florian went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Felix (was biking at sunset near the Weingut) -> felix_interview
+      - Find Josef (fisherman, works late on the river) -> josef_interview
+      - Find Werner (baker, starts at 5am, saw something) -> werner_interview
+      - Find Sophie (neighbouring winemaker, heard noises) -> sophie_interview
+
+  # --- Felix (saw someone at Florian's car) ---
+
+  felix_interview:
+    type: tweet
+    from: felix
+    text: >
+      war heute wieder am trail. irgendwie is die stimmung im ort
+      komplett im oarsch seit florian weg is. kann des ned erklären
+    effects: { trust_felix: "+5" }
+    choices:
+      - Ask Felix about that evening -> felix_talk
+
+  felix_talk:
+    type: message
+    text: >
+      FELIX: oida ok aber du sagst des niemandem ja. i war am
+      donauradweg so gegen 19 uhr, letzte runde. und i hab den
+      kronenberg — den weinkritiker — neben florians auto gsehen.
+      der hat irgendwas gmacht, so in der tür herum oder so. wie er
+      mi gsehen hat is er voll schnell weg.
+
+      oida i hab nix gsagt weil i ka drama wollte aber jetzt is
+      es echt heftig. des war ned normal sein verhalten, fix ned
+    effects:
+      trust_felix: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Josef (fisherman, saw late-night meeting) ---
+
+  josef_interview:
+    type: tweet
+    from: josef
+    text: >
+      Erinnerung: Fischerei am Donauufer nach 22 Uhr nur mit
+      Sondergenehmigung. Hab die letzten Nächte Aktivitäten bemerkt
+      die ned normal sind.
+    effects: { trust_josef: "+5" }
+    choices:
+      - Ask Josef what he saw -> josef_talk_night
+
+  josef_talk_night:
+    type: message
+    text: >
+      JOSEF: I was checking my nets around 23 Uhr. I saw lights at
+      Florian's Weingut — the cellar door was open. And a black
+      Mercedes was parked there. Two men were standing at the entrance.
+      One of them I recognised: Thomas Reiter, the DonauChem
+      Werksdirektor.
+
+      At 23 Uhr. At a small family Weingut. That's not normal.
+
+      I wrote it in my fishing log. Nobody's asked to see it yet.
+    effects:
+      trust_josef: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Werner (baker, saw car chase at dawn) ---
+
+  werner_interview:
+    type: tweet
+    from: werner
+    text: >
+      Semmerl wie immer ab 5 Uhr. Aber an dem Morgen war ein Auto
+      viel zu schnell auf der Donaustraße unterwegs. Viel zu schnell.
+    effects: { trust_werner: "+5" }
+    choices:
+      - Ask Werner what he saw -> werner_talk
+
+  werner_talk:
+    type: message
+    text: >
+      WERNER: I start baking at 4:30 every morning. That morning I
+      was opening the shutters and a car went past — fast, way too
+      fast for the Donaustraße. Dark sedan. Then maybe three minutes
+      later, a second car. Smaller, lighter coloured. Following?
+      I don't know.
+
+      The second car turned off toward the old Kellergasse — the
+      abandoned wine cellars up the hill. The first kept going
+      toward Krems.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_werner: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sophie (neighbouring winemaker, heard argument) ---
+
+  sophie_interview:
+    type: tweet
+    from: sophie
+    text: >
+      hab in der nacht stimmen gehört vom lechner weingut. laut.
+      streit. um die zeit is normalerweise ruhe im weingarten.
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Ask Sophie what she heard -> sophie_talk
+
+  sophie_talk:
+    type: message
+    text: >
+      SOPHIE: My vineyard borders Florian's. That night — around
+      midnight — I heard raised voices from his cellar. A proper
+      argument. Florian's voice I recognised. The other voices...
+      at least two men. Deeper, older.
+
+      I heard one of them say "Gib uns alles oder wir ruinieren
+      dich." Give us everything or we'll ruin you. Then something
+      crashed — glass breaking, maybe a barrel.
+
+      After that, silence. Then car doors. An engine. Gone.
+
+      By morning Florian was gone too.
+    effects:
+      trust_sophie: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Anna (girlfriend)
+      and Emma (saw Kronenberg watching the Weingut).
+    choices:
+      - Talk to Anna about that night -> anna_interview
+      - Talk to Emma -> emma_interview
+      - Find Felix -> felix_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Josef -> josef_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Werner -> werner_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sophie -> sophie_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Anna (last to see Florian) ---
+
+  anna_interview:
+    type: tweet
+    from: anna
+    text: >
+      des foto auf florians account. des is ned von ihm. florian
+      postet nie ohne text. florian postet ned um 2 in der früh.
+      irgendwer anders hat des gmacht.
+    effects: { trust_anna: "+5" }
+    choices:
+      - DM Anna -> anna_talk_low
+        when:
+          state: trust_anna
+          lt: 50
+      - DM Anna -> anna_talk_high
+        when:
+          state: trust_anna
+          gte: 50
+
+  anna_talk_low:
+    type: message
+    text: >
+      ANNA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now. It's too much.
+
+      [Anna needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_anna: "+5" }
+    choices:
+      - Share what you've learned about the night -> anna_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  anna_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the Weingut, the
+      company men, the argument Sophie overheard. Anna is silent for
+      a while.
+
+      ANNA: You're actually trying to find him. Okay. I'll talk.
+    effects: { trust_anna: "+25" }
+    choices:
+      - What happened that night? -> anna_talk_high
+
+  anna_talk_high:
+    type: message
+    text: >
+      ANNA: He came to the Heuriger after closing, around 22 Uhr.
+      I was cleaning up. He was pale, his hands were shaking. He said
+      "sie wissen was ich hab." They know what I have.
+
+      He grabbed his laptop and the USB stick he always kept in his
+      jacket — the one with the water analysis results.
+
+      I asked who. He said "die Fabrik. Die haben Leute zum Weingut
+      geschickt." The plant. They sent people to the Weingut. Then
+      he said something else — "und er war wieder da. Er ist immer
+      da." And he was there again. He's always there.
+
+      He wouldn't say who "er" was. He kissed me, said "mach dir
+      keine Sorgen," and left. By morning his car was gone and that
+      creepy photo was on his account.
+
+      Scheiße, I should have made him stay.
+    effects:
+      trust_anna: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Emma (saw Kronenberg watching the Weingut) ---
+
+  emma_interview:
+    type: message
+    text: >
+      EMMA: ok oida des is voll creepy was i sag aber der kronenberg —
+      der weinkritiker — i hab den so 3 mal gesehen wie er abends
+      vorm weingut lechner steht. einfach da. und schaut. auf den
+      keller. voll gruselig.
+
+      des letzte mal war 2 tage bevor florian verschwunden is. er
+      war in seinem auto geparkt gegenüber. einfach gsessen. licht
+      aus. oida i hab mi so angschissen.
+    effects:
+      trust_emma: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Kronenberg seen at Florian's car on the Donauradweg (Felix)
+      22:00 — Florian arrives at the Heuriger, shaken, grabs laptop (Anna)
+      23:00 — DonauChem car at the Weingut, Thomas Reiter present (Josef)
+      00:00 — Loud argument at Florian's cellar, threats, glass breaking (Sophie)
+      04:30 — Two cars speeding on Donaustraße, one toward Kellergasse (Werner)
+
+      DonauChem confronted Florian at his Weingut. There was a violent
+      argument. He fled with his evidence. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is DonauChem hiding? Who ordered the
+        confrontation? Why is the Bürgermeister silent?
+      — The obsession: What is Kronenberg really doing? Why was he
+        at Florian's car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Kronenberg -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      DonauChem is hiding something. Florian had proof. Now he's
+      gone and his evidence has vanished from the Weingut.
+
+      The Bürgermeister Heinrich Pichler owns shares in DonauChem.
+      The Vinea Wachau association has been suspiciously quiet.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the Weingut cellar records -> cellar_records
+      - Talk to Margit (Vizebürgermeisterin) -> margit_interview
+      - Talk to Nina (DonauChem technician) -> nina_interview
+      - Check Vinea Wachau's position -> vinea_investigation
+      - Talk to Josef about the dumping -> josef_dumping
+      - Investigate Bürgermeister Pichler -> pichler_investigation
+      - Back to hub -> investigation_hub
+
+  # --- Cellar Records ---
+
+  cellar_records:
+    type: message
+    text: >
+      Florian's cellar log — shared with Vinea Wachau for quality
+      certification — shows his recent work. Alongside winemaking
+      notes, he documented water and soil tests from six sites along
+      the Donau. The data for the site nearest DonauChem's discharge
+      pipe is marked "CRITICAL — CONTAMINATION CONFIRMED."
+
+      His soil analysis from the riverside vineyard Ried Donaustein
+      shows cadmium and mercury levels three times the EU limit. His
+      notes: "Die Einleitung von DonauChem verseucht unsere Böden.
+      Unser Terroir wird vergiftet. Das muss raus."
+
+      DonauChem is poisoning the terroir. The Wachau's UNESCO-protected
+      wine landscape is being contaminated.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Margit (Vizebürgermeisterin) ---
+
+  margit_interview:
+    type: message
+    text: >
+      MARGIT: As Vizebürgermeisterin for environment and tourism, I
+      take these allegations seriously. But DonauChem employs 150
+      people in this Gemeinde. The Bürgermeister insists we need to
+      "den Dialog aufrechterhalten."
+
+      Off the record? I've seen the Landesregierung inspection reports.
+      DonauChem passes every time. But those inspections are announced
+      two weeks in advance. They clean up before the inspectors arrive.
+      It's a fucking joke.
+
+      Florian had unannounced data. Real samples, real lab results.
+      That's what makes it dangerous.
+
+      And between you and me — Heinrich Pichler owns 12% of DonauChem.
+      It's in the Gemeinderat disclosure filings. Nobody reads those.
+      Florian read them.
+    effects:
+      trust_margit: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Nina (DonauChem whistleblower) ---
+
+  nina_interview:
+    type: message
+    text: >
+      NINA: I work at DonauChem. I'm just a lab tech. I run tests,
+      I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the Bezirkshauptmannschaft.
+    effects: { trust_nina: "+10" }
+    choices:
+      - What do you mean? -> nina_detail
+
+  nina_detail:
+    type: message
+    text: >
+      NINA: I measure heavy metals. Cadmium, mercury, lead, chromium.
+      My numbers go to my supervisor. Somewhere between my desk and
+      the regulatory filing, they change. Lower. Always lower.
+
+      Florian's soil and water samples matched MY original numbers.
+      Not the ones in the official reports. He had independent proof
+      that DonauChem is falsifying their discharge data. Systematic
+      fraud.
+
+      I'm scared. I have kids. Aber ich hab Kopien von meinen
+      Originalberichten. If someone can protect me, I'll share them.
+
+      Scheiße, it feels good to finally say this to someone.
+    effects:
+      trust_nina: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Vinea Wachau ---
+
+  vinea_investigation:
+    type: tweet
+    from: vinea_wachau
+    text: >
+      Die Wachau steht für höchste Qualität und intaktes Terroir.
+      Wir vertrauen auf die behördlichen Kontrollen unserer
+      Partnerbetriebe. Gerüchte und Spekulationen schaden der Region.
+    choices:
+      - Check their position -> vinea_data
+
+  vinea_data:
+    type: message
+    text: >
+      Vinea Wachau's official position is that DonauChem poses no
+      threat to the wine region. But their own internal soil monitoring
+      data — which Florian accessed as a member — tells a different
+      story.
+
+      Three vineyards closest to the river show elevated heavy metal
+      levels. The data has been flagged internally but never published.
+      The reason? DonauChem is a major sponsor of the annual Vinea
+      Wachau wine festival.
+
+      Follow the money. Always follow the money.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Josef on dumping ---
+
+  josef_dumping:
+    type: message
+    text: >
+      JOSEF: I'll show you something. Last month I pulled my nets near
+      the outfall and found this — a metal drum, corroded, leaking.
+      The label was half gone but I could read "Lösungsmittel" and
+      a DonauChem batch number.
+
+      I photographed it and sent it to Florian. He said it was the
+      missing piece — proof they were dumping solid waste into the
+      Donau, not just discharge through the pipe. Barrels in the river.
+      In a UNESCO world heritage landscape. Oida, these Oarschlöcher.
+
+      I still have the photos. And the batch number.
+    effects:
+      trust_josef: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Pichler investigation ---
+
+  pichler_investigation:
+    type: message
+    text: >
+      Bürgermeister Heinrich Pichler. In office since 2010. A search
+      through Gemeinderat filings reveals what Florian found: Pichler
+      owns 12% of DonauChem GmbH through a holding company registered
+      in Vienna. His wife sits on DonauChem's Aufsichtsrat.
+
+      Every time an environmental complaint about DonauChem reached
+      the Gemeinderat, Pichler tabled it. "Under review." "Awaiting
+      federal guidance." "Not within municipal jurisdiction."
+
+      Florian posted about this three weeks before he disappeared. The
+      post was reported for "defamation" and removed. By whom? The
+      Gemeinde's official account. Administered by the Bürgermeister's
+      office.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Maximilian Kronenberg. Wine critic. Journalist. Something more?
+      Someone was going through Florian's cellar notes. Someone was
+      watching the Weingut. Someone was at his car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Kronenberg's article history -> kronenberg_articles
+      - Talk to Anna about Kronenberg -> anna_kronenberg
+        when:
+          state: trust_anna
+          gte: 20
+      - Talk to Felix (more detail on the car incident) -> felix_detail
+      - Talk to Petra the pharmacist -> petra_interview
+      - Check the anonymous account @bastian_keller -> bastian_investigation
+      - Talk to Sophie about Kronenberg's visits -> sophie_kronenberg
+        when:
+          state: trust_sophie
+          gte: 40
+      - Talk to Inspektor Wallner -> inspektor_interview
+        when:
+          state: trust_inspektor
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Kronenberg Articles ---
+
+  kronenberg_articles:
+    type: message
+    text: >
+      Maximilian Kronenberg's published work over the past two years:
+
+      Eighteen articles. Twelve mention Florian Lechner by name. The
+      tone escalates over time:
+
+      Year 1: "A remarkable new voice in Wachau winemaking."
+      Month 8: "Lechner's refusal to collaborate on my book is
+      puzzling. His wines deserve the documentation only I can provide."
+      Month 14: "I visited the Lechner cellar unannounced. The 2024
+      Smaragd is transcendent. He was not pleased to see me."
+      Month 17: "Florian Lechner does not understand that my
+      appreciation of his work is the highest form of respect."
+
+      The last article, unpublished but found in his blog drafts:
+      "If I cannot document his genius, no one will."
+
+      That's not criticism. That's possession.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anna on Kronenberg ---
+
+  anna_kronenberg:
+    type: message
+    text: >
+      ANNA: Kronenberg? Oida, der hat Florian das Leben zur Hölle
+      gemacht. He'd show up at every tasting. He'd offer to write
+      Florian's biography. He'd comment on every single post within
+      minutes. Sometimes he'd just stand in the vineyard.
+
+      Florian told him he wasn't interested. Clearly. Firmly.
+      Kronenberg said he understood. Then nothing changed. He just...
+      kept being there. Always there.
+
+      Two months ago Florian found that someone had been in his cellar
+      after hours. His private tasting notes had been photographed —
+      you could see the flash marks on the paper. He suspected
+      Kronenberg but couldn't prove it.
+
+      Geh scheißen, the whole thing makes me sick.
+    effects:
+      trust_anna: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Felix detail ---
+
+  felix_detail:
+    type: message
+    text: >
+      FELIX: ok oida in echt hab i ned alles gsagt. wie i den
+      kronenberg bei florians auto gsehen hab, der hat irgendwas
+      in der hand ghabt. so a kleines kastl. und er hats unters
+      auto klebt. an die unterseite. so magnetisch oder so.
+
+      oida des war fix a GPS tracker. genau wie im film.
+
+      i hätt was sagen sollen aber wer glaubt am ado der an
+      erwachsenen beschuldigt. niemand oida. Scheiße.
+    effects:
+      trust_felix: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Petra (pharmacist) ---
+
+  petra_interview:
+    type: message
+    text: >
+      PETRA: This is confidential but I'm a pharmacist, not a priest.
+      Kronenberg comes in regularly. Schlaftabletten, Beruhigungsmittel,
+      Energiepräparate. The pattern is someone who doesn't sleep,
+      who's under extreme stress. Or extreme obsession.
+
+      He also asked me once if we sold Ferngläser — binoculars. I said
+      "das ist eine Apotheke, kein Elektronikmarkt." He laughed it
+      off. I didn't think about it again until Florian disappeared.
+
+      Oida, in retrospect that was creepy as fuck.
+    effects:
+      trust_petra: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Bastian (anonymous account) ---
+
+  bastian_investigation:
+    type: tweet
+    from: bastian
+    text: >
+      Er hätte zuhören sollen. Ich wollte ihn nur schützen. Niemand
+      versteht seine Arbeit so wie ich.
+    choices:
+      - Look at this account's history -> bastian_posts
+
+  bastian_posts:
+    type: message
+    text: >
+      @bastian_keller: account created 10 months ago. Posts are all
+      about Florian's wines and winemaking philosophy. Comments on
+      every harvest photo, every barrel update, every tasting note.
+      The tone shifts over time:
+
+      Month 1: "Unglaubliche Arbeit. Du machst was sich sonst keiner traut."
+      Month 4: "Warum antwortest du nicht auf meine Nachrichten? Ich
+      will nur zusammenarbeiten."
+      Month 7: "Ich seh dich beim Heurigen mit anderen Leuten. Für die
+      hast du Zeit aber für mich nicht?"
+      Month 9: "Ich weiß wo du hingehst. Ich kenn deinen Zeitplan. Ich
+      bin immer in der Nähe."
+
+      The account has no photos, no personal details. Just Florian.
+      Only Florian.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> bastian_style
+
+  bastian_style:
+    type: message
+    text: >
+      Comparing @bastian_keller with @maximilian_kronenberg:
+
+      Same use of wine terminology. Same precise Austrian German
+      spelling conventions. Same knowledge of Florian's winemaking
+      that only someone with cellar access would have. Same
+      pretentious semicolons that no normal person uses.
+
+      And one post from @bastian_keller: "Dein Smaragd aus der Ried
+      Donaustein ist transzendent." Ried Donaustein is Florian's
+      private vineyard designation. Not public. Not on any label.
+
+      It's Kronenberg. The anonymous account is Kronenberg.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sophie on Kronenberg ---
+
+  sophie_kronenberg:
+    type: message
+    text: >
+      SOPHIE: Kronenberg left something at my Weingut by mistake. He
+      was visiting — pretending to review my wines — and left a
+      notebook behind. I opened it thinking it was a tasting journal.
+
+      It wasn't. It was full of notes about Florian. His daily
+      schedule. When he leaves the Weingut, when he goes to the
+      Heuriger, when Anna visits, when he's alone in the cellar.
+      Pages and pages. With times accurate to the minute.
+
+      I gave it back and said nothing. I was too frightened. Florian
+      was my neighbour. I should have warned him. Scheiße, I should
+      have said something.
+    effects:
+      trust_sophie: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Inspektor Wallner ---
+
+  inspektor_interview:
+    type: message
+    text: >
+      INSPEKTOR WALLNER: Off the record — and I mean completely off
+      the record — I wanted to investigate DonauChem. My superior
+      at the Bezirkshauptmannschaft told me to stand down. He said
+      the Landesregierung had "Zuständigkeit." That's code for
+      "Finger weg."
+
+      The Kronenberg situation is different. I didn't even know about
+      that until now. If you have evidence of Stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case. Versprochen.
+    effects:
+      trust_inspektor: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Florian than anyone in Steinbach. Who is responsible?
+    choices:
+      - Confront Maximilian Kronenberg (the obsessive critic) -> confront_kronenberg
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Thomas Reiter (the plant director) -> confront_reiter
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Bürgermeister Pichler (political protection) -> confront_pichler
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Kronenberg (Best Ending) ---
+
+  confront_kronenberg:
+    type: message
+    text: >
+      You present your evidence to Kronenberg:
+
+      "I know @bastian_keller is your account. I know you put a GPS
+      tracker on Florian's car. I know you broke into his cellar and
+      photographed his notes. I know you watched the Weingut at night.
+      I have the notebook with his schedule. I have witnesses and I
+      have the anonymous post history."
+    choices:
+      - Send -> kronenberg_response
+
+  kronenberg_response:
+    type: message
+    text: >
+      Kronenberg doesn't reply for a long time. Then:
+
+      KRONENBERG: You don't understand. His wines are extraordinary.
+      Generational talent. I was documenting genius. I was the only
+      one who truly understood what he was creating. Everything I did
+      was in service of his legacy. He will thank me one day.
+
+      That's not documentation. That's obsession. That's stalking.
+
+      You've already sent the evidence to Inspektor Wallner. And to
+      Steinbach Aktuell.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektor Wallner reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the cellar break-in, Sophie's
+      notebook, the witness testimonies — Kronenberg is arrested for
+      Stalking and Hausfriedensbruch. A GPS tracker is recovered from
+      under Florian's car at the abandoned Kellergasse above the
+      village.
+
+      Steinbach Aktuell, in possession of Florian's full evidence
+      package, publishes the DonauChem story. The Landesregierung
+      orders an unannounced inspection. The factory is shut down
+      pending Umweltsanierung. Thomas Reiter faces criminal charges
+      for falsifying discharge reports. Bürgermeister Pichler's
+      financial ties to DonauChem are exposed. He resigns.
+
+      And Florian Lechner, reading the story from a friend's house
+      in Krems, calls his mother for the first time in nine days.
+
+      "Mama, i kumm ham."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: florian
+    text: >
+      die donau lügt nicht. und die leit von steinbach a ned.
+      danke dass ihr ned aufgeben habts.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Reiter (Partial Ending) ---
+
+  confront_reiter:
+    type: message
+    text: >
+      You present the pollution evidence to Thomas Reiter:
+
+      "I have water and soil samples showing heavy metal levels three
+      times the EU limit. I have the original lab reports showing the
+      data was falsified. I have photographs of barrels dumped in the
+      Donau with DonauChem batch numbers. I have the Bürgermeister's
+      financial disclosure showing his DonauChem shares."
+    choices:
+      - Send -> reiter_response
+
+  reiter_response:
+    type: message
+    text: >
+      REITER: Dieses Gespräch wird an unsere Rechtsabteilung
+      weitergeleitet. Jede Veröffentlichung verleumderischer Inhalte
+      wird sofortige rechtliche Schritte nach sich ziehen. DonauChem
+      hat stets im Rahmen der gesetzlichen Vorgaben operiert.
+
+      But it's too late. You've sent the evidence to Steinbach Aktuell,
+      to Vinea Wachau, and to the Landesregierung.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. DonauChem is ordered to halt
+      discharge pending investigation. The factory may close. 150
+      jobs hang in the balance. The Wachau wine community is divided.
+      Pichler calls it "economic sabotage."
+
+      But Florian?
+
+      Without the stalking evidence, Kronenberg is never investigated.
+      He continues to write. He continues to monitor Florian's
+      accounts. He creates a new anonymous profile. He starts
+      photographing the Lechner Weingut from the hill above.
+
+      Three months later, Florian reads about DonauChem online. He
+      returns quietly. He changes his cellar locks. He installs
+      cameras. He stops working alone at night. He checks his car
+      every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Florian walks free. And the silver Audi still appears on the
+      Donaustraße.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: florian
+    text: "i bin zruck. der wein wird wieder sauber. der rest... schauma mal."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Pichler (Wrong Ending) ---
+
+  confront_pichler:
+    type: message
+    text: >
+      You confront Bürgermeister Pichler with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> pichler_response
+
+  pichler_response:
+    type: tweet
+    from: claudia
+    text: >
+      Mein Mandant nimmt Ihre Anschuldigungen zur Kenntnis. Jede
+      öffentliche Verbreitung verleumderischer Aussagen wird
+      unverzüglich rechtlich verfolgt. — Kanzlei Fasching & Partner,
+      Wien
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The Bürgermeister's lawyer buries your accusation. Without a
+      direct link between Pichler and DonauChem's dumping — beyond
+      share ownership and political protection — your evidence is
+      legally insufficient.
+
+      DonauChem continues to operate. Kronenberg continues to watch.
+      Florian stays in hiding. The Donau continues to carry poison
+      through the Wachau's vineyards.
+
+      Six months later, @bastian_keller creates a new account. It
+      follows Florian's brother in Vienna.
+
+      The Vollidiot wins.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: STEINBACH AN DER DONAU — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Florian's story explores themes of
+      corporate impunity, environmental crime in protected landscapes,
+      obsessive behaviour disguised as admiration, political corruption,
+      and the courage to speak up.
+
+      If you or someone you know is experiencing stalking, harassment,
+      or crisis, help is available:
+      Telefonseelsorge Österreich: 142 (kostenlos, 24/7)
+      Frauenhelpline: 0800 222 555
+      Opfernotruf: 0800 112 112
+      Umweltanwaltschaft: umweltanwaltschaft.gv.at

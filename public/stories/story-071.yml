@@ -1,0 +1,1539 @@
+# DEAD ACCOUNT — Story 071: Järvenpohja (Finland, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-071.yml
+#
+# Player investigates the disappearance of sauna builder Aino Virtanen
+# in the fictional Lakeland village of Järvenpohja.
+
+meta:
+  title: "Dead Account — Järvenpohja"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_elina: 0
+    trust_mikko: 0
+    trust_ritva: 0
+    trust_juhani: 0
+    trust_noora: 0
+    trust_aleksi: 0
+    trust_veera: 0
+    trust_seppo: 0
+    trust_tuomas: 0
+    trust_kaarina: 0
+    trust_pekka: 0
+    trust_sanna: 0
+    trust_matti: 0
+    trust_liisa: 0
+    trust_onni: 0
+    trust_jenni: 0
+    trust_ville: 0
+    trust_henna: 0
+    trust_kari: 0
+    trust_ylikonst: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Uusi Asukas
+    bio: "juuri muuttanut järvenpohjan kuntaan. järvi-suomi ihastuttaa"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Jarvenpohja.social"
+    description: "Tervetuloa Järvenpohjan yhteisölliseen Mastodon-instanssiin"
+    avatar_url: /gamepatch/assets/dead-account/jarvenpohja_bot.png
+
+  npcs:
+    # === Aino's Inner Circle ===
+    aino:
+      name: "Aino Virtanen"
+      bio: "saunarakentaja | perinnesaunat & savusaunat | puu ei valehtele"
+      avatar: avatars/aino.jpg
+    elina:
+      name: "Elina Korhonen"
+      bio: "ainon paras kaveri | terveydenhoitaja tk:ssa | aamukahvi on pyhä"
+      avatar: avatars/elina.jpg
+    mikko:
+      name: "Mikko Virtanen"
+      bio: "ainon isoveli | asentaja | tampere | ei hyvältä näytä tää homma"
+      avatar: avatars/mikko.jpg
+    tuomas:
+      name: "Tuomas Laine"
+      bio: "puuseppä | järvenpohja | työkaveri & mestari | perinteiset menetelmät"
+      avatar: avatars/tuomas.jpg
+
+    # === Local Government ===
+    juhani:
+      name: "Juhani Mäkelä"
+      bio: "Järvenpohjan kunnanjohtaja | yhteistyöllä eteenpäin vuodesta 2016"
+      avatar: avatars/juhani.jpg
+    kaarina:
+      name: "Kaarina Lehtonen"
+      bio: "ympäristölautakunnan puheenjohtaja | Järvenpohja | puhdas järvi kaikille"
+      avatar: avatars/kaarina.jpg
+    kunta:
+      name: "Järvenpohjan kunta"
+      bio: "Virallinen tili | Kuntatiedotteet | Palveluaika ma-pe 9-16"
+      avatar: avatars/kunta.jpg
+
+    # === Local Business & Community ===
+    ritva:
+      name: "Ritva Hämäläinen"
+      bio: "Rantabaari | kahvia & korvapuusteja | järvenrannassa vuodesta 1991"
+      avatar: avatars/ritva.jpg
+    rantabaari:
+      name: "Rantabaari Hämäläinen"
+      bio: "Kahvila & lounas | Järvenpohjan ranta | avoinna ke-su | tervetuloa!"
+      avatar: avatars/rantabaari.jpg
+    seppo:
+      name: "Seppo Järvinen"
+      bio: "kalastaja | 35 vuotta tällä järvellä | kala ei valehtele"
+      avatar: avatars/seppo.jpg
+    pekka:
+      name: "Pekka Niskanen"
+      bio: "venemestari | Järvenpohjan venesatama | päivystys ti-la"
+      avatar: avatars/pekka.jpg
+    sanna:
+      name: "Sanna Aalto"
+      bio: "apteekkari | Järvenpohjan apteekki | auki myös sunnuntaisin"
+      avatar: avatars/sanna.jpg
+    matti:
+      name: "Matti Koivisto"
+      bio: "leipuri | Koiviston leipomo | ruisleipä & pulla | 4:ltä aamulla joka päivä"
+      avatar: avatars/matti.jpg
+    liisa:
+      name: "Liisa Rantala"
+      bio: "kirjastonhoitaja | Järvenpohjan kirjasto | lukupiiri keskiviikkoisin"
+      avatar: avatars/liisa.jpg
+
+    # === Journalist ===
+    kari:
+      name: "Kari Salonen"
+      bio: "toimittaja | freelance | ympäristö & maaseutu | vihjeet: kari@salonen-media.fi"
+      avatar: avatars/kari.jpg
+
+    # === BoreaTimber (paper mill / corporate) ===
+    boreatimber:
+      name: "BoreaTimber Oy"
+      bio: "Sellu- ja paperiteollisuus | Järvenpohjan tehdas | ISO 14001 sertifioitu"
+      avatar: avatars/boreatimber.jpg
+    onni:
+      name: "Onni Karjalainen"
+      bio: "tehtaanjohtaja BoreaTimber Järvenpohja | teollisuus & ympäristö tasapainossa"
+      avatar: avatars/onni.jpg
+    henna:
+      name: "Henna Toivonen"
+      bio: "asianajaja | Toivonen & Kumpp. | yritys- ja ympäristöoikeus | Helsinki"
+      avatar: avatars/henna.jpg
+
+    # === Teens ===
+    noora:
+      name: "Noora"
+      bio: "16 | soutaja & uimari | järvenpohja syntysin | vesi on elämä fr"
+      avatar: avatars/noora.jpg
+    aleksi:
+      name: "Aleksi"
+      bio: "17 | kalastus & metsästys | avanto on parasta | luonto parantaa"
+      avatar: avatars/aleksi.jpg
+    veera:
+      name: "Veera"
+      bio: "15 | valokuvaus & piirtäminen | järvi mustavalkoisena | aino on idolini"
+      avatar: avatars/veera.jpg
+
+    # === Media & Community ===
+    jarviuutiset:
+      name: "Järvenpohjan Uutiset"
+      bio: "Paikallisuutiset Järvenpohjasta | Vihjeet: toimitus@jarviuutiset.fi"
+      avatar: avatars/jarviuutiset.jpg
+    saapalvelu:
+      name: "Sää Järvenpohja"
+      bio: "Sääennusteet ja varoitukset | Automaattiasema | Päivitys joka tunti"
+      avatar: avatars/saapalvelu.jpg
+    jarviyhdistys:
+      name: "Järvenpohjan vesiensuojeluyhdistys"
+      bio: "Vesien puolesta | Vapaaehtoiset | Ilmoitukset päästöistä"
+      avatar: avatars/jarviyhdistys.jpg
+
+    # === Suspicious / Other ===
+    jenni:
+      name: "Jenni Laaksonen"
+      bio: "laboratorioteknikkio | BoreaTimber | teen duunini ja sillä selvä"
+      avatar: avatars/jenni.jpg
+    ville:
+      name: "Ville Karhu"
+      bio: "."
+      avatar: avatars/anon.jpg
+    ylikonst:
+      name: "Ylikonstaapeli Niemi"
+      bio: "Järvenpohjan poliisiasema | Hätänumero: 112"
+      avatar: avatars/ylikonst.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN JÄRVENPOHJA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Jarvenpohja.social — the community Mastodon instance for
+      the lakeside village of Järvenpohja, Finnish Lakeland.
+
+      The local feed is unusually tense today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @aino_virtanen.
+
+      A sauna builder. Traditional log construction. Smoke saunas. She
+      documented the old ways and fought for the lake. People are worried.
+      She hasn't posted in six days.
+    choices:
+      - Look at her profile -> aino_profile
+
+  aino_profile:
+    type: tweet
+    from: aino
+    text: "BoreaTimber laskee jätevettä järveen yöllä. Mulla on näytteet ja kuvat. Tää ei oo enää mielipide. Tää on fakta."
+    choices:
+      - That's her last real post... -> grey_lake
+
+  grey_lake:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a grey lake. Foggy, blurred, shot from a strange angle. Posted
+      at 4am. No caption.
+
+      Her friends say that's not her style. Aino always wrote something.
+      The police say she probably went to visit relatives. Something
+      doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: ylikonst
+    text: >
+      Olemme vastaanottaneet ilmoituksen koskien Järvenpohjan asukasta.
+      Tässä vaiheessa ei ole viitteitä rikoksesta. Kaikki tiedot voi
+      ilmoittaa numeroon 112 tai Järvenpohjan poliisiasemalle.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @elina_korhonen is
+      posting desperate messages. Her brother @mikko_virtanen is driving
+      down from Tampere. Her mentor @tuomas_laine is pacing the workshop.
+      The fisherman @seppo_jarvinen says she was right about the water.
+
+      And the journalist @kari_salonen is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Aino just went to visit
+      relatives.
+    effects: { trust_elina: "+5", trust_mikko: "+5" }
+    choices:
+      - Start following Aino's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Järvenpohja. Follow Aino's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Ritva (café owner, knows everyone) -> ritva_intro
+      - Talk to Seppo (fisherman, saw the water) -> seppo_intro
+      - Talk to Noora (teen rower, seems shaken) -> noora_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Aino with the rhythms of a small
+      lakeside village: ice fishing reports, the bakery's daily specials,
+      weather warnings about thin ice in spring.
+
+      Key names surface: Elina (best friend, nurse), Tuomas (mentor
+      carpenter, seems rattled), Kari (journalist, oddly quiet), and
+      the teens — Noora, Aleksi, Veera — who admired Aino's craft
+      and environmental work.
+
+      Also prominent: BoreaTimber Oy, the paper mill at the edge of
+      the village. Their posts are corporate PR. Aino's posts were
+      the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Ritva -> ritva_intro
+      - Talk to Seppo -> seppo_intro
+      - Talk to Noora -> noora_intro
+
+  # --- Ritva (social map) ---
+
+  ritva_intro:
+    type: tweet
+    from: ritva
+    text: >
+      Rantabaari on auki mutta sydän ei oo mukana. @aino_virtanen,
+      sun pöytä odottaa. Tuu takasin.
+    effects: { trust_ritva: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ritva -> ritva_talk
+
+  ritva_talk:
+    type: message
+    text: >
+      RITVA: Moikka, oot sä uus täällä? Tervetuloa. Huono aika muuttaa
+      tänne. Kaikki on ihan sekasin Ainon takia.
+
+      Let me tell you who's who. Elina is Aino's best friend — they've
+      known each other since childhood. Sweet woman, a wreck right now.
+      Tuomas Laine is Aino's old mentor, taught her everything about
+      wood and saunas. Good man, but... he's been strange about her
+      lately. Mikko is Aino's older brother, driving down from Tampere.
+
+      And Kari Salonen — the journalist — he and Aino were working on
+      something together. Something about the lake water. Kari hasn't
+      said a word since Aino vanished. That's not like him at all.
+
+      Oh, and don't bother reading BoreaTimber's PR posts. Lies wrapped
+      in ISO certifications.
+    effects: { trust_ritva: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Tuomas -> ritva_tuomas
+      - Ask about BoreaTimber -> ritva_borea
+      - Thank her and move on -> quest1_hub
+
+  ritva_tuomas:
+    type: message
+    text: >
+      RITVA: Tuomas? He taught Aino when she was just a kid. He's the
+      best carpenter in the village, been building saunas for forty years.
+      But since Aino set up her own workshop and started getting clients
+      on her own... something shifted.
+
+      He'd show up at her build sites uninvited. He'd check her timber
+      orders, criticize her methods. She told me once, "He acts like he
+      owns me." I thought she meant professionally. Now I'm not so sure.
+
+      And there was this one client — some rich guy from Helsinki — who
+      wanted Aino to build an exclusive lakeside sauna. Tuomas got
+      furious about it. Said the design was wrong, the location was
+      wrong, everything was wrong. But Aino said it was something else.
+    effects: { trust_ritva: "+5" }
+    choices:
+      - Ask about BoreaTimber -> ritva_borea
+      - Move on -> quest1_hub
+
+  ritva_borea:
+    type: message
+    text: >
+      RITVA: That mill has been there since the 70s. Paper and pulp.
+      The village tolerated it because it brought jobs. But the
+      fishermen have been complaining for years — strange foam on the
+      lake surface, dead fish near the discharge pipe, the water
+      smelling like chemicals at night.
+
+      Aino was the first person to actually take samples and document
+      everything. She had proof, she said. Real proof. The lake is
+      dying because of that mill. Two weeks later she's gone.
+
+      Vittu, it's not a coincidence.
+    effects: { trust_ritva: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Seppo (fisherman, witness tease) ---
+
+  seppo_intro:
+    type: tweet
+    from: seppo
+    text: >
+      kolkytviis vuotta kalastanu tällä järvellä. vesi ei oo enää sama.
+      @aino_virtanen oli oikeessa. ja nyt se on kadonnu. tehkää omat
+      johtopäätökset.
+    effects: { trust_seppo: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Seppo -> seppo_talk
+
+  seppo_talk:
+    type: message
+    text: >
+      SEPPO: I've fished this lake since I was a boy. I know every
+      current, every depth, every colour the water makes in each season.
+      And I'm telling you — the water near the mill outfall is wrong.
+      Has been for months. My nets come up with dead pike. The lake
+      bottom smells like bleach.
+
+      Aino took water samples. She dove down to the discharge pipe
+      with a camera. Photographed everything. She was building a case.
+      And then poof — kadonnut.
+
+      You think that's a coincidence? Perkele, I don't believe in
+      coincidences on this lake.
+    effects: { trust_seppo: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> seppo_night
+      - Move on -> quest1_hub
+
+  seppo_night:
+    type: message
+    text: >
+      SEPPO: The night before she vanished — I was coming back from
+      night fishing, around midnight. I saw lights at Aino's workshop
+      down by the shore. Not unusual, she works late sometimes. But
+      there were two vehicles in the yard. One was Aino's old Hilux.
+      The other was a black company SUV with BoreaTimber plates.
+
+      At midnight. At a sauna builder's workshop.
+
+      I wrote it in my fishing log. Nobody's asked to see it.
+    effects: { trust_seppo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Noora (teen rower, witness tease) ---
+
+  noora_intro:
+    type: tweet
+    from: noora
+    text: >
+      en voi uskoo tätä fr @aino_virtanen opetti mulle kaiken järvestä
+      ja puusta. ei se oo vaa lähteny jonneki. jos joku tietää jotai
+      pls kertokaa
+    effects: { trust_noora: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Noora -> noora_talk_early
+
+  noora_talk_early:
+    type: message
+    text: >
+      NOORA: moi ooksä uus? siis ajoitus on aika paska. mut joo aino
+      on niinku paras ihminen tässä kylässä fr. se opetti meille
+      soutamaan turvallisesti ja näytti miten sauna rakennetaan
+      oikeesti perinteisesti. tosi siistii.
+
+      ja nyt mua pelottaa koska aleksi näki jotain outoo sinä iltana
+      satamassa mut se ei haluu puhuu siitä. se sanoo et ei se ollu
+      mitään mut siis... kyllähän se oli jotain vittu
+    effects: { trust_noora: "+10" }
+    choices:
+      - What did Aleksi see? -> noora_aleksi_hint
+      - Move on -> quest1_hub
+
+  noora_aleksi_hint:
+    type: message
+    text: >
+      NOORA: en mä tiiä tarkkaan. se oli satamassa iltalenkillä ja
+      näki jonkun ainon auton luona? tai jotain sellasta. se flippaa
+      eikä haluu puhuu. pitää kysyy siltä suoraan mut se on aika
+      epäluulonen tuntemattomille. puhu sille ensin jostain kalastuksesta
+      tai metsästyksestä nii se rentoutuu lol
+    effects: { trust_noora: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Järvenpohja. A Finnish Lakeland
+      village built around the water. A sauna builder who was exposing
+      pollution. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Elina (Aino's best friend) -> elina_q1
+      - Talk to Tuomas (Aino's mentor) -> tuomas_q1
+      - Check what Mikko (Aino's brother) is saying -> mikko_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Elina Q1 ---
+
+  elina_q1:
+    type: tweet
+    from: elina
+    text: >
+      jos joku on nähny @aino_virtanen soittakaa mulle heti. sen huone
+      on koskematon. sukelluskamera on paikallaan. se ei ois ikinä
+      lähteny ilman varusteitaan.
+    effects: { trust_elina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Elina -> elina_q1_talk
+
+  elina_q1_talk:
+    type: message
+    text: >
+      ELINA: Thanks for reaching out but I don't know you. Aino has
+      a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Elina is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_elina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tuomas Q1 ---
+
+  tuomas_q1:
+    type: tweet
+    from: tuomas
+    text: >
+      Verstas on tyhjä ilman @aino_virtanen. Sen puuvarastot on
+      paikallaan. Keskeneräset projektit odottaa. Aino ei jätä
+      työtä kesken. Jotain on tapahtunu.
+    effects: { trust_tuomas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Tuomas -> tuomas_q1_talk
+
+  tuomas_q1_talk:
+    type: message
+    text: >
+      TUOMAS: Aino and I have worked together since she was an
+      apprentice. She's the most talented builder I've ever trained.
+      This pollution investigation — it consumed her. She had data,
+      photos, water samples. She was close to going public.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to support her work.
+
+      [Tuomas seems earnest. Or controlling?]
+    effects: { trust_tuomas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mikko Q1 ---
+
+  mikko_q1:
+    type: tweet
+    from: mikko
+    text: >
+      mun sisko on KADONNU ja poliisi sanoo et se on ehkä menny
+      sukulaisten luo??? SE EI LÄHDE KERTOMATTA. tuun tampereelta.
+      joku selittää mulle mitä helvettiä täällä tapahtuu.
+    effects: { trust_mikko: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mikko -> mikko_q1_talk
+
+  mikko_q1_talk:
+    type: message
+    text: >
+      MIKKO: Who are you? Another person from that village who's going
+      to tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "if anything
+      happens, look at BoreaTimber." Then she hung up.
+
+      That's the last I heard from her. Saatana.
+    effects: { trust_mikko: "+10" }
+    choices:
+      - What do you think happened? -> mikko_theory
+      - Move on -> quest1_hub
+
+  mikko_theory:
+    type: message
+    text: >
+      MIKKO: I think she found proof that BoreaTimber is dumping toxic
+      waste in the lake and they shut her up. But I also think that
+      old mentor of hers — Tuomas — knows more than he's saying. The
+      way he talks about her... it's not just professional concern.
+      It's something else. Se on sairas.
+
+      Aino told me months ago that someone was going through her files
+      at the workshop. Tools moved, papers shuffled. She thought it was
+      nothing. I don't think it was nothing.
+    effects: { trust_mikko: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Aino went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Aleksi (was fishing at the harbour at dusk) -> aleksi_interview
+      - Find Pekka (harbour master, works late) -> pekka_interview
+      - Find Matti (baker, starts at 4am, saw something) -> matti_interview
+      - Find Seppo (fisherman, early morning on the lake) -> seppo_interview_q2
+
+  # --- Aleksi (saw someone at Aino's truck) ---
+
+  aleksi_interview:
+    type: tweet
+    from: aleksi
+    text: >
+      hyväsessio tänää mut satamassa on outo fiilis nykyää. joku juttu
+      ei oo kohalleen. en osaa selittää
+    effects: { trust_aleksi: "+5" }
+    choices:
+      - Ask Aleksi about that evening -> aleksi_talk
+
+  aleksi_talk:
+    type: message
+    text: >
+      ALEKSI: okei mut älä kerro kellekää. mä olin satamassa siin
+      seiskalt illal kalastamas ja näin sen vanhuksen — tuomaksen —
+      ainon auton luona. se näytti siltä et se penkoi sieltä jotain
+      tai laitto jotain sinne. ku se näki mut nii se häipy vitun
+      nopeesti.
+
+      siis mä en sanonu mitää koska en halunnu draamaa mut nyt on
+      kyl aika paha tilanne. ei oo normaalia käytöstä saatana
+    effects:
+      trust_aleksi: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pekka (harbour master, saw late-night meeting) ---
+
+  pekka_interview:
+    type: tweet
+    from: pekka
+    text: >
+      Muistutus: venesatama on suljettu klo 22-06. Viime öinä
+      havaittu luvatonta liikennettä satama-alueella.
+    effects: { trust_pekka: "+5" }
+    choices:
+      - Ask Pekka what he saw -> pekka_talk
+
+  pekka_talk:
+    type: message
+    text: >
+      PEKKA: I was locking up the harbour office around 22:30. I saw
+      Aino's truck still at her workshop yard. And a black SUV —
+      BoreaTimber plates — parked next to it. Two men were standing
+      by the workshop door. One of them I recognised: Onni Karjalainen,
+      the mill director.
+
+      At 22:30. At a sauna builder's workshop. That's not normal.
+
+      I noted it in my harbour log. Nobody's asked to see it.
+    effects:
+      trust_pekka: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Matti (baker, saw car chase at dawn) ---
+
+  matti_interview:
+    type: tweet
+    from: matti
+    text: >
+      Aamuleipä uunissa neljältä niinku aina. Mut sinä aamuna
+      joku ajo rantatiellä aivan liian lujaa.
+    effects: { trust_matti: "+5" }
+    choices:
+      - Ask Matti what he saw -> matti_talk
+
+  matti_talk:
+    type: message
+    text: >
+      MATTI: I start baking at 4am every day. That morning I was
+      opening the shutters and a vehicle went past — fast, way too
+      fast for the shore road. Dark SUV. Then maybe two minutes later,
+      a second vehicle. Smaller, a pickup. Chasing? I don't know.
+
+      The pickup turned off toward the old fishing cabins at
+      Honkaniemi. The SUV kept going toward the highway.
+
+      I told the police. They wrote it down. That was it. Voi
+      jumalauta.
+    effects:
+      trust_matti: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Seppo Q2 (saw Aino fleeing) ---
+
+  seppo_interview_q2:
+    type: tweet
+    from: seppo
+    text: >
+      neljältä järvellä niinku aina. mut sinä aamuna ranta ei ollu
+      tyhjä. joku juoksi rantapolkua pitkin pimeässä. ei ollu lenkkeilijä.
+    effects: { trust_seppo: "+5" }
+    choices:
+      - Ask Seppo what he saw -> seppo_talk_q2
+
+  seppo_talk_q2:
+    type: message
+    text: >
+      SEPPO: I get up at 4am for the morning nets. That morning — the
+      morning after Aino's last post — I saw someone on the shore path.
+      Running. A woman, carrying a bag, heading toward Honkaniemi point.
+      It was still dark. She was moving fast, like she was afraid.
+
+      I called out but she didn't stop. I figured it was a jogger but...
+      who jogs at 4am carrying a duffel bag?
+
+      When I heard about Aino, I put it together. I think that was her.
+      Running from something.
+    effects:
+      trust_seppo: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Elina (best friend)
+      and Veera (saw Tuomas watching Aino's place).
+    choices:
+      - Talk to Elina about that night -> elina_interview
+      - Talk to Veera -> veera_interview
+      - Find Aleksi -> aleksi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Pekka -> pekka_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Matti -> matti_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Seppo -> seppo_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Elina (last to see Aino) ---
+
+  elina_interview:
+    type: tweet
+    from: elina
+    text: >
+      toi kuva ainon tilillä. se ei oo ainon. aino ei postaa ilman
+      tekstiä. aino ei postaa neljältä aamulla. joku muu teki ton.
+    effects: { trust_elina: "+5" }
+    choices:
+      - DM Elina -> elina_talk_low
+        when:
+          state: trust_elina
+          lt: 50
+      - DM Elina -> elina_talk_high
+        when:
+          state: trust_elina
+          gte: 50
+
+  elina_talk_low:
+    type: message
+    text: >
+      ELINA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Elina needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_elina: "+5" }
+    choices:
+      - Share what you've learned about the night -> elina_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  elina_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the workshop, the
+      company men, the running figure. Elina is silent for a while.
+
+      ELINA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_elina: "+25" }
+    choices:
+      - What happened that night? -> elina_talk_high
+
+  elina_talk_high:
+    type: message
+    text: >
+      ELINA: She came to my place around 23:00. I was getting ready
+      for the morning shift. She was pale, shaking. She said "ne tietää
+      mitä mulla on." She grabbed her laptop bag from my closet where
+      she'd stashed a backup hard drive.
+
+      I asked who. She said "the mill. They sent people to my workshop."
+      Then she said something else — "and hän oli siellä taas. Se on
+      aina siellä."
+
+      She wouldn't say who "he" was. She hugged me, said "älä huoli,"
+      and left with a bag. That was it. By morning her truck was gone
+      and the grey lake photo was on her account.
+    effects:
+      trust_elina: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Veera (saw Tuomas watching the workshop) ---
+
+  veera_interview:
+    type: message
+    text: >
+      VEERA: okei tää on creepy mut siis se vanha puuseppä — tuomas —
+      mä oon nähny sen ainon verstaan edessä illalla varmaan kolme
+      kertaa. se vaan seisoo siinä ja tuijottaa. ihan sairasta fr.
+
+      viimeks oli kaks päivää ennen ku aino hävis. se istu autossaan
+      vastapäätä verstaata. valot pois. vaan istu siinä. mitä helvettiä
+    effects:
+      trust_veera: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Tuomas seen at Aino's truck at the harbour (Aleksi)
+      22:30 — BoreaTimber SUV at the workshop, Onni Karjalainen present (Pekka)
+      23:00 — Aino arrives at Elina's, shaken, grabs backup drive (Elina)
+      04:00 — Woman running on shore path toward Honkaniemi (Seppo)
+      04:15 — Two vehicles speeding on shore road, one toward Honkaniemi (Matti)
+
+      BoreaTimber confronted Aino at her workshop. She fled to Elina's,
+      grabbed her evidence backup, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is BoreaTimber hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Tuomas really doing? Why was he at
+        her truck?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Tuomas -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      BoreaTimber is hiding something. Aino had proof. Now she's gone
+      and her sample cases are missing from the workshop.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the workshop records -> workshop_records
+      - Talk to Kari the journalist -> kari_interview
+      - Talk to Jenni (BoreaTimber technician) -> jenni_interview
+      - Talk to Kaarina (environment committee chair) -> kaarina_interview
+      - Check the vesiensuojeluyhdistys -> yhdistys_investigation
+      - Talk to Seppo about the dumping -> seppo_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Records ---
+
+  workshop_records:
+    type: message
+    text: >
+      Aino's workshop has a public project page. Her recent posts show
+      water quality measurements from six sites around the lake. The
+      data for the mill discharge point is marked "ODOTTAA TARKISTUSTA"
+      — the only site with that status.
+
+      Her dive log, shared with the local dive club for safety, shows
+      she made 14 dives near the BoreaTimber outfall pipe in the past
+      month. The last entry: "Kuvasin putkiliitoksen. Ilmoittamaton
+      toinen purkuputki. Päästöt eivät vastaa raportteja."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Kari ---
+
+  kari_interview:
+    type: message
+    text: >
+      KARI: I don't talk about sources. Period.
+    effects: { trust_kari: "+5" }
+    choices:
+      - Show Kari the evidence you have -> kari_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  kari_with_evidence:
+    type: message
+    text: >
+      KARI: ...you have more than I expected.
+
+      Okay. Aino and I were working together. She had photos of an
+      undeclared waste pipe — BoreaTimber has a second outfall that
+      doesn't appear on any permit. She had water samples showing
+      heavy metal and chemical levels fifteen times the legal limit.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my car and stole my backup
+      drive.
+
+      Aino is alive. She contacted me once, from a prepaid phone.
+      She said she was hiding. She said "ne uhkaili mua verstaalla ja
+      joku toinen ei jätä mua rauhaan."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_kari: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> kari_hint
+      - Back to investigation hub -> investigation_hub
+
+  kari_hint:
+    type: message
+    text: >
+      KARI: The mill sent their director — Karjalainen — and some
+      lawyer from Helsinki to the workshop that night. They told her
+      to hand over everything or face legal consequences. Classic
+      intimidation in a suit.
+
+      But she also said something about someone else. Someone who'd
+      been going through her workshop. Someone who always seemed to
+      know where she was, which build sites she was at. That's a
+      different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Jenni (BoreaTimber whistleblower) ---
+
+  jenni_interview:
+    type: message
+    text: >
+      JENNI: I work at BoreaTimber. I'm just a lab tech. I run tests,
+      I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the ELY-centre.
+    effects: { trust_jenni: "+10" }
+    choices:
+      - What do you mean? -> jenni_detail
+
+  jenni_detail:
+    type: message
+    text: >
+      JENNI: I measure chemical oxygen demand, heavy metals, suspended
+      solids. My numbers go to my supervisor. Somewhere between my desk
+      and the regulatory filing, they change. Lower. Always lower.
+
+      Aino's samples from outside the pipe matched MY original numbers,
+      not the ones in the official reports. She had independent proof
+      that BoreaTimber is falsifying their discharge data.
+
+      I'm scared. I have a family. But I kept copies of my original
+      reports. If someone can protect me, I'll share them. Basmeg, I
+      can't keep quiet anymore.
+    effects:
+      trust_jenni: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Kaarina ---
+
+  kaarina_interview:
+    type: message
+    text: >
+      KAARINA: As the chair of the environment committee, I take these
+      allegations seriously. But BoreaTimber employs 150 people in this
+      municipality. The kunnanjohtaja insists we need to "maintain
+      dialogue."
+
+      Off the record? I've seen the ELY-centre inspection reports.
+      BoreaTimber passes every time. But those inspections are announced
+      weeks in advance. They clean up before the inspectors arrive.
+
+      Aino had unannounced data. That's what makes it dangerous.
+    effects:
+      trust_kaarina: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Vesiensuojeluyhdistys ---
+
+  yhdistys_investigation:
+    type: tweet
+    from: jarviyhdistys
+    text: >
+      HUOMIO: Poikkeava vedenväri havaittu tehtaan purkuputken
+      läheisyydessä. Näytteet otettu. Vaadimme ennalta ilmoittamatonta
+      tarkastusta BoreaTimber Oy:n tehtaalle.
+    choices:
+      - Check their data -> yhdistys_data
+
+  yhdistys_data:
+    type: message
+    text: >
+      The vesiensuojeluyhdistys has been documenting water quality for
+      four years. Their data shows a clear pattern: chemical spikes
+      that correspond to BoreaTimber's production schedule. Higher on
+      weekdays, lower on weekends. Higher at night, lower during the
+      day.
+
+      The pattern is unmistakable. This is ongoing, deliberate illegal
+      discharge timed to avoid detection.
+
+      Aino was a member. She contributed most of the underwater
+      photography and the dive samples.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Seppo dumping ---
+
+  seppo_dumping:
+    type: message
+    text: >
+      SEPPO: I'll show you something. Last month I pulled my nets near
+      the outfall and found this — a metal drum, corroded, leaking. The
+      label was half gone but I could read "liuotin" and a BoreaTimber
+      batch number.
+
+      I photographed it and sent it to Aino. She said it was the
+      missing piece — proof they were dumping solid waste, not just
+      discharge. Barrels in the lake.
+
+      I still have the photos. And the batch number. Perkele, they've
+      been poisoning our lake for years.
+    effects:
+      trust_seppo: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Tuomas Laine. Mentor. Master carpenter. Something more? Someone
+      was going through Aino's workshop after hours. Someone was
+      watching her build sites. Someone was at her truck.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Tuomas's workshop access -> workshop_access
+      - Talk to Elina about Tuomas -> elina_tuomas
+        when:
+          state: trust_elina
+          gte: 20
+      - Talk to Aleksi (more detail on the truck incident) -> aleksi_detail
+      - Talk to Sanna the pharmacist -> sanna_interview
+      - Check the anonymous account @ville_karhu -> ville_investigation
+      - Talk to Liisa the librarian -> liisa_interview
+        when:
+          state: trust_liisa
+          gte: 40
+      - Talk to Ylikonstaapeli Niemi -> ylikonst_interview
+        when:
+          state: trust_ylikonst
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Access ---
+
+  workshop_access:
+    type: message
+    text: >
+      Aino's workshop has a simple electronic lock with a log. Her
+      code was used 52 times last month. Tuomas's old master code —
+      which Aino never changed — was used 38 times. Nearly as often.
+
+      Cross-referencing: on 25 of Tuomas's 38 entries, he accessed
+      the workshop within 30 minutes of Aino. He arrived after her
+      and left after her. Every time.
+
+      He has his own workshop across the village. Why was he in
+      hers so often?
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Elina on Tuomas ---
+
+  elina_tuomas:
+    type: message
+    text: >
+      ELINA: Tuomas? He made Aino uncomfortable. He'd show up at her
+      build sites uninvited. He'd offer to "check her work." He'd
+      comment on every single one of her posts immediately.
+
+      She told him she was independent now and didn't need supervision.
+      Clearly, kindly. He said he understood. Then nothing changed.
+      He just... kept being there. Always there.
+
+      A month ago she found that someone had been in her workshop after
+      hours. Her project files had been moved. Her timber orders had
+      been read. She suspected Tuomas but couldn't prove it. She said
+      "hän luulee et hän omistaa mut koska hän opetti mua."
+    effects:
+      trust_elina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Aleksi detail ---
+
+  aleksi_detail:
+    type: message
+    text: >
+      ALEKSI: okei fr en mä kertonu kaikkee. ku mä näin tuomaksen
+      ainon auton luona sillä oli joku pieni laite kädessä. se laitto
+      sen auton alle kuljettajan puolelle. niinku liimas sen sinne.
+
+      siis mä en oo mikään ekspertti mut se näytti ihan gps-
+      seurantalaitteelta. semmonen ku leffoissa. vittu mä oisin
+      pitäny sanoo jotain mut kuka uskois teiniä ku se syyttää
+      vanhaa mestaria. ei kukaan saatana.
+    effects:
+      trust_aleksi: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sanna ---
+
+  sanna_interview:
+    type: message
+    text: >
+      SANNA: This is confidential but I'm a pharmacist, not a priest.
+      Tuomas Laine comes in regularly. He's been buying things that...
+      suggest he's not sleeping. Anti-anxiety medication, sleep aids,
+      energy drinks by the case. The pattern is someone under extreme
+      stress. Or someone who stays up watching.
+
+      He also asked me once, very casually, where one could buy a
+      tracking device in this area. I said "this is a pharmacy, not
+      Verkkokauppa." He laughed it off. I didn't think about it again
+      until Aino disappeared.
+    effects:
+      trust_sanna: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ville (anonymous account) ---
+
+  ville_investigation:
+    type: tweet
+    from: ville
+    text: >
+      Sen olis pitäny kuunnella. Mä yritin suojella sitä. Kukaan muu
+      ei ymmärtäny sen työtä niin kuin minä.
+    choices:
+      - Look at this account's history -> ville_posts
+
+  ville_posts:
+    type: message
+    text: >
+      @ville_karhu: account created 9 months ago. Posts are all about
+      Aino's work. Comments on every sauna build photo, every wood
+      selection, every project update. The tone shifts over time:
+
+      Month 1: "Uskomatonta työtä. Teet mitä kukaan muu ei uskalla."
+      Month 3: "Mikset vastaa viesteihin? Haluan vain tehdä yhteistyötä."
+      Month 6: "Näen sut kahvilassa muiden kanssa. Muille riittää aika
+      mutta ei mulle?"
+      Month 8: "Tiedän missä käyt. Tiedän aikataulusi. Olen aina lähellä."
+
+      The account has no photos, no personal details. Just Aino.
+      Only Aino.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> ville_style
+
+  ville_style:
+    type: message
+    text: >
+      Comparing @ville_karhu with @tuomas_laine:
+
+      Same use of traditional carpentry terminology. Same Finnish
+      dialect markers — the specific Häme region expressions. Same
+      knowledge of Aino's projects that only a master builder would
+      have.
+
+      And one post from @ville_karhu: "Projekti 12:n hirsivaraus oli
+      kaunis." Project 12 is Aino's internal numbering. Not public.
+
+      It's Tuomas. The anonymous account is Tuomas.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Liisa ---
+
+  liisa_interview:
+    type: message
+    text: >
+      LIISA: Aino left something with me. A sealed waterproof case.
+      She said "if someone asks you about what's in the lake near the
+      mill, give them this."
+
+      She looked frightened. She said she'd made copies of everything
+      but needed one set off-site, somewhere nobody would think to look.
+      A village library seemed perfect.
+    effects: { trust_liisa: "+10" }
+    choices:
+      - What's in the lake near the mill? -> liisa_case
+
+  liisa_case:
+    type: message
+    text: >
+      Liisa reaches behind the returns desk and produces a waterproof
+      Pelican case.
+
+      LIISA: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show an underwater pipe — not the official discharge point, but a
+      second, hidden outfall — and barrels on the lake bed. The USB
+      drive contains water sample data, chemical analysis, and Aino's
+      detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Ylikonstaapeli Niemi ---
+
+  ylikonst_interview:
+    type: message
+    text: >
+      YLIKONSTAAPELI NIEMI: Off the record — and I mean completely
+      off the record — I wanted to investigate BoreaTimber. My
+      superior told me to stand down. He said the ELY-centre had
+      "jurisdiction." That's code for "don't touch it."
+
+      The Laine situation is different. I didn't even know about that
+      until now. If you have evidence of stalking, I can act on that.
+      That's clearly local police jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_ylikonst: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Aino than anyone in Järvenpohja. Who is responsible?
+    choices:
+      - Confront Tuomas Laine (the obsessive mentor) -> confront_tuomas
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Onni Karjalainen (the mill director) -> confront_onni
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Kunnanjohtaja Mäkelä (political protection) -> confront_juhani
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Tuomas (Best Ending) ---
+
+  confront_tuomas:
+    type: message
+    text: >
+      You present your evidence to Tuomas:
+
+      "I know @ville_karhu is your account. I know you put a GPS tracker
+      on Aino's truck. I know you accessed her workshop after hours using
+      your old master code. I know you were watching her build sites.
+      I have witnesses and I have the access logs."
+    choices:
+      - Send -> tuomas_response
+
+  tuomas_response:
+    type: message
+    text: >
+      Tuomas doesn't reply for a long time. Then:
+
+      TUOMAS: You don't understand. I was protecting her. She was in
+      danger from BoreaTimber and she wouldn't let me help. I needed to
+      know she was safe. I taught her everything. Everything she knows
+      about wood, about saunas, about this craft — it came from me. I
+      had a right to be involved.
+
+      That's not mentorship. That's obsession.
+
+      You've already sent the evidence to Ylikonstaapeli Niemi. And
+      to Kari Salonen.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Ylikonstaapeli Niemi reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the witness
+      testimonies — Tuomas is arrested for stalking and harassment. A
+      GPS tracker is recovered from under Aino's truck at the old
+      fishing cabins at Honkaniemi.
+
+      Kari Salonen, finally in possession of Aino's full evidence
+      package, publishes the BoreaTimber story in Helsingin Sanomat.
+      The ELY-centre orders an unannounced inspection. The mill is shut
+      down pending environmental remediation. Onni Karjalainen faces
+      criminal charges for falsifying discharge reports.
+
+      And Aino Virtanen, reading the story from a friend's cabin in
+      Kuopio, calls her brother for the first time in nine days.
+
+      "Mä tuun kotiin."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: aino
+    text: >
+      puu ei valehtele. eikä järvenpohjan ihmiset. kiitos kun ette
+      luovuttanu.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Onni (Partial Ending) ---
+
+  confront_onni:
+    type: message
+    text: >
+      You present the pollution evidence to Onni Karjalainen:
+
+      "I have photographs of the undeclared outfall pipe. I have water
+      samples showing chemical levels fifteen times the legal limit. I
+      have your original lab reports showing the data was falsified. I
+      have the barrel with your batch number."
+    choices:
+      - Send -> onni_response
+
+  onni_response:
+    type: message
+    text: >
+      ONNI: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. BoreaTimber has always operated within
+      regulatory requirements.
+
+      But it's too late. You've sent the evidence to Kari, to the
+      vesiensuojeluyhdistys, and to the ELY-centre.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. BoreaTimber is ordered to halt
+      discharge pending investigation. The mill may close. One hundred
+      and fifty jobs hang in the balance. The village is divided.
+
+      But Aino?
+
+      Without the stalking evidence, Tuomas is never investigated. He
+      continues to use the master code. He continues to monitor her
+      posts. He creates a new anonymous profile.
+
+      Three months later, Aino reads about BoreaTimber online. She
+      returns quietly. She changes her workshop locks. She stops
+      working alone. She checks her truck every morning.
+
+      The corporation is exposed. But the person who terrorised Aino
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: aino
+    text: "mä oon takas. vesi on puhtaampaa. muu... nähdään."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Kunnanjohtaja (Wrong Ending) ---
+
+  confront_juhani:
+    type: message
+    text: >
+      You confront Kunnanjohtaja Mäkelä with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> juhani_response
+
+  juhani_response:
+    type: tweet
+    from: henna
+    text: >
+      Päämieheni on ottanut väitteenne huomioon. Kunnianloukkaukseksi
+      katsottavan materiaalin julkaiseminen johtaa välittömiin
+      oikeustoimiin. — Asianajotoimisto Toivonen & Kumpp., Helsinki
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The kunnanjohtaja's lawyer buries your accusation. Without a
+      direct link between Mäkelä and BoreaTimber's dumping — and there
+      isn't one beyond political protection — your evidence is
+      insufficient.
+
+      BoreaTimber continues to operate. Tuomas continues to watch.
+      Aino stays in hiding.
+
+      Six months later, @ville_karhu creates a new account. It follows
+      Aino's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: JÄRVENPOHJA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Aino's story explores themes of corporate
+      impunity, environmental crime, obsessive behaviour disguised as
+      mentorship, community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Nollalinja (väkivalta ja uhka): 080 005 005 (maksuton)
+      Rikosuhripäivystys: 116 006
+      Ympäristöpäästöilmoitus: ymparisto.fi/ilmoitukset

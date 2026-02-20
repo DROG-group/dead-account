@@ -1,0 +1,1527 @@
+# DEAD ACCOUNT — Story 009: Brzeziny (Poland)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-009.yml
+#
+# Player investigates the disappearance of theater student and social
+# media activist Kasia Kowalska in the fictional Silesian town of Brzeziny.
+
+meta:
+  title: "Dead Account"
+  state:
+    trust_marek: 0
+    trust_zofia: 0
+    trust_tomasz: 0
+    trust_halina: 0
+    trust_kuba: 0
+    trust_maja: 0
+    trust_olek: 0
+    trust_agnieszka: 0
+    trust_pawel: 0
+    trust_jan: 0
+    trust_dorota: 0
+    trust_bartosz: 0
+    trust_kamil: 0
+    trust_ewa: 0
+    trust_piotr: 0
+    trust_anna: 0
+    trust_michal: 0
+    trust_helena: 0
+    trust_rafal: 0
+    trust_wiktor: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    misconduct_evidence: 0
+    troll_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to brzeziny. getting to know the town"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Brzeziny.social"
+    description: "Welcome to the Brzeziny community instance - Silesia, Poland"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    kasia:
+      name: "Kasia Kowalska"
+      bio: "theater student | protest journalist | the camera does not blink | dokumentuje"
+      avatar: avatars/kasia.jpg
+    marek:
+      name: "Marek Kowalski"
+      bio: "kasia's father | mechanic | Warsztat Kowalski | 20 years in brzeziny"
+      avatar: avatars/marek.jpg
+    zofia:
+      name: "Zofia Nowak"
+      bio: "theater director | Teatr Maly Brzeziny | art is resistance"
+      avatar: avatars/zofia.jpg
+    tomasz:
+      name: "Tomasz Wisniewski"
+      bio: "journalist | Glos Slaski | independent reporting | tips: tomasz@glosslaski.pl"
+      avatar: avatars/tomasz.jpg
+    halina:
+      name: "Babcia Halina Szymanska"
+      bio: "87 years | survived everything | pierogis on sunday | my granddaughter WILL be found"
+      avatar: avatars/halina.jpg
+    kuba:
+      name: "Kuba"
+      bio: "16 | siema | muza & protesty | kasia jest kozak | #JestesmyZKasia"
+      avatar: avatars/kuba.jpg
+    maja:
+      name: "Maja"
+      bio: "17 | teatr & sztuka | kasia nauczyla mnie wszystkiego | spoko ludzie sa potrzebni"
+      avatar: avatars/maja.jpg
+    olek:
+      name: "Olek"
+      bio: "15 | gaming | skate | elo | ktos musi cos zrobic"
+      avatar: avatars/olek.jpg
+    agnieszka:
+      name: "Agnieszka Kaminska"
+      bio: "lawyer | human rights | Kancelaria Kaminska | pro bono protest defense"
+      avatar: avatars/agnieszka.jpg
+    pawel:
+      name: "Komendant Pawel Kaczmarek"
+      bio: "Komenda Policji Brzeziny | serving the community | law & order"
+      avatar: avatars/pawel.jpg
+    jan:
+      name: "Jan Gorski"
+      bio: "policeman | Brzeziny station | community policing | 15 years service"
+      avatar: avatars/jan.jpg
+    dorota:
+      name: "Dorota Lewandowska"
+      bio: "city council | vice-mayor | Brzeziny | #BrzezinyRosnie"
+      avatar: avatars/dorota.jpg
+    bartosz:
+      name: "Bartosz Zielinski"
+      bio: "photographer | protest documentation | everything on camera | press card: 4477"
+      avatar: avatars/bartosz.jpg
+    kamil:
+      name: "Kamil Wojcik"
+      bio: "cafe owner | Kawiarnia Pod Lipami | coffee & conversation | the town's heart"
+      avatar: avatars/kamil.jpg
+    ewa:
+      name: "Ewa Mazur"
+      bio: "teacher | Liceum Brzeziny | Polish literature | theater club advisor"
+      avatar: avatars/ewa.jpg
+    piotr:
+      name: "Piotr Jankowski"
+      bio: "pharmacist | Apteka Pod Orlem | health advice | serving Brzeziny"
+      avatar: avatars/piotr.jpg
+    anna:
+      name: "Anna Kowalczyk"
+      bio: "librarian | Biblioteka Miejska | books & community | safe space for all"
+      avatar: avatars/anna.jpg
+    michal:
+      name: "Michal Adamski"
+      bio: "Kasia's ex | IT student | Katowice | we broke up but I still care"
+      avatar: avatars/michal.jpg
+    helena:
+      name: "Helena Wroblewska"
+      bio: "bookshop owner | Ksiegarnia Feniks | books are resistance"
+      avatar: avatars/helena.jpg
+    rafal:
+      name: "Rafal"
+      bio: "."
+      avatar: avatars/anon.jpg
+    wiktor:
+      name: "Wiktor Nowicki"
+      bio: "priest | parish of St. Wojciech | sunday mass 8:00 & 11:00"
+      avatar: avatars/wiktor.jpg
+    policja:
+      name: "Policja Brzeziny"
+      bio: "Official | Emergency: 112 | Report: 997 | policja.gov.pl"
+      avatar: avatars/policja.jpg
+    urzad:
+      name: "Urzad Miasta Brzeziny"
+      bio: "Official account | City services | News | #Brzeziny"
+      avatar: avatars/urzad.jpg
+    teatr:
+      name: "Teatr Maly Brzeziny"
+      bio: "community theater | performances | workshops | art for everyone"
+      avatar: avatars/teatr.jpg
+    glos:
+      name: "Glos Slaski"
+      bio: "Independent newspaper | Silesia region | news & investigations"
+      avatar: avatars/glos.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN BRZEZINY
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to brzeziny.social — the community Mastodon instance for
+      Brzeziny, a small town in Silesia, Poland. Industrial past, trying
+      to find its future.
+
+      The local feed is on fire. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      One name dominates everything: @kasia_dokumentuje.
+
+      A theater student who became the town's most important independent
+      journalist. She livestreamed protests, documented police conduct,
+      and had 12,000 followers. She hasn't posted in nine days.
+
+      Except — her account posted something three days ago.
+    choices:
+      - Look at her profile -> kasia_profile
+
+  kasia_profile:
+    type: tweet
+    from: kasia
+    text: "I want to apologize. Some of my previous posts contained inaccuracies. I have removed them. I'm taking a break to reflect."
+    choices:
+      - That doesn't sound like her... -> dead_post
+
+  dead_post:
+    type: message
+    text: >
+      Everyone who knows Kasia says the same thing: she did not write
+      that retraction. Kasia does not apologize for documented facts.
+      Kasia does not "reflect." Kasia films, edits, and publishes.
+
+      Her father says her phone is off. Her grandmother hasn't heard
+      from her. Twenty-three of her archived protest videos have been
+      deleted from her account. Someone with access to her account is
+      removing evidence.
+    choices:
+      - Read the police statement -> police_statement
+      - See what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: policja
+    text: >
+      The Brzeziny police have received a report regarding a local
+      resident. The individual posted on social media three days ago
+      indicating she is taking personal time. There is no evidence
+      of criminal activity.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The response is explosive. Kasia's friends are organizing search
+      parties. Her father Marek is at the police station every day.
+      Babcia Halina is posting in capital letters. The theater company
+      hung a banner: "WHERE IS KASIA."
+
+      And an anonymous account, @rafal, has been flooding the feed
+      with posts attacking Kasia: "Liar." "Provocateur." "She got
+      what she deserved."
+
+      The same kind of language that filled Kasia's inbox for months.
+    effects: { trust_marek: "+5", trust_halina: "+5" }
+    choices:
+      - Start following Kasia's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Brzeziny. A town where a protest journalist
+      documented what the authorities wanted hidden. Follow her
+      contacts and understand what she found.
+    choices:
+      - Talk to Kamil at the cafe -> kamil_intro
+      - Talk to Babcia Halina -> halina_intro
+      - Check what the teens are saying -> kuba_intro
+      - Browse the feed -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a battleground. Pro-Kasia hashtags vs troll accounts.
+      Everyday posts about church schedules and market hours. And
+      underneath it all, a deep unease about what happens when you
+      challenge authority in a small Polish town.
+
+      Key names: Marek (father, angry), Zofia (theater director,
+      mentor), Tomasz (journalist, working the story), Agnieszka
+      (lawyer, knows the legal side), Bartosz (photographer, was
+      with Kasia at the protests).
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Kamil -> kamil_intro
+      - Talk to Babcia Halina -> halina_intro
+      - Check the teens -> kuba_intro
+
+  # --- Kamil (social map) ---
+
+  kamil_intro:
+    type: tweet
+    from: kamil
+    text: >
+      Kawiarnia is open. The table where Kasia always sat with her
+      laptop is empty. Come in. We need to talk.
+    effects: { trust_kamil: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Kamil -> kamil_talk
+
+  kamil_talk:
+    type: message
+    text: >
+      KAMIL: You're new? Sit. Coffee is on the house.
+
+      Kasia was the bravest person in this town. Two months ago there
+      was a protest in the square — workers from the closed factory.
+      The police response was... disproportionate. Kasia filmed
+      everything. Baton strikes on people with their hands up. An
+      elderly man dragged across the cobblestones. All of it on camera.
+
+      She published the videos. They went viral. The komendant — Pawel
+      Kaczmarek — called them "manipulated footage." But everyone who
+      was there knows what happened.
+
+      Then the threats started. Anonymous accounts. Coordinated. The
+      same talking points, the same insults. Professional trolling.
+    effects: { trust_kamil: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the komendant -> kamil_komendant
+      - Ask about the troll accounts -> kamil_trolls
+      - Move on -> quest1_hub
+
+  kamil_komendant:
+    type: message
+    text: >
+      KAMIL: Pawel Kaczmarek has been komendant for eight years. He
+      runs the station like his private army. Before the protest, he
+      was unremarkable. After Kasia's videos, he became defensive,
+      aggressive. He gave a press conference calling the protesters
+      "provocateurs" and Kasia a "threat to public order."
+
+      Then Dorota Lewandowska — the vice-mayor — backed him publicly.
+      Said the videos were "taken out of context." The context being:
+      people being beaten by police.
+
+      Kasia had evidence that the order to use force came directly
+      from Kaczmarek. She had radio recordings from a scanner app.
+    effects: { trust_kamil: "+5" }
+    choices:
+      - Ask about the trolls -> kamil_trolls
+      - Move on -> quest1_hub
+
+  kamil_trolls:
+    type: message
+    text: >
+      KAMIL: After the protest videos went viral, Kasia's inbox
+      exploded. Hundreds of messages. Death threats. Rape threats.
+      Accounts calling her a "foreign agent," a "traitor."
+
+      The accounts were coordinated. Same language, same timing,
+      same hashtags. Not random trolls — organized harassment. Kasia
+      documented the patterns. She was building a case that the troll
+      campaign was connected to the police or the city administration.
+
+      She found something. She told me she found the connection.
+      Then she disappeared.
+    effects: { trust_kamil: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Babcia Halina ---
+
+  halina_intro:
+    type: tweet
+    from: halina
+    text: >
+      MY GRANDDAUGHTER IS MISSING. I AM 87 YEARS OLD AND I SURVIVED
+      THE COMMUNISTS AND I WILL NOT BE SILENT. KASIA IF YOU CAN READ
+      THIS BABCIA IS LOOKING FOR YOU.
+    effects: { trust_halina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Babcia Halina -> halina_talk
+
+  halina_talk:
+    type: message
+    text: >
+      HALINA: You want to help? Good. Because nobody else is helping.
+      The police say she left voluntarily. The police are the ones
+      she was investigating. Do you see the problem?
+
+      Kasia is my heart. She visits every Sunday. She brings pierogis.
+      She films my stories about the old times. She said "Babcia,
+      someone has to remember."
+
+      Last Sunday she did not come. She has NEVER missed a Sunday.
+      Not in twenty-one years. Something is very wrong.
+    effects: { trust_halina: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kuba (teen witness) ---
+
+  kuba_intro:
+    type: tweet
+    from: kuba
+    text: >
+      elo siema ktos wie co sie dzieje z kasia?? jest kozak i nikt
+      nic nie robi. maja plakala caly dzien. olek ma jakies screeny.
+      #JestesmyZKasia
+    effects: { trust_kuba: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kuba -> kuba_talk
+
+  kuba_talk:
+    type: message
+    text: >
+      KUBA: siema! nara za nudna wiadomosc ale muszę gadac. kasia
+      to mega spoko osoba. uczy nas w teatrze i na protestach.
+      pokazala nam jak filmowac zeby bylo dowodem.
+
+      maja ma cos waznego ale boi sie. mów z nia. olek ma screeny
+      trolli — poznal jeden z kont bo typo uzywal tego samego nicka
+      co w grach online xD taki ogar.
+
+      i slyszalem od kolegi ze ktos widzial kasie wsiadajac do
+      radiowozu tydzien temu. nie wiem czy to prawda ale luzik
+      nie jest.
+    effects: { trust_kuba: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      Brzeziny is a town where filming the truth makes you an enemy.
+      Kasia documented police violence. Now she's gone and her account
+      is posting retractions she didn't write.
+    choices:
+      - Talk to Marek (Kasia's father) -> marek_q1
+      - Talk to Zofia (theater director) -> zofia_q1
+      - Talk to Bartosz (protest photographer) -> bartosz_q1
+      - I'm ready to investigate the night she vanished -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marek Q1 ---
+
+  marek_q1:
+    type: tweet
+    from: marek
+    text: >
+      9 days. My daughter is gone 9 days. The police who she
+      investigated are "investigating" her disappearance. This is
+      not justice. This is a joke.
+    effects: { trust_marek: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marek -> marek_q1_talk
+
+  marek_q1_talk:
+    type: message
+    text: >
+      MAREK: You want to help? Everyone says they want to help. Then
+      they meet the komendant and suddenly they're busy.
+
+      My daughter was not afraid. She should have been but she wasn't.
+      She filmed things that powerful people wanted hidden. She
+      received death threats and kept filming.
+
+      The night before she disappeared, she came to the workshop. She
+      said "Tata, I found the link. I know who's behind the trolls."
+      She was excited. Not scared — excited. Like she'd solved
+      something big.
+
+      I told her to be careful. She said "I'm always careful."
+
+      That was the last time I saw her.
+    effects: { trust_marek: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Zofia Q1 ---
+
+  zofia_q1:
+    type: tweet
+    from: zofia
+    text: >
+      Teatr Maly cancels this week's performance. We cannot perform
+      while our heart is missing. Kasia IS this theater. We are not
+      moving on. We are waiting.
+    effects: { trust_zofia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Zofia -> zofia_q1_talk
+
+  zofia_q1_talk:
+    type: message
+    text: >
+      ZOFIA: Kasia was the most talented student I've had in thirty
+      years. But her real gift wasn't acting — it was seeing. She
+      looked at things others turned away from.
+
+      She used theater techniques for her journalism. Framing,
+      perspective, the power of witness. She said the camera was
+      her stage and the truth was her script.
+
+      The retraction they posted from her account — I know her writing.
+      Every sentence. That is not her voice. Those words were written
+      by someone who thinks in legal disclaimers, not theater.
+    effects: { trust_zofia: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bartosz Q1 ---
+
+  bartosz_q1:
+    type: tweet
+    from: bartosz
+    text: >
+      I was with Kasia at every protest. My photos, her video. We
+      documented everything together. Now my photos are the only
+      record left — they deleted all her videos.
+    effects: { trust_bartosz: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Bartosz -> bartosz_q1_talk
+
+  bartosz_q1_talk:
+    type: message
+    text: >
+      BARTOSZ: My press card is number 4477. I've covered protests
+      across Silesia. What happened in Brzeziny two months ago was
+      the worst police response I've ever seen.
+
+      Kasia's videos showed three specific officers using excessive
+      force. Badge numbers visible. Faces clear. That's why her
+      videos had to disappear. Someone is destroying evidence of
+      police brutality.
+
+      I have my photographs, but video is harder to deny than photos.
+      Kasia's originals were on her hard drive at home. If that
+      drive still exists, it's the key to everything.
+    effects: { trust_bartosz: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Kasia was last seen leaving Kawiarnia Pod Lipami at 22:00 on a
+      Thursday. She was working on her laptop. She packed up, said
+      goodbye to Kamil, and walked toward her apartment three blocks
+      away. She never arrived.
+
+      Collect witness accounts. You need at least 4.
+    choices:
+      - Find Maja (was texting Kasia that night) -> maja_interview
+      - Find Olek (saw something from his window) -> olek_interview
+      - Find Ewa (was leaving the school late) -> ewa_interview
+      - Find Anna (librarian, closing up next door) -> anna_interview
+
+  # --- Maja (texting) ---
+
+  maja_interview:
+    type: tweet
+    from: maja
+    text: >
+      ja pisalam z kasia tamtej nocy. ostatnia wiadomosc o 22:17.
+      napisala "ktos za mna idzie" i juz nic. nic nic nic.
+    effects: { trust_maja: "+5" }
+    choices:
+      - Ask Maja about the messages -> maja_talk
+
+  maja_talk:
+    type: message
+    text: >
+      MAJA: pisalysmy normalnie. o teatrze, o nowym monologu co
+      pisala. a potem nagle:
+
+      22:15 — "wychodzę z kawiarni, jutro pogadamy"
+      22:16 — "czekaj"
+      22:17 — "ktos za mna idzie"
+
+      i cisza. pisalam do niej 50 razy. nic. dzwonilam. telefon
+      wylaczony.
+
+      to nie jest tak ze kasia po prostu wyjechala. kasia by mi
+      napisala. kasia pisze do mnie CODZIENNIE. od trzech lat.
+      codziennie. i teraz nic.
+
+      mam cos. kasia dala mi pendrive tydzien wczesniej. powiedziala
+      "trzymaj to. jak mi sie cos stanie, daj tomaszowi z gazety."
+      jeszcze go nie otwieram. boje sie.
+    effects:
+      trust_maja: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Olek (saw the car) ---
+
+  olek_interview:
+    type: tweet
+    from: olek
+    text: >
+      elo mowie wam widzialem cos z okna. bialy fiat z policji
+      stanal na ulicy kolo kawiarni o 10 wieczorem. gadzio wyglądal
+      jakby czekal. potem odjechali z kims
+    effects: { trust_olek: "+5" }
+    choices:
+      - Ask Olek what he saw -> olek_talk
+
+  olek_talk:
+    type: message
+    text: >
+      OLEK: siema. to tak bylo — siedze w oknie bo gram, i widze
+      bialy fiat tipo na ulicy. oznakowany policyjny. stanal pod
+      kawiarnia. dwoch gości w srodku. czekali.
+
+      potem kasia wychodzi z kawiarni. idzie w strone domu. a ci
+      z auta wychodzą i ida za nia. szybko. ona sie odwraca i mówi
+      cos. oni ja biorą za rece. ona sie szarpie. wsadzaja ja do
+      auta. odjezdzaja.
+
+      to bylo szybkie. moze 30 sekund. zadnych swiatel. zadnych
+      syren. po prostu wsadzili ja i odjechali.
+
+      nagrałem na telefon ale slaba jakosc. ciemno. ale widac auto.
+      widac numery rejestracyjne.
+    effects:
+      trust_olek: "+15"
+      night_witnesses: "+1"
+      misconduct_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ewa (heard the commotion) ---
+
+  ewa_interview:
+    type: tweet
+    from: ewa
+    text: >
+      I was in the school until late, preparing exams. I heard
+      something outside that I cannot stop thinking about.
+    effects: { trust_ewa: "+5" }
+    choices:
+      - Ask Ewa what she heard -> ewa_talk
+
+  ewa_talk:
+    type: message
+    text: >
+      EWA: Around quarter past ten I heard a woman's voice on the
+      street. Raised, angry. She said — and I remember this exactly —
+      "You can't do this. I know my rights."
+
+      Then a man's voice, calm and official: "Come with us. Don't
+      make this difficult."
+
+      Then car doors. An engine. Silence.
+
+      I went to the window but the street was empty. I told myself
+      it was nothing. A domestic dispute, perhaps. Now I know it
+      was not nothing.
+
+      The voice was Kasia's. I teach her. I know her voice.
+    effects:
+      trust_ewa: "+10"
+      night_witnesses: "+1"
+      misconduct_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Anna (saw the plates) ---
+
+  anna_interview:
+    type: tweet
+    from: anna
+    text: >
+      I was closing the library. I saw the car. I noted the
+      registration number. It is what librarians do — we record things.
+    effects: { trust_anna: "+5" }
+    choices:
+      - Ask Anna what she recorded -> anna_talk
+
+  anna_talk:
+    type: message
+    text: >
+      ANNA: I was locking the library door at 22:10. A marked police
+      car was parked on the street. I noted the registration because
+      it was unusual — the plate format was from the Katowice district,
+      not Brzeziny. Our local cars have different numbers.
+
+      I saw two officers. Plain clothes but with police identification
+      visible. They were waiting.
+
+      When Kasia came out of the cafe, they approached her. She
+      resisted. They put her in the car. It drove toward the police
+      station but turned before reaching it — heading out of town
+      on the Katowice road.
+
+      I have the registration number. It does not belong to any
+      vehicle in the Brzeziny police fleet.
+    effects:
+      trust_anna: "+15"
+      night_witnesses: "+1"
+      misconduct_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      Keep collecting testimonies.
+    choices:
+      - Find Maja -> maja_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Olek -> olek_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ewa -> ewa_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Anna -> anna_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Agnieszka (the lawyer) -> agnieszka_early
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Agnieszka early ---
+
+  agnieszka_early:
+    type: message
+    text: >
+      AGNIESZKA: I have represented protest detainees in Brzeziny.
+      Kasia's situation is different. She wasn't arrested — there's
+      no arrest record. She wasn't detained — there's no detention
+      record. She wasn't charged — there's no charge.
+
+      According to every official database I can access, Kasia
+      Kowalska has not had any interaction with the police since
+      a traffic stop three years ago.
+
+      But multiple witnesses saw police put her in a car. That means
+      either those witnesses are lying — which I don't believe — or
+      someone is erasing records.
+    effects:
+      trust_agnieszka: "+10"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Kasia leaves Kawiarnia Pod Lipami
+      22:10 — Police car with Katowice plates parked outside (Anna)
+      22:15 — Kasia texts Maja: "someone is following me"
+      22:17 — "ktos za mna idzie" — last message
+      22:17 — Woman's voice: "You can't do this. I know my rights" (Ewa)
+      22:18 — Two men put Kasia in the car, drive away (Olek)
+      22:18 — Car heads out of town toward Katowice (Anna)
+
+      22:20 — Silence
+
+      Kasia was taken by people with police credentials in an
+      unmarked car from outside the local fleet. No arrest record
+      exists. No charge was filed.
+
+      Two threads to pull:
+      - Police misconduct: Who ordered this? What are they hiding?
+      - The troll network: Who is behind the coordinated harassment?
+    choices:
+      - Investigate the police -> misconduct_hub
+      - Investigate the trolls -> troll_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      MISCONDUCT THREAD: Evidence collected: ${misconduct_evidence}
+      TROLL THREAD: Evidence collected: ${troll_evidence}
+    choices:
+      - Work on the misconduct thread -> misconduct_hub
+      - Work on the troll thread -> troll_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: misconduct_evidence, gte: 5 }
+            - { state: troll_evidence, gte: 3 }
+
+  # =====================================================================
+  # MISCONDUCT THREAD
+  # =====================================================================
+
+  misconduct_hub:
+    type: message
+    text: >
+      THE MISCONDUCT THREAD
+
+      Police officers took Kasia off the street. No record exists.
+      Her videos of police brutality are being deleted from her
+      account. Someone with access is destroying evidence.
+
+      Misconduct evidence: ${misconduct_evidence}
+    choices:
+      - Check the protest footage records -> protest_records
+      - Talk to Bartosz about the evidence -> bartosz_evidence
+      - Talk to Jan (police officer) -> jan_interview
+        when:
+          state: trust_jan
+          gte: 20
+      - Talk to Agnieszka (lawyer) about rights -> agnieszka_rights
+      - Investigate who accessed Kasia's account -> account_investigation
+      - Talk to Dorota (vice-mayor) -> dorota_interview
+      - Talk to Piotr (pharmacist) -> piotr_interview
+      - Talk to Babcia Halina again -> halina_deeper
+        when:
+          state: trust_halina
+          gte: 20
+      - Check the theater prop room -> zofia_prop_room
+        when:
+          state: trust_zofia
+          gte: 20
+      - Talk to Kamil about the night -> kamil_deeper
+      - Talk to Wiktor (priest) -> wiktor_interview
+      - Back to hub -> investigation_hub
+
+  # --- Protest Records ---
+
+  protest_records:
+    type: message
+    text: >
+      Kasia's original protest footage showed three specific incidents:
+
+      1. An officer striking a seated protester with a baton
+      2. An elderly man dragged 15 metres across cobblestones
+      3. An officer removing his badge number before entering the crowd
+
+      All three videos have been deleted from her account. But the
+      videos were shared widely before deletion — cached copies exist
+      on other platforms. And Bartosz's photographs corroborate every
+      frame.
+
+      The three officers identified in the footage have not been
+      disciplined. The internal investigation found "conduct within
+      guidelines."
+    effects:
+      misconduct_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Bartosz Evidence ---
+
+  bartosz_evidence:
+    type: message
+    text: >
+      BARTOSZ: My photographs match Kasia's video frame by frame.
+      Badge numbers. Faces. Timestamps from two different cameras.
+
+      The internal investigation interviewed none of the witnesses.
+      They reviewed only the police body cameras — which conveniently
+      "malfunctioned" during the three key incidents.
+
+      Three body cameras failing simultaneously. What are the odds?
+
+      Kasia was building a complaint to the prosecutor's office.
+      She had the videos, my photos, witness statements from six
+      protesters. She was two days from filing when she disappeared.
+
+      The complaint would have named Komendant Kaczmarek personally.
+      He gave the order to clear the square "by any means necessary."
+      Kasia had the radio recording.
+    effects:
+      trust_bartosz: "+15"
+      misconduct_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Jan (police officer) ---
+
+  jan_interview:
+    type: message
+    text: >
+      JAN: I have been a policeman for fifteen years. I believe in
+      the law. What happened at the protest was not the law.
+
+      The komendant gave the order personally. I was there. I refused
+      to participate in the clearance. I was moved to desk duty the
+      next day.
+
+      The car that took Kasia — I checked the fleet records. That
+      vehicle is not ours. It belongs to the Katowice regional
+      command. Someone from above sent people to collect her.
+
+      This was not local. Someone higher than Kaczmarek is involved.
+      The videos Kasia had would embarrass people at the regional
+      level. The order to use force may have come from Katowice, not
+      from Brzeziny.
+
+      If that's true, the cover-up is bigger than one town.
+    effects:
+      trust_jan: "+20"
+      misconduct_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Agnieszka Rights ---
+
+  agnieszka_rights:
+    type: message
+    text: >
+      AGNIESZKA: Under Polish law, a detention must be recorded. The
+      detained person must be informed of the reason. They have the
+      right to a lawyer. They must be brought before a court within
+      48 hours.
+
+      None of this happened. There is no record. There is no
+      court appearance. This is not a detention — this is a
+      disappearance.
+
+      I have filed a complaint with the prosecutor's office in
+      Katowice. I have filed a complaint with the Ombudsman. I have
+      contacted the Helsinki Foundation for Human Rights.
+
+      If you have the witness testimony and the video evidence, I can
+      build a case that will reach the national level.
+    effects:
+      trust_agnieszka: "+15"
+      misconduct_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Account Investigation ---
+
+  account_investigation:
+    type: message
+    text: >
+      The retraction posted to Kasia's account used vocabulary Kasia
+      never uses. "Inaccuracies" — she says "lies." "Reflect" — she
+      says "fight." The post was written by someone with legal
+      training, not a theater student.
+
+      The post was made from an IP address in Katowice. Not from
+      Kasia's phone. Not from her laptop. From a police administrative
+      network.
+
+      Someone at the regional police headquarters logged into Kasia's
+      social media accounts, posted the retraction, and deleted 23
+      protest videos. This is destruction of evidence and impersonation.
+    effects:
+      misconduct_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Dorota ---
+
+  dorota_interview:
+    type: message
+    text: >
+      DOROTA: The situation with Pani Kowalska is regrettable. However,
+      the city administration has no involvement in police operations.
+      We trust the police to act within the law.
+
+      The protests were disruptive. The police response was
+      proportionate. The videos published by Pani Kowalska were
+      selectively edited to present a misleading narrative.
+
+      I have no further comment. Please direct questions to the
+      police press office.
+    effects: { trust_dorota: "+5" }
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Piotr (pharmacist) ---
+
+  piotr_interview:
+    type: message
+    text: >
+      PIOTR: Kasia came to the pharmacy three days before she
+      disappeared. She was exhausted. Dark circles under her eyes.
+      She asked me if I had anything for anxiety.
+
+      I recommended she see a doctor. She said "I can't. If I go
+      to the doctor, they'll say I'm unstable. And they'll use it
+      against me."
+
+      "They" — she said it like that. Like she knew exactly who
+      "they" were. She bought vitamins and left. She looked over
+      her shoulder three times walking to the door.
+
+      I've been a pharmacist in this town for fifteen years. I know
+      when someone is tired and when someone is hunted. Kasia was
+      hunted.
+    effects:
+      trust_piotr: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Halina (deeper testimony) ---
+
+  halina_deeper:
+    type: message
+    text: >
+      HALINA: You want to know what Kasia was really like? She was
+      like me. Like my generation. We survived because we documented.
+      We remembered. We told the truth even when it was dangerous.
+
+      In 1981 I hid printing presses in my basement. Solidarity
+      leaflets. The secret police came three times. They never found
+      them. Because I was cleverer than them.
+
+      Kasia is cleverer than the komendant. She made copies. She
+      always made copies. If her laptop is gone, there are copies
+      somewhere. She told me "Babcia, the truth always has a backup."
+
+      I think she gave something to her theater friends. The theater
+      is full of hiding places. Zofia would know. Ask Zofia about
+      the prop room. Kasia spent more time there than anyone.
+    effects:
+      trust_halina: "+15"
+      misconduct_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Zofia (the prop room) ---
+
+  zofia_prop_room:
+    type: message
+    text: >
+      ZOFIA: The prop room? Yes. Kasia practically lived there. She
+      said it was the one place in Brzeziny where nobody looked.
+
+      Come with me.
+
+      In the back of the Teatr Maly prop room, behind a rack of
+      old costumes, there is a metal box. Kasia put it there months
+      ago. I saw her but didn't ask.
+
+      Inside the box: a hard drive. A printed timeline of the protest
+      events. Photographs of the three officers. Badge numbers,
+      dates, actions. And a recording — audio from a police scanner
+      — of Komendant Kaczmarek saying: "Clear the square. Whatever
+      it takes. No cameras."
+
+      This is the evidence that would end careers. This is why they
+      took her.
+    effects:
+      trust_zofia: "+20"
+      misconduct_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Wiktor ---
+
+  wiktor_interview:
+    type: message
+    text: >
+      WIKTOR: I cannot reveal the content of confession. But I can
+      tell you that someone in authority in this town is carrying
+      a burden that grows heavier each day.
+
+      The truth has a way of surfacing. Water rises. Light enters
+      through cracks. Kasia understood this. She said the camera
+      was her witness.
+
+      I pray for her safety. I also pray for the conscience of those
+      who know where she is.
+    effects:
+      trust_wiktor: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # =====================================================================
+  # TROLL THREAD
+  # =====================================================================
+
+  troll_hub:
+    type: message
+    text: >
+      THE TROLL THREAD
+
+      Coordinated harassment drove Kasia off social media before she
+      was physically taken. Who runs the troll network? Is it connected
+      to the police?
+
+      Troll evidence: ${troll_evidence}
+    choices:
+      - Investigate the troll accounts -> troll_accounts
+      - Check @rafal's posts -> rafal_investigation
+      - Talk to Olek (identified a troll) -> olek_troll
+      - Talk to Tomasz (journalist) -> tomasz_interview
+      - Talk to Helena (bookshop, Kasia's confidant) -> helena_interview
+        when:
+          state: trust_helena
+          gte: 20
+      - Get Maja's USB drive -> maja_usb
+        when:
+          state: trust_maja
+          gte: 20
+      - Talk to Michal (Kasia's ex) -> michal_interview
+      - Back to hub -> investigation_hub
+
+  # --- Troll Accounts ---
+
+  troll_accounts:
+    type: message
+    text: >
+      Analysis of the troll accounts attacking Kasia reveals a pattern:
+
+      47 accounts created within a two-week window. All use the same
+      set of stock photos for avatars. All share the same four or five
+      talking points: "provocateur," "foreign agent," "manipulated
+      footage," "threatens public order."
+
+      Posting times cluster between 09:00 and 17:00 on weekdays.
+      These are not angry citizens posting in their free time. This
+      is a daytime operation.
+
+      Several accounts were created using email addresses with
+      sequential numbers from the same domain. Professional setup.
+    effects:
+      troll_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to troll thread -> troll_hub
+
+  # --- Rafal ---
+
+  rafal_investigation:
+    type: tweet
+    from: rafal
+    text: >
+      Kowalska got what she deserved. You don't film police and
+      expect no consequences. Maybe she'll learn something during
+      her "break."
+    choices:
+      - Investigate @rafal -> rafal_analysis
+
+  rafal_analysis:
+    type: message
+    text: >
+      @rafal is different from the mass troll accounts. More personal.
+      More informed. Uses details only someone close to the situation
+      would know.
+
+      The account references Kasia's "break" — the exact language of
+      the fake retraction. Before the retraction was posted. This
+      person knew what was coming.
+
+      Posting patterns show activity from the same IP blocks as the
+      police administrative network. Not definitive — but suggestive.
+
+      And one slip: a post mentioning "the komendant agrees" was
+      quickly deleted. But cached copies exist.
+    effects:
+      troll_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to troll thread -> troll_hub
+
+  # --- Olek troll ---
+
+  olek_troll:
+    type: message
+    text: >
+      OLEK: elo. ok wiec ten typo co trollowal kasie — jeden z kont
+      nazywal sie "SlaskiPatriota88". i ja znam tego nicka. to ten
+      sam gość co gra na tym samym serwerze co ja. i w grze chwalil
+      sie ze "pracuje dla miasta." mowil ze "zarabia na boku za
+      posty."
+
+      znaczy ten gość jest oplacany za trollowanie. i mam screeny
+      z czatu w grze gdzie mówi dokladnie to.
+
+      nie wiem jak sie naprawde nazywa ale wiem ze uzywa VPN z
+      katowic. bo sie chwalil ze jest "nie do namierzenia" xD
+      taki ogar co mowi ile zarabia za trolling
+    effects:
+      trust_olek: "+15"
+      troll_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to troll thread -> troll_hub
+
+  # --- Tomasz ---
+
+  tomasz_interview:
+    type: message
+    text: >
+      TOMASZ: I've been tracking the troll network for two months.
+      Kasia and I were collaborating. She had the video evidence of
+      police brutality. I was investigating the organized harassment.
+
+      The trolls are paid. It's a PR operation run through a company
+      called "Slask Media Solutions." Registered to an address that
+      is also a city council rental property. The contract — I have
+      a copy — is for "reputation management and online community
+      engagement." Signed by the vice-mayor's office.
+
+      The city is paying a company to harass its own citizens for
+      documenting police violence. Kasia found the same connection
+      independently. She had the contract. It was on her hard drive.
+    effects:
+      trust_tomasz: "+20"
+      troll_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Helena ---
+
+  helena_interview:
+    type: message
+    text: >
+      HELENA: Kasia came to my shop the day before she vanished. She
+      was nervous but focused. She gave me a sealed envelope. She said
+      "If something happens, give this to Agnieszka Kaminska. Nobody
+      else."
+
+      I have it. It contains a USB drive and a handwritten summary
+      of her evidence. The connection between the troll network, the
+      PR company, the city contract, and the komendant's order to
+      use force at the protest.
+
+      She connected everything. The same people who ordered the
+      violence ordered the cover-up and the harassment campaign. And
+      when the cover-up wasn't enough, they took her.
+    effects:
+      trust_helena: "+20"
+      troll_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Kamil (deeper testimony) ---
+
+  kamil_deeper:
+    type: message
+    text: >
+      KAMIL: I need to tell you something I haven't told the police.
+
+      The night Kasia disappeared, a man came into my cafe around
+      21:00. Plain clothes. He ordered a coffee and sat by the window.
+      He watched Kasia the entire time.
+
+      When she packed up her laptop at 22:00, he stood up immediately.
+      He didn't finish his coffee. He didn't pay — he left a 50 zloty
+      note for a 12 zloty coffee and walked out.
+
+      I followed him to the door. He got into a white Fiat parked
+      on the street. There was another man in the passenger seat.
+      They waited.
+
+      Kasia left. They followed her. On foot first, then in the car.
+
+      I should have said something. I should have called out to her.
+      But I didn't know what was about to happen. I just thought they
+      were surveillance — which in this town, sadly, is normal.
+
+      The man's face — I know faces. He wasn't from Brzeziny. Sharper
+      clothes. Katowice type. Maybe the same kind of man who sends
+      anonymous threats from an office desk.
+    effects:
+      trust_kamil: "+15"
+      misconduct_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to misconduct thread -> misconduct_hub
+
+  # --- Maja (USB drive) ---
+
+  maja_usb:
+    type: message
+    text: >
+      MAJA: ok dobrze. biorę pendrive i ci daję. kasia by tak chciala.
+
+      powiedziala mi "maju, to jest ubezpieczenie. jak mi cos zrobia,
+      to jest dowod ktory ich zniszczy." i dala mi to z takim
+      spojrzeniem... jakby sie zegnala.
+
+      nie otwieram tego. nie chce wiedziec co jest w srodku. chce
+      zeby kasia wrocila i sama mi powiedziala.
+
+      ale jak to moze ja przywrocic — bierz.
+    choices:
+      - I'll use this to bring her home -> maja_usb_give
+      - Keep it safe for now -> maja_usb_hold
+
+  maja_usb_give:
+    type: message
+    text: >
+      Maja gives you the USB drive. She's crying but her jaw is set.
+
+      MAJA: kasia mowila ze prawda zawsze wygrywa. pokaz ze miala racje.
+    effects:
+      misconduct_evidence: "+1"
+      troll_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  maja_usb_hold:
+    type: message
+    text: >
+      MAJA: ok. ale wroc po to. obiecaj mi. kasia mi zaufala. ja
+      zaufalam tobie.
+    effects: { trust_maja: "+10" }
+    choices:
+      - Back to troll thread -> troll_hub
+
+  # --- Michal ---
+
+  michal_interview:
+    type: message
+    text: >
+      MICHAL: Kasia and I split up eight months ago. It was my fault —
+      I couldn't handle how brave she was. I told her to stop filming
+      protests. She told me to grow up.
+
+      She was right.
+
+      I'm in Katowice. The morning after she disappeared, I got a
+      call from a number I didn't recognise. A woman's voice, very
+      quiet: "Tell Marek I'm okay. They're holding me at the regional
+      command. They say I have to sign a statement. I won't sign."
+
+      Then the line went dead. I called back — disconnected.
+
+      She's alive. She's in police custody somewhere in Katowice.
+      Officially she doesn't exist. Unofficially she's being
+      pressured to retract her evidence.
+    effects:
+      trust_michal: "+15"
+      misconduct_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      Kasia was taken by police and is being held illegally. The
+      evidence she gathered threatens powerful people at the local
+      and regional level. How do you expose this?
+    choices:
+      - Present full case to national authorities -> confront_both
+        when:
+          all:
+            - { state: misconduct_evidence, gte: 5 }
+            - { state: troll_evidence, gte: 3 }
+      - Expose the misconduct (police case) -> confront_police
+        when:
+          state: misconduct_evidence
+          gte: 5
+      - Expose the trolls (harassment case) -> confront_trolls
+        when:
+          state: troll_evidence
+          gte: 3
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Full Case (Best Ending) ---
+
+  confront_both:
+    type: message
+    text: >
+      You compile everything: Helena's envelope, Maja's USB drive,
+      Olek's phone recording, Anna's registration number, Bartosz's
+      photographs, Tomasz's investigation into the troll company,
+      Jan's testimony about the komendant's order, Michal's phone call
+      confirming Kasia is alive in Katowice, and the IP evidence
+      linking the retraction to the police network.
+
+      You send it to Agnieszka, to the national prosecutor, to the
+      Ombudsman, to the Helsinki Foundation, and to national media.
+
+      Simultaneously.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE TRUTH DOES NOT BLINK
+
+      The national prosecutor opens an investigation. The Ombudsman
+      issues an emergency intervention. National media arrives in
+      Brzeziny within hours.
+
+      Kasia is located at a regional police facility in Katowice.
+      She has been held for nine days without charge, without access
+      to a lawyer, without a court appearance. This is illegal under
+      Polish law and the European Convention on Human Rights.
+
+      She is released. Komendant Kaczmarek is suspended. The regional
+      commander who ordered the operation is placed under investigation.
+      Dorota Lewandowska resigns. The troll company contract is
+      published on the front page of every newspaper in Poland.
+
+      The protest videos are restored from Kasia's backup drives. All
+      three officers face criminal charges.
+
+      Kasia walks out of the police building in Katowice and calls
+      her father.
+
+      "Tata, I'm free. I didn't sign anything."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: kasia
+    text: >
+      the camera does not blink. neither do i. all footage restored.
+      the truth is back online. #JestesmyZKasia
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Police Only (Partial Ending) ---
+
+  confront_police:
+    type: message
+    text: >
+      You present the misconduct evidence — the illegal detention,
+      the missing records, the car from Katowice — to national
+      authorities.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE BADGE
+
+      Kasia is found and released. Kaczmarek is suspended. The
+      illegal detention makes national news.
+
+      But without exposing the troll network, the harassment
+      infrastructure remains intact. The PR company continues
+      operating under a different name. Other activists in other
+      towns face the same coordinated attacks.
+
+      Kasia returns to Brzeziny. She starts filming again. The
+      trolls start again too. Different accounts, same words.
+
+      She is free. But the machine that targeted her is still
+      running.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: kasia
+    text: "i'm back. they didn't break me. but they're still out there."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Trolls Only (Wrong Ending) ---
+
+  confront_trolls:
+    type: message
+    text: >
+      You expose the troll network — the PR company, the city
+      contract, the paid harassment. It makes the news.
+    choices:
+      - Wait for the result -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE NETWORK
+
+      The troll company is shut down. The contract is a scandal.
+      Dorota faces questions.
+
+      But without proving the illegal detention, the police deny
+      everything. Kaczmarek says Kasia left voluntarily. The car
+      from Katowice was "routine." There is no record, therefore
+      nothing happened.
+
+      Kasia is eventually released quietly, three weeks later,
+      after signing a statement she doesn't believe. She returns
+      to Brzeziny changed. Quieter. She still goes to theater
+      practice. But she doesn't bring her camera anymore.
+
+      The trolls are gone. But so is Kasia's voice.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Misconduct evidence: ${misconduct_evidence}
+      Troll evidence: ${troll_evidence}
+
+      Thank you for playing. Kasia's story explores themes of press
+      freedom, police accountability, organized harassment, and the
+      courage of bearing witness.
+
+      If you or someone you know is experiencing threats or unlawful
+      detention, help is available:
+      Helsinska Fundacja Praw Czlowieka: +48 22 556 44 40
+      Rzecznik Praw Obywatelskich (Ombudsman): 800 676 676
+      Niebieska Linia (violence helpline): 800 120 002
+      Emergency: 112

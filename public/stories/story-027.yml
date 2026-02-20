@@ -1,0 +1,1582 @@
+# DEAD ACCOUNT — Story 027: Pano Lefkara (Cyprus)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-027.yml
+#
+# Player investigates the disappearance of lace embroiderer Elena Georgiou
+# in the fictional Troodos mountain village of Pano Lefkara.
+
+meta:
+  title: "Dead Account — Pano Lefkara"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marina: 0
+    trust_nikos: 0
+    trust_stavros: 0
+    trust_androulla: 0
+    trust_loukia: 0
+    trust_petros: 0
+    trust_despina: 0
+    trust_michalis: 0
+    trust_christos: 0
+    trust_panayiota: 0
+    trust_kyriakos: 0
+    trust_eleni: 0
+    trust_giorgos: 0
+    trust_anna: 0
+    trust_theodoros: 0
+    trust_andreas: 0
+    trust_marilena: 0
+    trust_constantinos: 0
+    trust_alexia: 0
+    trust_astynomia: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    collector_evidence: 0
+    resort_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "μόλις ήρθα Πάνω Λεύκαρα. ανακαλύπτω τα Τρόοδος σιγά σιγά"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "PanoLefkara.social"
+    description: "Καλωσορίσατε στο κοινοτικό instance του Πάνω Λεύκαρα"
+    avatar_url: /gamepatch/assets/dead-account/panolefkara_bot.png
+
+  npcs:
+    # === Elena's Inner Circle ===
+    elena:
+      name: "Ελένη Γεωργίου"
+      bio: "λευκαρίτισσα | δαντέλα λευκαρίτικη | οι βελονιές λένε ιστορίες που τα λόγια εν μπορούν"
+      avatar: avatars/elena.jpg
+    marina:
+      name: "Μαρίνα Κυπριανού"
+      bio: "κολλητή της Ελένης | δασκάλα στο δημοτικό | καφές τζιαι κουτσομπολιό στην πλατεία"
+      avatar: avatars/marina.jpg
+    nikos:
+      name: "Νίκος Γεωργίου"
+      bio: "αδερφός της Ελένης | μηχανικός Λεμεσός | η αδερφή μου εν χάνεται έτσι"
+      avatar: avatars/nikos.jpg
+    androulla:
+      name: "Αντρούλλα Παφίτη"
+      bio: "δασκάλα δαντέλας | 40 χρόνια λευκαρίτικη | το εργαστήρι είναι η ζωή μου"
+      avatar: avatars/androulla.jpg
+
+    # === Local Government ===
+    stavros:
+      name: "Σταύρος Χατζηπέτρου"
+      bio: "Κοινοτάρχης Πάνω Λεύκαρα | Στην υπηρεσία της κοινότητας | #ΛεύκαραΜπροστά"
+      avatar: avatars/stavros.jpg
+    christos:
+      name: "Χρίστος Ιωάννου"
+      bio: "σύμβουλος τουριστικής ανάπτυξης | Κοινότητα Πάνω Λεύκαρα | βιώσιμη ανάπτυξη"
+      avatar: avatars/christos.jpg
+    koinotita:
+      name: "Κοινότητα Πάνω Λεύκαρα"
+      bio: "Επίσημος λογαριασμός | Ανακοινώσεις | Ώρες: Δευ-Παρ 8π-15μμ"
+      avatar: avatars/koinotita.jpg
+
+    # === Local Business & Community ===
+    loukia:
+      name: "Λουκία Νικολάου"
+      bio: "καφενείο Λουκίας | ζιβανία | σουτζιούκκο | γλυκό τρανταφύλλο | ανοιχτά που το '92"
+      avatar: avatars/loukia.jpg
+    kafeneio:
+      name: "Καφενείο η Λουκία"
+      bio: "Παραδοσιακό καφενείο | Κυπριακός καφές | Μεζέδες | Η καρδιά του χωρκού"
+      avatar: avatars/kafeneio.jpg
+    petros:
+      name: "Πέτρος Αντωνίου"
+      bio: "ασημουργός | 30 χρόνια στο σφυρί | λευκαρίτικο ασήμι | χειροποίητα"
+      avatar: avatars/petros.jpg
+    despina:
+      name: "Δέσποινα Λοΐζου"
+      bio: "φαρμακοποιός | Πάνω Λεύκαρα | υγεία & συμβουλές | ανοιχτά τζιαι Σάββατο"
+      avatar: avatars/despina.jpg
+    michalis:
+      name: "Μιχάλης Κωνσταντίνου"
+      bio: "κτηνοτρόφος | κατσίκκια τζιαι χαλλούμια | τα βουνά εν η ζωή μου"
+      avatar: avatars/michalis.jpg
+    panayiota:
+      name: "Παναγιώτα Σοφοκλέους"
+      bio: "παντοπωλείο Παναγιώτας | τοπικά προϊόντα | λουκούμια τζιαι παστέλλια"
+      avatar: avatars/panayiota.jpg
+    kyriakos:
+      name: "Κυριάκος Χριστοδούλου"
+      bio: "ξεναγός | μονοπάτια Τροόδους | ιστορία τζιαι φύση | tours στα αγγλικά τζιαι ελληνικά"
+      avatar: avatars/kyriakos.jpg
+
+    # === Journalist ===
+    anna:
+      name: "Άννα Μαυρονικόλα"
+      bio: "δημοσιογράφος | πολιτισμός & κληρονομιά | tips: anna@mavronikola-press.com.cy"
+      avatar: avatars/anna.jpg
+
+    # === Coastal Resort (corporate) ===
+    trident_dev:
+      name: "Trident Coastal Development Ltd"
+      bio: "Premium resort & leisure development | Cyprus | Sustainable tourism solutions"
+      avatar: avatars/trident.jpg
+    theodoros:
+      name: "Θεόδωρος Φωτίου"
+      bio: "διευθυντής ανάπτυξης | Trident Coastal | τουρισμός & υποδομές | Λεμεσός"
+      avatar: avatars/theodoros.jpg
+    andreas:
+      name: "Ανδρέας Παπαδόπουλος"
+      bio: "Δικηγόρος | Γραφείο Παπαδόπουλου & Συνεργατών | Ακίνητα & Αναπτύξεις | Λεμεσός"
+      avatar: avatars/andreas.jpg
+
+    # === Teens ===
+    alexia:
+      name: "Αλεξία"
+      bio: "16 | φωτογραφία & σχέδιο | η Ελένη μου μαθαίνει δαντέλα | Λεύκαρα born"
+      avatar: avatars/alexia.jpg
+    giorgos:
+      name: "Γιώργος"
+      bio: "17 | ποδήλατο βουνού | Τρόοδος trails | εν τωρά σοβαρά τούτο το χωρκό"
+      avatar: avatars/giorgos.jpg
+    eleni:
+      name: "Ελένη Κ."
+      bio: "15 | ζωγραφική | η δαντέλα σε watercolour | η Ελένη Γ. είναι inspi μου"
+      avatar: avatars/eleni.jpg
+
+    # === Media & Community ===
+    lefkara_news:
+      name: "Νέα Λεύκαρα"
+      bio: "Ειδήσεις Πάνω Λεύκαρα & Τροόδους | Tips: info@nealefkara.com.cy"
+      avatar: avatars/lefkara_news.jpg
+    paradosi_assoc:
+      name: "Σύλλογος Διατήρησης Παράδοσης Λεύκαρα"
+      bio: "Προστασία λευκαρίτικης δαντέλας UNESCO | Εθελοντές | Εκδηλώσεις"
+      avatar: avatars/paradosi.jpg
+
+    # === Suspicious / Other ===
+    marilena:
+      name: "Μαριλένα Στεφάνου"
+      bio: "collector | handmade textiles | Mediterranean crafts | seeking rare pieces"
+      avatar: avatars/marilena.jpg
+    constantinos:
+      name: "Κωνσταντίνος"
+      bio: "."
+      avatar: avatars/anon.jpg
+    astynomia:
+      name: "Αστυνομία Λεύκαρα"
+      bio: "Αστυνομικός Σταθμός Πάνω Λεύκαρα | Επείγοντα: 199 | 112"
+      avatar: avatars/astynomia.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PANO LEFKARA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to PanoLefkara.social — the community Mastodon instance for
+      the mountain village of Pano Lefkara, in the Troodos foothills of
+      Cyprus.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @elena_georgiou.
+
+      A lace embroiderer. Lefkaritika artisan. She documented the craft,
+      taught workshops, fought to preserve the village's heritage. People
+      are worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> elena_profile
+
+  elena_profile:
+    type: tweet
+    from: elena
+    text: "Η δαντέλα του Πάνω Λεύκαρα εν πωλείται σε developers. Εν κληρονομιά, εν ακίνητο. Έσιω αποδείξεις τι σχεδιάζουν."
+    choices:
+      - That's her last real post... -> grey_lace
+
+  grey_lace:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a piece of lace, photographed badly. Overexposed, blurred, posted
+      at 4am. No caption. No hashtags.
+
+      Her friends say that is not her style. Elena photographs every stitch
+      with studio precision. The police say she probably went to Limassol
+      to visit family. Something does not add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: astynomia
+    text: >
+      Λάβαμε αναφορά για κάτοικο του Πάνω Λεύκαρα. Σε τούτο το στάδιο,
+      εν υπάρχουν στοιχεία αξιόποινης πράξης. Οποιαδήποτε χρήσιμη
+      πληροφορία μπορεί να κοινοποιηθεί στο 199 ή στον σταθμό.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @marina_kyprianou is
+      desperate. Her brother @nikos_georgiou is driving up from Limassol.
+      Her lace teacher @androulla_pafiti is posting worried messages.
+      The silversmith @petros_antoniou says she was right about the
+      developers.
+
+      And the journalist @anna_mavronikola is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Elena just "went to
+      Limassol."
+    effects: { trust_marina: "+5", trust_nikos: "+5" }
+    choices:
+      - Start following Elena's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Pano Lefkara. Follow Elena's contacts and read their
+      posts. The more you engage with the community, the more they will
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Loukia (kafeneio owner, knows everyone) -> loukia_intro
+      - Talk to Petros (silversmith, knew about the developers) -> petros_intro
+      - Talk to Alexia (teen, Elena's student) -> alexia_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Elena with the rhythms of a mountain
+      village: olive harvest schedules, the bakery's halloumi pies,
+      weather warnings for the Troodos roads.
+
+      Key names surface: Marina (best friend, teacher), Androulla (lace
+      master, shattered), Anna (journalist, oddly quiet), and the teens
+      — Alexia, Giorgos, Eleni K. — who idolised Elena's craft revival.
+
+      Also prominent: Trident Coastal Development Ltd, the company
+      proposing a luxury resort on the old terraces below the village.
+      Their posts are slick PR. Elena's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Loukia -> loukia_intro
+      - Talk to Petros -> petros_intro
+      - Talk to Alexia -> alexia_intro
+
+  # --- Loukia (social map) ---
+
+  loukia_intro:
+    type: tweet
+    from: loukia
+    text: >
+      Το καφενείο ανοιχτό αλλά η καρδιά μου κλειστή. @elena_georgiou,
+      το τραπέζι σου σε περιμένει κούκλα μου. Γύρνα πίσω.
+    effects: { trust_loukia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Loukia -> loukia_talk
+
+  loukia_talk:
+    type: message
+    text: >
+      LOUKIA: Ah, you are new? Welcome. Bad time to come, my love.
+      Everyone is sick with worry about Elena.
+
+      Let me tell you who is who. Marina is Elena's best friend — they
+      grew up together, thick as thieves. Androulla Pafiti is the old
+      lace master, taught Elena everything since she was eight. Nikos
+      is her older brother, coming up from Limassol.
+
+      And Anna Mavronikola — the journalist — she and Elena were
+      working on something together. Something about the village land.
+      Anna has not said a word since Elena vanished. That is not like
+      her at all.
+
+      Oh, and do not believe a word from Trident Coastal Development.
+      Lies dressed up as "sustainable tourism."
+    effects: { trust_loukia: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the foreign woman -> loukia_marilena
+      - Ask about Trident -> loukia_trident
+      - Thank her and move on -> quest1_hub
+
+  loukia_marilena:
+    type: message
+    text: >
+      LOUKIA: There is a woman who has been visiting the village for
+      months. Foreign. Says she is a collector. Marilena something.
+      She sits in the kafeneio and watches Elena work. She buys
+      pieces — lots of pieces — but it is not normal collecting.
+
+      She photographs everything. She asks about techniques, about
+      patterns nobody teaches outsiders. Elena said she felt watched.
+      She said, "This woman does not want lace. She wants me."
+
+      Elena told her to stop coming to the workshop. The woman kept
+      coming anyway. Kept sitting at that table, right there, staring
+      at the workshop across the street.
+    effects: { trust_loukia: "+5" }
+    choices:
+      - Ask about Trident -> loukia_trident
+      - Move on -> quest1_hub
+
+  loukia_trident:
+    type: message
+    text: >
+      LOUKIA: Trident Coastal Development. They want to build a resort
+      on the old terraces below the village — the ones with the
+      traditional stone walls, the lace-drying grounds, the old
+      mulberry trees. They say it will bring tourists. We already
+      have tourists. We do not need a concrete hotel with a swimming
+      pool where the terraces used to be.
+
+      Elena was the loudest voice against it. She had documents —
+      something about the land titles, about bribes. Two weeks later
+      she is gone.
+    effects: { trust_loukia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Petros (silversmith, witness tease) ---
+
+  petros_intro:
+    type: tweet
+    from: petros
+    text: >
+      30 χρόνια δουλεύκω ασήμι δίπλα σε δαντελούες. @elena_georgiou
+      είχε δίκαιο για τα σχέδια τους. Τζιαι τωρά εξαφανίστηκεν.
+      Κάμετε τη σύνδεση.
+    effects: { trust_petros: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Petros -> petros_talk
+
+  petros_talk:
+    type: message
+    text: >
+      PETROS: I have been a silversmith in this village my whole life.
+      My workshop is next to Elena's. I see everything that happens on
+      this street.
+
+      Elena was fighting the Trident people. She had proof that the
+      land deal was dirty — forged signatures on heritage consent forms,
+      bribes to officials. She was building a case with Anna the
+      journalist.
+
+      And then there is that woman. The collector. She came to my shop
+      too, asked about silver techniques. But she always ended up across
+      the street, watching Elena. Every single time.
+
+      You think both things happening at once is a coincidence? I do not
+      believe in coincidences in small villages.
+    effects: { trust_petros: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> petros_night
+      - Move on -> quest1_hub
+
+  petros_night:
+    type: message
+    text: >
+      PETROS: The night before Elena vanished — I was finishing a late
+      commission, working until midnight. I heard voices from Elena's
+      workshop. Not shouting exactly, but intense. I looked out and
+      saw a car parked outside. Black SUV, Limassol plates. Not a
+      village car.
+
+      Two men went into the workshop. They were inside maybe twenty
+      minutes. Then they left. Fast.
+
+      I did not think much of it then. Now I think about it every day.
+    effects: { trust_petros: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Alexia (teen student, witness tease) ---
+
+  alexia_intro:
+    type: tweet
+    from: alexia
+    text: >
+      ρε κουμπάρε εν τωρά σοβαρά?? η @elena_georgiou εν αυτή που
+      μου μαθαίνει δαντέλα τζιαι τωρά εξαφανίστηκεν?? αν ξέρει
+      κανένας τίποτε πέτε μας ρε
+    effects: { trust_alexia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Alexia -> alexia_talk_early
+
+  alexia_talk_early:
+    type: message
+    text: >
+      ALEXIA: εν τωρά σοβαρά, είσαι νέος εδώ? τι timing ρε. η Ελένη
+      εν η καλύτερη σε τούτο το χωρκό. μας μαθαίνει δαντέλα, μας
+      δείχνει τα παλιά σχέδια, σιόρ τι γυναίκα.
+
+      τζιαι τωρά φοούμαι γιατί ο Γιώργος είδε κάτι περίεργο τζείνο
+      το βράδυ αλλά εν θέλει να μιλήσει. λαλεί ότι εν τίποτε αλλά
+      γαμώ τα εν τίποτε σιόρ
+    effects: { trust_alexia: "+10" }
+    choices:
+      - What did Giorgos see? -> alexia_giorgos_hint
+      - Move on -> quest1_hub
+
+  alexia_giorgos_hint:
+    type: message
+    text: >
+      ALEXIA: εν ξέρω ακριβώς. ήταν με το ποδήλατο πάνω στον δρόμο
+      τζιαι είδε κάποια να βάλλει πράματα μέσα στο εργαστήρι της
+      Ελένης?? ή κάτι τέτοιο. φοάται πολλά εν θέλει να μιλήσει.
+      δοκίμασε πρώτα να του μιλήσεις για ποδήλατα χαχα αλλιώς εν
+      σε εμπιστεύκεται
+    effects: { trust_alexia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You are getting a picture of Pano Lefkara. A Troodos mountain
+      village built around lace and silver. An embroiderer who was
+      fighting to protect the village's heritage. A disappearance
+      nobody believes is voluntary.
+
+      You have made contacts. Now dig deeper.
+    choices:
+      - Talk to Marina (Elena's best friend) -> marina_q1
+      - Talk to Androulla (Elena's lace teacher) -> androulla_q1
+      - Check what Nikos (Elena's brother) is saying -> nikos_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marina Q1 ---
+
+  marina_q1:
+    type: tweet
+    from: marina
+    text: >
+      αν κανένας έσιει νέα για @elena_georgiou τηλεφωνήστε μου. το
+      σπίτι της εν ακριβώς όπως το άφηκεν. η δαντέλα της εν πάνω
+      στο τελάρο. ποτέ εν θα φύει χωρίς τα εργαλεία της.
+    effects: { trust_marina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marina -> marina_q1_talk
+
+  marina_q1_talk:
+    type: message
+    text: >
+      MARINA: I appreciate you reaching out but I do not know you.
+      Elena has many friends here. I am sure she will come back.
+
+      ...I keep saying that. I do not believe it anymore.
+
+      [Marina is guarded. You will need to build more trust before she
+      opens up.]
+    effects: { trust_marina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Androulla Q1 ---
+
+  androulla_q1:
+    type: tweet
+    from: androulla
+    text: >
+      Η @elena_georgiou ήταν η καλύτερη μαθήτριά μου σε 40 χρόνια.
+      Το εργαστήρι εν άδειο χωρίς αυτήν. Η δαντέλα εν τελειωμένη
+      πάνω στο τελάρο. Ποτέ εν θα άφηνε δουλειά μισοτελειωμένη.
+    effects: { trust_androulla: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Androulla -> androulla_q1_talk
+
+  androulla_q1_talk:
+    type: message
+    text: >
+      ANDROULLA: Elena and I have worked side by side for twenty years.
+      She learned every stitch from me. This craft — lefkaritika — she
+      treated it like a sacred thing. She would never abandon a piece
+      halfway through.
+
+      She was also fighting those developers. And that foreign woman
+      would not leave her alone. Elena said she felt like a specimen
+      being studied.
+
+      [Androulla seems heartbroken. There is more here when she trusts
+      you.]
+    effects: { trust_androulla: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nikos Q1 ---
+
+  nikos_q1:
+    type: tweet
+    from: nikos
+    text: >
+      η αδερφή μου ΕΞΑΦΑΝΙΣΤΗΚΕΝ τζιαι η αστυνομία μου λαλεί πιθανόν
+      πήε Λεμεσό?? ΕΝ ΠΑΕ ΛΕΜΕΣΟ ΧΩΡΙΣ ΝΑ ΠΕΙ. φτάννω Λεύκαρα.
+      κάποιος θα μου εξηγήσει.
+    effects: { trust_nikos: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nikos -> nikos_q1_talk
+
+  nikos_q1_talk:
+    type: message
+    text: >
+      NIKOS: Who are you? Another person from that village who is going
+      to tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "if anything
+      happens, look at Trident Coastal." Then she hung up.
+
+      That is the last I heard from her.
+    effects: { trust_nikos: "+10" }
+    choices:
+      - What do you think happened? -> nikos_theory
+      - Move on -> quest1_hub
+
+  nikos_theory:
+    type: message
+    text: >
+      NIKOS: I think she found proof that the Trident land deal is
+      corrupt and they shut her up. But I also think that creepy
+      collector woman — Marilena — knows more than she is saying.
+      The way she talks about Elena... it is not just admiration for
+      lace. It is something else.
+
+      Elena told me months ago that someone was following her in the
+      village. She thought it was nothing. I do not think it was
+      nothing.
+    effects: { trust_nikos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Elena went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Giorgos (was cycling on the mountain road at dusk) -> giorgos_interview
+      - Find Michalis (goatherd, out early in the hills) -> michalis_interview
+      - Find Panayiota (shop owner, saw a car) -> panayiota_interview
+      - Find Kyriakos (guide, was on the trail at dawn) -> kyriakos_interview
+
+  # --- Giorgos (saw someone at Elena's workshop) ---
+
+  giorgos_interview:
+    type: tweet
+    from: giorgos
+    text: >
+      καλό ride σήμερα αλλά η ατμόσφαιρα στο χωρκό εν ζόρικη ρε
+      κουμπάρε. κάτι εν πάει καλά. εν ξέρω πώς να το εξηγήσω
+    effects: { trust_giorgos: "+5" }
+    choices:
+      - Ask Giorgos about that evening -> giorgos_talk
+
+  giorgos_talk:
+    type: message
+    text: >
+      GIORGOS: ρε σιόρ οκ αλλά εν το λες σε κανέναν ε. ήμουν στον
+      δρόμο με το ποδήλατο γύρω στις 7 βράδυ. τζιαι είδα τη γυναίκα
+      — τη Μαριλένα τη collector — έξω που το εργαστήρι της Ελένης.
+      είσιεν κλειδί σιόρ. ΚΛΕΙΔΙ. μπήκε μέσα τζιαι βκήκε μετά 10
+      λεπτά με ένα σακκούλι.
+
+      γαμώ τα εν ήξερα τι να κάμω. όταν με είδεν έφυεν τρεχάτη.
+
+      ποιος collector έσιει κλειδί στο εργαστήρι ρε κουμπάρε??
+    effects:
+      trust_giorgos: "+10"
+      night_witnesses: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Michalis (goatherd, saw figure fleeing at dawn) ---
+
+  michalis_interview:
+    type: tweet
+    from: michalis
+    text: >
+      σηκώνουμαι 4 τα ξημερώματα για τα κατσίκκια. σήμερα η στάνη
+      εν ήταν η μόνη ζωντανή τούτη τη ώρα. κάποιος έτρεχε στο
+      μονοπάτι.
+    effects: { trust_michalis: "+5" }
+    choices:
+      - Ask Michalis what he saw -> michalis_talk
+
+  michalis_talk:
+    type: message
+    text: >
+      MICHALIS: I get up at 4am for the goats every day. That morning
+      — the morning after Elena's last post — I saw someone on the
+      mountain path above the village. Running. A woman, carrying a
+      bag, heading toward the old monastery. It was still dark. She
+      was moving fast, like she was afraid.
+
+      I called out but she did not stop. I thought maybe a hiker who
+      started too early but... who hikes in the dark carrying an
+      embroidery case?
+
+      When I heard about Elena, I put it together. I think that was
+      her. Running from something.
+    effects:
+      trust_michalis: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Panayiota (saw the SUV) ---
+
+  panayiota_interview:
+    type: tweet
+    from: panayiota
+    text: >
+      Ανοίγω κάθε μέρα στις 6 το πρωί. Τζείνο το πρωί ένα αυτοκίνητο
+      πέρασε πολλά γρήγορα στον στενό δρόμο. Εν κανονικό τούτο.
+    effects: { trust_panayiota: "+5" }
+    choices:
+      - Ask Panayiota what she saw -> panayiota_talk
+
+  panayiota_talk:
+    type: message
+    text: >
+      PANAYIOTA: I open the shop at 6am every day. That morning I was
+      putting out the baskets and a car came through — fast, too fast
+      for our narrow village streets. Black SUV, tinted windows,
+      Limassol plates. Then maybe five minutes later, another smaller
+      car. Following? I do not know.
+
+      The SUV went down toward the Lefkara-Kato road. The smaller car
+      turned toward the old monastery path.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_panayiota: "+10"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Kyriakos (guide, found evidence on the trail) ---
+
+  kyriakos_interview:
+    type: tweet
+    from: kyriakos
+    text: >
+      ξημέρωμα στο μονοπάτι. βρήκα κάτι πεταμένο στα θαμνιά κοντά
+      στο παλιό μοναστήρι. εν πρέπει να ήταν εκεί.
+    effects: { trust_kyriakos: "+5" }
+    choices:
+      - Ask Kyriakos what he found -> kyriakos_talk
+
+  kyriakos_talk:
+    type: message
+    text: >
+      KYRIAKOS: I do trail inspections at dawn, before the tour groups.
+      That morning I found something on the path near the old monastery
+      — a lace frame, broken. Elena's initials were scratched on the
+      back. She marks all her frames.
+
+      Next to it, tyre tracks. Someone drove a vehicle up the
+      monastery path, which is supposed to be pedestrian only. The
+      tracks were fresh — overnight.
+
+      I also found a business card, half-trampled in the mud.
+      "Trident Coastal Development Ltd." With a Limassol phone number.
+
+      I kept everything. Nobody asked for it.
+    effects:
+      trust_kyriakos: "+10"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marina (best
+      friend) and Eleni K. (saw Marilena watching the workshop).
+    choices:
+      - Talk to Marina about that night -> marina_interview
+      - Talk to Eleni K. -> eleni_interview
+      - Find Giorgos -> giorgos_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Michalis -> michalis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Panayiota -> panayiota_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Kyriakos -> kyriakos_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marina (last to see Elena) ---
+
+  marina_interview:
+    type: tweet
+    from: marina
+    text: >
+      τούτη η φωτογραφία στον λογαριασμό της Ελένης. εν δικιά της.
+      η Ελένη ποτέ εν ποστάρει χωρίς λεζάντα. η Ελένη εν ποστάρει
+      στις 4 τα ξημερώματα. κάποιος άλλος εκαμε τούτο.
+    effects: { trust_marina: "+5" }
+    choices:
+      - DM Marina -> marina_talk_low
+        when:
+          state: trust_marina
+          lt: 50
+      - DM Marina -> marina_talk_high
+        when:
+          state: trust_marina
+          gte: 50
+
+  marina_talk_low:
+    type: message
+    text: >
+      MARINA: I appreciate the concern but I really do not want to
+      talk to strangers about this right now.
+
+      [Marina needs to trust you more. Show her you are investigating
+      seriously, not just gossiping.]
+    effects: { trust_marina: "+5" }
+    choices:
+      - Share what you've learned about the night -> marina_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marina_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the workshop, the
+      men from Trident, the running figure, the broken lace frame.
+      Marina is silent for a while.
+
+      MARINA: You are actually trying to find her. Okay. I will talk.
+    effects: { trust_marina: "+25" }
+    choices:
+      - What happened that night? -> marina_talk_high
+
+  marina_talk_high:
+    type: message
+    text: >
+      MARINA: She came to my house around 11pm. I was marking homework.
+      She was pale, shaking. She said "they know what I have." She
+      grabbed a bag she had left at mine — her laptop, her USB drives,
+      copies of documents.
+
+      I asked who. She said "the Trident people. They sent men to the
+      workshop." Then she said something else — "and she was there
+      again. She is always there."
+
+      She would not say who "she" was. She hugged me, said "do not
+      worry," and left into the dark. That was it. By morning the
+      blurred lace photo was on her account.
+    effects:
+      trust_marina: "+15"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Eleni K. (saw Marilena watching the workshop) ---
+
+  eleni_interview:
+    type: message
+    text: >
+      ELENI K.: εν τωρά σοβαρά ρε κουμπάρε τούτο που θα σου πω αλλά
+      η ξένη γυναίκα — η Μαριλένα — την είδα κυριολεκτικά 4 φορές να
+      κάθεται στον πάγκο απέναντι που το εργαστήρι τζιαι να κοιτάζει
+      μέσα. σαν γύπας σιόρ.
+
+      τελευταία φορά ήταν 2 μέρες πριν εξαφανιστεί η Ελένη. ήταν
+      καθιστή στο σκοτάδι. τα φώτα σβηστά. απλά κάθουνταν τζιαι
+      εκοίταζεν τα παράθυρα.
+    effects:
+      trust_eleni: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Marilena seen entering Elena's workshop with a key (Giorgos)
+      22:30 — Black SUV with Limassol plates at the workshop, two men inside (Petros)
+      23:00 — Elena arrives at Marina's house, shaken, grabs laptop and documents (Marina)
+      04:00 — Woman running on mountain path toward old monastery (Michalis)
+      06:00 — SUV speeding through village, smaller car toward monastery (Panayiota)
+      06:30 — Broken lace frame and Trident business card found on trail (Kyriakos)
+
+      Trident confronted Elena at her workshop. She fled to Marina's,
+      grabbed her evidence, and ran into the mountains. Someone chased her.
+
+      But there are two threats: the developers AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is Trident Coastal hiding? Who ordered the
+        intimidation?
+      — The obsession: What is Marilena really doing? Why did she have
+        a key?
+    choices:
+      - Investigate the Trident cover-up -> corruption_hub
+      - Investigate Marilena -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      RESORT THREAD: Evidence collected: ${resort_evidence}
+      COLLECTOR THREAD: Evidence collected: ${collector_evidence}
+    choices:
+      - Work on the resort thread -> corruption_hub
+      - Work on the collector thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: collector_evidence, gte: 5 }
+            - { state: resort_evidence, gte: 3 }
+
+  # =====================================================================
+  # RESORT CORRUPTION THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE RESORT THREAD
+
+      Trident Coastal Development is hiding something. Elena had proof.
+      Now she is gone and her documents are missing from the workshop.
+
+      Resort evidence: ${resort_evidence}
+    choices:
+      - Search the land registry records -> land_records
+      - Talk to Anna the journalist -> anna_interview
+      - Talk to Christos (tourism advisor) -> christos_interview
+      - Talk to Kyriakos about the monastery path -> kyriakos_monastery
+      - Check the Paradosi association records -> paradosi_investigation
+      - Talk to Petros about Trident's visits -> petros_trident
+      - Back to hub -> investigation_hub
+
+  # --- Land Records ---
+
+  land_records:
+    type: message
+    text: >
+      The village land registry, partially digitised, shows the
+      terraces below Pano Lefkara as "communal heritage land" —
+      protected under a 1997 preservation order. But there is a
+      recent amendment: a reclassification request filed six months
+      ago by "a private development entity."
+
+      The consent form bears signatures from village elders. Androulla
+      Pafiti's name is there — but she says she never signed anything.
+      Petros Antoniou's name is there — he says the same.
+
+      The signatures are forged. Elena had a handwriting expert's
+      report confirming it.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Anna ---
+
+  anna_interview:
+    type: message
+    text: >
+      ANNA: I do not talk about sources. Period.
+    effects: { trust_anna: "+5" }
+    choices:
+      - Show Anna the evidence you have -> anna_with_evidence
+        when:
+          state: resort_evidence
+          gte: 3
+      - Back to resort thread -> corruption_hub
+
+  anna_with_evidence:
+    type: message
+    text: >
+      ANNA: ...you have more than I expected.
+
+      Okay. Elena and I were working together. She had copies of the
+      forged consent forms, the handwriting expert's report, and
+      internal Trident emails showing they knew the land was protected.
+      They planned to reclassify it by faking community consent.
+
+      We were going to publish together. Then she went dark. And two
+      days later, someone broke into my office in Nicosia and took my
+      backup hard drive.
+
+      Elena is alive. She contacted me once, from a borrowed phone.
+      She said she was hiding in a friend's house in Platres. She
+      said "they threatened me at the workshop and someone else will
+      not leave me alone."
+
+      I cannot tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_anna: "+25"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> anna_hint
+      - Back to investigation hub -> investigation_hub
+
+  anna_hint:
+    type: message
+    text: >
+      ANNA: Trident sent their development director — Theodoros
+      Fotiou — and some lawyer to the workshop that night. They told
+      her to hand over everything or face legal consequences.
+      Intimidation dressed up as legal process.
+
+      But she also said something about someone who follows her.
+      Someone who had been entering the workshop. Someone who always
+      seemed to know her schedule. That is a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Christos (tourism advisor, internal whistleblower) ---
+
+  christos_interview:
+    type: message
+    text: >
+      CHRISTOS: I work for the village council on tourism development.
+      I am supposed to support sustainable growth.
+
+      But the Trident proposal is not sustainable. It is destruction
+      dressed up as investment.
+    effects: { trust_christos: "+10" }
+    choices:
+      - What do you mean? -> christos_detail
+
+  christos_detail:
+    type: message
+    text: >
+      CHRISTOS: The plan requires demolishing the old terraces — the
+      ones where lace has been dried for centuries. The mulberry trees
+      that feed the silkworms would be cut down. The stone walls that
+      are part of the UNESCO candidacy file — gone.
+
+      I told the council this would destroy our heritage application.
+      The koinarches — Stavros — told me to "think of the jobs." But
+      the only jobs are construction labour for two years, then hotel
+      cleaning. The village crafts die.
+
+      Elena had internal Trident documents showing the real plan: not
+      a boutique hotel, but a 300-room resort with golf course. They
+      lied to the council. I have copies of the original pitch deck
+      they showed investors.
+    effects:
+      trust_christos: "+15"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to resort thread -> corruption_hub
+
+  # --- Kyriakos monastery path ---
+
+  kyriakos_monastery:
+    type: message
+    text: >
+      KYRIAKOS: I went back to the monastery path. The tyre tracks
+      lead to the old parking area behind the monastery — it is
+      abandoned, used only by hikers. Someone parked there overnight.
+
+      I also found cigarette butts — a specific brand, Karelia Slims.
+      Not common in the village. And a receipt from a Limassol petrol
+      station, dated the night Elena disappeared. The receipt has a
+      partial number plate.
+
+      Cross-referencing: the plate matches a vehicle registered to
+      Trident Coastal Development Ltd.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> corruption_hub
+
+  # --- Paradosi Association ---
+
+  paradosi_investigation:
+    type: tweet
+    from: paradosi_assoc
+    text: >
+      ΑΝΑΚΟΙΝΩΣΗ: Η αίτηση αναδιαβάθμισης γης στις ταράτσες Λευκάρων
+      περιέχει πλαστές υπογραφές. Ζητούμε άμεση έρευνα. Η κληρονομιά
+      μας εν πωλείται.
+    choices:
+      - Check their documentation -> paradosi_data
+
+  paradosi_data:
+    type: message
+    text: >
+      The Paradosi association has been fighting the reclassification
+      for months. Their file contains: the original preservation order,
+      the fraudulent amendment with forged signatures, and statutory
+      declarations from village elders denying they ever signed.
+
+      The association also documented three visits by Trident
+      representatives to the village council, each time with
+      "development incentive packages" — envelopes whose contents
+      were never officially recorded.
+
+      Elena was the association's most active member. She provided most
+      of the photographic evidence of the terraces' heritage value.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> corruption_hub
+
+  # --- Petros on Trident ---
+
+  petros_trident:
+    type: message
+    text: >
+      PETROS: I will show you something. Last month Trident sent a
+      surveyor to the terraces. He was marking boundaries with spray
+      paint — on heritage stone walls. I photographed him. He saw me
+      and said "this land has been reclassified." I said "reclassified
+      by who?" He did not answer.
+
+      That night, someone spray-painted "TRAITOR" on my workshop door.
+      I cleaned it off. Elena photographed it first. She said it was
+      proof they were intimidating opponents.
+
+      I still have the photos of the surveyor. And the spray paint
+      matches the graffiti.
+    effects:
+      trust_petros: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE COLLECTOR THREAD
+
+      Marilena Stefanou. Collector. Admirer. Something more?
+      Someone had a key to Elena's workshop. Someone was watching
+      the building at night. Someone was photographing every
+      technique.
+
+      Collector evidence: ${collector_evidence}
+    choices:
+      - Investigate the workshop break-in -> workshop_breakin
+      - Talk to Marina about Marilena -> marina_marilena
+        when:
+          state: trust_marina
+          gte: 20
+      - Talk to Giorgos (more detail on the key) -> giorgos_detail
+      - Talk to Despina the pharmacist -> despina_interview
+      - Check the anonymous account @constantinos -> constantinos_investigation
+      - Talk to Androulla about the stolen patterns -> androulla_patterns
+        when:
+          state: trust_androulla
+          gte: 40
+      - Talk to Astynomia -> astynomia_interview
+        when:
+          state: trust_astynomia
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Break-in ---
+
+  workshop_breakin:
+    type: message
+    text: >
+      Elena's workshop has electronic access logs — installed last year
+      after a break-in scare. The front door was opened 34 times last
+      month with Elena's code. But the log also shows 11 entries with
+      a secondary code — one Elena says she never shared.
+
+      Cross-referencing: five of those 11 entries happened when Elena
+      was confirmed to be elsewhere. Someone was entering the workshop
+      alone, spending 30-60 minutes inside, then leaving.
+
+      The secondary code was created in the admin panel four months
+      ago. The IP address traces to a rental property in the village.
+      The rental agreement is in the name of Marilena Stefanou.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Marina on Marilena ---
+
+  marina_marilena:
+    type: message
+    text: >
+      MARINA: Marilena? She made Elena deeply uncomfortable. She came
+      to the workshop every single day. She bought pieces — expensive
+      ones — but that was not really the point. She wanted to learn
+      the old patterns. The secret ones that Androulla only teaches
+      family.
+
+      Elena told her no. Clearly, kindly. Marilena said she understood.
+      Then nothing changed. She just... kept coming. Always there.
+      Watching Elena's hands. Photographing the stitches.
+
+      A month ago Elena found that someone had been in the workshop
+      at night. Lace samples had been moved. A pattern book was
+      missing. She suspected Marilena but could not prove it.
+    effects:
+      trust_marina: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Giorgos detail ---
+
+  giorgos_detail:
+    type: message
+    text: >
+      GIORGOS: ρε σιόρ εν τα είπα ούλλα. όταν είδα τη Μαριλένα να
+      βκαίνει που το εργαστήρι, είσιεν κάτι στα χέρια της. σαν
+      βιβλίο — παχκύ, παλιό, δεμένο με δέρμα. ένα που τα παλιά
+      βιβλία σχεδίων τζιαι εκρατούσεν το σαν θησαυρό.
+
+      γαμώ τα μίλα μου. ήταν ένα που τα βιβλία σχεδίων της
+      Αντρούλλας. τα πρωτότυπα σχέδια. τούτα εν αντικαταστατά
+      σιόρ. 100 χρόνια ιστορία.
+
+      τζιαι εφωτογράφιζεν τα πάντα με το τηλέφωνό της πριν φύει.
+    effects:
+      trust_giorgos: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Despina ---
+
+  despina_interview:
+    type: message
+    text: >
+      DESPINA: This is confidential but I am a pharmacist, not a
+      priest. Marilena Stefanou comes in regularly. She buys film
+      for a camera — we are the only place that stocks it — and she
+      buys magnifying equipment. Loupes, illuminated lenses, the kind
+      of things conservators use.
+
+      She also asked me once, very casually, if I knew where she could
+      get a copy of Elena's workshop key made. I said "why would you
+      need that?" She laughed it off.
+
+      I did not think about it again until Elena disappeared.
+    effects:
+      trust_despina: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Constantinos (anonymous account) ---
+
+  constantinos_investigation:
+    type: tweet
+    from: constantinos
+    text: >
+      She should have shared her knowledge. I was trying to preserve
+      it. Nobody else understands the patterns like I do.
+    choices:
+      - Look at this account's history -> constantinos_posts
+
+  constantinos_posts:
+    type: message
+    text: >
+      @constantinos: account created 7 months ago. Posts are all about
+      Elena's lace work. Comments on every workshop photo, every
+      finished piece, every technique demonstration. The tone shifts
+      over time:
+
+      Month 1: "Extraordinary craftsmanship. You are preserving
+      something sacred."
+      Month 3: "Why do you not answer my messages? I only want to
+      learn from you."
+      Month 5: "I watched you teach those teenagers today. You have
+      time for them but not for a serious collector?"
+      Month 6: "I know your workshop schedule. I know when you are
+      alone. I am always close."
+
+      The account has no photos, no personal details. Just Elena.
+      Only Elena.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> constantinos_style
+
+  constantinos_style:
+    type: message
+    text: >
+      Comparing @constantinos with @marilena_stefanou:
+
+      Same use of textile conservation terminology. Same English
+      phrasing — the specific way she describes embroidery patterns
+      using museological language. Same knowledge of Elena's work
+      that only someone with workshop access would have.
+
+      And one post from @constantinos: "Your work on Pattern 47 is
+      breathtaking." Pattern 47 is Androulla's internal numbering
+      system. Not public. Not written down anywhere except the
+      workshop catalogue.
+
+      It is Marilena. The anonymous account is Marilena.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Androulla patterns ---
+
+  androulla_patterns:
+    type: message
+    text: >
+      ANDROULLA: Elena left something with me. A sealed envelope.
+      She said "if someone asks about the patterns that went missing,
+      give them this."
+
+      She looked frightened. She said she had made copies of
+      everything — the Trident documents, the evidence of Marilena's
+      break-ins — but needed one set somewhere safe. An old woman's
+      lace drawer seemed perfect.
+    effects: { trust_androulla: "+10" }
+    choices:
+      - What is in the envelope? -> androulla_envelope
+
+  androulla_envelope:
+    type: message
+    text: >
+      Androulla reaches into her lace cabinet and produces a thick
+      manila envelope, sealed with wax.
+
+      ANDROULLA: She said you would come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show Marilena inside the workshop at night — captured
+      by a hidden camera Elena installed. Photos of Marilena copying
+      patterns, photographing secret techniques, and taking lace
+      samples. The USB drive contains the Trident documents, the
+      forged signatures, and Elena's detailed report.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Astynomia ---
+
+  astynomia_interview:
+    type: message
+    text: >
+      ASTYNOMIA OFFICER: Off the record — and I mean completely off
+      the record — I wanted to investigate Trident. My superior told
+      me to stand down. He said the Limassol district office had
+      "jurisdiction." That is code for "do not touch it."
+
+      The Marilena situation is different. I did not even know about
+      the break-ins until now. If you have evidence of stalking and
+      unlawful entry, I can act on that. That is clearly my
+      jurisdiction.
+
+      Bring me something solid and I will reopen the case.
+    effects:
+      trust_astynomia: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You have gathered evidence. You know more about what happened
+      to Elena than anyone in Pano Lefkara. Who is responsible?
+    choices:
+      - Confront Marilena Stefanou (the obsessive collector) -> confront_marilena
+        when:
+          state: collector_evidence
+          gte: 5
+      - Confront Theodoros Fotiou (the Trident director) -> confront_theodoros
+        when:
+          state: resort_evidence
+          gte: 3
+      - Confront Koinarches Stavros (political protection) -> confront_stavros
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Marilena (Best Ending) ---
+
+  confront_marilena:
+    type: message
+    text: >
+      You present your evidence to Marilena:
+
+      "I know @constantinos is your account. I know you made a copy
+      of Elena's workshop key. I know you entered the workshop at
+      night to photograph and steal patterns. I have the hidden
+      camera footage, the access logs, and witnesses."
+    choices:
+      - Send -> marilena_response
+
+  marilena_response:
+    type: message
+    text: >
+      Marilena does not reply for a long time. Then:
+
+      MARILENA: You do not understand. I was preserving her work.
+      These patterns are too important to be locked in one woman's
+      workshop. They belong to the world. I needed to document them.
+      Everything I did was because I care about the craft.
+
+      That is not preservation. That is obsession.
+
+      You have already sent the evidence to the police. And to
+      Anna Mavronikola.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      The police reopen the case. With your evidence — the anonymous
+      account, the copied workshop key, the access logs, the hidden
+      camera footage, the witness testimonies — Marilena is arrested
+      for stalking, unlawful entry, and theft of cultural property.
+      Androulla's original pattern book is recovered from Marilena's
+      rented house, along with hundreds of photographs of Elena's
+      private techniques.
+
+      Anna Mavronikola, finally in possession of Elena's full evidence
+      package, publishes the Trident story in Phileleftheros. The
+      Antiquities Department orders an immediate halt to the land
+      reclassification. Trident's Limassol offices are raided.
+      Theodoros Fotiou faces criminal charges for forgery and bribery.
+      The terraces are granted permanent heritage protection.
+
+      And Elena Georgiou, reading the story from a friend's house in
+      Platres, calls her brother for the first time in nine days.
+
+      "Γυρίζω σπίτι."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: elena
+    text: >
+      η δαντέλα εν ψέματα λαλεί. τζιαι οι άνθρωποι του Λεύκαρα ούτε.
+      ευχαριστώ που εν τ' αφήκατε.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Theodoros (Partial Ending) ---
+
+  confront_theodoros:
+    type: message
+    text: >
+      You present the development evidence to Theodoros Fotiou:
+
+      "I have copies of the forged consent forms. I have the
+      handwriting expert's report. I have your internal pitch deck
+      showing the real 300-room resort plan. I have the business
+      card found on the monastery path. I have the vehicle
+      registration tracing to Trident."
+    choices:
+      - Send -> theodoros_response
+
+  theodoros_response:
+    type: message
+    text: >
+      THEODOROS: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Trident Coastal Development has always
+      operated within regulatory requirements.
+
+      But it is too late. You have sent the evidence to Anna, to the
+      Paradosi association, and to the Antiquities Department.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The development story breaks. Trident is ordered to halt all
+      activity on the Lefkara terraces pending investigation. The
+      resort plan collapses. The village council is divided — some
+      wanted the investment.
+
+      But Elena?
+
+      Without the stalking evidence, Marilena is never investigated.
+      She continues to visit the village. She continues to photograph
+      and collect. She rents a new house closer to the workshop. She
+      creates a new anonymous account.
+
+      Three months later, Elena reads about Trident online. She
+      returns quietly. She changes her workshop locks. She installs
+      more cameras. She stops working alone at night.
+
+      The development is stopped. But the person who terrorised Elena
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: elena
+    text: "γύρισα. τα βουνά εν πιο ασφαλή. τα υπόλοιπα... θα δούμε."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Koinarches (Wrong Ending) ---
+
+  confront_stavros:
+    type: message
+    text: >
+      You confront Koinarches Stavros with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> stavros_response
+
+  stavros_response:
+    type: tweet
+    from: andreas
+    text: >
+      Ο πελάτης μου λαμβάνει υπόψη τους ισχυρισμούς σας. Οποιαδήποτε
+      δημόσια διάδοση δυσφημιστικού υλικού θα επισύρει άμεσες
+      νομικές ενέργειες. — Γραφείο Παπαδόπουλου & Συνεργατών, Λεμεσός
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The koinarches' lawyer buries your accusation. Without a direct
+      link between Stavros and Trident's forgeries — and there is not
+      one beyond political protection — your evidence is insufficient.
+
+      Trident continues its plans. Marilena continues to watch. Elena
+      stays in hiding.
+
+      Six months later, @constantinos creates a new account. It
+      follows Elena's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PANO LEFKARA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Resort evidence: ${resort_evidence}
+      Collector evidence: ${collector_evidence}
+
+      Thank you for playing. Elena's story explores themes of cultural
+      theft, heritage destruction, obsessive behaviour, community
+      solidarity, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Cyprus Police Emergency: 199 / 112
+      Domestic Violence Helpline: 1440
+      Association for the Prevention and Handling of Violence
+      in the Family: 22 667 228

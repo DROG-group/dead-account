@@ -1,0 +1,1601 @@
+# DEAD ACCOUNT — Story 087: Vila das Furnas (Portugal — Azores)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-087.yml
+#
+# Player investigates the disappearance of young whale watching guide
+# Diogo Medeiros in the fictional Azorean volcanic island village of
+# Vila das Furnas.
+
+meta:
+  title: "Dead Account — Vila das Furnas"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_margarida: 0
+    trust_afonso: 0
+    trust_carolina: 0
+    trust_ricardo: 0
+    trust_ines: 0
+    trust_tiago: 0
+    trust_beatriz: 0
+    trust_joao: 0
+    trust_helena: 0
+    trust_miguel: 0
+    trust_leonor: 0
+    trust_pedro: 0
+    trust_ana: 0
+    trust_manuel: 0
+    trust_catarina: 0
+    trust_filipe: 0
+    trust_teresa: 0
+    trust_nuno: 0
+    trust_sargento: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "acabei de chegar a vila das furnas. discovering the azores one island at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "ViladasFurnas.social"
+    description: "Bem-vindos à instância comunitária de Vila das Furnas, Açores"
+    avatar_url: /gamepatch/assets/dead-account/viladasfurnas_bot.png
+
+  npcs:
+    # === Diogo's Inner Circle ===
+    diogo:
+      name: "Diogo Medeiros"
+      bio: "guia de whale watching | vila das furnas | o oceano não mente"
+      avatar: avatars/diogo.jpg
+    margarida:
+      name: "Margarida Medeiros"
+      bio: "irmã do diogo | enfermeira em ponta delgada | se vocês não o encontram eu encontro"
+      avatar: avatars/margarida.jpg
+    afonso:
+      name: "Afonso Tavares"
+      bio: "biólogo marinho | estação oceanográfica de vila das furnas | colega do diogo"
+      avatar: avatars/afonso.jpg
+    carolina:
+      name: "Carolina Sousa"
+      bio: "namorada do diogo | estudante de biologia em lisboa | morro de saudades"
+      avatar: avatars/carolina.jpg
+
+    # === Local Government ===
+    ricardo:
+      name: "Ricardo Pacheco"
+      bio: "Presidente da Câmara de Vila das Furnas | Turismo e tradição | #FurnasCresce"
+      avatar: avatars/ricardo.jpg
+    ines:
+      name: "Inês Ferreira"
+      bio: "Vereadora do Ambiente | Câmara de Vila das Furnas | proteção do mar"
+      avatar: avatars/ines.jpg
+    camara:
+      name: "Câmara de Vila das Furnas"
+      bio: "Conta oficial | Notícias do município | Horário: Seg-Sex 9h-17h"
+      avatar: avatars/camara.jpg
+
+    # === Local Business & Community ===
+    joao:
+      name: "João Borges"
+      bio: "Tasca do Borges | cozido das furnas | vinho do pico | desde 1961"
+      avatar: avatars/joao.jpg
+    tasca:
+      name: "Tasca do Borges"
+      bio: "Cozinha açoriana | Polvo grelhado | Lapas | O coração de Vila das Furnas"
+      avatar: avatars/tasca.jpg
+    helena:
+      name: "Helena Raposo"
+      bio: "pescadora | 40 anos no mar | esta costa é a minha vida"
+      avatar: avatars/helena.jpg
+    pedro:
+      name: "Pedro Câmara"
+      bio: "capitão do porto | Vila das Furnas | permanência ter-sáb"
+      avatar: avatars/pedro.jpg
+    ana:
+      name: "Ana Bettencourt"
+      bio: "farmácia vila das furnas | saúde & mar | aberta ao sábado de manhã"
+      avatar: avatars/ana.jpg
+    manuel:
+      name: "Manuel Estrela"
+      bio: "padeiro | Padaria Estrela | bolo lêvedo | massa sovada | 5h todas as manhãs"
+      avatar: avatars/manuel.jpg
+    nuno:
+      name: "Nuno Furtado"
+      bio: "capitão do barco de whale watching | 20 anos no atlântico | o mar fala"
+      avatar: avatars/nuno.jpg
+
+    # === Journalist ===
+    catarina:
+      name: "Catarina Amaral"
+      bio: "jornalista freelance | ambiente & oceano | tips: c.amaral@acorianooriental.pt"
+      avatar: avatars/catarina.jpg
+
+    # === OceanDeep (corporate) ===
+    oceandeep:
+      name: "OceanDeep Mining SA"
+      bio: "Mineração em águas profundas | Exploração sustentável | Projeto Atlântico Sul"
+      avatar: avatars/oceandeep.jpg
+    filipe:
+      name: "Filipe Mendonça"
+      bio: "CEO OceanDeep Mining SA | inovação oceânica | os Açores merecem o futuro"
+      avatar: avatars/filipe.jpg
+    teresa:
+      name: "Teresa Vasques"
+      bio: "Advogada | Vasques & Associados | Direito marítimo | Lisboa"
+      avatar: avatars/teresa.jpg
+
+    # === Teens ===
+    tiago:
+      name: "Tiago"
+      bio: "16 | surf & bodyboard | vila das furnas nascido | o mar é vida bué"
+      avatar: avatars/tiago.jpg
+    beatriz:
+      name: "Beatriz"
+      bio: "17 | mergulho & kayak | sessão ao nascer do sol | o mar cura tudo"
+      avatar: avatars/beatriz.jpg
+    leonor:
+      name: "Leonor"
+      bio: "15 | foto & natureza | os açores a preto e branco | diogo é o meu ídolo"
+      avatar: avatars/leonor.jpg
+
+    # === Media & Community ===
+    actu_furnas:
+      name: "Notícias Vila das Furnas"
+      bio: "Atualidade da ilha e do Atlântico | Tips: redacao@noticiasfurnas.pt"
+      avatar: avatars/actu_furnas.jpg
+    meteo_acores:
+      name: "Meteo Vila das Furnas"
+      bio: "Previsões e alertas | Estação automática | Atualização de hora a hora"
+      avatar: avatars/meteo_acores.jpg
+    asso_oceano:
+      name: "Associação Guardiões do Atlântico"
+      bio: "Proteção do oceano açoriano | Voluntários | Denúncias ambientais"
+      avatar: avatars/asso_oceano.jpg
+
+    # === Suspicious / Other ===
+    miguel:
+      name: "Miguel Andrade"
+      bio: "turista | adoro os açores | volto sempre"
+      avatar: avatars/miguel.jpg
+    marta_anon:
+      name: "Marta Vieira"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sargento:
+      name: "Sargento Oliveira"
+      bio: "GNR Posto de Vila das Furnas | Emergências: 112"
+      avatar: avatars/sargento.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VILA DAS FURNAS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to viladasfurnas.social — the community Mastodon instance
+      for the volcanic island village of Vila das Furnas, Azores.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @diogo_medeiros.
+
+      A young whale watching guide. He knew every migration route,
+      every dive pattern, every current around the island. People are
+      worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> diogo_profile
+
+  diogo_profile:
+    type: tweet
+    from: diogo
+    text: "Encontrei equipamento de perfuração no fundo do mar a 3 milhas da costa. Dentro da zona protegida. Tenho as fotos. Alguém tem de parar isto."
+    choices:
+      - That's his last real post... -> grey_ocean
+
+  grey_ocean:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a grey ocean surface. Blurred, overexposed, shot from a strange
+      angle. Posted at 3am. No caption.
+
+      His friends say that's not his style. The GNR say he probably
+      went travelling to the mainland. Something doesn't add up.
+    choices:
+      - Read the GNR statement -> gnr_statement
+      - Look at what people are saying -> community_reaction
+
+  gnr_statement:
+    type: tweet
+    from: sargento
+    text: >
+      Recebemos uma participação relativa a um residente de Vila
+      das Furnas. Nesta fase, não existem elementos que apontem
+      para qualquer ato criminoso. Quem tenha informações úteis
+      deve contactar o 112 ou o Posto.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @margarida_medeiros is
+      furious. His colleague @afonso_tavares is posting worried
+      messages. His girlfriend @carolina_sousa is desperate. The
+      old fisherwoman @helena_raposo says Diogo was right about the
+      ocean.
+
+      And the journalist @catarina_amaral is strangely silent.
+
+      Nobody buys the GNR's line. Nobody thinks Diogo just "went
+      to the mainland."
+    effects: { trust_margarida: "+5", trust_afonso: "+5" }
+    choices:
+      - Start following Diogo's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Vila das Furnas. Follow Diogo's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to João (tasca owner, knows everyone) -> joao_intro
+      - Talk to Helena (fisherwoman, saw the drilling ships) -> helena_intro
+      - Talk to Tiago (teen surfer, seems shaken) -> tiago_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Diogo with the rhythms of a small
+      island village: whale sighting reports, ferry schedules, the
+      padaria's bolo lêvedo specials, volcanic hot spring temperatures.
+
+      Key names surface: Margarida (sister, nurse in Ponta Delgada),
+      Afonso (marine biologist colleague, seems rattled), Carolina
+      (girlfriend, biology student in Lisbon), and the teens — Tiago,
+      Beatriz, Leonor — who worshipped Diogo's ocean work.
+
+      Also prominent: OceanDeep Mining SA, the deep sea mining company
+      doing "exploratory surveys" off the coast. Their posts are
+      corporate PR. Diogo's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to João -> joao_intro
+      - Talk to Helena -> helena_intro
+      - Talk to Tiago -> tiago_intro
+
+  # --- João (social map) ---
+
+  joao_intro:
+    type: tweet
+    from: joao
+    text: >
+      A tasca está aberta mas sem o @diogo_medeiros não é a mesma
+      coisa. Aquele rapaz passava sempre depois do mar. Diogo, a
+      tua mesa está à tua espera.
+    effects: { trust_joao: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to João -> joao_talk
+
+  joao_talk:
+    type: message
+    text: >
+      JOÃO: Ah, you're new? Bem-vindo. Terrible time to arrive.
+      The whole island is worried about Diogo.
+
+      Let me tell you who's who. Margarida is his sister — a nurse
+      in Ponta Delgada. Tough woman, she'll tear the island apart.
+      Afonso Tavares works at the oceanographic station with Diogo.
+      Smart man, knows the ocean. Carolina is Diogo's girlfriend,
+      studies biology in Lisbon. Comes back every chance she gets.
+
+      And then there's this tourist — Miguel Andrade, from Lisbon.
+      He started coming for the whale watching. Three trips in a
+      row. Always booking with Diogo. Then he started showing up
+      outside of tours. Carolina didn't like it but Diogo said he
+      was just enthusiastic.
+
+      Oh, and OceanDeep Mining — foda-se, don't get me started.
+      They want to drill the seabed inside the marine protected
+      area. Diogo was the loudest voice against it. The presidente
+      da câmara is in their pocket.
+    effects: { trust_joao: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Miguel -> joao_miguel
+      - Ask about OceanDeep -> joao_oceandeep
+      - Thank him and move on -> quest1_hub
+
+  joao_miguel:
+    type: message
+    text: >
+      JOÃO: Miguel? Bué estranho, that guy. Came for the whales
+      at first. Then he came for Diogo. You could see it — the
+      way he watched him, the way he'd find excuses to stay on the
+      boat longer after the tours ended.
+
+      Diogo was kind to everyone. Too kind. Miguel would sit at
+      the harbour wall for hours just watching the boat. He told
+      Carolina it was nothing. But I run a tasca — I know when
+      someone is coming for the food, and when they're coming for
+      something else.
+
+      After Diogo told him the tour schedule was full, he got...
+      strange. Quiet. But he didn't leave the island. If anything
+      he stayed longer.
+    effects: { trust_joao: "+5" }
+    choices:
+      - Ask about OceanDeep -> joao_oceandeep
+      - Move on -> quest1_hub
+
+  joao_oceandeep:
+    type: message
+    text: >
+      JOÃO: OceanDeep Mining wants to do "test drills" three miles
+      off the coast. Right in the middle of the marine protected
+      area. Whale migration route. Dolphin feeding grounds. They
+      say it's for "rare earth minerals" and it'll bring EU funds
+      and jobs.
+
+      The presidente da câmara — Ricardo — he's all for it. Caralho,
+      the man sees euros where the rest of us see whales and tuna.
+      Diogo found out OceanDeep was already running drill ships at
+      night, before any EU environmental assessment was completed.
+      He had underwater footage. That kid was fixe — brave as hell.
+
+      Two weeks after he posted those photos, he's gone.
+    effects: { trust_joao: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Helena (the ocean, witness tease) ---
+
+  helena_intro:
+    type: tweet
+    from: helena
+    text: >
+      quarenta anos que pesco nesta costa. o mar não é o mesmo.
+      @diogo_medeiros tinha razão. e agora desapareceu. façam
+      vocês a ligação.
+    effects: { trust_helena: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Helena -> helena_talk
+
+  helena_talk:
+    type: message
+    text: >
+      HELENA: I've been fishing these waters since I was fifteen.
+      I know every current, every colour the Atlantic makes. And
+      I'm telling you — the water off the south coast is wrong.
+      Has been for months. My nets come up with dead fish near the
+      drilling zone. The seabed smells like oil.
+
+      Diogo dove down there with his camera. He filmed everything.
+      Drill heads on the ocean floor. Sediment plumes. Dead coral.
+      He was building a case against OceanDeep.
+
+      Then poof — desapareceu.
+
+      You think that's a coincidence? No mar não há coincidências.
+    effects: { trust_helena: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> helena_night
+      - Move on -> quest1_hub
+
+  helena_night:
+    type: message
+    text: >
+      HELENA: The night before he vanished — I was coming back from
+      night fishing, around 1am. I saw lights at the marina. Not
+      unusual, boats come and go. But there was a large vessel
+      anchored just outside the harbour. No fishing lights. No
+      name visible. It looked like one of OceanDeep's survey ships.
+
+      At 1am. Just sitting there in the dark.
+
+      I didn't think much of it then. Merda, I think about it
+      every night now.
+    effects: { trust_helena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tiago (teen surfer, witness tease) ---
+
+  tiago_intro:
+    type: tweet
+    from: tiago
+    text: >
+      foda-se mano @diogo_medeiros foi ele que me ensinou a
+      respeitar o oceano tipo a sério não é possível que tenha
+      ido embora assim. se alguém sabe alguma cena digam pf
+    effects: { trust_tiago: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tiago -> tiago_talk_early
+
+  tiago_talk_early:
+    type: message
+    text: >
+      TIAGO: mano és novo aqui? bué mau timing. a sério o diogo
+      é tipo a melhor pessoa desta ilha. ensinou-nos a fazer surf
+      safe, levava-nos a ver as baleias, mostrava-nos as cenas
+      debaixo de água com a câmara. bué fixe.
+
+      e agora tou em pânico porque a beatriz viu uma cena estranha
+      à noite no porto mas não quer falar disso. diz que não é nada
+      mas tipo... não é nada um caralho
+    effects: { trust_tiago: "+10" }
+    choices:
+      - What did Beatriz see? -> tiago_beatriz_hint
+      - Move on -> quest1_hub
+
+  tiago_beatriz_hint:
+    type: message
+    text: >
+      TIAGO: não sei bem. ela tava a fazer kayak ao pôr do sol e
+      viu tipo um gajo a mexer no barco do diogo?? ou qualquer cena
+      assim. ela está bué assustada não quer falar. tens de lhe
+      perguntar diretamente mas ela é desconfiada com gente que
+      não conhece. tenta primeiro falar de mergulho com ela lol
+    effects: { trust_tiago: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Vila das Furnas. A volcanic
+      Azorean island village built around the ocean. A young whale
+      watching guide who was fighting deep sea mining. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Carolina (Diogo's girlfriend) -> carolina_q1
+      - Talk to Afonso (Diogo's colleague) -> afonso_q1
+      - Check what Margarida (Diogo's sister) is saying -> margarida_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Carolina Q1 ---
+
+  carolina_q1:
+    type: tweet
+    from: carolina
+    text: >
+      se alguém tiver notícias do @diogo_medeiros liguem-me por
+      favor. o barco está no porto. o equipamento de mergulho está
+      no armazém. ele nunca sairia sem o fato de neoprene.
+    effects: { trust_carolina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Carolina -> carolina_q1_talk
+
+  carolina_q1_talk:
+    type: message
+    text: >
+      CAROLINA: I appreciate you reaching out but I don't know you.
+      Diogo has a lot of friends here. I'm sure he'll come back.
+
+      ...I keep saying that. Já não acredito.
+
+      [Carolina is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_carolina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Afonso Q1 ---
+
+  afonso_q1:
+    type: tweet
+    from: afonso
+    text: >
+      A estação está vazia sem o @diogo_medeiros. As amostras de
+      água estão no frigorífico. Os registos de mergulho estão na
+      secretária. Ele nunca abandonaria uma investigação em curso.
+      Aconteceu alguma coisa.
+    effects: { trust_afonso: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Afonso -> afonso_q1_talk
+
+  afonso_q1_talk:
+    type: message
+    text: >
+      AFONSO: Diogo and I have worked together for two years at the
+      oceanographic station. He's the most dedicated guide and
+      researcher I know. This mining investigation — it was everything
+      to him. He had underwater footage, sediment samples, dead coral
+      photos. He was so close to going public.
+
+      I offered to help him. Many times. He said he had it under
+      control. He said he was working with a journalist. I just
+      wanted to support the work.
+
+      [Afonso seems earnest. Concerned.]
+    effects: { trust_afonso: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Margarida Q1 ---
+
+  margarida_q1:
+    type: tweet
+    from: margarida
+    text: >
+      o meu irmão DESAPARECEU e a GNR diz-me que se calhar foi
+      para o continente??? ELE NÃO SAI SEM AVISAR. venho de ponta
+      delgada. alguém me vai explicar.
+    effects: { trust_margarida: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Margarida -> margarida_q1_talk
+
+  margarida_q1_talk:
+    type: message
+    text: >
+      MARGARIDA: Who are you? Another person from this island who's
+      going to tell me to calm down? My brother called me the night
+      before he disappeared. He said he had something big. He said
+      "se me acontecer alguma coisa, olha para a OceanDeep." Then
+      he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_margarida: "+10" }
+    choices:
+      - What do you think happened? -> margarida_theory
+      - Move on -> quest1_hub
+
+  margarida_theory:
+    type: message
+    text: >
+      MARGARIDA: I think he found proof that OceanDeep is drilling
+      illegally in the marine protected zone and they shut him up.
+      The presidente da câmara is in on it — everyone knows Ricardo
+      gets kickbacks from the EU funds.
+
+      But there's something else too. Diogo told me months ago
+      about this guy — a tourist from Lisbon — who kept booking
+      whale watching trips. Miguel, something. He'd stay on the
+      island for weeks. Following Diogo to the harbour at dawn.
+      Diogo said it was nothing but I could hear in his voice — he
+      was worried.
+
+      Foda-se, I should have listened.
+    effects: { trust_margarida: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Diogo went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Beatriz (was kayaking at sunset) -> beatriz_interview
+      - Find Pedro (harbour master, works late) -> pedro_interview
+      - Find Nuno (boat captain, early morning at the marina) -> nuno_interview
+      - Find Manuel (baker, starts at 5am, saw something) -> manuel_interview
+
+  # --- Beatriz (saw someone at Diogo's boat) ---
+
+  beatriz_interview:
+    type: tweet
+    from: beatriz
+    text: >
+      boa sessão hoje mas o ambiente no porto está estranho tipo.
+      há qualquer cena que não está bem. não sei explicar
+    effects: { trust_beatriz: "+5" }
+    choices:
+      - Ask Beatriz about that evening -> beatriz_talk
+
+  beatriz_talk:
+    type: message
+    text: >
+      BEATRIZ: mano ok mas não digas a ninguém. tava no porto
+      tipo às 19h a fazer kayak. e vi um gajo ao pé do barco do
+      diogo — aquele turista de lisboa, o miguel. tava tipo a
+      mexer em qualquer cena no barco. quando me viu foi-se
+      embora bué rápido.
+
+      tipo eu não disse nada porque não queria problemas mas agora
+      é pesado. não é normal este comportamento puta que pariu
+    effects:
+      trust_beatriz: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pedro (harbour master, saw late-night vessel) ---
+
+  pedro_interview:
+    type: tweet
+    from: pedro
+    text: >
+      Aviso: o porto está encerrado entre as 23h e as 6h. Detetei
+      movimentos não autorizados nestas últimas noites.
+    effects: { trust_pedro: "+5" }
+    choices:
+      - Ask Pedro what he saw -> pedro_talk
+
+  pedro_talk:
+    type: message
+    text: >
+      PEDRO: I was closing the harbour office around 23h. I saw
+      Diogo's boat still at the marina. And a large vessel — no
+      name, no lights — anchored just outside the breakwater. A
+      tender boat came from it to the dock. Two men got out. One
+      of them I recognised: Filipe Mendonça, the OceanDeep CEO.
+
+      At 23h. At a closed harbour. On a vessel with no
+      identification.
+
+      I noted it in the harbour log. Nobody's asked to see it.
+    effects:
+      trust_pedro: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nuno (boat captain, saw Diogo leaving) ---
+
+  nuno_interview:
+    type: tweet
+    from: nuno
+    text: >
+      de pé às 4h para preparar o barco. a marina não estava
+      vazia esta manhã. havia alguém a desatracar no escuro.
+      não era pescador.
+    effects: { trust_nuno: "+5" }
+    choices:
+      - Ask Nuno what he saw -> nuno_talk
+
+  nuno_talk:
+    type: message
+    text: >
+      NUNO: I get up at 4am to prep the whale watching boat. That
+      morning — the morning after Diogo's last post — I saw someone
+      at the marina. A man, carrying a bag, untying a small boat.
+      Diogo's inflatable. It was still dark. He pushed off and
+      headed east, toward the volcanic islets.
+
+      I called out but he didn't stop. I figured it was someone
+      going early fishing but... who takes a research inflatable
+      with a messenger bag at 4am?
+
+      When I heard about Diogo, I put it together. I think that
+      was him. Running from something.
+    effects:
+      trust_nuno: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Manuel (baker, saw vehicles) ---
+
+  manuel_interview:
+    type: tweet
+    from: manuel
+    text: >
+      Fornada do dia às 5h como sempre. Mas naquela manhã havia
+      um carro a andar depressa demais na estrada costeira.
+    effects: { trust_manuel: "+5" }
+    choices:
+      - Ask Manuel what he saw -> manuel_talk
+
+  manuel_talk:
+    type: message
+    text: >
+      MANUEL: I start baking at 5am every day. That morning I was
+      opening the shutters and a car went past — fast, much too
+      fast for the coast road. A big black SUV with tinted windows.
+      Then maybe two minutes later, another car. Smaller, a rental.
+      Following?
+
+      The rental turned off toward the old fishing village at
+      Ponta da Caldeira. The SUV kept going toward the airport.
+
+      I told the GNR. They wrote it down. That was it.
+    effects:
+      trust_manuel: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Carolina
+      (girlfriend) and Leonor (saw Miguel watching the harbour).
+    choices:
+      - Talk to Carolina about that night -> carolina_interview
+      - Talk to Leonor -> leonor_interview
+      - Find Beatriz -> beatriz_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Pedro -> pedro_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Nuno -> nuno_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Manuel -> manuel_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Carolina (last to talk to Diogo) ---
+
+  carolina_interview:
+    type: tweet
+    from: carolina
+    text: >
+      aquela foto no perfil do diogo. não é ele. o diogo nunca
+      posta sem legenda. o diogo não posta às 3h da manhã.
+      alguém fez aquilo.
+    effects: { trust_carolina: "+5" }
+    choices:
+      - DM Carolina -> carolina_talk_low
+        when:
+          state: trust_carolina
+          lt: 50
+      - DM Carolina -> carolina_talk_high
+        when:
+          state: trust_carolina
+          gte: 50
+
+  carolina_talk_low:
+    type: message
+    text: >
+      CAROLINA: I appreciate the concern but I really don't want
+      to talk to strangers about this right now.
+
+      [Carolina needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_carolina: "+5" }
+    choices:
+      - Share what you've learned about the night -> carolina_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  carolina_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the vessel at the harbour,
+      the OceanDeep CEO, the man leaving in the inflatable, the
+      cars on the coast road. Carolina is silent for a while.
+
+      CAROLINA: You're actually trying to find him. Ok. I'll talk.
+    effects: { trust_carolina: "+25" }
+    choices:
+      - What happened that night? -> carolina_talk_high
+
+  carolina_talk_high:
+    type: message
+    text: >
+      CAROLINA: I called him around 23h. I was in Lisbon studying.
+      He was scared — and Diogo is never scared. Not of the ocean,
+      not of storms, not of anything. He said "they came to the
+      marina. They told me to delete everything or I'd end up at
+      the bottom of the Atlantic."
+
+      I asked who. He said "OceanDeep. Mendonça sent people." Then
+      he said something else — "and he was here again. He's always
+      here. He left things on my boat."
+
+      He wouldn't say who "he" was. He said "amo-te, não te
+      preocupes" and hung up. By morning his account posted that
+      grey photo and his phone was dead.
+    effects:
+      trust_carolina: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Leonor (saw Miguel watching the harbour) ---
+
+  leonor_interview:
+    type: message
+    text: >
+      LEONOR: ok mano a sério é bué estranho o que vou dizer mas
+      tipo o turista — o miguel — vi-o tipo 4 vezes sentado no
+      paredão do porto a olhar para o barco do diogo. de noite.
+      bué creepy.
+
+      a última vez foi tipo 2 dias antes do diogo desaparecer.
+      tava sentado no muro com um binóculo. juro por deus. às 10
+      da noite. com um caralho de um binóculo.
+    effects:
+      trust_leonor: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Miguel seen at Diogo's boat at the marina (Beatriz)
+      23:00 — OceanDeep vessel at harbour, Mendonça arrives by tender (Pedro)
+      23:00 — Diogo tells Carolina "they came, he's always here" (Carolina)
+      04:00 — Man leaving marina in inflatable, heading east (Nuno)
+      05:00 — Two cars speeding on coast road, one toward Ponta da Caldeira (Manuel)
+
+      OceanDeep confronted Diogo at the marina. He packed and fled
+      by sea. Someone — maybe Miguel — was also there.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The mining: What is OceanDeep hiding? Who ordered the
+        threats? Where are the EU fund kickbacks going?
+      — The obsession: What is Miguel really doing? Why won't he
+        leave the island?
+    choices:
+      - Investigate the OceanDeep cover-up -> corruption_hub
+      - Investigate Miguel -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      OceanDeep Mining is drilling inside the marine protected area.
+      Diogo had underwater footage. Now he's gone and his camera
+      hard drives are missing from the station.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the station records -> station_records
+      - Talk to Catarina the journalist -> catarina_interview
+      - Talk to Inês (vereadora do ambiente) -> ines_interview
+      - Talk to Nuno about the drilling ships -> nuno_drilling
+      - Check the Guardiões do Atlântico association -> asso_investigation
+      - Talk to Helena about the dead fish -> helena_fish
+      - Back to hub -> investigation_hub
+
+  # --- Station Records ---
+
+  station_records:
+    type: message
+    text: >
+      The oceanographic station's public database shows Diogo's
+      recent fieldwork: cetacean survey data from twelve sites
+      around the island. The data for the southern drilling zone is
+      marked "PENDING REVIEW" — the only site with that status.
+
+      His dive log, shared with the station for safety, shows 14
+      dives near the OceanDeep drilling zone in the past month. The
+      last entry: "Filmed drill head on seabed at 45m. Active
+      sediment plume. Dead coral in 200m radius. This is not an
+      exploratory survey — this is active mining."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Catarina ---
+
+  catarina_interview:
+    type: message
+    text: >
+      CATARINA: I don't talk about sources. Period.
+    effects: { trust_catarina: "+5" }
+    choices:
+      - Show Catarina the evidence you have -> catarina_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  catarina_with_evidence:
+    type: message
+    text: >
+      CATARINA: ...you have more than I expected.
+
+      Ok. Diogo and I were working together. He had underwater
+      footage of active drill heads on the seabed — inside the
+      marine protected area. He had sediment samples showing heavy
+      metal contamination. He had sonar recordings of the drilling
+      noise that was disrupting whale migration patterns.
+
+      We were going to publish together. Then he went dark. And
+      two days later, someone broke into my car at Ponta Delgada
+      airport and stole my backup drive.
+
+      Diogo is alive. He contacted me once, from a burner phone.
+      He said he was hiding on one of the islets. He said "they
+      threatened me at the marina and someone else won't leave me
+      alone."
+
+      I can't tell you where he is. But with enough evidence, I
+      can publish and make it safe for him to come back.
+    effects:
+      trust_catarina: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> catarina_hint
+      - Back to investigation hub -> investigation_hub
+
+  catarina_hint:
+    type: message
+    text: >
+      CATARINA: OceanDeep sent their CEO — Mendonça — and two crew
+      members from the drill ship to the marina that night. They
+      told him to hand over every hard drive and memory card or
+      they'd make sure he never worked in these waters again.
+      Intimidation dressed up as a business conversation.
+
+      But he also said something about a man on the island.
+      Someone who'd been following him. Someone who left gifts on
+      his boat. Someone who always seemed to know his dive schedule
+      before he posted it. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inês (vereadora do ambiente) ---
+
+  ines_interview:
+    type: message
+    text: >
+      INÊS: As vereadora do ambiente, I take these allegations very
+      seriously. But OceanDeep has promised EU structural funds and
+      the presidente da câmara says we can't block development. He
+      keeps saying "o progresso é o futuro dos Açores."
+
+      Off the record? I've seen the EU environmental impact
+      assessment. OceanDeep passed. But that assessment was done
+      by a consultancy firm that OceanDeep also pays. Filho da puta,
+      it's the same people writing the report and reviewing it.
+
+      Diogo had independent data — underwater footage, acoustic
+      measurements, sediment analysis. Data they couldn't control.
+      That's what makes it dangerous.
+    effects:
+      trust_ines: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Nuno on drilling ---
+
+  nuno_drilling:
+    type: message
+    text: >
+      NUNO: I've captained whale watching boats here for 20 years.
+      The whales know these waters. Sperm whales dive to 1,000
+      metres right off this coast. It's one of the best spots in
+      the Atlantic.
+
+      Since OceanDeep started their "surveys," the whale sightings
+      have dropped 60%. The drilling noise travels for kilometres
+      underwater. The whales are being driven away from their
+      feeding grounds.
+
+      I've been keeping a log. Every time I see a drill ship, I
+      record the position, the noise level, the whale activity.
+      Six weeks of data. Diogo said it was the key evidence — proof
+      that the drilling is destroying the marine ecosystem they
+      claimed it wouldn't affect.
+
+      The presidente knows. He signed an agreement with OceanDeep
+      for an "island development contribution" — merda, it's a bribe.
+      300,000 euros routed through an EU structural fund that only
+      the câmara controls.
+    effects:
+      trust_nuno: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Guardiões do Atlântico ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_oceano
+    text: >
+      ALERTA: Avistamento de navio de perfuração dentro da zona
+      marinha protegida. Fotos e coordenadas GPS documentadas.
+      Exigimos inspeção imediata do Governo Regional.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Guardiões do Atlântico have been monitoring the marine
+      protected area for three years. Their data shows a devastating
+      pattern: sperm whale sightings down 60%. Dolphin pods
+      displaced from the southern feeding grounds. Rare deep-sea
+      coral beds destroyed at two drill sites.
+
+      The drill ship coordinates fall squarely within the marine
+      protected zone — the one OceanDeep's environmental assessment
+      said would not be affected.
+
+      Diogo was their most active member. He contributed most of
+      the underwater footage and all of the cetacean survey data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Helena dead fish ---
+
+  helena_fish:
+    type: message
+    text: >
+      HELENA: I'll show you something. Last week I pulled my nets
+      near the drilling zone and found this — dead fish, dozens of
+      them, with burst swim bladders. That's what happens when
+      there's an underwater explosion. Not a drill — a blast.
+      They're using explosives to break through the basalt seabed.
+
+      I photographed everything and sent it to Diogo. He said it
+      was the missing piece — proof they were using methods that
+      are banned under EU regulations. Not test drilling. Blasting.
+
+      I still have the photos. And the GPS coordinates.
+    effects:
+      trust_helena: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Miguel Andrade. Tourist from Lisbon. Repeat visitor. Something
+      more? Someone was at Diogo's boat. Someone left gifts. Someone
+      watched the harbour with binoculars. Someone knew his dive
+      schedule before it was posted.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Miguel's visit history -> visit_history
+      - Talk to Carolina about Miguel -> carolina_miguel
+        when:
+          state: trust_carolina
+          gte: 20
+      - Talk to Beatriz (more detail on the boat) -> beatriz_detail
+      - Talk to Ana the pharmacist -> ana_interview
+      - Check the anonymous account @marta_vieira -> marta_investigation
+      - Talk to João about Miguel's stays -> joao_miguel_detail
+        when:
+          state: trust_joao
+          gte: 40
+      - Talk to Sargento Oliveira -> sargento_interview
+        when:
+          state: trust_sargento
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Visit History ---
+
+  visit_history:
+    type: message
+    text: >
+      The whale watching company's public booking system shows
+      Miguel Andrade booked 28 trips in the last 7 months. He
+      lives in Lisbon — that's a 2.5-hour flight each way. Every
+      booking is specifically with Diogo's boat.
+
+      The pattern escalates: once a month, then twice, then every
+      weekend, then multiple days a week. His review comments
+      change over time:
+
+      Month 1: "Amazing experience! Diogo is the best guide."
+      Month 3: "Why didn't you respond to my message? I flew here
+      for you."
+      Month 5: "I see you taking other groups. You promised me
+      a private tour."
+      Month 7: "I know your schedule. I'll be at the harbour."
+
+      The last booking, three days before Diogo vanished, was
+      cancelled by Diogo with the note: "Client banned. Safety
+      concerns."
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Carolina on Miguel ---
+
+  carolina_miguel:
+    type: message
+    text: >
+      CAROLINA: Miguel? Puta que pariu. That man made Diogo
+      uncomfortable and me furious. He'd show up at the harbour
+      every morning before the tours started. He'd wait for Diogo
+      after. He'd leave notes on the boat — love letters, basically.
+
+      Diogo told him clearly that he had a girlfriend, that he
+      wasn't interested. Miguel said he understood. Then nothing
+      changed. He just kept showing up. Every day. Always there.
+
+      A month ago Diogo found gifts on his boat in the morning.
+      A carved whale. A handwritten journal. Thirty pages. Diogo
+      didn't read it to me but I saw his face on the video call.
+      He looked sick. He said "this guy knows where I live."
+    effects:
+      trust_carolina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Beatriz detail ---
+
+  beatriz_detail:
+    type: message
+    text: >
+      BEATRIZ: mano ok a sério eu não disse tudo. quando vi o
+      miguel no barco do diogo ele tinha uma cena na mão. tipo
+      um aparelhinho pequeno. colou-o debaixo do painel do barco.
+      tipo por baixo onde ninguém vê.
+
+      eu não sou expert mas aquilo parecia bué um localizador GPS.
+      daqueles de filmes tipo.
+
+      devia ter dito alguma coisa mas mano quem me ia acreditar?
+      uma adolescente a acusar um adulto. filho da puta ninguém
+      acredita.
+    effects:
+      trust_beatriz: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ana pharmacist ---
+
+  ana_interview:
+    type: message
+    text: >
+      ANA: This is confidential but I'm a pharmacist, not a priest.
+      Miguel Andrade came in several times. He bought binoculars —
+      the waterproof marine kind. And he asked me, very casually,
+      where he could buy a marine GPS tracker. The kind used for
+      tracking fishing boats.
+
+      He also asked about Diogo's schedule. When does the boat
+      leave, when does he come ashore, does he have a girlfriend.
+      He said he was "just a big fan of the whale watching."
+
+      I didn't think about it until Diogo disappeared. Caralho, I
+      should have said something.
+    effects:
+      trust_ana: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marta (anonymous account) ---
+
+  marta_investigation:
+    type: tweet
+    from: marta_anon
+    text: >
+      He should have listened. I was trying to show him what real
+      devotion looks like. Nobody else understands the ocean like
+      I do.
+    choices:
+      - Look at this account's history -> marta_posts
+
+  marta_posts:
+    type: message
+    text: >
+      @marta_vieira: account created 6 months ago. Posts are all
+      about Diogo's work. Comments on every whale photo, every dive
+      report, every ocean update. The tone shifts over time:
+
+      Month 1: "Incredible footage. You make the ocean come alive."
+      Month 3: "Why won't you answer my messages? I just want to
+      dive with you."
+      Month 4: "I see you at the tasca with that girl. She's in
+      Lisbon half the time. I'm here. Always."
+      Month 6: "I know your routes. I know your schedule. I'm
+      always on the island."
+
+      The account has no photos, no personal details. Just Diogo.
+      Only Diogo.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> marta_style
+
+  marta_style:
+    type: message
+    text: >
+      Comparing @marta_vieira with @miguel_andrade:
+
+      Same use of marine terminology — specifically the Portuguese
+      word for sperm whale ("cachalote") instead of the more common
+      "baleia." Same comma patterns. Same knowledge of Diogo's dive
+      sites that only a regular client would have.
+
+      And one post from @marta_vieira: "Your footage from Banco D.
+      João de Castro was the most beautiful thing I've ever seen."
+      Banco D. João de Castro is an underwater volcano. The dive
+      Diogo did there was a private research trip. Not publicly
+      announced. Only someone who was watching the harbour that
+      morning would know he went there.
+
+      It's Miguel. The anonymous account is Miguel.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- João detail ---
+
+  joao_miguel_detail:
+    type: message
+    text: >
+      JOÃO: Miguel stayed in the guesthouse above the tasca 19
+      times in the last six months. Always asked for the room with
+      the harbour view — the one where you can see the marina.
+
+      He'd leave at dawn and come back after dark. One time my
+      wife cleaned his room and found a wall covered in photos.
+      All Diogo. Printed from social media, from the whale watching
+      webcam, from his own telephoto lens — photos taken from the
+      breakwater, from the cliff, from a distance. Photos you
+      can't take without following someone.
+
+      Foda-se, I should have thrown him out. But he was a paying
+      guest and I thought it was just a fixation. A weird hobby.
+
+      Last time he checked out, he left a note. "Isto não acabou."
+    effects:
+      trust_joao: "+15"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sargento Oliveira ---
+
+  sargento_interview:
+    type: message
+    text: >
+      SARGENTO OLIVEIRA: Off the record — and I mean completely
+      off the record — I wanted to investigate OceanDeep. My
+      superior told me to stand down. He said the Governo Regional
+      had "jurisdiction." That's code for "don't touch it."
+
+      The Andrade situation is different. I didn't know about the
+      stalking until now. If you have evidence of persecutory
+      behaviour, I can act on that. That's clearly within my
+      jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_sargento: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Diogo than anyone in Vila das Furnas. Who is responsible?
+    choices:
+      - Confront Miguel Andrade (the obsessive tourist) -> confront_miguel
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Filipe Mendonça (the OceanDeep CEO) -> confront_mendonca
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Presidente Pacheco (political protection) -> confront_ricardo
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Miguel (Best Ending) ---
+
+  confront_miguel:
+    type: message
+    text: >
+      You present your evidence to Miguel:
+
+      "I know @marta_vieira is your account. I know you put a GPS
+      tracker on Diogo's boat. I know about the love letters, the
+      binoculars, the wall of photos at the guesthouse. I know you
+      were banned from the whale watching tours. I have witnesses
+      and I have the booking records."
+    choices:
+      - Send -> miguel_response
+
+  miguel_response:
+    type: message
+    text: >
+      Miguel doesn't reply for a long time. Then:
+
+      MIGUEL: You don't understand. I love the ocean. I love what
+      he does. He's in danger from those mining people and he won't
+      let anyone help. I needed to be close. I needed to know he
+      was safe. Everything I did was because I care about him and
+      his work.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Sargento Oliveira. And
+      to Catarina Amaral.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sargento Oliveira reopens the case. With your evidence —
+      the anonymous account, the GPS tracker, the wall of photos,
+      the stalking pattern, the witness testimonies — Miguel
+      Andrade is arrested for stalking and harassment. A marine
+      GPS tracker is recovered from under Diogo's boat panel. His
+      phone contains 3,000 photos of Diogo taken without his
+      knowledge.
+
+      Catarina Amaral, finally in possession of Diogo's full
+      evidence package, publishes the OceanDeep story in Público.
+      The Governo Regional dos Açores orders an immediate halt to
+      all drilling. The EU launches an investigation into the
+      environmental assessment fraud. Filipe Mendonça faces
+      criminal charges. The presidente da câmara's "development
+      contribution" is investigated by the Polícia Judiciária.
+
+      And Diogo Medeiros, reading the story from a volcanic islet
+      off the coast, radios the harbour master for the first time
+      in ten days.
+
+      "Estou a voltar para casa."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: diogo
+    text: >
+      o oceano não mente. e as pessoas de vila das furnas também
+      não. obrigado por não terem desistido.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Mendonça (Partial Ending) ---
+
+  confront_mendonca:
+    type: message
+    text: >
+      You present the drilling evidence to Filipe Mendonça:
+
+      "I have underwater footage of active drill heads inside the
+      marine protected area. I have evidence of illegal blasting.
+      I have Nuno's log of whale displacement. I have the fake EU
+      assessment. I have the presidente's kickback agreement. I
+      have dead fish with burst swim bladders."
+    choices:
+      - Send -> mendonca_response
+
+  mendonca_response:
+    type: message
+    text: >
+      MENDONÇA: This conversation is being forwarded to our legal
+      department. Any publication of defamatory statements will
+      result in immediate proceedings. OceanDeep Mining has always
+      operated within applicable EU regulations and holds all
+      necessary permits.
+
+      But it's too late. You've sent the evidence to Catarina, to
+      the Guardiões do Atlântico, and to the Governo Regional.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The mining story breaks. OceanDeep is ordered to halt all
+      drilling pending investigation. The EU funds are frozen. The
+      jobs that were promised evaporate. The island is divided.
+
+      But Diogo?
+
+      Without the stalking evidence, Miguel is never investigated.
+      He continues to visit the island. He creates a new anonymous
+      account. He buys new binoculars. He rents a boat.
+
+      Three months later, Diogo reads about OceanDeep online. He
+      returns quietly. He reopens the whale watching tours. He
+      changes his routes every day. He checks his boat every
+      morning. He stops diving alone.
+
+      The corporation is exposed. But the person who terrorised
+      Diogo walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: diogo
+    text: "voltei. o oceano está mais limpo. o resto... logo se vê."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Presidente (Wrong Ending) ---
+
+  confront_ricardo:
+    type: message
+    text: >
+      You confront Presidente Pacheco with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> ricardo_response
+
+  ricardo_response:
+    type: tweet
+    from: teresa
+    text: >
+      O meu cliente toma nota das suas alegações. Qualquer
+      divulgação pública de declarações difamatórias será objeto
+      de ação judicial imediata. — Vasques & Associados, Lisboa
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The presidente's lawyer buries your accusation. Without a
+      direct link between Pacheco and OceanDeep's illegal drilling
+      — and the "development contribution" is technically routed
+      through legal EU fund channels — your evidence is
+      insufficient.
+
+      OceanDeep continues to drill. Miguel continues to watch.
+      Diogo stays in hiding on the islet.
+
+      Six months later, @marta_vieira creates a new account. It
+      follows Diogo's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VILA DAS FURNAS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Diogo's story explores themes of
+      corporate exploitation, environmental destruction, obsessive
+      behaviour, island community solidarity, and the courage to
+      protect the ocean.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      SOS Voz Amiga: 213 544 545
+      APAV (Apoio à Vítima): 116 006
+      Linha do Ambiente: 808 200 520

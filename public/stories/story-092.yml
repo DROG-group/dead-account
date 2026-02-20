@@ -1,0 +1,1587 @@
+# DEAD ACCOUNT — Story 092: Seebründl (Austria)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-092.yml
+#
+# Player investigates the death of herb farmer Anna Gruber
+# in the fictional Salzkammergut village of Seebründl.
+
+meta:
+  title: "Dead Account — Seebründl"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lena: 0
+    trust_markus: 0
+    trust_hilde: 0
+    trust_franz: 0
+    trust_sophie: 0
+    trust_jonas: 0
+    trust_michi: 0
+    trust_greta: 0
+    trust_sepp: 0
+    trust_karl: 0
+    trust_barbara: 0
+    trust_elfriede: 0
+    trust_thomas: 0
+    trust_nina: 0
+    trust_hansi: 0
+    trust_doris: 0
+    trust_rudi: 0
+    trust_lisa: 0
+    trust_inspektor: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    resort_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Neuzuzug
+    bio: "frisch nach seebründl gezogen. die berge und den see entdecken"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Seebründl.social"
+    description: "Willkommen auf der Gemeinschafts-Instanz von Seebründl am See"
+    avatar_url: /gamepatch/assets/dead-account/seebruendl_bot.png
+
+  npcs:
+    # === Anna's Inner Circle ===
+    anna:
+      name: "Anna Gruber"
+      bio: "kräuterbäuerin | almwiesen & naturheilkunde | de berg ruaft"
+      avatar: avatars/anna.jpg
+    lena:
+      name: "Lena Gruber"
+      bio: "annas schwester | volksschullehrerin in seebründl | wo is mei schwester"
+      avatar: avatars/lena.jpg
+    markus:
+      name: "Markus Hofer"
+      bio: "annas partner | tischler | werkstatt am see | sie fehlt"
+      avatar: avatars/markus.jpg
+    sophie:
+      name: "Sophie Eder"
+      bio: "kräuterkurs bei anna | biologiestudentin | innsbruck & seebründl"
+      avatar: avatars/sophie.jpg
+
+    # === Local Government ===
+    franz:
+      name: "Franz Wallner"
+      bio: "Bürgermeister von Seebründl | Für unsere Gemeinde seit 2016 | #SeebründlWächst"
+      avatar: avatars/franz.jpg
+    elfriede:
+      name: "Elfriede Moser"
+      bio: "Gemeinderätin Umwelt | Seebründl | Naturschutz im Salzkammergut"
+      avatar: avatars/elfriede.jpg
+    gemeinde:
+      name: "Gemeinde Seebründl"
+      bio: "Offizieller Account | Gemeindenachrichten | Mo-Fr 8-16 Uhr"
+      avatar: avatars/gemeinde.jpg
+
+    # === Local Business & Community ===
+    hilde:
+      name: "Hilde Brandstätter"
+      bio: "Gasthof Seeblick | Kasnocken | Schnitzel | Hausgebrannter | seit 1953"
+      avatar: avatars/hilde.jpg
+    gasthof:
+      name: "Gasthof Seeblick"
+      bio: "Traditionsgasthof am See | Regionale Küche | Stammtisch jeden Donnerstag"
+      avatar: avatars/gasthof.jpg
+    sepp:
+      name: "Sepp Kirchner"
+      bio: "almwirt | 60 kühe | bergkäse | de oide tradition stirbt ned"
+      avatar: avatars/sepp.jpg
+    karl:
+      name: "Karl Auer"
+      bio: "fischer | seebründler see | forellen & saiblinge | seit drei generationen"
+      avatar: avatars/karl.jpg
+    barbara:
+      name: "Barbara Lindner"
+      bio: "apothekerin | seebründl | bergkräuter & schulmedizin | mi frogst hoid"
+      avatar: avatars/barbara.jpg
+    hansi:
+      name: "Hansi Pichler"
+      bio: "bergrettung seebründl | ehrenamtlich | de berg san mei lebm"
+      avatar: avatars/hansi.jpg
+    greta:
+      name: "Greta Wimmer"
+      bio: "buchhändlerin | Bücherstube am See | lesungen am freitag"
+      avatar: avatars/greta.jpg
+
+    # === Journalist ===
+    doris:
+      name: "Doris Steiner"
+      bio: "journalistin | salzkammergut kurier | umwelt & region | tipps: doris@skurier.at"
+      avatar: avatars/doris.jpg
+
+    # === AlpinResort GmbH (corporate) ===
+    alpinresort:
+      name: "AlpinResort Seebründl GmbH"
+      bio: "Premium Skitourismus | Projekt Seebründl Alm | Nachhaltigkeit & Fortschritt"
+      avatar: avatars/alpinresort.jpg
+    thomas:
+      name: "Thomas Lechner"
+      bio: "Geschäftsführer AlpinResort Seebründl | Tourismus ist Zukunft"
+      avatar: avatars/thomas.jpg
+    rudi:
+      name: "Rudi Maier"
+      bio: "Rechtsanwalt | Kanzlei Maier & Partner | Wirtschaftsrecht | Salzburg"
+      avatar: avatars/rudi.jpg
+
+    # === Teens ===
+    jonas:
+      name: "Jonas"
+      bio: "16 | mountainbike & klettern | seebründl born | oida de natur is alles"
+      avatar: avatars/jonas.jpg
+    michi:
+      name: "Michi"
+      bio: "17 | skitouren & fotografie | almwiesen > skipisten | fix"
+      avatar: avatars/michi.jpg
+    nina:
+      name: "Nina"
+      bio: "15 | zeichnen & kräuter | anna is mei vorbild | seebründl 4ever"
+      avatar: avatars/nina.jpg
+
+    # === Media & Community ===
+    sk_aktuell:
+      name: "Salzkammergut Aktuell"
+      bio: "Nachrichten aus dem Salzkammergut | Tipps: redaktion@sk-aktuell.at"
+      avatar: avatars/sk_aktuell.jpg
+    wetter_see:
+      name: "Wetter Seebründl"
+      bio: "Wetterstation am See | Vorhersagen & Warnungen | stündlich aktualisiert"
+      avatar: avatars/wetter_see.jpg
+    naturschutz_alm:
+      name: "Naturschutzverein Almwiesen"
+      bio: "Schutz der Almwiesen im Salzkammergut | Ehrenamtlich | Meldungen Naturschutz"
+      avatar: avatars/naturschutz_alm.jpg
+
+    # === Suspicious / Other ===
+    lisa:
+      name: "Lisa Harmony"
+      bio: "wellness coach | detox & bergkräuter | deine energie ist dein kapital | namaste"
+      avatar: avatars/lisa.jpg
+    berggeist:
+      name: "Berggeist"
+      bio: "."
+      avatar: avatars/anon.jpg
+    inspektor:
+      name: "Inspektor Brandner"
+      bio: "Polizeiinspektion Seebründl | Bezirk Gmunden | Notruf: 133"
+      avatar: avatars/inspektor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SEEBRÜNDL
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Seebründl.social — the community Mastodon instance for
+      the alpine village of Seebründl, nestled in the Salzkammergut
+      between lake and mountain.
+
+      The local feed is uneasy today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @anna_gruber.
+
+      A herb farmer. She cultivated alpine meadow plants. Ran workshops
+      on traditional remedies. People loved her. She hasn't posted in
+      six days.
+    choices:
+      - Look at her profile -> anna_profile
+
+  anna_profile:
+    type: tweet
+    from: anna
+    text: "Die Almwiese oberhalb vom Kirchsteig wird planiert. Bagger stehen schon da. Die Gemeinde hat das genehmigt ohne uns zu fragen. I hab Fotos und Dokumente. Des wird ned still bleiben."
+    choices:
+      - That's her last real post... -> grey_mountain
+
+  grey_mountain:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of mountain fog. Grey, overexposed, shot from
+      a strange angle. Posted at 2am. No caption.
+
+      Her friends say that's not her style. Anna always wrote long
+      captions about every plant, every season. The police say she
+      probably went hiking and lost signal. Nobody believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: inspektor
+    text: >
+      Bezüglich einer als vermisst gemeldeten Bewohnerin von Seebründl:
+      Derzeit liegen keine Hinweise auf eine Straftat vor. Es wird von
+      einem freiwilligen Fernbleiben ausgegangen. Hinweise bitte an die
+      PI Seebründl oder unter 133.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her sister @lena_gruber is desperate.
+      Her partner @markus_hofer has been searching the mountain trails
+      for days. Her student @sophie_eder is posting frantic messages.
+      The alpine farmer @sepp_kirchner says she was right about the
+      meadow.
+
+      And the wellness influencer @lisa_harmony, who had been
+      commenting obsessively on Anna's herb posts, has gone completely
+      silent.
+
+      Nobody buys the police line. Nobody thinks Anna just "went
+      hiking."
+    effects: { trust_lena: "+5", trust_markus: "+5" }
+    choices:
+      - Start following Anna's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Seebründl. Follow Anna's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Hilde (Gasthof owner, knows everyone) -> hilde_intro
+      - Talk to Sepp (alpine farmer, saw the bulldozers) -> sepp_intro
+      - Talk to Jonas (teen mountainbiker, seems shaken) -> jonas_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Anna with the rhythms of a small
+      alpine village: weather warnings, cheese delivery schedules,
+      mountain rescue updates, the Gasthof's daily specials.
+
+      Key names surface: Lena (sister, teacher), Markus (partner,
+      carpenter, out searching the mountains), Sophie (biology student
+      and Anna's apprentice), and the teens — Jonas, Michi, Nina —
+      who helped Anna on the meadows every summer.
+
+      Also prominent: AlpinResort Seebründl GmbH, the ski resort
+      developer. Their posts are glossy PR about "sustainable alpine
+      tourism." Anna's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Hilde -> hilde_intro
+      - Talk to Sepp -> sepp_intro
+      - Talk to Jonas -> jonas_intro
+
+  # --- Hilde (social map) ---
+
+  hilde_intro:
+    type: tweet
+    from: hilde
+    text: >
+      Der Gasthof is offen oba de Stimmung is ned guat. @anna_gruber,
+      dei Kräuterteemischung steht nu am Tresen. Kumm zruck.
+    effects: { trust_hilde: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Hilde -> hilde_talk
+
+  hilde_talk:
+    type: message
+    text: >
+      HILDE: Ah, du bist neu? Grüß di. Schlechter Zeitpunkt zum
+      Herziehen. Alle san nervös wegen der Anna.
+
+      I sag dir wer wer is. Die Lena is die Schwester, Volksschullehrerin,
+      total fertig grad. Der Markus is Annas Partner, Tischler, rennt
+      seit Tagen jeden Steig am Berg ab. Die Sophie studiert Biologie
+      und hat bei Anna Kräuterkurse gmacht.
+
+      Und dann is da die Lisa Harmony. Die is vor am Jahr hergezogen,
+      macht so Wellness-Zeug im Internet. Hat si an die Anna rangschmeißt
+      wie a Klette. Wollte unbedingt "kooperieren" mit den Kräutern.
+      Anna hat höflich nein gsagt. Die Lisa hat ned aufghört.
+
+      Ach ja, und AlpinResort — die wollen de halbe Alm zubetonieren
+      für Schipisten. Annas Wiesen san genau dort oben.
+    effects: { trust_hilde: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Lisa -> hilde_lisa
+      - Ask about AlpinResort -> hilde_resort
+      - Thank her and move on -> quest1_hub
+
+  hilde_lisa:
+    type: message
+    text: >
+      HILDE: Die Lisa? Oida, die is a eigene Gschicht. Kam letztes
+      Jahr her, hat si als "Wellness Coach" vorgestellt. Macht so
+      Detox-Retreats und verkauft Kräutertees online für dreißig Euro
+      die Packung. Nur — die Kräuter waren ned ihre.
+
+      Sie hat Annas Rezepturen kopiert. Anna hat des rausgfundn und
+      war stinksauer. Hat auf Seebründl.social gpostet, dass Lisa ihre
+      Arbeit klaut. Seither is die Lisa... komisch. Schreibt Anna
+      dauernd Nachrichten, mal nett, mal bedrohlich. "Wir könnten so
+      gut zusammenarbeiten" und dann "Du wirst bereuen, dass du mich
+      öffentlich bloßgestellt hast."
+
+      Die Anna hat mir amoi gsagt: "Die schaut mi an als ghör i ihr."
+    effects: { trust_hilde: "+5" }
+    choices:
+      - Ask about AlpinResort -> hilde_resort
+      - Move on -> quest1_hub
+
+  hilde_resort:
+    type: message
+    text: >
+      HILDE: AlpinResort. Große Pläne, große Investoren, großes Mundwerk.
+      Die wollen oben am Kirchsteig a Skigebiet bauen. Neue Lifte,
+      Beschneiungsanlage, Après-Ski-Hütten. Klingt nach Geld für
+      Seebründl, aber die Almwiesen oben — die san seit Hunderten von
+      Jahren bewirtschaftet. Geschützte Pflanzen, seltene Kräuter.
+
+      Anna hat als Erste gesagt: des geht ned. Sie hat die ganzen
+      Naturschutz-Gutachten organisiert. Hat Fotos von den Baggern
+      gmacht, die schon angfangen haben zu planieren, obwohl no ka
+      Genehmigung da war.
+
+      Zwei Wochen später is sie weg. Mach dir dein eigenes Bild.
+    effects: { trust_hilde: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sepp (alpine farmer, witness tease) ---
+
+  sepp_intro:
+    type: tweet
+    from: sepp
+    text: >
+      sechzig jahr auf der alm. und jetzt stehen bagger dort wo mei
+      großvater nu gmäht hat. @anna_gruber hat recht ghabt. und jetzt
+      is sie weg. des is ka zufall.
+    effects: { trust_sepp: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sepp -> sepp_talk
+
+  sepp_talk:
+    type: message
+    text: >
+      SEPP: I bin am Berg aufgwachsen. Mei Familie bewirtschaftet de
+      Alm seit vier Generationen. De Wiesen oben — des san ka
+      Baugrund. Des is Lebensraum. Enzian, Arnika, Silberdistel.
+      Gschützte Arten.
+
+      De Anna hat Bodenproben gnommen. Hat Pflanzen kartiert. Hat an
+      ganzen Bericht gschriebn, der beweist, dass des Gebiet unter
+      Naturschutz ghört. Und dann hat AlpinResort trotzdem angfangen
+      zu baggern. Bei Nacht. Ohne Genehmigung.
+
+      Glaubst du des is a Zufall, dass sie jetzt weg is? I glaub ned
+      an Zufälle am Berg.
+    effects: { trust_sepp: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> sepp_night
+      - Move on -> quest1_hub
+
+  sepp_night:
+    type: message
+    text: >
+      SEPP: In der Nacht bevor sie verschwundn is — i war oben beim
+      Vieh, um halb zwölf. Hab Lichter gsehn beim Kräuterstadl, des
+      is Annas Hütte oben auf der Alm. Ned ungewöhnlich, sie arbeitet
+      oft spät.
+
+      Oba dann hab i a zweites Auto gsehn. An schwarzen SUV. Ned aus
+      der Gegend. Hat ka Kennzeichen ghabt, des i erkennen hab können
+      im Dunkeln. Der is um Mitternacht abgfahrn, viel zu schnell
+      für den Forstweg.
+
+      Hab mir nix dabei dacht. Jetzt denk i dauernd dran.
+    effects: { trust_sepp: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jonas (teen mountainbiker, witness tease) ---
+
+  jonas_intro:
+    type: tweet
+    from: jonas
+    text: >
+      oida @anna_gruber is de einzige person de mi überzeugt hat dass
+      kräuter cool san und ned nur für omas. wenn wer was weiß bitte
+      sagts es. des is ned normal dass einfach verschwindet
+    effects: { trust_jonas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jonas -> jonas_talk_early
+
+  jonas_talk_early:
+    type: message
+    text: >
+      JONAS: wos, du bist neu da? fix oida, voll da schlechte
+      zeitpunkt. die anna is halt einfach de beste. hat uns allen
+      gezeigt welche pflanzen man essen kann am berg, welche giftig
+      san. hat sogar unser schulprojekt betreut.
+
+      und jetzt is sie weg und de polizei sagt "wandern gegangen"??
+      geh bitte. wer glaubt denn sowas.
+
+      der michi hat übrigens was gsehn letzte woche am see. er will
+      ned drüber reden. sagt es war nix. oba der lügt voll schlecht
+      oida
+    effects: { trust_jonas: "+10" }
+    choices:
+      - What did Michi see? -> jonas_michi_hint
+      - Move on -> quest1_hub
+
+  jonas_michi_hint:
+    type: message
+    text: >
+      JONAS: weiß ned genau. er war abends beim see, so gegen
+      sonnenuntergang, und hat gsehn wie wer bei annas boot war. hat
+      irgendwas reinglegt oder rausgnommen, er war ned sicher. und
+      dann is die person schnell weg.
+
+      michi sagt er hat ned gsehn wer es war oba i glaub er lügt.
+      er traut si nur ned. versuch mal mit ihm über skitouren zu reden,
+      dann taut er auf haha
+    effects: { trust_jonas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Seebründl. A Salzkammergut village
+      between lake and mountain. A herb farmer who was fighting a ski
+      resort expansion. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lena (Anna's sister) -> lena_q1
+      - Talk to Sophie (Anna's student) -> sophie_q1
+      - Check what Markus (Anna's partner) is saying -> markus_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lena Q1 ---
+
+  lena_q1:
+    type: tweet
+    from: lena
+    text: >
+      bitte wenn wer @anna_gruber gsehn hat meldets euch. ihre
+      kräuterhütte is offen. ihr rucksack is da. ihre wanderschuhe
+      stehen beim eingang. sie is nirgends hingangen.
+    effects: { trust_lena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lena -> lena_q1_talk
+
+  lena_q1_talk:
+    type: message
+    text: >
+      LENA: I kenn di ned. I weiß ned warum i mit dir redn soll.
+      Mei Schwester is weg und alle tuan so als wär nix.
+
+      ...Entschuldigung. I bin fertig mit den Nerven.
+
+      [Lena is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sophie Q1 ---
+
+  sophie_q1:
+    type: tweet
+    from: sophie
+    text: >
+      @anna_gruber hat die vollständigste Kartierung der Almflora
+      im ganzen Salzkammergut. Ihre Proben stehen noch im Labor.
+      Sie würde ihre Forschung niemals im Stich lassen.
+    effects: { trust_sophie: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Sophie -> sophie_q1_talk
+
+  sophie_q1_talk:
+    type: message
+    text: >
+      SOPHIE: Anna und ich haben seit über einem Jahr zusammengearbeitet.
+      Sie hat mich alles über alpine Heilpflanzen gelehrt. Jede Pflanze,
+      jede Wirkung, jede Jahreszeit. Ihre Arbeit auf der Almwiese war
+      gleichzeitig ihr Naturschutz-Beweis gegen AlpinResort.
+
+      Was mich beunruhigt: Anna hat letzte Woche gesagt, jemand war
+      in ihrer Hütte. Sachen waren verschoben. Ihr Laptop stand offen,
+      obwohl sie ihn immer zumacht. Und dann hat sie diesen Blick
+      gekriegt — wie wenn du weißt, dass jemand dich beobachtet.
+
+      [Sophie seems genuinely frightened.]
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Markus Q1 ---
+
+  markus_q1:
+    type: tweet
+    from: markus
+    text: >
+      TAG VIER. Jeden Steig abgsucht. Jede Hütte. Jedes Ufer. De
+      Polizei sogt "wandern". ANNA WANDERT NED OHNE MICH. Sie hätt
+      ma gschrieben. Sie hätt angrufen. Irgendwas stimmt ned.
+    effects: { trust_markus: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Markus -> markus_q1_talk
+
+  markus_q1_talk:
+    type: message
+    text: >
+      MARKUS: Wer bist du? Noch wer der mir sagt i soll mi beruhigen?
+      Mei Partnerin hat mi in der Nacht bevor sie verschwundn is
+      angrufen. Sie hat gsagt sie hat Beweise. Sie hat gsagt "wenn
+      irgendwas passiert, schau dir AlpinResort an." Und dann hat
+      sie nu was gsagt — "und die Lisa, die lasst mi ned in Ruh."
+
+      Des war des letzte was i von ihr ghört hab.
+    effects: { trust_markus: "+10" }
+    choices:
+      - What do you think happened? -> markus_theory
+      - Move on -> quest1_hub
+
+  markus_theory:
+    type: message
+    text: >
+      MARKUS: I glaub AlpinResort hat sie zum Schweigen bracht. Sie
+      hatte Beweise, dass die illegal baggern auf gschütztem Gebiet.
+      Fotos, Gutachten, alles. Des hätte das ganze Projekt gestoppt.
+
+      Oba i glaub a, dass die Lisa Harmony da mit drin hängt. Ned
+      wegen dem Resort — wegen irgendwas anderm. Die Art wie die
+      Anna angschaut hat... des war ned normal. Anna hat mir erzählt,
+      dass Lisa ihre Hütte ausspioniert. Dass sie nachts an der
+      Almwiese war. Immer wieder.
+
+      A Firmeninteresse und a Wahnsinnige. Anna hat gegen beides
+      gleichzeitig kämpft.
+    effects: { trust_markus: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Anna went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Michi (was at the lake at sunset) -> michi_interview
+      - Find Karl (fisherman, up before dawn) -> karl_interview
+      - Find Hansi (mountain rescue, heard noises) -> hansi_interview
+      - Find Barbara (pharmacist, saw headlights) -> barbara_interview
+
+  # --- Michi (saw someone at Anna's boat) ---
+
+  michi_interview:
+    type: tweet
+    from: michi
+    text: >
+      schene skitour heit oba de stimmung in seebründl is irgendwie
+      oasch. fix oida i mag gar ned drüber nachdenken
+    effects: { trust_michi: "+5" }
+    choices:
+      - Ask Michi about that evening -> michi_talk
+
+  michi_talk:
+    type: message
+    text: >
+      MICHI: oida ok oba du sagst des niemandem gö. i war am see
+      gegen 18 uhr, wollte fotos machen vom sonnenuntergang. und da
+      war wer bei annas ruderboot. hat irgendwas reingelegt oder
+      dran rumgfummelt. als die person mi gsehn hat is sie abghaut
+      richtung waldweg.
+
+      und oida... i bin mir ned hundertpro sicher, oba es hat ausgsehen
+      wie die lisa harmony. gleiche jacke, gleiche haare. oba es war
+      scho dunkel.
+
+      scheiß drauf, i hätt was sagen sollen oba wer glaubt an
+      siebzehnjährigen
+    effects:
+      trust_michi: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Karl (fisherman, saw late-night vehicle) ---
+
+  karl_interview:
+    type: tweet
+    from: karl
+    text: >
+      Aufstehen um vier. See ist still. Zu still. Seit einer Woche
+      stimmt was ned am Wasser. Und an Land erst recht.
+    effects: { trust_karl: "+5" }
+    choices:
+      - Ask Karl what he saw -> karl_talk
+
+  karl_talk:
+    type: message
+    text: >
+      KARL: I fahr jeden Tag um halb fünf am See raus. In der Nacht
+      bevor Anna verschwundn is — da war i nu am Ufer, hab die Netze
+      vorbereitet. Um Mitternacht ungefähr hab i an schwarzen SUV
+      gsehn am Forstweg. Der is vom Kirchsteig runtergfahrn. Ohne
+      Licht. Des macht ka normaler Mensch.
+
+      Und dann, a halbe Stunde später, hat sich jemand am Seeufer
+      bewegt. Zu Fuß. Schnell. Richtung Bootshaus.
+
+      I hab "Hallo" grufen. Ka Antwort. Nur Schritte im Kies.
+    effects:
+      trust_karl: "+10"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Hansi (mountain rescue, heard noises on the alm) ---
+
+  hansi_interview:
+    type: tweet
+    from: hansi
+    text: >
+      Bergrettung Seebründl: In den letzten Wochen auffällige
+      Fahrzeugbewegungen am Forstweg Kirchsteig, auch nachts.
+      Bitte Vorsicht.
+    effects: { trust_hansi: "+5" }
+    choices:
+      - Ask Hansi what he heard -> hansi_talk
+
+  hansi_talk:
+    type: message
+    text: >
+      HANSI: I war in der Nacht auf Bereitschaft. Gegen 23 Uhr hab
+      i Lärm ghört vom Kirchsteig — Motorengeräusche, dann Stimmen.
+      Laut. Ein Mann und eine Frau. Die Frau hat geschrien, irgendwas
+      wie "Lassts mi in Ruh!"
+
+      I bin rauf, oba bis i dort war, war alles still. Nur frische
+      Reifenspuren am Forstweg. Und Annas Kräuterhütte stand offen.
+      Licht an, ka Mensch drin.
+
+      I hab des der Polizei gmeldet. Die haben gsagt sie kümmern si
+      drum. Des war vor sechs Tagen.
+    effects:
+      trust_hansi: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Barbara (pharmacist, saw headlights) ---
+
+  barbara_interview:
+    type: tweet
+    from: barbara
+    text: >
+      Um fünf in da Früh Nachtdienst ghabt. Auf der Seestraße is
+      ein Fahrzeug viel zu schnell gfahrn. Des war ka Einheimischer.
+    effects: { trust_barbara: "+5" }
+    choices:
+      - Ask Barbara what she saw -> barbara_talk
+
+  barbara_talk:
+    type: message
+    text: >
+      BARBARA: Nachtdienst in der Apotheke, wie öfters. Um fünf in
+      der Früh — a Auto, viel zu schnell, Richtung Bundesstraße.
+      Schwarzer SUV. Dann, fünf Minuten später, a kleineres Auto.
+      Annas grüner Fiat? Bin mir ned sicher. Oba die Farbe hat
+      gepasst.
+
+      Des Kleine is abgebogen zum alten Bootshaus. Des Große is
+      weiter Richtung Salzburg.
+
+      I hab der Polizei Bescheid gsagt. Die haben si bedankt. Mehr
+      is ned passiert.
+    effects:
+      trust_barbara: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lena (sister)
+      and Nina (saw Lisa near Anna's flat).
+    choices:
+      - Talk to Lena about that night -> lena_interview
+      - Talk to Nina -> nina_interview
+      - Find Michi -> michi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Karl -> karl_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Hansi -> hansi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Barbara -> barbara_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lena (last to see Anna) ---
+
+  lena_interview:
+    type: tweet
+    from: lena
+    text: >
+      des foto auf annas account. des is ned sie. anna postet ned
+      um 2 in der früh. anna postet ned ohne text. des hat wer
+      anderer gmacht.
+    effects: { trust_lena: "+5" }
+    choices:
+      - DM Lena -> lena_talk_low
+        when:
+          state: trust_lena
+          lt: 50
+      - DM Lena -> lena_talk_high
+        when:
+          state: trust_lena
+          gte: 50
+
+  lena_talk_low:
+    type: message
+    text: >
+      LENA: I schätz die Anteilnahme, oba i red ned mit Fremden
+      über mei Schwester.
+
+      [Lena needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Share what you've learned about the night -> lena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV on the mountain road,
+      the screaming at the hut, the figure at the lakeshore. Lena is
+      silent for a long time.
+
+      LENA: Du versuchst wirklich sie zu finden. Ok. I red.
+    effects: { trust_lena: "+25" }
+    choices:
+      - What happened that night? -> lena_talk_high
+
+  lena_talk_high:
+    type: message
+    text: >
+      LENA: Sie is um zehn am Abend bei mir vorbeikommen. Total
+      aufglöst. Blass. Sie hat gsagt "die wissen was i hab." Sie
+      hat ihren Laptop gnommen und die Festplatten mit den Fotos.
+
+      I hab gfragt wer. Sie hat gsagt "die vom Resort. Die haben
+      Leute raufgschickt zur Hütte." Und dann hat sie nu was gsagt —
+      "und sie war wieder da. Sie is immer da."
+
+      Sie hat ned gsagt wer "sie" is. Sie hat mi umarmt, gsagt
+      "mach da ka Sorgen" und is gangen. Am nächsten Morgen war
+      ihr Auto weg und des komische Foto auf ihrem Account.
+    effects:
+      trust_lena: "+15"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nina (saw Lisa watching Anna's flat) ---
+
+  nina_interview:
+    type: message
+    text: >
+      NINA: oida ok des is ur creepy oba die lisa harmony — de kenn
+      i weil sie mal in der schule an vortrag ghalten hat über
+      "achtsamkeit" oder sowas — die hab i dreimal abends vor annas
+      haus gsehn. einfach dort gstanden und zur wohnung raufgschaut.
+
+      des letzte mal war zwei tag bevor anna verschwundn is. die
+      lisa war in ihrem auto. motor aus. licht aus. einfach sitzen
+      und schauen. i hab da nu dacht ok vielleicht wartet die auf
+      wen. oba jetzt... oida des is ned normal
+    effects:
+      trust_nina: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      18:00 — Someone seen at Anna's boat at the lake (Michi)
+      22:00 — Anna arrives at Lena's, shaken, grabs laptop and drives (Lena)
+      23:00 — Loud voices at Anna's herb hut on the alm, screaming (Hansi)
+      00:00 — Black SUV drives down the mountain road, no lights (Karl)
+      05:00 — Two cars speeding on Seestraße, one to old boathouse (Barbara)
+
+      AlpinResort confronted Anna at the hut. She fled, grabbed her
+      evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AlpinResort hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Lisa Harmony really doing? Why was
+        she at Anna's boat?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Lisa -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${resort_evidence}
+      OBSESSION THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: resort_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AlpinResort Seebründl is hiding something. Anna had proof. Now
+      she's gone and her evidence is missing from the herb hut.
+
+      Resort evidence: ${resort_evidence}
+    choices:
+      - Search the Gemeinde records -> gemeinde_records
+      - Talk to Doris the journalist -> doris_interview
+      - Talk to Elfriede (environment councillor) -> elfriede_interview
+      - Check the Naturschutzverein Almwiesen -> naturschutz_investigation
+      - Talk to Sepp about the illegal bulldozing -> sepp_bulldozing
+      - Talk to Sophie about Anna's research data -> sophie_research
+      - Back to hub -> investigation_hub
+
+  # --- Gemeinde Records ---
+
+  gemeinde_records:
+    type: message
+    text: >
+      The Gemeinde's public planning database shows the AlpinResort
+      project: "Skitourismusentwicklung Kirchsteig-Alm." Status:
+      "Umweltverträglichkeitsprüfung ausstehend." Environmental
+      impact assessment still pending.
+
+      But satellite imagery from Anna's posts shows fresh earthwork
+      on the meadow dated two weeks ago. Heavy machinery tracks.
+      Cleared vegetation. Construction activity before approval.
+
+      Anna's formal objection is listed: "Einspruch Gruber — Flora-
+      Kartierung belegt geschützte Arten auf Projektfläche."
+      Her objection was the only thing blocking the project.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Doris ---
+
+  doris_interview:
+    type: message
+    text: >
+      DORIS: I red ned über Quellen. Punkt.
+    effects: { trust_doris: "+5" }
+    choices:
+      - Show Doris the evidence you have -> doris_with_evidence
+        when:
+          state: resort_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  doris_with_evidence:
+    type: message
+    text: >
+      DORIS: ...du hast mehr als i erwartet hab.
+
+      Ok. Anna und ich haben zusammengearbeitet. Sie hatte Fotos von
+      illegalen Bauarbeiten auf gschütztem Gebiet — AlpinResort hat
+      angfangen zu planieren, bevor die Umweltprüfung überhaupt
+      abgeschlossen war. Sie hatte Bodenproben, Flora-Kartierungen,
+      alles. Des hätte das ganze Projekt gestoppt.
+
+      Mir haben an Artikel vorbereitet. Dann is sie verschwundn. Und
+      zwei Tage später is wer in mei Büro einbrochen und hat meinen
+      Backup-Stick gstohlen.
+
+      Anna lebt. Sie hat mi amoi kontaktiert, von am fremden Handy.
+      Hat gsagt sie versteckt si. Hat gsagt "die vom Resort haben mi
+      bedroht und da is nu wer der mi ned in Ruh lasst."
+
+      I kann dir ned sagen wo sie is. Oba mit genug Beweisen kann i
+      publizieren und dann kann sie sicher zurückkommen.
+    effects:
+      trust_doris: "+25"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> doris_hint
+      - Back to investigation hub -> investigation_hub
+
+  doris_hint:
+    type: message
+    text: >
+      DORIS: Der Lechner — Geschäftsführer von AlpinResort — hat mit
+      am Anwalt bei der Hütte aufkreuzt. In der Nacht. Haben ihr
+      gsagt sie soll alles hergeben oder sie kriegt a Klage.
+      Einschüchterung als Rechtsberatung verpackt.
+
+      Oba sie hat a von wem anderm gredt. Von jemandem der sie
+      beobachtet. Der immer weiß wo sie is. Des is a anderes Problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Elfriede (environment councillor) ---
+
+  elfriede_interview:
+    type: message
+    text: >
+      ELFRIEDE: Als Gemeinderätin für Umwelt nehm i des ernst. Oba
+      AlpinResort verspricht fünfzig Arbeitsplätze und der Bürgermeister
+      besteht auf "Dialog mit den Investoren."
+
+      Unter uns? I hab de Genehmigungsunterlagen gsehn. AlpinResort hat
+      angfangen zu bauen, bevor die UVP fertig war. Des is illegal.
+      Oba die Bauaufsicht war zur "routinemäßigen Kontrolle" da — zwei
+      Wochen vorher angkündigt. Da war natürlich alles sauber.
+
+      Annas Daten waren unangekündigt. Deswegen waren sie gefährlich.
+    effects:
+      trust_elfriede: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Naturschutzverein ---
+
+  naturschutz_investigation:
+    type: tweet
+    from: naturschutz_alm
+    text: >
+      ALARM: Illegale Erdarbeiten auf der Kirchsteig-Alm dokumentiert.
+      Geschützte Pflanzenarten betroffen. Wir fordern sofortigen
+      Baustopp und unangekündigte Kontrolle.
+    choices:
+      - Check their data -> naturschutz_data
+
+  naturschutz_data:
+    type: message
+    text: >
+      Der Naturschutzverein Almwiesen hat seit drei Jahren die Flora
+      am Kirchsteig kartiert. Ihre Daten zeigen: 14 geschützte
+      Pflanzenarten auf der Projektfläche. Drei davon stehen auf der
+      Roten Liste Österreich.
+
+      Annas Kartierung war noch detaillierter — sie hat zusätzlich
+      Bodenproben genommen, die zeigen, dass die Feuchtwiese ein
+      einzigartiges Biotop ist. Unersetzlich.
+
+      AlpinResort hat in ihrer Projektbeschreibung geschrieben:
+      "Keine geschützten Arten auf der Projektfläche vorhanden."
+      Das ist eine nachweisbare Lüge.
+
+      Anna war Mitglied. Sie hat die meisten Kartierungen beigesteuert.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sepp bulldozing ---
+
+  sepp_bulldozing:
+    type: message
+    text: >
+      SEPP: I zeig dir was. Letzte Woche bin i oben gwesen, fünf Uhr
+      in der Früh. Da standen zwei Bagger auf der Almwiese. Frische
+      Erde aufgrissen, Grasnarbe weg, auf zweihundert Quadratmeter.
+      De Enziane — weg. De Arnika — weg. Dreihundert Jahre alte
+      Kulturlandschaft in einer Nacht.
+
+      I hab alles fotografiert. Und i hab die Firmenschilder an den
+      Baggern gsehn: "Lechner Baumaschinen GmbH." Lechner. Wie
+      Thomas Lechner, Geschäftsführer AlpinResort. Sein Bruder hat
+      die Baggerfirma.
+
+      Anna hatte die gleichen Fotos. Und die Baugenehmigung existiert
+      ned. I hab nachgfragt.
+    effects:
+      trust_sepp: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sophie research ---
+
+  sophie_research:
+    type: message
+    text: >
+      SOPHIE: Anna hat mir was anvertraut. Bevor sie verschwunden ist.
+      Eine Kopie ihrer ganzen Forschungsdaten — Bodenproben,
+      Flora-Kartierung, GPS-Koordinaten der illegalen Baggerarbeiten,
+      und den Schriftverkehr mit der Bezirkshauptmannschaft, wo die
+      immer wieder die Kontrolle verschoben haben.
+
+      Sie hat gesagt: "Wenn mir was passiert, bring das zur Doris
+      Steiner beim Salzkammergut Kurier."
+
+      Die Daten beweisen, dass AlpinResort auf geschütztem Gebiet
+      baut, und dass die Behörde das deckt.
+    effects:
+      trust_sophie: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Lisa Harmony. Wellness influencer. Moved to Seebründl a year ago.
+      Someone was copying Anna's recipes. Someone was watching her flat.
+      Someone was at her boat.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate Lisa's online presence -> lisa_online
+      - Talk to Lena about Lisa -> lena_lisa
+        when:
+          state: trust_lena
+          gte: 20
+      - Talk to Michi (more detail on the boat incident) -> michi_detail
+      - Talk to Barbara about Lisa -> barbara_lisa
+      - Check the anonymous account @berggeist -> berggeist_investigation
+      - Talk to Greta the bookseller -> greta_interview
+        when:
+          state: trust_greta
+          gte: 40
+      - Talk to Inspektor Brandner -> inspektor_interview
+        when:
+          state: trust_inspektor
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Lisa Online ---
+
+  lisa_online:
+    type: message
+    text: >
+      Lisa Harmony's Seebründl.social profile: 340 posts in 11 months.
+      The first month: generic wellness content. "Detox your morning."
+      "Mountain energy heals."
+
+      Then she discovered Anna's herb posts. From month 2 onward, her
+      content shifts dramatically:
+
+      Month 2: "Incredible herb wisdom from a local farmer! Inspired!"
+      Month 4: "Why won't certain people collaborate? We could achieve
+      so much together."
+      Month 7: "I know herbs too. My recipes are just as valid. Stop
+      gatekeeping plant knowledge."
+      Month 9: "She thinks she owns these mountains. She doesn't."
+      Month 10: No posts. Just silent likes on every Anna post.
+
+      Her online shop sells "Alpine Harmony Tea" — the ingredients are
+      identical to Anna's signature Almkräuter blend.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lena on Lisa ---
+
+  lena_lisa:
+    type: message
+    text: >
+      LENA: Die Lisa? Oida. Des is a Albtraum. Die is vor am Jahr
+      aufkreuzt, hat si als Annas "Seelenverwandte" bezeichnet. Hat
+      angfangen Annas Kräuterrezepte nachzumachen und online zu
+      verkaufen. Anna hat das öffentlich richtiggestellt. Seither is
+      de Lisa... durchdreht.
+
+      Mal kommen Nachrichten: "Wir sind doch gleich, warum lehnst du
+      mich ab?" Und dann: "Du wirst sehen was passiert wenn du mich
+      weiter ignorierst."
+
+      Anna hat mir amoi gsagt: "Die kennt meinen Tagesablauf besser
+      als i selber." Sie wusste immer wann Anna auf der Alm war, wann
+      im Dorf, wann daheim. Immer.
+
+      Vor am Monat hat Anna gmerkt, dass wer in ihrer Hütte war.
+      Nix gstohlen. Aber Sachen umgramt. Und a Kräutersträußchen
+      dagelassen. In Lisas Stil gebunden.
+    effects:
+      trust_lena: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Michi detail ---
+
+  michi_detail:
+    type: message
+    text: >
+      MICHI: ok oida in echt, i hab ned alles gsagt. als i de person
+      bei annas boot gsehn hab, hat die was am bootsboden befestigt.
+      so a kleines schwarzes kastl. mit klebeband oder magnet, weiß
+      ned genau.
+
+      und fix oida... am nächsten tag hab i die lisa harmony beim
+      bäcker gsehn und die hat genau die gleiche jacke anghabt. so a
+      lila outdoorjacke. und die gleichen blonden dreadlocks.
+
+      i weiß es is vielleicht nix oba seit anna weg is schlaf i
+      schlecht oida. hätt i was sagen sollen. wos wüst, i bin 17,
+      wer glaubt mir
+    effects:
+      trust_michi: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Barbara on Lisa ---
+
+  barbara_lisa:
+    type: message
+    text: >
+      BARBARA: Die Lisa Harmony. Die kommt regelmäßig. Kauft
+      Beruhigungstropfen, Schlafmittel, Energiepräparate. Des Muster
+      is jemand der ned schläft und dauernd unter Strom steht.
+
+      Und amoi hat sie mi gfragt, ganz beiläufig, ob i GPS-Tracker
+      verkauf. I hab gsagt "des is a Apotheke, ka Elektronikgeschäft."
+      Sie hat glacht und gsagt "war nur a Spaß."
+
+      Seit Anna verschwundn is, war sie ned mehr da. Des is a
+      ungewöhnlich. Die war vorher jeden dritten Tag bei mir.
+    effects:
+      trust_barbara: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Berggeist (anonymous account) ---
+
+  berggeist_investigation:
+    type: tweet
+    from: berggeist
+    text: >
+      Sie hätte auf mich hören sollen. Ich wollte sie nur beschützen.
+      Niemand versteht die Kräuter so wie ich.
+    choices:
+      - Look at this account's history -> berggeist_posts
+
+  berggeist_posts:
+    type: message
+    text: >
+      @berggeist: Account erstellt vor 9 Monaten. Alle Posts handeln
+      von Annas Arbeit. Kommentare unter jedem Kräuterfoto, jedem
+      Rezept, jedem Naturschutzbeitrag. Der Ton verändert sich:
+
+      Monat 1: "Wunderschöne Arbeit. Du bist die Seele der Almwiesen."
+      Monat 3: "Warum antwortest du mir nicht? Ich möchte doch nur
+      mit dir arbeiten."
+      Monat 5: "Ich sehe dich im Gasthof mit anderen Leuten. Für die
+      hast du Zeit, für mich nicht?"
+      Monat 8: "Ich weiß wo du bist. Immer. Ich bin nah."
+
+      Der Account hat keine Fotos, keine persönlichen Details. Nur
+      Anna. Immer nur Anna.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> berggeist_style
+
+  berggeist_style:
+    type: message
+    text: >
+      Vergleich @berggeist mit @lisa_harmony:
+
+      Gleiche Wellness-Terminologie. Gleiche Verwendung von Anglizismen
+      — "Energy," "Healing," "Mindfulness." Gleiches Wissen über Annas
+      Kräuterrezepturen, das nur jemand haben kann, der die Hütte von
+      innen kennt.
+
+      Und ein Post von @berggeist: "Deine Arnika-Tinktur nach dem
+      alten Rezept ist die stärkste." Das Rezept hat Anna nie
+      veröffentlicht. Es hing handgeschrieben in der Hütte.
+
+      Es ist Lisa. Der anonyme Account ist Lisa Harmony.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Greta ---
+
+  greta_interview:
+    type: message
+    text: >
+      GRETA: Anna hat mir was daglassen. A wasserdichte Box. Sie hat
+      gsagt: "Wenn jemand fragt was mit den Almwiesen passiert, gib
+      ihnen des."
+
+      Sie hat verängstigt ausgsehen. Sie hat gsagt sie braucht Kopien
+      an am Ort, an den niemand denken würde. A Buchhandlung passt
+      perfekt.
+    effects: { trust_greta: "+10" }
+    choices:
+      - What's in the box? -> greta_box
+
+  greta_box:
+    type: message
+    text: >
+      Greta holt eine wasserdichte Pelican-Box unter dem Tresen hervor.
+
+      GRETA: Sie hat gsagt du kommst. Nimm.
+
+      Drin: ein USB-Stick und gedruckte Fotos. Die Fotos zeigen
+      Bagger auf der Almwiese bei Nacht, die Firmenschilder lesbar.
+      Zerstörte Enzianfelder. Planierte Feuchtwiese. Der USB-Stick
+      enthält Bodenproben-Daten, Flora-Kartierung und Annas
+      vollständigen Bericht an die Bezirkshauptmannschaft — den die
+      nie bearbeitet haben.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspektor Brandner ---
+
+  inspektor_interview:
+    type: message
+    text: >
+      INSPEKTOR BRANDNER: Unter uns — und i mein wirklich unter uns —
+      i hab wollen ermitteln wegen AlpinResort. Mei Vorgesetzter hat
+      gsagt i soll des lassen. "Bezirkshauptmannschaft is zuständig."
+      Des is Beamtendeutsch für "Finger weg."
+
+      De Gschicht mit der Lisa is was anderes. Davon hab i bis jetzt
+      nix gwusst. Wenn du Beweise für Stalking hast, dann kann i was
+      machen. Des is eindeutig mei Zuständigkeit.
+
+      Bring mir was Handfestes und i mach den Fall wieder auf.
+    effects:
+      trust_inspektor: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Anna than anyone in Seebründl. Who is responsible?
+    choices:
+      - Confront Lisa Harmony (the obsessive influencer) -> confront_lisa
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Thomas Lechner (the resort director) -> confront_thomas
+        when:
+          state: resort_evidence
+          gte: 3
+      - Confront Mayor Wallner (political protection) -> confront_franz
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Lisa (Best Ending) ---
+
+  confront_lisa:
+    type: message
+    text: >
+      You present your evidence to Lisa Harmony:
+
+      "I know @berggeist is your account. I know you put a tracker
+      on Anna's boat. I know you broke into her herb hut. I know you
+      were watching her flat. I have witnesses and I have the
+      anonymous posts that match your writing style."
+    choices:
+      - Send -> lisa_response
+
+  lisa_response:
+    type: message
+    text: >
+      Lisa doesn't reply for a long time. Then:
+
+      LISA: Du verstehst das nicht. Anna und ich — wir sind gleich.
+      Wir gehören zusammen. Ich wollte sie nur beschützen. AlpinResort
+      war gefährlich für sie und sie hat meine Hilfe nicht angenommen.
+      Alles was ich getan habe, war aus Liebe.
+
+      That's not love. That's obsession.
+
+      You've already sent the evidence to Inspektor Brandner. And to
+      Doris Steiner.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektor Brandner reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the break-in at the hut,
+      the witness testimonies — Lisa Harmony is arrested for stalking,
+      Nötigung, and Hausfriedensbruch. A GPS tracker is recovered
+      from Anna's boat at the old boathouse.
+
+      Doris Steiner, in possession of Anna's full evidence package,
+      publishes the AlpinResort story in Der Standard. The
+      Bezirkshauptmannschaft orders an immediate stop of all
+      construction on the Kirchsteig-Alm. Thomas Lechner faces
+      criminal charges for illegal construction on protected land.
+
+      And Anna Gruber, reading the story from a friend's house in
+      Hallstatt, calls her sister for the first time in nine days.
+
+      "I kumm ham."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Frauenhelpline gegen Gewalt: 0800 222 555 (kostenlos, 24/7)
+      Opfernotruf: 0800 112 112
+      Onlineberatung: www.frauenhelpline.at
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: anna
+    text: >
+      de almwiese blüht weiter. und de leit in seebründl a. danke
+      dass es ned aufgeben habts.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Thomas (Partial Ending) ---
+
+  confront_thomas:
+    type: message
+    text: >
+      You present the environmental evidence to Thomas Lechner:
+
+      "I have photographs of illegal construction on protected alpine
+      meadow. I have the flora surveys proving endangered species on
+      the site. I have the building permits that don't exist. I have
+      your brother's excavators with your company name on them."
+    choices:
+      - Send -> thomas_response
+
+  thomas_response:
+    type: message
+    text: >
+      THOMAS: Dieses Gespräch wird an unsere Rechtsabteilung
+      weitergeleitet. Jede Veröffentlichung von rufschädigenden
+      Behauptungen wird rechtliche Konsequenzen haben. AlpinResort
+      Seebründl hat stets im Einklang mit geltendem Recht gehandelt.
+
+      But it's too late. You've sent the evidence to Doris, to the
+      Naturschutzverein, and to the Bezirkshauptmannschaft.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The construction scandal breaks. AlpinResort is ordered to halt
+      all work pending investigation. The project may be cancelled.
+      Fifty promised jobs vanish. The village is divided.
+
+      But Anna?
+
+      Without the stalking evidence, Lisa is never investigated. She
+      continues to live in Seebründl. She creates a new wellness brand.
+      She creates a new anonymous account. She watches.
+
+      Three months later, Anna reads about AlpinResort online. She
+      returns quietly. She moves her herb hut to a different meadow.
+      She installs a lock. She checks her boat every morning.
+
+      The corporation is exposed. But the person who terrorised Anna
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: anna
+    text: "i bin wieder da. de wiesen san grettet. der rest... schauma moi."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_franz:
+    type: message
+    text: >
+      You confront Bürgermeister Wallner with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> franz_response
+
+  franz_response:
+    type: tweet
+    from: rudi
+    text: >
+      Mein Mandant nimmt Ihre Anschuldigungen zur Kenntnis. Jede
+      Verbreitung von ehrenrührigen Behauptungen wird unverzüglich
+      gerichtlich verfolgt. — Kanzlei Maier & Partner, Salzburg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Wallner and AlpinResort's illegal construction —
+      and there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      AlpinResort continues to build. Lisa continues to watch. Anna
+      stays in hiding.
+
+      Six months later, @berggeist creates a new account. It follows
+      Anna's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SEEBRÜNDL — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Resort evidence: ${resort_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Anna's story explores themes of corporate
+      greed, environmental destruction, obsessive behaviour, alpine
+      community solidarity, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Frauenhelpline gegen Gewalt: 0800 222 555 (kostenlos, 24/7)
+      Opfernotruf: 0800 112 112
+      Umweltanwaltschaft Oberösterreich: +43 732 7720-13450

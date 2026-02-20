@@ -1,0 +1,1675 @@
+# DEAD ACCOUNT — Story 030: Tannhausen (Germany 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-030.yml
+#
+# Player investigates the disappearance of young traditional clockmaker
+# Florian Kessler in the fictional Black Forest village of Tannhausen.
+
+meta:
+  title: "Dead Account — Tannhausen"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lena: 0
+    trust_nico: 0
+    trust_hannah: 0
+    trust_greta: 0
+    trust_otto: 0
+    trust_werner: 0
+    trust_ingrid: 0
+    trust_karl: 0
+    trust_sabine: 0
+    trust_tobias: 0
+    trust_anke: 0
+    trust_michael: 0
+    trust_judith: 0
+    trust_norbert: 0
+    trust_yusuf: 0
+    trust_maja: 0
+    trust_tim: 0
+    trust_kommissar: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    stalking_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to tannhausen. black forest & cuckoo clocks"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Tannhausen.social"
+    description: "Willkommen auf der Community-Instanz von Tannhausen"
+    avatar_url: /gamepatch/assets/dead-account/tannhausen_bot.png
+
+  npcs:
+    # === Florian's Inner Circle ===
+    florian:
+      name: "Florian Kessler"
+      bio: "uhrmacher | traditionelle schwarzwalduhren | handwerk ist wahrheit | tannhausen"
+      avatar: avatars/florian.jpg
+    lena:
+      name: "Lena Hartmann"
+      bio: "florians mitbewohnerin | physiotherapeutin | kaffee & kiefernwald | tannhausen"
+      avatar: avatars/lena_t.jpg
+    nico:
+      name: "Nico Kessler"
+      bio: "florians bruder | freiburg | barista | wo ist mein bruder verdammt"
+      avatar: avatars/nico.jpg
+    hannah:
+      name: "Hannah Vogt"
+      bio: "florians freundin seit der schulzeit | lehrerin | grundschule tannhausen"
+      avatar: avatars/hannah.jpg
+
+    # === Local Government ===
+    norbert:
+      name: "Norbert Staufer"
+      bio: "Bürgermeister Tannhausen | Im Dienst der Gemeinde seit 2010 | #TannhausenWächst"
+      avatar: avatars/norbert.jpg
+    sabine:
+      name: "Sabine Reichert"
+      bio: "Gemeinderätin Umwelt | Tannhausen | Nachhaltigkeit & Naturschutz"
+      avatar: avatars/sabine.jpg
+    gemeinde:
+      name: "Gemeinde Tannhausen"
+      bio: "Offizieller Account | Bürgerinfo | Sprechstunde: Mo-Fr 9-12 Uhr"
+      avatar: avatars/gemeinde.jpg
+
+    # === Local Business & Community ===
+    greta:
+      name: "Greta Zimmermann"
+      bio: "Gasthaus Zum Schwarzwald | Schwarzwälder Kirschtorte | Stammtisch freitags | seit 1978"
+      avatar: avatars/greta.jpg
+    gasthaus:
+      name: "Gasthaus Zum Schwarzwald"
+      bio: "Gutbürgerliche Küche | Kirschtorte | Stammtisch | Das Herz von Tannhausen"
+      avatar: avatars/gasthaus.jpg
+    otto:
+      name: "Otto Brandt"
+      bio: "uhrmachermeister i.R. | 50 jahre schwarzwalduhren | florians lehrmeister"
+      avatar: avatars/otto.jpg
+    werner:
+      name: "Werner Fuchs"
+      bio: "förster | staatsforst tannhausen | der wald spricht wenn man zuhört"
+      avatar: avatars/werner.jpg
+    ingrid:
+      name: "Ingrid Möller"
+      bio: "apothekerin | Wald-Apotheke | tannhausen | gesundheit & kräuter | Mo-Sa"
+      avatar: avatars/ingrid.jpg
+    karl:
+      name: "Karl Ebner"
+      bio: "bäcker | Bäckerei Ebner | brot & brezeln | 4 uhr morgens seit 30 jahren"
+      avatar: avatars/karl.jpg
+    anke:
+      name: "Anke Sommer"
+      bio: "buchladen Sommer | neue & alte bücher | leseabend mittwochs | tannhausen"
+      avatar: avatars/anke.jpg
+    tobias:
+      name: "Tobias Wenger"
+      bio: "IT & webdesign | tannhausen | betreut florians onlineshop | nerd im schwarzwald"
+      avatar: avatars/tobias.jpg
+
+    # === Journalist ===
+    judith:
+      name: "Judith Kramer"
+      bio: "journalistin | Schwarzwälder Bote | umwelt & kommune | tipps: judith@swbote.de"
+      avatar: avatars/judith.jpg
+
+    # === GraniTec (corporate) ===
+    granitec:
+      name: "GraniTec Schwarzwald GmbH"
+      bio: "Gesteinsabbau & Baustoffe | Standort Tannhausen | DIN EN ISO 14001 zertifiziert"
+      avatar: avatars/granitec.jpg
+    michael:
+      name: "Michael Roth"
+      bio: "Geschäftsführer GraniTec Schwarzwald | Wirtschaft & Region | Arbeitsplätze sichern"
+      avatar: avatars/michael.jpg
+
+    # === Teens ===
+    yusuf:
+      name: "Yusuf"
+      bio: "17 | mountainbike & wald | tannhausen born | florian hat mir uhren beigebracht digga"
+      avatar: avatars/yusuf.jpg
+    maja:
+      name: "Maja"
+      bio: "16 | foto & natur | schwarzwald in schwarz-weiß | florian ist mein vorbild"
+      avatar: avatars/maja.jpg
+    tim:
+      name: "Tim"
+      bio: "15 | gaming & wandern | florian hat mich rausgeholt aus dem keller | ehrenmann fr"
+      avatar: avatars/tim.jpg
+
+    # === Media & Community ===
+    tannhausen_aktuell:
+      name: "Tannhausen Aktuell"
+      bio: "Nachrichten aus Tannhausen und Umgebung | Tips: redaktion@tannhausen-aktuell.de"
+      avatar: avatars/tannhausen_aktuell.jpg
+    wetter_sw:
+      name: "Wetter Tannhausen"
+      bio: "Automatische Wetterstation | Stündliche Updates | Schwarzwald"
+      avatar: avatars/wetter_sw.jpg
+    verein_wald:
+      name: "Verein Schwarzwaldwächter"
+      bio: "Naturschutz | Gewässerschutz | Schwarzwald bewahren | Ehrenamt"
+      avatar: avatars/verein_wald.jpg
+
+    # === Suspicious / Other ===
+    anon_uhr:
+      name: "SchwarzerZeiger"
+      bio: "."
+      avatar: avatars/anon.jpg
+    kommissar:
+      name: "Kommissarin Neumann"
+      bio: "Polizeirevier Tannhausen | Anzeigen: 110 | Bürgertelefon: Mo-Fr 8-16"
+      avatar: avatars/kommissar.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN TANNHAUSEN
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to tannhausen.social — the community Mastodon instance
+      for the Black Forest village of Tannhausen, Baden-Württemberg.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name appears everywhere:
+      @florian_kessler.
+
+      A young traditional clockmaker. He built handcrafted Black
+      Forest clocks and sold them online to collectors worldwide.
+      People are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> florian_profile
+
+  florian_profile:
+    type: tweet
+    from: florian
+    text: "Das Wasser im Tannenbach ist braun. Seit Wochen. Das kommt vom Steinbruch. Ich hab Proben genommen und die Werte sind krass. Scheiße, das muss öffentlich werden."
+    choices:
+      - That's his last real post... -> static_post
+
+  static_post:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a blurred photo of a clock face. The hands point to midnight.
+      No caption. Posted at 3am.
+
+      His friends say that's not his style. Florian always captioned
+      his work with details about the mechanism. The police say he
+      probably went hiking. Nobody buys it.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: kommissar
+    text: >
+      Wir haben eine Vermisstenanzeige bezüglich eines Bewohners
+      von Tannhausen aufgenommen. Derzeit liegen keine Hinweise auf
+      eine Straftat vor. Hinweise bitte an das Polizeirevier: 110.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are everywhere. His housemate @lena_hartmann
+      is desperate. His brother @nico_kessler is driving up from
+      Freiburg. His girlfriend @hannah_vogt is posting old photos
+      of them together. Old Otto, his clock master teacher, says
+      Florian would never leave unfinished work.
+
+      And the journalist @judith_kramer has gone silent since
+      Florian disappeared. Strange.
+
+      Nobody believes he went hiking. Florian had three commissions
+      due this month. You don't walk away from a clockmaker's bench
+      with unfinished pieces.
+    effects: { trust_lena: "+5", trust_nico: "+5" }
+    choices:
+      - Start following Florian's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Tannhausen. Follow Florian's contacts and read
+      their posts. The more you engage with the community, the
+      more they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Greta (gasthaus owner, knows everyone) -> greta_intro
+      - Talk to Otto (retired clockmaker, Florian's mentor) -> otto_intro
+      - Talk to Yusuf (teen, seems rattled) -> yusuf_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Florian with Black Forest village
+      life: hiking trail conditions, Greta's daily Kirschtorte
+      specials, weather warnings about Schwarzwald storms.
+
+      Key names surface: Lena (housemate, physio), Hannah (girlfriend,
+      teacher), Otto (clock mentor), and the teens — Yusuf, Maja,
+      Tim — who idolised Florian.
+
+      Also prominent: GraniTec Schwarzwald GmbH, the quarry company
+      at the edge of the forest. Their posts are corporate PR about
+      "sustainable resource extraction." Florian's posts about brown
+      water were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Greta -> greta_intro
+      - Talk to Otto -> otto_intro
+      - Talk to Yusuf -> yusuf_intro
+
+  # --- Greta (social map) ---
+
+  greta_intro:
+    type: tweet
+    from: greta
+    text: >
+      Florians Stammplatz ist leer. Sein Kaffee wird kalt. Komm
+      zurück, @florian_kessler. Wir brauchen dich hier.
+    effects: { trust_greta: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Greta -> greta_talk
+
+  greta_talk:
+    type: message
+    text: >
+      GRETA: New in town? Willkommen. Terrible timing though.
+      Everyone's on edge about Florian.
+
+      Let me tell you who's who. Lena is his housemate — she's
+      devastated, hasn't eaten in days. Hannah is his girlfriend
+      since Realschule — she's trying to stay strong but you can
+      see she's breaking. Otto Brandt taught him clockmaking — he's
+      been like a grandfather to Florian.
+
+      And then there's this online buyer situation. Tobias runs
+      Florian's webshop and he told me there's been this one
+      customer who's been... intense. Ordering clocks, then
+      returning them to get Florian to fix them personally. Sending
+      messages at all hours. Showing up at the workshop. Krass
+      creepy.
+
+      Oh, and GraniTec? Boah alter, don't get me started. They're
+      poisoning the Tannenbach and the Bürgermeister lets them.
+    effects: { trust_greta: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the online buyer -> greta_buyer
+      - Ask about GraniTec -> greta_granitec
+      - Thank her and move on -> quest1_hub
+
+  greta_buyer:
+    type: message
+    text: >
+      GRETA: Tobias knows more about it. But I'll tell you what I
+      saw. About a month ago, a man came into the gasthaus asking
+      for Florian. He'd driven from Mannheim — four hours — without
+      an appointment. He said he was a "collector" and needed to
+      "discuss a commission in person."
+
+      Florian was polite but uncomfortable. The man sat at the bar
+      for three hours waiting. When Florian didn't come back, the
+      man started asking everyone where Florian lived, where his
+      workshop was, what his schedule looked like.
+
+      I told him to leave. He said "I just want to talk to the
+      artist." Scheiße, the way he said "artist" — like he owned
+      Florian.
+    effects: { trust_greta: "+5" }
+    choices:
+      - Ask about GraniTec -> greta_granitec
+      - Move on -> quest1_hub
+
+  greta_granitec:
+    type: message
+    text: >
+      GRETA: GraniTec has been quarrying granite on the north slope
+      for eight years. They blasted through the hillside, and now
+      the groundwater is contaminated. The Tannenbach runs brown
+      after every rain. The trout are gone. Werner the forester says
+      the trees on the slope are dying.
+
+      Florian was the first person to actually test the water. He
+      sent samples to a lab in Freiburg. Heavy metals — cadmium,
+      nickel. Way over legal limits. He was building a case.
+
+      Two weeks later he's gone. Coincidence? Arschloch, no.
+    effects: { trust_greta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Otto (retired clockmaker, mentor) ---
+
+  otto_intro:
+    type: tweet
+    from: otto
+    text: >
+      fünfzig jahre uhrmacher. der junge ist der beste schüler den
+      ich je hatte. @florian_kessler lässt keine uhr unfertig. nie.
+      drei aufträge stehen offen. er ist nicht freiwillig gegangen.
+    effects: { trust_otto: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Otto -> otto_talk
+
+  otto_talk:
+    type: message
+    text: >
+      OTTO: I taught Florian everything. He came to me when he was
+      fourteen — said he wanted to learn Schwarzwalduhren. Real
+      ones. Hand-carved, hand-assembled. Not the tourist crap from
+      China.
+
+      He's the most talented clockmaker I've seen in fifty years.
+      His clocks sell for thousands online. Collectors from Japan,
+      America, everywhere. He made Tannhausen famous.
+
+      And I'm telling you — a clockmaker does not leave his bench
+      with three commissions open. It goes against everything in
+      his nature. Something happened.
+
+      Also — I've been worried about this for months — someone has
+      been sending him strange letters. Not emails. Paper letters.
+      Handwritten. He showed me one. It said "Your work is an
+      extension of your soul. I need to be closer to it."
+
+      Wichser. That's not admiration. That's obsession.
+    effects: { trust_otto: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> otto_night
+      - Move on -> quest1_hub
+
+  otto_night:
+    type: message
+    text: >
+      OTTO: The evening before he vanished — I was walking back from
+      the Gasthaus around 22 Uhr. I passed Florian's workshop and
+      the light was on. Normal — he works late. But there was a car
+      parked on the Waldweg next to the workshop. Not a local car.
+      Mannheim plates. Dark BMW. Parked in the trees where you
+      wouldn't see it from the road.
+
+      I didn't think much of it. A tourist, maybe. But now — Mannheim
+      plates. Same city that buyer came from.
+
+      Scheiße, I should have checked.
+    effects: { trust_otto: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Yusuf (teen, witness) ---
+
+  yusuf_intro:
+    type: tweet
+    from: yusuf
+    text: >
+      ey digga @florian_kessler hat mir beigebracht wie man ne uhr
+      repariert. der typ ist ehrenmann. wenn qqn was weiß sagt
+      bescheid alter ich dreh durch. krass dass keinen das
+      interessiert scheiße
+    effects: { trust_yusuf: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Yusuf -> yusuf_talk_early
+
+  yusuf_talk_early:
+    type: message
+    text: >
+      YUSUF: ey bist du neu hier? boah alter was ein timing. also
+      florian ist der krasseste typ in tannhausen safe. der hat uns
+      gezeigt wie man holz schnitzt, wie die zahnräder ineinander
+      greifen, der ganze scheiß. hat uns sogar bezahlt für sachen
+      schleifen und so.
+
+      und jetzt bin ich am ausflippen weil maja hat was gesehen
+      letzte woche am workshop aber sie will nicht drüber reden.
+      sie sagt es war nix aber digga das war safe nicht nix
+    effects: { trust_yusuf: "+10" }
+    choices:
+      - What did Maja see? -> yusuf_maja_hint
+      - Move on -> quest1_hub
+
+  yusuf_maja_hint:
+    type: message
+    text: >
+      YUSUF: ich weiß nicht genau. sie war abends joggen und hat
+      am workshop halt wen gesehen der da rumsteht. nicht florian.
+      irgendein typ. stand einfach da und hat durch die fenster
+      geguckt. und dann hat der angefangen fotos zu machen. vom
+      workshop. von der tür. von allem.
+
+      frag sie direkt aber sie ist vorsichtig mit leuten die sie
+      nicht kennt. red erstmal übers fotografieren mit ihr oder
+      so digga. die ist voll in dem thema
+    effects: { trust_yusuf: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Tannhausen. A Black Forest village
+      built around tradition and forest. A young clockmaker who was
+      exposing water contamination. A disappearance nobody believes
+      is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lena (Florian's housemate) -> lena_q1
+      - Talk to Hannah (Florian's girlfriend) -> hannah_q1
+      - Check what Nico (Florian's brother) is saying -> nico_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lena Q1 ---
+
+  lena_q1:
+    type: tweet
+    from: lena
+    text: >
+      wenn jemand was von @florian_kessler gehört hat meldet euch
+      bitte. seine werkstatt ist auf. sein werkzeug ist da. drei
+      uhren stehen halbfertig. er wäre NIE gegangen ohne das fertig
+      zu machen. niemals.
+    effects: { trust_lena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lena -> lena_q1_talk
+
+  lena_q1_talk:
+    type: message
+    text: >
+      LENA: I appreciate you reaching out but I don't know you.
+      Florian has a lot of friends in this village. I'm sure he'll
+      come back.
+
+      ...I keep telling myself that. I don't believe it anymore.
+
+      [Lena is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Hannah Q1 ---
+
+  hannah_q1:
+    type: tweet
+    from: hannah
+    text: >
+      Florian hat mir letzte Woche eine Uhr geschenkt. Handgeschnitzt.
+      Er hat gesagt "Falls mal was ist, denk an mich wenn du die
+      hörst." ICH WILL NICHT AN DICH DENKEN ICH WILL DASS DU DA BIST.
+    effects: { trust_hannah: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Hannah -> hannah_q1_talk
+
+  hannah_q1_talk:
+    type: message
+    text: >
+      HANNAH: Who are you? Another stranger who's going to tell me
+      to stay calm? Fick dich, I won't stay calm.
+
+      Florian called me the night before he disappeared. He said
+      "Hannah, ich hab Beweise. Wenn mir was passiert, guck dir
+      GraniTec an. Und diesen Typen aus Mannheim." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_hannah: "+10" }
+    choices:
+      - What do you think happened? -> hannah_theory
+      - Move on -> quest1_hub
+
+  hannah_theory:
+    type: message
+    text: >
+      HANNAH: I think two things are happening. GraniTec found out
+      he had water samples proving they're contaminating the
+      Tannenbach. And some Hurensohn from Mannheim has been
+      stalking him for months.
+
+      Florian told me about the letters. Handwritten. Detailed.
+      This person knew which clocks Florian was working on before
+      he posted about them. Knew his schedule. Knew when he was
+      alone in the workshop.
+
+      He went to the police. They said "it's just a fan." A fan who
+      drives four hours to stand outside your workshop at midnight.
+      Ja klar. Just a fan.
+    effects: { trust_hannah: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nico Q1 ---
+
+  nico_q1:
+    type: tweet
+    from: nico
+    text: >
+      mein bruder ist VERSCHWUNDEN und die polizei sagt er ist
+      vielleicht wandern??? ER WANDERT NICHT MITTEN IN DER
+      AUFTRAGSZEIT. ich fahr hoch aus freiburg. scheiße mann.
+    effects: { trust_nico: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nico -> nico_q1_talk
+
+  nico_q1_talk:
+    type: message
+    text: >
+      NICO: Who are you? Another person who's going to tell me
+      everything is fine? Scheiße, nothing is fine.
+
+      Florian sent me a message three days before he disappeared.
+      A link to a cloud folder. He said "if something happens to
+      me, send this to the Schwarzwälder Bote." I looked at it —
+      water analysis reports, photos of brown water, GraniTec truck
+      photos, some crazy letters from a buyer.
+
+      The folder is still there. I haven't sent it yet because I
+      keep thinking he'll come back.
+    effects: { trust_nico: "+10" }
+    choices:
+      - What kind of letters? -> nico_letters
+      - Move on -> quest1_hub
+
+  nico_letters:
+    type: message
+    text: >
+      NICO: Krass creepy letters. Handwritten, like old-fashioned.
+      This person writes about Florian's clocks like they're
+      religious artifacts. "Your Schwarzwalduhr Nr. 47 speaks to
+      me on a level no one else understands." "I've built a room
+      for your work. Everything is ready for you."
+
+      And the latest one — from two weeks ago: "I know you feel
+      the connection too. I've been watching you work. You're most
+      beautiful at midnight, alone with the wood."
+
+      Digga, that's not a customer. That's a stalker. And Florian
+      didn't even know who it was — the letters had no return
+      address. Just a Mannheim postmark.
+    effects: { trust_nico: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Florian went silent. Multiple
+      people saw or heard things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Maja (was jogging near the workshop that evening) -> maja_interview
+      - Find Werner (forester, patrols at dawn) -> werner_interview
+      - Find Karl (baker, starts at 4am, saw something) -> karl_interview
+      - Find Anke (bookshop, working late, heard something) -> anke_interview
+
+  # --- Maja (saw someone at the workshop) ---
+
+  maja_interview:
+    type: tweet
+    from: maja
+    text: >
+      ich war freitagabend joggen und am workshop von florian war
+      irgendwer. nicht florian. ein anderer typ. ich hab mich nicht
+      getraut was zu sagen. scheiße ich hätte was machen sollen
+    effects: { trust_maja: "+5" }
+    choices:
+      - Ask Maja what she saw -> maja_talk
+
+  maja_talk:
+    type: message
+    text: >
+      MAJA: ok alter aber sag das keinem weiter. ich war so gegen
+      21 uhr am workshop vorbei. und da stand ein typ. nicht aus
+      tannhausen — der hatte ne jacke an die kein mensch hier
+      trägt. so ne schicke lederjacke. und er hat durchs fenster
+      geguckt. und dann hat er fotos gemacht. vom werkzeug. von
+      den uhren die drin hängen. von allem.
+
+      als er mich gesehen hat ist er zu seinem auto gerannt. dunkler
+      BMW. und digga — er hatte mannheimer kennzeichen. ich hab das
+      gesehen weil er direkt an mir vorbei ist.
+
+      krass unheimlich alter. ich schwöre der war nicht zum ersten
+      mal da
+    effects:
+      trust_maja: "+10"
+      night_witnesses: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Werner (forester, dawn patrol) ---
+
+  werner_interview:
+    type: tweet
+    from: werner
+    text: >
+      Frühkontrolle heute Morgen. Der Tannenbach ist wieder braun.
+      Und am Waldweg zum Steinbruch frische Reifenspuren. Schwere
+      Fahrzeuge. In der Nacht.
+    effects: { trust_werner: "+5" }
+    choices:
+      - Ask Werner what he saw -> werner_talk
+
+  werner_talk:
+    type: message
+    text: >
+      WERNER: I patrol the forest at dawn. That morning — the morning
+      after Florian's last post — the Tannenbach was the colour of
+      coffee. Brown water running down from the GraniTec quarry.
+      Heavy rain the night before had washed out whatever they're
+      dumping.
+
+      On the Waldweg I found fresh tracks. Two vehicles. One heavy —
+      a truck or dumper. The other smaller, maybe a car. And next
+      to the stream, something worse: six blue barrels, half-buried
+      in the mud. Leaking. Industrial waste. I could smell the
+      chemicals.
+
+      I photographed everything and reported it to the
+      Landratsamt. They said "we'll send an inspector." That was
+      five days ago. Nobody came.
+    effects:
+      trust_werner: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Karl (baker, saw vehicles) ---
+
+  karl_interview:
+    type: tweet
+    from: karl
+    text: >
+      Um 4 Uhr geht der Ofen an. Jeden Tag seit 30 Jahren. Aber
+      an dem Morgen waren Autos unterwegs die um 4 Uhr nichts auf
+      der Straße zu suchen haben.
+    effects: { trust_karl: "+5" }
+    choices:
+      - Ask Karl what he saw -> karl_talk
+
+  karl_talk:
+    type: message
+    text: >
+      KARL: I start baking at 4am. That morning, while I was opening
+      the shutters, a GraniTec truck came through the village. At
+      4am. No headlights. Going fast, heading north toward the
+      Bundesstraße. Why would a quarry truck be driving without
+      lights at 4am?
+
+      Then about twenty minutes later, a smaller vehicle. A dark
+      VW Transporter. Florian's. Going the opposite direction —
+      south, toward the Feldberg. Also fast. Like he was fleeing.
+
+      I told the police. They noted it. That's all they ever do
+      in this village.
+    effects:
+      trust_karl: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Anke (bookshop, heard something) ---
+
+  anke_interview:
+    type: tweet
+    from: anke
+    text: >
+      Ich war Freitagabend spät im Laden. Inventur. Gegen 23 Uhr
+      habe ich Stimmen von der Werkstatt gehört. Laut. Aggressiv.
+    effects: { trust_anke: "+5" }
+    choices:
+      - Ask Anke what she heard -> anke_talk
+
+  anke_talk:
+    type: message
+    text: >
+      ANKE: I was doing inventory until about 23 Uhr. My bookshop
+      is two buildings down from Florian's workshop. I heard voices —
+      raised voices. Two men. One was Florian, I'd recognise his
+      voice anywhere. The other I didn't know.
+
+      It wasn't a normal argument. The other man was calm in a way
+      that was almost worse than shouting. Cold. Controlled. I
+      heard him say — through the wall, muffled — something like
+      "Sie hätten das Angebot annehmen sollen." You should have
+      taken the offer.
+
+      Then a car door. Then nothing. Twenty minutes later, Florian's
+      workshop light went off. By morning he was gone.
+    effects:
+      trust_anke: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lena
+      (housemate) and Tobias (webshop manager).
+    choices:
+      - Talk to Lena about that night -> lena_interview
+      - Talk to Tobias about the online buyer -> tobias_interview
+      - Find Maja -> maja_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Werner -> werner_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Karl -> karl_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Anke -> anke_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lena (last to see Florian) ---
+
+  lena_interview:
+    type: tweet
+    from: lena
+    text: >
+      das foto auf florians account. das ist nicht er. florian
+      postet nie ohne beschreibung. nie um 3 uhr morgens. jemand
+      anderes hat das gemacht. jemand. anderes.
+    effects: { trust_lena: "+5" }
+    choices:
+      - DM Lena -> lena_talk_low
+        when:
+          state: trust_lena
+          lt: 50
+      - DM Lena -> lena_talk_high
+        when:
+          state: trust_lena
+          gte: 50
+
+  lena_talk_low:
+    type: message
+    text: >
+      LENA: I appreciate the concern but I don't want to talk to
+      strangers about this.
+
+      [Lena needs to trust you more. Show her you're investigating
+      seriously.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Share what you've learned about the night -> lena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the GraniTec truck, the voices
+      at the workshop, the brown water, the car with Mannheim plates.
+      Lena is silent for a long time.
+
+      LENA: Scheiße... you're actually looking for him. Okay. I'll
+      talk.
+    effects: { trust_lena: "+25" }
+    choices:
+      - What happened that night? -> lena_talk_high
+
+  lena_talk_high:
+    type: message
+    text: >
+      LENA: He came home around midnight. I was watching a film on
+      the couch. He was pale, shaking. He said "sie wissen was
+      ich habe." They know what I have. He grabbed his laptop, his
+      backup drives, and the box of water samples from the garage.
+
+      I asked who. He said "GraniTec. Die haben jemanden geschickt."
+      Then he said something else — "und der andere war wieder da.
+      Der aus Mannheim. Er steht draußen. Immer wieder."
+
+      He wouldn't say more. He hugged me, said "Ich melde mich in
+      ein paar Tagen," grabbed his car keys and left. By morning
+      his Transporter was gone and that weird clock photo was on
+      his account.
+    effects:
+      trust_lena: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      stalking_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tobias (online buyer info) ---
+
+  tobias_interview:
+    type: message
+    text: >
+      TOBIAS: I manage Florian's online shop. Built the website,
+      handle the orders, deal with customer service. And I'm telling
+      you — this one buyer has been a nightmare for six months.
+
+      Username: @SchwarzerZeiger. He's bought seven clocks. Returned
+      five of them with complaints that were total Quatsch — "the
+      tick is 0.3 seconds off," "the cuckoo emerges 2mm too far."
+      The point was to force Florian to personally repair them. Every
+      return included a handwritten note.
+
+      The notes got progressively... worse. "I feel closer to you
+      through your work." "I can hear your heartbeat in the mechanism."
+      "I need to see you work in person."
+
+      I told Florian to block him. He did. The buyer created new
+      accounts. Five new accounts.
+    effects:
+      trust_tobias: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Man with Mannheim plates photographing Florian's
+      workshop through the windows (Maja)
+      23:00 — Two men arguing at the workshop: "You should have
+      taken the offer" (Anke)
+      00:00 — Florian comes home, shaken, grabs evidence and
+      flees (Lena)
+      Night — GraniTec truck dumps barrels by the Tannenbach
+      (Werner, dawn discovery)
+      04:00 — GraniTec truck without lights heading north,
+      Florian's Transporter heading south (Karl)
+
+      GraniTec confronted Florian at the workshop. He fled with his
+      evidence. But someone else was also there that night —
+      watching through the windows.
+
+      Two threads to pull:
+      — The cover-up: What is GraniTec dumping? Who ordered
+        the confrontation? Why is the Bürgermeister silent?
+      — The stalker: Who is the obsessive buyer from Mannheim?
+        How far does the obsession go?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate the stalker -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      STALKING THREAD: Evidence collected: ${stalking_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the stalking thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalking_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      GraniTec Schwarzwald is dumping waste into the Tannenbach.
+      The groundwater is contaminated. The Bürgermeister is silent.
+      Florian had proof.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search Florian's published data -> water_records
+      - Talk to Judith the journalist -> judith_interview
+      - Talk to Sabine (environment councillor) -> sabine_interview
+      - Talk to Werner about the dumping -> werner_dumping
+      - Check the Schwarzwaldwächter association -> verein_investigation
+      - Talk to Otto about Florian's evidence -> otto_evidence
+      - Back to hub -> investigation_hub
+
+  # --- Water Records ---
+
+  water_records:
+    type: message
+    text: >
+      Florian shared some of his data through the Schwarzwaldwächter
+      association. His water samples from the Tannenbach show a
+      clear pattern: heavy metal spikes that correspond to GraniTec's
+      blasting schedule.
+
+      Cadmium levels at 12 times the EU drinking water limit. Nickel
+      at 8 times. The contamination is worst downstream from the
+      quarry's drainage channel — a channel that doesn't appear on
+      any permit.
+
+      His photographic evidence shows the Tannenbach before and after
+      quarry operations: crystal clear vs. brown sludge. The before
+      photos are from Otto's archive — fifty years of a healthy
+      stream, now destroyed.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Judith ---
+
+  judith_interview:
+    type: message
+    text: >
+      JUDITH: I don't reveal sources. Never.
+    effects: { trust_judith: "+5" }
+    choices:
+      - Show Judith the evidence you have -> judith_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  judith_with_evidence:
+    type: message
+    text: >
+      JUDITH: ...you have more than I expected. Scheiße.
+
+      Okay. Florian and I were working together. He had water
+      analyses, photos, GPS-tagged evidence of illegal dumping. A
+      drainage channel that doesn't appear on any environmental
+      permit. Barrels of industrial waste buried by the Tannenbach.
+
+      We were going to publish in the Schwarzwälder Bote. Then he
+      disappeared. And two days later, someone broke into my office
+      and took my backup hard drive.
+
+      Florian is alive. He contacted me once, from a number I didn't
+      know. He said he's at a friend's cabin near Titisee. He said
+      "they came to my workshop and someone else won't leave me
+      alone."
+
+      With enough evidence, I can publish and make it safe for
+      him to come home.
+    effects:
+      trust_judith: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> judith_hint
+      - Back to investigation hub -> investigation_hub
+
+  judith_hint:
+    type: message
+    text: >
+      JUDITH: GraniTec sent their Geschäftsführer — Michael Roth —
+      and some corporate lawyer to the workshop that night. They
+      told Florian to hand over everything or face "legal
+      consequences for Geschäftsschädigung." Business defamation.
+      Intimidation in a suit.
+
+      But Florian also mentioned someone else. Someone who'd been
+      at the workshop. Someone who knew his schedule, his
+      commissions, his movements. That's a different problem —
+      and it's been going on for months.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sabine (environment councillor) ---
+
+  sabine_interview:
+    type: message
+    text: >
+      SABINE: As environment councillor, I've raised the Tannenbach
+      issue in every Gemeinderatssitzung for two years. The
+      Bürgermeister always says "GraniTec is an important employer.
+      We need dialogue."
+
+      Off the record? I've seen the Landratsamt inspection reports.
+      GraniTec passes every time. But those inspections are announced
+      weeks in advance. They stop dumping, clean the channel, wait
+      for the inspectors to leave, then start again.
+
+      Florian had unannounced data. Samples taken at 3am after
+      blasting. Photos of barrels in the stream. That's what makes
+      it so dangerous. The Bürgermeister told me to stop raising it.
+      He said GraniTec provides 80 jobs. As if jobs justify poisoning
+      the water table.
+    effects:
+      trust_sabine: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Werner dumping ---
+
+  werner_dumping:
+    type: message
+    text: >
+      WERNER: I'll show you something. Last month I found something
+      in the Staatsforst, 200 metres downstream from the quarry.
+      Six blue barrels, industrial waste, buried in a drainage ditch.
+      Leaking. The soil around them was dead — nothing growing for
+      two metres in every direction.
+
+      The barrels had a GraniTec batch number. I photographed
+      everything, took GPS coordinates, and reported it to the
+      Landratsamt and the Regierungspräsidium.
+
+      Response? "We'll investigate." That was four weeks ago. The
+      barrels are still there. I check every morning.
+
+      Florian had the same photos. He was building the case that
+      would force an unannounced inspection.
+    effects:
+      trust_werner: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Verein Schwarzwaldwächter ---
+
+  verein_investigation:
+    type: tweet
+    from: verein_wald
+    text: >
+      WARNUNG: Tannenbach bei Tannhausen erneut stark getrübt.
+      Schwermetallwerte über dem Grenzwert. Wir fordern eine
+      unangemeldete Inspektion des GraniTec-Steinbruchs.
+    choices:
+      - Check their data -> verein_data
+
+  verein_data:
+    type: message
+    text: >
+      The Schwarzwaldwächter have been monitoring the Tannenbach for
+      four years. Their data shows a devastating pattern: water
+      quality has collapsed since GraniTec expanded their quarry.
+
+      Heavy metal readings correlate directly with blasting days.
+      Sediment load has increased tenfold. The trout population has
+      dropped to zero — the stream that was once famous for
+      Schwarzwald Forelle is now dead.
+
+      Florian was their most active volunteer. He contributed the
+      most detailed water analyses, the GPS-tagged dumping evidence,
+      the before-and-after photography.
+
+      Their annual report to the Landratsamt was acknowledged. No
+      action was taken.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Otto evidence ---
+
+  otto_evidence:
+    type: message
+    text: >
+      OTTO: Florian left something with me. A waterproof case.
+      He said "if someone asks about the Tannenbach, give them this."
+
+      He looked frightened. He said he'd made copies of everything
+      but needed one set off-site. An old clockmaker's workshop
+      seemed the safest place — nobody would think to look here
+      between the pendulums and escapements.
+    effects: { trust_otto: "+10" }
+    choices:
+      - What's inside? -> otto_case
+
+  otto_case:
+    type: message
+    text: >
+      Otto reaches under his workbench and produces a metal box.
+
+      OTTO: He said you'd come. Take it.
+
+      Inside: a USB drive and printed photographs. The photos show
+      the illegal drainage channel, the buried barrels with GraniTec
+      batch numbers, the brown Tannenbach, dead trout floating in
+      the sludge. The USB drive contains water analyses from a
+      certified Freiburg lab, GPS coordinates, timestamps, and
+      Florian's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKING THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKING THREAD
+
+      Someone has been obsessing over Florian's work. Buying clocks.
+      Sending letters. Photographing his workshop. Showing up
+      unannounced. The Mannheim buyer.
+
+      Stalking evidence: ${stalking_evidence}
+    choices:
+      - Investigate the online orders -> order_records
+      - Talk to Hannah about the letters -> hannah_letters
+        when:
+          state: trust_hannah
+          gte: 20
+      - Talk to Maja (more detail about the BMW) -> maja_detail
+      - Talk to Ingrid the pharmacist -> ingrid_interview
+      - Check the anonymous account @SchwarzerZeiger -> anon_investigation
+      - Talk to Tobias about tracking the buyer -> tobias_tracking
+      - Talk to Kommissarin Neumann -> kommissar_interview
+        when:
+          state: trust_kommissar
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Order Records ---
+
+  order_records:
+    type: message
+    text: >
+      Tobias shares the order history. One account stands out:
+      customer "H. Brückner," Mannheim.
+
+      Seven orders in six months. Five returns with increasingly
+      bizarre complaints. Each return demanded personal repair by
+      Florian — not a substitute. Each came with a handwritten note.
+
+      The shipping address: a PO box in Mannheim. The payment:
+      always bank transfer, always the maximum amount. The email
+      correspondence: 147 messages in six months. The first were
+      normal. By month four: "I dream about your hands on the
+      wood." By month six: "I need to be in the room when you
+      create."
+
+      The account was blocked. Five new accounts appeared within
+      a week, all with Mannheim addresses. Same writing style.
+      Same obsession.
+    effects:
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Hannah on letters ---
+
+  hannah_letters:
+    type: message
+    text: >
+      HANNAH: Florian showed me all the letters. Fourteen in total.
+      Handwritten on expensive paper. No return address. Mannheim
+      postmark.
+
+      The first few were admiring. Normal-ish. "Your work is
+      extraordinary." But then: "I built a room in my house for
+      your clocks. The walls are lined with them. I fall asleep to
+      their ticking." And then: "I followed you through the
+      Weihnachtsmarkt last December. You were beautiful in the
+      snow. You didn't see me but I was there."
+
+      FOLLOWED HIM. At the Christmas market. And the police said
+      "it's just a fan." Hurensohn cops. Sorry but seriously.
+
+      The last letter — the one from two weeks ago — said "I'm
+      coming to stay. Nothing will keep us apart."
+    effects:
+      trust_hannah: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Maja detail ---
+
+  maja_detail:
+    type: message
+    text: >
+      MAJA: ok digga ich hab nicht alles erzählt. der typ mit dem
+      BMW — als er an mir vorbeigerannt ist hab ich sein gesicht
+      gesehen. so mitte 40 vielleicht. und er hatte was in der
+      hand. sah aus wie ein brief. oder ne karte. so einen umschlag
+      halt.
+
+      und boah alter — am nächsten morgen lag ein umschlag vor
+      florians werkstatttür. kein name drauf. kein absender. ich
+      hab ihn nicht angefasst aber ich hab ein foto gemacht.
+
+      und noch was: ich hab den BMW nicht nur einmal gesehen. der
+      steht seit wochen immer mal wieder auf dem waldweg. manchmal
+      abends, manchmal morgens ganz früh. ich hab drei mal die
+      kennzeichen fotografiert. immer dasselbe. MA-HB 417.
+
+      scheiße ich hätte sofort was sagen sollen
+    effects:
+      trust_maja: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Ingrid ---
+
+  ingrid_interview:
+    type: message
+    text: >
+      INGRID: A man came into my pharmacy three weeks ago. Not from
+      here — Hochdeutsch, city accent. He asked if I knew where
+      "der Uhrmacher" — the clockmaker — lived. Not Florian's name.
+      "Der Uhrmacher." Like he's a character, not a person.
+
+      I said I didn't give out addresses. He got uncomfortable.
+      Then he asked for sleeping pills. Strong ones. I said he'd
+      need a prescription. He left.
+
+      Then he came back the next day and asked the same questions.
+      And the day after. Three days in a row. I told Florian. He
+      said "he's getting closer."
+    effects:
+      trust_ingrid: "+10"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- SchwarzerZeiger (anonymous account) ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_uhr
+    text: >
+      Die Uhren ticken weiter. Auch wenn der Meister schweigt.
+      Ich höre jede Sekunde. Ich bin nah.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @SchwarzerZeiger: account created 4 months ago. Posts are all
+      about clocks, craftsmanship, and Florian. The tone shifts:
+
+      Month 1: "Kessler-Uhren are the finest in the Schwarzwald.
+      True art in wood and brass."
+      Month 2: "He doesn't respond to my messages. Artists need
+      solitude, I understand. But I am not just anyone."
+      Month 3: "I stood outside his workshop tonight. The light was
+      on. I could hear him working. The sound of his tools is
+      like music."
+      Month 4: "He blocked me. Again. But you can't block someone
+      who is already inside your work. I am in every clock."
+
+      No profile photo. No personal details. Just Florian. Only
+      Florian.
+    effects:
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @SchwarzerZeiger with the order emails from
+      "H. Brückner":
+
+      Same flowery prose. Same obsessive focus on Florian's hands,
+      his tools, his creative process. Same unusual vocabulary —
+      "Seelenverwandtschaft" (soul kinship), "Schöpfungsakt"
+      (act of creation).
+
+      And one post from @SchwarzerZeiger: "Schwarzwalduhr Nr. 52
+      has a wobble in the third gear. I can feel it." Nr. 52 hasn't
+      been posted about yet. It's still on the workbench. Unfinished.
+
+      Only someone who's been inside the workshop — or looking
+      through the windows — would know about Nr. 52.
+
+      @SchwarzerZeiger is H. Brückner. The Mannheim buyer.
+    effects:
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Tobias tracking ---
+
+  tobias_tracking:
+    type: message
+    text: >
+      TOBIAS: I did some digging. The bank transfer for the first
+      order came from a "Heinrich Brückner" at a Mannheim bank.
+      Google his name — nothing. No LinkedIn, no social media, no
+      business registration.
+
+      But I tracked the IP addresses from the five backup accounts
+      he created after being blocked. Four of them resolve to a
+      residential ISP in Mannheim-Neckarstadt. The fifth? An IP in
+      Tannhausen. Our village. He was here when he created that
+      account.
+
+      I also checked the webshop access logs. Someone has been
+      loading Florian's product pages 20-30 times per day for the
+      last three months. Same Mannheim IP. Every day. Multiple
+      times per hour. Who refreshes a clock page thirty times a day?
+
+      Krass creepy digga. This person is not well.
+    effects:
+      trust_tobias: "+15"
+      stalking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # --- Kommissarin Neumann ---
+
+  kommissar_interview:
+    type: message
+    text: >
+      KOMMISSARIN NEUMANN: Off the record — completely off the
+      record — the Kessler case bothers me. My superior classified
+      it as "voluntary absence" within 24 hours. That's fast.
+
+      And the GraniTec situation: I wanted to investigate. I was
+      told the Landratsamt has "Zuständigkeit" — jurisdiction.
+      Which means nobody investigates.
+
+      The stalking is different. If you bring me solid evidence —
+      the letters, the accounts, the car registration, witness
+      statements about the trespassing — I can act. Stalking is
+      §238 StGB. That's my jurisdiction.
+
+      Bring me something concrete and I'll reopen everything.
+    effects:
+      trust_kommissar: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalking thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Florian than anyone in Tannhausen. Who is responsible?
+    choices:
+      - Confront the stalker buyer (H. Brückner) -> confront_stalker
+        when:
+          state: stalking_evidence
+          gte: 5
+      - Confront Michael Roth (GraniTec director) -> confront_michael
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Bürgermeister Staufer (political protection) -> confront_norbert
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Stalker (Best Ending) ---
+
+  confront_stalker:
+    type: message
+    text: >
+      You present your evidence publicly:
+
+      "I know @SchwarzerZeiger is Heinrich Brückner from Mannheim.
+      I know about the 14 letters, the 7 orders, the 5 fake accounts.
+      I know about the BMW with plates MA-HB 417 parked outside the
+      workshop at night. I know he was photographing through the
+      windows. I have IP logs, witness testimonies, and the access
+      records."
+    choices:
+      - Send -> stalker_response
+
+  stalker_response:
+    type: message
+    text: >
+      @SchwarzerZeiger doesn't reply. The account is deleted within
+      minutes.
+
+      But Tobias has already archived everything. And you've sent
+      the evidence package to Kommissarin Neumann and to Judith
+      Kramer.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE STALKER
+
+      Three things happen in quick succession.
+
+      Kommissarin Neumann traces the registration MA-HB 417 to
+      Heinrich Brückner, 43, Mannheim-Neckarstadt. His apartment
+      is searched. An entire room is filled with Florian's clocks,
+      photographs of the workshop taken through windows, copies of
+      Florian's social media posts printed and pinned to the walls,
+      and a journal detailing every visit to Tannhausen over six
+      months. Brückner is arrested under §238 StGB — Nachstellung.
+
+      Judith Kramer, armed with Florian's complete water
+      contamination dossier, publishes the GraniTec story in the
+      Schwarzwälder Bote. It's picked up by SWR. The
+      Regierungspräsidium orders an unannounced inspection. The
+      buried barrels are found. GraniTec is shut down pending
+      Umweltsanierung. Michael Roth faces criminal charges for
+      illegal waste disposal. The Bürgermeister is questioned.
+
+      And Florian Kessler, reading the news from a cabin near
+      Titisee, calls his brother for the first time in ten days.
+
+      "Ich komme nach Hause. Die Uhren warten."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: florian
+    text: >
+      die werkstatt ist offen. die uhren ticken. der tannenbach
+      wird wieder klar. danke dass ihr nicht aufgegeben habt.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Michael Roth (Partial Ending) ---
+
+  confront_michael:
+    type: message
+    text: >
+      You present the contamination evidence to Michael Roth:
+
+      "I have certified water analyses showing cadmium at 12 times
+      the legal limit. I have GPS-tagged photos of your illegal
+      drainage channel. I have photos of barrels with GraniTec batch
+      numbers buried by the Tannenbach. I have four years of
+      monitoring data from the Schwarzwaldwächter. I have it all."
+    choices:
+      - Send -> michael_response
+
+  michael_response:
+    type: message
+    text: >
+      MICHAEL: GraniTec Schwarzwald GmbH operates in full compliance
+      with all environmental regulations. These allegations are
+      geschäftsschädigend and will be addressed through our legal
+      department. Any publication will result in immediate
+      Unterlassungsklage.
+
+      But it's too late. You've sent the evidence to Judith, to the
+      Schwarzwaldwächter, and directly to the Regierungspräsidium.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The contamination story breaks. GraniTec is ordered to halt
+      operations pending investigation. The quarry may close. Eighty
+      jobs hang in the balance. The village is divided.
+
+      But Florian?
+
+      Without the stalking evidence, Brückner is never investigated.
+      He continues to visit Tannhausen. He continues to watch the
+      workshop. He creates new accounts, buys clocks from other
+      makers, but always comes back to Florian's village.
+
+      Two months later, Florian reads about GraniTec online. He
+      returns quietly. He installs security cameras. He changes
+      the workshop lock. He never works alone at night again.
+
+      The corporation is exposed. But the person who terrorised
+      Florian walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: florian
+    text: "ich bin zurück. das wasser wird sauberer. die werkstatt hat jetzt kameras."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Bürgermeister (Wrong Ending) ---
+
+  confront_norbert:
+    type: message
+    text: >
+      You confront Bürgermeister Staufer with your evidence.
+
+      Within hours, you receive a response from a Freiburg law firm:
+    choices:
+      - Read the response -> norbert_response
+
+  norbert_response:
+    type: tweet
+    from: gemeinde
+    text: >
+      Die Gemeinde Tannhausen nimmt die Anschuldigungen zur
+      Kenntnis. Jede öffentliche Verbreitung diffamierender
+      Behauptungen wird rechtliche Konsequenzen nach sich ziehen.
+      — Kanzlei Schreiber & Partner, Freiburg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The Bürgermeister's lawyer buries your accusation. Without a
+      direct link between Staufer and GraniTec's dumping — and there
+      isn't one beyond political protection — your evidence is
+      misdirected.
+
+      GraniTec continues to dump. Brückner continues to watch.
+      Florian stays in hiding.
+
+      Six months later, @SchwarzerZeiger creates a new account. It
+      follows Florian's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: TANNHAUSEN — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Stalking evidence: ${stalking_evidence}
+
+      Thank you for playing. Florian's story explores themes of
+      corporate environmental crime, obsessive behaviour, small-town
+      silence, traditional craft under threat, and the courage to
+      protect what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, or is in emotional distress, help is available:
+      Telefonseelsorge: 0800 111 0 111 (kostenlos, 24/7)
+      Weisser Ring Opfertelefon: 116 006
+      Polizei: 110

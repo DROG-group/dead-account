@@ -1,0 +1,1591 @@
+# DEAD ACCOUNT — Story 032: Porticello (Sicily, Italy — Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-032.yml
+#
+# Player investigates the disappearance of young ceramics artist
+# Lucia Ferrante in the fictional Sicilian coastal town of Porticello.
+
+meta:
+  title: "Dead Account — Porticello"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_salvatore: 0
+    trust_valentina: 0
+    trust_giuseppe: 0
+    trust_francesca: 0
+    trust_marco: 0
+    trust_alessia: 0
+    trust_tommaso: 0
+    trust_rosa: 0
+    trust_carmelo: 0
+    trust_paola: 0
+    trust_enzo: 0
+    trust_nina: 0
+    trust_agata: 0
+    trust_santo: 0
+    trust_donato: 0
+    trust_irene: 0
+    trust_fabio: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    construction_evidence: 0
+    collector_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "appena arrivata a porticello. il mare, la ceramica, la luce siciliana"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Porticello.social"
+    description: "Benvenuti sull'istanza comunitaria di Porticello, Sicilia"
+    avatar_url: /gamepatch/assets/dead-account/porticello_bot.png
+
+  npcs:
+    # === Lucia (the victim) ===
+    lucia:
+      name: "Lucia Ferrante"
+      bio: "ceramista | il fuoco e l'argilla non mentono | porticello è casa mia"
+      avatar: avatars/lucia.jpg
+
+    # === Lucia's Inner Circle ===
+    valentina:
+      name: "Valentina Ferrante"
+      bio: "sorella di lucia | professoressa di lettere | palermo | ridatemi mia sorella"
+      avatar: avatars/valentina.jpg
+    salvatore:
+      name: "Salvatore Ferrante"
+      bio: "fratello di lucia | pescatore | porticello | la cerco ogni giorno"
+      avatar: avatars/salvatore.jpg
+    francesca:
+      name: "Francesca Lo Presti"
+      bio: "coinquilina di lucia | cameriera al bar del porto | non ha senso niente"
+      avatar: avatars/francesca.jpg
+    marco:
+      name: "Marco Di Salvo"
+      bio: "ex di lucia | fotografo | palermo | ci eravamo lasciati bene"
+      avatar: avatars/marco.jpg
+
+    # === Local Government ===
+    carmelo:
+      name: "Carmelo Ferrara"
+      bio: "Sindaco di Porticello | Al servizio della comunità dal 2018 | #PorticelloCresce"
+      avatar: avatars/carmelo.jpg
+    paola:
+      name: "Paola Ferrara"
+      bio: "Assessore all'Urbanistica | Comune di Porticello | sviluppo sostenibile"
+      avatar: avatars/paola.jpg
+    comune:
+      name: "Comune di Porticello"
+      bio: "Profilo ufficiale | Avvisi e comunicazioni | Uffici: Lun-Ven 9-14"
+      avatar: avatars/comune.jpg
+
+    # === Local Business & Community ===
+    rosa:
+      name: "Rosa Catania"
+      bio: "Bar del Porto | granita | arancini | vista sul mare | dal 1976"
+      avatar: avatars/rosa.jpg
+    giuseppe:
+      name: "Giuseppe 'Peppe' Amato"
+      bio: "pescatore | 50 anni di mare | questa costa è la mia vita"
+      avatar: avatars/giuseppe.jpg
+    agata:
+      name: "Agata Puglisi"
+      bio: "farmacista | Porticello | salute e consiglio | aperta la domenica mattina"
+      avatar: avatars/agata.jpg
+    santo:
+      name: "Santo Ferrara"
+      bio: "libraio | La Bussola | libri usati | letture il giovedì sera"
+      avatar: avatars/santo.jpg
+    enzo:
+      name: "Enzo Catania"
+      bio: "capitano del porto | Porticello | permanenza mar-sab"
+      avatar: avatars/enzo.jpg
+
+    # === Teens ===
+    alessia:
+      name: "Alessia"
+      bio: "16 | lucia mi ha insegnato la ceramica | minchia ridatemela | porticello"
+      avatar: avatars/alessia.jpg
+    tommaso:
+      name: "Tommaso"
+      bio: "17 | pesca e skateboard | tipo il mare è tutto fra | porticello"
+      avatar: avatars/tommaso.jpg
+    nina:
+      name: "Nina"
+      bio: "15 | disegno e foto | lucia è la mia ispirazione | porticello"
+      avatar: avatars/nina.jpg
+
+    # === Journalist ===
+    irene:
+      name: "Irene Ferraro"
+      bio: "giornalista freelance | ambiente e territorio | segnalazioni: irene@ferraro-stampa.it"
+      avatar: avatars/irene.jpg
+
+    # === Construction / Corporate ===
+    edilmare:
+      name: "EdilMare Costruzioni"
+      bio: "Costruzioni e sviluppo immobiliare | Sede Palermo | Qualità e territorio"
+      avatar: avatars/edilmare.jpg
+    donato:
+      name: "Donato Ferrara"
+      bio: "Direttore cantiere EdilMare | Progetto Porticello | costruiamo il futuro"
+      avatar: avatars/donato.jpg
+    fabio:
+      name: "Fabio Ferrara"
+      bio: "Avvocato | Studio Ferrara & Ferrara | Diritto urbanistico | Palermo"
+      avatar: avatars/fabio.jpg
+
+    # === The Collector ===
+    raimondo:
+      name: "Raimondo Vella"
+      bio: "collezionista d'arte | ceramica siciliana contemporanea | la bellezza salva il mondo"
+      avatar: avatars/raimondo.jpg
+
+    # === Law Enforcement ===
+    maresciallo:
+      name: "Maresciallo Ferrara"
+      bio: "Carabinieri - Stazione di Porticello | Per segnalazioni: 112"
+      avatar: avatars/maresciallo.jpg
+
+    # === Anonymous ===
+    argilla_viva:
+      name: "argilla_viva"
+      bio: "."
+      avatar: avatars/anon.jpg
+
+    # === Community ===
+    actu_porticello:
+      name: "Porticello Notizie"
+      bio: "Notizie di Porticello e della costa | redazione@porticellonotizie.it"
+      avatar: avatars/actu_porticello.jpg
+    proteggi_costa:
+      name: "Associazione Proteggi la Costa"
+      bio: "Tutela del litorale siciliano | Volontari | Segnalazioni abusi edilizi"
+      avatar: avatars/proteggi_costa.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PORTICELLO
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to porticello.social — the community Mastodon instance for
+      the coastal town of Porticello, Sicily.
+
+      The local feed is in chaos today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @lucia_ferrante.
+
+      A young ceramics artist. Known for her tiles, her sculptures, her
+      murals along the harbour wall. She documented the coast through clay.
+      People are worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> lucia_profile
+
+  lucia_profile:
+    type: tweet
+    from: lucia
+    text: "stanno costruendo sul promontorio. zona protetta. ho le foto. ho i documenti. non mi fermo."
+    choices:
+      - That's her last real post... -> grey_tile
+
+  grey_tile:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a cracked ceramic tile, grey and broken, photographed on wet rocks.
+      Posted at 4am. No caption.
+
+      Her friends say that's not her work. Lucia would never post a
+      broken piece. The carabinieri say she probably left for a trip.
+      Something doesn't add up.
+    choices:
+      - Read the carabinieri statement -> carabinieri_statement
+      - Look at what people are saying -> community_reaction
+
+  carabinieri_statement:
+    type: tweet
+    from: maresciallo
+    text: >
+      Abbiamo ricevuto una segnalazione riguardante una residente di
+      Porticello. Allo stato attuale, non vi sono elementi che facciano
+      pensare a fatti di natura criminale. Qualsiasi informazione utile
+      può essere comunicata al 112 o alla stazione.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are frantic. Her flatmate @francesca is desperate.
+      Her brother @salvatore is searching the coastline every morning.
+      Her sister @valentina is driving down from Palermo. The old
+      fisherman @giuseppe says she was right about the construction.
+
+      And the journalist @irene_ferraro hasn't posted a single word
+      since Lucia vanished.
+
+      Nobody buys the carabinieri's theory. Nobody thinks Lucia just
+      "went on a trip."
+    effects: { trust_salvatore: "+5", trust_valentina: "+5" }
+    choices:
+      - Start following Lucia's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Porticello. Follow Lucia's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Rosa (café owner, knows everyone) -> rosa_intro
+      - Talk to Giuseppe (fisherman, saw the construction) -> giuseppe_intro
+      - Talk to Alessia (teen, learned ceramics from Lucia) -> alessia_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Lucia with the rhythms of a small
+      Sicilian coastal town: fish market schedules, the pasticceria's
+      daily specials, weather warnings for the strait.
+
+      Key names surface: Francesca (flatmate, waitress), Marco (ex-
+      boyfriend, photographer in Palermo, seems worried), Irene
+      (journalist, oddly silent), and the teens — Alessia, Tommaso,
+      Nina — who adored Lucia's ceramics workshops.
+
+      Also prominent: EdilMare Costruzioni, a construction company
+      with a major project on the promontory. Their posts are corporate
+      polish. Lucia's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Rosa -> rosa_intro
+      - Talk to Giuseppe -> giuseppe_intro
+      - Talk to Alessia -> alessia_intro
+
+  # --- Rosa (social map) ---
+
+  rosa_intro:
+    type: tweet
+    from: rosa
+    text: >
+      Il bar è aperto ma il cuore no. @lucia_ferrante, il tuo
+      tavolo ti aspetta. Torna a casa.
+    effects: { trust_rosa: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Rosa -> rosa_talk
+
+  rosa_talk:
+    type: message
+    text: >
+      ROSA: Ah, sei nuovo qui? Benvenuto. Brutto momento per arrivare.
+      Tutti quanti sono in pensiero per Lucia.
+
+      Let me tell you who's who. Francesca is Lucia's flatmate — they
+      share a house near the old church. Sweet girl, destroyed right now.
+      Salvatore is Lucia's brother, fisherman, goes out looking every
+      morning. Valentina is the sister, teaches in Palermo.
+
+      Then there's that man. Raimondo Vella. Rich collector from
+      Catania. He showed up eight months ago and started buying every
+      piece Lucia made. At first she was flattered. Then... boh, it
+      got weird. He wanted private commissions, private viewings, private
+      everything. She said no and he didn't take it well.
+
+      And EdilMare — minchia, don't get me started. They're building
+      on the promontory. Protected land. Lucia was the only one brave
+      enough to document it.
+    effects: { trust_rosa: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Raimondo -> rosa_raimondo
+      - Ask about EdilMare -> rosa_edilmare
+      - Thank her and move on -> quest1_hub
+
+  rosa_raimondo:
+    type: message
+    text: >
+      ROSA: Raimondo? Tipo, the first time he came here he seemed
+      normal. Bought a coffee, asked about local art. I sent him to
+      Lucia's workshop. He bought three pieces that day. Three.
+
+      Then he kept coming back. Every weekend from Catania. He'd sit
+      in my bar for hours watching her workshop across the piazza.
+      When she stopped selling to him — she said he made her
+      uncomfortable — he started buying through intermediaries. She'd
+      find out and refuse those too.
+
+      Last month she told me: "Rosa, he follows my location. He
+      always shows up where I am." Minchia, that's not a collector.
+      That's something else.
+    effects: { trust_rosa: "+5" }
+    choices:
+      - Ask about EdilMare -> rosa_edilmare
+      - Move on -> quest1_hub
+
+  rosa_edilmare:
+    type: message
+    text: >
+      ROSA: EdilMare started the project six months ago. Luxury
+      apartments on the promontory — Punta Azzurra, the most beautiful
+      spot on this coast. It's zona protetta. Vincolo paesaggistico.
+      You can't build there. But they got permits. From the comune.
+      From the sovraintendenza. From everyone.
+
+      How? Because the sindaco's surname is Ferrara. The assessore's
+      surname is Ferrara. The avvocato's surname is Ferrara. The
+      direttore del cantiere's surname is Ferrara. Minchia, they're
+      all Ferrara. All family. All connected.
+
+      Lucia had photos of the construction destroying ancient ruins.
+      Greek ruins. Under the dirt they're pouring concrete over. She
+      went to the sovraintendenza. Nothing. She went to the prefettura.
+      Nothing. She started posting online. And then she disappeared.
+    effects: { trust_rosa: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Giuseppe (fisherman, saw things) ---
+
+  giuseppe_intro:
+    type: tweet
+    from: giuseppe
+    text: >
+      cinquant'anni di mare e non ho mai visto il promontorio così.
+      lo stanno distruggendo. @lucia_ferrante aveva ragione. e adesso
+      è sparita. fate voi il collegamento.
+    effects: { trust_giuseppe: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Giuseppe -> giuseppe_talk
+
+  giuseppe_talk:
+    type: message
+    text: >
+      GIUSEPPE: I've fished this coast since I was twelve. I know
+      every rock, every current, every colour the water makes at
+      sunset. And I'm telling you — what they're doing to Punta
+      Azzurra is criminal. Concrete dust in the sea. Ancient stones
+      smashed to rubble. The fish are gone from that area.
+
+      Lucia dove down there with her camera. She found Greek amphorae
+      fragments in the rubble. Pieces of a temple floor. Two thousand
+      years of history and they're burying it under a parking garage
+      for luxury apartments.
+
+      She documented everything. Then poof — gone.
+    effects: { trust_giuseppe: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> giuseppe_night
+      - Move on -> quest1_hub
+
+  giuseppe_night:
+    type: message
+    text: >
+      GIUSEPPE: The night before she vanished — I was bringing in my
+      boat, around midnight. I saw lights at her workshop. Not
+      unusual, she works late. But there was a car parked outside. A
+      black SUV. Tinted windows. EdilMare plates. I recognised it
+      from the construction site.
+
+      At midnight. In front of a ceramista's workshop.
+
+      I wrote down the plate number. Nobody has asked me for it.
+    effects: { trust_giuseppe: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Alessia (teen, ceramics student) ---
+
+  alessia_intro:
+    type: tweet
+    from: alessia
+    text: >
+      minchia fra non ce la faccio più. @lucia_ferrante è tipo la
+      persona più importante di questo paese per me. mi ha insegnato
+      tutto. non se ne è andata così. qualcuno sa qualcosa? parlate
+      cazzo
+    effects: { trust_alessia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Alessia -> alessia_talk_early
+
+  alessia_talk_early:
+    type: message
+    text: >
+      ALESSIA: ma chi sei? boh va bene comunque. guarda, lucia tipo
+      è una persona incredibile. mi ha insegnato a lavorare l'argilla
+      quando avevo dodici anni. ogni sabato al laboratorio. era più
+      di una maestra fra, era tipo una sorella maggiore.
+
+      e adesso ho il cazzo di paura perché tommaso ha visto una roba
+      strana al porto l'altra sera ma non vuole parlarne. dice che
+      è niente ma minchia, non è niente per niente sah
+    effects: { trust_alessia: "+10" }
+    choices:
+      - What did Tommaso see? -> alessia_tommaso_hint
+      - Move on -> quest1_hub
+
+  alessia_tommaso_hint:
+    type: message
+    text: >
+      ALESSIA: boh non so esattamente. tipo era in giro la sera
+      tardi e ha visto qualcuno al laboratorio di lucia. che tipo
+      metteva delle cose in una macchina. non so chi era ma tommaso
+      si è cagato sotto e non vuole dire niente.
+
+      devi parlarci tu però, lui tipo è diffidente con chi non
+      conosce. inizia a parlare di pesca o di skate e magari si
+      apre minchia
+    effects: { trust_alessia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Porticello. A Sicilian coastal town
+      built around the sea and the old harbour. A ceramics artist who
+      was documenting illegal construction. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Francesca (Lucia's flatmate) -> francesca_q1
+      - Talk to Salvatore (Lucia's brother) -> salvatore_q1
+      - Check what Valentina (Lucia's sister) is saying -> valentina_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Francesca Q1 ---
+
+  francesca_q1:
+    type: tweet
+    from: francesca
+    text: >
+      se qualcuno ha notizie di @lucia_ferrante vi prego chiamatemi.
+      la sua stanza è intatta. le sue mani sono ancora sporche di
+      argilla sul tavolo. non è uscita preparandosi per un viaggio.
+    effects: { trust_francesca: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Francesca -> francesca_q1_talk
+
+  francesca_q1_talk:
+    type: message
+    text: >
+      FRANCESCA: I appreciate you writing but I don't know you.
+      Lucia has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep telling myself that. I don't believe it anymore.
+
+      [Francesca is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_francesca: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Salvatore Q1 ---
+
+  salvatore_q1:
+    type: tweet
+    from: salvatore
+    text: >
+      mia sorella È SPARITA e i carabinieri mi dicono che forse è
+      partita per un viaggio??? MA CHE CAZZO VUOI. lei non parte
+      senza avvisare. esco ogni mattina con la barca a cercarla
+      lungo la costa. qualcuno mi deve spiegare.
+    effects: { trust_salvatore: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Salvatore -> salvatore_q1_talk
+
+  salvatore_q1_talk:
+    type: message
+    text: >
+      SALVATORE: Chi sei? Un altro stronzo che mi dice di stare
+      calmo? Mia sorella mi ha chiamato la notte prima di sparire.
+      Ha detto che aveva qualcosa di grosso. Ha detto "se mi succede
+      qualcosa, guarda EdilMare." Poi ha riattaccato.
+
+      È l'ultima volta che l'ho sentita.
+    effects: { trust_salvatore: "+10" }
+    choices:
+      - What do you think happened? -> salvatore_theory
+      - Move on -> quest1_hub
+
+  salvatore_theory:
+    type: message
+    text: >
+      SALVATORE: I think she found proof that EdilMare is destroying
+      protected land and they shut her up. But I also think that
+      stronzo of a collector — Raimondo — knows more than he says.
+      The way he talks about her art... minchia, it's not about art.
+      It's about her.
+
+      Lucia told me months ago that someone was following her. She
+      found her workshop door open twice when she'd locked it. She
+      thought it was nothing. I don't think it was nothing.
+    effects: { trust_salvatore: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Valentina Q1 ---
+
+  valentina_q1:
+    type: tweet
+    from: valentina
+    text: >
+      sto arrivando da palermo. lucia non rispondeva da tre giorni
+      e nessuno mi ha avvisato. com'è possibile che un'intera città
+      non sappia dov'è una ragazza di venticinque anni?
+    effects: { trust_valentina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Valentina -> valentina_q1_talk
+
+  valentina_q1_talk:
+    type: message
+    text: >
+      VALENTINA: You're investigating? Good. Because nobody else
+      seems to give a damn. The carabinieri are useless. The sindaco
+      won't take my calls. This town closes ranks when it suits them.
+
+      Lucia was the bravest person I know. She moved here from
+      Palermo to make ceramics by the sea and instead she found
+      corruption and she couldn't look away. That's who she is.
+
+      Find her. Please.
+    effects: { trust_valentina: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Lucia went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Tommaso (was out late, saw someone at the workshop) -> tommaso_interview
+      - Find Enzo (harbour master, works late) -> enzo_interview
+      - Find Giuseppe (fisherman, saw the SUV) -> giuseppe_interview_q2
+      - Find Agata (pharmacist, opens early, saw something) -> agata_interview
+
+  # --- Tommaso (saw someone at Lucia's workshop) ---
+
+  tommaso_interview:
+    type: tweet
+    from: tommaso
+    text: >
+      sessione al porto tipo assurda oggi ma l'atmosfera è strana
+      fra. tipo c'è qualcosa che non va in questo paese. boh non so
+      come spiegarlo
+    effects: { trust_tommaso: "+5" }
+    choices:
+      - Ask Tommaso about that evening -> tommaso_talk
+
+  tommaso_talk:
+    type: message
+    text: >
+      TOMMASO: fra ok ma giurami che non lo dici a nessuno. tipo ero
+      al porto verso le 21 a fare skate e ho visto quel tizio — il
+      collezionista, raimondo — davanti al laboratorio di lucia. stava
+      tipo provando la porta. quando ha visto che era chiusa ha
+      guardato dalle finestre. poi si è messo a scattare foto tipo
+      dell'interno.
+
+      quando mi ha visto è partito di corsa verso la macchina. fra
+      minchia era troppo strano. tipo io non ho detto niente perché
+      chi mi crede? sono un ragazzino con lo skate. merda.
+    effects:
+      trust_tommaso: "+10"
+      night_witnesses: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Enzo (harbour master, late-night activity) ---
+
+  enzo_interview:
+    type: tweet
+    from: enzo
+    text: >
+      Promemoria: il porto è interdetto tra le 22 e le 6.
+      Ho riscontrato passaggi non autorizzati nelle ultime notti.
+    effects: { trust_enzo: "+5" }
+    choices:
+      - Ask Enzo what he saw -> enzo_talk
+
+  enzo_talk:
+    type: message
+    text: >
+      ENZO: I was locking up the harbour office around 23h. I saw
+      Lucia's Fiat Panda still parked near her workshop. And a black
+      SUV — EdilMare plates — pulled up. Two men got out. One of them
+      I recognised: Donato Ferrara, the site director.
+
+      They went into the workshop. They were inside for maybe twenty
+      minutes. When they came out, they were carrying boxes. I couldn't
+      see what was in them from that distance but they loaded them
+      into the SUV.
+
+      At 23h. At a ceramista's workshop. That's not normal.
+
+      I noted it in my harbour log. Nobody has asked to see it.
+    effects:
+      trust_enzo: "+10"
+      night_witnesses: "+1"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Giuseppe Q2 (saw Lucia leaving) ---
+
+  giuseppe_interview_q2:
+    type: tweet
+    from: giuseppe
+    text: >
+      non dormo più bene. quella notte ho visto troppo e detto troppo
+      poco.
+    effects: { trust_giuseppe: "+5" }
+    choices:
+      - Ask Giuseppe about that night -> giuseppe_talk_q2
+
+  giuseppe_talk_q2:
+    type: message
+    text: >
+      GIUSEPPE: I told you about the SUV. But there's more. After the
+      men left — maybe an hour later, so around midnight — I saw
+      Lucia. She came running out of the house she shares with
+      Francesca. She had a bag, a laptop, something wrapped in cloth
+      — probably ceramics. She ran to her car.
+
+      Before she drove off, she stopped. Looked around. Like she was
+      terrified. Then she drove toward the old coastal road, the one
+      that goes up to the promontory.
+
+      Nobody drives to the promontory at midnight. Nobody.
+    effects:
+      trust_giuseppe: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Agata (early morning witness) ---
+
+  agata_interview:
+    type: tweet
+    from: agata
+    text: >
+      Apro la farmacia alle 7 come ogni giorno. Ma quel mattino
+      qualcosa era diverso sulla strada costiera.
+    effects: { trust_agata: "+5" }
+    choices:
+      - Ask Agata what she saw -> agata_talk
+
+  agata_talk:
+    type: message
+    text: >
+      AGATA: I open the pharmacy at 7am every day. That morning I was
+      pulling up the shutters when I noticed tyre marks on the coastal
+      road. Fresh, deep, like someone drove very fast. And there was
+      a piece of broken ceramic in the road. One of Lucia's tiles — I
+      recognised the glaze, that particular blue she uses.
+
+      Further up the road, near the turn to the promontory, I saw
+      the EdilMare SUV parked. At 7am. Before the workers arrive.
+
+      I told the carabinieri. They said they'd look into it. That
+      was six days ago.
+    effects:
+      trust_agata: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Francesca
+      (flatmate) and Nina (saw Raimondo watching the house).
+    choices:
+      - Talk to Francesca about that night -> francesca_interview
+      - Talk to Nina -> nina_interview
+      - Find Tommaso -> tommaso_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Enzo -> enzo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Giuseppe -> giuseppe_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Agata -> agata_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Francesca (last to see Lucia) ---
+
+  francesca_interview:
+    type: tweet
+    from: francesca
+    text: >
+      quella foto sul profilo di lucia. non è roba sua. lucia non
+      posta senza didascalia. lucia non posta alle 4 di notte.
+      qualcun altro l'ha fatto.
+    effects: { trust_francesca: "+5" }
+    choices:
+      - DM Francesca -> francesca_talk_low
+        when:
+          state: trust_francesca
+          lt: 50
+      - DM Francesca -> francesca_talk_high
+        when:
+          state: trust_francesca
+          gte: 50
+
+  francesca_talk_low:
+    type: message
+    text: >
+      FRANCESCA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Francesca needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_francesca: "+5" }
+    choices:
+      - Share what you've learned about the night -> francesca_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  francesca_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the workshop, the
+      men carrying boxes, the tyre marks. Francesca is silent for a
+      long time.
+
+      FRANCESCA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_francesca: "+25" }
+    choices:
+      - What happened that night? -> francesca_talk_high
+
+  francesca_talk_high:
+    type: message
+    text: >
+      FRANCESCA: She came home around 23h30. I was watching TV. She
+      was white as a ghost, trembling. She said "they broke into the
+      workshop. They took the photos and the documents." She grabbed
+      her laptop and a box of USB drives from under her bed.
+
+      I asked who. She said "EdilMare's people. Donato was there."
+      Then she said something else — "and he was outside again.
+      Always outside. Always watching."
+
+      She wouldn't say who "he" was. She hugged me, said "don't worry,
+      I have copies of everything," and left. By morning her car was
+      gone and that broken tile was on her account.
+    effects:
+      trust_francesca: "+15"
+      night_witnesses: "+1"
+      construction_evidence: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nina (saw Raimondo watching the house) ---
+
+  nina_interview:
+    type: message
+    text: >
+      NINA: ok fra tipo è una cosa assurda ma quel tizio — raimondo,
+      il collezionista — io l'ho visto tipo quattro volte fuori dalla
+      casa di lucia la sera. tipo fermo nella macchina a guardare le
+      finestre. minchia troppo creepy.
+
+      l'ultima volta era tipo due giorni prima che sparisse. era nella
+      sua macchina parcheggiata di fronte. fermo. fari spenti. io
+      stavo tornando a casa e l'ho visto. mi sono cagata sotto fra.
+    effects:
+      trust_nina: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Raimondo seen trying workshop door, photographing inside (Tommaso)
+      23:00 — EdilMare SUV arrives, Donato Ferrara and another man enter workshop, carry out boxes (Enzo)
+      23:30 — Lucia arrives home shaken, grabs laptop and drives (Francesca)
+      00:00 — Lucia seen running to car, drives toward promontory (Giuseppe)
+      07:00 — Tyre marks on coastal road, EdilMare SUV parked near promontory (Agata)
+
+      EdilMare's people broke into Lucia's workshop and stole her
+      evidence. She fled home, grabbed her backups, and ran.
+
+      But there are two threats: the construction company AND
+      someone closer.
+
+      Two threads to pull:
+      — The construction cover-up: What is EdilMare hiding on the
+        promontory? Who approved the permits?
+      — The obsession: What is Raimondo really doing? Why was he at
+        her workshop? At her house?
+    choices:
+      - Investigate the construction cover-up -> corruption_hub
+      - Investigate Raimondo -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CONSTRUCTION THREAD: Evidence collected: ${construction_evidence}
+      COLLECTOR THREAD: Evidence collected: ${collector_evidence}
+    choices:
+      - Work on the construction thread -> corruption_hub
+      - Work on the collector thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: collector_evidence, gte: 5 }
+            - { state: construction_evidence, gte: 3 }
+
+  # =====================================================================
+  # CONSTRUCTION COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CONSTRUCTION THREAD
+
+      EdilMare is building on protected land. Lucia had proof. Now
+      she's gone and her evidence was stolen from the workshop.
+
+      Construction evidence: ${construction_evidence}
+    choices:
+      - Search the workshop -> workshop_search
+      - Talk to Irene the journalist -> irene_interview
+      - Talk to Paola (urbanistica assessore) -> paola_interview
+      - Check Proteggi la Costa association -> proteggi_investigation
+      - Talk to Giuseppe about the promontory -> giuseppe_promontory
+      - Talk to Marco (Lucia's ex, photographer) -> marco_interview
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Search ---
+
+  workshop_search:
+    type: message
+    text: >
+      Lucia's workshop is locked but you can see through the windows.
+      The shelves are half-empty — the men took her files and photos.
+      But they missed things. On the wall, a map of Punta Azzurra
+      with red circles marking archaeological sites. On her desk,
+      a ceramic maquette of the promontory showing where the ancient
+      foundations are.
+
+      Under a cloth, you can see the edges of printed photographs.
+      One shows concrete being poured directly over what appears to
+      be a tessellated floor — Roman or Greek mosaic work.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Irene (journalist) ---
+
+  irene_interview:
+    type: message
+    text: >
+      IRENE: I don't discuss sources. Ever.
+    effects: { trust_irene: "+5" }
+    choices:
+      - Show Irene the evidence you have -> irene_with_evidence
+        when:
+          state: construction_evidence
+          gte: 3
+      - Back to construction thread -> corruption_hub
+
+  irene_with_evidence:
+    type: message
+    text: >
+      IRENE: ...you have more than I expected.
+
+      Okay. Lucia and I were working together. She had photos of
+      an undeclared archaeological site being destroyed — a Greek
+      temple foundation, 5th century BC. The sovraintendenza ignored
+      her reports. She had documents showing the permits were signed
+      by Paola Ferrara, whose brother-in-law is Donato Ferrara, the
+      site director. The whole thing is a family operation.
+
+      We were going to publish together in La Repubblica's Sicilia
+      section. Then she went dark. And two days later, someone broke
+      into my car and stole my backup drive.
+
+      Lucia is alive. She contacted me once, from a different phone.
+      She said she was hiding in the countryside. She said "they
+      threatened me and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_irene: "+25"
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> irene_hint
+      - Back to investigation hub -> investigation_hub
+
+  irene_hint:
+    type: message
+    text: >
+      IRENE: Donato came to her workshop with a man I later
+      identified as Fabio Ferrara — the family's lawyer. They told
+      her to hand over everything or face "consequences." In Sicily,
+      from people like that, "consequences" means something specific.
+
+      But she also mentioned someone else. Someone who always knew
+      where she was. Someone who'd been inside her workshop when she
+      wasn't there. That's a different kind of threat.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Paola (urbanistica assessore) ---
+
+  paola_interview:
+    type: message
+    text: >
+      PAOLA: As assessore all'urbanistica, I can assure you that all
+      permits for the Punta Azzurra project were issued in full
+      compliance with regional regulations. EdilMare is a reputable
+      company. The archaeological impact assessment was conducted and
+      no significant finds were reported.
+
+      Off the record? Minchia, I signed what they put in front of me.
+      The sindaco said to sign. The prefetto said to sign. Everyone
+      said to sign. Do you know what it's like to say no to the
+      Ferrara family in this town? My surname is Ferrara too.
+      Everyone's is. That doesn't mean I had a choice.
+
+      Lucia had the real impact assessment. The one the
+      sovraintendenza buried. With that document, this whole project
+      collapses.
+    effects:
+      trust_paola: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to construction thread -> corruption_hub
+
+  # --- Proteggi la Costa ---
+
+  proteggi_investigation:
+    type: tweet
+    from: proteggi_costa
+    text: >
+      ALLERTA: Segnalazione di attività edilizia in zona vincolata
+      a Punta Azzurra, Porticello. Documentazione fotografica in
+      corso. Chiediamo ispezione non preannunciata del cantiere
+      EdilMare.
+    choices:
+      - Check their data -> proteggi_data
+
+  proteggi_data:
+    type: message
+    text: >
+      Proteggi la Costa has been documenting the Punta Azzurra
+      construction for four months. Their records show: 12 violations
+      of the vincolo paesaggistico, concrete poured over protected
+      coastal rock, vegetation cleared without authorisation, and —
+      critically — earthworks that exposed and then buried
+      archaeological remains.
+
+      Satellite imagery shows the site before and after. Ancient
+      walls visible in the "before" images are gone in the "after."
+
+      Lucia was their most active member. She provided most of the
+      underwater photography and archaeological documentation.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to construction thread -> corruption_hub
+
+  # --- Giuseppe on the promontory ---
+
+  giuseppe_promontory:
+    type: message
+    text: >
+      GIUSEPPE: I'll tell you something. Two weeks ago I was fishing
+      near Punta Azzurra and I saw them dumping rubble into the sea.
+      At night. Lorries backing up to the cliff edge and tipping
+      construction waste straight into the water.
+
+      In the rubble I could see carved stone. Old stone. Temple
+      stone. They're not just building on the ruins — they're dumping
+      the ruins into the sea to destroy the evidence.
+
+      I photographed it. I still have the photos. And the GPS
+      coordinates.
+    effects:
+      trust_giuseppe: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Marco (ex-boyfriend, photographer) ---
+
+  marco_interview:
+    type: message
+    text: >
+      MARCO: Lucia and I broke up a year ago. Amicably. She wanted
+      to be in Porticello making art. I wanted to be in Palermo
+      shooting fashion. Different lives.
+
+      But we stayed friends. She sent me her photos of the
+      construction site last month and asked me to store copies. She
+      said "if anything happens, you have everything." I thought she
+      was being dramatic. Cazzo, I should have listened.
+
+      I have 400 photographs. Archaeological remains being destroyed.
+      Illegal dumping. Workers without permits. Everything.
+    effects:
+      trust_marco: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # COLLECTOR OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE COLLECTOR THREAD
+
+      Raimondo Vella. Art collector. Something more? Someone was
+      inside Lucia's workshop. Someone was watching her house.
+      Someone always knew where she was.
+
+      Collector evidence: ${collector_evidence}
+    choices:
+      - Investigate Raimondo's purchase history -> purchase_history
+      - Talk to Francesca about Raimondo -> francesca_raimondo
+        when:
+          state: trust_francesca
+          gte: 20
+      - Talk to Tommaso (more detail on what he saw) -> tommaso_detail
+      - Talk to Agata the pharmacist about Raimondo -> agata_raimondo
+      - Check the anonymous account @argilla_viva -> argilla_investigation
+      - Talk to Santo the bookseller -> santo_interview
+        when:
+          state: trust_santo
+          gte: 40
+      - Talk to Maresciallo Ferrara -> maresciallo_interview
+        when:
+          state: trust_maresciallo
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Purchase History ---
+
+  purchase_history:
+    type: message
+    text: >
+      Looking into Raimondo Vella's art purchases. He runs a small
+      private collection in Catania. Over the past eight months, he
+      has purchased or attempted to purchase 23 pieces by Lucia
+      Ferrante. He paid above market price. Significantly above.
+
+      After she stopped selling to him directly, he used three
+      different intermediaries. When she caught on and refused those
+      too, he began attending every public event where her work was
+      displayed. Every single one.
+
+      His social media — before he made it private — showed 147 posts
+      about Lucia's ceramics. And 31 photos of her taken without her
+      knowledge. At her workshop. At the market. On the beach.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Francesca on Raimondo ---
+
+  francesca_raimondo:
+    type: message
+    text: >
+      FRANCESCA: Raimondo? Minchia, that man made Lucia's skin
+      crawl. He'd show up at her workshop unannounced. He'd sit at
+      Rosa's bar for hours just to watch her work. He sent her long
+      emails about how her art "spoke to his soul" and how they had
+      a "spiritual connection."
+
+      She told him clearly to stop. He said he understood. Nothing
+      changed. He just got more careful about it.
+
+      A month ago she found that someone had been in her workshop
+      overnight. Clay pieces moved. Her sketchbook had been opened
+      to different pages. Nothing stolen, just... touched. She was
+      certain it was Raimondo but couldn't prove it.
+    effects:
+      trust_francesca: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Tommaso detail ---
+
+  tommaso_detail:
+    type: message
+    text: >
+      TOMMASO: ok fra in realtà non ho detto tutto. quando ho visto
+      raimondo al laboratorio lui tipo aveva una chiave. l'ho visto
+      provare la porta e non si apriva, ma poi ha tirato fuori una
+      chiave e ha aperto. è entrato dentro per tipo dieci minuti.
+
+      quando è uscito aveva in mano un pacchetto. tipo una cosa
+      avvolta nella carta. e l'ha tipo annusata? fra giuro minchia
+      era una roba da malati. tipo ha annusato una ceramica come se
+      fosse un fiore. poi ha chiuso tutto e se ne è andato.
+
+      chi cazzo ha la chiave del laboratorio di un'altra persona fra.
+      chi.
+    effects:
+      trust_tommaso: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Agata on Raimondo ---
+
+  agata_raimondo:
+    type: message
+    text: >
+      AGATA: This is sensitive but... Raimondo Vella comes to my
+      pharmacy when he's in Porticello. He buys things that suggest
+      he's not sleeping. Anxiolytics, sleep aids, energy supplements.
+      The pattern is someone under extreme obsessive stress.
+
+      He also asked me once, very casually, where Lucia bought her
+      clay. Specifically which supplier, what hours she picked up
+      materials. I told him it was none of my business or his. He
+      laughed it off. I didn't think about it again until she
+      disappeared.
+    effects:
+      trust_agata: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Argilla Viva (anonymous account) ---
+
+  argilla_investigation:
+    type: tweet
+    from: argilla_viva
+    text: >
+      Lei avrebbe dovuto ascoltarmi. Volevo solo proteggerla. Nessuno
+      capisce la sua arte come me.
+    choices:
+      - Look at this account's history -> argilla_posts
+
+  argilla_posts:
+    type: message
+    text: >
+      @argilla_viva: account created 7 months ago. Every post is
+      about Lucia's ceramics. Comments on every workshop photo, every
+      finished piece, every market appearance. The tone shifts over
+      time:
+
+      Month 1: "Breathtaking work. You are the soul of Sicilian
+      ceramics."
+      Month 3: "Why don't you answer my messages? I only want to
+      appreciate your art."
+      Month 5: "I see you at the bar with other people. You have time
+      for them but not for your greatest admirer?"
+      Month 6: "I know your schedule. I know your kiln firing times.
+      I am always close."
+
+      The account has no photos, no personal details. Just Lucia.
+      Only Lucia.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> argilla_style
+
+  argilla_style:
+    type: message
+    text: >
+      Comparing @argilla_viva with @raimondo_vella:
+
+      Same use of art terminology. Same Italian phrasing — the
+      specific way he describes glazes and firing temperatures. Same
+      knowledge of Lucia's techniques that only someone who'd studied
+      her work obsessively would have.
+
+      And one post from @argilla_viva: "Your reduction firing at
+      1280° last Tuesday was sublime." Lucia doesn't post her kiln
+      schedules publicly. You'd have to be watching the workshop to
+      know that.
+
+      It's Raimondo. The anonymous account is Raimondo.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Santo (bookseller, Lucia left something) ---
+
+  santo_interview:
+    type: message
+    text: >
+      SANTO: Lucia left something with me. A waterproof case. She
+      said "if someone comes asking about what's under the concrete
+      at Punta Azzurra, give them this."
+
+      She looked terrified. She said she'd made copies of everything
+      but needed one set somewhere nobody would think to look. A
+      bookshop in a side street seemed perfect.
+    effects: { trust_santo: "+10" }
+    choices:
+      - What's under the concrete at Punta Azzurra? -> santo_case
+
+  santo_case:
+    type: message
+    text: >
+      Santo reaches under the counter and produces a sealed
+      waterproof case.
+
+      SANTO: She said someone would come. Take it.
+
+      Inside: two USB drives and a set of printed photographs. The
+      photos show Greek temple foundations being demolished by
+      excavators, a tessellated floor being covered in concrete,
+      ancient walls reduced to rubble. The USB drives contain the
+      original archaeological survey — the real one — along with
+      Lucia's documentation, permit applications showing forged
+      signatures, and financial records linking EdilMare to the
+      sindaco's personal bank accounts.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Maresciallo ---
+
+  maresciallo_interview:
+    type: message
+    text: >
+      MARESCIALLO: Off the record — and I mean completely off the
+      record — I wanted to investigate EdilMare. My superiore told
+      me to stand down. He said the procura had "jurisdiction." In
+      Sicily, that's code for "don't touch it."
+
+      The Vella situation is different. I didn't know about that
+      until now. If you have evidence of stalking, I can act on that.
+      Stalking is clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_maresciallo: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Lucia than anyone in Porticello. Who is responsible?
+    choices:
+      - Confront Raimondo Vella (the obsessive collector) -> confront_raimondo
+        when:
+          state: collector_evidence
+          gte: 5
+      - Confront Donato Ferrara (the construction director) -> confront_donato
+        when:
+          state: construction_evidence
+          gte: 3
+      - Confront Sindaco Carmelo Ferrara (political protection) -> confront_carmelo
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Raimondo (Best Ending) ---
+
+  confront_raimondo:
+    type: message
+    text: >
+      You present your evidence to Raimondo:
+
+      "I know @argilla_viva is your account. I know you had a key to
+      Lucia's workshop. I know you were watching her house. I know you
+      followed her schedule and photographed her without consent. I
+      have witnesses and I have the post history."
+    choices:
+      - Send -> raimondo_response
+
+  raimondo_response:
+    type: message
+    text: >
+      Raimondo doesn't reply for hours. Then:
+
+      RAIMONDO: You don't understand. Her art IS her. To understand
+      her ceramics, I needed to understand her process, her life,
+      her rhythms. Every great collector must understand the artist
+      at a fundamental level. I was appreciating her. Protecting her
+      from people who don't see what I see.
+
+      That's not appreciation. That's obsession.
+
+      You've already sent the evidence to Maresciallo Ferrara. And
+      to Irene Ferraro.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE COLLECTOR
+
+      Three things happen in quick succession.
+
+      The maresciallo reopens the case. With your evidence — the
+      anonymous account, the workshop key, the surveillance photos,
+      the witness testimonies — Raimondo Vella is arrested for
+      stalking and harassment. A copy of Lucia's workshop key is
+      found in his Catania apartment, along with 14 stolen ceramic
+      pieces and a wall covered in photographs of her.
+
+      Irene Ferraro, with Lucia's full evidence package and Marco's
+      400 photographs, publishes the EdilMare story in La Repubblica.
+      The procura orders an immediate inspection of Punta Azzurra.
+      Construction is halted. Donato Ferrara and the sindaco face
+      criminal charges for destruction of archaeological heritage,
+      fraud, and corruption. The sovraintendenza is investigated for
+      complicity.
+
+      And Lucia Ferrante, reading the article from a friend's house
+      in the hills above Cefalù, calls her brother for the first
+      time in nine days.
+
+      "Salvo, torno a casa."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lucia
+    text: >
+      il fuoco e l'argilla non mentono. e neanche la gente di
+      porticello. grazie di non aver mollato.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Donato (Partial Ending) ---
+
+  confront_donato:
+    type: message
+    text: >
+      You present the construction evidence to Donato Ferrara:
+
+      "I have photographs of Greek temple foundations being destroyed.
+      I have the real archaeological survey. I have the forged permits.
+      I have financial records linking EdilMare to the sindaco's
+      personal accounts. I have satellite imagery."
+    choices:
+      - Send -> donato_response
+
+  donato_response:
+    type: message
+    text: >
+      DONATO: Questa conversazione sarà inoltrata al nostro
+      dipartimento legale. Qualsiasi pubblicazione di materiale
+      diffamatorio comporterà procedimenti immediati. EdilMare ha
+      sempre operato nel pieno rispetto della normativa vigente.
+
+      But it's too late. You've sent the evidence to Irene, to
+      Proteggi la Costa, and to the procura in Palermo.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CONSTRUCTION
+
+      The story breaks. EdilMare is ordered to halt all work at
+      Punta Azzurra pending investigation. The syndicated Ferrara
+      family empire begins to crack. Criminal charges are filed for
+      destruction of cultural heritage. The sindaco resigns. The town
+      is in shock.
+
+      But Lucia?
+
+      Without the stalking evidence, Raimondo is never investigated.
+      He continues to collect Sicilian ceramics. He finds new artists.
+      He creates a new anonymous account. He develops new obsessions.
+
+      Three months later, Lucia reads about the construction scandal
+      online. She returns quietly. She changes the locks on her
+      workshop. She installs cameras. She stops working alone at night.
+      She checks behind her every time she walks home.
+
+      The corruption is exposed. But the person who terrorised Lucia
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lucia
+    text: "sono tornata. il promontorio è salvo. il resto... vedremo."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Sindaco (Wrong Ending) ---
+
+  confront_carmelo:
+    type: message
+    text: >
+      You confront Sindaco Carmelo Ferrara with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> carmelo_response
+
+  carmelo_response:
+    type: tweet
+    from: fabio
+    text: >
+      Il mio cliente prende nota delle sue accuse. Qualsiasi
+      diffusione pubblica di materiale diffamatorio sarà oggetto di
+      procedimenti legali immediati. — Studio Ferrara & Ferrara,
+      Palermo
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The family lawyer buries your accusation. Without a direct,
+      prosecutable link between the sindaco and the destruction of
+      archaeological remains — and the family has layers of
+      insulation between them and the dirty work — your evidence is
+      not enough for the procura.
+
+      EdilMare continues to build. Raimondo continues to watch.
+      Lucia stays in hiding.
+
+      Six months later, the Punta Azzurra luxury apartments go on
+      sale. The tessellated floor is under the parking garage. The
+      temple foundations are in the sea.
+
+      And @argilla_viva creates a new account. It follows Lucia's
+      brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PORTICELLO — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Construction evidence: ${construction_evidence}
+      Collector evidence: ${collector_evidence}
+
+      Thank you for playing. Lucia's story explores themes of
+      organised crime in construction, destruction of cultural
+      heritage, obsessive behaviour disguised as appreciation,
+      institutional complicity, and the courage to speak up in
+      a community where power is concentrated in few hands.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Telefono Amico: 02 2327 2327
+      Antiviolenza Donna: 1522
+      Carabinieri: 112
+      Segnalazione abusi edilizi: Procura della Repubblica

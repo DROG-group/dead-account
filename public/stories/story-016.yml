@@ -1,0 +1,1719 @@
+# DEAD ACCOUNT — Story 016: Rannaküla (Estonia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-016.yml
+#
+# Player investigates the disappearance of young programmer/digital artist
+# Marten Tamm in the fictional Estonian tech-adjacent coastal town of Rannaküla.
+
+meta:
+  title: "Dead Account — Rannaküla"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_liina: 0
+    trust_rasmus: 0
+    trust_kadri: 0
+    trust_andres: 0
+    trust_piret: 0
+    trust_toomas: 0
+    trust_marika: 0
+    trust_juhan: 0
+    trust_karl: 0
+    trust_siim: 0
+    trust_heli: 0
+    trust_margus: 0
+    trust_anu: 0
+    trust_indrek: 0
+    trust_kertu: 0
+    trust_rain: 0
+    trust_tiina: 0
+    trust_peeter: 0
+    trust_anon: 0
+    trust_komissar: 0
+    trust_eerik: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to rannaküla. exploring the estonian coast one pixel at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Rannaküla.social"
+    description: "Tere tulemast Rannaküla kogukonna Mastodoni instantsile"
+    avatar_url: /gamepatch/assets/dead-account/rannakyla_bot.png
+
+  npcs:
+    # === Marten's Inner Circle ===
+    marten:
+      name: "Marten Tamm"
+      bio: "koodija & digitaalkunstnik | pikselid + meri | avatud lähtekood igavesti"
+      avatar: avatars/marten.jpg
+    liina:
+      name: "Liina Tamm"
+      bio: "marteni õde | tartu ülikool | ma ei usu et ta lihtsalt läks ära"
+      avatar: avatars/liina.jpg
+    rasmus:
+      name: "Rasmus Kask"
+      bio: "marteni parim sõber | UI designer | rannaküla | kus sa oled vend"
+      avatar: avatars/rasmus.jpg
+    kadri:
+      name: "Kadri Rebane"
+      bio: "fotograaf & marteni ex | rannaküla | tegelt muretsen tema pärast"
+      avatar: avatars/kadri.jpg
+
+    # === Local Government ===
+    andres:
+      name: "Andres Sepp"
+      bio: "Rannaküla vallavanem | Kogukond esmalt | #RannakülaAreneb"
+      avatar: avatars/andres.jpg
+    tiina:
+      name: "Tiina Kallas"
+      bio: "Rannaküla volikogu | IT ja arendus | digitaalne tulevik"
+      avatar: avatars/tiina.jpg
+    vald:
+      name: "Rannaküla Vald"
+      bio: "Ametlik konto | Vallavalitsuse teated | E-R 8:00-17:00"
+      avatar: avatars/vald.jpg
+
+    # === Local Business & Community ===
+    piret:
+      name: "Piret Aas"
+      bio: "Rannakohvik | kook ja kohv mere ääres | avatud 1998 aastast"
+      avatar: avatars/piret.jpg
+    kohvik:
+      name: "Rannakohvik"
+      bio: "Rannaküla parim kohv | kodused koogid | wifi tasuta | tere tulemast"
+      avatar: avatars/kohvik.jpg
+    toomas:
+      name: "Toomas Luik"
+      bio: "kalur | 35 aastat merel | rannaküla sadam | meri on aus"
+      avatar: avatars/toomas.jpg
+    juhan:
+      name: "Juhan Mägi"
+      bio: "sadamameister | rannaküla sadam | valve K-L 7:00-19:00"
+      avatar: avatars/juhan.jpg
+    marika:
+      name: "Marika Oja"
+      bio: "apteeker | rannaküla | tervis ja nõuanded | ka laupäeviti"
+      avatar: avatars/marika.jpg
+    karl:
+      name: "Karl Lepik"
+      bio: "rannaküla raamatukogu | raamatud & wifi | lugemisring kolmapäeviti"
+      avatar: avatars/karl.jpg
+    margus:
+      name: "Margus Org"
+      bio: "elektrik & IT tugi | rannaküla | parandan kõike mis plugi läheb"
+      avatar: avatars/margus.jpg
+
+    # === Journalist ===
+    heli:
+      name: "Heli Rand"
+      bio: "ajakirjanik | andmekaitse & privaatsus | vihje: heli@rand-meedia.ee"
+      avatar: avatars/heli.jpg
+
+    # === DataVõrk (corporate) ===
+    datavork:
+      name: "DataVõrk OÜ"
+      bio: "Andmelahendused | Rannaküla kontor | Targem linn targema andmetega"
+      avatar: avatars/datavork.jpg
+    siim:
+      name: "Siim Paas"
+      bio: "DataVõrk OÜ tegevjuht | andmed on uus nafta | rannaküla edulugu"
+      avatar: avatars/siim.jpg
+    peeter:
+      name: "Peeter Veski"
+      bio: "Advokaat | Veski & Partnerid | Äriõigus | Tallinn"
+      avatar: avatars/peeter.jpg
+
+    # === Teens ===
+    kertu:
+      name: "Kertu"
+      bio: "16 | koodija & gamer | rannaküla | marten õpetas mulle pythonit"
+      avatar: avatars/kertu.jpg
+    rain:
+      name: "Rain"
+      bio: "17 | skateboard & muusika | rannaküla sadam | mingi chill vend"
+      avatar: avatars/rain.jpg
+    anu:
+      name: "Anu"
+      bio: "15 | kunst & pixel | marteni stiil on nii lahe | rannaküla"
+      avatar: avatars/anu.jpg
+
+    # === Media & Community ===
+    uudised:
+      name: "Rannaküla Uudised"
+      bio: "Rannaküla ja ümbruskonna uudised | vihje: toimetus@rannakyla-uudised.ee"
+      avatar: avatars/uudised.jpg
+    ilm:
+      name: "Rannaküla Ilm"
+      bio: "Ilmateade ja hoiatused | Automaatjaam | Uuendus iga tund"
+      avatar: avatars/ilm.jpg
+    selts:
+      name: "Rannaküla Kodanikuühendus"
+      bio: "Kogukonna kaitse | Privaatsusõigused | Vabatahtlikud"
+      avatar: avatars/selts.jpg
+
+    # === Suspicious / Other ===
+    indrek:
+      name: "Indrek Saar"
+      bio: "DataVõrk arendaja | ma teen oma tööd | rohkem ei kommenteeri"
+      avatar: avatars/indrek.jpg
+    eerik:
+      name: "eerik404"
+      bio: "."
+      avatar: avatars/anon.jpg
+    komissar:
+      name: "Komissar Tammsaare"
+      bio: "Rannaküla politseijaoskond | Hädaabi: 112"
+      avatar: avatars/komissar.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN RANNAKÜLA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to rannakyla.social — the community Mastodon instance for
+      the coastal town of Rannaküla, Estonia.
+
+      The local feed is unsettled. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name everywhere:
+      @marten_tamm.
+
+      A programmer. Digital artist. Made glitch art from the Estonian
+      coastline. People loved him. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> marten_profile
+
+  marten_profile:
+    type: tweet
+    from: marten
+    text: "DataVõrk's 'smart city' sensors are harvesting way more than traffic data. I've cracked their API. uploading proof tonight."
+    choices:
+      - That's his last real post... -> static_post
+
+  static_post:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a burst of digital static. Black and white noise. Posted at 4am.
+      No caption.
+
+      His friends say that's not his work. Marten was a pixel artist
+      who spent hours on every piece. This is just garbage data. And
+      Marten never posted at 4am — he was a morning person.
+
+      The police say he probably went to Tallinn for a job. Nobody
+      believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: komissar
+    text: >
+      Oleme saanud teate Rannaküla elaniku kohta. Praegusel hetkel
+      puuduvad tõendid kuritegevusele viitamiseks. Igasugune
+      informatsioon palun edastada telefonil 112 või jaoskonda.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are a mess. His best friend @rasmus_kask is
+      furious. His sister @liina_tamm is driving down from Tartu.
+      His ex @kadri_rebane is posting old photos of them together.
+      The café owner @piret_aas says the town feels wrong without him.
+
+      And the journalist @heli_rand hasn't said a word since
+      Marten's last post about DataVõrk. That's suspicious.
+
+      Nobody believes the police. Nobody thinks Marten just
+      "went to Tallinn."
+    effects: { trust_rasmus: "+5", trust_liina: "+5" }
+    choices:
+      - Start following Marten's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Rannaküla. Follow Marten's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Piret (café owner, knows everyone) -> piret_intro
+      - Talk to Toomas (fisherman, old school) -> toomas_intro
+      - Talk to Kertu (teen coder, looks up to Marten) -> kertu_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Marten with ordinary small-town life:
+      harbour schedules, the café's daily specials, weather warnings
+      for the coast.
+
+      Key names: Rasmus (best friend, designer, furious), Kadri (ex,
+      photographer, worried), Liina (sister, coming from Tartu),
+      and the teens — Kertu, Rain, Anu — who Marten taught to code.
+
+      Also prominent: DataVõrk OÜ, the data startup that set up in
+      the old fish factory. Their posts are all "smart city" buzzwords.
+      Marten's posts were the opposite — raw, critical, real.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Piret -> piret_intro
+      - Talk to Toomas -> toomas_intro
+      - Talk to Kertu -> kertu_intro
+
+  # --- Piret (social map) ---
+
+  piret_intro:
+    type: tweet
+    from: piret
+    text: >
+      Kohvik on lahti aga rõõmu pole. @marten_tamm, su koht ootab
+      sind. Tule tagasi.
+    effects: { trust_piret: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Piret -> piret_talk
+
+  piret_talk:
+    type: message
+    text: >
+      PIRET: Oh, you're new here? Welcome, though the timing is
+      terrible. Everyone's worried about Marten.
+
+      Let me give you the picture. Rasmus is Marten's best friend —
+      they grew up together, do freelance design work. Kadri is his
+      ex-girlfriend, a photographer. Still close, or at least she
+      tried to be. Liina is his older sister, studying in Tartu.
+
+      And then there's DataVõrk. Siim Paas moved his startup here
+      two years ago with big promises — jobs, smart infrastructure,
+      put Rannaküla on the map. The vald loved it. But Marten said
+      their sensors were collecting personal data. Tracking where
+      people walk, when they're home, who visits who.
+
+      He was digging into their code. And now he's gone. You see
+      the problem, right?
+    effects: { trust_piret: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the anonymous admirer -> piret_admirer
+      - Ask about DataVõrk -> piret_datavork
+      - Thank her and move on -> quest1_hub
+
+  piret_admirer:
+    type: message
+    text: >
+      PIRET: There's something else. A few months ago, someone started
+      leaving things for Marten at the café. Little gifts — a USB drive
+      with fan art of his work, a printed screenshot of his code with
+      annotations. No name. Always when he wasn't here.
+
+      He thought it was cute at first. Then the gifts got... personal.
+      A photo of him working at his usual table, taken from outside.
+      A note that said "I understand your art better than anyone."
+
+      He stopped laughing about it after that.
+    effects: { trust_piret: "+5" }
+    choices:
+      - Ask about DataVõrk -> piret_datavork
+      - Move on -> quest1_hub
+
+  piret_datavork:
+    type: message
+    text: >
+      PIRET: DataVõrk set up in the old fish processing plant by the
+      harbour. Siim Paas — the CEO — walks around like he owns the
+      town. The vald gave him tax breaks, free office space, even ran
+      fibre optic cable at the town's expense. Andres Sepp, our
+      vallavanem, acts like Siim is Estonia's Elon Musk.
+
+      Marten saw through it. He found the sensors they installed —
+      not just traffic counters. Cameras with facial recognition.
+      Wi-Fi sniffers logging every phone that passes. All feeding
+      into DataVõrk's servers.
+
+      He said he cracked their API. Found the raw data. Then — poof.
+      Gone.
+    effects: { trust_piret: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Toomas (fisherman, old school) ---
+
+  toomas_intro:
+    type: tweet
+    from: toomas
+    text: >
+      35 aastat merel. ma tean millal midagi on valesti. ja praegu on
+      midagi väga valesti. @marten_tamm oli aus poiss. ta ei lähe
+      kuhugi ilma ütlemata.
+    effects: { trust_toomas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Toomas -> toomas_talk
+
+  toomas_talk:
+    type: message
+    text: >
+      TOOMAS: I've fished this coast my whole life. I don't understand
+      computers but I understand people. Marten was a good kid. Came
+      to the harbour every morning for sunrise — said the light was
+      good for his art. Always polite. Always honest.
+
+      He told me the cameras on the harbour wall were watching us.
+      Not just boats — us. He showed me on his phone — the cameras
+      track faces. Mine, yours, the old ladies walking their dogs.
+      All going to some server in DataVõrk's building.
+
+      The night before he disappeared, I saw him at the harbour.
+      Late. Around midnight. He was sitting on the pier, laptop open.
+      Looked agitated. I called out but he waved me off.
+
+      Then I saw a car pull up. Dark car, tinted windows. He closed
+      his laptop fast and walked toward it. That's the last I saw.
+    effects: { trust_toomas: "+10" }
+    choices:
+      - Who was in the car? -> toomas_car
+      - Move on -> quest1_hub
+
+  toomas_car:
+    type: message
+    text: >
+      TOOMAS: Couldn't see. Tinted windows, no lights. But the car
+      had a sticker on the back window — DataVõrk logo. I know because
+      they gave those stickers to everyone at the launch party. Most
+      people threw them away. Whoever drives that car is connected to
+      DataVõrk.
+
+      I told the police. They wrote it down and that was it.
+    effects: { trust_toomas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kertu (teen coder, witness tease) ---
+
+  kertu_intro:
+    type: tweet
+    from: kertu
+    text: >
+      kurat. @marten_tamm õpetas mulle esimese koodi kirjutama. ta
+      oli mingi parim inimene siin linnas tegelt. kui keegi midagi
+      teab siis rääkige perse ometi
+    effects: { trust_kertu: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kertu -> kertu_talk_early
+
+  kertu_talk_early:
+    type: message
+    text: >
+      KERTU: sa oled uus vä? mingi halb timing tegelt. marten on
+      nagu... ta oli meile kõigile nagu suur vend. õpetas mulle
+      pythonit, rainile muusikat tegema arvutiga, anule digitaalset
+      kunsti. tõsiselt lahe tüüp.
+
+      ja nüüd on ta kadunud ja keegi ei tee mitte midagi. politsei
+      on mingi nii perse tegelt. "läks tallinna" vittu küll, marten
+      vihkas tallinnat.
+
+      ja rain nägi mingi veidi asju aga ta ei taha rääkida. ta on
+      mingi hirmul tegelt
+    effects: { trust_kertu: "+10" }
+    choices:
+      - What did Rain see? -> kertu_rain_hint
+      - Move on -> quest1_hub
+
+  kertu_rain_hint:
+    type: message
+    text: >
+      KERTU: ma ei tea täpselt. rain oli mingi sadamas skeittimas ja
+      nägi kedagi marteni korteri juures. mingi tüüp kes lihtsalt
+      seisis seal pimedas ja vaatas aknaid. rain ütles et see oli
+      mingi creepy perse tegelt.
+
+      aga rain ei räägi kellelegi sest viimasel ajal on mingi kahtlane
+      tüüp teda jälginud ka ja ta flipib täiega. proovi temaga enne
+      skeidi teemadel rääkida vä, siis ta avaneb mingi rohkem
+    effects: { trust_kertu: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Rannaküla. A small Estonian coastal
+      town trying to be modern. A young programmer who exposed a data
+      harvesting operation. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Rasmus (Marten's best friend) -> rasmus_q1
+      - Talk to Kadri (Marten's ex) -> kadri_q1
+      - Check what Liina (Marten's sister) is saying -> liina_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Rasmus Q1 ---
+
+  rasmus_q1:
+    type: tweet
+    from: rasmus
+    text: >
+      @marten_tamm vend kus sa oled. helista mulle. kirjuta mulle.
+      midagi. see ei ole naljakas enam. me olime neljapäeval koos ja
+      kõik oli normaalne. keegi selgitage mis perse siin toimub
+    effects: { trust_rasmus: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rasmus -> rasmus_q1_talk
+
+  rasmus_q1_talk:
+    type: message
+    text: >
+      RASMUS: Who are you? Another nosy person who wants gossip about
+      my best friend? He's missing, not dead, not a story.
+
+      ...sorry. I'm losing it. We were together Thursday evening at
+      the kohvik. Normal stuff — he showed me some new pixel art.
+      He mentioned DataVõrk again, said he'd found something big in
+      their backend. Refused to tell me details. Said "the less you
+      know the better."
+
+      That's the last time I saw him.
+
+      [Rasmus is angry. He'll open up more once he trusts you.]
+    effects: { trust_rasmus: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kadri Q1 ---
+
+  kadri_q1:
+    type: tweet
+    from: kadri
+    text: >
+      vanad pildid @marten_tamm'ist. suvi merel. ta naeris alati nii
+      päriselt. kurat ma loodan et ta on kuskil turvaline.
+    effects: { trust_kadri: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Kadri -> kadri_q1_talk
+
+  kadri_q1_talk:
+    type: message
+    text: >
+      KADRI: We broke up six months ago. My decision. But we stayed
+      friends. Or... we tried. Marten is intense. About his art,
+      his code, everything. He doesn't do halfway.
+
+      He called me two days before he vanished. Said someone was
+      following him. Not DataVõrk — someone else. Someone who kept
+      showing up wherever he was. He sounded scared. Marten never
+      sounds scared.
+
+      And there was this account — @eerik404 — sending him creepy
+      messages. I told him to go to the police. He laughed and said
+      the police in Rannaküla work for Andres Sepp and Andres Sepp
+      works for DataVõrk.
+    effects: { trust_kadri: "+10" }
+    choices:
+      - Tell me about eerik404 -> kadri_eerik
+      - Move on -> quest1_hub
+
+  kadri_eerik:
+    type: message
+    text: >
+      KADRI: @eerik404. Anonymous account, created maybe four months
+      ago. Comments on everything Marten posts. At first it was
+      harmless — "love your work" type stuff. Then it got intense.
+      Long messages about how Marten's art "speaks to their soul."
+      Analysing every pixel of his work.
+
+      Then it got dark. "I saw you at the harbour today." "The light
+      on your face at the café was beautiful." "Why don't you
+      respond? I'm the only one who really gets you."
+
+      Marten blocked the account. It came back under a different
+      name. He blocked that too. It kept coming back.
+    effects: { trust_kadri: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Liina Q1 ---
+
+  liina_q1:
+    type: tweet
+    from: liina
+    text: >
+      mu vend on KADUNUD ja politsei ütleb mingi "ilmselt läks
+      tallinna"??? MARTEN EI LÄHE KUHUGI ILMA MULLE ÜTLEMATA.
+      sõidan tartust alla. keegi hakkab rääkima.
+    effects: { trust_liina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Liina -> liina_q1_talk
+
+  liina_q1_talk:
+    type: message
+    text: >
+      LIINA: You don't know me and I don't know you but I'm desperate.
+      Marten called me the night before he disappeared. He said he'd
+      found proof that DataVõrk was selling Rannaküla residents'
+      personal data — locations, habits, daily routines — to third
+      parties. Including, he said, some very sketchy companies.
+
+      He said "if something happens, look at what's on the DataVõrk
+      servers." Then the line went dead.
+
+      I've been trying to reach the police but Komissar Tammsaare
+      keeps saying there's "no evidence of wrongdoing." They won't
+      even look at Marten's computer.
+    effects: { trust_liina: "+10" }
+    choices:
+      - What do you think happened? -> liina_theory
+      - Move on -> quest1_hub
+
+  liina_theory:
+    type: message
+    text: >
+      LIINA: I think DataVõrk found out Marten had cracked their
+      system and they silenced him. Siim Paas has connections in
+      Tallinn — investors, politicians. The vallavanem Andres Sepp
+      practically kisses his shoes.
+
+      But there's something else. Marten told me months ago that
+      someone was obsessed with him. Online and offline. He said
+      this person knew things about his daily routine that you'd
+      only know if you were watching. And the creepiest part —
+      Marten said this person seemed to have access to DataVõrk's
+      tracking data. They always knew where he was.
+
+      Two threats. The company. And someone using the company's
+      tools to stalk him.
+    effects: { trust_liina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Marten went silent. Multiple
+      people saw or heard things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Rain (was skating at the harbour) -> rain_interview
+      - Find Juhan (harbour master, works late) -> juhan_interview
+      - Find Margus (electrician, was fixing a streetlight) -> margus_interview
+      - Find Piret (closes the café late, saw something) -> piret_interview
+
+  # --- Rain (saw someone watching Marten's flat) ---
+
+  rain_interview:
+    type: tweet
+    from: rain
+    text: >
+      mingi vibe on praegu nii off siin rannakülas. ei tea kuidas
+      seletada aga mingi kõik on valesti tegelt
+    effects: { trust_rain: "+5" }
+    choices:
+      - Ask Rain about that evening -> rain_talk
+
+  rain_talk:
+    type: message
+    text: >
+      RAIN: ok vend aga sa ei räägi kellelegi vä. ma olin sadamas
+      skeittimas mingi kella üheksa paiku õhtul. ja ma nägin seda
+      tüüpi — seda DataVõrgi venda indrekit — marteni maja ees. ta
+      lihtsalt seisis seal pimedas ja vaatas aknaid. mingi telefon
+      käes, tegi pilte vä midagi.
+
+      kui ta mind nägi siis ta kõndis minema tegelt kiirelt. aga
+      see oli mingi nii creepy raisk. kes kurat seisab kellegi maja
+      ees pimedas ja pildistab?
+
+      ma oleks pidanud midagi ütlema aga ma olin mingi... vittu ma
+      ei tea. ma olin hirmul tegelt
+    effects:
+      trust_rain: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Juhan (harbour master, saw late-night activity) ---
+
+  juhan_interview:
+    type: tweet
+    from: juhan
+    text: >
+      Meeldetuletus: sadama territoorium suletud kell 22:00-06:00.
+      Viimastel öödel täheldatud lubamatut liikumist.
+    effects: { trust_juhan: "+5" }
+    choices:
+      - Ask Juhan what he saw -> juhan_talk
+
+  juhan_talk:
+    type: message
+    text: >
+      JUHAN: I was locking up the harbour office around 23:00.
+      Marten was on the pier — I recognised him by his laptop screen
+      glow. He was there a lot at night, said the harbour wifi was
+      better than his flat. I usually let him stay.
+
+      But that night there was someone else. A man, standing back
+      near the DataVõrk building, watching Marten. Just standing
+      there in the dark. When I turned on my torch, he ducked behind
+      the building. I went to check but he was gone.
+
+      Ten minutes later a car pulled up — dark sedan, DataVõrk
+      sticker. Two people got out and walked toward Marten. I was
+      too far away to hear what they said.
+
+      By morning, Marten was gone and the static image was on his
+      account.
+    effects:
+      trust_juhan: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Margus (electrician, saw Marten running) ---
+
+  margus_interview:
+    type: tweet
+    from: margus
+    text: >
+      Olin eile öösel tänavavalgustit parandamas Mere tänaval.
+      Liiklust oli rohkem kui tavaliselt kella 2 ajal. Keegi jooksis.
+    effects: { trust_margus: "+5" }
+    choices:
+      - Ask Margus what he saw -> margus_talk
+
+  margus_talk:
+    type: message
+    text: >
+      MARGUS: I was up on a ladder fixing the streetlight on Mere
+      tänav around 2am. A young man came running — and I mean
+      sprinting — down the street from the harbour direction. He
+      had a backpack and a laptop bag. It was dark but under the
+      one working light I could see his face. It was Marten.
+
+      He looked terrified. He ran toward the coastal path heading
+      south, toward the old lighthouse.
+
+      About five minutes later, a dark car came down the same
+      street. Slow. Searching. It turned toward the coast road.
+
+      I didn't put it together until the next day. By then the
+      police already had their "he went to Tallinn" story.
+    effects:
+      trust_margus: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Piret (saw confrontation through window) ---
+
+  piret_interview:
+    type: tweet
+    from: piret
+    text: >
+      Sulgesin kohviku kell 23. Tavaliselt on sadam tühi. See öö ei
+      olnud tavaline.
+    effects: { trust_piret: "+5" }
+    choices:
+      - Ask Piret what she saw -> piret_night_talk
+
+  piret_night_talk:
+    type: message
+    text: >
+      PIRET: I was cleaning up after closing — around 23:00. Through
+      the café window I can see the harbour. Marten was on the pier
+      with his laptop, like usual. Then two men walked up to him.
+
+      I couldn't hear the words but the body language was clear.
+      They were threatening him. One of them jabbed a finger at
+      Marten's chest. Marten stood up. They argued. Then one of
+      them reached for Marten's laptop and Marten pulled it away.
+
+      One of the men — I'm almost certain it was Siim Paas. The
+      DataVõrk CEO. I've served him coffee a hundred times. I know
+      how he moves.
+
+      They talked for maybe ten more minutes. Then Marten grabbed
+      his stuff and walked fast toward town. The men went back
+      to the DataVõrk building.
+    effects:
+      trust_piret: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Rasmus (best
+      friend) and Anu (saw Indrek following Marten).
+    choices:
+      - Talk to Rasmus about that night -> rasmus_interview
+      - Talk to Anu -> anu_interview
+      - Find Rain -> rain_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Juhan -> juhan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Margus -> margus_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Piret -> piret_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Rasmus (last to talk to Marten) ---
+
+  rasmus_interview:
+    type: tweet
+    from: rasmus
+    text: >
+      see pilt marteni kontol. see ei ole tema kunst. marten ei
+      postita staatikat. marten ei postita kell 4 öösel. keegi
+      teine tegi seda.
+    effects: { trust_rasmus: "+5" }
+    choices:
+      - DM Rasmus -> rasmus_talk_low
+        when:
+          state: trust_rasmus
+          lt: 50
+      - DM Rasmus -> rasmus_talk_high
+        when:
+          state: trust_rasmus
+          gte: 50
+
+  rasmus_talk_low:
+    type: message
+    text: >
+      RASMUS: Look, I appreciate you trying but I don't know you.
+      I'm not going to spill my best friend's business to some
+      stranger on the internet.
+
+      [Rasmus needs to trust you more. Show him you're investigating
+      seriously.]
+    effects: { trust_rasmus: "+5" }
+    choices:
+      - Share what you've learned about the night -> rasmus_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  rasmus_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the confrontation at the
+      harbour, the DataVõrk car, the man watching the flat, Marten
+      running. Rasmus is quiet for a while.
+
+      RASMUS: Kurat. You're actually doing something. Ok. I'll talk.
+    effects: { trust_rasmus: "+25" }
+    choices:
+      - What happened that night? -> rasmus_talk_high
+
+  rasmus_talk_high:
+    type: message
+    text: >
+      RASMUS: He messaged me around midnight. Just said "they found
+      out. DataVõrk knows I have their data." I told him to come to
+      my place. He said no, he needed to upload the proof first.
+
+      Then around 1am he called. He was panicking. He said "they
+      came to the harbour. Siim and some guy I don't know. They
+      told me to hand over everything or they'd make my life hell."
+
+      He said something else too — "and that fucking eerik account
+      just posted my exact location. Someone is feeding them data
+      from the sensors. Someone at DataVõrk."
+
+      Then the call dropped. I tried calling back all night.
+      Nothing.
+    effects:
+      trust_rasmus: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Anu (saw Indrek following Marten) ---
+
+  anu_interview:
+    type: message
+    text: >
+      ANU: ok tegelt see on mingi creepy aga ma ütlen ära. ma olin
+      mingi nädal enne seda kui marten kadus kunstigaleriis ja
+      indrek — see tüüp DataVõrgist — oli ka seal. aga ta ei
+      vaadanud kunsti tegelt. ta vaatas martenit.
+
+      kogu aeg. nagu mingi silmad peal non-stop. ja kui marten
+      läks ära siis indrek läks ka kohe tema järel. sama suund.
+      mingi paari meetri kaugusel.
+
+      ja veel üks asi — indrek ostis marteni kunsti. nagu kõik.
+      iga NFT, iga print. tal on mingi terve sein marteni asjadega
+      tegelt. raisk see on nii creepy
+    effects:
+      trust_anu: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Indrek seen watching Marten's flat from the dark (Rain)
+      23:00 — Marten on the pier, two men confront him, one is Siim
+              Paas (Piret, Juhan)
+      23:00 — Unknown figure watching Marten from near DataVõrk (Juhan)
+      00:00 — Marten messages Rasmus: "they found out" (Rasmus)
+      01:00 — Marten calls Rasmus, panicking, mentions eerik404 has
+              his live location (Rasmus)
+      02:00 — Marten seen running from harbour, terrified (Margus)
+      02:05 — Dark car follows same route (Margus)
+      04:00 — Static image posted to Marten's account
+
+      DataVõrk confronted Marten at the harbour. He refused to hand
+      over his data. He ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone who's
+      been using their surveillance tools to track his every move.
+
+      Two threads to pull:
+      — The cover-up: What data is DataVõrk really harvesting? Who
+        is protecting them?
+      — The obsession: Who is eerik404? Why does Indrek follow
+        Marten everywhere?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate the stalker -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      DataVõrk is hiding something. Marten had proof. Now he's
+      gone and his laptop is missing.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the DataVõrk public filings -> datavork_filings
+      - Talk to Heli the journalist -> heli_interview
+      - Talk to Indrek (DataVõrk developer) -> indrek_interview_corp
+      - Talk to Tiina (council IT deputy) -> tiina_interview
+      - Check the Kodanikuühendus (citizens' group) -> selts_investigation
+      - Talk to Toomas about the harbour cameras -> toomas_cameras
+      - Back to hub -> investigation_hub
+
+  # --- DataVõrk Filings ---
+
+  datavork_filings:
+    type: message
+    text: >
+      DataVõrk OÜ — public records in the Estonian Business Registry.
+
+      Founded 3 years ago. Registered address: Rannaküla, Harju county.
+      Listed purpose: "smart city infrastructure and data analytics."
+      Revenue last year: €2.1 million. For a town of 3,000 people.
+      That's a lot of money from traffic counters.
+
+      Board members: Siim Paas (CEO), and two names registered in
+      Cyprus. The Cyprus connection is typical of companies trying
+      to obscure their ownership and data flows under EU law.
+
+      Their privacy policy — buried on their website — says data
+      is "processed in accordance with GDPR." But there's a clause:
+      "anonymised aggregate data may be shared with third-party
+      partners for research purposes." That "anonymised" is doing
+      a lot of heavy lifting.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Heli ---
+
+  heli_interview:
+    type: message
+    text: >
+      HELI: I don't discuss sources or ongoing investigations.
+    effects: { trust_heli: "+5" }
+    choices:
+      - Show Heli the evidence you have -> heli_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  heli_with_evidence:
+    type: message
+    text: >
+      HELI: ...you have more than I expected.
+
+      Okay. Marten and I were working together. He'd cracked
+      DataVõrk's API and found the raw data streams. Not
+      anonymised. Individual tracking — every resident's phone,
+      every face, every daily pattern. Sold to data brokers in
+      the UK and Singapore. Also sold directly to a Russian
+      marketing company. Estonian residents' personal data going
+      to Russia. In 2026.
+
+      We were days from publishing. Then Marten went dark. And
+      someone sent me an email from a burner address: "Drop the
+      story or your sources dry up permanently."
+
+      Marten is alive. He contacted me once from a prepaid phone.
+      He's hiding somewhere on Saaremaa. He said "they threatened
+      me at the harbour and someone else is tracking my every
+      move. Someone inside DataVõrk."
+
+      I need enough evidence to publish. Then he can come home.
+    effects:
+      trust_heli: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> heli_hint
+      - Back to investigation hub -> investigation_hub
+
+  heli_hint:
+    type: message
+    text: >
+      HELI: Siim Paas himself went to the harbour with some enforcer
+      type. They told Marten to delete everything or face legal
+      action — lawsuits for "unauthorized access to proprietary
+      systems." Intimidation dressed up as IP law.
+
+      But the scarier part is the stalker. Someone at DataVõrk has
+      been using the surveillance system to track Marten personally.
+      Not for the company — for themselves. Marten said this person
+      always knew where he was, showed up wherever he went, and ran
+      the eerik404 account.
+
+      That's a different kind of threat.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Indrek (DataVõrk developer, corporate angle) ---
+
+  indrek_interview_corp:
+    type: message
+    text: >
+      INDREK: I'm a developer at DataVõrk. I write code. I process
+      data. That's my job.
+
+      But the data I process... it's not what the public reports say.
+    effects: { trust_indrek: "+10" }
+    choices:
+      - What do you mean? -> indrek_detail_corp
+
+  indrek_detail_corp:
+    type: message
+    text: >
+      INDREK: The sensors collect more than traffic patterns. Facial
+      recognition. Device fingerprinting. Wi-Fi probe requests — your
+      phone broadcasts where it's been. We capture all of it.
+
+      Siim told us it was all anonymised before storage. It's not.
+      I've seen the raw database. Full device IDs, timestamped
+      location data, facial recognition matches linked to social
+      media profiles.
+
+      Marten found the same thing from the outside. I found it
+      from the inside. I kept quiet because I need the job. But
+      now someone's disappeared and I can't stay quiet anymore.
+
+      I have database exports. If someone can protect me, I'll
+      share them.
+    effects:
+      trust_indrek: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Tiina ---
+
+  tiina_interview:
+    type: message
+    text: >
+      TIINA: As the council member responsible for IT and development,
+      I supported DataVõrk's installation. Smart city infrastructure
+      is the future. But I had conditions — GDPR compliance,
+      anonymisation, citizen consent.
+
+      Off the record? None of those conditions were met. The
+      vallavanem signed the contract with DataVõrk without council
+      review. I only saw it after installation. The privacy clauses
+      are Swiss cheese — full of holes.
+
+      And the sensors? They're not what we approved. I asked for
+      traffic counters. What they installed has facial recognition
+      cameras, Wi-Fi sniffers, and microphones. Yes, microphones.
+
+      Marten was the first person to actually audit what these
+      things do. I wish I'd done it myself.
+    effects:
+      trust_tiina: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Kodanikuühendus ---
+
+  selts_investigation:
+    type: tweet
+    from: selts
+    text: >
+      HOIATUS: Rannaküla Kodanikuühendus on tuvastanud, et DataVõrk
+      OÜ sensorid koguvad isikuandmeid ilma elanike nõusolekuta.
+      Nõuame sõltumatut auditit ja sensorite peatamist.
+    choices:
+      - Check their documentation -> selts_data
+
+  selts_data:
+    type: message
+    text: >
+      The Kodanikuühendus has been documenting DataVõrk's sensors
+      for six months. Volunteers with IT backgrounds have identified
+      52 sensors across Rannaküla — far more than the 15 declared
+      in the contract with the vald.
+
+      Hidden cameras in streetlights. Wi-Fi sniffers in park benches.
+      Audio sensors disguised as weather stations. All feeding back
+      to DataVõrk's servers in the old fish factory.
+
+      Data retention? The contract says 30 days. The group found
+      records going back 18 months. Every resident's daily pattern,
+      stored indefinitely.
+
+      Marten contributed much of the technical analysis. He was
+      their best volunteer.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Toomas harbour cameras ---
+
+  toomas_cameras:
+    type: message
+    text: >
+      TOOMAS: I'll show you. Come with me to the harbour wall.
+
+      See that grey box? That's supposed to be a "smart traffic
+      counter." Marten opened one up once — showed me the guts.
+      There's a camera in there that can read a boat registration
+      number from fifty metres. And a Wi-Fi scanner.
+
+      There are twelve of them along the harbour. Twelve. For a
+      harbour with twenty boats.
+
+      Marten downloaded data from one of them. It had logged every
+      phone that had ever come within range. Mine. The tourists'.
+      The schoolchildren's. Timestamps, device IDs, duration.
+
+      He said this was just one sensor. Imagine fifty-two of them
+      across the whole town.
+    effects:
+      trust_toomas: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Someone has been tracking Marten. Online and offline. The
+      eerik404 account. The gifts at the café. The figure watching
+      his flat. And someone inside DataVõrk using the surveillance
+      tools to follow his every move.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate DataVõrk's internal access logs -> access_logs
+      - Talk to Kadri about the stalking -> kadri_stalking
+        when:
+          state: trust_kadri
+          gte: 20
+      - Talk to Rain (more detail on the watcher) -> rain_detail
+      - Talk to Marika the pharmacist -> marika_interview
+      - Check the anonymous account @eerik404 -> eerik_investigation
+      - Talk to Karl the librarian -> karl_interview
+        when:
+          state: trust_karl
+          gte: 40
+      - Talk to Komissar Tammsaare -> komissar_interview
+        when:
+          state: trust_komissar
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Access Logs ---
+
+  access_logs:
+    type: message
+    text: >
+      DataVõrk's system has an internal dashboard — Marten's files
+      include screenshots he took before he disappeared.
+
+      The dashboard shows which employees accessed which data
+      streams. Most queries are automated batch processes. But one
+      user — employee ID DV-017 — ran 847 manual queries in the
+      past three months. All targeting the same zone: Mere tänav,
+      where Marten lives. The harbour. The café. The library.
+
+      Every place Marten goes regularly.
+
+      DV-017 also queried specific device IDs. One device was
+      flagged repeatedly: Marten's phone. Every time Marten moved,
+      DV-017 checked his location within minutes.
+
+      Employee ID DV-017 is registered to: Indrek Saar.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kadri on stalking ---
+
+  kadri_stalking:
+    type: message
+    text: >
+      KADRI: Marten showed me the messages. The eerik404 account sent
+      him probably two hundred messages over four months. At first he
+      thought it was a fan. Flattering, even.
+
+      Then the tone changed. "I see you at the kohvik with that girl.
+      You deserve better." That girl was me. Whoever this is, they
+      were watching us in person.
+
+      The gifts at the café got worse too. A printed photo of Marten
+      sleeping — taken through his bedroom window. He went to the
+      police. Komissar Tammsaare said "it's just the internet, block
+      them and move on."
+
+      A month later the person left a USB drive. Marten plugged it
+      in — it contained a keylogger. Whoever made it wanted access
+      to everything on his computer. Marten was a programmer, so he
+      caught it. Most people wouldn't have.
+    effects:
+      trust_kadri: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rain detail ---
+
+  rain_detail:
+    type: message
+    text: >
+      RAIN: ok vend tegelt ma ütlen sulle rohkem. see indrek — ma
+      olen teda näinud mitu korda marteni järel käimas. mitte ainult
+      see üks kord.
+
+      üks kord ma olin mingi poes ja indrek tuli sisse kohe peale
+      martenit. ostis mitte midagi. lihtsalt seisis seal ja vaatas.
+      siis läks välja kui marten läks.
+
+      ja veel — ma nägin indrekit marteni prügikasti juures. mingi
+      2 öösel. ta otsis prügist läbi. ma mõtlesin et raisk see
+      tüüp on mingi hull perse tegelt. aga ma ei öelnud midagi sest
+      ta on mingi täiskasvanu ja keegi ei usukski mind
+    effects:
+      trust_rain: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marika ---
+
+  marika_interview:
+    type: message
+    text: >
+      MARIKA: I shouldn't say this — pharmacist confidentiality and
+      all that. But Indrek Saar comes in regularly. Anxiety
+      medication, sleep aids. The kind of pattern you see in someone
+      under severe psychological pressure.
+
+      He also asked me once if we sell "location tracking devices
+      for safety purposes." I said this is a pharmacy. He said it
+      was for his elderly mother. He doesn't have an elderly mother
+      — she passed away years ago. Everyone in Rannaküla knows that.
+
+      And once — this made my skin crawl — he asked if I knew what
+      brand of aftershave Marten uses. He said he wanted to buy the
+      same one. For himself. He said it as if that was completely
+      normal.
+    effects:
+      trust_marika: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- eerik404 (anonymous account) ---
+
+  eerik_investigation:
+    type: tweet
+    from: eerik
+    text: >
+      He should have listened to me. I was trying to help him. Nobody
+      else sees the beauty in his code the way I do.
+    choices:
+      - Look at this account's history -> eerik_posts
+
+  eerik_posts:
+    type: message
+    text: >
+      @eerik404: account created 4 months ago. Posts are exclusively
+      about Marten's work. Every pixel art piece, every code commit,
+      every post — eerik404 commented. The tone shifts over time:
+
+      Month 1: "Incredible work. Your use of dithering is masterful."
+      Month 2: "Why don't you reply to my DMs? I just want to
+      collaborate on a project."
+      Month 3: "I saw you at Rannakohvik today. You looked tired.
+      You work too hard. Let me help you."
+      Month 4: "I know your routine. I know your schedule. I'm always
+      nearby. You just don't see me. Yet."
+
+      The account has no personal information. No photos. Just Marten.
+      Only Marten.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Analyse the writing style -> eerik_style
+
+  eerik_style:
+    type: message
+    text: >
+      Comparing @eerik404 with known users on rannakyla.social:
+
+      eerik404 uses specific programming terminology — references to
+      "dithering algorithms" and "procedural generation" that match
+      exactly how Indrek Saar discusses code on his public GitHub.
+
+      Same Estonian dialect markers — the Võru-inflected way he
+      writes certain words. Same tendency to drop pronouns.
+
+      And one post from eerik404: "Your commit to the harbour
+      sensor repo at 23:47 was elegant." That repo was private.
+      Only DataVõrk employees had access.
+
+      It's Indrek. The anonymous account is Indrek Saar.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Karl ---
+
+  karl_interview:
+    type: message
+    text: >
+      KARL: Marten left something with me. A sealed waterproof pouch
+      with a USB drive inside. He said "if someone comes asking about
+      DataVõrk's sensors, give them this."
+
+      He looked scared. He said he'd uploaded copies to an encrypted
+      server but wanted a physical backup somewhere nobody would
+      look. A small-town library seemed perfect.
+
+      He said "the data on this drive proves everything. The tracking.
+      The sales. The GDPR violations. All of it."
+    effects: { trust_karl: "+10" }
+    choices:
+      - Take the drive -> karl_drive
+
+  karl_drive:
+    type: message
+    text: >
+      Karl reaches under the circulation desk and produces a
+      waterproof pouch.
+
+      KARL: He said you'd come. Take it.
+
+      Inside: a USB drive. The contents — when you check them later
+      — include DataVõrk's full internal database export. Raw
+      tracking data for every resident. Data broker contracts with
+      companies in the UK, Singapore, and Russia. Internal emails
+      from Siim Paas discussing how to "maintain plausible
+      deniability on consent." And screenshots showing Indrek Saar's
+      847 manual queries targeting Marten's location.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Komissar Tammsaare ---
+
+  komissar_interview:
+    type: message
+    text: >
+      KOMISSAR TAMMSAARE: Off the record — and I mean completely off
+      the record — I wanted to investigate DataVõrk. My superior at
+      the Harju prefecture told me to stand down. He said the
+      Andmekaitse Inspektsioon would "handle it through proper
+      channels." That's code for "don't touch it."
+
+      Vallavanem Sepp called me personally and said DataVõrk is
+      "vital to Rannaküla's economic future." He made it clear my
+      position depends on cooperation.
+
+      The stalking — I didn't even know about that until now. If
+      you have evidence of jälitamine, that's criminal. I can act
+      on that regardless of what Sepp or anyone else says.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_komissar: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Marten than anyone in Rannaküla. Who is responsible?
+    choices:
+      - Confront Indrek Saar (the obsessive stalker) -> confront_indrek
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Siim Paas (the DataVõrk CEO) -> confront_siim
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Vallavanem Andres Sepp (political protection) -> confront_andres
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Indrek (Best Ending) ---
+
+  confront_indrek:
+    type: message
+    text: >
+      You present your evidence to Indrek:
+
+      "I know @eerik404 is your account. I know you used DataVõrk's
+      surveillance system to track Marten's location 847 times. I
+      know you watched his flat. I know you went through his rubbish.
+      I know you sent him a keylogger. I have witnesses and I have
+      the access logs."
+    choices:
+      - Send -> indrek_response
+
+  indrek_response:
+    type: message
+    text: >
+      Indrek doesn't reply for a long time. Then:
+
+      INDREK: You don't understand. Marten's work is genius. His
+      code, his art — nobody appreciates it like I do. I wasn't
+      stalking him. I was studying him. Learning from him. I needed
+      to understand how he thinks, how he moves, what inspires him.
+
+      He wouldn't talk to me. I tried. I offered to collaborate.
+      He said no. But I knew if I just understood him better, he'd
+      see we're the same. We think the same way. We belong together
+      — working together, I mean.
+
+      That's not obsession. That's admiration.
+
+      It's obsession. And it's criminal.
+
+      You've already sent the evidence to Komissar Tammsaare. And
+      to Heli Rand.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Komissar Tammsaare reopens the case. With your evidence — the
+      anonymous account, the surveillance abuse, the access logs,
+      the witness testimonies, the keylogger — Indrek is arrested
+      for jälitamine and andmete kuritarvitamine. His flat is
+      searched. They find a wall covered in printouts of Marten's
+      art, photos of Marten taken from distances, and a notebook
+      logging Marten's daily movements for four months.
+
+      Heli Rand, armed with Marten's full evidence package,
+      publishes the DataVõrk story in Postimees. The Andmekaitse
+      Inspektsioon orders an emergency audit. DataVõrk's servers
+      are seized. Siim Paas faces criminal charges for GDPR
+      violations and selling personal data to foreign companies.
+      Vallavanem Sepp resigns when the contract is made public.
+
+      All 52 sensors are removed from Rannaküla within a week.
+
+      And Marten Tamm, reading the story from a friend's summer
+      house on Saaremaa, calls his sister for the first time in
+      nine days.
+
+      "Tulen koju."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: marten
+    text: >
+      avatud lähtekood igavesti. andmed peavad olema vabad — aga
+      mitte meie omad ilma loata. rannaküla, ma tulen tagasi.
+      aitäh et te ei loobunud.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Siim (Partial Ending) ---
+
+  confront_siim:
+    type: message
+    text: >
+      You present the surveillance evidence to Siim Paas:
+
+      "I have DataVõrk's full internal database. Raw tracking data
+      for every Rannaküla resident. Contracts with data brokers in
+      the UK, Singapore, and Russia. Your own emails about
+      'maintaining plausible deniability.' I have it all."
+    choices:
+      - Send -> siim_response
+
+  siim_response:
+    type: message
+    text: >
+      SIIM: This message has been forwarded to our legal counsel.
+      Any publication of proprietary business information obtained
+      through unauthorized system access will result in immediate
+      legal proceedings. DataVõrk OÜ operates in full compliance
+      with applicable data protection regulations.
+
+      But it's too late. You've sent the evidence to Heli, to the
+      Kodanikuühendus, and to the Andmekaitse Inspektsioon.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The data harvesting story breaks. DataVõrk is ordered to
+      cease operations pending investigation. The sensors come down.
+      Forty jobs in Rannaküla are lost. The town is divided — some
+      are relieved, others blame the whistleblowers.
+
+      But Marten?
+
+      Without the stalking evidence, Indrek is never investigated.
+      He moves to Tallinn and starts a new job at another tech
+      company. He creates a new anonymous account. He finds Marten's
+      new social media profiles within days.
+
+      Six months later, Marten reads about DataVõrk's closure
+      online. He returns to Rannaküla quietly. He changes his
+      routines. He covers his webcam. He checks over his shoulder
+      when he walks to the harbour.
+
+      He knows someone is still watching.
+
+      The corporation is exposed. But the person who terrorised
+      Marten walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marten
+    text: "olen tagasi. sensorid on maas. aga keegi vaatab ikka. seda tunnet ei saa maha."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Vallavanem (Wrong Ending) ---
+
+  confront_andres:
+    type: message
+    text: >
+      You confront Vallavanem Andres Sepp with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> andres_response
+
+  andres_response:
+    type: tweet
+    from: peeter
+    text: >
+      Minu klient on teadlik teie süüdistustest. Igasugune
+      laimavate materjalide avalikustamine toob kaasa viivitamatu
+      kohtumenetluse. — Veski & Partnerid, Tallinn
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The vallavanem's lawyer buries your accusation. Without a
+      direct link between Sepp and DataVõrk's data sales — and
+      there isn't one beyond political protection and a favourable
+      contract — your evidence is insufficient to touch him.
+
+      DataVõrk continues to operate. The sensors keep watching.
+      Indrek keeps tracking. Marten stays in hiding.
+
+      Three months later, @eerik404 creates a new account. It
+      follows Marten's sister.
+
+      Then his ex.
+
+      Then his friends.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: RANNAKÜLA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Marten's story explores themes of
+      mass surveillance, data exploitation, obsessive online
+      behaviour, the power of small-town politics, and the courage
+      to expose systems that harm communities.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or online abuse, help is available:
+      Eluliin: 6558 088
+      Ohvriabi: 116 006
+      Lasteabi: 116 111
+      Andmekaitse Inspektsioon: +372 627 4135

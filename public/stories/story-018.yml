@@ -1,0 +1,1581 @@
+# DEAD ACCOUNT — Story 018: Hévízkút (Hungary)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-018.yml
+#
+# Player investigates the disappearance of young folk musician Bence Szilágyi
+# in the fictional Hungarian thermal spa town of Hévízkút.
+
+meta:
+  title: "Dead Account — Hévízkút"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_reka: 0
+    trust_zoltan: 0
+    trust_lili: 0
+    trust_mate: 0
+    trust_dorina: 0
+    trust_feri: 0
+    trust_janos: 0
+    trust_kata: 0
+    trust_tibor: 0
+    trust_agnes: 0
+    trust_csaba: 0
+    trust_petra: 0
+    trust_norbert: 0
+    trust_ildiko: 0
+    trust_adam: 0
+    trust_eszter: 0
+    trust_gergely: 0
+    trust_boglarka: 0
+    trust_polgarmester: 0
+    trust_rendor: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Új Lakos
+    bio: "épp hévízkútra költöztem. ismerkedem a környékkel"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Hévízkút.közösség"
+    description: "Üdvözöljük Hévízkút közösségi Mastodon szerverén"
+    avatar_url: /gamepatch/assets/dead-account/hevizkut_bot.png
+
+  npcs:
+    # === Bence's Inner Circle ===
+    bence:
+      name: "Bence Szilágyi"
+      bio: "népzenész | tekerőlant & furulya | a zene a víz hangja | hévízkút"
+      avatar: avatars/bence.jpg
+    reka:
+      name: "Réka Varga"
+      bio: "bence exe | kozmetikus a termálfürdőnél | nem akarok erről beszélni"
+      avatar: avatars/reka.jpg
+    zoltan:
+      name: "Zoltán Szilágyi"
+      bio: "bence bátyja | kamionsofőr | győr-hévízkút | megtalálom az öcsémet"
+      avatar: avatars/zoltan.jpg
+    lili:
+      name: "Lili Németh"
+      bio: "17 | bence tanítványa | furulya | a zene mindent meggyógyít"
+      avatar: avatars/lili.jpg
+
+    # === Local Government ===
+    tibor:
+      name: "Tibor Kovács"
+      bio: "Hévízkút polgármestere | A község fejlődéséért 2018 óta | #HévízkútElőre"
+      avatar: avatars/tibor.jpg
+    ildiko:
+      name: "Ilona Tóthné Ildikó"
+      bio: "Alpolgármester | Kulturális és turisztikai ügyek | Hévízkút Önkormányzat"
+      avatar: avatars/ildiko.jpg
+    onkormanyzat:
+      name: "Hévízkút Önkormányzat"
+      bio: "Hivatalos fiók | Közérdekű információk | H-P 8:00-16:00"
+      avatar: avatars/onkormanyzat.jpg
+
+    # === Local Business & Community ===
+    feri:
+      name: "Ferenc 'Feri' bácsi Horváth"
+      bio: "a Meleg Forrás vendéglő | bográcsgulyás | házi pálinka | 1991 óta"
+      avatar: avatars/feri.jpg
+    vendeglo:
+      name: "Meleg Forrás Vendéglő"
+      bio: "Magyar konyha | Házi tészta | Élőzene pénteken | Hévízkút szíve"
+      avatar: avatars/vendeglo.jpg
+    janos:
+      name: "János Molnár"
+      bio: "fürdőmester | 30 éve a termálvíznél | ez a víz az életem"
+      avatar: avatars/janos.jpg
+    kata:
+      name: "Kata Balogh"
+      bio: "gyógynövényes | piaci árus | bio tea & méz | szombatonként a piacon"
+      avatar: avatars/kata.jpg
+    agnes:
+      name: "Ágnes Farkas"
+      bio: "patikus | Hévízkút gyógyszertár | nyitva vasárnap is 8-12"
+      avatar: avatars/agnes.jpg
+    csaba:
+      name: "Csaba Kis"
+      bio: "hentes | Kis Hentesáru | házi kolbász & szalámi | apámtól tanultam"
+      avatar: avatars/csaba.jpg
+    norbert:
+      name: "Norbert Szabó"
+      bio: "mezőgazdász | szőlő & bor | hévízkúti dűlők | természetes gazdálkodás"
+      avatar: avatars/norbert.jpg
+
+    # === Journalist ===
+    petra:
+      name: "Petra Lakatos"
+      bio: "újságíró | Hévízkúti Napló | helyi ügyek & környezetvédelem | tippek: petra@hevizkutinaplo.hu"
+      avatar: avatars/petra.jpg
+
+    # === AquaTherm (corporate) ===
+    aquatherm:
+      name: "AquaTherm Kft."
+      bio: "Termálvíz-hasznosítás | Hévízkúti telephely | ISO 9001 tanúsítvány"
+      avatar: avatars/aquatherm.jpg
+    gergely:
+      name: "Gergely Pintér"
+      bio: "ügyvezető | AquaTherm Kft. Hévízkút | ipar & innováció"
+      avatar: avatars/gergely.jpg
+    boglarka:
+      name: "Boglárka Mészáros"
+      bio: "Ügyvéd | Mészáros & Társai Ügyvédi Iroda | Gazdasági jog | Budapest"
+      avatar: avatars/boglarka.jpg
+
+    # === Teens ===
+    mate:
+      name: "Máté"
+      bio: "16 | bmx & zene | hévízkút gang | bence a legnagyobb tesó"
+      avatar: avatars/mate.jpg
+    dorina:
+      name: "Dorina"
+      bio: "15 | fotó & tiktok | hévízkút élete képekben | bence zenéje király"
+      avatar: avatars/dorina.jpg
+    adam:
+      name: "Ádám"
+      bio: "17 | gamer & streetwear | hévízkút | bence megtanított gitározni"
+      avatar: avatars/adam.jpg
+
+    # === Media & Community ===
+    naplo:
+      name: "Hévízkúti Napló"
+      bio: "Hévízkút és környéke hírportálja | Tippek: szerkesztoseg@hevizkutinaplo.hu"
+      avatar: avatars/naplo.jpg
+    idojaras:
+      name: "Hévízkút Időjárás"
+      bio: "Előrejelzés & figyelmeztetések | Automata állomás | Óránkénti frissítés"
+      avatar: avatars/idojaras.jpg
+    forras_egylet:
+      name: "Forrásőrök Egyesület"
+      bio: "A hévízkúti termálvíz védelméért | Önkéntesek | Szennyezés-bejelentések"
+      avatar: avatars/forras_egylet.jpg
+
+    # === Suspicious / Other ===
+    eszter:
+      name: "Eszter Papp"
+      bio: "laboráns | AquaTherm Kft. | dolgozom, ennyi"
+      avatar: avatars/eszter.jpg
+    anon_account:
+      name: "Hévízkúti Igazság"
+      bio: "."
+      avatar: avatars/anon.jpg
+    rendor:
+      name: "Főtörzsőrmester Fekete"
+      bio: "Hévízkút Rendőrőrs | Körzeti megbízott | Segélyhívó: 112"
+      avatar: avatars/rendor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN HÉVÍZKÚT
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to hévízkút.közösség — the community Mastodon instance for
+      the thermal spa town of Hévízkút, Hungary.
+
+      The local feed is buzzing with worry. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @bence_szilagyi.
+
+      A young folk musician. Hurdy-gurdy player. He played at every
+      festival, every wedding, every funeral. He documented the town's
+      thermal springs through music. People are scared. He hasn't
+      posted in six days.
+    choices:
+      - Look at his profile -> bence_profile
+
+  bence_profile:
+    type: tweet
+    from: bence
+    text: "A termálvíz a miénk. Nem eladó. Nem privatizálható. Akinek nem tetszik, az nézzen a szemembe."
+    choices:
+      - That's his last real post... -> grey_steam
+
+  grey_steam:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      steam rising from dark water. Blurred, shot at a strange angle.
+      Posted at 4am. No caption.
+
+      His friends say that's not him. Bence always wrote long, poetic
+      captions. The police say he probably went to Budapest. Something
+      doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: rendor
+    text: >
+      Bejelentés érkezett egy hévízkúti lakos eltűnéséről.
+      Jelenlegi ismereteink szerint bűncselekményre utaló
+      nyom nem merült fel. Információval rendelkezők
+      hívják a 112-es segélyhívót.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are a mess. His ex-girlfriend @reka_varga is posting
+      frantic messages. His brother @zoltan_szilagyi is driving down
+      from Győr. His student @lili_nemeth is begging for information.
+      The old bath master @janos_molnar says Bence was right about the
+      water.
+
+      And the journalist @petra_lakatos has gone strangely quiet.
+
+      Nobody buys the police line. Nobody thinks Bence just
+      "went to Budapest."
+    effects: { trust_reka: "+5", trust_zoltan: "+5" }
+    choices:
+      - Start following Bence's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Hévízkút. Follow Bence's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Feri bácsi (pub owner, knows everyone) -> feri_intro
+      - Talk to János (bath master, worried about the water) -> janos_intro
+      - Talk to Máté (teen, seems scared) -> mate_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Bence with the rhythms of a small
+      Hungarian spa town: thermal bath schedules, market day
+      announcements, weather warnings for the vineyards.
+
+      Key names surface: Réka (ex-girlfriend, beautician at the spa),
+      Zoltán (brother, trucker), Lili (student, shaken), and the teens
+      — Máté, Dorina, Ádám — who worshipped Bence's music.
+
+      Also prominent: AquaTherm Kft., the company trying to privatize
+      the thermal springs. Their posts are corporate PR. Bence's posts
+      were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Feri bácsi -> feri_intro
+      - Talk to János -> janos_intro
+      - Talk to Máté -> mate_intro
+
+  # --- Feri bácsi (social map) ---
+
+  feri_intro:
+    type: tweet
+    from: feri
+    text: >
+      Nyitva van a Meleg Forrás de nem ugyanaz nélküle.
+      @bence_szilagyi, a te széked itt vár. A pálinka is.
+      Gyere haza fiam.
+    effects: { trust_feri: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Feri bácsi -> feri_talk
+
+  feri_talk:
+    type: message
+    text: >
+      FERI BÁCSI: Á, új vagy? Üdv, öcskös. Szar időben jössz.
+      Mindenki ki van akadva a Bence miatt.
+
+      Hadd mondjam el ki kicsoda. Réka a volt barátnője — a
+      termálfürdőnél dolgozik, a kozmetikán. Szép lány, de amióta
+      szakítottak, kicsit... gáz a helyzet. Nem engedte el a
+      dolgot. Zoltán a bátyja, kamionos, jön le Győrből.
+      Lili a tanítványa, furulyázni tanítja — tanította — a
+      kis csajt.
+
+      Petra Lakatos az újságíró — ő meg a Bence dolgoztak
+      együtt valamin. A vízről. De amióta Bence eltűnt, Petra
+      egy szót sem szól. Az nem normális.
+
+      Ja, és az AquaTherm-es PR-hülyeségekre ne figyelj. Hazugság
+      az egész, szép csomagolásban.
+    effects: { trust_feri: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Réka -> feri_reka
+      - Ask about AquaTherm -> feri_aquatherm
+      - Thank him and move on -> quest1_hub
+
+  feri_reka:
+    type: message
+    text: >
+      FERI BÁCSI: Réka? Hát nézd, a lány odáig volt a Bencéért.
+      Két évig voltak együtt. Aztán Bence szakított, valami
+      olyasmit mondott, hogy "túl intenzív" neki a dolog.
+
+      De a Réka nem bírta elengedni. Ide járt a vendéglőbe minden
+      este, amikor Bence játszott. Ott ült az első sorban. Bence
+      feszengett tőle, láttam rajta. Egyszer mondta nekem: "Feri
+      bácsi, ez a lány nem hagy békén. Mindenhol ott van."
+
+      Hát, akkor nem gondoltam bele. Most már igen.
+    effects: { trust_feri: "+5" }
+    choices:
+      - Ask about AquaTherm -> feri_aquatherm
+      - Move on -> quest1_hub
+
+  feri_aquatherm:
+    type: message
+    text: >
+      FERI BÁCSI: Az AquaTherm az a kurva életbe. Két éve
+      jelentek meg, hogy "hasznosítani" akarják a termálvizet.
+      Wellness szálloda, palackozott termálvíz, meg az anyám
+      kínja. A polgármester, a Tibor, kezet fogott velük, mert
+      pénzt ígértek.
+
+      De a Bence nem hagyta annyiban. Összeszedte az öregeket,
+      a Forrásőröket, kampányolt, hogy ne adják el a mi vizünket.
+      A zene volt a fegyvere — írt egy dalt, "Nem eladó a forrás,"
+      felment a netre, százezer megtekintés. A Tibor meg az
+      AquaTherm bepánikolt.
+
+      Két héttel később Bence eltűnt. Te húzd le a következtetést.
+    effects: { trust_feri: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- János (bath master, the water) ---
+
+  janos_intro:
+    type: tweet
+    from: janos
+    text: >
+      harminc éve mérem a vizet. tudom milyen színű, milyen
+      szagú, milyen meleg. valami változott. @bence_szilagyi
+      tudta. és most nincs itt.
+    effects: { trust_janos: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to János -> janos_talk
+
+  janos_talk:
+    type: message
+    text: >
+      JÁNOS: Harminc éve vagyok itt a fürdőnél. Ismerem ezt a
+      vizet, mint a tenyeremet. És mondom neked — valami
+      változott. A hőmérséklet ingadozik. A víz néha zavaros.
+      Nem normális.
+
+      Amióta az AquaTherm elkezdte a próbafúrásokat a domb mögött,
+      a forrás nem ugyanaz. Bence volt az egyetlen, aki nyíltan
+      kimondta. Méréseket végzett, mintákat vett, dokumentálta
+      az egészet.
+
+      A polgármester azt mondta, hogy "természetes ingadozás."
+      Bazmeg, harminc éve nem ingadozott soha.
+    effects: { trust_janos: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> janos_night
+      - Move on -> quest1_hub
+
+  janos_night:
+    type: message
+    text: >
+      JÁNOS: Azon az éjszakán — mielőtt eltűnt — én zártam a
+      fürdőt, este tíz körül. Láttam, hogy Bence kerékpárja ott
+      áll a kultúrház előtt. Semmi különös, ott szokott próbálni.
+
+      De volt egy fekete terepjáró is a parkolóban. Budapesti
+      rendszám. AquaTherm logó az ajtón. Este tízkor.
+      A kultúrháznál.
+
+      Nem gondoltam bele, de most folyton ezen járatom az agyam.
+    effects: { trust_janos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Máté (teen, witness tease) ---
+
+  mate_intro:
+    type: tweet
+    from: mate
+    text: >
+      basszus nem bírom @bence_szilagyi tanított meg bmx-ezni
+      meg gitározni is ő a legkirályabb ember hévízkúton. ha
+      vki tud vmit pls szóljatok
+    effects: { trust_mate: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Máté -> mate_talk_early
+
+  mate_talk_early:
+    type: message
+    text: >
+      MÁTÉ: tesó ki vagy te? új vagy itt? gáz timing tbh.
+      amúgy bence az a fajta ember aki mindenkivel foglalkozik.
+      megtanított gitározni, bmx-ezni, még a házi feladatban
+      is segített néha lol
+
+      amúgy elmondom neked de ne szólj senkinek. az ádám
+      látott vmi furát aznap este a forrásnál de nem akar
+      beszélni róla. azt mondja semmiség de nézd meg az arcát
+      amikor kérdezed. nem semmiség az tesó
+    effects: { trust_mate: "+10" }
+    choices:
+      - What did Ádám see? -> mate_adam_hint
+      - Move on -> quest1_hub
+
+  mate_adam_hint:
+    type: message
+    text: >
+      MÁTÉ: bazmeg nem tudom pontosan. ő a forrásnál volt
+      este, valami streetwear fotózás meg ilyenek. és
+      látta hogy valaki turkál bence hátizsákjában a
+      kultúrház előtt?? vagy vmi ilyesmi.
+
+      nem akarja mondani mert fél hogy nem hisznek egy
+      17 éves gyereknek. próbálj meg vele beszélni de
+      előbb nyerd meg a bizalmát, szeret gamerkedni meg
+      ilyenek
+    effects: { trust_mate: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Hévízkút. A Hungarian thermal spa
+      town built around its springs. A young musician who was fighting
+      privatization. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Réka (Bence's ex-girlfriend) -> reka_q1
+      - Talk to Lili (Bence's student) -> lili_q1
+      - Check what Zoltán (Bence's brother) is saying -> zoltan_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Réka Q1 ---
+
+  reka_q1:
+    type: tweet
+    from: reka
+    text: >
+      @bence_szilagyi kérlek írj már. tudom h szakítottunk de
+      ettől még aggódom. nem bírom ezt a bizonytalanságot.
+      kérlek.
+    effects: { trust_reka: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Réka -> reka_q1_talk
+
+  reka_q1_talk:
+    type: message
+    text: >
+      RÉKA: Ki vagy te? Nem ismerlek. Nem akarok idegenekkel
+      beszélni Bencéről. Ő az én dolgom.
+
+      ...sajnálom. Ideges vagyok. Mindenki kérdez és senki
+      nem csinál semmit.
+
+      [Réka is defensive. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_reka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lili Q1 ---
+
+  lili_q1:
+    type: tweet
+    from: lili
+    text: >
+      a Bence tanár úr a legjobb ember akit ismerek. nem
+      ment el sehova. ő soha nem hagyná itt a hangszereit.
+      a tekerőlantja itt van a kultúrházban. ő soha. SOHA.
+    effects: { trust_lili: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lili -> lili_q1_talk
+
+  lili_q1_talk:
+    type: message
+    text: >
+      LILI: Bence tanár úr mindig azt mondta, "a zene az
+      igazság hangja." Ő nem futott volna el. Ő harcolt
+      volna.
+
+      Tudod mi a legfurább? A Réka... Bence exe... láttam
+      egyszer a kultúrház előtt este. Csak állt ott. Nézte
+      az ablakot. Bence bent próbált. Nem ment be. Csak
+      állt. Kicsit creepy volt tbh.
+    effects: { trust_lili: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Zoltán Q1 ---
+
+  zoltan_q1:
+    type: tweet
+    from: zoltan
+    text: >
+      AZ ÖCSÉM ELTŰNT és a rendőrség azt mondja h talán
+      felment pestre??? A FASZOM. bence UTÁLJA pestet.
+      megyek le győrből. valaki fog nekem válaszolni.
+    effects: { trust_zoltan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Zoltán -> zoltan_q1_talk
+
+  zoltan_q1_talk:
+    type: message
+    text: >
+      ZOLTÁN: Ki a fasz vagy te? Még egy ember aki
+      mindent jobban tud? Az öcsém hívott aznap este.
+      Azt mondta van valami nagy szar. Azt mondta "ha
+      történik velem valami, nézd meg az AquaTherm-et."
+      Aztán lerakta.
+
+      Az volt az utolsó amit hallottam tőle.
+    effects: { trust_zoltan: "+10" }
+    choices:
+      - What do you think happened? -> zoltan_theory
+      - Move on -> quest1_hub
+
+  zoltan_theory:
+    type: message
+    text: >
+      ZOLTÁN: Szerintem a Bence rájött hogy az AquaTherm
+      tönkreteszi a forrást és elhallgattatták. De az is
+      lehet hogy a Réka csinált valamit. A kurva életbe,
+      az a lány nem normális. Bence hónapok óta mondta
+      hogy követi, figyeli, mindenhol felbukkan.
+
+      Egyszer mondta nekem: "Tesó, a Réka mindent tud
+      rólam. Hol vagyok, kivel vagyok. Nem normális ez."
+      Akkor azt hittem túlzás. Most nem hiszem.
+    effects: { trust_zoltan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Bence went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Ádám (was at the springs, saw something) -> adam_interview
+      - Find János (bath master, was closing up) -> janos_interview
+      - Find Norbert (winemaker, early morning in the vineyards) -> norbert_interview
+      - Find Csaba (butcher, starts at 4am, saw something) -> csaba_interview
+
+  # --- Ádám (saw someone at Bence's bag) ---
+
+  adam_interview:
+    type: tweet
+    from: adam
+    text: >
+      valami gáz van hévízkúton. este a forrásnál voltam
+      fotózni és nem volt jó a vibe. nem tudom elmagyarázni
+    effects: { trust_adam: "+5" }
+    choices:
+      - Ask Ádám about that evening -> adam_talk
+
+  adam_talk:
+    type: message
+    text: >
+      ÁDÁM: tesó oké de ezt ne mondd el senkinek basszus.
+      a forrásnál voltam kb este 7-kor, csináltam fotókat
+      meg ilyenek. és láttam a Rékát — bence exét — bence
+      hátizsákjánál a kultúrház előtt. turkált benne, vagy
+      belerakott vmit, nem tudom pontosan.
+
+      amikor meglátott engem, teljesen bepanikolt és
+      elrohant. geci az creepy volt. ki turkál más
+      hátizsákjában este 7-kor??
+    effects:
+      trust_adam: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- János (bath master, saw late-night meeting) ---
+
+  janos_interview:
+    type: tweet
+    from: janos
+    text: >
+      A fürdő zárás után csendes szokott lenni. Aznap este
+      nem volt az. Mozgás, autók, hangok. Nem normális.
+    effects: { trust_janos: "+5" }
+    choices:
+      - Ask János what he saw -> janos_talk_night
+
+  janos_talk_night:
+    type: message
+    text: >
+      JÁNOS: Zártam a fürdőt, este tíz körül. A kultúrház
+      előtt Bence biciklije, ahogy mondtam. De aztán láttam
+      még valamit — a terepjáró, az AquaTherm-es, beállt a
+      kultúrház parkolójába. Két alak szállt ki. Az egyiket
+      felismertem: Pintér Gergely, az AquaTherm ügyvezetője.
+
+      Este tízkor. A kultúrháznál. Bementek az épületbe.
+      Én hazamentem. Most álmatlanul fekszem minden éjjel.
+    effects:
+      trust_janos: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Norbert (saw Bence fleeing) ---
+
+  norbert_interview:
+    type: tweet
+    from: norbert
+    text: >
+      hajnali 4-kor keltem a szürethez. a szőlő között
+      valaki futott. sötétben. nem szüretelő volt az.
+    effects: { trust_norbert: "+5" }
+    choices:
+      - Ask Norbert what he saw -> norbert_talk
+
+  norbert_talk:
+    type: message
+    text: >
+      NORBERT: Hajnali 4-kor kelek a szőlőhöz. Azon a
+      reggelen — Bence utolsó posztja utáni napon — láttam
+      valakit a dűlők között. Futott. Egy fiatalember,
+      hátizsákkal, a domb felé. Sötét volt még, de a holdnál
+      láttam.
+
+      Szóltam utána de nem állt meg. Gondoltam valami
+      részeg, de ki fut hajnali négykor hátizsákkal a
+      szőlőhegyen?
+
+      Amikor meghallottam Bencéről, összeállt. Az volt ő.
+      Menekült valami elől.
+    effects:
+      trust_norbert: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Csaba (saw car chase) ---
+
+  csaba_interview:
+    type: tweet
+    from: csaba
+    text: >
+      Hajnali 4-kor nyitom a boltot mint mindig. De aznap
+      egy autó száguldott végig a főutcán. Nem ide való tempó.
+    effects: { trust_csaba: "+5" }
+    choices:
+      - Ask Csaba what he saw -> csaba_talk
+
+  csaba_talk:
+    type: message
+    text: >
+      CSABA: Hajnali 4-kor keltem mint mindig, készítettem
+      a kolbászt. Kinyitottam a redőnyt és egy autó száguldott
+      el — fekete terepjáró, budapesti rendszám. Aztán talán
+      két perccel később egy kis Suzuki. Üldözés? Nem tudom.
+
+      A terepjáró a 71-es felé ment, a Suzuki meg letért a
+      régi pincesorra felé, a domb mögött.
+
+      Szóltam a rendőrségnek. Leírták. Ennyi volt.
+    effects:
+      trust_csaba: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Réka (ex-girlfriend)
+      and Dorina (saw Réka watching Bence's flat).
+    choices:
+      - Talk to Réka about that night -> reka_interview
+      - Talk to Dorina -> dorina_interview
+      - Find Ádám -> adam_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find János -> janos_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Norbert -> norbert_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Csaba -> csaba_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Réka (last to see Bence) ---
+
+  reka_interview:
+    type: tweet
+    from: reka
+    text: >
+      az a kép bence fiókjáról. nem ő posztolta. bence soha
+      nem posztol kép nélkül szöveg nélkül. bence soha nem
+      posztol hajnali 4-kor. valaki más volt az.
+    effects: { trust_reka: "+5" }
+    choices:
+      - DM Réka -> reka_talk_low
+        when:
+          state: trust_reka
+          lt: 50
+      - DM Réka -> reka_talk_high
+        when:
+          state: trust_reka
+          gte: 50
+
+  reka_talk_low:
+    type: message
+    text: >
+      RÉKA: Hagyj békén. Nem akarok idegenekkel beszélni
+      Bencéről. Ez az én dolgom.
+
+      [Réka needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_reka: "+5" }
+    choices:
+      - Share what you've learned about the night -> reka_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  reka_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the community
+      centre, the company men, the running figure. Réka is silent
+      for a long time.
+
+      RÉKA: Te tényleg keresed őt. Oké. Beszélek.
+    effects: { trust_reka: "+25" }
+    choices:
+      - What happened that night? -> reka_talk_high
+
+  reka_talk_high:
+    type: message
+    text: >
+      RÉKA: Aznap este... oké. Tudom hogy furcsa, de figyeltem
+      a kultúrházat. Láttam hogy Bence próbál bent. Aztán jöttek
+      az AquaTherm-es autóval. Két ember ment be. Hallottam
+      kiabálást.
+
+      Bence kijött kb fél óra múlva. Fehér volt mint a fal.
+      Felkapott mindent és elindult a biciklijén. Rohant.
+
+      Utánamentem a kocsimmal, csak azért hogy tudjam h jól
+      van. De elvesztettem a sötétben. A szőlőhegy felé ment.
+
+      Tudom hogy ez úgy hangzik mintha... követtem volna. Nem
+      úgy volt. Aggódtam érte. Még mindig szeretem, basszus.
+    effects:
+      trust_reka: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dorina (saw Réka watching Bence's flat) ---
+
+  dorina_interview:
+    type: message
+    text: >
+      DORINA: jaj tesó oké ez nagyon creepy lesz de
+      mondanom kell. a Réka — bence exe — láttam kb
+      háromszor bence háza előtt este. csak állt ott
+      és nézte az ablakot. egyszer a kocsiban ült a
+      ház előtt, sötétben, kikapcsolt lámpákkal.
+
+      az utolsó alkalom kb két nappal azelőtt volt
+      hogy bence eltűnt. faszom ez nem normális
+    effects:
+      trust_dorina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Réka seen going through Bence's bag at the community centre (Ádám)
+      22:00 — AquaTherm car at the community centre, Gergely Pintér enters (János)
+      22:30 — Shouting heard inside, Bence leaves shaken, flees on bicycle (Réka)
+      04:00 — Man running through vineyards with backpack (Norbert)
+      04:00 — SUV speeding through main street, small car following toward wine cellars (Csaba)
+
+      AquaTherm confronted Bence at the community centre. He fled. Someone
+      chased him. But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AquaTherm hiding? Who ordered the
+        confrontation? What role does the mayor play?
+      — The obsession: What is Réka really doing? Why was she at his
+        bag? Why was she following him?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Réka -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AquaTherm wants to privatize Hévízkút's thermal springs. Bence
+      had evidence their test drilling was damaging the source. Now he's
+      gone and his laptop is missing from the community centre.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the community centre records -> centre_records
+      - Talk to Petra the journalist -> petra_interview
+      - Talk to Eszter (AquaTherm lab technician) -> eszter_interview
+      - Talk to Ildikó (deputy mayor for culture) -> ildiko_interview
+      - Check the Forrásőrök association -> forras_investigation
+      - Talk to Kata about the water changes -> kata_investigation
+      - Back to hub -> investigation_hub
+
+  # --- Community Centre Records ---
+
+  centre_records:
+    type: message
+    text: >
+      The community centre's booking system is public. Bence had
+      a regular Wednesday rehearsal slot. But cross-referencing with
+      local council minutes: Mayor Kovács signed an agreement with
+      AquaTherm three months ago for "exploratory thermal resource
+      assessment." The contract is not public.
+
+      A freedom of information request by Bence — filed two weeks
+      before he disappeared — was denied. Reason: "commercial
+      sensitivity."
+
+      But Bence's own water measurements, shared with the Forrásőrök,
+      show a 4-degree temperature drop in the main spring since
+      drilling began. That's not "natural fluctuation."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Petra ---
+
+  petra_interview:
+    type: message
+    text: >
+      PETRA: Nem beszélek forrásokról. Soha.
+    effects: { trust_petra: "+5" }
+    choices:
+      - Show Petra the evidence you have -> petra_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  petra_with_evidence:
+    type: message
+    text: >
+      PETRA: ...többet tudsz mint gondoltam.
+
+      Oké. Bence és én együtt dolgoztunk. Voltak mérési
+      adatai arról hogy az AquaTherm fúrásai tönkreteszik a
+      termálforrást. Vízhőmérséklet csökkenés, vegyi
+      szennyezés, illegális próbafúrások a védett területen.
+
+      Publikálni akartunk együtt. Aztán Bence eltűnt. Két
+      nappal később valaki betörte a kocsimat és elvitte a
+      pendrive-omat.
+
+      Bence él. Egyszer felhívott egy ismeretlen számról.
+      Azt mondta rejtőzködik. Azt mondta "megfenyegettek a
+      kultúrházban és valaki más sem hagy békén."
+
+      Nem mondhatom meg hol van. De ha elég bizonyíték lesz,
+      publikálhatok, és biztonságban jöhet haza.
+    effects:
+      trust_petra: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> petra_hint
+      - Back to investigation hub -> investigation_hub
+
+  petra_hint:
+    type: message
+    text: >
+      PETRA: Pintér Gergely — az AquaTherm-es — és valami
+      ügyvéd ment be a kultúrházba aznap este. Azt mondták
+      Bencének, hogy adja át az összes adatot, különben jogi
+      következmények lesznek. Megfélemlítés, jogásznak
+      álcázva.
+
+      De Bence mást is mondott. Hogy valaki a környezetéből
+      mindig tudja hol van, mit csinál. Valaki, aki nem
+      engedi el. Az egy másik probléma.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Eszter (AquaTherm whistleblower) ---
+
+  eszter_interview:
+    type: message
+    text: >
+      ESZTER: Az AquaTherm-nél dolgozom. Laboráns vagyok.
+      Vizsgálatokat csinálok, jelentéseket írok.
+
+      De a jelentések, amiket én írok... nem mindig azok
+      a jelentések, amik a hatósághoz kerülnek.
+    effects: { trust_eszter: "+10" }
+    choices:
+      - What do you mean? -> eszter_detail
+
+  eszter_detail:
+    type: message
+    text: >
+      ESZTER: Mérem a víz összetételét. Nehézfémek,
+      hőmérséklet, nyomás. Az én számaim felmennek a
+      főnökhöz. Valahol az én asztalom és a hatósági
+      beadvány között megváltoznak. Lejjebb. Mindig
+      lejjebb.
+
+      Bence mérései kintről megegyeztek az ÉN eredeti
+      számaival, nem a hivatalos jelentésben szereplőkkel.
+      Független bizonyítéka volt arra, hogy az AquaTherm
+      hamisítja az adatokat. És hogy a fúrások károsítják
+      a termálforrást.
+
+      Félek. Van családom. De megvannak az eredeti
+      jelentéseim. Ha valaki megvéd, megosztom őket.
+    effects:
+      trust_eszter: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Ildikó ---
+
+  ildiko_interview:
+    type: message
+    text: >
+      ILDIKÓ: Alpolgármesterként komolyan veszem ezeket a
+      vádakat. De az AquaTherm 50 munkahelyet hoz a
+      községbe. A polgármester úr ragaszkodik a "párbeszéd
+      fenntartásához."
+
+      Nem hivatalosan? Láttam a szerződést. Az AquaTherm
+      nemcsak "kutatási jogot" kapott. Tibor eladta nekik
+      az elsőbbségi kitermelési jogot a forrásra. Húsz
+      évre. A testület megkerülésével.
+
+      Bence ezt kiderítette. Ezért volt veszélyes.
+    effects:
+      trust_ildiko: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Forrásőrök ---
+
+  forras_investigation:
+    type: tweet
+    from: forras_egylet
+    text: >
+      FIGYELMEZTETÉS: A hévízkúti termálforrás hőmérséklete
+      az elmúlt hónapban 4 fokot csökkent. Kérjük a hatóságokat,
+      hogy függesszék fel az AquaTherm próbafúrásait a vizsgálat
+      idejére.
+    choices:
+      - Check their data -> forras_data
+
+  forras_data:
+    type: message
+    text: >
+      The Forrásőrök have been monitoring the thermal spring for
+      five years. Their data shows a clear pattern: since AquaTherm
+      began test drilling three months ago, the water temperature
+      has dropped steadily. Chemical composition has changed —
+      increased sulphur, decreased mineral content.
+
+      The pattern is unmistakable. The drilling is draining the
+      thermal aquifer. At this rate, the spring that has fed
+      Hévízkút for centuries will be depleted within two years.
+
+      Bence was a founding member. He contributed most of the
+      measurement data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Kata investigation ---
+
+  kata_investigation:
+    type: message
+    text: >
+      KATA: A piacon árulok gyógynövényteát és mézet. A
+      füveket a termálforrásnál gyűjtöm — harmincféle növény
+      nő ott a meleg víz miatt. Legalábbis nőtt.
+
+      Amióta elkezdték a fúrásokat, a víz hűvösebb. A
+      növények pusztulnak. Három faj már nincs meg.
+
+      Bence dokumentálta az egészet. Együtt jártunk ki
+      mérni. Utoljára azt mondta: "Kata néni, van egy
+      papírom ami mindent bizonyít. Szerződés a
+      polgármester és az AquaTherm között. Törvénytelen."
+
+      Megkértem, hogy legyen óvatos. Nem volt elég óvatos.
+    effects:
+      trust_kata: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Réka Varga. Ex-girlfriend. Beautician. Something more?
+      Someone was going through Bence's bag. Someone was watching
+      his flat. Someone was following him in the dark.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Check Réka's social media activity -> reka_social
+      - Talk to Lili about Réka -> lili_reka
+        when:
+          state: trust_lili
+          gte: 20
+      - Talk to Ádám (more detail on the bag incident) -> adam_detail
+      - Talk to Ágnes the pharmacist -> agnes_interview
+      - Check the anonymous account @hevizkuti_igazsag -> anon_investigation
+      - Talk to Feri bácsi about the breakup -> feri_breakup
+        when:
+          state: trust_feri
+          gte: 40
+      - Talk to Főtörzsőrmester Fekete -> rendor_interview
+        when:
+          state: trust_rendor
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Réka Social Media ---
+
+  reka_social:
+    type: message
+    text: >
+      Réka's posting history tells a story. Before the breakup:
+      couple photos, heart emojis, "my everything." After the
+      breakup — three months ago — the posts shift.
+
+      Week 1: "I'll wait for you forever."
+      Week 4: "I see you at the vendéglő. You smile at everyone
+      but me."
+      Week 8: "I know your schedule. I know when you rehearse.
+      I know when you walk home. I'm always close."
+      Week 11: "If I can't have you, nobody will appreciate you
+      like I did."
+
+      The last post, two days before Bence disappeared: "You'll
+      understand soon. Everything I do is for us."
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lili on Réka ---
+
+  lili_reka:
+    type: message
+    text: >
+      LILI: A Réka? A Bence tanár úr félt tőle. Komolyan
+      mondom. A próbákon néha odajött az ablakhoz és csak
+      nézett be. Bence mindig ideges lett.
+
+      Egyszer mondta nekem: "Lili, ha egyszer nem jövök
+      próbálni, szólj a Zoltánnak." Akkor viccnek vettem.
+      Most nem vicces.
+
+      A Réka a telefonját is ellenőrizte amikor még együtt
+      voltak. Bence mesélte. Követte a Strava-ját, tudta
+      merre biciklizik. A szakítás után sem hagyta abba.
+      Bence letörölte a Stravát, de a Réka akkor is mindig
+      tudta hol van.
+    effects:
+      trust_lili: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ádám detail ---
+
+  adam_detail:
+    type: message
+    text: >
+      ÁDÁM: oké tesó nem mondtam el mindent. amikor
+      a Réka turkált bence táskájában, láttam h volt
+      vmi a kezében. valami kis fekete izé. belerakta
+      a hátizsák zsebébe.
+
+      basszus nem vagyok biztos de úgy nézett ki mint
+      egy gps nyomkövető. tudod olyan kicsi fekete
+      doboz. az apám teherautójában is van ilyen.
+
+      geci ki tesz gps-t a volt barátja táskájába??
+      ez beteg szar tesó
+    effects:
+      trust_adam: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ágnes ---
+
+  agnes_interview:
+    type: message
+    text: >
+      ÁGNES: Ez bizalmas, de patikus vagyok, nem pap.
+      Réka Varga rendszeresen jön. Altatókat, szorongás
+      elleni szereket vásárol. A minta egy súlyosan
+      stresszes ember képét mutatja.
+
+      De ami igazán feltűnt: egyszer kérdezte, hogy
+      árulunk-e GPS nyomkövetőt. Mondtam, ez
+      gyógyszertár, nem elektronikai bolt. Nevetett.
+      Nem gondoltam utána, amíg Bence el nem tűnt.
+
+      Ja, és rendszeresen vesz műkörmös kellékeket —
+      semmi gáz, a munkájához kell. De egyszer vett
+      egy nagy adag aceton-oldószert. Mondtam, ez
+      ipari mennyiség. Azt mondta, "nagy rendelés."
+      Nem tudom mit csináltam volna mással.
+    effects:
+      trust_agnes: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anon account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_account
+    text: >
+      Hallgatnia kellett volna rám. Csak védeni akartam.
+      Senki más nem értette úgy mint én.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @hevizkuti_igazsag: account created 4 months ago — right
+      after the breakup. Posts are all about Bence's music, his
+      activism, his schedule. The tone shifts over time:
+
+      Month 1: "The best musician in Hévízkút. You deserve
+      everything."
+      Month 2: "Why don't you answer my messages? I just want
+      to talk."
+      Month 3: "I saw you at the vendéglő with that new girl
+      from the market. You have time for everyone but me."
+      Month 4: "I know your rehearsal schedule. I know which
+      way you bike home. I'm closer than you think."
+
+      The account has no photos, no personal details. Just Bence.
+      Only Bence.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @hevizkuti_igazsag with @reka_varga:
+
+      Same writing patterns — the way she uses "..." at the
+      end of sentences, the same Hungarian spelling habits,
+      the same emotional escalation style. Same knowledge of
+      Bence's daily routine that only someone intimately
+      familiar with him would have.
+
+      And one post from @hevizkuti_igazsag: "Your rendition
+      of 'Tavaszi szél' at Thursday rehearsal was
+      breathtaking." Thursday rehearsals are not public.
+      Only people present — or watching from outside — would
+      know.
+
+      It's Réka. The anonymous account is Réka.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Feri bácsi on the breakup ---
+
+  feri_breakup:
+    type: message
+    text: >
+      FERI BÁCSI: A Réka szép lány, de a kurva életbe,
+      nem normális ahogy viselkedik. A Bence háromszor
+      próbált szakítani vele. Háromszor! Az első kettőnél
+      a Réka olyan jelenetet csinált a vendéglőben hogy
+      mindenki látta.
+
+      A harmadiknál Bence nem személyesen mondta, hanem
+      üzenetben. A Réka bejött ide és két órán át sírt.
+      Aztán kiment és leüllt a kocsijába Bence háza elé.
+
+      Éjszaka. Sötétben. Három órán át.
+
+      Mondtam a Bencének, figyelj már, ez nem normális.
+      Azt mondta: "Tudom, Feri bácsi. De mit csináljak?
+      A rendőrség azt mondja, amíg nem csinál semmit,
+      nem tehetnek semmit."
+    effects:
+      trust_feri: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rendőr ---
+
+  rendor_interview:
+    type: message
+    text: >
+      FŐTÖRZSŐRMESTER FEKETE: Ez nem hivatalos — és úgy is
+      értem, teljesen nem hivatalos. Az AquaTherm-ügyet nem
+      vizsgálhatom. A felettesem azt mondta, a hatóságé a
+      jogkör. Ez annyit tesz: ne nyúlj hozzá.
+
+      A Réka-ügy más. Erről nem is tudtam eddig. Ha van
+      bizonyítékod zaklatásra, azt tudom kezelni. Az
+      egyértelműen az én hatásköröm.
+
+      Hozz nekem valami szilárd dolgot és újranyitom az
+      ügyet.
+    effects:
+      trust_rendor: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Bence than anyone in Hévízkút. Who is responsible?
+    choices:
+      - Confront Réka Varga (the obsessive ex) -> confront_reka
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Gergely Pintér (the AquaTherm director) -> confront_gergely
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Kovács (political corruption) -> confront_tibor
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Réka (Best Ending) ---
+
+  confront_reka:
+    type: message
+    text: >
+      You present your evidence to Réka:
+
+      "I know @hevizkuti_igazsag is your account. I know you put a
+      GPS tracker in Bence's backpack. I know you were watching
+      his flat every night. I know you followed him the night he
+      disappeared. I have witnesses and I have your posting history."
+    choices:
+      - Send -> reka_response
+
+  reka_response:
+    type: message
+    text: >
+      Réka doesn't reply for a long time. Then:
+
+      RÉKA: Nem érted. Védtem őt. Veszélyben volt az AquaTherm
+      miatt és nem hagyott segíteni. Tudnom kellett hogy
+      biztonságban van. Mindent azért csináltam mert szeretem.
+
+      That's not love. That's obsession.
+
+      You've already sent the evidence to Főtörzsőrmester Fekete.
+      And to Petra Lakatos.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Főtörzsőrmester Fekete reopens the case. With your evidence —
+      the anonymous account, the GPS tracker, the surveillance, the
+      witness testimonies — Réka is arrested for stalking and
+      harassment. A GPS tracker is recovered from Bence's backpack,
+      found in the old wine cellars behind the hill.
+
+      Petra Lakatos, finally in possession of Bence's full evidence
+      package, publishes the AquaTherm story in HVG. The authorities
+      order an immediate halt to drilling. The illegal contract
+      between Mayor Kovács and AquaTherm is exposed. Kovács resigns.
+      Pintér Gergely faces criminal charges for environmental damage
+      and data falsification.
+
+      And Bence Szilágyi, reading the article from a friend's flat
+      in Pécs, calls his brother for the first time in nine days.
+
+      "Tesó, hazamegyek."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: bence
+    text: >
+      a víz a miénk. a zene a miénk. a forrás nem eladó.
+      köszönöm hogy nem adtátok fel.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Gergely (Partial Ending) ---
+
+  confront_gergely:
+    type: message
+    text: >
+      You present the privatization evidence to Gergely Pintér:
+
+      "I have water analysis proving your drilling is destroying
+      the thermal spring. I have your falsified reports. I have
+      the illegal contract with the mayor. I have witnesses who
+      saw you at the community centre that night."
+    choices:
+      - Send -> gergely_response
+
+  gergely_response:
+    type: message
+    text: >
+      GERGELY: Ezt a beszélgetést a jogi osztályunkhoz
+      továbbítom. Bármilyen rágalmazó anyag terjesztése
+      azonnali jogi eljárást von maga után. Az AquaTherm
+      minden jogszabályi előírásnak megfelel.
+
+      But it's too late. You've sent the evidence to Petra, to
+      the Forrásőrök, and to the environmental authority.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The privatization story breaks. AquaTherm is ordered to halt
+      all drilling. Mayor Kovács faces a no-confidence vote. The
+      town is divided — some feared losing jobs, but most are
+      furious about the secret contract.
+
+      But Réka?
+
+      Without the stalking evidence, Réka is never investigated.
+      She continues to watch Bence's empty flat. She continues
+      to monitor his accounts. She creates a new anonymous profile.
+
+      Three months later, Bence reads about AquaTherm online.
+      He returns quietly. He changes his rehearsal schedule. He
+      locks his backpack. He checks his belongings every morning.
+      He doesn't play at the vendéglő anymore.
+
+      The corporation is exposed. But the person who terrorized
+      Bence walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: bence
+    text: "hazajöttem. a víz megmenekült. a többi... majd meglátjuk."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_tibor:
+    type: message
+    text: >
+      You confront Mayor Kovács with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> tibor_response
+
+  tibor_response:
+    type: tweet
+    from: boglarka
+    text: >
+      Ügyfelünk tudomásul veszi az Ön állításait. Bármilyen
+      rágalmazó tartalom nyilvánosságra hozatala azonnali
+      peres eljárást von maga után. — Mészáros & Társai
+      Ügyvédi Iroda, Budapest
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Kovács and Bence's disappearance — and there
+      isn't one beyond political protection — your evidence is
+      insufficient.
+
+      AquaTherm continues to drill. Réka continues to watch.
+      Bence stays in hiding.
+
+      Six months later, @hevizkuti_igazsag creates a new account.
+      It follows Bence's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: HÉVÍZKÚT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Bence's story explores themes of
+      corporate greed, political corruption, obsessive behaviour,
+      community solidarity, and the courage to protect what
+      belongs to everyone.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Lelki Elsősegély: 116 123
+      NANE Egyesület (nők és gyermekek elleni erőszak): 06 80 505 101
+      Környezetvédelmi bejelentések: 06 80 301 301

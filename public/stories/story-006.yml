@@ -1,0 +1,1531 @@
+# DEAD ACCOUNT — Story 006: Vila do Sal (Portugal)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-006.yml
+#
+# Player investigates the disappearance of marine conservationist
+# Beatriz Santos in the fictional Algarve town of Vila do Sal.
+
+meta:
+  title: "Dead Account"
+  state:
+    trust_miguel: 0
+    trust_fatima: 0
+    trust_joaquim: 0
+    trust_ines: 0
+    trust_tomas: 0
+    trust_diogo: 0
+    trust_carla: 0
+    trust_rui: 0
+    trust_ana: 0
+    trust_sergio: 0
+    trust_helena: 0
+    trust_pedro: 0
+    trust_luis: 0
+    trust_fernanda: 0
+    trust_nuno: 0
+    trust_ricardo: 0
+    trust_marta: 0
+    trust_vasco: 0
+    trust_rosa: 0
+    trust_andre: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    fishing_evidence: 0
+    threat_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just arrived in vila do sal. exploring the coast"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "ViladoSal.social"
+    description: "Welcome to the Vila do Sal community instance - Algarve coast"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    beatriz:
+      name: "Beatriz Santos"
+      bio: "marine biologist | ocean photographer | protecting our coast | @oceano_vivo"
+      avatar: avatars/beatriz.jpg
+    miguel:
+      name: "Miguel Santos"
+      bio: "beatriz's brother | fisherman when the sea allows | WHERE IS MY SISTER"
+      avatar: avatars/miguel.jpg
+    fatima:
+      name: "Dona Fatima Rocha"
+      bio: "Cafe Marezinha | pasteis de nata since 1987 | the heart of Vila do Sal"
+      avatar: avatars/fatima.jpg
+    joaquim:
+      name: "Joaquim Ferreira"
+      bio: "fisherman | 40 years on the water | the sea keeps its secrets"
+      avatar: avatars/joaquim.jpg
+    ines:
+      name: "Ines"
+      bio: "16 | bue apaixonada pelo mar | surf & photography | @beatriz_santos is goals"
+      avatar: avatars/ines.jpg
+    tomas_teen:
+      name: "Tomas"
+      bio: "17 | skate & waves | vila do sal born and raised | noites na praia"
+      avatar: avatars/tomas_teen.jpg
+    diogo:
+      name: "Diogo"
+      bio: "15 | gaming & surf | tipo o unico gamer nesta vila lol"
+      avatar: avatars/diogo.jpg
+    carla:
+      name: "Carla Mendes"
+      bio: "biologist | University of Algarve | marine ecosystems | Beatriz's colleague"
+      avatar: avatars/carla.jpg
+    rui:
+      name: "Rui Oliveira"
+      bio: "journalist | Correio do Algarve | local stories matter | tips welcome"
+      avatar: avatars/rui.jpg
+    ana:
+      name: "Ana Baptista"
+      bio: "teacher | Escola Basica Vila do Sal | community volunteer"
+      avatar: avatars/ana.jpg
+    sergio:
+      name: "Sergio Lopes"
+      bio: "Capitania do Porto | Port Authority Vila do Sal | maritime safety"
+      avatar: avatars/sergio.jpg
+    helena:
+      name: "Helena Correia"
+      bio: "Camara Municipal | Vereadora do Ambiente | #ViladoSalVerde"
+      avatar: avatars/helena.jpg
+    pedro:
+      name: "Pedro Marques"
+      bio: "dive instructor | Centro de Mergulho Sol | the reef is everything"
+      avatar: avatars/pedro.jpg
+    luis:
+      name: "Luis Tavares"
+      bio: "owner | Tavares Peixe Lda | fresh fish wholesale | 3rd generation"
+      avatar: avatars/luis.jpg
+    fernanda:
+      name: "Fernanda Alves"
+      bio: "Livraria do Mar | books & salt air | open every day except when I forget"
+      avatar: avatars/fernanda.jpg
+    nuno:
+      name: "Nuno Costa"
+      bio: "GNR Vila do Sal | Posto Territorial | serving the community"
+      avatar: avatars/nuno.jpg
+    ricardo:
+      name: "Ricardo Fonseca"
+      bio: "boat repairs | Estaleiro Fonseca | if it floats I can fix it"
+      avatar: avatars/ricardo.jpg
+    marta:
+      name: "Marta Silva"
+      bio: "pharmacy | Farmacia Central | health advice | open 9-19"
+      avatar: avatars/marta.jpg
+    vasco:
+      name: "Vasco"
+      bio: "."
+      avatar: avatars/anon.jpg
+    rosa:
+      name: "Rosa Dias"
+      bio: "Junta de Freguesia | Vila do Sal | community matters"
+      avatar: avatars/rosa.jpg
+    oceano_vivo:
+      name: "Oceano Vivo"
+      bio: "Marine Conservation Algarve | protecting biodiversity | report violations"
+      avatar: avatars/oceano_vivo.jpg
+    gnr:
+      name: "GNR Vila do Sal"
+      bio: "Guarda Nacional Republicana | Emergencies: 112 | Reports: 213 217 000"
+      avatar: avatars/gnr.jpg
+    camara:
+      name: "Camara Municipal Vila do Sal"
+      bio: "Official account | Services | News | #ViladoSal"
+      avatar: avatars/camara.jpg
+    correio:
+      name: "Correio do Algarve"
+      bio: "Regional newspaper | News from the Algarve | tips: redacao@correioalgarve.pt"
+      avatar: avatars/correio.jpg
+    andre:
+      name: "Andre Sousa"
+      bio: "harbour master's office | logistics | maritime coordination"
+      avatar: avatars/andre.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VILA DO SAL
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to viladosal.social — the community Mastodon instance for
+      Vila do Sal, a small fishing town on the Algarve coast of Portugal.
+
+      The local feed is unusually tense. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps appearing: @beatriz_santos.
+
+      A marine biologist and ocean photographer. She ran a local conservation
+      group called Oceano Vivo. She hasn't posted in ten days.
+    choices:
+      - Look at her profile -> beatriz_profile
+
+  beatriz_profile:
+    type: tweet
+    from: beatriz
+    text: "They think I don't have proof. I do. And I'm going to share it."
+    choices:
+      - That was her last real post... -> dead_post
+
+  dead_post:
+    type: message
+    text: >
+      Five days after that post, her account shared a single image: a
+      photo of the ocean at night. Black water, no horizon. Posted at 3am.
+
+      Her brother says she would never post something so bleak. The GNR
+      says there is no evidence of a crime. Her boat was found drifting
+      empty near the caves.
+    choices:
+      - Read the GNR statement -> gnr_statement
+      - See what people are saying -> community_reaction
+
+  gnr_statement:
+    type: tweet
+    from: gnr
+    text: >
+      The GNR has received a report regarding the whereabouts of a Vila
+      do Sal resident. Maritime authorities have been notified. There is
+      currently no indication of criminal activity. Anyone with information
+      should contact the nearest GNR post.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The feed is divided. Her brother @miguel_santos is furious. Dona
+      Fatima at the cafe is rallying the town. The fishermen are quiet.
+      Too quiet.
+
+      And there is an anonymous account, @vasco, posting cryptic warnings:
+      "She was told to stop. She didn't stop."
+
+      Nobody believes Beatriz just fell off her boat.
+    effects: { trust_miguel: "+5", trust_fatima: "+5" }
+    choices:
+      - Start following Beatriz's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Vila do Sal. Follow Beatriz's contacts and read their
+      posts. This is a tight coastal community where everyone knows
+      everyone's business — and everyone's silence.
+
+      Start with whoever seems most willing to talk.
+    choices:
+      - Talk to Dona Fatima (she knows everyone) -> fatima_intro
+      - Talk to Pedro the dive instructor -> pedro_intro
+      - Check what the teens are saying -> ines_intro
+      - Browse the local feed -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry with everyday life. Fish market prices.
+      Sunset photos. A heated argument about parking near the harbour.
+      And threaded through all of it, the question nobody can answer:
+      where is Beatriz?
+
+      Key names: Miguel (her brother, angry), Joaquim (old fisherman,
+      says nothing), Carla (her research partner, posting frantically),
+      Rui (journalist, asking questions nobody wants to answer).
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Dona Fatima -> fatima_intro
+      - Talk to Pedro -> pedro_intro
+      - Check the teens -> ines_intro
+
+  # --- Dona Fatima (social map) ---
+
+  fatima_intro:
+    type: tweet
+    from: fatima
+    text: >
+      The cafe is open as always. Coffee is hot. But the chair where
+      Beatriz always sat is empty. Come in, talk to me. I need the company.
+    effects: { trust_fatima: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Dona Fatima -> fatima_talk
+
+  fatima_talk:
+    type: message
+    text: >
+      DONA FATIMA: You're new here? Sit. Coffee. No arguments.
+
+      Let me tell you about this town. Vila do Sal is built on fishing
+      and secrets. Beatriz was trying to change that. She documented
+      everything — the illegal trawlers at night, the catch that never
+      appears on the books, the reef damage.
+
+      Her brother Miguel is a wreck. Carla from the university is calling
+      everyone. And Rui from the newspaper keeps asking questions that
+      make powerful people uncomfortable.
+
+      Be careful who you trust here. The port authority has ears everywhere.
+    effects: { trust_fatima: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the port authority -> fatima_port
+      - Ask about the anonymous threats -> fatima_threats
+      - Thank her and move on -> quest1_hub
+
+  fatima_port:
+    type: message
+    text: >
+      DONA FATIMA: Sergio Lopes runs the port authority like his personal
+      kingdom. Nothing moves in this harbour without his say. And his
+      cousin Luis Tavares runs the biggest fish wholesale operation in
+      the Algarve.
+
+      Beatriz was documenting boats that went out at night and came back
+      with catches that never appeared in any official records. She had
+      photographs. GPS tracks. She was building a case.
+
+      Sergio told her to mind her own business. That was three weeks
+      before she disappeared.
+    effects: { trust_fatima: "+5" }
+    choices:
+      - Ask about the threats -> fatima_threats
+      - Move on -> quest1_hub
+
+  fatima_threats:
+    type: message
+    text: >
+      DONA FATIMA: Before she disappeared, Beatriz told me she was getting
+      messages. Anonymous accounts. "Stop filming." "You don't know what
+      you're dealing with." She showed me one on her phone — just a photo
+      of her boat at the dock. Taken at night. No message, just the photo.
+
+      Someone was watching her. She reported it to Nuno at the GNR. He
+      wrote it down. Nothing happened.
+    effects: { trust_fatima: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pedro (the reef damage) ---
+
+  pedro_intro:
+    type: tweet
+    from: pedro
+    text: >
+      another dive today. the reef near Ponta da Agulha is getting worse.
+      @beatriz_santos was right about everything. someone needs to finish
+      what she started.
+    effects: { trust_pedro: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Pedro -> pedro_talk
+
+  pedro_talk:
+    type: message
+    text: >
+      PEDRO: Beatriz and I dove together every week. She was documenting
+      damage to the reef — trawler nets dragged through protected areas.
+      The damage is undeniable. I've seen it with my own eyes.
+
+      She had underwater photographs, GPS coordinates, dates. She was
+      building a report for ICNF, the nature conservation institute. She
+      was close to finishing.
+
+      Two weeks before she disappeared, someone cut her boat's mooring
+      lines during the night. Could have been the current, could have
+      been a knife. She was sure it was a knife.
+    effects: { trust_pedro: "+10", contacts_followed: "+1" }
+    choices:
+      - Ask who would do that -> pedro_suspect
+      - Move on -> quest1_hub
+
+  pedro_suspect:
+    type: message
+    text: >
+      PEDRO: Everyone here knows who benefits from illegal trawling.
+      Luis Tavares buys the catch. Sergio Lopes looks the other way at
+      the port. And the boats go out at night when nobody is supposed
+      to be watching.
+
+      Beatriz was watching. That was her mistake — not the watching, but
+      letting them know she was watching.
+    effects: { trust_pedro: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ines (teen witness) ---
+
+  ines_intro:
+    type: tweet
+    from: ines
+    text: >
+      ya nao consigo com esta cena. a beatriz desapareceu e ngm faz nada??
+      tipo ela era bue fixe connosco e agr tds fazem de conta q ta td bem.
+      fds
+    effects: { trust_ines: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ines -> ines_talk
+
+  ines_talk:
+    type: message
+    text: >
+      INES: oi!! es novo aqui? ya a beatriz era tipo a pessoa mais fixe
+      desta vila. ela ensinava-nos sobre o mar e isso. levou-nos a ver
+      os golfinhos e tudo.
+
+      tomas viu uma cena a outra noite mas ta com medo de falar. tipo ele
+      tava na praia e viu uns barcos a sair do porto tipo as 2 da manha.
+      sem luzes. bue estranho tas a ver?
+
+      o diogo diz q e mentira mas o tomas nao mente sobre estas cenas
+    effects: { trust_ines: "+10" }
+    choices:
+      - Can you get Tomas to talk to me? -> ines_tomas
+      - Move on -> quest1_hub
+
+  ines_tomas:
+    type: message
+    text: >
+      INES: vou tentar ya. ele ta bue paranoid ultimamente. diz q viu
+      um gajo a tirar fotos do carro do pai dele. tipo a seguir. mano
+      isso e bue creepy
+
+      manda-lhe msg direta. ele responde. so nao fales em nome de
+      ninguem senao ele fica todo
+
+      ah e o diogo tem uns prints de umas contas falsas q andavam a
+      mandar msgs a beatriz. ele mostrou-me tipo eram bue heavy
+    effects: { trust_ines: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      Vila do Sal is taking shape. A fishing town with a conservation
+      problem. A woman who was documenting illegal operations. Anonymous
+      threats. A port authority that controls everything.
+
+      Dig deeper.
+    choices:
+      - Talk to Miguel (Beatriz's brother) -> miguel_q1
+      - Talk to Carla (research partner) -> carla_q1
+      - Talk to Joaquim (the old fisherman) -> joaquim_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Miguel Q1 ---
+
+  miguel_q1:
+    type: tweet
+    from: miguel
+    text: >
+      10 DAYS. My sister has been missing for 10 days. The GNR says
+      "no evidence of a crime." Her boat was found EMPTY. How is that
+      not evidence? WAKE UP.
+    effects: { trust_miguel: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Miguel -> miguel_q1_talk
+
+  miguel_q1_talk:
+    type: message
+    text: >
+      MIGUEL: Who are you? Another tourist? My sister is MISSING and
+      this town is full of people who know something and say nothing.
+
+      The fishermen won't look me in the eye. Sergio at the port told me
+      to "let the authorities handle it." The AUTHORITIES. He IS the
+      authority and he's done NOTHING.
+    effects: { trust_miguel: "+10" }
+    choices:
+      - What was Beatriz working on? -> miguel_work
+      - Move on -> quest1_hub
+
+  miguel_work:
+    type: message
+    text: >
+      MIGUEL: She had evidence of illegal fishing. Photos, GPS logs,
+      everything. She was going to send it all to ICNF and to the
+      European Commission. She said the Algarve marine reserve was
+      being destroyed and nobody cared.
+
+      The last time I saw her she said "If anything happens to me, check
+      the cloud." I thought she was being dramatic. Now I can't access
+      her accounts. Someone changed her passwords.
+    effects: { trust_miguel: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Carla Q1 ---
+
+  carla_q1:
+    type: tweet
+    from: carla
+    text: >
+      I have been reviewing @beatriz_santos research data. The evidence
+      she gathered is significant. Someone needs to act on this. The reef
+      will not survive another season of this destruction.
+    effects: { trust_carla: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Carla -> carla_q1_talk
+
+  carla_q1_talk:
+    type: message
+    text: >
+      CARLA: Beatriz and I were co-authoring a report on illegal trawling
+      in the marine reserve. She handled the field documentation — photos,
+      GPS tracks of boats operating at night in protected zones. I handled
+      the scientific analysis.
+
+      The report was nearly finished. We were going to submit it to ICNF
+      and the European Environment Agency simultaneously. Now she's gone
+      and half the field data was on her equipment.
+
+      I still have my copies of the analysis. But without her photographic
+      evidence, it's just numbers.
+    effects: { trust_carla: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Joaquim Q1 ---
+
+  joaquim_q1:
+    type: tweet
+    from: joaquim
+    text: >
+      The sea gives and the sea takes. Forty years I have fished these
+      waters. I know when the current shifts. It has shifted.
+    effects: { trust_joaquim: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Joaquim -> joaquim_q1_talk
+
+  joaquim_q1_talk:
+    type: message
+    text: >
+      JOAQUIM: I am an old man. I fish with a line and a hook, the way
+      my father did. These trawlers that go out at night, that is not
+      fishing. That is theft from the sea.
+
+      Beatriz understood this. She listened to us, the old fishermen.
+      We told her which boats, which nights. She listened.
+
+      I will not say more now. The walls have ears in this town. Come
+      to the cafe when it is quiet. I will tell you what I saw.
+    effects: { trust_joaquim: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Beatriz went out on her research boat the night she disappeared.
+      She texted Miguel at 21:00 saying "going to check something at
+      Ponta da Agulha." Her boat was found drifting at dawn.
+
+      Collect witness accounts. You need at least 4.
+    choices:
+      - Find Tomas (was at the beach that night) -> tomas_interview
+      - Find Ricardo (boat mechanic, works at the harbour) -> ricardo_interview
+      - Find Joaquim (was fishing that night) -> joaquim_interview
+      - Find Ana (lives overlooking the harbour) -> ana_interview
+
+  # --- Tomas (saw boats without lights) ---
+
+  tomas_interview:
+    type: tweet
+    from: tomas_teen
+    text: >
+      ok mano eu sei q ngm me leva a serio mas eu vi uma cena aquela
+      noite. tava na praia da rocha velha e vi barcos a sair sem luzes
+      tipo as 2h. e dps ouvi tipo um motor bue alto perto das grutas
+    effects: { trust_tomas: "+5" }
+    choices:
+      - Ask Tomas what he saw -> tomas_talk
+
+  tomas_talk:
+    type: message
+    text: >
+      TOMAS: ya mano eu tava la com o diogo a ouvir musica na praia.
+      tipo as 2 da manha vi dois barcos a sair do porto sem luzes
+      nenhumas. bue sketchy. depois tipo 30 min dps ouvimos um motor
+      a acelerar bue alto la pra ponta da agulha.
+
+      o diogo ficou todo e tipo "ya isso e normal" mas nao e mano.
+      barcos nao saem sem luzes. isso e ilegal.
+
+      e tipo meia hora dps vi um barco voltar. so um. e tava rapido.
+      o outro nao voltou.
+    effects:
+      trust_tomas: "+10"
+      night_witnesses: "+1"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ricardo (heard the radio) ---
+
+  ricardo_interview:
+    type: tweet
+    from: ricardo
+    text: >
+      I keep my radio on channel 16 at night. Old habit. That night I
+      heard something I wish I hadn't.
+    effects: { trust_ricardo: "+5" }
+    choices:
+      - Ask Ricardo what he heard -> ricardo_talk
+
+  ricardo_talk:
+    type: message
+    text: >
+      RICARDO: I was at the estaleiro working late on a hull repair.
+      My marine radio was on. Around half two in the morning I heard a
+      transmission. Someone saying "She's here. At the point." Then
+      another voice: "Deal with it."
+
+      Not standard maritime communication. No call signs, no
+      identification. Just those words.
+
+      Twenty minutes later: "Done. Heading back." That was it.
+
+      I told Nuno at the GNR. He said the radio picks up signals from
+      other areas. "Could be anyone."
+    effects:
+      trust_ricardo: "+10"
+      night_witnesses: "+1"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Joaquim (saw the trawler) ---
+
+  joaquim_interview:
+    type: message
+    text: >
+      JOAQUIM: I was on my boat that night. Line fishing near Pedra
+      Branca, about two kilometres from Ponta da Agulha.
+
+      Around two in the morning I saw a large trawler moving without
+      navigation lights. Heading toward the point. It had no markings
+      visible. But I know that silhouette — it is the Estrela do Mar.
+      Luis Tavares's biggest boat.
+
+      Thirty minutes later I heard an engine — fast, aggressive. Then
+      nothing. When dawn came, I saw Beatriz's boat drifting with no
+      one aboard.
+
+      I called the port authority. Sergio answered. He said he would
+      "look into it."
+    effects:
+      trust_joaquim: "+15"
+      night_witnesses: "+1"
+      fishing_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ana (saw the truck) ---
+
+  ana_interview:
+    type: tweet
+    from: ana
+    text: >
+      My apartment overlooks the harbour. Some nights I cannot sleep.
+      That night was one of them.
+    effects: { trust_ana: "+5" }
+    choices:
+      - Ask Ana what she saw -> ana_talk
+
+  ana_talk:
+    type: message
+    text: >
+      ANA: Around three in the morning I was at my window. A refrigerated
+      truck pulled up to the harbour. No company markings. Two men
+      unloaded crates from a boat that had just come in. They worked
+      fast, no lights, just the headlamps of the truck.
+
+      The truck left heading north toward the highway. By sunrise there
+      was no trace — no crates, no truck, nothing.
+
+      That is how the illegal catch disappears. Beatriz told me about
+      it months ago. She was trying to photograph the truck's plates.
+      I think that night she got too close.
+    effects:
+      trust_ana: "+10"
+      night_witnesses: "+1"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      Collect more testimonies or talk to people who know more.
+    choices:
+      - Talk to Tomas -> tomas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Ricardo -> ricardo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Joaquim -> joaquim_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Ana -> ana_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Diogo (has screenshots) -> diogo_early
+      - Talk to Nuno the GNR officer -> nuno_early
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Diogo (early encounter) ---
+
+  diogo_early:
+    type: tweet
+    from: diogo
+    text: >
+      bro tou a ver q vcs tao todos a falar da beatriz. eu tenho uns
+      prints de umas contas q mandavam msgs a ela. tipo cenas pesadas.
+      quem quer ver?
+    effects: { trust_diogo: "+5" }
+    choices:
+      - Ask Diogo for the screenshots -> diogo_screenshots_early
+      - Come back later -> quest2_hub
+
+  diogo_screenshots_early:
+    type: message
+    text: >
+      DIOGO: ya mano a ines mostrou-me o tlm da beatriz uma vez. ela
+      tinha tipo 20 msgs de contas diferentes todas a dizer o msm.
+      "para de filmar" "nao sabes com quem te metes" "acidentes acontecem
+      no mar"
+
+      eu tirei prints pq tipo... isso e evidencia ne? tipo em csi
+      e assim. tenho 5 screenshots.
+
+      a ultima msg q ela recebeu antes de desaparecer era so uma foto
+      do barco dela. tipo a dizer "sabemos onde esta"
+    effects:
+      trust_diogo: "+10"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nuno (early encounter) ---
+
+  nuno_early:
+    type: message
+    text: >
+      NUNO: I took the report. I filed it. The investigation is ongoing.
+
+      That is all I can say at this time.
+
+      [Nuno is guarded. You need more trust and evidence before he
+      will speak freely.]
+    effects: { trust_nuno: "+5" }
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Beatriz texts Miguel: "going to check something at Ponta
+      da Agulha"
+      02:00 — Tomas sees two boats leave harbour without lights
+      02:00 — Joaquim spots the Estrela do Mar near the point
+      02:30 — Ricardo hears radio: "She's here. Deal with it."
+      02:30 — Engine sounds near Ponta da Agulha
+      03:00 — One boat returns. Refrigerated truck at harbour. (Ana)
+      03:00 — Radio: "Done. Heading back."
+      05:30 — Beatriz's boat found drifting, empty
+
+      Two threads to pull:
+      - The fishing network: Who runs the illegal operation?
+      - The threats: Who was intimidating Beatriz online?
+    choices:
+      - Investigate the fishing network -> fishing_hub
+      - Investigate the threats -> threat_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      FISHING NETWORK: Evidence collected: ${fishing_evidence}
+      THREAT ACCOUNTS: Evidence collected: ${threat_evidence}
+    choices:
+      - Work on the fishing network -> fishing_hub
+      - Work on the threat accounts -> threat_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: fishing_evidence, gte: 5 }
+            - { state: threat_evidence, gte: 3 }
+
+  # =====================================================================
+  # FISHING NETWORK THREAD
+  # =====================================================================
+
+  fishing_hub:
+    type: message
+    text: >
+      THE FISHING NETWORK
+
+      Illegal trawlers operating at night in a marine reserve. Someone
+      runs the boats, someone buys the catch, someone at the port
+      looks the other way.
+
+      Fishing evidence: ${fishing_evidence}
+    choices:
+      - Investigate the port authority -> sergio_investigation
+      - Talk to Joaquim about the boats -> joaquim_boats
+      - Investigate Luis Tavares (fish wholesaler) -> luis_investigation
+      - Talk to Pedro about the reef damage -> pedro_reef
+      - Check Andre (harbour logistics) -> andre_interview
+        when:
+          state: trust_andre
+          gte: 20
+      - Talk to Helena (environment councillor) -> helena_interview
+      - Talk to Rosa at the Junta de Freguesia -> rosa_interview
+      - Back to hub -> investigation_hub
+
+  # --- Sergio Investigation ---
+
+  sergio_investigation:
+    type: tweet
+    from: sergio
+    text: >
+      The Port Authority of Vila do Sal operates in full compliance with
+      national maritime regulations. All vessel movements are logged and
+      monitored. Unauthorized speculation is unhelpful and potentially
+      defamatory.
+    effects: { trust_sergio: "+5" }
+    choices:
+      - Check the port logs -> port_logs
+      - Back to fishing thread -> fishing_hub
+
+  port_logs:
+    type: message
+    text: >
+      The port authority publishes monthly vessel movement summaries.
+      Cross-referencing with Joaquim's sightings and Tomas's testimony:
+
+      On 14 of the last 30 nights, no vessel departures are logged
+      between midnight and 05:00. But witnesses — Tomas, Joaquim,
+      Beatriz's own logs — documented boats leaving on at least 8 of
+      those nights.
+
+      The logs are being falsified. Someone with access to the port
+      authority system is erasing nocturnal departures.
+    effects:
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fishing thread -> fishing_hub
+
+  # --- Joaquim boats ---
+
+  joaquim_boats:
+    type: message
+    text: >
+      JOAQUIM: Three boats do the night work. The Estrela do Mar — that
+      is Luis's biggest trawler. The Gaviao — owned by a company in
+      Portimao, but it docks here and Luis manages it. And a smaller
+      boat, no name painted, no registration visible.
+
+      Sergio signs their departure logs in the morning — backdated. I
+      have watched him do it from my boat. He fills in the paperwork
+      at 07:00 for boats that left at 02:00. That is how it works.
+
+      Beatriz filmed him doing it. She had video on her camera.
+    effects:
+      trust_joaquim: "+10"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fishing thread -> fishing_hub
+
+  # --- Luis Investigation ---
+
+  luis_investigation:
+    type: message
+    text: >
+      Luis Tavares runs Tavares Peixe Lda, the largest fish wholesale
+      operation in the eastern Algarve. Third generation. His warehouse
+      is at the edge of town, trucks come and go at all hours.
+
+      His public accounts show revenue that doesn't match the official
+      catch declarations for his registered vessels. The company buys
+      more fish than its boats could legally catch.
+
+      Where does the extra fish come from?
+    effects:
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Talk to Luis directly -> luis_talk
+      - Back to fishing thread -> fishing_hub
+
+  luis_talk:
+    type: message
+    text: >
+      LUIS: My family has been in the fish business for three generations.
+      We buy from many fishermen, not just our own boats. Everything is
+      documented and legal.
+
+      This interest in Beatriz Santos — she was a troubled woman. She
+      harassed my workers, trespassed on my property with cameras. I
+      filed a complaint. The GNR told her to stay away from my warehouse.
+
+      That is all I have to say. Speak to my lawyer if you have
+      further questions.
+    effects: { trust_luis: "+5" }
+    choices:
+      - Back to fishing thread -> fishing_hub
+
+  # --- Pedro reef ---
+
+  pedro_reef:
+    type: message
+    text: >
+      PEDRO: I can show you what the trawlers have done. The seabed near
+      Ponta da Agulha is destroyed. Drag marks in the sand, broken coral,
+      ripped posidonia meadows. This is a protected zone — no trawling
+      is allowed within five nautical miles.
+
+      Beatriz and I documented this together. I still have our dive logs.
+      GPS coordinates, depth readings, photographs of the damage. Every
+      dive dated and signed by both of us.
+
+      The night she disappeared, she told me she was going to photograph
+      the boats with a night-vision camera she had borrowed from the
+      university. She said "This time I'll get the registration numbers."
+    effects:
+      trust_pedro: "+10"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fishing thread -> fishing_hub
+
+  # --- Andre ---
+
+  andre_interview:
+    type: message
+    text: >
+      ANDRE: I work at the harbour master's office. I process the
+      paperwork. And I can tell you — the logs do not match reality.
+
+      Sergio handles the night departures personally. He told me not
+      to come in before seven. "I'll handle the early paperwork," he
+      said. I thought he was being kind. Now I think he was hiding
+      the entries he was falsifying.
+
+      Beatriz came to me once, asked to see the original departure
+      logs. I showed her. She photographed them. She compared them
+      to Sergio's filed versions. They didn't match.
+
+      If Sergio finds out I told you this, I lose my job. Or worse.
+    effects:
+      trust_andre: "+20"
+      fishing_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to fishing thread -> fishing_hub
+
+  # --- Helena ---
+
+  helena_interview:
+    type: message
+    text: >
+      HELENA: As environment councillor, I have raised the issue of
+      illegal trawling in the marine reserve multiple times. I am
+      consistently told the port authority has it under control.
+
+      Beatriz submitted a formal complaint to my office six weeks ago.
+      I forwarded it to the relevant authorities. I was told it would
+      be "investigated." The investigation appears to consist of
+      nothing.
+
+      I suspect the port authority and the fish wholesale interests
+      have more influence than my office. That is the reality of
+      local politics in a small town.
+    effects:
+      trust_helena: "+10"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fishing thread -> fishing_hub
+
+  # --- Rosa ---
+
+  rosa_interview:
+    type: message
+    text: >
+      ROSA: Beatriz came to the Junta a month ago with photographs.
+      Reef damage, boats without lights, logbook discrepancies. She
+      was methodical, professional. She wanted us to act.
+
+      I tried. I wrote to the Camara, to ICNF, to the maritime police
+      in Faro. I received one reply: "Your concerns have been noted."
+
+      Then Sergio Lopes called me personally. He said, very politely,
+      that "unfounded accusations damage the town's economy and its
+      people's livelihoods." It felt like a warning.
+    effects:
+      trust_rosa: "+10"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fishing thread -> fishing_hub
+
+  # =====================================================================
+  # THREAT ACCOUNTS THREAD
+  # =====================================================================
+
+  threat_hub:
+    type: message
+    text: >
+      THE THREAT THREAD
+
+      Anonymous accounts sent Beatriz threatening messages before she
+      disappeared. Who is behind them? And is the anonymous account
+      @vasco connected?
+
+      Threat evidence: ${threat_evidence}
+    choices:
+      - Investigate the anonymous accounts -> anon_accounts
+      - Check @vasco's posts -> vasco_investigation
+      - Talk to Diogo (has screenshots) -> diogo_investigation
+      - Talk to Rui the journalist -> rui_interview
+      - Talk to Fernanda (saw something online) -> fernanda_interview
+        when:
+          state: trust_fernanda
+          gte: 20
+      - Talk to Marta the pharmacist -> marta_interview
+      - Talk to Nuno the GNR officer -> nuno_interview
+        when:
+          state: trust_nuno
+          gte: 30
+      - Talk to Miguel about the passwords -> miguel_passwords
+      - Back to hub -> investigation_hub
+
+  # --- Anonymous Accounts ---
+
+  anon_accounts:
+    type: message
+    text: >
+      Examining the accounts that threatened Beatriz. Five different
+      usernames, all created within the same two-week period. All with
+      default avatars. All posting only to Beatriz or about her.
+
+      The accounts share patterns: similar sentence structure,
+      same misspelling of "consequencias" without the accent, same
+      tendency to use maritime terminology.
+
+      These are not random trolls. This is one person, or a small group,
+      with knowledge of fishing and the local waters.
+    effects:
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Look at posting times -> anon_timing
+      - Back to threat thread -> threat_hub
+
+  anon_timing:
+    type: message
+    text: >
+      Every threatening message was sent between 18:00 and 20:00 —
+      the hours between when fishing boats return and when the
+      evening begins. Work done, dinner not started.
+
+      One account posted a photo of Beatriz's boat taken from the
+      harbour pier. The angle matches the view from the port authority
+      office window.
+    effects:
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to threat thread -> threat_hub
+
+  # --- Vasco Investigation ---
+
+  vasco_investigation:
+    type: tweet
+    from: vasco
+    text: >
+      She was told to stop. She didn't stop. Now the sea has spoken.
+      Think about that.
+    choices:
+      - Look at Vasco's other posts -> vasco_posts
+
+  vasco_posts:
+    type: message
+    text: >
+      @vasco's posts are different from the threats. Not aggressive —
+      more like warnings. "The port has eyes." "Not everyone who fishes
+      at night is a criminal, but the criminals fish at night."
+
+      One post stands out: "The photographs are not lost. They are
+      where the fish don't go." Cryptic. But it sounds like someone
+      who knows where Beatriz stored her evidence.
+
+      Posting pattern: late at night, 23:00 to 01:00. Maritime
+      vocabulary but not the same as the threat accounts. This is
+      someone different. Someone who might be trying to help.
+    effects:
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Try to contact Vasco -> vasco_contact
+      - Back to threat thread -> threat_hub
+
+  vasco_contact:
+    type: message
+    text: >
+      You DM @vasco: "I'm trying to find out what happened to Beatriz."
+
+      Hours pass. Then:
+
+      VASCO: You should know that Beatriz uploaded her evidence to a
+      cloud server the night before she disappeared. The photos, the
+      GPS logs, the video of the port authority falsifying records.
+      She gave the access details to someone she trusted.
+
+      Find the person she trusted most. The key is with them.
+
+      Who am I? Someone who has fished these waters for fifty years
+      and cannot bear what they have become.
+    effects:
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to threat thread -> threat_hub
+
+  # --- Diogo Investigation ---
+
+  diogo_investigation:
+    type: message
+    text: >
+      DIOGO: ya mano eu guardei tudo. olha estes prints:
+
+      Account @mar_limpo_2024: "Para de filmar. Ultimo aviso."
+      Account @pescador_real: "Acidentes acontecem no mar. Especialmente
+      a pessoas que nao sabem nadar no fundo."
+      Account @algarve_verdade: "Se continuas a meter-te onde nao es
+      chamada vais descobrir como o mar e frio de noite."
+
+      mano estas msgs sao tipo de filme. e tds da mesma pessoa aposto.
+      tds com o msm tipo de escrita. e tipo quem diz "nadar no fundo"?
+      isso e tipo gajo do mar ne
+
+      a ines diz q deviamos ir a policia mas eu tenho medo. tipo estas
+      pessoas sao serias
+    effects:
+      trust_diogo: "+15"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to threat thread -> threat_hub
+
+  # --- Rui Interview ---
+
+  rui_interview:
+    type: message
+    text: >
+      RUI: I've been investigating the fishing situation in Vila do Sal
+      for six months. Beatriz was my primary source. She had photographic
+      evidence I could only dream of.
+
+      Three weeks before she disappeared, I published an article about
+      suspected illegal trawling. General terms, no names. The day after
+      publication, my editor received a legal threat from Luis Tavares's
+      lawyer. We had to pull the online version.
+
+      Now Beatriz is gone and my editor won't touch the story. I need
+      her evidence to prove it. Without those photographs and GPS logs,
+      I have testimony and suspicion but nothing that will hold up.
+    effects:
+      trust_rui: "+15"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask about Sergio's connections -> rui_sergio
+      - Back to threat thread -> threat_hub
+
+  rui_sergio:
+    type: message
+    text: >
+      RUI: Sergio Lopes and Luis Tavares are cousins. That is public
+      knowledge. What is not public knowledge is that Sergio's daughter
+      received a scholarship from a "fishing industry foundation" that
+      Luis controls. And that Sergio's new car was purchased through
+      a company registered to Luis's wife.
+
+      The port authority chief is being paid by the man whose illegal
+      operations he is supposed to prevent. Beatriz found the company
+      records. She showed me copies.
+
+      Someone in this chain decided she was a threat that needed to
+      be silenced.
+    effects:
+      trust_rui: "+10"
+      fishing_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Fernanda ---
+
+  fernanda_interview:
+    type: message
+    text: >
+      FERNANDA: I run the bookshop, I see everyone. Beatriz used my
+      wifi to upload files the week before she disappeared. She sat
+      in the corner for two hours with her laptop. She said she was
+      "making copies of everything, just in case."
+
+      She asked me to hold a waterproof envelope. She said "If something
+      happens and someone comes asking about my research, give them this."
+
+      I have it behind the counter. It has been there for three weeks.
+    effects: { trust_fernanda: "+15" }
+    choices:
+      - I'm looking for Beatriz's research -> fernanda_envelope
+      - Back to threat thread -> threat_hub
+
+  fernanda_envelope:
+    type: message
+    text: >
+      Fernanda looks at you for a long time. Then she reaches behind
+      the biography section.
+
+      FERNANDA: Beatriz was a good person. She cared about this coast
+      more than anyone.
+
+      The envelope contains a handwritten note: cloud storage login
+      credentials, a list of file names, and a message: "Give these
+      to Rui Oliveira at the Correio. No one else."
+    effects:
+      fishing_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Marta ---
+
+  marta_interview:
+    type: message
+    text: >
+      MARTA: Beatriz came to the pharmacy the week before she
+      disappeared. She was not her usual self. Tense. She asked me
+      about anxiety medication. I recommended she see a doctor.
+
+      She said "I can't go to the doctor. They'll know." I asked who
+      "they" were. She said "The people who are watching me."
+
+      I should have done more. I should have called someone. But she
+      seemed so certain she could handle it herself.
+    effects:
+      trust_marta: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to threat thread -> threat_hub
+
+  # --- Nuno (with evidence) ---
+
+  nuno_interview:
+    type: message
+    text: >
+      NUNO: Between us? This case was closed too fast. My superiors
+      classified it as "probable accident at sea" within 48 hours.
+      That doesn't happen without pressure from somewhere.
+
+      Beatriz filed three complaints in the months before she
+      disappeared. Harassment, threats, trespassing at the port. I
+      processed all three. Each time my superior said "insufficient
+      evidence for action."
+
+      I checked the boat. No blood, no signs of struggle. But her
+      camera was missing. Her phone was missing. Her GPS unit was
+      missing. All the equipment she used for documentation — gone.
+
+      Someone cleaned that boat before we found it.
+    effects:
+      trust_nuno: "+15"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Why didn't you push harder? -> nuno_why
+      - Back to threat thread -> threat_hub
+
+  nuno_why:
+    type: message
+    text: >
+      NUNO: My commander told me the maritime police in Faro would handle
+      it. They sent one officer. He spent three hours, talked to Sergio
+      at the port, and left. Report: "No evidence of foul play."
+
+      He talked to Sergio. The man who controls the harbour. The man
+      whose cousin benefits from the illegal fishing. That is who the
+      investigation relied on.
+
+      If you have real evidence, take it to the Policia Judiciaria in
+      Faro. Not the local GNR. Not the maritime police. The PJ. They
+      are the only ones outside the influence network.
+    effects: { trust_nuno: "+10" }
+    choices:
+      - Back to threat thread -> threat_hub
+
+  # --- Miguel passwords ---
+
+  miguel_passwords:
+    type: message
+    text: >
+      MIGUEL: Someone changed Beatriz's email and social media passwords
+      the day after she disappeared. I tried to access her cloud storage
+      — the login no longer works.
+
+      She used the same password pattern for everything. Someone who had
+      her phone could have changed it all in minutes.
+
+      Her phone was on the boat. The GNR says the phone was not found.
+      But if it was a sea accident, the phone would be at the bottom.
+      If someone took it, they have access to everything.
+
+      Someone took her phone, changed her passwords, and posted that
+      photo of the black ocean from her account. Someone is actively
+      covering tracks.
+    effects:
+      trust_miguel: "+10"
+      threat_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You have gathered evidence of an illegal fishing network and a
+      campaign of intimidation against a marine conservationist. The
+      question is: who is ultimately responsible for what happened
+      to Beatriz?
+    choices:
+      - Confront Sergio Lopes (port authority) -> confront_sergio
+        when:
+          state: fishing_evidence
+          gte: 5
+      - Confront Luis Tavares (fish wholesaler) -> confront_luis
+        when:
+          state: threat_evidence
+          gte: 3
+      - Confront both (present full case to PJ) -> confront_both
+        when:
+          all:
+            - { state: fishing_evidence, gte: 5 }
+            - { state: threat_evidence, gte: 3 }
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Full Case to PJ (Best Ending) ---
+
+  confront_both:
+    type: message
+    text: >
+      You compile everything: the cloud storage evidence from Fernanda's
+      envelope, the falsified port logs, Joaquim's identification of the
+      Estrela do Mar, Ricardo's radio intercept, Nuno's observations
+      about the cleaned boat, Diogo's threat screenshots, the anonymous
+      account analysis, and Rui's documentation of the Sergio-Luis
+      financial connection.
+
+      You send it all to the Policia Judiciaria in Faro, to Rui at the
+      Correio do Algarve, and to Helena at the Camara.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE NETWORK
+
+      The Policia Judiciaria opens a formal investigation. Within a week,
+      they seize the port authority's computers. The falsified logs are
+      confirmed. Luis Tavares's warehouse is raided — they find
+      undeclared fish worth thousands of euros.
+
+      Sergio Lopes is arrested for falsifying official documents and
+      complicity in illegal fishing. Luis Tavares is charged with
+      environmental crimes and operating an illegal fishing network.
+      Three boat captains are detained.
+
+      The threat accounts are traced to a prepaid phone registered to
+      Luis's warehouse address. The photo of Beatriz's boat was taken
+      from Sergio's office window.
+
+      And Beatriz? The PJ finds she was intercepted at sea but managed
+      to swim to shore near the caves. She has been hiding in Faro,
+      staying with a friend from the university, afraid to return.
+
+      With the arrests confirmed, she calls Miguel.
+
+      "I'm coming home. They can't stop us now."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: beatriz
+    text: >
+      the ocean doesn't forget. neither do i. the report is going to
+      ICNF and Brussels. this coast will be protected. thank you for
+      not looking away.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Sergio Only (Partial Ending) ---
+
+  confront_sergio:
+    type: message
+    text: >
+      You present the fishing evidence to the authorities, focusing on
+      Sergio's role in falsifying port records. The falsified logs, the
+      night departures, Joaquim's testimony.
+    choices:
+      - Send the evidence -> sergio_response
+
+  sergio_response:
+    type: message
+    text: >
+      Sergio is suspended pending investigation. The port authority logs
+      are audited. Irregularities are confirmed.
+
+      But without the threat evidence linking Luis to the intimidation
+      campaign, and without Beatriz's photographs proving the extent of
+      the operation, the case is limited to administrative fraud.
+
+      Sergio takes the blame. Luis Tavares continues operating. The
+      illegal fishing moves to a different port.
+
+      Three months later, Beatriz surfaces in Lisbon. She quietly
+      returns to Vila do Sal. She starts her research again, alone this
+      time. She no longer posts her findings publicly.
+
+      The port authority is reformed. But the network survives.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: beatriz
+    text: "i'm back. the work continues. but some things have changed."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Luis Only (Wrong Ending) ---
+
+  confront_luis:
+    type: message
+    text: >
+      You confront Luis Tavares directly with the threat evidence.
+    choices:
+      - Send the accusation -> luis_response
+
+  luis_response:
+    type: message
+    text: >
+      Within hours, you receive a message from Luis's lawyer:
+
+      "My client categorically denies any involvement in the
+      disappearance of Beatriz Santos or any form of intimidation.
+      These allegations are defamatory and will be treated as such
+      under Portuguese law. You will be hearing from our office."
+
+      Without the port authority evidence connecting Luis to the illegal
+      fishing operation, and without proving who sent the threats, your
+      accusation has no foundation.
+
+      Luis's lawyer files a complaint against you. Sergio remains in
+      his position. The boats continue to go out at night.
+
+      Six months later, someone posts a photo from Beatriz's account:
+      a sunset over Vila do Sal. Beautiful and empty. No one knows if
+      it's really her.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Fishing network evidence: ${fishing_evidence}
+      Threat evidence: ${threat_evidence}
+
+      Thank you for playing. Beatriz's story explores themes of
+      environmental activism, institutional corruption, intimidation,
+      and the cost of speaking truth in small communities.
+
+      If you or someone you know is experiencing threats or
+      intimidation, help is available:
+      APAV (Victim Support): 116 006
+      SOS Ambiente (Environmental reporting): 808 200 520
+      Emergency: 112

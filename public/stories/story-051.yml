@@ -1,0 +1,1590 @@
+# DEAD ACCOUNT — Story 051: Vianden-les-Prés (Luxembourg, Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-051.yml
+#
+# Player investigates the death of beekeeper Léa Hoffmann
+# in the fictional Our valley village of Vianden-les-Prés.
+
+meta:
+  title: "Dead Account — Vianden-les-Prés"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marc: 0
+    trust_claire: 0
+    trust_fernand: 0
+    trust_josy: 0
+    trust_sophie: 0
+    trust_ben: 0
+    trust_lina: 0
+    trust_thierry: 0
+    trust_monique: 0
+    trust_patrick: 0
+    trust_georges: 0
+    trust_nathalie: 0
+    trust_romain: 0
+    trust_anne: 0
+    trust_yves: 0
+    trust_mireille: 0
+    trust_kevin: 0
+    trust_chantal: 0
+    trust_brigadier: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    quarry_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to vianden-les-prés. discovering the our valley one hike at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "ViandenLesPres.social"
+    description: "Wëllkomm op der Instanz vun eiser Gemeng Vianden-les-Prés"
+    avatar_url: /gamepatch/assets/dead-account/viandenlesprés_bot.png
+
+  npcs:
+    # === Léa's Inner Circle ===
+    lea:
+      name: "Léa Hoffmann"
+      bio: "Imkerin | d'Beien sinn d'Séil vun der Landschaft | miel de l'Our | #savethebees"
+      avatar: avatars/lea.jpg
+    marc:
+      name: "Marc Hoffmann"
+      bio: "de Brudder vun der Léa | informaticien zu Lëtzebuerg-Stad | si wier ni esou fortgaang"
+      avatar: avatars/marc.jpg
+    claire:
+      name: "Claire Muller"
+      bio: "Léa hir bescht Frëndin | Kiné am Centre Médical | café an Honig, dat ass alles wat ech brauch"
+      avatar: avatars/claire.jpg
+    fernand:
+      name: "Fernand Weber"
+      bio: "Bauer | Ourtal | 30 Joer Landwirtschaft | Léa hir Wisen waren d'Bescht"
+      avatar: avatars/fernand.jpg
+
+    # === Local Government ===
+    josy:
+      name: "Josy Kieffer"
+      bio: "Buergermeeschter vu Vianden-les-Prés | Zënter 2017 am Déngscht vun der Gemeng"
+      avatar: avatars/josy.jpg
+    nathalie:
+      name: "Nathalie Clement"
+      bio: "Adjointe à l'environnement | Commune de Vianden-les-Prés | biodiversité & nature"
+      avatar: avatars/nathalie.jpg
+    mairie:
+      name: "Gemeng Vianden-les-Prés"
+      bio: "Offiziellt Kont | Neiegkeeten aus der Gemeng | Ëffnungszäiten: Méi-Fre 9h-17h"
+      avatar: avatars/mairie.jpg
+
+    # === Local Business & Community ===
+    sophie:
+      name: "Sophie Thill"
+      bio: "Café vum Schlass | Kuch a Kaffi | Vue op d'Schlass | op zënter 1994"
+      avatar: avatars/sophie.jpg
+    cafe_schlass:
+      name: "Café vum Schlass"
+      bio: "Pâtisseries maison | Kaffi an Téi | Live Musek de Samschdeg | d'Häerz vu Vianden"
+      avatar: avatars/cafe_schlass.jpg
+    thierry:
+      name: "Thierry Schmit"
+      bio: "Wanderguide | Our-Naturpark | de Bësch ass meng Heem"
+      avatar: avatars/thierry.jpg
+    monique:
+      name: "Monique Reuter"
+      bio: "Apdikt | Vianden-les-Prés | Gesondheet & Berodung | och Sonndes Moies op"
+      avatar: avatars/monique.jpg
+    anne:
+      name: "Anne Meyers"
+      bio: "Bäckerei Meyers | Bamkuch & Brout | 5h moies all Dag | Traditsoun zënter 1962"
+      avatar: avatars/anne.jpg
+    georges:
+      name: "Georges Lentz"
+      bio: "Wënzer | Wäin vun der Musel | kleng Produktioun | groussen Goût"
+      avatar: avatars/georges.jpg
+    romain:
+      name: "Romain Krier"
+      bio: "Buchhändler | Librairie de l'Our | nei a gebraucht | Liesowend de Mëttwoch"
+      avatar: avatars/romain.jpg
+
+    # === Journalist ===
+    patrick:
+      name: "Patrick Faber"
+      bio: "Journalist | Lëtzebuerger Journal | Ëmwelt & Regioun | tips: pfaber@journal.lu"
+      avatar: avatars/patrick.jpg
+
+    # === Ardennes Granit (corporate) ===
+    ardennes_granit:
+      name: "Ardennes Granit SA"
+      bio: "Carrières & matériaux | Site Vianden-les-Prés | ISO 14001 certifié"
+      avatar: avatars/ardennes_granit.jpg
+    yves:
+      name: "Yves Dumont"
+      bio: "Directeur du site Ardennes Granit Vianden-les-Prés | industrie & territoire"
+      avatar: avatars/yves.jpg
+    mireille:
+      name: "Mireille Hoffmann-Lacroix"
+      bio: "Avocate | Cabinet Hoffmann-Lacroix | Droit des affaires | Luxembourg-Ville"
+      avatar: avatars/mireille.jpg
+
+    # === Teens ===
+    ben:
+      name: "Ben"
+      bio: "16 | BMX a Bësch | Viansen born | d'Natur ass alles frr"
+      avatar: avatars/ben.jpg
+    lina:
+      name: "Lina"
+      bio: "15 | Foto & Ëmwelt | d'Beien sinn cool | Léa war meng Heldin"
+      avatar: avatars/lina.jpg
+    kevin:
+      name: "Kevin"
+      bio: "17 | Kayak op der Our | Natur nerd | merde quoi c'est quoi ce bordel"
+      avatar: avatars/kevin.jpg
+
+    # === Media & Community ===
+    actu_vianden:
+      name: "Actu Vianden-les-Prés"
+      bio: "Neiegkeeten aus Vianden-les-Prés an dem Ourtal | Tips: redaktioun@actu-vianden.lu"
+      avatar: avatars/actu_vianden.jpg
+    meteo_lux:
+      name: "Météo Vianden"
+      bio: "Prévisiounen an Alertën | Automatesch Statioun | Update all Stonn"
+      avatar: avatars/meteo_lux.jpg
+    asso_beien:
+      name: "Vereenegung Beien an Natur"
+      bio: "Schutz vun de Beien an der Biodiversitéit | Bénévolen | Meldungen Ëmweltverschmotzung"
+      avatar: avatars/asso_beien.jpg
+
+    # === Suspicious / Other ===
+    chantal:
+      name: "Chantal Grosch"
+      bio: "."
+      avatar: avatars/anon.jpg
+    brigadier:
+      name: "Brigadier Scholtes"
+      bio: "Police Grand-Ducale Vianden-les-Prés | Commissariat local | urgences: 113"
+      avatar: avatars/brigadier.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VIANDEN-LES-PRÉS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to ViandenLesPres.social — the community Mastodon instance for
+      the village of Vianden-les-Prés, in Luxembourg's Our valley.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @lea_hoffmann.
+
+      A beekeeper. Wildflower meadow keeper. She documented the valley's
+      biodiversity. People are devastated. Her account went dark three
+      days ago. Then a body was found near the quarry cliffs.
+    choices:
+      - Look at her profile -> lea_profile
+
+  lea_profile:
+    type: tweet
+    from: lea
+    text: "D'Wise bei der Carrière ass komplett zerstéiert. D'Beie fannen näischt méi. Ardennes Granit killt eist Tal. Ech hu Beweiser."
+    choices:
+      - That's her last real post... -> grey_hive
+
+  grey_hive:
+    type: message
+    text: >
+      The day after that post, her account uploaded a single image:
+      a blurred photo of an empty beehive. Shot at an odd angle, posted
+      at 2am. No caption.
+
+      Her friends say that is not her style. The police say it looks
+      like an accidental fall from the quarry cliffs. Something does
+      not add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: brigadier
+    text: >
+      Mir hunn de Kierper vun enger Awunnerin vu Vianden-les-Prés
+      an der Géigend vun der Carrière fonnt. Op dësem Stade weist
+      näischt op eng Stroftat. All nëtzlech Informatioun kann un de
+      Commissariat gemaach ginn: 113.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @claire_muller is
+      shattered. Her brother @marc_hoffmann is driving down from
+      Luxembourg City. The farmer @fernand_weber says she never went
+      near those cliffs alone.
+
+      And @patrick_faber, the journalist, has gone strangely quiet.
+
+      Nobody buys the police's line. Nobody thinks Léa just slipped
+      from a cliff in the dark.
+    effects: { trust_marc: "+5", trust_claire: "+5" }
+    choices:
+      - Start following Léa's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Vianden-les-Prés. Follow Léa's contacts and read their
+      posts. The more you engage with the community, the more they will
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Sophie (café owner, knows everyone) -> sophie_intro
+      - Talk to Fernand (farmer, worked alongside Léa) -> fernand_intro
+      - Talk to Lina (teen, loved the bees) -> lina_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief about Léa with the rhythms of a small
+      valley village: hiking trail conditions, the bakery's Bamkuch of
+      the day, weather warnings for the Our valley.
+
+      Key names surface: Claire (best friend, physiotherapist), Marc
+      (brother, furious from Luxembourg City), Fernand (farmer, her
+      meadow neighbour), and the teens — Ben, Lina, Kevin — who
+      helped Léa with her beehives every summer.
+
+      Also prominent: Ardennes Granit SA, the quarry company expanding
+      operations at the edge of the village. Their posts are corporate
+      PR. Léa's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Sophie -> sophie_intro
+      - Talk to Fernand -> fernand_intro
+      - Talk to Lina -> lina_intro
+
+  # --- Sophie (social map) ---
+
+  sophie_intro:
+    type: tweet
+    from: sophie
+    text: >
+      De Café ass op mee d'Häerz ass schwéier. @lea_hoffmann, däin
+      Dësch waart op dech. Komm séier zeréck... ach, waat soen ech do.
+      Si kennt net méi zeréck.
+    effects: { trust_sophie: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sophie -> sophie_talk
+
+  sophie_talk:
+    type: message
+    text: >
+      SOPHIE: Ah, you are new here? Bienvenue. A terrible moment to
+      arrive. The whole village is upside down about Léa.
+
+      Let me tell you who is who. Claire Muller is Léa's best friend —
+      they have been inseparable since school. Fernand Weber farms the
+      fields next to Léa's meadows, they helped each other constantly.
+      Marc is her older brother, he works in IT in the city.
+
+      And there is this man — Thierry Schmit, the hiking guide. He has
+      been buying Léa's honey for three years. Not normal amounts. He
+      would show up at her farm every week, sometimes twice. Always an
+      excuse to be near her. She told me once he made her uncomfortable
+      but she did not want to be rude — he was a good customer.
+
+      Oh, and do not bother reading Ardennes Granit's posts. Lies
+      wrapped in environmental certifications.
+    effects: { trust_sophie: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Thierry -> sophie_thierry
+      - Ask about Ardennes Granit -> sophie_quarry
+      - Thank her and move on -> quest1_hub
+
+  sophie_thierry:
+    type: message
+    text: >
+      SOPHIE: Thierry? He moved here five years ago from Esch-sur-Alzette.
+      Became the hiking guide for the nature park. Quiet man, lives alone
+      in a cabin near the forest. But since he discovered Léa's honey,
+      something changed.
+
+      He would come to the café every time she was here. He started
+      showing up at the beekeeping association meetings. He ordered
+      thirty jars of honey last month — thirty! What does a single man
+      do with thirty jars of honey?
+
+      Léa told me, "He does not take hints." I thought it was funny
+      then. Now it makes me sick.
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Ask about Ardennes Granit -> sophie_quarry
+      - Move on -> quest1_hub
+
+  sophie_quarry:
+    type: message
+    text: >
+      SOPHIE: That quarry has been there since the 70s. Gravel, stone,
+      construction material. The village tolerated it because it brought
+      jobs. But last year they applied to expand — doubling the
+      extraction zone. Right into the wildflower meadows where Léa
+      kept her bees.
+
+      Léa fought it. She went to every council meeting. She had data
+      about biodiversity, bee populations, water table impact. She was
+      the only person standing between Ardennes Granit and a valley
+      full of crushed rock.
+
+      Two weeks after her last public complaint, she is dead at the
+      bottom of their cliffs. C'est quoi ce bordel.
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Fernand (farmer, witness tease) ---
+
+  fernand_intro:
+    type: tweet
+    from: fernand
+    text: >
+      30 Joer schaffen ech dëst Land. D'Léa hir Beie waren de Séil vu
+      menge Felder. Ouni si, keen Honig. Ouni d'Wise, keng Beien. An
+      Ardennes Granit wëllt alles plattmaachen.
+    effects: { trust_fernand: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Fernand -> fernand_talk
+
+  fernand_talk:
+    type: message
+    text: >
+      FERNAND: I have farmed this valley for thirty years. My orchards
+      depend on Léa's bees for pollination. Without her meadows, without
+      the wildflowers, the whole ecosystem collapses. She understood that
+      better than anyone.
+
+      She was fighting the quarry expansion with everything she had.
+      Water table studies, bee colony surveys, biodiversity counts. She
+      was building a case that would have stopped the expansion dead.
+
+      And now she is dead at the bottom of those cliffs. The police say
+      she fell. Léa knew every path around that quarry — she walked them
+      in the dark checking on her hives. She did not fall.
+    effects: { trust_fernand: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> fernand_night
+      - Move on -> quest1_hub
+
+  fernand_night:
+    type: message
+    text: >
+      FERNAND: The evening before they found her — I was bringing in
+      the cows around 21h. I saw a car parked on the lane near Léa's
+      apiary. Not her car. A white SUV. I know all the cars in this
+      village, and this one had Ardennes Granit plates.
+
+      At 21h. Near the beehives. On a road that goes nowhere except
+      to the quarry cliffs.
+
+      I wrote down the time. Nobody has asked me about it.
+    effects: { trust_fernand: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lina (teen, witness tease) ---
+
+  lina_intro:
+    type: tweet
+    from: lina
+    text: >
+      putain jsuis deg la frr @lea_hoffmann c elle qui m'a montré les
+      abeilles genre c'est pas possible qu'elle soit tombée comme ça.
+      Léa connaissait chaque centimètre de ces falaises. si qqn sait
+      qqch dites le svp
+    effects: { trust_lina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lina -> lina_talk_early
+
+  lina_talk_early:
+    type: message
+    text: >
+      LINA: mdr t'es nouveau ici? c chaud comme timing. en vrai Léa
+      c'est genre la meilleure personne du village. elle nous apprenait
+      à s'occuper des ruches, elle nous montrait les reines et tout.
+      trop stylé.
+
+      et la jsuis flippée pcq kevin il a vu un truc bizarre l'autre
+      soir près de la carrière mais il veut pas en parler. il dit que
+      c rien mais genre... c'est pas rien sah. Herrgottsack c'est
+      chelou tout ça.
+    effects: { trust_lina: "+10" }
+    choices:
+      - What did Kevin see? -> lina_kevin_hint
+      - Move on -> quest1_hub
+
+  lina_kevin_hint:
+    type: message
+    text: >
+      LINA: jsp exactement. il était en kayak sur l'Our vers le soir
+      et il a vu genre qqn qui suivait Léa sur le sentier de la
+      carrière?? genre pas loin derrière elle. il flippe trop il veut
+      pas en parler. faut lui demander direct mais il est méfiant
+      avec les gens qu'il connaît pas. essaie d'abord de parler kayak
+      avec lui ptdr. merde quoi c'est quoi ce bordel.
+    effects: { trust_lina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You are getting a picture of Vianden-les-Prés. A Luxembourg valley
+      village built around meadows, forests, and the Our river. A
+      beekeeper who was fighting a quarry expansion. A death nobody
+      believes is accidental.
+
+      You have made contacts. Now dig deeper.
+    choices:
+      - Talk to Claire (Léa's best friend) -> claire_q1
+      - Talk to Thierry (the hiking guide) -> thierry_q1
+      - Check what Marc (Léa's brother) is saying -> marc_q1
+      - I'm ready to investigate the night she died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Claire Q1 ---
+
+  claire_q1:
+    type: tweet
+    from: claire
+    text: >
+      wann iergendeen Informatiounen huet iwwer @lea_hoffmann rufft
+      mech w.e.g. un. si hätt ni eleng bei der Carrière gaang ouni
+      et ze soen. hiren Imkeranzug läit nach doheem. hir Beien
+      brauchen si.
+    effects: { trust_claire: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Claire -> claire_q1_talk
+
+  claire_q1_talk:
+    type: message
+    text: >
+      CLAIRE: I appreciate you reaching out but I do not know you.
+      Léa had many friends here. The whole village loved her.
+
+      ...everyone keeps saying "she fell." She did not fall. She knew
+      those paths better than anyone alive.
+
+      [Claire is guarded. You will need to build more trust before she
+      opens up.]
+    effects: { trust_claire: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Thierry Q1 ---
+
+  thierry_q1:
+    type: tweet
+    from: thierry
+    text: >
+      Les sentiers autour de la carrière sont dangereux la nuit. Je le
+      dis depuis des années. Léa le savait pourtant. Je n'arrive pas à
+      comprendre. Elle me manque déjà. Son miel me manque.
+    effects: { trust_thierry: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Thierry -> thierry_q1_talk
+
+  thierry_q1_talk:
+    type: message
+    text: >
+      THIERRY: Léa and I had a professional relationship. I buy her
+      honey — the best in the Our valley, anyone will tell you that.
+      I recommended it to all my hiking groups. We talked about nature,
+      about the bees. She was passionate about her work.
+
+      I cannot believe she is gone. I was just at her farm last week
+      to pick up my order. She seemed worried about the quarry but
+      otherwise fine. This is a tragedy.
+
+      [Thierry seems calm. Maybe too calm for someone who saw her
+      "just last week"?]
+    effects: { trust_thierry: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marc Q1 ---
+
+  marc_q1:
+    type: tweet
+    from: marc
+    text: >
+      meng Schwëster ass DOUT an d'Police seet mir si wier gefall???
+      D'LÉA FÄLLT NET. SI KENNT ALL WEEËR DO UEWEN. ech kommen elo
+      vun der Stad. iergendeen wäert mir erkläeren wat geschitt ass.
+    effects: { trust_marc: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marc -> marc_q1_talk
+
+  marc_q1_talk:
+    type: message
+    text: >
+      MARC: Who are you? Another person from that village who is going to
+      tell me to accept it? My sister called me two days before she died.
+      She said the quarry people had threatened her. She said "if anything
+      happens, look at Ardennes Granit." Then she said something else —
+      "and that customer, he will not stop coming."
+
+      That is the last I heard from her.
+    effects: { trust_marc: "+10" }
+    choices:
+      - What do you think happened? -> marc_theory
+      - Move on -> quest1_hub
+
+  marc_theory:
+    type: message
+    text: >
+      MARC: I think she found proof that the quarry expansion would
+      destroy the water table and they shut her up. But I also think
+      that hiking guide — Thierry — is not normal. The way he talks
+      about her honey, about her... it is not just a customer thing.
+      It is something else.
+
+      Léa told me months ago that someone was leaving things at her
+      apiary. Little gifts. Pressed flowers. Notes about her bees. She
+      thought it was sweet at first. Then it got creepy — whoever it was
+      knew her schedule. Knew when she would be alone at the hives.
+    effects: { trust_marc: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Léa died. Multiple people saw or
+      heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Kevin (was kayaking on the Our) -> kevin_interview
+      - Find Georges (winemaker, was on the road late) -> georges_interview
+      - Find Anne (baker, starts at 5am, heard something) -> anne_interview
+      - Find Ben (BMX in the forest, saw lights) -> ben_interview
+
+  # --- Kevin (saw someone following Léa) ---
+
+  kevin_interview:
+    type: tweet
+    from: kevin
+    text: >
+      session kayak ce soir mais l'ambiance au village c chelou en ce
+      moment. genre y'a un truc qui va pas. merde quoi.
+    effects: { trust_kevin: "+5" }
+    choices:
+      - Ask Kevin about that evening -> kevin_talk
+
+  kevin_talk:
+    type: message
+    text: >
+      KEVIN: wsh frr ok mais tu le dis à personne hein. j'étais en
+      kayak sur l'Our vers 20h, session sunset. et j'ai vu le gars —
+      thierry le guide — sur le sentier de la carrière. il suivait
+      quelqu'un. genre à 50 mètres derrière. et devant c'était Léa,
+      j'ai reconnu sa veste orange.
+
+      elle marchait vers les ruches du haut, celles près des falaises.
+      et lui il la suivait putain. quand elle s'est retournée il s'est
+      planqué derrière un arbre. Herrgottsack c'est pas normal sah.
+    effects:
+      trust_kevin: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Georges (saw quarry car at night) ---
+
+  georges_interview:
+    type: tweet
+    from: georges
+    text: >
+      Ech war spéit um Wee heem vum Wäibau. Eng Camionnette vun
+      Ardennes Granit op der Strooss bei der Carrière. Um 23h. Dat
+      ass net normal.
+    effects: { trust_georges: "+5" }
+    choices:
+      - Ask Georges what he saw -> georges_talk
+
+  georges_talk:
+    type: message
+    text: >
+      GEORGES: I was coming back from the vineyard around 23h — late
+      harvest preparation. On the road near the quarry access, I saw
+      the white Ardennes Granit SUV parked with its lights off. And next
+      to it, a second vehicle — Yves Dumont's personal car. I know it
+      because he has that ridiculous Mercedes with the vanity plates.
+
+      At 23h. At the quarry access road. The quarry does not operate
+      at night.
+
+      I noted it in my head. I should have written it down. Now I
+      wish I had called the police.
+    effects:
+      trust_georges: "+10"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Anne (heard argument near cliffs) ---
+
+  anne_interview:
+    type: tweet
+    from: anne
+    text: >
+      Fournée du jour à 5h wie gewinnt. Mais cette nuit-là, j'ai
+      entendu des voix qui venaient de la carrière. Des cris. Vers 23h30.
+    effects: { trust_anne: "+5" }
+    choices:
+      - Ask Anne what she heard -> anne_talk
+
+  anne_talk:
+    type: message
+    text: >
+      ANNE: I start baking at 5am every day. But that night I could not
+      sleep. Around 23h30 I was at my kitchen window — the bakery faces
+      the valley, you can hear sounds carry from the quarry when it is
+      quiet.
+
+      I heard voices. Raised voices. A man shouting. Then a second
+      voice — deeper, angrier. And then... a sound I cannot describe.
+      Like something heavy falling. Then silence.
+
+      I told the police. They wrote it down. Two voices, they said.
+      Then they classified it as an accidental fall. How does one
+      person fall with two voices shouting?
+    effects:
+      trust_anne: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ben (saw lights at the quarry) ---
+
+  ben_interview:
+    type: tweet
+    from: ben
+    text: >
+      j'étais en BMX dans le bois ce soir-là. y'avait des lampes torches
+      qui bougeaient près de la falaise. genre plusieurs. dréck c'est
+      chelou non?
+    effects: { trust_ben: "+5" }
+    choices:
+      - Ask Ben what he saw -> ben_talk
+
+  ben_talk:
+    type: message
+    text: >
+      BEN: ok frr écoute. j'étais dans le bois vers 22h, session night
+      ride avec ma frontale. du coup j'ai coupé ma lampe quand j'ai vu
+      les lumières à la carrière pcq j'avais pas envie qu'on me voie —
+      jsuis pas censé rider la nuit la-bas.
+
+      y'avait au moins deux lampes torches. elles bougeaient vers les
+      falaises. et genre j'ai vu une silhouette — un mec grand avec
+      une veste de rando. et plus loin, une autre personne. et une
+      voiture blanche garée sur le chemin.
+
+      putain quand j'ai entendu pour Léa le lendemain jsuis resté
+      bloqué. merde. j'aurais du faire qqch.
+    effects:
+      trust_ben: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Claire (best friend)
+      and Monique (pharmacist, saw Thierry behaving strangely).
+    choices:
+      - Talk to Claire about that night -> claire_interview
+      - Talk to Monique -> monique_interview
+      - Find Kevin -> kevin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Georges -> georges_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Anne -> anne_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ben -> ben_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Claire (last to talk to Léa) ---
+
+  claire_interview:
+    type: tweet
+    from: claire
+    text: >
+      dat Foto op dem Léa hirem Kont. dat ass net si. Léa post ni ouni
+      Ënnerschrëft. Léa post net um 2h moies. iergendeen aneren huet
+      dat gemaach.
+    effects: { trust_claire: "+5" }
+    choices:
+      - DM Claire -> claire_talk_low
+        when:
+          state: trust_claire
+          lt: 50
+      - DM Claire -> claire_talk_high
+        when:
+          state: trust_claire
+          gte: 50
+
+  claire_talk_low:
+    type: message
+    text: >
+      CLAIRE: I appreciate the concern but I really do not want to
+      talk to strangers about this right now.
+
+      [Claire needs to trust you more. Show her you are investigating
+      seriously, not just gossiping.]
+    effects: { trust_claire: "+5" }
+    choices:
+      - Share what you've learned about the night -> claire_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  claire_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the quarry car at night, the
+      shouting, the torchlight, the figure following Léa. Claire is
+      silent for a while.
+
+      CLAIRE: You are actually trying to find out what happened. Okay.
+      I will talk.
+    effects: { trust_claire: "+25" }
+    choices:
+      - What happened that night? -> claire_talk_high
+
+  claire_talk_high:
+    type: message
+    text: >
+      CLAIRE: She called me around 20h. She was agitated. She said
+      Ardennes Granit had sent someone to her farm that afternoon — a
+      man in a suit, offering to buy her meadows. She refused. He said
+      "you should reconsider before someone reconsiders for you."
+
+      Then she said something else — "and he was there again today.
+      At the hives. Pretending to check on the honey order. But I
+      saw him take photos of my schedule on the wall."
+
+      She would not say who "he" was by name. She said she was going
+      to check on the upper hives near the quarry cliffs before dark.
+      I told her to wait until morning. She said "d'Beie waarden net."
+      The bees do not wait.
+
+      That was the last time I spoke to her.
+    effects:
+      trust_claire: "+15"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Monique (pharmacist, saw Thierry) ---
+
+  monique_interview:
+    type: message
+    text: >
+      MONIQUE: ok en vrai je ne devrais pas dire ça mais Thierry Schmit
+      — the hiking guide — he comes into the pharmacy regularly. He buys
+      binoculars cleaning wipes, night-vision supplements, energy bars.
+      Always the same pattern — before weekends, when Léa would be at
+      her hives alone.
+
+      And last month he asked me if I sold trail cameras. The kind
+      hunters use. I said this is a pharmacy. He laughed. But his eyes
+      were not laughing.
+    effects:
+      trust_monique: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Léa walks toward upper hives near quarry (Kevin sees
+      Thierry following her on the path)
+      21:00 — Ardennes Granit SUV parked near Léa's apiary (Fernand)
+      22:00 — Torchlight and figures near quarry cliffs (Ben)
+      23:00 — Yves Dumont's car at quarry access road (Georges)
+      23:30 — Two voices shouting near cliffs, then a heavy fall (Anne)
+      02:00 — Blurred hive photo posted from Léa's account
+
+      Ardennes Granit had people at the quarry. Thierry was following
+      Léa. Someone posted from her account after she died.
+
+      Two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The expansion: What is Ardennes Granit hiding? Who threatened
+        Léa? Who pushed her?
+      — The obsession: What is Thierry really doing? Why was he
+        following her?
+    choices:
+      - Investigate the quarry cover-up -> corruption_hub
+      - Investigate Thierry -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      QUARRY THREAD: Evidence collected: ${quarry_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the quarry thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: quarry_evidence, gte: 3 }
+
+  # =====================================================================
+  # QUARRY COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE QUARRY THREAD
+
+      Ardennes Granit is hiding something. Léa had proof the expansion
+      would destroy the water table and the meadows. Now she is dead
+      and her evidence files are missing from her laptop.
+
+      Quarry evidence: ${quarry_evidence}
+    choices:
+      - Search Léa's environmental records -> env_records
+      - Talk to Patrick the journalist -> patrick_interview
+      - Talk to Nathalie (environment deputy) -> nathalie_interview
+      - Check the Beien an Natur association -> asso_investigation
+      - Talk to Fernand about the land offers -> fernand_land
+      - Search the quarry permit records -> quarry_permits
+      - Back to hub -> investigation_hub
+
+  # --- Environmental Records ---
+
+  env_records:
+    type: message
+    text: >
+      Léa's publicly shared environmental data shows three years of
+      biodiversity surveys: wildflower counts, bee colony health,
+      water table measurements. The data for the quarry expansion zone
+      is devastating — 47 species of wildflowers, three rare orchid
+      varieties, and a water table that feeds six farms.
+
+      Her last upload, marked "URGENT — DO NOT DELETE": measurements
+      showing the quarry's blasting had already cracked the limestone
+      layer protecting the aquifer. One more expansion phase and the
+      valley's water supply would be contaminated.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Patrick (journalist) ---
+
+  patrick_interview:
+    type: message
+    text: >
+      PATRICK: I do not talk about sources. Period.
+    effects: { trust_patrick: "+5" }
+    choices:
+      - Show Patrick the evidence you have -> patrick_with_evidence
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Back to quarry thread -> corruption_hub
+
+  patrick_with_evidence:
+    type: message
+    text: >
+      PATRICK: ...you have more than I expected.
+
+      Okay. Léa and I were working together. She had geological
+      surveys proving the quarry expansion would destroy the aquifer.
+      She had photos of illegal blasting outside the permitted zone.
+      She had internal Ardennes Granit emails — leaked by someone
+      inside — showing they knew about the water table risk and
+      concealed it from the commune.
+
+      We were going to publish together. Then she died. And the next
+      day, someone broke into my office and stole my backup USB.
+
+      Here is what I did not tell the police: Léa sent me a final
+      message the evening she died. She said "they sent a man to buy
+      my meadows. He threatened me. And someone else has been watching
+      me for weeks."
+
+      With enough evidence, I can still publish. For Léa.
+    effects:
+      trust_patrick: "+25"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> patrick_hint
+      - Back to investigation hub -> investigation_hub
+
+  patrick_hint:
+    type: message
+    text: >
+      PATRICK: The quarry sent their director — Yves Dumont — and some
+      land acquisition agent to her farm. They offered triple the market
+      value for her meadows. When she refused, the agent said something
+      like "accidents happen on cliffs at night."
+
+      But she also mentioned someone else. Not Ardennes Granit. Someone
+      who kept showing up at her apiary. Someone who knew her schedule.
+      Someone who left things at her hives. That is a different problem
+      entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Nathalie (environment deputy) ---
+
+  nathalie_interview:
+    type: message
+    text: >
+      NATHALIE: As deputy for the environment, I took Léa's concerns
+      seriously. But Ardennes Granit employs 150 people in this commune.
+      The mayor insists we need to "maintain dialogue with industry
+      partners."
+
+      Off the record? I have seen the geological survey Ardennes Granit
+      submitted to the commune. It is... optimistic. They claim the
+      expansion will not affect the water table. Léa's independent data
+      says the opposite.
+
+      And the permits were approved in a closed council session. I was
+      not invited. The mayor signed off alone.
+    effects:
+      trust_nathalie: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Beien an Natur association ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_beien
+    text: >
+      ALERT: D'Beienbestänn am Ourtal sinn ëm 40% erofgaang zënter dem
+      Ufank vun de Sprengaarbechten an der Carrière. Mir fuerderen en
+      onofhängegt Gutachten. #SaveOurBees
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Beien an Natur association has been documenting bee colony
+      health for five years. Their data shows a clear pattern: colony
+      collapse accelerating in direct correlation with quarry blasting
+      schedules. Vibrations from the explosions disorient the bees.
+      Dust from the quarry coats the wildflowers.
+
+      The pattern is unmistakable. The quarry is systematically
+      destroying the ecosystem that Léa spent her life protecting.
+
+      Léa was the association's president. She contributed most of
+      the field data.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Fernand land offers ---
+
+  fernand_land:
+    type: message
+    text: >
+      FERNAND: I will show you something. Three months ago, Ardennes
+      Granit sent letters to every landowner bordering the quarry.
+      "Pre-acquisition offers." Generous prices. Most farmers were
+      tempted — this land is worth nothing for farming if the bees
+      die anyway.
+
+      But Léa refused. And she convinced four other landowners to
+      refuse too. She organised them. Without Léa's meadows, the
+      expansion cannot happen — her land sits right in the middle
+      of the proposed zone.
+
+      With Léa dead... her brother Marc inherits the land. And Marc
+      lives in the city. He does not farm. Ardennes Granit will make
+      him an offer he cannot refuse.
+    effects:
+      trust_fernand: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Quarry Permits ---
+
+  quarry_permits:
+    type: message
+    text: >
+      The commune's public records show the quarry expansion permit
+      was approved six weeks ago. The vote was 5-2 in a closed session.
+      The environmental impact assessment was conducted by a firm based
+      in Luxembourg City — Enviro-Consult SA. A quick search shows
+      Enviro-Consult's managing director is the brother-in-law of
+      Ardennes Granit's CEO.
+
+      The geological survey submitted with the permit omits the
+      limestone fracture data that Léa documented. It claims the
+      water table is "adequately protected by bedrock integrity."
+
+      Léa's own measurements, taken from the same sites, show
+      fractures already present. The survey was doctored.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Thierry Schmit. Hiking guide. Honey customer. Something more?
+      Someone was following Léa. Someone was leaving gifts at her
+      hives. Someone knew her schedule. Someone was there the night
+      she died.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Thierry's movements -> thierry_movements
+      - Talk to Claire about Thierry -> claire_thierry
+        when:
+          state: trust_claire
+          gte: 20
+      - Talk to Kevin (more detail on the path) -> kevin_detail
+      - Talk to Monique (more about his purchases) -> monique_detail
+      - Check the anonymous account @chantal_grosch -> chantal_investigation
+      - Talk to Romain the bookseller -> romain_interview
+        when:
+          state: trust_romain
+          gte: 40
+      - Talk to Brigadier Scholtes -> brigadier_interview
+        when:
+          state: trust_brigadier
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Thierry's Movements ---
+
+  thierry_movements:
+    type: message
+    text: >
+      Thierry's hiking guide schedule is posted publicly on the nature
+      park website. Cross-referencing with Léa's beekeeping calendar
+      — also public, shared with the association — reveals something
+      disturbing.
+
+      On 28 of the last 30 days Léa visited her hives, Thierry had
+      no guided hikes scheduled. On the two days she skipped, he did.
+
+      His "off days" perfectly match her hive visits. That is not
+      coincidence. That is surveillance.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Claire on Thierry ---
+
+  claire_thierry:
+    type: message
+    text: >
+      CLAIRE: Thierry? He made Léa uncomfortable. He would show up
+      at the farm when she was alone. He would offer to carry her
+      equipment. He would leave jars of wildflower seeds at her gate
+      with little notes. "For your bees." "For your meadows."
+
+      She told him politely that the visits were too frequent. He said
+      he understood. Then nothing changed. He just... kept appearing.
+      Always with an excuse — "I was passing by on a hike." But his
+      hikes never go past her farm. I checked.
+
+      A month ago she found a trail camera hidden in a tree overlooking
+      her apiary. Pointing directly at where she works. She took it
+      down. She never found out who put it there.
+    effects:
+      trust_claire: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kevin detail ---
+
+  kevin_detail:
+    type: message
+    text: >
+      KEVIN: ok frr en vrai j'ai pas tout dit. quand j'ai vu thierry
+      suivre léa sur le sentier il avait un truc à la main. genre des
+      jumelles. et un sac à dos. et il marchait sans bruit sah. genre
+      pas comme quelqu'un qui se promène. comme quelqu'un qui chasse.
+
+      et le pire c'est — j'ai vu un flash. genre un appareil photo. il
+      la prenait en photo putain. sur le sentier. dans le noir. avec un
+      zoom. Herrgottsack c'est quoi ce bordel. j'aurais du gueuler mais
+      genre... qui m'aurait cru? un ado qui accuse le guide nature du
+      parc? mdr non.
+    effects:
+      trust_kevin: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Monique detail ---
+
+  monique_detail:
+    type: message
+    text: >
+      MONIQUE: There is more. Last month Thierry asked me about bee
+      pheromones. Specifically queen bee pheromones. He said it was
+      "for a nature education project." But queen pheromone attracts
+      bees — if you put it on someone's clothes, bees swarm them.
+
+      I told him I do not sell that. He thanked me and left. But I
+      looked it up later — you can order synthetic queen mandibular
+      pheromone online. If someone put that on Léa's equipment near
+      the quarry cliffs... the bees would have swarmed her. She
+      might have panicked. She might have stepped back.
+
+      Over a cliff.
+    effects:
+      trust_monique: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Chantal (anonymous account) ---
+
+  chantal_investigation:
+    type: tweet
+    from: chantal
+    text: >
+      She should have accepted my help. I only wanted to protect her
+      and the bees. Nobody else understood them like I do.
+    choices:
+      - Look at this account's history -> chantal_posts
+
+  chantal_posts:
+    type: message
+    text: >
+      @chantal_grosch: account created 10 months ago. Posts are all
+      about Léa's beekeeping work. Comments on every hive photo, every
+      honey harvest, every meadow update. The tone shifts over time:
+
+      Month 1: "Your bees are extraordinary. You are saving this valley."
+      Month 3: "Why do you not respond to my messages? I just want to
+      help with the hives."
+      Month 6: "I see you at the café with other people. You have
+      time for them but not for me?"
+      Month 8: "I know where every hive is. I know your schedule. I
+      watch them thrive because of you."
+      Month 10: "If you will not let me in, I will find another way."
+
+      The account has no photos, no personal details. Just Léa.
+      Only Léa. And bees.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> chantal_style
+
+  chantal_style:
+    type: message
+    text: >
+      Comparing @chantal_grosch with @thierry_schmit:
+
+      Same use of botanical terminology — specific wildflower names
+      that only a nature guide would know. Same French-Luxembourgish
+      code-switching pattern. Same knowledge of apiary locations that
+      only someone who had physically visited every hive site would
+      have.
+
+      And one post from @chantal_grosch: "The queen in Hive 7 is
+      magnificent." Hive 7 is Léa's private numbering system. Not
+      public. Only someone who had been inside her apiary would know.
+
+      It is Thierry. The anonymous account is Thierry.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Romain ---
+
+  romain_interview:
+    type: message
+    text: >
+      ROMAIN: Léa left something with me. A sealed box. She said "if
+      someone asks you about what Ardennes Granit is doing to the water,
+      give them this."
+
+      She looked frightened. She said she had made copies of everything
+      but needed one set off-site, somewhere nobody would think to look.
+      A bookshop seemed perfect.
+    effects: { trust_romain: "+10" }
+    choices:
+      - What's in the box? -> romain_box
+
+  romain_box:
+    type: message
+    text: >
+      Romain reaches under the counter and produces a sealed waterproof
+      box.
+
+      ROMAIN: She said someone would come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show quarry blasting outside the permitted zone, limestone
+      fractures in the aquifer protection layer, and dead bee colonies
+      covered in quarry dust. The USB drive contains geological data,
+      water table measurements, and Léa's detailed report to the
+      Ministry of the Environment — a report that was never filed
+      because someone at the commune intercepted it.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Brigadier Scholtes ---
+
+  brigadier_interview:
+    type: message
+    text: >
+      BRIGADIER SCHOLTES: Off the record — and I mean completely off
+      the record — I wanted to investigate this as a homicide. My
+      superior told me to classify it as accidental. He said the
+      procureur had "reviewed the file." That was 24 hours after the
+      body was found. No procureur reviews a file that fast unless
+      someone made a phone call.
+
+      The Schmit situation is different. I did not even know about
+      the stalking until now. If you have evidence of harassment and
+      surveillance, I can act on that. That is clearly within my
+      authority.
+
+      Bring me something solid and I will reopen the case.
+    effects:
+      trust_brigadier: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You have gathered evidence. You know more about what happened
+      to Léa than anyone in Vianden-les-Prés. Who is responsible?
+    choices:
+      - Confront Thierry Schmit (the obsessive customer) -> confront_thierry
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Yves Dumont (the quarry director) -> confront_yves
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Confront Mayor Kieffer (political protection) -> confront_josy
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Thierry (Best Ending) ---
+
+  confront_thierry:
+    type: message
+    text: >
+      You present your evidence to Thierry:
+
+      "I know @chantal_grosch is your account. I know you installed a
+      trail camera at her apiary. I know you followed her the night
+      she died. I know you researched bee pheromones. I know you knew
+      her private hive numbering system. I have witnesses and I have
+      the schedule analysis."
+    choices:
+      - Send -> thierry_response
+
+  thierry_response:
+    type: message
+    text: >
+      Thierry does not reply for a long time. Then:
+
+      THIERRY: You do not understand. I was protecting her. She was in
+      danger from Ardennes Granit and she would not let me help. I
+      needed to know she was safe. The camera was to watch for
+      intruders. The visits were to make sure nobody damaged her hives.
+      Everything I did was because I care about her. About the bees.
+
+      That is not care. That is obsession. And the night she died, he
+      was on that path behind her. Near the cliffs. In the dark.
+
+      You have already sent the evidence to Brigadier Scholtes. And to
+      Patrick Faber.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Brigadier Scholtes reopens the case as a homicide investigation.
+      With your evidence — the anonymous account, the trail camera, the
+      pheromone research, the witness testimonies of him following Léa
+      that night — Thierry is arrested. Forensic analysis of the cliff
+      edge shows two sets of footprints. Traces of synthetic queen
+      mandibular pheromone are found on Léa's jacket. He had sprayed
+      her equipment. The bees swarmed. She stepped back. He was there.
+      He could have saved her. He watched.
+
+      Patrick Faber, finally in possession of Léa's full evidence
+      package, publishes the Ardennes Granit story in the Lëtzebuerger
+      Journal and it goes national. The Ministry of the Environment
+      orders an immediate halt to quarry operations. The expansion
+      permit is revoked. Yves Dumont faces criminal charges for
+      falsifying the geological survey and for threatening a citizen.
+
+      Marc Hoffmann, reading the story from his flat in Luxembourg
+      City, calls Claire for the first time since the funeral.
+
+      "Ech verkafe keng Wis. D'Beie bleiwen."
+      I am not selling the meadows. The bees stay.
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: claire
+    text: >
+      d'Léa hat Recht. d'Beie sinn d'Séil vun dësem Tal. mir wäerten
+      et net vergiessen. mir wäerten hir Wise schützen. fir si.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Yves (Partial Ending) ---
+
+  confront_yves:
+    type: message
+    text: >
+      You present the quarry evidence to Yves Dumont:
+
+      "I have geological surveys proving the expansion will destroy
+      the aquifer. I have photos of blasting outside the permitted
+      zone. I have Léa's intercepted report to the Ministry. I have
+      the falsified environmental impact assessment. I have your car
+      at the quarry at 23h the night she died."
+    choices:
+      - Send -> yves_response
+
+  yves_response:
+    type: message
+    text: >
+      YVES: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Ardennes Granit has always operated
+      within regulatory and environmental requirements.
+
+      But it is too late. You have sent the evidence to Patrick, to
+      the Beien an Natur association, and to the Ministry.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE QUARRY
+
+      The environmental story breaks. Ardennes Granit is ordered to
+      halt all extraction pending investigation. The expansion permit
+      is suspended. 150 jobs hang in the balance. The village is divided.
+
+      But Léa's death?
+
+      Without the stalking evidence, Thierry is never investigated. The
+      pheromone on her jacket is never tested. Her death remains
+      classified as an accidental fall. Thierry continues to hike the
+      trails. He continues to visit the hives. He tends them now,
+      claiming Léa "would have wanted" him to.
+
+      He creates a new anonymous account. It follows Claire.
+
+      The quarry is stopped. But the person whose obsession led to
+      Léa's death walks free. And the truth of how she really died
+      stays buried, like the limestone under the meadow.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marc
+    text: "d'Wise ass gerett. d'Beie bleiwen. mee d'Léa kennt net zeréck. an d'Wouerecht... och net."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_josy:
+    type: message
+    text: >
+      You confront Mayor Kieffer with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> josy_response
+
+  josy_response:
+    type: tweet
+    from: mireille
+    text: >
+      Mon client prend note de vos allégations. Toute diffusion publique
+      de propos diffamatoires fera l'objet de poursuites immédiates.
+      — Cabinet Hoffmann-Lacroix, Luxembourg-Ville
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct link
+      between Kieffer and Léa's death — and there is not one beyond
+      political complicity — your evidence is insufficient.
+
+      Ardennes Granit continues to expand. Thierry continues to watch.
+      The meadows shrink. The bees decline. The village loses its soul,
+      one blast at a time.
+
+      Six months later, @chantal_grosch creates a new account. It
+      follows Marc Hoffmann.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VIANDEN-LES-PRÉS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Quarry evidence: ${quarry_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Léa's story explores themes of corporate
+      greed, environmental destruction, obsessive behaviour, community
+      solidarity, and the courage to defend nature.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      BEE SECURE Helpline Luxembourg: 8002 1234 (gratis)
+      Femmes en Détresse: 12 2020
+      Police Grand-Ducale: 113
+      Kanner-Jugendtelefon: 116 111

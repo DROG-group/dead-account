@@ -1,0 +1,1619 @@
+# DEAD ACCOUNT — Story 056: Riquewihr-les-Vignes (France Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-056.yml
+#
+# Player investigates the disappearance of young natural winemaker
+# Aurélie Kessler in a fictional Alsatian wine village.
+
+meta:
+  title: "Dead Account — Riquewihr-les-Vignes"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_margaux: 0
+    trust_theo: 0
+    trust_quentin: 0
+    trust_clemence: 0
+    trust_baptiste: 0
+    trust_romain: 0
+    trust_elise: 0
+    trust_lucien: 0
+    trust_nadia: 0
+    trust_xavier: 0
+    trust_sophie: 0
+    trust_youssef: 0
+    trust_lea: 0
+    trust_hugo: 0
+    trust_manon: 0
+    trust_maxime: 0
+    trust_adjoint: 0
+    trust_gendarme: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "vient d'arriver en alsace. riesling et bretzels, on découvre"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Riquewihr.social"
+    description: "Bienvenue sur l'instance communautaire de Riquewihr-les-Vignes"
+    avatar_url: /gamepatch/assets/dead-account/riquewihr_bot.png
+
+  npcs:
+    # === Aurélie's Inner Circle ===
+    aurelie:
+      name: "Aurélie Kessler"
+      bio: "vigneronne nature | riesling sans sulfites | le terroir ne triche pas"
+      avatar: avatars/aurelie.jpg
+    margaux:
+      name: "Margaux Hoffmann"
+      bio: "meilleure amie d'aurélie | sommelière au weinstub | les vins vivants c'est la vie"
+      avatar: avatars/margaux.jpg
+    theo:
+      name: "Théo Kessler"
+      bio: "frère d'aurélie | étudiant à strasbourg | elle répond plus, c'est pas elle ça"
+      avatar: avatars/theo.jpg
+    clemence:
+      name: "Clémence Muller"
+      bio: "coloc d'aurélie | aide-soignante | café le matin, tisane le soir"
+      avatar: avatars/clemence.jpg
+
+    # === Local Government ===
+    lucien:
+      name: "Lucien Braun"
+      bio: "Maire de Riquewihr-les-Vignes | Au service du village depuis 2008 | #NotreTerroir"
+      avatar: avatars/lucien.jpg
+    adjoint:
+      name: "Gérard Pfister"
+      bio: "Adjoint au développement économique | Commune de Riquewihr-les-Vignes"
+      avatar: avatars/adjoint.jpg
+    mairie:
+      name: "Mairie de Riquewihr-les-Vignes"
+      bio: "Compte officiel | Actualités communales | Horaires: Lun-Ven 8h30-12h 14h-17h"
+      avatar: avatars/mairie.jpg
+
+    # === Local Business & Community ===
+    elise:
+      name: "Élise Schreiber"
+      bio: "Weinstub zum Rebstock | cuisine alsacienne | choucroute & gewurztraminer | depuis 1952"
+      avatar: avatars/elise.jpg
+    xavier:
+      name: "Xavier Wenger"
+      bio: "président coopérative viticole | 30 ans dans le vin | tradition & qualité"
+      avatar: avatars/xavier.jpg
+    sophie:
+      name: "Sophie Ritter"
+      bio: "pharmacienne | Riquewihr-les-Vignes | santé & conseil | fermé le lundi"
+      avatar: avatars/sophie.jpg
+    nadia:
+      name: "Nadia Bensalem"
+      bio: "libraire | La Treille | livres & vins | lectures le samedi"
+      avatar: avatars/nadia.jpg
+    baptiste:
+      name: "Baptiste Zimmermann"
+      bio: "vigneron bio | domaine Zimmermann | pinot noir & crémant | pas de pesticides chez moi"
+      avatar: avatars/baptiste.jpg
+    romain:
+      name: "Romain Acker"
+      bio: "caviste | Le Foudre | vins nature & indépendants | on goûte avant d'acheter"
+      avatar: avatars/romain.jpg
+
+    # === Journalist ===
+    youssef:
+      name: "Youssef Hamidi"
+      bio: "journaliste indépendant | agriculture & environnement alsace | tips: youssef@hamidi-presse.fr"
+      avatar: avatars/youssef.jpg
+
+    # === VineProtect (corporate) ===
+    vineprotect:
+      name: "VineProtect SA"
+      bio: "Solutions phytosanitaires | Siège Colmar | Protéger la vigne, protéger l'avenir"
+      avatar: avatars/vineprotect.jpg
+    maxime:
+      name: "Maxime Erhardt"
+      bio: "directeur commercial VineProtect Alsace | industrie & terroir"
+      avatar: avatars/maxime.jpg
+    avocat:
+      name: "Maître Schaeffer"
+      bio: "Avocat | Cabinet Schaeffer & Partners | Droit des affaires | Strasbourg"
+      avatar: avatars/avocat.jpg
+
+    # === Teens ===
+    lea:
+      name: "Léa"
+      bio: "16 | vendanges chaque année | le vin naturel c'est trop bien frr"
+      avatar: avatars/lea.jpg
+    hugo:
+      name: "Hugo"
+      bio: "17 | apprenti vigneron | session vignes à l'aube | le terroir ça soigne"
+      avatar: avatars/hugo.jpg
+    manon:
+      name: "Manon"
+      bio: "15 | dessin & photo | les coteaux en aquarelle | aurélie c'est mon inspi"
+      avatar: avatars/manon.jpg
+
+    # === Media & Community ===
+    actu_vignes:
+      name: "Actu Riquewihr"
+      bio: "Actualités du village et du vignoble | Tips: redaction@actu-riquewihr.fr"
+      avatar: avatars/actu_vignes.jpg
+    meteo_alsace:
+      name: "Météo Riquewihr"
+      bio: "Prévisions et alertes | Station viticole | Mise à jour quotidienne"
+      avatar: avatars/meteo_alsace.jpg
+    asso_terroir:
+      name: "Association Vignerons Libres d'Alsace"
+      bio: "Vignerons indépendants | Vin nature | Défense du terroir | Signalements pesticides"
+      avatar: avatars/asso_terroir.jpg
+
+    # === Suspicious / Other ===
+    quentin:
+      name: "Quentin Frey"
+      bio: "étudiant en oenologie | colmar | le vin c'est un art et une science"
+      avatar: avatars/quentin.jpg
+    anon_compte:
+      name: "cepage_fantome"
+      bio: "."
+      avatar: avatars/anon.jpg
+    gendarme:
+      name: "Adjudant Kieffer"
+      bio: "Gendarmerie de Riquewihr-les-Vignes | Brigade territoriale | urgences: 17"
+      avatar: avatars/gendarme.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN RIQUEWIHR-LES-VIGNES
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to riquewihr.social — the community Mastodon instance for
+      the wine village of Riquewihr-les-Vignes, Alsace.
+
+      The local feed is uneasy. Something has happened among the vines.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @aurelie_kessler.
+
+      A young natural winemaker. She made wine without pesticides or
+      sulfites on her family's small plot. People loved her riesling.
+      She hasn't posted in six days.
+    choices:
+      - Look at her profile -> aurelie_profile
+
+  aurelie_profile:
+    type: tweet
+    from: aurelie
+    text: "Les vignes autour de mon domaine sont en train de crever. Quelqu'un balance des pesticides la nuit. J'ai des analyses de sol. Je vais tout balancer."
+    choices:
+      - That's her last real post... -> strange_photo
+
+  strange_photo:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurry photo of grapevines at night. Shot at an odd angle.
+      Posted at 4am. No caption. No hashtags.
+
+      Her friends say she never posts without a tasting note or a
+      caption about terroir. The gendarmerie says she probably left
+      to visit family. Nobody buys it.
+    choices:
+      - Read the gendarmerie statement -> gendarmerie_statement
+      - Look at what people are saying -> community_reaction
+
+  gendarmerie_statement:
+    type: tweet
+    from: gendarme
+    text: >
+      Un signalement a été reçu concernant une résidente de
+      Riquewihr-les-Vignes. À ce stade, aucun élément ne permet de
+      conclure à un acte délictueux. Toute information utile peut être
+      communiquée au 17 ou à la brigade.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her roommate @clemence_muller is
+      posting desperate messages. Her brother @theo_kessler is driving
+      down from Strasbourg. Her best friend @margaux_hoffmann is
+      furious at the gendarmerie.
+
+      The natural winemaker @baptiste_zimmermann says she was right
+      about the pesticides. And the journalist @youssef_hamidi is
+      strangely silent.
+
+      Nobody believes Aurélie just "left to visit family."
+    effects: { trust_margaux: "+5", trust_theo: "+5" }
+    choices:
+      - Start following Aurélie's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Riquewihr-les-Vignes. Follow Aurélie's contacts and
+      read their posts. The more you engage with the community, the
+      more they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Élise (weinstub owner, knows everyone) -> elise_intro
+      - Talk to Baptiste (natural winemaker, saw the pesticides) -> baptiste_intro
+      - Talk to Léa (teen, helps with vendanges) -> lea_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Aurélie with the rhythms of a wine
+      village: harvest schedules, cooperative meetings, weather alerts
+      for late frost.
+
+      Key names surface: Clémence (roommate, aide-soignante), Quentin
+      (oenology student, seems rattled), Youssef (journalist, oddly
+      quiet), and the teens — Léa, Hugo, Manon — who adored Aurélie's
+      natural wine work.
+
+      Also prominent: VineProtect SA, the pesticide company that
+      supplies most of the cooperative. Their posts are corporate
+      greenwashing. Aurélie's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Élise -> elise_intro
+      - Talk to Baptiste -> baptiste_intro
+      - Talk to Léa -> lea_intro
+
+  # --- Élise (social map) ---
+
+  elise_intro:
+    type: tweet
+    from: elise
+    text: >
+      Le weinstub est ouvert mais le coeur n'y est pas. @aurelie_kessler,
+      ta carafe de riesling t'attend. Reviens vite ma grande.
+    effects: { trust_elise: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Élise -> elise_talk
+
+  elise_talk:
+    type: message
+    text: >
+      ÉLISE: Ah, you're new in the village? Bad timing. Everyone is on
+      edge since Aurélie disappeared.
+
+      Let me tell you who's who. Clémence is Aurélie's roommate — they
+      share the flat above the old cooperage. Sweet girl, worried sick.
+      Margaux is Aurélie's best friend, she's the sommelière here at
+      the weinstub. Théo is Aurélie's brother in Strasbourg.
+
+      And there's Quentin Frey — oenology student from Colmar. He's
+      been around the village a lot. Says he's doing a thesis on
+      natural wine. But he follows Aurélie around like a shadow. She
+      was too polite to say anything but I could see it made her
+      uncomfortable.
+
+      Oh, and VineProtect? Putain, those people. They sell poison and
+      call it progress.
+    effects: { trust_elise: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Quentin -> elise_quentin
+      - Ask about VineProtect -> elise_vineprotect
+      - Thank her and move on -> quest1_hub
+
+  elise_quentin:
+    type: message
+    text: >
+      ÉLISE: Quentin? He arrived in the village about eight months
+      ago. Said he was writing his master's thesis on vin nature. He
+      attached himself to Aurélie immediately. Wanted to shadow her
+      in the vineyard, taste every cuvée, attend every market with
+      her. She let him at first — she loved sharing her work.
+
+      But then it got weird. He'd show up unannounced at the weinstub
+      when she was eating. He'd be at her plot at dawn before she
+      arrived. She told me once, "Il me lâche pas, c'est grave
+      flippant." I thought she meant he was annoying. Now I think she
+      meant something else.
+    effects: { trust_elise: "+5" }
+    choices:
+      - Ask about VineProtect -> elise_vineprotect
+      - Move on -> quest1_hub
+
+  elise_vineprotect:
+    type: message
+    text: >
+      ÉLISE: VineProtect supplies pesticides to most of the
+      cooperative vignerons. Big money. They've got contracts with
+      Xavier Wenger, the cooperative president. The maire loves
+      them because they sponsor the wine festival every year.
+
+      But Aurélie was proving that their products were contaminating
+      the organic plots around her vineyard. Drift from spraying. She
+      had soil analyses, water tests from the stream below the
+      coteaux. She was going to expose them.
+
+      Two weeks later she vanishes. Bordel de merde, you don't need
+      to be a detective to see the connection.
+    effects: { trust_elise: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Baptiste (the pesticides, witness tease) ---
+
+  baptiste_intro:
+    type: tweet
+    from: baptiste
+    text: >
+      trente ans que je fais du vin ici. la terre est empoisonnée
+      autour de mes parcelles. @aurelie_kessler avait les preuves.
+      et maintenant elle a disparu. réfléchissez deux secondes.
+    effects: { trust_baptiste: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Baptiste -> baptiste_talk
+
+  baptiste_talk:
+    type: message
+    text: >
+      BAPTISTE: I've been making wine on these slopes since before
+      you were born. I went organic twenty years ago, when everyone
+      called me crazy. Aurélie was the new generation — she went
+      further. No sulfites, no intervention, pure terroir.
+
+      But the conventional vignerons around us spray their vines with
+      VineProtect chemicals. The drift lands on our grapes. Our soil.
+      Our water. Aurélie took soil samples from the border of her
+      plot. Heavy pesticide residues — from products she never used.
+
+      She confronted Xavier Wenger at the cooperative meeting. He
+      told her to shut up or leave the cooperative. She said she'd
+      go to the press. That was ten days before she disappeared.
+    effects: { trust_baptiste: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> baptiste_night
+      - Move on -> quest1_hub
+
+  baptiste_night:
+    type: message
+    text: >
+      BAPTISTE: The night before she went silent — I was checking
+      my vines late, around midnight. The moon was full, I like to
+      walk the rows. I saw lights in Aurélie's cave — her cellar
+      where she makes wine. And a vehicle parked on the chemin
+      communal. Not her little Clio. A big SUV, dark. Looked like
+      the kind VineProtect reps drive.
+
+      At midnight. At a young woman's wine cellar. That's not
+      normal. That's not a friendly visit.
+    effects: { trust_baptiste: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Léa (teen, witness tease) ---
+
+  lea_intro:
+    type: tweet
+    from: lea
+    text: >
+      wesh jsuis trop deg la @aurelie_kessler c elle qui m'a appris
+      à faire les vendanges. sah c'est pas possible qu'elle soit
+      partie sans rien dire. si qqn sait qqch dites le putain
+    effects: { trust_lea: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Léa -> lea_talk_early
+
+  lea_talk_early:
+    type: message
+    text: >
+      LÉA: wesh t'es nouveau ici? c chaud comme timing frr. en vrai
+      aurélie c'est genre la meilleure vigneronne du village. elle
+      nous a appris la taille, les vendanges, tout. elle faisait
+      goûter le moût aux gamins, trop stylé.
+
+      et la jsuis grave flippée pcq hugo il a vu un truc chelou
+      l'autre soir aux vignes mais il veut pas en parler. il dit
+      que c rien mais genre... c'est pas rien sah
+    effects: { trust_lea: "+10" }
+    choices:
+      - What did Hugo see? -> lea_hugo_hint
+      - Move on -> quest1_hub
+
+  lea_hugo_hint:
+    type: message
+    text: >
+      LÉA: jsp exactement. il était en mode rando au coucher du
+      soleil du côté de la parcelle d'aurélie et il a vu genre qqn
+      qui fouillait dans sa cave?? le gars de l'oenologie là,
+      quentin. il était tout seul dans la cave d'aurélie. genre
+      sans elle. chelou non?
+
+      hugo il flippe trop il veut pas en parler. faut lui demander
+      direct mais il est méfiant avec les gens qu'il connaît pas.
+      parle lui de vignes d'abord ptdr
+    effects: { trust_lea: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Riquewihr-les-Vignes. An Alsatian
+      wine village nestled in the Vosges foothills. A young natural
+      winemaker who was exposing pesticide contamination. A
+      disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Margaux (Aurélie's best friend) -> margaux_q1
+      - Talk to Quentin (the oenology student) -> quentin_q1
+      - Check what Théo (Aurélie's brother) is saying -> theo_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Margaux Q1 ---
+
+  margaux_q1:
+    type: tweet
+    from: margaux
+    text: >
+      si quelqu'un a des nouvelles de @aurelie_kessler, appelez moi.
+      son matériel de vinification est resté dans la cave. ses
+      cuves fermentent encore. elle ne serait jamais partie en
+      pleine fermentation. jamais.
+    effects: { trust_margaux: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Margaux -> margaux_q1_talk
+
+  margaux_q1_talk:
+    type: message
+    text: >
+      MARGAUX: I appreciate it but I don't know you. Aurélie has a
+      lot of supporters. The whole village loves her wine.
+
+      ...everyone keeps saying she'll come back. I don't believe
+      that anymore. Something happened to her.
+
+      [Margaux is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_margaux: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quentin Q1 ---
+
+  quentin_q1:
+    type: tweet
+    from: quentin
+    text: >
+      Le terroir de Riquewihr sans @aurelie_kessler c'est pas
+      pareil. Ses cuvées sont encore en cave. Elle n'abandonnerait
+      jamais ses vins en pleine fermentation. Il s'est passé
+      quelque chose.
+    effects: { trust_quentin: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Quentin -> quentin_q1_talk
+
+  quentin_q1_talk:
+    type: message
+    text: >
+      QUENTIN: Aurélie and I have worked closely for months. She's
+      the most talented winemaker I've ever met. Her approach to
+      terroir — it's revolutionary. No intervention, no sulfites,
+      just pure expression of the grape.
+
+      I was documenting her methods for my thesis. She was generous
+      with her time. So generous. She let me taste everything, walk
+      every row. I just wanted to learn from her.
+
+      [Quentin seems passionate. Or obsessive?]
+    effects: { trust_quentin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Théo Q1 ---
+
+  theo_q1:
+    type: tweet
+    from: theo
+    text: >
+      ma soeur a DISPARU et la gendarmerie me dit qu'elle est
+      peut-être partie chez des amis??? PUTAIN ELLE RÉPOND PLUS
+      DEPUIS 6 JOURS. j'arrive de strasbourg. quelqu'un va
+      m'expliquer bordel.
+    effects: { trust_theo: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Théo -> theo_q1_talk
+
+  theo_q1_talk:
+    type: message
+    text: >
+      THÉO: T'es qui toi? Encore qqn du village qui va me dire de
+      me calmer? Ma soeur m'a appelé la veille de sa disparition.
+      Elle m'a dit "j'ai des preuves contre VineProtect, c'est
+      énorme." Puis elle a dit "si jamais il m'arrive un truc,
+      regarde du côté de la coopérative." Et elle a raccroché.
+
+      C'est la dernière fois que je l'ai entendue. Putain.
+    effects: { trust_theo: "+10" }
+    choices:
+      - What do you think happened? -> theo_theory
+      - Move on -> quest1_hub
+
+  theo_theory:
+    type: message
+    text: >
+      THÉO: Je pense qu'elle a trouvé des preuves que VineProtect
+      empoisonne les sols et que la coopérative couvre tout. Ils
+      l'ont fait taire. Mais y'a aussi ce mec — Quentin — qui me
+      fait grave flipper. La façon dont il parle d'elle... c'est
+      pas juste de l'admiration pour le vin. C'est autre chose.
+
+      Aurélie m'a dit ya deux mois que quelqu'un entrait dans sa
+      cave quand elle était pas là. Elle pensait que c'était rien.
+      Moi je pense que c'était pas rien du tout.
+    effects: { trust_theo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Aurélie went silent. Multiple
+      people saw or heard things among the vines. Piece together
+      the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Hugo (was walking near her vineyard) -> hugo_interview
+      - Find Romain (caviste, was closing late) -> romain_interview
+      - Find Baptiste (natural winemaker, night walk in the vines) -> baptiste_interview
+      - Find Sophie (pharmacist, early morning) -> sophie_interview
+
+  # --- Hugo (saw Quentin in Aurélie's cave) ---
+
+  hugo_interview:
+    type: tweet
+    from: hugo
+    text: >
+      bonne rando ce soir mais l'ambiance dans le village c'est
+      chelou en ce moment. genre y'a un truc qui va pas entre les
+      vignes. jsp comment dire
+    effects: { trust_hugo: "+5" }
+    choices:
+      - Ask Hugo about that evening -> hugo_talk
+
+  hugo_talk:
+    type: message
+    text: >
+      HUGO: wesh frr ok mais tu le dis à personne hein. j'étais
+      du côté de la parcelle d'aurélie vers 18h, rando sunset. et
+      j'ai vu le gars de l'oenologie — quentin — dans la cave
+      d'aurélie. tout seul. il avait son ordi branché sur le truc
+      qui contrôle les températures des cuves. genre il faisait
+      quoi la sah??
+
+      quand il m'a vu il a flippé, il a fermé son ordi direct et
+      il s'est barré. j'ai rien dit pcq je voulais pas
+      d'embrouilles mais la c'est chaud. c'est pas normal son
+      comportement fdp
+    effects:
+      trust_hugo: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Romain (caviste, saw late-night meeting) ---
+
+  romain_interview:
+    type: tweet
+    from: romain
+    text: >
+      Rappel: la cave Le Foudre est ouverte jusqu'à 21h le vendredi.
+      Ce soir-là j'ai fermé tard. Y'avait du mouvement sur le
+      chemin des vignes. Pas normal.
+    effects: { trust_romain: "+5" }
+    choices:
+      - Ask Romain what he saw -> romain_talk
+
+  romain_talk:
+    type: message
+    text: >
+      ROMAIN: I was closing the shop around 22h. Through the back
+      window I can see the chemin communal that leads to the
+      vineyards. I saw two vehicles going up — one SUV, dark, the
+      kind VineProtect reps drive. The other was a black Audi. I
+      recognised the Audi. It belongs to Xavier Wenger, the
+      cooperative president.
+
+      At 22h. Heading up to the vineyards. That's not normal.
+      Nobody visits vines at night unless they're up to something.
+
+      I wrote it in my sales log. Nobody's asked to see it.
+    effects:
+      trust_romain: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Baptiste (saw confrontation) ---
+
+  baptiste_interview:
+    type: tweet
+    from: baptiste
+    text: >
+      j'étais dans mes vignes cette nuit-là. la pleine lune, c'est
+      mon truc. j'ai entendu des voix du côté de la cave d'aurélie.
+      des voix d'hommes. pas amicales.
+    effects: { trust_baptiste: "+5" }
+    choices:
+      - Ask Baptiste what he heard -> baptiste_talk_night
+
+  baptiste_talk_night:
+    type: message
+    text: >
+      BAPTISTE: It was around 23h. I was walking my rows — full
+      moon, I always do that. From the top of my parcel I can see
+      Aurélie's cave below. Lights were on. I heard voices. Men,
+      at least two. One was shouting.
+
+      I heard fragments: "...les analyses..." "...tu vas te taire..."
+      "...on va te ruiner..."
+
+      Then a car door slammed. An engine started. The lights in the
+      cave went off. I called Aurélie's phone. No answer.
+
+      I should have gone down there. Putain, I should have gone
+      down.
+    effects:
+      trust_baptiste: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sophie (pharmacist, early morning) ---
+
+  sophie_interview:
+    type: tweet
+    from: sophie
+    text: >
+      Ouverture à 8h comme d'habitude. Mais ce matin-là, j'ai vu
+      une voiture garée n'importe comment devant la pharmacie. Moteur
+      en marche. Quelqu'un qui dormait dedans.
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Ask Sophie what she saw -> sophie_talk
+
+  sophie_talk:
+    type: message
+    text: >
+      SOPHIE: I open at 8am. That morning — the morning after
+      Aurélie's last post — there was a car parked in front of the
+      pharmacy. Engine running. Someone sleeping in it.
+
+      It was Quentin Frey. The oenology student. He woke up when I
+      knocked on the window. He looked terrible — dark circles, shaky.
+      He said he'd been working late on his thesis. But his car was
+      pointing away from Colmar, toward the vineyards. Like he'd been
+      up at the coteaux all night.
+
+      When I heard about Aurélie, I put it together. He was up there.
+      That night. Doing what?
+    effects:
+      trust_sophie: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Clémence
+      (roommate) and Manon (saw Quentin watching the flat).
+    choices:
+      - Talk to Clémence about that night -> clemence_interview
+      - Talk to Manon -> manon_interview
+      - Find Hugo -> hugo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Romain -> romain_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Baptiste -> baptiste_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sophie -> sophie_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Clémence (last to see Aurélie) ---
+
+  clemence_interview:
+    type: tweet
+    from: clemence
+    text: >
+      cette photo sur le compte d'aurélie. c'est pas elle. aurélie
+      ne poste jamais sans parler du vin. aurélie ne poste pas à
+      4h du mat. quelqu'un d'autre a fait ça.
+    effects: { trust_clemence: "+5" }
+    choices:
+      - DM Clémence -> clemence_talk_low
+        when:
+          state: trust_clemence
+          lt: 50
+      - DM Clémence -> clemence_talk_high
+        when:
+          state: trust_clemence
+          gte: 50
+
+  clemence_talk_low:
+    type: message
+    text: >
+      CLÉMENCE: Thanks but I really don't want to talk to strangers
+      about this right now. I'm exhausted. I haven't slept.
+
+      [Clémence needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_clemence: "+5" }
+    choices:
+      - Share what you've learned about the night -> clemence_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  clemence_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the vineyard, the
+      shouting voices, Quentin sleeping in his car, the cooperative
+      president's Audi. Clémence is silent for a while.
+
+      CLÉMENCE: You're actually trying to find her. OK. I'll talk.
+    effects: { trust_clemence: "+25" }
+    choices:
+      - What happened that night? -> clemence_talk_high
+
+  clemence_talk_high:
+    type: message
+    text: >
+      CLÉMENCE: She came home around midnight. I was reading in the
+      salon. She was white as a sheet, shaking. She said "ils savent
+      ce que j'ai." She grabbed her laptop and the USB sticks with
+      her soil analyses.
+
+      I asked who. She said "VineProtect. They sent people to the
+      cave." Then she said something else — "et il était là aussi.
+      Il est toujours là."
+
+      She wouldn't say who "il" was. She hugged me, said "t'inquiète
+      pas," and left with a bag. By morning her car was gone and that
+      weird photo was on her account.
+    effects:
+      trust_clemence: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Manon (saw Quentin watching the flat) ---
+
+  manon_interview:
+    type: message
+    text: >
+      MANON: wesh ok en vrai c'est chelou ce que je vais dire mais
+      genre le gars de l'oenologie — quentin — je l'ai vu genre 4
+      fois devant l'appart d'aurélie le soir. juste posé à regarder
+      les fenêtres. trop creepy sah.
+
+      la dernière fois c'était genre 2 jours avant qu'elle
+      disparaisse. il était sur le banc en face. juste assis. il
+      faisait rien. il regardait. grave flippant.
+    effects:
+      trust_manon: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      18:00 — Quentin seen alone in Aurélie's cave, using her
+      equipment (Hugo)
+      22:00 — VineProtect SUV and Xavier's Audi heading to vineyards
+      (Romain)
+      23:00 — Men heard shouting at Aurélie's cave, threats about
+      analyses (Baptiste)
+      00:00 — Aurélie arrives home shaken, grabs laptop and data,
+      flees (Clémence)
+      08:00 — Quentin found sleeping in his car near the vineyards
+      (Sophie)
+
+      VineProtect and the cooperative confronted Aurélie at her cave.
+      She fled home, grabbed her evidence, and ran. Someone else was
+      there too — watching.
+
+      Two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is VineProtect hiding? Who in the
+        cooperative is complicit?
+      — The obsession: What is Quentin really doing? Why was he
+        in her cave?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Quentin -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      VineProtect is hiding something. Aurélie had proof of pesticide
+      contamination. Now she's gone and her soil analyses are missing
+      from the cave.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the cooperative records -> coop_records
+      - Talk to Youssef the journalist -> youssef_interview
+      - Talk to Xavier Wenger (cooperative president) -> xavier_interview
+      - Talk to Gérard Pfister (adjoint) -> adjoint_interview
+      - Check the Vignerons Libres association -> asso_investigation
+      - Talk to Baptiste about the bribes -> baptiste_bribes
+      - Back to hub -> investigation_hub
+
+  # --- Cooperative Records ---
+
+  coop_records:
+    type: message
+    text: >
+      The cooperative's public financial reports show a curious
+      pattern. VineProtect SA has been the exclusive pesticide
+      supplier for three years running — despite being 30% more
+      expensive than competitors.
+
+      The contract was renewed without tender each year, signed by
+      Xavier Wenger as president, countersigned by the maire.
+
+      A line item in the accounts: "Subvention développement
+      viticole — VineProtect: 45,000€." That money went to the
+      cooperative but never appeared in any vineyard improvement
+      project.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Youssef ---
+
+  youssef_interview:
+    type: message
+    text: >
+      YOUSSEF: I don't reveal my sources. Full stop.
+    effects: { trust_youssef: "+5" }
+    choices:
+      - Show Youssef the evidence you have -> youssef_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  youssef_with_evidence:
+    type: message
+    text: >
+      YOUSSEF: ...you have more than I expected.
+
+      OK. Aurélie and I were working together. She had soil analyses
+      showing VineProtect's pesticides at ten times the allowed level
+      on organic plots that never used them. Drift contamination. She
+      had water tests from the stream showing the same chemicals.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my car and stole my backup
+      hard drive.
+
+      Aurélie is alive. She contacted me once, from a burner phone.
+      She said she was hiding in the Vosges. She said "ils m'ont
+      menacée à la cave et y'a quelqu'un d'autre qui me lâche pas."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_youssef: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> youssef_hint
+      - Back to investigation hub -> investigation_hub
+
+  youssef_hint:
+    type: message
+    text: >
+      YOUSSEF: VineProtect sent their commercial director — Maxime
+      Erhardt — and Xavier Wenger to her cave that night. They told
+      her to hand over the soil analyses or they'd have the
+      cooperative expel her. They'd cut off her appellation. She'd
+      never sell another bottle in Alsace.
+
+      But she also said something about someone at the vineyard.
+      Someone who'd been in her cave without permission. Someone
+      who always seemed to know where she was. That's a different
+      problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Xavier Wenger ---
+
+  xavier_interview:
+    type: message
+    text: >
+      XAVIER: I'm the president of this cooperative. We have a
+      responsibility to our members. VineProtect is a trusted
+      partner. Their products are certified, authorized, legal.
+
+      Aurélie Kessler is a talented young woman but she was making
+      dangerous accusations without proper scientific basis.
+    effects: { trust_xavier: "+5" }
+    choices:
+      - Press Xavier about the money -> xavier_money
+      - Back to corporate thread -> corruption_hub
+
+  xavier_money:
+    type: message
+    text: >
+      You mention the 45,000€ "subvention" from VineProtect.
+
+      XAVIER: That's... that's a development grant. For vineyard
+      modernisation. It's all properly accounted for.
+
+      It isn't. You've checked. The money went into an account
+      controlled by Xavier personally. From there it was transferred
+      to a company registered to his wife.
+
+      Xavier goes quiet. Then:
+
+      XAVIER: This conversation is over. Talk to my lawyer.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gérard Pfister (adjoint) ---
+
+  adjoint_interview:
+    type: message
+    text: >
+      GÉRARD: As adjoint for economic development, I support all
+      businesses that bring prosperity to the village. VineProtect
+      employs people in Colmar and supports our vignerons.
+
+      Off the record? The maire signed a deal with VineProtect two
+      years ago. They sponsor the wine festival, they fund the
+      cooperative, and in exchange the commune looks the other way
+      on pesticide regulations. Inspections are announced in advance.
+      The vignerons clean up before inspectors arrive.
+
+      Aurélie had unannounced soil data. That's what makes it
+      explosive. I wanted to support her but the maire told me to
+      shut up. "Ne fais pas de vagues, Gérard."
+    effects:
+      trust_adjoint: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Vignerons Libres ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_terroir
+    text: >
+      ALERTE: Analyses de sol indépendantes autour de
+      Riquewihr-les-Vignes. Résidus de pesticides 8x la norme
+      sur parcelles bio. Nous demandons une inspection non annoncée.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Vignerons Libres d'Alsace have been documenting soil
+      contamination for two years. Their data shows a pattern:
+      pesticide residues on organic plots that spike during spraying
+      season. The chemicals match VineProtect's product line.
+
+      Drift maps show contamination patterns consistent with
+      nighttime spraying — higher concentrations when wind carries
+      particles from conventional plots to organic ones.
+
+      The pattern is unmistakable. This is ongoing, systematic
+      contamination that violates organic certification rules.
+
+      Aurélie was their most active member. She contributed most of
+      the soil samples and the analysis methodology.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Baptiste on bribes ---
+
+  baptiste_bribes:
+    type: message
+    text: >
+      BAPTISTE: I'll tell you something. Last year the cooperative
+      offered me a "bonus" of 5,000€ to switch from organic to
+      conventional spraying. Xavier Wenger brought the offer
+      personally. He said VineProtect would cover the cost of the
+      chemicals.
+
+      I said no. He said I'd regret it. Two months later my organic
+      certification was challenged — someone filed a complaint saying
+      I was using undeclared products. It was bullshit. It cost me
+      6,000€ in legal fees to clear my name.
+
+      Aurélie had the same offer. She said no too. And she went
+      further — she kept the letter. Proof that VineProtect was
+      paying the cooperative to push their products on organic
+      vignerons.
+    effects:
+      trust_baptiste: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Quentin Frey. Oenology student. Thesis subject. Something
+      more? Someone was entering Aurélie's cave without permission.
+      Someone was watching her flat. Someone was in her cave the
+      evening she disappeared.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Quentin's university records -> uni_records
+      - Talk to Margaux about Quentin -> margaux_quentin
+        when:
+          state: trust_margaux
+          gte: 20
+      - Talk to Hugo (more detail on the cave incident) -> hugo_detail
+      - Talk to Sophie the pharmacist -> sophie_quentin
+      - Check the anonymous account @cepage_fantome -> anon_investigation
+      - Talk to Nadia the bookseller -> nadia_interview
+        when:
+          state: trust_nadia
+          gte: 40
+      - Talk to Adjudant Kieffer -> gendarme_interview
+        when:
+          state: trust_gendarme
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- University Records ---
+
+  uni_records:
+    type: message
+    text: >
+      Quentin Frey's profile at the Colmar oenology institute is
+      public. His thesis topic, registered eight months ago:
+      "Approche sensorielle et microbiologique des vins nature:
+      le cas du Domaine Kessler."
+
+      His thesis is about Aurélie. Specifically and exclusively.
+
+      His supervisor's public comment: "Quentin's dedication to his
+      subject is remarkable. He spends more time at the vineyard
+      than at the university."
+
+      His social media: every post is about Aurélie's wine. Tasting
+      notes, vineyard photos, harvest updates. He tags her in
+      everything. She stopped responding to his tags three months ago.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Margaux on Quentin ---
+
+  margaux_quentin:
+    type: message
+    text: >
+      MARGAUX: Quentin? Putain, ce mec me fout les jetons. He made
+      Aurélie uncomfortable from the start. He'd show up at the
+      weinstub when she was eating. He'd be at the vineyard before
+      dawn. He'd comment on every one of her posts within minutes,
+      day or night.
+
+      She told him clearly — she wasn't interested beyond professional
+      courtesy. He said he understood. Then nothing changed. He just
+      kept appearing. Everywhere. Always.
+
+      A month ago she found that someone had been in her cave at
+      night. A bottle had been moved. Her fermentation notes had been
+      photographed — she could see the flash reflection in the
+      stainless steel. She suspected Quentin but couldn't prove it.
+
+      Grave, ça me rend malade.
+    effects:
+      trust_margaux: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Hugo detail ---
+
+  hugo_detail:
+    type: message
+    text: >
+      HUGO: ok frr en vrai j'ai pas tout dit. quand j'ai vu
+      quentin dans la cave d'aurélie, il avait pas juste son ordi.
+      il avait un ptit appareil, genre un truc qu'il collait sous
+      la table de dégustation. comme un micro ou un traceur gps.
+      un truc tout petit, noir.
+
+      sah moi jsuis pas expert mais ça ressemblait trop à un
+      mouchard. le genre de truc qu'on voit dans les séries.
+
+      j'aurais du dire qqch mais genre qui m'aurait cru? un ado
+      qui accuse un étudiant en master. nique ta mère personne
+      m'écoute. mais la c'est grave.
+    effects:
+      trust_hugo: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sophie on Quentin ---
+
+  sophie_quentin:
+    type: message
+    text: >
+      SOPHIE: This is confidential but given the circumstances...
+      Quentin Frey comes to the pharmacy regularly. He buys sleep
+      aids, anxiety medication, caffeine supplements. The pattern
+      is someone who doesn't sleep. Who watches all night and
+      functions on chemicals during the day.
+
+      He also asked me once if I sold miniature recording devices.
+      I said "this is a pharmacy, not FNAC." He laughed it off.
+
+      And something else — he bought binoculars. Professional ones.
+      Swarovski. Not exactly standard oenology equipment.
+    effects:
+      trust_sophie: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_compte
+    text: >
+      Elle aurait dû m'écouter. Je voulais la protéger. Personne
+      ne comprend son vin comme moi.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @cepage_fantome: account created seven months ago. Posts are
+      all about Aurélie's wines. Comments on every harvest photo,
+      every tasting note, every fermentation update. The tone shifts
+      over time:
+
+      Month 1: "A true artist of terroir. Your riesling speaks to me."
+      Month 3: "Why won't you answer my DMs? I just want to discuss
+      your malolactic approach."
+      Month 5: "I see you at the weinstub with other people. You have
+      time for them but not for me?"
+      Month 7: "I know your schedule. I know when you're in the cave.
+      I'm always close."
+
+      The account has no photos, no personal details. Just Aurélie.
+      Only Aurélie.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @cepage_fantome with @quentin_frey:
+
+      Same oenological terminology. Same obsessive precision in
+      tasting descriptors — the specific way he writes about
+      "minéralité" and "tension." Same knowledge of Aurélie's
+      winemaking that only someone with lab access would have.
+
+      And one post from @cepage_fantome: "Your Cuvée Parcelle 7
+      is breathtaking." Parcelle 7 is an internal designation
+      Aurélie uses for her best plot. Not public. She told
+      Quentin that name during a private vineyard walk.
+
+      It's Quentin. The anonymous account is Quentin.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Nadia ---
+
+  nadia_interview:
+    type: message
+    text: >
+      NADIA: Aurélie left something with me. A sealed envelope.
+      She said "if someone comes asking about what's in the soil
+      at Riquewihr, give them this."
+
+      She was frightened. She said she'd made copies of everything
+      but needed one set somewhere nobody would think to look. A
+      bookshop that also sells wine seemed perfect.
+    effects: { trust_nadia: "+10" }
+    choices:
+      - What's in the soil at Riquewihr? -> nadia_envelope
+
+  nadia_envelope:
+    type: message
+    text: >
+      Nadia reaches under the counter and produces a heavy
+      envelope.
+
+      NADIA: She said someone would come. Take it.
+
+      Inside: a USB drive and printed lab reports. The soil analyses
+      show pesticide concentrations ten times above legal limits on
+      organic plots surrounding VineProtect-treated vineyards. Water
+      samples from the stream show the same chemicals. Financial
+      documents link VineProtect payments to the cooperative and
+      the maire's office. Aurélie's detailed report names names.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Adjudant Kieffer ---
+
+  gendarme_interview:
+    type: message
+    text: >
+      ADJUDANT KIEFFER: Off the record — completely off the record
+      — I wanted to investigate VineProtect and the cooperative. My
+      superior told me to leave it alone. He said the préfecture
+      would handle it. That's code for "don't touch it."
+
+      The Frey situation is different. I didn't know about the
+      stalking until now. If you have evidence, I can act on that.
+      That's my jurisdiction.
+
+      Bring me something solid and I'll reopen the case. Putain,
+      this whole thing stinks.
+    effects:
+      trust_gendarme: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Aurélie than anyone in Riquewihr-les-Vignes. Who is
+      responsible?
+    choices:
+      - Confront Quentin Frey (the obsessive student) -> confront_quentin
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Maxime Erhardt (VineProtect director) -> confront_maxime
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Maire Braun (political protection) -> confront_lucien
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Quentin (Best Ending) ---
+
+  confront_quentin:
+    type: message
+    text: >
+      You present your evidence to Quentin:
+
+      "I know @cepage_fantome is your account. I know you planted
+      a listening device in Aurélie's cave. I know you were in her
+      cave the evening she disappeared. I know you were watching her
+      flat. I have witnesses and I have the university records."
+    choices:
+      - Send -> quentin_response
+
+  quentin_response:
+    type: message
+    text: >
+      Quentin doesn't reply for a long time. Then:
+
+      QUENTIN: You don't understand. She's a genius. Her wine is
+      unlike anything I've ever tasted. I needed to understand her
+      process. I needed to be close to her work. Everything I did
+      was because I respect her art. I was protecting her from
+      VineProtect. She wouldn't let me help.
+
+      That's not respect. That's obsession.
+
+      You've already sent the evidence to Adjudant Kieffer. And
+      to Youssef Hamidi.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Adjudant Kieffer reopens the case. With your evidence — the
+      anonymous account, the listening device, the university
+      records, the witness testimonies — Quentin is arrested for
+      stalking and harassment. A recording device is recovered from
+      Aurélie's cave, containing weeks of audio. A GPS tracker is
+      found in her car, still parked at a farmhouse in the Vosges.
+
+      Youssef Hamidi, finally in possession of Aurélie's full
+      evidence package, publishes the VineProtect story in Le Monde.
+      The préfecture orders an unannounced inspection. Soil samples
+      confirm contamination ten times above legal limits. Xavier
+      Wenger is charged with corruption. VineProtect faces criminal
+      prosecution for environmental fraud. The maire is forced to
+      resign.
+
+      And Aurélie Kessler, reading the article from a friend's
+      farmhouse in the Vallée de Munster, calls her brother for the
+      first time in nine days.
+
+      "Je rentre à la maison. Le riesling m'attend."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: aurelie
+    text: >
+      le terroir ne triche pas. et les gens de riquewihr non plus.
+      merci de ne pas avoir lâché. la prochaine cuvée est pour vous.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Maxime (Partial Ending) ---
+
+  confront_maxime:
+    type: message
+    text: >
+      You present the contamination evidence to Maxime Erhardt:
+
+      "I have soil analyses showing your pesticides at ten times
+      the legal limit on organic plots. I have water samples from
+      the stream. I have financial documents showing bribes to the
+      cooperative. I have Aurélie's full report."
+    choices:
+      - Send -> maxime_response
+
+  maxime_response:
+    type: message
+    text: >
+      MAXIME: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material regarding
+      VineProtect SA will result in immediate legal proceedings.
+      Our products are certified and used in compliance with all
+      regulations.
+
+      But it's too late. You've sent the evidence to Youssef, to
+      the Vignerons Libres, and to the préfecture.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The contamination story breaks. VineProtect is ordered to
+      halt sales in Alsace pending investigation. The cooperative
+      is audited. Xavier Wenger resigns. The maire faces questions
+      about the sponsorship deal. Organic vignerons are vindicated.
+
+      But Aurélie?
+
+      Without the stalking evidence, Quentin is never investigated.
+      He continues his thesis. He continues to visit the vineyards.
+      He creates a new anonymous account — @terroir_secret.
+
+      Three months later, Aurélie reads about VineProtect online.
+      She returns quietly. She changes the locks on her cave. She
+      installs cameras. She stops working alone at night. She checks
+      her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Aurélie walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: aurelie
+    text: "je suis rentrée. le sol est plus propre. le reste... on verra."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Maire (Wrong Ending) ---
+
+  confront_lucien:
+    type: message
+    text: >
+      You confront Maire Braun with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> lucien_response
+
+  lucien_response:
+    type: tweet
+    from: avocat
+    text: >
+      Mon client prend note de vos allégations. Toute diffusion
+      publique de propos diffamatoires fera l'objet de poursuites
+      immédiates. — Cabinet Schaeffer & Partners, Strasbourg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The maire's lawyer buries your accusation. Without a direct
+      link between Braun and VineProtect's contamination — and
+      there isn't one beyond political negligence — your evidence
+      is insufficient.
+
+      VineProtect continues to sell. The cooperative continues to
+      spray. Quentin continues to watch. Aurélie stays in hiding.
+
+      Six months later, @cepage_fantome creates a new account. It
+      starts following Aurélie's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: RIQUEWIHR-LES-VIGNES — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Aurélie's story explores themes of
+      corporate corruption, environmental crime, obsessive behaviour,
+      agricultural resistance, and the courage of small communities.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      SOS Amitié: 09 72 39 40 50
+      Violences Femmes Info: 3919 (appel gratuit)
+      Association e-Enfance (cyberharcèlement): 3018

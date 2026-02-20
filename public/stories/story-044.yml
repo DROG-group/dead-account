@@ -1,0 +1,1546 @@
+# DEAD ACCOUNT — Story 044: Revontulivaara (Finland)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-044.yml
+#
+# Player investigates the disappearance of aurora/night sky guide
+# Aino Korhonen in the fictional northern Finnish village of Revontulivaara.
+
+meta:
+  title: "Dead Account — Revontulivaara"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_siiri: 0
+    trust_lauri: 0
+    trust_viivi: 0
+    trust_aleksi: 0
+    trust_eero: 0
+    trust_marja: 0
+    trust_juhani: 0
+    trust_tuomas: 0
+    trust_kaisa: 0
+    trust_pekka: 0
+    trust_olli: 0
+    trust_riikka: 0
+    trust_heikki: 0
+    trust_anneli: 0
+    trust_mikko: 0
+    trust_sanna: 0
+    trust_harri: 0
+    trust_ilkka: 0
+    trust_anon: 0
+    trust_niilo: 0
+    trust_capitaine: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved up north. chasing the aurora borealis and the quiet life"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Revontulivaara.social"
+    description: "Tervetuloa Revontulivaaran yhteisöinstanssiin"
+    avatar_url: /gamepatch/assets/dead-account/revontulivaara_bot.png
+
+  npcs:
+    # === Aino's Inner Circle ===
+    aino:
+      name: "Aino Korhonen"
+      bio: "revontuliopas | tähtikuvaaja | pohjoinen taivas ei koskaan valehtele"
+      avatar: avatars/aino.jpg
+    siiri:
+      name: "Siiri Mäkelä"
+      bio: "ainon paras kaveri | sairaanhoitaja terveyskeskus | kahvi on elämä"
+      avatar: avatars/siiri.jpg
+    lauri:
+      name: "Lauri Korhonen"
+      bio: "ainon isoveli | rovaniemi | mekaanikko | ei mun sisko vaan häviä"
+      avatar: avatars/lauri.jpg
+    eero:
+      name: "Eero Virtanen"
+      bio: "luontokuvaaja | ainon työkaveri | revontulet & eräopastus"
+      avatar: avatars/eero.jpg
+
+    # === Local Government ===
+    juhani:
+      name: "Juhani Niskanen"
+      bio: "Revontulivaaran kunnanjohtaja | kunta palvelee 2018- | #VaaraKehittyy"
+      avatar: avatars/juhani.jpg
+    kaisa:
+      name: "Kaisa Rantala"
+      bio: "ympäristölautakunnan puheenjohtaja | Revontulivaara | luonto ensin"
+      avatar: avatars/kaisa.jpg
+    kunta:
+      name: "Revontulivaaran kunta"
+      bio: "Virallinen tili | Kuntatiedotteet | Ma-Pe 9-16"
+      avatar: avatars/kunta.jpg
+
+    # === Local Business & Community ===
+    marja:
+      name: "Marja Heikkinen"
+      bio: "Tähtikahvila | poronlihapiirakka | kuuma kaakao | auki talvellakin"
+      avatar: avatars/marja.jpg
+    kahvila:
+      name: "Tähtikahvila"
+      bio: "Pohjoisin kahvila | Kuuma kaakao & pulla | Revontulisesongit"
+      avatar: avatars/kahvila.jpg
+    pekka:
+      name: "Pekka Karjalainen"
+      bio: "poromies | 45 vuotta tunturissa | tää maa on mun elämä"
+      avatar: avatars/pekka.jpg
+    heikki:
+      name: "Heikki Laine"
+      bio: "kalastaja & eräopas | Revontulivaara | tunturijärvet & -joet"
+      avatar: avatars/heikki.jpg
+    anneli:
+      name: "Anneli Saarinen"
+      bio: "kyläkauppias | Saarisen Valinta | auki joka päivä 8-20"
+      avatar: avatars/anneli.jpg
+    olli:
+      name: "Olli Tuominen"
+      bio: "huoltoasema & moottorikelkkahuolto | Revontulivaara | 24h hätäpalvelu"
+      avatar: avatars/olli.jpg
+    riikka:
+      name: "Riikka Lahtinen"
+      bio: "kirjastonhoitaja | Revontulivaaran kirjasto | lukupiiri torstaisin"
+      avatar: avatars/riikka.jpg
+
+    # === Journalist ===
+    sanna:
+      name: "Sanna Järvinen"
+      bio: "toimittaja | ympäristö & pohjoinen | vinkit: sanna@pohjolan-sanomat.fi"
+      avatar: avatars/sanna.jpg
+
+    # === ArcticMine Oy (corporate) ===
+    arcticmine:
+      name: "ArcticMine Oy"
+      bio: "Kestävä kaivostoiminta | Revontulivaaran hanke | ISO 14001"
+      avatar: avatars/arcticmine.jpg
+    harri:
+      name: "Harri Väisänen"
+      bio: "hankepäällikkö ArcticMine Oy | kaivostoiminta & aluekehitys"
+      avatar: avatars/harri.jpg
+    ilkka:
+      name: "Ilkka Salonen"
+      bio: "Asianajaja | Salonen & Kumpp. | Kaivos- ja ympäristöoikeus | Helsinki"
+      avatar: avatars/ilkka.jpg
+
+    # === Teens ===
+    viivi:
+      name: "Viivi"
+      bio: "16 | aurora hunter | revontulivaara syntyny | aino opetti mulle kaiken"
+      avatar: avatars/viivi.jpg
+    aleksi:
+      name: "Aleksi"
+      bio: "17 | moottorikelkka & valokuvaus | pohjoinen on koti"
+      avatar: avatars/aleksi.jpg
+    mikko:
+      name: "Mikko"
+      bio: "15 | piirtäjä & luontokuvaaja | taivas on paras kangas"
+      avatar: avatars/mikko.jpg
+
+    # === Media & Community ===
+    pohjolanews:
+      name: "Pohjolan Sanomat"
+      bio: "Pohjoisen uutiset | vinkit: toimitus@pohjolan-sanomat.fi"
+      avatar: avatars/pohjolanews.jpg
+    saatiedotus:
+      name: "Sää Revontulivaara"
+      bio: "Säätiedotukset & varoitukset | Automaattiasema | Päivitys tunneittain"
+      avatar: avatars/saatiedotus.jpg
+    luontoyhdistys:
+      name: "Vaaran Luonnonsuojelijat"
+      bio: "Luonnonsuojelu pohjoisessa | Vapaaehtoiset | Ilmoitukset & havainnot"
+      avatar: avatars/luontoyhdistys.jpg
+
+    # === Suspicious / Other ===
+    tuomas:
+      name: "Tuomas Lindqvist"
+      bio: "matkailu & revontuliretket | 'aino on paras opas pohjoisessa'"
+      avatar: avatars/tuomas.jpg
+    niilo:
+      name: "Niilo"
+      bio: "."
+      avatar: avatars/anon.jpg
+    poliisi:
+      name: "Ylikonstaapeli Repo"
+      bio: "Revontulivaaran poliisiasema | Hätänumero: 112"
+      avatar: avatars/poliisi.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN REVONTULIVAARA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to revontulivaara.social — the community Mastodon instance
+      for the arctic village of Revontulivaara, northern Finland.
+
+      The local feed is uneasy. The polar night is ending but something
+      darker has settled over the village.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps coming up:
+      @aino_korhonen.
+
+      An aurora guide. Night sky photographer. She led tourists under the
+      northern lights and documented the wilderness. People are panicking.
+      She hasn't posted in six days.
+    choices:
+      - Look at her profile -> aino_profile
+
+  aino_profile:
+    type: tweet
+    from: aino
+    text: "ArcticMine on porannut koealueella joka on suojelualueen sisällä. Mulla on GPS-koordinaatit ja kuvat. Tää on laitonta."
+    choices:
+      - That's her last real post... -> strange_photo
+
+  strange_photo:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of the night sky. Overexposed, shaky, shot from
+      a weird angle. Posted at 4am. No caption.
+
+      Her friends say that's not her style. Aino's aurora photos were
+      art. This looked like someone grabbed her phone. The police say
+      she probably went to Rovaniemi for a break. Nobody believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: poliisi
+    text: >
+      Olemme vastaanottaneet ilmoituksen Revontulivaaran asukkaasta.
+      Tässä vaiheessa ei ole syytä epäillä rikosta. Kaikki tiedot
+      voi ilmoittaa numeroon 112 tai poliisiasemalle.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are frantic. Her best friend @siiri_makela is
+      losing it. Her brother @lauri_korhonen is driving up from
+      Rovaniemi. Her colleague @eero_virtanen keeps posting worried
+      messages. The reindeer herder @pekka_karjalainen says she was
+      right about the drilling.
+
+      And the journalist @sanna_jarvinen hasn't said a word.
+
+      One guy — @tuomas_lindqvist — keeps posting about how much he
+      misses "his guide." Something about his tone feels off.
+
+      Nobody buys the police line. Nobody thinks Aino just left.
+    effects: { trust_siiri: "+5", trust_lauri: "+5" }
+    choices:
+      - Start following Aino's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Revontulivaara. Follow Aino's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Marja (café owner, knows everyone) -> marja_intro
+      - Talk to Pekka (reindeer herder, saw the drilling) -> pekka_intro
+      - Talk to Viivi (teen aurora hunter, seems scared) -> viivi_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Aino with the rhythms of arctic life:
+      aurora forecasts, reindeer sightings, ski trail conditions,
+      the café's daily pulla specials.
+
+      Key names surface: Siiri (best friend, nurse), Eero (colleague,
+      rattled), Sanna (journalist, silent), and the teens — Viivi,
+      Aleksi, Mikko — who idolised Aino's night sky work.
+
+      Also prominent: ArcticMine Oy, the mining company with drilling
+      permits at the edge of the protected area. Their posts are
+      corporate greenwashing. Aino's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Marja -> marja_intro
+      - Talk to Pekka -> pekka_intro
+      - Talk to Viivi -> viivi_intro
+
+  # --- Marja (social map) ---
+
+  marja_intro:
+    type: tweet
+    from: marja
+    text: >
+      Kahvila on auki mutta sydän on raskas. @aino_korhonen, sun
+      pöytä odottaa. Tule takas.
+    effects: { trust_marja: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Marja -> marja_talk
+
+  marja_talk:
+    type: message
+    text: >
+      MARJA: You're new here? Tervetuloa. Bad timing though. Everyone's
+      on edge about Aino.
+
+      Let me tell you who's who. Siiri is Aino's best friend — they
+      share a flat above the health centre. Sweet girl, completely
+      wrecked right now. Eero Virtanen works with Aino doing wilderness
+      guiding. Good man, but he's been strange since she vanished.
+      Lauri is Aino's older brother, driving up from Rovaniemi.
+
+      And Sanna Järvinen — the journalist — she and Aino were working
+      on something together. Something about ArcticMine's drilling. Sanna
+      hasn't said a word since Aino disappeared. That's not like her.
+
+      Oh, and there's this tourist — Tuomas Lindqvist. He's been coming
+      here for aurora tours for two years. Always requests Aino
+      specifically. It's... a lot.
+    effects: { trust_marja: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Tuomas -> marja_tuomas
+      - Ask about ArcticMine -> marja_arcticmine
+      - Thank her and move on -> quest1_hub
+
+  marja_tuomas:
+    type: message
+    text: >
+      MARJA: Tuomas? Hän on... siis, miten sen sanois. He's been
+      visiting every month for two years. Always books Aino's tours.
+      Started showing up at the café whenever she was here. Sits at the
+      next table, stares. Offers to carry her camera equipment.
+
+      Aino was polite about it, she always is, but I could see it was
+      getting to her. Last month she told me "hän ei ymmärrä sanaa ei."
+      He doesn't understand the word no.
+
+      He moved into the holiday cabin six months ago. Full-time. That's
+      when I started worrying.
+    effects: { trust_marja: "+5" }
+    choices:
+      - Ask about ArcticMine -> marja_arcticmine
+      - Move on -> quest1_hub
+
+  marja_arcticmine:
+    type: message
+    text: >
+      MARJA: Vittu se kaivos. They showed up two years ago with their
+      "sustainable mining" bullshit. The kunnanjohtaja — Juhani Niskanen
+      — rolled out the red carpet. Jobs, development, investment. The
+      usual promises.
+
+      But they've been drilling test holes inside the protected area.
+      The reindeer herders noticed first — the animals won't go near
+      the drilling sites. Pekka has been fighting them for months.
+
+      Aino was the one who actually went out there with GPS and a camera
+      and documented exactly where they were drilling. Inside the boundary.
+      Illegal. Two weeks later she's gone.
+
+      Sattumaa? Vittu ei oo sattumaa.
+    effects: { trust_marja: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pekka (reindeer herder, witness tease) ---
+
+  pekka_intro:
+    type: tweet
+    from: pekka
+    text: >
+      neljäkymmentäviis vuotta porojen kanssa. maa ei oo enää sama.
+      @aino_korhonen oli oikeessa. ja nyt se on poissa.
+      yhdistäkää pisteet.
+    effects: { trust_pekka: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Pekka -> pekka_talk
+
+  pekka_talk:
+    type: message
+    text: >
+      PEKKA: I've herded reindeer on this land since I was a boy. I
+      know every hill, every river crossing, every place where the moss
+      grows thick. And I'm telling you — something is wrong near
+      Karhunselkä ridge.
+
+      The reindeer won't go there anymore. The ground vibrates. There's
+      machinery noise at night. I found drill holes with ArcticMine
+      markers inside the Natura 2000 boundary. Inside. Where they have
+      no permit.
+
+      Aino mapped every hole. She had GPS coordinates, photographs,
+      timestamps. She was building a case. And then — poissa. Gone.
+
+      You think that's a coincidence? Perkele. I don't believe in
+      coincidences in the tunturi.
+    effects: { trust_pekka: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> pekka_night
+      - Move on -> quest1_hub
+
+  pekka_night:
+    type: message
+    text: >
+      PEKKA: The night before she disappeared — I was checking my
+      reindeer fence, around midnight. I saw headlights up at the
+      aurora observation point. Not unusual in tourist season, but
+      this was a big vehicle. SUV. Dark. ArcticMine plates.
+
+      At midnight. At Aino's observation point.
+
+      And then maybe an hour later, another car. Smaller. Just sitting
+      there with lights off. I thought it was strange but... you don't
+      go investigating in the dark at minus twenty.
+    effects: { trust_pekka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Viivi (teen aurora hunter, witness tease) ---
+
+  viivi_intro:
+    type: tweet
+    from: viivi
+    text: >
+      siis mä en kestä tätä. @aino_korhonen opetti mulle kaiken
+      revontulista ja tähtikuvauksesta. ei se vaan lähtis ilman
+      sanomatta mitään. joku tietää jotain. puhukaa vittu.
+    effects: { trust_viivi: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Viivi -> viivi_talk_early
+
+  viivi_talk_early:
+    type: message
+    text: >
+      VIIVI: ootsä uus täällä? huono ajoitus niinku tosissaan. siis
+      aino on niinku paras ihminen tässä kylässä. se opetti meidät
+      kuvaamaan revontulia, näytti meille kuinka lukee taivasta. tosi
+      siistiä.
+
+      ja nyt mua pelottaa koska aleksi näki jotain outoo ainon mökillä
+      mut se ei haluu puhuu siitä. se sanoo et ei oo mitään mut siis...
+      kyllähän sen näkee et se valehtelee saatana
+    effects: { trust_viivi: "+10" }
+    choices:
+      - What did Aleksi see? -> viivi_aleksi_hint
+      - Move on -> quest1_hub
+
+  viivi_aleksi_hint:
+    type: message
+    text: >
+      VIIVI: en mä tiiä tarkkaan. se oli kelkkailemassa illalla ja ajo
+      ainon mökin ohi ja näki jonkun tyyppi joka oli niinku tirkistelemässä
+      ikkunoista? tai jotain sellasta. se flipps ihan täysin. se ei haluu
+      puhuu siitä ku se pelkää et kukaan ei usko sitä.
+
+      yritä puhuu sille mut se on tosi varovainen tuntemattomien kaa.
+      puhu ensin kelkoista tai jostain niin se rentoutuu lol
+    effects: { trust_viivi: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Revontulivaara. An arctic village
+      built around reindeer, aurora tourism, and the wilderness. A night
+      sky guide who was exposing illegal mining. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Siiri (Aino's best friend) -> siiri_q1
+      - Talk to Eero (Aino's colleague) -> eero_q1
+      - Check what Lauri (Aino's brother) is saying -> lauri_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Siiri Q1 ---
+
+  siiri_q1:
+    type: tweet
+    from: siiri
+    text: >
+      jos jollakin on tietoo @aino_korhonen soittakaa mulle. sen huone
+      on koskematon. kaikki kamerat on paikallaan. se ei ois ikinä
+      lähteny ilman kameroita.
+    effects: { trust_siiri: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Siiri -> siiri_q1_talk
+
+  siiri_q1_talk:
+    type: message
+    text: >
+      SIIRI: Thanks for reaching out but I don't know you. Aino has a
+      lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. En mä enää usko sitä.
+
+      [Siiri is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_siiri: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Eero Q1 ---
+
+  eero_q1:
+    type: tweet
+    from: eero
+    text: >
+      The observation point is empty without @aino_korhonen. Her aurora
+      forecast board is still on the wall. Her star maps are on the desk.
+      She would never abandon a season mid-winter.
+    effects: { trust_eero: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Eero -> eero_q1_talk
+
+  eero_q1_talk:
+    type: message
+    text: >
+      EERO: Aino and I have worked together for three years. She's the
+      best aurora guide in Lapland. This mining investigation — it was
+      everything to her. She had GPS data, drone footage, soil samples.
+      She was close to going public.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to support her.
+
+      [Eero seems sincere. But there's something he's not saying.]
+    effects: { trust_eero: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lauri Q1 ---
+
+  lauri_q1:
+    type: tweet
+    from: lauri
+    text: >
+      MUN SISKO ON KADONNU ja poliisi sanoo et se on ehkä lomalla???
+      SE EI LÄHDE LOMALLE ILMAN SANOMATTA. mä ajan rovaniemeltä nyt.
+      joku selittää mulle vittu.
+    effects: { trust_lauri: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lauri -> lauri_q1_talk
+
+  lauri_q1_talk:
+    type: message
+    text: >
+      LAURI: Who the fuck are you? Another person from that village
+      who's going to tell me to calm down? My sister called me the
+      night before she disappeared. She said she had something big.
+      She said "if anything happens, look at ArcticMine." Then the
+      line went dead.
+
+      That's the last I heard from her.
+    effects: { trust_lauri: "+10" }
+    choices:
+      - What do you think happened? -> lauri_theory
+      - Move on -> quest1_hub
+
+  lauri_theory:
+    type: message
+    text: >
+      LAURI: I think she found proof that ArcticMine is drilling
+      illegally in a protected area and they shut her up. But I also
+      think that weird tourist — Tuomas — knows more than he's saying.
+      The way he talks about her... se ei oo normaalia. It's not
+      just a fan thing. It's something else.
+
+      Aino told me months ago that someone was following her on her
+      night tours. She thought she was imagining it. I don't think
+      she was imagining it.
+    effects: { trust_lauri: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Aino went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Aleksi (was snowmobiling near Aino's cabin) -> aleksi_interview
+      - Find Heikki (fishing guide, was out on the ice) -> heikki_interview
+      - Find Olli (runs the petrol station, works late) -> olli_interview
+      - Find Anneli (shopkeeper, early morning delivery) -> anneli_interview
+
+  # --- Aleksi (saw someone at Aino's cabin) ---
+
+  aleksi_interview:
+    type: tweet
+    from: aleksi
+    text: >
+      kelkkailu illalla on yleensä chillii mut viime aikoina kylässä
+      on ollu joku outo fiilis. niinku jotain on pielessä. en osaa
+      selittää
+    effects: { trust_aleksi: "+5" }
+    choices:
+      - Ask Aleksi about that evening -> aleksi_talk
+
+  aleksi_talk:
+    type: message
+    text: >
+      ALEKSI: joo ok mut älä kerro kellekään. mä olin kelkkailemassa
+      illalla, ehkä kymmeneltä. ja mä ajoin ainon mökin ohi ja näin
+      sen tyypin — tuomaksen — ainon pihalla. se oli niinku ikkunan
+      edessä. seiso vaan siinä ja katto sisään. vittu se oli creepy.
+
+      ku se kuuli kelkan se lähti juoksemaan metsään. siis kuka
+      tekee tollasta? mä en sanonu mitään ku en halunnu draamaa mut
+      nyt se on aika saatanan vakavaa
+    effects:
+      trust_aleksi: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Heikki (fishing guide, saw late-night meeting) ---
+
+  heikki_interview:
+    type: tweet
+    from: heikki
+    text: >
+      Muistutus: Karhunselkä-alue on suljettu yöaikaan. Olen havainnut
+      luvatonta liikennettä viime öinä.
+    effects: { trust_heikki: "+5" }
+    choices:
+      - Ask Heikki what he saw -> heikki_talk
+
+  heikki_talk:
+    type: message
+    text: >
+      HEIKKI: I was coming back from ice fishing around midnight. I
+      saw a big SUV at the aurora observation point — ArcticMine plates.
+      Two men were standing outside. One of them I recognised: Harri
+      Väisänen, the project manager.
+
+      At midnight. At Aino's observation point. In the dark.
+
+      Then I saw Aino's old Hilux parked maybe 200 metres away, hidden
+      behind the birch trees. Like she was watching them? Or they were
+      waiting for her?
+
+      I noted it in my fishing log. Nobody's asked to see it.
+    effects:
+      trust_heikki: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Olli (petrol station, saw Aino fleeing) ---
+
+  olli_interview:
+    type: tweet
+    from: olli
+    text: >
+      huoltoasema on 24h hätätilanteissa. sinä yönä joku tankkasi
+      kolmelta aamuyöllä. hätäinen. en nähnyt kunnolla.
+    effects: { trust_olli: "+5" }
+    choices:
+      - Ask Olli what he saw -> olli_talk
+
+  olli_talk:
+    type: message
+    text: >
+      OLLI: I do overnight emergency service — snowmobile breakdowns
+      mostly. That night, around 3am, someone pulled into the station.
+      Old Toyota Hilux. A woman. She was shaking, paid cash, wouldn't
+      look at me. Filled the tank and headed south on the E75.
+
+      I'm almost certain it was Aino. I've fuelled her car a hundred
+      times. But she looked... terrified. Like someone was behind her.
+
+      I tried to ask if she was okay. She just said "kiitos" and drove
+      away. Fast. Too fast for those roads in winter.
+    effects:
+      trust_olli: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Anneli (shopkeeper, saw car chase) ---
+
+  anneli_interview:
+    type: tweet
+    from: anneli
+    text: >
+      Tavaratoimitus aamulla kuudelta kuten aina. Mutta sinä aamuna
+      auto ajoi ohitse aivan liian lujaa. Talvikeli ja pimeys.
+    effects: { trust_anneli: "+5" }
+    choices:
+      - Ask Anneli what she saw -> anneli_talk
+
+  anneli_talk:
+    type: message
+    text: >
+      ANNELI: I receive deliveries at 6am every morning. That morning
+      I was opening the loading dock and a car went past — way too fast
+      for winter roads. Dark SUV. Then maybe five minutes later, the
+      lights of a snowmobile on the fell trail, heading the same
+      direction.
+
+      The SUV turned south on the E75. The snowmobile cut across the
+      fell toward the old Sami hut at Karhunselkä.
+
+      I told the police. They wrote it down. That was it. Helvetti.
+    effects:
+      trust_anneli: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Siiri (best friend)
+      and Mikko (saw Tuomas following Aino).
+    choices:
+      - Talk to Siiri about that night -> siiri_interview
+      - Talk to Mikko -> mikko_interview
+      - Find Aleksi -> aleksi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Heikki -> heikki_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Olli -> olli_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Anneli -> anneli_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Siiri (last to see Aino) ---
+
+  siiri_interview:
+    type: tweet
+    from: siiri
+    text: >
+      se kuva ainon tilillä. se ei oo ainon ottama. aino ei postaa
+      ilman kuvatekstiä. aino ei postaa neljältä aamuyöllä. joku muu
+      teki sen.
+    effects: { trust_siiri: "+5" }
+    choices:
+      - DM Siiri -> siiri_talk_low
+        when:
+          state: trust_siiri
+          lt: 50
+      - DM Siiri -> siiri_talk_high
+        when:
+          state: trust_siiri
+          gte: 50
+
+  siiri_talk_low:
+    type: message
+    text: >
+      SIIRI: I appreciate the concern but I really don't want to talk
+      to strangers right now. Sorry.
+
+      [Siiri needs to trust you more. Show her you're investigating
+      seriously, not just being nosy.]
+    effects: { trust_siiri: "+5" }
+    choices:
+      - Share what you've learned about the night -> siiri_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  siiri_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the observation point,
+      the ArcticMine men, the 3am refuelling, the terrified woman
+      driving south. Siiri is quiet for a long time.
+
+      SIIRI: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_siiri: "+25" }
+    choices:
+      - What happened that night? -> siiri_talk_high
+
+  siiri_talk_high:
+    type: message
+    text: >
+      SIIRI: She came home around 1am. I was on early shift so I was
+      sleeping but she woke me up. She was shaking, white as snow. She
+      said "ne tietää mitä mulla on." They know what I have.
+
+      She grabbed her laptop, her memory cards, everything. I asked
+      who. She said "the mining company. They sent people to the
+      observation point."
+
+      Then she said something else — "ja hän oli taas siellä. hän on
+      aina siellä." And he was there again. He's always there.
+
+      She wouldn't say who. She hugged me, said "älä huoli," and left.
+      By morning her car was gone and that shitty photo was on her
+      account.
+    effects:
+      trust_siiri: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Mikko (saw Tuomas following Aino) ---
+
+  mikko_interview:
+    type: message
+    text: >
+      MIKKO: joo ok siis tää on creepy mut niinku se Tuomas-tyyppi —
+      se turisti — mä nään sen joka ilta ainon mökin lähellä. se
+      istuu autossaan tien varressa. valot sammutettuna. joka. vitun.
+      ilta.
+
+      viimeks se oli kaks päivää ennen ku aino katos. se käveli
+      polkua pitkin ainon mökin taakse. mä olin piirtämässä
+      tunturimaisemaa ja se ei nähny mua. se seiso siellä varmaan
+      vartin ja katto ikkunoista.
+
+      siis vittu. kuka tekee tollasta?
+    effects:
+      trust_mikko: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Tuomas seen at Aino's cabin window (Aleksi)
+      00:00 — ArcticMine SUV at observation point, Harri Väisänen present (Heikki)
+      01:00 — Aino arrives home, shaken, grabs laptop and drives (Siiri)
+      03:00 — Aino refuels at petrol station, terrified, heads south (Olli)
+      06:00 — SUV and snowmobile speeding south, one toward Sami hut (Anneli)
+
+      ArcticMine confronted Aino at the observation point. She fled home,
+      grabbed her evidence, and ran south. Someone followed.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is ArcticMine hiding? Who authorised the
+        illegal drilling?
+      — The obsession: What is Tuomas really doing? Why was he at
+        her cabin?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Tuomas -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      ArcticMine is hiding something. Aino had proof of illegal drilling
+      inside a Natura 2000 protected area. Now she's gone and her
+      evidence has vanished from the observation station.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the observation station records -> station_records
+      - Talk to Sanna the journalist -> sanna_interview
+      - Talk to Kaisa (environment committee chair) -> kaisa_interview
+      - Check the Vaaran Luonnonsuojelijat association -> luonto_investigation
+      - Talk to Pekka about the drilling -> pekka_drilling
+      - Back to hub -> investigation_hub
+
+  # --- Station Records ---
+
+  station_records:
+    type: message
+    text: >
+      The aurora observation station's shared drive shows Aino's recent
+      work: GPS-logged survey routes across six sites near Karhunselkä
+      ridge. The data for three sites inside the protected boundary is
+      marked "UNDER REVIEW" — suspicious.
+
+      Her activity log shows she made 14 field trips to the ArcticMine
+      drilling zone in the past month. The last entry: "Drone footage
+      of test drilling inside Natura 2000 boundary. Coordinates confirmed.
+      Equipment bears ArcticMine serial numbers. This is illegal."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Sanna ---
+
+  sanna_interview:
+    type: message
+    text: >
+      SANNA: I don't talk about sources. Ever.
+    effects: { trust_sanna: "+5" }
+    choices:
+      - Show Sanna the evidence you have -> sanna_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  sanna_with_evidence:
+    type: message
+    text: >
+      SANNA: ...you've found more than I expected.
+
+      Okay. Aino and I were working together. She had drone footage of
+      ArcticMine drilling inside the Natura 2000 boundary — test holes,
+      heavy machinery, core samples. She had GPS coordinates that prove
+      they're operating where their permit explicitly forbids it.
+
+      We were going to publish together in Pohjolan Sanomat. Then she
+      went dark. And two days later someone broke into my car and stole
+      my backup hard drive.
+
+      Aino is alive. She contacted me once, from a prepaid number. She
+      said she was hiding. She said "they threatened me at the station
+      and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come home.
+    effects:
+      trust_sanna: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> sanna_hint
+      - Back to investigation hub -> investigation_hub
+
+  sanna_hint:
+    type: message
+    text: >
+      SANNA: The mining company sent their project manager — Väisänen —
+      and some lawyer from Helsinki to the observation point. They told
+      her to hand over everything or face legal consequences. Classic
+      corporate intimidation dressed up as process.
+
+      But she also mentioned someone else. Someone who seemed to know
+      her schedule. Someone who was always there when she went out at
+      night. That's a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Kaisa ---
+
+  kaisa_interview:
+    type: message
+    text: >
+      KAISA: As environment committee chair, I take these allegations
+      seriously. But ArcticMine promised 80 jobs in a village of 600
+      people. The kunnanjohtaja insists we need to "maintain dialogue."
+
+      Off the record? I've seen the ELY-keskus inspection reports.
+      ArcticMine passes every time. But those inspections are announced
+      weeks in advance. They move their equipment before the inspectors
+      arrive.
+
+      Aino had unannounced documentation. Drone footage with timestamps.
+      That's what makes it dangerous.
+    effects:
+      trust_kaisa: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Luonnonsuojelijat ---
+
+  luonto_investigation:
+    type: tweet
+    from: luontoyhdistys
+    text: >
+      VAROITUS: Havaittuja porausmerkkejä Karhunselkä-harjun Natura
+      2000 -alueella. Valokuvat ja GPS-koordinaatit toimitettu
+      ELY-keskukselle. Vaadimme ennakoimatonta tarkastusta.
+    choices:
+      - Check their data -> luonto_data
+
+  luonto_data:
+    type: message
+    text: >
+      The Vaaran Luonnonsuojelijat have been documenting ArcticMine's
+      activity for eighteen months. Their data shows a clear pattern:
+      drilling activity outside the protected boundary during weekdays,
+      inside the boundary at night and on weekends when inspectors
+      don't visit.
+
+      The pattern is unmistakable. This is deliberate, systematic
+      illegal prospecting timed to avoid detection.
+
+      Aino was their most active member. She contributed most of the
+      drone footage and GPS data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Pekka drilling ---
+
+  pekka_drilling:
+    type: message
+    text: >
+      PEKKA: I'll show you something. Last month I found this on my
+      reindeer grazing land — inside the protected area. A core sample
+      drill casing, still in the ground. ArcticMine serial number
+      stamped on the side.
+
+      The drill hole had killed the lichen in a ten-metre circle. My
+      reindeer won't go near it. There are seventeen of these holes
+      that I've found. Aino mapped them all.
+
+      I photographed everything. I still have the serial numbers. And
+      I dug one casing out — it's in my shed. Physical evidence.
+      Perkele.
+    effects:
+      trust_pekka: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Tuomas Lindqvist. Tourist. Aurora enthusiast. Something more?
+      Someone was watching Aino's cabin. Someone followed her on night
+      tours. Someone always knew her schedule.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Tuomas's booking history -> booking_records
+      - Talk to Siiri about Tuomas -> siiri_tuomas
+        when:
+          state: trust_siiri
+          gte: 20
+      - Talk to Aleksi (more detail on the cabin incident) -> aleksi_detail
+      - Talk to Anneli about Tuomas -> anneli_tuomas
+      - Check the anonymous account @niilo -> niilo_investigation
+      - Talk to Riikka the librarian -> riikka_interview
+        when:
+          state: trust_riikka
+          gte: 40
+      - Talk to Ylikonstaapeli Repo -> poliisi_interview
+        when:
+          state: trust_capitaine
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Booking Records ---
+
+  booking_records:
+    type: message
+    text: >
+      The aurora tour company's public booking system shows Tuomas
+      Lindqvist's history: 23 tours in the past two years. Every single
+      one with Aino as guide. When Aino wasn't available, he cancelled.
+
+      His review comments evolved over time:
+      Month 1: "Incredible guide. The aurora was magical."
+      Month 6: "Aino understands the sky like nobody else. I need to
+      see it through her eyes."
+      Month 12: "She cancelled on me again. This isn't right. I came
+      here for her."
+      Month 18: "I've moved here permanently. The aurora is secondary.
+      She is the reason."
+
+      He booked his last tour the day before she disappeared.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Siiri on Tuomas ---
+
+  siiri_tuomas:
+    type: message
+    text: >
+      SIIRI: Tuomas? Vittu. He made Aino uncomfortable for months.
+      He'd show up at the café whenever she was there. He'd offer to
+      walk her home in the dark — "it's not safe for a woman alone at
+      night," he'd say. He'd comment on every aurora photo she posted
+      within minutes.
+
+      She told him she wasn't interested in anything beyond professional
+      guiding. Clearly, kindly. He said he understood. Then nothing
+      changed. He just... kept being there. Always there. In a village
+      this small you can't avoid anyone.
+
+      A month ago she found footprints in the snow outside her cabin
+      window. Fresh ones. Every morning for a week. She was terrified.
+    effects:
+      trust_siiri: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Aleksi detail ---
+
+  aleksi_detail:
+    type: message
+    text: >
+      ALEKSI: ok siis mä en kertonu kaikkee. ku mä näin tuomaksen
+      ainon mökillä niin sillä oli kädessä joku pieni laite. se
+      kiinnitti sen ainon auton alle. niinku liimas sen sinne.
+
+      mä en oo mikään asiantuntija mut se näytti ihan gps-seurantalaitteelta.
+      sellaset ku leffoissa. vittu.
+
+      mun ois pitäny sanoo jotain mut siis kuka uskois teinii joka
+      syyttää turistia. saatana. mä oon miettiny tätä joka yö.
+    effects:
+      trust_aleksi: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anneli on Tuomas ---
+
+  anneli_tuomas:
+    type: message
+    text: >
+      ANNELI: Tuomas Lindqvist? He comes to my shop every day. Always
+      buys the same things Aino buys. Same coffee brand, same bread,
+      same chocolate. I noticed because who moves from Helsinki to a
+      village of 600 people for aurora tours?
+
+      He asked me once what time Aino usually shops. I said I don't
+      keep track of my customers' schedules. He laughed and said "of
+      course not, I was just curious."
+
+      But after that he started coming at the same time she did. Every
+      day. Standing in the next aisle. Pretending to browse.
+    effects:
+      trust_anneli: "+5"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Niilo (anonymous account) ---
+
+  niilo_investigation:
+    type: tweet
+    from: niilo
+    text: >
+      She should have listened. I was trying to protect her. Nobody else
+      understands the sky like we do.
+    choices:
+      - Look at this account's history -> niilo_posts
+
+  niilo_posts:
+    type: message
+    text: >
+      @niilo: account created 10 months ago. Posts are all about Aino's
+      work. Comments on every aurora photo, every tour update, every
+      wilderness shot. The tone shifts over time:
+
+      Month 1: "Stunning capture. You see the sky like nobody else."
+      Month 3: "Why won't you respond? I just want to watch the aurora
+      with you. Alone."
+      Month 6: "I see you at the café with other people. You have time
+      for everyone but me?"
+      Month 8: "I know your routes. I know your schedule. I follow
+      your light."
+
+      The account has no photos, no personal details. Just Aino.
+      Only Aino.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> niilo_style
+
+  niilo_style:
+    type: message
+    text: >
+      Comparing @niilo with @tuomas_lindqvist:
+
+      Same use of aurora photography terminology. Same way of describing
+      light — "valojen tanssi," "taivaan hengitys" — phrases Tuomas uses
+      in his tour reviews. Same knowledge of Aino's routes that only a
+      repeat client would have.
+
+      And one post from @niilo: "Your route past Karhunselkä was
+      perfect at 23:15." That's a private tour route. Not public.
+
+      It's Tuomas. The anonymous account is Tuomas.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Riikka ---
+
+  riikka_interview:
+    type: message
+    text: >
+      RIIKKA: Aino left something with me. A waterproof Pelican case.
+      She said "if someone comes asking about what's happening on
+      Karhunselkä ridge, give them this."
+
+      She looked terrified. She said she'd made copies of everything
+      but needed one set somewhere nobody would think to look. A village
+      library seemed perfect.
+
+      She came in the last evening I saw her. She squeezed my hand and
+      said "kiitos kaikesta."
+    effects: { trust_riikka: "+10" }
+    choices:
+      - What's on Karhunselkä ridge? -> riikka_case
+
+  riikka_case:
+    type: message
+    text: >
+      Riikka reaches under the counter and produces a waterproof case.
+
+      RIIKKA: She said you'd come. Take it.
+
+      Inside: a USB drive, a set of printed drone photographs, and a
+      hand-drawn map. The photos show drilling equipment inside the
+      Natura 2000 boundary, core sample casings, and heavy tyre tracks
+      across protected lichen fields. The USB drive contains GPS logs,
+      soil analysis data, and Aino's detailed report with coordinates
+      matching ArcticMine's equipment serial numbers.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Poliisi ---
+
+  poliisi_interview:
+    type: message
+    text: >
+      YLIKONSTAAPELI REPO: Off the record — and I mean completely off
+      the record — I wanted to investigate ArcticMine. My superior in
+      Sodankylä told me to stand down. He said the ministry had
+      "jurisdiction." That's code for don't touch it.
+
+      The Lindqvist situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_capitaine: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Aino than anyone in Revontulivaara. Who is responsible?
+    choices:
+      - Confront Tuomas Lindqvist (the obsessive tourist) -> confront_tuomas
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Harri Väisänen (the project manager) -> confront_harri
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Kunnanjohtaja Niskanen (political protection) -> confront_juhani
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Tuomas (Best Ending) ---
+
+  confront_tuomas:
+    type: message
+    text: >
+      You present your evidence to Tuomas:
+
+      "I know @niilo is your account. I know you put a GPS tracker on
+      Aino's car. I know you were at her cabin window every night. I
+      know you followed her on her tours. I have witnesses, booking
+      records, and the anonymous posts."
+    choices:
+      - Send -> tuomas_response
+
+  tuomas_response:
+    type: message
+    text: >
+      Tuomas doesn't reply for a long time. Then:
+
+      TUOMAS: You don't understand. I love the aurora. I love what she
+      sees in the sky. I was protecting her. She was in danger from
+      those mining people and she wouldn't let me help. I needed to
+      know she was safe. Everything I did was out of love.
+
+      That's not love. That's obsession.
+
+      You've already sent the evidence to Ylikonstaapeli Repo. And to
+      Sanna Järvinen.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Ylikonstaapeli Repo reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the booking records, the
+      witness testimonies — Tuomas is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Aino's Hilux
+      at a relative's farm south of Sodankylä.
+
+      Sanna Järvinen, finally in possession of Aino's full evidence
+      package, publishes the ArcticMine story in Helsingin Sanomat.
+      The ministry orders an unannounced inspection. ArcticMine's
+      permits are suspended pending a full environmental review.
+      Harri Väisänen faces criminal charges for operating inside a
+      protected Natura 2000 area.
+
+      And Aino Korhonen, reading the story from a friend's cabin in
+      Inari, calls her brother for the first time in nine days.
+
+      "Mä tuun kotiin."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: aino
+    text: >
+      pohjoinen taivas ei koskaan valehtele. eikä revontulivaaran
+      ihmiset. kiitos kun ette luovuttaneet.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Harri (Partial Ending) ---
+
+  confront_harri:
+    type: message
+    text: >
+      You present the drilling evidence to Harri Väisänen:
+
+      "I have drone footage of ArcticMine drilling inside the Natura
+      2000 boundary. I have GPS coordinates matching your equipment
+      serial numbers. I have core sample casings with your company
+      stamps. I have the reindeer herder's physical evidence."
+    choices:
+      - Send -> harri_response
+
+  harri_response:
+    type: message
+    text: >
+      HARRI: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. ArcticMine Oy has always operated
+      within its permit conditions.
+
+      But it's too late. You've sent the evidence to Sanna, to the
+      Vaaran Luonnonsuojelijat, and to the ELY-keskus.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The illegal drilling story breaks. ArcticMine is ordered to halt
+      all operations pending investigation. The permits may be revoked.
+      Eighty promised jobs vanish. The village is divided.
+
+      But Aino?
+
+      Without the stalking evidence, Tuomas is never investigated. He
+      continues to live in the village. He continues to book tours with
+      other guides. He creates a new anonymous profile. He finds new
+      windows to watch.
+
+      Three months later, Aino reads about ArcticMine online. She
+      returns quietly. She changes her cabin locks. She stops guiding
+      alone at night. She checks under her car every morning.
+
+      The corporation is exposed. But the person who terrorised Aino
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: aino
+    text: "mä oon takas. taivas on puhdas. mutta yöt... yöt on vielä vaikeita."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Juhani (Wrong Ending) ---
+
+  confront_juhani:
+    type: message
+    text: >
+      You confront Kunnanjohtaja Niskanen with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> juhani_response
+
+  juhani_response:
+    type: tweet
+    from: ilkka
+    text: >
+      Päämieheni on tietoinen väitteistänne. Kaikenlainen
+      kunniaa loukkaavan materiaalin levittäminen johtaa
+      välittömiin oikeustoimiin. — Asianajotoimisto Salonen &
+      Kumpp., Helsinki
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The kunnanjohtaja's lawyer buries your accusation. Without a
+      direct link between Niskanen and ArcticMine's illegal drilling —
+      and there isn't one beyond political protection and enabled
+      permits — your evidence is insufficient.
+
+      ArcticMine continues to drill. Tuomas continues to watch. Aino
+      stays in hiding.
+
+      Six months later, @niilo creates a new account. It follows
+      Aino's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: REVONTULIVAARA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Aino's story explores themes of corporate
+      exploitation of protected wilderness, political complicity,
+      obsessive behaviour disguised as admiration, community solidarity,
+      and the courage to document the truth.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Kriisipuhelin: 09 2525 0111
+      Nollalinja (väkivalta): 080 005 005
+      Ympäristörikokset: ilmoita poliisille 112

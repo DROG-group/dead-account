@@ -1,0 +1,1585 @@
+# DEAD ACCOUNT — Story 063: Dolina Zielona (Poland)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-063.yml
+#
+# Player investigates the death of folk painter Zofia Mazur
+# in the fictional Bieszczady village of Dolina Zielona.
+
+meta:
+  title: "Dead Account — Dolina Zielona"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_kasia: 0
+    trust_bartek: 0
+    trust_pani_helena: 0
+    trust_janek: 0
+    trust_ola: 0
+    trust_damian: 0
+    trust_agata: 0
+    trust_pan_wieslaw: 0
+    trust_tomek: 0
+    trust_renata: 0
+    trust_marek: 0
+    trust_dorota: 0
+    trust_pan_zbigniew: 0
+    trust_zuzia: 0
+    trust_filip: 0
+    trust_patrycja: 0
+    trust_pan_kowalski: 0
+    trust_gosia: 0
+    trust_krzysztof: 0
+    trust_anon: 0
+    trust_komendant: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nowy Mieszkaniec
+    bio: "przyjechałem do doliny zielonej. odkrywam bieszczady krok po kroku"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "DolinaZielona.social"
+    description: "Witamy na instancji społeczności Doliny Zielonej"
+    avatar_url: /gamepatch/assets/dead-account/dolinazielona_bot.png
+
+  npcs:
+    # === Zofia's Inner Circle ===
+    zofia:
+      name: "Zofia Mazur"
+      bio: "malarka ludowa | ikony bieszczadzkie | kolory mówią prawdę"
+      avatar: avatars/zofia.jpg
+    kasia:
+      name: "Kasia Mazur"
+      bio: "siostra zofii | nauczycielka w podstawówce | dolina zielona to dom"
+      avatar: avatars/kasia.jpg
+    bartek:
+      name: "Bartek Mazur"
+      bio: "brat zofii | stolarz | rzeszów | zofia nie zniknęłaby bez słowa"
+      avatar: avatars/bartek.jpg
+    marek:
+      name: "Marek Witkowski"
+      bio: "artysta ceramik | pracownia w dolinie | kolega zofii od lat"
+      avatar: avatars/marek.jpg
+
+    # === Local Government ===
+    pan_zbigniew:
+      name: "Zbigniew Leśniak"
+      bio: "Wójt Gminy Dolina Zielona | Służba od 2018 | #DolinaRośnie"
+      avatar: avatars/pan_zbigniew.jpg
+    dorota:
+      name: "Dorota Baran"
+      bio: "radna ds. środowiska | Gmina Dolina Zielona | ochrona przyrody"
+      avatar: avatars/dorota.jpg
+    urzad:
+      name: "Urząd Gminy Dolina Zielona"
+      bio: "Konto oficjalne | Aktualności gminne | Pn-Pt 8:00-16:00"
+      avatar: avatars/urzad.jpg
+
+    # === Local Business & Community ===
+    pani_helena:
+      name: "Helena Dudek"
+      bio: "Gospoda Pod Połoniną | pierogi | nalewki | otwarte od 1995"
+      avatar: avatars/pani_helena.jpg
+    gospoda:
+      name: "Gospoda Pod Połoniną"
+      bio: "Kuchnia bieszczadzka | piwo rzemieślnicze | muzyka na żywo w piątek"
+      avatar: avatars/gospoda.jpg
+    janek:
+      name: "Janek Woźniak"
+      bio: "leśnik | 30 lat w bieszczadach | te góry to moje życie"
+      avatar: avatars/janek.jpg
+    tomek:
+      name: "Tomek Sikora"
+      bio: "stolarz | meble z drewna | Dolina Zielona | robota od świtu"
+      avatar: avatars/tomek.jpg
+    renata:
+      name: "Renata Pawlak"
+      bio: "aptekarka | Dolina Zielona | zdrowie i rada | dyżur w niedzielę"
+      avatar: avatars/renata.jpg
+    gosia:
+      name: "Gosia Krawczyk"
+      bio: "sklep spożywczy | Dolina Zielona | od 6 rano | zapraszam"
+      avatar: avatars/gosia.jpg
+    pan_wieslaw:
+      name: "Wiesław Gajda"
+      bio: "pszczelarze bieszczadzcy | miód | natura | ochrona pszczół"
+      avatar: avatars/pan_wieslaw.jpg
+    krzysztof:
+      name: "Krzysztof Nowak"
+      bio: "właściciel pensjonatu Bieszczadzki Zakątek | turystyka | szlaki"
+      avatar: avatars/krzysztof.jpg
+
+    # === Journalist ===
+    agata:
+      name: "Agata Zając"
+      bio: "dziennikarka | środowisko i region | tips: agata@zajac-press.pl"
+      avatar: avatars/agata.jpg
+
+    # === BieszczadChem (corporate) ===
+    bieszczadchem:
+      name: "BieszczadChem Sp. z o.o."
+      bio: "Produkcja chemii przemysłowej | Zakład Dolina Zielona | ISO 14001"
+      avatar: avatars/bieszczadchem.jpg
+    pan_kowalski:
+      name: "Adam Kowalski"
+      bio: "dyrektor zakładu BieszczadChem | przemysł i rozwój regionu"
+      avatar: avatars/pan_kowalski.jpg
+    patrycja:
+      name: "Patrycja Wójcik"
+      bio: "Kancelaria Wójcik & Partnerzy | prawo gospodarcze | Rzeszów"
+      avatar: avatars/patrycja.jpg
+
+    # === Teens ===
+    ola:
+      name: "Ola"
+      bio: "16 | foto & szlaki | dolina zielona forever | zofia to moja inspiracja"
+      avatar: avatars/ola.jpg
+    damian:
+      name: "Damian"
+      bio: "17 | rower & góry | bieszczady rules | tu jest najlepiej"
+      avatar: avatars/damian.jpg
+    zuzia:
+      name: "Zuzia"
+      bio: "15 | rysuję | kocham bieszczady | zofia mnie uczyła malować"
+      avatar: avatars/zuzia.jpg
+
+    # === Media & Community ===
+    echo_doliny:
+      name: "Echo Doliny"
+      bio: "Aktualności z Doliny Zielonej i okolic | redakcja@echodoliny.pl"
+      avatar: avatars/echo_doliny.jpg
+    pogoda_bieszczady:
+      name: "Pogoda Dolina Zielona"
+      bio: "Prognozy i ostrzeżenia | Stacja automatyczna | Aktualizacja co godzinę"
+      avatar: avatars/pogoda_bieszczady.jpg
+    stowarzyszenie_zielona:
+      name: "Stowarzyszenie Zielona Dolina"
+      bio: "Ochrona przyrody Bieszczadów | Wolontariusze | Zgłoszenia zanieczyszczeń"
+      avatar: avatars/stowarzyszenie_zielona.jpg
+
+    # === Suspicious / Other ===
+    filip:
+      name: "Filip Lis"
+      bio: "technik laboratorium | BieszczadChem | robię swoje i tyle"
+      avatar: avatars/filip.jpg
+    anon_kolekcjoner:
+      name: "MiłośnikSztuki"
+      bio: "."
+      avatar: avatars/anon.jpg
+    komendant:
+      name: "Komendant Maj"
+      bio: "Posterunek Policji Dolina Zielona | zgłoszenia: 112"
+      avatar: avatars/komendant.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN DOLINA ZIELONA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Witamy na DolinaZielona.social — instancji społeczności Doliny
+      Zielonej, małej wsi w Bieszczadach.
+
+      Na lokalnym feedzie dziś jest dziwny niepokój. Coś się stało.
+    choices:
+      - Sprawdź feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Przewijając feed, zauważasz jedno imię powtarzające się wszędzie:
+      @zofia_mazur.
+
+      Malarka ludowa. Ikonografka bieszczadzka. Dokumentowała piękno
+      i ciemne strony doliny. Ludzie się martwią. Nie publikowała
+      nic od pięciu dni.
+    choices:
+      - Popatrz na jej profil -> zofia_profile
+
+  zofia_profile:
+    type: tweet
+    from: zofia
+    text: "Woda w potoku za fabryką nie jest już przejrzysta. Ktoś zatruwa dolinę. Mam dowody. Namalowałam to wszystko."
+    choices:
+      - To jej ostatni post... -> grey_painting
+
+  grey_painting:
+    type: message
+    text: >
+      Dwa dni po tym poście na jej koncie pojawiło się jedno zdjęcie:
+      szary obraz. Rozmazany, prześwietlony, namalowany z dziwnej
+      perspektywy. Opublikowany o 3 w nocy. Bez podpisu.
+
+      Jej przyjaciele mówią, że to nie jej styl. Policja mówi, że
+      pewnie pojechała gdzieś na plener. Coś tu nie gra.
+    choices:
+      - Przeczytaj oświadczenie policji -> policja_statement
+      - Zobacz, co mówią ludzie -> community_reaction
+
+  policja_statement:
+    type: tweet
+    from: komendant
+    text: >
+      Otrzymaliśmy zgłoszenie dotyczące mieszkanki Doliny Zielonej.
+      Na obecnym etapie brak przesłanek wskazujących na czyn
+      zabroniony. Wszelkie informacje proszę kierować pod numer 112
+      lub bezpośrednio na posterunek.
+    choices:
+      - Co mówią ludzie? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      Reakcje są chaotyczne. Siostra Zofii @kasia_mazur jest
+      zdesperowana. Brat @bartek_mazur jedzie z Rzeszowa. Kolega
+      artysta @marek_witkowski pisze niespokojne wiadomości. Leśnik
+      @janek_wozniak mówi, że Zofia miała rację co do wody.
+
+      A dziennikarka @agata_zajac jest podejrzanie cicha.
+
+      Nikt nie wierzy policji. Nikt nie wierzy, że Zofia po prostu
+      pojechała na plener.
+    effects: { trust_kasia: "+5", trust_bartek: "+5" }
+    choices:
+      - Zacznij śledzić kontakty Zofii -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: PIERWSZE WRAŻENIA
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      ZADANIE: PIERWSZE WRAŻENIA
+
+      Poznaj Dolinę Zieloną. Obserwuj kontakty Zofii i czytaj ich
+      posty. Im więcej rozmawiasz ze społecznością, tym bardziej
+      ci zaufają.
+
+      Zacznij od osób, które wyglądają na najbardziej otwarte.
+    choices:
+      - Porozmawiaj z Heleną (gospoda, zna wszystkich) -> helena_intro
+      - Porozmawiaj z Jankiem (leśnik, widział wodę) -> janek_intro
+      - Porozmawiaj z Olą (nastolatka, jest wstrząśnięta) -> ola_intro
+      - Sprawdź lokalny feed -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      Feed miesza panikę o Zofii z rytmem małej górskiej wsi:
+      prognoza pogody, godziny otwarcia sklepu Gosi, ostrzeżenia
+      o niedźwiedziach.
+
+      Pojawiają się kluczowe nazwiska: Kasia (siostra, nauczycielka),
+      Marek (ceramik, wydaje się rozbity), Agata (dziennikarka,
+      dziwnie cicha) i nastolatki — Ola, Damian, Zuzia — które
+      uwielbiały prace Zofii.
+
+      Widoczna jest też firma BieszczadChem Sp. z o.o., zakład
+      chemiczny na skraju wsi. Ich posty to korporacyjny PR.
+      Posty Zofii były ich przeciwieństwem.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Porozmawiaj z Heleną -> helena_intro
+      - Porozmawiaj z Jankiem -> janek_intro
+      - Porozmawiaj z Olą -> ola_intro
+
+  # --- Helena (social map) ---
+
+  helena_intro:
+    type: tweet
+    from: pani_helena
+    text: >
+      Gospoda otwarta, ale serce nie na miejscu. @zofia_mazur,
+      twój stolik czeka. Wracaj do nas.
+    effects: { trust_pani_helena: "+5", contacts_followed: "+1" }
+    choices:
+      - Odpowiedz Helenie -> helena_talk
+
+  helena_talk:
+    type: message
+    text: >
+      HELENA: O, nowy jesteś? Witaj. Kiepski moment na przyjazd.
+      Wszyscy się denerwują przez Zofię.
+
+      Powiem ci kto jest kto. Kasia to siostra Zofii — uczą w
+      podstawówce, mieszka nad apteką. Złota dziewczyna, teraz
+      załamana. Marek Witkowski to ceramik, pracuje z Zofią od lat.
+      Dobry facet, ale... dziwnie się zachowuje od jakiegoś czasu.
+      Bartek to brat Zofii, jedzie z Rzeszowa.
+
+      A Agata Zając — dziennikarka — ona i Zofia nad czymś razem
+      pracowały. Coś o wodzie. Agata od zniknięcia Zofii nie
+      odezwała się ani słowem. To do niej niepodobne.
+
+      A od BieszczadChemu trzymaj się z daleka. Kłamstwa opakowane
+      w certyfikaty ISO.
+    effects: { trust_pani_helena: "+10", contacts_followed: "+2" }
+    choices:
+      - Zapytaj o Marka -> helena_marek
+      - Zapytaj o BieszczadChem -> helena_fabryka
+      - Podziękuj i idź dalej -> quest1_hub
+
+  helena_marek:
+    type: message
+    text: >
+      HELENA: Marek? Był tu dłużej niż Zofia. Świetny ceramik.
+      Ale od kiedy Zofia zaczęła wystawiać i zyskała rozgłos, on
+      się zmienił. Przychodził do gospody kiedy ona tu była. Chciał
+      pomagać przy każdym projekcie. Pilnował jej jak cień.
+
+      Zofia mi kiedyś powiedziała: "On nie przyjmuje nie za
+      odpowiedź." Myślałam, że chodzi o sztukę. Teraz nie jestem
+      taka pewna.
+
+      A ostatnio pojawił się jakiś kolekcjoner z Krakowa. Dziwny
+      typ. Miał obsesję na punkcie ikon Zofii. Marek się wściekał,
+      że ten gość ją nagabuje, ale cholera... czasem wyglądało to
+      jak zazdrość, nie troska.
+    effects: { trust_pani_helena: "+5" }
+    choices:
+      - Zapytaj o BieszczadChem -> helena_fabryka
+      - Idź dalej -> quest1_hub
+
+  helena_fabryka:
+    type: message
+    text: >
+      HELENA: Ta fabryka stoi tu od lat dziewięćdziesiątych. Robią
+      jakieś rozpuszczalniki, środki czyszczące, cholera wie co.
+      Wioska tolerowała ich, bo dawali pracę. Ale leśnicy i
+      pszczelarze narzekają od lat — dziwne kolory w potoku za
+      fabryką, martwe ryby, pszczoły zdychają.
+
+      Zofia pierwsza poszła tam z aparatem i próbówkami. Miała
+      dowody, mówiła. Prawdziwe dowody. Namalowała serię obrazów
+      o zatruciu — "Szara Dolina". Dwa tygodnie później jej nie ma.
+    effects: { trust_pani_helena: "+5" }
+    choices:
+      - Idź dalej -> quest1_hub
+
+  # --- Janek (the water, witness tease) ---
+
+  janek_intro:
+    type: tweet
+    from: janek
+    text: >
+      trzydzieści lat chodzę po tych lasach. woda w potoku nie
+      jest już taka sama. @zofia_mazur miała rację. a teraz jej
+      nie ma. połączcie fakty.
+    effects: { trust_janek: "+5", contacts_followed: "+1" }
+    choices:
+      - Odpowiedz Jankowi -> janek_talk
+
+  janek_talk:
+    type: message
+    text: >
+      JANEK: Chodzę po tych górach od trzydziestu lat. Znam każdy
+      potok, każdy kolor wody. I mówię ci — woda za fabryką jest
+      nie taka. Od miesięcy. Ryby zdychają. Trawa przy brzegu jest
+      żółta. Pszczoły Wiesława uciekają z uli.
+
+      Zofia brała próbki wody. Robiła zdjęcia rur odpływowych.
+      Fotografowała wszystko. I malowała to — swoje obrazy były
+      jak dokumenty. Budowała sprawę. A potem puf — nie ma jej.
+
+      Myślisz, że to przypadek? Ja pierdolę, w tych górach nie
+      ma przypadków.
+    effects: { trust_janek: "+10" }
+    choices:
+      - Widziałeś coś dziwnego ostatnio? -> janek_night
+      - Idź dalej -> quest1_hub
+
+  janek_night:
+    type: message
+    text: >
+      JANEK: Noc przed jej zniknięciem — wracałem z obchodu lasu,
+      koło pierwszej w nocy. Widziałem światła w pracowni Zofii.
+      To nie jest nienormalne, artyści pracują późno. Ale na
+      parkingu stały dwa samochody. Jeden to był stary fiat Zofii.
+      Drugi — czarne BMW z rejestracją RZ. Firmowy samochód
+      BieszczadChemu.
+
+      O pierwszej w nocy. Przy pracowni artystki.
+
+      Nie myślałem o tym wtedy. Teraz myślę o tym bez przerwy.
+    effects: { trust_janek: "+5" }
+    choices:
+      - Idź dalej -> quest1_hub
+
+  # --- Ola (teen, witness tease) ---
+
+  ola_intro:
+    type: tweet
+    from: ola
+    text: >
+      kurwa nie wierzę @zofia_mazur to ona mnie nauczyła patrzeć
+      na te góry tak naprawdę. no nie, to jest niemożliwe żeby
+      tak po prostu wyjechała. jeśli ktoś coś wie to piszcie
+    effects: { trust_ola: "+5", contacts_followed: "+1" }
+    choices:
+      - Odpowiedz Oli -> ola_talk_early
+
+  ola_talk_early:
+    type: message
+    text: >
+      OLA: spoko, nowy jesteś? kiepski timing. w sumie zofia to
+      jest najlepsza osoba w tej wsi. uczyła nas malować, brała
+      nas na szlaki, pokazywała nam jak fotografować bieszczady.
+      mega kobieta.
+
+      i teraz się boję bo damian widział jakiś dziwny shit koło
+      pracowni zofii ale nie chce gadać. mówi że to nic ale
+      cholera... to nie jest nic
+    effects: { trust_ola: "+10" }
+    choices:
+      - Co widział Damian? -> ola_damian_hint
+      - Idź dalej -> quest1_hub
+
+  ola_damian_hint:
+    type: message
+    text: >
+      OLA: nie wiem dokładnie. był na rowerze wieczorem koło
+      pracowni i widział jakiegoś gościa który grzebał w
+      samochodzie zofii?? albo coś takiego. flipuje totalnie
+      nie chce gadać. musisz z nim bezpośrednio pogadać ale
+      jest mega nieufny do obcych. pogadaj z nim najpierw
+      o rowerach albo górach xD
+    effects: { trust_ola: "+5" }
+    choices:
+      - Idź dalej -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      Zaczynasz rozumieć Dolinę Zieloną. Bieszczadzka wioska
+      zbudowana wokół gór i lasu. Malarka ludowa, która ujawniała
+      zanieczyszczenia. Zniknięcie, w które nikt nie wierzy
+      dobrowolnie.
+
+      Nawiązałeś kontakty. Teraz kopaj głębiej.
+    choices:
+      - Porozmawiaj z Kasią (siostra Zofii) -> kasia_q1
+      - Porozmawiaj z Markiem (kolega artysta Zofii) -> marek_q1
+      - Sprawdź co mówi Bartek (brat Zofii) -> bartek_q1
+      - Jestem gotowy zbadać noc jej zniknięcia -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Kasia Q1 ---
+
+  kasia_q1:
+    type: tweet
+    from: kasia
+    text: >
+      jeśli ktoś ma wieści od @zofia_mazur niech zadzwoni.
+      jej pracownia jest nietknięta. farby na stole. pędzle
+      w wodzie. nigdy by nie wyjechała zostawiając tego.
+    effects: { trust_kasia: "+5", contacts_followed: "+1" }
+    choices:
+      - Napisz do Kasi -> kasia_q1_talk
+
+  kasia_q1_talk:
+    type: message
+    text: >
+      KASIA: Dziękuję za zainteresowanie, ale cię nie znam.
+      Zofia ma tu wielu przyjaciół. Na pewno wróci.
+
+      ...ciągle to powtarzam. Sama już w to nie wierzę.
+
+      [Kasia jest ostrożna. Musisz zbudować więcej zaufania,
+      zanim się otworzy.]
+    effects: { trust_kasia: "+5" }
+    choices:
+      - Idź dalej -> quest1_hub
+
+  # --- Marek Q1 ---
+
+  marek_q1:
+    type: tweet
+    from: marek
+    text: >
+      Pracownia pusta bez @zofia_mazur. Jej obrazy stoją na
+      sztalugach. Seria "Szara Dolina" niedokończona. Nigdy
+      by nie porzuciła niedokończonej pracy. Coś się stało.
+    effects: { trust_marek: "+5", contacts_followed: "+1" }
+    choices:
+      - Napisz do Marka -> marek_q1_talk
+
+  marek_q1_talk:
+    type: message
+    text: >
+      MAREK: Z Zofią pracujemy razem od pięciu lat. Jest
+      najbardziej oddaną artystką jaką znam. To dochodzenie
+      w sprawie zanieczyszczeń — to było dla niej wszystko.
+      Miała dane, zdjęcia, próbki. Była blisko ujawnienia
+      tego publicznie.
+
+      Proponowałem jej pomoc. Wiele razy. Mówiła, że ma to
+      pod kontrolą. Że pracuje z dziennikarką. Chciałem
+      ją tylko wspierać.
+
+      [Marek wydaje się szczery. Albo obsesyjny?]
+    effects: { trust_marek: "+5" }
+    choices:
+      - Idź dalej -> quest1_hub
+
+  # --- Bartek Q1 ---
+
+  bartek_q1:
+    type: tweet
+    from: bartek
+    text: >
+      moja siostra ZNIKNĘŁA a policja mi mówi że pewnie
+      pojechała na plener??? ONA NIE WYJEŻDŻA BEZ
+      UPRZEDZENIA. jadę z rzeszowa. ktoś mi to wytłumaczy.
+    effects: { trust_bartek: "+5", contacts_followed: "+1" }
+    choices:
+      - Napisz do Bartka -> bartek_q1_talk
+
+  bartek_q1_talk:
+    type: message
+    text: >
+      BARTEK: Kim jesteś? Kolejna osoba z tej wsi, która
+      powie mi, żebym się uspokoił? Moja siostra zadzwoniła
+      do mnie noc przed zniknięciem. Powiedziała, że ma coś
+      dużego. Powiedziała "jeśli coś mi się stanie, patrz
+      na BieszczadChem." Potem się rozłączyła.
+
+      To ostatnie co od niej słyszałem.
+    effects: { trust_bartek: "+10" }
+    choices:
+      - Jak myślisz, co się stało? -> bartek_theory
+      - Idź dalej -> quest1_hub
+
+  bartek_theory:
+    type: message
+    text: >
+      BARTEK: Myślę, że znalazła dowody na to, że BieszczadChem
+      truje dolinę i zamknęli jej usta. Ale myślę też, że ten
+      dziwny kolekcjoner z Krakowa — albo nawet Marek — wie więcej
+      niż mówi. To jak Marek o niej gadał... to nie jest tylko
+      koleżeńska troska. To coś innego.
+
+      Zofia mi powiedziała miesiące temu, że ktoś grzebał w jej
+      pracowni. Myślała, że to nic. Ja pierdolę, to nie było nic.
+    effects: { trust_bartek: "+5" }
+    choices:
+      - Idź dalej -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: OSTATNIA NOC
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      ZADANIE: OSTATNIA NOC
+
+      Coś się wydarzyło nocą, kiedy Zofia zamilkła. Kilka osób
+      coś widziało lub słyszało. Złóż oś czasu ze świadków.
+
+      Potrzebujesz zeznań co najmniej 4 osób.
+    choices:
+      - Znajdź Damiana (był na rowerze przy pracowni wieczorem) -> damian_interview
+      - Znajdź Wiesława (pszczelarz, wstaje wcześnie) -> wieslaw_interview
+      - Znajdź Gosię (sklep, otwiera o 6, widziała coś) -> gosia_interview
+      - Znajdź Tomka (stolarz, pracował do późna) -> tomek_interview
+
+  # --- Damian (saw someone at Zofia's car) ---
+
+  damian_interview:
+    type: tweet
+    from: damian
+    text: >
+      dobra sesja rowerowa ale atmosfera w dolinie jest dziwna.
+      jakby coś wisi w powietrzu. nie umiem tego wytłumaczyć
+    effects: { trust_damian: "+5" }
+    choices:
+      - Zapytaj Damiana o tamten wieczór -> damian_talk
+
+  damian_talk:
+    type: message
+    text: >
+      DAMIAN: spoko ziom ale nikomu nie mówisz co nie? byłem
+      na rowerze koło pracowni zofii wieczorem, koło 19. i
+      widziałem tego gościa — nie marka, innego — takiego
+      z krakowa, kolekcjoner czy coś. stał przy samochodzie
+      zofii. wyglądał jakby grzebał w środku albo montował
+      jakiś szajs. jak mnie zobaczył to się zmył mega szybko.
+
+      no nie, ja nic nie mówiłem bo nie chciałem problemów
+      ale kurwa to jest dziwne. to nie jest normalne zachowanie
+    effects:
+      trust_damian: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Kontynuuj dochodzenie -> quest2_hub
+
+  # --- Wiesław (beekeeper, saw late-night meeting) ---
+
+  wieslaw_interview:
+    type: tweet
+    from: pan_wieslaw
+    text: >
+      Przypominam: ule są chronione. Ostatnio znowu obserwuję
+      niepokój wśród pszczół. Coś je truje.
+    effects: { trust_pan_wieslaw: "+5" }
+    choices:
+      - Zapytaj Wiesława co widział -> wieslaw_talk
+
+  wieslaw_talk:
+    type: message
+    text: >
+      WIESŁAW: Zamykałem ule koło 22:30 — muszę to robić
+      osobiście, pszczoły są niespokojne ostatnio. Widziałem
+      światła w pracowni Zofii. I czarne BMW z rejestracją RZ
+      zaparkowane obok. Dwóch mężczyzn stało przy drzwiach.
+      Jednego rozpoznałem: Adam Kowalski, dyrektor BieszczadChemu.
+
+      O 22:30. Przy pracowni artystki. To nie jest normalne.
+
+      Zapisałem to w dzienniku uli. Nikt nie prosił, żeby
+      to zobaczyć.
+    effects:
+      trust_pan_wieslaw: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Kontynuuj dochodzenie -> quest2_hub
+
+  # --- Gosia (saw Zofia fleeing) ---
+
+  gosia_interview:
+    type: tweet
+    from: gosia
+    text: >
+      wstałam o 5 do sklepu. droga przez dolinę nie była pusta.
+      ktoś biegł ścieżką w stronę gór. w ciemności. to nie
+      był turysta.
+    effects: { trust_gosia: "+5" }
+    choices:
+      - Zapytaj Gosię co widziała -> gosia_talk
+
+  gosia_talk:
+    type: message
+    text: >
+      GOSIA: Wstaję o 5 rano do sklepu. Tego ranka — ranka po
+      ostatnim poście Zofii — widziałam kogoś na ścieżce w
+      stronę połonin. Biegła. Kobieta z torbą, w kierunku
+      starej chaty pasterskiej. Było jeszcze ciemno. Poruszała
+      się szybko, jakby się bała.
+
+      Zawołałam, ale się nie zatrzymała. Pomyślałam, że to
+      turystka na wczesny szlak, ale... kto biega o 5 rano
+      z płócienną torbą?
+
+      Jak usłyszałam o Zofii, złożyłam to w całość. Myślę,
+      że to była ona. Uciekała przed czymś.
+    effects:
+      trust_gosia: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Kontynuuj dochodzenie -> quest2_hub
+
+  # --- Tomek (saw car chase) ---
+
+  tomek_interview:
+    type: tweet
+    from: tomek
+    text: >
+      Robota od 5 jak zwykle. Ale tego ranka samochód jechał
+      tą drogą dużo za szybko. Górska droga, ciemno.
+    effects: { trust_tomek: "+5" }
+    choices:
+      - Zapytaj Tomka co widział -> tomek_talk
+
+  tomek_talk:
+    type: message
+    text: >
+      TOMEK: Zaczynam o 5 rano codziennie. Tego ranka otwierałem
+      warsztat i samochód przejechał — szybko, za szybko jak na
+      górską drogę. Ciemne BMW. A potem, może dwie minuty później,
+      drugi samochód. Mniejszy, jasny. Goniący? Nie wiem.
+
+      Drugi samochód skręcił w stronę starych szałasów pasterskich
+      na Połoninie. Pierwszy pojechał dalej w kierunku drogi na
+      Lesko.
+
+      Powiedziałem policji. Zapisali. I tyle.
+    effects:
+      trust_tomek: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Kontynuuj dochodzenie -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Świadkowie znalezieni: ${night_witnesses} z 4 potrzebnych.
+
+      Możesz dalej zbierać zeznania albo porozmawiać z Kasią
+      (siostra) i Zuzią (widziała kogoś pod pracownią).
+    choices:
+      - Porozmawiaj z Kasią o tamtej nocy -> kasia_interview
+      - Porozmawiaj z Zuzią -> zuzia_interview
+      - Znajdź Damiana -> damian_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Znajdź Wiesława -> wieslaw_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Znajdź Gosię -> gosia_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Znajdź Tomka -> tomek_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Złóż oś czasu -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Kasia (last to see Zofia) ---
+
+  kasia_interview:
+    type: tweet
+    from: kasia
+    text: >
+      to zdjęcie na koncie zofii. to nie jest jej praca. zofia
+      nigdy nie publikuje bez podpisu. zofia nie publikuje o 3
+      w nocy. ktoś inny to zrobił.
+    effects: { trust_kasia: "+5" }
+    choices:
+      - Napisz do Kasi -> kasia_talk_low
+        when:
+          state: trust_kasia
+          lt: 50
+      - Napisz do Kasi -> kasia_talk_high
+        when:
+          state: trust_kasia
+          gte: 50
+
+  kasia_talk_low:
+    type: message
+    text: >
+      KASIA: Doceniam troskę, ale naprawdę nie chcę teraz
+      rozmawiać z obcymi o tym.
+
+      [Kasia musi ci bardziej zaufać. Pokaż jej, że poważnie
+      prowadzisz dochodzenie, a nie plotkujesz.]
+    effects: { trust_kasia: "+5" }
+    choices:
+      - Podziel się tym, co wiesz o tamtej nocy -> kasia_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Wróć później -> quest2_hub
+
+  kasia_trust_build:
+    type: message
+    text: >
+      Dzielisz się zeznaniami świadków — samochód przy pracowni,
+      ludzie z fabryki, uciekająca postać. Kasia milczy przez
+      chwilę.
+
+      KASIA: Naprawdę próbujesz ją znaleźć. Dobra. Pogadajmy.
+    effects: { trust_kasia: "+25" }
+    choices:
+      - Co się stało tamtej nocy? -> kasia_talk_high
+
+  kasia_talk_high:
+    type: message
+    text: >
+      KASIA: Przyszła do mnie koło 23. Byłam jeszcze na nogach,
+      sprawdzałam klasówki. Była blada, trzęsła się. Powiedziała
+      "oni wiedzą co mam." Zabrała laptop i dyski z kopiami
+      obrazów i zdjęć.
+
+      Zapytałam kto. Powiedziała "fabryka. Przysłali ludzi do
+      pracowni." Potem powiedziała coś jeszcze — "i on tam
+      był. On zawsze tam jest."
+
+      Nie chciała powiedzieć kto to "on." Przytuliła mnie,
+      powiedziała "nie martw się" i wyszła z torbą. To było
+      wszystko. Rano jej samochodu nie było, a na koncie
+      ten szary obraz.
+    effects:
+      trust_kasia: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Kontynuuj dochodzenie -> quest2_hub
+
+  # --- Zuzia (saw someone watching the studio) ---
+
+  zuzia_interview:
+    type: message
+    text: >
+      ZUZIA: ok w sumie to jest creepy ale ten kolekcjoner z
+      krakowa — widziałam go 3 razy pod pracownią zofii
+      wieczorem. stał i patrzył w okna. mega dziwne.
+
+      ostatni raz to było 2 dni przed zniknięciem zofii.
+      siedział w samochodzie zaparkowanym naprzeciwko.
+      światła zgaszone. po prostu siedział.
+
+      a marek? on też tam chodził. ale marek przynajmniej
+      pukał do drzwi. tamten gość tylko patrzył.
+    effects:
+      trust_zuzia: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Kontynuuj dochodzenie -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      OŚ CZASU ZŁOŻONA
+
+      19:00 — Nieznany mężczyzna (kolekcjoner) widziany przy samochodzie Zofii (Damian)
+      22:30 — Samochód BieszczadChem przy pracowni, dyrektor Kowalski obecny (Wiesław)
+      23:00 — Zofia przychodzi do siostry, wstrząśnięta, zabiera laptop i dyski (Kasia)
+      05:00 — Kobieta biegnie ścieżką w stronę połonin (Gosia)
+      05:10 — Dwa samochody pędzą górską drogą, jeden w stronę szałasów (Tomek)
+
+      BieszczadChem skonfrontował Zofię w pracowni. Uciekła do
+      siostry, zabrała dowody i pobiegła. Ktoś ją gonił.
+
+      Ale są dwa zagrożenia: korporacja I ktoś bliżej.
+
+      Dwa tropy do zbadania:
+      — Tuszowanie: Co ukrywa BieszczadChem? Kto zlecił
+        konfrontację?
+      — Obsesja: Kim jest kolekcjoner? Co naprawdę robi Marek?
+        Dlaczego ktoś grzebał w jej samochodzie?
+    choices:
+      - Zbadaj korporacyjne tuszowanie -> corruption_hub
+      - Zbadaj obsesyjnego kolekcjonera -> stalker_hub
+      - Prowadź oba wątki -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Dwa dochodzenia prowadzone równolegle.
+
+      WĄTEK KORPORACYJNY: Dowody zebrane: ${corporate_evidence}
+      WĄTEK OBSESJI: Dowody zebrane: ${obsession_evidence}
+    choices:
+      - Pracuj nad wątkiem korporacyjnym -> corruption_hub
+      - Pracuj nad wątkiem obsesji -> stalker_hub
+      - Skonfrontuj podejrzanego -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      WĄTEK KORPORACYJNY
+
+      BieszczadChem coś ukrywa. Zofia miała dowody. Teraz jej
+      nie ma, a dowody zniknęły z pracowni.
+
+      Dowody korporacyjne: ${corporate_evidence}
+    choices:
+      - Przeszukaj dokumenty z pracowni -> studio_records
+      - Porozmawiaj z Agatą (dziennikarką) -> agata_interview
+      - Porozmawiaj z Filipem (technik BieszczadChem) -> filip_interview
+      - Porozmawiaj z Dorotą (radna ds. środowiska) -> dorota_interview
+      - Sprawdź Stowarzyszenie Zielona Dolina -> stowarzyszenie_investigation
+      - Porozmawiaj z Jankiem o zrzutach -> janek_dumping
+      - Wróć do huba -> investigation_hub
+
+  # --- Studio Records ---
+
+  studio_records:
+    type: message
+    text: >
+      Pracownia Zofii jest dostępna — Kasia ma klucz. Na stole
+      leży notatnik z datami i numerami próbek. Seria "Szara
+      Dolina" stoi na sztalugach: sześć obrazów przedstawiających
+      potok w różnych kolorach — od czystego błękitu do toksycznej
+      szarości.
+
+      Pod jednym obrazem ołówkiem: "Rura odpływowa nr 2 —
+      nieujawniona. Zrzut nie odpowiada raportom."
+
+      Na osobnej kartce lista powiązań: "Kowalski — dyrektor.
+      Leśniak — chroni. Kolekcjoner — ???"
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Kontynuuj -> corruption_hub
+
+  # --- Agata ---
+
+  agata_interview:
+    type: message
+    text: >
+      AGATA: Nie rozmawiam o źródłach. Kropka.
+    effects: { trust_agata: "+5" }
+    choices:
+      - Pokaż Agacie dowody -> agata_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Wróć do wątku korporacyjnego -> corruption_hub
+
+  agata_with_evidence:
+    type: message
+    text: >
+      AGATA: ...masz więcej niż się spodziewałam.
+
+      Dobra. Zofia i ja pracowałyśmy razem. Miała zdjęcia
+      nieujawnionej rury odpływowej — BieszczadChem ma drugą
+      rurę, której nie ma w żadnym pozwoleniu. Miała próbki
+      wody z metalami ciężkimi dziesięć razy ponad normę.
+
+      Miałyśmy to opublikować razem. Potem zamilkła. A dwa
+      dni później ktoś włamał się do mojego samochodu i ukradł
+      dysk z kopiami.
+
+      Zofia żyje. Skontaktowała się ze mną raz, z obcego
+      telefonu. Powiedziała, że się ukrywa. Powiedziała "grożono
+      mi w pracowni i ktoś inny nie daje mi spokoju."
+
+      Nie powiem ci gdzie jest. Ale z wystarczającymi dowodami
+      mogę opublikować i będzie dla niej bezpiecznie wrócić.
+    effects:
+      trust_agata: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Kto jej groził? -> agata_hint
+      - Wróć do huba -> investigation_hub
+
+  agata_hint:
+    type: message
+    text: >
+      AGATA: Fabryka wysłała dyrektora — Kowalskiego — i jakiegoś
+      prawnika do pracowni tamtej nocy. Powiedzieli jej, żeby
+      oddała wszystko, albo poniesie konsekwencje prawne.
+      Zastraszanie przebrane za procedurę prawną.
+
+      Ale powiedziała też coś o kimś innym. Ktoś, kto chodził
+      za nią. Ktoś, kto zawsze wiedział gdzie jest. To inny
+      problem.
+    choices:
+      - Wróć do huba -> investigation_hub
+
+  # --- Filip (BieszczadChem whistleblower) ---
+
+  filip_interview:
+    type: message
+    text: >
+      FILIP: Pracuję w BieszczadChemie. Jestem tylko technikiem
+      laboratoryjnym. Robię testy, wypełniam raporty.
+
+      Ale raporty, które wypełniam... to nie zawsze te same
+      raporty, które trafiają do inspektoratu.
+    effects: { trust_filip: "+10" }
+    choices:
+      - Co masz na myśli? -> filip_detail
+
+  filip_detail:
+    type: message
+    text: >
+      FILIP: Mierzę metale ciężkie. Kadm, rtęć, ołów. Moje
+      wyniki idą do przełożonego. Gdzieś między moim biurkiem
+      a raportem do inspektoratu, zmieniają się. Niższe.
+      Zawsze niższe.
+
+      Próbki Zofii z zewnątrz rury odpowiadały MOIM oryginalnym
+      wynikom, a nie tym z oficjalnych raportów. Miała niezależny
+      dowód, że BieszczadChem fałszuje dane o zrzutach.
+
+      Boję się. Mam rodzinę. Ale zatrzymałem kopie oryginalnych
+      raportów. Jeśli ktoś mnie ochroni, udostępnię je.
+    effects:
+      trust_filip: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Wróć do wątku korporacyjnego -> corruption_hub
+
+  # --- Dorota ---
+
+  dorota_interview:
+    type: message
+    text: >
+      DOROTA: Jako radna ds. środowiska traktuję te zarzuty
+      poważnie. Ale BieszczadChem zatrudnia 150 osób w gminie.
+      Wójt upiera się, że musimy "utrzymać dialog."
+
+      Nieoficjalnie? Widziałam raporty z inspekcji. BieszczadChem
+      przechodzi każdą kontrolę. Ale te kontrole są zapowiadane
+      z dwutygodniowym wyprzedzeniem. Sprzątają zanim przyjadą
+      inspektorzy.
+
+      Zofia miała dane bez zapowiedzi. To czyni je niebezpiecznymi.
+    effects:
+      trust_dorota: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wróć do wątku korporacyjnego -> corruption_hub
+
+  # --- Stowarzyszenie Zielona Dolina ---
+
+  stowarzyszenie_investigation:
+    type: tweet
+    from: stowarzyszenie_zielona
+    text: >
+      ALERT: Zgłoszenie nieprawidłowego zabarwienia wody w potoku
+      za zakładem BieszczadChem. Zdjęcia i próbki w toku. Żądamy
+      niezapowiedzianej kontroli zakładu.
+    choices:
+      - Sprawdź ich dane -> stowarzyszenie_data
+
+  stowarzyszenie_data:
+    type: message
+    text: >
+      Stowarzyszenie Zielona Dolina dokumentuje jakość wody od
+      trzech lat. Ich dane pokazują wyraźny wzorzec: skoki metali
+      ciężkich odpowiadające harmonogramowi produkcji BieszczadChemu.
+      Wyższe w dni robocze, niższe w weekendy. Wyższe nocą,
+      niższe w dzień.
+
+      Wzorzec jest jednoznaczny. To ciągły, celowy nielegalny
+      zrzut zaplanowany tak, żeby uniknąć wykrycia.
+
+      Zofia była członkinią stowarzyszenia. Przekazywała większość
+      fotografii i próbek.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wróć do wątku korporacyjnego -> corruption_hub
+
+  # --- Janek dumping ---
+
+  janek_dumping:
+    type: message
+    text: >
+      JANEK: Pokażę ci coś. W zeszłym miesiącu poszedłem na
+      obchód do potoku za fabryką i znalazłem to — metalowa
+      beczka, skorodowana, przeciekająca. Etykieta była częściowo
+      zniszczona, ale mogłem przeczytać "rozpuszczalnik" i numer
+      serii BieszczadChem.
+
+      Zrobiłem zdjęcie i wysłałem Zofii. Powiedziała, że to
+      brakujący element — dowód, że nie tylko odprowadzają
+      ścieki, ale wyrzucają odpady stałe. Beczki w potoku.
+
+      Nadal mam zdjęcia. I numer serii.
+    effects:
+      trust_janek: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wróć do huba -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      WĄTEK OBSESJI
+
+      Ktoś śledził Zofię. Kolekcjoner z Krakowa, który pojawiał
+      się pod jej pracownią. Marek Witkowski, który nie potrafił
+      trzymać dystansu. Ktoś grzebał w jej samochodzie. Ktoś
+      włamywał się do pracowni.
+
+      Dowody obsesji: ${obsession_evidence}
+    choices:
+      - Zbadaj kolekcjonera -> kolekcjoner_investigation
+      - Porozmawiaj z Kasią o podejrzanych -> kasia_obsesja
+        when:
+          state: trust_kasia
+          gte: 20
+      - Porozmawiaj z Damianem (więcej szczegółów o samochodzie) -> damian_detail
+      - Porozmawiaj z Renatą (aptekarka) -> renata_interview
+      - Sprawdź anonimowe konto @MiłośnikSztuki -> anon_investigation
+      - Porozmawiaj z Krzysztofem (pensjonat) -> krzysztof_interview
+        when:
+          state: trust_krzysztof
+          gte: 40
+      - Porozmawiaj z Komendantem Majem -> komendant_interview
+        when:
+          state: trust_komendant
+          gte: 30
+      - Wróć do huba -> investigation_hub
+
+  # --- Collector Investigation ---
+
+  kolekcjoner_investigation:
+    type: message
+    text: >
+      Pytając w wiosce dowiadujesz się więcej o kolekcjonerze.
+      Nazywa się Ryszard Górski. Z Krakowa. Pojawił się w Dolinie
+      Zielonej trzy miesiące temu. Kupił kilka ikon Zofii za
+      duże pieniądze. Potem chciał więcej. Potem chciał ekskluzywne
+      zamówienia. Potem zaczął pojawiać się bez zapowiedzi.
+
+      Helena go widziała w gospodzie — siedział sam i patrzył
+      na Zofię przez okno pracowni naprzeciwko. Kasia mówi, że
+      Zofia go blokowała na Mastodonie trzy razy, ale za każdym
+      razem tworzył nowe konto.
+
+      Nikt nie wie, gdzie Górski się zatrzymuje.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wróć do wątku obsesji -> stalker_hub
+
+  # --- Kasia on suspects ---
+
+  kasia_obsesja:
+    type: message
+    text: >
+      KASIA: Ten kolekcjoner — Górski — nie dawał Zofii spokoju.
+      Przychodził do pracowni bez zapowiedzi. Pisał dziwne
+      wiadomości o tym, że jej obrazy "należą do niego." Zofia
+      się go bała.
+
+      Ale Marek też się dziwnie zachowywał. Komentował każdy
+      post Zofii w ciągu minut. Oferował odprowadzanie do domu.
+      Przychodził do gospody kiedy ona tam była.
+
+      Zofia powiedziała mu wprost, że chce profesjonalnej
+      relacji, nic więcej. Powiedział, że rozumie. A potem nic
+      się nie zmieniło. Po prostu... ciągle tam był.
+
+      Miesiąc temu Zofia odkryła, że ktoś włamał się do jej
+      pracowni po godzinach. Pliki na komputerze były otwarte.
+      Podejrzewała albo Górskiego, albo Marka, ale nie mogła
+      udowodnić.
+    effects:
+      trust_kasia: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wróć do wątku obsesji -> stalker_hub
+
+  # --- Damian detail ---
+
+  damian_detail:
+    type: message
+    text: >
+      DAMIAN: ok ziom tak naprawdę to nie powiedziałem
+      wszystkiego. jak widziałem tego gościa przy samochodzie
+      zofii to miał coś w ręce. takie małe pudełko. i schował
+      je pod samochód, od strony kierowcy. jakby przykleił
+      to od spodu.
+
+      ja pierdolę nie jestem ekspertem ale to wyglądało jak
+      lokalizator gps czy coś. takie coś z filmów.
+
+      powinienem był coś powiedzieć ale kurwa kto by mi
+      uwierzył? nastolatek oskarżający jakiegoś bogatego
+      kolekcjonera. no nie.
+    effects:
+      trust_damian: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Wróć do wątku obsesji -> stalker_hub
+
+  # --- Renata ---
+
+  renata_interview:
+    type: message
+    text: >
+      RENATA: To poufne, ale jestem aptekarką, nie księdzem.
+      Ten kolekcjoner z Krakowa — Górski — kupował u mnie
+      regularnie. Leki na bezsenność, uspokajające, suplementy
+      energetyczne. Wzorzec kogoś pod skrajnym stresem. Albo
+      kogoś obsesyjnego.
+
+      Zapytał mnie też kiedyś, tak jakby mimochodem, czy
+      sprzedajemy lokalizatory GPS. Powiedziałam "to apteka,
+      nie MediaMarkt." Zaśmiał się. Nie myślałam o tym więcej
+      aż do zniknięcia Zofii.
+
+      A Marek? Marek kupuje kwiaty. Co tydzień. Ale nie dla
+      siebie. Pakuje je w papier i zostawia pod drzwiami
+      pracowni Zofii.
+    effects:
+      trust_renata: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wróć do wątku obsesji -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_kolekcjoner
+    text: >
+      Powinna była posłuchać. Próbowałem ją chronić. Nikt inny
+      nie rozumie jej sztuki tak jak ja.
+    choices:
+      - Sprawdź historię tego konta -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @MiłośnikSztuki: konto założone 6 miesięcy temu. Posty
+      dotyczą wyłącznie prac Zofii. Komentarze pod każdym
+      obrazem, każdym zdjęciem, każdą aktualizacją. Ton zmienia
+      się z czasem:
+
+      Miesiąc 1: "Niesamowite prace. Robisz to, czego nikt
+      nie śmie."
+      Miesiąc 2: "Dlaczego nie odpowiadasz na moje wiadomości?
+      Chcę tylko współpracować."
+      Miesiąc 4: "Widzę cię w gospodzie z innymi ludźmi. Masz
+      czas dla nich, ale nie dla mnie?"
+      Miesiąc 5: "Wiem gdzie chodzisz. Znam twój rozkład dnia.
+      Jestem zawsze blisko."
+
+      Konto nie ma zdjęć, żadnych osobistych danych. Tylko Zofia.
+      Wyłącznie Zofia.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Sprawdź styl pisania -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Porównanie @MiłośnikSztuki z postami Ryszarda Górskiego
+      na innych platformach:
+
+      Ten sam sposób opisu dzieł sztuki — specyficzna terminologia
+      ikonograficzna. Te same błędy interpunkcyjne — brak
+      przecinka przed "które." Ta sama wiedza o technikach Zofii,
+      którą mógłby mieć tylko ktoś, kto szczegółowo studiował
+      jej prace na żywo.
+
+      I jeden post od @MiłośnikSztuki: "Twoja ikona nr 17 jest
+      najpiękniejsza." Ikona nr 17 to numer katalogowy z prywatnej
+      listy Zofii. Niepubliczna.
+
+      To Górski. Anonimowe konto to Górski.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Wróć do wątku obsesji -> stalker_hub
+
+  # --- Krzysztof ---
+
+  krzysztof_interview:
+    type: message
+    text: >
+      KRZYSZTOF: Zofia zostawiła mi coś. Zapieczętowany tubus
+      na obrazy. Powiedziała "jeśli ktoś zapyta o to, co jest
+      w potoku za fabryką, daj mu to."
+
+      Wyglądała na przestraszoną. Powiedziała, że zrobiła kopie
+      wszystkiego, ale potrzebowała jednego zestawu poza pracownią,
+      gdzieś, gdzie nikt nie pomyśli szukać. Pensjonat wydawał
+      się idealny.
+    effects: { trust_krzysztof: "+10" }
+    choices:
+      - Co jest w potoku za fabryką? -> krzysztof_case
+
+  krzysztof_case:
+    type: message
+    text: >
+      Krzysztof sięga pod ladę recepcji i wyciąga tubus.
+
+      KRZYSZTOF: Mówiła, że ktoś przyjdzie. Bierz.
+
+      W środku: pendrive i zestaw wydrukowanych zdjęć. Zdjęcia
+      pokazują rurę odpływową — nie oficjalny punkt zrzutu, ale
+      drugą, ukrytą rurę — i beczki w potoku. Pendrive zawiera
+      dane z próbek wody, analizy chemiczne i szczegółowy
+      raport Zofii. A także skany jej obrazów z serii
+      "Szara Dolina" w wysokiej rozdzielczości.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Wróć do huba -> investigation_hub
+
+  # --- Komendant Maj ---
+
+  komendant_interview:
+    type: message
+    text: >
+      KOMENDANT MAJ: Nieoficjalnie — i mówię całkowicie
+      nieoficjalnie — chciałem zbadać BieszczadChem. Mój
+      przełożony kazał mi odpuścić. Powiedział, że inspektorat
+      ma "jurysdykcję." To kod na "nie dotykaj."
+
+      Sprawa Górskiego to inna historia. Nie wiedziałem o tym
+      do teraz. Jeśli masz dowody na stalking, mogę działać.
+      To jasno moja jurysdykcja.
+
+      Przynieś mi coś solidnego i otworzę sprawę na nowo.
+    effects:
+      trust_komendant: "+15"
+      evidence_total: "+1"
+    choices:
+      - Wróć do wątku obsesji -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: KONFRONTACJA
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      OSKARŻENIE
+
+      Zebrałeś dowody. Wiesz więcej o tym, co się stało z Zofią,
+      niż ktokolwiek w Dolinie Zielonej. Kto jest odpowiedzialny?
+    choices:
+      - Skonfrontuj Ryszarda Górskiego (obsesyjny kolekcjoner) -> confront_gorski
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Skonfrontuj Adama Kowalskiego (dyrektor fabryki) -> confront_kowalski
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Skonfrontuj wójta Leśniaka (ochrona polityczna) -> confront_zbigniew
+      - Potrzebuję więcej dowodów -> investigation_hub
+
+  # --- ENDING A: Górski (Best Ending) ---
+
+  confront_gorski:
+    type: message
+    text: >
+      Przedstawiasz dowody Górskiemu:
+
+      "Wiem, że @MiłośnikSztuki to twoje konto. Wiem, że
+      zamontowałeś GPS w samochodzie Zofii. Wiem, że włamywałeś
+      się do jej pracowni. Wiem, że śledziłeś ją pod oknem.
+      Mam świadków i logi."
+    choices:
+      - Wyślij -> gorski_response
+
+  gorski_response:
+    type: message
+    text: >
+      Górski nie odpowiada przez długi czas. Potem:
+
+      GÓRSKI: Nie rozumiesz. Chroniłem ją. Jej sztuka jest
+      zagrożona przez tę fabrykę, a ona nie chciała mojej
+      pomocy. Musiałem wiedzieć, że jest bezpieczna. Wszystko
+      co robiłem, robiłem z miłości do jej talentu.
+
+      To nie jest miłość. To obsesja.
+
+      Dowody już wysłałeś do Komendanta Maja. I do Agaty Zając.
+    choices:
+      - Poczekaj na rezultat -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ZAKOŃCZENIE A: OBSESJA
+
+      Trzy rzeczy dzieją się szybko po sobie.
+
+      Komendant Maj otwiera sprawę na nowo. Z twoimi dowodami —
+      anonimowe konto, lokalizator GPS, logi włamań, zeznania
+      świadków — Ryszard Górski zostaje zatrzymany za stalking
+      i nękanie. Lokalizator GPS zostaje odnaleziony pod
+      samochodem Zofii przy starych szałasach na Połoninie.
+
+      Agata Zając, wreszcie mając pełny pakiet dowodów Zofii,
+      publikuje historię BieszczadChemu w Gazecie Wyborczej.
+      Inspektorat nakazuje niezapowiedzianą kontrolę. Fabryka
+      zostaje zamknięta do czasu remediacji środowiskowej. Adam
+      Kowalski staje przed zarzutami karnymi za fałszowanie
+      raportów o zrzutach.
+
+      A Zofia Mazur, czytając artykuł u przyjaciółki w Sanoku,
+      dzwoni do siostry po raz pierwszy od ośmiu dni.
+
+      "Wracam do domu."
+    choices:
+      - Zobacz epilog -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: zofia
+    text: >
+      kolory doliny nie kłamią. i ludzie z doliny zielonej też
+      nie. dziękuję, że nie odpuściliście.
+    choices:
+      - Koniec -> game_complete
+
+  # --- ENDING B: Kowalski (Partial Ending) ---
+
+  confront_kowalski:
+    type: message
+    text: >
+      Przedstawiasz dowody na zanieczyszczenia Kowalskiemu:
+
+      "Mam zdjęcia nieujawnionej rury odpływowej. Mam próbki
+      wody z metalami ciężkimi dziesięć razy ponad normę. Mam
+      oryginalne raporty laboratoryjne pokazujące fałszowanie
+      danych. Mam beczkę z waszym numerem serii."
+    choices:
+      - Wyślij -> kowalski_response
+
+  kowalski_response:
+    type: message
+    text: >
+      KOWALSKI: Ta rozmowa jest przekazywana do naszego działu
+      prawnego. Publikacja materiałów o charakterze
+      zniesławiającym będzie skutkować natychmiastowym
+      postępowaniem. BieszczadChem zawsze działał zgodnie
+      z wymogami regulacyjnymi.
+
+      Ale jest za późno. Dowody już wysłałeś do Agaty, do
+      Stowarzyszenia Zielona Dolina i do inspektoratu.
+    choices:
+      - Poczekaj na rezultat -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ZAKOŃCZENIE B: KORPORACJA
+
+      Historia o zanieczyszczeniach wybucha. BieszczadChem
+      dostaje nakaz wstrzymania zrzutów do czasu dochodzenia.
+      Fabryka może zostać zamknięta. 150 miejsc pracy wisi
+      na włosku. Wioska jest podzielona.
+
+      Ale Zofia?
+
+      Bez dowodów na stalking, Górski nigdy nie jest badany.
+      Dalej jeździ do Doliny Zielonej. Dalej śledzi jej konta.
+      Tworzy nowy anonimowy profil.
+
+      Trzy miesiące później Zofia czyta o BieszczadChemie
+      online. Wraca cicho. Zmienia pracownię. Przestaje malować
+      sama po zmroku. Sprawdza samochód każdego ranka.
+
+      Korporacja jest zdemaskowana. Ale osoba, która terroryzowała
+      Zofię, chodzi wolna.
+    choices:
+      - Zobacz epilog -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: zofia
+    text: "wróciłam. woda jest czystsza. reszta... zobaczymy."
+    choices:
+      - Koniec -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_zbigniew:
+    type: message
+    text: >
+      Konfrontujesz wójta Leśniaka z dowodami.
+
+      W ciągu godziny dostajesz wiadomość z jego kancelarii:
+    choices:
+      - Przeczytaj odpowiedź -> zbigniew_response
+
+  zbigniew_response:
+    type: tweet
+    from: patrycja
+    text: >
+      Mój klient przyjmuje do wiadomości Państwa zarzuty.
+      Publikacja materiałów o charakterze zniesławiającym będzie
+      skutkować natychmiastowym postępowaniem sądowym. —
+      Kancelaria Wójcik & Partnerzy, Rzeszów
+    choices:
+      - Co się stanie dalej? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ZAKOŃCZENIE C: POLITYK
+
+      Prawnik wójta grzebie twoje oskarżenie. Bez
+      bezpośredniego powiązania między Leśniakiem a zrzutami
+      BieszczadChemu — a takiego powiązania nie ma, poza
+      ochroną polityczną — twoje dowody są niewystarczające.
+
+      BieszczadChem dalej działa. Górski dalej obserwuje.
+      Zofia dalej się ukrywa.
+
+      Sześć miesięcy później @MiłośnikSztuki tworzy nowe
+      konto. Zaczyna obserwować siostrę Zofii.
+    choices:
+      - Koniec -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: DOLINA ZIELONA — GRA UKOŃCZONA
+
+      Zebrane dowody: ${evidence_total}
+      Dowody korporacyjne: ${corporate_evidence}
+      Dowody obsesji: ${obsession_evidence}
+
+      Dziękujemy za grę. Historia Zofii porusza tematy
+      bezkarności korporacji, przestępstw środowiskowych,
+      obsesyjnego zachowania, solidarności społeczności
+      i odwagi mówienia prawdy.
+
+      Jeśli ty lub ktoś, kogo znasz, doświadcza stalkingu
+      lub nękania, pomoc jest dostępna:
+      Telefon zaufania dla dzieci i młodzieży: 116 111
+      Niebieska Linia (przemoc): 800 120 002
+      Centrum Praw Kobiet: 800 107 777
+      Zgłoszenia środowiskowe GIOŚ: 22 369 22 00

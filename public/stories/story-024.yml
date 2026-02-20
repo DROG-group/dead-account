@@ -1,0 +1,1539 @@
+# DEAD ACCOUNT — Story 024: Brezová pod Tatrami (Slovakia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-024.yml
+#
+# Player investigates the disappearance of young folk dancer Katarína
+# Kováčová in the fictional mountain village of Brezová pod Tatrami.
+
+meta:
+  title: "Dead Account — Brezová pod Tatrami"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_zuzana: 0
+    trust_marek: 0
+    trust_jakub: 0
+    trust_simona: 0
+    trust_peter: 0
+    trust_milan: 0
+    trust_elena: 0
+    trust_jozef: 0
+    trust_iveta: 0
+    trust_tomas: 0
+    trust_roman: 0
+    trust_darina: 0
+    trust_michal: 0
+    trust_lucia: 0
+    trust_andrej: 0
+    trust_barbora: 0
+    trust_stefan: 0
+    trust_vladimira: 0
+    trust_filip: 0
+    trust_nadezda: 0
+    trust_major: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nový obyvateľ
+    bio: "práve som sa presťahoval do brezovej. objavujem tatry krok za krokom"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Brezova.social"
+    description: "Vitajte na komunitnej Mastodon inštancii obce Brezová pod Tatrami"
+    avatar_url: /gamepatch/assets/dead-account/brezova_bot.png
+
+  npcs:
+    # === Katarína's Inner Circle ===
+    katarina:
+      name: "Katarína Kováčová"
+      bio: "folkloristka | tanec je môj život | tatranské lúky a piesne | 19"
+      avatar: avatars/katarina.jpg
+    zuzana:
+      name: "Zuzana Hrušková"
+      bio: "katkiná najlepšia kamoška | učiteľka v škôlke | kávička a hory"
+      avatar: avatars/zuzana.jpg
+    marek:
+      name: "Marek Novák"
+      bio: "brat katky | automechanik | žilina | nájdem ťa sestra"
+      avatar: avatars/marek.jpg
+    simona:
+      name: "Simona Baková"
+      bio: "vedúca folklórneho súboru Javor | tradície žijú | brezová"
+      avatar: avatars/simona.jpg
+
+    # === Local Government ===
+    stefan:
+      name: "Štefan Kučera"
+      bio: "Starosta Brezovej pod Tatrami | Slúžim obci od roku 2018 | #BrezováRastie"
+      avatar: avatars/stefan.jpg
+    vladimira:
+      name: "Vladimíra Ondrejková"
+      bio: "Poslankyňa OZ | životné prostredie | Brezová pod Tatrami | zelená budúcnosť"
+      avatar: avatars/vladimira.jpg
+    obec:
+      name: "Obec Brezová pod Tatrami"
+      bio: "Oficiálny účet | Obecné správy | Úradné hodiny: Po-Pi 8:00-15:30"
+      avatar: avatars/obec.jpg
+
+    # === Local Business & Community ===
+    elena:
+      name: "Elena Mráziková"
+      bio: "Koliba u Eleny | bryndzové halušky | domáca kuchyňa | otvorené od 1995"
+      avatar: avatars/elena.jpg
+    koliba:
+      name: "Koliba u Eleny"
+      bio: "Tradičná slovenská kuchyňa | Živá muzika v piatok | Srdce Brezovej"
+      avatar: avatars/koliba.jpg
+    jozef:
+      name: "Jozef Poliak"
+      bio: "horský vodca | 35 rokov v tatrách | túto zem poznám lepšie než svoju dlaň"
+      avatar: avatars/jozef.jpg
+    iveta:
+      name: "Iveta Šimková"
+      bio: "lekárnička | Brezová | zdravie a rada | otvorené aj v sobotu ráno"
+      avatar: avatars/iveta.jpg
+    tomas:
+      name: "Tomáš Krajčí"
+      bio: "drevorubač a stolár | brezová | rukami robím čo srdce chce"
+      avatar: avatars/tomas.jpg
+    darina:
+      name: "Darina Horvátová"
+      bio: "pekáreň Horvátová | čerstvý chlieb a koláče | od 4:00 ráno každý deň"
+      avatar: avatars/darina.jpg
+    roman:
+      name: "Roman Ďuriš"
+      bio: "správca chaty pod Kriváňom | turistika | hory liečia"
+      avatar: avatars/roman.jpg
+
+    # === Journalist ===
+    lucia:
+      name: "Lucia Vlčková"
+      bio: "novinárka | environment & regióny | tipy: lucia@vlckova-press.sk"
+      avatar: avatars/lucia.jpg
+
+    # === TatraResort (corporate) ===
+    tatraresort:
+      name: "TatraResort Development a.s."
+      bio: "Lyžiarske stredisko & wellness | Projekt Brezová Ski | ISO 14001"
+      avatar: avatars/tatraresort.jpg
+    andrej:
+      name: "Andrej Beneš"
+      bio: "riaditeľ projektu TatraResort Brezová | rozvoj & turizmus"
+      avatar: avatars/andrej.jpg
+    barbora:
+      name: "Barbora Richterová"
+      bio: "Advokátka | Kancelária Richter & Partners | Obchodné právo | Bratislava"
+      avatar: avatars/barbora.jpg
+
+    # === Teens ===
+    peter:
+      name: "Peter"
+      bio: "17 | snowboard & bike | brezová born | hory sú free frr"
+      avatar: avatars/peter.jpg
+    milan:
+      name: "Milan"
+      bio: "16 | folklór & rap | fuška a folklór sa nevylučujú | vole"
+      avatar: avatars/milan.jpg
+    filip:
+      name: "Filip"
+      bio: "15 | foto & video | tatry v 4K | katka je legenda"
+      avatar: avatars/filip.jpg
+
+    # === Media & Community ===
+    spravy_brezova:
+      name: "Správy Brezová"
+      bio: "Regionálne správy | Brezová a okolie | tipy: redakcia@spravy-brezova.sk"
+      avatar: avatars/spravy_brezova.jpg
+    pocasie_tatry:
+      name: "Počasie Tatry"
+      bio: "Predpoveď a výstrahy | Tatranský región | Aktualizácia každú hodinu"
+      avatar: avatars/pocasie_tatry.jpg
+    ochrana_lesa:
+      name: "Občianske združenie Strážcovia Lesa"
+      bio: "Ochrana tatranských lesov | Dobrovoľníci | Hlásenie nelegálnej ťažby"
+      avatar: avatars/ochrana_lesa.jpg
+
+    # === Suspicious / Other ===
+    michal:
+      name: "Michal Krasňanský"
+      bio: "technik | TatraResort | robím si svoju robotu a hotovo"
+      avatar: avatars/michal.jpg
+    nadezda:
+      name: "Nádežda Tichá"
+      bio: "."
+      avatar: avatars/anon.jpg
+    major:
+      name: "Major Húska"
+      bio: "Polícia SR | Obvodné oddelenie Brezová | Tiesňové volanie: 158"
+      avatar: avatars/major.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN BREZOVÁ POD TATRAMI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to brezova.social — the community Mastodon instance for
+      the mountain village of Brezová pod Tatrami, Slovakia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @katarina_kovacova.
+
+      A folk dancer. Performer. She documented village traditions and
+      fought to protect the mountain forests. People are worried.
+      She hasn't posted in six days.
+    choices:
+      - Look at her profile -> katarina_profile
+
+  katarina_profile:
+    type: tweet
+    from: katarina
+    text: "Bágre nad Kriváňom rúbu stromy. Chránený les. Mám fotky, mám dôkazy. Toto neprejde."
+    choices:
+      - That's her last real post... -> silent_forest
+
+  silent_forest:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of a dark treeline at night. Posted at 2am.
+      No caption. No hashtags.
+
+      Her friends say that's not her style. Katarína always wrote long
+      captions about the land, the trees, the traditions. The police
+      say she probably went hiking alone and lost signal. Something
+      doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: major
+    text: >
+      Prijali sme hlásenie o nezvestnej osobe z obce Brezová pod
+      Tatrami. V súčasnosti nič nenasvedčuje trestnému činu.
+      Akékoľvek informácie prosím hláste na číslo 158 alebo na
+      obvodné oddelenie.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @zuzana_hruskova is
+      desperate. Her brother @marek_novak is driving down from Žilina.
+      The folk ensemble leader @simona_bakova says Katarína would never
+      miss rehearsal. The mountain guide @jozef_poliak says the forest
+      is being destroyed and Katarína was the only one documenting it.
+
+      And the journalist @lucia_vlckova is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Katarína just
+      "went hiking."
+    effects: { trust_zuzana: "+5", trust_marek: "+5" }
+    choices:
+      - Start following Katarína's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Brezová pod Tatrami. Follow Katarína's contacts and
+      read their posts. The more you engage with the community, the
+      more they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Elena (koliba owner, knows everyone) -> elena_intro
+      - Talk to Jozef (mountain guide, knows the forest) -> jozef_intro
+      - Talk to Peter (teen snowboarder, seems shaken) -> peter_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Katarína with the rhythms of a small
+      mountain village: weather warnings, the bakery's fresh bread,
+      weekend hikes, folk ensemble rehearsal schedules.
+
+      Key names surface: Zuzana (best friend, kindergarten teacher),
+      Simona (ensemble leader, seems rattled), Lucia (journalist,
+      oddly quiet), and the teens — Peter, Milan, Filip — who filmed
+      Katarína's performances for social media.
+
+      Also prominent: TatraResort Development a.s., the ski resort
+      company building on the mountain above the village. Their posts
+      are corporate PR. Katarína's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Elena -> elena_intro
+      - Talk to Jozef -> jozef_intro
+      - Talk to Peter -> peter_intro
+
+  # --- Elena (social map) ---
+
+  elena_intro:
+    type: tweet
+    from: elena
+    text: >
+      Koliba je otvorená ale srdce plače. @katarina_kovacova, tvoj
+      stôl čaká. Vráť sa nám, dievča.
+    effects: { trust_elena: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Elena -> elena_talk
+
+  elena_talk:
+    type: message
+    text: >
+      ELENA: Nový si tu? Vitaj. Hrozný čas na príchod. Celá dedina
+      je hore nohami kvôli Katke.
+
+      Poviem ti kto je kto. Zuzana je Katkina najlepšia kamoška —
+      bývajú spolu v byte nad lekárňou. Zlaté dievča, zničená teraz.
+      Jakub Sedláček — ten chlapec z Popradu — bol Katkin priateľ.
+      Rozišli sa pred tromi mesiacmi ale on to nezvládol. Stále sa
+      tu krútil. Simona vedie folklórny súbor, Katka bola ich hviezda.
+
+      A Lucia Vlčková — novinárka — ona a Katka robili na niečom
+      spolu. Niečo o tých stromoch hore. Lucia nepovedala ani slovo
+      odkedy Katka zmizla. To nie je normálne.
+
+      A pozor na TatraResort. Klamstvá zabalené do certifikátov.
+    effects: { trust_elena: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Jakub -> elena_jakub
+      - Ask about TatraResort -> elena_tatraresort
+      - Thank her and move on -> quest1_hub
+
+  elena_jakub:
+    type: message
+    text: >
+      ELENA: Jakub? Pekný chlapec, z Popradu. Chodili spolu asi rok.
+      Ale potom sa začal správať... divne. Žiarlil na každého kto sa
+      s Katkou rozprával. Prišiel sem do koliby a robil scény keď
+      videl že tancuje s niekým na skúške.
+
+      Katka to ukončila. Jasne mu povedala že je koniec. On povedal
+      že chápe. Ale nič sa nezmenilo. Stále bol všade. Stále sa
+      pýtal ľudí kde je.
+
+      Raz mi Katka povedala: "Teta Elena, on nepočúva keď hovorím
+      nie." Myslela som že to berie príliš vážne. Teraz si nie som
+      istá.
+    effects: { trust_elena: "+5" }
+    choices:
+      - Ask about TatraResort -> elena_tatraresort
+      - Move on -> quest1_hub
+
+  elena_tatraresort:
+    type: message
+    text: >
+      ELENA: Tá firma je tu od roku 2022. Kúpili pozemky hore na
+      svahu a chcú stavať obrovské lyžiarske stredisko. Wellness,
+      hotely, parkoviská. Problém je že polovica tých pozemkov je
+      chránený les. NATURA 2000, chápete?
+
+      Katka bola prvá kto išla hore s foťákom a dokumentovala čo
+      tam robia. Výrub stromov v chránenej zóne. Bagre v potoku.
+      Mala dôkazy. Skutočné dôkazy.
+
+      Dva týždne na to zmizla.
+    effects: { trust_elena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jozef (the forest, witness tease) ---
+
+  jozef_intro:
+    type: tweet
+    from: jozef
+    text: >
+      tridsaťpäť rokov chodím po týchto horách. les hore nad
+      sedlom nie je ten istý. @katarina_kovacova mala pravdu.
+      a teraz je preč. spojte si to.
+    effects: { trust_jozef: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jozef -> jozef_talk
+
+  jozef_talk:
+    type: message
+    text: >
+      JOZEF: Celý život chodím po Tatrách. Poznám každý strom,
+      každý potok, každý chodník. A hovorím vám — les nad sedlom
+      je zničený. Vyrúbali sto metrov chráneného porastu. Potok
+      je zanesený hlinou z bagrov.
+
+      Katka fotila všetko. Chodila hore s GPS a zaznamenávala
+      každý vyrúbaný strom. Mala súradnice, fotky, dátumy. Stavala
+      prípad. A potom — preč.
+
+      Myslíte že je to náhoda? V horách sa náhody nestávajú.
+    effects: { trust_jozef: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> jozef_night
+      - Move on -> quest1_hub
+
+  jozef_night:
+    type: message
+    text: >
+      JOZEF: Tú noc pred tým čo zmizla — vracal som sa z chaty,
+      bolo okolo jednej v noci. Videl som svetlá pri kultúrnom dome.
+      Nie je to nezvyčajné, niekedy tam cvičia. Ale boli tam dve
+      autá. Jedno bolo Katkino červené Suzuki. Druhé bol čierny
+      SUV s bratislavskými značkami. TatraResort ho používa.
+
+      O jednej v noci. Pri kultúrnom dome. To nie je normálne.
+
+      Zapísal som si to. Nikto sa ma na to nepýtal.
+    effects: { trust_jozef: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Peter (teen snowboarder, witness tease) ---
+
+  peter_intro:
+    type: tweet
+    from: peter
+    text: >
+      kurva vole @katarina_kovacova to nie je možné že len tak
+      odišla. ona ma naučila milovať tieto hory. ak niekto niečo
+      vie prosím napíšte
+    effects: { trust_peter: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Peter -> peter_talk_early
+
+  peter_talk_early:
+    type: message
+    text: >
+      PETER: vole si tu nový? hustý timing fakt. Katka je proste
+      najlepšia osoba v celej dedine. učila nás tancovať, brala
+      nás do hôr, vysvetľovala nám prečo sú stromy dôležité. fakt
+      hustá ženská.
+
+      a teraz som v piči lebo Milan videl niečo divné pri parkovisku
+      ale nechce o tom hovoriť. tvrdí že to bolo hovno ale... fakt
+      to nebolo hovno vole
+    effects: { trust_peter: "+10" }
+    choices:
+      - What did Milan see? -> peter_milan_hint
+      - Move on -> quest1_hub
+
+  peter_milan_hint:
+    type: message
+    text: >
+      PETER: kurva presne neviem. bol na parkovisku pri kultúrnom
+      dome, natáčal nejakú piču na tiktok, a videl nejakého typka
+      pri Katkinom aute. niečo tam robil. Milan sa fakt boji o tom
+      hovoriť.
+
+      musíš s ním najprv pogadať o nejakej hovadine, o folklóre
+      alebo o rape, potom sa možno otvorí. on nehovorí s ľuďmi
+      čo nepozná vole
+    effects: { trust_peter: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Brezová pod Tatrami. A Slovak
+      mountain village built around folk traditions and the forest.
+      A young dancer who was exposing illegal logging. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Zuzana (Katarína's best friend) -> zuzana_q1
+      - Talk to Simona (folk ensemble leader) -> simona_q1
+      - Check what Marek (Katarína's brother) is saying -> marek_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Zuzana Q1 ---
+
+  zuzana_q1:
+    type: tweet
+    from: zuzana
+    text: >
+      prosím ak máte akékoľvek správy o @katarina_kovacova zavolajte
+      mi. jej izba je nedotknutá. jej kroj visí v skrini. nikdy by
+      neodišla bez neho.
+    effects: { trust_zuzana: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Zuzana -> zuzana_q1_talk
+
+  zuzana_q1_talk:
+    type: message
+    text: >
+      ZUZANA: Ďakujem za záujem ale nepoznám ťa. Katka má veľa
+      priateľov tu. Určite sa vráti.
+
+      ...stále to hovorím. Už tomu neverím.
+
+      [Zuzana is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Simona Q1 ---
+
+  simona_q1:
+    type: tweet
+    from: simona
+    text: >
+      Skúška súboru Javor dnes bez @katarina_kovacova. Jej miesto
+      je prázdne. Dvadsať rokov vediem tento súbor. Nikto nikdy
+      nechýbal bez slova. Niečo sa stalo.
+    effects: { trust_simona: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Simona -> simona_q1_talk
+
+  simona_q1_talk:
+    type: message
+    text: >
+      SIMONA: Katarína je duša tohto súboru. Devätnásť rokov a
+      tancuje ako keby mala oheň v srdci. Toto vyšetrovanie o
+      lese — bola v tom celá. Mala fotky, GPS záznamy, všetko.
+
+      Ten jej ex — Jakub — ten ma znepokojuje. Po rozchode sa
+      začal správať čudne. Prišiel na vystúpenie a sedel v
+      poslednom rade. Len sa díval. Celé dve hodiny.
+
+      [Simona seems genuinely worried.]
+    effects: { trust_simona: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marek Q1 ---
+
+  marek_q1:
+    type: tweet
+    from: marek
+    text: >
+      moja sestra ZMIZLA a polícia mi hovorí že asi išla na
+      turistiku??? ONA NECHODÍ NA TURISTIKU BEZ OZNÁMENIA.
+      idem z žiliny. niekto mi to vysvetlí do piče.
+    effects: { trust_marek: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marek -> marek_q1_talk
+
+  marek_q1_talk:
+    type: message
+    text: >
+      MAREK: Kto si? Ďalší čo mi povie aby som sa upokojil? Sestra
+      mi volala v tú noc pred tým čo zmizla. Povedala že má niečo
+      veľké. Povedala "keby sa niečo stalo, pozri sa na TatraResort."
+      Potom zložila.
+
+      To je posledné čo som od nej počul.
+    effects: { trust_marek: "+10" }
+    choices:
+      - What do you think happened? -> marek_theory
+      - Move on -> quest1_hub
+
+  marek_theory:
+    type: message
+    text: >
+      MAREK: Myslím si že našla dôkaz že TatraResort rúbe chránený
+      les a oni ju umlčali. Ale tiež si myslím že ten jej kreténsky
+      ex — Jakub — vie viac než hovorí. Spôsob akým o nej hovorí...
+      to nie je normálna starosť. To je niečo iné.
+
+      Katka mi pred mesiacmi povedala že niekto jej prehľadáva veci
+      v šatni pri kultúrnom dome. Myslela si že to je blbosť. Ja si
+      nemyslím že to bola blbosť.
+    effects: { trust_marek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Katarína went silent. Multiple
+      people saw or heard things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Milan (was filming near the cultural house) -> milan_interview
+      - Find Jozef (mountain guide, saw lights at night) -> jozef_interview
+      - Find Darina (baker, early morning) -> darina_interview
+      - Find Roman (mountain hut warden, heard engines) -> roman_interview
+
+  # --- Milan (saw someone at Katarína's car) ---
+
+  milan_interview:
+    type: tweet
+    from: milan
+    text: >
+      vole dnes som mal natáčať nový klip ale nálada je v piči.
+      divné veci sa dejú v tejto dedine fakt
+    effects: { trust_milan: "+5" }
+    choices:
+      - Ask Milan about that evening -> milan_talk
+
+  milan_talk:
+    type: message
+    text: >
+      MILAN: vole ok ale nikomu to nehovor kurva. bol som pri
+      kultúrnom dome okolo siedmej, natáčal som nejaké hovadiny
+      na tiktok. a videl som toho typka — jakuba — pri Katkinom
+      aute. niečo tam pichal alebo dával pod auto. keď ma zbadal
+      tak zdrhol jak do piče.
+
+      vole ja som nič nepovedal lebo som nechcel mať problémy
+      ale toto je fakt hustý. to nie je normálne správanie kokot
+    effects:
+      trust_milan: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jozef (mountain guide, saw late-night meeting) ---
+
+  jozef_interview:
+    type: tweet
+    from: jozef
+    text: >
+      Pripomínam: chodníky nad sedlom sú po zotmení zakázané.
+      V posledných nociach som zaregistroval nepovolený pohyb
+      vozidiel.
+    effects: { trust_jozef: "+5" }
+    choices:
+      - Ask Jozef what he saw -> jozef_talk_night
+
+  jozef_talk_night:
+    type: message
+    text: >
+      JOZEF: Zatváral som chatu okolo desiatej večer. Videl som
+      Katkino auto ešte stáť pri kultúrnom dome. A vedľa neho
+      čierny SUV — bratislavské značky — ten čo jazdí Andrej
+      Beneš z TatraResortu.
+
+      O desiatej večer. Pri kultúrnom dome. Dvaja chlapi stáli
+      pri vchode. Jedného som poznal — Beneš.
+
+      Zapísal som si to do denníka. Nikto sa nepýtal.
+    effects:
+      trust_jozef: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Darina (baker, early morning) ---
+
+  darina_interview:
+    type: tweet
+    from: darina
+    text: >
+      Pečiem od štvrtej ako vždy. Ale to ráno — auto išlo príliš
+      rýchlo po ceste k sedlu. V tme. Nebezpečne.
+    effects: { trust_darina: "+5" }
+    choices:
+      - Ask Darina what she saw -> darina_talk
+
+  darina_talk:
+    type: message
+    text: >
+      DARINA: Vstávam o štvrtej každý deň. To ráno som otvárala
+      okenice a auto prešlo cez dedinu — rýchlo, príliš rýchlo
+      na horskú cestu. Čierne SUV. Potom asi o dve minúty neskôr
+      druhé auto. Menšie, červené. Ako keby naháňalo to prvé.
+
+      To druhé auto odbočilo na lesnú cestu k starým salašom.
+      Prvé pokračovalo smerom na hlavnú cestu k Poprad.
+
+      Povedala som to polícii. Zapísali si to. Tým to skončilo.
+    effects:
+      trust_darina: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Roman (mountain hut, heard engines) ---
+
+  roman_interview:
+    type: tweet
+    from: roman
+    text: >
+      o tretej ráno počuť motory na lesnej ceste. to nie sú turisti.
+      niekto jazdí ťažkou technikou v chránenej zóne. v noci.
+    effects: { trust_roman: "+5" }
+    choices:
+      - Ask Roman what he heard -> roman_talk
+
+  roman_talk:
+    type: message
+    text: >
+      ROMAN: Bývam na chate pod Kriváňom. V tú noc — noc pred tým
+      čo Katka zmizla — som o tretej ráno počul motory. Nie auto.
+      Ťažkú techniku. Bagre alebo nákladiaky na lesnej ceste.
+
+      Ráno som išiel pozrieť. Čerstvé stopy pneumatík na ceste
+      do chránenej zóny. A ďalšie vyrúbané stromy. Asi dvadsať.
+      V noci. Aby to nikto nevidel.
+
+      Katka fotila presne tieto miesta. Vedeli čo má.
+    effects:
+      trust_roman: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Zuzana (best
+      friend) and Filip (saw Jakub watching the flat).
+    choices:
+      - Talk to Zuzana about that night -> zuzana_interview
+      - Talk to Filip -> filip_interview
+      - Find Milan -> milan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Jozef -> jozef_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Darina -> darina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Roman -> roman_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Zuzana (last to see Katarína) ---
+
+  zuzana_interview:
+    type: tweet
+    from: zuzana
+    text: >
+      tá fotka na Katkinom účte. to nie je ona. Katka nikdy
+      nepostne bez popisu. Katka nepostuje o druhej ráno.
+      niekto iný to urobil.
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - DM Zuzana -> zuzana_talk_low
+        when:
+          state: trust_zuzana
+          lt: 50
+      - DM Zuzana -> zuzana_talk_high
+        when:
+          state: trust_zuzana
+          gte: 50
+
+  zuzana_talk_low:
+    type: message
+    text: >
+      ZUZANA: Ďakujem za starosť ale fakt nechcem hovoriť s
+      cudzími ľuďmi o tomto.
+
+      [Zuzana needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - Share what you've learned about the night -> zuzana_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  zuzana_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the cultural house,
+      the corporate men, the running figure, the midnight logging.
+      Zuzana is silent for a while.
+
+      ZUZANA: Ty to fakt riešiš. Dobre. Poviem ti.
+    effects: { trust_zuzana: "+25" }
+    choices:
+      - What happened that night? -> zuzana_talk_high
+
+  zuzana_talk_high:
+    type: message
+    text: >
+      ZUZANA: Prišla domov okolo jedenástej. Bola som ešte hore,
+      pozerala som film. Bola bledá, triasla sa. Povedala "vedia
+      čo mám." Zobrala notebook a externý disk s fotkami.
+
+      Pýtala som sa kto. Povedala "z resortu. Prišli do kultúráku."
+      Potom povedala ešte niečo — "a on tam bol tiež. Vždy tam
+      je."
+
+      Nechcela povedať kto "on" bol. Objala ma, povedala "neboj
+      sa," a odišla s taškou. To bolo všetko. Ráno jej auto bolo
+      preč a na účte bola tá fotka.
+    effects:
+      trust_zuzana: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Filip (saw Jakub watching the flat) ---
+
+  filip_interview:
+    type: message
+    text: >
+      FILIP: vole ok fakt divné čo ti poviem ale ten typek —
+      jakub — videl som ho asi trikrát večer pred Katkiným bytom.
+      proste stál tam a pozeral na okná. mega creepy vole.
+
+      poslednýkrát to bolo asi dva dni pred tým čo zmizla. sedel
+      v aute na parkovisku oproti. len tak sedel. svetlá zhasnuté.
+      fakt desivé hovno.
+    effects:
+      trust_filip: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Jakub seen at Katarína's car at the parking lot (Milan)
+      22:00 — TatraResort SUV at the cultural house, Andrej Beneš present (Jozef)
+      23:00 — Katarína arrives home, shaken, grabs laptop and drives (Zuzana)
+      03:00 — Heavy machinery heard on forest road, more trees felled (Roman)
+      04:00 — Two cars speeding through village, one toward old mountain huts (Darina)
+
+      TatraResort confronted Katarína at the cultural house. She fled
+      home, grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is TatraResort hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Jakub really doing? Why was he at
+        her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Jakub -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      TatraResort is hiding something. Katarína had proof. Now she's
+      gone and her evidence USB is missing from the cultural house.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the cultural house records -> cultural_records
+      - Talk to Lucia the journalist -> lucia_interview
+      - Talk to Michal (TatraResort technician) -> michal_interview
+      - Talk to Vladimíra (environment deputy) -> vladimira_interview
+      - Check the Strážcovia Lesa association -> asso_investigation
+      - Talk to Jozef about the logging -> jozef_logging
+      - Back to hub -> investigation_hub
+
+  # --- Cultural House Records ---
+
+  cultural_records:
+    type: message
+    text: >
+      The cultural house has a booking log. Katarína reserved the
+      small meeting room regularly for folk ensemble rehearsals.
+      Her last booking was the evening she disappeared — but the
+      log shows "cancelled by admin" with no explanation.
+
+      The cultural house's shared computer shows Katarína's
+      presentation folder was last accessed at 21:47 — two hours
+      after the ensemble finished rehearsal. Someone opened her
+      files. Her GPS documentation folder is empty. Wiped.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Lucia ---
+
+  lucia_interview:
+    type: message
+    text: >
+      LUCIA: Nehovorím o zdrojoch. Nikdy.
+    effects: { trust_lucia: "+5" }
+    choices:
+      - Show Lucia the evidence you have -> lucia_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  lucia_with_evidence:
+    type: message
+    text: >
+      LUCIA: ...máš viac než som čakala.
+
+      Dobre. Katka a ja sme spolupracovali. Mala fotky nelegálneho
+      výrubu v chránenej zóne NATURA 2000. Mala GPS súradnice
+      každého vyrúbaného stromu. Mala dokumenty o stavebných
+      povoleniach ktoré boli vydané spätne — po tom čo stromy
+      už boli vyrúbané.
+
+      Chceli sme to spolu zverejniť. Potom zmizla. A o dva dni
+      niekto vlámal do mojej kancelárie a ukradol záložný disk.
+
+      Katka žije. Ozvala sa mi raz, z cudzieho čísla. Povedala
+      že sa ukrýva. Povedala "vyhrážali sa mi v kultúráku a ešte
+      niekto iný ma nenechá na pokoji."
+
+      Nemôžem ti povedať kde je. Ale s dostatkom dôkazov môžem
+      to zverejniť a bude pre ňu bezpečné vrátiť sa.
+    effects:
+      trust_lucia: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> lucia_hint
+      - Back to investigation hub -> investigation_hub
+
+  lucia_hint:
+    type: message
+    text: >
+      LUCIA: Z resortu prišiel Beneš — riaditeľ projektu — a nejaký
+      právnik. Povedali jej nech odovzdá všetko alebo bude čeliť
+      právnym následkom. Zastrašovanie zabalené do právnických
+      rečí.
+
+      Ale spomínala aj niekoho z jej okolia. Niekoho kto jej
+      prehľadával veci. Kto vždy vedel kde je. To je iný problém.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Michal (TatraResort whistleblower) ---
+
+  michal_interview:
+    type: message
+    text: >
+      MICHAL: Pracujem pre TatraResort. Som len technik. Nastavujem
+      sondy, meriam terén.
+
+      Ale merania čo robím... nie vždy sa zhodujú s tým čo ide
+      do povolení.
+    effects: { trust_michal: "+10" }
+    choices:
+      - What do you mean? -> michal_detail
+
+  michal_detail:
+    type: message
+    text: >
+      MICHAL: Meriam sklon svahu, hladinu spodnej vody, kvalitu
+      pôdy. Moje čísla idú šéfovi. Niekde medzi mojím stolom a
+      úradnými dokumentmi sa zmenia. Vždy v prospech výstavby.
+
+      Katkine fotky chránenej zóny sa zhodovali s mojimi
+      originálnymi meraniami — nie s tými v povoleniach. Mala
+      nezávislý dôkaz že TatraResort falšuje podklady pre
+      stavebné povolenia.
+
+      Bojím sa. Mám rodinu. Ale kópie mojich originálov mám
+      schované. Ak ma niekto ochráni, zdieľam ich.
+    effects:
+      trust_michal: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Vladimíra ---
+
+  vladimira_interview:
+    type: message
+    text: >
+      VLADIMÍRA: Ako poslankyňa pre životné prostredie beriem
+      tieto obvinenia vážne. Ale TatraResort zamestnáva osemdesiat
+      ľudí z obce. Starosta trvá na tom že musíme "udržať dialóg."
+
+      Mimo záznam? Videla som inšpekčné správy. TatraResort
+      prejde každou kontrolou. Ale tie kontroly sú ohlásené dva
+      týždne vopred. Upracú pred tým než prídu inšpektori.
+
+      Katka mala neoznámené údaje. Preto je to nebezpečné.
+    effects:
+      trust_vladimira: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Strážcovia Lesa ---
+
+  asso_investigation:
+    type: tweet
+    from: ochrana_lesa
+    text: >
+      UPOZORNENIE: Nahlásený nelegálny výrub v chránenej zóne
+      NATURA 2000 nad sedlom. Fotodokumentácia a merania prebiehajú.
+      Žiadame okamžitú neohlásenú inšpekciu projektu TatraResort.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Strážcovia Lesa dokumentujú stav lesa tri roky. Ich údaje
+      ukazujú jasný vzorec: výrub stromov sa zhoduje s harmonogramom
+      výstavby TatraResortu. Väčší výrub v noci a cez víkendy.
+      Menší cez deň keď chodia turisti.
+
+      Vzorec je jednoznačný. Toto je priebežný, úmyselný nelegálny
+      výrub načasovaný aby sa vyhol detekcii.
+
+      Katka bola členkou. Prispela väčšinou fotografií a GPS údajov.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Jozef logging ---
+
+  jozef_logging:
+    type: message
+    text: >
+      JOZEF: Ukážem ti niečo. Minulý mesiac som našiel v potoku
+      pod sedlom toto — betónové zvyšky, kusy asfaltu, odpad zo
+      stavby. Priamo v chránenom potoku. Na kusoch bol logo
+      TatraResortu a číslo zákazky.
+
+      Odfotil som to a poslal Katke. Povedala že to je chýbajúci
+      kúsok — dôkaz že nielen rúbu stromy ale aj znečisťujú
+      vodné toky. Stavebný odpad v NATURA 2000 zóne.
+
+      Stále mám fotky. A číslo zákazky.
+    effects:
+      trust_jozef: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Jakub Sedláček. Ex-boyfriend. Still around? Someone was going
+      through Katarína's things at the cultural house. Someone was
+      watching her flat. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Jakub's social media activity -> jakub_social
+      - Talk to Zuzana about Jakub -> zuzana_jakub
+        when:
+          state: trust_zuzana
+          gte: 20
+      - Talk to Milan (more detail on the car incident) -> milan_detail
+      - Talk to Iveta the pharmacist -> iveta_interview
+      - Check the anonymous account @nadezda_ticha -> nadezda_investigation
+      - Talk to Tomáš the woodworker -> tomas_interview
+        when:
+          state: trust_tomas
+          gte: 40
+      - Talk to Major Húska -> major_interview
+        when:
+          state: trust_major
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Jakub's Social Media ---
+
+  jakub_social:
+    type: message
+    text: >
+      Jakub Sedláček's public profile: 22 years old, from Poprad.
+      Works at a car dealership. His posts are normal — cars, football,
+      beer with friends — until three months ago.
+
+      After the breakup, his posting changes. Katarína's name appears
+      constantly. "Missing you." "We'll work it out." "Nobody understands
+      you like I do." Then darker: "I know you still care." "I see
+      you with other people." "You can't just throw away what we had."
+
+      He likes and comments on every single one of Katarína's posts.
+      Within minutes. Every time. Even at 2am.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Zuzana on Jakub ---
+
+  zuzana_jakub:
+    type: message
+    text: >
+      ZUZANA: Jakub? Z toho chlapca bola Katka v strese. Chodili
+      spolu rok, bol milý na začiatku. Potom začal kontrolovať
+      kde je, s kým je, prečo neodpísala do piatich minút.
+
+      Rozišla sa s ním jasne, slušne. Povedal že rozumie. A nič
+      sa nezmenilo. Stále bol všade. Stále sa objavoval pri
+      kultúrnom dome keď mala skúšku. Stále sa pýtal jej kamarátov
+      kde je.
+
+      Pred mesiacom Katka zistila že jej niekto prehľadal tašku
+      v šatni. Nič nechýbalo ale veci boli prehádzané. Podozrievala
+      Jakuba ale nemohla to dokázať.
+    effects:
+      trust_zuzana: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Milan detail ---
+
+  milan_detail:
+    type: message
+    text: >
+      MILAN: vole ok fakt som ti nepovedal všetko. keď som videl
+      jakuba pri Katkinom aute, mal v ruke nejaký malý prístroj.
+      dal to pod auto, na stranu vodiča. prilepil to tam.
+
+      vole ja nie som expert ale vyzeralo to jak GPS sledovačka.
+      jak z filmu vole. ten kokot ju sledoval kurva.
+
+      mal som niečo povedať ale vole kto by uveril šestnásťročnému
+      čo natáča tiktok. do piče nikto.
+    effects:
+      trust_milan: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Iveta ---
+
+  iveta_interview:
+    type: message
+    text: >
+      IVETA: Toto je dôverné ale som lekárnička, nie kňaz. Jakub
+      Sedláček sem chodí pravidelne. Kupuje veci čo naznačujú
+      že nespí. Lieky na úzkosť, tabletky na spanie, energetické
+      doplnky. Vzorec niekoho pod extrémnym stresom.
+
+      Raz sa ma tiež pýtal, úplne ležérne, či predávame GPS
+      sledovačky. Povedala som "toto je lekáreň, nie elektro."
+      Zasmial sa a odišiel. Nerozmýšľala som o tom. Až kým
+      Katka nezmizla.
+    effects:
+      trust_iveta: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Nádežda (anonymous account) ---
+
+  nadezda_investigation:
+    type: tweet
+    from: nadezda
+    text: >
+      Mala ma počúvať. Snažil som sa ju chrániť. Nikto iný
+      nerozumel jej práci ako ja.
+    choices:
+      - Look at this account's history -> nadezda_posts
+
+  nadezda_posts:
+    type: message
+    text: >
+      @nadezda_ticha: account created 5 months ago. Posts are all
+      about Katarína's work. Comments on every dance video, every
+      forest photo, every rehearsal update. The tone shifts over time:
+
+      Month 1: "Nádherné vystúpenie. Robíš to čo si nikto iný netrúfne."
+      Month 2: "Prečo mi neodpíšeš? Len chcem pomôcť."
+      Month 4: "Vidím ťa v kolibe s inými ľuďmi. Na mňa čas nemáš?"
+      Month 5: "Viem kde chodíš. Poznám tvoj rozvrh. Som vždy blízko."
+
+      The account has no photos, no personal details. Just Katarína.
+      Only Katarína.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> nadezda_style
+
+  nadezda_style:
+    type: message
+    text: >
+      Comparing @nadezda_ticha with Jakub Sedláček's public posts:
+
+      Same spelling errors — consistently writes "nebudú" with a
+      missing háček. Same use of Poprad regional slang. Same knowledge
+      of Katarína's rehearsal schedule that only someone close to the
+      ensemble would have.
+
+      And one post from @nadezda_ticha: "Tvoj tanec na generálke
+      bol dokonalý." Generálka — the dress rehearsal — was private.
+      Not public. Not streamed. You had to be there.
+
+      It's Jakub. The anonymous account is Jakub.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Tomáš ---
+
+  tomas_interview:
+    type: message
+    text: >
+      TOMÁŠ: Katka mi niečo nechala. Zabalenú vodotesnú krabicu.
+      Povedala "ak sa niekto bude pýtať na stromy nad sedlom, daj
+      mu toto."
+
+      Vyzerala vystrašene. Povedala že urobila kópie všetkého ale
+      potrebuje jednu sadu niekde kde by nikto nehľadal. Stolárska
+      dielňa sa zdala perfektná.
+    effects: { trust_tomas: "+10" }
+    choices:
+      - What's above the saddle? -> tomas_case
+
+  tomas_case:
+    type: message
+    text: >
+      Tomáš siahne pod pracovný stôl a vytiahne vodotesnú krabicu.
+
+      TOMÁŠ: Povedala že prídeš. Vezmi si to.
+
+      Vnútri: USB kľúč a sada vytlačených fotografií. Fotky
+      ukazujú vyrúbanú chránenú zónu — pne, bahno, stopy po
+      ťažkej technike — a dokumenty o stavebných povoleniach
+      vydaných spätne. USB disk obsahuje GPS súradnice, chemické
+      analýzy vody z potoka, a podrobný Katkin report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Major Húska ---
+
+  major_interview:
+    type: message
+    text: >
+      MAJOR HÚSKA: Mimo záznamu — a myslím tým úplne mimo záznamu
+      — chcel som vyšetriť TatraResort. Môj nadriadený mi povedal
+      nech to nechám. Povedal že "krajský úrad má kompetenciu."
+      To je kód pre "nechaj to na pokoji."
+
+      Situácia so Sedláčkom je iná. O tej som nevedel. Ak máš
+      dôkazy o stalkingu, môžem konať. To je jednoznačne moja
+      kompetencia.
+
+      Prines mi niečo konkrétne a prípad znova otvorím.
+    effects:
+      trust_major: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Katarína than anyone in Brezová. Who is responsible?
+    choices:
+      - Confront Jakub Sedláček (the obsessive ex) -> confront_jakub
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Andrej Beneš (the resort director) -> confront_andrej
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Kučera (political protection) -> confront_stefan
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Jakub (Best Ending) ---
+
+  confront_jakub:
+    type: message
+    text: >
+      You present your evidence to Jakub:
+
+      "I know @nadezda_ticha is your account. I know you put a GPS
+      tracker on Katarína's car. I know you went through her things
+      in the dressing room. I know you watched her flat. I have
+      witnesses and I have your posting history."
+    choices:
+      - Send -> jakub_response
+
+  jakub_response:
+    type: message
+    text: >
+      Jakub doesn't reply for a long time. Then:
+
+      JAKUB: Ty nechápeš. Chránil som ju. Bola v nebezpečenstve
+      kvôli tomu resortu a nechcela si dať pomôcť. Musel som
+      vedieť že je v bezpečí. Všetko čo som robil bolo preto
+      lebo mi na nej záleží.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Major Húska. And to
+      Lucia Vlčková.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Major Húska reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the witnesses, the
+      pattern of stalking — Jakub is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Katarína's
+      car at the old mountain huts above the saddle.
+
+      Lucia Vlčková, finally in possession of Katarína's full
+      evidence package, publishes the TatraResort story in Denník N.
+      The ministry orders an unannounced inspection. Construction
+      is halted pending environmental investigation. Andrej Beneš
+      faces criminal charges for falsifying building permits and
+      destroying protected forest.
+
+      And Katarína Kováčová, reading the story from a friend's
+      house in Košice, calls her brother for the first time in
+      nine days.
+
+      "Idem domov."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: katarina
+    text: >
+      les neklamne. a ľudia z brezovej tiež nie. ďakujem že ste
+      to nevzdali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Andrej (Partial Ending) ---
+
+  confront_andrej:
+    type: message
+    text: >
+      You present the environmental evidence to Andrej Beneš:
+
+      "I have photographs of illegal logging in NATURA 2000 protected
+      forest. I have GPS coordinates of every felled tree. I have
+      building permits issued retroactively. I have original survey
+      data showing your submissions were falsified."
+    choices:
+      - Send -> andrej_response
+
+  andrej_response:
+    type: message
+    text: >
+      ANDREJ: Tento rozhovor bude postúpený nášmu právnemu
+      oddeleniu. Akékoľvek zverejnenie ohovárania bude mať
+      okamžité právne následky. TatraResort Development vždy
+      koná v súlade s platnými predpismi.
+
+      But it's too late. You've sent the evidence to Lucia, to
+      the Strážcovia Lesa, and to the ministry.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The logging story breaks. TatraResort is ordered to halt
+      construction pending investigation. The resort project may
+      be cancelled. Eighty jobs hang in the balance. The village
+      is divided.
+
+      But Katarína?
+
+      Without the stalking evidence, Jakub is never investigated.
+      He continues to monitor her social media. He continues to
+      drive past her flat. He creates a new anonymous profile.
+
+      Three months later, Katarína reads about TatraResort online.
+      She returns quietly. She changes her rehearsal schedule. She
+      stops hiking alone. She checks her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Katarína walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: katarina
+    text: "som doma. les je bezpečnejší. zvyšok... uvidíme."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_stefan:
+    type: message
+    text: >
+      You confront Mayor Kučera with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> stefan_response
+
+  stefan_response:
+    type: tweet
+    from: barbora
+    text: >
+      Môj klient berie na vedomie vaše obvinenia. Akékoľvek
+      verejné šírenie ohovárania bude mať za následok okamžité
+      právne kroky. — Kancelária Richter & Partners, Bratislava
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Kučera and TatraResort's illegal logging — and
+      there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      TatraResort continues to build. Jakub continues to watch.
+      Katarína stays in hiding.
+
+      Six months later, @nadezda_ticha creates a new account. It
+      follows Katarína's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: BREZOVÁ POD TATRAMI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Katarína's story explores themes of
+      environmental destruction, corporate corruption, obsessive
+      behaviour, community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Linka dôvery: 0800 500 333
+      Národná linka pre ženy zažívajúce násilie: 0800 212 212
+      Polícia SR: 158

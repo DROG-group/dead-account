@@ -1,0 +1,1661 @@
+# DEAD ACCOUNT — Story 083: Clos-de-Brenne (France, Round 4)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-083.yml
+#
+# Player investigates the death of goat cheese maker Margaux Dubois
+# in the fictional Berry village of Clos-de-Brenne.
+
+meta:
+  title: "Dead Account — Clos-de-Brenne"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lucien: 0
+    trust_camille: 0
+    trust_raymond: 0
+    trust_nadine: 0
+    trust_enzo: 0
+    trust_yasmine: 0
+    trust_dylan: 0
+    trust_philippe: 0
+    trust_sandrine: 0
+    trust_odette: 0
+    trust_baptiste: 0
+    trust_agnes: 0
+    trust_julien: 0
+    trust_florence: 0
+    trust_romain: 0
+    trust_marianne: 0
+    trust_victor: 0
+    trust_gendarme: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "fraîchement arrivé à clos-de-brenne. le berry, ça se découvre à pied"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "ClosDeBrene.social"
+    description: "Bienvenue sur l'instance communautaire de Clos-de-Brenne, Berry"
+    avatar_url: /gamepatch/assets/dead-account/closdebrene_bot.png
+
+  npcs:
+    # === Margaux's Inner Circle ===
+    margaux:
+      name: "Margaux Dubois"
+      bio: "fromagère de chèvre | la Ferme du Pré Vert | AOP crottin de chavignol | mes biques, ma vie"
+      avatar: avatars/margaux.jpg
+    lucien:
+      name: "Lucien Dubois"
+      bio: "frère de margaux | menuisier | clos-de-brenne depuis toujours | elle me manque"
+      avatar: avatars/lucien.jpg
+    camille:
+      name: "Camille Bertrand"
+      bio: "meilleure amie de margaux | instit à l'école du village | les gosses d'abord"
+      avatar: avatars/camille.jpg
+    baptiste:
+      name: "Baptiste Morel"
+      bio: "ex de margaux | vigneron bio | domaine des Épines | on s'est quittés en bons termes"
+      avatar: avatars/baptiste.jpg
+
+    # === Local Government ===
+    philippe:
+      name: "Philippe Gauthier"
+      bio: "Maire de Clos-de-Brenne | 3e mandat | emploi & territoire | #BerryQuiVit"
+      avatar: avatars/philippe.jpg
+    sandrine:
+      name: "Sandrine Michaud"
+      bio: "Adjointe agriculture & environnement | Commune de Clos-de-Brenne | circuits courts"
+      avatar: avatars/sandrine.jpg
+    mairie:
+      name: "Mairie de Clos-de-Brenne"
+      bio: "Compte officiel | Actualités communales | Horaires: Lun-Ven 9h-12h 14h-17h"
+      avatar: avatars/mairie.jpg
+
+    # === Local Business & Community ===
+    raymond:
+      name: "Raymond Perrin"
+      bio: "paysan retraité | 50 ans d'élevage | cette terre c'est mon sang"
+      avatar: avatars/raymond.jpg
+    nadine:
+      name: "Nadine Clément"
+      bio: "Auberge du Vieux Pont | cuisine berrichonne | ouvert ven-dim + jours de marché"
+      avatar: avatars/nadine.jpg
+    odette:
+      name: "Odette Blanchard"
+      bio: "pharmacienne | Clos-de-Brenne | conseil & santé | garde le dimanche"
+      avatar: avatars/odette.jpg
+    agnes:
+      name: "Agnès Fournier"
+      bio: "apicultrice | Les Ruches du Val | miel de bruyère | mes abeilles crèvent et personne dit rien"
+      avatar: avatars/agnes.jpg
+    florence:
+      name: "Florence Joubert"
+      bio: "boulangerie Joubert | pain au levain | galette aux pommes de terre | 5h du mat 7j/7"
+      avatar: avatars/florence.jpg
+
+    # === Journalist ===
+    marianne:
+      name: "Marianne Vasseur"
+      bio: "journaliste | La Nouvelle République du Centre | environnement & ruralité | tips: m.vasseur@nrco.fr"
+      avatar: avatars/marianne.jpg
+
+    # === AgriVal (corporate) ===
+    agrival:
+      name: "AgriVal Centre SA"
+      bio: "Solutions agrochimiques | Site de Brenne-Sud | Agriculture performante & responsable"
+      avatar: avatars/agrival.jpg
+    julien:
+      name: "Julien Marchand"
+      bio: "directeur site AgriVal Centre | Brenne-Sud | industrie au service de l'agriculture"
+      avatar: avatars/julien.jpg
+    victor:
+      name: "Victor Delaunay"
+      bio: "Avocat | Cabinet Delaunay & Partenaires | Droit des affaires | Bourges"
+      avatar: avatars/victor.jpg
+
+    # === Teens ===
+    enzo:
+      name: "Enzo"
+      bio: "16 | motocross & bécane | clos-de-brenne c la campagne mais c chez moi frr"
+      avatar: avatars/enzo.jpg
+    yasmine:
+      name: "Yasmine"
+      bio: "17 | photo nature | les chèvres de margaux c'était mon spot préféré"
+      avatar: avatars/yasmine.jpg
+    dylan:
+      name: "Dylan"
+      bio: "15 | pêche & rando | le berry c'est pas mort bordel"
+      avatar: avatars/dylan.jpg
+
+    # === Media & Community ===
+    actu_brenne:
+      name: "Actu Clos-de-Brenne"
+      bio: "Actualités du village et du Berry | Tips: redaction@actu-brenne.fr"
+      avatar: avatars/actu_brenne.jpg
+    meteo_berry:
+      name: "Météo Berry"
+      bio: "Prévisions & alertes | Station Clos-de-Brenne | Mise à jour toutes les heures"
+      avatar: avatars/meteo_berry.jpg
+    asso_terre:
+      name: "Association Terre de Berry"
+      bio: "Protection des terres agricoles | Biodiversité | Signalements pollution"
+      avatar: avatars/asso_terre.jpg
+
+    # === Suspicious / Other ===
+    romain:
+      name: "Romain Lefèvre"
+      bio: "photographe animalier | installé à clos-de-brenne depuis 2 ans | la nature, c'est sacré"
+      avatar: avatars/romain.jpg
+    anon_berger:
+      name: "Le Berger Noir"
+      bio: "."
+      avatar: avatars/anon.jpg
+    gendarme:
+      name: "Adjudant Moreau"
+      bio: "Gendarmerie de Clos-de-Brenne | Brigade territoriale | urgences: 17"
+      avatar: avatars/gendarme.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN CLOS-DE-BRENNE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to ClosDeBrene.social — the community Mastodon instance for
+      the village of Clos-de-Brenne, Berry, central France.
+
+      The local feed is heavy today. Something has happened in the valley.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice one name in every other post:
+      @margaux_dubois.
+
+      A goat cheese maker. Ran the Ferme du Pré Vert. Her crottins won
+      prizes. She was part of the landscape here. People are devastated.
+
+      She was found dead two days ago. In the stream behind her farm.
+      The gendarmerie says accidental drowning.
+    choices:
+      - Look at her profile -> margaux_profile
+
+  margaux_profile:
+    type: tweet
+    from: margaux
+    text: "Les chèvres ne boivent plus au ruisseau. L'eau sent le chimique depuis des semaines. J'ai fait des analyses. Les résultats sont là. Qui veut voir?"
+    choices:
+      - That's her last real post... -> grey_photo
+
+  grey_photo:
+    type: message
+    text: >
+      A day after that post, her account uploaded a single image:
+      a blurry photo of her goats in the fog. Shot at dawn. No caption.
+      No hashtags. Nothing like her usual posts.
+
+      Her friends say she would never post without a story. The gendarmerie
+      says she slipped on the muddy bank. Something doesn't add up.
+    choices:
+      - Read the gendarmerie statement -> gendarmerie_statement
+      - Look at what people are saying -> community_reaction
+
+  gendarmerie_statement:
+    type: tweet
+    from: gendarme
+    text: >
+      Nous avons constaté le décès d'une résidente de Clos-de-Brenne.
+      Les premiers éléments indiquent une noyade accidentelle. L'enquête
+      est en cours. Toute information peut être communiquée au 17 ou
+      à la brigade.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are furious. Her brother @lucien_dubois is in shock.
+      Her best friend @camille_bertrand is calling it murder. The old
+      farmer @raymond_perrin says the stream has been poisoned for months.
+      The beekeeper @agnes_fournier says her hives are dying too.
+
+      And the photographer @romain_lefevre, who moved to the village
+      two years ago, is posting tributes that feel... too intimate.
+
+      Nobody buys the gendarmerie's accidental drowning line. Margaux
+      knew that stream her whole life. She didn't slip.
+    effects: { trust_lucien: "+5", trust_camille: "+5" }
+    choices:
+      - Start following Margaux's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Clos-de-Brenne. Follow Margaux's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Nadine (auberge owner, knows everyone) -> nadine_intro
+      - Talk to Raymond (old farmer, knows the land) -> raymond_intro
+      - Talk to Enzo (teen, seems angry) -> enzo_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief about Margaux with the rhythms of a rural
+      village: market schedules, hunting season reminders, the bakery's
+      daily specials, rain forecasts.
+
+      Key names surface: Lucien (her brother, carpenter), Camille (best
+      friend, schoolteacher), Baptiste (her ex, winemaker), and the
+      teens — Enzo, Yasmine, Dylan — who loved visiting the farm.
+
+      Also prominent: AgriVal Centre SA, the agrochemical company whose
+      facility sits two kilometres upstream from Margaux's farm. Their
+      posts are corporate PR about "sustainable agriculture." Margaux's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Nadine -> nadine_intro
+      - Talk to Raymond -> raymond_intro
+      - Talk to Enzo -> enzo_intro
+
+  # --- Nadine (social map) ---
+
+  nadine_intro:
+    type: tweet
+    from: nadine
+    text: >
+      L'auberge sera fermée ce soir. Je n'ai pas le cœur à cuisiner.
+      @margaux_dubois, ton fromage sera toujours sur ma carte. Toujours.
+    effects: { trust_nadine: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Nadine -> nadine_talk
+
+  nadine_talk:
+    type: message
+    text: >
+      NADINE: Ah, vous êtes nouveau? Welcome. Terrible timing. The
+      whole village is in pieces over Margaux.
+
+      Let me tell you who's who. Lucien is her brother — carpenter, lives
+      on the other side of the valley. Sweet man, completely destroyed.
+      Camille is her best friend, teaches at the school. They grew up
+      together.
+
+      Baptiste Morel — he's her ex. They split up a year ago but stayed
+      friendly. He's a winemaker, organic, good guy. Margaux used to
+      supply cheese for his wine tastings.
+
+      Then there's Romain Lefèvre. A photographer. Moved here two years
+      ago. He's been... very attentive to Margaux. Always at the farm
+      taking pictures of the goats, he said. But Camille told me Margaux
+      was getting uncomfortable with him.
+
+      And AgriVal Centre — putain, don't get me started. That factory
+      has been poisoning the valley and nobody does a thing.
+    effects: { trust_nadine: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Romain -> nadine_romain
+      - Ask about AgriVal -> nadine_agrival
+      - Thank her and move on -> quest1_hub
+
+  nadine_romain:
+    type: message
+    text: >
+      NADINE: Romain? He turned up two years ago from Paris. Said he
+      wanted to photograph wildlife. Fair enough — the Brenne is full
+      of birds and deer. But pretty quickly he started spending all
+      his time at Margaux's farm.
+
+      Said the goats were photogenic. Maybe. But then it was showing
+      up at the market when she had a stall. At the auberge when she
+      was eating. At the fête du village right next to her.
+
+      Margaux told me once, "He doesn't understand when I say I want
+      to be alone." I said she should tell him more firmly. She said
+      she had. Three times.
+    effects: { trust_nadine: "+5" }
+    choices:
+      - Ask about AgriVal -> nadine_agrival
+      - Move on -> quest1_hub
+
+  nadine_agrival:
+    type: message
+    text: >
+      NADINE: AgriVal Centre. They make pesticides, herbicides, all
+      kinds of chemicals. Their factory is upstream from half the farms
+      in the valley. For years, the farmers have complained — dead fish
+      in the stream, strange smells, goats getting sick.
+
+      Margaux's goats started refusing to drink from the stream six
+      months ago. Animals know. She got the water tested privately.
+      Heavy metals, pesticide residues — way above the norms.
+
+      She was going to make it public. She had a meeting with a
+      journalist from La Nouvelle République. Then she turned up dead
+      in the stream.
+
+      Noyade accidentelle, mon cul.
+    effects: { trust_nadine: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Raymond (the land, witness tease) ---
+
+  raymond_intro:
+    type: tweet
+    from: raymond
+    text: >
+      cinquante ans que je travaille cette terre. le ruisseau du pré
+      vert a jamais tué personne. c'est pas l'eau qui l'a tuée.
+      c'est ceux qui ont empoisonné l'eau.
+    effects: { trust_raymond: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Raymond -> raymond_talk
+
+  raymond_talk:
+    type: message
+    text: >
+      RAYMOND: I've farmed this valley since I was fourteen. I know
+      every field, every spring, every path. The stream behind
+      Margaux's farm is shallow — knee-deep at most. You don't
+      drown in that stream. You'd have to be held down.
+
+      I've been telling the maire about the water for years. The
+      fish died first. Then the frogs. Then the bees — ask Agnès,
+      she's lost half her hives. The goats stopped drinking. Margaux
+      measured it all. She was building a case.
+
+      She called me the week before she died. Said she had proof
+      that AgriVal was dumping at night, directly into the stream.
+      Not through the official treatment system. Raw chemical waste.
+    effects: { trust_raymond: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> raymond_night
+      - Move on -> quest1_hub
+
+  raymond_night:
+    type: message
+    text: >
+      RAYMOND: Two nights before they found her — I was out checking
+      my fences around midnight, the deer have been getting in. And
+      I saw headlights on the track that runs along the stream. A van.
+      No markings. Heading toward the AgriVal outflow point.
+
+      At midnight. On a farm track. That van had no business being
+      there.
+
+      I told the gendarmes. They wrote it down. That was it.
+    effects: { trust_raymond: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Enzo (teen, angry) ---
+
+  enzo_intro:
+    type: tweet
+    from: enzo
+    text: >
+      putain frr margaux elle est morte et les flics disent qu'elle
+      s'est noyée?? dans 30cm d'eau?? c'est quoi ce délire.
+      si qqn sait un truc faut parler bordel
+    effects: { trust_enzo: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Enzo -> enzo_talk_early
+
+  enzo_talk_early:
+    type: message
+    text: >
+      ENZO: t'es qui toi? nouveau dans le bled? merde c pas le bon
+      moment frr. margaux c'était genre la meuf la plus gentille du
+      village. elle me laissait conduire le tracteur quand j'étais
+      petit. ses fromages c'était les meilleurs putain.
+
+      et la on vient me dire noyade accidentelle. nique sa mère.
+      30cm d'eau. t'as déjà vu qqn se noyer dans 30cm d'eau??
+
+      en vrai yasmine elle a vu un truc chelou mais elle flippe
+      trop d'en parler. le gars là, le photographe, il était
+      bizarre ces derniers temps
+    effects: { trust_enzo: "+10" }
+    choices:
+      - What did Yasmine see? -> enzo_yasmine_hint
+      - Move on -> quest1_hub
+
+  enzo_yasmine_hint:
+    type: message
+    text: >
+      ENZO: jsp exactement. elle était en rando vers la ferme de
+      margaux et elle a vu le photographe — romain — genre planqué
+      dans les buissons avec son appareil. pas en train de
+      photographier les oiseaux hein. il matait la ferme.
+
+      elle l'a dit à personne sauf à moi pcq tout le monde trouve
+      romain trop sympa avec ses photos de nature ptdr. mais frr
+      un mec qui se planque dans les buissons c'est pas normal sah.
+
+      faut que tu parles à yasmine directement mais elle est méfiante
+      avec les gens qu'elle connaît pas. montre-lui que t'es sérieux
+    effects: { trust_enzo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Clos-de-Brenne. A Berry village
+      built around the land and the stream. A goat cheese maker who
+      was exposing pollution. A death nobody believes is accidental.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lucien (Margaux's brother) -> lucien_q1
+      - Talk to Camille (Margaux's best friend) -> camille_q1
+      - Check what Baptiste (Margaux's ex) is saying -> baptiste_q1
+      - I'm ready to investigate the night she died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lucien Q1 ---
+
+  lucien_q1:
+    type: tweet
+    from: lucien
+    text: >
+      ma sœur avait peur. elle me l'a dit. elle avait peur et j'ai
+      rien fait. si quelqu'un sait quelque chose dites-le. je vous
+      en supplie.
+    effects: { trust_lucien: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lucien -> lucien_q1_talk
+
+  lucien_q1_talk:
+    type: message
+    text: >
+      LUCIEN: Thank you for reaching out but I don't know you. Margaux
+      had a lot of friends here. Good people. I'm... I can't think
+      straight.
+
+      She was my little sister. She made the best cheese in the Berry.
+      She loved her goats more than most people love their children.
+
+      [Lucien is devastated. You'll need to build more trust before
+      he opens up.]
+    effects: { trust_lucien: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Camille Q1 ---
+
+  camille_q1:
+    type: tweet
+    from: camille
+    text: >
+      @margaux_dubois ne s'est pas noyée. c'est impossible. elle
+      connaissait ce ruisseau par cœur. elle y allait tous les jours
+      avec les chèvres. ON NE SE NOIE PAS DANS 30CM D'EAU.
+    effects: { trust_camille: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Camille -> camille_q1_talk
+
+  camille_q1_talk:
+    type: message
+    text: >
+      CAMILLE: You're new. Okay. Let me be clear: Margaux was murdered.
+      I don't care what the gendarmes say. I grew up with her. She
+      could cross that stream blindfolded.
+
+      She called me the night before she died. She was scared. She said
+      "they know I have the analyses" and "he won't stop coming to the
+      farm." I asked who. She said "I'll tell you tomorrow."
+
+      There was no tomorrow.
+    effects: { trust_camille: "+10" }
+    choices:
+      - Who are "they" and "he"? -> camille_theory
+      - Move on -> quest1_hub
+
+  camille_theory:
+    type: message
+    text: >
+      CAMILLE: "They" is AgriVal. Has to be. She had water analyses
+      proving they were dumping pesticide waste directly into the
+      stream. She was going public with a journalist.
+
+      "He" — I think she meant Romain Lefèvre. That photographer.
+      He's been obsessed with her since he arrived. She told him
+      she wasn't interested. Multiple times. He just kept showing
+      up at the farm. Always with an excuse — photographing wildlife,
+      bringing a book, offering to fix something.
+
+      Margaux told me last month: "Il me fait flipper." That's not
+      something she says lightly.
+    effects: { trust_camille: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Baptiste Q1 ---
+
+  baptiste_q1:
+    type: tweet
+    from: baptiste
+    text: >
+      on s'était séparés mais margaux restait ma meilleure amie. son
+      fromage sur ma table, ses rires dans ma cave pendant les
+      vendanges. c'est fini. c'est fini et personne ne fait rien.
+    effects: { trust_baptiste: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Baptiste -> baptiste_q1_talk
+
+  baptiste_q1_talk:
+    type: message
+    text: >
+      BAPTISTE: Who are you? Another person who's going to tell me
+      to be patient? My ex-girlfriend is dead and the gendarmerie
+      says she fell in a stream.
+
+      Margaux was the toughest person I know. She built that farm
+      from nothing. She milked thirty goats every morning at 5am.
+      She didn't slip on a muddy bank.
+
+      She told me two weeks ago that someone from AgriVal had come
+      to the farm. Threatened her. Said if she published those water
+      analyses, they'd make sure her AOP certification was revoked.
+      She laughed them off. She wasn't the laughing type.
+    effects: { trust_baptiste: "+10" }
+    choices:
+      - Did she mention anyone else? -> baptiste_romain
+      - Move on -> quest1_hub
+
+  baptiste_romain:
+    type: message
+    text: >
+      BAPTISTE: Yeah. That photographer. Romain. I ran into him at the
+      farm once — I'd gone to drop off some wine bottles for Margaux.
+      He was just sitting there, in his car, parked on the track
+      overlooking the goat pasture. Engine off. Camera on the
+      passenger seat.
+
+      I asked what he was doing. He said "waiting for the light."
+      At 8pm. In November. There was no light.
+
+      Margaux asked me not to make a scene. She said she'd handle it.
+      That was a month before she died.
+    effects: { trust_baptiste: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Margaux died. Multiple people saw
+      or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Yasmine (was near the farm that evening) -> yasmine_interview
+      - Find Raymond (old farmer, checks fences at night) -> raymond_interview
+      - Find Florence (baker, starts at 5am, saw something) -> florence_interview
+      - Find Agnès (beekeeper, hives near the stream) -> agnes_interview
+
+  # --- Yasmine (saw Romain hiding near the farm) ---
+
+  yasmine_interview:
+    type: tweet
+    from: yasmine
+    text: >
+      j'arrive plus à dormir. j'aurais du dire quelque chose avant.
+      maintenant c'est trop tard. margaux...
+    effects: { trust_yasmine: "+5" }
+    choices:
+      - Ask Yasmine about that evening -> yasmine_talk
+
+  yasmine_talk:
+    type: message
+    text: >
+      YASMINE: ok mais stp tu le répètes pas comme ça hein. j'étais
+      en rando photo vers la ferme de margaux genre vers 18h. et j'ai
+      vu romain le photographe. il était pas sur le chemin. il était
+      dans les fourrés, genre accroupi, avec un gros téléobjectif
+      braqué sur la maison de margaux.
+
+      quand il m'a vue il a fait genre il photographiait un oiseau
+      mais putain y'avait aucun oiseau c'était le soir.
+
+      c'est quoi ce délire. c'est pas normal son truc. et moi j'ai
+      rien dit pcq c'est un adulte et tout le monde le trouve sympa.
+      merde. j'aurais du parler.
+    effects:
+      trust_yasmine: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Raymond (saw van near outflow point at night) ---
+
+  raymond_interview:
+    type: tweet
+    from: raymond
+    text: >
+      encore des traces de pneus sur le chemin du ruisseau ce matin.
+      des pneus de camionnette. pas d'un tracteur. quelqu'un vient
+      la nuit et c'est pas pour pêcher.
+    effects: { trust_raymond: "+5" }
+    choices:
+      - Ask Raymond what he saw -> raymond_talk_night
+
+  raymond_talk_night:
+    type: message
+    text: >
+      RAYMOND: That night — the night Margaux died — I was out at
+      midnight checking fences. I saw the same van I'd seen before.
+      No markings. Heading down the track toward the stream, near
+      the AgriVal discharge point.
+
+      But this time I got closer. I saw two men unloading drums.
+      Big plastic drums, the kind you store chemicals in. They were
+      pouring them directly into the stream. At midnight.
+
+      One of them I recognised by his walk. Julien Marchand. The
+      AgriVal plant director. In rubber boots, dumping chemicals
+      into a stream at midnight.
+
+      That stream runs past Margaux's farm.
+    effects:
+      trust_raymond: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Florence (saw car early morning) ---
+
+  florence_interview:
+    type: tweet
+    from: florence
+    text: >
+      5h du matin fournée comme d'habitude. mais ce matin-là y'avait
+      une voiture garée sur le chemin de la ferme. moteur éteint.
+      personne dedans. bizarre.
+    effects: { trust_florence: "+5" }
+    choices:
+      - Ask Florence what she saw -> florence_talk
+
+  florence_talk:
+    type: message
+    text: >
+      FLORENCE: I start baking at 5am every day. That morning — the
+      morning they found Margaux — I saw a car parked on the lane
+      that leads to the Ferme du Pré Vert. Dark grey Renault. Engine
+      off, nobody inside.
+
+      I didn't recognise it as a village car. But later I remembered
+      — Romain Lefèvre drives a dark grey Renault Kadjar.
+
+      I told the gendarmes. They said they'd check it. Nobody's
+      mentioned it since.
+
+      At 5am, on the lane to a dead woman's farm. Nobody thought
+      that was worth investigating?
+    effects:
+      trust_florence: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Agnès (beekeeper, heard shouting) ---
+
+  agnes_interview:
+    type: tweet
+    from: agnes
+    text: >
+      mes ruches sont à 200m de la ferme de margaux. cette nuit-là
+      j'y étais pour vérifier les abeilles. j'ai entendu des cris.
+    effects: { trust_agnes: "+5" }
+    choices:
+      - Ask Agnès what she heard -> agnes_talk
+
+  agnes_talk:
+    type: message
+    text: >
+      AGNES: I was at my hives around 23h. Late, I know, but the
+      bees have been agitated — the chemicals in the stream affect
+      them too. I was checking the hives by torchlight.
+
+      I heard shouting from the direction of Margaux's farm. A man's
+      voice. Angry. Then Margaux's voice — I'd recognise it anywhere.
+      She was yelling "Laisse-moi tranquille! Dégage!"
+
+      Then quiet. Too quiet.
+
+      I thought about going over but... it was dark, I was alone.
+      I called Margaux's phone at midnight. No answer. I thought
+      she'd gone to bed.
+
+      I'll never forgive myself for that.
+    effects:
+      trust_agnes: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Camille (best
+      friend) and Dylan (saw Romain's car before).
+    choices:
+      - Talk to Camille about that night -> camille_interview
+      - Talk to Dylan -> dylan_interview
+      - Find Yasmine -> yasmine_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Raymond -> raymond_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Florence -> florence_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Agnès -> agnes_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Camille (last to speak to Margaux) ---
+
+  camille_interview:
+    type: tweet
+    from: camille
+    text: >
+      elle m'a appelée ce soir-là. elle avait peur. je lui ai dit
+      d'appeler les gendarmes. elle a dit "ils feront rien." elle
+      avait raison.
+    effects: { trust_camille: "+5" }
+    choices:
+      - DM Camille -> camille_talk_low
+        when:
+          state: trust_camille
+          lt: 50
+      - DM Camille -> camille_talk_high
+        when:
+          state: trust_camille
+          gte: 50
+
+  camille_talk_low:
+    type: message
+    text: >
+      CAMILLE: I appreciate you trying but I still don't really
+      know you. This is the worst week of my life.
+
+      [Camille needs to trust you more. Show her you're investigating
+      seriously.]
+    effects: { trust_camille: "+5" }
+    choices:
+      - Share what you've learned about the night -> camille_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  camille_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the van dumping chemicals,
+      the photographer hiding in bushes, the shouting at the farm.
+      Camille is silent for a long time.
+
+      CAMILLE: You're actually trying to find out what happened.
+      Okay. I'll talk.
+    effects: { trust_camille: "+25" }
+    choices:
+      - What happened that night? -> camille_talk_high
+
+  camille_talk_high:
+    type: message
+    text: >
+      CAMILLE: She called me at 22h. She was scared. She said someone
+      had been at the farm again — she didn't say who but I assumed
+      Romain. She said she'd found something new in the water analyses
+      — not just pesticides but actual waste solvent, industrial grade.
+      Proof that AgriVal was using the stream as an illegal dump.
+
+      She said she was going to photograph the discharge point that
+      night. She'd set up a trail camera. She said "if I can catch
+      them in the act, nobody can ignore it."
+
+      I told her to wait. To do it with someone. She said "I've
+      been waiting too long already."
+
+      That was the last time I heard her voice.
+    effects:
+      trust_camille: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dylan (saw Romain's car near farm before) ---
+
+  dylan_interview:
+    type: message
+    text: >
+      DYLAN: wsh en vrai j'ai un truc à dire. le gars là, romain,
+      son bagnole je la vois tout le temps garée sur le chemin de
+      la ferme. genre le soir, la nuit même. pas une fois hein.
+      genre au moins cinq six fois le mois dernier.
+
+      une fois j'étais à la pêche au ruisseau tôt le matin et il
+      était la, assis dans sa caisse, avec ses jumelles. je lui ai
+      fait coucou il a sursauté comme un ouf.
+
+      c'est quoi son délire bordel. c'est pas les oiseaux qu'il
+      mate. c'est margaux qu'il matait.
+    effects:
+      trust_dylan: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      18:00 — Romain seen hiding near Margaux's farm with telephoto lens (Yasmine)
+      22:00 — Margaux calls Camille, scared, plans to photograph discharge (Camille)
+      23:00 — Shouting heard at the farm, a man's voice, Margaux yelling "leave me alone" (Agnès)
+      00:00 — Van with chemicals at stream discharge point, AgriVal director present (Raymond)
+      05:00 — Romain's car found parked on lane to Margaux's farm, empty (Florence)
+
+      Two things happened that night. AgriVal was dumping chemicals
+      in the stream. And someone confronted Margaux at the farm.
+
+      Did she go out to photograph the dumping and encounter the
+      company men? Or did someone come to her?
+
+      Two threads to pull:
+      — The contamination: What is AgriVal hiding? Who ordered
+        the nighttime dumping?
+      — The obsession: What was Romain really doing? Why was he
+        always at the farm?
+    choices:
+      - Investigate the contamination cover-up -> corruption_hub
+      - Investigate Romain -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AgriVal Centre is hiding something. Margaux had proof. Now she's
+      dead and her water analyses are missing from the farm.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the farm records -> farm_records
+      - Talk to Marianne the journalist -> marianne_interview
+      - Talk to Sandrine (environment deputy) -> sandrine_interview
+      - Check the Terre de Berry association -> asso_investigation
+      - Talk to Agnès about the bees -> agnes_bees
+      - Talk to Raymond about the dumping -> raymond_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Farm Records ---
+
+  farm_records:
+    type: message
+    text: >
+      Margaux kept meticulous records. Her farm blog, still public,
+      shows water quality data she'd collected over six months. pH
+      levels, heavy metals, pesticide residues. All from the stream
+      that runs past her goat pasture.
+
+      The numbers tell a story: spikes in contamination that match
+      AgriVal's production schedule. Higher on weekdays, lower on
+      weekends. Higher at night — she'd installed an automatic
+      sampler.
+
+      Her last blog entry, two days before her death: "I have six
+      months of data. The pattern is undeniable. Meeting with
+      @marianne_vasseur on Thursday. This ends now."
+
+      Thursday was the day after she died.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Marianne ---
+
+  marianne_interview:
+    type: message
+    text: >
+      MARIANNE: I don't discuss my sources.
+    effects: { trust_marianne: "+5" }
+    choices:
+      - Show Marianne the evidence you have -> marianne_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  marianne_with_evidence:
+    type: message
+    text: >
+      MARIANNE: ...you have more than the gendarmerie.
+
+      Okay. Margaux and I were working on a story. She had six months
+      of water data. She had photos of the illegal discharge point —
+      AgriVal has a pipe that doesn't appear on any permit, hidden
+      under a bridge two hundred metres from the official outflow.
+
+      We were going to publish on Thursday. She died on Wednesday.
+
+      The day after she died, someone broke into my car at the paper's
+      parking lot in Châteauroux. Took my laptop bag. Which had my
+      backup of her data.
+
+      But Margaux was clever. She told me she'd hidden a second copy
+      somewhere in the village. She didn't say where. She said "if
+      something happens, someone will bring it to you."
+    effects:
+      trust_marianne: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who killed her? -> marianne_hint
+      - Back to investigation hub -> investigation_hub
+
+  marianne_hint:
+    type: message
+    text: >
+      MARIANNE: The factory had motive. She was about to destroy
+      them publicly. But I don't think Julien Marchand would kill
+      someone. Intimidate, yes. Threaten legal action, yes. He sent
+      people to the farm to warn her off.
+
+      But there was something else Margaux mentioned — someone who
+      was always around. Who made her uneasy. A man. She didn't
+      name him to me. She said "it's a village thing, I'll handle
+      it."
+
+      She shouldn't have had to handle anything alone.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sandrine ---
+
+  sandrine_interview:
+    type: message
+    text: >
+      SANDRINE: As deputy for agriculture and environment, I take
+      water contamination very seriously. But the maire says AgriVal
+      employs 150 people. We can't just shut them down without proof.
+
+      Off the record? The préfecture inspections are announced weeks
+      in advance. AgriVal cleans up before every visit. The inspectors
+      find nothing. The official reports say everything is within
+      norms.
+
+      Margaux's data was different. Unannounced. Continuous. Six
+      months of real numbers. That data would have ended them.
+    effects:
+      trust_sandrine: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Terre de Berry ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_terre
+    text: >
+      ALERTE: Mortalité anormale de poissons et batraciens dans le
+      ruisseau du Pré Vert. Signalement en cours auprès de la
+      préfecture. Nous demandons une inspection non annoncée d'AgriVal.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Terre de Berry has been documenting biodiversity loss in the
+      valley for four years. Their data shows a clear decline:
+      fish populations down 70%. Frog species extinct locally.
+      Insect diversity halved. Bee colony losses in all apiaries
+      within 500m of the stream.
+
+      All correlating with AgriVal's expansion of their production
+      line two years ago.
+
+      Margaux was their most active volunteer. She contributed
+      water samples, goat health data, and photographic evidence
+      of dead animals near the discharge point.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Agnès bees ---
+
+  agnes_bees:
+    type: message
+    text: >
+      AGNES: My bees are dying. Half my colonies collapsed this year.
+      The bees come back to the hive disoriented, trembling. Classic
+      signs of neonicotinoid poisoning.
+
+      AgriVal makes neonicotinoids. Their factory is upstream. My
+      hives are downstream. It's not complicated.
+
+      Margaux and I went to the maire together. He said "these things
+      happen in nature." Connard.
+
+      She tested the dead bees. Found pesticide residues matching
+      AgriVal's product line. She was going to include it in the
+      article with the journalist. Bees, goats, fish, frogs — the
+      whole valley is dying.
+    effects:
+      trust_agnes: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Raymond dumping ---
+
+  raymond_dumping:
+    type: message
+    text: >
+      RAYMOND: I'll show you something. Last month I found barrels
+      in the ditch along the track — three of them, half-buried.
+      Leaking. The soil around them was dead. No grass, no insects.
+      The labels had AgriVal batch numbers.
+
+      I photographed everything. Sent the photos to Margaux. She
+      said it was the final piece — proof they were dumping solid
+      waste, not just liquid discharge. Burying chemical barrels
+      in the fields.
+
+      I still have the photos. I still have the GPS coordinates.
+    effects:
+      trust_raymond: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Romain Lefèvre. Photographer. Newcomer. Something more?
+      Someone was always at the farm. Someone was watching from the
+      lane. Someone confronted Margaux the night she died.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Check Romain's social media history -> romain_posts
+      - Talk to Camille about Romain -> camille_romain
+        when:
+          state: trust_camille
+          gte: 20
+      - Talk to Yasmine (more detail on what she saw) -> yasmine_detail
+      - Talk to Odette the pharmacist -> odette_interview
+      - Check the anonymous account @le_berger_noir -> anon_investigation
+      - Talk to Baptiste about Romain -> baptiste_romain_detail
+        when:
+          state: trust_baptiste
+          gte: 40
+      - Talk to Adjudant Moreau -> gendarme_interview
+        when:
+          state: trust_gendarme
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Romain's Posts ---
+
+  romain_posts:
+    type: message
+    text: >
+      Romain's account is full of nature photography — birds, deer,
+      landscapes. Beautiful work, objectively. But scrolling through
+      two years of posts, a pattern emerges.
+
+      Margaux appears in the background of dozens of photos. Always
+      at a distance. In the goat pasture. At the market. Walking
+      on the lane. Never posed. Never looking at the camera. She
+      didn't know she was being photographed.
+
+      One post, from three months ago, shows Margaux's farmhouse
+      at dusk. Caption: "La lumière du Berry en automne." The light
+      is on in her kitchen window. You can see her silhouette.
+
+      That's not landscape photography.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Camille on Romain ---
+
+  camille_romain:
+    type: message
+    text: >
+      CAMILLE: Romain made Margaux's skin crawl. He arrived two years
+      ago. Within a month he was at the farm every other day. Always
+      with an excuse — the goats, the light, bringing her a book
+      about cheese making he'd found at a vide-grenier.
+
+      She told him she wasn't interested. Clearly. More than once.
+      He'd nod, say he understood, then show up the next day.
+
+      Last month she found photos of herself on his hard drive. He'd
+      left it at the auberge by accident and Nadine called Margaux
+      before returning it. Hundreds of photos. All of Margaux. Some
+      taken through the farmhouse windows.
+
+      She was terrified. She didn't file a complaint because — and
+      this is the tragedy — she was focused on the AgriVal story.
+      She said "I'll deal with Romain after the article."
+    effects:
+      trust_camille: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Yasmine detail ---
+
+  yasmine_detail:
+    type: message
+    text: >
+      YASMINE: ok en vrai j'ai pas tout dit la première fois. quand
+      j'ai vu romain dans les buissons il avait pas juste un appareil
+      photo. il avait genre un truc à la main. un petit boîtier. il
+      l'a accroché à un arbre, genre planqué dans les branches, face
+      à la porte de la ferme.
+
+      moi j'y connais rien mais putain ça ressemblait à une caméra
+      de surveillance. le genre de truc de chasse pour filmer les
+      animaux. sauf que c'était braqué sur la maison.
+
+      bordel j'aurais du dire un truc à margaux. maintenant elle
+      est morte et je me déteste.
+    effects:
+      trust_yasmine: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Odette ---
+
+  odette_interview:
+    type: message
+    text: >
+      ODETTE: I'm a pharmacist, discretion is part of the job. But
+      this is about a dead woman so I'll talk.
+
+      Romain Lefèvre comes in regularly. Insomnia medication, anxiety
+      pills, and — this struck me — he asked about GPS trackers once.
+      I told him this is a pharmacy, not Boulanger. He laughed.
+
+      He also buys developing chemicals. Nothing unusual for a
+      photographer. But the quantities... he's buying for a darkroom
+      that never stops running. How many photos does one man need?
+
+      I'll tell you: as many as it takes when the subject is a
+      person, not a bird.
+    effects:
+      trust_odette: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Le Berger Noir (anonymous account) ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_berger
+    text: >
+      Elle ne comprenait pas. J'étais le seul à voir vraiment sa
+      beauté. Les chèvres, le fromage, le ruisseau. Personne
+      d'autre ne voyait. Moi je voyais.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @le_berger_noir: account created 18 months ago. Every post is
+      about Margaux. Comments on every farm photo, every market day
+      post, every cheese review. The tone shifts over time:
+
+      Month 1: "Your crottins are a work of art. You are an artist."
+      Month 4: "Why don't you respond? I only want to talk about
+      your work."
+      Month 8: "I see you at the auberge with other people. You
+      have time for them but not for me?"
+      Month 12: "I know your schedule. I know when you milk, when
+      you rest, when the light in your kitchen goes off."
+
+      The account has no photos, no personal details. Just Margaux.
+      Only Margaux.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @le_berger_noir with @romain_lefevre:
+
+      Same vocabulary around light and landscape. Same way of
+      describing Margaux's cheese — "sculptural" is a word they
+      both use. Same knowledge of the farm's daily rhythms that
+      only someone watching closely would have.
+
+      And one post from @le_berger_noir: "The goats at the east
+      pasture looked beautiful at dawn today." The east pasture
+      is not visible from any public path. You'd have to be on
+      private land — or have a trail camera pointing at it.
+
+      It's Romain. The anonymous account is Romain.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Baptiste on Romain ---
+
+  baptiste_romain_detail:
+    type: message
+    text: >
+      BAPTISTE: I confronted Romain once. Three weeks before Margaux
+      died. I told him to leave her alone. He looked at me with
+      these dead calm eyes and said "You don't understand her the
+      way I do. You left her. I never would."
+
+      I said "She doesn't want you around." He said "She will.
+      She just needs time to see it."
+
+      That's not a sane thing to say. That's obsession.
+
+      Margaux left something with me. A sealed envelope. She said
+      "if anything happens to me, give this to the journalist." I
+      thought she meant AgriVal. Now I'm not sure she only meant
+      AgriVal.
+    effects:
+      trust_baptiste: "+10"
+      evidence_total: "+2"
+    choices:
+      - What's in the envelope? -> baptiste_envelope
+
+  baptiste_envelope:
+    type: message
+    text: >
+      Baptiste hands you a thick brown envelope.
+
+      Inside: a USB drive and printed screenshots. The screenshots
+      show messages from @le_berger_noir — increasingly threatening.
+      Photos of Margaux taken without her knowledge, pulled from
+      Romain's accidentally-shared hard drive. And a handwritten note
+      from Margaux:
+
+      "If you're reading this, something has happened. Romain Lefèvre
+      has been following me for months. He's installed cameras near my
+      farm. AgriVal is poisoning the valley. Both truths need to come
+      out. The water data is hidden at the school — Camille knows
+      where. Don't let them bury this."
+    effects:
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Adjudant Moreau ---
+
+  gendarme_interview:
+    type: message
+    text: >
+      ADJUDANT MOREAU: Off the record — completely off the record —
+      I wanted to investigate this as a homicide. My commanding
+      officer said no. He said the prefecture was satisfied with
+      accidental drowning. That's code for "someone made a call."
+
+      The AgriVal situation — that's above my pay grade. But this
+      Romain Lefèvre business? If you have evidence of stalking, I
+      can act on that. Stalking and harassment are clearly my
+      jurisdiction.
+
+      Bring me something solid and I'll reopen the case as a
+      criminal investigation.
+    effects:
+      trust_gendarme: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Margaux than anyone in Clos-de-Brenne. Who is responsible?
+    choices:
+      - Confront Romain Lefèvre (the obsessive photographer) -> confront_romain
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Julien Marchand (the plant director) -> confront_julien
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Gauthier (political protection) -> confront_philippe
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Romain (Best Ending) ---
+
+  confront_romain:
+    type: message
+    text: >
+      You present your evidence to Romain:
+
+      "I know @le_berger_noir is your account. I know you installed
+      trail cameras at Margaux's farm. I know you photographed her
+      through her windows. I know you were at the farm the night she
+      died. I have witnesses, I have Margaux's own testimony, and
+      I have the screenshots from your hard drive."
+    choices:
+      - Send -> romain_response
+
+  romain_response:
+    type: message
+    text: >
+      Romain doesn't reply for a very long time. Then:
+
+      ROMAIN: You don't understand. I loved her. I was the only one
+      who truly understood her work, her connection to the land, to
+      the animals. I was protecting her. She was in danger from
+      AgriVal and she wouldn't let me help. I needed to be close.
+      Everything I did was out of love.
+
+      That's not love. That's obsession. And Margaux is dead.
+
+      You've already sent the evidence to Adjudant Moreau. And to
+      Marianne Vasseur.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Adjudant Moreau reopens the case as a criminal investigation.
+      With your evidence — the anonymous account, the trail cameras,
+      the photographs, the witness testimonies, Margaux's own letter
+      — Romain Lefèvre is arrested. His house is searched. They find
+      thousands of photos of Margaux. Detailed logs of her movements.
+      A trail camera recovered from the tree near her farm door.
+
+      Forensic evidence places Romain at the stream bank that night.
+      He confronted her. She told him to leave. He grabbed her.
+      She fell. He held her down. It lasted seconds. He says he
+      didn't mean to. The water was only 30 centimetres deep.
+
+      Marianne Vasseur, with Margaux's full evidence package from
+      the school, publishes the AgriVal story in La Nouvelle
+      République. The préfecture orders an unannounced inspection.
+      The factory is shut down pending environmental remediation.
+      Julien Marchand faces criminal charges for illegal dumping.
+
+      The valley begins to heal. The stream runs clearer. Agnès
+      reports the first healthy bee colony in months.
+
+      But Margaux is gone. The cheese room is empty. The goats
+      were taken in by a neighbouring farm. They still gather at
+      the stream bank in the morning, waiting for someone who
+      won't come.
+
+      If you or someone you know is being stalked or harassed:
+      Violences Femmes Info: 3919 (appel gratuit, anonyme)
+      Association e-Enfance (cyberharcèlement): 3018
+      Signalement environnemental: 0 800 130 000
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lucien
+    text: >
+      margaux n'est plus là. mais ce qu'elle a fait pour cette vallée,
+      personne ne pourra l'effacer. les chèvres boivent au ruisseau
+      à nouveau. c'est grâce à elle.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Julien (Partial Ending) ---
+
+  confront_julien:
+    type: message
+    text: >
+      You present the pollution evidence to Julien Marchand:
+
+      "I have six months of water data. I have photos of your
+      undeclared discharge pipe. I have barrel batch numbers from
+      your factory found buried in a ditch. I have Raymond's photos
+      of you personally dumping chemicals at midnight."
+    choices:
+      - Send -> julien_response
+
+  julien_response:
+    type: message
+    text: >
+      JULIEN: These allegations are defamatory and will be dealt
+      with by our legal department. AgriVal Centre has always
+      operated within regulatory requirements. We will not be
+      intimidated by activist misinformation.
+
+      But it's too late. You've sent the evidence to Marianne,
+      to Terre de Berry, and to the préfecture.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The contamination story breaks. AgriVal is ordered to halt
+      operations pending investigation. The factory may close. A
+      hundred and fifty jobs hang in the balance. The village is
+      divided.
+
+      But Margaux?
+
+      Without the stalking evidence, Romain is never investigated.
+      He continues to live in the village. He continues to photograph.
+      He creates a new anonymous account. He finds a new subject.
+
+      A year later, another woman in a nearby village files a
+      complaint about a photographer who won't leave her alone.
+
+      The stream is cleaner. But the man who killed Margaux Dubois
+      walks free. And the gendarmerie's file still reads: noyade
+      accidentelle.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lucien
+    text: "le ruisseau est propre. ma sœur est morte. la justice n'a fait que la moitié du chemin."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_philippe:
+    type: message
+    text: >
+      You confront Mayor Gauthier with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> philippe_response
+
+  philippe_response:
+    type: tweet
+    from: victor
+    text: >
+      Mon client prend acte de vos allégations. Toute diffusion
+      publique de propos diffamatoires fera l'objet de poursuites
+      immédiates. — Cabinet Delaunay & Partenaires, Bourges
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Gauthier and AgriVal's dumping — and there isn't
+      one beyond political complicity — your evidence is insufficient.
+
+      AgriVal continues to operate. Romain continues to watch. The
+      file reads accidental drowning. The stream stays poisoned.
+
+      Six months later, @le_berger_noir creates a new account. It
+      follows a young farmer in the next village. The cycle begins
+      again.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: CLOS-DE-BRENNE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Margaux's story explores themes of
+      pesticide contamination, rural isolation, obsessive behaviour,
+      the vulnerability of women who speak up, and the communities
+      that fail to protect them.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Violences Femmes Info: 3919 (appel gratuit, anonyme)
+      Association e-Enfance (cyberharcèlement): 3018
+      Signalement environnemental: 0 800 130 000

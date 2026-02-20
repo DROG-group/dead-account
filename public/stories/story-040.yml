@@ -1,0 +1,1624 @@
+# DEAD ACCOUNT — Story 040: Vranići (Croatia 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-040.yml
+#
+# Player investigates the disappearance of young truffle hunter and
+# forager Matej Barić in the fictional Istrian hilltop village of
+# Vranići.
+
+meta:
+  title: "Dead Account — Vranići"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_ivan: 0
+    trust_petra: 0
+    trust_tea: 0
+    trust_luka: 0
+    trust_ana: 0
+    trust_marko: 0
+    trust_josip: 0
+    trust_maja: 0
+    trust_tomislav: 0
+    trust_dario: 0
+    trust_nina: 0
+    trust_karlo: 0
+    trust_renata: 0
+    trust_ante: 0
+    trust_ella: 0
+    trust_branko: 0
+    trust_sanja: 0
+    trust_goran: 0
+    trust_inspektor: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to vranići. discovering istria one hill at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Vranići.social"
+    description: "Dobrodošli na zajedničku instancu sela Vranići"
+    avatar_url: /gamepatch/assets/dead-account/vranici_bot.png
+
+  npcs:
+    # === Matej's Inner Circle ===
+    matej:
+      name: "Matej Barić"
+      bio: "tartufi & divlje biljke | istra ne laže | šuma je moj dom"
+      avatar: avatars/matej.jpg
+    ivan:
+      name: "Ivan Barić"
+      bio: "matejov brat | radi u rijeci | ak ne javlja se nešto nije u redu"
+      avatar: avatars/ivan.jpg
+    petra:
+      name: "Petra Kovačević"
+      bio: "matejova cura | konobarica u konoba zora | nedostaje mi"
+      avatar: avatars/petra.jpg
+    ana:
+      name: "Ana Barić"
+      bio: "matejova mama | obiteljski maslinik od 1975 | moj sin se ne skriva"
+      avatar: avatars/ana.jpg
+
+    # === Local Government ===
+    tomislav:
+      name: "Tomislav Jurić"
+      bio: "Načelnik Općine Vranići | Služim zajednici od 2017 | #VranićiRastu"
+      avatar: avatars/tomislav.jpg
+    maja:
+      name: "Maja Perić"
+      bio: "Zamjenica načelnika | okoliš & turizam | Općina Vranići"
+      avatar: avatars/maja.jpg
+    opcina:
+      name: "Općina Vranići"
+      bio: "Službeni račun | Vijesti iz općine | Radno vrijeme: pon-pet 8-14h"
+      avatar: avatars/opcina.jpg
+
+    # === Local Business & Community ===
+    josip:
+      name: "Josip Milić"
+      bio: "konoba zora | istarski pršut & tartufi | terasa s pogledom | od 1988"
+      avatar: avatars/josip.jpg
+    konoba_zora:
+      name: "Konoba Zora"
+      bio: "Istarska kuhinja | Domaći tartufi | Terasa | Svaki petak živa glazba"
+      avatar: avatars/konoba_zora.jpg
+    marko:
+      name: "Marko Radin"
+      bio: "lovac na tartufe | 25 godina u šumi | istra je moja"
+      avatar: avatars/marko.jpg
+    dario:
+      name: "Dario Bašić"
+      bio: "farmer | maslinik & vinograd | vranići | zemlja je sve"
+      avatar: avatars/dario.jpg
+    renata:
+      name: "Renata Vlahović"
+      bio: "ljekarna vranići | zdravlje & savjeti | subotom ujutro otvoreno"
+      avatar: avatars/renata.jpg
+    ante:
+      name: "Ante Fabijanić"
+      bio: "pekara fabijanić | kruh sa suhim smokvama | svaki dan od 5h"
+      avatar: avatars/ante.jpg
+    ella:
+      name: "Ella Broz"
+      bio: "knjižara na brdu | nove & rabljene knjige | čitaonica srijedom"
+      avatar: avatars/ella.jpg
+
+    # === Journalist ===
+    sanja:
+      name: "Sanja Tomić"
+      bio: "novinarka | okoliš & zemljište | dojave: sanja@tomic-press.hr"
+      avatar: avatars/sanja.jpg
+
+    # === IstraBuild (corporate) ===
+    istrabuild:
+      name: "IstraBuild d.o.o."
+      bio: "Luksuzne nekretnine | Projekt Vranići Hills | Investirajte u Istru"
+      avatar: avatars/istrabuild.jpg
+    goran:
+      name: "Goran Krstić"
+      bio: "direktor IstraBuild d.o.o. | nekretnine & regija"
+      avatar: avatars/goran.jpg
+    branko:
+      name: "Branko Pavlović"
+      bio: "Odvjetnik | Ured Pavlović & Partneri | Pravo nekretnina | Zagreb"
+      avatar: avatars/branko.jpg
+
+    # === Teens ===
+    tea:
+      name: "Tea"
+      bio: "16 | fotka & šuma | vranići born | matej me naučio sve o gljivama"
+      avatar: avatars/tea.jpg
+    luka:
+      name: "Luka"
+      bio: "17 | mtb & trail running | istra | matej je legenda"
+      avatar: avatars/luka.jpg
+    nina:
+      name: "Nina"
+      bio: "15 | crtanje & priroda | matej mi je bio mentor | vratio se pliz"
+      avatar: avatars/nina.jpg
+
+    # === Media & Community ===
+    actu_vranici:
+      name: "Vijesti Vranići"
+      bio: "Novosti iz Vranića i okolice | Dojave: redakcija@vijesti-vranici.hr"
+      avatar: avatars/actu_vranici.jpg
+    vrijeme_istra:
+      name: "Vrijeme Vranići"
+      bio: "Prognoza i upozorenja | Automatska stanica | Ažuriranje svaki sat"
+      avatar: avatars/vrijeme_istra.jpg
+    udruga_suma:
+      name: "Udruga Čuvari Šume"
+      bio: "Zaštita istarskih šuma i zemljišta | Volonteri | Prijave devastacije"
+      avatar: avatars/udruga_suma.jpg
+
+    # === Suspicious / Other ===
+    karlo:
+      name: "Karlo Valentić"
+      bio: "tehničar | IstraBuild d.o.o. | radim svoj posao i to je to"
+      avatar: avatars/karlo.jpg
+    dino:
+      name: "Dino Novak"
+      bio: "."
+      avatar: avatars/anon.jpg
+    inspektor:
+      name: "Inspektor Horvat"
+      bio: "Policijska postaja Vranići | Krim istraživanje | Hitno: 192"
+      avatar: avatars/inspektor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VRANIĆI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to vranici.social — the community Mastodon instance for
+      the Istrian hilltop village of Vranići.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @matej_baric.
+
+      A truffle hunter. Forager. He mapped the ancient forests around
+      Vranići, documented wild edibles, and supplied the best
+      restaurants in Istria. People are worried. He hasn't posted
+      in seven days.
+    choices:
+      - Look at his profile -> matej_profile
+
+  matej_profile:
+    type: tweet
+    from: matej
+    text: "Netko čisti šumu iznad sela. Strojevi. Noću. Ovo nije zakonito. Imam dokaze."
+    choices:
+      - That's his last real post... -> grey_truffle
+
+  grey_truffle:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a muddy truffle, crushed, photographed on bare concrete under
+      harsh light. Posted at 4am. No caption.
+
+      His friends say that's not his style. Matej's photos were
+      always of the forest floor — dappled light, careful
+      compositions, the dog beside him. The policija says he probably
+      went hiking and lost signal. Something doesn't add up.
+    choices:
+      - Read the policija statement -> policija_statement
+      - Look at what people are saying -> community_reaction
+
+  policija_statement:
+    type: tweet
+    from: inspektor
+    text: >
+      Zaprimili smo prijavu nestanka stanovnika Vranića. U ovom
+      trenutku nema naznaka kaznenog djela. Informacije možete
+      dostaviti policijskoj postaji ili na broj 192.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His brother @ivan_baric is driving
+      down from Rijeka. His girlfriend @petra_kovacevic is barely
+      holding it together. The konoba owner @josip_milic says
+      Matej's truffle supply has gone silent. The old hunter
+      @marko_radin says Matej was right about the forest.
+
+      And the journalist @sanja_tomic is strangely silent.
+
+      Nobody buys the policija's line. Nobody thinks Matej just
+      "went hiking."
+    effects: { trust_ivan: "+5", trust_petra: "+5" }
+    choices:
+      - Start following Matej's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Vranići. Follow Matej's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Josip (konoba owner, knows everyone) -> josip_intro
+      - Talk to Marko (old truffle hunter, knows the forest) -> marko_intro
+      - Talk to Tea (teen photographer, seems shaken) -> tea_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Matej with the rhythms of an Istrian
+      hilltop village: olive harvest updates, the bakery's daily
+      bread, weather warnings for the bura wind.
+
+      Key names surface: Ivan (brother, in Rijeka), Petra (girlfriend,
+      works at the konoba), Sanja (journalist, oddly quiet), and the
+      teens — Tea, Luka, Nina — who Matej took foraging in the
+      forest every weekend.
+
+      Also prominent: IstraBuild d.o.o., a luxury property developer
+      buying land around the village. Their posts are glossy renders
+      of villas. Matej's posts were of ancient oak forests.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Josip -> josip_intro
+      - Talk to Marko -> marko_intro
+      - Talk to Tea -> tea_intro
+
+  # --- Josip (social map) ---
+
+  josip_intro:
+    type: tweet
+    from: josip
+    text: >
+      Konoba je otvorena ali kuhinja je tužna bez tartufa. @matej_baric,
+      tvoj stol te čeka. Vrati se buraz.
+    effects: { trust_josip: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Josip -> josip_talk
+
+  josip_talk:
+    type: message
+    text: >
+      JOSIP: You're new here? Welcome, buraz. Bad timing though.
+      Everyone's losing it over Matej.
+
+      Let me tell you who's who. Ivan is Matej's older brother — lives
+      in Rijeka, works at the shipyard, driving down today. Petra is
+      Matej's girlfriend — she waits tables here at the konoba, barely
+      sleeping. Ana is their mother — she runs the family olive grove,
+      tough woman, but this is breaking her.
+
+      Marko Radin — the old truffle hunter — he taught Matej
+      everything. Jebote, that man knows every tree in the forest.
+      He says something bad is happening up there. Machines at night.
+
+      And Sanja Tomić — the journalist — she and Matej were working
+      on something together. Something about land sales. Sanja hasn't
+      said a word since Matej vanished. That's not like her at all.
+
+      Oh, and watch out for IstraBuild. Those Zagreb suits want to
+      turn our forest into a villa resort. Matej was in their way.
+    effects: { trust_josip: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Marko Radin -> josip_marko
+      - Ask about IstraBuild -> josip_istrabuild
+      - Thank him and move on -> quest1_hub
+
+  josip_marko:
+    type: message
+    text: >
+      JOSIP: Marko? He's the best tartufar in Istria. Has been for
+      thirty years. But since Matej started finding spots Marko
+      didn't know about — especially that white truffle patch in the
+      old forest — things got... tense.
+
+      Marko is possessive about his territory. He sees the forest as
+      his. When Matej started selling directly to restaurants in
+      Rovinj and Pula, skipping the middlemen Marko uses, Marko was
+      furious. He said Matej was "stealing."
+
+      Fakat, I thought it was just old-man jealousy. Now I'm not
+      so sure.
+    effects: { trust_josip: "+5" }
+    choices:
+      - Ask about IstraBuild -> josip_istrabuild
+      - Move on -> quest1_hub
+
+  josip_istrabuild:
+    type: message
+    text: >
+      JOSIP: IstraBuild showed up two years ago. Some developer from
+      Zagreb — Goran Krstić — buying up land around the village.
+      Olive groves, vineyards, forest plots. Paying good money. Too
+      good. Half the old farmers sold.
+
+      But the forest above the village — that's public land. Protected,
+      supposedly. Matej found machines up there. Clearing trees.
+      At night, so nobody would see. He said there were survey stakes
+      with IstraBuild markings on protected forest land.
+
+      He had photos, GPS coordinates, everything. He said the
+      načelnik — Tomislav Jurić — had signed off on a rezoning
+      request. That's illegal if the land is protected.
+
+      Jebote, someone needs to do something.
+    effects: { trust_josip: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marko (the forest, witness tease) ---
+
+  marko_intro:
+    type: tweet
+    from: marko
+    text: >
+      dvadeset pet godina lovim tartufe u ovoj šumi. netko je uništava.
+      @matej_baric je imao pravo. a sad ga nema. razmislite.
+    effects: { trust_marko: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Marko -> marko_talk
+
+  marko_talk:
+    type: message
+    text: >
+      MARKO: I've hunted truffles in this forest since before that
+      boy was born. I know every oak root, every clearing, every
+      truffle patch. And I'm telling you — the forest above the
+      village is being destroyed. Trees cut at night. Heavy
+      machinery tracks on protected trails.
+
+      Matej documented everything. He had photos of the clearing,
+      the stakes, the tracks. He was building a case against
+      IstraBuild. And then — gone.
+
+      You think that's a coincidence? Kurac. Nothing in this village
+      is coincidence.
+    effects: { trust_marko: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> marko_night
+      - Move on -> quest1_hub
+
+  marko_night:
+    type: message
+    text: >
+      MARKO: The night before he vanished — I was out checking my
+      traps, around midnight. Truffle dogs need training at night.
+      I saw lights in the forest. Not headlamps — proper floodlights.
+      And I heard machines.
+
+      When I got closer, I saw a 4x4 with IstraBuild plates parked
+      at the forest access road. And another car — local plates,
+      fancy Audi. That's the načelnik's car. Tomislav Jurić. At
+      midnight. In the forest.
+
+      I didn't think much of it then. Sranje. I should have.
+    effects: { trust_marko: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tea (teen photographer, witness tease) ---
+
+  tea_intro:
+    type: tweet
+    from: tea
+    text: >
+      buraz fakat ne mogu @matej_baric me naučio sve o šumama i
+      gljivama. najbolji lik na svijetu. ak netko zna nešto molim
+      vas javite se
+    effects: { trust_tea: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tea -> tea_talk_early
+
+  tea_talk_early:
+    type: message
+    text: >
+      TEA: ti si nov ovdje? sranje timing buraz. matej je fakat
+      najbolji čovjek u selu. vodio nas u šumu svaki vikend, učio
+      nas o biljkama, gljivama, svemu. bolji od bilo kojeg profe.
+
+      i sad sam u strahu jer luka je vidio nešto čudno onu noć kod
+      šume ali neće pričati o tome. kaže da je ništa ali fakat...
+      to nije ništa jebote
+    effects: { trust_tea: "+10" }
+    choices:
+      - What did Luka see? -> tea_luka_hint
+      - Move on -> quest1_hub
+
+  tea_luka_hint:
+    type: message
+    text: >
+      TEA: ne znam točno. bio je na trail runningu navečer i vidio
+      nekoga tko je nešto stavljao u matejev auto?? ili nešto takvo.
+      fakat se boji. ne želi pričati. trebaš mu se obratiti direktno
+      ali je sumnjičav prema ljudima koje ne poznaje. probaj prvo
+      pričati o mountainbikeu ili nešto haha
+    effects: { trust_tea: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Vranići. An Istrian hilltop village
+      built around ancient forests and truffle hunting. A young
+      forager who was exposing illegal land clearing. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Ivan (Matej's brother) -> ivan_q1
+      - Talk to Petra (Matej's girlfriend) -> petra_q1
+      - Check what Ana (Matej's mother) is saying -> ana_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Ivan Q1 ---
+
+  ivan_q1:
+    type: tweet
+    from: ivan
+    text: >
+      moj brat je NESTAO i policija mi kaže da je možda otišao na
+      planinarenje??? ON NE IDE NIKAM BEZ DA SE JAVI. dolazim iz
+      rijeke. netko će mi objasniti.
+    effects: { trust_ivan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ivan -> ivan_q1_talk
+
+  ivan_q1_talk:
+    type: message
+    text: >
+      IVAN: Who are you? Another person from this village who's going
+      to tell me to calm down? My brother called me the night before
+      he disappeared. He said he had something big. He said "if
+      anything happens, look at IstraBuild." Then he hung up.
+
+      Pičku materinu, that's the last I heard from him.
+    effects: { trust_ivan: "+10" }
+    choices:
+      - What do you think happened? -> ivan_theory
+      - Move on -> quest1_hub
+
+  ivan_theory:
+    type: message
+    text: >
+      IVAN: I think he found proof that IstraBuild is clearing
+      protected forest with the načelnik's blessing and they shut
+      him up. But I also think that old hunter — Marko Radin —
+      has been losing his mind over Matej's success. The way he
+      talks about Matej's truffle spots... like Matej stole
+      something from him. Like those patches belong to Marko
+      by divine right.
+
+      Matej told me months ago that someone was following him in the
+      forest. Setting up trail cameras on his paths. He thought it
+      was poachers. Now I think it was Marko.
+
+      Jebote, I should have come down sooner.
+    effects: { trust_ivan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Petra Q1 ---
+
+  petra_q1:
+    type: tweet
+    from: petra
+    text: >
+      ako itko ima vijesti o @matej_baric javite mi se. njegov pas
+      čeka pred vratima. ne bi nikad ostavio rusa. nikad.
+    effects: { trust_petra: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Petra -> petra_q1_talk
+
+  petra_q1_talk:
+    type: message
+    text: >
+      PETRA: I appreciate you reaching out but I don't know you.
+      Matej has a lot of friends here. I'm sure he'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      His truffle dog Ruso hasn't eaten since he left. Dogs know.
+
+      [Petra is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_petra: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ana Q1 ---
+
+  ana_q1:
+    type: tweet
+    from: ana
+    text: >
+      Moj sin nije bjegunac. Moj sin je lovac na tartufe i poznavalac
+      šume. Netko mi je uzeo sina i ja ću saznati tko.
+    effects: { trust_ana: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ana -> ana_q1_talk
+
+  ana_q1_talk:
+    type: message
+    text: >
+      ANA: I am Matej's mother. I have run this olive grove for
+      forty years. I know every person in this village. And I know
+      my son did not "go hiking."
+
+      He came home that evening. He was upset. He said the načelnik
+      threatened him. Told him to stop posting about the forest or
+      there would be consequences. My son doesn't scare easily but
+      that night he was scared.
+
+      Whoever took my son from me will answer for it. To the law
+      or to me.
+    effects: { trust_ana: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Matej went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Luka (was trail running near the forest) -> luka_interview
+      - Find Dario (farmer, heard vehicles at night) -> dario_interview
+      - Find Ante (baker, saw cars before dawn) -> ante_interview
+      - Find Renata (pharmacist, heard an argument) -> renata_interview
+
+  # --- Luka (saw someone at Matej's car) ---
+
+  luka_interview:
+    type: tweet
+    from: luka
+    text: >
+      nisam spavao. čudna vibracija u selu. ne govorim ništa online
+      ali ak me poznaješ znaš di sam
+    effects: { trust_luka: "+5" }
+    choices:
+      - Ask Luka about that evening -> luka_talk
+
+  luka_talk:
+    type: message
+    text: >
+      LUKA: buraz ok al nikomu ne govoriš. bio sam na trail runu
+      iznad sela oko 19h. i vidio sam marko radina kod matejevog
+      auta. bio je na koljenima pored prednjeg kotača. nešto je
+      radio ispod. kad me vidio ustao je i otišao brzo.
+
+      fakat buraz mislim da je nešto stavio pod auto. tipa gps
+      tracker ili takvo nešto. ko u filmovima jebote.
+
+      nisam ništa rekao jer tko će mi vjerovati. tinejdžer koji
+      optužuje starog lovca. kurac. nitko.
+    effects:
+      trust_luka: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dario (farmer, heard vehicles) ---
+
+  dario_interview:
+    type: tweet
+    from: dario
+    text: >
+      Šuma iznad sela. Noću. Strojevi. Svjetla. Ovo ne smije
+      nastaviti. Ali nitko ne sluša farmere.
+    effects: { trust_dario: "+5" }
+    choices:
+      - Ask Dario what he heard -> dario_talk
+
+  dario_talk:
+    type: message
+    text: >
+      DARIO: I was up late checking on the olive trees — bura wind
+      was strong that night. Around 23h I heard heavy vehicles on
+      the forest road. Trucks. Big ones. Not normal for a village
+      road at that hour.
+
+      Then floodlights in the forest. The sound of chainsaws. At
+      23h. On protected land.
+
+      Around midnight, I saw a 4x4 with IstraBuild markings drive
+      past my farm. And behind it — the načelnik's Audi. Tomislav
+      Jurić himself, driving toward the forest at midnight.
+
+      I noted the time and the plates. Nobody's asked me for them.
+    effects:
+      trust_dario: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ante (baker, saw chase at dawn) ---
+
+  ante_interview:
+    type: tweet
+    from: ante
+    text: >
+      Svaki dan počinjem u 5h. To jutro nisam bio sam na cesti.
+      Daleko od toga.
+    effects: { trust_ante: "+5" }
+    choices:
+      - Ask Ante what he saw -> ante_talk
+
+  ante_talk:
+    type: message
+    text: >
+      ANTE: I start baking at 5am every day. That morning I was
+      heating up the ovens and heard a car — fast, much too fast
+      for the village road. A 4x4, dark, heading down the hill.
+      Then maybe three minutes later, a smaller car. Matej's old
+      Fiat. Heading the same direction but turning off toward the
+      coast road.
+
+      The 4x4 stopped, reversed, and went after the Fiat.
+
+      Sranje. Someone was chasing him.
+
+      I told the policija. They wrote it down. That was it.
+    effects:
+      trust_ante: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Renata (pharmacist, heard argument) ---
+
+  renata_interview:
+    type: tweet
+    from: renata
+    text: >
+      Noćna smjena u ljekarni. Čujete svašta kad je selo tiho.
+      Te noći nisam čula tišinu.
+    effects: { trust_renata: "+5" }
+    choices:
+      - Ask Renata what she heard -> renata_talk
+
+  renata_talk:
+    type: message
+    text: >
+      RENATA: I was on night duty — we rotate. Around 1am I heard
+      shouting outside. Two men. One of them was definitely Matej —
+      I know his voice, he picks up his mother's medication here.
+
+      The other voice I didn't recognise at first. Deeper, older.
+      He said: "Those spots are mine. You think you can just take
+      what I built? I'll destroy you before I let you have them."
+
+      Matej said: "They're not yours, Marko. The forest belongs to
+      everyone."
+
+      Then I heard a car door slam and tyres on gravel. Fast.
+
+      Jebote. I should have called the police right then.
+    effects:
+      trust_renata: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Petra (girlfriend)
+      and Nina (saw Marko watching Matej's house).
+    choices:
+      - Talk to Petra about that night -> petra_interview
+      - Talk to Nina -> nina_interview
+      - Find Luka -> luka_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dario -> dario_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ante -> ante_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Renata -> renata_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Petra (last contact with Matej) ---
+
+  petra_interview:
+    type: tweet
+    from: petra
+    text: >
+      ta slika na matejevom računu. to nije on. matej nikad ne
+      objavljuje bez opisa. matej ne objavljuje u 4 ujutro. netko
+      drugi je to napravio.
+    effects: { trust_petra: "+5" }
+    choices:
+      - DM Petra -> petra_talk_low
+        when:
+          state: trust_petra
+          lt: 50
+      - DM Petra -> petra_talk_high
+        when:
+          state: trust_petra
+          gte: 50
+
+  petra_talk_low:
+    type: message
+    text: >
+      PETRA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Petra needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_petra: "+5" }
+    choices:
+      - Share what you've learned about the night -> petra_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  petra_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the GPS tracker, the midnight
+      vehicles, the argument, the chase at dawn. Petra is silent for
+      a while.
+
+      PETRA: You're actually trying to find him. Ok. I'll talk.
+    effects: { trust_petra: "+25" }
+    choices:
+      - What happened that night? -> petra_talk_high
+
+  petra_talk_high:
+    type: message
+    text: >
+      PETRA: He came to the konoba around 22h. I was closing up.
+      He was pale, his hands were shaking. He said "they know what
+      I found." He grabbed his laptop and his camera from his
+      backpack.
+
+      I asked who. He said "IstraBuild. They sent people to the
+      forest. The načelnik was there." Then he said something else —
+      "and he's been following me again. He's always in the forest
+      when I am."
+
+      He wouldn't say who "he" was. He kissed me, said "don't
+      worry," and left with his dog. By morning his car was gone,
+      Ruso was at the door alone, and that crushed truffle photo
+      was on his account.
+
+      Pičku materinu. I should have gone with him.
+    effects:
+      trust_petra: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nina (saw Marko watching Matej's house) ---
+
+  nina_interview:
+    type: message
+    text: >
+      NINA: buraz ok fakat je creepy ali vidila sam markota radina
+      — starog lovca — tri puta navečer ispred matejeve kuće.
+      doslovno stoji i gleda u prozore. ono tko to radi jebote.
+
+      zadnji put je bio dva dana prije nego je matej nestao. sjedio
+      je u autu nasuprot. svjetla ugašena. samo sjedi. tering
+      jezivo buraz.
+    effects:
+      trust_nina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Marko Radin seen at Matej's car, attaching something (Luka)
+      22:00 — Matej arrives at konoba, panicked, grabs evidence (Petra)
+      23:00 — IstraBuild trucks and načelnik's car at the forest (Dario)
+      01:00 — Marko confronts Matej outside the pharmacy (Renata)
+      05:00 — Two cars speeding from the village, chase toward coast (Ante)
+
+      IstraBuild was clearing protected forest. The načelnik was in
+      on it. Matej had the proof. He was confronted and fled.
+
+      But there are two threats: the developers AND someone closer.
+
+      Two threads to pull:
+      — The land grab: What is IstraBuild doing? Who authorized the
+        clearing?
+      — The obsession: Why is Marko following Matej? What does the
+        old hunter really want?
+    choices:
+      - Investigate the land grab -> corruption_hub
+      - Investigate Marko Radin -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD — THE LAND GRAB
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      IstraBuild is clearing protected forest with the načelnik's
+      help. Matej had proof. Now he's gone and his evidence is
+      missing from his house.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the land registry records -> land_records
+      - Talk to Sanja the journalist -> sanja_interview
+      - Talk to Karlo (IstraBuild technician) -> karlo_interview
+      - Talk to Maja (deputy načelnik, environment) -> maja_interview
+      - Check the Udruga Čuvari Šume -> udruga_investigation
+      - Talk to Dario about the clearing -> dario_clearing
+      - Back to hub -> investigation_hub
+
+  # --- Land Records ---
+
+  land_records:
+    type: message
+    text: >
+      The municipal land registry is public. Cross-referencing
+      IstraBuild's purchases with zoning maps reveals a pattern:
+      twelve land parcels around Vranići purchased in the last
+      eighteen months. All rezoned from agricultural to
+      residential within weeks of purchase.
+
+      But the forest above the village — parcel K-47 — is marked
+      "Protected Forest Land." The zoning status shows an active
+      amendment request: "Reclassification to Tourism-Residential."
+      Filed by IstraBuild d.o.o. Signed by Načelnik Tomislav Jurić.
+
+      The amendment hasn't been approved by the county yet. But
+      the clearing has already started.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Sanja ---
+
+  sanja_interview:
+    type: message
+    text: >
+      SANJA: I don't talk about sources. Period.
+    effects: { trust_sanja: "+5" }
+    choices:
+      - Show Sanja the evidence you have -> sanja_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  sanja_with_evidence:
+    type: message
+    text: >
+      SANJA: ...you have more than I expected.
+
+      Ok. Matej and I were working together. He had photos of the
+      illegal clearing — GPS-tagged, dated, undeniable. Chainsaws on
+      protected land. Survey stakes with IstraBuild logos. The
+      načelnik's car at the site. He had drone footage too.
+
+      We were going to publish together. Then he went dark. And the
+      next day, someone broke into my apartment in Pula and stole my
+      laptop.
+
+      Matej is alive. He contacted me once, from a borrowed phone.
+      He said he was hiding in the hills. He said "they threatened me
+      and the old man won't let go of me."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come back.
+    effects:
+      trust_sanja: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> sanja_hint
+      - Back to investigation hub -> investigation_hub
+
+  sanja_hint:
+    type: message
+    text: >
+      SANJA: IstraBuild sent their director — Krstić — and some
+      thug to the forest that night. They found Matej at his
+      observation point. They told him to hand over everything and
+      stop posting or they'd make his family's life impossible.
+      Threatened to buy the family olive grove out from under them.
+
+      But he also said something about Marko Radin. The old hunter
+      who's been in the forest for decades. Someone who always seems
+      to know where Matej is, where he hunts. That's a different
+      problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Karlo (IstraBuild whistleblower) ---
+
+  karlo_interview:
+    type: message
+    text: >
+      KARLO: I work at IstraBuild. I'm a site technician. I drive
+      equipment, I clear land.
+
+      But the land I've been clearing lately... is not land we
+      have permits for.
+    effects: { trust_karlo: "+10" }
+    choices:
+      - What do you mean? -> karlo_detail
+
+  karlo_detail:
+    type: message
+    text: >
+      KARLO: My boss sends me coordinates. I drive the machinery
+      there and clear. Simple. But last month I checked the
+      coordinates against the zoning maps. Three of the four sites
+      are on protected forest land. No permits exist.
+
+      When I asked my supervisor, he said "the permits are coming."
+      That means they're clearing first and filing paperwork after.
+      That's illegal.
+
+      Matej confronted me at one of the sites. He had a camera.
+      He was calm, polite. He said "I don't blame you. But this
+      has to stop." I agreed with him.
+
+      I'm scared. I need this job. But I kept GPS logs of every
+      clearing operation. If someone can protect me, I'll share them.
+    effects:
+      trust_karlo: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Maja (deputy načelnik) ---
+
+  maja_interview:
+    type: message
+    text: >
+      MAJA: As deputy načelnik for environment and tourism, I take
+      these allegations seriously. But IstraBuild promises fifty
+      construction jobs and a luxury resort that would put Vranići
+      on the map. The načelnik insists we need "economic growth."
+
+      Off the record? I've seen the rezoning requests. They bypass
+      every environmental review. Načelnik Jurić signs them the day
+      they arrive. Nobody else on the council even gets to vote.
+
+      He's being paid. I can't prove it, but the man bought a new
+      Mercedes last month on a načelnik's salary. Sranje, do the
+      math.
+    effects:
+      trust_maja: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Udruga Čuvari Šume ---
+
+  udruga_investigation:
+    type: tweet
+    from: udruga_suma
+    text: >
+      UPOZORENJE: Prijava nezakonite sječe na zaštićenom šumskom
+      zemljištu iznad Vranića. Fotografije i koordinate prikupljeni.
+      Zahtijevamo hitnu inspekciju.
+    choices:
+      - Check their data -> udruga_data
+
+  udruga_data:
+    type: message
+    text: >
+      The Čuvari Šume have been monitoring the forest for five years.
+      Their satellite data shows clear deforestation: 3.2 hectares of
+      protected oak forest cleared in the last six months. The
+      clearing pattern matches IstraBuild's villa development plans
+      published on their website.
+
+      The timing is unmistakable. Trees are cut at night, between
+      22h and 4am. Heavy equipment tracks appear overnight. By
+      morning, the stumps are covered with brush.
+
+      Matej was their most active volunteer. He provided most of
+      the ground-level photography.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Dario clearing ---
+
+  dario_clearing:
+    type: message
+    text: >
+      DARIO: I'll show you something. My farm borders the forest.
+      Last week I found this — survey stakes on my land. Not the
+      forest, my land. With IstraBuild markings. They're already
+      surveying beyond the parcels they've bought.
+
+      The načelnik told me to sell. "Fair price," he said. Then
+      he said "it would be a shame if your irrigation permit got
+      lost in the system." That's a threat. Without water my
+      olives die.
+
+      Matej photographed the stakes on my land. He said it proved
+      IstraBuild was expanding illegally beyond their purchased
+      parcels. With the načelnik's help.
+
+      I still have those photos.
+    effects:
+      trust_dario: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD — THE RIVAL HUNTER
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Marko Radin. Old truffle hunter. Thirty years in the forest.
+      He sees Matej as a threat — a young man finding patches Marko
+      considers his own. Trail cameras on Matej's paths. A GPS
+      tracker on his car. Midnight confrontations.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Marko's trail cameras -> trail_cameras
+      - Talk to Petra about Marko -> petra_marko
+        when:
+          state: trust_petra
+          gte: 20
+      - Talk to Luka (more detail on the car incident) -> luka_detail
+      - Talk to Renata about Marko -> renata_marko
+      - Check the anonymous account @dino_novak -> dino_investigation
+      - Talk to Ella the bookseller -> ella_interview
+        when:
+          state: trust_ella
+          gte: 40
+      - Talk to Inspektor Horvat -> inspektor_interview
+        when:
+          state: trust_inspektor
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Trail Cameras ---
+
+  trail_cameras:
+    type: message
+    text: >
+      Matej's public foraging blog includes a disturbing post from
+      two months ago: "Found another camera on the north trail. That
+      makes four. Someone is mapping my routes."
+
+      He photographed each camera — commercial trail cameras, the
+      kind used for wildlife monitoring. But these were pointed at
+      paths, not animal crossings. And they were all on routes Matej
+      used to reach his truffle patches.
+
+      Cross-referencing: the cameras are a model sold by a hunting
+      supply shop in Pazin. Purchase records are private. But the
+      memory cards Matej recovered from two of them show his face,
+      timestamped, on fifteen separate occasions.
+
+      Someone was tracking his every movement in the forest.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Petra on Marko ---
+
+  petra_marko:
+    type: message
+    text: >
+      PETRA: Marko? Jebote, that man is obsessed. He started
+      friendly — the old master teaching the young apprentice. But
+      when Matej found the white truffle patch in the old forest —
+      the one Marko never found in thirty years — something broke.
+
+      Marko started showing up at our table at the konoba. Asking
+      where Matej hunted that day. What paths he used. Matej stopped
+      answering and Marko got angry. Said Matej was "poaching his
+      territory."
+
+      A month ago Matej found that someone had poisoned one of his
+      truffle patches — salted the earth around an oak so nothing
+      would grow. He suspected Marko but couldn't prove it.
+
+      Kurac. Who does that? Who destroys nature out of jealousy?
+    effects:
+      trust_petra: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Luka detail ---
+
+  luka_detail:
+    type: message
+    text: >
+      LUKA: buraz ok nisam sve rekao. kad sam vidio markota kod
+      matejevog auta imao je nešto u rukama. mali uređaj. stavio
+      ga je pod branik s magneta. znaš ono gps tracker.
+
+      i imao je još nešto — bilježnicu. ispisivao je nešto, tipa
+      registraciju auta ili tako. lik ima bilježnicu punu podataka
+      o mateju. fakat bolesno.
+
+      i ono — vidio sam markota u šumi s dalekozorom prošli tjedan.
+      nije gledao životinje. gledao je matejevu kuću s brda.
+
+      jebote buraz ovo je stalking.
+    effects:
+      trust_luka: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Renata on Marko ---
+
+  renata_marko:
+    type: message
+    text: >
+      RENATA: Marko Radin has been coming to the pharmacy more
+      frequently. He's been buying things that... suggest he's not
+      well. Sleep medication, anxiety pills. And he asked me once
+      about GPS tracking devices. "For the dog," he said.
+
+      His dog has been dead for two years.
+
+      He also asked me, very casually, where Matej sold his truffles
+      these days. I said "the restaurants in Rovinj, everyone knows
+      that." He got this look in his eyes. Jebote, it scared me.
+    effects:
+      trust_renata: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Dino (anonymous account) ---
+
+  dino_investigation:
+    type: tweet
+    from: dino
+    text: >
+      Trebao je slušati. Ta šuma nije njegova. Trudio sam se držati
+      ga podalje. Nitko ne razumije tu šumu kao ja.
+    choices:
+      - Look at this account's history -> dino_posts
+
+  dino_posts:
+    type: message
+    text: >
+      @dino_novak: account created 9 months ago. Posts are all about
+      truffle hunting and Matej's foraging routes. Comments on every
+      forest photo, every mushroom find, every truffle post. The tone
+      shifts over time:
+
+      Month 1: "Great find. You have a real eye for the forest."
+      Month 3: "Those are not your patches. Show some respect for the
+      people who came before you."
+      Month 5: "I see you at the konoba bragging about your finds.
+      Enjoy it while it lasts."
+      Month 8: "I know your routes. I know your schedule. The forest
+      tells me everything."
+
+      The account has no photos, no personal details. Just Matej.
+      Only Matej.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> dino_style
+
+  dino_style:
+    type: message
+    text: >
+      Comparing @dino_novak with @marko_radin:
+
+      Same use of Istrian dialect — "ča" forms that are specific to
+      older speakers. Same knowledge of forest geography that only a
+      decades-long truffle hunter would have. Same references to
+      specific oak trees by local nicknames that only someone who
+      has worked this forest for thirty years would know.
+
+      And one post from @dino_novak: "Your find at Stari Hrast was
+      mine." Stari Hrast is a local name for a specific tree. It's
+      not on any map. Only Marko and Matej used that name.
+
+      It's Marko. The anonymous account is Marko Radin.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ella ---
+
+  ella_interview:
+    type: message
+    text: >
+      ELLA: Matej left something with me. A sealed waterproof bag.
+      He said "if someone asks you about the forest above Vranići,
+      give them this."
+
+      He looked frightened. He said he'd made copies of everything
+      but needed one set off-site, somewhere nobody would think to
+      look. A bookshop on a hilltop seemed perfect.
+    effects: { trust_ella: "+10" }
+    choices:
+      - What's in the bag? -> ella_bag
+
+  ella_bag:
+    type: message
+    text: >
+      Ella reaches under the counter and produces a waterproof dry
+      bag.
+
+      ELLA: He said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show heavy machinery on protected forest land —
+      IstraBuild equipment with plates and serial numbers visible.
+      Survey stakes on parcels the company doesn't own. The
+      načelnik's car at the clearing site, timestamped at 1am.
+      And drone footage of 3.2 hectares of ancient oak forest
+      reduced to mud. The USB contains GPS coordinates, satellite
+      comparisons, and Matej's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspektor Horvat ---
+
+  inspektor_interview:
+    type: message
+    text: >
+      INSPEKTOR HORVAT: Off the record — and I mean completely off
+      the record — I wanted to investigate IstraBuild. My supervisor
+      in Pula told me to stand down. He said the county had
+      "jurisdiction." Sranje. That's code for "the načelnik made a
+      phone call."
+
+      The Marko Radin situation is different. I didn't even know
+      about that until now. If you have evidence of stalking and
+      harassment, I can act on that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_inspektor: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Matej than anyone in Vranići. Who is responsible?
+    choices:
+      - Confront Marko Radin (the obsessive rival hunter) -> confront_marko
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Goran Krstić (IstraBuild director) -> confront_goran
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Načelnik Tomislav Jurić (political corruption) -> confront_tomislav
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Marko Radin (Best Ending) ---
+
+  confront_marko:
+    type: message
+    text: >
+      You present your evidence to Marko Radin:
+
+      "I know @dino_novak is your account. I know you put a GPS
+      tracker on Matej's car. I know about the trail cameras. I know
+      you poisoned his truffle patches. I know you confronted him
+      outside the pharmacy at 1am. I have witnesses, access records,
+      and the anonymous posts."
+    choices:
+      - Send -> marko_response
+
+  marko_response:
+    type: message
+    text: >
+      Marko doesn't reply for a long time. Then:
+
+      MARKO: You don't understand. That forest is mine. Thirty years
+      I've worked it. Every tree, every root, every truffle — I found
+      them. I mapped them. That boy comes along with his smartphone
+      and his drone and thinks he owns it.
+
+      I was protecting the forest. Protecting what's mine. He should
+      have stayed in his lane.
+
+      That's not protection. That's obsession.
+
+      You've already sent the evidence to Inspektor Horvat. And to
+      Sanja Tomić.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektor Horvat reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the trail cameras, the
+      poisoned truffle patches, the midnight confrontation — Marko
+      Radin is arrested for stalking, harassment, and destruction
+      of property. A GPS tracker is recovered from under Matej's
+      car, found abandoned near the coast.
+
+      Sanja Tomić, finally in possession of Matej's full evidence
+      package, publishes the IstraBuild story in Jutarnji List. The
+      county orders an immediate halt to all clearing on protected
+      land. IstraBuild is fined and their permits revoked. Goran
+      Krstić faces criminal charges for unauthorized deforestation.
+      Načelnik Tomislav Jurić is suspended pending investigation for
+      corruption and accepting bribes.
+
+      And Matej Barić, reading the story from a shepherd's hut in
+      the mountains above Motovun, calls his brother for the first
+      time in twelve days.
+
+      "Dolazim kući."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: matej
+    text: >
+      šuma ne laže. i ljudi iz vranića ne lažu. hvala što niste
+      odustali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Goran Krstić (Partial Ending) ---
+
+  confront_goran:
+    type: message
+    text: >
+      You present the land grab evidence to Goran Krstić:
+
+      "I have photographs of illegal clearing on protected forest
+      land. I have GPS coordinates and timestamps. I have drone
+      footage. I have the rezoning requests signed by the načelnik
+      before county approval. I have your equipment serial numbers
+      on protected land."
+    choices:
+      - Send -> goran_response
+
+  goran_response:
+    type: message
+    text: >
+      GORAN: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will
+      result in immediate proceedings. IstraBuild operates within
+      all applicable regulations.
+
+      But it's too late. You've sent the evidence to Sanja, to the
+      Čuvari Šume, and to the county environmental office.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The land grab story breaks. IstraBuild is ordered to halt all
+      operations pending investigation. The villa project may be
+      cancelled. Fifty promised jobs evaporate. The village is
+      divided — half relieved, half furious.
+
+      But Matej?
+
+      Without the stalking evidence, Marko Radin is never
+      investigated. He continues to hunt the forest. He continues
+      to monitor Matej's routes. He sets new trail cameras. He
+      creates a new anonymous profile.
+
+      Three months later, Matej reads about IstraBuild online. He
+      returns quietly. He hunts different patches. He varies his
+      routes. He checks his car every morning.
+
+      The land grab is exposed. But the person who terrorised Matej
+      walks free in the same forest.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: matej
+    text: "vratio sam se. šuma je sigurnija. ali nisam siguran da sam ja."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Načelnik Jurić (Wrong Ending) ---
+
+  confront_tomislav:
+    type: message
+    text: >
+      You confront Načelnik Tomislav Jurić with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> tomislav_response
+
+  tomislav_response:
+    type: tweet
+    from: branko
+    text: >
+      Moj klijent prima na znanje vaše optužbe. Svaka javna objava
+      klevetničkih tvrdnji rezultirat će trenutnim pravnim postupkom.
+      — Ured Pavlović & Partneri, Zagreb
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The načelnik's lawyer buries your accusation. Without a direct
+      link between Jurić and the illegal clearing — beyond signing
+      rezoning requests, which he claims is "standard administrative
+      procedure" — your evidence is insufficient for criminal charges.
+
+      IstraBuild continues to clear. Marko continues to watch.
+      Matej stays in hiding.
+
+      Six months later, @dino_novak creates a new account. It
+      follows Matej's girlfriend.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VRANIĆI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Matej's story explores themes of land
+      corruption, environmental destruction, territorial obsession,
+      generational conflict, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or thoughts of suicide, help is available:
+      Plavi telefon: 0800 0551 (besplatno)
+      Hrabri telefon: 116 111 (za djecu i mlade)
+      Zeleni telefon: 072 123 456 (prijava devastacije okoliša)

@@ -1,0 +1,1581 @@
+# DEAD ACCOUNT — Story 081: Lefkara Heights (Cyprus)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-081.yml
+#
+# Player investigates the disappearance of lace maker Andreas Christou
+# in the fictional Troodos foothills village of Lefkara Heights.
+
+meta:
+  title: "Dead Account — Lefkara Heights"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_eleni: 0
+    trust_michalis: 0
+    trust_stavroula: 0
+    trust_kyriakos: 0
+    trust_marina: 0
+    trust_nikos: 0
+    trust_panayiota: 0
+    trust_costas: 0
+    trust_loukas: 0
+    trust_despina: 0
+    trust_andros: 0
+    trust_chrysanthi: 0
+    trust_petros: 0
+    trust_yiannis: 0
+    trust_sofronis: 0
+    trust_marios: 0
+    trust_georgia: 0
+    trust_artemis: 0
+    trust_lefkara_astynomia: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    quarry_evidence: 0
+    collector_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to lefkara heights. exploring the troodos foothills one trail at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "LefkaraHeights.social"
+    description: "Καλωσήρτατε στο κοινοτικό Mastodon των Λευκάρων"
+    avatar_url: /gamepatch/assets/dead-account/lefkaraheights_bot.png
+
+  npcs:
+    # === Andreas's Inner Circle ===
+    andreas:
+      name: "Andreas Christou"
+      bio: "λευκαρίτικη δαντέλα | τρίτη γενιά δαντελλού | η τέχνη εν πεθαίνει"
+      avatar: avatars/andreas.jpg
+    eleni:
+      name: "Eleni Christou"
+      bio: "αδερφή του Αντρέα | δασκάλα στο δημοτικό | εν μπορώ να πιστέψω ότι εχάθηκεν"
+      avatar: avatars/eleni.jpg
+    michalis:
+      name: "Michalis Pavlou"
+      bio: "κολλητός του Αντρέα | ξυλουργός | εργαστήρι στα Λεύκαρα | τζιαι κάτι εν πάει καλά"
+      avatar: avatars/michalis.jpg
+    stavroula:
+      name: "Stavroula Andreou"
+      bio: "μάνα του Αντρέα | 67 χρονών | τα χέρια μου ξέρουν μόνο δαντέλα τζιαι προσευχή"
+      avatar: avatars/stavroula.jpg
+
+    # === Local Government ===
+    kyriakos:
+      name: "Kyriakos Demetriou"
+      bio: "Κοινοτάρχης Λευκάρων | Υπηρετώ τον τόπο μας | #ΛεύκαραΜπροστά"
+      avatar: avatars/kyriakos.jpg
+    georgia:
+      name: "Georgia Hadjipetrou"
+      bio: "Δημοτική Σύμβουλος | Περιβάλλον & Πολιτισμός | Λεύκαρα"
+      avatar: avatars/georgia.jpg
+    koinotita:
+      name: "Κοινότητα Λευκάρων"
+      bio: "Επίσημος λογαριασμός | Ανακοινώσεις | Ωράριο: Δευτ-Παρ 8π-15μ"
+      avatar: avatars/koinotita.jpg
+
+    # === Local Business & Community ===
+    marina:
+      name: "Marina Loizou"
+      bio: "καφενείο Η Δαντέλα | καφές & γλυκά | η καρδιά του χωριού από το 1972"
+      avatar: avatars/marina.jpg
+    kafeneio:
+      name: "Καφενείο Η Δαντέλα"
+      bio: "Παραδοσιακό καφενείο | Κυπριακός καφές | Κουμανταρία | Στο κέντρο των Λευκάρων"
+      avatar: avatars/kafeneio.jpg
+    costas:
+      name: "Costas Georgiou"
+      bio: "αργυροχόος | τρίτη γενιά | λευκαρίτικα ασημικά | η τέχνη εν λίρες"
+      avatar: avatars/costas.jpg
+    loukas:
+      name: "Loukas Nicolaou"
+      bio: "αγρότης | ελιές & αμύγδαλα | troodos foothills | η γη εν ψέματα"
+      avatar: avatars/loukas.jpg
+    despina:
+      name: "Despina Kyriacou"
+      bio: "φαρμακοποιός | Λεύκαρα | υγεία & συμβουλές | ανοιχτά Σάββατο πρωί"
+      avatar: avatars/despina.jpg
+    panayiota:
+      name: "Panayiota Stavrou"
+      bio: "ξενοδοχείο Τα Λεύκαρα | agrotourism | παραδοσιακό πέτρινο σπίτι"
+      avatar: avatars/panayiota.jpg
+    chrysanthi:
+      name: "Chrysanthi Ioannou"
+      bio: "δαντελλού | 58 χρονών | η τελευταία γενιά; | ελπίζω όι"
+      avatar: avatars/chrysanthi.jpg
+
+    # === Journalist ===
+    petros:
+      name: "Petros Makrides"
+      bio: "δημοσιογράφος | Φιλελεύθερος | περιβάλλον & πολιτισμός | tips: petros@makrides.cy"
+      avatar: avatars/petros.jpg
+
+    # === TroodoStone (corporate) ===
+    troodostone:
+      name: "TroodoStone Quarries Ltd"
+      bio: "Εξόρυξη & Δομικά Υλικά | Μονάδα Λευκάρων | ISO 14001 Πιστοποιημένη"
+      avatar: avatars/troodostone.jpg
+    andros:
+      name: "Andros Papamichael"
+      bio: "Διευθυντής Λατομείου TroodoStone | Βιομηχανία & Κοινότητα"
+      avatar: avatars/andros.jpg
+    sofronis:
+      name: "Sofronis Karayiannis"
+      bio: "Δικηγόρος | Γραφείο Καραγιάννη & Συνεργάτες | Εμπορικό Δίκαιο | Λεμεσός"
+      avatar: avatars/sofronis.jpg
+
+    # === Teens ===
+    nikos:
+      name: "Nikos"
+      bio: "16 | bmx & graffiti | lefkara born | ρε κουμπάρε η ζωή εν κοντή"
+      avatar: avatars/nikos.jpg
+    marios:
+      name: "Marios"
+      bio: "17 | μουσική & gaming | troodos nights | εν τωρά σοβαρά αυτά"
+      avatar: avatars/marios.jpg
+    artemis:
+      name: "Artemis"
+      bio: "15 | φωτογραφία & σχέδιο | δαντέλα σε μαυρόασπρο | ο Αντρέας ήταν ο δάσκαλός μου"
+      avatar: avatars/artemis.jpg
+
+    # === Media & Community ===
+    actu_lefkara:
+      name: "Ειδήσεις Λευκάρων"
+      bio: "Τοπικές ειδήσεις | Λεύκαρα & Τρόοδος | tips: info@eidiseis-lefkaron.cy"
+      avatar: avatars/actu_lefkara.jpg
+    meteo_troodos:
+      name: "Καιρός Τροόδους"
+      bio: "Προγνώσεις & ειδοποιήσεις | Αυτόματος σταθμός | Ενημέρωση κάθε ώρα"
+      avatar: avatars/meteo_troodos.jpg
+    asso_lefkaritiki:
+      name: "Σύλλογος Προστασίας Λευκαρίτικης Δαντέλας"
+      bio: "Διατήρηση UNESCO | Εθελοντές | Εκθέσεις & Εργαστήρια"
+      avatar: avatars/asso_lefkaritiki.jpg
+
+    # === Suspicious / Other ===
+    yiannis:
+      name: "Yiannis Markides"
+      bio: "συλλέκτης τέχνης | Λεμεσός | αφιερωμένος στα λευκαρίτικα κεντήματα"
+      avatar: avatars/yiannis.jpg
+    anon_collector:
+      name: "LaceLover_CY"
+      bio: "."
+      avatar: avatars/anon.jpg
+    lefkara_astynomia:
+      name: "Αστυνομικός Σταθμός Λευκάρων"
+      bio: "Αστυνομία Κύπρου | Τοπικός Σταθμός | Έκτακτα: 199"
+      avatar: avatars/lefkara_astynomia.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN LEFKARA HEIGHTS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to LefkaraHeights.social — the community Mastodon instance
+      for the Troodos foothills village of Lefkara Heights, Cyprus.
+
+      The local feed is unsettled today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @andreas_christou.
+
+      A lace maker. Third generation. He documented the art of
+      lefkaritiki — the legendary Lefkara lace, UNESCO-recognized. People
+      are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> andreas_profile
+
+  andreas_profile:
+    type: tweet
+    from: andreas
+    text: "Η δαντέλα εν απλά κλωστή. Εν η ψυχή του τόπου. Τζιαι κάποιοι θέλουν να την αγοράσουν ολόκληρη. Έσιει πράματα που εν πωλούνται."
+    choices:
+      - That's his last real post... -> torn_lace
+
+  torn_lace:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a piece of torn lace. Frayed edges, ruined by what looks like
+      deliberate cuts. Posted at 2am. No caption.
+
+      His friends say that's not his style. Andreas treated lace like
+      sacred art. The police say he probably went to Limassol for work.
+      Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: lefkara_astynomia
+    text: >
+      Λάβαμε αναφορά σχετικά με κάτοικο των Λευκάρων. Σε αυτό το
+      στάδιο, δεν υπάρχουν στοιχεία που να υποδεικνύουν εγκληματική
+      ενέργεια. Κάθε χρήσιμη πληροφορία μπορεί να κοινοποιηθεί
+      στο 199 ή στον τοπικό σταθμό.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @eleni_christou is beside
+      herself. His best friend @michalis_pavlou is going door to door.
+      His mother @stavroula_andreou hasn't left the church. The
+      silversmith @costas_georgiou says Andreas was scared of someone.
+
+      And the journalist @petros_makrides is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Andreas just
+      "went to Limassol for work."
+    effects: { trust_eleni: "+5", trust_michalis: "+5" }
+    choices:
+      - Start following Andreas's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Lefkara Heights. Follow Andreas's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Marina (café owner, knows everyone) -> marina_intro
+      - Talk to Loukas (farmer, knows the land) -> loukas_intro
+      - Talk to Nikos (teen, seems shaken) -> nikos_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Andreas with the rhythms of a small
+      mountain village: olive harvest schedules, the bakery's halloumi
+      bread, weather warnings from the Troodos peaks.
+
+      Key names surface: Eleni (sister, teacher), Michalis (best friend,
+      worried sick), Petros (journalist, oddly quiet), and the teens —
+      Nikos, Marios, Artemis — who admired Andreas's craft.
+
+      Also prominent: TroodoStone Quarries Ltd, the extraction company
+      at the edge of the valley. Their posts are corporate PR. Andreas's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Marina -> marina_intro
+      - Talk to Loukas -> loukas_intro
+      - Talk to Nikos -> nikos_intro
+
+  # --- Marina (social map) ---
+
+  marina_intro:
+    type: tweet
+    from: marina
+    text: >
+      Το καφενείο ανοιχτό αλλά η καρδιά μου κλειστή. @andreas_christou,
+      η θέση σου σε περιμένει. Γύρνα πίσω ρε κούκλα μου.
+    effects: { trust_marina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Marina -> marina_talk
+
+  marina_talk:
+    type: message
+    text: >
+      MARINA: Ah, you're new? Welcome. Terrible time to arrive, my love.
+      Everyone's tearing their hair out about Andreas.
+
+      Let me tell you who's who. Eleni is his sister — teaches at the
+      primary school. Sweet girl, destroyed right now. Michalis Pavlou
+      is his best friend, a woodworker, strong as an ox and twice as
+      stubborn. Stavroula is his mother, sixty-seven years old, hasn't
+      stopped crying.
+
+      And there's this man from Limassol — Yiannis Markides. Calls
+      himself a collector. He's been coming to the village for months,
+      trying to buy Andreas's antique lace pieces. The family heirlooms.
+      Andreas told him to go to hell. The man wouldn't take no for an
+      answer.
+
+      Oh, and don't believe a word TroodoStone posts. They're blasting
+      the hillside to dust and calling it "progress."
+    effects: { trust_marina: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Yiannis -> marina_yiannis
+      - Ask about TroodoStone -> marina_troodostone
+      - Thank her and move on -> quest1_hub
+
+  marina_yiannis:
+    type: message
+    text: >
+      MARINA: Yiannis Markides. Rich man, Limassol money. He collects
+      lefkaritiki lace — not just any lace, the old pieces. Pre-war
+      patterns. Museum-quality. He's been buying from whoever sells,
+      but Andreas had the best collection in the village. Pieces his
+      grandmother made. His great-grandmother's wedding tablecloth.
+
+      Andreas refused to sell. Told him "ρε κουμπάρε, this isn't a
+      shop, it's a family." Yiannis kept coming back. Higher offers.
+      Then... different tactics. He started showing up at Andreas's
+      workshop uninvited. Photographing the pieces through the window.
+      Sending messages at all hours.
+
+      Andreas told me once, "This man doesn't want lace. He wants to
+      own everything I am."
+    effects: { trust_marina: "+5" }
+    choices:
+      - Ask about TroodoStone -> marina_troodostone
+      - Move on -> quest1_hub
+
+  marina_troodostone:
+    type: message
+    text: >
+      MARINA: That quarry has been there since the 90s. They cut
+      limestone for construction. The village tolerated them because
+      they brought a few jobs. But the blasting has been getting worse.
+      Cracks in the old stone houses. Dust covering everything. The
+      vibrations shook a crack right through the wall of the lace museum.
+
+      Andreas was the first person to actually stand up to them. He
+      documented the damage, photographed the cracks, measured the
+      dust. He was building a case to shut them down. Two weeks later
+      he's gone.
+
+      Γαμώ τα, you do the maths.
+    effects: { trust_marina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Loukas (the land, witness tease) ---
+
+  loukas_intro:
+    type: tweet
+    from: loukas
+    text: >
+      σαράντα χρόνια καλλιεργώ αυτή τη γη. τα αμύγδαλα σκεπάστηκαν
+      σκόνη. @andreas_christou είχε δίκαιο. τζιαι τωρά εχάθηκεν.
+      βκάλτε τα συμπεράσματά σας.
+    effects: { trust_loukas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Loukas -> loukas_talk
+
+  loukas_talk:
+    type: message
+    text: >
+      LOUKAS: I've been farming these terraces since I was a boy.
+      Olives and almonds, same as my father. And I'm telling you —
+      the land is suffering. The quarry blasting shakes the roots.
+      The dust coats the leaves. My yields are down thirty percent
+      in three years.
+
+      Andreas was documenting everything. He had a drone — took photos
+      of the quarry expansion. They've been cutting beyond their
+      permitted boundary. Into the hillside that feeds our water springs.
+      He had maps, measurements, everything. He was building a legal case.
+
+      Then poof — gone. You think that's a coincidence? Εν τωρά
+      σοβαρά; I don't believe in coincidences in these mountains.
+    effects: { trust_loukas: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> loukas_night
+      - Move on -> quest1_hub
+
+  loukas_night:
+    type: message
+    text: >
+      LOUKAS: The night before he vanished — I was up early checking
+      the irrigation, around 4am. I saw lights on the road to the
+      quarry. Not unusual at that hour, the trucks sometimes run early.
+      But there were two vehicles. One was Andreas's old pickup. The
+      other was a black SUV I didn't recognise. TroodoStone plates.
+
+      At 4am. Heading toward the quarry.
+
+      I noted it in my head. Nobody's asked me about it until now.
+    effects: { trust_loukas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nikos (teen, witness tease) ---
+
+  nikos_intro:
+    type: tweet
+    from: nikos
+    text: >
+      ρε κουμπάρε εν τωρά σοβαρά;; @andreas_christou ήταν ο μόνος
+      μεγάλος που μας σεβόταν. εν γίνεται απλά να φύει έτσι. αν
+      ξέρει κανένας κάτι πέτε ρε
+    effects: { trust_nikos: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Nikos -> nikos_talk_early
+
+  nikos_talk_early:
+    type: message
+    text: >
+      NIKOS: ρε συ είσαι νέος εδώ; χαλαρά αλλά κακό timing σιόρ.
+      ο Αντρέας ήταν γαμάτος τύπος. μας έδειχνε τη δαντέλα, μας
+      εξηγούσε γιατί είναι σημαντική. εν ήταν σαν τους άλλους
+      μεγάλους που λαλούν "φύετε ρε κοπέλια."
+
+      τζιαι τωρά εν φοβισμένος γιατί ο Μάριος είδε κάτι περίεργο
+      εκείνο το βράδυ κοντά στο εργαστήρι αλλά εν θέλει να μιλήσει.
+      λαλεί ότι εν τίποτε αλλά σιόρ... εν τίποτε μαλακίες αυτά
+    effects: { trust_nikos: "+10" }
+    choices:
+      - What did Marios see? -> nikos_marios_hint
+      - Move on -> quest1_hub
+
+  nikos_marios_hint:
+    type: message
+    text: >
+      NIKOS: εν ξέρω ακριβώς. ήταν πάνω στο βουνό, gaming session
+      στο κινητό πάνω σε κείνο το τοιχάκι που πιάνει σήμα. τζιαι
+      είδε κάποιον που μπήκε μέσα στο εργαστήρι του Αντρέα τζιαι
+      βγήκε με κάτι τυλιγμένο. ρε γαμώ τα.
+
+      ο Μάριος φοβάται. πες του ότι παίζεις κάτι σε PC τζιαι θα
+      σου μιλήσει ίσως lol
+    effects: { trust_nikos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Lefkara Heights. A Troodos foothills
+      village built around lace and silver. A craftsman who was exposing
+      quarry damage and refusing to sell family heirlooms. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Eleni (Andreas's sister) -> eleni_q1
+      - Talk to Michalis (Andreas's best friend) -> michalis_q1
+      - Check what Stavroula (Andreas's mother) is saying -> stavroula_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Eleni Q1 ---
+
+  eleni_q1:
+    type: tweet
+    from: eleni
+    text: >
+      αν κάποιος έχει νέα του @andreas_christou τηλεφωνήστε μου σας
+      παρακαλώ. το εργαστήρι του είναι ανοιχτό. τα εργαλεία του
+      εκεί. εν θα έφευγε ποτέ χωρίς τα σταυροβελονιά του.
+    effects: { trust_eleni: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Eleni -> eleni_q1_talk
+
+  eleni_q1_talk:
+    type: message
+    text: >
+      ELENI: I appreciate you reaching out but I don't know you.
+      Andreas has many friends here. I'm sure he'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Eleni is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_eleni: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Michalis Q1 ---
+
+  michalis_q1:
+    type: tweet
+    from: michalis
+    text: >
+      ρε @andreas_christou που είσαι ρε φίλε; το εργαστήρι σου
+      σκοτεινό. η μάνα σου κλαίει. τζιαι εσύ εν λαλείς τίποτε.
+      γαμώ τα κάτι εν πάει καλά.
+    effects: { trust_michalis: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Michalis -> michalis_q1_talk
+
+  michalis_q1_talk:
+    type: message
+    text: >
+      MICHALIS: Who are you? Another person who's going to tell me
+      he probably went to Limassol? My best friend called me the
+      night before he disappeared. He said someone broke into his
+      workshop and stole two antique lace pieces. Heirloom stuff,
+      irreplaceable. He said "if anything happens, look at the
+      collector from Limassol and the quarry people." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_michalis: "+10" }
+    choices:
+      - What do you think happened? -> michalis_theory
+      - Move on -> quest1_hub
+
+  michalis_theory:
+    type: message
+    text: >
+      MICHALIS: Two things could have happened. Either that quarry
+      company silenced him because he had proof they're destroying the
+      hillside illegally. Or that psycho collector — Yiannis Markides —
+      finally did something crazy to get his hands on the lace.
+
+      Or both. Ρε κουμπάρε, maybe both.
+
+      Andreas told me months ago that someone was following him. A car
+      parked outside his workshop at night. Someone going through his
+      Instagram looking at every photo of every lace piece he owned.
+      He thought it was nothing. Εν ήταν τίποτε.
+    effects: { trust_michalis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Stavroula Q1 ---
+
+  stavroula_q1:
+    type: tweet
+    from: stavroula
+    text: >
+      Παναγία μου φύλαξε τον. Ο γιος μου ο Αντρέας. Τα χέρια του
+      έκαμαν δαντέλα σαν τη γιαγιά του. Φέρτε τον πίσω. Σας
+      παρακαλώ.
+    effects: { trust_stavroula: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Stavroula -> stavroula_q1_talk
+
+  stavroula_q1_talk:
+    type: message
+    text: >
+      STAVROULA: My boy... he kept his grandmother's lace pieces in
+      a special chest. Wrapped in muslin. Temperature controlled. He
+      treated them like holy relics. The wedding tablecloth from 1923.
+      The altar cloth my mother made for the church.
+
+      That man from Limassol offered fifty thousand euros for the
+      tablecloth. Andreas laughed. "Γιαγιά would haunt me," he said.
+
+      But two pieces went missing last month. The small doilies. Andreas
+      was devastated. He knew who took them but couldn't prove it.
+    effects: { trust_stavroula: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Andreas went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Marios (was on the hillside, saw the workshop) -> marios_interview
+      - Find Panayiota (hotel owner, saw lights) -> panayiota_interview
+      - Find Costas (silversmith, heard the argument) -> costas_interview
+      - Find Chrysanthi (lace maker, early morning witness) -> chrysanthi_interview
+
+  # --- Marios (saw someone at the workshop) ---
+
+  marios_interview:
+    type: tweet
+    from: marios
+    text: >
+      ρε τούτη η βδομάδα εν χάλια. κάτι τρέχει στο χωριό τζιαι
+      κανένας εν λαλεί τίποτε. εν τωρά σοβαρά αυτά;
+    effects: { trust_marios: "+5" }
+    choices:
+      - Ask Marios about that evening -> marios_talk
+
+  marios_talk:
+    type: message
+    text: >
+      MARIOS: ρε σιόρ ok αλλά εν λαλείς σε κανέναν ε; ήμουν πάνω
+      στο βουνάκι γύρω στις 11 το βράδυ, gaming session που πιάνει
+      wifi. τζιαι είδα κάποιον μες στο εργαστήρι του Αντρέα. μαύρα
+      ρούχα, φακό στο χέρι, βγήκε με κάτι τυλιγμένο σε ύφασμα.
+
+      ρε γαμώ τα ήταν σαν ταινία. όταν με είδε — γιατί φαίνεται
+      με είδε — έτρεξε προς το δρόμο. αμάξι με σβηστά φώτα.
+
+      εν είπα τίποτε γιατί ποιος θα πίστευε κοπέλι 17 χρονών;
+      σιόρ κανένας.
+    effects:
+      trust_marios: "+10"
+      night_witnesses: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Panayiota (hotel owner, saw late-night vehicles) ---
+
+  panayiota_interview:
+    type: tweet
+    from: panayiota
+    text: >
+      Υπενθύμιση: ησυχία στο χωριό μετά τις 23:00. Τελευταίες νύχτες
+      κυκλοφορούν οχήματα σε ασυνήθιστες ώρες. Ενοχλούνται οι τουρίστες.
+    effects: { trust_panayiota: "+5" }
+    choices:
+      - Ask Panayiota what she saw -> panayiota_talk
+
+  panayiota_talk:
+    type: message
+    text: >
+      PANAYIOTA: My hotel faces the main square. That night — around
+      midnight — I was closing the shutters and saw a black SUV parked
+      near Andreas's workshop. TroodoStone logo on the door. Two men
+      standing outside, talking on phones.
+
+      Then around 1am, a second car arrived. Silver Mercedes, Limassol
+      plates. A man got out — well-dressed, carrying a briefcase. He
+      went into the workshop.
+
+      At 1am. In a craftsman's workshop. That's not normal.
+
+      I noted it for the guest complaint log. Nobody's asked to see it.
+    effects:
+      trust_panayiota: "+10"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Costas (silversmith, heard the argument) ---
+
+  costas_interview:
+    type: tweet
+    from: costas
+    text: >
+      Τρεις γενιές αργυροχοΐας σε αυτό το χωριό. Τρεις γενιές
+      δαντέλας δίπλα μας. Ο @andreas_christou ήταν ο τελευταίος
+      αληθινός δαντελλάς. Τζιαι τωρά σιωπή.
+    effects: { trust_costas: "+5" }
+    choices:
+      - Ask Costas what happened -> costas_talk
+
+  costas_talk:
+    type: message
+    text: >
+      COSTAS: My silver workshop is three doors down from Andreas's
+      lace workshop. That night I was working late — a commission for
+      a wedding, filigree work takes hours. Around 11pm I heard
+      shouting from Andreas's place.
+
+      Two voices. One was Andreas. The other I didn't recognise.
+      Andreas was shouting "Εν πουλώ τίποτε! Φύε!" — "I'm not
+      selling anything! Get out!" The other voice was quieter, more
+      controlled. Threatening.
+
+      Then I heard glass break. A door slam. An engine starting.
+
+      I should have gone outside. I didn't. Γαμώ τα, I should have
+      gone outside.
+    effects:
+      trust_costas: "+10"
+      night_witnesses: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Chrysanthi (early morning, saw Andreas leave) ---
+
+  chrysanthi_interview:
+    type: tweet
+    from: chrysanthi
+    text: >
+      Σηκώνουμαι στις 5 για δαντέλα — το φως του πρωινού είναι
+      το καλύτερο. Αλλά εκείνο το πρωί ο δρόμος εν ήταν άδειος.
+    effects: { trust_chrysanthi: "+5" }
+    choices:
+      - Ask Chrysanthi what she saw -> chrysanthi_talk
+
+  chrysanthi_talk:
+    type: message
+    text: >
+      CHRYSANTHI: I wake at 5am every day for lace work — the morning
+      light through the east window is perfect. That morning I was
+      opening the shutters and I saw Andreas. Walking fast, almost
+      running, carrying a large bag. He was heading up the mountain
+      road, toward the old monastery path.
+
+      He looked terrified. I called out to him — "Αντρέα μου, τι
+      τρέχει;" He didn't stop. Didn't even look back.
+
+      An hour later, a black SUV went up the same road. Fast. Too
+      fast for that path.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_chrysanthi: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Eleni (sister)
+      and Artemis (saw Yiannis watching the workshop).
+    choices:
+      - Talk to Eleni about that night -> eleni_interview
+      - Talk to Artemis -> artemis_interview
+      - Find Marios -> marios_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Panayiota -> panayiota_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Costas -> costas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Chrysanthi -> chrysanthi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Eleni (last to speak with Andreas) ---
+
+  eleni_interview:
+    type: tweet
+    from: eleni
+    text: >
+      αυτή η φωτογραφία στον λογαριασμό του Αντρέα. εν είναι αυτός.
+      ο Αντρέας εν βάζει ποτέ φωτογραφία χωρίς λεζάντα. ο Αντρέας
+      εν ποστάρει στις 2 τα ξημερώματα. κάποιος άλλος τόκαμε.
+    effects: { trust_eleni: "+5" }
+    choices:
+      - DM Eleni -> eleni_talk_low
+        when:
+          state: trust_eleni
+          lt: 50
+      - DM Eleni -> eleni_talk_high
+        when:
+          state: trust_eleni
+          gte: 50
+
+  eleni_talk_low:
+    type: message
+    text: >
+      ELENI: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Eleni needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_eleni: "+5" }
+    choices:
+      - Share what you've learned about the night -> eleni_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  eleni_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the vehicles, the argument,
+      the intruder, Andreas fleeing. Eleni is silent for a while.
+
+      ELENI: You're actually trying to find him. Okay. I'll talk.
+    effects: { trust_eleni: "+25" }
+    choices:
+      - What happened that night? -> eleni_talk_high
+
+  eleni_talk_high:
+    type: message
+    text: >
+      ELENI: He called me around 10pm. He was whispering. He said
+      "they came to the workshop. The quarry people. They said I
+      have 48 hours to drop the complaint or they'll make problems
+      for mama's house." He was furious but also scared.
+
+      Then he said something else — "and he's here again. He's
+      always here." He wouldn't say who. Just "the shadow."
+
+      I told him to call the police. He laughed — a bitter laugh.
+      "The police? The koinotarchis plays golf with the quarry
+      director." Then the line went dead. By morning his workshop
+      was trashed and that torn lace photo was on his account.
+    effects:
+      trust_eleni: "+15"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      collector_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Artemis (saw Yiannis watching the workshop) ---
+
+  artemis_interview:
+    type: message
+    text: >
+      ARTEMIS: ok ρε εν τωρά σοβαρά αυτό που θα πω αλλά εκείνος ο
+      τύπος — ο συλλέκτης, Γιάννης — τον είδα σαν 5 φορές μπροστά
+      στο εργαστήρι του Αντρέα τα βράδια. απλά στεκόταν τζιαι
+      κοίταζε τα παράθυρα. πολύ creepy σιόρ.
+
+      η τελευταία φορά ήταν σαν 2 μέρες πριν εξαφανιστεί ο Αντρέας.
+      ήταν μες στο αμάξι του παρκαρισμένο απέναντι. απλά καθόταν.
+      σβηστά φώτα.
+    effects:
+      trust_artemis: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      23:00 — Intruder in Andreas's workshop, steals wrapped object (Marios)
+      23:00 — Argument heard, Andreas shouting "I'm not selling" (Costas)
+      00:00 — TroodoStone SUV and silver Mercedes at the workshop (Panayiota)
+      01:00 — Well-dressed man enters workshop with briefcase (Panayiota)
+      05:00 — Andreas fleeing up mountain road with bag (Chrysanthi)
+      06:00 — Black SUV follows same road at speed (Chrysanthi)
+
+      Someone raided Andreas's workshop. Then the quarry company and a
+      mysterious well-dressed man came calling. Andreas fled into the
+      mountains. Someone followed him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The quarry cover-up: What is TroodoStone hiding? Who ordered
+        the intimidation?
+      — The obsession: What is Yiannis Markides really after? Why is
+        he watching the workshop?
+    choices:
+      - Investigate the quarry cover-up -> corruption_hub
+      - Investigate Yiannis -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      QUARRY THREAD: Evidence collected: ${quarry_evidence}
+      COLLECTOR THREAD: Evidence collected: ${collector_evidence}
+    choices:
+      - Work on the quarry thread -> corruption_hub
+      - Work on the collector thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: collector_evidence, gte: 5 }
+            - { state: quarry_evidence, gte: 3 }
+
+  # =====================================================================
+  # QUARRY COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE QUARRY THREAD
+
+      TroodoStone is hiding something. Andreas had proof of illegal
+      expansion. Now he's gone and his workshop was ransacked.
+
+      Quarry evidence: ${quarry_evidence}
+    choices:
+      - Search the planning records -> planning_records
+      - Talk to Petros the journalist -> petros_interview
+      - Talk to Georgia (environment councillor) -> georgia_interview
+      - Talk to Loukas about the quarry damage -> loukas_quarry
+      - Check the Lace Preservation Association -> asso_investigation
+      - Talk to Michalis about the quarry threats -> michalis_quarry
+      - Back to hub -> investigation_hub
+
+  # --- Planning Records ---
+
+  planning_records:
+    type: message
+    text: >
+      The district planning office has public records on TroodoStone's
+      quarry permit. Approved extraction zone: 12 hectares. Current
+      satellite imagery from the forestry department shows the quarry
+      now covers approximately 19 hectares.
+
+      Seven hectares of illegal expansion. Into the protected Troodos
+      foothills watershed.
+
+      Andreas's drone photos, shared with the Lace Preservation
+      Association, show the expansion in detail. Blast marks, new
+      access roads, heavy equipment beyond the permitted boundary.
+      Date-stamped and GPS-tagged.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Petros ---
+
+  petros_interview:
+    type: message
+    text: >
+      PETROS: I don't discuss sources. Period.
+    effects: { trust_petros: "+5" }
+    choices:
+      - Show Petros the evidence you have -> petros_with_evidence
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Back to quarry thread -> corruption_hub
+
+  petros_with_evidence:
+    type: message
+    text: >
+      PETROS: ...you have more than I expected.
+
+      Okay. Andreas and I were working together. He had drone footage
+      of the illegal expansion — TroodoStone has blasted seven hectares
+      beyond their permit. He had geological surveys showing the blasting
+      is destabilizing the aquifer that feeds three villages. He had
+      photos of cracks in heritage buildings caused by the vibrations.
+
+      We were going to publish together in Phileleftheros. Then he
+      went dark. And two days later, someone broke into my office in
+      Nicosia and stole my hard drive.
+
+      Andreas is alive. He contacted me once, from a friend's phone
+      in Paphos. He said he was hiding. He said "they threatened my
+      mother's house and someone else won't stop watching me."
+
+      I can't tell you where he is. But with enough evidence, I
+      can publish and make it safe for him to come back.
+    effects:
+      trust_petros: "+25"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> petros_hint
+      - Back to investigation hub -> investigation_hub
+
+  petros_hint:
+    type: message
+    text: >
+      PETROS: The quarry sent their director — Papamichael — and some
+      goons to his workshop that night. They told him to withdraw the
+      complaint or they'd demolish his mother's retaining wall — it
+      sits on land they claim is in the quarry zone. Legal intimidation
+      wrapped in property disputes.
+
+      But he also said something about someone who kept coming back.
+      Someone obsessed with the lace collection. Someone who tracked
+      his every movement. That's a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Georgia (environment councillor) ---
+
+  georgia_interview:
+    type: message
+    text: >
+      GEORGIA: As councillor for environment and culture, I take these
+      allegations seriously. But TroodoStone employs forty people from
+      these villages. The koinotarchis insists we need to "maintain
+      dialogue."
+
+      Off the record? I've seen the environmental impact reports.
+      TroodoStone passes every inspection. But those inspections are
+      announced a month in advance. They stop blasting, water down
+      the dust, clean up the edges.
+
+      Andreas had unannounced drone data. That's what makes it
+      dangerous.
+    effects:
+      trust_georgia: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Loukas quarry ---
+
+  loukas_quarry:
+    type: message
+    text: >
+      LOUKAS: I'll show you something. Three months ago the blasting
+      cracked the old spring above my orchard. The spring that's been
+      feeding these terraces for five hundred years. Dry now.
+
+      Andreas measured the vibrations with a seismograph app. The
+      readings exceeded legal limits every single blast day. He mapped
+      the cracks spreading through the village — twelve houses, the
+      church bell tower, and the wall of the lace museum.
+
+      He said TroodoStone owed the village millions in damages. They
+      said he was a troublemaker. Γαμώ τα, who's the troublemaker —
+      the man with the lace or the men with the dynamite?
+    effects:
+      trust_loukas: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Lace Preservation Association ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_lefkaritiki
+    text: >
+      ΕΙΔΟΠΟΙΗΣΗ: Νέα ρωγμή στον τοίχο του Μουσείου Δαντέλας μετά
+      τις εκρήξεις της Τρίτης. Ζητούμε άμεση αναστολή εργασιών του
+      λατομείου TroodoStone. Η κληρονομιά μας καταστρέφεται.
+    choices:
+      - Check their documentation -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Lace Preservation Association has been documenting quarry
+      damage for four years. Their records show a clear pattern:
+      building cracks that correspond to TroodoStone's blasting
+      schedule. Vibration readings that exceed permitted levels.
+      Dust particle counts that violate air quality standards.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      environmental destruction that's erasing a UNESCO-listed
+      heritage site.
+
+      Andreas was the association's most active member. He contributed
+      most of the drone photography and the vibration measurements.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Michalis quarry ---
+
+  michalis_quarry:
+    type: message
+    text: >
+      MICHALIS: Let me tell you what happened two weeks before Andreas
+      vanished. Andros Papamichael — the quarry director — came to
+      the kafeneio. Sat right there, ordered a coffee, smiled at
+      everyone. Then he leaned over to Andreas and said, very quietly:
+
+      "Your mother's house sits on interesting geology. We might need
+      to survey it."
+
+      Εν τωρά σοβαρά; That's a threat. He's saying they'll claim
+      eminent domain on Stavroula's house. The old stone house where
+      three generations of lace makers lived.
+
+      Andreas went white. But he didn't back down. He said "Survey
+      this" and walked out. Two weeks later he's gone.
+    effects:
+      trust_michalis: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # COLLECTOR OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE COLLECTOR THREAD
+
+      Yiannis Markides. Art collector. Limassol money. Something more?
+      Someone was watching the workshop. Someone was photographing
+      the lace pieces. Someone stole from the collection.
+
+      Collector evidence: ${collector_evidence}
+    choices:
+      - Investigate Yiannis's collection history -> collection_history
+      - Talk to Eleni about Yiannis -> eleni_yiannis
+        when:
+          state: trust_eleni
+          gte: 20
+      - Talk to Marios (more detail on the intruder) -> marios_detail
+      - Talk to Despina the pharmacist -> despina_interview
+      - Check the anonymous account @LaceLover_CY -> anon_investigation
+      - Talk to Chrysanthi about the lace black market -> chrysanthi_lace
+        when:
+          state: trust_chrysanthi
+          gte: 40
+      - Talk to the police -> police_interview
+        when:
+          state: trust_lefkara_astynomia
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Collection History ---
+
+  collection_history:
+    type: message
+    text: >
+      Yiannis Markides has a public online gallery of his lefkaritiki
+      collection. Cross-referencing with the Lace Preservation
+      Association's registry reveals something disturbing.
+
+      Seven pieces in his collection match items reported stolen from
+      Lefkara Heights households in the past two years. Different
+      families, different patterns, but all pre-war heirloom pieces.
+
+      He claims he bought them all at auction. But two of the
+      "auction records" reference dealers that don't exist.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Eleni on Yiannis ---
+
+  eleni_yiannis:
+    type: message
+    text: >
+      ELENI: Yiannis Markides makes my skin crawl. He first came to
+      the village a year ago. Polite, well-dressed, carrying cash.
+      Offered generous prices for old lace. Some families sold.
+
+      But with Andreas it became different. Yiannis wasn't just
+      interested in the lace — he was interested in Andreas. He'd
+      sit in the kafeneio for hours watching him work. He'd photograph
+      him through the workshop window. He'd send messages analysing
+      Andreas's technique, comparing him to masters from the 1800s.
+
+      Andreas blocked him. Yiannis made new accounts. Andreas told
+      him never to come back. Yiannis came back.
+
+      A month ago Andreas found his workshop door forced open. Two
+      small doilies — our grandmother's — were gone. The only
+      fingerprints the police couldn't identify.
+    effects:
+      trust_eleni: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Marios detail ---
+
+  marios_detail:
+    type: message
+    text: >
+      MARIOS: ok σιόρ εν σου είπα τα πάντα. όταν είδα τον τύπο
+      στο εργαστήρι, πρόλαβα να δω το πρόσωπό του στο φως του
+      φακού. ήταν εκείνος ο κύριος από τη Λεμεσό. ο συλλέκτης.
+      ο Γιάννης.
+
+      τζιαι ξέρεις τι κρατούσε; εν ήταν ένα κομμάτι δαντέλα. ήταν
+      τρία. τυλιγμένα σε μετάξι. ρε γαμώ τα ο τύπος ήρθε νύχτα
+      τζιαι έκλεψε.
+
+      τζιαι μετά σταμάτησε τζιαι κοίταξε πίσω προς το εργαστήρι
+      σαν να ήθελε να γυρίσει. σαν εν ήταν αρκετό. ρε κουμπάρε
+      τι psycho...
+    effects:
+      trust_marios: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Despina ---
+
+  despina_interview:
+    type: message
+    text: >
+      DESPINA: This is between us but I'm a pharmacist, not a priest.
+      A man matching Yiannis Markides's description comes to my
+      pharmacy when he visits the village. He buys anxiety medication,
+      sleeping pills, and those tiny digital cameras — the ones
+      disguised as buttons. I stock them for the tourist shop next door.
+
+      He bought four of them. Four. I asked what they were for and
+      he said "security." Four hidden cameras for "security."
+
+      He also asked me if I knew where Andreas kept his lace pieces
+      at night. I said "this is a pharmacy, not an information desk."
+      I didn't think about it again until Andreas vanished.
+    effects:
+      trust_despina: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Anonymous Account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_collector
+    text: >
+      He should have accepted the offer. I was trying to preserve his
+      work. Nobody else appreciates the artistry like I do.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @LaceLover_CY: account created 10 months ago. Posts are all
+      about Andreas's work. Comments on every lace photo, every
+      workshop update, every exhibition post. The tone shifts over time:
+
+      Month 1: "Extraordinary craftsmanship. A living master."
+      Month 3: "Why won't you respond to my messages? I only want to
+      discuss technique."
+      Month 5: "I see you at the kafeneio with others. You have time
+      for them but not for me?"
+      Month 8: "I know your schedule. I know where every piece is kept.
+      I'm always watching."
+      Month 9: "If you won't share them willingly, perhaps the pieces
+      deserve a more devoted guardian."
+
+      The account has no personal details. Just Andreas. Only Andreas.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @LaceLover_CY with @yiannis_markides:
+
+      Same use of textile terminology. Same English loanwords mixed
+      into Greek — the specific way he uses "provenance" and "patina."
+      Same knowledge of Andreas's collection that only someone who'd
+      studied it obsessively would have.
+
+      And one post from @LaceLover_CY: "The 1923 tablecloth has a
+      hidden repair in the northeast corner. Most people would never
+      notice." That detail isn't public. You'd have to hold the piece
+      up to the light.
+
+      It's Yiannis. The anonymous account is Yiannis.
+    effects:
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Chrysanthi (lace black market) ---
+
+  chrysanthi_lace:
+    type: message
+    text: >
+      CHRYSANTHI: There's a black market for lefkaritiki lace. The old
+      pieces, the pre-war ones. Collectors in London, Dubai, Moscow
+      pay extraordinary money. A single tablecloth from the 1920s can
+      fetch a hundred thousand euros.
+
+      Andreas's collection — his grandmother's pieces — is probably
+      worth half a million in total. The 1923 wedding tablecloth alone
+      could be two hundred thousand.
+
+      Yiannis Markides isn't just a collector. He's a dealer. He buys
+      here and sells abroad. The pieces that "disappeared" from other
+      families? I've seen photos of them in a London gallery catalogue.
+      Sold through Markides Fine Textiles Ltd. His company.
+    effects:
+      trust_chrysanthi: "+10"
+      collector_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # --- Police ---
+
+  police_interview:
+    type: message
+    text: >
+      POLICE OFFICER: Off the record — and I mean completely off the
+      record — I wanted to investigate TroodoStone. My superior told me
+      to leave it. He said the district office had "jurisdiction." That's
+      code for "the koinotarchis said don't touch it."
+
+      The Markides situation is different. I didn't even know the full
+      extent until now. If you have evidence of theft and harassment,
+      I can act on that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_lefkara_astynomia: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to collector thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Andreas than anyone in Lefkara Heights. Who is responsible?
+    choices:
+      - Confront Yiannis Markides (the obsessive collector) -> confront_yiannis
+        when:
+          state: collector_evidence
+          gte: 5
+      - Confront Andros Papamichael (the quarry director) -> confront_andros
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Confront Koinotarchis Kyriakos (political protection) -> confront_kyriakos
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Yiannis (Best Ending) ---
+
+  confront_yiannis:
+    type: message
+    text: >
+      You present your evidence to Yiannis:
+
+      "I know @LaceLover_CY is your account. I know you planted hidden
+      cameras near the workshop. I know you stole lace pieces — Marios
+      saw you that night. I know you've been selling stolen heirlooms
+      through your London gallery. I have witnesses and I have the
+      auction records that don't check out."
+    choices:
+      - Send -> yiannis_response
+
+  yiannis_response:
+    type: message
+    text: >
+      Yiannis doesn't reply for a long time. Then:
+
+      YIANNIS: You don't understand. I was preserving the art. Andreas
+      was keeping these masterpieces in a damp workshop where they'd
+      rot. I could give them climate-controlled cases, museum-grade
+      protection. Everything I did was because I love the craft.
+
+      That's not love. That's obsession. And theft.
+
+      You've already sent the evidence to the police. And to Petros
+      Makrides at Phileleftheros.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE COLLECTOR
+
+      Three things happen in quick succession.
+
+      The police reopen the case. With your evidence — the anonymous
+      account, the hidden cameras, the theft witnesses, the fake
+      auction records — Yiannis Markides is arrested for theft,
+      harassment, and trafficking in stolen cultural property. Hidden
+      cameras are recovered from outside Andreas's workshop. Seven
+      stolen lace pieces are seized from his Limassol villa.
+
+      Petros Makrides, finally in possession of Andreas's full
+      evidence package, publishes the TroodoStone story in
+      Phileleftheros. The district authority orders an immediate
+      halt to blasting. The quarry is shut down pending environmental
+      review. Andros Papamichael faces criminal charges for illegal
+      expansion and intimidation.
+
+      And Andreas Christou, reading the story from a cousin's house
+      in Paphos, calls his sister for the first time in nine days.
+
+      "Γυρνώ σπίτι."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: andreas
+    text: >
+      η δαντέλα εν πεθαίνει. τζιαι οι Λευκαρίτες εν τα παρατούν.
+      ευχαριστώ που εν τα παρατήσετε τζιαι σεις.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Andros (Partial Ending) ---
+
+  confront_andros:
+    type: message
+    text: >
+      You present the quarry evidence to Andros Papamichael:
+
+      "I have drone footage of the illegal expansion — seven hectares
+      beyond your permit. I have vibration readings that exceed legal
+      limits. I have documentation of twelve damaged heritage buildings.
+      I have witness testimony of your threats against Andreas Christou
+      and his family."
+    choices:
+      - Send -> andros_response
+
+  andros_response:
+    type: message
+    text: >
+      ANDROS: This correspondence is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. TroodoStone has always operated within
+      its permitted parameters.
+
+      But it's too late. You've sent the evidence to Petros, to the
+      Lace Preservation Association, and to the district planning
+      authority.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE QUARRY
+
+      The quarry story breaks. TroodoStone is ordered to halt all
+      blasting pending investigation. The company may lose its licence.
+      Forty jobs hang in the balance. The village is divided.
+
+      But Andreas?
+
+      Without the collector evidence, Yiannis is never investigated.
+      He continues to visit the village. He continues to monitor the
+      workshop. He creates a new anonymous account. He contacts other
+      families with old lace.
+
+      Three months later, Andreas reads about TroodoStone online.
+      He returns quietly. He reinforces the workshop locks. He installs
+      his own cameras. He checks his collection every morning.
+
+      The quarry is stopped. But the man who terrorised Andreas and
+      stole his family's heritage walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: andreas
+    text: "γύρισα. η σκόνη σταμάτησε. τα υπόλοιπα... θα δούμε."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Koinotarchis (Wrong Ending) ---
+
+  confront_kyriakos:
+    type: message
+    text: >
+      You confront Koinotarchis Kyriakos with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> kyriakos_response
+
+  kyriakos_response:
+    type: tweet
+    from: sofronis
+    text: >
+      Ο πελάτης μου λαμβάνει γνώση των ισχυρισμών σας. Οποιαδήποτε
+      δημόσια διάδοση δυσφημιστικού υλικού θα αντιμετωπιστεί με
+      άμεσες νομικές ενέργειες. — Γραφείο Καραγιάννη & Συνεργάτες,
+      Λεμεσός
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The koinotarchis's lawyer buries your accusation. Without a
+      direct link between Kyriakos and TroodoStone's illegal
+      activities — and there isn't one beyond political protection —
+      your evidence is insufficient.
+
+      TroodoStone continues to blast. Yiannis Markides continues to
+      collect. Andreas stays in hiding.
+
+      Six months later, @LaceLover_CY creates a new account. It
+      follows Andreas's mother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: LEFKARA HEIGHTS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Quarry evidence: ${quarry_evidence}
+      Collector evidence: ${collector_evidence}
+
+      Thank you for playing. Andreas's story explores themes of
+      cultural heritage theft, environmental destruction, obsessive
+      collecting, community solidarity, and the courage to protect
+      what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Cyprus Domestic Violence Helpline: 1440 (24 hours, free)
+      Cyprus Police Emergency: 199
+      Mental Health Helpline Cyprus: 7777 7383
+      Environmental Complaints Cyprus: 1468

@@ -1,0 +1,1678 @@
+# DEAD ACCOUNT — Story 022: Marsaskala Bay (Malta)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-022.yml
+#
+# Player investigates the disappearance of marine archaeologist Toni Camilleri
+# in the fictional Maltese fishing village of Marsaskala Bay.
+
+meta:
+  title: "Dead Account — Marsaskala Bay"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_maria: 0
+    trust_luke: 0
+    trust_daniela: 0
+    trust_kyle: 0
+    trust_george: 0
+    trust_carmen: 0
+    trust_noel: 0
+    trust_josianne: 0
+    trust_mark: 0
+    trust_kevin: 0
+    trust_charlene: 0
+    trust_pawlu: 0
+    trust_rita: 0
+    trust_steve: 0
+    trust_rachel: 0
+    trust_wayne: 0
+    trust_joseph: 0
+    trust_lara: 0
+    trust_sgt: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to marsaskala. discovering malta one dive at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "MarsaskalaBay.social"
+    description: "Merħba fl-istanza komunitarja ta' Marsaskala Bay"
+    avatar_url: /gamepatch/assets/dead-account/marsaskalabay_bot.png
+
+  npcs:
+    # === Toni's Inner Circle ===
+    toni:
+      name: "Toni Camilleri"
+      bio: "marine archaeologist | freediver | il-baħar jgħidlek kollox | 🏛️🤿"
+      avatar: avatars/toni.jpg
+    maria:
+      name: "Maria Vella"
+      bio: "toni's girlfriend | primary school teacher | marsaskala born & raised"
+      avatar: avatars/maria.jpg
+    luke:
+      name: "Luke Camilleri"
+      bio: "toni's brother | electrician | birkirkara | fejn hu ħija?"
+      avatar: avatars/luke.jpg
+    daniela:
+      name: "Daniela Borg"
+      bio: "dive instructor | marsaskala dive centre | toni's dive partner since day one"
+      avatar: avatars/daniela.jpg
+
+    # === Local Government ===
+    george:
+      name: "George Axiaq"
+      bio: "Sindku ta' Marsaskala Bay | Serving the community since 2017 | #MarsaskalaFirst"
+      avatar: avatars/george.jpg
+    josianne:
+      name: "Josianne Zammit"
+      bio: "Heritage Council Member | Marsaskala Bay | protecting our underwater history"
+      avatar: avatars/josianne.jpg
+    kunsill:
+      name: "Kunsill Lokali Marsaskala Bay"
+      bio: "Kont Uffiċjali | Aħbarijiet tal-Komunità | Mon-Fri 9am-4pm"
+      avatar: avatars/kunsill.jpg
+
+    # === Local Business & Community ===
+    carmen:
+      name: "Carmen Galea"
+      bio: "tal-ħanut | carmen's bar & grill | fresh fish daily | best view in marsaskala"
+      avatar: avatars/carmen.jpg
+    carmens_bar:
+      name: "Carmen's Bar & Grill"
+      bio: "Ħut frisk | Sunset drinks | Live music Saturdays | Il-qalb ta' Marsaskala"
+      avatar: avatars/carmens_bar.jpg
+    pawlu:
+      name: "Pawlu Farrugia"
+      bio: "sajjied | 45 years fishing this coast | the sea is my church"
+      avatar: avatars/pawlu.jpg
+    noel:
+      name: "Noel Grech"
+      bio: "harbour master | Marsaskala Bay | luzzu maintenance & berth allocation"
+      avatar: avatars/noel.jpg
+    rita:
+      name: "Rita Spiteri"
+      bio: "pharmacist | dispensary on the promenade | open sundays 8-12"
+      avatar: avatars/rita.jpg
+    joseph:
+      name: "Joseph Attard"
+      bio: "parish priest | knisja ta' marsaskala | community & faith"
+      avatar: avatars/joseph.jpg
+    kevin:
+      name: "Kevin Micallef"
+      bio: "boat mechanic | dgħajjes tal-ħbieb | if it floats i fix it"
+      avatar: avatars/kevin.jpg
+
+    # === Journalist ===
+    rachel:
+      name: "Rachel Calleja"
+      bio: "freelance journalist | heritage & environment | tips: rachel@calleja.mt"
+      avatar: avatars/rachel.jpg
+
+    # === MedBuild (corporate) ===
+    medbuild:
+      name: "MedBuild Construction Ltd"
+      bio: "Premium waterfront development | Malta & Gozo | ISO 9001 certified"
+      avatar: avatars/medbuild.jpg
+    steve:
+      name: "Steve Bonnici"
+      bio: "CEO MedBuild Construction | developing Malta's future | #BuildingForward"
+      avatar: avatars/steve.jpg
+    wayne:
+      name: "Wayne Cassar"
+      bio: "Avukat | Cassar & Associates | Commercial Law | Valletta"
+      avatar: avatars/wayne.jpg
+
+    # === Teens ===
+    kyle:
+      name: "Kyle"
+      bio: "16 | spearfishing & cliff jumping | marsaskala life | toni taught me everything"
+      avatar: avatars/kyle.jpg
+    charlene:
+      name: "Charlene"
+      bio: "17 | photography | sunsets & luzzijiet | marsaskala born"
+      avatar: avatars/charlene.jpg
+    lara:
+      name: "Lara"
+      bio: "15 | art & history nerd | toni's finds were the coolest thing ever"
+      avatar: avatars/lara.jpg
+
+    # === Media & Community ===
+    actu_marsaskala:
+      name: "Marsaskala Bay News"
+      bio: "Local news & community updates | Tips: news@marsaskalabay.mt"
+      avatar: avatars/actu_marsaskala.jpg
+    temp_malta:
+      name: "Malta Weather Station"
+      bio: "Forecasts & sea conditions | Automated | Updated hourly"
+      avatar: avatars/temp_malta.jpg
+    heritage_watch:
+      name: "Heritage Watch Malta"
+      bio: "Protecting Malta's underwater archaeological sites | Volunteers welcome"
+      avatar: avatars/heritage_watch.jpg
+
+    # === Suspicious / Other ===
+    mark:
+      name: "Mark Schembri"
+      bio: "site foreman | medbuild | just doing my job"
+      avatar: avatars/mark.jpg
+    ghostdiver:
+      name: "GhostDiver99"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sgt:
+      name: "Surġent Mifsud"
+      bio: "Malta Police Force | Marsaskala Station | emergencies: 112"
+      avatar: avatars/sgt.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN MARSASKALA BAY
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to marsaskalabay.social — the community Mastodon instance
+      for the fishing village of Marsaskala Bay, Malta.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice one name everywhere:
+      @toni_camilleri.
+
+      A marine archaeologist. Freediver. He mapped the underwater ruins
+      off the coast — ancient harbours, Roman anchors, Phoenician wrecks.
+      People are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> toni_profile
+
+  toni_profile:
+    type: tweet
+    from: toni
+    text: "Found something massive at the Ras il-Bajja site. This changes everything we know about the harbour. They can't build on this. I won't let them."
+    choices:
+      - That's his last real post... -> grey_wave
+
+  grey_wave:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a dark, blurry underwater shot. Nothing recognisable. Posted at
+      4am. No caption.
+
+      His friends say that's not his style. Toni always tagged his dive
+      sites, always wrote long captions about what he found. The police
+      say he probably went on a trip. Nobody believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: sgt
+    text: >
+      We have received a report regarding a Marsaskala Bay resident.
+      At this stage, there is no evidence of foul play. Any relevant
+      information can be communicated to the Marsaskala station or
+      by calling 112.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @maria_vella is
+      posting desperate messages. His brother @luke_camilleri is
+      driving down from Birkirkara. His dive partner @daniela_borg
+      has gone silent — people notice. The fisherman @pawlu_farrugia
+      says Toni was right about the construction site.
+
+      And the journalist @rachel_calleja seems to know more than
+      she's saying.
+
+      Nobody buys the police line. Toni didn't just go on a trip.
+      His dive gear is still in his flat. His luzzu is still moored
+      at the harbour.
+    effects: { trust_maria: "+5", trust_luke: "+5" }
+    choices:
+      - Start following Toni's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Marsaskala Bay. Follow Toni's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Carmen (bar owner, knows everyone) -> carmen_intro
+      - Talk to Pawlu (fisherman, saw the construction) -> pawlu_intro
+      - Talk to Kyle (teen, looks up to Toni) -> kyle_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Toni with the rhythms of a small
+      Maltese fishing village: festa preparations, luzzu repairs,
+      fishing reports, complaints about parking.
+
+      Key names surface: Maria (girlfriend, teacher), Daniela (dive
+      partner, oddly quiet), Luke (brother, furious), and the teens
+      — Kyle, Charlene, Lara — who Toni took on dives to show them
+      the underwater ruins.
+
+      Also prominent: MedBuild Construction Ltd, the company building
+      a luxury marina complex on the headland. Toni's posts were a
+      direct challenge to their project.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Carmen -> carmen_intro
+      - Talk to Pawlu -> pawlu_intro
+      - Talk to Kyle -> kyle_intro
+
+  # --- Carmen (social map) ---
+
+  carmen_intro:
+    type: tweet
+    from: carmen
+    text: >
+      il-bar miftuħ imma qalbi magħluqa. @toni_camilleri, il-mejda
+      tiegħek qed tistenniek. ejja lura.
+    effects: { trust_carmen: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Carmen -> carmen_talk
+
+  carmen_talk:
+    type: message
+    text: >
+      CARMEN: Aw, you're new here? Mela... bad timing. Everyone's on
+      edge about Toni.
+
+      Let me tell you who's who. Maria is his girlfriend — sweet girl,
+      teaches at the primary school. She's a mess right now. Luke is
+      Toni's older brother, coming down from Birkirkara, ready to flip
+      tables. Daniela Borg is his dive partner. They've been diving
+      together since they were teenagers. She's... intense about him.
+      Always has been.
+
+      And then there's MedBuild. Madonna, don't get me started. Steve
+      Bonnici thinks he can buy this whole village and turn it into
+      another Sliema. Toni was the only one standing in his way.
+
+      Prosit to Toni for having the balls to fight them.
+    effects: { trust_carmen: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Daniela -> carmen_daniela
+      - Ask about MedBuild -> carmen_medbuild
+      - Thank her and move on -> quest1_hub
+
+  carmen_daniela:
+    type: message
+    text: >
+      CARMEN: Daniela? Mela, how do I say this... She and Toni have
+      been diving together since they were like fifteen. She's an
+      amazing diver, runs the dive centre. But there's always been
+      something... more, from her side. Everyone sees it except Toni.
+
+      When he started dating Maria two years ago, Daniela took it
+      hard. She was professional about it but... aw, I'd catch her
+      watching them at the bar. And she started going on solo dives
+      to the same sites Toni mapped, at weird hours. Night dives,
+      alone. That's not safe and she knows it.
+
+      She told me once, after too much Cisk, "Nobody understands the
+      sea like we do. Maria doesn't deserve him." I thought she was
+      just drunk. Now I'm not sure.
+    effects: { trust_carmen: "+5" }
+    choices:
+      - Ask about MedBuild -> carmen_medbuild
+      - Move on -> quest1_hub
+
+  carmen_medbuild:
+    type: message
+    text: >
+      CARMEN: MedBuild. Ostja, where do I start. Steve Bonnici bought
+      the headland two years ago. Plans to build a luxury marina —
+      apartments, yacht berths, a fucking hotel. On top of what Toni
+      says is a Phoenician harbour site.
+
+      Toni found artefacts there. Anchors, pottery, carved stone.
+      He filed for heritage protection status. If that goes through,
+      MedBuild can't build shit. We're talking millions down the
+      drain.
+
+      Bonnici's been cosying up to the mayor. George Axiaq suddenly
+      has a new car and his house got renovated. Everyone knows but
+      nobody says it out loud. Except Toni. Toni said it out loud.
+
+      And now Toni's gone.
+    effects: { trust_carmen: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pawlu (fisherman, witness tease) ---
+
+  pawlu_intro:
+    type: tweet
+    from: pawlu
+    text: >
+      erbgħin sena sajd f'dan il-baħar. @toni_camilleri kien jaf
+      x'hemm taħt l-ilma. u issa sparixxa. aħsbu ftit.
+    effects: { trust_pawlu: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Pawlu -> pawlu_talk
+
+  pawlu_talk:
+    type: message
+    text: >
+      PAWLU: I've been fishing these waters since before you were born.
+      Forty-five years. I know every rock, every current, every mood
+      the sea has.
+
+      Toni was special. He'd dive down and come back with stories —
+      Roman anchors, Phoenician carvings, things that had been under
+      there for thousands of years. He mapped the whole seabed off
+      Ras il-Bajja. And what he found there — mela, it should have
+      stopped MedBuild dead.
+
+      But money talks in Malta. Heritage doesn't. Not when someone
+      like Bonnici is waving millions around.
+
+      You think Toni just went on holiday? Madonna. That boy lived
+      for this village. He wouldn't leave without his dive gear and
+      his luzzu.
+    effects: { trust_pawlu: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> pawlu_night
+      - Move on -> quest1_hub
+
+  pawlu_night:
+    type: message
+    text: >
+      PAWLU: The night before he vanished — I was coming back from
+      night fishing, around midnight. I saw lights at the dive
+      centre. Not unusual, Daniela works late sometimes. But then I
+      saw a car I didn't recognise. Big SUV, dark. Not from the
+      village. Parked right by the slipway.
+
+      And I saw two people on the jetty. One of them was carrying
+      something heavy, loading it onto a RIB. At midnight. In the
+      dark.
+
+      I called out but they cut the engine and the RIB disappeared
+      around the headland. Toward the MedBuild site.
+
+      I told the police. They wrote it down. That was it.
+    effects: { trust_pawlu: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kyle (teen, witness tease) ---
+
+  kyle_intro:
+    type: tweet
+    from: kyle
+    text: >
+      bro im so fucked up rn @toni_camilleri literally taught me how
+      to dive he's like an older brother to me. mela if anyone knows
+      anything SPEAK UP ffs this is bullshit
+    effects: { trust_kyle: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kyle -> kyle_talk_early
+
+  kyle_talk_early:
+    type: message
+    text: >
+      KYLE: aw you're new? mela welcome to the shitshow basically.
+      toni is the best person in this whole village no cap. he took
+      me diving, showed me the ruins, taught me to respect the sea
+      and shit. he was gonna help me get my dive certification.
+
+      and now he's just gone?? ostja that's not him bro. he wouldn't
+      leave without telling anyone. his luzzu is still here. his
+      gear is still at the flat.
+
+      also like... charlene saw something weird with daniela the
+      other night but she's scared to talk about it. you should
+      ask her but like... be chill about it yeah?
+    effects: { trust_kyle: "+10" }
+    choices:
+      - What did Charlene see? -> kyle_charlene_hint
+      - Move on -> quest1_hub
+
+  kyle_charlene_hint:
+    type: message
+    text: >
+      KYLE: bro idk exactly she was walking home from her nanna's
+      house and she saw daniela at the dive centre like super late.
+      and daniela was loading toni's gear into her car. like HIS
+      gear. his tanks, his cameras. at like 2am or some shit.
+
+      charlene thought it was weird but she didn't say anything
+      cos daniela's her dive instructor and she didn't wanna start
+      drama. but now with toni missing... mela that's sus as fuck
+      right??
+
+      talk to her but don't say i told you. she'll kill me lol
+    effects: { trust_kyle: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Marsaskala Bay. A Maltese fishing
+      village built around the sea. A marine archaeologist who was
+      blocking a construction project worth millions. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Maria (Toni's girlfriend) -> maria_q1
+      - Talk to Daniela (Toni's dive partner) -> daniela_q1
+      - Check what Luke (Toni's brother) is saying -> luke_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Maria Q1 ---
+
+  maria_q1:
+    type: tweet
+    from: maria
+    text: >
+      jekk xi ħadd ra lil @toni_camilleri please ċemplu. l-affarijiet
+      kollha tiegħu għadhom hawn. id-dive gear. il-luzzu. il-laptop.
+      mhux se jitlaq mingħajr dawn l-affarijiet.
+    effects: { trust_maria: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Maria -> maria_q1_talk
+
+  maria_q1_talk:
+    type: message
+    text: >
+      MARIA: I appreciate you reaching out but I don't know you.
+      Toni has a lot of friends in this village. I keep waiting for
+      him to walk through the door.
+
+      ...I know he's not going to. Something happened to him.
+
+      [Maria is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_maria: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Daniela Q1 ---
+
+  daniela_q1:
+    type: tweet
+    from: daniela
+    text: >
+      If anyone has information about @toni_camilleri, please contact
+      the police or the dive centre. We're organising search dives
+      along the coast. Volunteers welcome.
+    effects: { trust_daniela: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Daniela -> daniela_q1_talk
+
+  daniela_q1_talk:
+    type: message
+    text: >
+      DANIELA: Toni and I have been dive partners for twelve years.
+      Since we were kids. I know every site he's mapped, every wreck
+      he's documented. If anyone's going to find him, it's me.
+
+      He was obsessed with the Ras il-Bajja site. He said it was the
+      most important archaeological find in Malta in decades. He was
+      right. And MedBuild was going to destroy it.
+
+      I offered to help with the heritage filing. He said he had it
+      handled. He said he was working with a journalist. He always
+      had to do everything himself.
+
+      [Daniela seems concerned. Dedicated. Or something else?]
+    effects: { trust_daniela: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Luke Q1 ---
+
+  luke_q1:
+    type: tweet
+    from: luke
+    text: >
+      ħija SPARIXXA u l-pulizija qed jgħiduli li forsi mar xi mkien??
+      MADONNA HU MA JITLAQX MINGĦAJR MA JGĦID. qed niġi marsaskala.
+      xi ħadd se jispjegali x'ġara.
+    effects: { trust_luke: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Luke -> luke_q1_talk
+
+  luke_q1_talk:
+    type: message
+    text: >
+      LUKE: Who are you? Another person who's gonna tell me to calm
+      down? Ostja, my brother called me the night before he disappeared.
+      He was excited AND scared. He said he found something huge at
+      Ras il-Bajja — not just Phoenician, something older. He said
+      "if they find out what's really there, they'll stop at nothing."
+
+      I asked who. He said "Bonnici's people. And someone closer."
+      Then the line went weird and he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_luke: "+10" }
+    choices:
+      - What do you think happened? -> luke_theory
+      - Move on -> quest1_hub
+
+  luke_theory:
+    type: message
+    text: >
+      LUKE: Mela, I think MedBuild found out about his heritage
+      filing and sent people to shut him up. Millions of euros at
+      stake — you think they won't get dirty? In Malta? Madonna,
+      wake up.
+
+      But there's something else. Toni told me months ago that
+      someone was following him on dives. Going to the same sites
+      after him. He'd find evidence that someone had been to his
+      mapped locations — fin marks in the silt, things moved.
+
+      He thought it was someone from MedBuild checking what he'd
+      found. But the dive pattern was too skilled, too precise.
+      Only a few people in Malta dive like that. Daniela's one of
+      them.
+
+      I'm not accusing anyone. But something's wrong.
+    effects: { trust_luke: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Toni went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Charlene (was walking home, saw Daniela) -> charlene_interview
+      - Find Noel (harbour master, works late) -> noel_interview
+      - Find Kevin (boat mechanic, heard engines) -> kevin_interview
+      - Find Joseph (parish priest, saw vehicles) -> joseph_interview
+
+  # --- Charlene (saw Daniela at dive centre) ---
+
+  charlene_interview:
+    type: tweet
+    from: charlene
+    text: >
+      can't sleep. keep thinking about toni. this village feels wrong
+      rn. like something's broken underneath.
+    effects: { trust_charlene: "+5" }
+    choices:
+      - Ask Charlene about that evening -> charlene_talk
+
+  charlene_talk:
+    type: message
+    text: >
+      CHARLENE: ok promise you won't tell anyone i said this right??
+      cos daniela is my dive instructor and i don't want shit with
+      her.
+
+      i was walking home from nanna's house that night, around 2am
+      cos we were watching a film and it went late. and i saw daniela
+      at the dive centre. she was loading stuff into the back of her
+      car. tanks, bags, camera equipment. i recognised toni's yellow
+      dry bag — the one he always takes on big dives.
+
+      she was alone and she was in a rush. when she saw me she froze.
+      told me she was "organising gear for a morning dive." at 2am??
+      mela come on.
+
+      i didn't think much of it then but now... ostja, why did she
+      have toni's gear?
+    effects:
+      trust_charlene: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Noel (harbour master, saw boat leave) ---
+
+  noel_interview:
+    type: tweet
+    from: noel
+    text: >
+      Reminder: all vessel movements after 22:00 must be logged with
+      the harbour office. I've noted two unlogged departures this
+      week. This is a safety issue.
+    effects: { trust_noel: "+5" }
+    choices:
+      - Ask Noel what he saw -> noel_talk
+
+  noel_talk:
+    type: message
+    text: >
+      NOEL: I was doing my evening round at around 23:00. I saw an
+      SUV I didn't recognise parked at the slipway — dark, tinted
+      windows, rental plates. Two men were loading equipment onto a
+      RIB. Professional looking. Not fishermen, not divers I know.
+
+      One of them had MedBuild hi-vis jackets in the back seat. I
+      saw the logo when the door was open.
+
+      They launched the RIB and headed around the headland. Toward
+      Ras il-Bajja. Where Toni's been diving.
+
+      I logged it. Nobody's asked to see my log.
+    effects:
+      trust_noel: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Kevin (heard engines, saw confrontation) ---
+
+  kevin_interview:
+    type: tweet
+    from: kevin
+    text: >
+      kont qed naħdem fuq dgħajsa fil-garage u smajt magni weird
+      barra l-port bil-lejl. mhux magni tas-sajd.
+    effects: { trust_kevin: "+5" }
+    choices:
+      - Ask Kevin what he heard -> kevin_talk
+
+  kevin_talk:
+    type: message
+    text: >
+      KEVIN: I was in the boat shed working late — I had an engine
+      rebuild to finish. Around 22:00 I heard voices at the slipway.
+      Loud. Aggressive. I looked out and saw Toni arguing with two
+      men. Big guys. Suits, not village people.
+
+      One of them grabbed Toni's arm. Toni pulled away and shouted
+      something like "You can't buy everything!" The other guy said
+      something quieter — I couldn't hear it but Toni went pale.
+
+      Then they left. Toni stood there for a minute, then ran toward
+      the dive centre. That was the last time I saw him.
+
+      Madonna, I should have gone out there. But it's not my business,
+      right? Except now it is everyone's business.
+    effects:
+      trust_kevin: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Joseph (saw vehicles on coast road) ---
+
+  joseph_interview:
+    type: tweet
+    from: joseph
+    text: >
+      I pray for @toni_camilleri and his family. If anyone is
+      struggling, the parish door is always open. God sees what
+      happens in darkness.
+    effects: { trust_joseph: "+5" }
+    choices:
+      - Ask Joseph what he meant -> joseph_talk
+
+  joseph_talk:
+    type: message
+    text: >
+      JOSEPH: I don't sleep well. Old bones. That night I was at
+      the rectory window around 3am, saying my rosary. I saw three
+      vehicles on the coast road.
+
+      First: a dark SUV, heading out of the village fast, toward
+      the main road. Then Toni's white van — I know it, the one
+      with the dive flag sticker. Going the same direction but
+      turning off toward Ras il-Bajja.
+
+      Then, about twenty minutes later, a third vehicle. A silver
+      car. Daniela Borg's car — I know it because she parks at
+      the church on Sundays. Following the same route.
+
+      Three vehicles at 3am. All heading toward the headland.
+      That's not normal.
+    effects:
+      trust_joseph: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Maria (girlfriend)
+      and Lara (saw Daniela tracking Toni's dives).
+    choices:
+      - Talk to Maria about that night -> maria_interview
+      - Talk to Lara -> lara_interview
+      - Find Charlene -> charlene_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Noel -> noel_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Kevin -> kevin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Joseph -> joseph_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Maria (last to speak to Toni) ---
+
+  maria_interview:
+    type: tweet
+    from: maria
+    text: >
+      dik l-istampa fuq il-kont ta' toni. mhux hu. toni dejjem
+      jikteb x'sab. dik l-istampa m'għandha l-ebda deskrizzjoni.
+      xi ħadd ieħor għamel hekk.
+    effects: { trust_maria: "+5" }
+    choices:
+      - DM Maria -> maria_talk_low
+        when:
+          state: trust_maria
+          lt: 50
+      - DM Maria -> maria_talk_high
+        when:
+          state: trust_maria
+          gte: 50
+
+  maria_talk_low:
+    type: message
+    text: >
+      MARIA: I appreciate the concern but I really can't talk to
+      strangers about this right now. I'm barely holding it together.
+
+      [Maria needs to trust you more. Show her you're investigating
+      seriously.]
+    effects: { trust_maria: "+5" }
+    choices:
+      - Share what you've learned about the night -> maria_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  maria_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the slipway, the
+      confrontation, the vehicles heading to the headland. Maria is
+      quiet for a while.
+
+      MARIA: You're actually looking for him. Okay. I'll tell you
+      what I know.
+    effects: { trust_maria: "+25" }
+    choices:
+      - What happened that night? -> maria_talk_high
+
+  maria_talk_high:
+    type: message
+    text: >
+      MARIA: He came home around 22:30. He was shaking. He said
+      "Bonnici's people found me at the slipway. They threatened
+      me. They said they'd destroy the evidence and nobody would
+      believe a village diver over a construction company."
+
+      He grabbed his laptop and his dive camera drives. I begged
+      him to call the police. He said "the police won't help —
+      the mayor's in Bonnici's pocket."
+
+      Then he said something strange. He said "and she was there
+      again. At the site. I saw her bubbles." I asked who. He
+      wouldn't say. He kissed me and left with his van.
+
+      By morning the van was gone and that horrible photo was on
+      his account.
+    effects:
+      trust_maria: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lara (saw Daniela tracking Toni's dives) ---
+
+  lara_interview:
+    type: message
+    text: >
+      LARA: ok so this is gonna sound crazy but i've been tracking
+      this. i'm a nerd ok don't judge me.
+
+      daniela posts dive photos right? and i noticed that like...
+      every single time toni posted a dive from a new site, daniela
+      would go to the exact same site the next day. EVERY time.
+      for months.
+
+      i made a spreadsheet. toni posts ras il-bajja monday. daniela
+      dives ras il-bajja tuesday. toni posts wied iz-zurrieq
+      wednesday. daniela's there thursday. it's like clockwork.
+
+      also she has this second account — @ghostdiver99 — don't ask
+      me how i know, i recognised her wetsuit in one of the photos.
+      that account follows toni and comments on everything. it's
+      creepy af.
+    effects:
+      trust_lara: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Toni confronted by two men at the slipway (Kevin)
+      22:30 — Toni arrives home shaken, grabs evidence, leaves (Maria)
+      23:00 — MedBuild SUV and RIB launched toward Ras il-Bajja (Noel)
+      02:00 — Daniela loading Toni's gear at dive centre (Charlene)
+      03:00 — Three vehicles heading to headland: SUV, Toni's van,
+               Daniela's car (Joseph)
+
+      MedBuild confronted Toni. He fled home, grabbed his evidence,
+      and headed for the archaeological site. But two parties followed
+      him: MedBuild's people AND Daniela.
+
+      There are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is MedBuild hiding? Who's being bribed?
+      — The obsession: What is Daniela really doing? Why does she
+        have his gear?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Daniela -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      MedBuild is building a luxury marina on top of an archaeological
+      site. Toni had proof. Now he's gone and his evidence is missing.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the heritage filing records -> heritage_records
+      - Talk to Rachel the journalist -> rachel_interview
+      - Talk to Mark (MedBuild site foreman) -> mark_interview
+      - Talk to Josianne (Heritage Council) -> josianne_interview
+      - Check Heritage Watch Malta -> heritage_investigation
+      - Talk to Pawlu about the seabed -> pawlu_seabed
+      - Back to hub -> investigation_hub
+
+  # --- Heritage Records ---
+
+  heritage_records:
+    type: message
+    text: >
+      The Superintendence of Cultural Heritage's public database shows
+      Toni's recent filings: an emergency request for Scheduled Status
+      for the Ras il-Bajja seabed area. Filed three weeks ago.
+
+      Status: "Under Review — Awaiting Site Inspection."
+
+      The inspection was scheduled for next week. If the site gets
+      protection status, MedBuild's construction permit becomes
+      worthless. Their entire marina project dies.
+
+      The filing includes 47 photographs, GPS coordinates of artefact
+      locations, and Toni's expert assessment: "Probable Phoenician
+      harbour installation, circa 700 BCE. Nationally significant."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Rachel ---
+
+  rachel_interview:
+    type: message
+    text: >
+      RACHEL: I don't discuss sources. Period.
+    effects: { trust_rachel: "+5" }
+    choices:
+      - Show Rachel the evidence you have -> rachel_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  rachel_with_evidence:
+    type: message
+    text: >
+      RACHEL: ...you've been busy. Alright.
+
+      Toni and I were working on an exposé together. He had everything
+      — the archaeological evidence, photos of MedBuild workers
+      dumping rubble on the site to bury artefacts, and financial
+      records showing payments from MedBuild to Mayor Axiaq's
+      personal account. Bribes. Straight up.
+
+      We were going to publish in MaltaToday. Then Toni went dark.
+      And someone broke into my office and took my external drive.
+
+      Toni's alive. He contacted me once from a burner phone. He
+      said he's hiding. He said "they came to the site and someone
+      else followed me there." He sounded scared of both.
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and blow this wide open. Make it safe for him.
+    effects:
+      trust_rachel: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> rachel_hint
+      - Back to investigation hub -> investigation_hub
+
+  rachel_hint:
+    type: message
+    text: >
+      RACHEL: MedBuild sent people to the slipway that night. Bonnici's
+      fixer — a guy called Tarcisio, does all the dirty work — plus
+      some muscle. They told Toni to withdraw the heritage filing or
+      they'd make him disappear. Standard Maltese construction mafia
+      shit. Madonna, this island sometimes.
+
+      But Toni also said something about someone diving his sites.
+      Someone who knew exactly where he'd been, what he'd documented.
+      Someone who could find his hidden camera drops. That's not
+      MedBuild — those guys can barely swim. That's someone with
+      serious dive skills and intimate knowledge of his work.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Mark (MedBuild whistleblower) ---
+
+  mark_interview:
+    type: message
+    text: >
+      MARK: I'm just the foreman. I build what they tell me to build.
+      I don't ask questions.
+
+      But some things... ostja, some things you can't not see.
+    effects: { trust_mark: "+10" }
+    choices:
+      - What did you see? -> mark_detail
+
+  mark_detail:
+    type: message
+    text: >
+      MARK: Three weeks ago, Bonnici ordered us to dump construction
+      rubble off the headland. Into the sea. Specifically into the
+      area Toni had mapped. Tonnes of concrete and rebar, right on
+      top of the archaeological site.
+
+      He said it was "site preparation for the marina foundations."
+      Bullshit. The marina doesn't extend that far. He was burying
+      the evidence. Covering the Phoenician remains with rubble so
+      the heritage inspection would find nothing.
+
+      I have the work orders. Signed by Bonnici. With dates. And
+      GPS coordinates that match Toni's heritage filing exactly.
+
+      I'm scared. I have kids. But what they did to that site...
+      and what they might have done to Toni... I can't stay quiet.
+    effects:
+      trust_mark: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Josianne ---
+
+  josianne_interview:
+    type: message
+    text: >
+      JOSIANNE: As Heritage Council member, I take Toni's filing very
+      seriously. The Ras il-Bajja site could be one of the most
+      important archaeological discoveries in Malta this century.
+
+      But the mayor... aw, George Axiaq has been blocking heritage
+      assessments. He keeps delaying the site inspection. Says it's
+      "premature" and we need to "balance development with heritage."
+      That's code for letting MedBuild finish building before anyone
+      can prove what's underneath.
+
+      Toni's filing forced the Superintendence to schedule an
+      inspection. The mayor can't block that. Which means MedBuild
+      has maybe two weeks to destroy the evidence. Or make sure there's
+      nobody left to testify about what was there.
+    effects:
+      trust_josianne: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Heritage Watch ---
+
+  heritage_investigation:
+    type: tweet
+    from: heritage_watch
+    text: >
+      ALERT: Satellite imagery shows fresh rubble deposits on the
+      seabed at Ras il-Bajja, directly over the area filed for
+      heritage protection by @toni_camilleri. This appears to be
+      deliberate destruction of an archaeological site.
+    choices:
+      - Check their data -> heritage_data
+
+  heritage_data:
+    type: message
+    text: >
+      Heritage Watch Malta has been monitoring Malta's underwater
+      heritage sites for a decade. Their satellite comparison shows
+      clear changes at Ras il-Bajja: before and after images reveal
+      tonnes of construction rubble dumped on the seabed in a pattern
+      that exactly covers Toni's mapped artefact locations.
+
+      The timing matches MedBuild's construction schedule. The rubble
+      composition matches their building materials.
+
+      The report concludes: "This constitutes deliberate destruction
+      of a nationally significant archaeological site. Criminal
+      prosecution is warranted."
+
+      Toni's underwater photographs — taken before the dumping —
+      are now the only evidence of what existed beneath.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Pawlu seabed ---
+
+  pawlu_seabed:
+    type: message
+    text: >
+      PAWLU: I'll tell you something. Last week my nets snagged on
+      something off Ras il-Bajja. Pulled up a piece of carved stone
+      — old, very old. Toni would have known what it was. Looked
+      Phoenician to me.
+
+      It was mixed in with fresh concrete rubble. Someone dumped
+      building waste right on top of the ancient site. The bastards
+      are trying to bury it.
+
+      I kept the stone. And I took photos of the rubble in my nets.
+      GPS coordinates and all. Toni taught me to document everything.
+
+      Prosit, Toni. Even missing, you're still teaching this old
+      fisherman.
+    effects:
+      trust_pawlu: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Daniela Borg. Dive partner. Instructor. Something more?
+      Someone was following Toni's dives. Someone was at the dive
+      centre at 2am with his gear. Someone followed him to the
+      headland.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate the dive centre logbook -> dive_logs
+      - Talk to Maria about Daniela -> maria_daniela
+        when:
+          state: trust_maria
+          gte: 20
+      - Talk to Charlene (more detail on 2am) -> charlene_detail
+      - Talk to Rita the pharmacist -> rita_interview
+      - Check the anonymous account @ghostdiver99 -> ghost_investigation
+      - Talk to Kevin about Daniela's boat -> kevin_daniela
+        when:
+          state: trust_kevin
+          gte: 40
+      - Talk to Surġent Mifsud -> sgt_interview
+        when:
+          state: trust_sgt
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Dive Logs ---
+
+  dive_logs:
+    type: message
+    text: >
+      The dive centre's electronic logbook tracks all dives conducted
+      through the centre. Toni logged 38 dives last month, mostly
+      at Ras il-Bajja. Daniela logged 52. Far more than usual for
+      an instructor.
+
+      Cross-referencing: on 29 of Daniela's 52 dives, she went to
+      the same site Toni had dived within 24 hours. She arrived
+      after him, stayed longer. Every time.
+
+      Her own regular instruction dives are at different, shallower
+      sites. These deep solo dives to Toni's sites are off-schedule,
+      unscheduled, often at dawn or dusk.
+
+      She's been shadowing his underwater work for months.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Maria on Daniela ---
+
+  maria_daniela:
+    type: message
+    text: >
+      MARIA: Daniela? Mela... it's complicated. She and Toni go way
+      back. Childhood dive buddies. But it's always been more than
+      that for her. Everyone knows it except maybe Toni.
+
+      When we got together, Daniela congratulated us to our faces.
+      But she started showing up everywhere. At the bar when we were
+      on dates. At the beach when we went for walks. Always with
+      an excuse — "oh I was just passing by" or "I need to check
+      the boats."
+
+      Toni found his dive site maps had been copied from his
+      computer at the dive centre. Someone had accessed his dive
+      logs, his GPS coordinates, everything. He suspected Daniela
+      but couldn't prove it. She had access — she runs the centre.
+
+      He told her to stop. She said she was "just maintaining the
+      shared records." Ostja, those records are HIS research.
+    effects:
+      trust_maria: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Charlene detail ---
+
+  charlene_detail:
+    type: message
+    text: >
+      CHARLENE: ok so when i saw daniela that night at the dive centre
+      there's something else i didn't tell you. she was on the phone.
+      speaking really fast, really quiet. and she said... i swear she
+      said "i know where he's going. i always know."
+
+      like... what the fuck does that mean?? i always know where he's
+      going?? that's not normal right??
+
+      also she had her own dive gear loaded too. full kit. tanks,
+      torch, the lot. at 2am. she was going to dive. alone. at night.
+      following toni.
+
+      i've been scared to say anything cos she's my instructor. but
+      this is bigger than dive lessons init.
+    effects:
+      trust_charlene: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rita ---
+
+  rita_interview:
+    type: message
+    text: >
+      RITA: This is between us, yes? I'm a pharmacist, not a gossip.
+      But Daniela Borg comes in regularly. She's been buying things
+      that concern me — heavy-duty sleeping tablets, motion sickness
+      medication in quantities that don't match recreational diving,
+      and waterproof tracking patches.
+
+      She asked me once about underwater GPS systems. I said "this is
+      a pharmacy, Rita, try a dive shop." She laughed it off. But
+      the way she asked... mela, it was like she was researching how
+      to follow someone underwater without them knowing.
+
+      And the sleeping tablets — she asked if they dissolve in water.
+      What kind of question is that?
+    effects:
+      trust_rita: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- GhostDiver99 (anonymous account) ---
+
+  ghost_investigation:
+    type: tweet
+    from: ghostdiver
+    text: >
+      Nobody knows these waters like I do. Nobody loves them like I
+      do. When he's down there, I'm the one keeping him safe. He
+      just doesn't know it.
+    choices:
+      - Look at this account's history -> ghost_posts
+
+  ghost_posts:
+    type: message
+    text: >
+      @ghostdiver99: account created 10 months ago. Posts are all
+      about Toni's dive work. Comments on every underwater photo,
+      every site discovery. The tone shifts over time:
+
+      Month 1: "Incredible find. Your mapping work is revolutionary."
+      Month 3: "I was at the same site today. Our paths cross in the
+      deep. That means something."
+      Month 5: "Why do you dive with others now? We were always
+      better alone."
+      Month 8: "I followed you to Ras il-Bajja. I watched from the
+      blue. You never look behind you. I do. I always watch your
+      back."
+      Month 10: "Maria doesn't understand what we share. The sea
+      is ours."
+
+      The account has no face photos. Only underwater shots showing
+      a distinctive red and black wetsuit.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the wetsuit -> ghost_style
+
+  ghost_style:
+    type: message
+    text: >
+      Comparing @ghostdiver99's photos with @daniela_borg's public
+      posts:
+
+      Same red and black wetsuit — it's a custom ScubaPro, visible
+      in Daniela's official dive centre photos. Same underwater
+      camera model. Same distinctive kick pattern visible in the
+      silt clouds of several videos.
+
+      And one post from @ghostdiver99: "Site 12-B is where the
+      oldest anchors sleep." Site 12-B is Toni's private designation
+      system. Not public. Only someone who accessed his dive logs
+      would know that code.
+
+      It's Daniela. The anonymous account is Daniela.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kevin on Daniela's boat ---
+
+  kevin_daniela:
+    type: message
+    text: >
+      KEVIN: You want to know about Daniela's boat? Mela, here's
+      something weird. She brought her RIB in for work last month.
+      Asked me to install a sonar unit — high-end stuff, the kind
+      you use for search and tracking. Way beyond what a dive
+      instructor needs.
+
+      And she asked me to mount a bracket under the hull. For a
+      transponder. The kind that pings another transponder — like
+      a paired underwater tracking system. One unit on her boat.
+      Where's the other one?
+
+      I installed it because she's a customer. But I thought about
+      it afterwards. If you stuck the other transponder on someone's
+      dive gear... you'd know exactly where they were. Underwater.
+      In real time.
+
+      Ostja. That's what she's been doing, isn't it?
+    effects:
+      trust_kevin: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Surġent Mifsud ---
+
+  sgt_interview:
+    type: message
+    text: >
+      SGT MIFSUD: Off the record — and I mean completely off the
+      record — I wanted to investigate MedBuild. My superintendent
+      told me to stand down. Said the case was "above our station."
+      That's code for someone made a phone call.
+
+      The Borg situation is different. I didn't know about the
+      tracking, the anonymous account, any of it. If you have
+      evidence of stalking, that's criminal. That I can act on
+      without anyone blocking me.
+
+      Bring me something solid and I'll reopen the case properly.
+    effects:
+      trust_sgt: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Toni than anyone in Marsaskala Bay. Who is responsible?
+    choices:
+      - Confront Daniela Borg (the obsessive dive partner) -> confront_daniela
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Steve Bonnici (MedBuild CEO) -> confront_steve
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Axiaq (political protection) -> confront_george
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Daniela (Best Ending) ---
+
+  confront_daniela:
+    type: message
+    text: >
+      You present your evidence to Daniela:
+
+      "I know @ghostdiver99 is your account. I know you installed
+      a tracking transponder to follow Toni underwater. I know you
+      were at the dive centre at 2am loading his gear. I know you
+      followed him to Ras il-Bajja that night. I have the dive logs,
+      the tracking hardware, and six witnesses."
+    choices:
+      - Send -> daniela_response
+
+  daniela_response:
+    type: message
+    text: >
+      Daniela doesn't respond for a long time. Then:
+
+      DANIELA: You don't understand. Toni is reckless. He dives
+      alone at dangerous sites with no backup. He picks fights with
+      construction companies and gangsters. Someone has to watch out
+      for him. I've been protecting him his whole diving life.
+
+      We're meant to be partners. Not just diving partners. He
+      doesn't see it yet. Maria is temporary. The sea is forever.
+      We are forever.
+
+      That's not protection. That's obsession.
+
+      You've already sent the evidence to Surġent Mifsud. And to
+      Rachel Calleja.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Surġent Mifsud reopens the case. With your evidence — the
+      anonymous account, the tracking transponder, the dive logs,
+      the witness testimonies — Daniela is arrested for stalking,
+      harassment, and theft of archaeological evidence. Toni's
+      dive gear and camera drives are recovered from her apartment.
+
+      Rachel Calleja publishes the MedBuild story in MaltaToday.
+      Photographs of the rubble dumping, the bribery payments to
+      Mayor Axiaq, and Toni's original archaeological survey force
+      the Superintendence to grant emergency heritage protection
+      to Ras il-Bajja. MedBuild's construction permit is revoked.
+      Steve Bonnici faces criminal charges for destruction of a
+      heritage site. George Axiaq resigns.
+
+      And Toni Camilleri, reading the story from a friend's boat
+      in Gozo, calls his brother for the first time in nine days.
+
+      "Ġej lura d-dar."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: toni
+    text: >
+      il-baħar jgħidlek kollox jekk tisma'. u n-nies ta' marsaskala
+      semgħu. grazzi li ma waqaftux.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Steve Bonnici (Partial Ending) ---
+
+  confront_steve:
+    type: message
+    text: >
+      You present the construction evidence to Steve Bonnici:
+
+      "I have photographs of MedBuild dumping rubble on the Ras
+      il-Bajja site. I have work orders with your signature. I have
+      financial records showing payments to Mayor Axiaq. I have
+      Toni's complete archaeological survey proving what you tried
+      to bury."
+    choices:
+      - Send -> steve_response
+
+  steve_response:
+    type: message
+    text: >
+      STEVE: This communication has been forwarded to our legal team.
+      MedBuild Construction operates within all applicable permits
+      and regulations. Any publication of defamatory statements will
+      result in immediate litigation.
+
+      But it's too late. You've sent the evidence to Rachel, to
+      Heritage Watch Malta, and to the Superintendence.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The heritage story breaks. MedBuild is ordered to halt
+      construction pending investigation. The marina project may
+      be dead. The mayor faces a corruption inquiry. The village
+      is divided — some celebrate, others worry about lost jobs.
+
+      But Toni?
+
+      Without the stalking evidence, Daniela is never investigated.
+      She continues to run the dive centre. She continues to shadow
+      Toni's sites. She creates a new anonymous account.
+
+      Three months later, Toni reads about MedBuild online. He
+      returns quietly. He takes up his research again. But he stops
+      diving alone. He changes his dive schedules without telling
+      anyone. He checks his gear for trackers every morning.
+
+      Some days, on deep dives, he sees bubbles in the distance.
+      Following.
+
+      The corporation is exposed. But the person who terrorised
+      Toni walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: toni
+    text: "lura marsaskala. il-bini waqaf. il-bqija... naraw."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_george:
+    type: message
+    text: >
+      You confront Mayor Axiaq with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> george_response
+
+  george_response:
+    type: tweet
+    from: wayne
+    text: >
+      My client takes note of your allegations. Any public
+      dissemination of defamatory material will result in immediate
+      legal proceedings. — Cassar & Associates, Valletta
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without direct
+      evidence linking Axiaq to Toni's disappearance — and there
+      isn't any beyond the bribery — your case goes nowhere.
+
+      MedBuild continues to build. Daniela continues to dive.
+      Toni stays in hiding.
+
+      Six months later, @ghostdiver99 creates a new account. It
+      follows Toni's brother. And Maria.
+
+      The rubble settles over the Phoenician harbour. Layer by
+      layer, history disappears. Like Toni.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: MARSASKALA BAY — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Toni's story explores themes of
+      corporate greed, heritage destruction, obsessive behaviour,
+      corruption, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or feels unsafe, help is available:
+      Supportline 179: 179

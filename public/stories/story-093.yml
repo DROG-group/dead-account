@@ -1,0 +1,1575 @@
+# DEAD ACCOUNT — Story 093: Vlamertinge (Belgium)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-093.yml
+#
+# Player investigates the death of craft brewer Emile Peeters
+# in the fictional West Flanders village of Vlamertinge.
+
+meta:
+  title: "Dead Account — Vlamertinge"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lies: 0
+    trust_bram: 0
+    trust_madelief: 0
+    trust_gerard: 0
+    trust_fien: 0
+    trust_wout: 0
+    trust_noor: 0
+    trust_roger: 0
+    trust_hilde: 0
+    trust_stijn: 0
+    trust_sofie: 0
+    trust_pieter: 0
+    trust_lotte: 0
+    trust_anne: 0
+    trust_thibault: 0
+    trust_cecile: 0
+    trust_jan: 0
+    trust_commissaris: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "net verhuisd naar vlamertinge. hop & tarwe & belgisch platteland"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Vlamertinge.social"
+    description: "Welkom op de community-instance van Vlamertinge, West-Vlaanderen"
+    avatar_url: /gamepatch/assets/dead-account/vlamertinge_bot.png
+
+  npcs:
+    # === Emile's Inner Circle ===
+    emile:
+      name: "Emile Peeters"
+      bio: "brouwer | Brouwerij De Vlaamse Poort | ambachtelijk bier | de hop liegt nooit"
+      avatar: avatars/emile.jpg
+    lies:
+      name: "Lies Vandenbroucke"
+      bio: "vrouw van emile | boekhouding brouwerij | mama van twee | ik houd vol"
+      avatar: avatars/lies.jpg
+    bram:
+      name: "Bram Peeters"
+      bio: "zoon van emile | 22 | student brouwtechnologie | gent | papa alsjeblieft"
+      avatar: avatars/bram.jpg
+    madelief:
+      name: "Madelief Claessens"
+      bio: "assistente brouwer | De Vlaamse Poort | emile heeft mij alles geleerd"
+      avatar: avatars/madelief.jpg
+
+    # === Local Government ===
+    gerard:
+      name: "Gerard Demeyere"
+      bio: "Burgemeester van Vlamertinge | CD&V | al 18 jaar in dienst van de gemeente"
+      avatar: avatars/gerard.jpg
+    hilde:
+      name: "Hilde Vermeersch"
+      bio: "Schepen van Milieu | Vlamertinge | groen beleid & duurzaamheid"
+      avatar: avatars/hilde.jpg
+    gemeente:
+      name: "Gemeente Vlamertinge"
+      bio: "Officieel account | Gemeentenieuws | Openingsuren: Ma-Vr 9u-16u30"
+      avatar: avatars/gemeente.jpg
+
+    # === Local Business & Community ===
+    roger:
+      name: "Roger Decock"
+      bio: "Café 't Oud Gemeentehuis | bier & gezelligheid | open sinds 1974"
+      avatar: avatars/roger.jpg
+    cafe_oud:
+      name: "Café 't Oud Gemeentehuis"
+      bio: "Streekbieren | kaart- en dartsavonden | het kloppend hart van Vlamertinge"
+      avatar: avatars/cafe_oud.jpg
+    sofie:
+      name: "Sofie Dewulf"
+      bio: "bakkerij Dewulf | pistolets | koffiekoeken | elke morgen vanaf 5u"
+      avatar: avatars/sofie.jpg
+    pieter:
+      name: "Pieter Desmet"
+      bio: "landbouwer | Hoeve Desmet | aardappelen & vlas | 4de generatie"
+      avatar: avatars/pieter.jpg
+    anne:
+      name: "Anne Coppens"
+      bio: "apothekeres | Vlamertinge | advies & zorg | ook op zondag"
+      avatar: avatars/anne.jpg
+    lotte:
+      name: "Lotte Maes"
+      bio: "dierenarts | plattelandspraktijk | boerderijdieren & gezelschapsdieren"
+      avatar: avatars/lotte.jpg
+
+    # === Journalist ===
+    stijn:
+      name: "Stijn Buysse"
+      bio: "journalist | De Westhoek Krant | milieu & lokaal nieuws | tips: stijn@westhoek.be"
+      avatar: avatars/stijn.jpg
+
+    # === VlasChem (corporate) ===
+    vlaschem:
+      name: "VlasChem NV"
+      bio: "Vlasverwerkende chemische industrie | Site Vlamertinge | ISO 14001 gecertificeerd"
+      avatar: avatars/vlaschem.jpg
+    thibault:
+      name: "Thibault Verbeke"
+      bio: "directeur VlasChem Vlamertinge | industrie & werkgelegenheid voor de regio"
+      avatar: avatars/thibault.jpg
+    cecile:
+      name: "Cécile Fontaine"
+      bio: "Avocate | Cabinet Fontaine & Partners | Droit des entreprises | Bruxelles"
+      avatar: avatars/cecile.jpg
+
+    # === Teens ===
+    fien:
+      name: "Fien"
+      bio: "16 | vlamertinge born | bier is cultuur | emile was ne held"
+      avatar: avatars/fien.jpg
+    wout:
+      name: "Wout"
+      bio: "17 | mountainbike & veldrijden | west-vlaanderen is the best-vlaanderen"
+      avatar: avatars/wout.jpg
+    noor:
+      name: "Noor"
+      bio: "15 | tekenen & schrijven | ik documenteer alles | voor emile"
+      avatar: avatars/noor.jpg
+
+    # === Media & Community ===
+    actu_vlam:
+      name: "Vlamertinge Nieuws"
+      bio: "Lokaal nieuws uit Vlamertinge en de Westhoek | tips: redactie@vlamertinge-nieuws.be"
+      avatar: avatars/actu_vlam.jpg
+    meteo_wvl:
+      name: "Weer West-Vlaanderen"
+      bio: "Weerberichten & waarschuwingen | Automatisch weerstation | Elk uur bijgewerkt"
+      avatar: avatars/meteo_wvl.jpg
+    brouwgilde:
+      name: "Brouwgilde Westhoek"
+      bio: "Ambachtelijke brouwers van de Westhoek | Evenementen | Proeverijen"
+      avatar: avatars/brouwgilde.jpg
+
+    # === Suspicious / Other ===
+    jan:
+      name: "Jan Michiels"
+      bio: "onafhankelijk bierblogger | BeerBelgium.blog | ik schrijf de waarheid over bier"
+      avatar: avatars/jan.jpg
+    donkerbier:
+      name: "DonkerBier"
+      bio: "."
+      avatar: avatars/anon.jpg
+    commissaris:
+      name: "Commissaris Vandenberghe"
+      bio: "Politiezone Westhoek | Lokale recherche | noodgevallen: 101"
+      avatar: avatars/commissaris.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VLAMERTINGE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Vlamertinge.social — the community Mastodon instance for
+      the village of Vlamertinge, West Flanders, Belgium.
+
+      The local feed is buzzing with grief. Something terrible has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name dominates everything:
+      @emile_peeters.
+
+      A craft brewer. Owner of Brouwerij De Vlaamse Poort. Known across the
+      Westhoek for his lambic and his tripel. Found dead in his brew house
+      three days ago. The police say it was an accident — carbon dioxide
+      asphyxiation from a faulty fermentation tank.
+
+      Nobody in Vlamertinge believes that.
+    choices:
+      - Look at his profile -> emile_profile
+
+  emile_profile:
+    type: tweet
+    from: emile
+    text: "Het water uit de grond is niet meer zuiver. Ik brouw al 20 jaar met dat water. Nu smaakt het naar chemicaliën. Iemand vervuilt onze bronnen en ik heb bewijs."
+    choices:
+      - That's one of his last posts... -> grey_barrel
+
+  grey_barrel:
+    type: message
+    text: >
+      One day after that post, his account uploaded a single image:
+      a blurred photo of a rusted barrel in a field. Posted at 2am.
+      No caption. No hashtags.
+
+      His wife says he never posted without a caption. His brewing
+      assistant says his phone was found on the floor of the brew house,
+      screen cracked. The CO2 alarm in the fermentation room was
+      disconnected.
+
+      A brewer of twenty years does not accidentally suffocate in his
+      own brewery.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: commissaris
+    text: >
+      Betreffende het overlijden van een inwoner van Vlamertinge: het
+      onderzoek wijst op een industrieel ongeval. Het CO2-alarm was
+      defect. Er zijn op dit moment geen aanwijzingen voor kwaad opzet.
+      Informatie kan gemeld worden op 101.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are a mix of fury and heartbreak. His wife
+      @lies_vandenbroucke is posting through tears. His son
+      @bram_peeters is driving down from Ghent. His assistant
+      @madelief_claessens is in shock.
+
+      The farmer @pieter_desmet says Emile was right about the water.
+      The café owner @roger_decock says Emile was getting threats.
+      And the beer blogger @jan_michiels, who wrote a savage review
+      of the brewery last month, has gone very quiet.
+
+      The journalist @stijn_buysse is asking questions nobody wants
+      to answer.
+    effects: { trust_lies: "+5", trust_bram: "+5" }
+    choices:
+      - Start following Emile's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Vlamertinge. Follow Emile's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Roger (café owner, knows everyone) -> roger_intro
+      - Talk to Pieter (farmer, noticed the water) -> pieter_intro
+      - Talk to Fien (teen, shaken up) -> fien_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes mourning for Emile with ordinary village life:
+      market schedules, the bakery's morning pistolets, field reports
+      from the farmers.
+
+      Key names surface: Lies (wife, keeping the brewery going),
+      Madelief (assistant brewer, rattled), Stijn (journalist, digging),
+      and the teens — Fien, Wout, Noor — who saw Emile as a village
+      hero.
+
+      Also prominent: VlasChem NV, the chemical processing plant at the
+      edge of the village. Their posts are slick corporate PR. Emile's
+      posts were the opposite — raw, furious, accusing.
+
+      And one name keeps surfacing in whispers: @jan_michiels, the beer
+      blogger who seemed obsessed with destroying Emile's reputation.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Roger -> roger_intro
+      - Talk to Pieter -> pieter_intro
+      - Talk to Fien -> fien_intro
+
+  # --- Roger (social map) ---
+
+  roger_intro:
+    type: tweet
+    from: roger
+    text: >
+      Het café is open maar het hart is dicht. @emile_peeters, gij
+      zijt veel te vroeg vertrokken manneke. Uw kruk staat er nog.
+    effects: { trust_roger: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Roger -> roger_talk
+
+  roger_talk:
+    type: message
+    text: >
+      ROGER: Ah, ge zijt nieuw hier? Welkom. Slechte timing, vriend.
+      Heel Vlamertinge is in rouw.
+
+      Laat me u wat vertellen. Lies is Emile zijn vrouw — zij deed de
+      boekhouding van de brouwerij. Sterke madam. Madelief Claessens is
+      zijn assistente, zij kent het brouwproces op haar duimpje. Bram is
+      hun zoon, hij studeert brouwtechnologie in Gent. Komt naar huis
+      gereden.
+
+      En dan hebt ge Jan Michiels — die bierblogger. Die gast heeft
+      Emile maanden zitten treiteren online. Recensies die meer op
+      persoonlijke aanvallen leken. Emile zei dat het stalking was.
+      Niemand luisterde.
+
+      Oh ja, en VlasChem — die chemische fabriek. Emile beweerde dat
+      ze het grondwater aan het vergiftigen waren. Zijn bier smaakte
+      anders. Hij liet het water testen. En toen...
+    effects: { trust_roger: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Jan Michiels -> roger_jan
+      - Ask about VlasChem -> roger_vlaschem
+      - Thank him and move on -> quest1_hub
+
+  roger_jan:
+    type: message
+    text: >
+      ROGER: Jan Michiels. Amai zeg, die gast. Hij schrijft een
+      bierblog — BeerBelgium.blog. Klinkt onschuldig hé? Maar die
+      mens was bezeten van Emile. Elke batch die Emile brouwde, Jan
+      schreef er een vernietigende recensie over. Niet gewoon kritiek
+      — persoonlijke aanvallen. "Peeters verliest zijn touch." "De
+      Vlaamse Poort is verleden tijd."
+
+      Emile zei dat Jan hem volgde. Naar brouwersbeurzen, naar
+      proeverijen. Altijd dezelfde gast op de eerste rij met zijn
+      telefoon. En dan die DM's — tientallen berichten die Emile
+      nooit beantwoordde.
+
+      Het was meer dan een boze blogger. Het was obsessie.
+    effects: { trust_roger: "+5" }
+    choices:
+      - Ask about VlasChem -> roger_vlaschem
+      - Move on -> quest1_hub
+
+  roger_vlaschem:
+    type: message
+    text: >
+      ROGER: VlasChem zit hier al sinds de jaren negentig. Ze
+      verwerken vlas met chemicaliën — bleking, ontvetting, dat soort
+      dingen. De gemeente was blij met de jobs. Maar de boeren klagen
+      al jaren over het water. Beesten die ziek worden. Gewassen die
+      niet meer groeien rond de fabriek.
+
+      Emile brouwde met lokaal bronwater — dat was zijn ding, hé.
+      Terroir, noemde hij dat. Maar vorig jaar begon zijn bier anders
+      te smaken. Hij liet het water testen in een onafhankelijk labo.
+      De resultaten waren... niet goed.
+
+      Twee weken later was hij dood.
+    effects: { trust_roger: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pieter (farmer, water witness tease) ---
+
+  pieter_intro:
+    type: tweet
+    from: pieter
+    text: >
+      vier generaties boeren op dit land. het water is vergiftigd.
+      @emile_peeters wist het. en nu is hij dood. maak de link.
+    effects: { trust_pieter: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Pieter -> pieter_talk
+
+  pieter_talk:
+    type: message
+    text: >
+      PIETER: Ik boer al dertig jaar op deze grond. Mijn vader, mijn
+      grootvader, mijn overgrootvader. En ik vertel u — het grondwater
+      is kapot. Mijn koeien drinken het niet meer. De velden rond de
+      VlasChem-fabriek zijn dood.
+
+      Emile kwam bij mij zijn water halen toen zijn eigen bron vreemd
+      begon te smaken. Hij liet alles testen. Zware metalen.
+      Oplosmiddelen. Dingen die niet in grondwater horen. Hij had
+      documenten, foto's, analyserapporten.
+
+      En toen godverdomme — dood. In zijn eigen brouwerij. Door een
+      "defect CO2-alarm." Dat alarm werkte twee weken geleden nog
+      perfect. Ik heb het zelf gezien.
+    effects: { trust_pieter: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> pieter_night
+      - Move on -> quest1_hub
+
+  pieter_night:
+    type: message
+    text: >
+      PIETER: De nacht voor ze hem vonden — ik was laat op de hoeve,
+      kalveren aan het controleren. Rond middernacht zag ik licht in
+      de brouwerij. Niet abnormaal, Emile werkte soms laat. Maar er
+      stonden twee auto's. De bestelwagen van de brouwerij en een
+      zwarte BMW met VlasChem-nummerplaten.
+
+      Om middernacht. Bij de brouwerij.
+
+      Ik heb het genoteerd in mijn logboek. Niemand heeft ernaar
+      gevraagd.
+    effects: { trust_pieter: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Fien (teen, witness tease) ---
+
+  fien_intro:
+    type: tweet
+    from: fien
+    text: >
+      serieus nu ik kan niet stoppen met wenen. @emile_peeters was de
+      beste mens van dit dorp. hij leerde ons over bier en cultuur en
+      ge zijt zot als ge denkt dat dat een ongeval was. als iemand
+      iets weet zeg het aub
+    effects: { trust_fien: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Fien -> fien_talk_early
+
+  fien_talk_early:
+    type: message
+    text: >
+      FIEN: ge zijt nieuw? amai wat een timing. in echt emile was
+      gewoon de max. hij deed rondleidingen voor de scholen, hij
+      legde alles uit over hop en gist en fermentatie. wij mochten
+      altijd komen kijken.
+
+      en nu ben ik bang want wout heeft iets gezien de andere avond
+      bij de brouwerij maar hij wilt er niet over praten. hij zegt
+      dat het niks is maar da's bullshit serieus
+    effects: { trust_fien: "+10" }
+    choices:
+      - What did Wout see? -> fien_wout_hint
+      - Move on -> quest1_hub
+
+  fien_wout_hint:
+    type: message
+    text: >
+      FIEN: ik weet het niet exact. hij was met zijn mountainbike op
+      het veldpad achter de brouwerij en hij zag iemand die rondhing
+      bij de zijdeur. niet emile. iemand anders. met een rugzak.
+
+      wout flipt echt hard hij wilt er niet over praten. ge moet hem
+      eerst vertrouwen kweken ofzo. praat over veldrijden met hem
+      ofzo lol
+    effects: { trust_fien: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Vlamertinge. A West Flemish village
+      built around agriculture and craft brewing. A brewer who was
+      exposing water contamination. A death nobody believes was an
+      accident.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lies (Emile's wife) -> lies_q1
+      - Talk to Madelief (Emile's assistant) -> madelief_q1
+      - Check what Bram (Emile's son) is saying -> bram_q1
+      - I'm ready to investigate the night he died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lies Q1 ---
+
+  lies_q1:
+    type: tweet
+    from: lies
+    text: >
+      de brouwerij is dicht vandaag. en morgen. en ik weet niet
+      wanneer nog. @emile_peeters zijn laatste batch staat nog in de
+      tanks. ik kan er niet naar kijken.
+    effects: { trust_lies: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lies -> lies_q1_talk
+
+  lies_q1_talk:
+    type: message
+    text: >
+      LIES: Ik ken u niet. Maar bedankt voor uw medeleven. De hele
+      wereld praat over Emile en niemand doet iets.
+
+      ...Ik blijf zeggen dat het goed komt. Maar dat is niet waar.
+
+      [Lies is op haar hoede. Je zult meer vertrouwen moeten opbouwen
+      voordat ze zich openstelt.]
+    effects: { trust_lies: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Madelief Q1 ---
+
+  madelief_q1:
+    type: tweet
+    from: madelief
+    text: >
+      De gistingsruimte is afgesloten door de politie. Maar ik ken
+      die ruimte. Het CO2-alarm is twee maanden geleden nog nagekeken.
+      Het werkte perfect. @emile_peeters was de veiligste brouwer die
+      ik kende.
+    effects: { trust_madelief: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Madelief -> madelief_q1_talk
+
+  madelief_q1_talk:
+    type: message
+    text: >
+      MADELIEF: Emile en ik werkten al vijf jaar samen. Hij was mijn
+      mentor. Alles wat ik weet over brouwen komt van hem. Die man
+      was geobsedeerd door veiligheid — dubbele checks, logboeken,
+      alles.
+
+      Het CO2-alarm was niet "defect." Iemand heeft het uitgeschakeld.
+      Er zaten verse krasjes op de behuizing. Ik heb het aan de
+      politie gezegd. Ze schreven het op. Dat was het.
+
+      [Madelief lijkt oprecht. Of probeert ze zichzelf te beschermen?]
+    effects: { trust_madelief: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bram Q1 ---
+
+  bram_q1:
+    type: tweet
+    from: bram
+    text: >
+      mijn pa is DOOD en de politie zegt "industrieel ongeval"???
+      MIJN PA BROUWDE AL 20 JAAR HIJ WIST WAT HIJ DEED. godverdomme
+      ik rij naar huis. iemand gaat mij uitleg geven.
+    effects: { trust_bram: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Bram -> bram_q1_talk
+
+  bram_q1_talk:
+    type: message
+    text: >
+      BRAM: Wie zijt gij? Nog iemand die gaat zeggen dat ik moet
+      kalmeren? Mijn pa belde mij de avond voor hij stierf. Hij zei
+      dat hij iets groots had ontdekt. Hij zei "als er iets gebeurt,
+      kijk naar VlasChem." En dan zei hij nog iets — "die blogger
+      weet meer dan hij laat uitschijnen."
+
+      Dat is het laatste dat ik van hem gehoord heb.
+    effects: { trust_bram: "+10" }
+    choices:
+      - What do you think happened? -> bram_theory
+      - Move on -> quest1_hub
+
+  bram_theory:
+    type: message
+    text: >
+      BRAM: Ik denk dat mijn pa bewijs had dat VlasChem het grondwater
+      vergiftigt. En dat ze hem het zwijgen hebben opgelegd. Maar ik
+      denk ook dat die creep van een bierblogger — Jan Michiels — er
+      iets mee te maken heeft. Die gast was bezeten van mijn pa. Niet
+      op een goede manier.
+
+      Pa vertelde mij maanden geleden dat iemand zijn brouwerij
+      binnenkwam 's nachts. Spullen die verplaatst waren. Recepten die
+      gekopieerd leken. Hij dacht dat het niks was. Ik denk dat het
+      wél iets was.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Emile died. Multiple people saw or
+      heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Wout (was mountain biking near the brewery) -> wout_interview
+      - Find Sofie (baker, starts at 5am, heard something) -> sofie_interview
+      - Find Lotte (vet, called out to a farm nearby) -> lotte_interview
+      - Find Roger (was closing the café late) -> roger_interview
+
+  # --- Wout (saw someone at the brewery) ---
+
+  wout_interview:
+    type: tweet
+    from: wout
+    text: >
+      goede ride vandaag maar de sfeer rond de brouwerij is niet
+      normaal. er hangt iets in de lucht. letterlijk en figuurlijk.
+    effects: { trust_wout: "+5" }
+    choices:
+      - Ask Wout about that evening -> wout_talk
+
+  wout_talk:
+    type: message
+    text: >
+      WOUT: ok maar ge zegt het tegen niemand hé. ik was op het
+      veldpad achter de brouwerij rond 21u, avondrit met mijn
+      mountainbike. en ik zag iemand bij de zijdeur van de brouwerij.
+      niet emile — iemand anders. kleiner. met een rugzak. hij deed
+      iets aan de deur, alsof hij met het slot bezig was.
+
+      toen hij mij hoorde is hij weggelopen richting het veld. ik heb
+      zijn gezicht niet gezien maar hij liep raar. en die rugzak was
+      zwaar.
+
+      serieus nu wie gaat er om 21u met een rugzak aan de zijdeur van
+      iemand zijn brouwerij staan foeteren
+    effects:
+      trust_wout: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sofie (baker, heard argument) ---
+
+  sofie_interview:
+    type: tweet
+    from: sofie
+    text: >
+      Om 5u aan het bakken zoals elke dag. Maar die nacht heb ik iets
+      gehoord. Een discussie. Luide stemmen bij de brouwerij. Rond 1u.
+    effects: { trust_sofie: "+5" }
+    choices:
+      - Ask Sofie what she heard -> sofie_talk
+
+  sofie_talk:
+    type: message
+    text: >
+      SOFIE: Ik slaap licht — beroepsziekte als ge om 4u30 moet
+      opstaan. Die nacht werd ik wakker rond 1u. Er waren stemmen bij
+      de brouwerij. Luide stemmen. Minstens twee mannen. Eentje was
+      Emile — ik herken zijn stem na twintig jaar.
+
+      De andere stem kende ik niet. Dieper. Rustig maar dreigend.
+      Ik hoorde Emile zeggen: "Ge kunt mij niet tegenhouden." En de
+      andere: "We zullen zien."
+
+      Dan was het stil. Een autoportier. Een motor. Stilte.
+
+      's Morgens was Emile dood.
+    effects:
+      trust_sofie: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lotte (vet, saw VlasChem car) ---
+
+  lotte_interview:
+    type: tweet
+    from: lotte
+    text: >
+      Nachtoproep voor een kalf bij Hoeve Desmet. Op de terugweg
+      iets vreemd gezien op de weg naar de brouwerij. Ik twijfel of
+      ik het moet melden.
+    effects: { trust_lotte: "+5" }
+    choices:
+      - Ask Lotte what she saw -> lotte_talk
+
+  lotte_talk:
+    type: message
+    text: >
+      LOTTE: Ik was opgeroepen voor een moeilijke geboorte bij Pieter
+      Desmet — dat was rond 23u. Op de terugweg, rond middernacht,
+      reed ik langs de brouwerij. Er stond een zwarte BMW geparkeerd
+      aan de achterkant. VlasChem-nummerplaten — ik herkende het logo.
+
+      Om middernacht. Bij de brouwerij. Wie van VlasChem gaat er om
+      middernacht naar een brouwerij?
+
+      Ik heb de nummerplaat genoteerd. Beroepsgewoonte — ik noteer
+      altijd alles.
+    effects:
+      trust_lotte: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Roger (closing café, saw Jan) ---
+
+  roger_interview:
+    type: tweet
+    from: roger
+    text: >
+      Late sluiting gisteravond. Iemand hing rond op het dorpsplein
+      na sluitingstijd. Niet de eerste keer.
+    effects: { trust_roger: "+5" }
+    choices:
+      - Ask Roger what he saw -> roger_night_talk
+
+  roger_night_talk:
+    type: message
+    text: >
+      ROGER: Ik sloot het café rond 23u30. Op het plein stond iemand
+      te roken aan de overkant. Jan Michiels. De bierblogger. Hij
+      stond te staren naar de brouwerij aan het einde van de straat.
+
+      Ik riep "Jan, alles goed?" Hij schrok en liep weg. Richting
+      het veldpad — hetzelfde pad dat naar de achterkant van de
+      brouwerij leidt.
+
+      Die gast hangt al weken rond in het dorp. Hij woont in Ieper.
+      Waarom hangt iemand uit Ieper om halftwaal 's nachts rond op
+      een dorpsplein in Vlamertinge?
+    effects:
+      trust_roger: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lies (wife) and
+      Noor (saw Jan watching the brewery).
+    choices:
+      - Talk to Lies about that night -> lies_interview
+      - Talk to Noor -> noor_interview
+      - Find Wout -> wout_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sofie -> sofie_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Lotte -> lotte_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Roger -> roger_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lies (last to see Emile alive) ---
+
+  lies_interview:
+    type: tweet
+    from: lies
+    text: >
+      die foto op emile zijn account. dat is hij niet. emile post
+      nooit zonder uitleg. emile post niet om 2u 's nachts. iemand
+      anders heeft dat gedaan.
+    effects: { trust_lies: "+5" }
+    choices:
+      - DM Lies -> lies_talk_low
+        when:
+          state: trust_lies
+          lt: 50
+      - DM Lies -> lies_talk_high
+        when:
+          state: trust_lies
+          gte: 50
+
+  lies_talk_low:
+    type: message
+    text: >
+      LIES: Ik stel het op prijs maar ik wil echt niet met vreemden
+      praten hierover nu.
+
+      [Lies moet je meer vertrouwen. Toon haar dat je serieus aan het
+      onderzoeken bent, niet gewoon aan het roddelen.]
+    effects: { trust_lies: "+5" }
+    choices:
+      - Share what you've learned about the night -> lies_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lies_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the BMW at the brewery, the
+      argument, the person at the side door. Lies is silent for a
+      while.
+
+      LIES: Ge probeert echt om de waarheid te vinden. Ok. Ik zal
+      praten.
+    effects: { trust_lies: "+25" }
+    choices:
+      - What happened that night? -> lies_talk_high
+
+  lies_talk_high:
+    type: message
+    text: >
+      LIES: Hij kwam thuis rond 20u. Normaal. We aten samen. Dan
+      rond 21u zei hij dat hij nog naar de brouwerij moest — een
+      gisting controleren. Ik zei "nu nog?" Hij zei dat het moest.
+
+      Om 23u belde hij mij. Zijn stem was raar. Gespannen. Hij zei
+      "ze zijn hier geweest. Van VlasChem. Ze willen dat ik alles
+      afgeef." Ik vroeg wie. Hij zei "Verbeke zelf. Met een advocaat."
+
+      Dan zei hij nog iets — "en die andere is er ook weer. Hij zit
+      altijd in mijn nek."
+
+      Hij wilde niet zeggen wie "die andere" was. Hij zei "maak je
+      geen zorgen" en hing op. 's Morgens was hij dood.
+    effects:
+      trust_lies: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Noor (saw Jan watching the brewery) ---
+
+  noor_interview:
+    type: message
+    text: >
+      NOOR: ok dit klinkt misschien raar maar ik heb jan michiels —
+      die bierblogger — al drie keer gezien bij de brouwerij 's
+      avonds. gewoon daar staan. foto's nemen van het gebouw. soms
+      zat hij in zijn auto geparkeerd aan de overkant. lichten uit.
+      gewoon zitten staren.
+
+      de laatste keer was twee dagen voor emile stierf. hij stond bij
+      de zijdeur en hij schreef dingen op in een schriftje. toen ik
+      langs fietste keek hij op en liep weg. trop creepy godverdomme.
+    effects:
+      trust_noor: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Unknown figure at brewery side door with backpack (Wout)
+      23:00 — Emile calls Lies, says VlasChem visited the brewery (Lies)
+      23:30 — Jan Michiels seen on village square staring at brewery, walks toward back path (Roger)
+      00:00 — VlasChem BMW parked behind brewery (Lotte)
+      01:00 — Loud argument at brewery, Emile and unknown man (Sofie)
+      05:30 — Emile found dead by Madelief, CO2 alarm disconnected
+
+      VlasChem confronted Emile at his brewery. But someone else was
+      also there that night — someone who had been watching for weeks.
+
+      Two threads to pull:
+      — The contamination: What is VlasChem hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Jan Michiels really doing? Why was he
+        at the brewery?
+    choices:
+      - Investigate the contamination cover-up -> corruption_hub
+      - Investigate Jan Michiels -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      VlasChem is hiding something. Emile had proof. Now he's dead and
+      his evidence is missing from the brewery.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the brewery records -> brewery_records
+      - Talk to Stijn the journalist -> stijn_interview
+      - Talk to Hilde (environment deputy) -> hilde_interview
+      - Check the Brouwgilde association -> brouwgilde_investigation
+      - Talk to Pieter about the contamination -> pieter_contamination
+      - Talk to Madelief about the water tests -> madelief_water
+      - Back to hub -> investigation_hub
+
+  # --- Brewery Records ---
+
+  brewery_records:
+    type: message
+    text: >
+      The brewery's public quality reports — posted monthly on the
+      Brouwerij De Vlaamse Poort website — show Emile's water quality
+      monitoring. The most recent reports are marked "PENDING — EXTERN
+      LABO" — the only batches with that status.
+
+      His production log, shared with the Brouwgilde for traceability,
+      shows he sent fourteen water samples to an independent laboratory
+      in Leuven last month. The last entry: "Resultaten binnen. Zware
+      metalen 8x boven wettelijke norm. Bron: grondwater perceel
+      VlasChem. Onmiddellijke melding nodig."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Stijn ---
+
+  stijn_interview:
+    type: message
+    text: >
+      STIJN: Ik praat niet over bronnen. Punt.
+    effects: { trust_stijn: "+5" }
+    choices:
+      - Show Stijn the evidence you have -> stijn_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  stijn_with_evidence:
+    type: message
+    text: >
+      STIJN: ...ge hebt meer dan ik verwachtte.
+
+      Ok. Emile en ik werkten samen. Hij had wateranalyses die
+      aantoonden dat VlasChem illegaal chemisch afval loosde in de
+      grond — niet via het rioleringssysteem, maar via een onvergunde
+      put achter het fabrieksgebouw. De zware metalen sijpelden door
+      naar het grondwater. Het water waaruit Emile brouwde.
+
+      We gingen samen publiceren. Dan stierf hij. En twee dagen later
+      brak iemand in bij mijn kantoor en stal mijn laptop.
+
+      Emile had een reservekopie gemaakt. Ergens veilig. Als ge die
+      vindt, kan ik publiceren en de waarheid naar boven brengen.
+    effects:
+      trust_stijn: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> stijn_hint
+      - Back to investigation hub -> investigation_hub
+
+  stijn_hint:
+    type: message
+    text: >
+      STIJN: VlasChem stuurde Verbeke zelf — de directeur — en een
+      advocaat van een groot Brussels kantoor. Ze eisten dat Emile
+      alles overhandigde of ze zouden hem juridisch kapotmaken.
+      Intimidatie verpakt als juridische procedure.
+
+      Maar Emile zei ook iets over iemand anders. Iemand die al
+      maanden rond de brouwerij hing. Iemand die zijn recepten
+      probeerde te stelen. Dat is een ander probleem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Madelief on water tests ---
+
+  madelief_water:
+    type: message
+    text: >
+      MADELIEF: Emile liet mij de labuitslagen zien. Cadmium,
+      kwik, lood — alles ver boven de norm. Het water was vergiftigd.
+      En niet een beetje — serieus vergiftigd. Ge kunt daar niet mee
+      brouwen. Ge kunt dat niet eens drinken.
+
+      Hij stopte onmiddellijk met het lokale bronwater. Schakelde over
+      op stadswater. Maar het ging hem niet om het bier — het ging om
+      het dorp. Dat water voedde ook de velden van Pieter. De beesten
+      van de boeren. De moestuintjes van de mensen.
+
+      VlasChem vergiftigde het hele dorp. En Emile was de enige die
+      het kon bewijzen.
+    effects:
+      trust_madelief: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Hilde ---
+
+  hilde_interview:
+    type: message
+    text: >
+      HILDE: Als schepen van milieu neem ik deze aantijgingen ernstig.
+      Maar VlasChem stelt 150 mensen tewerk in onze gemeente. De
+      burgemeester wil "dialoog behouden."
+
+      Onder ons? Ik heb de inspectieverslagen van de provincie gezien.
+      VlasChem slaagt elke keer. Maar die inspecties worden twee
+      weken op voorhand aangekondigd. Ze ruimen alles op voor de
+      inspecteurs komen.
+
+      Emile had onaangekondigde data. Dat maakt het gevaarlijk.
+    effects:
+      trust_hilde: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Brouwgilde ---
+
+  brouwgilde_investigation:
+    type: tweet
+    from: brouwgilde
+    text: >
+      MEDEDELING: Het Brouwgilde Westhoek heeft met ontzetting kennis
+      genomen van het overlijden van lid Emile Peeters. Wij vragen een
+      onafhankelijk onderzoek naar de waterkwaliteit in de regio
+      Vlamertinge.
+    choices:
+      - Check their data -> brouwgilde_data
+
+  brouwgilde_data:
+    type: message
+    text: >
+      The Brouwgilde has been monitoring water quality for member
+      breweries for five years. Their data shows a disturbing pattern:
+      heavy metal concentrations in Vlamertinge's groundwater have
+      risen steadily since VlasChem expanded their operations in 2022.
+
+      The correlation is unmistakable. Production increases at VlasChem
+      correspond directly to contamination spikes. Weekday levels are
+      higher than weekends. Night levels higher than day.
+
+      Emile was a founding member of the monitoring programme. His data
+      was the most detailed.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Pieter contamination ---
+
+  pieter_contamination:
+    type: message
+    text: >
+      PIETER: Ik zal u iets tonen. Vorige maand heb ik gegraven op
+      het veld naast de VlasChem-fabriek. Op twee meter diep: een
+      gebarsten buis. Geen rioolbuis — een industriële leiding die
+      rechtstreeks van de fabriek naar de grond loopt. Illegale
+      lozing.
+
+      Ik heb foto's en bodemstalen. Emile had dezelfde bewijzen vanuit
+      het water. Samen was dat een waterdicht dossier — een illegale
+      lozingsbuis die niet op geen enkele vergunning staat.
+
+      Ik heb de foto's nog. En de GPS-coördinaten.
+    effects:
+      trust_pieter: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Jan Michiels. Beer blogger. Critic. Something more? Someone was
+      watching the brewery at night. Someone was at the side door with
+      a backpack. Someone wrote increasingly unhinged reviews.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Jan's blog history -> blog_history
+      - Talk to Lies about Jan -> lies_jan
+        when:
+          state: trust_lies
+          gte: 20
+      - Talk to Wout (more detail on the figure) -> wout_detail
+      - Talk to Anne the pharmacist -> anne_interview
+      - Check the anonymous account @donkerbier -> donkerbier_investigation
+      - Talk to Roger about Jan's visits -> roger_jan_detail
+        when:
+          state: trust_roger
+          gte: 40
+      - Talk to Commissaris Vandenberghe -> commissaris_interview
+        when:
+          state: trust_commissaris
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Blog History ---
+
+  blog_history:
+    type: message
+    text: >
+      Jan Michiels' blog — BeerBelgium.blog — has 340 posts over
+      four years. A search reveals: 67 of those posts mention Brouwerij
+      De Vlaamse Poort. Nearly one in five.
+
+      The tone shifted dramatically eight months ago:
+
+      Year 1: "Peeters is a gifted craftsman. His tripel is exceptional."
+      Year 2: "The Vlaamse Poort remains a benchmark for West Flemish brewing."
+      Month 8: "Peeters' latest batch is uninspired. He's coasting."
+      Month 4: "De Vlaamse Poort is in decline. Peeters has lost his palate."
+      Month 1: "This brewery should close. Peeters is a fraud. His water
+      is contaminated and he's serving poison."
+
+      The last post was published three days before Emile died.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lies on Jan ---
+
+  lies_jan:
+    type: message
+    text: >
+      LIES: Jan Michiels? Die gast maakte Emile zijn leven een hel.
+      Het begon met die blog — agressieve recensies, persoonlijke
+      aanvallen. Maar het werd erger. DM's. Tientallen. "Ge verdient
+      die brouwerij niet." "Ik kan beter brouwen dan gij." "Ge zult
+      spijt krijgen."
+
+      Emile blokkeerde hem. Dan maakte Jan nieuwe accounts aan. Altijd
+      dezelfde stijl. Altijd dezelfde obsessie.
+
+      Een maand geleden vond Emile dat iemand in de brouwerij was
+      geweest 's nachts. Reccepten waren verplaatst. Het logboek was
+      opengeslagen op een andere pagina. Emile dacht dat het Jan was
+      maar kon het niet bewijzen.
+    effects:
+      trust_lies: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Wout detail ---
+
+  wout_detail:
+    type: message
+    text: >
+      WOUT: ok serieus nu ik heb niet alles gezegd. die persoon bij
+      de zijdeur — hij had een sleutel. of iets dat leek op een
+      sleutel. hij deed de deur open, ging naar binnen, en kwam na
+      vijf minuten weer buiten. de rugzak leek lichter.
+
+      en ik herkende hem. het was jan michiels. die bierblogger. ik
+      heb zijn gezicht gezien toen hij naar buiten kwam en het licht
+      van de straatlamp erop viel.
+
+      ik had iets moeten zeggen maar wie gaat er naar een tiener
+      luisteren hé. merde. ik had iets moeten doen.
+    effects:
+      trust_wout: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anne ---
+
+  anne_interview:
+    type: message
+    text: >
+      ANNE: Dit is vertrouwelijk maar ik ben een apotheker, geen
+      biechtvader. Jan Michiels komt hier geregeld. Hij koopt dingen
+      die... wijzen op iemand die niet slaapt. Angstremmers,
+      slaappillen, energiesupplementen. Het patroon is iemand onder
+      extreme stress.
+
+      Hij vroeg mij ook een keer, heel nonchalant, of wij
+      afluisterapparatuur verkochten. Ik zei "dit is een apotheek,
+      geen spionagewinkel." Hij lachte het weg. Ik dacht er niet meer
+      aan tot Emile stierf.
+    effects:
+      trust_anne: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- DonkerBier (anonymous account) ---
+
+  donkerbier_investigation:
+    type: tweet
+    from: donkerbier
+    text: >
+      Hij had moeten luisteren. Ik probeerde hem te helpen. Niemand
+      anders begreep zijn bier zoals ik.
+    choices:
+      - Look at this account's history -> donkerbier_posts
+
+  donkerbier_posts:
+    type: message
+    text: >
+      @donkerbier: account created 6 months ago. Posts are all about
+      Emile's brewery. Comments on every brew, every batch, every
+      event. The tone shifts over time:
+
+      Month 1: "Brilliant brewer. Your tripel changed my life."
+      Month 3: "Why won't you respond to my messages? I have
+      suggestions that could improve your process."
+      Month 4: "I see you at the café with other brewers. You have
+      time for them but not for me?"
+      Month 5: "I've been to your brewery. I know your recipes. I
+      know your schedule. I'm always close."
+      Month 6: "You don't deserve what you have. I do."
+
+      The account has no photos, no personal details. Just Emile.
+      Only Emile.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> donkerbier_style
+
+  donkerbier_style:
+    type: message
+    text: >
+      Comparing @donkerbier with @jan_michiels:
+
+      Same use of technical brewing vocabulary — specific terms like
+      "diacetylrust" and "koude hop" that only experienced brewers
+      use. Same Flemish spelling habits — the particular way he uses
+      "ge" instead of "je," his distinctive comma placement.
+
+      And one post from @donkerbier: "Uw batch 47B had een
+      oxidatiefout." Batch 47B is an internal production code. Not
+      public. Only someone who had accessed the brewery's log book
+      would know that.
+
+      It's Jan. The anonymous account is Jan Michiels.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Roger on Jan ---
+
+  roger_jan_detail:
+    type: message
+    text: >
+      ROGER: Jan Michiels heeft bij mij in het café gezeten — elke
+      week, de laatste twee maanden. Altijd alleen. Altijd met zijn
+      laptop open. Altijd kijkend naar de brouwerij aan de overkant.
+
+      Hij bestelde Emile zijn bier en dan schreef hij vernietigende
+      recensies terwijl hij het opdronk. Ik zei "als ge het zo slecht
+      vindt, waarom drinkt ge het dan?" Hij zei: "Ik moet het
+      begrijpen. Ik moet alles begrijpen over hem."
+
+      Dat is geen bierkritiek. Dat is obsessie. En de laatste keer —
+      hij had een kopie van een brouwrecept in zijn tas. Emile zijn
+      handschrift. Ik herkende het. Hoe komt een blogger aan een
+      brouwer zijn handgeschreven recept?
+    effects:
+      trust_roger: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Commissaris ---
+
+  commissaris_interview:
+    type: message
+    text: >
+      COMMISSARIS VANDENBERGHE: Onder ons — en ik meen dat echt — ik
+      wilde VlasChem onderzoeken. Mijn overste zei dat ik moest
+      stoppen. Hij zei dat het provinciale bevoegdheid was. Dat is
+      code voor "raak het niet aan."
+
+      De zaak-Michiels is anders. Daar wist ik niet eens van tot nu.
+      Als ge bewijzen hebt van stalking, kan ik daarmee werken. Dat
+      is duidelijk mijn bevoegdheid.
+
+      Breng mij iets stevig en ik heropen de zaak.
+    effects:
+      trust_commissaris: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Emile than anyone in Vlamertinge. Who is responsible?
+    choices:
+      - Confront Jan Michiels (the obsessive blogger) -> confront_jan
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Thibault Verbeke (the plant director) -> confront_thibault
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Demeyere (political protection) -> confront_gerard
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Jan Michiels (Best Ending) ---
+
+  confront_jan:
+    type: message
+    text: >
+      You present your evidence to Jan Michiels:
+
+      "I know @donkerbier is your account. I know you broke into the
+      brewery and stole recipes. I know you were watching the building
+      at night. I know you were inside the brewery the evening Emile
+      died. I have witnesses and I have the writing analysis."
+    choices:
+      - Send -> jan_response
+
+  jan_response:
+    type: message
+    text: >
+      Jan doesn't reply for a long time. Then:
+
+      JAN: Ge begrijpt het niet. Emile was de beste brouwer van
+      Vlaanderen en hij verspilde het. Ik wilde hem helpen. Ik wilde
+      samenwerken. Maar hij weigerde. Altijd weigeren. Ik wist dat
+      ik het beter kon als hij mij de kans gaf.
+
+      Ik ben die avond naar de brouwerij gegaan. Ik wilde met hem
+      praten. Maar VlasChem was er ook. Ik heb me verstopt. Ik hoorde
+      het dispuut. En toen ze weg waren... was het CO2-alarm al
+      uitgeschakeld. Niet door mij. Door hen.
+
+      Ik heb niks gedaan. Ik zweer het. Ik was er alleen maar.
+
+      That's not an alibi. That's a confession of complicity. You've
+      already sent the evidence to Commissaris Vandenberghe. And to
+      Stijn Buysse.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Commissaris Vandenberghe reopens the case. With your evidence —
+      the anonymous account, the break-ins, the stolen recipes, the
+      witness testimonies — Jan Michiels is arrested for stalking,
+      breaking and entering, and failure to render assistance. He was
+      in the brewery when Emile was dying and did nothing.
+
+      Stijn Buysse, finally in possession of Emile's full evidence
+      package — found in the waterproof box Emile left with the
+      Brouwgilde — publishes the VlasChem story in De Morgen. The
+      province orders an unannounced inspection. The factory is shut
+      down pending environmental remediation. Thibault Verbeke faces
+      criminal charges for illegal dumping and falsifying discharge
+      reports. The investigation into Emile's death is upgraded to
+      a manslaughter inquiry.
+
+      And Lies Vandenbroucke, standing in the brewery with Bram and
+      Madelief, starts the next batch. Emile's last recipe. The
+      water is clean now — they test it twice.
+
+      "Voor Emile. De hop liegt nooit."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lies
+    text: >
+      de brouwerij is weer open. het bier smaakt naar waarheid. en
+      naar emile. bedankt dat ge niet hebt losgelaten.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Thibault (Partial Ending) ---
+
+  confront_thibault:
+    type: message
+    text: >
+      You present the contamination evidence to Thibault Verbeke:
+
+      "I have water analyses showing heavy metal levels eight times
+      the legal limit. I have photos of the illegal discharge pipe.
+      I have soil samples. I have the original lab reports. And I have
+      witnesses who saw your car at the brewery the night Emile died."
+    choices:
+      - Send -> thibault_response
+
+  thibault_response:
+    type: message
+    text: >
+      THIBAULT: Dit gesprek wordt doorgestuurd naar onze juridische
+      dienst. Elke publicatie van lasterlijke beweringen zal leiden
+      tot onmiddellijke gerechtelijke stappen. VlasChem heeft altijd
+      binnen de wettelijke normen geopereerd.
+
+      But it's too late. You've sent the evidence to Stijn, to the
+      Brouwgilde, and to the province.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The contamination story breaks. VlasChem is ordered to halt all
+      discharge pending investigation. The factory may close. A hundred
+      and fifty jobs hang in the balance. The village is divided.
+
+      But Emile's death?
+
+      Without the stalking evidence, Jan Michiels is never investigated.
+      He continues his blog. He starts writing about the next small
+      brewery. He creates a new anonymous account. He begins visiting
+      another brewer's premises at night.
+
+      Six months later, Lies reads about VlasChem online. The water is
+      clean. The brewery reopens. But she checks the locks three times
+      every night. She installs cameras. She can't shake the feeling
+      of being watched.
+
+      The corporation is exposed. But the person who haunted Emile —
+      who was in the brewery as he died and did nothing — walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lies
+    text: "de brouwerij is open. het water is schoon. de rest... we zullen zien."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_gerard:
+    type: message
+    text: >
+      You confront Mayor Demeyere with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> gerard_response
+
+  gerard_response:
+    type: tweet
+    from: cecile
+    text: >
+      Mon client prend acte de vos allégations. Toute diffusion
+      publique de propos diffamatoires fera l'objet de poursuites
+      immédiates. — Cabinet Fontaine & Partners, Bruxelles
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct link
+      between Demeyere and VlasChem's dumping — and there isn't one
+      beyond political protection — your evidence is insufficient.
+
+      VlasChem continues to operate. Jan Michiels continues to watch.
+      The brewery stays closed.
+
+      Six months later, @donkerbier creates a new account. It starts
+      following Madelief.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VLAMERTINGE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Emile's story explores themes of
+      corporate environmental crime, obsessive behaviour, community
+      solidarity, small-town power structures, and the courage to
+      speak up even when it costs everything.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Hulplijn 1712 (geweld, misbruik, stalking): 1712
+      Child Focus (cyberpesten): 116 000
+      Milieuklachten Vlaanderen: 1700

@@ -1,0 +1,1632 @@
+# DEAD ACCOUNT — Story 049: Wied il-Għasel, Gozo (Malta Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-049.yml
+#
+# Player investigates the disappearance of young beekeeper Aaron Camilleri
+# in the fictional Gozitan village of Wied il-Għasel.
+
+meta:
+  title: "Dead Account — Wied il-Għasel"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_christiana: 0
+    trust_nathan: 0
+    trust_jade: 0
+    trust_luca: 0
+    trust_miriam: 0
+    trust_daniel: 0
+    trust_graziella: 0
+    trust_stefan: 0
+    trust_marie: 0
+    trust_pawlu: 0
+    trust_beppe: 0
+    trust_rita: 0
+    trust_carmen: 0
+    trust_kevin: 0
+    trust_daphne: 0
+    trust_joseph: 0
+    trust_katrina: 0
+    trust_frankie: 0
+    trust_marlene: 0
+    trust_ispettur: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to gozo. discovering the island one limestone path at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "WiedGħasel.social"
+    description: "Merħba fl-istanza komunitarja ta' Wied il-Għasel, Għawdex"
+    avatar_url: /gamepatch/assets/dead-account/wiedghasel_bot.png
+
+  npcs:
+    # === Aaron's Inner Circle ===
+    aaron:
+      name: "Aaron Camilleri"
+      bio: "naħliet għawdex | beekeeper | honey from limestone cliffs | if the bees go, we all go"
+      avatar: avatars/aaron.jpg
+    christiana:
+      name: "Christiana Vella"
+      bio: "aaron's girlfriend | pharmacy student | valletta-gozo ferry life | mela fejn hu?"
+      avatar: avatars/christiana.jpg
+    nathan:
+      name: "Nathan Camilleri"
+      bio: "aaron's brother | fisherman | marsalforn | my brother doesn't just disappear"
+      avatar: avatars/nathan.jpg
+    jade:
+      name: "Jade Borg"
+      bio: "aaron's best friend since primary | graphic design | xewkija | this isn't right"
+      avatar: avatars/jade.jpg
+
+    # === Local Government ===
+    pawlu:
+      name: "Pawlu Grech"
+      bio: "Sindku ta' Wied il-Għasel | Serving the community since 2019 | #GħawdexForward"
+      avatar: avatars/pawlu.jpg
+    graziella:
+      name: "Graziella Azzopardi"
+      bio: "Kunsilliera | Environment & Heritage | Wied il-Għasel | protecting what's ours"
+      avatar: avatars/graziella.jpg
+    kunsill:
+      name: "Kunsill Lokali Wied il-Għasel"
+      bio: "Official account | Local news & services | Office hours: Mon-Fri 8:30-15:30"
+      avatar: avatars/kunsill.jpg
+
+    # === Local Business & Community ===
+    miriam:
+      name: "Miriam Galea"
+      bio: "bar ta' miriam | pastizzi | coffee | ħobż biż-żejt | the heart of the village since 1991"
+      avatar: avatars/miriam.jpg
+    bar_miriam:
+      name: "Bar ta' Miriam"
+      bio: "Pastizzi freski | Kafè | Il-pjazza ta' Wied il-Għasel | open 6am-late"
+      avatar: avatars/bar_miriam.jpg
+    stefan:
+      name: "Stefan Calleja"
+      bio: "farmer | ftit art oħra | ġbejniet & wine | this land is everything"
+      avatar: avatars/stefan.jpg
+    marie:
+      name: "Marie Attard"
+      bio: "apothecary | herbal remedies & honey products | wied il-għasel | nature heals"
+      avatar: avatars/marie.jpg
+    beppe:
+      name: "Beppe Sultana"
+      bio: "diver | boat tours | xlendi-dwejra | the sea knows things the land forgets"
+      avatar: avatars/beppe.jpg
+    rita:
+      name: "Rita Cassar"
+      bio: "teacher | st augustine school | gozo | our children deserve the truth"
+      avatar: avatars/rita.jpg
+    carmen:
+      name: "Carmen Zammit"
+      bio: "għaqda tan-naħal gozitan | gozitan beekeeping association | heritage & sustainability"
+      avatar: avatars/carmen.jpg
+
+    # === Journalist ===
+    daphne:
+      name: "Daphne Spiteri"
+      bio: "journalist | gozo matters | environment & development | tips: daphne@gozomatters.mt"
+      avatar: avatars/daphne.jpg
+
+    # === Seabreeze Hotels (corporate) ===
+    seabreeze:
+      name: "Seabreeze Hospitality Group"
+      bio: "Luxury hotel development | Mediterranean portfolio | Gozo flagship project"
+      avatar: avatars/seabreeze.jpg
+    daniel:
+      name: "Daniel Fenech"
+      bio: "project director | seabreeze gozo | building the future of gozitan tourism"
+      avatar: avatars/daniel.jpg
+    frankie:
+      name: "Frankie Mifsud"
+      bio: "Avukat | Mifsud & Partners | Corporate & property law | Valletta"
+      avatar: avatars/frankie.jpg
+
+    # === Teens ===
+    kevin:
+      name: "Kevin"
+      bio: "16 | skater | wied il-għasel born | mela x'sar?"
+      avatar: avatars/kevin.jpg
+    katrina:
+      name: "Katrina"
+      bio: "17 | photography | gozo sunsets | aaron taught me about bees 🐝"
+      avatar: avatars/katrina.jpg
+    marlene:
+      name: "Marlene"
+      bio: "15 | art & nature | everything is connected | fejn hu aaron?"
+      avatar: avatars/marlene.jpg
+
+    # === Media & Community ===
+    gozo_news:
+      name: "Gozo Daily"
+      bio: "Independent Gozo news | Development | Environment | Tips: news@gozodaily.mt"
+      avatar: avatars/gozo_news.jpg
+    temp_għawdex:
+      name: "Temp Għawdex"
+      bio: "Weather updates for Gozo & Comino | Automated station | Hourly updates"
+      avatar: avatars/temp_ghawdex.jpg
+    għaqda_wirt:
+      name: "Għaqda Wirt Għawdex"
+      bio: "Gozo heritage protection | Volunteers | Reporting development violations"
+      avatar: avatars/ghaqda_wirt.jpg
+
+    # === Suspicious / Other ===
+    luca:
+      name: "Luca Buttigieg"
+      bio: "beekeeper | premium gozo honey | the best hives on the island | business is business"
+      avatar: avatars/luca.jpg
+    joseph:
+      name: "Joseph Schembri"
+      bio: "."
+      avatar: avatars/anon.jpg
+    ispettur:
+      name: "Ispettur Borg"
+      bio: "Pulizija ta' Għawdex | Gozo District Police | emergencies: 112"
+      avatar: avatars/ispettur.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN WIED IL-GĦASEL
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to wiedghasel.social — the community Mastodon instance for
+      the village of Wied il-Għasel, Gozo.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name everywhere:
+      @aaron_camilleri.
+
+      A young beekeeper. Twenty-two years old. He kept hives on the
+      limestone cliffs above the valley. Documented the bees, the honey,
+      the wildflowers. People loved him. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> aaron_profile
+
+  aaron_profile:
+    type: tweet
+    from: aaron
+    text: "The hives above tal-Mixta are dying. Not disease — poison. Someone is spraying the garrigue. I have samples and I'm going public."
+    choices:
+      - That's his last real post... -> grey_hive
+
+  grey_hive:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurred photo of an empty beehive. No caption. Posted at 4am.
+
+      His friends say that's not how Aaron posts. He always wrote long
+      captions about the bees, the seasons, the land. The police say
+      he probably went to the mainland. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: ispettur
+    text: >
+      Irċevejna rapport dwar resident ta' Wied il-Għasel. S'issa
+      m'hemm l-ebda evidenza ta' att kriminali. Kull informazzjoni
+      tista tintbagħat lill-pulizija fuq 112.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @christiana_vella hasn't
+      slept in days. His brother @nathan_camilleri is threatening to
+      search every abandoned farmhouse on the island. His best friend
+      @jade_borg keeps posting old photos of them together.
+
+      The farmer @stefan_calleja says Aaron was right about the poison.
+      The journalist @daphne_spiteri hasn't published a word.
+
+      And in the background, the Seabreeze Hospitality Group just got
+      planning permission for a 300-room resort on agricultural land.
+      Aaron's land.
+
+      Nobody buys the police line. Nobody thinks Aaron just left.
+    effects: { trust_christiana: "+5", trust_nathan: "+5" }
+    choices:
+      - Start following Aaron's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Wied il-Għasel. Follow Aaron's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Miriam (bar owner, knows everyone) -> miriam_intro
+      - Talk to Stefan (farmer, knows the land) -> stefan_intro
+      - Talk to Kevin (teen skater, seems shaken) -> kevin_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Aaron with the rhythms of a small
+      Gozitan village: festa preparations, pastizzi reviews, ferry
+      delays, weather warnings.
+
+      Key names surface: Christiana (girlfriend, pharmacy student),
+      Nathan (brother, fisherman, furious), Jade (best friend, posting
+      through grief), and the teens — Kevin, Katrina, Marlene — who
+      Aaron taught about beekeeping.
+
+      Also prominent: Seabreeze Hospitality Group, the hotel chain
+      with a massive development planned on the valley's edge. Their
+      posts are all CGI renders of infinity pools. Aaron's posts were
+      dead bees and poisoned soil.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Miriam -> miriam_intro
+      - Talk to Stefan -> stefan_intro
+      - Talk to Kevin -> kevin_intro
+
+  # --- Miriam (social map) ---
+
+  miriam_intro:
+    type: tweet
+    from: miriam
+    text: >
+      Il-bar miftuħ imma l-qalb mhux fiha. @aaron_camilleri, il-kafè
+      tiegħek qed jistenniek. Ejja lura.
+    effects: { trust_miriam: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Miriam -> miriam_talk
+
+  miriam_talk:
+    type: message
+    text: >
+      MIRIAM: Aw, you're new? Mela welcome. Bad time to arrive, ħabib.
+      Everyone is going mad about Aaron.
+
+      Let me tell you who is who. Christiana is Aaron's girlfriend —
+      she studies pharmacy in Valletta, takes the ferry every day.
+      Sweet girl, can't stop crying. Nathan is Aaron's older brother,
+      fisherman, strong man but he's losing it. Jade has been Aaron's
+      best friend since they were five. She designed all the labels
+      for his honey jars.
+
+      And then there's Luca Buttigieg. Another beekeeper. Mela, he
+      hated Aaron. Jealous of everything — the prizes, the social
+      media following, the organic certification. Aaron's honey won
+      best in Gozo two years running. Luca couldn't handle it.
+
+      Oh, and Seabreeze Hotels? Madonna. Don't get me started. They
+      want to build a monster on the valley. Aaron was the loudest
+      voice against it. Now he's gone. You do the maths.
+    effects: { trust_miriam: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Luca -> miriam_luca
+      - Ask about Seabreeze -> miriam_seabreeze
+      - Thank her and move on -> quest1_hub
+
+  miriam_luca:
+    type: message
+    text: >
+      MIRIAM: Luca? Ostja, that man. He's been keeping bees for
+      fifteen years but Aaron comes along at twenty and suddenly
+      everyone wants Aaron's honey. Luca's business dropped. He
+      started bad-mouthing Aaron everywhere — saying his organic
+      certification was fake, saying he was stealing hive locations.
+
+      Last month at the festa, Luca got drunk and told Aaron to his
+      face: "I'll destroy your hives before I let you destroy my
+      business." Everyone heard it. Aaron just walked away. That's
+      the kind of person Aaron is. Was. Is. Madonna, I don't even
+      know what tense to use anymore.
+    effects: { trust_miriam: "+5" }
+    choices:
+      - Ask about Seabreeze -> miriam_seabreeze
+      - Move on -> quest1_hub
+
+  miriam_seabreeze:
+    type: message
+    text: >
+      MIRIAM: The hotel chain. Three hundred rooms on agricultural
+      land. Mela, it's not even controversial — it's criminal. That
+      land has been farmed for centuries. Aaron's grandfather kept
+      hives there. Stefan's family grows grapes there.
+
+      But someone on the council approved it. The sindku, Pawlu Grech,
+      suddenly has a new car. A BMW. On a sindku salary? Aw, come on.
+
+      Aaron had evidence. He found documents — internal Seabreeze
+      emails — showing payments to someone in local government. He
+      was going to give them to Daphne Spiteri, the journalist. Two
+      weeks later, gone.
+    effects: { trust_miriam: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Stefan (the land, witness tease) ---
+
+  stefan_intro:
+    type: tweet
+    from: stefan
+    text: >
+      twenty years I farmed this valley. now they want to pour concrete
+      on it. @aaron_camilleri was right about everything. and now he
+      is not here.
+    effects: { trust_stefan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Stefan -> stefan_talk
+
+  stefan_talk:
+    type: message
+    text: >
+      STEFAN: Mela, I've been farming the Wied il-Għasel valley my
+      whole life. Ġbejniet, wine, capers. The soil here is special —
+      the limestone filters the water, the garrigue gives the bees
+      their flowers. Aaron understood this. He was the only young
+      person who cared about the land.
+
+      Then the poison started. Someone was spraying herbicide on the
+      garrigue above his hives. Killing the wildflowers the bees
+      need. Aaron took soil samples. He found industrial-grade
+      herbicide — not the stuff farmers use. Professional.
+
+      He said someone was deliberately killing his bees to force him
+      off the land. And mela, guess who just bought the development
+      rights to the plots next to his?
+    effects: { trust_stefan: "+10" }
+    choices:
+      - Who bought the rights? -> stefan_rights
+      - Move on -> quest1_hub
+
+  stefan_rights:
+    type: message
+    text: >
+      STEFAN: A shell company called Sunset Valley Holdings. I looked
+      it up — the registered agent is the same law firm that represents
+      Seabreeze Hotels. Mifsud & Partners, Valletta.
+
+      Aaron found out. He told me the night before he disappeared. He
+      said "they're killing my bees to clear the land." He was going
+      to the press.
+
+      Ostja, and that night — I was coming back from the fields late,
+      around midnight. I saw headlights on the dirt road above the
+      hives. Two cars. Nobody drives up there at night. Nobody.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kevin (teen skater, witness tease) ---
+
+  kevin_intro:
+    type: tweet
+    from: kevin
+    text: >
+      mela x'sar bro?? @aaron_camilleri literally taught us everything
+      about the valley and bees and shit and now he's just gone??
+      f'ommok this isn't right someone knows something SAY IT
+    effects: { trust_kevin: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kevin -> kevin_talk_early
+
+  kevin_talk_early:
+    type: message
+    text: >
+      KEVIN: aw you're new here? mela shit timing bro. aaron is like
+      the best person in this village no cap. he used to let us hang
+      at the hives and he'd show us the bees and explain everything.
+      katrina took photos of the whole thing, marlene drew the bees.
+      he was teaching us about the land and shit.
+
+      and now he's gone and everyone's pretending it's fine and it's
+      NOT fine. mela katrina saw something weird the night before he
+      disappeared but she's scared to talk about it. she says luca
+      buttigieg was up near the hives at like 10pm with a backpack
+      sprayer. who the fuck sprays at 10pm bro??
+    effects: { trust_kevin: "+10" }
+    choices:
+      - What did Katrina see exactly? -> kevin_katrina_hint
+      - Move on -> quest1_hub
+
+  kevin_katrina_hint:
+    type: message
+    text: >
+      KEVIN: she was doing sunset photos up on the ridge — she goes
+      there every evening. she saw luca walking up from the valley
+      with one of those pump sprayer things on his back. it was dark
+      already, like 10pm. he was spraying the garrigue around aaron's
+      hive sites.
+
+      she took photos but she's scared because luca is friends with
+      her dad and mela... you know how it is in a small village. but
+      fuck that honestly. someone needs to see those photos.
+
+      talk to katrina but be chill about it yeah? she gets nervous
+      around new people
+    effects: { trust_kevin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Wied il-Għasel. A Gozitan village
+      built around the valley and the bees. A young beekeeper who was
+      fighting a hotel development and exposing bee poisoning. A
+      disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Christiana (Aaron's girlfriend) -> christiana_q1
+      - Talk to Jade (Aaron's best friend) -> jade_q1
+      - Check what Nathan (Aaron's brother) is saying -> nathan_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Christiana Q1 ---
+
+  christiana_q1:
+    type: tweet
+    from: christiana
+    text: >
+      please if anyone has seen @aaron_camilleri contact me. his room
+      is the same. his beekeeping suit is still here. his smoker is
+      on the table. he would NEVER leave his bees. never ever ever.
+    effects: { trust_christiana: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Christiana -> christiana_q1_talk
+
+  christiana_q1_talk:
+    type: message
+    text: >
+      CHRISTIANA: I appreciate you reaching out but I don't know you.
+      Aaron has a lot of people who care about him. I'm sure he'll
+      come back.
+
+      ...mela I keep saying that. I don't believe it anymore.
+
+      [Christiana is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_christiana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jade Q1 ---
+
+  jade_q1:
+    type: tweet
+    from: jade
+    text: >
+      designed this label 3 months ago for aaron's new wildflower
+      honey. "Għasel tal-Wied" — Valley Honey. he was so proud. the
+      first batch was supposed to be ready this week. he should be
+      here for it.
+    effects: { trust_jade: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Jade -> jade_q1_talk
+
+  jade_q1_talk:
+    type: message
+    text: >
+      JADE: Mela, Aaron and I go back to reception class. He's my
+      best friend. He's the most genuine person I know. Everything
+      he does with the bees — it's not business, it's love. Real
+      love for the land, for Gozo, for what we're losing.
+
+      And that's why people wanted him gone. He was inconvenient.
+      He was standing in the way of a lot of money. The hotel people,
+      the sindku, Luca... everyone had a reason to want Aaron to
+      shut up.
+
+      But Aaron doesn't shut up. That's why I love him.
+
+      [Jade seems open. She might know more.]
+    effects: { trust_jade: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nathan Q1 ---
+
+  nathan_q1:
+    type: tweet
+    from: nathan
+    text: >
+      MY BROTHER HAS BEEN MISSING FOR SIX DAYS AND THE POLICE TELL
+      ME HE'S "PROBABLY IN MALTA"??? HE DOESN'T GO TO MALTA WITHOUT
+      TELLING ME. ostja I'M GOING TO FIND HIM MYSELF IF NOBODY HELPS
+    effects: { trust_nathan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nathan -> nathan_q1_talk
+
+  nathan_q1_talk:
+    type: message
+    text: >
+      NATHAN: Who are you? Another person who's going to tell me to
+      stay calm? Mela, my brother called me the night before he
+      disappeared. He said he had proof — actual documents — that
+      Seabreeze was bribing the sindku to approve the hotel on
+      agricultural land. He said "if anything happens to me, it's
+      the hotel people."
+
+      That's the last thing he said to me.
+    effects: { trust_nathan: "+10" }
+    choices:
+      - What do you think happened? -> nathan_theory
+      - Move on -> quest1_hub
+
+  nathan_theory:
+    type: message
+    text: >
+      NATHAN: I think the hotel people got to him. They have money,
+      lawyers, connections. They could make anyone disappear.
+
+      But I also think that bastard Luca knows something. Mela,
+      everyone saw him threaten Aaron at the festa. "I'll destroy
+      your hives." And someone HAS been destroying his hives — the
+      poison, the dead bees. Luca has the knowledge and the motive.
+
+      Aaron told me weeks ago that someone was following him. He
+      found footprints around his hives at night. He found his
+      equipment moved. He thought it was Luca but couldn't prove it.
+    effects: { trust_nathan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Aaron went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Katrina (was taking sunset photos near the hives) -> katrina_interview
+      - Find Beppe (diver, was out on the water that night) -> beppe_interview
+      - Find Stefan (farmer, saw headlights on the dirt road) -> stefan_interview
+      - Find Rita (teacher, heard shouting near the valley) -> rita_interview
+
+  # --- Katrina (saw Luca spraying at night) ---
+
+  katrina_interview:
+    type: tweet
+    from: katrina
+    text: >
+      can't sleep. keep looking at the photos I took that evening.
+      the sunset was so beautiful and then everything went wrong.
+    effects: { trust_katrina: "+5" }
+    choices:
+      - Ask Katrina about that evening -> katrina_talk
+
+  katrina_talk:
+    type: message
+    text: >
+      KATRINA: mela ok but you can't tell my dad please. I was up on
+      the ridge above the valley doing sunset photos around 9pm. the
+      light was fading but I saw someone on the path below — luca
+      buttigieg. he had a backpack sprayer and he was going along the
+      garrigue near aaron's hive sites. spraying everything.
+
+      I took photos. you can see his face in one of them. the
+      headlamp he was wearing lit him up.
+
+      then around 10pm I heard a car — actually two cars — drive up
+      the dirt track toward the cliff edge. that road goes nowhere
+      except aaron's hives. nobody drives there at night. I got
+      scared and went home.
+    effects:
+      trust_katrina: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Beppe (saw boat near cliffs at night) ---
+
+  beppe_interview:
+    type: tweet
+    from: beppe
+    text: >
+      Something wrong off the north cliffs last night. Lights where
+      lights shouldn't be. Not fishermen. Not divers. Something else.
+    effects: { trust_beppe: "+5" }
+    choices:
+      - Ask Beppe what he saw -> beppe_talk
+
+  beppe_talk:
+    type: message
+    text: >
+      BEPPE: I was bringing my boat back from Comino late — around
+      midnight. Passing under the cliffs below the valley, I saw
+      lights. A vehicle up on the cliff edge, headlights pointing
+      out to sea. And below, at the water line, a small inflatable
+      — a RIB — moored at the rocks.
+
+      Mela nobody moors there. It's too dangerous. The rocks will
+      tear a boat apart. You'd only go there if you had a reason
+      nobody should know about.
+
+      There were voices — men shouting — but the wind carried the
+      words away. By the time I circled back, the RIB was gone and
+      the headlights were off.
+    effects:
+      trust_beppe: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Stefan (saw headlights on the dirt road) ---
+
+  stefan_interview:
+    type: tweet
+    from: stefan
+    text: >
+      Headlights on the dirt road at midnight. Nobody drives there
+      at night. I told the police. They wrote it down. That was it.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Ask Stefan what he saw -> stefan_talk_night
+
+  stefan_talk_night:
+    type: message
+    text: >
+      STEFAN: I was bringing my tools back from the field, late —
+      around 11pm. Two vehicles on the dirt track above the valley.
+      One was a big SUV, black, the kind with tinted windows. Not
+      a farmer's car. The other was Aaron's old Hilux — I'd know
+      that truck anywhere, the rust on the tailgate.
+
+      They were heading toward the cliff. Toward the hives. I called
+      out but they were too far away.
+
+      At 6am I went up to check. Aaron's truck was there. Empty.
+      Driver door open. Keys in the ignition. His phone on the
+      passenger seat.
+
+      He left his phone. Mela, a twenty-two-year-old doesn't leave
+      his phone. Something happened at those cliffs.
+    effects:
+      trust_stefan: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rita (heard shouting near the valley) ---
+
+  rita_interview:
+    type: tweet
+    from: rita
+    text: >
+      I live at the top of Triq il-Wied. The echoes carry up from
+      the valley. That night I heard things no teacher should have
+      to report.
+    effects: { trust_rita: "+5" }
+    choices:
+      - Ask Rita what she heard -> rita_talk
+
+  rita_talk:
+    type: message
+    text: >
+      RITA: My house overlooks the valley. Around 11:30pm I heard
+      shouting — two men, maybe three. One voice I'm sure was Aaron's.
+      He was shouting "get off my land" and then something I couldn't
+      make out. Then another voice, deeper, calmer. And then...
+
+      A sound like something breaking. Wood, or maybe a hive box.
+      Then silence. Absolute silence. Not even the dogs barked after
+      that.
+
+      I called the police at midnight. They said they'd send someone.
+      Nobody came until morning.
+    effects:
+      trust_rita: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Christiana
+      (girlfriend) and Marlene (saw Luca near Aaron's house).
+    choices:
+      - Talk to Christiana about that night -> christiana_interview
+      - Talk to Marlene -> marlene_interview
+      - Find Katrina -> katrina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Beppe -> beppe_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Stefan -> stefan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Rita -> rita_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Christiana (last to see Aaron) ---
+
+  christiana_interview:
+    type: tweet
+    from: christiana
+    text: >
+      that photo on aaron's account. that's not him. aaron writes
+      paragraphs about every single bee. he doesn't post blurry
+      photos at 4am with no caption. someone else did this.
+    effects: { trust_christiana: "+5" }
+    choices:
+      - DM Christiana -> christiana_talk_low
+        when:
+          state: trust_christiana
+          lt: 50
+      - DM Christiana -> christiana_talk_high
+        when:
+          state: trust_christiana
+          gte: 50
+
+  christiana_talk_low:
+    type: message
+    text: >
+      CHRISTIANA: Mela, I appreciate the concern but I really can't
+      talk to strangers about this right now.
+
+      [Christiana needs to trust you more. Show her you're taking
+      this seriously.]
+    effects: { trust_christiana: "+5" }
+    choices:
+      - Share what you've learned about the night -> christiana_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  christiana_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the cars at the cliff, the
+      shouting in the valley, the abandoned truck. Christiana is
+      silent for a while.
+
+      CHRISTIANA: You're actually trying to find him. Okay. I'll talk.
+    effects: { trust_christiana: "+25" }
+    choices:
+      - What happened that night? -> christiana_talk_high
+
+  christiana_talk_high:
+    type: message
+    text: >
+      CHRISTIANA: I was on the last ferry from Valletta. I got to
+      his house around 10pm. He was agitated. He said "they came to
+      my hives today and smashed three boxes." He showed me photos —
+      hive frames broken, honey spilling everywhere, bees dead on
+      the ground.
+
+      He said he was going up to the cliff to check the rest. I
+      begged him not to go at night. He said "if I don't go now
+      they'll destroy everything by morning."
+
+      He kissed me and left. Madonna, that was the last time I...
+
+      He also said something weird. He said "Luca was there today
+      but he wasn't alone. There was a man in a suit. At the hives.
+      A man in a fucking suit, Christiana."
+
+      Then he got a text and his face changed. He said "they want
+      to meet. Tonight. At the cliff." And he left.
+    effects:
+      trust_christiana: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marlene (saw Luca near Aaron's house) ---
+
+  marlene_interview:
+    type: message
+    text: >
+      MARLENE: mela ok this is creepy but like two days before aaron
+      disappeared I saw luca buttigieg outside aaron's house. it was
+      like 7am, I was walking to school. he was just standing there
+      looking at the front door.
+
+      and it wasn't the first time. katrina saw him too, like a week
+      before that. just standing in the street staring at aaron's
+      house. and one time I saw him at the hives when aaron wasn't
+      there. he was going through aaron's equipment shed.
+
+      it's fucking weird. like obsessive weird. kevin says luca is
+      losing his mind over aaron beating him at everything.
+    effects:
+      trust_marlene: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Luca Buttigieg seen spraying herbicide near Aaron's hives (Katrina)
+      22:00 — Christiana arrives, Aaron shows smashed hives, gets text about meeting
+      23:00 — Two vehicles on dirt track heading to cliffs (Stefan)
+      23:30 — Shouting heard from the valley — "get off my land" (Rita)
+      00:00 — Lights on cliff, RIB boat at waterline, men shouting (Beppe)
+      06:00 — Aaron's truck found empty, door open, phone inside (Stefan)
+
+      Someone lured Aaron to the cliff. They smashed his hives to
+      provoke him. Then they met him in the dark.
+
+      But there are two threats: the hotel corporation AND someone
+      closer.
+
+      Two threads to pull:
+      — The cover-up: What is Seabreeze hiding? Who bribed the sindku?
+      — The obsession: What is Luca really doing? Why was he destroying
+        the hives?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Luca -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Seabreeze Hospitality Group wants to build a 300-room resort
+      on agricultural land. Aaron had evidence of bribery. Now he's
+      gone and his evidence is missing.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the planning records -> planning_records
+      - Talk to Daphne the journalist -> daphne_interview
+      - Talk to Graziella (environment councillor) -> graziella_interview
+      - Check the heritage association -> ghaqda_investigation
+      - Talk to Beppe about the boat -> beppe_boat
+      - Talk to Stefan about the land sales -> stefan_land
+      - Back to hub -> investigation_hub
+
+  # --- Planning Records ---
+
+  planning_records:
+    type: message
+    text: >
+      The local council's planning database is public. The Seabreeze
+      application shows an interesting timeline:
+
+      January: Application filed for 300-room resort on Zone AG
+      (agricultural) land. Requires reclassification.
+      February: Environmental impact assessment filed. Completed in
+      just 12 days — a process that normally takes months.
+      March: Council vote: 4-3 in favour. Sindku Pawlu Grech cast
+      the deciding vote.
+      April: Aaron files formal objection with evidence of ecological
+      damage to protected garrigue habitats.
+      May: Aaron's objection marked "UNDER REVIEW" — still pending.
+      May 14: Aaron disappears.
+
+      His objection was the only thing blocking the development.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Daphne ---
+
+  daphne_interview:
+    type: message
+    text: >
+      DAPHNE: I don't discuss sources. Full stop.
+    effects: { trust_daphne: "+5" }
+    choices:
+      - Show Daphne the evidence you have -> daphne_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  daphne_with_evidence:
+    type: message
+    text: >
+      DAPHNE: ...you have more than I expected.
+
+      Okay. Aaron and I were working together. He had screenshots of
+      internal Seabreeze emails — forwarded by someone inside the
+      company — showing a payment of €85,000 to "P. Grech Consulting."
+      Mela, there is no P. Grech Consulting. It's the sindku. A direct
+      bribe for the rezoning vote.
+
+      We were going to publish. Then Aaron vanished. And two days
+      later someone broke into my office and took my backup files.
+
+      Aaron is alive. He contacted me once, from a phone I didn't
+      recognise. He said he was hiding. He said "they threatened me
+      at the cliffs and someone else is destroying everything I built."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come back.
+    effects:
+      trust_daphne: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> daphne_hint
+      - Back to investigation hub -> investigation_hub
+
+  daphne_hint:
+    type: message
+    text: >
+      DAPHNE: The hotel sent their project director — Daniel Fenech —
+      and a lawyer to the cliff that night. They told Aaron to
+      withdraw his planning objection or face "consequences." Classic
+      intimidation.
+
+      But Aaron also told me about someone else. Someone who'd been
+      sabotaging his hives for months. Someone who was always around,
+      always watching. That's a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Graziella (environment councillor) ---
+
+  graziella_interview:
+    type: message
+    text: >
+      GRAZIELLA: As environment councillor, I voted against the
+      Seabreeze development. 4-3. The sindku's vote decided it.
+
+      Mela, off the record? Something changed with Pawlu. He was
+      always cautious about development. Then suddenly he's the
+      hotel's biggest supporter. New car, house renovations, trips
+      to conferences in Dubai. On a sindku's allowance of €6,000
+      a year?
+
+      Aaron had documents. He showed me once — bank transfers,
+      shell company records. I told him to go to the press. He
+      said he was going to Daphne Spiteri. That was two weeks
+      before he disappeared.
+    effects:
+      trust_graziella: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Heritage Association ---
+
+  ghaqda_investigation:
+    type: tweet
+    from: għaqda_wirt
+    text: >
+      ALERT: Seabreeze Hospitality Group development site overlaps
+      with protected garrigue habitat Zone GZ-14. We have filed a
+      formal complaint with MEPA. Awaiting response.
+    choices:
+      - Check their data -> ghaqda_data
+
+  ghaqda_data:
+    type: message
+    text: >
+      The Għaqda Wirt Għawdex has been monitoring the development
+      site for two years. Their documentation shows:
+
+      — Protected wildflower species destroyed by herbicide spraying
+      — Three beehive sites vandalised over six months
+      — Illegal access roads cut through agricultural land
+      — Night-time construction activity before permits were granted
+
+      All of this started after Seabreeze filed their application.
+      The pattern is clear: systematic destruction of ecological
+      value to undermine conservation objections.
+
+      Aaron was a member. He contributed most of the biodiversity
+      photography and soil sample data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Beppe boat ---
+
+  beppe_boat:
+    type: message
+    text: >
+      BEPPE: Mela, I went back to those rocks the next morning.
+      Where I saw the RIB moored. The rocks were scraped — fresh
+      marks, someone tied up there in a hurry. And I found this.
+
+      He shows you a photo: a Seabreeze Hospitality Group branded
+      life jacket, caught on the rocks below the cliff.
+
+      BEPPE: That's not a cheap inflatable. That's a company boat.
+      Seabreeze sent people by sea. They came from the water side
+      where nobody could see them. And then Aaron disappeared.
+    effects:
+      trust_beppe: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Stefan land ---
+
+  stefan_land:
+    type: message
+    text: >
+      STEFAN: I did some digging after Aaron told me about Sunset
+      Valley Holdings. Mela, here's what I found:
+
+      Three more shell companies bought plots in the valley in the
+      last year. Different names, same registered agent — Mifsud &
+      Partners. They're buying up the whole valley piece by piece.
+
+      And one of the sellers? Luca Buttigieg. He sold his plot —
+      the one next to Aaron's hives — to Sunset Valley Holdings
+      for €200,000. That land is worth maybe €30,000 for farming.
+
+      Luca took the money. And then Aaron's hives on the adjacent
+      land started getting poisoned. Mela, you don't need to be a
+      detective to see what happened. Luca sold out and started
+      clearing the way.
+    effects:
+      trust_stefan: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Luca Buttigieg. Competitor. Beekeeper. Something more?
+      Someone was poisoning Aaron's hives. Someone was watching
+      his house. Someone was destroying his equipment.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Luca's land sale -> luca_land_sale
+      - Talk to Christiana about Luca -> christiana_luca
+        when:
+          state: trust_christiana
+          gte: 20
+      - Talk to Katrina (more detail on the spraying) -> katrina_detail
+      - Talk to Marie the herbalist -> marie_interview
+      - Check the anonymous account @joseph_schembri -> joseph_investigation
+      - Talk to Carmen at the beekeeping association -> carmen_interview
+        when:
+          state: trust_carmen
+          gte: 40
+      - Talk to Ispettur Borg -> ispettur_interview
+        when:
+          state: trust_ispettur
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Luca's Land Sale ---
+
+  luca_land_sale:
+    type: message
+    text: >
+      Public property records show Luca Buttigieg sold plot GZ-14/B
+      to Sunset Valley Holdings seven months ago. The sale price:
+      €200,000 for agricultural land valued at €30,000.
+
+      Immediately after the sale, Luca's social media activity
+      changed. More posts about "professional beekeeping," fewer
+      about tradition. He bought new equipment. A new van. He started
+      undercutting Aaron's prices.
+
+      And the herbicide spraying near Aaron's hives began exactly
+      two weeks after Luca's land sale. The correlation is perfect.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Christiana on Luca ---
+
+  christiana_luca:
+    type: message
+    text: >
+      CHRISTIANA: Luca? Madonna, that man makes my skin crawl. He
+      was always around. At the market when Aaron sold honey. At
+      the hives when Aaron wasn't there. At the bar watching us.
+
+      Aaron tried to be nice about it. He said competition was
+      healthy. But Luca wasn't competing — he was obsessing. He
+      copied Aaron's labels, his honey varieties, even his social
+      media captions. Word for word sometimes.
+
+      And then Aaron won the Gozo Honey Prize for the second year
+      and Luca lost it. He started telling everyone Aaron was
+      cheating, using imported queens, faking organic status. All
+      lies. But some people believed him.
+
+      A month ago Aaron found that someone had opened his equipment
+      shed at night and poured bleach on his extraction frames.
+      Thousands of euros of equipment destroyed. He suspected Luca
+      but couldn't prove it.
+    effects:
+      trust_christiana: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Katrina detail ---
+
+  katrina_detail:
+    type: message
+    text: >
+      KATRINA: mela ok I have the photos. look at this one. you can
+      see luca's face clearly — the headlamp lights him up. he's
+      spraying roundup directly onto the wild thyme and borage. those
+      are the flowers aaron's bees need. without them the colony
+      starves.
+
+      and look at this photo from the week before. different night,
+      same spot. luca again, but this time he's got something else —
+      it looks like he's putting something INTO one of aaron's hives.
+      I zoomed in and it's a strip of something — could be a
+      varroa treatment chemical that kills bees if you use the wrong
+      dose.
+
+      he wasn't just poisoning the flowers. he was poisoning the
+      bees directly. this is fucking insane.
+    effects:
+      trust_katrina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marie ---
+
+  marie_interview:
+    type: message
+    text: >
+      MARIE: I run the herbal shop. Aaron supplied all my honey — raw,
+      unfiltered, beautiful stuff. But I also sell agricultural
+      supplies. And here's what's interesting:
+
+      Luca Buttigieg has been buying industrial-grade herbicide from
+      a supplier in Valletta. Not the stuff you'd use on a farm —
+      this is glyphosate concentrate. The kind you'd use to kill
+      everything in an area.
+
+      He told the supplier it was for clearing land. But his own
+      land was sold months ago. He has no land to clear.
+
+      I also know that Luca came into my shop three times asking
+      about Aaron's delivery schedule. When does Aaron deliver? What
+      days? What time? Mela, why does a competitor need to know
+      your exact schedule?
+    effects:
+      trust_marie: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Joseph (anonymous account) ---
+
+  joseph_investigation:
+    type: tweet
+    from: joseph
+    text: >
+      He should have accepted the offer. I tried to warn him.
+      Nobody listens when I try to help.
+    choices:
+      - Look at this account's history -> joseph_posts
+
+  joseph_posts:
+    type: message
+    text: >
+      @joseph_schembri: account created 6 months ago. Posts are all
+      about Aaron's beekeeping. Comments on every honey photo, every
+      hive update, every market post. The tone shifts over time:
+
+      Month 1: "Great work. Gozo needs beekeepers like you."
+      Month 2: "Your organic method is interesting but traditional
+      methods produce better yield. Let me show you."
+      Month 4: "You won again? The judges don't understand real
+      beekeeping. My grandfather kept bees for 50 years."
+      Month 5: "I know where every one of your hives is. I check
+      them when you're not there. Someone has to."
+      Month 6: "They're offering good money for that land. Take it.
+      Take it before something happens."
+
+      The account has no photos, no bio. Just Aaron. Only Aaron.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> joseph_style
+
+  joseph_style:
+    type: message
+    text: >
+      Comparing @joseph_schembri with @luca_buttigieg:
+
+      Same spelling patterns — the specific way he writes Maltese
+      words in English posts. Same beekeeping terminology. Same
+      knowledge of hive locations that only another local beekeeper
+      would have.
+
+      And one post from @joseph_schembri: "The queen in Hive 7B is
+      weak. You should replace her." Hive 7B is Aaron's private
+      numbering system. Not public information. You'd have to
+      physically inspect the hive to know the queen was weak.
+
+      It's Luca. The anonymous account is Luca.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Carmen ---
+
+  carmen_interview:
+    type: message
+    text: >
+      CARMEN: The Beekeeping Association tried to mediate between
+      Aaron and Luca. Mela, we invited them both to a meeting. Aaron
+      came, open, willing to talk. Luca came with a list of
+      grievances as long as my arm.
+
+      He accused Aaron of stealing his bees — which is insane, bees
+      swarm where they want. He accused him of poaching hive
+      locations. He accused him of bribing the honey prize judges.
+
+      But the thing that shook me was when Luca said, quietly, at
+      the end: "I've been keeping bees since before he was born.
+      This island isn't big enough for both of us."
+
+      That's not competition. That's something darker.
+
+      I have the meeting minutes. And I have Luca's written
+      complaint, which reads more like a stalking diary than a
+      professional grievance.
+    effects:
+      trust_carmen: "+15"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ispettur Borg ---
+
+  ispettur_interview:
+    type: message
+    text: >
+      ISPETTUR BORG: Off the record — completely off the record.
+      I wanted to investigate Seabreeze. My superintendent told me
+      to leave it alone. He said it was "a planning matter, not a
+      police matter." Mela, a missing person is always a police
+      matter.
+
+      The Buttigieg situation is different. I didn't know the full
+      extent until now. If you have evidence of criminal property
+      damage and harassment, I can act on that. That's clearly my
+      jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_ispettur: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Aaron than anyone in Wied il-Għasel. Who is responsible?
+    choices:
+      - Confront Luca Buttigieg (the obsessive competitor) -> confront_luca
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Daniel Fenech (the hotel project director) -> confront_daniel
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Sindku Pawlu Grech (political corruption) -> confront_pawlu
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Luca (Best Ending) ---
+
+  confront_luca:
+    type: message
+    text: >
+      You present your evidence to Luca:
+
+      "I know @joseph_schembri is your account. I know you've been
+      spraying herbicide on Aaron's hive sites at night. I know you
+      poisoned bees directly inside his hives. I know you sold your
+      land to Seabreeze's shell company and then started clearing
+      Aaron's land. I have photographs, witnesses, and purchase
+      records."
+    choices:
+      - Send -> luca_response
+
+  luca_response:
+    type: message
+    text: >
+      Luca doesn't reply for a long time. Then:
+
+      LUCA: You don't understand. Aaron was destroying everything I
+      built. Thirty years of beekeeping and this kid comes along
+      and everyone forgets I exist. I built the honey reputation of
+      this island. Me. Not him. I had to protect what was mine.
+
+      That's not protection. That's obsession.
+
+      You've already sent the evidence to Ispettur Borg. And to
+      Daphne Spiteri.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Ispettur Borg reopens the case. With your evidence — the
+      anonymous account, the poisoning photographs, the herbicide
+      purchases, the land sale records, the witness testimonies —
+      Luca is arrested for criminal property damage, environmental
+      destruction, and harassment. Soil samples from Aaron's hive
+      sites confirm industrial-grade herbicide application
+      consistent with Luca's purchases.
+
+      Daphne Spiteri, finally in possession of Aaron's full evidence
+      package, publishes the Seabreeze bribery story in the Times
+      of Malta. The €85,000 payment to Sindku Grech's fake consulting
+      company is exposed. MEPA orders a halt to the development.
+      Daniel Fenech faces criminal charges. Pawlu Grech resigns.
+
+      And Aaron Camilleri, reading the story from a cousin's
+      farmhouse in Mellieħa, calls his brother for the first time
+      in nine days.
+
+      "Ġej lura d-dar."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: aaron
+    text: >
+      the bees are still here. the valley is still here. and so am I.
+      mela, it took a village. grazzi.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Daniel (Partial Ending) ---
+
+  confront_daniel:
+    type: message
+    text: >
+      You present the bribery evidence to Daniel Fenech:
+
+      "I have screenshots of internal Seabreeze emails showing
+      €85,000 paid to a shell consulting company owned by the
+      sindku. I have property records showing Seabreeze subsidiaries
+      buying up the valley through shell companies. I have evidence
+      of a Seabreeze boat at the cliffs the night Aaron disappeared."
+    choices:
+      - Send -> daniel_response
+
+  daniel_response:
+    type: message
+    text: >
+      DANIEL: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Seabreeze Hospitality Group operates
+      within all applicable legal frameworks.
+
+      But it's too late. You've sent the evidence to Daphne, to the
+      heritage association, and to MEPA.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The bribery story breaks. Seabreeze's development is frozen
+      pending investigation. The sindku resigns. The valley is saved,
+      for now.
+
+      But Aaron?
+
+      Without the obsession evidence, Luca is never investigated.
+      He continues to keep bees in Wied il-Għasel. He continues to
+      monitor Aaron's remaining hives. He creates a new anonymous
+      account.
+
+      Three months later, Aaron reads about Seabreeze online. He
+      returns quietly. He rebuilds his hives. But every morning he
+      checks for poison. Every night he wonders if someone is out
+      there in the dark. He stops selling at the village market. He
+      installs cameras.
+
+      The corporation is exposed. But the person who terrorised
+      Aaron walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: aaron
+    text: "I'm back. the valley is safe. the rest... mela, we'll see."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Sindku (Wrong Ending) ---
+
+  confront_pawlu:
+    type: message
+    text: >
+      You confront Sindku Pawlu Grech with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> pawlu_response
+
+  pawlu_response:
+    type: tweet
+    from: frankie
+    text: >
+      Il-klijent tiegħi jinnota l-allegazzjonijiet tiegħek. Kull
+      distribuzzjoni pubblika ta' materjal difamatorju tirriżulta fi
+      proċeduri legali immedjati. — Mifsud & Partners, Valletta
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The sindku's lawyer buries your accusation. Without a direct,
+      prosecutable link between Pawlu Grech and Aaron's disappearance
+      — and there isn't one beyond political corruption — your
+      evidence is insufficient for criminal charges.
+
+      Seabreeze continues its development. Luca continues to poison.
+      Aaron stays in hiding.
+
+      Six months later, @joseph_schembri creates a new account. It
+      follows Aaron's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: WIED IL-GĦASEL — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Aaron's story explores themes of
+      environmental destruction, corporate greed, political corruption,
+      obsessive rivalry, community solidarity, and the courage to
+      protect what matters.
+
+      If you or someone you know is experiencing harassment, stalking,
+      or needs someone to talk to, help is available:
+      Supportline 179: 179 (free, confidential, 24/7)

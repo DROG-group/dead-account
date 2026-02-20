@@ -1,0 +1,1593 @@
+# DEAD ACCOUNT — Story 033: Ponta do Falcão (Portugal 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-033.yml
+#
+# Player investigates the disappearance of young surf instructor
+# Gonçalo Ferreira in the fictional Algarve clifftop village of
+# Ponta do Falcão.
+
+meta:
+  title: "Dead Account — Ponta do Falcão"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_ines: 0
+    trust_tiago: 0
+    trust_mariana: 0
+    trust_rafael: 0
+    trust_beatriz: 0
+    trust_diogo: 0
+    trust_leonor: 0
+    trust_carlos: 0
+    trust_helena: 0
+    trust_joao: 0
+    trust_rosa: 0
+    trust_andre: 0
+    trust_catarina: 0
+    trust_nuno: 0
+    trust_filipa: 0
+    trust_miguel: 0
+    trust_vera: 0
+    trust_anon: 0
+    trust_sargento: 0
+    trust_duarte: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "acabei de me mudar para ponta do falcão. a descobrir o algarve onda a onda"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "PontadoFalcao.social"
+    description: "Bem-vindos à instância comunitária de Ponta do Falcão — Algarve"
+    avatar_url: /gamepatch/assets/dead-account/pontadofalcao_bot.png
+
+  npcs:
+    # === Gonçalo's Inner Circle ===
+    goncalo:
+      name: "Gonçalo Ferreira"
+      bio: "instrutor de surf | 23 | as falésias são sagradas | o mar não se vende"
+      avatar: avatars/goncalo.jpg
+    ines:
+      name: "Inês Ferreira"
+      bio: "irmã do gonçalo | bióloga marinha em faro | ele ligava-me todos os dias. agora não."
+      avatar: avatars/ines.jpg
+    tiago:
+      name: "Tiago Oliveira"
+      bio: "melhor amigo do gonçalo | pescador | ponta do falcão é a minha casa"
+      avatar: avatars/tiago.jpg
+    mariana:
+      name: "Mariana Santos"
+      bio: "colega de surf do gonçalo | escola de surf costa brava | a praia é de todos"
+      avatar: avatars/mariana.jpg
+
+    # === Surf & Beach World ===
+    rafael:
+      name: "Rafael Werner"
+      bio: "surf & travel | berlin → algarve | best waves of my life 🌊 | coming back every year"
+      avatar: avatars/rafael.jpg
+    beatriz:
+      name: "Beatriz Costa"
+      bio: "dona da escola de surf costa brava | ponta do falcão | 15 anos nas ondas"
+      avatar: avatars/beatriz.jpg
+    duarte:
+      name: "Duarte Mendes"
+      bio: "fotógrafo de surf | ponta do falcão | a costa algarvia em cada frame"
+      avatar: avatars/duarte.jpg
+
+    # === Local Government ===
+    carlos:
+      name: "Carlos Machado"
+      bio: "Vereador do urbanismo | Câmara de Ponta do Falcão | desenvolvimento sustentável"
+      avatar: avatars/carlos.jpg
+    helena:
+      name: "Helena Pires"
+      bio: "Assembleia Municipal | Ponta do Falcão | BE | ambiente e costa"
+      avatar: avatars/helena.jpg
+    camara:
+      name: "Câmara Municipal de Ponta do Falcão"
+      bio: "Conta oficial | Notícias municipais | Seg-Sex 9h-17h"
+      avatar: avatars/camara.jpg
+
+    # === Local Business & Community ===
+    joao:
+      name: "João Rodrigues"
+      bio: "tasca do joão | petiscos & imperiais | o coração da aldeia desde 1992"
+      avatar: avatars/joao.jpg
+    rosa:
+      name: "Rosa Mendonça"
+      bio: "farmácia mendonça | ponta do falcão | saúde & conselhos | aberta ao domingo de manhã"
+      avatar: avatars/rosa.jpg
+    andre:
+      name: "André Baptista"
+      bio: "pescador | 35 anos no mar | estas falésias são a minha vida"
+      avatar: avatars/andre.jpg
+    catarina:
+      name: "Catarina Lopes"
+      bio: "jornalista barlavento | ambiente & costa | denúncias bem-vindas"
+      avatar: avatars/catarina.jpg
+    nuno:
+      name: "Nuno Figueiredo"
+      bio: "biólogo | ICNF algarve | conservação da costa | zona protegida"
+      avatar: avatars/nuno.jpg
+
+    # === Teens ===
+    diogo:
+      name: "Diogo"
+      bio: "16 | surf & skate | ponta do falcão | o gonçalo ensinou-me tudo"
+      avatar: avatars/diogo.jpg
+    leonor:
+      name: "Leonor"
+      bio: "15 | fotografia | as falésias ao pôr do sol | isto não pode desaparecer"
+      avatar: avatars/leonor.jpg
+    filipa:
+      name: "Filipa"
+      bio: "17 | surf | biologia | quero ser como o gonçalo quando crescer"
+      avatar: avatars/filipa.jpg
+
+    # === Resort Development (corporate) ===
+    golden_cliff:
+      name: "Golden Cliff Resorts SA"
+      bio: "Turismo de luxo | Costa Algarvia | Sustentabilidade & Excelência | Em construção"
+      avatar: avatars/golden_cliff.jpg
+    miguel:
+      name: "Miguel Esteves"
+      bio: "CEO Golden Cliff Resorts | hotelaria de luxo | investir no algarve"
+      avatar: avatars/miguel.jpg
+    vera:
+      name: "Vera Magalhães"
+      bio: "advogada | escritório Magalhães & Associados | direito imobiliário | lisboa"
+      avatar: avatars/vera.jpg
+
+    # === Suspicious / Other ===
+    anon_surf:
+      name: "onda_eterna"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sargento:
+      name: "Sargento Almeida"
+      bio: "GNR Ponta do Falcão | Posto territorial | emergências: 112"
+      avatar: avatars/sargento.jpg
+
+    # === Media & Community ===
+    actu_falcao:
+      name: "Notícias do Falcão"
+      bio: "Notícias locais de Ponta do Falcão e arredores | tips: redacao@noticiasdofalcao.pt"
+      avatar: avatars/actu_falcao.jpg
+    meteo_algarve:
+      name: "Meteo Falcão"
+      bio: "Previsões & alertas | Ondulação & vento | Atualização horária"
+      avatar: avatars/meteo_algarve.jpg
+    sos_costa:
+      name: "SOS Costa Algarvia"
+      bio: "Proteção da costa algarvia | Voluntários | Denúncias de construção ilegal"
+      avatar: avatars/sos_costa.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PONTA DO FALCÃO
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to pontadofalcao.social — the community Mastodon instance
+      for the clifftop village of Ponta do Falcão, Algarve.
+
+      It's summer. The cliffs glow orange at sunset. The surf should
+      be perfect. But the local feed is anything but calm.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps coming back:
+      @goncalo_ferreira.
+
+      A 23-year-old surf instructor. The village's favourite son.
+      He hasn't posted in seven days. His phone is off. His board
+      is still at the surf school. His wetsuit is hanging to dry.
+    choices:
+      - Look at his profile -> goncalo_profile
+
+  goncalo_profile:
+    type: tweet
+    from: goncalo
+    text: "as máquinas da golden cliff estão a destruir a falésia protegida. zona ICNF. tenho vídeos. isto tem de parar. foda-se."
+    choices:
+      - That's his last real post... -> grey_wave
+
+  grey_wave:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a grey wave. Murky, shot from a strange angle against the
+      cliffs. Posted at 3am. No caption.
+
+      His friends say Gonçalo always writes something. A joke, a
+      line about the ocean. Never just an image. The GNR says he
+      probably went travelling. The whole village knows that's
+      bullshit.
+    choices:
+      - Read the GNR statement -> gnr_statement
+      - Look at what people are saying -> community_reaction
+
+  gnr_statement:
+    type: tweet
+    from: sargento
+    text: >
+      A GNR recebeu uma comunicação relativa a um residente de
+      Ponta do Falcão. Nesta fase, não existem indícios de prática
+      criminosa. Qualquer informação relevante pode ser comunicada
+      ao posto territorial ou através do 112.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @ines_ferreira is driving
+      down from Faro. His best friend @tiago_oliveira is losing it.
+      His surf students — @diogo, @leonor, @filipa — are posting
+      panicked messages.
+
+      The fisherman @andre_baptista says Gonçalo was right about the
+      cliffs. The journalist @catarina_lopes is asking why the câmara
+      approved Golden Cliff's construction permit.
+
+      And @rafael_werner — a German tourist who kept coming back for
+      Gonçalo's lessons — has gone very quiet.
+    effects: { trust_ines: "+5", trust_tiago: "+5" }
+    choices:
+      - Start following Gonçalo's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Ponta do Falcão. Follow Gonçalo's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to João (tasca owner, knows everyone) -> joao_intro
+      - Talk to André (fisherman, knows the coast) -> andre_intro
+      - Talk to Diogo (teen surfer, clearly shaken) -> diogo_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Gonçalo with the rhythms of an
+      Algarve village: surf conditions, fish market times, the
+      tasca's daily specials, sunset photos from the cliffs.
+
+      Key names surface: Inês (sister, marine biologist in Faro),
+      Tiago (best friend, fisherman, furious), Rafael (German tourist,
+      suspiciously present), and the teens — Diogo, Leonor, Filipa
+      — who lived for Gonçalo's surf lessons.
+
+      Also prominent: Golden Cliff Resorts SA, the luxury hotel
+      company building on the protected cliffs east of the village.
+      Their posts are glossy PR. Gonçalo's posts were dynamite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to João -> joao_intro
+      - Talk to André -> andre_intro
+      - Talk to Diogo -> diogo_intro
+
+  # --- João (social map) ---
+
+  joao_intro:
+    type: tweet
+    from: joao
+    text: >
+      a tasca está aberta mas falta aqui alguém. @goncalo_ferreira,
+      a tua imperial está à espera. volta pá.
+    effects: { trust_joao: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to João -> joao_talk
+
+  joao_talk:
+    type: message
+    text: >
+      JOÃO: Ah, és novo por aqui? Bem-vindo. Má altura para chegar,
+      isso é. A aldeia toda está às avessas por causa do Gonçalo.
+
+      Olha, vou-te explicar quem é quem. A Inês é a irmã dele,
+      bióloga marinha em Faro. Miúda espetacular, está destroçada.
+      O Tiago é o melhor amigo, desde putos. Pescador. Está a ficar
+      maluco com isto.
+
+      A Mariana trabalha com ele na escola de surf. A Beatriz é a
+      dona. E depois tens aquele alemão — Rafael. Werner ou lá o que
+      é. Vem cá todos os verões. Aulas com o Gonçalo. Mas ya, aquilo
+      não é só aulas. Aquele gajo é bué estranho. Sempre atrás do
+      Gonçalo. Sempre.
+
+      E a Golden Cliff? Caralho, nem me fales nisso. Estão a
+      destruir a falésia protegida para fazer um resort de luxo. O
+      Gonçalo era o único que tinha tomates para denunciar aquilo.
+    effects: { trust_joao: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Rafael -> joao_rafael
+      - Ask about Golden Cliff -> joao_golden_cliff
+      - Thank him and move on -> quest1_hub
+
+  joao_rafael:
+    type: message
+    text: >
+      JOÃO: O Rafael? Olha, aquele gajo vem cá há três verões. No
+      início parecia normal — turista, quer aprender surf, fixe.
+      Mas depois começou a ficar o verão todo. Depois voltava no
+      inverno. Marcava aulas só com o Gonçalo. Recusava outros
+      instrutores.
+
+      Começou a aparecer na tasca quando o Gonçalo cá estava. Sentava-
+      se perto. Ficava a olhar. O Gonçalo é um puto simpático, não diz
+      nada. Mas eu vi que ele ficava desconfortável.
+
+      A última vez que o Rafael esteve cá, fez uma cena porque o
+      Gonçalo cancelou uma aula. Ficou vermelho, começou a gritar que
+      ele tinha prometido. O Gonçalo foi-se embora. O Rafael ficou na
+      tasca duas horas a beber sozinho.
+
+      Bué creepy. Sws.
+    effects: { trust_joao: "+5" }
+    choices:
+      - Ask about Golden Cliff -> joao_golden_cliff
+      - Move on -> quest1_hub
+
+  joao_golden_cliff:
+    type: message
+    text: >
+      JOÃO: A Golden Cliff Resorts comprou terreno a leste da aldeia.
+      Zona protegida pelo ICNF. Falésias. Habitat natural. Nidificação
+      de aves. E agora estão lá com máquinas a escavar.
+
+      O problema é que a câmara aprovou o projeto. O Carlos Machado —
+      vereador do urbanismo — assinou aquilo tudo. E a Golden Cliff
+      patrocina metade das festas da aldeia. O torneio de surf. O
+      festival de verão. Tudo.
+
+      O Gonçalo filmou as obras. Pôs online. Mostrou que estavam a
+      escavar dentro da zona protegida. Duas semanas depois, desapareceu.
+
+      Foda-se, faz as contas.
+    effects: { trust_joao: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- André (fisherman, the coast) ---
+
+  andre_intro:
+    type: tweet
+    from: andre
+    text: >
+      trinta e cinco anos no mar. esta costa está a mudar. as
+      falésias estão a cair. @goncalo_ferreira tinha razão. e agora
+      desapareceu. coincidência? puta que pariu.
+    effects: { trust_andre: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to André -> andre_talk
+
+  andre_talk:
+    type: message
+    text: >
+      ANDRÉ: Eu pesco nesta costa desde miúdo. Conheço cada rocha,
+      cada corrente, cada recanto das falésias. E digo-te: o que a
+      Golden Cliff está a fazer é criminoso.
+
+      Estão a escavar a base das falésias. A rocha está a ceder. Já
+      houve dois desabamentos este ano. A praia onde o Gonçalo dava
+      aulas está a ficar mais estreita. As ondas batem mais perto.
+
+      O Gonçalo mergulhou lá. Filmou debaixo de água. Mostrou que as
+      fundações do resort estão a drenar a rocha. A falésia está a
+      colapsar. E eles continuam a construir.
+
+      Queres saber quem tem medo da verdade? Quem mandou calar o
+      Gonçalo.
+    effects: { trust_andre: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> andre_night
+      - Move on -> quest1_hub
+
+  andre_night:
+    type: message
+    text: >
+      ANDRÉ: A noite antes de ele desaparecer. Eu estava a voltar da
+      pesca, por volta da uma da manhã. Vi uma carrinha da Golden
+      Cliff no caminho das falésias. Sem luzes. À uma da manhã.
+
+      E vi uma figura no trilho da costa. A correr. Parecia o
+      Gonçalo — mesma altura, mesmo cabelo. Mas estava escuro, não
+      tenho a certeza.
+
+      Disse à GNR. Escreveram num papel. Pronto. Mais nada.
+    effects: { trust_andre: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Diogo (teen surfer, witness tease) ---
+
+  diogo_intro:
+    type: tweet
+    from: diogo
+    text: >
+      o gonçalo ensinou-me a surfar. ensinou-me a respeitar o mar.
+      era bué fixe. não acredito que foi embora. foda-se se alguém
+      sabe de alguma cena diga please
+    effects: { trust_diogo: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Diogo -> diogo_talk_early
+
+  diogo_talk_early:
+    type: message
+    text: >
+      DIOGO: ya quem és? ok whatever. olha o gonçalo é a melhor
+      pessoa desta aldeia. dava-nos aulas de borla ao fim de semana.
+      ensinava os miúdos todos. nunca recusava ninguém.
+
+      e agora desapareceu?? isso não faz sentido nenhum. ele nunca
+      faltava a uma aula. NUNCA. e o campeonato é para a semana.
+
+      e sabes o que é bué creepy? aquele alemão — o rafael — apareceu
+      na praia ontem. sem o gonçalo. estava lá sentado a olhar para o
+      mar. sozinho. durante horas. a leonor viu e tirou foto.
+    effects: { trust_diogo: "+10" }
+    choices:
+      - What else do you know about Rafael? -> diogo_rafael_hint
+      - Move on -> quest1_hub
+
+  diogo_rafael_hint:
+    type: message
+    text: >
+      DIOGO: aquele gajo é bué estranho mano. está sempre atrás do
+      gonçalo. uma vez vi-o a seguir o gonçalo depois da aula. tipo
+      no carro. o gonçalo foi de mota para casa e o rafael foi atrás
+      de carro.
+
+      e na outra semana a filipa disse que viu o rafael à noite perto
+      da casa do gonçalo. tipo sentado no carro. luzes apagadas.
+      merda, isso é creepy ya.
+
+      fala com a filipa. ela sabe mais.
+    effects: { trust_diogo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Ponta do Falcão. An Algarve clifftop
+      village built around the ocean. A surf instructor who was
+      exposing illegal construction. A disappearance nobody believes
+      is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Inês (Gonçalo's sister) -> ines_q1
+      - Talk to Tiago (Gonçalo's best friend) -> tiago_q1
+      - Check what Rafael (the tourist) is posting -> rafael_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Inês Q1 ---
+
+  ines_q1:
+    type: tweet
+    from: ines
+    text: >
+      se alguém tem informação sobre o @goncalo_ferreira LIGUEM-ME.
+      o quarto dele está igual. a prancha está na escola. o meu irmão
+      não vai a lado nenhum sem a prancha. NUNCA.
+    effects: { trust_ines: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Inês -> ines_q1_talk
+
+  ines_q1_talk:
+    type: message
+    text: >
+      INÊS: Quem és tu? Desculpa, eu... não confio em ninguém agora.
+      O Gonçalo ligava-me todos os dias. Todos. E de repente parou.
+
+      A GNR diz que se calhar foi viajar. O meu irmão nunca saiu de
+      Ponta do Falcão na vida. Aquele rapaz vive para o mar.
+
+      [A Inês está desconfiada. Precisas de construir mais confiança
+      antes de ela se abrir.]
+    effects: { trust_ines: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tiago Q1 ---
+
+  tiago_q1:
+    type: tweet
+    from: tiago
+    text: >
+      eu juro que se alguém fez mal ao gonçalo eu descubro. a gnr
+      não faz nada. a câmara não faz nada. caralho então faço eu.
+    effects: { trust_tiago: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Tiago -> tiago_q1_talk
+
+  tiago_q1_talk:
+    type: message
+    text: >
+      TIAGO: O Gonçalo é o meu melhor amigo. Desde putos. Aprendemos
+      a nadar juntos na praia do Falcão.
+
+      Ele ligou-me na noite antes de desaparecer. Estava tenso.
+      Disse: "se me acontecer alguma coisa, olha para o estaleiro da
+      Golden Cliff. Encontrei uma cena que eles não querem que
+      ninguém saiba."
+
+      Mais nada. Telefone desligado. Desapareceu.
+
+      E aquele Rafael? Aquele klootz— desculpa, aquele gajo. Anda
+      atrás do Gonçalo há meses. Toda a gente vê. O Gonçalo dizia
+      que era só um turista chato. Mas não é só isso. É uma cena
+      doentia.
+    effects: { trust_tiago: "+10" }
+    choices:
+      - What do you think happened? -> tiago_theory
+      - Move on -> quest1_hub
+
+  tiago_theory:
+    type: message
+    text: >
+      TIAGO: Duas hipóteses. Uma: a Golden Cliff mandou calá-lo. O
+      Gonçalo tinha vídeos a mostrar que estavam a construir dentro
+      da zona protegida do ICNF. Se aquilo fosse público, perdiam a
+      licença. Milhões.
+
+      Duas: o Rafael pirou de vez. Aquele gajo seguia o Gonçalo
+      para todo o lado. Aparecia na praia, na tasca, no trilho das
+      falésias. O Gonçalo contou-me que alguém lhe mexeu no cacifo
+      da escola de surf. Quem faz uma cena dessas?
+
+      Se calhar as duas coisas. Se calhar uma abriu a porta à outra.
+    effects: { trust_tiago: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Rafael Q1 ---
+
+  rafael_q1:
+    type: tweet
+    from: rafael
+    text: >
+      Amazing sunset at Ponta do Falcão. Missing my surf sessions.
+      Hope to see @goncalo_ferreira back soon. Best instructor
+      in the Algarve. 🌊
+    effects: { trust_rafael: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rafael -> rafael_q1_talk
+
+  rafael_q1_talk:
+    type: message
+    text: >
+      RAFAEL: Gonçalo? Yes, very sad he's gone. But people need
+      breaks sometimes, you know? The pressure of teaching, the
+      environmental activism... it's a lot.
+
+      I come here every year for surf lessons. He's the best
+      instructor. I'm sure he'll be back. I'm waiting for him.
+
+      [Rafael seems remarkably calm. Almost rehearsed.]
+    effects: { trust_rafael: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Gonçalo went silent. Multiple
+      people saw or heard things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Filipa (was near Gonçalo's house that evening) -> filipa_interview
+      - Find André (fisherman, was at sea) -> andre_interview
+      - Find Duarte (photographer, was on the cliffs) -> duarte_interview
+      - Find Rosa (pharmacist, got a late call) -> rosa_interview
+
+  # --- Filipa (saw Rafael near Gonçalo's house) ---
+
+  filipa_interview:
+    type: tweet
+    from: filipa
+    text: >
+      eu sei coisas que devia ter dito antes. mas tinha medo. agora
+      já não tenho.
+    effects: { trust_filipa: "+5" }
+    choices:
+      - DM Filipa -> filipa_talk
+
+  filipa_talk:
+    type: message
+    text: >
+      FILIPA: ok olha eu vou dizer. naquela noite eu estava a voltar
+      da casa da leonor. passámos pela casa do gonçalo tipo às dez
+      da noite. e sabes quem estava lá? o rafael. no carro dele.
+      luzes apagadas. a olhar para a casa do gonçalo.
+
+      eu e a leonor ficámos tipo merda, que é isto. ficámos a ver
+      durante uns cinco minutos. ele não se mexeu. só estava lá
+      sentado. a olhar.
+
+      quando o gonçalo saiu de casa com uma mochila, o rafael ligou
+      o carro e foi atrás dele. sem luzes. eu fiquei tipo puta que
+      pariu isto é bué doentio.
+
+      devia ter feito alguma coisa. merda.
+    effects:
+      trust_filipa: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- André (saw vehicles on cliff road) ---
+
+  andre_interview:
+    type: tweet
+    from: andre
+    text: >
+      noite estranha no mar ontem. movimentos na falésia que não
+      são normais. nem tudo é peixes nesta costa.
+    effects: { trust_andre: "+5" }
+    choices:
+      - Ask André about that night -> andre_talk_night
+
+  andre_talk_night:
+    type: message
+    text: >
+      ANDRÉ: Voltava da pesca, uma da manhã. A carrinha da Golden
+      Cliff estava no caminho da falésia. Motor a trabalhar. Sem
+      luzes. Dois homens do lado de fora, a fumar.
+
+      E no trilho vi outra coisa: um carro pequeno, alugado —
+      matrícula estrangeira, alemã. Estacionado onde o trilho começa.
+      A uma da manhã.
+
+      Quem é que vai passear nas falésias a essa hora? Turistas não.
+      Construtores também não. Algo se passou ali aquela noite.
+    effects:
+      trust_andre: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Duarte (photographer, saw confrontation) ---
+
+  duarte_interview:
+    type: tweet
+    from: duarte
+    text: >
+      estava nas falésias a fotografar a lua. vi coisas que não devia
+      ter visto.
+    effects: { trust_duarte: "+5" }
+    choices:
+      - Ask Duarte what he saw -> duarte_talk
+
+  duarte_talk:
+    type: message
+    text: >
+      DUARTE: Estava a fazer fotos noturnas na ponta leste. A lua
+      sobre o mar. Por volta das onze da noite.
+
+      Ouvi vozes vindas do estaleiro da Golden Cliff. Barulho. Dois
+      homens — pelo menos — e alguém mais novo. A voz mais nova
+      parecia o Gonçalo. Estava a gritar: "isto é zona protegida,
+      vocês não podem fazer isto!"
+
+      Depois ouvi outra voz: "se abres a boca, garanto-te que nunca
+      mais entras no mar." Fria. Ameaçadora.
+
+      Depois silêncio. O som de um carro. E mais nada.
+
+      Eu devia ter descido. Mas estava escuro e tive medo. Caralho,
+      tive medo.
+    effects:
+      trust_duarte: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rosa (pharmacist, late call from Rafael) ---
+
+  rosa_interview:
+    type: tweet
+    from: rosa
+    text: >
+      Lembrete: a farmácia está aberta seg-sex. Urgências fora de
+      horas: hospital de faro. Cuido de vocês. Também me preocupo
+      com o @goncalo_ferreira.
+    effects: { trust_rosa: "+5" }
+    choices:
+      - Ask Rosa about that night -> rosa_talk
+
+  rosa_talk:
+    type: message
+    text: >
+      ROSA: Isto é confidencial, mas é demasiado importante para
+      calar. Naquela noite, por volta das duas da manhã, alguém
+      bateu à porta da farmácia. Era o Rafael Werner. O turista
+      alemão.
+
+      Tinha a mão direita inchada. Os nós dos dedos em sangue.
+      Disse que tinha caído nas rochas. Às duas da manhã.
+
+      Tratei-o. Mas aquilo não era de uma queda. Pareciam marcas
+      de uma luta. Punhos contra alguma coisa. Ou alguém.
+
+      Pagou em dinheiro. Não quis recibo. Pediu para eu não contar
+      a ninguém. Disse em português mau: "foi nada, obrigado."
+    effects:
+      trust_rosa: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Inês (sister)
+      and Leonor (was with Filipa, saw Rafael too).
+    choices:
+      - Talk to Inês about that night -> ines_interview
+      - Talk to Leonor -> leonor_interview
+      - Find Filipa -> filipa_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find André -> andre_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Duarte -> duarte_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Rosa -> rosa_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Inês (last to talk to Gonçalo) ---
+
+  ines_interview:
+    type: tweet
+    from: ines
+    text: >
+      aquela foto na conta do gonçalo. não é dele. o gonçalo põe
+      sempre uma legenda. sempre uma piada. isto não é ele. alguém
+      fez isto.
+    effects: { trust_ines: "+5" }
+    choices:
+      - DM Inês -> ines_talk_low
+        when:
+          state: trust_ines
+          lt: 50
+      - DM Inês -> ines_talk_high
+        when:
+          state: trust_ines
+          gte: 50
+
+  ines_talk_low:
+    type: message
+    text: >
+      INÊS: Agradeço a preocupação mas não te conheço. Desculpa.
+
+      [A Inês precisa de confiar mais em ti. Mostra-lhe que estás
+      a investigar a sério.]
+    effects: { trust_ines: "+5" }
+    choices:
+      - Share what you've learned -> ines_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  ines_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the Golden Cliff van on the
+      cliffs, Rafael's car, the confrontation, the injuries at the
+      pharmacy. Inês is silent for a long time.
+
+      INÊS: Estás mesmo a tentar encontrá-lo. Ok. Eu falo.
+    effects: { trust_ines: "+25" }
+    choices:
+      - What happened that night? -> ines_talk_high
+
+  ines_talk_high:
+    type: message
+    text: >
+      INÊS: Ele ligou-me às onze da noite. Estava normal — quer
+      dizer, não. Estava nervoso. Disse: "fui ao estaleiro da Golden
+      Cliff. Estão a escavar de noite. Dentro da zona protegida. Eu
+      filmei tudo."
+
+      Eu disse: vai à GNR. Ele disse: "a GNR não faz nada. O Carlos
+      Machado está comprado."
+
+      Depois disse outra coisa. "O Rafael apareceu outra vez. Estava
+      à minha porta. Já não sei o que fazer com este gajo."
+
+      Disse que me ligava no dia seguinte. Nunca mais ligou.
+
+      De manhã o carro dele estava na praia do Falcão. Vazio. Portas
+      abertas. A câmara do telemóvel partida.
+    effects:
+      trust_ines: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Leonor (saw Rafael, confirmed Filipa's account) ---
+
+  leonor_interview:
+    type: message
+    text: >
+      LEONOR: ya eu estava com a filipa. vimos o rafael no carro
+      dele à frente da casa do gonçalo. tipo parado. luzes apagadas.
+      estava bué escuro mas era ele de certeza. aquele carro alugado
+      cinzento.
+
+      e não foi a primeira vez. eu já o tinha visto antes. há duas
+      semanas. de noite. mesmo sítio. mesmo carro. a olhar para a
+      casa.
+
+      e uma vez vi-o a mexer na mota do gonçalo. estava estacionada
+      na rua. ele estava a fazer qualquer coisa por baixo. não sei
+      o quê. mas quando me viu, foi-se embora bué rápido.
+
+      tipo foda-se, isto é doentio.
+    effects:
+      trust_leonor: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Rafael parked outside Gonçalo's house, lights off.
+      Follows Gonçalo when he leaves (Filipa, Leonor)
+      23:00 — Gonçalo calls his sister. Says he filmed illegal night
+      construction at Golden Cliff. Says Rafael was at his door
+      again (Inês)
+      23:00 — Voices at Golden Cliff site. Gonçalo confronted.
+      Threatened: "nunca mais entras no mar" (Duarte)
+      01:00 — Golden Cliff van and Rafael's rental car both on cliff
+      road (André)
+      02:00 — Rafael at pharmacy with injuries consistent with a
+      fight (Rosa)
+
+      Golden Cliff confronted Gonçalo at the construction site. He
+      fled. But Rafael was also following him that night.
+
+      Two threats. Two threads.
+      — The cover-up: What is Golden Cliff destroying? Who protects
+        them?
+      — The obsession: What does Rafael really want? What did he do?
+    choices:
+      - Investigate the resort cover-up -> corruption_hub
+      - Investigate Rafael -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Golden Cliff Resorts is building a luxury resort on protected
+      coastline. The cliffs are collapsing. Gonçalo had video evidence.
+      Now he's gone.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search for Gonçalo's environmental data -> env_data
+      - Talk to Catarina the journalist -> catarina_interview
+      - Talk to Nuno (ICNF biologist) -> nuno_interview
+      - Talk to Helena (assembly member, BE) -> helena_interview
+      - Check the SOS Costa Algarvia -> sos_investigation
+      - Talk to André about the cliff damage -> andre_cliff
+      - Back to hub -> investigation_hub
+
+  # --- Environmental Data ---
+
+  env_data:
+    type: message
+    text: >
+      Gonçalo posted his documentation publicly. Drone videos of the
+      construction site. Underwater footage of the cliff foundations.
+      GPS-tagged photos showing heavy machinery inside the ICNF
+      protected zone.
+
+      His most damning file: a comparison of satellite images from
+      six months apart showing the cliff edge retreating by three
+      meters near the construction. The resort's foundations are
+      literally eating the cliff.
+
+      His last upload, three days before he disappeared: video of
+      night construction — floodlights, excavators, trucks — all
+      inside the protected zone. Timestamp: 23:15.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Catarina ---
+
+  catarina_interview:
+    type: message
+    text: >
+      CATARINA: Eu não falo de fontes. Ponto final.
+    effects: { trust_catarina: "+5" }
+    choices:
+      - Show Catarina the evidence you have -> catarina_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  catarina_with_evidence:
+    type: message
+    text: >
+      CATARINA: ...tens mais do que eu esperava.
+
+      Ok. O Gonçalo e eu estávamos a trabalhar juntos. Ele tinha
+      vídeos, fotos, dados de satélite. Prova irrefutável de que a
+      Golden Cliff está a construir dentro da zona ICNF. E prova de
+      que o Carlos Machado — vereador do urbanismo — aprovou as
+      licenças sabendo que era zona protegida.
+
+      Estávamos a preparar a publicação. Depois ele desapareceu. E
+      três dias depois alguém partiu o vidro do meu carro. O disco
+      externo com os backups desapareceu.
+
+      Mas o Gonçalo está vivo. Ligou-me uma vez, de um número
+      desconhecido. Disse que estava escondido. Disse: "ameaçaram-me
+      no estaleiro e há alguém que não me larga."
+
+      Não posso dizer onde ele está. Mas com provas suficientes posso
+      publicar e tornar seguro para ele voltar.
+    effects:
+      trust_catarina: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> catarina_hint
+      - Back to investigation hub -> investigation_hub
+
+  catarina_hint:
+    type: message
+    text: >
+      CATARINA: O Miguel Esteves em pessoa. O CEO da Golden Cliff. E
+      dois seguranças privados. Apanharam o Gonçalo no estaleiro à
+      noite. Tiraram-lhe a câmara. Disseram-lhe: "se publicas alguma
+      coisa, garantimos que nunca mais dás aulas de surf nesta costa."
+
+      Mas ele também me disse uma coisa sobre alguém da escola de
+      surf. Alguém que não pertence ali. Alguém que sabia sempre
+      onde ele estava. Isso é outro problema.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Nuno (ICNF biologist) ---
+
+  nuno_interview:
+    type: message
+    text: >
+      NUNO: Como biólogo do ICNF, levo estas denúncias muito a
+      sério. Mas a Golden Cliff tem advogados em Lisboa. A câmara
+      municipal apoia o projeto. E o meu superior disse-me para
+      "não complicar."
+
+      Off the record? A zona onde estão a construir é habitat de
+      nidificação do falcão-peregrino. Está classificada como Rede
+      Natura 2000. A licença nunca devia ter sido aprovada.
+
+      O Gonçalo tinha dados melhores que os nossos. Monitorizações
+      independentes. Filmagens submarinas. É por isso que era
+      perigoso. Ele provava o que nós não conseguíamos provar
+      oficialmente.
+    effects:
+      trust_nuno: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Helena ---
+
+  helena_interview:
+    type: message
+    text: >
+      HELENA: Como membro da assembleia municipal pelo BE, posso
+      dizer-te: o Carlos Machado vendeu esta aldeia. Aquela licença
+      foi aprovada numa reunião à porta fechada. Sem debate público.
+      Sem avaliação de impacto ambiental independente.
+
+      A Golden Cliff doou 200 mil euros à câmara para "obras
+      públicas." O torneio de surf é patrocinado por eles. A festa
+      de verão. Até o posto da GNR teve uma remodelação paga pela
+      Golden Cliff.
+
+      Achas que a GNR vai investigar quem lhes pagou a casa nova?
+      Puta que pariu. Claro que não.
+    effects:
+      trust_helena: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- SOS Costa Algarvia ---
+
+  sos_investigation:
+    type: tweet
+    from: sos_costa
+    text: >
+      ALERTA: Construção ilegal detetada em zona Rede Natura 2000 em
+      Ponta do Falcão. Fotografias e denúncia enviadas ao ICNF e à
+      APA. Exigimos embargo imediato das obras da Golden Cliff.
+    choices:
+      - Check their data -> sos_data
+
+  sos_data:
+    type: message
+    text: >
+      SOS Costa Algarvia has been documenting coastal destruction for
+      five years. Their data on the Ponta do Falcão site shows:
+
+      Cliff erosion accelerated 400% since construction began.
+      Protected nesting sites destroyed. Underwater habitats
+      contaminated by construction runoff. Sediment plumes visible
+      from satellite imagery.
+
+      They show construction activity that only happens at night —
+      between 22:00 and 05:00 — to avoid detection. The same pattern
+      Gonçalo documented.
+
+      He was a member. He contributed most of the underwater footage.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- André cliff damage ---
+
+  andre_cliff:
+    type: message
+    text: >
+      ANDRÉ: Vem comigo ao mar. Vou-te mostrar uma coisa.
+
+      André takes you out in his boat. From the water, the damage is
+      staggering. The eastern cliffs — where the resort is being
+      built — are cracked. Whole sections have fallen into the sea.
+      The construction foundations are visible from the water: raw
+      concrete poured into the rock face.
+
+      ANDRÉ: Vês? Estão a destruir a falésia para fazer quartos de
+      hotel a mil euros a noite. E a câmara assina tudo. E quando
+      isto desabar — e vai desabar — morre gente. Turistas, banhistas,
+      surfistas. A praia do Falcão fica por baixo.
+
+      O Gonçalo mergulhou aqui. Filmou tudo. E mandaram-no calar.
+    effects:
+      trust_andre: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Rafael Werner. Tourist. Surf student. Something more?
+      Someone was following Gonçalo. Someone was parked outside his
+      house. Someone was at the pharmacy at 2am with bloody knuckles.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Rafael's booking history -> booking_history
+      - Talk to Beatriz (surf school owner) about Rafael -> beatriz_rafael
+      - Talk to Mariana (Gonçalo's colleague) -> mariana_interview
+      - Talk to the anonymous account @onda_eterna -> anon_investigation
+      - Talk to João about Rafael's behaviour -> joao_rafael_deep
+      - Talk to Sargento Almeida -> sargento_interview
+        when:
+          state: trust_sargento
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Booking History ---
+
+  booking_history:
+    type: message
+    text: >
+      The surf school's online booking system is public. Rafael
+      Werner's booking history:
+
+      Summer 2023: 4 lessons with various instructors.
+      Winter 2023: 8 lessons. All with Gonçalo. Refused substitutes.
+      Summer 2024: 22 lessons. All with Gonçalo. Booked months in
+      advance. Cancelled if Gonçalo was unavailable.
+      Winter 2024: 15 lessons. Started renting an apartment in the
+      village. Stayed three months.
+      Summer 2025: 28 lessons booked. Plus 4 "private sunset
+      sessions." Has been in the village since May.
+
+      Nobody takes 77 surf lessons over three years with the same
+      instructor. Nobody.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Beatriz on Rafael ---
+
+  beatriz_rafael:
+    type: message
+    text: >
+      BEATRIZ: O Rafael é o nosso melhor cliente. Em termos de
+      dinheiro. Mas em termos de... normalidade? Não.
+
+      Há dois anos pedi ao Tiago para dar uma aula ao Rafael porque
+      o Gonçalo estava doente. O Rafael recusou. Disse que só queria
+      o Gonçalo. Ficou furioso. Mandou um email a dizer que "pagava
+      pelo Gonçalo, não por substitutos."
+
+      Depois começou a aparecer na escola fora das aulas. Para
+      "ver o pôr do sol." Perguntava ao Gonçalo a que horas saía.
+      Onde ia jantar. O que fazia ao fim de semana.
+
+      O Gonçalo veio ter comigo. Disse: "Beatriz, aquele gajo
+      assusta-me." Eu disse que podia proibi-lo da escola. O Gonçalo
+      disse: "não, ele é inofensivo." Mas eu vi o medo nos olhos
+      dele.
+    effects:
+      trust_beatriz: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mariana ---
+
+  mariana_interview:
+    type: message
+    text: >
+      MARIANA: O Rafael? Foda-se, aquele gajo metia-me nojo. Sempre
+      a olhar para o Gonçalo. Sempre a perguntar por ele. Uma vez
+      apanhei-o no armazém da escola a mexer no cacifo do Gonçalo.
+      Disse que estava a procurar um fato emprestado. Mentira.
+
+      O Gonçalo contou-me que encontrou o telemóvel dele com o GPS
+      ligado. Sempre. Achava estranho mas não ligava muito. Depois
+      alguém lhe disse que dava para seguir a localização de uma
+      pessoa pelo telemóvel se tivesses a app certa e acesso ao
+      iCloud.
+
+      Uma semana antes de desaparecer, o Gonçalo mudou todas as
+      passwords. Disse-me: "alguém anda a ler as minhas mensagens."
+    effects:
+      trust_mariana: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_surf
+    text: >
+      ele devia ter percebido. eu só quero estar perto dele. é assim
+      tão difícil de entender? o mar une-nos.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @onda_eterna: account created 10 months ago. Every post is
+      about Gonçalo's surfing. Comments on every wave photo, every
+      lesson update, every sunset session. The tone shifts:
+
+      Month 1: "Beautiful session today. You make the ocean come
+      alive."
+      Month 4: "Why didn't you reply to my message? I just wanted to
+      thank you for the lesson."
+      Month 7: "I see you at the tasca with your friends. You have
+      time for them but not for me?"
+      Month 9: "I know your schedule. I know where you live. I'm
+      always near. The ocean connects us."
+
+      No photos. No personal details. Just Gonçalo. Only Gonçalo.
+      Written in English with occasional Portuguese words — "obrigado,"
+      "saudade," "o mar."
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @onda_eterna with Rafael Werner's public posts:
+
+      Same English. Same specific surf terminology — "the break at
+      section three" refers to a spot only regular surfers at Ponta do
+      Falcão would know. Same habit of mixing Portuguese words into
+      English sentences.
+
+      And one post from @onda_eterna: "Your backside carve at the
+      Tuesday sunset session was perfect." Rafael was the ONLY student
+      booked for that session. Only someone present would have seen it.
+
+      It's Rafael. The anonymous account is Rafael.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- João on Rafael deep ---
+
+  joao_rafael_deep:
+    type: message
+    text: >
+      JOÃO: O Rafael vem à tasca todas as noites. Há meses. Sempre
+      a mesma mesa — junto à janela. Donde se vê a rua. A rua por
+      onde o Gonçalo passa para ir para casa.
+
+      Pede uma imperial e fica duas horas. No telemóvel. Uma vez
+      espreitei — tinha o Strava do Gonçalo aberto. A seguir o
+      percurso dele em tempo real.
+
+      A semana passada perguntei: "Rafael, está tudo bem?" Olhou
+      para mim como se eu fosse maluco e disse: "I'm fine. Just
+      watching the sunset." Às dez da noite. Dentro da tasca. Sem
+      janela para o mar.
+
+      E a noite em que o Gonçalo desapareceu? O Rafael não veio.
+      Pela primeira vez em meses. Isso diz-te tudo.
+    effects:
+      trust_joao: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sargento Almeida ---
+
+  sargento_interview:
+    type: message
+    text: >
+      SARGENTO ALMEIDA: Off the record — e quando digo off the
+      record é mesmo off the record — eu queria investigar a Golden
+      Cliff. O meu superior disse para não mexer. A câmara não quer
+      problemas. E o posto foi remodelado com dinheiro da Golden
+      Cliff. Fica mal investigar quem nos pagou a casa.
+
+      A situação do Rafael é diferente. Isso eu não sabia. Se tens
+      provas de stalking, posso agir. Isso é claramente da minha
+      competência.
+
+      Traz-me algo concreto e reabro o caso.
+    effects:
+      trust_sargento: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Gonçalo than anyone in Ponta do Falcão. Who is responsible?
+    choices:
+      - Confront Rafael Werner (the obsessive tourist) -> confront_rafael
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Miguel Esteves (the resort CEO) -> confront_miguel
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Vereador Carlos Machado (political protection) -> confront_carlos
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Rafael (Best Ending) ---
+
+  confront_rafael:
+    type: message
+    text: >
+      You present your evidence to Rafael:
+
+      "I know @onda_eterna is your account. I know you parked outside
+      Gonçalo's house for months. I know you followed him the night
+      he disappeared. I know you went to the pharmacy at 2am with
+      bloody knuckles. I have witnesses, booking records, and the
+      anonymous posts."
+    choices:
+      - Send -> rafael_response
+
+  rafael_response:
+    type: message
+    text: >
+      Rafael doesn't reply for a long time. Then:
+
+      RAFAEL: You don't understand. Gonçalo is special. He's not just
+      an instructor. He understands the ocean like nobody else. I came
+      back for him. I stayed for him. I just wanted to be close to
+      him. To learn from him. To be part of his world.
+
+      That night — I followed him to the cliffs. I saw those men
+      threatening him. I tried to help. We fought. He ran. I don't
+      know where. I swear.
+
+      That's not appreciation. That's obsession.
+
+      You've already sent the evidence to Sargento Almeida. And to
+      Catarina Lopes.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sargento Almeida reopens the case. With your evidence — the
+      anonymous account, the booking pattern, the nightly surveillance,
+      the pharmacy visit, the witness testimonies — Rafael is arrested
+      for stalking and harassment. A GPS tracker is recovered from
+      under Gonçalo's motorbike. Rafael's rental apartment contains
+      hundreds of photographs of Gonçalo taken without his knowledge.
+
+      Catarina Lopes, with Gonçalo's full evidence package, publishes
+      the Golden Cliff story in the Barlavento and it gets picked up
+      by Público and RTP. The ICNF orders an immediate halt to all
+      construction. The APA opens a criminal investigation. Miguel
+      Esteves faces charges for destruction of protected habitat.
+      Vereador Carlos Machado demite-se.
+
+      And Gonçalo Ferreira, reading the article from a friend's house
+      in Tavira, calls his sister for the first time in ten days.
+
+      "Vou para casa, Inês."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: goncalo
+    text: >
+      o mar não se vende. as falésias não se compram. e as pessoas
+      de ponta do falcão não se calam. obrigado.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Miguel Esteves (Partial Ending) ---
+
+  confront_miguel:
+    type: message
+    text: >
+      You present the construction evidence to Miguel Esteves:
+
+      "I have drone footage of construction inside the Rede Natura
+      2000 zone. I have satellite images showing cliff erosion of
+      three meters in six months. I have video of night construction.
+      I have testimony from the ICNF and the assembleia municipal.
+      I have the SOS Costa Algarvia's five-year dataset."
+    choices:
+      - Send -> miguel_response
+
+  miguel_response:
+    type: message
+    text: >
+      MIGUEL: Esta conversa está a ser reencaminhada para o nosso
+      departamento jurídico. Qualquer publicação de material
+      difamatório resultará em procedimento imediato. A Golden Cliff
+      Resorts opera dentro de todos os enquadramentos legais.
+
+      But it's too late. You've sent everything to Catarina, to SOS
+      Costa Algarvia, and to the ICNF.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The construction story breaks. Golden Cliff Resorts is ordered
+      to halt all operations. The resort may never be completed.
+      Fifty local jobs disappear. The village is divided between those
+      who wanted the resort's money and those who wanted the cliffs.
+
+      But Gonçalo?
+
+      Without the stalking evidence, Rafael is never investigated.
+      He returns to Berlin. He creates a new Instagram account. He
+      follows Gonçalo's surf school page. He books a flight back to
+      Faro for the winter.
+
+      Four months later, Gonçalo reads about Golden Cliff online. He
+      comes home. He stops giving lessons after sunset. He changes
+      the lock on his house. He never surfs alone anymore.
+
+      The corporation is exposed. But the person who terrorised
+      Gonçalo walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: goncalo
+    text: "voltei. as falésias estão a salvo. o resto... logo se vê."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Vereador (Wrong Ending) ---
+
+  confront_carlos:
+    type: message
+    text: >
+      You confront Vereador Carlos Machado with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> carlos_response
+
+  carlos_response:
+    type: tweet
+    from: vera
+    text: >
+      O meu cliente toma nota das suas alegações. Qualquer difusão
+      pública de declarações difamatórias será objeto de procedimento
+      judicial imediato. — Escritório Magalhães & Associados, Lisboa
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The vereador's lawyer buries your accusation. Without a direct
+      link between Machado and Golden Cliff's illegal construction —
+      beyond political favouritism — your evidence isn't enough for
+      criminal charges.
+
+      Golden Cliff continues to build. Rafael continues to watch.
+      Gonçalo stays in hiding.
+
+      Six months later, @onda_eterna creates a new account. It
+      follows Gonçalo's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PONTA DO FALCÃO — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Gonçalo's story explores themes of
+      coastal destruction, corporate greed, obsessive behaviour,
+      community courage, and the fight to protect the places we love.
+
+      If you or someone you know is struggling with stalking,
+      harassment, or dark thoughts, help is available:
+
+      SOS Voz Amiga: 213 544 545 (diário, 15h30-00h30)
+      Linha de Emergência Social: 144
+      APAV (apoio à vítima): 116 006

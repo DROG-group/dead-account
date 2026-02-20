@@ -1,0 +1,1528 @@
+# DEAD ACCOUNT — Story 078: Oravská Lehota (Slovakia 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-078.yml
+#
+# Player investigates the disappearance of young bryndza maker Marek Hrdina
+# in the fictional Orava highland village of Oravská Lehota.
+
+meta:
+  title: "Dead Account — Oravská Lehota"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_barbora: 0
+    trust_adam: 0
+    trust_kristina: 0
+    trust_jozef: 0
+    trust_zuzana: 0
+    trust_peter: 0
+    trust_lucia: 0
+    trust_milan: 0
+    trust_eva: 0
+    trust_dano: 0
+    trust_simona: 0
+    trust_tomas: 0
+    trust_marta: 0
+    trust_filip: 0
+    trust_katarina: 0
+    trust_roman: 0
+    trust_andrea: 0
+    trust_juraj: 0
+    trust_lenka: 0
+    trust_starosta: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nový Obyvateľ
+    bio: "práve som sa presťahoval do oravskej lehoty. objavujem hory krok za krokom"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "OravskaLehota.social"
+    description: "Vitajte na komunitnej inštancii Oravskej Lehoty — srdce Oravy"
+    avatar_url: /gamepatch/assets/dead-account/oravskalehota_bot.png
+
+  npcs:
+    # === Marek's Inner Circle ===
+    marek:
+      name: "Marek Hrdina"
+      bio: "bryndza z oravských oviec | tradičná výroba | hory sú moje | salaš nad potokom"
+      avatar: avatars/marek.jpg
+    barbora:
+      name: "Barbora Kučerová"
+      bio: "markova sestra | učiteľka ZŠ oravská lehota | kde je môj brat"
+      avatar: avatars/barbora.jpg
+    adam:
+      name: "Adam Hrdina"
+      bio: "markov otec | pastier celý život | oravské hole | ovce sú rodina"
+      avatar: avatars/adam.jpg
+    kristina:
+      name: "Kristína Poliaková"
+      bio: "markova priateľka | veterinárka | dolný kubín | niečo nie je v poriadku"
+      avatar: avatars/kristina.jpg
+
+    # === Local Government ===
+    starosta:
+      name: "Ing. Dušan Vrábel"
+      bio: "Starosta obce Oravská Lehota | Slúžim obci od 2018 | #OravaNapreduje"
+      avatar: avatars/starosta.jpg
+    andrea:
+      name: "Andrea Gajdošová"
+      bio: "Zástupkyňa starostu | Komisia životného prostredia | Oravská Lehota"
+      avatar: avatars/andrea.jpg
+    obec:
+      name: "Obec Oravská Lehota"
+      bio: "Oficiálny účet | Obecné správy | Úradné hodiny: Po-Pia 8:00-15:00"
+      avatar: avatars/obec.jpg
+
+    # === Local Business & Community ===
+    jozef:
+      name: "Jozef Kubica"
+      bio: "hostinec U Kubicu | halušky | žinčica | živá muzika v piatok | od 1994"
+      avatar: avatars/jozef.jpg
+    zuzana:
+      name: "Zuzana Ondrejková"
+      bio: "farmárka | kozy a ovce | oravská lehota | mlieko z pasienkov"
+      avatar: avatars/zuzana.jpg
+    peter:
+      name: "Peter Hromada"
+      bio: "lesník | správa lesov SR | oravský revír | les je chrám"
+      avatar: avatars/peter.jpg
+    lucia:
+      name: "Lucia Blahová"
+      bio: "lekárnička | Oravská Lehota | zdravie & rada | otvorené aj v sobotu ráno"
+      avatar: avatars/lucia.jpg
+    milan:
+      name: "Milan Kavuljak"
+      bio: "rybár | oravské potoky a pstruhy | 30 rokov pri vode | voda je život"
+      avatar: avatars/milan.jpg
+    eva:
+      name: "Eva Maťašová"
+      bio: "pekáreň Maťašová | chlieb z kvásku | koláče | vstávam o 4:00 každý deň"
+      avatar: avatars/eva.jpg
+
+    # === Journalist ===
+    simona:
+      name: "Simona Kolarčíková"
+      bio: "novinárka | Oravské echo | životné prostredie & región | tipy: simona@oravskeecho.sk"
+      avatar: avatars/simona.jpg
+
+    # === OravaDairy (corporate) ===
+    oravadairy:
+      name: "OravaDairy a.s."
+      bio: "Priemyselná mliekareň | Závod Oravská Lehota | ISO 22000 certifikovaný"
+      avatar: avatars/oravadairy.jpg
+    tomas:
+      name: "Tomáš Sedlák"
+      bio: "riaditeľ závodu OravaDairy Oravská Lehota | priemysel & región"
+      avatar: avatars/tomas.jpg
+    roman:
+      name: "Roman Kováč"
+      bio: "Advokát | Kancelária Kováč & Partners | Obchodné právo | Žilina"
+      avatar: avatars/roman.jpg
+
+    # === Teens ===
+    dano:
+      name: "Dano"
+      bio: "16 | bike & hory | oravská lehota born | hory sú free vole"
+      avatar: avatars/dano.jpg
+    filip:
+      name: "Filip"
+      bio: "17 | skate & snowboard | session na kopci | orava je najlepšia"
+      avatar: avatars/filip.jpg
+    katarina:
+      name: "Katarína"
+      bio: "15 | foto & príroda | oravské lesy v čiernobielej | marek ma naučil robiť bryndzu"
+      avatar: avatars/katarina.jpg
+
+    # === Media & Community ===
+    oravske_echo:
+      name: "Oravské echo"
+      bio: "Správy z Oravy a okolia | Tipy: redakcia@oravskeecho.sk"
+      avatar: avatars/oravske_echo.jpg
+    meteo_orava:
+      name: "Počasie Orava"
+      bio: "Predpoveď a varovania | Automatická stanica | Aktualizácia každú hodinu"
+      avatar: avatars/meteo_orava.jpg
+    ochrana_vod:
+      name: "Združenie Čistá Orava"
+      bio: "Ochrana oravských vôd | Dobrovoľníci | Hlásenie znečistenia"
+      avatar: avatars/ochrana_vod.jpg
+
+    # === Suspicious / Other ===
+    marta:
+      name: "Marta Hečková"
+      bio: "techníčka | OravaDairy | robím svoju prácu a hotovo"
+      avatar: avatars/marta.jpg
+    lenka:
+      name: "Lenka Ďurčová"
+      bio: "."
+      avatar: avatars/anon.jpg
+    juraj:
+      name: "Nadporučík Juraj Bača"
+      bio: "Polícia SR | Obvodné oddelenie Oravská Lehota | tiesňové: 158"
+      avatar: avatars/juraj.jpg
+
+    # === Food Blogger (Thread A suspect) ===
+    matus:
+      name: "Matúš Hrček"
+      bio: "food blogger | @zjedzslovensko | 85k followers | tradičné jedlá | DM pre spoluprácu"
+      avatar: avatars/matus.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ORAVSKÁ LEHOTA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to oravskalehota.social — the community Mastodon instance for
+      the highland village of Oravská Lehota, Orava region, Slovakia.
+
+      The local feed is agitated today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @marek_hrdina.
+
+      A young bryndza maker. Traditional sheep cheese from his own salaš.
+      He documented old Orava recipes, kept highland traditions alive.
+      People are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> marek_profile
+
+  marek_profile:
+    type: tweet
+    from: marek
+    text: "potok za salašom smrdí. tá fabrika z OravaDairy tam púšťa srvátku a hovno vie čo ešte. mám vzorky. mám fotky. toto musí skončiť."
+    choices:
+      - That's his last real post... -> grey_mountain
+
+  grey_mountain:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a grey mountainside. Foggy, blurred, shot from a strange angle.
+      Posted at 2am. No caption.
+
+      His friends say that's not his style. Marek always wrote long
+      captions about every batch, every season, every sheep. The police
+      say he probably went hiking. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: juraj
+    text: >
+      Prijali sme oznámenie o nezvestnom obyvateľovi Oravskej Lehoty.
+      V súčasnosti nie sú žiadne dôkazy nasvedčujúce trestnému činu.
+      Akékoľvek informácie hlásťe na linku 158 alebo na obvodné
+      oddelenie.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @barbora_kucerova is
+      desperate. His father @adam_hrdina has gone silent, up in the
+      hills searching alone. His girlfriend @kristina_poliakova is
+      driving up from Dolný Kubín every day.
+
+      The fisherman @milan_kavuljak says the streams are poisoned.
+      And the journalist @simona_kolarcikova is asking questions nobody
+      wants to answer.
+
+      Nobody buys the police's line. Nobody thinks Marek just
+      "went hiking."
+    effects: { trust_barbora: "+5", trust_kristina: "+5" }
+    choices:
+      - Start following Marek's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Oravská Lehota. Follow Marek's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Jozef (pub owner, knows everyone) -> jozef_intro
+      - Talk to Milan (fisherman, knows the streams) -> milan_intro
+      - Talk to Dano (teen biker, seems shaken) -> dano_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Marek with the rhythms of a small
+      highland village: weather warnings from the mountains, Eva's
+      daily bread specials, sheep grazing updates.
+
+      Key names surface: Barbora (sister, teacher), Kristína (girlfriend,
+      seems frantic), Adam (father, out searching the hills), and the
+      teens — Dano, Filip, Katarína — who loved Marek's bryndza workshops.
+
+      Also prominent: OravaDairy a.s., the industrial dairy factory at
+      the edge of the village. Their posts are corporate PR. Marek's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Jozef -> jozef_intro
+      - Talk to Milan -> milan_intro
+      - Talk to Dano -> dano_intro
+
+  # --- Jozef (social map) ---
+
+  jozef_intro:
+    type: tweet
+    from: jozef
+    text: >
+      Hostinec je otvorený ale nálada je na hovno. @marek_hrdina, tvoje
+      halušky s bryndzou tu chýbajú. Vráť sa, chlapče.
+    effects: { trust_jozef: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jozef -> jozef_talk
+
+  jozef_talk:
+    type: message
+    text: >
+      JOZEF: Ty si nový? Vitaj. Zlý čas na príchod, vole. Všetci sú
+      kvôli Marekovi v keli.
+
+      Poviem ti kto je kto. Barbora je Markova sestra — učí na základke.
+      Hustá baba, teraz je ale v piči. Kristína je Markova frajerka,
+      veterinárka z Kubína. Adam je Markov foter — pastier, celý život
+      v horách. Teraz chodí sám hore a hľadá ho.
+
+      A ten food blogger — Matúš Hrček — @zjedzslovensko — ten sa okolo
+      Marka motá už mesiace. Marek mi vravel že ho ten kokot sleduje
+      na každý jarmok, na každú akciu. Že mu píše denne. Že je to úplný
+      psycho.
+
+      A pozor na OravaDairy. Ich posty sú čisté klamstvá, vole.
+    effects: { trust_jozef: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Matúš the blogger -> jozef_matus
+      - Ask about OravaDairy -> jozef_dairy
+      - Thank him and move on -> quest1_hub
+
+  jozef_matus:
+    type: message
+    text: >
+      JOZEF: Matúš? Ten frajer s tým blogom — Zjedz Slovensko. Má
+      85 tisíc followerov, robí videá o tradičnom jedle. Marek bol pre
+      neho taká zlatá baňa, vole. Mladý syrár, hory, ovce, tradícia —
+      to všetko.
+
+      Ale Marek mu nechcel robiť reklamu. Vravel že ten chlap je fake,
+      že mu ide len o lajky. Matúš to nezniesol. Začal chodiť na salaš
+      bez pozvania. Fotil Markove recepty a dával si ich na blog akoby
+      boli jeho.
+
+      Marek mi vravel: "Ten kokot nerozumie slovu nie." Myslel som že
+      profesionálne. Teraz si nie som istý.
+    effects: { trust_jozef: "+5" }
+    choices:
+      - Ask about OravaDairy -> jozef_dairy
+      - Move on -> quest1_hub
+
+  jozef_dairy:
+    type: message
+    text: >
+      JOZEF: Tá fabrika tu stojí od deväťdesiatych rokov. Robia
+      priemyselnú bryndzu, jogurty, hovno vie čo. Dedina to tolerovala
+      lebo dali prácu. Ale rybári sa sťažujú roky — potok pod fabrikou
+      smrdí, ryby zdochli, voda je biela od srvátky.
+
+      Marek bol prvý kto tam šiel s fľaškami a fotoaparátom. Mal dôkazy,
+      vravel. Reálne dôkazy. Dva týždne na to je preč.
+
+      A starosta Vrábel? Ten kokot má v OravaDairy nejakú zmluvu na
+      odvoz odpadu. Jasné, úplne legálne. Kurva, jasné.
+    effects: { trust_jozef: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Milan (fisherman, water, witness tease) ---
+
+  milan_intro:
+    type: tweet
+    from: milan
+    text: >
+      tridsať rokov pri potoku. voda nie je tá istá. @marek_hrdina mal
+      pravdu. a teraz je preč. urobte si záver.
+    effects: { trust_milan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Milan -> milan_talk
+
+  milan_talk:
+    type: message
+    text: >
+      MILAN: Ryby v potoku pod fabrikou sú mŕtve. Pstruhy, čo tu boli
+      generácie — preč. Voda je biela, smrdí po kyslom. To nie je
+      normálne, vole.
+
+      Marek odoberal vzorky. Nosil ich do Žiliny na rozbor. Mal čísla,
+      mal fotky. Budoval prípad. A potom — kurva — zmizol.
+
+      Myslíš že je to náhoda? Na Orave sa v náhody neverí.
+    effects: { trust_milan: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> milan_night
+      - Move on -> quest1_hub
+
+  milan_night:
+    type: message
+    text: >
+      MILAN: Noc predtým ako zmizol — bol som na potoku, chytal som
+      v noci, okolo jednej. Videl som svetlá pri salaši. Nie je to
+      nezvyčajné, Marek pracoval aj v noci. Ale boli tam dve autá.
+      Jedno Markova stará Škoda Felícia. Druhé čierne SUV so značkami
+      OravaDairy.
+
+      O jednej v noci. Pri salaši.
+
+      Vtedy som nad tým nerozmýšľal. Teraz nad tým rozmýšľam furt.
+    effects: { trust_milan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dano (teen biker, witness tease) ---
+
+  dano_intro:
+    type: tweet
+    from: dano
+    text: >
+      vole @marek_hrdina to je ten najlepší človek v dedine. naučil ma
+      robiť oštiepky fakt hustý. nie je možné že len tak odišiel. ak
+      niekto niečo vie tak napíšte kurva
+    effects: { trust_dano: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dano -> dano_talk_early
+
+  dano_talk_early:
+    type: message
+    text: >
+      DANO: čo vole ty si nový? hustý timing. fakt. marek je proste
+      najlepší chlap v tejto dedine. učil nás robiť bryndzu po starom,
+      brával nás na salaš, ukazoval nám hory.
+
+      a teraz som v piči lebo filip videl niečo divné tú noc pri potoku
+      ale nechce o tom hovoriť. vravel že to nič ale vole... to nič
+      nebolo jasné
+    effects: { trust_dano: "+10" }
+    choices:
+      - What did Filip see? -> dano_filip_hint
+      - Move on -> quest1_hub
+
+  dano_filip_hint:
+    type: message
+    text: >
+      DANO: neviem presne. bol na nočnej jazde na bajku nad dedinou a
+      videl niekoho pri markovom salaši. vravel že ten chlap fotil
+      salaš? alebo niečo také. a keď ho zbadal tak zdrhol.
+
+      filip sa bojí, vole. nechce hovoriť. skús mu najprv napísať
+      o bikoch alebo o snehu, potom možno povolí haha
+    effects: { trust_dano: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Oravská Lehota. A highland village
+      built around sheep, streams, and mountains. A young bryndza maker
+      who was exposing pollution. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Barbora (Marek's sister) -> barbora_q1
+      - Talk to Kristína (Marek's girlfriend) -> kristina_q1
+      - Check what Adam (Marek's father) is saying -> adam_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Barbora Q1 ---
+
+  barbora_q1:
+    type: tweet
+    from: barbora
+    text: >
+      ak má niekto správy o @marek_hrdina volajte mi prosím. jeho salaš
+      je zatvorený. ovce sú bez pastiera. nikdy by neodišiel bez toho
+      aby sa o ne postaral.
+    effects: { trust_barbora: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Barbora -> barbora_q1_talk
+
+  barbora_q1_talk:
+    type: message
+    text: >
+      BARBORA: Ďakujem že píšeš ale nepoznám ťa. Marek má veľa
+      kamarátov tu. Určite sa vráti.
+
+      ...Stále si to opakujem. Už tomu neverím.
+
+      [Barbora is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_barbora: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kristína Q1 ---
+
+  kristina_q1:
+    type: tweet
+    from: kristina
+    text: >
+      Marek mi volal v noci. Povedal že sa niečo deje. Povedal "ak sa
+      mi niečo stane, pozri sa na fabriku." Potom zložil. Nikdy predtým
+      takto nehovoril. @marek_hrdina prosím ozvi sa.
+    effects: { trust_kristina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Kristína -> kristina_q1_talk
+
+  kristina_q1_talk:
+    type: message
+    text: >
+      KRISTÍNA: Kto si? Ďalší čo mi povie nech sa upokojím? Môj priateľ
+      mi volal v noci, povedal "pozri sa na OravaDairy" a potom zmizol.
+
+      Posledné čo som od neho počula.
+
+      A ten food blogger — Matúš — ten mu posielal správy každý deň.
+      Marek mu blokol číslo a on si kúpil nové. To je normálne?
+    effects: { trust_kristina: "+10" }
+    choices:
+      - What do you think happened? -> kristina_theory
+      - Move on -> quest1_hub
+
+  kristina_theory:
+    type: message
+    text: >
+      KRISTÍNA: Myslím že OravaDairy ho umlčala. Mal dôkazy že vypúšťajú
+      odpad do potoka. Ale tiež myslím že ten blogger vie viac než
+      hovorí. Matúš sa objavil na salaši neohlásený minimálne päťkrát.
+      Fotil Markove veci. Marek mi vravel: "Ten chlap ma sleduje."
+
+      Pred mesiacom Marek zistil že mu niekto prehrabáva záznamy v
+      salaši. Myslel že to nič nie je. Ja si myslím že to niečo bolo.
+    effects: { trust_kristina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Adam Q1 ---
+
+  adam_q1:
+    type: tweet
+    from: adam
+    text: >
+      hľadám syna. šesť dní. hory, doliny, salaše. nič. kto vie
+      niečo nech sa ozve. otec hľadá syna.
+    effects: { trust_adam: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Adam -> adam_q1_talk
+
+  adam_q1_talk:
+    type: message
+    text: >
+      ADAM: Marek je môj syn. Naučil som ho robiť bryndzu, naučil som
+      ho starať sa o ovce. Nikdy by neodišiel bez slova. Nikdy by
+      nenechal ovce samé. To by neurobil.
+
+      Niekto mu ublížil. A ja ho nájdem.
+    effects: { trust_adam: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Marek went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Filip (was night-biking above the village) -> filip_interview
+      - Find Peter (forester, patrols at night) -> peter_interview
+      - Find Zuzana (goat farmer, early morning at the pasture) -> zuzana_interview
+      - Find Eva (baker, starts at 4am, saw something) -> eva_interview
+
+  # --- Filip (saw someone at the salaš) ---
+
+  filip_interview:
+    type: tweet
+    from: filip
+    text: >
+      nočná jazda na bajku bola divná vole. hore nad dedinou je teraz
+      taká hustá atmosféra. neviem čo sa deje ale niečo je zle
+    effects: { trust_filip: "+5" }
+    choices:
+      - Ask Filip about that evening -> filip_talk
+
+  filip_talk:
+    type: message
+    text: >
+      FILIP: vole ok ale nikomu to nehovor jasné. bol som hore nad
+      dedinou na bajku, taký nočný ride, okolo ôsmej večer. a videl
+      som pri markovom salaši chlapa. mal foťák a fotil okná, dvere,
+      zámky. keď ma zbadal tak zdrhol do auta.
+
+      a vole to bol ten food blogger. matúš. poznám jeho auto — taký
+      biely fiat s nálepkou zjedzslovensko. do piče.
+
+      nepovedal som to lebo kto mi uverí? nejaký 17ročný na bajku
+      v noci. jasné.
+    effects:
+      trust_filip: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Peter (forester, saw late-night vehicles) ---
+
+  peter_interview:
+    type: tweet
+    from: peter
+    text: >
+      Upozornenie: pohyb nepovolených vozidiel na lesných cestách
+      v nočných hodinách. Nočné kontroly budú zvýšené.
+    effects: { trust_peter: "+5" }
+    choices:
+      - Ask Peter what he saw -> peter_talk
+
+  peter_talk:
+    type: message
+    text: >
+      PETER: Bol som na nočnej obhliadke, okolo jedenástej. Videl som
+      Markovu Felíciu pri salaši. A vedľa nej čierne SUV. Značky
+      OravaDairy. Dvaja chlapi stáli pred salašom. Jedného som poznal —
+      Tomáš Sedlák, riaditeľ závodu.
+
+      O jedenástej v noci. Na horskom salaši.
+
+      Zapísal som to do služobného denníka. Nikto sa ma na to nepýtal.
+    effects:
+      trust_peter: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Zuzana (saw Marek fleeing) ---
+
+  zuzana_interview:
+    type: tweet
+    from: zuzana
+    text: >
+      vstávam o štvrtej k kozám. dnes ráno cesta nad dedinou nebola
+      prázdna. niekto bežal po chodníku smerom na hole. v tme. to
+      nebol turista.
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - Ask Zuzana what she saw -> zuzana_talk
+
+  zuzana_talk:
+    type: message
+    text: >
+      ZUZANA: Vstávam o štvrtej ráno ku kozám. To ráno — ráno po
+      Markovom poslednom poste — som videla niekoho na horskom chodníku.
+      Bežal. Chlap, niesol batoh, smerom na Babiou horu. Bola ešte
+      tma. Bežal rýchlo, akoby sa bál.
+
+      Zavolala som ale nezastavil. Myslela som že turista ale... kto
+      ide na Babiu horu o štvrtej ráno s batohom?
+
+      Keď som počula o Marekovi, dala som si to dokopy. To bol on.
+      Utekal pred niečím.
+    effects:
+      trust_zuzana: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Eva (saw car speeding) ---
+
+  eva_interview:
+    type: tweet
+    from: eva
+    text: >
+      Pečiem od štvrtej ako vždy. Ale to ráno jedno auto letelo cez
+      dedinu. Oveľa rýchlejšie než normálne na horskej ceste.
+    effects: { trust_eva: "+5" }
+    choices:
+      - Ask Eva what she saw -> eva_talk
+
+  eva_talk:
+    type: message
+    text: >
+      EVA: Otváram pekáreň o štvrtej každý deň. To ráno som práve
+      otvorila okenice a okolo preletelo auto — rýchlo, veľmi rýchlo
+      na horskú cestu. Čierne SUV. Potom asi o dve minúty druhé auto.
+      Menšie, staršie. Akoby naháňačka.
+
+      To druhé auto odbočilo smerom na starý mlyn pri potoku. Prvé
+      pokračovalo na hlavnú cestu smerom na Dolný Kubín.
+
+      Povedala som to polícii. Zapísali to. A tým to skončilo.
+    effects:
+      trust_eva: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Kristína (girlfriend)
+      and Katarína (saw the blogger watching the salaš).
+    choices:
+      - Talk to Kristína about that night -> kristina_interview
+      - Talk to Katarína -> katarina_interview
+      - Find Filip -> filip_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Peter -> peter_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Zuzana -> zuzana_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Eva -> eva_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Kristína (last to hear from Marek) ---
+
+  kristina_interview:
+    type: tweet
+    from: kristina
+    text: >
+      tá fotka na markovom účte. to nie je on. marek nikdy nepostuje
+      bez popisu. marek nepostuje o druhej ráno. niekto iný to dal
+      hore.
+    effects: { trust_kristina: "+5" }
+    choices:
+      - DM Kristína -> kristina_talk_low
+        when:
+          state: trust_kristina
+          lt: 50
+      - DM Kristína -> kristina_talk_high
+        when:
+          state: trust_kristina
+          gte: 50
+
+  kristina_talk_low:
+    type: message
+    text: >
+      KRISTÍNA: Vážim si záujem ale fakt nechcem hovoriť s cudzími
+      ľuďmi o tomto.
+
+      [Kristína needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_kristina: "+5" }
+    choices:
+      - Share what you've learned about the night -> kristina_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  kristina_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the salaš, the
+      factory men, the running figure. Kristína is silent for a while.
+
+      KRISTÍNA: Ty ho fakt hľadáš. Ok. Poviem ti.
+    effects: { trust_kristina: "+25" }
+    choices:
+      - What happened that night? -> kristina_talk_high
+
+  kristina_talk_high:
+    type: message
+    text: >
+      KRISTÍNA: Volal mi okolo jedenástej. Bol vydesený. Vravel "vedia
+      čo mám." Chytil notebook, externý disk so všetkými fotkami.
+
+      Pýtala som sa kto. Vravel "fabrika. Poslali ľudí na salaš." Potom
+      povedal ešte niečo — "a ten je tu tiež. Ten je tu vždy."
+
+      Nechcel povedať kto "ten" je. Objal by ma keby mohol, povedal
+      "neboj sa" a odišiel s batohom. To bolo posledné. Ráno bola
+      Felícia preč a na účte tá šedá fotka.
+    effects:
+      trust_kristina: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Katarína (saw the blogger at the salaš) ---
+
+  katarina_interview:
+    type: message
+    text: >
+      KATARÍNA: ok toto je fakt creepy ale ten food blogger — matúš —
+      som ho videla trikrát pri markovom salaši večer. proste stál tam
+      a fotil. alebo čakal. hrozne divné vole.
+
+      posledný raz to bolo dva dni predtým ako marek zmizol. sedel
+      v aute oproti salašu. svetlá vypnuté. proste sedel.
+    effects:
+      trust_katarina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Matúš Hrček (food blogger) photographing Marek's salaš (Filip)
+      23:00 — OravaDairy car at the salaš, Tomáš Sedlák present (Peter)
+      23:00 — Marek calls Kristína, shaken, grabs laptop and drives (Kristína)
+      04:00 — Man running on mountain path toward Babia hora (Zuzana)
+      04:15 — Two cars speeding through village, one toward old mill (Eva)
+
+      OravaDairy confronted Marek at the salaš. He fled, grabbed his
+      evidence, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The dumping: What is OravaDairy hiding? Who ordered the
+        confrontation? Why is the starosta protecting them?
+      — The obsession: What is Matúš Hrček really doing? Why was he
+        photographing the salaš?
+    choices:
+      - Investigate the corporate dumping -> corruption_hub
+      - Investigate Matúš the blogger -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE DUMPING THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      OravaDairy is hiding something. Marek had proof. Now he's gone
+      and his evidence is missing from the salaš.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the water quality records -> water_records
+      - Talk to Simona the journalist -> simona_interview
+      - Talk to Marta (OravaDairy technician) -> marta_interview
+      - Talk to Andrea (environment deputy) -> andrea_interview
+      - Check the Čistá Orava association -> asso_investigation
+      - Talk to Milan about the dumping -> milan_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Water Records ---
+
+  water_records:
+    type: message
+    text: >
+      The regional water authority's public database shows water quality
+      testing from six sites along the Orava streams. The data for
+      the stream below OravaDairy is marked "ČAKÁ NA SCHVÁLENIE" —
+      the only site with that status.
+
+      Marek's records, shared with the Čistá Orava association for
+      safety, show he took 15 water samples near the factory outfall in
+      the past month. The last entry: "Nezdokumentovaný výpust. Srvátka
+      a chemický odpad. Koncentrácie ďaleko nad limitom."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Simona ---
+
+  simona_interview:
+    type: message
+    text: >
+      SIMONA: O zdrojoch nehovorím. Bodka.
+    effects: { trust_simona: "+5" }
+    choices:
+      - Show Simona the evidence you have -> simona_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  simona_with_evidence:
+    type: message
+    text: >
+      SIMONA: ...máš viac než som čakala.
+
+      Dobre. Marek a ja sme spolupracovali. Mal fotky nelegálneho
+      výpustu — OravaDairy má potrubie čo nie je v žiadnom povolení.
+      Mal vzorky vody s úrovňami BSK päťnásobok limitu. Srvátka,
+      fosfáty, čpavok.
+
+      Mali sme to publikovať spolu. Potom zmizol. A dva dni na to
+      mi niekto vykradol auto a ukradol záložný disk.
+
+      Marek je nažive. Ozval sa mi raz, z prepaid telefónu. Vravel
+      že sa skrýva. Vravel "vyhrážali sa mi na salaši a ešte niekto
+      iný ma nechá na pokoji."
+
+      Nemôžem ti povedať kde je. Ale s dosť dôkazmi môžem publikovať
+      a bude bezpečné aby sa vrátil.
+    effects:
+      trust_simona: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> simona_hint
+      - Back to investigation hub -> investigation_hub
+
+  simona_hint:
+    type: message
+    text: >
+      SIMONA: Fabrika poslala riaditeľa — Sedláka — a nejakého právnika
+      na salaš v noci. Povedali mu nech odovzdá všetko alebo bude čeliť
+      súdnym žalobám. Zastrašovanie prezlečené za právny proces.
+
+      Ale vravel aj niečo o niekom kto sa okolo neho motá. Niekto kto
+      mu prehrabáva veci. Niekto kto vždy vie kde je. To je iný
+      problém.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Marta (OravaDairy whistleblower) ---
+
+  marta_interview:
+    type: message
+    text: >
+      MARTA: Pracujem v OravaDairy. Som len techníčka. Robím testy,
+      píšem správy.
+
+      Ale správy čo píšem... nie sú vždy správy čo sa posielajú na
+      inšpekciu.
+    effects: { trust_marta: "+10" }
+    choices:
+      - What do you mean? -> marta_detail
+
+  marta_detail:
+    type: message
+    text: >
+      MARTA: Meriam BSK, fosfáty, čpavok, ťažké kovy. Moje čísla
+      idú nadriadenému. Niekde medzi mojím stolom a úradným hlásením
+      sa zmenia. Nižšie. Vždy nižšie.
+
+      Markove vzorky z potoka pod fabrikou zodpovedali MOJIM pôvodným
+      číslam, nie tým v oficiálnych správach. Mal nezávislý dôkaz že
+      OravaDairy falšuje údaje o vypúšťaní.
+
+      Bojím sa. Mám rodinu. Ale mám kópie pôvodných správ. Ak ma
+      niekto ochráni, zdieľam ich.
+    effects:
+      trust_marta: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Andrea ---
+
+  andrea_interview:
+    type: message
+    text: >
+      ANDREA: Ako zástupkyňa starostu a predsedníčka komisie životného
+      prostredia beriem tieto obvinenia vážne. Ale OravaDairy zamestnáva
+      120 ľudí v obci. Starosta trvá na tom že musíme "udržiavať dialóg."
+
+      Neoficiálne? Videla som inšpekčné správy. OravaDairy prejde vždy.
+      Ale tie inšpekcie sú ohlásené dva týždne vopred. Upracú pred
+      príchodom inšpektorov.
+
+      A ešte niečo. Starosta Vrábel má zmluvu s OravaDairy na odvoz
+      biologického odpadu. Cez firmu jeho švagra. Úplne legálne, jasné.
+      Kurva legálne.
+
+      Marek mal neohlásené dáta. Preto je to nebezpečné.
+    effects:
+      trust_andrea: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Čistá Orava ---
+
+  asso_investigation:
+    type: tweet
+    from: ochrana_vod
+    text: >
+      VAROVANIE: Hlásenie abnormálneho zafarbenia vody v potoku pod
+      závodom OravaDairy. Fotodokumentácia a odbery prebiehajú.
+      Žiadame neohlásenu inšpekciu.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Združenie Čistá Orava dokumentuje kvalitu vody tri roky. Ich
+      dáta ukazujú jasný vzorec: výkyvy BSK a fosfátov zodpovedajú
+      výrobnému harmonogramu OravaDairy. Vyššie v pracovné dni, nižšie
+      cez víkendy. Vyššie v noci, nižšie cez deň.
+
+      Vzorec je nepopierateľný. Toto je zámerné, pravidelné, nelegálne
+      vypúšťanie odpadu načasované tak aby sa vyhlo detekcii.
+
+      Marek bol člen. Prispel väčšinou fotografií a odberov vzoriek.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Milan dumping ---
+
+  milan_dumping:
+    type: message
+    text: >
+      MILAN: Ukážem ti niečo. Minulý mesiac som šiel na potok pod
+      fabriku a našiel som toto — plastový sud, rozožratý, tiekol z
+      neho. Bol na ňom nápis "srvátka" a sériové číslo OravaDairy.
+
+      Odfotil som to a poslal Marekovi. Vravel že to je chýbajúci
+      dielik — dôkaz že vyhadzujú pevný odpad, nie len vypúšťajú.
+      Sudy v potoku.
+
+      Stále mám fotky. A sériové číslo.
+    effects:
+      trust_milan: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Matúš Hrček. Food blogger. 85k followers. Something more?
+      Someone was photographing Marek's salaš. Someone was going
+      through his recipes. Someone was always there, uninvited.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Matúš's blog activity -> blog_activity
+      - Talk to Kristína about Matúš -> kristina_matus
+        when:
+          state: trust_kristina
+          gte: 20
+      - Talk to Filip (more detail on the salaš incident) -> filip_detail
+      - Talk to Lucia the pharmacist -> lucia_interview
+      - Check the anonymous account @lenka_durcova -> lenka_investigation
+      - Talk to Jozef the pub owner (more on Matúš) -> jozef_matus_detail
+        when:
+          state: trust_jozef
+          gte: 40
+      - Talk to Nadporučík Bača -> juraj_interview
+        when:
+          state: trust_juraj
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Blog Activity ---
+
+  blog_activity:
+    type: message
+    text: >
+      Matúš Hrček's blog @zjedzslovensko: 85,000 followers. Video
+      content about traditional Slovak food. His most popular posts
+      are all about Orava bryndza — specifically Marek's.
+
+      Last 6 months: 47 posts mentioning or featuring Marek's salaš.
+      12 videos shot at or near the salaš — many appear to be filmed
+      without Marek's knowledge. Wide shots through windows. Zoomed-in
+      photos of recipe notes on Marek's desk.
+
+      Comments from Matúš under Marek's posts increase over time:
+      Month 1: "Úžasná práca! Tradícia žije!"
+      Month 3: "Prečo neodpovieš na moje správy? Chcem len spolupracovať."
+      Month 5: "Videl som ťa na jarmoku. Mal si čas na iných, na mňa nie?"
+
+      Marek blocked him twice. Matúš created new accounts both times.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kristína on Matúš ---
+
+  kristina_matus:
+    type: message
+    text: >
+      KRISTÍNA: Matúš? Ten chlap robil Marekovi zo života peklo. Chodil
+      na salaš bez ohlásenia. Fotil Markove recepty a dával ich na blog
+      akoby boli jeho. Komentoval každý jeden post do pár minút.
+
+      Marek mu povedal jasne a slušne že nemá záujem spolupracovať.
+      Matúš vravel že rozumie. A nič sa nezmenilo. Proste... bol stále
+      tam. Vždy tam.
+
+      Pred mesiacom Marek zistil že mu niekto prehrabáva veci na salaši.
+      Jeho zápisky boli preložené, foťák bol inde než ho nechal.
+      Podozrieval Matúša ale nemal dôkaz.
+    effects:
+      trust_kristina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Filip detail ---
+
+  filip_detail:
+    type: message
+    text: >
+      FILIP: vole ok nepovedal som všetko. keď som videl matúša pri
+      salaši, mal v ruke niečo. taký malý prístroj. a dával to pod
+      okno na parapete. ako skryl to tam za kvetináč.
+
+      vole vyzeralo to jak mikrokamera. taký malý čierny box. fakt
+      hustý. v zmysle hrozný.
+
+      mal som niečo povedať ale vole kto by mi veril. 17ročný na bajku
+      v noci. haha jasné.
+    effects:
+      trust_filip: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lucia ---
+
+  lucia_interview:
+    type: message
+    text: >
+      LUCIA: Toto je dôverné ale som lekárnička, nie kňaz. Matúš Hrček
+      chodí pravidelne. Kupuje veci čo... naznačujú že nespí. Lieky
+      proti úzkosti, tabletky na spanie, energetické doplnky. Vzorec
+      niekoho pod extrémnym stresom.
+
+      A raz sa ma veľmi ležérne opýtal či predávame sledovacie
+      zariadenia. Povedala som "toto je lekáreň, nie Alza." Zasmial
+      sa. Nad tým som znova nepremýšľala až kým Marek nezmizol.
+    effects:
+      trust_lucia: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lenka (anonymous account) ---
+
+  lenka_investigation:
+    type: tweet
+    from: lenka
+    text: >
+      Mal počúvať. Snažil som sa ho chrániť. Nikto iný nechápal jeho
+      prácu ako ja.
+    choices:
+      - Look at this account's history -> lenka_posts
+
+  lenka_posts:
+    type: message
+    text: >
+      @lenka_durcova: account created 7 months ago. Posts are all
+      about Marek's work. Comments on every bryndza photo, every
+      recipe post, every salaš update. The tone shifts over time:
+
+      Month 1: "Neuveriteľná práca. Robíš čo si nikto iný netrúfa."
+      Month 3: "Prečo neodpovieš na moje správy? Chcem len pomôcť."
+      Month 5: "Vidím ťa na jarmoku s inými ľuďmi. Na nich máš čas?"
+      Month 6: "Viem kde chodíš. Viem tvoj rozvrh. Som vždy blízko."
+
+      The account has no photos, no personal details. Just Marek.
+      Only Marek.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> lenka_style
+
+  lenka_style:
+    type: message
+    text: >
+      Comparing @lenka_durcova with @zjedzslovensko (Matúš):
+
+      Same use of food production terminology. Same style of
+      photographing traditional food — the specific angles, the
+      lighting preferences. Same knowledge of Marek's production
+      schedule that only someone watching closely would have.
+
+      And one post from @lenka_durcova: "Tvoja šarža z 15. bola
+      najlepšia." Šarža 15 is an internal production number. Marek
+      never posted that publicly. Only someone who was at the salaš
+      and saw the labels would know.
+
+      It's Matúš. The anonymous account is Matúš.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Jozef on Matúš (deeper) ---
+
+  jozef_matus_detail:
+    type: message
+    text: >
+      JOZEF: Marek mi nechal niečo. Zapečatenú plastovú krabicu.
+      Vravel: "Ak sa ma niekto opýta na to čo je v potoku, daj mu
+      toto."
+
+      Vyzeral vystrašený. Vravel že má kópie všetkého ale potrebuje
+      jednu sadu mimo salaša, niekde kde by nikto nehľadal. Hostinec
+      sa zdal ideálny.
+
+      Hľadáš pravdu, vole. Tak tu to máš.
+    effects: { trust_jozef: "+10" }
+    choices:
+      - What's inside? -> jozef_case
+
+  jozef_case:
+    type: message
+    text: >
+      Jozef vyťahuje spod baru plastovú vodotesnú krabicu.
+
+      JOZEF: Vravel že prídeš. Ber to.
+
+      Vnútri: USB kľúč a sada vytlačených fotografií. Fotky ukazujú
+      potrubie — nie oficiálny výpust, ale druhé, skryté — a sudy v
+      potoku. USB kľúč obsahuje dáta z rozborov vody, chemickú analýzu,
+      a Markovu podrobnú správu.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Nadporučík Bača ---
+
+  juraj_interview:
+    type: message
+    text: >
+      NADPORUČÍK BAČA: Neoficiálne — a myslím úplne neoficiálne —
+      chcel som vyšetrovať OravaDairy. Nadriadený mi povedal nech to
+      nechám. Vravel že okres má "kompetenciu." To je kód pre "nechaj
+      to tak."
+
+      Situácia s Hrčekom je iná. O tej som nevedel až doteraz. Ak
+      máš dôkazy o stalkingu, môžem konať. To je jasne moja
+      kompetencia.
+
+      Prines mi niečo solídne a prípad znova otvorím.
+    effects:
+      trust_juraj: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Marek than anyone in Oravská Lehota. Who is responsible?
+    choices:
+      - Confront Matúš Hrček (the obsessive blogger) -> confront_matus
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Tomáš Sedlák (the factory director) -> confront_tomas
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Starosta Vrábel (political protection) -> confront_starosta
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Matúš (Best Ending) ---
+
+  confront_matus:
+    type: message
+    text: >
+      You present your evidence to Matúš Hrček:
+
+      "I know @lenka_durcova is your account. I know you installed a
+      camera at Marek's salaš. I know you went through his recipes
+      and notes. I know you were photographing his property. I have
+      witnesses and I have the blog archives."
+    choices:
+      - Send -> matus_response
+
+  matus_response:
+    type: message
+    text: >
+      Matúš doesn't reply for a long time. Then:
+
+      MATÚŠ: Ty nechápeš. Ja som ho chránil. Robil úžasnú prácu
+      a nikto si to nevážil okrem mňa. Chcel som mu pomôcť zviditeľniť
+      sa. Všetko čo som robil bolo preto lebo mi na jeho práci záleží.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Nadporučík Bača. And to
+      Simona Kolarčíková.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Nadporučík Bača reopens the case. With your evidence — the
+      anonymous account, the hidden camera, the blog archives, the
+      witness testimonies — Matúš is arrested for stalking and
+      harassment. A camera is recovered from Marek's salaš window.
+      Matúš's phone contains hundreds of photos of Marek taken without
+      his knowledge.
+
+      Simona Kolarčíková, finally in possession of Marek's full
+      evidence package, publishes the OravaDairy story in SME. The
+      inšpekcia životného prostredia orders an unannounced inspection.
+      The factory is shut down pending environmental remediation. Tomáš
+      Sedlák faces criminal charges for falsifying discharge reports.
+      Starosta Vrábel's contract with OravaDairy through his
+      brother-in-law's company is exposed. He resigns.
+
+      And Marek Hrdina, reading the story from a friend's house in
+      Martin, calls his sister for the first time in nine days.
+
+      "Idem domov."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: marek
+    text: >
+      hory neklamú. a ľudia z oravskej lehoty tiež nie. ďakujem že
+      ste to nevzdali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Tomáš (Partial Ending) ---
+
+  confront_tomas:
+    type: message
+    text: >
+      You present the pollution evidence to Tomáš Sedlák:
+
+      "I have photographs of the undeclared outfall pipe. I have water
+      samples showing BSK levels five times the legal limit. I have
+      your original lab reports showing the data was falsified. I have
+      the barrel with your serial number."
+    choices:
+      - Send -> tomas_response
+
+  tomas_response:
+    type: message
+    text: >
+      TOMÁŠ: Táto konverzácia bude postúpená nášmu právnemu oddeleniu.
+      Akákoľvek publikácia defamačných materiálov bude mať za následok
+      okamžité právne kroky. OravaDairy vždy pôsobila v rámci
+      regulačných požiadaviek.
+
+      But it's too late. You've sent the evidence to Simona, to
+      Čistá Orava, and to the regional inspectorate.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. OravaDairy is ordered to halt
+      discharge pending investigation. The factory may close. A hundred
+      and twenty jobs hang in the balance. The village is divided.
+
+      But Marek?
+
+      Without the stalking evidence, Matúš is never investigated.
+      He continues his blog. He continues to monitor Marek's accounts.
+      He creates a new anonymous profile.
+
+      Three months later, Marek reads about OravaDairy online. He
+      returns quietly. He changes his salaš locks. He stops working
+      alone. He checks his windows every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Marek walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marek
+    text: "som doma. voda je čistejšia. zvyšok... uvidíme."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Starosta (Wrong Ending) ---
+
+  confront_starosta:
+    type: message
+    text: >
+      You confront Starosta Vrábel with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> starosta_response
+
+  starosta_response:
+    type: tweet
+    from: roman
+    text: >
+      Môj klient berie na vedomie vaše obvinenia. Akékoľvek verejné
+      šírenie defamačných vyjadrení bude mať za následok okamžité
+      právne konanie. — Kancelária Kováč & Partners, Žilina
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The starosta's lawyer buries your accusation. Without a direct
+      link between Vrábel and OravaDairy's dumping — and there isn't
+      one beyond political protection and a contract through his
+      brother-in-law — your evidence is insufficient.
+
+      OravaDairy continues to operate. Matúš continues to watch.
+      Marek stays in hiding.
+
+      Six months later, @lenka_durcova creates a new account. It
+      follows Marek's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: ORAVSKÁ LEHOTA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Marek's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or needs help:
+      Linka dôvery: 0800 500 333
+      Polícia SR: 158
+      Slovenská inšpekcia životného prostredia: 02/58 10 81 11

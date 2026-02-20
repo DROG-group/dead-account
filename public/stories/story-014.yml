@@ -1,0 +1,1580 @@
+# DEAD ACCOUNT — Story 014: Skelné Údolí (Czech Republic)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-014.yml
+#
+# Player investigates the disappearance of young glassblower/artist
+# Marek Dvořák in the fictional Bohemian glassmaking town of Skelné Údolí.
+
+meta:
+  title: "Dead Account — Skelné Údolí"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_tereza: 0
+    trust_jakub: 0
+    trust_karolina: 0
+    trust_pavel: 0
+    trust_radek: 0
+    trust_jana: 0
+    trust_libor: 0
+    trust_zuzana: 0
+    trust_milan: 0
+    trust_petra: 0
+    trust_ondrej: 0
+    trust_eva: 0
+    trust_hana: 0
+    trust_tomas: 0
+    trust_vojtech: 0
+    trust_dagmar: 0
+    trust_filip: 0
+    trust_lucie: 0
+    trust_anon: 0
+    trust_nadporucik: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    toxic_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nový obyvatel
+    bio: "právě jsem se přestěhoval do skelného údolí. objevuju krásy šumavy"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "SkelneUdoli.social"
+    description: "Vítejte na komunitní instanci města Skelné Údolí"
+    avatar_url: /gamepatch/assets/dead-account/skelnoudoli_bot.png
+
+  npcs:
+    # === Marek's Inner Circle ===
+    marek:
+      name: "Marek Dvořák"
+      bio: "sklář | artist | sklo je živý materiál | skelné údolí navždy"
+      avatar: avatars/marek.jpg
+    tereza:
+      name: "Tereza Nováková"
+      bio: "spolubydlící marka | učitelka ZŠ | káva a knížky | skelné údolí"
+      avatar: avatars/tereza.jpg
+    jakub:
+      name: "Jakub Dvořák"
+      bio: "markův brácha | praha | IT | jestli mu někdo ublížil tak já ho najdu"
+      avatar: avatars/jakub.jpg
+    karolina:
+      name: "Karolína Šťastná"
+      bio: "markova přítelkyně | grafický design | liberec | kde jsi marku"
+      avatar: avatars/karolina.jpg
+
+    # === Glassmaking World ===
+    pavel:
+      name: "Pavel Červenka"
+      bio: "mistr sklář | 35 let u pece | Sklárna Údolí | tradice je všechno"
+      avatar: avatars/pavel.jpg
+    radek:
+      name: "Radek Kříž"
+      bio: "ředitel Sklárny Údolí | rodinná tradice | #českésklo"
+      avatar: avatars/radek.jpg
+    sklarna:
+      name: "Sklárna Údolí"
+      bio: "Tradiční česká sklárna | Založena 1876 | Umělecké sklo | Exkurze"
+      avatar: avatars/sklarna.jpg
+
+    # === Local Government ===
+    milan:
+      name: "Milan Procházka"
+      bio: "starosta Skelného Údolí | pro občany | od roku 2018 | #NašeÚdolí"
+      avatar: avatars/milan.jpg
+    dagmar:
+      name: "Dagmar Benešová"
+      bio: "místostarostka | životní prostředí | Skelné Údolí | zelená budoucnost"
+      avatar: avatars/dagmar.jpg
+    radnice:
+      name: "Město Skelné Údolí"
+      bio: "Oficiální účet | Úřední hodiny: Po-Pá 8-16 | Informace pro občany"
+      avatar: avatars/radnice.jpg
+
+    # === Local Business & Community ===
+    zuzana:
+      name: "Zuzana Králová"
+      bio: "hospoda U Skláře | svíčková | plzeň | živá muzika v pátek"
+      avatar: avatars/zuzana.jpg
+    hospoda:
+      name: "Hospoda U Skláře"
+      bio: "Tradiční česká kuchyně | Pivo z tanku | Živá muzika | Od roku 1923"
+      avatar: avatars/hospoda.jpg
+    libor:
+      name: "Libor Marek"
+      bio: "lesník | správa šumavského parku | znám každej strom v údolí"
+      avatar: avatars/libor.jpg
+    petra:
+      name: "Petra Horáčková"
+      bio: "lékárnice | Skelné Údolí | pohotovost i o víkendu"
+      avatar: avatars/petra.jpg
+    hana:
+      name: "Hana Veselá"
+      bio: "pekařství Veselá | rohlíky od 5 ráno | koláče jako od babičky"
+      avatar: avatars/hana.jpg
+    vojtech:
+      name: "Vojtěch Navrátil"
+      bio: "knihkupectví & antikvariát | staré mapy | nové příběhy | skelné údolí"
+      avatar: avatars/vojtech.jpg
+
+    # === Journalist ===
+    jana:
+      name: "Jana Pokorná"
+      bio: "novinářka | regionální zprávy | životní prostředí | tipy: jana@pokorna-press.cz"
+      avatar: avatars/jana.jpg
+
+    # === Factory / Corporate ===
+    ondrej:
+      name: "Ondřej Bartoš"
+      bio: "technický ředitel | Bohemia Chemical s.r.o. | průmysl a region"
+      avatar: avatars/ondrej.jpg
+    bohemia_chem:
+      name: "Bohemia Chemical s.r.o."
+      bio: "Chemická výroba | Skelné Údolí | ISO certifikace | Odpovědný průmysl"
+      avatar: avatars/bohemia_chem.jpg
+
+    # === Teens ===
+    tomas:
+      name: "Tomáš"
+      bio: "17 | skate & graffiti | skelné údolí je nuda ale marek to chápal"
+      avatar: avatars/tomas.jpg
+    filip:
+      name: "Filip"
+      bio: "16 | bmx | youtube | furt někde venku"
+      avatar: avatars/filip.jpg
+    lucie:
+      name: "Lucie"
+      bio: "15 | fotky | umění | marek mě naučil vidět krásu ve skle"
+      avatar: avatars/lucie.jpg
+
+    # === Media & Community ===
+    zpravy_udoli:
+      name: "Zprávy Skelné Údolí"
+      bio: "Regionální zpravodajství | tipy: redakce@zpravy-udoli.cz"
+      avatar: avatars/zpravy_udoli.jpg
+    meteo_sumava:
+      name: "Počasí Šumava"
+      bio: "Předpověď a výstrahy | Automatická stanice | Aktualizace každou hodinu"
+      avatar: avatars/meteo_sumava.jpg
+    ochrana_prirody:
+      name: "Spolek Čistý Potok"
+      bio: "Ochrana přírody | Šumava | Kvalita vody | Dobrovolníci vítáni"
+      avatar: avatars/ochrana_prirody.jpg
+
+    # === Suspicious / Other ===
+    eva:
+      name: "Eva Holubová"
+      bio: "technik | Bohemia Chemical | dělám svou práci a nic víc"
+      avatar: avatars/eva.jpg
+    anon:
+      name: "SkelnyDuch"
+      bio: "."
+      avatar: avatars/anon.jpg
+    nadporucik:
+      name: "Nadporučík Krátký"
+      bio: "Policie ČR | Obvodní oddělení Skelné Údolí | Tísňová linka: 158"
+      avatar: avatars/nadporucik.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SKELNÉ ÚDOLÍ
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to skelnoudoli.social — the community Mastodon instance for
+      the Bohemian glassmaking town of Skelné Údolí, nestled in the
+      Šumava hills.
+
+      The local feed is full of anxiety today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name everywhere:
+      @marek_dvorak.
+
+      A young glassblower. An artist. He created stunning glass sculptures
+      inspired by Šumava's forests and streams. People loved him.
+      He hasn't posted in six days.
+    choices:
+      - Look at his profile -> marek_profile
+
+  marek_profile:
+    type: tweet
+    from: marek
+    text: "Potok za sklárnou smrdí chemikáliema. Barva vody je úplně špatná. Mám fotky. Mám vzorky. Tohle není normální."
+    choices:
+      - That's his last real post... -> strange_photo
+
+  strange_photo:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurred photo of a glass furnace. Shot at a weird angle, posted
+      at 2am. No caption. No hashtags.
+
+      His friends say that's not how he posts. Marek always wrote long
+      captions about his craft and the meaning behind each piece.
+      The police say he probably left town. Nobody buys it.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: nadporucik
+    text: >
+      Přijali jsme oznámení o pohřešované osobě z obce Skelné Údolí.
+      V tuto chvíli nemáme důvod se domnívat, že došlo k trestnému činu.
+      Informace sdělte na lince 158 nebo na obvodním oddělení.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are all over the place. His roommate @tereza is
+      panicking. His brother @jakub is driving down from Prague.
+      His girlfriend @karolina is posting desperate messages from Liberec.
+      The old master glassblower @pavel hasn't said a word — which is
+      strange, because he and Marek were inseparable at the workshop.
+
+      And the local journalist @jana is weirdly quiet.
+
+      Nobody believes Marek just "left town." Not a guy who loved this
+      place more than anything.
+    effects: { trust_tereza: "+5", trust_jakub: "+5" }
+    choices:
+      - Start following Marek's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Skelné Údolí. Follow Marek's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Zuzana (pub owner, knows everyone) -> zuzana_intro
+      - Talk to Libor (forester, saw the polluted stream) -> libor_intro
+      - Talk to Tomáš (teen, seems upset) -> tomas_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a mix of worry about Marek and the usual small-town
+      rhythms: bus schedules, the bakery's weekend koláče specials,
+      weather warnings about fog in the valley.
+
+      Key names surface: Tereza (roommate, teacher), Pavel (master
+      craftsman, mentor — conspicuously silent), Karolína (girlfriend
+      in Liberec, frantic), and the teens — Tomáš, Filip, Lucie — who
+      admired Marek's art.
+
+      Also prominent: Bohemia Chemical s.r.o., the chemical plant
+      upstream from the town. Their posts are bland corporate PR.
+      Marek's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Zuzana -> zuzana_intro
+      - Talk to Libor -> libor_intro
+      - Talk to Tomáš -> tomas_intro
+
+  # --- Zuzana (social map) ---
+
+  zuzana_intro:
+    type: tweet
+    from: zuzana
+    text: >
+      Dneska je v hospodě ticho. @marek_dvorak, tvoje pivo čeká.
+      Vrať se, vole.
+    effects: { trust_zuzana: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Zuzana -> zuzana_talk
+
+  zuzana_talk:
+    type: message
+    text: >
+      ZUZANA: Ty seš novej? No, vítej. Horší timing jsi vybrat nemoh.
+      Celý údolí je vzhůru nohama kvůli Markovi.
+
+      Tak hele, řeknu ti kdo je kdo. Tereza je jeho spolubydlící, učí
+      na základce, hrozně hodná holka, teď je z toho úplně na dně.
+      Pavel Červenka — ten starý mistr sklář — ten Marka vedl od
+      chvíle, kdy přišel do sklárny. Jako otec a syn. Ale v poslední
+      době... nevím, něco mezi nima bylo. Pavel se choval divně.
+
+      A pak je tu Jana Pokorná, novinářka. Ona a Marek na něčem
+      spolupracovali. Něco ohledně tý chemičky nad městem. Od tý doby
+      co Marek zmizel, Jana mlčí. To není jako ona.
+
+      Jo, a Bohemia Chemical — těm nevěř ani slovo. Kurva, vím
+      co říkám, smrdí to tu chemikáliema a oni tvrdí, že všechno je
+      v normě.
+    effects: { trust_zuzana: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Pavel -> zuzana_pavel
+      - Ask about Bohemia Chemical -> zuzana_chemical
+      - Thank her and move on -> quest1_hub
+
+  zuzana_pavel:
+    type: message
+    text: >
+      ZUZANA: Pavel? Vole, ten chlap je legenda. Třicet pět let
+      u pece. Nejlepší sklář v celým kraji. Když Marek přišel před
+      třema rokama, Pavel ho vzal pod křídla. Učil ho všechno.
+      Marek říkal, že Pavel je nejlepší učitel, jakýho kdy měl.
+
+      Jenže pak... Marek začal dělat vlastní věci. Moderní sklo,
+      experimenty, sochy. Získal cenu v Praze. Začali o něm psát
+      v novinách. A Pavel... hele, nevím přesně, ale vidím, jak se
+      na Marka díval, když myslel, že ho nikdo nevidí. Fakt hustý
+      pohled. Jako kdyby ho to žralo zevnitř.
+
+      Marek mi jednou řekl: "Pavel mě nechce pustit." Myslela jsem,
+      že mluví profesionálně. Teď si tím nejsem jistá.
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - Ask about Bohemia Chemical -> zuzana_chemical
+      - Move on -> quest1_hub
+
+  zuzana_chemical:
+    type: message
+    text: >
+      ZUZANA: Ta fabrika tam stojí od devadesátek. Dělaj průmyslový
+      chemikálie, rozpouštědla, hovno ví co přesně. Město to
+      tolerovalo, protože dali lidem práci. Ale ten potok za
+      sklárnou — ten, co teče z kopce od fabriky — ten smrdí čím
+      dál víc. Ryby v něm nežijou už dva roky.
+
+      Marek byl první, kdo tam fakt šel s foťákem a s lahvičkama
+      na vzorky. Měl důkazy, říkal. Pořádný důkazy. A za dva týdny
+      je pryč.
+
+      Kurva, no řekni.
+    effects: { trust_zuzana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Libor (forester, saw the stream) ---
+
+  libor_intro:
+    type: tweet
+    from: libor
+    text: >
+      dvacet let hlídám tyhle lesy. potok od bohemia chemical je
+      mrtvej. @marek_dvorak měl pravdu. a teď zmizel. zamyslete se.
+    effects: { trust_libor: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Libor -> libor_talk
+
+  libor_talk:
+    type: message
+    text: >
+      LIBOR: Znám Šumavu jako vlastní dlaň. Každou pěšinu, každej
+      potok, každýho jezevce. A říkám ti — voda z údolí nad fabrikou
+      je čistá jako slza. Pod fabrikou? Oranžová. Smrdí po
+      chemikáliích. Ryby tam chcípaly, žáby zmizely.
+
+      Marek tam chodil, bral vzorky, fotil. Jednou jsem ho potkal
+      v noci na stezce nad fabrikou. Měl foťák a čelovku. Říkal,
+      že fotí, jak v noci pouštěj odpady do potoka.
+
+      A pak — šups, pryč. Myslíš, že je to náhoda? Já na náhody
+      v lese nevěřím.
+    effects: { trust_libor: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> libor_night
+      - Move on -> quest1_hub
+
+  libor_night:
+    type: message
+    text: >
+      LIBOR: Noc předtím, než zmizel — byl jsem na obchůzce, kolem
+      jedný ráno. Viděl jsem světlo v sklárně. To by nebylo divný,
+      někdy pracujou pozdě. Ale bylo tam i auto, který tam normálně
+      nestojí. Černý SUV. A u zadního vchodu stál chlap — Pavel
+      Červenka.
+
+      Ve dvě ráno. U sklárny. Sám. To není normální.
+
+      Zapsal jsem si to do hlídkovýho deníku. Nikdo se na to
+      neptal.
+    effects: { trust_libor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tomáš (teen, upset) ---
+
+  tomas_intro:
+    type: tweet
+    from: tomas
+    text: >
+      do prdele lidi @marek_dvorak je jedinej kdo chápal umění v
+      tomhle městě. ten by nikdy neodjel bez rozloučení. někdo
+      nám něco neříká fakt
+    effects: { trust_tomas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tomáš -> tomas_talk_early
+
+  tomas_talk_early:
+    type: message
+    text: >
+      TOMÁŠ: čus, ty seš novej? vole špatnej timing. hele marek
+      je hustej člověk, naučil mě a filipa a lucii jak dělat
+      se sklem, měli jsme u něj workshop každej pátek. taky nás
+      nechal malovat graffiti na starý sklářský haly, říkal že
+      umění patří všem.
+
+      a teď jsem z toho v prdeli protože filip viděl něco divnýho
+      tu noc ale nechce o tom mluvit. říká že to nic nebylo ale
+      vole jasně že jo
+    effects: { trust_tomas: "+10" }
+    choices:
+      - What did Filip see? -> tomas_filip_hint
+      - Move on -> quest1_hub
+
+  tomas_filip_hint:
+    type: message
+    text: >
+      TOMÁŠ: nevím přesně. byl v noci venku na bmxku u sklárny a
+      viděl jak někdo vynášel markovy věci z dílny. jeho sochy,
+      foťák, ten velkej skleněnej kus co dělal na soutěž. filip
+      říkal že ten chlap vypadal jako pavel ale nechce to říct
+      nahlas protože se bojí. do prdele, vole, to je fakt hustý.
+
+      zkus s ním promluvit ale pozor, je dost opatrnej s lidma
+      co nezná
+    effects: { trust_tomas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Skelné Údolí. A Bohemian town
+      built around glassmaking for over a century. A young artist
+      who was exposing pollution. A disappearance that makes no sense.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Tereza (Marek's roommate) -> tereza_q1
+      - Talk to Karolína (Marek's girlfriend) -> karolina_q1
+      - Check what Jakub (Marek's brother) is saying -> jakub_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Tereza Q1 ---
+
+  tereza_q1:
+    type: tweet
+    from: tereza
+    text: >
+      prosím, jestli někdo viděl @marek_dvorak, ozvěte se.
+      jeho pokoj je nedotčenej. foťák je pryč ale všechno ostatní
+      je na místě. on by nikdy neodešel bez svýho nářadí.
+    effects: { trust_tereza: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Tereza -> tereza_q1_talk
+
+  tereza_q1_talk:
+    type: message
+    text: >
+      TEREZA: Díky, ale neznám tě. Marek má hodně přátel. Určitě
+      se vrátí.
+
+      ...To si říkám pořád dokola. Už tomu nevěřím.
+
+      [Tereza is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_tereza: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Karolína Q1 ---
+
+  karolina_q1:
+    type: tweet
+    from: karolina
+    text: >
+      @marek_dvorak lásko prosím tě ozvi se. jsem v liberci a
+      nemůžu spát. tvůj telefon je mrtvej. tohle není jako ty.
+      prosím. prosím.
+    effects: { trust_karolina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Karolína -> karolina_q1_talk
+
+  karolina_q1_talk:
+    type: message
+    text: >
+      KAROLÍNA: Kdo jsi? Další člověk co chce drby? Marek prostě
+      zmizel a nikdo nic nedělá. Policie říká, že si asi odjel.
+      Kurva, kam by odjel? On miloval to město víc než cokoliv.
+      Víc než mě, upřímně.
+
+      Poslední co mi psal... napsal "mám problém s Pavlem, vysvětlím
+      ti to o víkendu." Ten víkend nikdy nepřišel.
+    effects: { trust_karolina: "+10" }
+    choices:
+      - What problem with Pavel? -> karolina_pavel
+      - Move on -> quest1_hub
+
+  karolina_pavel:
+    type: message
+    text: >
+      KAROLÍNA: Nevím přesně. Marek mi říkal, že Pavel se chová
+      divně. Že nechce, aby Marek dělal vlastní práci. Že mu
+      sabotuje zakázky. Jednou Marek přišel do dílny a jeho
+      rozpracovaná socha byla rozbitá. Pavel řekl, že spadla.
+      Marek tomu nevěřil.
+
+      A pak — asi měsíc zpátky — Marek říkal, že Pavel prochází
+      jeho věci. Že někdo otevíral jeho skříňku v dílně. Že Pavel
+      ví o jeho práci pro novinářku věci, který mu Marek nikdy
+      neřekl.
+    effects: { trust_karolina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jakub Q1 ---
+
+  jakub_q1:
+    type: tweet
+    from: jakub
+    text: >
+      můj bratr ZMIZEL a policajti mi říkaj že si asi odjel???
+      MAREK NEODJEDE BEZ TOHO ABY MĚ NEZAVOLAL. jedu z prahy.
+      někdo mi to vysvětlí kurva.
+    effects: { trust_jakub: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Jakub -> jakub_q1_talk
+
+  jakub_q1_talk:
+    type: message
+    text: >
+      JAKUB: Kdo jsi? Další člověk z toho města, co mi řekne ať
+      se uklidním? Marek mi volal tu noc. Poslední co řekl:
+      "Jakube, mám průser. Pavel zjistil, že dělám s novinářkou.
+      A ty lidi z chemičky — oni vědí, co mám."
+
+      Pak se spojení přerušilo. To je poslední co jsem od něj
+      slyšel.
+    effects: { trust_jakub: "+10" }
+    choices:
+      - What do you think happened? -> jakub_theory
+      - Move on -> quest1_hub
+
+  jakub_theory:
+    type: message
+    text: >
+      JAKUB: Myslím, že to má dvě vrstvy. Za prvý — Bohemia
+      Chemical vypouští do potoka jedy a Marek měl důkazy.
+      Za druhý — ten starej sklář, Pavel, je posedlej Markem.
+      Nechce ho pustit, nechce aby Marek byl úspěšnější než on.
+
+      Marek mi říkal, že Pavel jednou v noci přišel k jejich
+      bytu. Jen tam stál a díval se na okna. Fakt creepy
+      hovno, vole.
+
+      Nevím co se stalo, ale vím, že Marek by nikdy neutekl.
+      Nikdy.
+    effects: { trust_jakub: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Marek went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Filip (was riding BMX near the glassworks) -> filip_interview
+      - Find Libor (forester, doing night patrol) -> libor_interview
+      - Find Hana (baker, starts at 4am) -> hana_interview
+      - Find Petra (pharmacist, was on late shift) -> petra_interview
+
+  # --- Filip (saw someone removing Marek's work) ---
+
+  filip_interview:
+    type: tweet
+    from: filip
+    text: >
+      normálně jezdím v noci u sklárny ale teď tam nechci.
+      divná atmosféra fakt. jako bych tam něco viděl co jsem
+      neměl
+    effects: { trust_filip: "+5" }
+    choices:
+      - Ask Filip about that evening -> filip_talk
+
+  filip_talk:
+    type: message
+    text: >
+      FILIP: vole ok ale nikomu to neříkej jo. byl jsem na bmxku
+      u sklárny kolem desátý večer. a viděl jsem pavla — toho
+      staršího skláře — jak z dílny vynáší markovy věci. jeho
+      sochy, skicáky, ten velkej kus co dělal na soutěž do
+      mnichova.
+
+      nakládal to do dodávky. když mě zaslechl, zhasl baterku
+      a schoval se. píčo, vole, to bylo hustý. utekl jsem.
+
+      nikdo by mi nevěřil. dospělák říká že teenagerovi lže.
+      klasika.
+    effects:
+      trust_filip: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Libor (saw late-night meeting at factory) ---
+
+  libor_interview:
+    type: tweet
+    from: libor
+    text: >
+      noční obchůzka hlásí: pohyb vozidel u Bohemia Chemical
+      ve 23:00. neobvyklé. zaznamenáno do deníku.
+    effects: { trust_libor: "+5" }
+    choices:
+      - Ask Libor what he saw -> libor_talk_night
+
+  libor_talk_night:
+    type: message
+    text: >
+      LIBOR: Byl jsem na obchůzce, kolem jedenáctý v noci.
+      U Bohemia Chemical stály dvě auta, který tam normálně
+      v noci nestojí. A u zadní brány — kde je ten výpustnej
+      potrubí do potoka — stáli tři chlapi. Jednoho jsem
+      poznal: Ondřej Bartoš, technickej ředitel fabriky.
+
+      V jedenáct v noci. U výpustě. To není inspekce.
+
+      A víš co je hustý? Potok tu noc svítil. Fakt. Oranžovej
+      odstín, viditelnej i ve tmě. Pouštěli něco do vody.
+    effects:
+      trust_libor: "+10"
+      night_witnesses: "+1"
+      toxic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Hana (baker, saw chase) ---
+
+  hana_interview:
+    type: tweet
+    from: hana
+    text: >
+      Pečení od 4 ráno jako vždycky. Ale to ráno jsem slyšela
+      něco divného venku. Motor. Křik. V půl pátý ráno.
+    effects: { trust_hana: "+5" }
+    choices:
+      - Ask Hana what she heard -> hana_talk
+
+  hana_talk:
+    type: message
+    text: >
+      HANA: Každý ráno ve čtyři vstávám péct chleba. To ráno —
+      ráno po Markově posledním postu — jsem otevírala okenice
+      a slyšela auto. Jelo rychle po silnici k lesu. Pak druhý
+      auto, za ním. Menší, jako Markova stará Škodovka.
+
+      U odbočky k Černému rybníku to druhý auto zahnulo do lesa.
+      To první pokračovalo na hlavní.
+
+      Řekla jsem to policii. Zapsali si to. Tím to skončilo.
+    effects:
+      trust_hana: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petra (pharmacist, late shift) ---
+
+  petra_interview:
+    type: tweet
+    from: petra
+    text: >
+      Noční pohotovost je klidná ale město ne. Něco se děje
+      a nikdo nemluví.
+    effects: { trust_petra: "+5" }
+    choices:
+      - Ask Petra what she noticed -> petra_talk
+
+  petra_talk:
+    type: message
+    text: >
+      PETRA: Měla jsem noční směnu v lékárně. Kolem půlnoci
+      přišel Marek. Vypadal vyděšeně. Koupil si náplasti — měl
+      pořezaný ruce, jako od skla — a energetickej nápoj. Ptal
+      se, jestli vím, kde se dá v noci vytisknout dokumenty.
+
+      Řekla jsem mu, že Vojtěch v knihkupectví má klíč od
+      kopírky na úřadě. Marek poděkoval a odešel rychle. Vypadal,
+      jako by ho někdo honil.
+
+      Pak mi řekl: "Kdyby se mě na to někdo ptal — nebyl jsem
+      tady." A odešel.
+    effects:
+      trust_petra: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Tereza (roommate)
+      and Lucie (saw Pavel watching the flat).
+    choices:
+      - Talk to Tereza about that night -> tereza_interview
+      - Talk to Lucie -> lucie_interview
+      - Find Filip -> filip_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Libor -> libor_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Hana -> hana_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Petra -> petra_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Tereza (last to see Marek) ---
+
+  tereza_interview:
+    type: tweet
+    from: tereza
+    text: >
+      ta fotka na markově účtu. to není on. marek nikdy nepostuje
+      bez popisku. marek nepostuje ve dvě ráno. někdo jinej
+      to udělal.
+    effects: { trust_tereza: "+5" }
+    choices:
+      - DM Tereza -> tereza_talk_low
+        when:
+          state: trust_tereza
+          lt: 50
+      - DM Tereza -> tereza_talk_high
+        when:
+          state: trust_tereza
+          gte: 50
+
+  tereza_talk_low:
+    type: message
+    text: >
+      TEREZA: Děkuju za zájem, ale fakt nechci mluvit
+      s cizíma lidma o tomhle.
+
+      [Tereza needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_tereza: "+5" }
+    choices:
+      - Share what you've learned about the night -> tereza_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  tereza_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — Pavel at the glassworks,
+      the factory men at the stream, the cars in the night. Tereza
+      is quiet for a while.
+
+      TEREZA: Ty to fakt řešíš. Ok. Povím ti co vím.
+    effects: { trust_tereza: "+25" }
+    choices:
+      - What happened that night? -> tereza_talk_high
+
+  tereza_talk_high:
+    type: message
+    text: >
+      TEREZA: Přišel domů kolem jedenáctý. Byla jsem vzhůru,
+      opravovala jsem sešity. Byl bílej jak stěna. Třásl se.
+      Řekl: "Vědí co mám. Byli v dílně."
+
+      Ptala jsem se kdo. Řekl: "Z chemičky. Přišli na mě do
+      dílny. A Pavel — Pavel jim řekl kde mám schovaný věci."
+
+      Pak řekl ještě něco: "Pavel mě sleduje. Všude. Ví kde
+      jsem, ví co dělám. To není normální."
+
+      Sebral notebook, foťák a harddisk s fotkami. Objal mě,
+      řekl "neboj se" a odešel. Ráno jeho auto bylo pryč a na
+      jeho účtu byla ta divná fotka.
+    effects:
+      trust_tereza: "+15"
+      night_witnesses: "+1"
+      toxic_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lucie (saw Pavel watching the flat) ---
+
+  lucie_interview:
+    type: message
+    text: >
+      LUCIE: ok hele je to divný co řeknu ale ten starší sklář —
+      pavel — já ho viděla tak třikrát v noci jak stojí před
+      markovou barákem. prostě tam stál a koukal na okna.
+      fakt creepy.
+
+      naposledy to bylo den předtím než marek zmizel. seděl
+      v autě naproti. motor vypnutej. světla zhasnutý. prostě
+      seděl a čekal. na co? kurva na co čekal?
+    effects:
+      trust_lucie: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Filip saw Pavel removing Marek's work from the workshop
+      23:00 — Company men seen at Bohemia Chemical discharge pipe (Libor)
+      23:00 — Marek arrives home shaken, grabs laptop and evidence (Tereza)
+      00:00 — Marek at the pharmacy, hands cut, asking about copying documents (Petra)
+      04:30 — Two cars speeding on the forest road, one turns toward Černý rybník (Hana)
+
+      Bohemia Chemical people confronted Marek at his workshop.
+      Pavel told them where his evidence was hidden. Marek fled home,
+      grabbed his materials, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is Bohemia Chemical hiding? Who ordered
+        the intimidation?
+      — The obsession: What is Pavel really doing? Why was he removing
+        Marek's work?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Pavel -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      TOXIC THREAD: Evidence collected: ${toxic_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the toxic waste thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: toxic_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE TOXIC THREAD
+
+      Bohemia Chemical is hiding something. Marek had proof. Now he's
+      gone and his evidence is missing from the workshop.
+
+      Toxic evidence: ${toxic_evidence}
+    choices:
+      - Search Marek's workshop records -> workshop_records
+      - Talk to Jana the journalist -> jana_interview
+      - Talk to Eva (Bohemia Chemical technician) -> eva_interview
+      - Talk to Dagmar (environment deputy mayor) -> dagmar_interview
+      - Check the Spolek Čistý Potok -> spolek_investigation
+      - Talk to Libor about the dumping -> libor_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Records ---
+
+  workshop_records:
+    type: message
+    text: >
+      Marek's workshop space at the glassworks has a shared log system
+      for kiln use. His entries show he worked late on 23 nights in the
+      past month. But cross-referencing with the security camera
+      timestamps, there are 8 additional entries after midnight where
+      the camera was "offline for maintenance."
+
+      His sketches are gone. His sample bottles — the ones he used
+      for water testing — are missing. But there's a notebook hidden
+      behind the kiln brick lining. Inside: detailed notes on
+      Bohemia Chemical's discharge schedule. "They dump at night.
+      Always between 23:00 and 02:00. Orange residue. Chemical
+      smell. Photographed 14 instances."
+    effects:
+      toxic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Jana (journalist) ---
+
+  jana_interview:
+    type: message
+    text: >
+      JANA: O zdrojích nemluvím. Tečka.
+    effects: { trust_jana: "+5" }
+    choices:
+      - Show Jana the evidence you have -> jana_with_evidence
+        when:
+          state: toxic_evidence
+          gte: 3
+      - Back to toxic thread -> corruption_hub
+
+  jana_with_evidence:
+    type: message
+    text: >
+      JANA: ...máš toho víc, než jsem čekala.
+
+      Ok. Marek a já jsme spolupracovali. On měl fotky nelegálního
+      výpustu — Bohemia Chemical má druhý potrubí, který není
+      v žádným povolení. Měl vzorky vody s desateronásobkem
+      povoleného limitu těžkých kovů.
+
+      Chtěli jsme to publikovat společně. Pak zmizel. A dva dny
+      potom mi někdo vykradl auto a ukradl záložní disk.
+
+      Marek žije. Ozval se mi jednou, z prepaid telefonu. Řekl,
+      že se schovává. Řekl: "Vyhrožovali mi v dílně a ještě
+      někdo mě nenechá být."
+
+      Nemůžu ti říct kde je. Ale s dostatkem důkazů můžu
+      publikovat a bude pro něj bezpečný se vrátit.
+    effects:
+      trust_jana: "+25"
+      toxic_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> jana_hint
+      - Back to investigation hub -> investigation_hub
+
+  jana_hint:
+    type: message
+    text: >
+      JANA: Z fabriky poslali Bartoše — technickýho ředitele —
+      a právníka. Přišli za ním do dílny a řekli mu, ať odevzdá
+      všechno, jinak čelí žalobě. Zastrašování v obleku.
+
+      Ale taky říkal něco o někom v dílně. Někdo, kdo mu procházel
+      věci. Někdo, kdo vždycky věděl, kde Marek je. To je jinej
+      problém.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Eva (Bohemia Chemical whistleblower) ---
+
+  eva_interview:
+    type: message
+    text: >
+      EVA: Pracuju v Bohemia Chemical. Jsem technik. Dělám
+      testy, píšu zprávy.
+
+      Ale ty zprávy, co píšu... nejsou vždycky ty zprávy,
+      co jdou na inspekci.
+    effects: { trust_eva: "+10" }
+    choices:
+      - What do you mean? -> eva_detail
+
+  eva_detail:
+    type: message
+    text: >
+      EVA: Měřím těžký kovy. Kadmium, rtuť, olovo. Moje čísla
+      jdou k vedoucímu. Někde mezi mojí kanceláří a hlášením
+      na inspekci se změní. Nižší. Vždycky nižší.
+
+      Markovy vzorky z potoka odpovídaly MOJIM původním číslům,
+      ne těm v oficiálních zprávách. On měl nezávislej důkaz, že
+      Bohemia Chemical falšuje data o odpadech.
+
+      Bojím se. Mám rodinu. Ale originály jsem si schovala.
+      Jestli mě někdo ochrání, podělím se.
+    effects:
+      trust_eva: "+15"
+      toxic_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to toxic thread -> corruption_hub
+
+  # --- Dagmar (deputy mayor) ---
+
+  dagmar_interview:
+    type: message
+    text: >
+      DAGMAR: Jako místostarostka pro životní prostředí beru tyhle
+      věci vážně. Ale Bohemia Chemical zaměstnává 150 lidí v obci.
+      Starosta trvá na tom, že musíme "zachovat dialog."
+
+      Neoficiálně? Viděla jsem inspekční zprávy z krajskýho úřadu.
+      Bohemia Chemical projde pokaždý. Ale ty inspekce jsou
+      ohlášený dva týdny předem. Do tý doby uklidí.
+
+      Marek měl neohlášený data. Proto je to nebezpečný.
+    effects:
+      trust_dagmar: "+10"
+      toxic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to toxic thread -> corruption_hub
+
+  # --- Spolek Čistý Potok ---
+
+  spolek_investigation:
+    type: tweet
+    from: ochrana_prirody
+    text: >
+      UPOZORNĚNÍ: Naměřeny abnormální hodnoty těžkých kovů v potoce
+      pod Bohemia Chemical. Fotodokumentace a vzorky zajištěny.
+      Žádáme neohlášenou inspekci závodu.
+    choices:
+      - Check their data -> spolek_data
+
+  spolek_data:
+    type: message
+    text: >
+      The Spolek Čistý Potok has been monitoring water quality for
+      four years. Their data shows a clear pattern: heavy metal spikes
+      that correspond to Bohemia Chemical's production schedule.
+      Higher on weekdays, lower on weekends. Higher at night, lower
+      during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate illegal
+      discharge timed to avoid detection.
+
+      Marek was a member. He contributed most of the photography and
+      water samples.
+    effects:
+      toxic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to toxic thread -> corruption_hub
+
+  # --- Libor dumping ---
+
+  libor_dumping:
+    type: message
+    text: >
+      LIBOR: Ukážu ti něco. Minulej měsíc jsem na stezce nad
+      fabrikou našel sudy. Rezavý, proděravělý, vyteklý do
+      země. Na štítku jsem přečetl "rozpouštědlo" a šarži
+      Bohemia Chemical.
+
+      Vyfotil jsem to a poslal Markovi. Řekl, že to je ten
+      poslední dílek — důkaz, že netečou jen tekutý odpady,
+      ale že zakopávaj sudy v lese. V LESE. Na Šumavě.
+
+      Fotky a číslo šarže mám schovaný.
+    effects:
+      trust_libor: "+10"
+      toxic_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Pavel Červenka. Master craftsman. Mentor. Something more?
+      Someone was watching Marek's flat. Someone was going through
+      his work. Someone removed his sculptures from the workshop.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Pavel's workshop access -> workshop_access
+      - Talk to Tereza about Pavel -> tereza_pavel
+        when:
+          state: trust_tereza
+          gte: 20
+      - Talk to Filip (more detail on what he saw) -> filip_detail
+      - Talk to Petra about Pavel -> petra_pavel
+      - Check the anonymous account @SkelnyDuch -> anon_investigation
+      - Talk to Vojtěch the bookseller -> vojtech_interview
+        when:
+          state: trust_vojtech
+          gte: 40
+      - Talk to Nadporučík Krátký -> nadporucik_interview
+        when:
+          state: trust_nadporucik
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Access ---
+
+  workshop_access:
+    type: message
+    text: >
+      The glassworks has a keycard system for after-hours access.
+      Marek's card was used 47 times last month. Pavel's card: 91 times.
+      Nearly double.
+
+      Cross-referencing: on 34 of Pavel's 91 entries, he accessed the
+      workshop within 20 minutes of Marek. He arrived after him and
+      left after him. Every time.
+
+      His own workstation is in a different wing.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Tereza on Pavel ---
+
+  tereza_pavel:
+    type: message
+    text: >
+      TEREZA: Pavel? Ten Marka děsil. Byl všude kde Marek. V hospodě
+      když tam Marek byl. Nabízel, že ho doprovodí domů. Komentoval
+      každej jeho post během minut.
+
+      Marek mu řekl jasně, že chce pracovat sám. Že si váží jeho
+      učení, ale potřebuje prostor. Pavel řekl, že rozumí. A nic
+      se nezměnilo. Prostě... byl pořád tam. Vždycky tam.
+
+      Před měsícem Marek zjistil, že mu někdo prochází věci v dílně.
+      Jeho skicáky byly přerovnaný. Foťák přesunutej. Podezíral
+      Pavla, ale nemoh to dokázat.
+    effects:
+      trust_tereza: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Filip detail ---
+
+  filip_detail:
+    type: message
+    text: >
+      FILIP: vole ok hele neřekl jsem všechno. když jsem viděl
+      pavla u tý dodávky s markovou sochama, měl u sebe i
+      markův skicák. ten velkej hnědej co marek nosil všude.
+      a listoval v něm. jako by to četl.
+
+      a víš co je hustý? pavel měl v autě plnej kufr markových
+      věcí. skleněný figurky, fotky, USB disky. jako by kradl
+      celej markův život, vole.
+
+      do prdele, píčo, měl jsem něco udělat ale kdo by mi
+      věřil. šestnáctiletej kluk obviní respektovanýho mistra
+      skláře. jasně.
+    effects:
+      trust_filip: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Petra on Pavel ---
+
+  petra_pavel:
+    type: message
+    text: >
+      PETRA: Tohle je důvěrný, ale jsem lékárnice, ne kněz.
+      Pavel Červenka k nám chodí pravidelně. Bere léky na
+      spaní, antidepresiva, anxiolytika. Někdo pod obrovským
+      stresem.
+
+      Jednou se ptal — tak jakoby mimochodem — jestli prodáváme
+      GPS trackery. Řekla jsem: "Tohle je lékárna, ne Alza."
+      Zasmál se a šel. Nepřemýšlela jsem nad tím, dokud
+      Marek nezmizel.
+    effects:
+      trust_petra: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon
+    text: >
+      Měl poslouchat. Snažil jsem se ho chránit. Nikdo jinej
+      nerozuměl jeho práci jako já.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @SkelnyDuch: account created 10 months ago. Posts are all about
+      Marek's work. Comments on every glass sculpture, every
+      exhibition photo, every workshop update. The tone shifts:
+
+      Month 1: "Neskutečná práce. Děláš to, co se nikdo jiný neodváží."
+      Month 3: "Proč neodpovídáš na moje zprávy? Chci jen spolupracovat."
+      Month 6: "Vidím tě v hospodě s jinýma lidma. Na ně máš čas,
+      ale na mě ne?"
+      Month 8: "Vím kde chodíš. Znám tvůj rozvrh. Jsem vždycky blízko."
+
+      The account has no photos, no personal details. Just Marek.
+      Only Marek.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @SkelnyDuch with @pavel_cervenka:
+
+      Same use of glassmaking terminology — specific technical terms
+      only a master craftsman would know. Same writing habits —
+      the way he uses dashes and ellipses. Same knowledge of
+      Marek's techniques that only someone at his workbench would have.
+
+      And one post from @SkelnyDuch: "Tvoje práce na Zakázce 47 je
+      geniální." Zakázka 47 is an internal glassworks reference.
+      Not public.
+
+      It's Pavel. The anonymous account is Pavel.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Vojtěch (bookseller, has evidence) ---
+
+  vojtech_interview:
+    type: message
+    text: >
+      VOJTĚCH: Marek u mě nechal něco. Vodotěsnej kufřík. Řekl:
+      "Kdyby se někdo ptal na tu vodu v potoce, dej mu tohle."
+
+      Vypadal vystrašeně. Řekl, že si všechno zkopíroval, ale
+      potřeboval jednu sadu někde, kde by to nikdo nehledal.
+      Antikvariát se zdál ideální.
+    effects: { trust_vojtech: "+10" }
+    choices:
+      - What's in the case? -> vojtech_case
+
+  vojtech_case:
+    type: message
+    text: >
+      Vojtěch vytáhne zpod pultu černý Pelican kufřík.
+
+      VOJTĚCH: Říkal, že přijdeš. Vem si to.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show the stream below Bohemia Chemical — orange water,
+      dead fish, corroded barrels half-buried in mud. An undeclared
+      discharge pipe hidden under vegetation. The USB contains water
+      sample data, chemical analysis, and Marek's detailed report
+      with dates and GPS coordinates.
+    effects:
+      toxic_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Nadporučík Krátký ---
+
+  nadporucik_interview:
+    type: message
+    text: >
+      NADPORUČÍK KRÁTKÝ: Neoficiálně — a myslím úplně neoficiálně —
+      chtěl jsem vyšetřovat Bohemia Chemical. Nadřízený mi řekl,
+      ať to nechám. Prý to řeší kraj. To je kód pro "nesahej
+      na to."
+
+      Situace s Červenkou je jiná. O tom jsem do teď nevěděl.
+      Jestli máte důkazy o stalkingu, můžu jednat. To je jasně
+      moje kompetence.
+
+      Přineste mi něco solidního a případ znovu otevřu.
+    effects:
+      trust_nadporucik: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Marek than anyone in Skelné Údolí. Who is responsible?
+    choices:
+      - Confront Pavel Červenka (the obsessive mentor) -> confront_pavel
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Ondřej Bartoš (the factory director) -> confront_ondrej
+        when:
+          state: toxic_evidence
+          gte: 3
+      - Confront Mayor Procházka (political protection) -> confront_milan
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Pavel (Best Ending) ---
+
+  confront_pavel:
+    type: message
+    text: >
+      You present your evidence to Pavel:
+
+      "I know @SkelnyDuch is your account. I know you removed Marek's
+      work from the workshop. I know you watched his flat at night.
+      I know you went through his sketches and files. I have witnesses
+      and I have the access logs."
+    choices:
+      - Send -> pavel_response
+
+  pavel_response:
+    type: message
+    text: >
+      Pavel doesn't reply for a long time. Then:
+
+      PAVEL: Nerozumíš tomu. Chránil jsem ho. On je talent jaký
+      se rodí jednou za generaci. A ničil to tím svým vyšetřováním.
+      Chtěl jsem jen, aby se soustředil na sklo. Všechno co jsem
+      dělal bylo proto, že mi na něm záleží.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Nadporučík Krátký. And to
+      Jana Pokorná.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Nadporučík Krátký reopens the case. With your evidence — the
+      anonymous account, the workshop access logs, the removed
+      sculptures, the witness testimonies — Pavel is arrested for
+      stalking, harassment, and theft of Marek's artwork. A GPS
+      tracker is recovered from under Marek's Škoda parked at
+      the old fishing hut by Černý rybník.
+
+      Jana Pokorná, finally in possession of Marek's full evidence
+      package, publishes the Bohemia Chemical story in Respekt. The
+      environmental inspectorate orders an unannounced inspection.
+      The factory is shut down pending remediation. Ondřej Bartoš
+      faces criminal charges for falsifying discharge data. Barrels
+      of toxic waste are excavated from the forest.
+
+      And Marek Dvořák, reading the story from a friend's cottage
+      near Český Krumlov, calls his brother for the first time in
+      nine days.
+
+      "Jakube, jedu domů."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: marek
+    text: >
+      sklo nelže. voda nelže. a lidi ze skelného údolí taky ne.
+      díky, že jste to nevzdali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Ondřej (Partial Ending) ---
+
+  confront_ondrej:
+    type: message
+    text: >
+      You present the pollution evidence to Ondřej Bartoš:
+
+      "I have photographs of the undeclared discharge pipe. I have
+      water samples showing heavy metal levels ten times the legal
+      limit. I have your original lab reports showing the data was
+      falsified. I have the barrel with your batch number."
+    choices:
+      - Send -> ondrej_response
+
+  ondrej_response:
+    type: message
+    text: >
+      ONDŘEJ: Tento rozhovor předávám právnímu oddělení. Jakékoliv
+      zveřejnění pomlouvačných materiálů bude mít právní důsledky.
+      Bohemia Chemical vždy operovala v souladu s regulačními
+      požadavky.
+
+      But it's too late. You've sent the evidence to Jana, to the
+      Spolek Čistý Potok, and to the inspectorate.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. Bohemia Chemical is ordered to halt
+      all discharge pending investigation. The factory may close
+      permanently. 150 jobs hang in the balance. The town is divided.
+
+      But Marek?
+
+      Without the stalking evidence, Pavel is never investigated.
+      He continues to work at the glassworks. He continues to monitor
+      Marek's accounts. He creates a new anonymous profile.
+
+      Three months later, Marek reads about Bohemia Chemical online.
+      He returns quietly. He changes workshops. He stops working late
+      alone. He checks his car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Marek walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marek
+    text: "vrátil jsem se. potok je čistší. zbytek... uvidíme."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_milan:
+    type: message
+    text: >
+      You confront Mayor Procházka with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> milan_response
+
+  milan_response:
+    type: tweet
+    from: radnice
+    text: >
+      Město Skelné Údolí bere na vědomí vaše podání. Jakékoliv
+      šíření nepodložených obvinění bude řešeno právní cestou.
+      — Právní oddělení Města Skelné Údolí
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's legal team buries your accusation. Without a direct
+      link between Procházka and Bohemia Chemical's dumping — and
+      there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      Bohemia Chemical continues to operate. Pavel continues to watch.
+      Marek stays in hiding.
+
+      Six months later, @SkelnyDuch creates a new account. It follows
+      Marek's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SKELNÉ ÚDOLÍ — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Toxic evidence: ${toxic_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Marek's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      artistic freedom, mentorship turned toxic, and the courage
+      to speak the truth.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or needs help:
+      Linka bezpečí: 116 111
+      Linka důvěry: 116 123
+      Policie ČR: 158

@@ -1,0 +1,1600 @@
+# DEAD ACCOUNT — Story 069: Lynghøj (Denmark)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-069.yml
+#
+# Player investigates the death of organic farmer Mads Jensen
+# in the fictional Jutland village of Lynghøj.
+
+meta:
+  title: "Dead Account — Lynghøj"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_astrid: 0
+    trust_peter: 0
+    trust_karen: 0
+    trust_lars: 0
+    trust_freja: 0
+    trust_magnus: 0
+    trust_signe: 0
+    trust_henrik: 0
+    trust_camilla: 0
+    trust_niels: 0
+    trust_ida: 0
+    trust_thomas: 0
+    trust_sofie: 0
+    trust_jeppe: 0
+    trust_anne: 0
+    trust_mikkel: 0
+    trust_rikke: 0
+    trust_erik: 0
+    trust_line: 0
+    trust_politiet: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "lige flyttet til lynghøj. vild natur, frisk luft, hvad kan gå galt"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Lynghoj.social"
+    description: "Velkommen til Lynghøjs lokale fællesskab"
+    avatar_url: /gamepatch/assets/dead-account/lynghoj_bot.png
+
+  npcs:
+    # === Mads's Inner Circle ===
+    mads:
+      name: "Mads Jensen"
+      bio: "økologisk landbrug | marken er mit kontor | lynghøj born & raised"
+      avatar: avatars/mads.jpg
+    astrid:
+      name: "Astrid Krogh"
+      bio: "mads' søster | sygeplejerske i thisted | han ville aldrig bare forsvinde"
+      avatar: avatars/astrid.jpg
+    peter:
+      name: "Peter Vestergaard"
+      bio: "mads' bedste ven | tømrer | lynghøj | vi drikker øl fredag, altid"
+      avatar: avatars/peter.jpg
+    camilla:
+      name: "Camilla Bech"
+      bio: "mads' eks | flyttet tilbage til lynghøj | det er kompliceret ok"
+      avatar: avatars/camilla.jpg
+
+    # === Local Government ===
+    henrik:
+      name: "Henrik Dalgaard"
+      bio: "Borgmester i Lynghøj Kommune | Landsby med ambitioner | #LynghøjVokser"
+      avatar: avatars/henrik.jpg
+    sofie:
+      name: "Sofie Nyholm"
+      bio: "Miljøudvalgsformand | Lynghøj Kommune | bæredygtighed & naturbeskyttelse"
+      avatar: avatars/sofie.jpg
+    kommune:
+      name: "Lynghøj Kommune"
+      bio: "Officiel konto | Nyheder & arrangementer | Åbningstider: man-fre 9-15"
+      avatar: avatars/kommune.jpg
+
+    # === Local Business & Community ===
+    karen:
+      name: "Karen Bruun"
+      bio: "Bruuns Kro | frokost & aftensmad | byens stue siden 1953"
+      avatar: avatars/karen.jpg
+    kro:
+      name: "Bruuns Kro"
+      bio: "Jysk hjemmelavet mad | Fredagsbøf | Søndagsbrunch | Hjertet af Lynghøj"
+      avatar: avatars/kro.jpg
+    lars:
+      name: "Lars Thomsen"
+      bio: "landmand | tredje generation | 800 søer | DanPork leverandør"
+      avatar: avatars/lars.jpg
+    niels:
+      name: "Niels Skriver"
+      bio: "dyrlæge | lynghøj & omegn | stort & småt | ring før kl 20"
+      avatar: avatars/niels.jpg
+    ida:
+      name: "Ida Munksgaard"
+      bio: "apoteker | lynghøj apotek | åbent også lørdag formiddag"
+      avatar: avatars/ida.jpg
+    thomas:
+      name: "Thomas Brink"
+      bio: "mekaniker | brinks auto | lynghøj | alt med motor"
+      avatar: avatars/thomas.jpg
+    anne:
+      name: "Anne Hedegaard"
+      bio: "bibliotekar | lynghøj bibliotek | bogklub onsdag | lån & lyt"
+      avatar: avatars/anne.jpg
+
+    # === Journalist ===
+    rikke:
+      name: "Rikke Holm"
+      bio: "journalist | nordjyske medier | miljø & landbrug | tips: rikke@nordjyske.dk"
+      avatar: avatars/rikke.jpg
+
+    # === DanPork (corporate) ===
+    danpork:
+      name: "DanPork A/S"
+      bio: "Dansk svineproduktion | 15 anlæg i Jylland | Kvalitet & eksport"
+      avatar: avatars/danpork.jpg
+    erik:
+      name: "Erik Lund"
+      bio: "direktør DanPork anlæg Lynghøj | 400 arbejdspladser | vækst i vest"
+      avatar: avatars/erik.jpg
+    line:
+      name: "Line Søgaard"
+      bio: "Advokat | Søgaard & Partners | Erhvervsret | Aalborg"
+      avatar: avatars/line.jpg
+
+    # === Teens ===
+    freja:
+      name: "Freja"
+      bio: "16 | heste & hede | lynghøj til i dør | for helvede lad mig være"
+      avatar: avatars/freja.jpg
+    magnus:
+      name: "Magnus"
+      bio: "17 | skater | landsby med ingenting | men heden er nice sgu"
+      avatar: avatars/magnus.jpg
+    signe:
+      name: "Signe"
+      bio: "15 | tegner & maler | naturen her er syg smuk | savner mads' gårdbutik"
+      avatar: avatars/signe.jpg
+
+    # === Media & Community ===
+    lokalnyt:
+      name: "LynghøjNyt"
+      bio: "Lokalnyheder fra Lynghøj og omegn | Tips: redaktion@lynghojnyt.dk"
+      avatar: avatars/lokalnyt.jpg
+    vejret:
+      name: "Vejret Lynghøj"
+      bio: "Vejrudsigt & varsler | Automatisk station | Opdateres hver time"
+      avatar: avatars/vejret.jpg
+    forening:
+      name: "Lynghøj Naturbeskyttelse"
+      bio: "Frivillige | Hede & fjord | Overvågning af vandkvalitet & dyreliv"
+      avatar: avatars/forening.jpg
+
+    # === Suspicious / Other ===
+    jeppe:
+      name: "Jeppe Møller"
+      bio: "landbrugsrådgiver | DanPork | compliance & miljørapporter"
+      avatar: avatars/jeppe.jpg
+    mikkel:
+      name: "Mikkel Vang"
+      bio: "."
+      avatar: avatars/anon.jpg
+    politiet:
+      name: "Politiassistent Krogh"
+      bio: "Midt- og Vestjyllands Politi | Lynghøj lokalstation | 114"
+      avatar: avatars/politiet.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN LYNGHØJ
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Lynghoj.social — the community Mastodon instance for
+      the village of Lynghøj, Jutland.
+
+      The local feed is uneasy today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name everywhere:
+      @mads_jensen.
+
+      An organic farmer. Community fixture. He ran the village farm shop
+      and spent years fighting against industrial pig farming on the
+      heath. People are panicking. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> mads_profile
+
+  mads_profile:
+    type: tweet
+    from: mads
+    text: "gylle i bækken igen. DanPork-anlægget dumper om natten. jeg har billeder, datoer, prøver. det her stopper NU."
+    choices:
+      - That's his last real post... -> grey_field
+
+  grey_field:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurred photo of a grey field at dawn. No caption. Posted at
+      4am. Grainy, off-angle, like a phone dropped in mud.
+
+      His friends say that's not his style. Mads always wrote long
+      captions about soil health and seasons. The police say he
+      probably went on holiday. Nobody buys it.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: politiet
+    text: >
+      Vi har modtaget en anmeldelse vedr. en borger fra Lynghøj.
+      Der er på nuværende tidspunkt ikke grundlag for at antage, at
+      der er sket noget kriminelt. Oplysninger kan rettes til
+      lokalstationen eller 114.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @astrid_krogh is posting
+      from Thisted, demanding answers. His best friend @peter_vestergaard
+      checked the farm — tools left out, tractor running low on diesel
+      in the field. His ex @camilla_bech is strangely active online.
+
+      The vet @niels_skriver says Mads's animals were left unfed. The
+      journalist @rikke_holm hasn't written a word.
+
+      And DanPork A/S, the industrial pig operation next door, just
+      posted a press release about their "excellent environmental
+      record."
+
+      Nobody thinks Mads just went on holiday.
+    effects: { trust_astrid: "+5", trust_peter: "+5" }
+    choices:
+      - Start following Mads's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Lynghøj. Follow Mads's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Karen (kro owner, knows everyone) -> karen_intro
+      - Talk to Lars (neighbouring pig farmer) -> lars_intro
+      - Talk to Freja (teen, rides her horse past the farm) -> freja_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Mads with the rhythms of a Jutland
+      village: weather warnings, cattle auctions, the kro's Friday
+      steak special, someone's dog loose on the heath.
+
+      Key names surface: Astrid (sister, nurse in Thisted), Peter
+      (best friend, carpenter, furious), Camilla (ex-girlfriend, moved
+      back recently), and the teens — Freja, Magnus, Signe — who
+      hung out at Mads's farm shop.
+
+      Also prominent: DanPork A/S, the industrial pig facility on the
+      edge of town. Their posts are corporate PR. Mads's posts were
+      the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Karen -> karen_intro
+      - Talk to Lars -> lars_intro
+      - Talk to Freja -> freja_intro
+
+  # --- Karen (social map) ---
+
+  karen_intro:
+    type: tweet
+    from: karen
+    text: >
+      Kroen er åben men stemningen er tung. @mads_jensen, din plads
+      ved baren venter. Kom nu hjem.
+    effects: { trust_karen: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Karen -> karen_talk
+
+  karen_talk:
+    type: message
+    text: >
+      KAREN: You're new here? Welcome, though the timing is rotten.
+      Everyone's on edge about Mads.
+
+      Let me tell you who's who. Astrid is his big sister — she's a
+      nurse in Thisted, drives down every weekend. Peter Vestergaard
+      is his best mate, they've been friends since folkeskole. Good
+      man, handy with everything.
+
+      Camilla Bech — that's the tricky one. She and Mads were together
+      for two years. She moved away, came back six months ago. Nobody
+      knows why. Mads told me she wouldn't leave him alone. He said
+      "hun forstår ikke et nej."
+
+      And then there's DanPork. That factory stinks — literally and
+      figuratively. Mads has been documenting their dumping for months.
+      Erik Lund, the plant director, threatened him at a council
+      meeting. In public. Everyone heard it.
+    effects: { trust_karen: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Camilla -> karen_camilla
+      - Ask about DanPork -> karen_danpork
+      - Thank her and move on -> quest1_hub
+
+  karen_camilla:
+    type: message
+    text: >
+      KAREN: Camilla? Sgu, that's a story. They dated two years. Mads
+      broke it off because she was... intense. Possessive. She'd show
+      up at his fields unannounced, check his phone, get angry if he
+      talked to other women at the kro.
+
+      He ended it clearly. She moved to Aalborg. Then six months ago
+      she just... came back. Rented a house two streets from his farm.
+      Started coming to the kro whenever he was there. Commenting on
+      all his posts. He told me it was getting creepy.
+
+      "Hun stalker mig, Karen. Hvad fanden skal jeg gøre?"
+
+      Those were his words. Two weeks before he vanished.
+    effects: { trust_karen: "+5" }
+    choices:
+      - Ask about DanPork -> karen_danpork
+      - Move on -> quest1_hub
+
+  karen_danpork:
+    type: message
+    text: >
+      KAREN: DanPork has been here five years. Before that it was nice
+      farmland. Now it's 800 sows in metal sheds and the smell in
+      summer is unbearable. The slurry lagoon is massive — you can see
+      it from the road.
+
+      Mads was the first to actually test the water in the stream.
+      The one that runs past DanPork and through the village. He found
+      nitrates, ammonia, things that shouldn't be there. He said they
+      were dumping slurry illegally at night, directly into the stream.
+
+      Two weeks after he went public with the data, he's gone. For
+      helvede, you don't need to be a detective.
+    effects: { trust_karen: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lars (neighbouring farmer, corporate link) ---
+
+  lars_intro:
+    type: tweet
+    from: lars
+    text: >
+      mads jensen er en god nabo. vi er uenige om meget men han er
+      hæderlig. håber han dukker op snart.
+    effects: { trust_lars: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lars -> lars_talk
+
+  lars_talk:
+    type: message
+    text: >
+      LARS: Look, I run a conventional pig operation. Mads runs
+      organic. We disagreed about everything — pesticides, stocking
+      density, the whole thing. But we respected each other. He's a
+      decent man.
+
+      DanPork is different. They're not farmers, they're a factory.
+      Eight hundred sows, no pasture, slurry everywhere. Even I think
+      it's too much. And Mads had proof they were breaking the rules.
+
+      The stream that runs past their place? It used to have fish in
+      it. Now it's dead. Mads tested it and the numbers were bad.
+      Really bad. He showed me the results. I told him to be careful.
+    effects: { trust_lars: "+10" }
+    choices:
+      - Did anything unusual happen recently? -> lars_night
+      - Move on -> quest1_hub
+
+  lars_night:
+    type: message
+    text: >
+      LARS: The week before Mads disappeared, I saw something odd. A
+      car parked outside his farm at night. Not a car I recognised —
+      it was small, dark blue, and it was just sitting there with the
+      lights off. Around 22:00. I thought maybe it was Camilla again.
+
+      She used to do that when they were together. Park outside and
+      wait for him. He hated it. Told me about it many times.
+
+      And then the night he vanished — I heard a truck on the road
+      past DanPork around 2am. Big vehicle. Going toward the moor.
+      That's not normal.
+    effects: { trust_lars: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Freja (teen, rides past the farm) ---
+
+  freja_intro:
+    type: tweet
+    from: freja
+    text: >
+      sgu mands @mads_jensen er den eneste voksne her der ikke er
+      totalt ligegyldig. hans gårdbutik var det bedste sted. hvad
+      fanden sker der??
+    effects: { trust_freja: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Freja -> freja_talk_early
+
+  freja_talk_early:
+    type: message
+    text: >
+      FREJA: hvem er du?? ok whatever. mads er sgu den fedeste. han
+      lod os hænge ud i gårdbutikken efter skole, han lærte signe at
+      male landskaber, han gav magnus skaterampen i laden.
+
+      og nu er han bare væk?? det er bare fucked for helvede.
+
+      magnus så noget mærkeligt den aften btw men han tør ikke sige
+      det. han siger det er lort men det er det sgu ikke.
+    effects: { trust_freja: "+10" }
+    choices:
+      - What did Magnus see? -> freja_magnus_hint
+      - Move on -> quest1_hub
+
+  freja_magnus_hint:
+    type: message
+    text: >
+      FREJA: ved det ikke helt. han var ude at skate ved vejen forbi
+      danpork og han så nogen. en kvinde. hun stod ved mads' indkørsel
+      og tog billeder af hans hus. i mørket. magnus sagde hun
+      lignede camilla men han er ikke sikker.
+
+      han flipper over det sgu. prøv at snakke med ham men han er
+      mega mistroisk til folk han ikke kender. start med at snakke
+      skate eller noget lol
+    effects: { trust_freja: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Lynghøj. A Jutland village where
+      the heath meets the fields. An organic farmer who was exposing
+      illegal dumping. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Astrid (Mads's sister) -> astrid_q1
+      - Talk to Camilla (Mads's ex) -> camilla_q1
+      - Check what Peter (Mads's best friend) is saying -> peter_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Astrid Q1 ---
+
+  astrid_q1:
+    type: tweet
+    from: astrid
+    text: >
+      min bror er FORSVUNDET og politiet siger han nok er på ferie??
+      MADS TAGER IKKE PÅ FERIE. HAN HAR DYR DER SKAL PASSES.
+      jeg kører fra thisted. nogen skal forklare mig det her.
+    effects: { trust_astrid: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Astrid -> astrid_q1_talk
+
+  astrid_q1_talk:
+    type: message
+    text: >
+      ASTRID: Who are you? Another stranger who thinks they can help?
+      Mads called me the evening before he went silent. He was upset.
+      Not scared — angry. He said "de truer mig, Astrid. Både
+      firmaet og hende."
+
+      The company and her. That's what he said. I asked who "hende"
+      was. He said Camilla. Then he said something about DanPork
+      sending people to his farm. And then the line went dead.
+
+      That's the last I heard from my brother.
+    effects: { trust_astrid: "+10" }
+    choices:
+      - What do you think happened? -> astrid_theory
+      - Move on -> quest1_hub
+
+  astrid_theory:
+    type: message
+    text: >
+      ASTRID: I think DanPork wanted his evidence destroyed. He had
+      water samples, photos, a whole dossier. They threatened him at
+      a council meeting — Erik Lund said "vi finder en løsning, Mads,
+      den ene eller den anden vej." Everyone heard it.
+
+      But Camilla... that's the other thing. She wouldn't leave him
+      alone. He filed a complaint six months ago but the police said
+      there wasn't enough evidence. She'd show up at his door, leave
+      notes on his tractor, follow him to the kro.
+
+      The night he vanished, both things were happening. DanPork AND
+      Camilla. My brother was trapped between a corporation and an
+      obsession.
+    effects: { trust_astrid: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Camilla Q1 ---
+
+  camilla_q1:
+    type: tweet
+    from: camilla
+    text: >
+      folk snakker lort om mig herinde. i kender ikke hele historien.
+      mads og jeg havde noget specielt. det forsvinder ikke bare.
+    effects: { trust_camilla: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Camilla -> camilla_q1_talk
+
+  camilla_q1_talk:
+    type: message
+    text: >
+      CAMILLA: Look, I know what people say about me. That I'm
+      obsessed, that I can't let go. That's not fair. Mads and I had
+      something real. He ended it because of the pressure — the farm,
+      the DanPork fight, everything. Not because of us.
+
+      I came back to Lynghøj because this is my home too. I have
+      every right to be here. And yes, I worry about him. Is that
+      a crime?
+
+      [Camilla is defensive but composed. Her story doesn't match
+      what others have said.]
+    effects: { trust_camilla: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Peter Q1 ---
+
+  peter_q1:
+    type: tweet
+    from: peter
+    text: >
+      var ude på mads' gård i dag. traktoren stod i marken. hundene
+      havde ikke fået mad. hans støvler stod i gangen. DET ER IKKE
+      EN MAND DER ER TAGET PÅ FERIE FOR HELVEDE
+    effects: { trust_peter: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Peter -> peter_q1_talk
+
+  peter_q1_talk:
+    type: message
+    text: >
+      PETER: I've known Mads since we were six years old. He doesn't
+      leave his animals. He doesn't leave his fields. The man sleeps
+      in the barn during lambing season. You think he just packed a
+      bag and went to Thailand?
+
+      Lort, the police are useless. They took a statement and left.
+      I checked the farm myself — nothing stolen, no sign of a
+      struggle. But his laptop is gone. And the folder he kept in the
+      kitchen drawer — his DanPork evidence file — that's gone too.
+
+      Someone took his proof and someone took him. Or made him run.
+    effects: { trust_peter: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Mads went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Magnus (was skating near DanPork road) -> magnus_interview
+      - Find Niels (vet, was out on a late call) -> niels_interview
+      - Find Thomas (mechanic, heard vehicles) -> thomas_interview
+      - Find Anne (librarian, lives on the main road) -> anne_interview
+
+  # --- Magnus (saw woman at Mads's driveway) ---
+
+  magnus_interview:
+    type: tweet
+    from: magnus
+    text: >
+      kedelig aften i lynghøj shocker. men seriøst er der nogen der
+      har set noget mærkeligt de sidste dage?? bare mig??
+    effects: { trust_magnus: "+5" }
+    choices:
+      - Ask Magnus about that evening -> magnus_talk
+
+  magnus_talk:
+    type: message
+    text: >
+      MAGNUS: ok sgu du siger det ikke videre. jeg var ude at skate
+      ved danpork-vejen den aften, det var mørkt men der er lys fra
+      anlægget. og jeg så camilla. 100% hende. hun stod ved mads'
+      indkørsel med sin telefon og tog billeder af huset.
+
+      hvad fanden laver man det for kl 21 om aftenen?? det er bare
+      fucked. og da hun gik tilbage til sin bil parkerede hun ikke
+      hjemme. hun kørte hen til den lille vej bag mads' mark og
+      slukkede lyset. bare sad der.
+
+      sgu creepy det der for helvede
+    effects:
+      trust_magnus: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Niels (vet, saw DanPork truck) ---
+
+  niels_interview:
+    type: tweet
+    from: niels
+    text: >
+      Sent kald i nat — kalvefødslen hos Petersens gik godt. Men
+      trafikken på hedevejen var usædvanlig for kl 2 om natten.
+    effects: { trust_niels: "+5" }
+    choices:
+      - Ask Niels what he saw -> niels_talk
+
+  niels_talk:
+    type: message
+    text: >
+      NIELS: I was driving back from a calving at Petersen's farm
+      around 02:00. Two things caught my eye. First, a DanPork tanker
+      truck heading toward the stream crossing — at 2am. Those trucks
+      run during the day. Never at night. Unless they're dumping.
+
+      Second, when I passed Mads's farm, there was a light on in the
+      barn. And a car in the yard I didn't recognise. Not Mads's
+      truck. Something smaller.
+
+      By the next morning, Mads was gone and his animals were hungry.
+    effects:
+      trust_niels: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Thomas (heard confrontation) ---
+
+  thomas_interview:
+    type: tweet
+    from: thomas
+    text: >
+      Nogen kørte stærkt på grusvejene kl 3 i nat. Det gør man ikke
+      medmindre man har travlt med at slippe væk fra noget.
+    effects: { trust_thomas: "+5" }
+    choices:
+      - Ask Thomas what he heard -> thomas_talk
+
+  thomas_talk:
+    type: message
+    text: >
+      THOMAS: My workshop is on the road out of town, past Mads's
+      farm. I was working late — rebuilding an engine, couldn't sleep
+      anyway. Around midnight I heard voices. Loud. From the
+      direction of Mads's property. A man and a woman arguing. Then
+      it went quiet.
+
+      Around 03:00, a vehicle came flying past on the gravel road.
+      Fast, no lights. Heading toward the moor. Not a car — something
+      bigger. A pickup or an SUV. Then maybe ten minutes later, a
+      smaller car came the same way. Slower. Like it was following.
+
+      I should have looked. I didn't. Now I can't stop thinking
+      about it.
+    effects:
+      trust_thomas: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Anne (saw early morning activity) ---
+
+  anne_interview:
+    type: tweet
+    from: anne
+    text: >
+      Jeg var oppe tidligt med babyen. Set fra vinduet: En bil jeg
+      ikke kender holdt udenfor Mads' gård længe. Inden solopgang.
+    effects: { trust_anne: "+5" }
+    choices:
+      - Ask Anne what she saw -> anne_talk
+
+  anne_talk:
+    type: message
+    text: >
+      ANNE: I was up at 04:30 with the baby. From my window I can see
+      the road past Mads's farm. There was a dark blue car parked by
+      his gate. I've seen it before — it's Camilla's car. She sat
+      there for maybe thirty minutes. Then she got out, walked to his
+      front door, stood there, and walked back. Got in the car and
+      drove away.
+
+      By then it was getting light. I could see Mads's truck was gone.
+      The barn door was open. Something felt wrong.
+
+      I called Peter at 07:00. He went to check and found the animals
+      unfed.
+    effects:
+      trust_anne: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Peter (best
+      friend) and Signe (teen who saw Camilla watching the farm).
+    choices:
+      - Talk to Peter about that night -> peter_interview
+      - Talk to Signe -> signe_interview
+      - Find Magnus -> magnus_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Niels -> niels_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Thomas -> thomas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Anne -> anne_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Peter (last to talk to Mads) ---
+
+  peter_interview:
+    type: tweet
+    from: peter
+    text: >
+      den der grå mark på mads' konto. det er ikke ham. mads poster
+      aldrig uden tekst. mads poster ikke kl 4 om morgenen. nogen
+      har adgang til hans telefon.
+    effects: { trust_peter: "+5" }
+    choices:
+      - DM Peter -> peter_talk_low
+        when:
+          state: trust_peter
+          lt: 50
+      - DM Peter -> peter_talk_high
+        when:
+          state: trust_peter
+          gte: 50
+
+  peter_talk_low:
+    type: message
+    text: >
+      PETER: I appreciate it but I don't trust strangers with this.
+      Not right now.
+
+      [Peter needs to trust you more. Show him you're actually
+      investigating, not just snooping.]
+    effects: { trust_peter: "+5" }
+    choices:
+      - Share what you've learned about the night -> peter_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  peter_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the DanPork truck at 2am, the
+      arguing voices, the car with no lights, Camilla's early morning
+      visit. Peter is quiet for a long time.
+
+      PETER: Lort. You actually know something. Okay. I'll talk.
+    effects: { trust_peter: "+25" }
+    choices:
+      - What happened that night? -> peter_talk_high
+
+  peter_talk_high:
+    type: message
+    text: >
+      PETER: Mads called me at 22:00. He was stressed. He said Erik
+      Lund from DanPork had shown up at his farm with two men. They
+      told him to hand over his evidence and stop posting. They said
+      "vi kan gøre det nemt eller svært."
+
+      He told them to fuck off. They left. But then he said Camilla
+      had been parked outside again. He saw her car when the DanPork
+      people drove away. She was just sitting there in the dark.
+
+      He said "jeg er fanget mellem en fabrik og en stalker, Peter."
+      I told him to come to my place. He said he'd handle it. He said
+      "de får ikke mine beviser."
+
+      That's the last time I spoke to him.
+    effects:
+      trust_peter: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Signe (saw Camilla watching the farm) ---
+
+  signe_interview:
+    type: message
+    text: >
+      SIGNE: ok det her er creepy men det er sgu sandt. jeg cykler
+      forbi mads' gård hver dag til skole og de sidste par uger har
+      camillas bil holdt i nærheden. ikke foran — lidt væk, på den
+      lille markvej. slukket. som om hun bare sidder og kigger.
+
+      den ene gang cyklede jeg tæt forbi og hun tog billeder af mads'
+      hus med sin telefon. kl 7 om morgenen. hvad fanden laver man det
+      for?? det er bare fucked sgu.
+    effects:
+      trust_signe: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Camilla seen photographing Mads's house, parks nearby
+      in the dark (Magnus)
+      22:00 — DanPork men confront Mads at his farm (Peter)
+      00:00 — Voices arguing at Mads's property (Thomas)
+      02:00 — DanPork tanker heading to stream, unknown car at Mads's
+      farm (Niels)
+      03:00 — Vehicle speeding toward moor, followed by smaller car
+      (Thomas)
+      04:30 — Camilla's car parked at Mads's gate, Mads's truck gone
+      (Anne)
+
+      DanPork confronted Mads and demanded his evidence. He refused.
+      Sometime after midnight, something happened. He's gone, his
+      laptop is gone, his evidence folder is gone.
+
+      But there are two threats: the corporation AND the ex.
+
+      Two threads to pull:
+      — The cover-up: What is DanPork hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Camilla really doing? How far did
+        she go?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Camilla -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      DanPork is hiding something. Mads had proof. Now he's gone and
+      his evidence has vanished from the farm.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the stream water records -> stream_records
+      - Talk to Rikke the journalist -> rikke_interview
+      - Talk to Jeppe (DanPork compliance officer) -> jeppe_interview
+      - Talk to Sofie (environment committee chair) -> sofie_interview
+      - Check the Naturbeskyttelse association -> forening_investigation
+      - Talk to Lars about the dumping -> lars_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Stream Records ---
+
+  stream_records:
+    type: message
+    text: >
+      Lynghøj Kommune's public environmental database shows water
+      quality monitoring for the stream that runs past DanPork. The
+      readings are consistently within limits — suspiciously
+      consistent. The same numbers, month after month.
+
+      But Mads posted his own independent tests on Lynghoj.social.
+      His readings show nitrate levels three times the legal limit
+      and ammonia spikes that correspond to DanPork's production
+      schedule. Higher on weekdays. Higher at night.
+
+      The official numbers and Mads's numbers can't both be right.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Rikke ---
+
+  rikke_interview:
+    type: message
+    text: >
+      RIKKE: I don't discuss sources.
+    effects: { trust_rikke: "+5" }
+    choices:
+      - Show Rikke the evidence you have -> rikke_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  rikke_with_evidence:
+    type: message
+    text: >
+      RIKKE: ...you have more than I expected for a newcomer.
+
+      Okay. Mads and I were working together. He had independent water
+      samples showing DanPork's actual discharge levels — ammonia and
+      nitrates far above legal limits. He had drone footage of tanker
+      trucks going to the stream at night. He had photographs of a
+      broken slurry pipe that DanPork claimed was "repaired" but
+      wasn't.
+
+      We were going to publish in Nordjyske. Then he went dark. And
+      someone broke into my car in Thisted and stole my backup hard
+      drive.
+
+      Mads is alive. He contacted me once from a number I didn't
+      recognise. He said he was hiding somewhere on the moor. He said
+      "de truede mig på gården og hun dukker op overalt."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come home.
+    effects:
+      trust_rikke: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> rikke_hint
+      - Back to investigation hub -> investigation_hub
+
+  rikke_hint:
+    type: message
+    text: >
+      RIKKE: Erik Lund brought their lawyer and two hired men to
+      Mads's farm that evening. They told him to hand over everything
+      or they'd sue him into the ground. Intimidation dressed up as
+      legal process.
+
+      But Mads also mentioned someone else. Someone who seemed to
+      always know where he was. Someone who appeared at the stream
+      testing sites, at the kro, on the paths he walked. That's a
+      different kind of threat.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Jeppe (DanPork whistleblower) ---
+
+  jeppe_interview:
+    type: message
+    text: >
+      JEPPE: I work at DanPork. Compliance. I make sure the reports
+      get filed.
+
+      But the reports I file... are not always the numbers I measured.
+    effects: { trust_jeppe: "+10" }
+    choices:
+      - What do you mean? -> jeppe_detail
+
+  jeppe_detail:
+    type: message
+    text: >
+      JEPPE: I measure nitrates, ammonia, phosphorus in the discharge
+      water. My numbers go to Erik Lund. Somewhere between my desk and
+      the regulatory filing with the kommune, they change. Lower.
+      Always lower.
+
+      Mads's independent samples matched MY original numbers. Not the
+      ones in the official reports. He had proof from outside the pipe
+      that matched what I was measuring inside.
+
+      I'm terrified. I have a wife and a kid. But I kept copies of my
+      original lab reports on a USB drive at home. If someone can
+      protect me, I'll share them.
+    effects:
+      trust_jeppe: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sofie ---
+
+  sofie_interview:
+    type: message
+    text: >
+      SOFIE: As chair of the environment committee, I take this very
+      seriously. But DanPork employs 400 people in this kommune. The
+      mayor insists we need to "bevare arbejdspladserne."
+
+      Off the record? I've seen the state inspections. DanPork passes
+      every time. But those inspections are announced three weeks in
+      advance. They repair everything, clean the lagoon, stop the
+      night dumping. Then start again when the inspectors leave.
+
+      Mads had unannounced data. Continuous monitoring. That's what
+      makes it so dangerous.
+    effects:
+      trust_sofie: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Naturbeskyttelse ---
+
+  forening_investigation:
+    type: tweet
+    from: forening
+    text: >
+      ADVARSEL: Forhøjet ammoniakniveau i Lynghøj Å nedstrøms
+      DanPork-anlægget. Prøver taget kl 06:00. Vi kræver uanmeldt
+      inspektion fra Miljøstyrelsen.
+    choices:
+      - Check their data -> forening_data
+
+  forening_data:
+    type: message
+    text: >
+      Lynghøj Naturbeskyttelse has been monitoring the stream for two
+      years. Their data shows a clear pattern: ammonia and nitrate
+      spikes correlating with DanPork's production schedule. Higher on
+      weekdays. Higher at night. Lower on weekends when production
+      slows.
+
+      The pattern is unmistakable. Systematic, deliberate illegal
+      discharge timed to avoid detection.
+
+      Mads was their most active volunteer. He contributed most of the
+      water samples and drone footage.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Lars dumping ---
+
+  lars_dumping:
+    type: message
+    text: >
+      LARS: I'll show you something. Three weeks ago I found a broken
+      pipe at the edge of DanPork's property where it borders my land.
+      Not the official discharge point — a second pipe, hidden in the
+      reeds. Slurry was pouring directly into the stream.
+
+      I photographed it and sent it to Mads. He said it was the
+      missing piece — proof they had an undeclared discharge point
+      that bypassed the monitoring station. He was going to add it to
+      his report.
+
+      I still have the photos. And the GPS coordinates.
+    effects:
+      trust_lars: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Camilla Bech. Ex-girlfriend. Moved back to town. Something
+      more? Someone was photographing Mads's house. Someone was
+      parked outside at night. Someone always knew where he was.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Check Camilla's posting history -> camilla_posts
+      - Talk to Karen about Camilla -> karen_camilla_deep
+        when:
+          state: trust_karen
+          gte: 20
+      - Talk to Magnus (more detail on the car incident) -> magnus_detail
+      - Talk to Ida the pharmacist -> ida_interview
+      - Check the anonymous account @mikkel_vang -> mikkel_investigation
+      - Talk to Anne about Camilla's patterns -> anne_patterns
+        when:
+          state: trust_anne
+          gte: 40
+      - Talk to Politiassistent Krogh -> politiet_interview
+        when:
+          state: trust_politiet
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Camilla's Posts ---
+
+  camilla_posts:
+    type: message
+    text: >
+      Camilla's posting history on Lynghoj.social tells a story.
+
+      Month 1 (after returning): Normal posts. The village, the
+      weather, getting settled.
+      Month 2: Starts mentioning Mads casually. "Dejlig gårdbutik."
+      Month 3: Comments on every one of Mads's posts within minutes.
+      Month 4: Posts about "the one who got away." References to
+      places they used to go together.
+      Month 5: "Nogle mennesker forstår ikke at vi hører sammen."
+      Month 6 (last week): Posts become erratic. Late at night.
+      "Han vil forstå det snart."
+
+      The pattern is clear. This isn't someone moving on.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Karen on Camilla ---
+
+  karen_camilla_deep:
+    type: message
+    text: >
+      KAREN: Camilla? Sgu, she's worse than people think. After
+      she came back, she'd come to the kro every single evening
+      Mads was there. She'd sit where she could watch him. If he
+      talked to a woman — any woman — Camilla would stare. Not say
+      anything. Just stare.
+
+      Mads told me she left notes on his tractor. Love letters. Then
+      angry letters. Then threats. "Hvis jeg ikke kan have dig, kan
+      ingen." He showed me one. I told him to go to the police. He
+      did. They said it wasn't enough.
+
+      A week before he vanished, she followed him to the stream where
+      he was taking water samples. He told her to leave. She said
+      "jeg ved altid hvor du er, Mads."
+    effects:
+      trust_karen: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Magnus detail ---
+
+  magnus_detail:
+    type: message
+    text: >
+      MAGNUS: ok for helvede der er mere. den aften da jeg så camilla
+      ved mads' indkørsel... hun havde ikke bare sin telefon. hun
+      havde en ting i hånden. som en lille boks. hun gik hen til mads'
+      truck og bøjede sig ned under den. som om hun satte noget fast.
+
+      det er sgu det der gps-lort man ser i krimiserier. jeg
+      tænkte hvad fanden men hun så mig ikke. og da hun gik væk
+      tjekket hun sin telefon som om hun fulgte noget på et kort.
+
+      det er bare fucked. jeg burde have sagt noget men hvem tror
+      på en 17-årig skater sgu
+    effects:
+      trust_magnus: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ida ---
+
+  ida_interview:
+    type: message
+    text: >
+      IDA: I shouldn't say this but I'm a pharmacist, not a priest.
+      Camilla Bech has been coming in regularly. Sleeping pills — high
+      dose. Anti-anxiety medication. And she asked me about GPS
+      tracking devices. At a pharmacy. I said "dette er et apotek,
+      ikke Elgiganten."
+
+      She laughed but she wasn't joking. And she's been buying
+      binoculars too — claimed they were for birdwatching. In
+      November. When there's nothing to watch.
+    effects:
+      trust_ida: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mikkel (anonymous account) ---
+
+  mikkel_investigation:
+    type: tweet
+    from: mikkel
+    text: >
+      Han burde have lyttet. Jeg prøvede at beskytte ham. Ingen
+      andre forstod hans arbejde som jeg gør.
+    choices:
+      - Look at this account's history -> mikkel_posts
+
+  mikkel_posts:
+    type: message
+    text: >
+      @mikkel_vang: account created 5 months ago. Posts are all about
+      Mads's farming work. Comments on every field photo, every market
+      day post, every environmental update. The tone shifts over time:
+
+      Month 1: "Fantastisk arbejde. Du gør det ingen andre tør."
+      Month 2: "Hvorfor svarer du ikke mine beskeder? Jeg vil bare
+      hjælpe."
+      Month 3: "Jeg ser dig i kroen med andre. Du har tid til dem
+      men ikke til mig?"
+      Month 4: "Jeg ved hvor du går. Jeg kender dit program. Jeg er
+      altid tæt på."
+      Month 5: "Hvis du ikke vil forstå det frivilligt, må jeg vise
+      dig."
+
+      No photos, no personal details. Just Mads. Only Mads.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> mikkel_style
+
+  mikkel_style:
+    type: message
+    text: >
+      Comparing @mikkel_vang with @camilla_bech:
+
+      Same Jutlandic dialect patterns. Same use of agricultural terms
+      — the specific way she describes soil conditions. Same spelling
+      habits, including a distinctive way of writing compound words.
+
+      And one post from @mikkel_vang: "Din mark 7 ser fantastisk ud
+      i aftenlyset." Mark 7 is what Mads calls his seventh field in
+      his private rotation system. Not public information. Only
+      someone who had been to the farm repeatedly would know that.
+
+      It's Camilla. The anonymous account is Camilla.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anne patterns ---
+
+  anne_patterns:
+    type: message
+    text: >
+      ANNE: I live on the main road with a clear view of the area.
+      I've been keeping a diary — librarian habit. Let me check.
+
+      Camilla's car was parked near Mads's farm on: October 3rd, 5th,
+      7th, 9th, 12th, 14th, 15th, 16th, 18th, 19th, 20th, 21st...
+      every single day for the last three weeks. Usually between 21:00
+      and 23:00. Sometimes again at 05:00.
+
+      She also followed him to the stream twice that I saw. And she
+      was at the kro every evening he was there. She sat in the
+      corner and watched.
+
+      I wrote it all down with times and dates. Nobody asked for it
+      until now.
+    effects:
+      trust_anne: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Politiassistent Krogh ---
+
+  politiet_interview:
+    type: message
+    text: >
+      POLITIASSISTENT KROGH: Off the record — completely off the
+      record — I wanted to investigate DanPork. My superior said the
+      environmental agency had "jurisdiction." That's code for "don't
+      rock the boat."
+
+      As for Camilla — Mads filed a complaint. We talked to her. She
+      was calm, articulate, denied everything. Without hard evidence
+      of harassment, our hands were tied.
+
+      But if you have evidence of stalking — GPS trackers, systematic
+      surveillance, the anonymous account — that changes everything.
+      Bring me something solid and I'll reopen the case. Both cases.
+    effects:
+      trust_politiet: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Mads than anyone in Lynghøj. Who is responsible?
+    choices:
+      - Confront Camilla Bech (the obsessive ex) -> confront_camilla
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Erik Lund (the plant director) -> confront_erik
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Dalgaard (political protection) -> confront_henrik
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Camilla (Best Ending) ---
+
+  confront_camilla:
+    type: message
+    text: >
+      You present your evidence to Camilla:
+
+      "I know @mikkel_vang is your account. I know you put a GPS
+      tracker on Mads's truck. I know you photographed his house at
+      night. I know you followed him to the stream, to the kro,
+      everywhere. I have witnesses, I have your posting history, and
+      I have Anne's diary with dates and times."
+    choices:
+      - Send -> camilla_response
+
+  camilla_response:
+    type: message
+    text: >
+      Camilla doesn't reply for a long time. Then:
+
+      CAMILLA: Du forstår det ikke. I was protecting him. He was in
+      danger from DanPork and he wouldn't listen to me. I needed to
+      know he was safe. Everything I did was because I love him.
+
+      That's not love. That's obsession.
+
+      You've already sent the evidence to Politiassistent Krogh. And
+      to Rikke Holm.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Politiassistent Krogh reopens the case. With your evidence —
+      the anonymous account, the GPS tracker, the surveillance diary,
+      the witness testimonies — Camilla is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Mads's truck,
+      found abandoned on the moor road.
+
+      Rikke Holm, armed with Mads's full evidence package plus
+      Jeppe's original lab reports, publishes the DanPork story in
+      Nordjyske Stiftstidende. Miljøstyrelsen orders an unannounced
+      inspection. The facility is shut down pending environmental
+      remediation. Erik Lund faces criminal charges for falsifying
+      discharge reports.
+
+      And Mads Jensen, reading the story from a friend's hunting cabin
+      near Thy, calls his sister for the first time in nine days.
+
+      "Jeg kommer hjem, Astrid."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Offerrådgivningen: 4633 1613 (gratis)
+      politiet.dk/LivslinienDK: 70 201 201
+      Miljøstyrelsens hotline: 72 54 40 00
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: mads
+    text: >
+      marken er stadig her. bækken rinder igen. tak fordi i ikke
+      gav op.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Erik (Partial Ending) ---
+
+  confront_erik:
+    type: message
+    text: >
+      You present the pollution evidence to Erik Lund:
+
+      "I have independent water samples showing ammonia levels three
+      times the legal limit. I have photos of the undeclared discharge
+      pipe. I have drone footage of tanker trucks dumping at night. I
+      have your compliance officer's original numbers before you
+      falsified them."
+    choices:
+      - Send -> erik_response
+
+  erik_response:
+    type: message
+    text: >
+      ERIK: Denne korrespondance videresendes til vores
+      juridiske afdeling. Enhver offentliggørelse af injurierende
+      materiale vil medføre øjeblikkelige retlige skridt. DanPork
+      overholder alle gældende miljøregler.
+
+      But it's too late. You've sent the evidence to Rikke, to
+      Naturbeskyttelsen, and to Miljøstyrelsen.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. DanPork is ordered to halt discharge
+      pending investigation. The facility may close. Four hundred jobs
+      hang in the balance. The village is divided.
+
+      But Mads?
+
+      Without the stalking evidence, Camilla is never investigated.
+      She continues to live two streets from his farm. She continues
+      to monitor his accounts. She creates a new anonymous profile.
+
+      Three months later, Mads reads about DanPork online. He returns
+      quietly. He installs cameras on his property. He locks his truck
+      every night. He checks his mirrors constantly.
+
+      The corporation is exposed. But the person who terrorised Mads
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: mads
+    text: "jeg er hjemme. vandet er renere. resten... vi ser."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_henrik:
+    type: message
+    text: >
+      You confront Mayor Dalgaard with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> henrik_response
+
+  henrik_response:
+    type: tweet
+    from: line
+    text: >
+      Min klient tager dine påstande til efterretning. Enhver
+      offentlig fremsættelse af ærekrænkende udtalelser vil medføre
+      øjeblikkelige retlige skridt. — Søgaard & Partners, Aalborg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Dalgaard and DanPork's dumping — and there isn't
+      one beyond political protection — your evidence is insufficient.
+
+      DanPork continues to operate. Camilla continues to watch.
+      Mads stays in hiding.
+
+      Six months later, @mikkel_vang creates a new account. It
+      follows Mads's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: LYNGHØJ — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Mads's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      rural solidarity, and the courage to stand your ground.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Offerrådgivningen: 4633 1613 (gratis)
+      Livslinien: 70 201 201
+      Miljøstyrelsens døgnvagt: 72 54 40 00

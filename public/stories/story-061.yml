@@ -1,0 +1,1606 @@
+# DEAD ACCOUNT — Story 061: Ballynure (Ireland, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-061.yml
+#
+# Player investigates the disappearance of sheep farmer Siobhan Walsh
+# in the fictional Kerry village of Ballynure.
+
+meta:
+  title: "Dead Account — Ballynure"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_cormac: 0
+    trust_aisling: 0
+    trust_padraig: 0
+    trust_roisin: 0
+    trust_sean: 0
+    trust_tommy: 0
+    trust_grainne: 0
+    trust_brendan: 0
+    trust_noreen: 0
+    trust_declan: 0
+    trust_ciara: 0
+    trust_ryan: 0
+    trust_fionnuala: 0
+    trust_kevin: 0
+    trust_orla: 0
+    trust_donal: 0
+    trust_mairead: 0
+    trust_dermot: 0
+    trust_liam: 0
+    trust_sergeant: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    windfarm_evidence: 0
+    neighbour_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to ballynure. discovering kerry one hill at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Ballynure.social"
+    description: "Welcome to the community Mastodon instance for Ballynure, Co. Kerry"
+    avatar_url: /gamepatch/assets/dead-account/ballynure_bot.png
+
+  npcs:
+    # === Siobhan's Inner Circle ===
+    siobhan:
+      name: "Siobhan Walsh"
+      bio: "sheep farmer | ballynure born | the mountain doesn't lie | 4th generation on this land"
+      avatar: avatars/siobhan.jpg
+    cormac:
+      name: "Cormac Walsh"
+      bio: "siobhan's brother | fisherman | dingle | my sister doesn't just disappear"
+      avatar: avatars/cormac.jpg
+    aisling:
+      name: "Aisling Brennan"
+      bio: "siobhan's best friend | nurse at kerry general | coffee before anything"
+      avatar: avatars/aisling.jpg
+    padraig:
+      name: "Padraig O'Sullivan"
+      bio: "siobhan's partner | teaches at the national school | she's everything to me"
+      avatar: avatars/padraig.jpg
+
+    # === Local Government ===
+    roisin:
+      name: "Roisin Fitzgerald"
+      bio: "Councillor for Ballynure | Serving the community since 2016 | #BallynureForward"
+      avatar: avatars/roisin.jpg
+    grainne:
+      name: "Grainne Ni Shuilleabhain"
+      bio: "Planning Officer | Kerry County Council | environment & heritage"
+      avatar: avatars/grainne.jpg
+    council:
+      name: "Ballynure Community Council"
+      bio: "Official account | Local news and events | Meetings: First Tuesday monthly"
+      avatar: avatars/council.jpg
+
+    # === Local Business & Community ===
+    sean:
+      name: "Sean Moriarty"
+      bio: "The Shepherd's Rest pub | trad sessions friday | pints & craic since 1974"
+      avatar: avatars/sean.jpg
+    pub:
+      name: "The Shepherd's Rest"
+      bio: "Trad music Fridays | Local craft beers | Toasties all day | Heart of Ballynure"
+      avatar: avatars/pub.jpg
+    brendan:
+      name: "Brendan Healy"
+      bio: "farmer | 40 years on the mountain | these fields are my life"
+      avatar: avatars/brendan.jpg
+    noreen:
+      name: "Noreen Daly"
+      bio: "post office & shop | ballynure | open 7 days | sure where else would you go"
+      avatar: avatars/noreen.jpg
+    declan:
+      name: "Declan Murphy"
+      bio: "vet | ballynure & district | livestock & companions | on call 24/7 sure why not"
+      avatar: avatars/declan.jpg
+    kevin:
+      name: "Kevin Keane"
+      bio: "butcher | Keane's of Ballynure | grass-fed lamb | here since my father's time"
+      avatar: avatars/kevin.jpg
+    orla:
+      name: "Orla Connolly"
+      bio: "mountain walking guide | kerry way | wild atlantic way | the hills know the truth"
+      avatar: avatars/orla.jpg
+
+    # === Journalist ===
+    fionnuala:
+      name: "Fionnuala O'Brien"
+      bio: "journalist | Kerry Herald | environment & planning | tips: fionnuala@kerryherald.ie"
+      avatar: avatars/fionnuala.jpg
+
+    # === AtlantiWind (corporate) ===
+    atlantiwind:
+      name: "AtlantiWind Energy Ltd"
+      bio: "Renewable energy solutions | Ballynure Wind Farm Project | ISO 14001 certified"
+      avatar: avatars/atlantiwind.jpg
+    donal:
+      name: "Donal Cahill"
+      bio: "project director AtlantiWind Kerry | energy & community partnership"
+      avatar: avatars/donal.jpg
+    mairead:
+      name: "Mairead Gilmore"
+      bio: "Solicitor | Gilmore & Associates | Planning & Commercial Law | Tralee"
+      avatar: avatars/mairead.jpg
+
+    # === Teens ===
+    ciara:
+      name: "Ciara"
+      bio: "16 | horses & hiking | ballynure born | the mountain is home fr"
+      avatar: avatars/ciara.jpg
+    tommy:
+      name: "Tommy"
+      bio: "17 | hurling & farming | dawn sessions | kerry til i die"
+      avatar: avatars/tommy.jpg
+    ryan:
+      name: "Ryan"
+      bio: "15 | photography & nature | the fields in black and white | siobhan is my inspo"
+      avatar: avatars/ryan.jpg
+
+    # === Media & Community ===
+    kerry_news:
+      name: "Kerry News Online"
+      bio: "Local news from Kerry and beyond | Tips: newsdesk@kerrynews.ie"
+      avatar: avatars/kerry_news.jpg
+    met_kerry:
+      name: "Met Kerry"
+      bio: "Weather forecasts and warnings | Automatic station | Updated hourly"
+      avatar: avatars/met_kerry.jpg
+    mountain_heritage:
+      name: "Kerry Mountain Heritage Group"
+      bio: "Protecting Kerry's upland heritage | Volunteers | Reporting environmental damage"
+      avatar: avatars/mountain_heritage.jpg
+
+    # === Suspicious / Other ===
+    dermot:
+      name: "Dermot Lyons"
+      bio: "neighbouring farm | ballynure | minding my own business"
+      avatar: avatars/dermot.jpg
+    liam:
+      name: "Liam Rua"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sergeant:
+      name: "Sergeant Molloy"
+      bio: "An Garda Siochana | Ballynure Station | Emergency: 999 / 112"
+      avatar: avatars/sergeant.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN BALLYNURE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Ballynure.social — the community Mastodon instance for
+      the village of Ballynure, County Kerry, Ireland.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @siobhan_walsh.
+
+      A sheep farmer. Fourth generation on the mountain. She documented
+      everything — the land, the weather, the flock. People are worried.
+      She hasn't posted in five days.
+    choices:
+      - Look at her profile -> siobhan_profile
+
+  siobhan_profile:
+    type: tweet
+    from: siobhan
+    text: "The access road they're building isn't on any planning document I can find. Forty-tonne trucks on a boreen that's been a sheep path for two hundred years. I have the photos and I have the county records. Something is very wrong."
+    choices:
+      - That's her last real post... -> dark_photo
+
+  dark_photo:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a blurred photo of a green hillside. Overexposed, tilted, shot
+      from a strange angle. Posted at 4am. No caption.
+
+      Her friends say that's not her style. Siobhan always wrote long
+      captions about the weather and the sheep. The Guards say she
+      probably went walking and lost signal. Something doesn't add up.
+    choices:
+      - Read the Garda statement -> garda_statement
+      - Look at what people are saying -> community_reaction
+
+  garda_statement:
+    type: tweet
+    from: sergeant
+    text: >
+      We have received a report regarding a resident of Ballynure.
+      At this time, there is no evidence to suggest foul play. Any
+      information can be communicated to Ballynure Garda Station
+      or by calling 999.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @aisling_brennan is
+      desperate. Her brother @cormac_walsh is driving from Dingle.
+      Her partner @padraig_osullivan is posting frantic messages.
+      The farmer @brendan_healy says she was right about the road.
+
+      And the journalist @fionnuala_obrien is strangely silent.
+
+      Nobody buys the Guards' line. Nobody thinks Siobhan just
+      "went walking."
+    effects: { trust_cormac: "+5", trust_aisling: "+5" }
+    choices:
+      - Start following Siobhan's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Ballynure. Follow Siobhan's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Sean (pub owner, knows everyone) -> sean_intro
+      - Talk to Brendan (farmer, saw the road) -> brendan_intro
+      - Talk to Ciara (teen rider, seems shaken) -> ciara_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Siobhan with the rhythms of a small
+      Kerry village: mart prices, weather warnings, the pub's trad
+      session lineup, mass times.
+
+      Key names surface: Aisling (best friend, nurse), Padraig
+      (partner, teacher, destroyed), Fionnuala (journalist, oddly
+      quiet), and the teens — Ciara, Tommy, Ryan — who looked up
+      to Siobhan's farming work.
+
+      Also prominent: AtlantiWind Energy Ltd, the wind farm company
+      with a development on the ridge above the village. Their posts
+      are corporate PR. Siobhan's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Sean -> sean_intro
+      - Talk to Brendan -> brendan_intro
+      - Talk to Ciara -> ciara_intro
+
+  # --- Sean (social map) ---
+
+  sean_intro:
+    type: tweet
+    from: sean
+    text: >
+      The pub is open but the heart isn't in it. @siobhan_walsh,
+      your stool is waiting. Come back to us now.
+    effects: { trust_sean: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sean -> sean_talk
+
+  sean_talk:
+    type: message
+    text: >
+      SEAN: Ah, you're new? Welcome to Ballynure. Shite timing to
+      arrive, I'll tell you that much. The whole village is in bits
+      over Siobhan.
+
+      Let me tell you who's who. Aisling is Siobhan's best friend —
+      they've been thick as thieves since school. Sweet girl, in an
+      absolute state right now. Padraig is her partner, teaches at
+      the national school. Lovely man, barely holding it together.
+      Cormac is her brother, fisherman out of Dingle, driving over
+      as we speak.
+
+      And Fionnuala O'Brien — the journalist from the Herald — she
+      and Siobhan were working on something together. Something
+      about that wind farm. Fionnuala hasn't said a word since
+      Siobhan vanished. That's not like her at all.
+
+      Oh, and keep an eye on that neighbour. Dermot Lyons. There's
+      a land dispute there that goes back years. Bitter stuff.
+    effects: { trust_sean: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Dermot -> sean_dermot
+      - Ask about AtlantiWind -> sean_atlantiwind
+      - Thank him and move on -> quest1_hub
+
+  sean_dermot:
+    type: message
+    text: >
+      SEAN: Dermot Lyons? He farms the land next to Siobhan. Their
+      families have been fighting over a boundary wall since before
+      I was born. But it got worse — much worse — when the wind farm
+      came along. AtlantiWind offered big money for access rights,
+      and the proposed route goes right through disputed land.
+
+      Dermot wanted to sign. Siobhan refused. Said the turbines
+      would destroy the mountain. Dermot went mad. Started showing
+      up at her gate at all hours, shouting about how she was
+      costing him his retirement.
+
+      I barred him from the pub last month after he had a few and
+      started saying things about Siobhan that I won't repeat.
+      Feck that carry-on in my house.
+    effects: { trust_sean: "+5" }
+    choices:
+      - Ask about AtlantiWind -> sean_atlantiwind
+      - Move on -> quest1_hub
+
+  sean_atlantiwind:
+    type: message
+    text: >
+      SEAN: AtlantiWind showed up two years ago with their plans.
+      Thirty turbines on the ridge. They promised jobs, community
+      fund, the whole lot. Half the village is for it — the money's
+      massive. Half the village is against — the mountain would be
+      destroyed.
+
+      Siobhan was the loudest voice against. She had photos of
+      the access road they started building without proper planning
+      permission. She had drainage reports showing the turbine
+      foundations would destroy the peat bog and poison the water
+      table. She was building a case.
+
+      Two weeks later she's gone. What the actual fuck like.
+    effects: { trust_sean: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Brendan (farmer, saw the road) ---
+
+  brendan_intro:
+    type: tweet
+    from: brendan
+    text: >
+      forty years on this mountain. never seen a road like that
+      appear overnight. @siobhan_walsh was right. and now she's
+      gone. join the dots.
+    effects: { trust_brendan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Brendan -> brendan_talk
+
+  brendan_talk:
+    type: message
+    text: >
+      BRENDAN: I've been farming this mountain since I was a lad.
+      I know every field, every stream, every sheep path. And I'm
+      telling you — that access road is not right. Heavy machinery
+      on a boreen that hasn't seen more than a tractor in two
+      centuries.
+
+      Siobhan took photos. She went up to the county council offices
+      in Tralee and checked the planning files. The road doesn't
+      appear on any approved plan. It's being built without
+      permission and nobody's saying a word.
+
+      You think that's a coincidence? Sure look.
+    effects: { trust_brendan: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> brendan_night
+      - Move on -> quest1_hub
+
+  brendan_night:
+    type: message
+    text: >
+      BRENDAN: The night before she went quiet — I was up with a
+      sick ewe, around midnight. I saw lights on the mountain road.
+      Not headlights — smaller, like torches. Moving up toward
+      Siobhan's top fields. Two, maybe three people.
+
+      And then I heard her dogs barking. Fierce barking, the kind
+      they do for strangers. That was around half twelve.
+
+      I didn't think much of it then. Foxes, maybe, I told myself.
+      Now I think about it constantly. Should have gone up to check.
+      Shite.
+    effects: { trust_brendan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ciara (teen rider, witness tease) ---
+
+  ciara_intro:
+    type: tweet
+    from: ciara
+    text: >
+      im so worried like @siobhan_walsh she literally taught me to
+      ride she literally taught me how to look after lambs she's
+      like the best person in this village if anyone knows anything
+      please please say
+    effects: { trust_ciara: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ciara -> ciara_talk_early
+
+  ciara_talk_early:
+    type: message
+    text: >
+      CIARA: you're new here? shite timing. siobhan is like literally
+      the best person in ballynure. she taught us everything about
+      the mountain. lambing season she'd have us all up at four in
+      the morning and she'd make it class somehow.
+
+      and now im freaking out because tommy saw something weird at
+      siobhan's gate the other night but he won't talk about it.
+      says it was nothing but like... it wasn't nothing. the
+      absolute state of him when he told me, he was white as a
+      sheet.
+    effects: { trust_ciara: "+10" }
+    choices:
+      - What did Tommy see? -> ciara_tommy_hint
+      - Move on -> quest1_hub
+
+  ciara_tommy_hint:
+    type: message
+    text: >
+      CIARA: i don't know exactly. he was walking home from hurling
+      and he saw someone at siobhan's gate like messing with something.
+      or leaving something. he's scared out of his mind and won't
+      talk about it. you'd need to ask him straight out but he's
+      pure sus of anyone he doesn't know. maybe talk about hurling
+      first haha
+
+      what the actual fuck is going on in this village
+    effects: { trust_ciara: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Ballynure. A Kerry mountain village
+      built around farming and the land. A sheep farmer who was
+      exposing wind farm corruption. A disappearance nobody believes
+      is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Aisling (Siobhan's best friend) -> aisling_q1
+      - Talk to Padraig (Siobhan's partner) -> padraig_q1
+      - Check what Cormac (Siobhan's brother) is saying -> cormac_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Aisling Q1 ---
+
+  aisling_q1:
+    type: tweet
+    from: aisling
+    text: >
+      if anyone has news of @siobhan_walsh please ring me. her
+      wellies are by the door. her dogs are going mad. she wouldn't
+      leave without her dogs. she just wouldn't.
+    effects: { trust_aisling: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Aisling -> aisling_q1_talk
+
+  aisling_q1_talk:
+    type: message
+    text: >
+      AISLING: Thanks for reaching out but I don't know you. Siobhan
+      has a lot of friends here. I'm sure she'll be back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Aisling is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_aisling: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Padraig Q1 ---
+
+  padraig_q1:
+    type: tweet
+    from: padraig
+    text: >
+      The sheep need feeding. The dogs need walking. I'm doing it
+      all. But I can't do it without knowing where she is. @siobhan_walsh
+      please just come home. Whatever it is we'll sort it.
+    effects: { trust_padraig: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Padraig -> padraig_q1_talk
+
+  padraig_q1_talk:
+    type: message
+    text: >
+      PADRAIG: Who are you? Another person from that crowd who's
+      going to tell me to give it time? She rang me the night before
+      she disappeared. She said she had something big. She said "if
+      anything happens, look at AtlantiWind." Then she said something
+      about the neighbour. About Dermot. Said he'd been at the gate
+      again.
+
+      That's the last I heard from her.
+    effects: { trust_padraig: "+10" }
+    choices:
+      - What do you think happened? -> padraig_theory
+      - Move on -> quest1_hub
+
+  padraig_theory:
+    type: message
+    text: >
+      PADRAIG: I think she found proof that AtlantiWind are building
+      without permission and someone shut her up. But I also think
+      that gobshite Dermot Lyons is involved. The way he talks about
+      her land... it's not a normal boundary dispute. It's something
+      darker.
+
+      Siobhan told me weeks ago that someone had been on her property
+      at night. Gates left open, sheep scattered. She thought it was
+      foxes. I don't think it was foxes.
+
+      The absolute state of this village. Everyone knows something
+      and nobody's saying it.
+    effects: { trust_padraig: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Cormac Q1 ---
+
+  cormac_q1:
+    type: tweet
+    from: cormac
+    text: >
+      my sister has GONE and the Guards are telling me she probably
+      went hillwalking and lost signal?? SHE KNOWS THAT MOUNTAIN
+      BETTER THAN ANY GUARD IN KERRY. driving from dingle now.
+      someone will explain this to me.
+    effects: { trust_cormac: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Cormac -> cormac_q1_talk
+
+  cormac_q1_talk:
+    type: message
+    text: >
+      CORMAC: Who are you? Another person from that village who's
+      going to tell me to calm down? My sister rang me the night
+      before she disappeared. She said she had evidence that would
+      "blow the whole thing open." She said "if anything happens,
+      look at the planning files."
+
+      Then she said something else — "and he was at the gate
+      again tonight. He's always there."
+
+      She wouldn't say who. Her voice was shaking.
+    effects: { trust_cormac: "+10" }
+    choices:
+      - What do you think "he" means? -> cormac_theory
+      - Move on -> quest1_hub
+
+  cormac_theory:
+    type: message
+    text: >
+      CORMAC: I don't know exactly. But Siobhan told me months ago
+      about Dermot Lyons. Not just the boundary dispute — the man
+      is obsessed with her land. Watches her farm from the hill
+      above. Counts her sheep. Keeps track of when she comes and
+      goes.
+
+      She told the Guards. They said it was a civil matter. A fecking
+      civil matter. A man watching your farm from a hill with
+      binoculars is a civil matter apparently.
+
+      This isn't about a wall. This is about something sick.
+    effects: { trust_cormac: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Siobhan went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Tommy (was walking home from hurling) -> tommy_interview
+      - Find Noreen (post office, early morning) -> noreen_interview
+      - Find Orla (walking guide, dawn patrol) -> orla_interview
+      - Find Declan (vet, late night call) -> declan_interview
+
+  # --- Tommy (saw someone at Siobhan's gate) ---
+
+  tommy_interview:
+    type: tweet
+    from: tommy
+    text: >
+      good session tonight but the vibe around the village is pure
+      off. something isn't right. can't explain it like
+    effects: { trust_tommy: "+5" }
+    choices:
+      - Ask Tommy about that evening -> tommy_talk
+
+  tommy_talk:
+    type: message
+    text: >
+      TOMMY: right ok but you tell no one yeah. i was walking home
+      from hurling around seven. and i saw dermot lyons at siobhan's
+      gate. he was doing something to the lock like. or putting
+      something on the gatepost. when he saw me he legged it back
+      to his land.
+
+      like i said nothing cos who'd believe me? a young fella
+      ratting on a farmer. feck that. but now it's serious and
+      i'm shitting it
+    effects:
+      trust_tommy: "+10"
+      night_witnesses: "+1"
+      neighbour_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Noreen (post office, saw late-night meeting) ---
+
+  noreen_interview:
+    type: tweet
+    from: noreen
+    text: >
+      Up early as always for the deliveries. But that morning the
+      road past the church had fresh tyre tracks. Big ones. Not
+      from any local car.
+    effects: { trust_noreen: "+5" }
+    choices:
+      - Ask Noreen what she saw -> noreen_talk
+
+  noreen_talk:
+    type: message
+    text: >
+      NOREEN: I was closing up the shop around half ten that night.
+      I saw Siobhan's jeep still parked by the community hall. And
+      next to it — a big black Range Rover. Dublin plates. Two men
+      in suits standing by the hall door. One of them I recognised
+      from the papers: Donal Cahill, the AtlantiWind project director.
+
+      At half ten. At the community hall. In Ballynure. That's not
+      normal now.
+
+      I wrote it down in my diary. Nobody's asked to see it.
+    effects:
+      trust_noreen: "+10"
+      night_witnesses: "+1"
+      windfarm_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Orla (walking guide, saw Siobhan fleeing) ---
+
+  orla_interview:
+    type: tweet
+    from: orla
+    text: >
+      up at five for the dawn walk. the mountain path wasn't empty.
+      someone running on the sheep track. in the dark. that's not
+      a walker.
+    effects: { trust_orla: "+5" }
+    choices:
+      - Ask Orla what she saw -> orla_talk
+
+  orla_talk:
+    type: message
+    text: >
+      ORLA: I get up at five every morning for the dawn walks. That
+      morning — the morning after Siobhan's last post — I saw someone
+      on the sheep track above the village. Running. A woman, carrying
+      a bag, heading up toward the pass. It was barely light. She
+      was moving fast, like she was afraid.
+
+      I called out but she didn't stop. I thought maybe someone out
+      with the sheep early but... who runs up a mountain at five in
+      the morning carrying a holdall?
+
+      When I heard about Siobhan, I put it together. That was her.
+      Running from something.
+    effects:
+      trust_orla: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Declan (vet, late night call, saw car chase) ---
+
+  declan_interview:
+    type: tweet
+    from: declan
+    text: >
+      Out on a call at half four this morning. Calving. But on the
+      mountain road — a vehicle going far too fast for that road
+      at that hour.
+    effects: { trust_declan: "+5" }
+    choices:
+      - Ask Declan what he saw -> declan_talk
+
+  declan_talk:
+    type: message
+    text: >
+      DECLAN: I was coming back from a calving at Leary's place,
+      around half four in the morning. A car went past me — fast,
+      way too fast for the mountain road. Black Range Rover. Nearly
+      put me in the ditch. Then maybe two minutes later, a second
+      vehicle. Smaller, a jeep. Chasing? I don't know.
+
+      The jeep turned off toward the old shepherd's hut up at
+      Coomakista. The Range Rover kept going toward Killarney.
+
+      I told the Guards. They wrote it down. That was it. Gobshites.
+    effects:
+      trust_declan: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Aisling (best
+      friend) and Ryan (saw Dermot watching the farm).
+    choices:
+      - Talk to Aisling about that night -> aisling_interview
+      - Talk to Ryan -> ryan_interview
+      - Find Tommy -> tommy_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Noreen -> noreen_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Orla -> orla_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Declan -> declan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Aisling (last to see Siobhan) ---
+
+  aisling_interview:
+    type: tweet
+    from: aisling
+    text: >
+      that photo on siobhan's account. that is NOT her. siobhan
+      doesn't post without a caption. siobhan doesn't post at 4am.
+      someone else did that.
+    effects: { trust_aisling: "+5" }
+    choices:
+      - DM Aisling -> aisling_talk_low
+        when:
+          state: trust_aisling
+          lt: 50
+      - DM Aisling -> aisling_talk_high
+        when:
+          state: trust_aisling
+          gte: 50
+
+  aisling_talk_low:
+    type: message
+    text: >
+      AISLING: I appreciate the concern but I really don't want to
+      talk to strangers about this right now. Sorry.
+
+      [Aisling needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_aisling: "+5" }
+    choices:
+      - Share what you've learned about the night -> aisling_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  aisling_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the Range Rover at the hall,
+      the suited men, the running figure. Aisling is silent for a while.
+
+      AISLING: You're actually trying to find her. Right so. I'll talk.
+    effects: { trust_aisling: "+25" }
+    choices:
+      - What happened that night? -> aisling_talk_high
+
+  aisling_talk_high:
+    type: message
+    text: >
+      AISLING: She came to mine around eleven. I was getting ready
+      for the night shift at the hospital. She was white as a ghost,
+      shaking. She said "they know what I have." She grabbed her
+      laptop and the USB drives from her bag.
+
+      I asked who. She said "the wind farm crowd. They sent people
+      to the hall." Then she said something else — "and he was at
+      the gate again. He's always at the fecking gate."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry girl," and left with a bag. That was it. By morning
+      her jeep was gone and that weird photo was on her account.
+    effects:
+      trust_aisling: "+15"
+      night_witnesses: "+1"
+      windfarm_evidence: "+1"
+      neighbour_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ryan (saw Dermot watching the farm) ---
+
+  ryan_interview:
+    type: message
+    text: >
+      RYAN: ok this is mad creepy right but dermot lyons — the
+      neighbour — i saw him like three times up on the hill above
+      siobhan's farm in the evenings. just standing there with
+      binoculars. watching her yard. absolute state of that man.
+
+      the last time was like two days before she disappeared. he
+      was sitting in his jeep on the boreen above her top field.
+      just sitting there. engine off. lights off.
+
+      what the actual fuck like
+    effects:
+      trust_ryan: "+10"
+      neighbour_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Dermot Lyons seen at Siobhan's gate, doing something to
+      the lock (Tommy)
+      22:30 — AtlantiWind Range Rover at community hall, Donal Cahill
+      present (Noreen)
+      23:00 — Siobhan arrives at Aisling's, shaken, grabs laptop and
+      drives (Aisling)
+      05:00 — Woman running on sheep track toward mountain pass (Orla)
+      04:30 — Two vehicles speeding on mountain road, one toward
+      shepherd's hut (Declan)
+
+      AtlantiWind confronted Siobhan at the hall. She fled to
+      Aisling's, grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AtlantiWind hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Dermot really doing? Why was he
+        at her gate?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Dermot -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${windfarm_evidence}
+      OBSESSION THREAD: Evidence collected: ${neighbour_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: neighbour_evidence, gte: 5 }
+            - { state: windfarm_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AtlantiWind is hiding something. Siobhan had proof. Now she's
+      gone and her planning objection files are missing from the
+      community hall.
+
+      Wind farm evidence: ${windfarm_evidence}
+    choices:
+      - Search the planning records -> planning_records
+      - Talk to Fionnuala the journalist -> fionnuala_interview
+      - Talk to Grainne (planning officer) -> grainne_interview
+      - Check the Mountain Heritage Group -> heritage_investigation
+      - Talk to Brendan about the road -> brendan_road
+      - Back to hub -> investigation_hub
+
+  # --- Planning Records ---
+
+  planning_records:
+    type: message
+    text: >
+      Kerry County Council's public planning database shows Siobhan's
+      recent submissions: objections to three separate planning
+      applications by AtlantiWind. The access road application is
+      marked "DECISION PENDING" — the only one with that status.
+
+      Her submission, available on the public file, notes:
+      "Construction of access road commenced prior to grant of
+      planning permission. Photographic evidence of works dated
+      six weeks before the application was even lodged. Section 160
+      enforcement action required."
+
+      That's illegal development. And someone started building it
+      before anyone could say no.
+    effects:
+      windfarm_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Fionnuala ---
+
+  fionnuala_interview:
+    type: message
+    text: >
+      FIONNUALA: I don't talk about sources. Full stop.
+    effects: { trust_fionnuala: "+5" }
+    choices:
+      - Show Fionnuala the evidence you have -> fionnuala_with_evidence
+        when:
+          state: windfarm_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  fionnuala_with_evidence:
+    type: message
+    text: >
+      FIONNUALA: ...you have more than I expected.
+
+      Right. Siobhan and I were working together. She had photos
+      of the access road being built weeks before the planning
+      application was lodged. She had drainage reports showing the
+      turbine foundations would destroy two square kilometres of
+      blanket bog. She had evidence that AtlantiWind made undisclosed
+      payments to a councillor's family company.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my car in Tralee and took
+      my backup drive.
+
+      Siobhan is alive. She contacted me once, from a phone I
+      didn't recognise. She said she was hiding. She said "they
+      threatened me at the hall and someone else won't leave me
+      alone."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_fionnuala: "+25"
+      windfarm_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> fionnuala_hint
+      - Back to investigation hub -> investigation_hub
+
+  fionnuala_hint:
+    type: message
+    text: >
+      FIONNUALA: The wind farm crowd sent their project director —
+      Cahill — and some solicitor from Dublin to the community hall
+      that night. They told her to withdraw her planning objections
+      or face legal consequences. Intimidation dressed up in
+      legalese.
+
+      But she also said something about the neighbour. About someone
+      who'd been on her land at night. Someone who always seemed to
+      know when she was home and when she wasn't. That's a different
+      problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Grainne ---
+
+  grainne_interview:
+    type: message
+    text: >
+      GRAINNE: As planning officer, I take these allegations very
+      seriously. But AtlantiWind's project represents significant
+      investment in the county. The councillor insists we need to
+      "facilitate development."
+
+      Off the record? I've seen the planning files. The access road
+      was built before the application was submitted. That's
+      unauthorised development, plain and simple. But every time I
+      flag it, it gets buried in "further assessment."
+
+      Siobhan's objection was the most thorough I've ever seen from
+      a member of the public. Photographs dated and GPS-tagged.
+      That's what made it dangerous for them.
+    effects:
+      trust_grainne: "+10"
+      windfarm_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Mountain Heritage Group ---
+
+  heritage_investigation:
+    type: tweet
+    from: mountain_heritage
+    text: >
+      ALERT: Undocumented construction activity on mountain access
+      route above Ballynure. Photographic evidence and peat depth
+      surveys being compiled. We are requesting an emergency
+      enforcement inspection from Kerry County Council.
+    choices:
+      - Check their data -> heritage_data
+
+  heritage_data:
+    type: message
+    text: >
+      The Kerry Mountain Heritage Group have been documenting upland
+      damage for five years. Their data shows a clear pattern:
+      construction activity that doesn't correspond to any granted
+      planning permission. Machinery movements at weekends. Earth
+      moving at night.
+
+      The drainage impact study shows the access road has already
+      diverted three mountain streams, destroying downstream habitats
+      and poisoning water supplies for two farms.
+
+      Siobhan was a member. She contributed most of the
+      photographic evidence.
+    effects:
+      windfarm_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Brendan road ---
+
+  brendan_road:
+    type: message
+    text: >
+      BRENDAN: I'll show you something. Last month I walked the
+      new road from end to end. Found this — a drainage pipe dumping
+      straight into the stream that feeds my water supply. No silt
+      trap, no treatment, nothing. Just peat water and diesel runoff
+      going straight into the drinking water.
+
+      I photographed it and sent it to Siobhan. She said it was the
+      missing piece — proof that the construction is causing active
+      environmental damage, not just potential damage. Fait accompli
+      pollution.
+
+      I still have the photos. And the water test results.
+    effects:
+      trust_brendan: "+10"
+      windfarm_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Dermot Lyons. Neighbouring farmer. Land dispute. Something more?
+      Someone was on Siobhan's land at night. Someone was watching
+      her farm. Someone was at her gate.
+
+      Neighbour evidence: ${neighbour_evidence}
+    choices:
+      - Investigate Dermot's movements -> dermot_movements
+      - Talk to Aisling about Dermot -> aisling_dermot
+        when:
+          state: trust_aisling
+          gte: 20
+      - Talk to Tommy (more detail on the gate incident) -> tommy_detail
+      - Talk to Noreen about Dermot -> noreen_dermot
+      - Check the anonymous account @liam_rua -> liam_investigation
+      - Talk to Kevin the butcher -> kevin_interview
+        when:
+          state: trust_kevin
+          gte: 40
+      - Talk to Sergeant Molloy -> sergeant_interview
+        when:
+          state: trust_sergeant
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Dermot's Movements ---
+
+  dermot_movements:
+    type: message
+    text: >
+      Siobhan kept a farm diary — shared with the ICSA for insurance
+      purposes. Cross-referencing her lambing schedule with Dermot's
+      movements paints a disturbing picture.
+
+      Every time Siobhan was at the top fields for lambing —
+      sometimes at 3am, sometimes at midnight — Dermot was recorded
+      passing through the shared gate within the hour. His own
+      sheep don't graze that section.
+
+      Over the past three months: 27 instances where Dermot accessed
+      the shared mountain land within an hour of Siobhan. Always
+      after her. Always staying until she left.
+
+      His own flock is in the valley fields. There is no farming
+      reason for him to be on that mountain.
+    effects:
+      neighbour_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Aisling on Dermot ---
+
+  aisling_dermot:
+    type: message
+    text: >
+      AISLING: Dermot? He made Siobhan's skin crawl. He'd show up
+      at the boundary wall when she was working the top fields. He'd
+      offer to "help" with lambing. He'd comment on every single one
+      of her posts about the farm within minutes.
+
+      She told him to stay on his own land. Clearly, firmly. He said
+      he understood. Then nothing changed. He just... kept appearing.
+      Always there. Always watching from the hill above.
+
+      A month ago she found that someone had been opening her field
+      gates at night. Sheep scattered all over the mountain. She
+      suspected Dermot but couldn't prove it.
+
+      Feck him. I should have done more.
+    effects:
+      trust_aisling: "+10"
+      neighbour_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Tommy detail ---
+
+  tommy_detail:
+    type: message
+    text: >
+      TOMMY: right yeah i didn't say everything. when i saw dermot
+      at siobhan's gate he had something in his hand. small yoke.
+      he was sticking it to the inside of the gatepost. like wedging
+      it into the stone.
+
+      i'm not an expert but it looked like one of those trail
+      cameras. the ones for wildlife. except it was pointed at
+      siobhan's yard, not at the mountain.
+
+      i should have said something but like who'd believe me?
+      a young lad accusing a farmer. feck that like. but shite
+      it's serious now isn't it.
+    effects:
+      trust_tommy: "+10"
+      neighbour_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Noreen on Dermot ---
+
+  noreen_dermot:
+    type: message
+    text: >
+      NOREEN: This is between us now. Dermot Lyons has been in and
+      out of my shop more than usual. Buying things that don't make
+      sense for a farmer. Batteries — the small kind, not torch
+      batteries. And he asked me to order in a trail camera. Said
+      it was for foxes.
+
+      I ordered it. But he bought three more online — I saw the
+      Amazon parcels when they came through the post office. Four
+      trail cameras for a man who's never lost a lamb to a fox in
+      his life.
+
+      He also started buying binoculars. Good ones. Zeiss. Three
+      hundred euro on binoculars. For a man who said he'd no interest
+      in birdwatching.
+    effects:
+      trust_noreen: "+10"
+      neighbour_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Liam (anonymous account) ---
+
+  liam_investigation:
+    type: tweet
+    from: liam
+    text: >
+      She should have listened. That land isn't hers alone. I know
+      every field better than she does. I was only trying to protect
+      what's ours.
+    choices:
+      - Look at this account's history -> liam_posts
+
+  liam_posts:
+    type: message
+    text: >
+      @liam_rua: account created 7 months ago. Posts are all about
+      Siobhan's farm. Comments on every lambing photo, every field
+      update, every weather post. The tone shifts over time:
+
+      Month 1: "Great work on the mountain. The old ways are the
+      best ways."
+      Month 3: "Why won't you answer my messages? I just want to
+      discuss the boundary."
+      Month 5: "I see you in the top field with other people. You
+      have time for them but not for me?"
+      Month 6: "I know your schedule. I know when you're home.
+      I'm always watching."
+
+      The account has no personal photos. Just Siobhan's farm.
+      Only Siobhan.
+    effects:
+      neighbour_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> liam_style
+
+  liam_style:
+    type: message
+    text: >
+      Comparing @liam_rua with @dermot_lyons:
+
+      Same use of farming terminology — specific Kerry mountain
+      farming terms that only a local would know. Same spelling
+      habits, same sentence structure. Same knowledge of Siobhan's
+      flock numbers that only a neighbouring farmer would have.
+
+      And one post from @liam_rua: "Saw you moved the hoggets to
+      the south field today." The south field is only visible from
+      one place: Dermot's land above.
+
+      It's Dermot. The anonymous account is Dermot.
+    effects:
+      neighbour_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kevin ---
+
+  kevin_interview:
+    type: message
+    text: >
+      KEVIN: Siobhan left something with me. A waterproof bag,
+      sealed up tight. She said "if someone asks you about the
+      planning files for the ridge road, give them this."
+
+      She looked frightened. She said she'd made copies of
+      everything but needed one set off-site, somewhere nobody
+      would think to look. A butcher's shop seemed perfect.
+    effects: { trust_kevin: "+10" }
+    choices:
+      - What's in the bag? -> kevin_bag
+
+  kevin_bag:
+    type: message
+    text: >
+      Kevin reaches under the counter behind the lamb chops and
+      produces a waterproof dry bag.
+
+      KEVIN: She said someone would come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show the access road under construction — dated six
+      weeks before the planning application was lodged. The USB
+      drive contains drainage impact data, undisclosed payment
+      records between AtlantiWind and a councillor's company,
+      and Siobhan's detailed report.
+    effects:
+      windfarm_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sergeant Molloy ---
+
+  sergeant_interview:
+    type: message
+    text: >
+      SERGEANT MOLLOY: Off the record — and I mean completely off
+      the record — I wanted to investigate AtlantiWind. My
+      superintendent told me to stand down. He said the county
+      had "enforcement jurisdiction." That's code for "leave it."
+
+      The Lyons situation is different. I didn't even know about
+      all that until now. If you have evidence of harassment and
+      surveillance, I can act on that. That's criminal. That's
+      mine.
+
+      Bring me something solid and I'll reopen the case. I'm
+      pure sick of being told what to ignore.
+    effects:
+      trust_sergeant: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Siobhan than anyone in Ballynure. Who is responsible?
+    choices:
+      - Confront Dermot Lyons (the obsessive neighbour) -> confront_dermot
+        when:
+          state: neighbour_evidence
+          gte: 5
+      - Confront Donal Cahill (the project director) -> confront_donal
+        when:
+          state: windfarm_evidence
+          gte: 3
+      - Confront Councillor Fitzgerald (political protection) -> confront_roisin
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Dermot (Best Ending) ---
+
+  confront_dermot:
+    type: message
+    text: >
+      You present your evidence to Dermot:
+
+      "I know @liam_rua is your account. I know you installed trail
+      cameras pointed at Siobhan's yard. I know you've been watching
+      her farm from the hill with binoculars. I know you were at her
+      gate the night she disappeared. I have witnesses and I have the
+      movement records."
+    choices:
+      - Send -> dermot_response
+
+  dermot_response:
+    type: message
+    text: >
+      Dermot doesn't reply for a long time. Then:
+
+      DERMOT: You don't understand. I was minding her land. She
+      doesn't know that mountain like I do. My family has farmed
+      here longer than hers. I was looking out for her. Everything
+      I did was because that land needs proper care.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Sergeant Molloy. And to
+      Fionnuala O'Brien.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sergeant Molloy reopens the case. With your evidence — the
+      anonymous account, the trail cameras, the movement records,
+      the witness testimonies — Dermot is arrested for harassment
+      and surveillance. Four trail cameras are recovered from
+      Siobhan's gate, her lambing shed, her yard, and her driveway.
+
+      Fionnuala O'Brien, finally in possession of Siobhan's full
+      evidence package, publishes the AtlantiWind story in the
+      Irish Examiner. Kerry County Council issues enforcement
+      proceedings. The access road is ordered demolished and the
+      bog restored. Donal Cahill faces criminal charges for
+      unauthorised development and undisclosed payments to a
+      public representative.
+
+      And Siobhan Walsh, reading the story from a cousin's house
+      in Galway, rings her brother for the first time in seven days.
+
+      "I'm coming home."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: siobhan
+    text: >
+      the mountain doesn't lie. and neither do the people of
+      ballynure. thanks for not giving up.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Donal (Partial Ending) ---
+
+  confront_donal:
+    type: message
+    text: >
+      You present the wind farm evidence to Donal Cahill:
+
+      "I have photographs of the access road under construction
+      weeks before planning was applied for. I have drainage reports
+      showing active environmental damage. I have records of
+      undisclosed payments to a councillor's company. I have
+      Siobhan's complete report."
+    choices:
+      - Send -> donal_response
+
+  donal_response:
+    type: message
+    text: >
+      DONAL: This conversation is being forwarded to our legal team.
+      Any publication of defamatory material will result in immediate
+      proceedings. AtlantiWind has always operated within all
+      applicable planning and environmental regulations.
+
+      But it's too late. You've sent the evidence to Fionnuala, to
+      the Mountain Heritage Group, and to Kerry County Council.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The wind farm story breaks. AtlantiWind is ordered to halt all
+      construction pending a full planning review. The project may be
+      refused entirely. Jobs and the community fund hang in the
+      balance. The village is divided.
+
+      But Siobhan?
+
+      Without the harassment evidence, Dermot is never investigated.
+      He continues to watch from the hill. He continues to open
+      gates. He installs new cameras. He creates a new anonymous
+      account.
+
+      Three months later, Siobhan reads about AtlantiWind online.
+      She returns quietly. She changes her locks. She gets dogs
+      trained for security, not herding. She checks the gateposts
+      every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Siobhan walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: siobhan
+    text: "i'm back. the mountain is safe. the rest... we'll see."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Councillor (Wrong Ending) ---
+
+  confront_roisin:
+    type: message
+    text: >
+      You confront Councillor Fitzgerald with your evidence.
+
+      Within the hour, you receive a message from her solicitor:
+    choices:
+      - Read the response -> roisin_response
+
+  roisin_response:
+    type: tweet
+    from: mairead
+    text: >
+      My client notes your allegations. Any public dissemination of
+      defamatory statements will result in immediate legal action.
+      — Gilmore & Associates, Tralee
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The councillor's solicitor buries your accusation. Without a
+      direct link between Fitzgerald and AtlantiWind's unauthorised
+      construction — and there isn't one beyond political facilitation
+      — your evidence is insufficient.
+
+      AtlantiWind continues to build. Dermot continues to watch.
+      Siobhan stays in hiding.
+
+      Six months later, @liam_rua creates a new account. It follows
+      Siobhan's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: BALLYNURE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Wind farm evidence: ${windfarm_evidence}
+      Neighbour evidence: ${neighbour_evidence}
+
+      Thank you for playing. Siobhan's story explores themes of
+      corporate greed, planning corruption, obsessive behaviour,
+      rural isolation, community solidarity, and the courage to
+      defend the land.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or domestic abuse, help is available:
+      Women's Aid Freephone Helpline: 1800 341 900
+      An Garda Siochana: 999 / 112
+      Samaritans Ireland: 116 123 (free, 24/7)
+      Environmental complaints: EPA 1890 33 55 99

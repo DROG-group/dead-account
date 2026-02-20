@@ -1,0 +1,1601 @@
+# DEAD ACCOUNT — Story 005: Colleverdi (Italy)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-005.yml
+#
+# Player investigates the disappearance of young street artist Davide Ferraro
+# in the fictional Tuscan hill town of Colleverdi.
+
+meta:
+  title: "Dead Account — Colleverdi"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_giulia: 0
+    trust_marco: 0
+    trust_chiara: 0
+    trust_alessandro: 0
+    trust_elena: 0
+    trust_tommaso: 0
+    trust_beatrice: 0
+    trust_lorenzo: 0
+    trust_rosa: 0
+    trust_filippo: 0
+    trust_valentina: 0
+    trust_matteo: 0
+    trust_paola: 0
+    trust_giuseppe: 0
+    trust_francesca: 0
+    trust_dario: 0
+    trust_simone: 0
+    trust_alba: 0
+    trust_maresciallo: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    land_evidence: 0
+    rival_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "appena arrivato a colleverdi. scoprendo la toscana un vicolo alla volta"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Colleverdi.social"
+    description: "Benvenuti sull'istanza comunitaria di Colleverdi"
+    avatar_url: /gamepatch/assets/dead-account/colleverdi_bot.png
+
+  npcs:
+    # === Davide's Inner Circle ===
+    davide:
+      name: "Davide Ferraro"
+      bio: "street art | murales | colleverdi è la mia tela | i muri parlano se li ascolti"
+      avatar: avatars/davide.jpg
+    giulia:
+      name: "Giulia Ferraro"
+      bio: "sorella di davide | studentessa di legge a siena | non smetterò di cercarlo"
+      avatar: avatars/giulia.jpg
+    marco:
+      name: "Marco Vitali"
+      bio: "migliore amico di davide | musicista | piazza san rocco ogni sera"
+      avatar: avatars/marco.jpg
+    chiara:
+      name: "Chiara Bianchi"
+      bio: "ex di davide | lavoro al bar stella | colleverdi nel cuore"
+      avatar: avatars/chiara.jpg
+
+    # === Local Government ===
+    giuseppe:
+      name: "Giuseppe Marchetti"
+      bio: "Sindaco di Colleverdi | al servizio del territorio dal 2018 | #ColleverdiFiorisce"
+      avatar: avatars/giuseppe.jpg
+    paola:
+      name: "Paola Rinaldi"
+      bio: "Assessore alla cultura | Comune di Colleverdi | arte e tradizione"
+      avatar: avatars/paola.jpg
+    comune:
+      name: "Comune di Colleverdi"
+      bio: "Account ufficiale | Avvisi comunali | Orari: Lun-Ven 8:30-13:00"
+      avatar: avatars/comune.jpg
+
+    # === Local Business & Community ===
+    elena:
+      name: "Elena Conti"
+      bio: "Bar Stella | caffè | cornetti | aperitivo | il cuore di Colleverdi dal 1972"
+      avatar: avatars/elena.jpg
+    bar_stella:
+      name: "Bar Stella"
+      bio: "Caffè artigianale | Aperitivi | Musica dal vivo il venerdì | Piazza San Rocco"
+      avatar: avatars/bar_stella.jpg
+    lorenzo:
+      name: "Lorenzo Galli"
+      bio: "viticoltore | Tenuta Galli | sangiovese | la terra non tradisce"
+      avatar: avatars/lorenzo.jpg
+    rosa:
+      name: "Rosa Martini"
+      bio: "erboristeria La Salvia | piante officinali | colleverdi"
+      avatar: avatars/rosa.jpg
+    filippo:
+      name: "Filippo Barbieri"
+      bio: "ferramenta Barbieri | tutto per la casa | dal 1965 | piazza del mercato"
+      avatar: avatars/filippo.jpg
+    valentina:
+      name: "Valentina Moretti"
+      bio: "gallerista | Galleria del Borgo | arte contemporanea | colleverdi & siena"
+      avatar: avatars/valentina.jpg
+
+    # === Journalist ===
+    francesca:
+      name: "Francesca Longo"
+      bio: "giornalista freelance | ambiente & territorio | tips: francesca@longo-stampa.it"
+      avatar: avatars/francesca.jpg
+
+    # === AgriToscana (corporate) ===
+    agritoscana:
+      name: "AgriToscana SpA"
+      bio: "Agroalimentare | Viticoltura & olivicoltura | Sede: Colleverdi | ISO 22000"
+      avatar: avatars/agritoscana.jpg
+    dario:
+      name: "Dario Santini"
+      bio: "direttore operativo AgriToscana SpA | sviluppo territoriale"
+      avatar: avatars/dario.jpg
+    simone:
+      name: "Simone Pellegrini"
+      bio: "Avvocato | Studio Pellegrini & Rossi | Diritto societario | Firenze"
+      avatar: avatars/simone.jpg
+
+    # === Teens ===
+    tommaso:
+      name: "Tommaso"
+      bio: "17 | skate & graffiti | colleverdi born | davide è il maestro fra"
+      avatar: avatars/tommaso.jpg
+    beatrice:
+      name: "Beatrice"
+      bio: "16 | foto & collage | le mura di colleverdi sono un museo | tipo tutto"
+      avatar: avatars/beatrice.jpg
+    matteo:
+      name: "Matteo"
+      bio: "15 | bmx & street art | i vicoli sono nostri | boh"
+      avatar: avatars/matteo.jpg
+
+    # === Media & Community ===
+    eco_colleverdi:
+      name: "L'Eco di Colleverdi"
+      bio: "Notizie da Colleverdi e dintorni | Tips: redazione@ecodicolleverdi.it"
+      avatar: avatars/eco_colleverdi.jpg
+    meteo_toscana:
+      name: "Meteo Colleverdi"
+      bio: "Previsioni e allerte | Stazione automatica | Aggiornamento ogni ora"
+      avatar: avatars/meteo_toscana.jpg
+    terra_viva:
+      name: "Associazione Terra Viva"
+      bio: "Tutela del territorio toscano | Volontari | Segnalazioni ambientali"
+      avatar: avatars/terra_viva.jpg
+
+    # === Suspicious / Other ===
+    alessandro:
+      name: "Alessandro Ferro"
+      bio: "artista | pittore | gallerie a siena e firenze | l'arte vera si fa in studio"
+      avatar: avatars/alessandro.jpg
+    alba:
+      name: "ombra_sui_muri"
+      bio: "."
+      avatar: avatars/anon.jpg
+    maresciallo:
+      name: "Maresciallo De Luca"
+      bio: "Stazione Carabinieri di Colleverdi | Emergenze: 112"
+      avatar: avatars/maresciallo.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN COLLEVERDI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to colleverdi.social — the community Mastodon instance for
+      the Tuscan hill town of Colleverdi.
+
+      The local feed is restless. The walls of the town are covered in
+      murals by a local artist. But the artist himself has gone silent.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps coming up:
+      @davide_ferraro.
+
+      A young street artist. Muralist. He painted the walls of Colleverdi
+      with scenes of the landscape, the people, the vineyards. Everyone
+      loved his work. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> davide_profile
+
+  davide_profile:
+    type: tweet
+    from: davide
+    text: "stanotte ho visto le ruspe dietro la vigna vecchia di Galli. scavano di notte. nessuno ne parla. io ne parlo. con i muri."
+    choices:
+      - That's his last real post... -> grey_wall
+
+  grey_wall:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a photo of a blank grey wall. No tags, no colours, no art.
+      Posted at 4am. No caption.
+
+      His friends say that's the opposite of everything Davide stands
+      for. The Carabinieri say he probably went to travel for
+      inspiration. Something doesn't add up.
+    choices:
+      - Read the Carabinieri statement -> carabinieri_statement
+      - Look at what people are saying -> community_reaction
+
+  carabinieri_statement:
+    type: tweet
+    from: maresciallo
+    text: >
+      È stato ricevuto un esposto relativo a un residente di Colleverdi.
+      Al momento non emergono elementi di natura delittuosa. Chiunque
+      disponga di informazioni utili è pregato di contattare la Stazione
+      al 112 o presentarsi in caserma.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are a mess. His sister @giulia_ferraro is begging
+      for information. His best friend @marco_vitali is furious at the
+      Carabinieri. His ex @chiara_bianchi is posting worried messages.
+      The old winemaker @lorenzo_galli says Davide was right about the
+      digging.
+
+      And the journalist @francesca_longo has gone completely quiet.
+
+      Nobody buys the Carabinieri's line. Nobody thinks Davide just
+      "went travelling for inspiration."
+    effects: { trust_giulia: "+5", trust_marco: "+5" }
+    choices:
+      - Start following Davide's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Colleverdi. Follow Davide's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Elena (bar owner, knows everyone) -> elena_intro
+      - Talk to Lorenzo (winemaker, saw the digging) -> lorenzo_intro
+      - Talk to Tommaso (teen skater, looks shaken) -> tommaso_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Davide with the rhythms of a small
+      Tuscan hill town: harvest schedules, the bar's aperitivo specials,
+      announcements about the sagra della bistecca.
+
+      Key names surface: Giulia (sister, law student in Siena), Marco
+      (best friend, musician), Chiara (ex-girlfriend, works at Bar
+      Stella), and the teens — Tommaso, Beatrice, Matteo — who
+      worshipped Davide's street art.
+
+      Also prominent: AgriToscana SpA, the agribusiness company buying
+      up land around the town. Their posts are polished corporate PR.
+      Davide's murals were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Elena -> elena_intro
+      - Talk to Lorenzo -> lorenzo_intro
+      - Talk to Tommaso -> tommaso_intro
+
+  # --- Elena (social map) ---
+
+  elena_intro:
+    type: tweet
+    from: elena
+    text: >
+      Il bar è aperto ma non è la stessa cosa senza @davide_ferraro
+      che passa a prendere il caffè alle 7. Torna a casa, ragazzo.
+    effects: { trust_elena: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Elena -> elena_talk
+
+  elena_talk:
+    type: message
+    text: >
+      ELENA: Ah, sei nuovo? Benvenuto. Brutto momento per arrivare.
+      Sono tutti nervosi per Davide.
+
+      Ti spiego come funziona qui. Giulia è la sorella di Davide —
+      studia giurisprudenza a Siena, sta impazzendo. Marco Vitali è il
+      migliore amico, suonano insieme, tipo inseparabili. Chiara Bianchi
+      è l'ex di Davide — lo ha lasciato tre mesi fa ma è ancora
+      attaccata a lui. Lavora qui al bar.
+
+      Poi c'è Alessandro Ferro — un pittore, tipo artista serio, gallerie
+      e tutto. Lui e Davide non si sopportano. Alessandro dice che la
+      street art non è arte vera. Davide gli ha risposto con un murale
+      davanti alla sua galleria preferita. Immagina il casino.
+
+      E poi la AgriToscana — quelli stanno comprando tutto il terreno
+      intorno a Colleverdi. Davide ha dipinto un murale enorme contro
+      di loro. Non gli è piaciuto per niente.
+    effects: { trust_elena: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Alessandro -> elena_alessandro
+      - Ask about AgriToscana -> elena_agritoscana
+      - Thank her and move on -> quest1_hub
+
+  elena_alessandro:
+    type: message
+    text: >
+      ELENA: Alessandro? Madonna, quello è un pezzo di merda, scusa il
+      francese. Si crede un genio perché espone a Firenze. Quando Davide
+      ha iniziato a farsi un nome con i murales — tipo articoli sui
+      giornali, gente che veniva apposta a Colleverdi per vederli — lui
+      è diventato verde dall'invidia.
+
+      Ha scritto una lettera al sindaco per far rimuovere i murales.
+      Ha detto che "deturpano il centro storico." Minchia, la gente
+      viene qui PER quei murales. Ma Alessandro non sopporta che uno
+      con le bombolette spray abbia più fama di lui con i pennelli.
+
+      L'ho sentito una volta al bar che diceva: "prima o poi qualcuno
+      gli insegnerà a stare al suo posto." Mi ha fatto venire i brividi.
+    effects: { trust_elena: "+5" }
+    choices:
+      - Ask about AgriToscana -> elena_agritoscana
+      - Move on -> quest1_hub
+
+  elena_agritoscana:
+    type: message
+    text: >
+      ELENA: Quelli dell'AgriToscana stanno comprando tutto. Vigne,
+      oliveti, terreni agricoli. Pagano bene, troppo bene. Metà dei
+      vecchi contadini hanno venduto. Ma Lorenzo Galli — il viticoltore
+      — non vende. E la sua vigna vecchia è esattamente dove loro
+      vogliono espandersi.
+
+      Davide ha scoperto qualcosa. Diceva che di notte le ruspe
+      scavavano dietro la vigna di Lorenzo. Che interravano roba.
+      Ha dipinto un murale enorme sul muro del vecchio frantoio —
+      tipo teschi e barili tossici tra i filari di viti. Bellissimo
+      ma inquietante.
+
+      Due settimane dopo, sparito.
+    effects: { trust_elena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lorenzo (the land, witness tease) ---
+
+  lorenzo_intro:
+    type: tweet
+    from: lorenzo
+    text: >
+      cinquant'anni su questa terra. la conosco come il palmo della
+      mia mano. e vi dico che qualcosa non va. @davide_ferraro aveva
+      ragione. fate il collegamento.
+    effects: { trust_lorenzo: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lorenzo -> lorenzo_talk
+
+  lorenzo_talk:
+    type: message
+    text: >
+      LORENZO: Io faccio vino da quando avevo quindici anni. Questa
+      terra me l'ha lasciata mio nonno. Conosco ogni metro, ogni sasso,
+      ogni radice.
+
+      E ti dico una cosa: di notte, dietro la mia vigna vecchia, quelli
+      dell'AgriToscana scavano. Ho sentito le ruspe. Ho visto i camion.
+      Di notte, quando pensano che nessuno guardi.
+
+      Davide è venuto da me. Voleva capire. Ha fatto foto, disegni,
+      appunti. Ha dipinto quel murale incredibile. E poi — puf —
+      sparito.
+
+      Tu credi alle coincidenze? Io no. La terra non mente.
+    effects: { trust_lorenzo: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> lorenzo_night
+      - Move on -> quest1_hub
+
+  lorenzo_night:
+    type: message
+    text: >
+      LORENZO: La notte prima che sparisse — ero sveglio, non dormivo
+      bene, verso l'una. Ho sentito un'auto che risaliva la strada
+      sterrata dietro la vigna. Non è una strada dove passa nessuno
+      di notte.
+
+      Mi sono affacciato. Due fari nella polvere. Un SUV scuro. Targa
+      non ho visto, ma era grosso, tipo aziendale.
+
+      All'una di notte. Sulla strada della mia vigna.
+
+      Non ci ho pensato subito. Adesso ci penso sempre.
+    effects: { trust_lorenzo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tommaso (teen skater, witness tease) ---
+
+  tommaso_intro:
+    type: tweet
+    from: tommaso
+    text: >
+      fra giuro @davide_ferraro non se ne va così tipo boh non ha
+      senso. è lui che ci ha insegnato a disegnare, a vedere i muri
+      in modo diverso. se qualcuno sa qualcosa parlate cazzo
+    effects: { trust_tommaso: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tommaso -> tommaso_talk_early
+
+  tommaso_talk_early:
+    type: message
+    text: >
+      TOMMASO: oh ma chi sei fra? sei nuovo? vabbè comunque davide
+      è tipo il più grande di colleverdi. ci ha insegnato tutto —
+      stencil, throw-up, wildstyle, tutto. tipo un fratello maggiore
+      per tutti noi.
+
+      e adesso sto in paranoia perché beatrice ha visto una roba
+      strana l'altra sera al vecchio frantoio ma non vuole parlarne.
+      dice che ha paura. tipo fra è assurdo sta situazione
+    effects: { trust_tommaso: "+10" }
+    choices:
+      - What did Beatrice see? -> tommaso_beatrice_hint
+      - Move on -> quest1_hub
+
+  tommaso_beatrice_hint:
+    type: message
+    text: >
+      TOMMASO: boh non so bene. lei era fuori a fare foto tipo per
+      un progetto e ha visto qualcuno vicino al murale di davide —
+      quello grande, quello dell'AgriToscana. tipo qualcuno che lo
+      stava coprendo di vernice bianca. di notte fra. chi cazzo
+      va a cancellare un murale di notte?
+
+      e ha detto che ha riconosciuto la persona ma non vuole dire
+      chi. è spaventata. tipo forse devi prima guadagnarti la sua
+      fiducia, parlale di arte o roba così
+    effects: { trust_tommaso: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Colleverdi. A Tuscan hill town built
+      around olive groves and vineyards. A street artist who was
+      exposing something. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Giulia (Davide's sister) -> giulia_q1
+      - Talk to Marco (Davide's best friend) -> marco_q1
+      - Check what Chiara (Davide's ex) is saying -> chiara_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Giulia Q1 ---
+
+  giulia_q1:
+    type: tweet
+    from: giulia
+    text: >
+      mio fratello è SPARITO e i carabinieri mi dicono che forse è
+      andato a farsi un viaggio??? MA DAVIDE NON PARTE SENZA DIRMI
+      NIENTE. arrivo da siena. qualcuno mi spiegherà.
+    effects: { trust_giulia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Giulia -> giulia_q1_talk
+
+  giulia_q1_talk:
+    type: message
+    text: >
+      GIULIA: Chi sei? Un altro che vuole gossip su mio fratello?
+      Davide mi ha chiamato la sera prima di sparire. Era agitato.
+      Ha detto che aveva trovato qualcosa di grosso dietro la vigna
+      di Lorenzo. Ha detto "se mi succede qualcosa, guarda
+      l'AgriToscana." Poi ha riattaccato.
+
+      È l'ultima volta che ho sentito la sua voce.
+    effects: { trust_giulia: "+10" }
+    choices:
+      - What do you think happened? -> giulia_theory
+      - Move on -> quest1_hub
+
+  giulia_theory:
+    type: message
+    text: >
+      GIULIA: Io penso che Davide ha scoperto che l'AgriToscana
+      interra rifiuti nei terreni che compra e loro l'hanno zittito.
+      Ma c'è anche quella storia con Alessandro Ferro — il pittore.
+      Quello non ha mai accettato il successo di Davide. Lo odia.
+
+      E poi... Davide mi ha detto che qualcuno gli mandava messaggi
+      strani. Tipo qualcuno che lo seguiva, che fotografava i suoi
+      murales ogni giorno, che lo aspettava fuori dal bar. Pensava
+      fosse un fan ossessivo ma non sapeva chi.
+
+      Porco dio, avrei dovuto insistere per saperne di più.
+    effects: { trust_giulia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marco Q1 ---
+
+  marco_q1:
+    type: tweet
+    from: marco
+    text: >
+      davide non risponde. non risponde al telefono, ai messaggi, a
+      niente. fra noi ci sentiamo OGNI GIORNO da quando avevamo 10
+      anni. è successo qualcosa. ne sono sicuro.
+    effects: { trust_marco: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marco -> marco_q1_talk
+
+  marco_q1_talk:
+    type: message
+    text: >
+      MARCO: Davide e io ci conosciamo da sempre. Suoniamo insieme,
+      lui dipinge io suono la chitarra, tipo in piazza. E ti giuro
+      fra — lui non sparisce così. Mai. Neanche quando stava di
+      merda per la storia con Chiara.
+
+      L'ultima sera l'ho visto in piazza. Era nervoso. Aveva lo zaino
+      con le bombolette e la macchina fotografica. Ha detto che doveva
+      andare a documentare una cosa "grossa" dietro la vigna vecchia.
+      Ho detto "vengo con te" e lui ha detto no, troppo pericoloso.
+
+      Cazzo, avrei dovuto seguirlo lo stesso.
+
+      [Marco sembra sincero. Distrutto.]
+    effects: { trust_marco: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Chiara Q1 ---
+
+  chiara_q1:
+    type: tweet
+    from: chiara
+    text: >
+      lo so che ci siamo lasciati. lo so che non dovrebbe importarmi
+      così tanto. ma @davide_ferraro merita che qualcuno lo cerchi.
+      è una brava persona cazzo.
+    effects: { trust_chiara: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Chiara -> chiara_q1_talk
+
+  chiara_q1_talk:
+    type: message
+    text: >
+      CHIARA: Io e Davide ci siamo lasciati tre mesi fa. Motivi
+      miei. Ma gli voglio ancora bene. E sto impazzendo.
+
+      La cosa strana è che dopo che ci siamo lasciati, qualcuno
+      ha iniziato a mandarmi messaggi anonimi. Tipo "sei libera adesso"
+      e "lui non ti meritava." Roba che mi ha fatto accapponare la
+      pelle. Ho pensato fosse uno scherzo ma...
+
+      E poi Davide mi ha detto che anche lui riceveva messaggi
+      strani. Qualcuno che gli mandava foto dei suoi murales con
+      commenti tipo "il prossimo capolavoro sarà il mio." Boh. Che
+      cazzo vuol dire?
+
+      [Chiara è scossa. Qualcosa la preoccupa oltre la scomparsa.]
+    effects: { trust_chiara: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Davide went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Beatrice (was near the old frantoio at night) -> beatrice_interview
+      - Find Filippo (hardware store, stays late in the shop) -> filippo_interview
+      - Find Rosa (herbalist, walks home late through the vicoli) -> rosa_interview
+      - Find Lorenzo (winemaker, heard the car again) -> lorenzo_interview_q2
+
+  # --- Beatrice (saw someone painting over the mural) ---
+
+  beatrice_interview:
+    type: tweet
+    from: beatrice
+    text: >
+      tipo non sto bene. non dormo. ho visto una cosa che non dovevo
+      vedere e adesso ho paura. boh non so che fare
+    effects: { trust_beatrice: "+5" }
+    choices:
+      - Ask Beatrice about that evening -> beatrice_talk
+
+  beatrice_talk:
+    type: message
+    text: >
+      BEATRICE: ok ma giurami che non lo dici a nessuno fra. ero fuori
+      al vecchio frantoio tipo verso le 22 a fare foto per un progetto.
+      e ho visto uno che stava coprendo il murale grande di davide.
+      quello con i teschi e i barili. tipo con vernice bianca e un
+      rullo.
+
+      e fra l'ho riconosciuto. era alessandro ferro. il pittore. quello
+      con le gallerie. stava cancellando il murale di davide nel buio
+      tipo con una torcia sul telefono. e rideva. rideva da solo.
+
+      minchia mi ha fatto troppo paura. me ne sono andata subito.
+    effects:
+      trust_beatrice: "+10"
+      night_witnesses: "+1"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Filippo (saw argument) ---
+
+  filippo_interview:
+    type: tweet
+    from: filippo
+    text: >
+      Ero in negozio tardi a fare inventario. Ho sentito delle voci
+      alte in piazza verso le 23. Questa città non è più tranquilla
+      come una volta.
+    effects: { trust_filippo: "+5" }
+    choices:
+      - Ask Filippo what he heard -> filippo_talk
+
+  filippo_talk:
+    type: message
+    text: >
+      FILIPPO: I close the shop late on Thursdays — inventory night.
+      Around 23:00 I heard shouting in the piazza. I looked out the
+      window. Two men. One was definitely Davide — I recognised his
+      jacket, the one covered in paint stains.
+
+      The other man was taller, dressed well. They were arguing. The
+      tall one grabbed Davide by the collar and said something I
+      couldn't quite hear, but it ended with "...mai più un murale
+      in questa città." Never paint another mural in this town.
+
+      Then a car pulled up — a big SUV, dark — and the tall man got
+      in. Davide stood there for a moment, then walked off toward
+      the old olive road. That's the direction of the vineyards.
+
+      I told the Carabinieri. They wrote it down. That was it.
+    effects:
+      trust_filippo: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rosa (saw Davide heading to the vineyards) ---
+
+  rosa_interview:
+    type: tweet
+    from: rosa
+    text: >
+      Chiudo l'erboristeria alle 21 e torno a piedi per i vicoli.
+      L'altra sera ho incrociato qualcuno che correva. Di notte. Non
+      è normale a Colleverdi.
+    effects: { trust_rosa: "+5" }
+    choices:
+      - Ask Rosa what she saw -> rosa_talk
+
+  rosa_talk:
+    type: message
+    text: >
+      ROSA: I was walking home through Via del Pozzo around midnight.
+      It was quiet, as always. But then I saw someone — a young man,
+      carrying a backpack and a camera — rushing down toward the
+      Porta Vecchia. That's the old gate that leads to the olive
+      road and the vineyards.
+
+      He was moving fast, like he was determined. Not running from
+      something — running toward something. But urgently.
+
+      I called out "tutto bene?" and he turned for a second. It
+      was Davide. He waved without stopping and disappeared through
+      the gate.
+
+      That was the last anyone saw of him. Going toward the
+      vineyards. Alone. At midnight.
+    effects:
+      trust_rosa: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lorenzo Q2 (heard machinery) ---
+
+  lorenzo_interview_q2:
+    type: tweet
+    from: lorenzo
+    text: >
+      di nuovo le ruspe. di nuovo di notte. e adesso il ragazzo che
+      le ha denunciate è sparito. porco dio.
+    effects: { trust_lorenzo: "+5" }
+    choices:
+      - Ask Lorenzo what he heard that night -> lorenzo_talk_q2
+
+  lorenzo_talk_q2:
+    type: message
+    text: >
+      LORENZO: That night — the night Davide vanished — I was awake
+      again. Around 2am. The machinery started. Louder than usual.
+      Diesel engines, the sound of digging.
+
+      I went to the window. Lights behind the vineyard. Headlights,
+      work lights. And then I heard shouting. Men's voices. And
+      something else — a younger voice. Scared.
+
+      Then everything stopped. Engines off. Lights off. Silence.
+
+      In the morning, fresh tyre tracks all over the dirt road.
+      And the soil behind my vineyard — disturbed. Freshly turned.
+      Like they'd buried something in a hurry.
+    effects:
+      trust_lorenzo: "+10"
+      night_witnesses: "+1"
+      land_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marco (best friend)
+      and Chiara (ex, knows about the anonymous messages).
+    choices:
+      - Talk to Marco about that night -> marco_interview
+      - Talk to Chiara about the anonymous messages -> chiara_interview
+      - Find Beatrice -> beatrice_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Filippo -> filippo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Rosa -> rosa_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Lorenzo -> lorenzo_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marco (last conversation with Davide) ---
+
+  marco_interview:
+    type: tweet
+    from: marco
+    text: >
+      l'ultima cosa che mi ha detto è stata "fra stasera cambio tutto."
+      pensavo parlasse di un murale nuovo. adesso non so più cosa
+      pensare.
+    effects: { trust_marco: "+5" }
+    choices:
+      - DM Marco -> marco_talk_low
+        when:
+          state: trust_marco
+          lt: 50
+      - DM Marco -> marco_talk_high
+        when:
+          state: trust_marco
+          gte: 50
+
+  marco_talk_low:
+    type: message
+    text: >
+      MARCO: Apprezzo la preoccupazione ma fra non ti conosco. Non
+      voglio parlare con estranei della situazione.
+
+      [Marco ha bisogno di fidarsi di te. Dimostragli che stai
+      indagando seriamente.]
+    effects: { trust_marco: "+5" }
+    choices:
+      - Share what you've learned about the night -> marco_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marco_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the argument in the piazza,
+      the machinery at the vineyard, the shouting in the dark.
+      Marco is quiet for a while.
+
+      MARCO: Cazzo. Stai davvero cercando di trovarlo. Ok. Parlo.
+    effects: { trust_marco: "+25" }
+    choices:
+      - What happened that night? -> marco_talk_high
+
+  marco_talk_high:
+    type: message
+    text: >
+      MARCO: L'ultima sera eravamo in piazza. Davide era elettrico.
+      Aveva le foto della scena dietro la vigna — ruspe, camion,
+      bidoni. Roba seria fra. Ha detto che voleva tornare quella
+      notte per documentare tutto con la macchina fotografica. Prove
+      definitive.
+
+      Gli ho detto "fra non andare da solo cazzo" ma lui era fatto
+      così — testa dura. Ha detto che aveva avvisato Francesca la
+      giornalista e che doveva solo fare le foto.
+
+      E poi ha detto una cosa strana. Ha detto "e poi c'è quello
+      che mi segue. devo capire chi cazzo è prima che sia troppo
+      tardi." Tipo qualcuno lo stava seguendo da settimane. Non
+      solo l'AgriToscana. Qualcun altro.
+    effects:
+      trust_marco: "+15"
+      night_witnesses: "+1"
+      land_evidence: "+1"
+      rival_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Chiara (anonymous messages) ---
+
+  chiara_interview:
+    type: message
+    text: >
+      CHIARA: ok ti faccio vedere i messaggi. da quando io e davide
+      ci siamo lasciati, questo account — @ombra_sui_muri — mi scrive
+      tipo ogni settimana. "sei libera adesso." "lui non meritava
+      la tua attenzione." "il vero artista aspetta."
+
+      ma la cosa più inquietante? ha mandato anche a davide. gli ha
+      scritto "i tuoi muri sono solo rumore. il silenzio è arte
+      vera." e "la prossima opera sarà il vuoto."
+
+      davide pensava fosse uno scherzo ma tipo... "la prossima opera
+      sarà il vuoto"? adesso che è sparito quelle parole mi fanno
+      venire la pelle d'oca.
+    effects:
+      trust_chiara: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Davide in piazza with Marco, agitated, shows photos of
+      AgriToscana digging (Marco)
+      22:00 — Beatrice sees Alessandro painting over Davide's mural at
+      the old frantoio (Beatrice)
+      23:00 — Argument in piazza between Davide and a tall man, SUV
+      drives away (Filippo)
+      00:00 — Davide rushes through Porta Vecchia toward vineyards,
+      carrying camera and backpack (Rosa)
+      02:00 — Machinery, digging, shouting behind Lorenzo's vineyard,
+      then sudden silence (Lorenzo)
+
+      Davide went to the vineyards to photograph AgriToscana's illegal
+      activity. He was caught. Someone also had a confrontation with
+      him earlier. And someone was destroying his art.
+
+      Two threats: the corporation AND someone obsessive.
+
+      Two threads to pull:
+      — The land: What is AgriToscana burying? Who ordered the
+        confrontation?
+      — The rival: What is Alessandro really doing? Who is
+        @ombra_sui_muri?
+    choices:
+      - Investigate the land contamination -> corruption_hub
+      - Investigate Alessandro and the anonymous account -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      LAND THREAD: Evidence collected: ${land_evidence}
+      RIVAL THREAD: Evidence collected: ${rival_evidence}
+    choices:
+      - Work on the land thread -> corruption_hub
+      - Work on the rival thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: rival_evidence, gte: 5 }
+            - { state: land_evidence, gte: 3 }
+
+  # =====================================================================
+  # LAND CONTAMINATION THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE LAND THREAD
+
+      AgriToscana is hiding something. Davide had proof. Now he's
+      gone and his photos are missing.
+
+      Land evidence: ${land_evidence}
+    choices:
+      - Search public records on AgriToscana land purchases -> land_records
+      - Talk to Francesca the journalist -> francesca_interview
+      - Talk to Lorenzo about soil samples -> lorenzo_soil
+      - Talk to Paola (culture deputy, knows about permits) -> paola_interview
+      - Check the Terra Viva association -> terra_viva_investigation
+      - Talk to Valentina the gallerist -> valentina_interview
+      - Back to hub -> investigation_hub
+
+  # --- Land Records ---
+
+  land_records:
+    type: message
+    text: >
+      The Comune di Colleverdi's public land registry shows
+      AgriToscana has purchased 47 hectares around the town in
+      the past three years. All recorded as "agricultural conversion."
+      But satellite images from before their purchase show these
+      plots were healthy olive groves and vineyards.
+
+      AgriToscana's environmental impact assessment — filed with the
+      Regione — lists only "organic viticulture and olive cultivation."
+      No mention of excavation. No mention of waste disposal. No
+      mention of heavy machinery.
+
+      The machinery Lorenzo heard at 2am doesn't match organic farming.
+    effects:
+      land_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Francesca ---
+
+  francesca_interview:
+    type: message
+    text: >
+      FRANCESCA: Non parlo delle mie fonti. Punto.
+    effects: { trust_francesca: "+5" }
+    choices:
+      - Show Francesca the evidence you have -> francesca_with_evidence
+        when:
+          state: land_evidence
+          gte: 3
+      - Back to land thread -> corruption_hub
+
+  francesca_with_evidence:
+    type: message
+    text: >
+      FRANCESCA: ...hai più roba di quanto mi aspettassi.
+
+      Ok. Davide e io stavamo lavorando insieme. Lui faceva le foto,
+      io scrivevo il pezzo. AgriToscana non compra terreni per fare
+      il vino. Li compra per interrare rifiuti industriali. Merda
+      tossica da fabbriche del nord che paga per far sparire.
+
+      Davide aveva le foto delle ruspe, dei bidoni, dei camion con
+      targhe di aziende del Veneto. Stavamo per pubblicare tutto.
+      Poi lui è sparito. E il giorno dopo qualcuno ha sfondato il
+      finestrino della mia macchina e mi ha rubato il portatile.
+
+      Davide è vivo. Mi ha contattato una volta, da un numero che
+      non conoscevo. Ha detto che si nasconde. Ha detto "quelli
+      dell'AgriToscana mi hanno trovato alla vigna e qualcun altro
+      mi sta addosso."
+
+      Non posso dirti dove è. Ma con abbastanza prove, posso
+      pubblicare e farlo tornare in sicurezza.
+    effects:
+      trust_francesca: "+25"
+      land_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who found him at the vineyard? -> francesca_hint
+      - Back to investigation hub -> investigation_hub
+
+  francesca_hint:
+    type: message
+    text: >
+      FRANCESCA: AgriToscana ha mandato il loro direttore — Dario
+      Santini — e degli uomini alla vigna quella notte. Hanno trovato
+      Davide che fotografava. L'hanno minacciato. Gli hanno detto che
+      se pubblicava le foto avrebbe avuto guai seri.
+
+      Ma lui ha detto anche un'altra cosa. Ha detto che qualcuno lo
+      seguiva da settimane. Qualcuno che sapeva sempre dove andava.
+      Qualcuno che gli lasciava messaggi su account anonimi. Quello è
+      un problema diverso.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Lorenzo soil ---
+
+  lorenzo_soil:
+    type: message
+    text: >
+      LORENZO: Ti faccio vedere una cosa. Il mese scorso, dopo le
+      piogge, è venuta fuori della roba dal terreno dietro la vigna.
+      Un liquido scuro, puzzolente. Ha bruciato le radici delle mie
+      viti più vecchie — piante di cinquant'anni, morte in una
+      settimana.
+
+      Ho preso dei campioni. Li ho mandati a un laboratorio a Siena
+      di nascosto. I risultati? Solventi industriali, metalli pesanti,
+      idrocarburi. Livelli venti volte superiori al limite legale.
+
+      AgriToscana non fa vino. Fa la discarica abusiva. E la mia
+      vigna sta morendo per colpa loro.
+    effects:
+      trust_lorenzo: "+15"
+      land_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to land thread -> corruption_hub
+
+  # --- Paola ---
+
+  paola_interview:
+    type: message
+    text: >
+      PAOLA: Come assessore alla cultura, vi dico che i murales di
+      Davide sono un patrimonio per Colleverdi. Ma come funzionaria
+      comunale, devo dirvi una cosa off the record.
+
+      I permessi dell'AgriToscana per l'acquisto dei terreni sono
+      passati in consiglio comunale in fretta. Troppa fretta. Il
+      sindaco ha insistito per l'approvazione rapida. Ha detto che
+      l'investimento era "strategico per lo sviluppo territoriale."
+
+      Ma le relazioni ambientali allegate ai permessi? Copie
+      identiche, parola per parola. Come se le avesse scritte
+      qualcuno dell'azienda, non un tecnico indipendente.
+
+      Davide aveva le prove fotografiche che le attività non
+      corrispondevano ai permessi. Per questo dava fastidio.
+    effects:
+      trust_paola: "+10"
+      land_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to land thread -> corruption_hub
+
+  # --- Terra Viva ---
+
+  terra_viva_investigation:
+    type: tweet
+    from: terra_viva
+    text: >
+      ALLARME: Segnalazione di sversamento illegale nei terreni
+      agricoli tra Colleverdi e Poggio al Sole. Campioni prelevati.
+      Chiediamo un'ispezione immediata non annunciata all'AgriToscana.
+    choices:
+      - Check their data -> terra_viva_data
+
+  terra_viva_data:
+    type: message
+    text: >
+      Terra Viva has been monitoring water and soil quality around
+      Colleverdi for two years. Their data shows a clear pattern:
+      spikes in contamination that match AgriToscana's land purchases.
+      Every plot they buy shows elevated levels of industrial solvents
+      within six months.
+
+      The pattern is unmistakable. This is systematic illegal dumping
+      disguised as agricultural development.
+
+      Davide was a member of Terra Viva. He contributed most of the
+      photographic documentation.
+    effects:
+      land_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to land thread -> corruption_hub
+
+  # --- Valentina ---
+
+  valentina_interview:
+    type: message
+    text: >
+      VALENTINA: I run the Galleria del Borgo. Davide never showed
+      there — his work was the walls of the town. But I know the art
+      scene.
+
+      Alessandro Ferro? He's technically skilled but the art world
+      moved past his style years ago. When Davide started getting
+      press — Corriere della Sera, Repubblica, even a BBC piece
+      about Tuscan street art — Alessandro lost it. He couldn't
+      handle that a kid with spray cans was getting the recognition
+      he'd chased for twenty years.
+
+      He filed a denuncia with the Comune to have the murals removed.
+      He called them vandalism. The Comune rejected it. That made
+      him even angrier.
+    effects:
+      trust_valentina: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # RIVAL / OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE RIVAL THREAD
+
+      Alessandro Ferro. Painter. Gallery artist. Something more?
+      Someone was destroying Davide's murals. Someone was sending
+      threatening anonymous messages. Someone was watching.
+
+      Rival evidence: ${rival_evidence}
+    choices:
+      - Look at Alessandro's public posts -> alessandro_posts
+      - Talk to Chiara about the anonymous account -> chiara_anon
+        when:
+          state: trust_chiara
+          gte: 20
+      - Talk to Beatrice (more detail on the mural destruction) -> beatrice_detail
+      - Talk to Elena about Alessandro's behaviour -> elena_alessandro_deep
+      - Investigate the anonymous account @ombra_sui_muri -> ombra_investigation
+      - Talk to Maresciallo De Luca -> maresciallo_interview
+        when:
+          state: trust_maresciallo
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Alessandro's posts ---
+
+  alessandro_posts:
+    type: message
+    text: >
+      Alessandro's public posts paint a picture — literally. His
+      feed is full of his own oil paintings, gallery openings, and
+      art criticism. But beneath the polished surface, bitterness:
+
+      "La vera arte richiede disciplina, non bombolette spray."
+      "Il turismo da street art distrugge l'identità dei borghi."
+      "Chiunque con un muro e uno stencil si crede Banksy."
+
+      And buried in older posts:
+      "I muri di Colleverdi meritano rispetto, non vandalismo
+      colorato."
+      "Presto le cose cambieranno. Il rumore si spegnerà."
+
+      That last post was three days before Davide disappeared.
+    effects:
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> stalker_hub
+
+  # --- Chiara on the anonymous account ---
+
+  chiara_anon:
+    type: message
+    text: >
+      CHIARA: Ok, ti mostro tutto. L'account @ombra_sui_muri mi ha
+      scritto 23 messaggi in tre mesi. All'inizio pensavo fosse un
+      troll qualsiasi. Ma poi ha iniziato a sapere cose. Cose che sa
+      solo chi mi conosce.
+
+      Tipo "ti ho vista al bar ieri con la maglia rossa." Oppure
+      "sei bella quando ridi ma non ridi mai con lui." Roba che
+      vuol dire che mi guarda. Che mi segue.
+
+      E Davide... Davide ha ricevuto roba peggio. Tipo "i tuoi
+      muri sono temporanei. tu sei temporaneo. il vuoto è per
+      sempre." E l'ultimo messaggio prima che sparisse:
+      "stanotte il muro diventa bianco."
+
+      Stanotte il muro diventa bianco. E poi il murale è stato
+      cancellato e Davide è sparito.
+    effects:
+      trust_chiara: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> stalker_hub
+
+  # --- Beatrice detail ---
+
+  beatrice_detail:
+    type: message
+    text: >
+      BEATRICE: fra ok in realtà non ti ho detto tutto. quando
+      alessandro stava cancellando il murale, ha visto che lo
+      guardavo. mi ha puntato la torcia in faccia. e ha detto —
+      giuro fra — ha detto: "vai a casa ragazzina. il prossimo
+      muro che copro sarà quello dove dorme il tuo amichetto."
+
+      tipo minchia fra io sono scappata di corsa. e la mattina
+      dopo il murale era tutto bianco e davide era sparito.
+
+      non ho detto niente ai carabinieri perché ho paura di lui.
+      quello è fuori di testa fra. è ossessionato. non è solo
+      invidia, è tipo follia.
+    effects:
+      trust_beatrice: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to rival thread -> stalker_hub
+
+  # --- Elena deep ---
+
+  elena_alessandro_deep:
+    type: message
+    text: >
+      ELENA: Vuoi sapere la verità su Alessandro? Quello viene al
+      bar ogni sera e beve fino a tardi. E quando beve, parla.
+
+      Ha detto cose tipo: "Ferraro è un parassita. Vive della mia
+      arte, copia il mio stile." Il che è ridicolo — Davide fa
+      street art, Alessandro fa quadri a olio. Non c'entrano niente.
+
+      Ma una sera ha detto qualcosa che mi ha gelato il sangue.
+      Ha detto: "L'unica opera d'arte che quel ragazzo farà sarà
+      sparire." L'ho scritto sul telefono quella sera stessa
+      perché mi sembrava una minaccia.
+
+      Era tipo due settimane prima che Davide sparisse.
+    effects:
+      trust_elena: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> stalker_hub
+
+  # --- Ombra sui muri investigation ---
+
+  ombra_investigation:
+    type: tweet
+    from: alba
+    text: >
+      L'arte vera è pazienza. L'arte vera è silenzio. I muri rumorosi
+      diventano bianchi. Come deve essere.
+    choices:
+      - Look at this account's history -> ombra_posts
+
+  ombra_posts:
+    type: message
+    text: >
+      @ombra_sui_muri: account created 5 months ago. Every post is
+      about Davide's work — or rather, against it. The tone escalates:
+
+      Month 1: "Street art is noise. Real art whispers."
+      Month 2: "Ferraro thinks paint on a wall makes him an artist.
+      Pathetic."
+      Month 3: "I watch him paint. He doesn't see me. He doesn't
+      see anything."
+      Month 4: "The walls will be clean soon. I promise."
+      Month 5: "Tonight the silence wins."
+
+      That last post was the night Davide disappeared.
+
+      The account also sent DMs to Chiara. Romantic, possessive.
+      As if Davide's disappearance would clear the way.
+    effects:
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> ombra_style
+
+  ombra_style:
+    type: message
+    text: >
+      Comparing @ombra_sui_muri with @alessandro_ferro:
+
+      Same pretentious art vocabulary. Same distinctive comma usage
+      before conjunctions — an Italian stylistic choice that
+      Alessandro makes consistently. Same knowledge of specific
+      Colleverdi locations that only a local artist would reference.
+
+      And one post from @ombra_sui_muri: "The mural at Via del
+      Frantoio 12 is particularly offensive." Via del Frantoio 12
+      is not a public address — it's how the Comune's cultural
+      registry lists the wall. Only someone who filed official
+      paperwork about the murals would know that designation.
+
+      Alessandro filed the denuncia. He used that exact address.
+
+      It's Alessandro. The anonymous account is Alessandro.
+    effects:
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> stalker_hub
+
+  # --- Maresciallo De Luca ---
+
+  maresciallo_interview:
+    type: message
+    text: >
+      MARESCIALLO DE LUCA: Off the record — e intendo completamente
+      off the record — io volevo indagare sull'AgriToscana. Il mio
+      superiore mi ha detto di lasciar stare. Ha detto che la
+      Procura di Siena aveva "competenza." Che in gergo vuol dire
+      "non toccare."
+
+      La storia di Ferro è diversa. Di quella non sapevo niente
+      fino a ora. Se avete prove di stalking e minacce, posso
+      agire su quello. Quella è chiaramente competenza mia.
+
+      Portatemi qualcosa di solido e riapro il caso.
+    effects:
+      trust_maresciallo: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Davide than anyone in Colleverdi. Who is responsible?
+    choices:
+      - Confront Alessandro Ferro (the obsessive rival) -> confront_alessandro
+        when:
+          state: rival_evidence
+          gte: 5
+      - Confront Dario Santini (the AgriToscana director) -> confront_dario
+        when:
+          state: land_evidence
+          gte: 3
+      - Confront Mayor Marchetti (political protection) -> confront_giuseppe
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Alessandro (Best Ending) ---
+
+  confront_alessandro:
+    type: message
+    text: >
+      You present your evidence to Alessandro:
+
+      "I know @ombra_sui_muri is your account. I know you destroyed
+      Davide's mural the night he disappeared. I know you threatened
+      a teenager who saw you. I know you sent threatening messages to
+      Davide and his ex-girlfriend. I have witnesses and I have the
+      account analysis."
+    choices:
+      - Send -> alessandro_response
+
+  alessandro_response:
+    type: message
+    text: >
+      Alessandro doesn't reply for hours. Then:
+
+      ALESSANDRO: You don't understand anything about art. That boy
+      was destroying the aesthetic soul of this town. His garish
+      paint on these ancient walls — it was an insult to every real
+      artist. I was protecting Colleverdi's heritage. Everything I
+      did was for art.
+
+      That's not art. That's obsession and jealousy twisted into
+      something dangerous.
+
+      You've already sent the evidence to Maresciallo De Luca.
+      And to Francesca Longo.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Maresciallo De Luca reopens the case. With your evidence — the
+      anonymous account, the mural destruction, the witness
+      testimonies, the threatening messages — Alessandro Ferro is
+      arrested for stalking, threatening behaviour, and destruction
+      of property. In his studio, the Carabinieri find hundreds of
+      photographs of Davide — working, walking, painting. A wall
+      covered in printouts of Davide's social media posts with
+      obsessive annotations. A journal detailing Davide's daily
+      movements for months.
+
+      Francesca Longo, finally in possession of Davide's full
+      photographic evidence and Lorenzo's soil samples, publishes
+      the AgriToscana story in La Repubblica. The Procura di Siena
+      orders an immediate investigation. The contaminated sites
+      are sealed. Dario Santini faces criminal charges for illegal
+      waste disposal and environmental contamination.
+
+      And Davide Ferraro, reading the story from a friend's apartment
+      in Firenze, calls his sister for the first time in nine days.
+
+      "Giulia, torno a casa."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: davide
+    text: >
+      i muri non si zittiscono. la terra non mente. e colleverdi
+      non dimentica. grazie a chi non ha mollato.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Dario (Partial Ending) ---
+
+  confront_dario:
+    type: message
+    text: >
+      You present the contamination evidence to Dario Santini:
+
+      "I have photographs of the illegal excavation and burial of
+      industrial waste. I have soil samples showing contamination
+      levels twenty times the legal limit. I have the land purchase
+      records and the fraudulent environmental assessments. I have
+      witness testimony of nighttime dumping operations."
+    choices:
+      - Send -> dario_response
+
+  dario_response:
+    type: message
+    text: >
+      DARIO: Questa conversazione verrà inoltrata al nostro ufficio
+      legale. Qualsiasi diffusione di materiale diffamatorio sarà
+      oggetto di azioni legali immediate. AgriToscana ha sempre
+      operato nel rispetto delle normative vigenti.
+
+      But it's too late. You've sent the evidence to Francesca, to
+      Terra Viva, and to the Procura di Siena.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The contamination story breaks. AgriToscana's operations are
+      suspended pending investigation. The remediation will take
+      years. Dozens of jobs lost. The town is divided between those
+      who sold their land and those who didn't.
+
+      But Davide?
+
+      Without the stalking evidence, Alessandro is never investigated.
+      He continues to paint in his studio. He creates a new anonymous
+      account. He starts watching the next young artist who gets too
+      much attention.
+
+      Three months later, Davide reads about AgriToscana online.
+      He returns quietly. He paints a new mural. The next morning,
+      it's covered in white paint.
+
+      He stops painting outside. He moves to Firenze. The walls of
+      Colleverdi slowly fade.
+
+      The corporation is exposed. But the person who terrorised
+      Davide walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: davide
+    text: "sono tornato. la terra si pulirà. i muri... vediamo."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_giuseppe:
+    type: message
+    text: >
+      You confront Mayor Marchetti with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> giuseppe_response
+
+  giuseppe_response:
+    type: tweet
+    from: simone
+    text: >
+      Il mio cliente prende atto delle Vostre allegazioni. Qualsiasi
+      diffusione pubblica di affermazioni diffamatorie sarà oggetto
+      di immediato procedimento giudiziario. — Studio Pellegrini &
+      Rossi, Firenze
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Marchetti and AgriToscana's dumping — and there
+      isn't one beyond political facilitation — your evidence is
+      insufficient.
+
+      AgriToscana continues to operate. Alessandro continues to
+      watch. Davide stays in hiding.
+
+      Six months later, a new mural appears on a wall in Colleverdi.
+      Anonymous, unsigned. It shows a young man with a backpack
+      walking away from a town on a hill, looking back.
+
+      By morning, it's painted white.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: COLLEVERDI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Land evidence: ${land_evidence}
+      Rival evidence: ${rival_evidence}
+
+      Thank you for playing. Davide's story explores themes of
+      corporate environmental crime, artistic jealousy, obsessive
+      behaviour, community solidarity, and the courage to speak
+      truth through art.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or threats, help is available:
+      Telefono Amico: 02 2327 2327
+      Numero antiviolenza e stalking: 1522
+      Segnalazione ambientale: 800 253 608

@@ -1,0 +1,1503 @@
+# DEAD ACCOUNT — Story 015: Thyborøn (Denmark)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-015.yml
+#
+# Player investigates the disappearance of wind energy engineer Mads Vestergaard
+# in the fictional Jutland coastal town of Thyborøn.
+
+meta:
+  title: "Dead Account — Thyborøn"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_freja: 0
+    trust_kasper: 0
+    trust_astrid: 0
+    trust_lars: 0
+    trust_sofie: 0
+    trust_nikolaj: 0
+    trust_ida: 0
+    trust_henrik: 0
+    trust_birgitte: 0
+    trust_jens: 0
+    trust_camilla: 0
+    trust_pernille: 0
+    trust_thomas: 0
+    trust_mikkel: 0
+    trust_dorthe: 0
+    trust_signe: 0
+    trust_erik: 0
+    trust_betjent: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nyt Ansigt
+    bio: "lige flyttet til thyborøn. vinden er vild herude"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Thyborøn.social"
+    description: "Velkommen til Thyborøns fællesskabsinstans — vestkysten samlet"
+    avatar_url: /gamepatch/assets/dead-account/thyboroen_bot.png
+
+  npcs:
+    # === Mads' Inner Circle ===
+    mads:
+      name: "Mads Vestergaard"
+      bio: "vindingeniør | havvind er fremtiden | thyborøn-dreng | havet tager aldrig fri"
+      avatar: avatars/mads.jpg
+    freja:
+      name: "Freja Holm"
+      bio: "mads' kæreste | sygeplejerske på thyborøn sundhedscenter | savner dig"
+      avatar: avatars/freja.jpg
+    kasper:
+      name: "Kasper Vestergaard"
+      bio: "mads' storebror | fisker | limfjorden | han er sgu ikke bare taget af sted"
+      avatar: avatars/kasper.jpg
+    nikolaj:
+      name: "Nikolaj Bech"
+      bio: "ingeniør | NordVind Energy | kollega & ven af mads | noget er helt galt"
+      avatar: avatars/nikolaj.jpg
+
+    # === Local Government ===
+    henrik:
+      name: "Henrik Dahl"
+      bio: "Borgmester i Thyborøn | Bæredygtig vækst til vestkysten | #ThyborønFremad"
+      avatar: avatars/henrik.jpg
+    birgitte:
+      name: "Birgitte Kjær"
+      bio: "Miljøudvalgsformand | Thyborøn Kommune | grøn omstilling & borgernærhed"
+      avatar: avatars/birgitte.jpg
+    kommune:
+      name: "Thyborøn Kommune"
+      bio: "Officiel konto | Kommunale nyheder | Åbningstider: Man-Fre 9-16"
+      avatar: avatars/kommune.jpg
+
+    # === Local Business & Community ===
+    astrid:
+      name: "Astrid Møller"
+      bio: "Café Vestkysten | smørrebrød | kaffe | udsigt til havet | åbent siden 1993"
+      avatar: avatars/astrid.jpg
+    cafe_vest:
+      name: "Café Vestkysten"
+      bio: "Hjemmebagt | Lokalt bryg | Livemusik fredag | Thyborøns stue"
+      avatar: avatars/cafe_vest.jpg
+    lars:
+      name: "Lars Fisker"
+      bio: "kutterfisker | 35 år på havet | vestkysten er mit liv"
+      avatar: avatars/lars.jpg
+    jens:
+      name: "Jens Krogh"
+      bio: "havnemester | Thyborøn havn | kontor tirs-lør"
+      avatar: avatars/jens.jpg
+    pernille:
+      name: "Pernille Bak"
+      bio: "apoteker | Thyborøn Apotek | sundhed & omsorg | også søndag formiddag"
+      avatar: avatars/pernille.jpg
+    dorthe:
+      name: "Dorthe Lund"
+      bio: "bager | Lunds Bageri | rugbrød & wienerbrød | kl 4 hver morgen"
+      avatar: avatars/dorthe.jpg
+    thomas:
+      name: "Thomas Riber"
+      bio: "vindsurfer & surfskole | Thyborøn Beach | vinden stopper aldrig"
+      avatar: avatars/thomas.jpg
+    mikkel:
+      name: "Mikkel Gram"
+      bio: "boghandler | Gram & Co | bøger & vinyl | onsdagslæsning"
+      avatar: avatars/mikkel.jpg
+
+    # === Journalist ===
+    camilla:
+      name: "Camilla Nørgaard"
+      bio: "journalist | energi & miljø | freelance | tips: camilla@noergaard-press.dk"
+      avatar: avatars/camilla.jpg
+
+    # === NordVind Energy (corporate) ===
+    nordvind:
+      name: "NordVind Energy A/S"
+      bio: "Havvindenergi | Thyborøn vindmøllepark | ISO 45001 certificeret | Danmarks grønne fremtid"
+      avatar: avatars/nordvind.jpg
+    erik:
+      name: "Erik Brandt"
+      bio: "driftsdirektør NordVind Energy Thyborøn | industri & lokalsamfund"
+      avatar: avatars/erik.jpg
+    magnus:
+      name: "Magnus Holm"
+      bio: "Advokat | Holm & Partners | Erhvervsret | Aarhus"
+      avatar: avatars/magnus.jpg
+
+    # === Teens ===
+    sofie:
+      name: "Sofie"
+      bio: "16 | surfer | thyborøn born | havet er sgu det eneste der giver mening"
+      avatar: avatars/sofie.jpg
+    ida:
+      name: "Ida"
+      bio: "17 | foto & kunst | vestkysten i sort/hvid | mads var fedt inspiration"
+      avatar: avatars/ida.jpg
+    signe:
+      name: "Signe"
+      bio: "15 | skater & musik | thyborøn til jeg dør | #findmads"
+      avatar: avatars/signe.jpg
+
+    # === Media & Community ===
+    thyboroen_nyt:
+      name: "Thyborøn Nyt"
+      bio: "Lokalnyheder fra Thyborøn og vestkysten | Tips: red@thyboroen-nyt.dk"
+      avatar: avatars/thyboroen_nyt.jpg
+    vejr_vest:
+      name: "Vejret Thyborøn"
+      bio: "Vejrudsigt & varsler | Automatisk station | Opdatering hver time"
+      avatar: avatars/vejr_vest.jpg
+    vind_forening:
+      name: "Foreningen Sikker Vind"
+      bio: "Arbejdsmiljø i vindenergi | Frivillige | Meld sikkerhedsproblemer"
+      avatar: avatars/vind_forening.jpg
+
+    # === Suspicious / Other ===
+    sanne:
+      name: "Sanne Riis"
+      bio: "sikkerhedsinspektør | NordVind Energy | jeg gør bare mit arbejde"
+      avatar: avatars/sanne.jpg
+    storm_vest:
+      name: "StormVest"
+      bio: "."
+      avatar: avatars/anon.jpg
+    betjent:
+      name: "Betjent Andersen"
+      bio: "Thyborøn Politi | Lokalpolitiet | nødsituation: 112"
+      avatar: avatars/betjent.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN THYBORØN
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to thyborøn.social — the community Mastodon instance for
+      the wind-battered coastal town of Thyborøn, Jutland.
+
+      The local feed is restless today. The wind is howling but that's
+      not what has people on edge.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @mads_vestergaard.
+
+      A young wind energy engineer. He worked on the offshore turbines.
+      He loved the sea. People are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> mads_profile
+
+  mads_profile:
+    type: tweet
+    from: mads
+    text: "Turbine 7 er stadig nede. Tredje 'uheld' denne måned. NordVind siger det er vejret. Bullshit. Jeg har set vedligeholdelsesrapporterne. Det her er bevidst nedprioritering."
+    choices:
+      - That's his last real post... -> grey_turbine
+
+  grey_turbine:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a grey turbine blade, blurred, shot from a strange angle. Posted
+      at 2am. No caption.
+
+      His girlfriend says that's not how Mads posts. He always writes
+      long captions about the engineering. The police say he probably
+      went travelling. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: betjent
+    text: >
+      Vi har modtaget en anmeldelse vedrørende en beboer i Thyborøn.
+      På nuværende tidspunkt er der intet der tyder på kriminel
+      handling. Alle relevante oplysninger kan meddeles på 112 eller
+      til lokalpolitiet.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @freja_holm is
+      desperate. His brother @kasper_vestergaard is driving down from
+      the Limfjord. His colleague @nikolaj_bech is posting frantic
+      messages. The fisherman @lars_fisker says Mads was right about
+      the turbines.
+
+      And the journalist @camilla_noergaard is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Mads just
+      "went travelling."
+    effects: { trust_freja: "+5", trust_kasper: "+5" }
+    choices:
+      - Start following Mads' contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Thyborøn. Follow Mads' contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Astrid (café owner, knows everyone) -> astrid_intro
+      - Talk to Lars (fisherman, saw things at sea) -> lars_intro
+      - Talk to Sofie (teen surfer, seems shaken) -> sofie_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Mads with small-town Jutland life:
+      wind forecasts, fishing quotas, bakery specials, weather warnings.
+
+      Key names surface: Freja (girlfriend, nurse), Nikolaj (colleague,
+      seems rattled), Camilla (journalist, oddly quiet), and the
+      teens — Sofie, Ida, Signe — who looked up to Mads and his
+      fight for green energy.
+
+      Also prominent: NordVind Energy A/S, the offshore wind company.
+      Their posts are slick corporate PR. Mads' posts were the
+      opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Astrid -> astrid_intro
+      - Talk to Lars -> lars_intro
+      - Talk to Sofie -> sofie_intro
+
+  # --- Astrid (social map) ---
+
+  astrid_intro:
+    type: tweet
+    from: astrid
+    text: >
+      Cafeen er åben men humøret er i bund. @mads_vestergaard, din
+      plads ved vinduet står tom. Kom hjem.
+    effects: { trust_astrid: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Astrid -> astrid_talk
+
+  astrid_talk:
+    type: message
+    text: >
+      ASTRID: Nå, du er ny? Velkommen. Satans dårlig timing. Hele
+      byen er oppe at køre over Mads.
+
+      Freja er Mads' kæreste — de bor over apoteket. Helt knust.
+      Nikolaj Bech arbejder hos NordVind med Mads. Dygtig, men...
+      lidt intens omkring ham. Kasper er Mads' storebror, kommer ned
+      fra Limfjorden.
+
+      Og Camilla Nørgaard — journalisten — hun og Mads arbejdede på
+      noget om turbinerne. Camilla har ikke sagt et ord siden Mads
+      forsvandt. Det er sgu ikke normalt.
+
+      Hold dig fra NordVinds PR. Løgn pakket ind i certificeringer.
+    effects: { trust_astrid: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Nikolaj -> astrid_nikolaj
+      - Ask about NordVind -> astrid_nordvind
+      - Thank her and move on -> quest1_hub
+
+  astrid_nikolaj:
+    type: message
+    text: >
+      ASTRID: Nikolaj? To år længere end Mads på NordVind. Dygtig.
+      Men siden Mads startede har Nikolaj været... klæbende. I cafeen
+      hver gang. Tilbød at hjælpe med alt. Mads var høflig men
+      irriteret.
+
+      Blev værre efter sikkerhedsundersøgelsen. Mads sagde til mig:
+      "Han tager sgu ikke et nej." Jeg troede han mente fagligt.
+      Nu er jeg ikke sikker.
+    effects: { trust_astrid: "+5" }
+    choices:
+      - Ask about NordVind -> astrid_nordvind
+      - Move on -> quest1_hub
+
+  astrid_nordvind:
+    type: message
+    text: >
+      ASTRID: NordVind har haft turbineparken i fem år. De lovede
+      jobs og grøn energi. Men fiskerne har klaget — mærkelige
+      ulykker, teknikere med skader NordVind kalder "mindre
+      hændelser."
+
+      Mads var den første der dokumenterede det. Rapporter, billeder
+      af defekte komponenter. Han sagde de sparede penge ved at
+      springe sikkerhedstjek over. To uger efter er han væk. For
+      fanden.
+    effects: { trust_astrid: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lars (fisherman, witness tease) ---
+
+  lars_intro:
+    type: tweet
+    from: lars
+    text: >
+      35 år på havet. de vindmøller er ikke sikre. @mads_vestergaard
+      havde ret. og nu er han forsvundet. tænk over det.
+    effects: { trust_lars: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lars -> lars_talk
+
+  lars_talk:
+    type: message
+    text: >
+      LARS: Jeg har fisket her siden jeg var femten. De turbiner er
+      lortefarlige. Teknikere hejst op i vindstyrker hvor de aldrig
+      burde arbejde.
+
+      Mads tog billeder. Fotograferede fundamenterne der rustede
+      igennem. Byggede en sag. Og så — puf — væk.
+
+      Tilfældigt? Det gør jeg kraftedeme ikke.
+    effects: { trust_lars: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> lars_night
+      - Move on -> quest1_hub
+
+  lars_night:
+    type: message
+    text: >
+      LARS: Natten før han forsvandt — jeg var ude at fiske, kom ind
+      omkring klokken et. Jeg så lys på NordVind-kontoret nede ved
+      havnen. Ikke unormalt, folk arbejder sent. Men der holdt to
+      biler. Den ene var Mads' gamle Skoda. Den anden var en sort
+      firmabil med NordVind-logo.
+
+      Klokken et om natten. På vindmøllekontoret.
+
+      Jeg tænkte ikke videre over det dengang. Nu tænker jeg sgu
+      ikke på andet.
+    effects: { trust_lars: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sofie (teen surfer, witness tease) ---
+
+  sofie_intro:
+    type: tweet
+    from: sofie
+    text: >
+      er helt i chok seriøst @mads_vestergaard det var ham der lærte
+      os om havet og vinden og alt det der. der er sgu noget galt.
+      hvis nogen ved noget så sig det for fanden
+    effects: { trust_sofie: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sofie -> sofie_talk_early
+
+  sofie_talk_early:
+    type: message
+    text: >
+      SOFIE: hvem er du? ny herude? sygt timing. altså mads er bare
+      den fedeste person i byen. han lærte os at windsurfe safe, han
+      viste os hvordan turbinerne fungerer. mega fedt.
+
+      og nu flipper jeg fordi ida så noget vildt mærkeligt nede ved
+      havnen den anden aften men hun vil ikke snakke om det. hun siger
+      det er ingenting men det er sgu ikke ingenting altså
+    effects: { trust_sofie: "+10" }
+    choices:
+      - What did Ida see? -> sofie_ida_hint
+      - Move on -> quest1_hub
+
+  sofie_ida_hint:
+    type: message
+    text: >
+      SOFIE: ved ikke præcis. hun var nede og tage billeder ved
+      solnedgang og hun så en eller anden rode rundt i mads' bil??
+      eller noget i den stil. hun flipper totalt og vil ikke snakke.
+      du skal nok spørge hende direkte men hun er lidt sky over for
+      folk hun ikke kender. snak om fotografi med hende først haha
+    effects: { trust_sofie: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Thyborøn. A Jutland coastal town
+      shaped by wind and sea. A young engineer who was exposing safety
+      failures. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Freja (Mads' girlfriend) -> freja_q1
+      - Talk to Nikolaj (Mads' colleague) -> nikolaj_q1
+      - Check what Kasper (Mads' brother) is saying -> kasper_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Freja Q1 ---
+
+  freja_q1:
+    type: tweet
+    from: freja
+    text: >
+      hvis nogen har hørt fra @mads_vestergaard ring til mig. hans
+      tøj er der stadig. hans dykkerudstyr er der. han ville aldrig
+      tage af sted uden at sige noget.
+    effects: { trust_freja: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Freja -> freja_q1_talk
+
+  freja_q1_talk:
+    type: message
+    text: >
+      FREJA: Tak fordi du skriver, men jeg kender dig ikke. Mads har
+      mange venner herude. Jeg er sikker på han kommer tilbage.
+
+      ...Det siger jeg hele tiden. Jeg tror sgu ikke på det mere.
+
+      [Freja is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_freja: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nikolaj Q1 ---
+
+  nikolaj_q1:
+    type: tweet
+    from: nikolaj
+    text: >
+      Kontoret er tomt uden @mads_vestergaard. Hans rapporter ligger
+      stadig på skrivebordet. Hans sikkerhedslog er åben. Han ville
+      aldrig forlade igangværende arbejde. Der er sket noget.
+    effects: { trust_nikolaj: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nikolaj -> nikolaj_q1_talk
+
+  nikolaj_q1_talk:
+    type: message
+    text: >
+      NIKOLAJ: Mads og jeg har arbejdet sammen i over et år. Han er
+      den mest dedikerede ingeniør jeg kender. Den her
+      sikkerhedsundersøgelse — det var alt for ham. Han havde data,
+      billeder, vedligeholdelsesrapporter. Han var tæt på at gå til
+      pressen.
+
+      Jeg tilbød at hjælpe ham. Mange gange. Han sagde han havde styr
+      på det. Han sagde han arbejdede med en journalist. Jeg ville
+      bare støtte ham.
+
+      [Nikolaj seems earnest. Or obsessive?]
+    effects: { trust_nikolaj: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kasper Q1 ---
+
+  kasper_q1:
+    type: tweet
+    from: kasper
+    text: >
+      min bror er FORSVUNDET og politiet siger han måske er taget
+      på ferie??? HAN TAGER SGU IKKE PÅ FERIE UDEN AT SIGE DET.
+      jeg kører til thyborøn nu. nogen skal satans forklare mig det.
+    effects: { trust_kasper: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Kasper -> kasper_q1_talk
+
+  kasper_q1_talk:
+    type: message
+    text: >
+      KASPER: Hvem fanden er du? Endnu en fra den by der vil have mig
+      til at slappe af? Min bror ringede til mig aftenen før han
+      forsvandt. Han sagde han havde noget stort. Han sagde "hvis der
+      sker noget, så kig på NordVind." Så lagde han på.
+
+      Det er det sidste jeg har hørt fra ham.
+    effects: { trust_kasper: "+10" }
+    choices:
+      - What do you think happened? -> kasper_theory
+      - Move on -> quest1_hub
+
+  kasper_theory:
+    type: message
+    text: >
+      KASPER: Jeg tror han fandt bevis for at NordVind fusker med
+      sikkerheden og de har lukket munden på ham. Men jeg tror også
+      den der mærkelige kollega — Nikolaj — ved mere end han siger.
+      Måden han snakker om Mads... det er ikke bare kollegial
+      bekymring. Det er noget andet.
+
+      Mads fortalte mig for måneder siden at nogen på kontoret gik
+      ind i hans filer. Han troede det var ingenting. Det tror jeg
+      sgu ikke det var.
+    effects: { trust_kasper: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Mads went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Ida (was taking photos near the harbour) -> ida_interview
+      - Find Jens (harbour master, works late) -> jens_interview
+      - Find Thomas (windsurfer, early morning at the beach) -> thomas_interview
+      - Find Dorthe (baker, starts at 4am, saw something) -> dorthe_interview
+
+  # --- Ida (saw someone at Mads' car) ---
+
+  ida_interview:
+    type: tweet
+    from: ida
+    text: >
+      god session med kameraet i aften men stemningen nede ved havnen
+      er bare off. der er noget der ikke passer. kan ikke forklare det
+    effects: { trust_ida: "+5" }
+    choices:
+      - Ask Ida about that evening -> ida_talk
+
+  ida_talk:
+    type: message
+    text: >
+      IDA: ok men du siger det ikke til nogen ja? jeg var nede ved
+      havnen ved syv-tiden, tog billeder af solnedgangen. og jeg så
+      ham fra kontoret — nikolaj — ved siden af mads' bil. det så ud
+      som om han rodede rundt i den eller lagde noget. da han så mig
+      gik han mega hurtigt.
+
+      altså jeg sagde ingenting fordi jeg gad ikke bøvl men det er
+      sgu sygt. det er ikke normalt hans opførsel
+    effects:
+      trust_ida: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jens (harbour master, saw late-night meeting) ---
+
+  jens_interview:
+    type: tweet
+    from: jens
+    text: >
+      Påmindelse: havneområdet er lukket mellem kl 22 og 6. Jeg har
+      konstateret uautoriseret adgang de seneste nætter.
+    effects: { trust_jens: "+5" }
+    choices:
+      - Ask Jens what he saw -> jens_talk
+
+  jens_talk:
+    type: message
+    text: >
+      JENS: Jeg var ved at lukke havnekontoret omkring klokken halv
+      elleve. Jeg så Mads' bil stadig holde på NordVind-parkeringen.
+      Og en sort sedan med NordVind-nummerplader holdt ved siden af.
+      To mænd stod ved kontorindgangen. Den ene genkendte jeg:
+      Erik Brandt, driftsdirektøren.
+
+      Klokken halv elleve. På vindmøllekontoret. Det er sgu ikke
+      normalt.
+
+      Jeg skrev det i havneloggen. Ingen har bedt om at se den.
+    effects:
+      trust_jens: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Thomas (saw Mads fleeing) ---
+
+  thomas_interview:
+    type: tweet
+    from: thomas
+    text: >
+      oppe klokken fire for morgen-session. stranden var ikke tom.
+      der var en der løb på stien langs kysten. i mørket. det var
+      ikke en jogger.
+    effects: { trust_thomas: "+5" }
+    choices:
+      - Ask Thomas what he saw -> thomas_talk
+
+  thomas_talk:
+    type: message
+    text: >
+      THOMAS: Jeg står op klokken fire til morgen-surf. Den morgen —
+      morgenen efter Mads' sidste opslag — så jeg nogen på kyststien.
+      Løb. En mand med en taske, på vej mod Agger Tangen. Det var
+      stadig mørkt. Han bevægede sig hurtigt, som om han var bange.
+
+      Jeg råbte men han stoppede ikke. Jeg tænkte det var en løber
+      men... hvem løber klokken fire med en computertaske?
+
+      Da jeg hørte om Mads, faldt det hele på plads. Jeg tror
+      det var ham. Han flygtede fra noget.
+    effects:
+      trust_thomas: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dorthe (saw car chase) ---
+
+  dorthe_interview:
+    type: tweet
+    from: dorthe
+    text: >
+      Rugbrød i ovnen klokken fire som altid. Men den morgen kørte
+      en bil alt for hurtigt på kystvejen. Og så endnu en.
+    effects: { trust_dorthe: "+5" }
+    choices:
+      - Ask Dorthe what she saw -> dorthe_talk
+
+  dorthe_talk:
+    type: message
+    text: >
+      DORTHE: Jeg bager fra klokken fire hver dag. Den morgen åbnede
+      jeg skoderne og en bil kørte forbi — hurtigt, alt for hurtigt
+      til kystvejen. Sort sedan. Så måske to minutter efter, en bil
+      mere. Mindre, ældre. Jagtede? Det ved jeg ikke.
+
+      Den anden bil drejede ned mod de gamle fiskerskure ved Agger.
+      Den første fortsatte mod motorvejen.
+
+      Jeg fortalte politiet. De skrev det ned. Det var det.
+    effects:
+      trust_dorthe: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Freja (girlfriend)
+      and Signe (saw Nikolaj watching the flat).
+    choices:
+      - Talk to Freja about that night -> freja_interview
+      - Talk to Signe -> signe_interview
+      - Find Ida -> ida_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Jens -> jens_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Thomas -> thomas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dorthe -> dorthe_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Freja (last to see Mads) ---
+
+  freja_interview:
+    type: tweet
+    from: freja
+    text: >
+      det billede på mads' konto. det er ikke ham. mads poster aldrig
+      uden tekst. mads poster ikke klokken to om natten. nogen
+      andre har gjort det.
+    effects: { trust_freja: "+5" }
+    choices:
+      - DM Freja -> freja_talk_low
+        when:
+          state: trust_freja
+          lt: 50
+      - DM Freja -> freja_talk_high
+        when:
+          state: trust_freja
+          gte: 50
+
+  freja_talk_low:
+    type: message
+    text: >
+      FREJA: Jeg sætter pris på det, men jeg vil virkelig ikke
+      snakke med fremmede om det lige nu.
+
+      [Freja needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_freja: "+5" }
+    choices:
+      - Share what you've learned about the night -> freja_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  freja_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the office, the
+      company men, the running figure. Freja is silent for a while.
+
+      FREJA: Du prøver faktisk at finde ham. Okay. Jeg snakker.
+    effects: { trust_freja: "+25" }
+    choices:
+      - What happened that night? -> freja_talk_high
+
+  freja_talk_high:
+    type: message
+    text: >
+      FREJA: Han kom hjem omkring klokken elleve. Jeg var ved at gå
+      i seng. Han var bleg, rystede. Han sagde "de ved hvad jeg har."
+      Han greb sin laptop og sine harddiske.
+
+      Jeg spurgte hvem. Han sagde "firmaet. De sendte folk til
+      kontoret." Så sagde han noget mere — "og han var der også.
+      Han er altid der."
+
+      Han ville ikke sige hvem "han" var. Han krammede mig, sagde
+      "det skal nok gå," og gik med en taske. Det var det hele.
+      Næste morgen var hans bil væk og det der gråt billede var
+      på hans konto.
+    effects:
+      trust_freja: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Signe (saw Nikolaj watching the flat) ---
+
+  signe_interview:
+    type: message
+    text: >
+      SIGNE: ok det er mega creepy det her men altså ham fra kontoret
+      — nikolaj — jeg har set ham foran mads og frejas lejlighed om
+      aftenen. bare sidde der og kigge op på vinduerne. tre gange
+      mindst. vildt uhyggeligt seriøst.
+
+      sidste gang var to dage før mads forsvandt. han sad i sin bil
+      parkeret overfor. bare sad der. lygterne slukket.
+    effects:
+      trust_signe: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Nikolaj seen at Mads' car at the harbour (Ida)
+      22:30 — NordVind car at the office, Erik Brandt present (Jens)
+      23:00 — Mads arrives home, shaken, grabs laptop and drives (Freja)
+      04:00 — Man running on coastal path toward Agger Tangen (Thomas)
+      05:00 — Two cars speeding on coast road, one toward Agger (Dorthe)
+
+      NordVind confronted Mads at the office. He fled home, grabbed
+      his evidence, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is NordVind hiding? Who ordered the
+        confrontation?
+      — The stalker: What is Nikolaj really doing? Why was he at
+        Mads' car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Nikolaj -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      NordVind is hiding something. Mads had proof. Now he's gone
+      and his evidence is missing from the office.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the office records -> office_records
+      - Talk to Camilla the journalist -> camilla_interview
+      - Talk to Sanne (NordVind safety inspector) -> sanne_interview
+      - Talk to Birgitte (environment committee) -> birgitte_interview
+      - Check the Foreningen Sikker Vind -> forening_investigation
+      - Talk to Lars about the turbines -> lars_turbines
+      - Back to hub -> investigation_hub
+
+  # --- Office Records ---
+
+  office_records:
+    type: message
+    text: >
+      NordVind's public safety database shows Mads' filings: incident
+      reports from six turbines. Turbine 7's report is marked "UNDER
+      REVIEW" — the only one with that status.
+
+      His maintenance log shows 14 safety violations last month. Last
+      entry: "Bolt fatigue on nacelle housing T7. Rated critical.
+      Management reclassified to 'minor.' This will kill someone."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Camilla ---
+
+  camilla_interview:
+    type: message
+    text: >
+      CAMILLA: Jeg taler ikke om kilder. Punktum.
+    effects: { trust_camilla: "+5" }
+    choices:
+      - Show Camilla the evidence you have -> camilla_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  camilla_with_evidence:
+    type: message
+    text: >
+      CAMILLA: ...du har mere end jeg forventede.
+
+      Okay. Mads og jeg arbejdede sammen. Han havde billeder af rustne
+      fundamenter, defekte bolte, sprungne sikkerhedstjek. Rapporter
+      der viste NordVind bevidst nedklassificerede kritiske fejl. Tre
+      teknikere skadet i år. En mistede to fingre.
+
+      Vi skulle publicere sammen. Så gik han under jorden. To dage
+      senere blev min bil brudt op og min backup stjålet.
+
+      Mads er i live. Han kontaktede mig fra en prepaid. Han gemmer
+      sig. Han sagde "de truede mig på kontoret og en anden giver
+      ikke slip."
+
+      Jeg kan ikke sige hvor han er. Men med nok beviser kan jeg
+      publicere og gøre det sikkert for ham at komme hjem.
+    effects:
+      trust_camilla: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> camilla_hint
+      - Back to investigation hub -> investigation_hub
+
+  camilla_hint:
+    type: message
+    text: >
+      CAMILLA: Firmaet sendte deres driftsdirektør — Brandt — og en
+      advokat til kontoret den aften. De sagde han skulle aflevere alt
+      eller stå over for juridiske konsekvenser. Intimidering
+      forklædt som jura.
+
+      Men han sagde også noget om nogen på kontoret. Nogen der havde
+      været inde i hans filer. Nogen der altid vidste hvor han var.
+      Det er et andet problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sanne (NordVind whistleblower) ---
+
+  sanne_interview:
+    type: message
+    text: >
+      SANNE: Jeg arbejder hos NordVind. Bare sikkerhedsinspektør.
+      Jeg laver tjek, skriver rapporter. Men de rapporter jeg
+      skriver... er ikke altid dem der sendes til Arbejdstilsynet.
+    effects: { trust_sanne: "+10" }
+    choices:
+      - What do you mean? -> sanne_detail
+
+  sanne_detail:
+    type: message
+    text: >
+      SANNE: Jeg tjekker boltspændinger, korrosion, sikkerhedsudstyr.
+      Mine tal går til min chef. Et sted mellem mit skrivebord og den
+      officielle indberetning ændrer de sig. Lavere. Altid lavere.
+
+      Mads' målinger matchede MINE originale tal, ikke de officielle.
+      Han havde uafhængigt bevis for at NordVind forfalsker data.
+
+      Jeg er bange. Jeg har familie. Men jeg har gemt kopier af mine
+      originale rapporter. Hvis nogen kan beskytte mig, deler jeg dem.
+    effects:
+      trust_sanne: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Birgitte ---
+
+  birgitte_interview:
+    type: message
+    text: >
+      BIRGITTE: Som miljøudvalgsformand tager jeg anklagerne alvorligt.
+      Men NordVind beskæftiger 150 mennesker. Borgmesteren insisterer
+      på "dialog."
+
+      Mellem os? Inspektionerne varsles to uger i forvejen. NordVind
+      retter op inden inspektørerne kommer. Består hver gang.
+
+      Mads havde uvarslet data. Det er det der gør det farligt.
+    effects:
+      trust_birgitte: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Foreningen Sikker Vind ---
+
+  forening_investigation:
+    type: tweet
+    from: vind_forening
+    text: >
+      ADVARSEL: Indberetning om sikkerhedsbrud ved Thyborøn
+      vindmøllepark. Dokumentation og vidneudsagn indsamles. Vi
+      kræver uanmeldt inspektion af NordVind Energy.
+    choices:
+      - Check their data -> forening_data
+
+  forening_data:
+    type: message
+    text: >
+      Foreningen Sikker Vind has been documenting safety incidents for
+      two years. Their data shows a clear pattern: injury rates at
+      Thyborøn are three times the national average for offshore wind.
+      Incident reports systematically downgraded from "critical" to
+      "minor." Equipment replacement delayed by months.
+
+      The pattern is unmistakable. Ongoing, deliberate negligence to
+      cut costs. Mads was a board member. He contributed most of the
+      internal documentation.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Lars turbines ---
+
+  lars_turbines:
+    type: message
+    text: >
+      LARS: Sidste måned fiskede jeg nær Turbine 7. Min kutter ramte
+      noget — en fundamentsplade faldet af. Rusten igennem. NordVinds
+      serienummer på.
+
+      Jeg sendte billeder til Mads. Han sagde det var den sidste brik
+      — bevis for at fundamenterne forfalder og NordVind ved det.
+      Strukturel svigt der kan vælte en hel turbine.
+
+      Jeg har stadig billederne. Og serienummeret.
+    effects:
+      trust_lars: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Nikolaj Bech. Colleague. Engineer. Something more?
+      Someone was accessing Mads' files. Someone was watching
+      his flat. Someone was at his car.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate Nikolaj's office access logs -> office_access
+      - Talk to Freja about Nikolaj -> freja_nikolaj
+        when:
+          state: trust_freja
+          gte: 20
+      - Talk to Ida (more detail on the car incident) -> ida_detail
+      - Talk to Pernille the pharmacist -> pernille_interview
+      - Check the anonymous account @storm_vest -> stormvest_investigation
+      - Talk to Mikkel the bookseller -> mikkel_interview
+        when:
+          state: trust_mikkel
+          gte: 40
+      - Talk to Betjent Andersen -> betjent_interview
+        when:
+          state: trust_betjent
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Office Access Logs ---
+
+  office_access:
+    type: message
+    text: >
+      NordVind's electronic door access system is logged. Mads' access
+      card was used 52 times last month. Nikolaj's card: 91 times.
+      Nearly double.
+
+      Cross-referencing: on 34 of Nikolaj's 91 entries, he accessed
+      the office within 15 minutes of Mads. He arrived after him and
+      left after him. Every time.
+
+      His own workspace is in a different wing.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Freja on Nikolaj ---
+
+  freja_nikolaj:
+    type: message
+    text: >
+      FREJA: Nikolaj? Han gjorde Mads utilpas. Dukkede op i cafeen
+      når Mads var der. Kommenterede hvert opslag inden for minutter.
+
+      Mads sagde tydeligt fra. Nikolaj sagde han forstod. Intet
+      ændrede sig. Han var bare... altid der.
+
+      For en måned siden fandt Mads ud af nogen havde åbnet hans
+      filer efter arbejdstid. Han mistænkte Nikolaj men kunne ikke
+      bevise det.
+    effects:
+      trust_freja: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Ida detail ---
+
+  ida_detail:
+    type: message
+    text: >
+      IDA: ok altså der er mere. da jeg så nikolaj ved mads' bil
+      havde han noget i hånden. sådan en lille boks. han satte den
+      under bilen på førersiden. limet fast under.
+
+      altså jeg er ikke ekspert men det lignede en gps-tracker
+      seriøst. den slags man ser i film.
+
+      jeg burde have sagt noget men altså hvem ville tro en teenager
+      der anklager en ingeniør. nej tak for fanden
+    effects:
+      trust_ida: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Pernille ---
+
+  pernille_interview:
+    type: message
+    text: >
+      PERNILLE: Fortroligt, men jeg er apoteker, ikke præst. Nikolaj
+      Bech kommer regelmæssigt. Angstmedicin, sovepiller,
+      energitilskud. Mønsteret er en person under ekstremt pres.
+
+      Han spurgte også en gang om vi solgte GPS-trackere. Jeg sagde
+      "det her er et apotek, ikke Elgiganten." Han grinede det væk.
+      Tænkte ikke over det før Mads forsvandt.
+    effects:
+      trust_pernille: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- StormVest (anonymous account) ---
+
+  stormvest_investigation:
+    type: tweet
+    from: storm_vest
+    text: >
+      Han burde have lyttet. Jeg prøvede at beskytte ham. Ingen andre
+      forstod hans arbejde som jeg gør.
+    choices:
+      - Look at this account's history -> stormvest_posts
+
+  stormvest_posts:
+    type: message
+    text: >
+      @storm_vest: created 9 months ago. Every post about Mads' work.
+      Comments on every turbine photo, every safety report. The tone
+      shifts over time:
+
+      Month 1: "Imponerende arbejde. Du gør hvad ingen andre tør."
+      Month 3: "Hvorfor svarer du ikke? Jeg vil bare samarbejde."
+      Month 6: "Du har tid til andre men ikke til mig?"
+      Month 8: "Jeg ved hvor du går. Jeg er altid tæt på."
+
+      No photos, no personal details. Just Mads. Only Mads.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> stormvest_style
+
+  stormvest_style:
+    type: message
+    text: >
+      Comparing @storm_vest with @nikolaj_bech:
+
+      Same use of wind engineering terminology. Same Danish writing
+      quirks — the specific way he abbreviates technical terms. Same
+      knowledge of Mads' research that only an office colleague would
+      have.
+
+      And one post from @storm_vest: "Din inspektion af Platform 3B
+      var brillant." Platform 3B is an internal NordVind designation.
+      Not public.
+
+      It's Nikolaj. The anonymous account is Nikolaj.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Mikkel ---
+
+  mikkel_interview:
+    type: message
+    text: >
+      MIKKEL: Mads efterlod noget hos mig. En forseglet vandtæt kasse.
+      Han sagde "hvis nogen spørger til hvad der sker med turbinerne,
+      giv dem den her."
+
+      Han så bange ud. Han sagde han havde lavet kopier af alt men
+      havde brug for et sæt udenfor kontoret, et sted ingen ville
+      tænke på at lede. En boghandel virkede perfekt.
+    effects: { trust_mikkel: "+10" }
+    choices:
+      - What's happening with the turbines? -> mikkel_case
+
+  mikkel_case:
+    type: message
+    text: >
+      Mikkel reaches under the counter and produces a waterproof
+      Pelican case.
+
+      MIKKEL: Han sagde du ville komme. Tag den.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show corroded turbine foundations, cracked bolt
+      assemblies, and maintenance reports stamped "CRITICAL" that
+      were later re-filed as "MINOR." The USB drive contains
+      incident reports, injury documentation, and Mads' detailed
+      analysis.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Betjent Andersen ---
+
+  betjent_interview:
+    type: message
+    text: >
+      BETJENT ANDERSEN: Off the record — jeg ville efterforske
+      NordVind. Min chef sagde nej. Kommunen har "jurisdiktion."
+      Kode for "rør det ikke."
+
+      Nikolaj-situationen er anderledes. Beviser for stalking kan
+      jeg handle på. Det er min jurisdiktion.
+
+      Giv mig noget solidt og jeg genåbner sagen.
+    effects:
+      trust_betjent: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Mads than anyone in Thyborøn. Who is responsible?
+    choices:
+      - Confront Nikolaj Bech (the obsessive colleague) -> confront_nikolaj
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Erik Brandt (the operations director) -> confront_erik
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Dahl (political protection) -> confront_henrik
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Nikolaj (Best Ending) ---
+
+  confront_nikolaj:
+    type: message
+    text: >
+      You present your evidence to Nikolaj:
+
+      "I know @storm_vest is your account. I know you put a GPS tracker
+      on Mads' car. I know you accessed his files at the office. I know
+      you were watching his flat. I have witnesses and I have the
+      access logs."
+    choices:
+      - Send -> nikolaj_response
+
+  nikolaj_response:
+    type: message
+    text: >
+      Nikolaj doesn't reply for a long time. Then:
+
+      NIKOLAJ: Du forstår det ikke. Jeg beskyttede ham. Han var i
+      fare fra NordVind og han ville ikke lade mig hjælpe. Jeg var
+      nødt til at vide han var okay. Alt hvad jeg gjorde var fordi
+      jeg bekymrer mig om ham.
+
+      That's not concern. That's obsession.
+
+      You've already sent the evidence to Betjent Andersen. And to
+      Camilla Nørgaard.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen fast.
+
+      Betjent Andersen reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witnesses — Nikolaj is arrested for stalking. A tracker is
+      recovered from under Mads' car at the fishing huts near Agger.
+
+      Camilla Nørgaard publishes the NordVind story in Politiken.
+      Arbejdstilsynet orders an unannounced inspection. The park is
+      shut down pending remediation. Erik Brandt faces criminal
+      charges. Three injured workers file lawsuits.
+
+      And Mads Vestergaard, reading the story from a friend's house
+      in Aarhus, calls his brother for the first time in nine days.
+
+      "Jeg kommer hjem."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: mads
+    text: >
+      vinden stopper aldrig. og folk i thyborøn heller ikke. tak
+      fordi i ikke gav op.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Erik (Partial Ending) ---
+
+  confront_erik:
+    type: message
+    text: >
+      You present the safety evidence to Erik Brandt:
+
+      "I have photographs of corroded foundations. I have maintenance
+      reports showing critical failures reclassified as minor. I have
+      your original safety inspections showing the data was falsified.
+      I have the foundation plate with your serial number. I have
+      three injured workers."
+    choices:
+      - Send -> erik_response
+
+  erik_response:
+    type: message
+    text: >
+      ERIK: Denne samtale videresendes til vores juridiske afdeling.
+      Enhver offentliggørelse af injurierende materiale vil medføre
+      øjeblikkelig retsforfølgelse. NordVind Energy har altid opereret
+      inden for gældende sikkerhedskrav.
+
+      But it's too late. You've sent the evidence to Camilla, to
+      Foreningen Sikker Vind, and to Arbejdstilsynet.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The safety story breaks. NordVind is ordered to halt operations
+      pending investigation. The turbine park may close. A hundred
+      and fifty jobs hang in the balance. The town is divided.
+
+      But Mads? Without the stalking evidence, Nikolaj is never
+      investigated. He continues at NordVind. He monitors Mads'
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Mads reads about NordVind online. He
+      returns quietly. Changes companies. Stops working alone. Checks
+      his car every morning.
+
+      The corporation is exposed. But the person who terrorised Mads
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: mads
+    text: "jeg er tilbage. turbinerne er sikrere. resten... vi får se."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_henrik:
+    type: message
+    text: >
+      You confront Mayor Dahl with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> henrik_response
+
+  henrik_response:
+    type: tweet
+    from: magnus
+    text: >
+      Min klient tager note af Deres anklager. Enhver offentlig
+      udbredelse af injurierende udtalelser vil medføre øjeblikkelig
+      retsforfølgelse. — Holm & Partners, Aarhus
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct link
+      between Dahl and NordVind's negligence — and there isn't one
+      beyond political protection — your evidence is insufficient.
+
+      NordVind continues to operate. Nikolaj continues to watch.
+      Mads stays in hiding. Six months later, @storm_vest creates a
+      new account. It follows Mads' brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: THYBORØN — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Mads' story explores themes of corporate
+      negligence, worker safety, obsessive behaviour, community
+      solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking, harassment,
+      or is in crisis, help is available:
+      Livslinien: 70 201 201 (gratis og anonymt)
+      BørneTelefonen: 116 111
+      Arbejdstilsynet (sikkerhed): 70 12 12 88

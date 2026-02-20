@@ -1,0 +1,1579 @@
+# DEAD ACCOUNT — Story 065: Alpenrose (Austria, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-065.yml
+#
+# Player investigates the death of cheese maker (Sennerin) Maria Huber
+# in the fictional Tyrolean village of Alpenrose.
+
+meta:
+  title: "Dead Account — Alpenrose"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lena: 0
+    trust_thomas: 0
+    trust_sepp: 0
+    trust_irene: 0
+    trust_niki: 0
+    trust_felix: 0
+    trust_sophie: 0
+    trust_hansi: 0
+    trust_gertrude: 0
+    trust_werner: 0
+    trust_florian: 0
+    trust_anna: 0
+    trust_rudi: 0
+    trust_lisa: 0
+    trust_max: 0
+    trust_petra: 0
+    trust_helmut: 0
+    trust_karin: 0
+    trust_stefan: 0
+    trust_bauer: 0
+    trust_inspektor: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    quarry_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Neuzugezogene/r
+    bio: "frisch nach alpenrose gezogen. die berge entdecken, schritt für schritt"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Alpenrose.social"
+    description: "Willkommen auf der Gemeinschafts-Instanz von Alpenrose, Tirol"
+    avatar_url: /gamepatch/assets/dead-account/alpenrose_bot.png
+
+  npcs:
+    # === Maria's Inner Circle ===
+    maria:
+      name: "Maria Huber"
+      bio: "sennerin | almkäse & bergkräuter | die alm lügt ned | #alpenrose"
+      avatar: avatars/maria.jpg
+    lena:
+      name: "Lena Huber"
+      bio: "marias schwester | lehrerin an der VS alpenrose | sie is ned einfach verschwundn"
+      avatar: avatars/lena.jpg
+    thomas:
+      name: "Thomas Auer"
+      bio: "marias partner | tischler | werkstatt in alpenrose | was habts ihr gmacht"
+      avatar: avatars/thomas.jpg
+    sepp:
+      name: "Sepp Gruber"
+      bio: "senner seit 40 jahr | hat maria alles beigebracht | die alm is mei leben"
+      avatar: avatars/sepp.jpg
+
+    # === Local Government ===
+    helmut:
+      name: "Helmut Brandner"
+      bio: "Bürgermeister von Alpenrose | Gemeinde seit 2018 | #AlpenroseWächst"
+      avatar: avatars/helmut.jpg
+    karin:
+      name: "Karin Winkler"
+      bio: "Gemeinderätin Umwelt | Alpenrose | Naturschutz geht uns alle an"
+      avatar: avatars/karin.jpg
+    gemeinde:
+      name: "Gemeinde Alpenrose"
+      bio: "Offizieller Account | Gemeindenachrichten | Mo-Fr 8-16 Uhr"
+      avatar: avatars/gemeinde.jpg
+
+    # === Local Business & Community ===
+    irene:
+      name: "Irene Mair"
+      bio: "Gasthaus Edelweiß | Tiroler Küche | Kaspressknödel seit 1963 | Stammtisch Do abends"
+      avatar: avatars/irene.jpg
+    gasthaus:
+      name: "Gasthaus Edelweiß"
+      bio: "Tiroler Wirtshaus | Almkäse von Maria | Hausgemacht seit 3 Generationen"
+      avatar: avatars/gasthaus.jpg
+    hansi:
+      name: "Hansi Pichler"
+      bio: "bergführer | alpenverein alpenrose | jede woche am gipfel | sicher am berg"
+      avatar: avatars/hansi.jpg
+    gertrude:
+      name: "Gertrude Egger"
+      bio: "apotheke alpenrose | gesundheit & rat | seit 30 jahren für euch da"
+      avatar: avatars/gertrude.jpg
+    rudi:
+      name: "Rudi Steiner"
+      bio: "bäckerei steiner | bauernbrot | mohnstriezel | ab 5 uhr früh | tradition seit 1951"
+      avatar: avatars/rudi.jpg
+    werner:
+      name: "Werner Hofer"
+      bio: "landwirt | milchwirtschaft | 60 kühe | alpenrose seit geburt"
+      avatar: avatars/werner.jpg
+    anna:
+      name: "Anna Leitner"
+      bio: "kräuterpädagogin | wanderungen | die berge heilen | marias freundin"
+      avatar: avatars/anna.jpg
+
+    # === Journalist ===
+    petra:
+      name: "Petra Kirchner"
+      bio: "journalistin | tiroler tageszeitung | umwelt & region | tips: petra@tt-regional.at"
+      avatar: avatars/petra.jpg
+
+    # === GranAlp (quarry company) ===
+    granalp:
+      name: "GranAlp Steinbruch GmbH"
+      bio: "Naturstein & Schotter | Standort Alpenrose | ISO zertifiziert | Arbeitsplätze für die Region"
+      avatar: avatars/granalp.jpg
+    stefan:
+      name: "Stefan Kratzer"
+      bio: "Geschäftsführer GranAlp | Wirtschaft & Tradition | Alpenrose braucht Arbeitsplätze"
+      avatar: avatars/stefan.jpg
+    bauer:
+      name: "Dr. Bauer"
+      bio: "Rechtsanwalt | Kanzlei Bauer & Partner | Wirtschaftsrecht | Innsbruck"
+      avatar: avatars/bauer.jpg
+
+    # === Teens ===
+    niki:
+      name: "Niki"
+      bio: "16 | snowboard & mountainbike | alpenrose born | oida de berge san mei leben"
+      avatar: avatars/niki.jpg
+    felix:
+      name: "Felix"
+      bio: "17 | kletterer | boulderhalle & fels | session am wochenende immer"
+      avatar: avatars/felix.jpg
+    sophie:
+      name: "Sophie"
+      bio: "15 | fotografie | natur & tiere | maria war mein vorbild fr"
+      avatar: avatars/sophie.jpg
+
+    # === Media & Community ===
+    alpenrose_aktuell:
+      name: "Alpenrose Aktuell"
+      bio: "Nachrichten aus Alpenrose und dem Tal | redaktion@alpenrose-aktuell.at"
+      avatar: avatars/alpenrose_aktuell.jpg
+    wetter_tirol:
+      name: "Wetter Alpenrose"
+      bio: "Wetterstation | Vorhersagen & Warnungen | stündlich aktualisiert"
+      avatar: avatars/wetter_tirol.jpg
+    naturschutz_verein:
+      name: "Verein Bergwacht Alpenrose"
+      bio: "Naturschutz im Tal | Ehrenamtlich | Wanderwege & Biotopschutz"
+      avatar: avatars/naturschutz_verein.jpg
+
+    # === Suspicious / Other ===
+    florian:
+      name: "Florian Ender"
+      bio: "sprengmeister | GranAlp | i mach mei arbeit, des wars"
+      avatar: avatars/florian.jpg
+    lisa:
+      name: "Lisa"
+      bio: "."
+      avatar: avatars/anon.jpg
+    max:
+      name: "Max Reiter"
+      bio: "wanderer | naturfotograf | die alpen sind mein zuhause | überall und nirgends"
+      avatar: avatars/max.jpg
+    inspektor:
+      name: "Inspektor Griesser"
+      bio: "Polizeiinspektion Alpenrose | Bezirk | Notruf: 133"
+      avatar: avatars/inspektor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ALPENROSE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Alpenrose.social — the community Mastodon instance for
+      the mountain village of Alpenrose, Tyrol.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @maria_huber.
+
+      A Sennerin — a traditional alpine cheese maker. She ran a small
+      mountain dairy on the Hochalm above the village. People loved her.
+      She documented the alpine meadows, the cheese-making, the wildflowers.
+
+      She hasn't posted in six days. Her cabin on the Hochalm is empty.
+    choices:
+      - Look at her profile -> maria_profile
+
+  maria_profile:
+    type: tweet
+    from: maria
+    text: "Die Sprengungen vom Steinbruch rücken näher an die Alm. Die Kühe sind nervös. Das Wasser schmeckt nach Staub. Irgendwann reichts."
+    choices:
+      - That's her last real post... -> grey_mountain
+
+  grey_mountain:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a grey mountain slope. Blurred, taken at a strange angle. Posted
+      at 2am. No caption.
+
+      Her friends say that is not her style. Maria always wrote long
+      captions about herbs and cheese and the seasons. The police say
+      she probably went hiking and lost signal. Something does not add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: inspektor
+    text: >
+      Wir haben eine Vermisstenanzeige betreffend eine Bewohnerin von
+      Alpenrose aufgenommen. Derzeit liegen keine Hinweise auf ein
+      Verbrechen vor. Sachdienliche Hinweise bitte an die PI Alpenrose
+      oder den Notruf 133.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her sister @lena_huber is desperate.
+      Her partner @thomas_auer is furious. Her mentor @sepp_gruber says
+      the mountains do not just swallow people. The herb guide
+      @anna_leitner says Maria knew every path blindfolded.
+
+      And the journalist @petra_kirchner is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Maria just
+      "went hiking."
+    effects: { trust_lena: "+5", trust_thomas: "+5" }
+    choices:
+      - Start following Maria's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Alpenrose. Follow Maria's contacts and read their
+      posts. The more you engage with the community, the more they will
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Irene (innkeeper, knows everyone) -> irene_intro
+      - Talk to Sepp (old Senner, Maria's mentor) -> sepp_intro
+      - Talk to Niki (teen snowboarder, seems shaken) -> niki_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Maria with the rhythms of a small
+      mountain village: weather warnings, the bakery's Mohnstriezel
+      schedule, hiking trail closures from the quarry blasting.
+
+      Key names surface: Lena (sister, teacher), Thomas (partner,
+      carpenter, angry), Sepp (old Senner, devastated), and the
+      teens — Niki, Felix, Sophie — who idolised Maria's mountain life.
+
+      Also prominent: GranAlp Steinbruch GmbH, the quarry company
+      expanding into the valley. Their posts are corporate PR. Maria's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Irene -> irene_intro
+      - Talk to Sepp -> sepp_intro
+      - Talk to Niki -> niki_intro
+
+  # --- Irene (social map) ---
+
+  irene_intro:
+    type: tweet
+    from: irene
+    text: >
+      Heut gibts kan Almkäs. @maria_huber, dei Platz beim Stammtisch
+      is leer. Kumm zruck.
+    effects: { trust_irene: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Irene -> irene_talk
+
+  irene_talk:
+    type: message
+    text: >
+      IRENE: Ah, du bist neu? Servus. Schlecht Timing. Alle drehn
+      durch wegen Maria.
+
+      I'll tell you who is who. Lena is Maria's younger sister — she
+      teaches at the primary school. Devastated. Thomas is Maria's
+      partner, a carpenter. Big man, quiet normally, but right now he
+      is ready to punch walls. Sepp Gruber is the old Senner who
+      taught Maria everything about cheese making.
+
+      Anna Leitner — the herb guide — she and Maria were working on
+      something together. Something about the water on the Hochalm.
+      Anna has not posted since Maria vanished. That is not like her.
+
+      Oh, and do not bother reading GranAlp's corporate posts. Lies
+      wrapped in ISO certificates.
+    effects: { trust_irene: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the quarry -> irene_quarry
+      - Ask about the hiker, Max -> irene_max
+      - Thank her and move on -> quest1_hub
+
+  irene_quarry:
+    type: message
+    text: >
+      IRENE: The quarry has been there since the seventies. Gravel,
+      stone, construction material. The village tolerated it because
+      of the jobs. But last year GranAlp applied for expansion — they
+      want to blast closer to the Hochalm. Maria's alm.
+
+      The blasting shakes the cheese cellar. Cracks in the walls. The
+      cows are stressed, the milk is off. And the spring that feeds her
+      dairy — she said it started tasting like rock dust.
+
+      Maria was the only one who stood up at the Gemeinderat meeting
+      and said no. Two weeks later she is gone.
+    effects: { trust_irene: "+5" }
+    choices:
+      - Ask about the hiker -> irene_max
+      - Move on -> quest1_hub
+
+  irene_max:
+    type: message
+    text: >
+      IRENE: There is a man — Max Reiter, he calls himself. Been
+      coming to Alpenrose for months. Says he is a nature photographer,
+      a long-distance hiker. Stays at the Gasthof sometimes, sometimes
+      camps above the treeline.
+
+      But he is always on the paths near the Hochalm. Always near
+      Maria's alm. She mentioned him once — said he kept showing up,
+      asking to photograph her cheese making. She said no. He kept
+      coming back.
+
+      Hansi the mountain guide has seen him too. On trails that go
+      nowhere except past Maria's cabin.
+    effects: { trust_irene: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sepp (the old Senner, witness tease) ---
+
+  sepp_intro:
+    type: tweet
+    from: sepp
+    text: >
+      40 johr auf der alm. die berg verschlucken kane leut. die
+      @maria_huber is ned verlorn gangen. do is wos passiert.
+    effects: { trust_sepp: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sepp -> sepp_talk
+
+  sepp_talk:
+    type: message
+    text: >
+      SEPP: I have been a Senner for forty years. I know every ridge,
+      every ravine, every weather change. Maria knew them too — I taught
+      her myself. She does not get lost. She does not fall. The police
+      are talking nonsense.
+
+      The spring water on the Hochalm has been bad for months. Turbid,
+      strange taste. Maria took samples. She sent them to a lab in
+      Innsbruck. She was building a case against the quarry.
+
+      And then — gone. Like the morning mist.
+
+      You think that is a coincidence? On the mountain, there are no
+      coincidences.
+    effects: { trust_sepp: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> sepp_night
+      - Move on -> quest1_hub
+
+  sepp_night:
+    type: message
+    text: >
+      SEPP: The night before she vanished — I was up early, around
+      4 in the morning, checking the weather from my hut. I saw lights
+      on the Almweg. Not headlamps — vehicle lights. Two sets. Going
+      up toward the Hochalm.
+
+      At 4am. On the Almweg. That road is for tractors and dairy
+      transport. Nobody drives up there at night.
+
+      One vehicle was big — like a company pickup. The other was
+      smaller. Maria's old Suzuki maybe.
+
+      I did not think much of it then. Now I think about it every day.
+    effects: { trust_sepp: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Niki (teen, witness tease) ---
+
+  niki_intro:
+    type: tweet
+    from: niki
+    text: >
+      oida des is so scheiße @maria_huber is die einzige die sich
+      um de alm kümmert hat und jetzt is sie weg?? wer woaß wos
+      sagt es bitte
+    effects: { trust_niki: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Niki -> niki_talk_early
+
+  niki_talk_early:
+    type: message
+    text: >
+      NIKI: oida du bist neu hier? ur schlechtes timing. also maria
+      is halt ur leiwand, die coolste person im ganzen dorf. hat uns
+      gezeigt wie man käs macht, hat uns auf die alm mitgnommen,
+      hat uns alles über die blumen und so erklärt.
+
+      und jetzt bin i ur gstresst weil da felix hat wos gsehen am
+      steinbruch aber er will ned drüber reden. er sagt is nix aber
+      oida... des is sicher ned nix
+    effects: { trust_niki: "+10" }
+    choices:
+      - What did Felix see? -> niki_felix_hint
+      - Move on -> quest1_hub
+
+  niki_felix_hint:
+    type: message
+    text: >
+      NIKI: weiß ned genau. er war klettern am steinbruch — da is
+      eigentlich verboten aber da geht jeder hin — und hat irgendeinen
+      typ gsehen der wos bei marias auto gmacht hat?? oder so ähnlich.
+      er flippt ur aus und will ned reden.
+
+      musst ihn selber fragen aber er is voll misstrauisch bei leuten
+      die er ned kennt. red zuerst übers klettern mit ihm oida
+    effects: { trust_niki: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You are getting a picture of Alpenrose. A Tyrolean mountain
+      village built around the Alps. A cheese maker who was fighting a
+      quarry expansion. A disappearance nobody believes is accidental.
+
+      You have made contacts. Now dig deeper.
+    choices:
+      - Talk to Lena (Maria's sister) -> lena_q1
+      - Talk to Thomas (Maria's partner) -> thomas_q1
+      - Check what Anna (herb guide, Maria's friend) is saying -> anna_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lena Q1 ---
+
+  lena_q1:
+    type: tweet
+    from: lena
+    text: >
+      wer infos über @maria_huber hat bitte meldet euch. ihr zimmer
+      schaut normal aus. ihr käse-equipment is oben auf der alm.
+      sie wär nie ohne ihre werkzeuge gangen.
+    effects: { trust_lena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lena -> lena_q1_talk
+
+  lena_q1_talk:
+    type: message
+    text: >
+      LENA: Danke dass du schreibst aber ich kenn dich ned. Maria hat
+      viele Freunde hier. Sie kommt sicher zurück.
+
+      ...das sag ich immer. Ich glaubs selber nimmer.
+
+      [Lena is guarded. You will need to build more trust before she
+      opens up.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Thomas Q1 ---
+
+  thomas_q1:
+    type: tweet
+    from: thomas
+    text: >
+      MEINE PARTNERIN IS VERSCHWUNDEN UND DE POLIZEI SAGT MIR SIE
+      IS WANDERN GANGEN??? MARIA GEHT NED WANDERN OHNE MIR BESCHEID
+      ZU SAGEN. WACHT AUF OIDA.
+    effects: { trust_thomas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Thomas -> thomas_q1_talk
+
+  thomas_q1_talk:
+    type: message
+    text: >
+      THOMAS: Wer bist du? Noch jemand der mir sagt ich soll mich
+      beruhigen? Maria hat mich am Abend vorher angerufen. Sie hat
+      gesagt sie hat was Großes. Sie hat gesagt "wenn irgendwas
+      passiert, schau dir GranAlp an." Dann hat sie aufgelegt.
+
+      Das war das Letzte was ich von ihr gehört hab.
+    effects: { trust_thomas: "+10" }
+    choices:
+      - What do you think happened? -> thomas_theory
+      - Move on -> quest1_hub
+
+  thomas_theory:
+    type: message
+    text: >
+      THOMAS: Ich glaub sie hat Beweise gfunden dass GranAlp illegal
+      sprengt und die ham sie zum Schweigen gebracht. Aber ich glaub
+      auch dass dieser gschissene Wanderer — der Max — mehr weiß als
+      er zugibt. Wie der Maria immer nachgstiegen is... des war ned
+      normal.
+
+      Maria hat mir vor Wochen gsagt dass jemand ihre Sachen am Alm
+      durchgsucht hat. Ihre Proben, ihre Fotos. Sie hat dacht es war
+      nix. Ich glaub des war ned nix.
+    effects: { trust_thomas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Anna Q1 ---
+
+  anna_q1:
+    type: tweet
+    from: anna
+    text: >
+      Die Kräuter auf der Hochalm blühn weiter. Aber die Sennerin
+      is ned da. @maria_huber, die Berg warten auf di.
+    effects: { trust_anna: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Anna -> anna_q1_talk
+
+  anna_q1_talk:
+    type: message
+    text: >
+      ANNA: Maria and I have been friends since school. We were working
+      together — she on the water, I on the soil. The quarry blasting
+      is changing everything up there. The herbs taste different, the
+      spring water is turbid, the ground vibrates.
+
+      We were documenting it. We had samples, photos, measurements.
+      We were going to present it at the next Gemeinderat meeting.
+
+      Then she went silent. And two days later, someone broke into
+      my garden shed and took my sample case.
+
+      [Anna seems genuinely frightened.]
+    effects: { trust_anna: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Maria went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Felix (was climbing near the quarry) -> felix_interview
+      - Find Hansi (mountain guide, patrols early) -> hansi_interview
+      - Find Werner (dairy farmer, heard explosions) -> werner_interview
+      - Find Rudi (baker, starts at 5am, saw something) -> rudi_interview
+
+  # --- Felix (saw someone at Maria's car) ---
+
+  felix_interview:
+    type: tweet
+    from: felix
+    text: >
+      geile session am fels heut aber irgendwos stimmt ned im dorf.
+      die stimmung is oasch. kann des ned erklären oida
+    effects: { trust_felix: "+5" }
+    choices:
+      - Ask Felix about that evening -> felix_talk
+
+  felix_talk:
+    type: message
+    text: >
+      FELIX: oida ok aber du sagst des niemandem. i war am steinbruch
+      klettern, so gegen 19 uhr. und i hab den typen gsehen — den
+      max, den wanderer — bei marias auto am parkplatz. er hat
+      irgendwos unterm auto gmacht. als er mi gsehen hat is er ur
+      schnell abghaut.
+
+      wos zum fick oida. i hab nix gsagt weil i ned wollt dass wer
+      weiß dass i am steinbruch kletter — is ja verboten. aber jetzt
+      is des schon heftig
+    effects:
+      trust_felix: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Hansi (mountain guide, saw late-night activity) ---
+
+  hansi_interview:
+    type: tweet
+    from: hansi
+    text: >
+      Erinnerung: Der Almweg ist ab 20 Uhr gesperrt. In den letzten
+      Nächten sind unautorisierte Fahrzeuge gesichtet worden.
+    effects: { trust_hansi: "+5" }
+    choices:
+      - Ask Hansi what he saw -> hansi_talk
+
+  hansi_talk:
+    type: message
+    text: >
+      HANSI: I was doing my evening round at the Alpenverein hut,
+      around 22 Uhr. I saw lights on the Almweg — two vehicles going
+      up toward the Hochalm. The first was a GranAlp pickup, I know
+      the logo. The second I could not identify.
+
+      At 22 Uhr. On the Almweg. That is not normal.
+
+      I noted it in my patrol log. Nobody has asked to see it.
+    effects:
+      trust_hansi: "+10"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Werner (heard late-night blasting) ---
+
+  werner_interview:
+    type: tweet
+    from: werner
+    text: >
+      die kühe san scho wieder narrisch gwordn letzte nacht. des
+      rumsen vom steinbruch isch zu jeder zeit jetzt. a um mitternacht.
+    effects: { trust_werner: "+5" }
+    choices:
+      - Ask Werner what he heard -> werner_talk
+
+  werner_talk:
+    type: message
+    text: >
+      WERNER: I have sixty cows. They know the rhythm of the mountain.
+      And that night — the night before Maria vanished — there was a
+      blast. Not the usual daytime blasting. This was at midnight.
+      Maybe 1am. A deep rumble.
+
+      My cows panicked. Broke through a fence. It took me an hour
+      to get them back.
+
+      GranAlp says they never blast at night. My cows say different.
+      And a midnight blast near the Hochalm? That is where Maria's
+      spring comes from. That is where her cheese cellar is.
+    effects:
+      trust_werner: "+10"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rudi (baker, saw vehicle chase) ---
+
+  rudi_interview:
+    type: tweet
+    from: rudi
+    text: >
+      Fournée um 5 wie immer. Aber an dem Morgen is a Fahrzeug
+      viel zu schnell durchs Dorf gfahrn. Auf der Almstraße.
+    effects: { trust_rudi: "+5" }
+    choices:
+      - Ask Rudi what he saw -> rudi_talk
+
+  rudi_talk:
+    type: message
+    text: >
+      RUDI: I start baking at 5 every morning. That morning I was
+      opening the shutters and a vehicle came down the Almweg — fast,
+      much too fast. A big pickup. GranAlp colours, I think. Then
+      maybe three minutes later, a smaller car. Maria's old Suzuki,
+      maybe — hard to tell in the dark.
+
+      The Suzuki turned off toward the Klamm — the gorge road. The
+      pickup kept going toward the Inntal highway.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_rudi: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lena (sister)
+      and Sophie (saw Max watching the cabin).
+    choices:
+      - Talk to Lena about that night -> lena_interview
+      - Talk to Sophie -> sophie_interview
+      - Find Felix -> felix_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Hansi -> hansi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Werner -> werner_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Rudi -> rudi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lena (last to see Maria) ---
+
+  lena_interview:
+    type: tweet
+    from: lena
+    text: >
+      des foto auf marias account. des is ned sie. maria postet nie
+      ohne text. maria postet ned um 2 in der früh. des war wer
+      anderer.
+    effects: { trust_lena: "+5" }
+    choices:
+      - DM Lena -> lena_talk_low
+        when:
+          state: trust_lena
+          lt: 50
+      - DM Lena -> lena_talk_high
+        when:
+          state: trust_lena
+          gte: 50
+
+  lena_talk_low:
+    type: message
+    text: >
+      LENA: I appreciate it but I really do not want to talk to
+      strangers about this right now.
+
+      [Lena needs to trust you more. Show her you are investigating
+      seriously, not just being nosy.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Share what you've learned about the night -> lena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the vehicles on the Almweg,
+      the midnight blast, the GranAlp pickup. Lena is silent for a
+      while.
+
+      LENA: Du versuchst wirklich sie zu finden. Ok. I red mit dir.
+    effects: { trust_lena: "+25" }
+    choices:
+      - What happened that night? -> lena_talk_high
+
+  lena_talk_high:
+    type: message
+    text: >
+      LENA: She came down from the Alm around 21 Uhr. Showed up at
+      my flat. White as chalk, hands shaking. She said "sie wissen
+      was ich hab." She grabbed her laptop and the USB stick with
+      the water analysis.
+
+      I asked who. She said "the quarry. They sent people up to the
+      Alm." Then she said something else — "and he was there again.
+      He is always there."
+
+      She would not say who "he" was. She hugged me, said "mach dir
+      keine Sorgen," and left with a bag. By morning her car was gone
+      and the grey mountain photo was on her account.
+    effects:
+      trust_lena: "+15"
+      night_witnesses: "+1"
+      quarry_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sophie (saw Max watching the cabin) ---
+
+  sophie_interview:
+    type: message
+    text: >
+      SOPHIE: oida ok des is ur creepy was i jetzt sag aber der typ —
+      der max, der wanderer — i hab ihn bestimmt fünf mal beim
+      almweg gsehen. einfach nur dastehen und zur hütte raufschauen.
+      marias hütte.
+
+      des letzte mal war zwei tage bevor sie verschwunden is. er war
+      hinter dem stadl versteckt. mit einem fernglas. oida i schwör.
+    effects:
+      trust_sophie: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Max Reiter seen tampering with Maria's car (Felix)
+      21:00 — Maria arrives at Lena's, shaken, grabs laptop (Lena)
+      22:00 — GranAlp pickup and second vehicle going up Almweg (Hansi)
+      01:00 — Midnight blast near Hochalm (Werner)
+      05:00 — Vehicles speeding down Almweg, Suzuki toward Klamm (Rudi)
+
+      GranAlp confronted Maria on the Alm. She fled down, grabbed her
+      evidence, and ran. Someone chased her.
+
+      But there are two threats: the quarry corporation AND someone
+      closer.
+
+      Two threads to pull:
+      — The quarry: What is GranAlp hiding? Who ordered the midnight
+        blast?
+      — The stalker: What is Max Reiter really doing? Why was he at
+        her car?
+    choices:
+      - Investigate the quarry cover-up -> corruption_hub
+      - Investigate Max Reiter -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      QUARRY THREAD: Evidence collected: ${quarry_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the quarry thread -> corruption_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: quarry_evidence, gte: 3 }
+
+  # =====================================================================
+  # QUARRY COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE QUARRY THREAD
+
+      GranAlp is hiding something. Maria had proof. Now she is gone
+      and her evidence is missing from the Alm.
+
+      Quarry evidence: ${quarry_evidence}
+    choices:
+      - Search the Alm records -> alm_records
+      - Talk to Petra the journalist -> petra_interview
+      - Talk to Florian (GranAlp blasting technician) -> florian_interview
+      - Talk to Karin (environment councillor) -> karin_interview
+      - Check the Bergwacht association -> bergwacht_investigation
+      - Talk to Sepp about the water -> sepp_water
+      - Back to hub -> investigation_hub
+
+  # --- Alm Records ---
+
+  alm_records:
+    type: message
+    text: >
+      The Gemeinde's public records show Maria's recent complaints:
+      water quality reports from the Hochalm spring, filed monthly
+      for the past six months. The most recent report is marked
+      "PENDING REVIEW" — the only one with that status.
+
+      Her cheese production log, shared with the dairy cooperative,
+      shows she noted "unacceptable sediment in spring water" and
+      "cheese cellar wall cracks from blasting — structural risk."
+
+      The last entry: "Water sample sent to Uni Innsbruck.
+      Results confirm heavy metals above limit. Source: quarry runoff."
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Petra ---
+
+  petra_interview:
+    type: message
+    text: >
+      PETRA: I do not talk about sources. Period.
+    effects: { trust_petra: "+5" }
+    choices:
+      - Show Petra the evidence you have -> petra_with_evidence
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Back to quarry thread -> corruption_hub
+
+  petra_with_evidence:
+    type: message
+    text: >
+      PETRA: ...you have more than I expected.
+
+      Ok. Maria and I were working together. She had water analysis
+      from Uni Innsbruck — heavy metals at twelve times the legal
+      limit in the Hochalm spring. She had photos of quarry runoff
+      going directly into the watershed. She had blast schedules
+      that showed illegal midnight operations.
+
+      We were going to publish together. Then she went dark. And two
+      days later, someone broke into my car in Innsbruck and stole
+      my backup drive.
+
+      Maria is alive. She contacted me once, from a burner phone.
+      She said she is hiding. She said "they threatened me at the
+      Alm and someone else will not leave me alone."
+
+      I cannot tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_petra: "+25"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> petra_hint
+      - Back to investigation hub -> investigation_hub
+
+  petra_hint:
+    type: message
+    text: >
+      PETRA: The quarry sent their director — Kratzer — and some
+      lawyer up to the Alm that night. They told her to hand over
+      everything or face legal consequences. Intimidation dressed up
+      as a legal process.
+
+      But she also said something about a man on the mountain.
+      Someone who always knew where she was. Someone who kept appearing
+      on her paths. That is a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Florian (GranAlp whistleblower) ---
+
+  florian_interview:
+    type: message
+    text: >
+      FLORIAN: I work at GranAlp. I am the blasting technician. I
+      set charges, I file reports. That is my job.
+
+      But the reports I file... are not always the reports that reach
+      the Bezirkshauptmannschaft.
+    effects: { trust_florian: "+10" }
+    choices:
+      - What do you mean? -> florian_detail
+
+  florian_detail:
+    type: message
+    text: >
+      FLORIAN: I log every blast. Time, charge size, location,
+      distance to residential and agricultural zones. My logs go
+      to my boss. Somewhere between my desk and the regulatory
+      filing, the distances change. Bigger. Always bigger.
+
+      Maria's water samples matched what I know — the blasting IS
+      too close to the watershed. The runoff IS contaminated. My
+      original logs prove the quarry violates the distance regulations
+      every single time.
+
+      I am scared. I have a family. But I kept copies of my original
+      blast logs. If someone can protect me, I will share them.
+    effects:
+      trust_florian: "+15"
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Karin ---
+
+  karin_interview:
+    type: message
+    text: >
+      KARIN: As environment councillor, I take these allegations
+      seriously. But GranAlp employs 150 people in this Gemeinde.
+      The Bürgermeister insists we need to "maintain dialogue."
+
+      Off the record? I have seen the Bezirk inspection reports.
+      GranAlp passes every time. But those inspections are announced
+      three weeks in advance. They clean the runoff channels before
+      the inspectors arrive.
+
+      Maria had unannounced data. That is what makes it dangerous.
+    effects:
+      trust_karin: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Bergwacht ---
+
+  bergwacht_investigation:
+    type: tweet
+    from: naturschutz_verein
+    text: >
+      WARNUNG: Erhöhte Schwermetallwerte im Hochalm-Quellwasser
+      festgestellt. Proben und Dokumentation laufend. Wir fordern
+      eine unangekündigte Inspektion des GranAlp Steinbruchs.
+    choices:
+      - Check their data -> bergwacht_data
+
+  bergwacht_data:
+    type: message
+    text: >
+      The Bergwacht has been documenting water quality for four
+      years. Their data shows a clear pattern: heavy metal spikes
+      that correspond to GranAlp's blasting schedule. Higher on
+      weekdays, lower on weekends. Spikes after every blast cycle.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      contamination of the alpine watershed timed to the quarry's
+      operations.
+
+      Maria was a member. She contributed most of the water samples
+      and the photography.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to quarry thread -> corruption_hub
+
+  # --- Sepp water ---
+
+  sepp_water:
+    type: message
+    text: >
+      SEPP: I will show you something. Last month I found this on
+      the Hochalm — a crack in the rock face near the spring. New.
+      Not natural. From blasting too close. And through that crack,
+      groundwater seeps in carrying sediment from the quarry. Iron,
+      manganese, who knows what else.
+
+      Maria photographed it. She measured the crack width every week.
+      It is growing. She said it was the final proof — the quarry is
+      physically breaking the mountain that feeds her dairy.
+
+      I still have her photos. And the measurements.
+    effects:
+      trust_sepp: "+10"
+      quarry_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Max Reiter. Hiker. Photographer. Something more?
+      Someone was watching Maria's cabin. Someone was at her car.
+      Someone always knew where she was on the mountain.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate Max's hiking patterns -> hiking_patterns
+      - Talk to Lena about Max -> lena_max
+        when:
+          state: trust_lena
+          gte: 20
+      - Talk to Felix (more detail on the car incident) -> felix_detail
+      - Talk to Gertrude the pharmacist -> gertrude_interview
+      - Check the anonymous account @lisa -> lisa_investigation
+      - Talk to Anna the herb guide -> anna_interview
+        when:
+          state: trust_anna
+          gte: 40
+      - Talk to Inspektor Griesser -> inspektor_interview
+        when:
+          state: trust_inspektor
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Hiking Patterns ---
+
+  hiking_patterns:
+    type: message
+    text: >
+      The Alpenverein's public hut log books are digitised. Max Reiter
+      has signed in at mountain huts near Alpenrose 37 times in the
+      past four months. Always the huts on routes that pass the
+      Hochalm.
+
+      Cross-referencing with Maria's cheese delivery schedule: on 28
+      of those 37 visits, Max was on the mountain the same day as
+      Maria. He arrived after her and left after her. Every time.
+
+      He told the Gasthof he was photographing alpine flowers. There
+      are no flower photography posts on his account.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Lena on Max ---
+
+  lena_max:
+    type: message
+    text: >
+      LENA: Max? He made Maria uncomfortable. He would show up at
+      the Gasthof when she was there. He would offer to carry her
+      cheese down the mountain. He would comment on every single
+      one of her posts within minutes.
+
+      She told him she was not interested in being photographed. She
+      told him clearly, kindly. He said he understood. Then nothing
+      changed. He just kept appearing. Always there on her paths.
+
+      A month ago she found that someone had been in her cheese
+      cellar after hours. Her sample bottles had been moved. Her
+      notebook was open to a different page. She suspected Max but
+      could not prove it.
+    effects:
+      trust_lena: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Felix detail ---
+
+  felix_detail:
+    type: message
+    text: >
+      FELIX: oida ok i hab ned alles gsagt. als i den max bei marias
+      auto gsehen hab, hat er wos in der hand ghabt. so a kleines
+      kastl. er hats unters auto pickt, auf da fahrerseite. so
+      drunter klebt.
+
+      i bin ka experte aber des hat ur nach so am gps tracker
+      ausgschaut oida. so wie im film.
+
+      i hätt was sagen solln aber geh bitte wer glaubt an teenager
+      der an erwachsenen beschuldigt. niemand oida.
+    effects:
+      trust_felix: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Gertrude ---
+
+  gertrude_interview:
+    type: message
+    text: >
+      GERTRUDE: This is confidential but I am a pharmacist, not a
+      priest. Max Reiter comes in regularly. He has been buying things
+      that suggest he is not sleeping. Melatonin, valerian, caffeine
+      tablets. The pattern is someone under extreme stress who is
+      forcing himself to stay awake.
+
+      He also asked me once, very casually, if we sold binoculars.
+      I said "this is a pharmacy, not Intersport." He laughed it
+      off. I did not think about it again until Maria disappeared.
+    effects:
+      trust_gertrude: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Lisa (anonymous account) ---
+
+  lisa_investigation:
+    type: tweet
+    from: lisa
+    text: >
+      She should have listened. I was trying to protect her. Nobody
+      else understood the mountains like I do.
+    choices:
+      - Look at this account's history -> lisa_posts
+
+  lisa_posts:
+    type: message
+    text: >
+      @lisa: account created 5 months ago. Posts are all about Maria's
+      work. Comments on every cheese photo, every mountain post, every
+      herb update. The tone shifts over time:
+
+      Month 1: "Beautiful cheese. You are keeping tradition alive."
+      Month 2: "Why do you not reply to my messages? I just want to
+      learn from you."
+      Month 4: "I see you at the Gasthof with other people. You have
+      time for them but not for me?"
+      Month 5: "I know your paths. I know your schedule. I am always
+      near."
+
+      The account has no photos, no personal details. Just Maria.
+      Only Maria.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> lisa_style
+
+  lisa_style:
+    type: message
+    text: >
+      Comparing @lisa with @max_reiter:
+
+      Same use of alpine terminology. Same peculiar way of describing
+      mountain paths — "the line between the ridges" is a phrase both
+      accounts use. Same knowledge of Maria's schedule that only
+      someone watching her daily would have.
+
+      And one post from @lisa: "Your Bergkäse from batch 14 was
+      perfect." Batch numbers are internal dairy cooperative
+      designations. Not public.
+
+      It is Max. The anonymous account is Max Reiter.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Anna ---
+
+  anna_interview:
+    type: message
+    text: >
+      ANNA: Maria left something with me. A sealed waterproof bag.
+      She said "if someone asks about what is happening to the
+      Hochalm water, give them this."
+
+      She looked frightened. She said she had made copies of
+      everything but needed one set off-mountain, somewhere nobody
+      would think to look. A herb garden shed seemed perfect.
+    effects: { trust_anna: "+10" }
+    choices:
+      - What is happening to the Hochalm water? -> anna_evidence
+
+  anna_evidence:
+    type: message
+    text: >
+      Anna reaches into the back of her drying shed and produces a
+      sealed dry bag.
+
+      ANNA: She said you would come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show quarry runoff channels draining directly into the Hochalm
+      watershed — not through the official settling ponds, but through
+      an illegal bypass. The USB contains water analysis from Uni
+      Innsbruck, blast logs, and Maria's detailed report.
+    effects:
+      quarry_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspektor Griesser ---
+
+  inspektor_interview:
+    type: message
+    text: >
+      INSPEKTOR GRIESSER: Off the record — and I mean completely off
+      the record — I wanted to investigate GranAlp. My superior at
+      the Bezirk told me to stand down. He said the
+      Landeshauptmannschaft had "jurisdiction." That is code for
+      "do not touch it."
+
+      The stalking situation is different. I did not even know about
+      that until now. If you have evidence of Stalking, I can act on
+      that. That is clearly my jurisdiction.
+
+      Bring me something solid and I will reopen the case.
+    effects:
+      trust_inspektor: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You have gathered evidence. You know more about what happened
+      to Maria than anyone in Alpenrose. Who is responsible?
+    choices:
+      - Confront Max Reiter (the obsessive hiker) -> confront_max
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Stefan Kratzer (the quarry director) -> confront_stefan
+        when:
+          state: quarry_evidence
+          gte: 3
+      - Confront Bürgermeister Brandner (political protection) -> confront_helmut
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Max (Best Ending) ---
+
+  confront_max:
+    type: message
+    text: >
+      You present your evidence to Max Reiter:
+
+      "I know @lisa is your account. I know you put a GPS tracker on
+      Maria's car. I know you were in her cheese cellar. I know you
+      watched her cabin with binoculars. I have witnesses and I have
+      the hut logs."
+    choices:
+      - Send -> max_response
+
+  max_response:
+    type: message
+    text: >
+      Max does not reply for a long time. Then:
+
+      MAX: You do not understand. I was protecting her. She was in
+      danger from the quarry and she would not let me help. I needed
+      to know she was safe. Everything I did was because I care about
+      her.
+
+      That is not care. That is obsession.
+
+      You have already sent the evidence to Inspektor Griesser. And
+      to Petra Kirchner.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektor Griesser reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the hut logs, the witness
+      testimonies — Max Reiter is arrested for Stalking and
+      harassment. A GPS tracker is recovered from under Maria's
+      Suzuki at the Klamm gorge parking area.
+
+      Petra Kirchner, finally in possession of Maria's full evidence
+      package, publishes the GranAlp story in the Tiroler
+      Tageszeitung and it gets picked up nationally. The
+      Bezirkshauptmannschaft orders an unannounced inspection. The
+      quarry is shut down pending environmental remediation. Stefan
+      Kratzer faces criminal charges for falsifying blast distance
+      reports and illegal watershed contamination.
+
+      And Maria Huber, reading the story from a friend's house in
+      Innsbruck, calls her sister for the first time in nine days.
+
+      "I kimm hoam."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Frauenhelpline gegen Gewalt: 0800 222 555 (kostenlos, 24h)
+      Opfernotruf: 0800 112 112
+      Umweltbundesamt Beschwerdelinie: +43 1 31304
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: maria
+    text: >
+      die alm lügt ned. und de leit von alpenrose ah ned.
+      danke dass ihr ned aufgebn habts.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Stefan (Partial Ending) ---
+
+  confront_stefan:
+    type: message
+    text: >
+      You present the quarry evidence to Stefan Kratzer:
+
+      "I have water analysis from Uni Innsbruck showing heavy metals
+      twelve times the legal limit. I have photos of the illegal
+      bypass channel. I have original blast logs showing you violate
+      distance regulations. I have the crack in the rock face you
+      caused."
+    choices:
+      - Send -> stefan_response
+
+  stefan_response:
+    type: message
+    text: >
+      STEFAN: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. GranAlp has always operated within
+      regulatory requirements.
+
+      But it is too late. You have sent the evidence to Petra, to
+      the Bergwacht, and to the Bezirkshauptmannschaft.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE QUARRY
+
+      The contamination story breaks. GranAlp is ordered to halt all
+      blasting pending investigation. The quarry may close permanently.
+      One hundred and fifty jobs hang in the balance. The village is
+      divided.
+
+      But Maria?
+
+      Without the stalking evidence, Max Reiter is never investigated.
+      He moves on from Alpenrose but creates new accounts. He finds
+      Maria's new location within weeks. He begins hiking the trails
+      near her friend's house in Innsbruck.
+
+      Three months later, Maria reads about GranAlp online. She
+      returns quietly. She repairs her cheese cellar. She stops
+      working alone on the Alm. She checks her car every morning.
+
+      The quarry is exposed. But the person who terrorised Maria
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: maria
+    text: "i bin zruck. des wasser is sauberer. der rest... schaun ma mal."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_helmut:
+    type: message
+    text: >
+      You confront Bürgermeister Brandner with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> helmut_response
+
+  helmut_response:
+    type: tweet
+    from: bauer
+    text: >
+      Mein Mandant nimmt Ihre Anschuldigungen zur Kenntnis. Jede
+      öffentliche Verbreitung diffamierender Inhalte wird
+      unverzüglich rechtlich verfolgt. — Kanzlei Bauer & Partner,
+      Innsbruck
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Brandner and GranAlp's illegal operations — and
+      there is not one beyond political protection — your evidence is
+      insufficient.
+
+      GranAlp continues to blast. Max continues to watch. Maria stays
+      in hiding.
+
+      Six months later, @lisa creates a new account. It follows
+      Maria's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: ALPENROSE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Quarry evidence: ${quarry_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Maria's story explores themes of
+      corporate environmental destruction, obsessive behaviour,
+      alpine community solidarity, and the courage to stand up
+      for the land.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Frauenhelpline gegen Gewalt: 0800 222 555 (kostenlos, 24h)
+      Opfernotruf: 0800 112 112
+      Umweltbundesamt Beschwerdelinie: +43 1 31304

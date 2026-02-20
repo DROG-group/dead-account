@@ -1,0 +1,1687 @@
+# DEAD ACCOUNT — A TactCheck Gamepatch Scenario
+# Story 096: Denmark 4 — Marskhøj
+# An investigation game on a simulated Mastodon instance
+#
+# Player investigates the disappearance of young thatched roof craftsperson
+# Kasper Nørgaard in the fictional North Sea marshland village of Marskhøj.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_oliver: 0
+    trust_thea: 0
+    trust_sebastian: 0
+    trust_josephine: 0
+    trust_magnus: 0
+    trust_freja: 0
+    trust_emil: 0
+    trust_ida: 0
+    trust_william: 0
+    trust_clara: 0
+    trust_anton: 0
+    trust_lærke: 0
+    trust_niels: 0
+    trust_dorthe: 0
+    trust_søren: 0
+    trust_hanne: 0
+    trust_torben: 0
+    trust_morten: 0
+    trust_vigga: 0
+    trust_betjent: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    drilling_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to marskhøj. learning to live with the wind and the marsh"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Marskhøj.social"
+    description: "Velkommen til Marskhøj — vores fælles instans ved marsken"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    # === Kasper's Inner Circle ===
+    kasper:
+      name: "Kasper Nørgaard"
+      bio: "tækkemand | traditionelt stråtag | marskhøj | håndværk er hukommelse"
+      avatar: avatars/kasper.jpg
+    oliver:
+      name: "Oliver Vestergaard"
+      bio: "kaspers bedste ven | tømrer | marskhøj | vi bygger videre"
+      avatar: avatars/oliver.jpg
+    thea:
+      name: "Thea Nørgaard"
+      bio: "kaspers søster | sygeplejerske i esbjerg | HVOR ER MIN BROR"
+      avatar: avatars/thea.jpg
+    sebastian:
+      name: "Sebastian Møller"
+      bio: "landmand | marskhøj | fåreavl og marskgræs | kender hver grøft"
+      avatar: avatars/sebastian.jpg
+
+    # === Local Government ===
+    magnus:
+      name: "Magnus Kjeldsen"
+      bio: "Borgmester | Marskhøj Kommune | tradition og fremskridt"
+      avatar: avatars/magnus.jpg
+    ida:
+      name: "Ida Thomsen"
+      bio: "kommunaldirektør | Marskhøj | EU-midler & kystbeskyttelse"
+      avatar: avatars/ida.jpg
+    kommune:
+      name: "Marskhøj Kommune"
+      bio: "Officiel konto | Nyheder og information | Åbent: man-fre 9-15"
+      avatar: avatars/kommune.jpg
+
+    # === Local Business & Community ===
+    josephine:
+      name: "Josephine Friis"
+      bio: "krovært | Marskkroen | snaps & stegt flæsk | since 1923"
+      avatar: avatars/josephine.jpg
+    freja:
+      name: "Freja Lundgaard"
+      bio: "naturfotograf | marsken i alle farver | fugle og horisont"
+      avatar: avatars/freja.jpg
+    william:
+      name: "William Poulsen"
+      bio: "fisker | marskhøj sluse | ålefangst | havet stiger men vi bliver"
+      avatar: avatars/william.jpg
+    clara:
+      name: "Clara Bech"
+      bio: "dyrlæge | marskhøj | får, køer, og for mange katte"
+      avatar: avatars/clara.jpg
+    niels:
+      name: "Niels Brandt"
+      bio: "museumsbestyrer | Marskhøj Marskmuseum | lokalhistorie & kulturarv"
+      avatar: avatars/niels.jpg
+    dorthe:
+      name: "Dorthe Kristensen"
+      bio: "bibliotekar | Marskhøj | bogklub onsdag | kaffe altid"
+      avatar: avatars/dorthe.jpg
+    hanne:
+      name: "Hanne Skou"
+      bio: "journalist | Marsken Avis | lokalnyheder & gummistøvler"
+      avatar: avatars/hanne.jpg
+
+    # === Oil Company / Corporate ===
+    nordsjø_energi:
+      name: "NordsjøEnergi A/S"
+      bio: "Energiløsninger | Prøveboringer Vestjylland | Bæredygtig fremtid"
+      avatar: avatars/nordsjoe.jpg
+    torben:
+      name: "Torben Hedegaard"
+      bio: "projektleder | NordsjøEnergi A/S | Marskhøj-programmet | fremtidens energi"
+      avatar: avatars/torben.jpg
+    morten:
+      name: "Morten Gram"
+      bio: "advokat | Gram & Partners | erhvervsret | Esbjerg"
+      avatar: avatars/morten.jpg
+
+    # === Teens ===
+    emil:
+      name: "Emil"
+      bio: "16 | bmx & fiskeri | marskhøj born | marsken er mega fed"
+      avatar: avatars/emil.jpg
+    lærke:
+      name: "Lærke"
+      bio: "17 | kunst & foto | drømmer om kbh men marsken holder mig"
+      avatar: avatars/laerke.jpg
+
+    # === Architecture Tourist / Suspicious ===
+    vigga:
+      name: "Vigga Stein"
+      bio: "arkitekturstuderende | stråtag & marskbygninger | research i marskhøj"
+      avatar: avatars/vigga.jpg
+    anon_marsk:
+      name: "marskvansen"
+      bio: "."
+      avatar: avatars/anon.jpg
+
+    # === Police ===
+    betjent:
+      name: "Betjent Frandsen"
+      bio: "Politibetjent | Marskhøj | Syd- og Sønderjyllands Politi | 114"
+      avatar: avatars/betjent.jpg
+
+    # === Media / Weather ===
+    marsken_avis:
+      name: "Marsken Avis"
+      bio: "Lokalnyheder fra Marskhøj og omegn | Tips: redaktion@marsken-avis.dk"
+      avatar: avatars/marsken_avis.jpg
+    vejr_marsk:
+      name: "Vejr Marskhøj"
+      bio: "Stormflodsvarsling | Tidevand | Opdatering hver time"
+      avatar: avatars/vejr_marsk.jpg
+    naturfond:
+      name: "Marskhøj Naturfond"
+      bio: "Beskyttelse af marsklandet | Frivillige | Fugletælling & naturpleje"
+      avatar: avatars/naturfond.jpg
+    søren:
+      name: "Søren Winther"
+      bio: "geolog | uafhængig | grundvand & jordprøver | sandheden ligger i jorden"
+      avatar: avatars/soeren.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN MARSKHØJ
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to marskhøj.social — the community Mastodon instance for
+      the North Sea marshland village of Marskhøj, Western Jutland.
+
+      The local feed is uneasy. Something has happened in the marsh.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name dominates everything:
+      @kasper_noergaard.
+
+      A young thatched roof craftsman. Twenty-three years old. One of
+      the last people in the region who knew the traditional marsh
+      thatching technique. He documented his work — the old farmhouses,
+      the reed harvesting, the craft dying out across Denmark.
+
+      He hasn't posted in six days. His workshop is locked. His tools
+      are still inside.
+    choices:
+      - Look at his profile -> kasper_profile
+
+  kasper_profile:
+    type: tweet
+    from: kasper
+    text: "De vil bore i marsken. Lige der hvor rørene gror. Hvis de ødelægger rørskovene, er det slut med stråtag i Marskhøj. For altid."
+    choices:
+      - That was his last real post... -> strange_photo
+
+  strange_photo:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single photo:
+      a muddy field. Flat, grey, blurred. Posted at 4am. No caption.
+
+      His friends say Kasper never posted without a story. He narrated
+      every reed he cut, every roof he laid. This isn't him.
+
+      The police say he probably went to Copenhagen for work. Nobody
+      believes that. Kasper would never leave during reed harvest season.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: betjent
+    text: >
+      Vi har modtaget en anmeldelse om en forsvundet person fra
+      Marskhøj. Der er på nuværende tidspunkt ingen tegn på en
+      kriminel handling. Eventuelle oplysninger bedes rettet til
+      Syd- og Sønderjyllands Politi på 114.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The village is small and loud. Oliver, Kasper's best friend, is
+      furious. Thea, his sister, is driving down from Esbjerg. Sebastian,
+      the farmer who supplies Kasper's reed, says the marshland tells
+      the truth.
+
+      And the journalist Hanne Skou has gone quiet. She was writing
+      about the drilling. Now she's posting nothing.
+
+      Meanwhile, NordsjøEnergi A/S keeps posting about their
+      "sustainable exploration programme." The comments are brutal.
+
+      Nobody thinks Kasper just left for Copenhagen.
+    effects: { trust_oliver: "+5", trust_thea: "+5" }
+    choices:
+      - Start following Kasper's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Marskhøj. Follow Kasper's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Josephine (inn owner, knows everyone) -> josephine_intro
+      - Talk to Sebastian (farmer, knows the marsh) -> sebastian_intro
+      - Talk to Emil (teen, seems upset) -> emil_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Kasper with the rhythms of marshland
+      life: tide warnings, sheep updates, weather alerts, the inn's
+      daily menu.
+
+      Key names surface: Oliver (best friend, carpenter, angry), Thea
+      (sister, nurse, desperate), Sebastian (farmer, knows the marsh
+      better than anyone), and the teens — Emil and Lærke — who helped
+      Kasper harvest reeds every autumn.
+
+      Also prominent: NordsjøEnergi A/S and their test drilling
+      programme. Their PR is polished. Kasper's last posts were the
+      opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Josephine -> josephine_intro
+      - Talk to Sebastian -> sebastian_intro
+      - Talk to Emil -> emil_intro
+
+  # --- Josephine (social map) ---
+
+  josephine_intro:
+    type: tweet
+    from: josephine
+    text: >
+      Kroen er åben men det føles forkert. @kasper_noergaard plejede
+      at sidde ved vinduesbordet og tegne tagkonstruktioner på
+      servietterne. Bordet står tomt. Kom hjem, dreng.
+    effects: { trust_josephine: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Josephine -> josephine_talk
+
+  josephine_talk:
+    type: message
+    text: >
+      JOSEPHINE: Nå, you're new here? Shit timing, I'll say that.
+      Everyone's freaking out about Kasper. Let me give you the lay
+      of the land.
+
+      Oliver is Kasper's best mate — they grew up together, both
+      craftsmen. Oliver's a carpenter. He's losing it right now.
+      Thea is Kasper's older sister, nurse in Esbjerg, she's on her
+      way. Sebastian Møller — the farmer — he and Kasper work together.
+      Sebastian grows the reed, Kasper thatches with it. They've been
+      a team for years.
+
+      And then there's that architecture student — Vigga something.
+      Been hanging around the village for weeks, photographing every
+      roof Kasper ever touched. Kasper said she was getting weird.
+      Always showing up at his workshop. Always wanting to "observe
+      the craft." He told her to back off. She didn't.
+
+      Oh — and NordsjøEnergi? For helvede. Don't get me started on
+      those assholes.
+    effects: { trust_josephine: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Vigga -> josephine_vigga
+      - Ask about NordsjøEnergi -> josephine_drilling
+      - Thank her and move on -> quest1_hub
+
+  josephine_vigga:
+    type: message
+    text: >
+      JOSEPHINE: Vigga Stein. Architecture student from Aarhus, she
+      says. Showed up about two months ago. At first it was fine —
+      she was researching traditional thatching techniques, wanted to
+      interview Kasper, take photos. Fedt, right? Good for the craft.
+
+      But then she didn't leave. She rented a room in the village.
+      She started showing up at Kasper's workshop every day. She'd
+      sit and watch him work for hours. She followed him to the reed
+      beds. She knew his schedule better than Oliver did.
+
+      Kasper told me: "She doesn't blink when she looks at me. It's
+      mega sygt." He asked her to give him space. She said she was
+      "just doing research." Same shit, different day.
+    effects: { trust_josephine: "+5" }
+    choices:
+      - Ask about the drilling -> josephine_drilling
+      - Move on -> quest1_hub
+
+  josephine_drilling:
+    type: message
+    text: >
+      JOSEPHINE: NordsjøEnergi got permission to do test drilling in
+      the marshland. Test drilling! In a protected wetland! They say
+      it's "preliminary exploration" and won't damage anything.
+      Kraftedeme, they've already driven heavy machinery through the
+      reed beds.
+
+      The borgmester — Magnus Kjeldsen — signed off on it. Nobody
+      voted. No public hearing. And rumour is he's getting royalty
+      agreements. His cousin's construction company got the contract
+      for the access roads.
+
+      Kasper was the loudest voice against it. He said the drilling
+      would destroy the reed beds — and without reeds, there's no
+      thatching. A 500-year tradition, dead. Because some oil bastards
+      want to poke holes in the marsh.
+
+      Two weeks after his biggest protest post, he vanishes. Connect
+      the dots yourself.
+    effects: { trust_josephine: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sebastian (the marsh, witness tease) ---
+
+  sebastian_intro:
+    type: tweet
+    from: sebastian
+    text: >
+      marsken lyver ikke. der er spor i mudderet ved rørskoven.
+      tungere end et menneske. maskiner har været der om natten.
+      @kasper_noergaard havde ret. de ødelægger det hele.
+    effects: { trust_sebastian: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sebastian -> sebastian_talk
+
+  sebastian_talk:
+    type: message
+    text: >
+      SEBASTIAN: I've farmed this marshland for thirty years. My
+      father farmed it before me. The reed beds are everything — they
+      hold the ground together, they filter the water, they give us
+      material for the roofs. Without them, this village drowns in
+      the next storm surge.
+
+      Kasper understood that. He was the only young person who gave
+      a shit about the traditional craft. He learned thatching from
+      old Henrik — who's dead now — and he was carrying it forward.
+      Him and me, we harvested reed together every autumn.
+
+      And now NordsjøEnergi drives trucks through the reed beds at
+      night. I've seen the tracks. They're doing more than "test
+      drilling." They're clearing land.
+
+      Kasper was documenting everything. GPS coordinates, photos,
+      dates. He was building a case. And then he's gone.
+    effects: { trust_sebastian: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> sebastian_night
+      - Move on -> quest1_hub
+
+  sebastian_night:
+    type: message
+    text: >
+      SEBASTIAN: The night before Kasper went quiet — I was checking
+      on the sheep, around midnight. I saw lights out in the marsh.
+      Not headlights. Work lights. The kind they use on drill rigs.
+
+      And voices. Angry voices. I couldn't make out words, but one
+      of them was Kasper. I know his voice. He was shouting at
+      someone.
+
+      By the time I got closer, everyone was gone. Just tire tracks
+      in the mud. Deep ones. And Kasper's bicycle, lying on the dike
+      path.
+
+      His bicycle. Just lying there.
+    effects: { trust_sebastian: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Emil (teen, witness tease) ---
+
+  emil_intro:
+    type: tweet
+    from: emil
+    text: >
+      hold nu kæft det her er fucked. kasper er den fedeste dude i
+      hele marskhøj og nu er han bare væk?? politiet siger han er
+      taget til kbh?? han HADER kbh for helvede. noget er mega galt
+    effects: { trust_emil: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Emil -> emil_talk_early
+
+  emil_talk_early:
+    type: message
+    text: >
+      EMIL: hvem er du?? ok whatever. kasper er bare den sygeste
+      type. han lærte mig at skære rør og binde tagbundter. det
+      lyder kedeligt men det er faktisk mega fedt når man er derude
+      i marsken.
+
+      og den der vigga pige?? satans hun er creepy. hun sidder og
+      glor på kasper som en eller anden stalker. lærke og mig vi
+      jokede med det men honestly det var ikke sjovt. kasper sagde
+      hun fulgte efter ham hjem en aften.
+
+      og så er der borefolkene. lort mand. de kører rundt med store
+      maskiner om natten. lærke har billeder.
+    effects: { trust_emil: "+10" }
+    choices:
+      - What did Lærke photograph? -> emil_laerke_hint
+      - Move on -> quest1_hub
+
+  emil_laerke_hint:
+    type: message
+    text: >
+      EMIL: lærke er mega god til foto. hun har taget billeder af
+      boretårnene om natten — der hvor de ikke burde bore. og hun
+      har billeder af vigga. vigga der sidder i sin bil foran
+      kaspers værksted klokken lort om aftenen. bare sidder der.
+      helt mørkt.
+
+      lærke viser det nok hvis du snakker pænt til hende. hun er
+      skrap men hun er sej. bare sig at emil sendte dig lol
+    effects: { trust_emil: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Marskhøj. A marshland village built
+      on reeds and tradition. A young craftsman who was fighting to
+      protect both. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Oliver (Kasper's best friend) -> oliver_q1
+      - Talk to Thea (Kasper's sister) -> thea_q1
+      - Check what the journalist Hanne is doing -> hanne_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Oliver Q1 ---
+
+  oliver_q1:
+    type: tweet
+    from: oliver
+    text: >
+      min bedste ven er forsvundet og ingen gør en skid. politiet
+      siger "vent." borgmesteren siger "ro på." HOLD NU KÆFT og
+      find ham. kasper ville aldrig bare tage af sted. ALDRIG.
+    effects: { trust_oliver: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Oliver -> oliver_q1_talk
+
+  oliver_q1_talk:
+    type: message
+    text: >
+      OLIVER: Who the hell are you? Another one who's going to tell
+      me to calm down? My best friend vanished and nobody's doing
+      shit about it.
+
+      Kasper called me that night. He said he'd found something at
+      the drill site — something that proved NordsjøEnergi was doing
+      way more than test drilling. He said "they're not looking for
+      oil, Oliver. It's something else." Then the line went dead.
+
+      That's the last I heard from him.
+    effects: { trust_oliver: "+10" }
+    choices:
+      - What do you think happened? -> oliver_theory
+      - Move on -> quest1_hub
+
+  oliver_theory:
+    type: message
+    text: >
+      OLIVER: I think two things happened and they crashed together.
+      That Vigga woman had been getting worse — Kasper showed me
+      messages she sent him. Dozens of DMs he never answered. She
+      photographed his house at night. She knew what time he woke up.
+      That's not research, that's stalking.
+
+      And then the drilling company. Kasper had evidence they were
+      illegally expanding operations. He was going to the press.
+
+      Either the company shut him up, or that Vigga woman went too
+      far, or both. For helvede, I don't know. But someone knows
+      where he is.
+    effects: { trust_oliver: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Thea Q1 ---
+
+  thea_q1:
+    type: tweet
+    from: thea
+    text: >
+      MIN BROR ER FORSVUNDET. Han ringer ikke. Han svarer ikke.
+      Hans cykel lå i marsken. Hans dør er låst indefra. HVEM
+      LÅSER EN DØR INDEFRA OG FORSVINDER??? Politiet gør INTET.
+    effects: { trust_thea: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Thea -> thea_q1_talk
+
+  thea_q1_talk:
+    type: message
+    text: >
+      THEA: You're new here. I don't know you. But I'll talk to
+      anyone who's actually trying to find my brother.
+
+      Kasper is not the type to disappear. He has sheep to feed. He
+      has three roofs under contract. He has reed to harvest before
+      the frost. He would NEVER just leave.
+
+      He told me last week that someone was following him. He thought
+      it was that architecture student but he wasn't sure. And he
+      said the borgmester threatened him — told him to "stop making
+      noise" about the drilling or there'd be consequences.
+
+      The borgmester. Threatening a 23-year-old craftsman. What kind
+      of village is this becoming?
+    effects: { trust_thea: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Hanne Q1 ---
+
+  hanne_q1:
+    type: tweet
+    from: hanne
+    text: >
+      Arbejder på en sag. Mere snart.
+    effects: { trust_hanne: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Hanne -> hanne_q1_talk
+
+  hanne_q1_talk:
+    type: message
+    text: >
+      HANNE: I can't talk about my sources. Journalistic integrity.
+
+      But I'll say this: the drilling story is bigger than anyone
+      in Marskhøj realises. And Kasper knew it.
+
+      [Hanne is guarded. She'll need evidence before she talks.]
+    effects: { trust_hanne: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Kasper went silent. The marsh holds
+      secrets. People saw things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Lærke (teen photographer, was in the marsh) -> laerke_interview
+      - Find William (fisherman, works the sluice at night) -> william_interview
+      - Find Freja (nature photographer, checks camera traps) -> freja_interview
+      - Find Clara (vet, was on a night call) -> clara_interview
+
+  # --- Lærke (photographs of the drill site at night) ---
+
+  laerke_interview:
+    type: tweet
+    from: lærke
+    text: >
+      jeg har billeder. fra marsken. fra den aften. men jeg er
+      bange for at poste dem. folk siger jeg skal slette dem.
+      HVILKE folk?? pis af med jeres trusler
+    effects: { trust_lærke: "+5" }
+    choices:
+      - Ask Lærke about that evening -> laerke_talk
+
+  laerke_talk:
+    type: message
+    text: >
+      LÆRKE: ok du kender emil right? han sagde du var chill.
+      so basically. jeg var ude i marsken den aften med mit kamera.
+      nattebilleder af fuglene, det gør jeg tit.
+
+      og så ser jeg lys ude ved borestedet. store lys. og der er
+      folk. og maskiner. klokken er bare 23 om aftenen liksom??
+      de skal slet ikke bore om natten.
+
+      og så ser jeg kasper. han kommer cyklende ad diget. han
+      råber af dem. og der er en fra selskabet — torben tror jeg —
+      der griber hans arm. kasper river sig løs og cykler væk.
+
+      men det er ikke det værste. der var EN TIL. i mørket, bag
+      rørene. en person der bare stod og kiggede. på kasper.
+      hun havde et kamera med et mega langt objektiv.
+
+      det var vigga. klokken fucking 23 i marsken.
+    effects:
+      trust_lærke: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      drilling_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- William (fisherman, saw vehicles at the sluice) ---
+
+  william_interview:
+    type: tweet
+    from: william
+    text: >
+      slusen var åben i nat. den åbner kun ved stormflod. der var
+      ingen stormflod. nogen har åbnet den manuelt. hvorfor?
+    effects: { trust_william: "+5" }
+    choices:
+      - Ask William what he saw -> william_talk
+
+  william_talk:
+    type: message
+    text: >
+      WILLIAM: I check the sluice every night — it's how I keep my
+      eel traps maintained. Around midnight I saw two vehicles on
+      the marsh road. One was a NordsjøEnergi truck — white with
+      their logo. The other was a dark SUV. Municipal plates.
+
+      They were heading toward the new drill site. The one that's
+      supposed to be "inactive pending environmental review." At
+      midnight. With no lights.
+
+      I wrote the plate numbers in my logbook. I always do. Forty
+      years of habit.
+
+      The SUV? Registered to Marskhøj Kommune. The borgmester's
+      official vehicle.
+    effects:
+      trust_william: "+10"
+      night_witnesses: "+1"
+      drilling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Freja (camera traps captured something) ---
+
+  freja_interview:
+    type: tweet
+    from: freja
+    text: >
+      mine vildtkameraer ved rørskoven har fanget noget. det er
+      ikke dyr. det er ikke normalt. jeg ved ikke hvad jeg skal
+      gøre med det.
+    effects: { trust_freja: "+5" }
+    choices:
+      - Ask Freja what the cameras caught -> freja_talk
+
+  freja_talk:
+    type: message
+    text: >
+      FREJA: I have wildlife cameras all over the marsh — for
+      bird research. They trigger on motion, day and night.
+
+      The night Kasper vanished, Camera 7 — near the old reed
+      beds by the drill site — captured footage. At 23:14 it shows
+      Kasper on his bicycle, heading toward the drill site. At 23:31
+      it shows him running back. On foot. No bicycle.
+
+      And at 23:47 it shows a woman. Walking slowly toward the
+      spot where Kasper was last seen. Carrying a tripod and a
+      camera bag. She stays in frame for forty seconds, looking
+      around. Then she walks into the reeds.
+
+      At 00:12 the same woman returns from the reeds carrying
+      something else. It looks like Kasper's work bag.
+
+      I know that woman. It's the architecture student. Vigga.
+    effects:
+      trust_freja: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Clara (vet, saw confrontation) ---
+
+  clara_interview:
+    type: tweet
+    from: clara
+    text: >
+      jeg var på vagt den aften. fødsel hos madsens. på vejen
+      hjem så jeg noget der stadig holder mig vågen.
+    effects: { trust_clara: "+5" }
+    choices:
+      - Ask Clara what she saw -> clara_talk
+
+  clara_talk:
+    type: message
+    text: >
+      CLARA: I was driving home from a calving at the Madsen farm,
+      around 1am. On the marsh road I passed Kasper's workshop.
+      There was a light on. The door was open.
+
+      I slowed down. Kasper was inside, throwing things into a bag.
+      He looked terrified. He was talking to someone on the phone,
+      fast and panicked. I couldn't hear the words.
+
+      Then I saw a car parked fifty metres up the road. Engine off.
+      Lights off. Someone sitting inside. I couldn't see who.
+
+      As I drove past, the car started its engine and pulled out.
+      Following the direction of Kasper's workshop.
+
+      That's the last anyone saw of him, as far as I know.
+    effects:
+      trust_clara: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Oliver and
+      Niels (museum director, heard about threats).
+    choices:
+      - Talk to Oliver about that night -> oliver_interview
+      - Talk to Niels -> niels_interview
+      - Find Lærke -> laerke_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find William -> william_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Freja -> freja_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Clara -> clara_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Oliver (last call from Kasper) ---
+
+  oliver_interview:
+    type: tweet
+    from: oliver
+    text: >
+      kasper ringede til mig klokken 23. han var ude af sig selv.
+      han sagde "oliver de boring slet ikke efter olie" og så
+      brød forbindelsen. jeg har ringet 200 gange siden.
+    effects: { trust_oliver: "+5" }
+    choices:
+      - DM Oliver -> oliver_talk_night
+        when:
+          state: trust_oliver
+          lt: 50
+      - DM Oliver -> oliver_talk_night_high
+        when:
+          state: trust_oliver
+          gte: 50
+
+  oliver_talk_night:
+    type: message
+    text: >
+      OLIVER: I don't want to talk about it right now. I've told
+      the police everything. They don't care.
+
+      [Oliver needs to trust you more. Show him you're actually
+      investigating.]
+    effects: { trust_oliver: "+5" }
+    choices:
+      - Share what you've learned -> oliver_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  oliver_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the lights at the drill site,
+      the municipal SUV, the camera trap footage. Oliver goes quiet.
+
+      OLIVER: Fuck. You actually found something. OK. I'll tell you
+      everything.
+    effects: { trust_oliver: "+25" }
+    choices:
+      - What happened? -> oliver_talk_night_high
+
+  oliver_talk_night_high:
+    type: message
+    text: >
+      OLIVER: Kasper called me at 23:00. He was out of breath. He'd
+      gone to the drill site because Sebastian told him there were
+      lights. He said he found something — the bore holes aren't oil
+      test sites. They're dumping waste underground. Injecting
+      something into the aquifer.
+
+      He said he took photos and grabbed a soil sample. Then Torben
+      from NordsjøEnergi showed up with two other men. They grabbed
+      him, took his phone. He got away but they kept his phone.
+
+      He was at his workshop packing a bag when we got cut off. I
+      drove to Marskhøj but by the time I got there — 2am — his
+      workshop was dark and locked. From the inside.
+
+      Locked from the inside. But Kasper was gone.
+    effects:
+      trust_oliver: "+15"
+      night_witnesses: "+1"
+      drilling_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Niels (museum director, heard threats) ---
+
+  niels_interview:
+    type: message
+    text: >
+      NIELS: Kasper came to the museum three days before he
+      disappeared. He wanted to show me something. Photographs of
+      the drill site. Not oil equipment — waste injection machinery.
+      Industrial waste being pumped underground through the bore holes.
+
+      He said the borgmester knew. He said NordsjøEnergi was paying
+      Magnus Kjeldsen to keep quiet and sign permits. Royalty
+      agreements disguised as "community development funds."
+
+      He wanted me to store copies of his evidence at the museum.
+      In the archive. Where nobody would think to look.
+
+      I said yes. I have a USB drive in the 1800s land registry
+      drawer. Nobody opens that drawer.
+    effects:
+      trust_niels: "+10"
+      drilling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Lights at the drill site; NordsjøEnergi trucks and
+               the borgmester's SUV seen heading there (William)
+      23:00 — Kasper cycles to drill site, confronts workers, is
+               grabbed by Torben; phone confiscated (Oliver, Lærke)
+      23:14 — Camera trap: Kasper on bicycle heading to drill site (Freja)
+      23:31 — Camera trap: Kasper running back on foot (Freja)
+      23:47 — Camera trap: Vigga walking toward Kasper's last position (Freja)
+      00:12 — Camera trap: Vigga returns from reeds with Kasper's bag (Freja)
+      01:00 — Kasper at his workshop, packing, terrified, on phone (Clara)
+      01:00 — Unknown car parked near workshop, follows him (Clara)
+
+      Kasper found evidence of illegal waste injection. NordsjøEnergi
+      confronted him. And all through the night, Vigga was there.
+      Watching. Following. Taking his belongings.
+
+      Two threats: the corporation AND the obsessive tourist.
+    choices:
+      - Investigate the drilling cover-up -> corruption_hub
+      - Investigate Vigga -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      DRILLING THREAD: Evidence collected: ${drilling_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the drilling thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: drilling_evidence, gte: 3 }
+
+  # =====================================================================
+  # DRILLING COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE DRILLING THREAD
+
+      NordsjøEnergi isn't looking for oil. Kasper found out. Now he's
+      gone and his phone with the evidence is missing.
+
+      Drilling evidence: ${drilling_evidence}
+    choices:
+      - Search the drill site records -> drill_records
+      - Talk to Hanne the journalist -> hanne_interview
+      - Talk to Søren (independent geologist) -> soeren_interview
+      - Talk to Ida (municipal director) -> ida_interview
+      - Check the Marskhøj Naturfond -> naturfond_investigation
+      - Talk to Sebastian about the soil -> sebastian_soil
+      - Back to hub -> investigation_hub
+
+  # --- Drill Records ---
+
+  drill_records:
+    type: message
+    text: >
+      The publicly available permit applications tell a story.
+      NordsjøEnergi applied for "preliminary hydrocarbon exploration"
+      — standard language for oil test drilling. Six permits, all
+      signed by Borgmester Kjeldsen.
+
+      But cross-referencing with geological survey data, these sites
+      make no sense for oil exploration. The geological formations
+      are wrong. No petroleum engineer would drill here for oil.
+
+      What the formations ARE suited for: deep injection wells.
+      The kind used for disposing of industrial waste underground.
+
+      The permits are signed. The environmental impact assessments
+      are perfunctory — the same boilerplate language copied across
+      all six. As if nobody actually assessed anything.
+    effects:
+      drilling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Hanne ---
+
+  hanne_interview:
+    type: message
+    text: >
+      HANNE: I said I don't talk about sources.
+    effects: { trust_hanne: "+5" }
+    choices:
+      - Show Hanne the evidence you have -> hanne_with_evidence
+        when:
+          state: drilling_evidence
+          gte: 3
+      - Back to drilling thread -> corruption_hub
+
+  hanne_with_evidence:
+    type: message
+    text: >
+      HANNE: ...you've got more than I expected. OK, sit down.
+
+      Kasper and I were working together. He had photographs of the
+      bore holes — close-up shots showing injection equipment, not
+      drilling equipment. He had soil samples showing contamination.
+      He had GPS data proving the trucks were moving at night.
+
+      We were going to publish in Jyllands-Posten. National coverage.
+      Then he went dark.
+
+      But here's what you don't know: Kasper contacted me after he
+      vanished. One text, from a number I didn't recognise. It said:
+      "I'm safe. They took my phone. Someone else took my bag. Two
+      different problems. Don't publish yet."
+
+      Two different problems. The company and someone else.
+
+      I'm sitting on the story until I know he's safe. But if you
+      can deal with both problems, I'll publish immediately.
+    effects:
+      trust_hanne: "+25"
+      drilling_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who took his bag? -> hanne_hint
+      - Back to investigation hub -> investigation_hub
+
+  hanne_hint:
+    type: message
+    text: >
+      HANNE: He didn't say. But think about it — Freja's camera
+      shows Vigga taking a bag from where Kasper was. Kasper's work
+      bag with his soil samples and his backup camera.
+
+      If Vigga has Kasper's evidence, she has leverage. Over Kasper
+      and over NordsjøEnergi. That's not just obsession anymore.
+      That's control.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Søren (geologist) ---
+
+  soeren_interview:
+    type: message
+    text: >
+      SØREN: I've been an independent geologist for twenty years.
+      When I heard about the drilling programme, I requested the
+      geological surveys. What I found made me sick.
+
+      These are not test wells for hydrocarbons. The target
+      formations are porous sandstone layers — perfect for waste
+      injection. Someone is pumping industrial waste into the aquifer
+      beneath Marskhøj.
+
+      The contamination will reach the village's drinking water within
+      five to ten years. By then, NordsjøEnergi will have moved on.
+      The permits will have expired. And Marskhøj will have poisoned
+      groundwater for a generation.
+
+      Kasper understood this. He was the only one who listened to me.
+    effects:
+      trust_søren: "+15"
+      drilling_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to drilling thread -> corruption_hub
+
+  # --- Ida (municipal director) ---
+
+  ida_interview:
+    type: message
+    text: >
+      IDA: As kommunaldirektør, I process the permits. I sign what
+      the borgmester approves. That's my job.
+
+      But — and this stays between us — the NordsjøEnergi permits
+      came with an unusual attachment. A "community development
+      agreement." The payments go to a fund controlled solely by
+      the borgmester. No council oversight. No public accounts.
+
+      That fund has received 4.2 million kroner in eighteen months.
+      That's not normal for test drilling permits.
+
+      I tried to raise it with the council. Magnus told me to "focus
+      on my own responsibilities." The next day, his lawyer called
+      to remind me about my confidentiality clause.
+    effects:
+      trust_ida: "+15"
+      drilling_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to drilling thread -> corruption_hub
+
+  # --- Naturfond ---
+
+  naturfond_investigation:
+    type: tweet
+    from: naturfond
+    text: >
+      ADVARSEL: Forurening registreret i grundvandsprøver nær
+      boresteder. Tungmetaller og kemiske forbindelser der IKKE
+      forekommer naturligt i marsken. Vi kræver øjeblikkelig
+      undersøgelse.
+    choices:
+      - Check their data -> naturfond_data
+
+  naturfond_data:
+    type: message
+    text: >
+      The Marskhøj Naturfond has been monitoring groundwater for
+      five years. Their latest samples — taken from wells near the
+      drill sites — show alarming levels of benzene, toluene, and
+      heavy metals. Compounds associated with industrial waste
+      disposal.
+
+      The contamination pattern radiates from the drill sites.
+      Concentrations decrease with distance. The source is clear.
+
+      These aren't natural formations being disturbed by drilling.
+      This is waste being injected and spreading through the aquifer.
+
+      Kasper donated his soil samples to the Naturfond before he
+      disappeared. They confirm the same findings.
+    effects:
+      drilling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to drilling thread -> corruption_hub
+
+  # --- Sebastian soil ---
+
+  sebastian_soil:
+    type: message
+    text: >
+      SEBASTIAN: The reed beds are dying. Not from the drilling
+      itself — from what's in the water. The reeds pull water from
+      the aquifer through their roots. If the aquifer is poisoned,
+      the reeds die. And without reeds...
+
+      No thatching material. No flood protection. No bird habitat.
+      The entire marsh ecosystem, dead.
+
+      Kasper took this soil sample two days before he vanished. Look
+      at the colour — grey-black. Marsh soil should be brown. This
+      smells like chemicals.
+
+      He gave me a copy of his photos too. The bore holes. The
+      machinery. The trucks at night. I keep them in my barn, in
+      the feed storage. Nobody looks there.
+    effects:
+      trust_sebastian: "+10"
+      drilling_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Vigga Stein. Architecture student. Researcher. Something more?
+      She was in the marsh the night Kasper vanished. The camera
+      trap shows her taking his bag. She's been watching him for
+      months.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Check Vigga's social media history -> vigga_history
+      - Talk to Oliver about Vigga -> oliver_vigga
+        when:
+          state: trust_oliver
+          gte: 20
+      - Talk to Lærke (more detail on the photos) -> laerke_detail
+      - Talk to Dorthe the librarian -> dorthe_interview
+      - Check the anonymous account @marskvansen -> anon_investigation
+      - Talk to Niels about Vigga's research -> niels_vigga
+        when:
+          state: trust_niels
+          gte: 40
+      - Talk to Betjent Frandsen -> betjent_interview
+        when:
+          state: trust_betjent
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Vigga's History ---
+
+  vigga_history:
+    type: message
+    text: >
+      Vigga Stein's account was created four months ago. Her bio
+      says "architecture student, Aarhus." Her posts are all about
+      Kasper's work. Every roof he thatched. Every reed he cut.
+      Close-up photographs of his hands, his tools, his face.
+
+      The tone shifts over time:
+
+      Month 1: "Incredibly skilled craftsperson. This technique must
+      be preserved."
+      Month 2: "Spent the day at his workshop. He's so focused when
+      he works. Beautiful to watch."
+      Month 3: "He asked me to come less often. He doesn't understand
+      I'm trying to help him. His work needs documentation."
+      Month 4: "He won't answer my messages. I'll wait at the
+      workshop. He has to come eventually."
+
+      Checking Aarhus School of Architecture: no student named Vigga
+      Stein is enrolled. No student named Vigga Stein has ever been
+      enrolled.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Oliver on Vigga ---
+
+  oliver_vigga:
+    type: message
+    text: >
+      OLIVER: Vigga? Satans, that woman. She showed up in May. Said
+      she was doing a thesis on traditional thatching. Kasper was
+      flattered at first — nobody cares about stråtag anymore.
+
+      But then she started showing up every single day. She'd sit
+      on a stool in his workshop and just... stare at him. Taking
+      notes. Taking photos. Not of the roof — of him. His face. His
+      hands. Close-ups.
+
+      He told her to stop coming. She said "you can't stop me from
+      being in a public space." He said the workshop is his private
+      property. She stood outside instead. Just outside the door.
+      For hours.
+
+      He found her business card in his house once. Inside. He locks
+      his door. She'd been inside his house.
+    effects:
+      trust_oliver: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lærke detail ---
+
+  laerke_detail:
+    type: message
+    text: >
+      LÆRKE: ok her er billederne. se selv.
+
+      [Lærke shows you timestamped photographs]
+
+      Photo 1: Vigga's car parked outside Kasper's workshop. 22:14.
+      Interior light shows her sitting there, watching the door.
+
+      Photo 2: The drill site at night. Three men and a truck. Work
+      lights on a bore hole. One of the men is Torben from NordsjøEnergi.
+
+      Photo 3: Vigga's rental room window. Visible on the wall: a
+      printed timeline of Kasper's daily movements. Times, locations,
+      photographs. Like a detective's evidence board.
+
+      Photo 4: Vigga in the reed beds. Night. She's holding Kasper's
+      work bag — the one with the reed-cutting knife pattern he
+      embroidered himself. You can see his initials on the strap.
+
+      LÆRKE: for helvede. hun er skør. og hun har hans ting.
+    effects:
+      trust_lærke: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Dorthe ---
+
+  dorthe_interview:
+    type: message
+    text: >
+      DORTHE: Vigga Stein has been using the library every day.
+      She reserved a study room. I thought she was writing a thesis.
+
+      But I clean the rooms after hours. She left papers behind once.
+      Not architecture notes. Photographs of Kasper. Dozens of them.
+      Printed on photo paper. Some taken through windows. Some from
+      across the street with a long lens.
+
+      And a notebook. I shouldn't have read it but I did. It's not
+      a research journal. It's about Kasper. His schedule. What he
+      eats. What he wears. Who he talks to. Who he smiles at.
+
+      It's a diary of obsession. Every detail of his life, recorded.
+      Pages and pages.
+
+      I put everything back. I didn't want her to know. But I'm
+      scared for Kasper.
+    effects:
+      trust_dorthe: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_marsk
+    text: >
+      Han fortjener nogen der forstår hans arbejde. Ikke de idioter
+      i den landsby. Jeg er den eneste der virkelig ser ham.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @marskvansen: account created five months ago. Every post is
+      about Kasper. Comments on every project update. Replies to
+      every photograph. The tone is possessive, intimate:
+
+      "Your hands know the reeds better than anyone alive."
+      "Why do you smile at Oliver but not at me? I watch you both."
+      "I sat outside your workshop today. You looked tired. You
+      should rest. I could take care of you."
+      "You told me to leave. I never leave. I'm always here."
+      "They don't deserve your craft. This village will let you
+      die out like the old thatchers. I'm the one preserving you."
+
+      No personal information. No photos. Just Kasper. Always Kasper.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @marskvansen with @vigga_stein:
+
+      Same sentence structures. Same unusual use of semicolons.
+      Same architectural terminology applied to a person — "his
+      proportions," "the structure of his movements."
+
+      And one post from @marskvansen: "The third panel on the
+      Jensens' east-facing roof is your best work." The Jensens'
+      roof project was never posted online. Kasper only discussed
+      it in person, at his workshop.
+
+      Only someone who spent hours in that workshop would know that
+      detail. It's Vigga. The anonymous account is Vigga.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Niels on Vigga ---
+
+  niels_vigga:
+    type: message
+    text: >
+      NIELS: Vigga came to the museum. She said she was researching
+      thatching history. I gave her access to the archive.
+
+      Then I noticed she wasn't looking at thatching records. She
+      was going through the census data. Birth records. Property
+      records. Everything about the Nørgaard family. Kasper's family.
+      Going back generations.
+
+      She photocopied his grandmother's wedding certificate. His
+      father's death notice. His school enrollment form. She was
+      building a complete dossier on his life.
+
+      That's not architecture research. That's something else
+      entirely.
+
+      And one more thing: she asked me if the museum had a key to
+      Kasper's workshop. The old buildings use heritage locks, and
+      the museum sometimes keeps copies. I said no.
+
+      But I checked later. A key IS missing from the heritage lock
+      collection. The one for Kasper's workshop address.
+    effects:
+      trust_niels: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Betjent Frandsen ---
+
+  betjent_interview:
+    type: message
+    text: >
+      BETJENT FRANDSEN: Off the record. Completely.
+
+      I wanted to investigate NordsjøEnergi. My superior said the
+      permits were valid and it was a civil matter. "Not our
+      jurisdiction." Bullshit — environmental crime is absolutely
+      our jurisdiction.
+
+      The Vigga situation is different. I didn't know about any of
+      this until now. Stalking, breaking and entering, theft —
+      those are crimes I can act on. Today.
+
+      And the waste injection — if you can give me hard evidence,
+      I'll go over my superior's head. Straight to the national
+      environmental crime unit.
+
+      Bring me something solid.
+    effects:
+      trust_betjent: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Kasper than anyone in Marskhøj. Who is responsible?
+    choices:
+      - Confront Vigga Stein (the obsessive tourist) -> confront_vigga
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Torben Hedegaard (NordsjøEnergi project leader) -> confront_torben
+        when:
+          state: drilling_evidence
+          gte: 3
+      - Confront Borgmester Kjeldsen (political corruption) -> confront_magnus
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Vigga (Best Ending) ---
+
+  confront_vigga:
+    type: message
+    text: >
+      You present your evidence to Vigga:
+
+      "I know @marskvansen is your account. I know you're not an
+      architecture student — Aarhus has no record of you. I know
+      you stole a heritage key to enter Kasper's workshop. I have
+      camera trap footage of you taking his bag from the marsh. I
+      have photographs of your surveillance board. I have witnesses."
+    choices:
+      - Send -> vigga_response
+
+  vigga_response:
+    type: message
+    text: >
+      Vigga doesn't respond for hours. Then:
+
+      VIGGA: You don't understand. His craft is dying. Nobody else
+      sees what he's doing — the last living connection to 500 years
+      of marshland building tradition. I'm preserving him. His
+      techniques, his movements, his process. Everything.
+
+      If the world loses Kasper Nørgaard's thatching, it loses
+      something irreplaceable. I'm the only one who understands that.
+      Everything I did was to protect the craft.
+
+      That's not preservation. That's obsession. And theft. And
+      stalking. And breaking and entering.
+
+      You've already sent everything to Betjent Frandsen. And to
+      Hanne Skou.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Betjent Frandsen arrests Vigga Stein — real name Vibeke
+      Stensgaard, no university affiliation, a history of fixation
+      on traditional craftspeople in three other Danish villages. She
+      had Kasper's work bag, his backup camera, his soil samples, and
+      a room papered with photographs of his daily life.
+
+      Hanne Skou, armed with the full evidence package — geological
+      surveys, groundwater tests, permit irregularities, the
+      borgmester's secret fund — publishes in Jyllands-Posten.
+      National environmental inspectors arrive within 48 hours. The
+      bore holes are sealed. NordsjøEnergi faces criminal charges
+      for illegal waste disposal. Borgmester Kjeldsen resigns. The
+      4.2 million kroner fund is frozen.
+
+      And Kasper Nørgaard, who has been hiding at a friend's farm
+      near Ribe, reads the story on his borrowed phone.
+
+      He calls Oliver first. "Jeg kommer hjem. Der er tag der skal
+      lægges."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: kasper
+    text: >
+      marsken overlever. rørene vokser. tagene holder. tak til jer
+      der ikke gav op.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Torben (Partial Ending) ---
+
+  confront_torben:
+    type: message
+    text: >
+      You present the drilling evidence to Torben Hedegaard:
+
+      "I have geological surveys proving these aren't oil test wells.
+      I have groundwater samples showing industrial contamination. I
+      have permit records showing the borgmester's secret royalty fund.
+      I have photographs of your trucks operating illegally at night."
+    choices:
+      - Send -> torben_response
+
+  torben_response:
+    type: message
+    text: >
+      TORBEN: This communication has been forwarded to our legal
+      department. NordsjøEnergi A/S operates within all applicable
+      regulatory frameworks. Any defamatory publication will result
+      in immediate legal action.
+
+      But it's too late. You've sent everything to Hanne, to the
+      Naturfond, and to the national environmental agency.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The waste injection story breaks nationally. NordsjøEnergi is
+      ordered to halt all operations. The bore holes are sealed. The
+      borgmester faces an investigation into corruption. The village
+      is shaken — some are relieved, others fear losing the promised
+      investment.
+
+      But Kasper?
+
+      Without the stalking evidence, Vigga is never investigated.
+      She still has Kasper's work bag, his samples, his photographs.
+      She creates a new account and continues her surveillance from
+      a distance.
+
+      Kasper returns three months later, when the drilling stops. He
+      reopens his workshop. But he installs new locks. He checks
+      behind him when he walks to the reed beds. He doesn't work
+      alone anymore.
+
+      The marsh is saved. But the person who terrorised Kasper walks
+      free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: kasper
+    text: "marsken er ren igen. rørene kan vokse. resten... det tager tid."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Borgmester (Wrong Ending) ---
+
+  confront_magnus:
+    type: message
+    text: >
+      You confront Borgmester Kjeldsen with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> magnus_response
+
+  magnus_response:
+    type: tweet
+    from: morten
+    text: >
+      Min klient tager til efterretning at der er fremsat
+      udokumenterede påstande. Enhver offentliggørelse af
+      injurierende materiale vil medføre omgående retslige skridt.
+      — Gram & Partners, Esbjerg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The borgmester's lawyer buries your accusation. Without a
+      direct link between Kjeldsen and the waste injection — the
+      royalty fund alone isn't enough — your evidence stalls in
+      legal proceedings.
+
+      NordsjøEnergi continues operating under their existing permits.
+      Vigga continues watching. Kasper stays in hiding.
+
+      The reed beds thin. The groundwater darkens. Six months later,
+      @marskvansen creates a new account. It follows Kasper's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: MARSKHØJ — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Drilling evidence: ${drilling_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Kasper's story explores themes of
+      environmental destruction, corporate corruption, obsessive
+      behaviour, the death of traditional crafts, and the courage
+      of small communities standing up against powerful interests.
+
+      If you or someone you know is experiencing stalking or
+      harassment, or if you need someone to talk to:
+      Livslinien: 70 201 201
+      Offerrådgivningen (victim support): 70 20 16 90
+      Politi (non-emergency): 114

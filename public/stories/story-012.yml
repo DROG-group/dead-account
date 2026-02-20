@@ -1,0 +1,1661 @@
+# DEAD ACCOUNT — Story 012: Ferrières-les-Forges (Belgium)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-012.yml
+#
+# Player investigates the disappearance of young chocolatier Noémie Claessens
+# in the fictional Wallonian industrial town of Ferrières-les-Forges.
+
+meta:
+  title: "Dead Account — Ferrières-les-Forges"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_mathilde: 0
+    trust_antoine: 0
+    trust_liam: 0
+    trust_manon: 0
+    trust_hugo: 0
+    trust_yasmina: 0
+    trust_baptiste: 0
+    trust_lucienne: 0
+    trust_philippe: 0
+    trust_sarah: 0
+    trust_maxime: 0
+    trust_celine: 0
+    trust_julien: 0
+    trust_fatima: 0
+    trust_thomas: 0
+    trust_margaux: 0
+    trust_inspecteur: 0
+    trust_anon: 0
+    trust_kevin: 0
+    trust_amelie: 0
+    trust_nadia: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    competitor_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "viens d'arriver à ferrières. le chocolat et les terrils, on verra bien"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Ferrières.social"
+    description: "Bienvenue sur l'instance communautaire de Ferrières-les-Forges"
+    avatar_url: /gamepatch/assets/dead-account/ferrieres_bot.png
+
+  npcs:
+    # === Noémie's Inner Circle ===
+    noemie:
+      name: "Noémie Claessens"
+      bio: "chocolatière artisanale | atelier la forge sucrée | le cacao c'est la vie"
+      avatar: avatars/noemie.jpg
+    mathilde:
+      name: "Mathilde Dubois"
+      bio: "meilleure amie de noémie | étudiante en chimie ULiège | café et galères"
+      avatar: avatars/mathilde.jpg
+    antoine:
+      name: "Antoine Claessens"
+      bio: "grand frère de noémie | infirmier à charleroi | elle répond pas et ça m'inquiète"
+      avatar: avatars/antoine.jpg
+    liam:
+      name: "Liam Devos"
+      bio: "ex de noémie | photographe freelance | liège | on est restés potes"
+      avatar: avatars/liam.jpg
+
+    # === Local Government ===
+    philippe:
+      name: "Philippe Renard"
+      bio: "Bourgmestre de Ferrières-les-Forges | au service de la commune depuis 2018 | #FerriAvance"
+      avatar: avatars/philippe.jpg
+    celine:
+      name: "Céline Marchal"
+      bio: "Échevine de l'environnement | Commune de Ferrières | transition industrielle"
+      avatar: avatars/celine.jpg
+    commune:
+      name: "Commune de Ferrières-les-Forges"
+      bio: "Compte officiel | Actualités communales | Horaires: Lun-Ven 8h30-16h30"
+      avatar: avatars/commune.jpg
+
+    # === Local Business & Community ===
+    lucienne:
+      name: "Lucienne Warnier"
+      bio: "Brasserie du Terril | frites maison | bières artisanales | ici depuis 1973"
+      avatar: avatars/lucienne.jpg
+    brasserie:
+      name: "Brasserie du Terril"
+      bio: "Frites deux fois cuites | Bières locales | Terrasse avec vue sur le terril | Le cœur de Ferrières"
+      avatar: avatars/brasserie.jpg
+    baptiste:
+      name: "Baptiste Lejeune"
+      bio: "boulanger-pâtissier | fournil du vieux pont | 4h du mat | pistolets & couques"
+      avatar: avatars/baptiste.jpg
+    fatima:
+      name: "Fatima El Amrani"
+      bio: "pharmacienne | Ferrières | conseil et écoute | ouverte le samedi"
+      avatar: avatars/fatima.jpg
+    thomas:
+      name: "Thomas Pirard"
+      bio: "libraire | Le Bouquin Rouillé | livres & BD | lectures le mercredi après-midi"
+      avatar: avatars/thomas.jpg
+    julien:
+      name: "Julien Collin"
+      bio: "ouvrier chez SolvaChem | délégué syndical FGTB | cette usine nous tue"
+      avatar: avatars/julien.jpg
+
+    # === The Competitor ===
+    maxime:
+      name: "Maxime Vandenberghe"
+      bio: "Maître chocolatier | Vandenberghe Chocolats | traditions belges depuis 3 générations"
+      avatar: avatars/maxime.jpg
+    vandenberghe:
+      name: "Vandenberghe Chocolats"
+      bio: "Chocolaterie artisanale | Pralines | Depuis 1965 | Commandes: info@vandenberghe-choco.be"
+      avatar: avatars/vandenberghe.jpg
+
+    # === Journalist ===
+    sarah:
+      name: "Sarah Fontaine"
+      bio: "journaliste indépendante | environnement & santé publique | tips: sarah@fontaine-presse.be"
+      avatar: avatars/sarah.jpg
+
+    # === SolvaChem (corporate) ===
+    solvachem:
+      name: "SolvaChem Industries"
+      bio: "Solutions chimiques industrielles | Site de Ferrières | Certifié ISO 14001 | #IndustrieDurable"
+      avatar: avatars/solvachem.jpg
+    hugo:
+      name: "Hugo Mertens"
+      bio: "directeur usine SolvaChem Ferrières | industrie & développement local"
+      avatar: avatars/hugo.jpg
+
+    # === Teens ===
+    yasmina:
+      name: "Yasmina"
+      bio: "17 | ferrières born | noémie m'a appris à tempérer le chocolat | wesh"
+      avatar: avatars/yasmina.jpg
+    kevin:
+      name: "Kévin"
+      bio: "16 | skate & graf | le terril c'est mon spot | ferrières en force"
+      avatar: avatars/kevin.jpg
+    amelie:
+      name: "Amélie"
+      bio: "15 | dessin & photo | les friches industrielles c chelou mais beau"
+      avatar: avatars/amelie.jpg
+
+    # === Media & Community ===
+    actu_ferrieres:
+      name: "Actu Ferrières"
+      bio: "Actualités de Ferrières-les-Forges et alentours | Tips: redaction@actu-ferrieres.be"
+      avatar: avatars/actu_ferrieres.jpg
+    meteo_wallonie:
+      name: "Météo Ferrières"
+      bio: "Prévisions et alertes | Station automatique | Mise à jour toutes les heures"
+      avatar: avatars/meteo_wallonie.jpg
+    asso_terrils:
+      name: "Association Terrils Vivants"
+      bio: "Protection de l'environnement post-industriel | Bénévoles | Qualité de l'eau et du sol"
+      avatar: avatars/asso_terrils.jpg
+
+    # === Suspicious / Other ===
+    margaux:
+      name: "Margaux Lemaire"
+      bio: "technicienne labo | SolvaChem | je fais mon boulot point"
+      avatar: avatars/margaux.jpg
+    nadia:
+      name: "Nadia Vantour"
+      bio: "."
+      avatar: avatars/anon.jpg
+    inspecteur:
+      name: "Inspecteur Delvaux"
+      bio: "Police locale de Ferrières | Zone de police du Terril | urgences: 101"
+      avatar: avatars/inspecteur.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN FERRIÈRES-LES-FORGES
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to ferrieres.social — the community Mastodon instance for
+      the Wallonian industrial town of Ferrières-les-Forges.
+
+      The local feed is agitated. Something is wrong.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name over and over:
+      @noemie_claessens.
+
+      A young chocolatier. She ran a tiny artisan workshop called La Forge
+      Sucrée in an old converted forge building. She made pralines from
+      single-origin cacao. The town adored her. She hasn't posted in six
+      days.
+    choices:
+      - Look at her profile -> noemie_profile
+
+  noemie_profile:
+    type: tweet
+    from: noemie
+    text: "L'eau du robinet a un goût bizarre depuis des mois. J'ai fait analyser. Les résultats sont... je publie ça demain. SolvaChem va devoir répondre."
+    choices:
+      - That's her last real post... -> grey_photo
+
+  grey_photo:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single photo:
+      a blurred shot of the terril — the old slag heap — at night. No
+      caption. Posted at 2am. Overexposed, off-angle. Not her style
+      at all.
+
+      Noémie was known for careful, warm photos of her chocolates, her
+      workshop, the old streets. This looked like someone else took it.
+      Or she was running when she shot it.
+
+      The police say she probably left town for personal reasons.
+      Nobody in Ferrières believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: inspecteur
+    text: >
+      Nous avons été informés d'un signalement de disparition concernant
+      une résidente de Ferrières-les-Forges. À ce stade, aucun élément
+      ne permet de conclure à un acte criminel. Toute information utile
+      peut être communiquée au 101 ou au commissariat.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are frantic. Her best friend @mathilde_dubois is
+      panicking. Her brother @antoine_claessens is driving down from
+      Charleroi. Her ex @liam_devos is posting old photos of her.
+      The baker @baptiste_lejeune says her shop has been dark for days.
+
+      And @maxime_vandenberghe — the rival chocolatier whose family
+      business has been in Ferrières for three generations — posted
+      a suspiciously sympathetic message. He and Noémie had been in a
+      bitter business dispute for months.
+
+      The journalist @sarah_fontaine hasn't said a word. That's
+      unusual for someone who covers everything in this town.
+    effects: { trust_mathilde: "+5", trust_antoine: "+5" }
+    choices:
+      - Start following Noémie's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Ferrières-les-Forges. Follow Noémie's contacts and
+      read their posts. The more you engage with the community, the
+      more they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Lucienne (brasserie owner, knows everyone) -> lucienne_intro
+      - Talk to Julien (factory worker, angry about SolvaChem) -> julien_intro
+      - Talk to Yasmina (teen, Noémie's apprentice) -> yasmina_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Noémie with the daily rhythms of a
+      post-industrial Wallonian town: terril hike schedules, brasserie
+      specials, complaints about the bus to Liège, weather alerts.
+
+      Key names surface: Mathilde (best friend, chemistry student),
+      Liam (ex-boyfriend, photographer), Maxime Vandenberghe (rival
+      chocolatier, openly hostile), and the teens — Yasmina, Kévin,
+      Amélie — who hung around Noémie's workshop after school.
+
+      Also prominent: SolvaChem Industries, the chemical plant by the
+      old canal. Their posts are corporate PR. Noémie's last post
+      was the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Lucienne -> lucienne_intro
+      - Talk to Julien -> julien_intro
+      - Talk to Yasmina -> yasmina_intro
+
+  # --- Lucienne (social map) ---
+
+  lucienne_intro:
+    type: tweet
+    from: lucienne
+    text: >
+      La brasserie est ouverte mais j'ai pas le cœur à servir des
+      frites. @noemie_claessens, ta place au comptoir est vide. Reviens
+      nous petite.
+    effects: { trust_lucienne: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lucienne -> lucienne_talk
+
+  lucienne_talk:
+    type: message
+    text: >
+      LUCIENNE: Ah, you're new here? Welcome to Ferrières. Terrible
+      timing though. Everyone's gutted about Noémie.
+
+      Let me fill you in. Mathilde is Noémie's best friend — chemistry
+      student at ULiège, they share everything. Antoine is her older
+      brother, nurse in Charleroi, completely beside himself. Liam is
+      her ex, a photographer, they split six months ago but stayed
+      close. Maybe too close, some say.
+
+      Then there's Maxime Vandenberghe. His family has had the chocolate
+      shop here for three generations. When Noémie opened La Forge Sucrée
+      two years ago with her artisan approach, his sales dropped. He's
+      been furious. Threatening legal action, spreading rumours, the
+      whole bit. Putain, that man has no shame.
+
+      And SolvaChem — the factory by the canal — Noémie was onto
+      something about their waste. She had water tested. She was going
+      to go public. Then she vanished.
+    effects: { trust_lucienne: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Maxime -> lucienne_maxime
+      - Ask about SolvaChem -> lucienne_solvachem
+      - Thank her and move on -> quest1_hub
+
+  lucienne_maxime:
+    type: message
+    text: >
+      LUCIENNE: Maxime? Bordel, where do I start. His grandfather
+      founded Vandenberghe Chocolats in 1965. Maxime took over five
+      years ago. Business was steady — tourist pralines, nothing
+      special. Then Noémie arrived with her single-origin cacao,
+      her bean-to-bar process, her Instagram-worthy workshop.
+
+      The young people loved it. His sales tanked. He accused her of
+      stealing recipes — merde, she doesn't even use the same
+      techniques. He sent her a legal letter. He tried to get the
+      commune to revoke her permit. He told everyone she was using the
+      old forge building illegally.
+
+      Last month someone smashed her shop window at night. No proof
+      it was him. But everyone knows.
+    effects: { trust_lucienne: "+5" }
+    choices:
+      - Ask about SolvaChem -> lucienne_solvachem
+      - Move on -> quest1_hub
+
+  lucienne_solvachem:
+    type: message
+    text: >
+      LUCIENNE: SolvaChem has been here since the 80s. Industrial
+      solvents, cleaning chemicals, that kind of thing. Two hundred
+      jobs — half the town works there or knows someone who does.
+      Nobody asks too many questions.
+
+      But the water has been weird for months. Tastes metallic.
+      Noémie noticed it because it affected her chocolate — she uses
+      local water in her ganaches. She got it tested at ULiège through
+      Mathilde. She said the results were "insane." Heavy metals way
+      over the limit.
+
+      She was going to publish everything. Then poof — gone.
+    effects: { trust_lucienne: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Julien (factory worker, witness tease) ---
+
+  julien_intro:
+    type: tweet
+    from: julien
+    text: >
+      20 ans que je bosse dans cette usine de merde. l'eau est dégueulasse
+      et tout le monde s'en fout. @noemie_claessens avait raison. et
+      maintenant elle a disparu. faites le calcul.
+    effects: { trust_julien: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Julien -> julien_talk
+
+  julien_talk:
+    type: message
+    text: >
+      JULIEN: I've been a union delegate at SolvaChem for twelve years.
+      I know every pipe, every tank, every discharge point. And I'm
+      telling you — what comes out of that factory is not what they
+      report.
+
+      There's a drainage channel that runs from the old storage yard
+      to the canal. It's not on any permit. At night, when the
+      inspectors are sleeping, they open the valves. The water in the
+      canal turns grey. The fish died years ago.
+
+      Noémie took samples. She had the numbers. She was the first
+      person brave enough to say it out loud. Now she's gone. Tu
+      crois que c'est un hasard? Moi non.
+    effects: { trust_julien: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> julien_night
+      - Move on -> quest1_hub
+
+  julien_night:
+    type: message
+    text: >
+      JULIEN: The night before she disappeared — I was on the late
+      shift, finished at 23h. Walking to my car I saw a black BMW
+      in the SolvaChem executive parking. Hugo Mertens' car — the
+      plant director. At 23h on a Tuesday. He never stays past 18h.
+
+      And there was another car there I didn't recognise. Nice car
+      though. Dark blue Audi. Not a factory worker's car, I can
+      tell you that.
+
+      I didn't think much of it. Now I think about it a lot.
+    effects: { trust_julien: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Yasmina (teen, Noémie's apprentice) ---
+
+  yasmina_intro:
+    type: tweet
+    from: yasmina
+    text: >
+      wesh sah c'est pas possible que noémie soit partie comme ça.
+      elle m'apprenait le tempérage du chocolat wallah c'était ouf
+      comme personne. si qqn sait un truc dites le svp putain
+    effects: { trust_yasmina: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Yasmina -> yasmina_talk_early
+
+  yasmina_talk_early:
+    type: message
+    text: >
+      YASMINA: mdr t'es nouveau ici? chelou comme timing. en vrai
+      noémie c'est genre la meilleure meuf de cette ville. elle nous
+      laissait venir à l'atelier après les cours, elle nous filait
+      du chocolat, elle nous apprenait des trucs. c'était trop bien.
+
+      et la jsuis trop flippée pcq kévin il a vu un truc ouf l'autre
+      soir devant l'atelier mais il veut pas en parler. il dit que
+      c'est rien mais bordel c'est chelou sah
+    effects: { trust_yasmina: "+10" }
+    choices:
+      - What did Kévin see? -> yasmina_kevin_hint
+      - Move on -> quest1_hub
+
+  yasmina_kevin_hint:
+    type: message
+    text: >
+      YASMINA: jsp exactement. il faisait du skate sur le parking du
+      terril et il a vu genre qqn devant l'atelier de noémie. le
+      gars il fouillait dans les poubelles?? ou il regardait par la
+      fenêtre, un truc chelou comme ça. kévin dit que c'était
+      vandenberghe — le chocolatier là — mais il flippe de le dire
+      pcq le gars il est ouf, genre agressif.
+
+      faut que tu parles à kévin direct mais wesh il fait pas
+      confiance aux gens qu'il connaît pas. parle lui de skate
+      d'abord ptdr
+    effects: { trust_yasmina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Ferrières-les-Forges. A Wallonian town
+      built on coal and industry, now struggling with decline. A young
+      chocolatier who was exposing chemical pollution. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Mathilde (Noémie's best friend) -> mathilde_q1
+      - Talk to Liam (Noémie's ex) -> liam_q1
+      - Check what Antoine (Noémie's brother) is saying -> antoine_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Mathilde Q1 ---
+
+  mathilde_q1:
+    type: tweet
+    from: mathilde
+    text: >
+      si quelqu'un a des nouvelles de @noemie_claessens appelez moi svp.
+      son atelier est fermé. ses moules à chocolat sont encore sur la
+      table. elle serait JAMAIS partie sans ranger son atelier. jamais.
+    effects: { trust_mathilde: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mathilde -> mathilde_q1_talk
+
+  mathilde_q1_talk:
+    type: message
+    text: >
+      MATHILDE: I appreciate the concern but I don't know you. Noémie
+      has lots of followers. I'm drowning in messages. I can't sort
+      out who actually cares from who's just nosy.
+
+      ...sorry. I'm losing it. She's my best friend and nobody's
+      doing anything.
+
+      [Mathilde is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_mathilde: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Liam Q1 ---
+
+  liam_q1:
+    type: tweet
+    from: liam
+    text: >
+      throwback to noémie tempering chocolate at 6am, light coming
+      through the forge windows. she made everything beautiful. she
+      wouldn't just leave. [photo attached]
+    effects: { trust_liam: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Liam -> liam_q1_talk
+
+  liam_q1_talk:
+    type: message
+    text: >
+      LIAM: Yeah, I'm her ex. We broke up in January — my fault, I was
+      never around, always on assignment. We stayed friends. Good friends.
+      She called me the week before she vanished. She sounded scared.
+
+      She said someone had been hanging around her atelier at night.
+      She said she was getting threatening messages about dropping the
+      water investigation. And she said Maxime Vandenberghe told her
+      to her face that he'd "make her regret" opening La Forge Sucrée.
+
+      I told her to go to the police. She said they wouldn't care.
+      She was right.
+    effects: { trust_liam: "+10" }
+    choices:
+      - Did she say who was threatening her? -> liam_threats
+      - Move on -> quest1_hub
+
+  liam_threats:
+    type: message
+    text: >
+      LIAM: She wasn't sure. The messages came from anonymous accounts.
+      But she thought there were two separate things happening — the
+      chemical company wanting her to shut up about the water, and
+      Vandenberghe wanting her to shut down her shop. Two different
+      enemies, both closing in.
+
+      She said "I'm stuck between a factory and a psychopath." She
+      laughed when she said it. Noémie always laughed when she was
+      terrified.
+    effects: { trust_liam: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Antoine Q1 ---
+
+  antoine_q1:
+    type: tweet
+    from: antoine
+    text: >
+      ma sœur a DISPARU et la police me dit qu'elle est peut-être
+      partie en weekend??? ELLE DIRIGE UN ATELIER ELLE PART PAS
+      COMME ÇA. j'arrive de charleroi. quelqu'un va m'expliquer
+      bordel.
+    effects: { trust_antoine: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Antoine -> antoine_q1_talk
+
+  antoine_q1_talk:
+    type: message
+    text: >
+      ANTOINE: Who are you? Another stranger who's going to tell me
+      to stay calm? My sister called me two nights before she went
+      silent. She said "if something happens to me, look at
+      Vandenberghe and look at SolvaChem." Both of them.
+
+      She said Vandenberghe was obsessed with destroying her business
+      and SolvaChem was panicking about what she found in the water.
+      She said she had proof of everything but she was scared.
+
+      That's the last I heard from her. Putain.
+    effects: { trust_antoine: "+10" }
+    choices:
+      - What do you think happened? -> antoine_theory
+      - Move on -> quest1_hub
+
+  antoine_theory:
+    type: message
+    text: >
+      ANTOINE: I think there are two things going on. SolvaChem is
+      dumping chemicals and Noémie had the evidence to prove it. That's
+      a corporate problem — they'd try to shut her up legally, maybe
+      illegally.
+
+      But Vandenberghe? That's personal. He's been harassing her for
+      a year. Legal threats, smashed windows, showing up at the atelier
+      at closing time. The man is unhinged. Noémie told me he stood
+      outside her flat at 1am last month. Just standing there.
+
+      I think one of them pushed too far. Maybe both. Merde.
+    effects: { trust_antoine: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Noémie went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Kévin (was skating near the atelier) -> kevin_interview
+      - Find Baptiste (baker, starts at 4am) -> baptiste_interview
+      - Find Fatima (pharmacist, lives above the shop) -> fatima_interview
+      - Find Julien (factory worker, late shift) -> julien_interview_q2
+
+  # --- Kévin (saw Vandenberghe at the atelier) ---
+
+  kevin_interview:
+    type: tweet
+    from: kevin
+    text: >
+      session skate au terril ce soir mais c chelou l'ambiance en ce
+      moment. genre y'a un truc qui va pas dans cette ville. jsp
+      comment dire
+    effects: { trust_kevin: "+5" }
+    choices:
+      - Ask Kévin about that evening -> kevin_talk
+
+  kevin_talk:
+    type: message
+    text: >
+      KÉVIN: wesh frr ok mais tu le dis à personne hein. j'étais au
+      parking du terril vers 20h, session skate. et j'ai vu
+      vandenberghe — le chocolatier — devant l'atelier de noémie. il
+      avait une lampe torche et il regardait par les fenêtres. genre
+      il prenait des photos avec son tel.
+
+      quand il m'a vu il est parti direct en mode stress. il avait
+      l'air ouf sah genre possédé.
+
+      moi j'ai rien dit pcq le gars il fait flipper mais la c'est
+      trop chelou bordel
+    effects:
+      trust_kevin: "+10"
+      night_witnesses: "+1"
+      competitor_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Baptiste (baker, saw cars at night) ---
+
+  baptiste_interview:
+    type: tweet
+    from: baptiste
+    text: >
+      Fournée à 4h comme tous les jours. Mais ce matin-là y'avait
+      du bruit dans la rue. Des voitures. À 4h du mat. C'est pas
+      normal.
+    effects: { trust_baptiste: "+5" }
+    choices:
+      - Ask Baptiste what he saw -> baptiste_talk
+
+  baptiste_talk:
+    type: message
+    text: >
+      BAPTISTE: I start baking at 4am, every day for twenty years. I
+      know the sounds of this town at night. That morning I heard two
+      cars. First one going fast toward the canal — dark car, couldn't
+      see the colour properly. Then five minutes later, a second car,
+      smaller, heading toward the N90 out of town.
+
+      The first car came back about twenty minutes later. Drove slow
+      past the atelier, stopped, then went toward the SolvaChem plant.
+
+      I told the police. They wrote it down. That was it. Putain,
+      what do they even do all day.
+    effects:
+      trust_baptiste: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Fatima (pharmacist, heard argument) ---
+
+  fatima_interview:
+    type: tweet
+    from: fatima
+    text: >
+      J'habite au-dessus de la pharmacie. La nuit de la disparition
+      de @noemie_claessens j'ai entendu des voix dans la rue. Pas
+      une conversation. Une dispute.
+    effects: { trust_fatima: "+5" }
+    choices:
+      - Ask Fatima what she heard -> fatima_talk
+
+  fatima_talk:
+    type: message
+    text: >
+      FATIMA: I live above the pharmacy, on the main street. Around
+      23h I was reading in bed and I heard shouting. A man's voice,
+      aggressive. And Noémie — I recognised her voice — saying
+      something like "leave me alone" and "I'm calling the police."
+
+      The man said something I couldn't make out. Then a car door
+      slammed and everything went quiet. I looked out the window but
+      I couldn't see anyone. Just a dark car driving away toward the
+      canal.
+
+      I should have gone down. I keep thinking — if I'd gone down,
+      maybe she'd still be here.
+    effects:
+      trust_fatima: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Julien Q2 (factory late shift, saw meeting) ---
+
+  julien_interview_q2:
+    type: tweet
+    from: julien
+    text: >
+      poste de nuit hier. des gars en costard à l'usine à minuit.
+      c'est pas des ouvriers ça. quelqu'un m'explique?
+    effects: { trust_julien: "+5" }
+    choices:
+      - Ask Julien what he saw that night -> julien_talk_q2
+
+  julien_talk_q2:
+    type: message
+    text: >
+      JULIEN: I was finishing the late shift around midnight. Normally
+      the offices are dark — only the plant floor runs 24h. But that
+      night the director's office had lights on. Hugo Mertens, the
+      plant director, was there with two people. One in a suit — a
+      lawyer type. The other I couldn't see properly.
+
+      They were looking at documents, arguing. I heard Mertens say
+      "this can't get out" and "deal with the source." Then they
+      saw me in the corridor and the door closed.
+
+      "Deal with the source." Noémie WAS the source.
+    effects:
+      trust_julien: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Mathilde (best
+      friend) and Amélie (saw Vandenberghe stalking the flat).
+    choices:
+      - Talk to Mathilde about that night -> mathilde_interview
+      - Talk to Amélie -> amelie_interview
+      - Find Kévin -> kevin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Baptiste -> baptiste_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Fatima -> fatima_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Julien -> julien_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Mathilde (last to see Noémie) ---
+
+  mathilde_interview:
+    type: tweet
+    from: mathilde
+    text: >
+      cette photo sur le compte de noémie. c'est pas elle. noémie
+      poste jamais à 2h du mat. elle poste jamais sans légende. et
+      elle poste jamais le terril — elle le déteste. quelqu'un d'autre
+      a fait ça.
+    effects: { trust_mathilde: "+5" }
+    choices:
+      - DM Mathilde -> mathilde_talk_low
+        when:
+          state: trust_mathilde
+          lt: 50
+      - DM Mathilde -> mathilde_talk_high
+        when:
+          state: trust_mathilde
+          gte: 50
+
+  mathilde_talk_low:
+    type: message
+    text: >
+      MATHILDE: I really can't talk about this to people I don't know.
+      Sorry.
+
+      [Mathilde needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_mathilde: "+5" }
+    choices:
+      - Share what you've learned about the night -> mathilde_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  mathilde_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the shouting in the street, the
+      cars at night, the men in suits at the factory, Vandenberghe at
+      the atelier window. Mathilde is quiet for a long time.
+
+      MATHILDE: Putain. You're actually looking into this. Ok. I'll
+      tell you what I know.
+    effects: { trust_mathilde: "+25" }
+    choices:
+      - What happened that night? -> mathilde_talk_high
+
+  mathilde_talk_high:
+    type: message
+    text: >
+      MATHILDE: She called me around 22h. She was at the atelier,
+      closing up. She said someone had been there again — she could
+      tell because things had been moved. Her files were in a different
+      order. Her USB drive with the water analysis was missing from
+      her desk.
+
+      She was furious. She said "I have copies of everything, they
+      think I'm stupid." Then she said someone was at the door. She
+      said "merde, c'est lui" and hung up.
+
+      I tried calling back ten times. Nothing. By morning the terril
+      photo was on her account and her car was gone.
+
+      I don't know who "lui" was. Vandenberghe? Someone from
+      SolvaChem? Putain, I should have gone there.
+    effects:
+      trust_mathilde: "+15"
+      night_witnesses: "+1"
+      competitor_evidence: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Amélie (saw Vandenberghe watching the flat) ---
+
+  amelie_interview:
+    type: message
+    text: >
+      AMÉLIE: ok en vrai c chelou ce que je vais dire mais genre
+      vandenberghe — le gars des chocolats — je l'ai vu genre 4 ou
+      5 fois devant chez noémie le soir. juste assis dans sa voiture
+      à regarder les fenêtres. une audi bleu foncé. phares éteints.
+      trop creepy sah.
+
+      la dernière fois c'était genre 3 jours avant qu'elle disparaisse.
+      il est resté au moins une heure. j'ai failli appeler la police
+      mais genre... c'est un commerçant connu ici. qui m'aurait cru?
+      moi jsuis juste une ado de 15 ans mdr.
+    effects:
+      trust_amelie: "+10"
+      competitor_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Vandenberghe seen spying on the atelier with a flashlight (Kévin)
+      22:00 — Noémie calls Mathilde, says files tampered with, someone at the door (Mathilde)
+      23:00 — Argument heard on main street, man shouting at Noémie (Fatima)
+      00:00 — Midnight meeting at SolvaChem, "deal with the source" (Julien)
+      04:00 — Two cars seen, one heading to canal, one leaving town (Baptiste)
+
+      Someone confronted Noémie at her atelier. She fled. Someone
+      chased her. Meanwhile, SolvaChem was holding crisis meetings
+      about her water samples.
+
+      But there are two threats: the corporation AND the competitor.
+
+      Two threads to pull:
+      — The cover-up: What is SolvaChem dumping? Who ordered
+        the intimidation?
+      — The obsession: How far has Vandenberghe gone? What is he
+        really after?
+    choices:
+      - Investigate the chemical cover-up -> corruption_hub
+      - Investigate Vandenberghe -> competitor_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      COMPETITOR THREAD: Evidence collected: ${competitor_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the competitor thread -> competitor_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: competitor_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      SolvaChem is hiding something. Noémie had water analysis proving
+      contamination. Now she's gone and her USB drive is missing from
+      the atelier.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Check the water analysis data -> water_analysis
+      - Talk to Sarah the journalist -> sarah_interview
+      - Talk to Margaux (SolvaChem technician) -> margaux_interview
+      - Talk to Céline (environment deputy) -> celine_interview
+      - Check Terrils Vivants association -> asso_investigation
+      - Talk to Julien about the dumping -> julien_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Water Analysis ---
+
+  water_analysis:
+    type: message
+    text: >
+      Mathilde, as a chemistry student, helped Noémie get the water
+      tested at ULiège. The public health database shows Ferrières'
+      municipal water reports — all within normal limits.
+
+      But Noémie's independent samples, shared with Mathilde before
+      she vanished, tell a different story: cadmium at 12x the EU
+      limit. Mercury at 8x. Lead at 15x. All from taps within 500m
+      of the SolvaChem drainage channel.
+
+      The municipal reports are either wrong or falsified. The
+      independent lab at ULiège is accredited. Someone is lying.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Sarah ---
+
+  sarah_interview:
+    type: message
+    text: >
+      SARAH: I don't discuss sources. Ever.
+    effects: { trust_sarah: "+5" }
+    choices:
+      - Show Sarah the evidence you have -> sarah_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  sarah_with_evidence:
+    type: message
+    text: >
+      SARAH: ...you have more than most people would find. Okay.
+
+      Noémie and I were building a story together. She had the water
+      data, the photos of the drainage channel, chemical analysis
+      from ULiège. I had the regulatory filings showing SolvaChem's
+      declared discharge numbers — completely different from reality.
+
+      We were going to publish in Le Soir. Front page. Then she
+      went dark. And two days later, someone broke into my apartment
+      and took my external hard drive. Professional job — nothing
+      else touched.
+
+      Noémie is alive. She contacted me once from a prepaid number.
+      She said she was hiding. She said "they came to the atelier
+      and someone else won't stop following me."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_sarah: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who came to the atelier? -> sarah_hint
+      - Back to investigation hub -> investigation_hub
+
+  sarah_hint:
+    type: message
+    text: >
+      SARAH: SolvaChem sent their director — Hugo Mertens — and a
+      lawyer to her atelier that evening. They told her to hand over
+      all samples and analysis or face legal action for "defamation
+      of a certified industrial operation." Intimidation in a suit.
+
+      But she also said someone else had been following her for
+      weeks. Someone who knew her movements, who showed up everywhere
+      she went. That's not corporate — that's personal.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Margaux (SolvaChem whistleblower) ---
+
+  margaux_interview:
+    type: message
+    text: >
+      MARGAUX: I work at SolvaChem. I'm a lab technician. I run
+      analysis, I write reports. That's my job.
+
+      But the reports I write... are not always the reports that
+      reach the SPW Environnement.
+    effects: { trust_margaux: "+10" }
+    choices:
+      - What do you mean? -> margaux_detail
+
+  margaux_detail:
+    type: message
+    text: >
+      MARGAUX: I measure the discharge water. Heavy metals, solvents,
+      pH. My numbers go to my supervisor. Between my desk and the
+      regulatory filing, they change. Always lower. Always within
+      limits.
+
+      Noémie's independent samples matched MY original numbers — not
+      the official reports. She had proof from outside the plant that
+      confirmed what I've been documenting from inside.
+
+      I'm scared. I have kids. But I kept copies of every original
+      report for three years. Every single one. If someone can
+      protect me, I'll share them.
+    effects:
+      trust_margaux: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Céline ---
+
+  celine_interview:
+    type: message
+    text: >
+      CÉLINE: As échevine de l'environnement, I take this seriously.
+      But SolvaChem employs 200 people in this commune. The bourgmestre
+      says we need to "maintain dialogue" and "preserve jobs."
+
+      Off the record? I've seen the SPW inspection reports. SolvaChem
+      passes every time. But inspections are announced three weeks
+      in advance. They clean up, they adjust the valves, they run
+      clean water through the channel. By the time the inspector
+      arrives, everything is perfect.
+
+      Noémie had unannounced data. That's what made her dangerous
+      to them.
+    effects:
+      trust_celine: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Terrils Vivants ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_terrils
+    text: >
+      ALERTE: Analyses citoyennes de l'eau du canal montrent des taux
+      de métaux lourds anormaux à proximité de l'usine SolvaChem. Nous
+      demandons une inspection non annoncée immédiate.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Terrils Vivants has been monitoring water quality around the old
+      industrial sites for five years. Their data shows a clear pattern:
+      heavy metal spikes that match SolvaChem's production schedule.
+      Higher on weekdays, lower on weekends. Highest at night, lowest
+      during the day.
+
+      The pattern is unmistakable. This is deliberate, ongoing, illegal
+      discharge timed to avoid detection.
+
+      Noémie was a member. She contributed the most detailed samples —
+      taken directly from household taps, proving the contamination
+      reached the drinking water supply.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Julien dumping ---
+
+  julien_dumping:
+    type: message
+    text: >
+      JULIEN: I'll show you something. Behind the old storage yard,
+      there's a drainage ditch that's not on any plan. I've worked
+      there 20 years — I know it's not official. At night they open
+      a valve and grey water runs straight into the canal.
+
+      Last month I found drums — unmarked, corroded — half-buried in
+      the embankment near the canal. I photographed them. They had
+      SolvaChem batch numbers under the rust.
+
+      Noémie saw my photos. She said it was the last piece she needed.
+      Proof of solid waste dumping on top of the liquid discharge.
+      Barrels in the ground, poison in the water.
+
+      I still have the photos and the batch numbers.
+    effects:
+      trust_julien: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # COMPETITOR OBSESSION THREAD
+  # =====================================================================
+
+  competitor_hub:
+    type: message
+    text: >
+      THE COMPETITOR THREAD
+
+      Maxime Vandenberghe. Third-generation chocolatier. Losing
+      business to Noémie's artisan approach. But is it just business
+      rivalry, or something much darker?
+
+      Competitor evidence: ${competitor_evidence}
+    choices:
+      - Investigate Vandenberghe's business threats -> vandenberghe_legal
+      - Talk to Mathilde about Vandenberghe -> mathilde_vandenberghe
+        when:
+          state: trust_mathilde
+          gte: 20
+      - Talk to Kévin (more detail on the atelier incident) -> kevin_detail
+      - Talk to Fatima about Vandenberghe -> fatima_vandenberghe
+      - Check the anonymous account @nadia_vantour -> nadia_investigation
+      - Talk to Thomas the bookseller -> thomas_interview
+        when:
+          state: trust_thomas
+          gte: 40
+      - Talk to Inspecteur Delvaux -> inspecteur_interview
+        when:
+          state: trust_inspecteur
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Vandenberghe's Legal Threats ---
+
+  vandenberghe_legal:
+    type: message
+    text: >
+      Noémie's social media history reveals a pattern of harassment
+      from Vandenberghe Chocolats:
+
+      March: Legal letter demanding she stop using the word "artisanal"
+      — rejected by a judge.
+      April: Complaint to the commune about her building permit — found
+      to be valid.
+      May: Review-bombing her Google listing with fake 1-star reviews.
+      June: Formal accusation of "recipe theft" — dismissed, as they
+      use completely different techniques.
+      July: Her shop window smashed at night. No proof, no cameras.
+      August: Anonymous flyers distributed in town calling her chocolate
+      "mass-produced garbage from a hipster fraud."
+
+      This is not business competition. This is a campaign of
+      destruction.
+    effects:
+      competitor_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to competitor thread -> competitor_hub
+
+  # --- Mathilde on Vandenberghe ---
+
+  mathilde_vandenberghe:
+    type: message
+    text: >
+      MATHILDE: Vandenberghe? Fils de pute. Sorry but there's no
+      other word.
+
+      He showed up at the atelier once while I was there. Just walked
+      in like he owned the place. Told Noémie her chocolate was
+      "derivative" and that she should "go back to where she came
+      from." She's FROM here — she grew up in Ferrières. He knows
+      that.
+
+      She told him to leave. He stood there staring at her for ten
+      seconds — this dead, cold stare — then turned and walked out.
+      I was shaking. Noémie just went back to tempering chocolate
+      like nothing happened. But her hands were trembling.
+
+      After that, she started locking the atelier door during the day.
+      She never used to do that.
+    effects:
+      trust_mathilde: "+10"
+      competitor_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to competitor thread -> competitor_hub
+
+  # --- Kévin detail ---
+
+  kevin_detail:
+    type: message
+    text: >
+      KÉVIN: ok frr en vrai j'ai pas tout dit. quand j'ai vu
+      vandenberghe devant l'atelier il avait pas juste une lampe.
+      il avait un truc genre outil — comme un pied-de-biche. il
+      essayait d'ouvrir la porte de derrière.
+
+      quand il m'a vu il a planqué le truc derrière son dos et il
+      est parti direct. mais genre, il essayait de rentrer chez elle
+      sah. c'est du cambriolage ça non?
+
+      j'aurais du appeler la police mais putain qui croit un ado
+      contre un commerçant? enculé va.
+    effects:
+      trust_kevin: "+10"
+      competitor_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to competitor thread -> competitor_hub
+
+  # --- Fatima on Vandenberghe ---
+
+  fatima_vandenberghe:
+    type: message
+    text: >
+      FATIMA: Maxime Vandenberghe comes to the pharmacy regularly. He's
+      been buying sleeping pills, anti-anxiety medication. The man is
+      not well. His business is struggling and he's fixated entirely
+      on Noémie as the cause.
+
+      He asked me once — very casually, as if it was nothing — where
+      Noémie lived. I said "I'm a pharmacist, not a directory." He
+      laughed but his eyes didn't.
+
+      Two weeks before she vanished, he came in and bought disposable
+      gloves. A box of fifty. I asked what for — he said "cleaning."
+      A chocolatier buying pharmacy-grade gloves for cleaning. Sure.
+    effects:
+      trust_fatima: "+10"
+      competitor_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to competitor thread -> competitor_hub
+
+  # --- Nadia (anonymous account) ---
+
+  nadia_investigation:
+    type: tweet
+    from: nadia
+    text: >
+      She should have stayed in her lane. Real chocolate is tradition,
+      not some Instagram trend. She ruined everything.
+    choices:
+      - Look at this account's history -> nadia_posts
+
+  nadia_posts:
+    type: message
+    text: >
+      @nadia_vantour: account created 10 months ago. Posts are all
+      about Noémie's business. Comments on every product photo, every
+      workshop event, every positive review. The tone shifts:
+
+      Month 1: "Overrated. Real Belgian chocolate doesn't need
+      marketing gimmicks."
+      Month 3: "She doesn't belong here. Three generations of
+      Vandenberghe chocolatiers and some newcomer thinks she's better?"
+      Month 6: "I know when your atelier is open. I know when you
+      leave. I watch everything."
+      Month 9: "You should be afraid. You took what's mine."
+
+      The account has no photos, no personal details. Just rage
+      directed at Noémie. Only Noémie.
+    effects:
+      competitor_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> nadia_style
+
+  nadia_style:
+    type: message
+    text: >
+      Comparing @nadia_vantour with @maxime_vandenberghe:
+
+      Same use of chocolate terminology — "tempérage" spelled with
+      the accent, "couverture" rather than "chocolat de couverture."
+      Same obsession with "tradition" and "generations." Same specific
+      knowledge of La Forge Sucrée's operating hours that only someone
+      watching closely would have.
+
+      And one post from @nadia_vantour: "Her ganache ratio is wrong.
+      60/40 cacao to cream — amateur." That's not public information.
+      You'd have to taste it or see the recipe.
+
+      It's Vandenberghe. The anonymous account is Vandenberghe.
+    effects:
+      competitor_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to competitor thread -> competitor_hub
+
+  # --- Thomas ---
+
+  thomas_interview:
+    type: message
+    text: >
+      THOMAS: Noémie left something with me. A sealed envelope and
+      a USB drive. She said "if someone comes asking about the water
+      in Ferrières, give them this."
+
+      She looked terrified. She said she'd made copies of everything
+      but needed one set somewhere nobody would think to look. A
+      bookshop full of paper seemed like the last place anyone would
+      look for digital evidence.
+    effects: { trust_thomas: "+10" }
+    choices:
+      - What's in the envelope? -> thomas_case
+
+  thomas_case:
+    type: message
+    text: >
+      Thomas reaches behind a shelf of Belgian comic books and
+      produces a thick envelope and a USB drive.
+
+      THOMAS: She said you'd come eventually. Take it.
+
+      Inside: the USB contains water analysis from ULiège, photos of
+      the hidden drainage channel, and SolvaChem's real discharge
+      data compared to their official filings. The envelope contains
+      printed screenshots of every threatening message from the
+      @nadia_vantour account, a handwritten timeline of Vandenberghe's
+      harassment, and photos of him outside her atelier at night —
+      taken from her window.
+    effects:
+      corporate_evidence: "+1"
+      competitor_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspecteur Delvaux ---
+
+  inspecteur_interview:
+    type: message
+    text: >
+      INSPECTEUR DELVAUX: Off the record — completely off the record —
+      I wanted to investigate SolvaChem when Noémie came to me with
+      the water data. My commandant told me to stand down. He said the
+      SPW Environnement had "jurisdiction." That means don't touch it.
+
+      The Vandenberghe situation is different. If you have evidence of
+      stalking and attempted break-in, I can act on that. That's
+      clearly police locale jurisdiction.
+
+      Bring me something solid and I'll open a dossier.
+    effects:
+      trust_inspecteur: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to competitor thread -> competitor_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Noémie than anyone else in Ferrières-les-Forges. Who is
+      responsible?
+    choices:
+      - Confront Maxime Vandenberghe (the obsessive competitor) -> confront_vandenberghe
+        when:
+          state: competitor_evidence
+          gte: 5
+      - Confront Hugo Mertens (the plant director) -> confront_mertens
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Bourgmestre Renard (political protection) -> confront_philippe
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Vandenberghe (Best Ending) ---
+
+  confront_vandenberghe:
+    type: message
+    text: >
+      You present your evidence to Vandenberghe:
+
+      "I know @nadia_vantour is your account. I know you were at her
+      atelier with a crowbar. I know you've been watching her flat
+      from your car. I know you smashed her window. I have witnesses,
+      I have screenshots, and I have her own documentation of every
+      threat you've made."
+    choices:
+      - Send -> vandenberghe_response
+
+  vandenberghe_response:
+    type: message
+    text: >
+      Vandenberghe doesn't reply for a long time. Then:
+
+      MAXIME: You don't understand. She was destroying everything my
+      family built. Three generations of chocolatiers, and some girl
+      with an Instagram account takes it all away? I was protecting
+      my heritage. My legacy. Everything I did was to defend what's
+      mine.
+
+      That's not defending a business. That's obsession.
+
+      You've already sent the evidence to Inspecteur Delvaux. And
+      to Sarah Fontaine.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspecteur Delvaux opens a full investigation. With your
+      evidence — the anonymous account, the attempted break-in, the
+      surveillance, the witness testimonies, Noémie's own documentation
+      — Maxime Vandenberghe is arrested for stalking, harassment, and
+      attempted burglary. His shop is closed pending trial.
+
+      Sarah Fontaine, with Noémie's full evidence package and Margaux's
+      original lab reports, publishes the SolvaChem story in Le Soir.
+      The SPW Environnement orders an unannounced inspection. The
+      factory's hidden drainage channel is discovered. Hugo Mertens
+      faces criminal charges for falsifying discharge data and
+      illegal dumping. Two hundred jobs hang in the balance, but the
+      remediation creates new work.
+
+      And Noémie Claessens, reading the story from a friend's
+      apartment in Namur, calls her brother for the first time in
+      nine days.
+
+      "Je rentre à la maison. La forge sucrée rouvre lundi."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: noemie
+    text: >
+      le chocolat a besoin d'eau propre. ferrières a besoin de vérité.
+      merci de ne pas avoir lâché. la prochaine fournée de pralines
+      est pour vous.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Mertens (Partial Ending) ---
+
+  confront_mertens:
+    type: message
+    text: >
+      You present the pollution evidence to Hugo Mertens:
+
+      "I have independent water analysis showing heavy metals at 15
+      times the legal limit. I have photos of your hidden drainage
+      channel. I have original lab reports from your own technician
+      proving the data was falsified. I have the buried drums with
+      your batch numbers."
+    choices:
+      - Send -> mertens_response
+
+  mertens_response:
+    type: message
+    text: >
+      HUGO: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material concerning
+      SolvaChem Industries will result in immediate judicial action.
+      We have always operated within the framework of our regulatory
+      permits.
+
+      But it's too late. You've sent the evidence to Sarah, to
+      Terrils Vivants, and to the SPW Environnement.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. SolvaChem is ordered to halt all
+      discharge pending investigation. The factory may close. Two
+      hundred jobs are at risk. The town is bitterly divided — some
+      blame Noémie for threatening their livelihoods.
+
+      But Noémie?
+
+      Without the stalking evidence, Vandenberghe is never investigated.
+      He continues to operate his chocolate shop three streets from La
+      Forge Sucrée. He creates a new anonymous account. He drives past
+      her atelier every night.
+
+      Four months later, Noémie reads about SolvaChem online. She
+      returns quietly. She reopens the atelier but changes the locks,
+      installs cameras, and never works alone after dark. She flinches
+      when the door opens.
+
+      The corporation is exposed. But the man who terrorised Noémie
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: noemie
+    text: "je suis rentrée. l'eau sera propre un jour. le reste... on verra."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Bourgmestre (Wrong Ending) ---
+
+  confront_philippe:
+    type: message
+    text: >
+      You confront Bourgmestre Renard with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> philippe_response
+
+  philippe_response:
+    type: tweet
+    from: commune
+    text: >
+      La commune prend note des allégations portées à notre attention.
+      Toute diffusion de propos diffamatoires à l'encontre des élus
+      ou des acteurs économiques de Ferrières fera l'objet de
+      poursuites. — Service juridique, Commune de Ferrières-les-Forges
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The bourgmestre's legal team buries your accusation. Without a
+      direct link between Renard and SolvaChem's dumping — and there
+      isn't one beyond political complicity — your evidence is
+      insufficient.
+
+      SolvaChem continues to operate. Vandenberghe continues to watch.
+      Noémie stays in hiding.
+
+      Six months later, @nadia_vantour creates a new account. It
+      follows Noémie's brother. And the water still tastes of metal.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: FERRIÈRES-LES-FORGES — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Competitor evidence: ${competitor_evidence}
+
+      Thank you for playing. Noémie's story explores themes of
+      corporate impunity, environmental contamination, obsessive
+      business rivalry, community solidarity, and the courage to
+      speak up against power.
+
+      If you or someone you know is experiencing stalking, harassment,
+      or suicidal thoughts, help is available:
+      Centre de Prévention du Suicide: 0800 32 123
+      Écoute-Enfants: 103
+      Police secours: 101

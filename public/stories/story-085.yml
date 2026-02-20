@@ -1,0 +1,1585 @@
+# DEAD ACCOUNT — Story 085: Peñablanca (Spain)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-085.yml
+#
+# Player investigates the death of beekeeper Miguel Torres
+# in the fictional Asturian mountain village of Peñablanca.
+
+meta:
+  title: "Dead Account — Peñablanca"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_carmen: 0
+    trust_dani: 0
+    trust_lola: 0
+    trust_raquel: 0
+    trust_pablo: 0
+    trust_ivan: 0
+    trust_elena: 0
+    trust_paco: 0
+    trust_bego: 0
+    trust_txema: 0
+    trust_rosa: 0
+    trust_marcos: 0
+    trust_yolanda: 0
+    trust_alvaro: 0
+    trust_lucia: 0
+    trust_nuria: 0
+    trust_jorge: 0
+    trust_sargento: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nuevo Vecino
+    bio: "recién llegado a peñablanca. descubriendo asturias paso a paso"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Penablanca.social"
+    description: "Bienvenidos a la instancia comunitaria de Peñablanca"
+    avatar_url: /gamepatch/assets/dead-account/penablanca_bot.png
+
+  npcs:
+    # === Miguel's Inner Circle ===
+    miguel:
+      name: "Miguel Torres"
+      bio: "apicultor | los prados de peñablanca | la miel no miente"
+      avatar: avatars/miguel.jpg
+    carmen:
+      name: "Carmen Torres"
+      bio: "hermana de miguel | veterinaria rural | peñablanca | lo cuido todo menos a mí"
+      avatar: avatars/carmen.jpg
+    dani:
+      name: "Dani Suárez"
+      bio: "mejor amigo de miguel | pastor de cabras | sidra casera | la montaña manda"
+      avatar: avatars/dani.jpg
+    raquel:
+      name: "Raquel Vega"
+      bio: "bióloga | estudio de polinizadores | universidad de oviedo | colega de miguel"
+      avatar: avatars/raquel.jpg
+
+    # === Local Government ===
+    alvaro:
+      name: "Álvaro Menéndez"
+      bio: "Alcalde de Peñablanca | Al servicio del concejo desde 2015 | #PeñablancaAvanza"
+      avatar: avatars/alvaro.jpg
+    yolanda:
+      name: "Yolanda Castañón"
+      bio: "Concejala de Medio Ambiente | Ayuntamiento de Peñablanca | transición verde"
+      avatar: avatars/yolanda.jpg
+    ayuntamiento:
+      name: "Ayuntamiento de Peñablanca"
+      bio: "Cuenta oficial | Noticias del concejo | Horario: Lun-Vie 9h-14h"
+      avatar: avatars/ayuntamiento.jpg
+
+    # === Local Business & Community ===
+    paco:
+      name: "Paco Redondo"
+      bio: "Bar El Hayedo | sidra | fabada | tortilla | desde 1978 | el corazón del pueblo"
+      avatar: avatars/paco.jpg
+    bar_hayedo:
+      name: "Bar El Hayedo"
+      bio: "Sidra natural | Cocina asturiana | Tertulia los viernes | El alma de Peñablanca"
+      avatar: avatars/bar_hayedo.jpg
+    bego:
+      name: "Begoña Fernández"
+      bio: "quesera | quesos artesanos de peñablanca | la vaca manda | mercado sábados"
+      avatar: avatars/bego.jpg
+    txema:
+      name: "Txema Arregui"
+      bio: "guarda forestal | parque natural de peñablanca | la montaña se respeta"
+      avatar: avatars/txema.jpg
+    rosa:
+      name: "Rosa Cuervo"
+      bio: "farmacéutica | peñablanca | salud y consejo | guardia domingos"
+      avatar: avatars/rosa.jpg
+    marcos:
+      name: "Marcos Villanueva"
+      bio: "carpintero | madera de haya y castaño | hórreos restaurados | artesano"
+      avatar: avatars/marcos.jpg
+
+    # === Journalist ===
+    elena:
+      name: "Elena Quirós"
+      bio: "periodista independiente | medio ambiente y rural | tips: elena@quiros-prensa.es"
+      avatar: avatars/elena.jpg
+
+    # === SolVerde (corporate) ===
+    solverde:
+      name: "SolVerde Energía S.A."
+      bio: "Energía solar fotovoltaica | Proyecto Peñablanca | Compromiso sostenible"
+      avatar: avatars/solverde.jpg
+    jorge:
+      name: "Jorge Ibáñez"
+      bio: "director de proyecto SolVerde Peñablanca | energía y territorio"
+      avatar: avatars/jorge.jpg
+    nuria:
+      name: "Nuria Santamaría"
+      bio: "Abogada | Bufete Santamaría & Asociados | Derecho mercantil | Madrid"
+      avatar: avatars/nuria.jpg
+
+    # === Teens ===
+    lola:
+      name: "Lola"
+      bio: "16 | senderista | peñablanca born | la montaña es vida tío"
+      avatar: avatars/lola.jpg
+    ivan:
+      name: "Iván"
+      bio: "17 | mtb & escalada | ruta amanecer | el monte cura todo"
+      avatar: avatars/ivan.jpg
+    pablo:
+      name: "Pablo"
+      bio: "15 | foto & naturaleza | la sierra en blanco y negro | miguel era mi referente"
+      avatar: avatars/pablo.jpg
+
+    # === Media & Community ===
+    actu_pena:
+      name: "Noticias Peñablanca"
+      bio: "Actualidad de Peñablanca y comarca | Tips: redaccion@noticias-penablanca.es"
+      avatar: avatars/actu_pena.jpg
+    meteo_asturias:
+      name: "Meteo Peñablanca"
+      bio: "Previsiones y alertas | Estación automática | Actualización cada hora"
+      avatar: avatars/meteo_asturias.jpg
+    aso_prados:
+      name: "Asociación Defensores de los Prados"
+      bio: "Protección de prados y biodiversidad asturiana | Voluntarios | Denuncias ambientales"
+      avatar: avatars/aso_prados.jpg
+
+    # === Suspicious / Other ===
+    lucia:
+      name: "Lucía Blanco"
+      bio: "técnica de campo | SolVerde | yo solo hago mi trabajo"
+      avatar: avatars/lucia.jpg
+    anonimo:
+      name: "AbejaOscura"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sargento:
+      name: "Sargento Medina"
+      bio: "Guardia Civil de Peñablanca | Puesto territorial | emergencias: 062"
+      avatar: avatars/sargento.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PEÑABLANCA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Penablanca.social — the community Mastodon instance for
+      the mountain village of Peñablanca, Asturias.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @miguel_torres.
+
+      A beekeeper. Guardian of the mountain meadows. He documented the
+      wildflowers and pollinators. People are devastated. He was found
+      dead three days ago at the edge of his apiary.
+    choices:
+      - Look at his profile -> miguel_profile
+
+  miguel_profile:
+    type: tweet
+    from: miguel
+    text: "Los prados de la Collada de Valmonte están arrasados. Alguien ha pasado maquinaria pesada por encima de los asentamientos de abejas silvestres. Tengo fotos y muestras. Esto no queda así."
+    choices:
+      - That's his last real post... -> grey_meadow
+
+  grey_meadow:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a grey hillside. Blurred, shot from a strange angle. Posted
+      at 4am. No caption.
+
+      His friends say that's not his style. The Guardia Civil says
+      it was a fall near his hives — an accident. Something doesn't
+      add up.
+    choices:
+      - Read the Guardia Civil statement -> guardia_statement
+      - Look at what people are saying -> community_reaction
+
+  guardia_statement:
+    type: tweet
+    from: sargento
+    text: >
+      Informamos del fallecimiento de un vecino de Peñablanca en las
+      inmediaciones de su explotación apícola. Las primeras diligencias
+      apuntan a un accidente. Cualquier información relevante puede
+      comunicarse al 062.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @carmen_torres is furious.
+      His best friend @dani_suarez says Miguel knew every rock on that
+      mountain and would never fall. His colleague @raquel_vega is
+      posting worried messages about his research.
+
+      And the journalist @elena_quiros is strangely silent.
+
+      Nobody buys the Guardia Civil's line. Nobody thinks Miguel just
+      "fell."
+    effects: { trust_carmen: "+5", trust_dani: "+5" }
+    choices:
+      - Start following Miguel's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Peñablanca. Follow Miguel's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Paco (bar owner, knows everyone) -> paco_intro
+      - Talk to Dani (shepherd, saw the meadows) -> dani_intro
+      - Talk to Lola (teen hiker, seems shaken) -> lola_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief about Miguel with the rhythms of a small
+      mountain village: weather warnings, cheese market schedules,
+      hiking trail conditions.
+
+      Key names surface: Carmen (sister, vet), Raquel (biologist
+      colleague, seems rattled), Elena (journalist, oddly quiet),
+      and the teens — Lola, Iván, Pablo — who idolised Miguel's
+      mountain work.
+
+      Also prominent: SolVerde Energía S.A., the solar energy company
+      clearing meadows at the edge of the village. Their posts are
+      corporate greenwashing. Miguel's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Paco -> paco_intro
+      - Talk to Dani -> dani_intro
+      - Talk to Lola -> lola_intro
+
+  # --- Paco (social map) ---
+
+  paco_intro:
+    type: tweet
+    from: paco
+    text: >
+      El bar está abierto pero el alma no. @miguel_torres, tu mesa
+      te espera. Hoy la sidra sabe a lágrimas.
+    effects: { trust_paco: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Paco -> paco_talk
+
+  paco_talk:
+    type: message
+    text: >
+      PACO: Ah, you're new? Welcome. Terrible time to arrive. The
+      whole village is in pieces over Miguel.
+
+      Let me tell you who's who. Carmen is Miguel's younger sister —
+      she's the vet, tough as nails, broken right now. Dani Suárez is
+      his best friend since childhood, a goat herder up in the braña.
+      Raquel Vega is a biologist from the university — she worked with
+      Miguel on the pollinator study. Smart woman, but... she had a
+      thing for him. Everyone could see it except Miguel.
+
+      And Elena Quirós — the journalist — she and Miguel were building
+      a case together. Something about the meadows being destroyed.
+      Elena hasn't said a word since Miguel died. That's not like her.
+
+      Oh, and don't waste your time with SolVerde's PR posts.
+      Mentiras envueltas en paneles solares.
+    effects: { trust_paco: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Raquel -> paco_raquel
+      - Ask about SolVerde -> paco_solverde
+      - Thank him and move on -> quest1_hub
+
+  paco_raquel:
+    type: message
+    text: >
+      PACO: Raquel? She's been coming up from Oviedo every weekend for
+      two years. For the pollinators, she says. But she was here every
+      time Miguel was at the bar. Sat at his table, laughed at his
+      jokes, brought him books about bees from the university library.
+
+      Miguel was oblivious. He loved his bees more than people, that
+      man. She tried to make it obvious. He just talked about queen
+      cells and varroa mites. I think it drove her mad.
+
+      After he started the meadow investigation, she got worse. Wanted
+      to be part of everything. He told me once, "She doesn't
+      understand I need to do this alone." I thought he meant the
+      research. Now I'm not sure.
+    effects: { trust_paco: "+5" }
+    choices:
+      - Ask about SolVerde -> paco_solverde
+      - Move on -> quest1_hub
+
+  paco_solverde:
+    type: message
+    text: >
+      PACO: SolVerde showed up last year with big promises. Solar farm,
+      clean energy, jobs for the valley. The mayor was delighted. But
+      the site they chose — the Collada de Valmonte — is the richest
+      wildflower meadow in the comarca. Centuries-old pastureland.
+      Miguel's bees depended on it. Everyone's bees depended on it.
+
+      They started clearing with heavy machinery. Ripped up the turf,
+      crushed the wild hives. Miguel was the first person to get in
+      their way. He chained himself to a bulldozer. He collected
+      samples of the soil. He had proof that the environmental impact
+      assessment was falsified.
+
+      Two weeks later he's dead in a ditch near his hives.
+      Joder, qué casualidad.
+    effects: { trust_paco: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dani (the meadows, witness tease) ---
+
+  dani_intro:
+    type: tweet
+    from: dani
+    text: >
+      cuarenta años subiendo a la braña. los prados ya no son los
+      mismos. @miguel_torres tenía razón. y ahora está muerto. echad
+      cuentas.
+    effects: { trust_dani: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dani -> dani_talk
+
+  dani_talk:
+    type: message
+    text: >
+      DANI: I've been taking goats up this mountain since I was a
+      kid. I know every path, every meadow, every rock. And I'm
+      telling you — what they've done to Valmonte is a crime. The
+      turf is torn up. The wild beehives are crushed. My goats won't
+      graze there anymore because the soil stinks of diesel from
+      the machinery.
+
+      Miguel took soil samples. He photographed the destruction. He
+      was building a case against SolVerde. And then — oh, what a
+      coincidence — he falls off a path he's walked ten thousand
+      times.
+
+      Me cago en todo. Miguel didn't fall. Miguel was pushed.
+    effects: { trust_dani: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> dani_night
+      - Move on -> quest1_hub
+
+  dani_night:
+    type: message
+    text: >
+      DANI: The night before they found him — I was bringing the
+      goats down late, around midnight. I saw lights up at the
+      Collada. Not unusual, SolVerde sometimes runs machinery at
+      night to avoid attention. But there was also a car parked
+      at the trailhead to Miguel's apiary. A black SUV with
+      SolVerde plates.
+
+      At midnight. At the path to Miguel's bees.
+
+      I didn't think much of it then. Hostia puta, now I can't
+      stop thinking about it.
+    effects: { trust_dani: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lola (teen hiker, witness tease) ---
+
+  lola_intro:
+    type: tweet
+    from: lola
+    text: >
+      estoy flipando tío @miguel_torres es el que me enseñó a
+      respetar la montaña, no puede ser que se haya caído así.
+      si alguien sabe algo que lo diga joder
+    effects: { trust_lola: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lola -> lola_talk_early
+
+  lola_talk_early:
+    type: message
+    text: >
+      LOLA: eres nuevo? vaya timing de mierda tío. en plan miguel
+      era la mejor persona de este pueblo. nos enseñaba las plantas,
+      las abejas, los senderos seguros. era un crack.
+
+      y estoy flipando porque iván vio algo raro la otra noche cerca
+      del apiario pero no quiere hablar. dice que no es nada pero
+      tío... no es nada mis cojones
+    effects: { trust_lola: "+10" }
+    choices:
+      - What did Iván see? -> lola_ivan_hint
+      - Move on -> quest1_hub
+
+  lola_ivan_hint:
+    type: message
+    text: >
+      LOLA: no sé exactamente. estaba haciendo ruta en bici por la
+      tarde y vio a alguien trasteando en el cobertizo de miguel.
+      donde guarda los cuadros de miel y eso. pero no era miguel.
+      era una tía, dice. le flipó bastante.
+
+      tienes que hablar con él directamente pero es borde con la
+      gente que no conoce. habla primero de rutas de mtb o algo
+      jajaja
+    effects: { trust_lola: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Peñablanca. An Asturian mountain
+      village built around the meadows and the mountain. A beekeeper
+      who was exposing the destruction of ancient pastureland. A death
+      nobody believes was an accident.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Carmen (Miguel's sister) -> carmen_q1
+      - Talk to Raquel (Miguel's colleague) -> raquel_q1
+      - Check what Txema (the forest ranger) is saying -> txema_q1
+      - I'm ready to investigate the night he died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Carmen Q1 ---
+
+  carmen_q1:
+    type: tweet
+    from: carmen
+    text: >
+      si alguien tiene información sobre @miguel_torres que me llame.
+      su equipo de apicultura está intacto. sus botas están en la
+      puerta. mi hermano no subió a la montaña sin sus botas.
+    effects: { trust_carmen: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Carmen -> carmen_q1_talk
+
+  carmen_q1_talk:
+    type: message
+    text: >
+      CARMEN: Who are you? Another person from outside who's going to
+      tell me to accept it? My brother knew every centimetre of that
+      path. He could walk it blindfolded.
+
+      ...I keep telling myself there's an explanation. I don't believe
+      it anymore.
+
+      [Carmen is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_carmen: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Raquel Q1 ---
+
+  raquel_q1:
+    type: tweet
+    from: raquel
+    text: >
+      El apiario está vacío sin @miguel_torres. Sus muestras de
+      suelo siguen en la cabaña. Sus cuadernos de campo están en la
+      mesa. Él nunca habría abandonado una investigación en curso.
+      Algo pasó.
+    effects: { trust_raquel: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Raquel -> raquel_q1_talk
+
+  raquel_q1_talk:
+    type: message
+    text: >
+      RAQUEL: Miguel and I worked together for over a year. He was
+      the most passionate field researcher I've ever known. This
+      meadow investigation — it was everything to him. He had soil
+      data, photographs, species counts showing the destruction.
+      He was so close to going public.
+
+      I offered to help him. Many times. He said he had it under
+      control. He said he was working with a journalist. I just
+      wanted to support him.
+
+      [Raquel seems earnest. Or obsessive?]
+    effects: { trust_raquel: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Txema Q1 ---
+
+  txema_q1:
+    type: tweet
+    from: txema
+    text: >
+      mi compañero ha MUERTO y la Guardia Civil dice que se cayó???
+      MIGUEL CONOCÍA CADA PIEDRA DE ESE CAMINO. soy guarda forestal
+      y os digo que eso no fue un accidente. me cago en la leche.
+    effects: { trust_txema: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Txema -> txema_q1_talk
+
+  txema_q1_talk:
+    type: message
+    text: >
+      TXEMA: Who are you? Look, I know that mountain better than
+      anyone except Miguel. He called me the night before he died.
+      He said he had something big. He said "if anything happens,
+      look at SolVerde." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_txema: "+10" }
+    choices:
+      - What do you think happened? -> txema_theory
+      - Move on -> quest1_hub
+
+  txema_theory:
+    type: message
+    text: >
+      TXEMA: I think he found proof that SolVerde falsified the
+      environmental impact assessment and they shut him up. But I
+      also think that biologist — Raquel — knows more than she's
+      saying. The way she talks about him... it's not just
+      professional concern. It's something else.
+
+      Miguel told me months ago that someone had been going through
+      his field notebooks in the cabaña. Things moved. Pages
+      photographed. He thought it was nothing. Joder, it wasn't
+      nothing.
+    effects: { trust_txema: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Miguel died. Multiple people saw
+      or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Iván (was mountain biking near the apiary) -> ivan_interview
+      - Find Txema (forest ranger, patrols at night) -> txema_interview
+      - Find Begoña (cheesemaker, early morning at the braña) -> bego_interview
+      - Find Marcos (carpenter, workshop near the trailhead) -> marcos_interview
+
+  # --- Iván (saw someone at Miguel's shed) ---
+
+  ivan_interview:
+    type: tweet
+    from: ivan
+    text: >
+      buena ruta hoy pero el ambiente en el monte está raro. hay
+      algo que no mola tío. no sé cómo explicarlo
+    effects: { trust_ivan: "+5" }
+    choices:
+      - Ask Iván about that evening -> ivan_talk
+
+  ivan_talk:
+    type: message
+    text: >
+      IVÁN: hostia puta tío vale pero no se lo digas a nadie eh.
+      estaba en la ruta de mtb por la tarde, la que pasa por detrás
+      del apiario de miguel. y vi a una tía en su cobertizo. estaba
+      sacando fotos de sus cuadernos o algo así. cuando me vio se
+      piró corriendo.
+
+      era la del labo, la de oviedo. raquel. seguro que era ella,
+      la reconocí por la mochila esa naranja que lleva siempre.
+
+      mierda tío no dije nada porque no quería movidas pero es
+      que ahora flipas
+    effects:
+      trust_ivan: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Txema (forest ranger, saw late-night meeting) ---
+
+  txema_interview:
+    type: tweet
+    from: txema
+    text: >
+      Aviso: el sendero de la Collada de Valmonte sigue cerrado por
+      obras de SolVerde. He detectado maquinaria no autorizada en
+      horario nocturno.
+    effects: { trust_txema: "+5" }
+    choices:
+      - Ask Txema what he saw -> txema_talk
+
+  txema_talk:
+    type: message
+    text: >
+      TXEMA: I was doing my night patrol around 23h. I saw lights at
+      the SolVerde site — machinery running, which is against their
+      permit. But more importantly, there was a black SUV parked at
+      the trailhead near Miguel's apiary. Two men were standing by
+      the gate. One of them I recognised: Jorge Ibáñez, the SolVerde
+      project director.
+
+      At 23h. At the trailhead to Miguel's bees. That is not normal.
+
+      I logged it in my patrol report. Nobody has asked to see it.
+    effects:
+      trust_txema: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Begoña (saw figure fleeing at dawn) ---
+
+  bego_interview:
+    type: tweet
+    from: bego
+    text: >
+      arriba a las 4 para el ordeño. la braña no estaba vacía esta
+      mañana. alguien corría sendero abajo. en la oscuridad. no era
+      un corredor de montaña.
+    effects: { trust_bego: "+5" }
+    choices:
+      - Ask Begoña what she saw -> bego_talk
+
+  bego_talk:
+    type: message
+    text: >
+      BEGOÑA: I get up at 4am for the milking. That morning — the
+      morning they found Miguel — I saw someone on the path down
+      from the Collada. Running. A figure in dark clothes, heading
+      toward the road. Moving fast, stumbling. Like they were afraid.
+
+      I called out but they didn't stop. I figured it was a hiker
+      who'd got lost but... who hikes at 4am wearing dark clothes
+      and carrying nothing?
+
+      When I heard about Miguel, I put it together. Someone was
+      leaving the mountain. Leaving fast.
+    effects:
+      trust_bego: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marcos (saw vehicles at night) ---
+
+  marcos_interview:
+    type: tweet
+    from: marcos
+    text: >
+      Curro en el taller hasta tarde. Esa noche un vehículo pasó
+      demasiado rápido por la pista forestal. No era hora para
+      circular por el monte.
+    effects: { trust_marcos: "+5" }
+    choices:
+      - Ask Marcos what he saw -> marcos_talk
+
+  marcos_talk:
+    type: message
+    text: >
+      MARCOS: I work late in the carpentry shop — it's right by the
+      trailhead to the Collada. That night, around midnight, a
+      vehicle came down the forest track — fast, too fast for that
+      road. Black SUV. Then maybe half an hour later, a second car.
+      Smaller. I couldn't see the colour in the dark.
+
+      The SUV turned onto the main road toward Oviedo. The smaller
+      car went toward the old quarry.
+
+      I told the Guardia Civil. They wrote it down. That was it.
+      Mierda, they didn't even check the quarry.
+    effects:
+      trust_marcos: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Carmen (sister)
+      and Pablo (saw Raquel watching the apiary).
+    choices:
+      - Talk to Carmen about that night -> carmen_interview
+      - Talk to Pablo -> pablo_interview
+      - Find Iván -> ivan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Txema -> txema_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Begoña -> bego_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Marcos -> marcos_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Carmen (last to see Miguel) ---
+
+  carmen_interview:
+    type: tweet
+    from: carmen
+    text: >
+      esa foto en la cuenta de miguel. no es suya. miguel nunca
+      publica sin pie de foto. miguel no publica a las 4 de la
+      mañana. alguien más lo hizo.
+    effects: { trust_carmen: "+5" }
+    choices:
+      - DM Carmen -> carmen_talk_low
+        when:
+          state: trust_carmen
+          lt: 50
+      - DM Carmen -> carmen_talk_high
+        when:
+          state: trust_carmen
+          gte: 50
+
+  carmen_talk_low:
+    type: message
+    text: >
+      CARMEN: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Carmen needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_carmen: "+5" }
+    choices:
+      - Share what you've learned about the night -> carmen_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  carmen_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the trailhead, the
+      SolVerde men, the figure fleeing at dawn. Carmen is silent for
+      a while.
+
+      CARMEN: You're actually trying to find out what happened. Okay.
+      I'll talk.
+    effects: { trust_carmen: "+25" }
+    choices:
+      - What happened that night? -> carmen_talk_high
+
+  carmen_talk_high:
+    type: message
+    text: >
+      CARMEN: He came to my house around 22h. I was preparing for
+      an early call — a farmer's cow in trouble. He was pale, shaking.
+      He said "they know what I have." He grabbed his field notebooks
+      and his camera.
+
+      I asked who. He said "the solar people. They sent men to the
+      Collada." Then he said something else — "and she was there
+      again. She's always there."
+
+      He wouldn't say who "she" was. He hugged me, said "no te
+      preocupes," and left with his rucksack. That was it. By
+      morning he was dead at the bottom of the scree below his
+      apiary.
+    effects:
+      trust_carmen: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pablo (saw Raquel watching the apiary) ---
+
+  pablo_interview:
+    type: message
+    text: >
+      PABLO: tío vale flipas con lo que te voy a contar. la tía
+      del labo — raquel — la he visto como tres veces rondando el
+      apiario de miguel por las tardes. ahí quieta mirando con los
+      prismáticos. una vez la vi haciendo fotos del camino que
+      miguel usa para subir.
+
+      la última vez fue como dos días antes de que muriera. estaba
+      sentada en su coche aparcado en la pista. motor apagado.
+      luces apagadas. mierda tío, era creepy de cojones.
+    effects:
+      trust_pablo: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      17:00 — Raquel seen at Miguel's shed, photographing notebooks (Iván)
+      22:00 — Miguel arrives at Carmen's, shaken, grabs notebooks (Carmen)
+      23:00 — SolVerde SUV at trailhead, Jorge Ibáñez present (Txema)
+      00:00 — Two vehicles leaving on forest track (Marcos)
+      04:00 — Figure fleeing down mountain path (Begoña)
+
+      SolVerde confronted Miguel at the Collada. He fled to his
+      sister's, grabbed his evidence, and went back up the mountain.
+      Someone followed him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is SolVerde hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Raquel really doing? Why was she
+        in his shed?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Raquel -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      SolVerde is hiding something. Miguel had proof. Now he's dead
+      and his evidence is missing from the cabaña.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the field records -> field_records
+      - Talk to Elena the journalist -> elena_interview
+      - Talk to Lucía (SolVerde field technician) -> lucia_interview
+      - Talk to Yolanda (environment councillor) -> yolanda_interview
+      - Check the Defensores de los Prados association -> aso_investigation
+      - Talk to Dani about the destruction -> dani_meadows
+      - Back to hub -> investigation_hub
+
+  # --- Field Records ---
+
+  field_records:
+    type: message
+    text: >
+      Miguel's pollinator study data is publicly shared on the
+      university repository. His species counts show a catastrophic
+      decline in wild bee populations at Valmonte since SolVerde began
+      clearing. The data for the Collada site is marked "UNDER
+      REVIEW" — the only site with that status.
+
+      His field diary, shared with the Defensores for safety, shows
+      he made 15 visits to the SolVerde construction zone in the
+      past month. The last entry: "Photographed earthworks at sector
+      norte. Undeclared clearing beyond permitted boundary. Soil
+      contamination from machinery diesel. This is not what they
+      reported in the EIA."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Elena ---
+
+  elena_interview:
+    type: message
+    text: >
+      ELENA: I don't talk about sources. Period.
+    effects: { trust_elena: "+5" }
+    choices:
+      - Show Elena the evidence you have -> elena_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  elena_with_evidence:
+    type: message
+    text: >
+      ELENA: ...you have more than I expected.
+
+      Okay. Miguel and I were working together. He had photographs
+      of unauthorised clearing — SolVerde expanded way beyond their
+      permitted zone. He had soil samples showing diesel contamination.
+      He had proof that the environmental impact assessment was
+      written by a consultant firm owned by SolVerde's parent company.
+      The whole thing was a rubber stamp.
+
+      We were going to publish together. Then he died. And two days
+      later, someone broke into my office and stole my backup drive.
+
+      Miguel knew he was in danger. He told me he'd hidden copies.
+      He said "if anything happens, find la caja de la reina." The
+      queen's box. It's something to do with his bees.
+    effects:
+      trust_elena: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> elena_hint
+      - Back to investigation hub -> investigation_hub
+
+  elena_hint:
+    type: message
+    text: >
+      ELENA: SolVerde sent their project director — Ibáñez — and
+      some lawyer to the Collada that evening. They told him to hand
+      over everything or face legal consequences. Intimidation dressed
+      up as land rights.
+
+      But he also told me about someone else. Someone who kept
+      appearing at his apiary. Someone who always seemed to know
+      where he was going. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Lucía (SolVerde whistleblower) ---
+
+  lucia_interview:
+    type: message
+    text: >
+      LUCÍA: I work at SolVerde. I'm just a field tech. I measure
+      soil, I file impact reports.
+
+      But the reports I file... are not always the reports that reach
+      the Junta de Asturias.
+    effects: { trust_lucia: "+10" }
+    choices:
+      - What do you mean? -> lucia_detail
+
+  lucia_detail:
+    type: message
+    text: >
+      LUCÍA: I measure soil contamination. Diesel, heavy metals
+      from the panel foundations, herbicide residue from clearing.
+      My numbers go to my supervisor. Somewhere between my desk
+      and the regulatory filing, they change. Lower. Always lower.
+
+      Miguel's independent samples matched MY original numbers, not
+      the ones in the official reports. He had proof that SolVerde
+      is falsifying their environmental impact data.
+
+      I'm scared. I have a family. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_lucia: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Yolanda ---
+
+  yolanda_interview:
+    type: message
+    text: >
+      YOLANDA: As environment councillor, I take these allegations
+      seriously. But SolVerde has promised 80 jobs and EU subsidy
+      money. The mayor insists we need to "maintain dialogue."
+
+      Off the record? I've seen the environmental permit. The
+      approved zone is half the size of what they're actually
+      clearing. They bulldoze at night and at weekends when nobody
+      is watching.
+
+      Miguel had unannounced field data. That's what made it
+      dangerous.
+    effects:
+      trust_yolanda: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Defensores de los Prados ---
+
+  aso_investigation:
+    type: tweet
+    from: aso_prados
+    text: >
+      ALERTA: Denuncia de destrucción de prados en la Collada de
+      Valmonte. Fotos y muestras de suelo en curso. Exigimos una
+      inspección sin previo aviso del proyecto SolVerde.
+    choices:
+      - Check their data -> aso_data
+
+  aso_data:
+    type: message
+    text: >
+      The Defensores de los Prados have been documenting meadow
+      destruction for eighteen months. Their data shows a clear
+      pattern: clearing operations that extend far beyond the
+      permitted zone, always conducted at night or on weekends.
+      Satellite imagery confirms the footprint is 40% larger than
+      the approved area.
+
+      The species counts are devastating: 67% decline in wild bee
+      populations, 80% loss of wildflower diversity at the Collada.
+      Ancient pastureland destroyed in months.
+
+      Miguel was a founding member. He contributed most of the field
+      photography.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Dani meadows ---
+
+  dani_meadows:
+    type: message
+    text: >
+      DANI: I'll show you something. Last week I was checking the
+      goats near Valmonte and I found this — a stack of chemical
+      drums hidden under a tarp in the construction zone. Herbicide.
+      Industrial-grade. The label said "for authorised use only" with
+      a SolVerde purchase order number.
+
+      They're not just clearing meadow. They're poisoning the soil
+      to make sure nothing grows back. So when the inspectors come,
+      they can say "see? Nothing was growing there anyway."
+
+      Miguel photographed those drums. He had the purchase order
+      number. He sent everything to Elena.
+    effects:
+      trust_dani: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Raquel Vega. Colleague. Researcher. Something more? Someone
+      was going through Miguel's notebooks. Someone was watching
+      his apiary. Someone was in his shed.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Raquel's visit logs to the village -> visit_logs
+      - Talk to Carmen about Raquel -> carmen_raquel
+        when:
+          state: trust_carmen
+          gte: 20
+      - Talk to Iván (more detail on the shed incident) -> ivan_detail
+      - Talk to Rosa the pharmacist -> rosa_interview
+      - Check the anonymous account @AbejaOscura -> anonimo_investigation
+      - Talk to Marcos about Raquel -> marcos_interview_2
+        when:
+          state: trust_marcos
+          gte: 40
+      - Talk to Sargento Medina -> sargento_interview
+        when:
+          state: trust_sargento
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Visit Logs ---
+
+  visit_logs:
+    type: message
+    text: >
+      The university's field visit system requires researchers to
+      log trips to study sites. Raquel's records show she visited
+      Peñablanca 47 times in the past six months. Her pollinator
+      study requires monthly visits. She came weekly.
+
+      Cross-referencing with Miguel's field diary: on 28 of her 47
+      visits, she arrived on the same day as his scheduled fieldwork.
+      She booked accommodation at the Pensión del Valle — which
+      overlooks the trailhead to his apiary.
+
+      Her study site is 3km east of his. She didn't need to be on
+      his trail.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Carmen on Raquel ---
+
+  carmen_raquel:
+    type: message
+    text: >
+      CARMEN: Raquel? She made Miguel uncomfortable. She'd show up
+      at the bar when he was there. She'd offer to walk back to the
+      village with him. She'd comment on every single one of his
+      posts within minutes. Every photo of his bees got an instant
+      reaction.
+
+      He told her he wasn't interested. Clearly, kindly. He said
+      "I'm married to the bees." She laughed. Then nothing changed.
+      She just... kept being there. Always there.
+
+      A month ago he found his field notebooks rearranged in the
+      cabaña. Pages photographed — you could see the flash marks.
+      He suspected Raquel but couldn't prove it.
+    effects:
+      trust_carmen: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Iván detail ---
+
+  ivan_detail:
+    type: message
+    text: >
+      IVÁN: hostia tío vale en plan no lo dije todo. cuando pillé
+      a raquel en el cobertizo de miguel tenía algo en la mano.
+      parecía un aparato pequeño. lo estaba pegando debajo de la
+      mesa, donde miguel deja la mochila.
+
+      joder tío parecía un localizador gps. de esos que salen en
+      las pelis.
+
+      tendría que haber dicho algo pero flipas tío quién me iba a
+      creer. un chaval acusando a una investigadora de la uni.
+      mierda no.
+    effects:
+      trust_ivan: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rosa ---
+
+  rosa_interview:
+    type: message
+    text: >
+      ROSA: This is confidential but I'm a pharmacist, not a priest.
+      Raquel Vega comes in regularly when she's in the village. She
+      buys things that... suggest she's not sleeping. Anxiolytics,
+      sleep aids, caffeine supplements. The pattern is someone under
+      extreme stress.
+
+      She also asked me once, very casually, if we sold those small
+      tracking devices for hikers. I said "this is a pharmacy, not
+      a Decathlon." She laughed it off. I didn't think about it
+      again until Miguel died.
+    effects:
+      trust_rosa: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- AbejaOscura (anonymous account) ---
+
+  anonimo_investigation:
+    type: tweet
+    from: anonimo
+    text: >
+      Tenía que haber escuchado. Yo intentaba protegerle. Nadie
+      entendía su trabajo como yo.
+    choices:
+      - Look at this account's history -> anonimo_posts
+
+  anonimo_posts:
+    type: message
+    text: >
+      @AbejaOscura: account created 10 months ago. Posts are all
+      about Miguel's work. Comments on every bee photo, every
+      meadow survey, every field update. The tone shifts over time:
+
+      Month 1: "Incredible work. You're doing what nobody else dares."
+      Month 3: "Why won't you respond to my messages? I just want
+      to collaborate."
+      Month 6: "I see you at the bar with Dani. You have time for
+      him but not for me?"
+      Month 8: "I know your routes. I know your schedule. I'm always
+      close."
+
+      The account has no personal photos. Just Miguel's world.
+      Only Miguel.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anonimo_style
+
+  anonimo_style:
+    type: message
+    text: >
+      Comparing @AbejaOscura with @raquel_vega:
+
+      Same use of entomology terminology. Same spelling conventions —
+      the specific way she abbreviates Latin species names. Same
+      knowledge of Miguel's research that only a university
+      collaborator would have.
+
+      And one post from @AbejaOscura: "Your count at Transecto 7
+      was beautiful." Transecto 7 is an internal study designation.
+      Not public.
+
+      It's Raquel. The anonymous account is Raquel.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marcos 2 ---
+
+  marcos_interview_2:
+    type: message
+    text: >
+      MARCOS: Miguel left something with me. A sealed waterproof
+      case. He said "if someone asks about what's happening at the
+      Collada, give them this."
+
+      He looked frightened. He said he'd made copies of everything
+      but needed one set off-site, somewhere nobody would look. A
+      carpentry workshop seemed perfect. He called it "la caja de
+      la reina" — the queen's box.
+    effects: { trust_marcos: "+10" }
+    choices:
+      - What's in the queen's box? -> marcos_case
+
+  marcos_case:
+    type: message
+    text: >
+      Marcos reaches under his workbench and produces a waterproof
+      Pelican case with a bee sticker on the lid.
+
+      MARCOS: He said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show clearing operations far beyond the permitted zone,
+      herbicide drums with SolVerde batch numbers, and a falsified
+      environmental impact assessment. The USB drive contains soil
+      data, species counts, and Miguel's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sargento Medina ---
+
+  sargento_interview:
+    type: message
+    text: >
+      SARGENTO MEDINA: Off the record — and I mean completely off
+      the record — I wanted to investigate SolVerde. My superior in
+      Oviedo told me to stand down. He said the Junta had
+      "jurisdiction over environmental matters." That's code for
+      "don't touch it."
+
+      The Vega situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act
+      on that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case as a homicide.
+    effects:
+      trust_sargento: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Miguel than anyone in Peñablanca. Who is responsible?
+    choices:
+      - Confront Raquel Vega (the obsessive colleague) -> confront_raquel
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Jorge Ibáñez (the project director) -> confront_jorge
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Menéndez (political protection) -> confront_alvaro
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Raquel (Best Ending) ---
+
+  confront_raquel:
+    type: message
+    text: >
+      You present your evidence to Raquel:
+
+      "I know @AbejaOscura is your account. I know you put a GPS
+      tracker in Miguel's shed. I know you went through his field
+      notebooks. I know you were watching his apiary with binoculars.
+      I have witnesses and I have the visit logs."
+    choices:
+      - Send -> raquel_response
+
+  raquel_response:
+    type: message
+    text: >
+      Raquel doesn't reply for a long time. Then:
+
+      RAQUEL: You don't understand. I was protecting him. He was
+      in danger from SolVerde and he wouldn't let me help. I
+      needed to know he was safe. Everything I did was because I
+      care about him. Cared. Care.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Sargento Medina. And to
+      Elena Quirós.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sargento Medina reopens the case as a homicide investigation.
+      With your evidence — the anonymous account, the GPS tracker,
+      the visit logs, the witness testimonies — Raquel is arrested
+      for stalking and harassment. The Guardia Civil forensics team
+      re-examines the death scene. They find bruising on Miguel's
+      body inconsistent with a fall. They find Raquel's DNA on his
+      jacket collar. She followed him up the mountain that night.
+      She confronted him. There was a struggle.
+
+      Elena Quirós, finally in possession of Miguel's full evidence
+      package, publishes the SolVerde story in El País. The Junta
+      de Asturias orders an unannounced inspection. The solar project
+      is halted pending environmental restoration. Jorge Ibáñez
+      faces criminal charges for falsifying the environmental impact
+      assessment.
+
+      And in the apiary at Peñablanca, Miguel's bees continue their
+      work. Carmen takes over the hives. She talks to them, the way
+      Miguel did.
+
+      "Ya puedes descansar, hermano."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: carmen
+    text: >
+      los prados no mienten. y la gente de peñablanca tampoco.
+      las abejas de miguel siguen volando. gracias por no rendiros.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Jorge (Partial Ending) ---
+
+  confront_jorge:
+    type: message
+    text: >
+      You present the environmental evidence to Jorge Ibáñez:
+
+      "I have photographs of clearing beyond the permitted zone. I
+      have soil samples showing diesel and herbicide contamination.
+      I have your original field reports showing the data was
+      falsified. I have the drums with your purchase order numbers."
+    choices:
+      - Send -> jorge_response
+
+  jorge_response:
+    type: message
+    text: >
+      JORGE: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will
+      result in immediate proceedings. SolVerde has always operated
+      within its environmental permit.
+
+      But it's too late. You've sent the evidence to Elena, to
+      the Defensores de los Prados, and to the Junta de Asturias.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The environmental story breaks. SolVerde is ordered to halt
+      construction pending investigation. The solar project may be
+      cancelled. Eighty promised jobs vanish. The village is divided.
+
+      But Miguel?
+
+      Without the stalking evidence, Raquel is never investigated.
+      His death remains classified as an accident. She publishes a
+      memorial paper about his pollinator work. She cites herself
+      as co-author. She visits his apiary every month, alone.
+
+      Carmen notices. She changes the padlock on the cabaña. She
+      finds a new GPS tracker under the hive stand.
+
+      The corporation is exposed. But the person who killed Miguel
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: carmen
+    text: "los prados se recuperarán. la justicia para mi hermano... ya veremos."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_alvaro:
+    type: message
+    text: >
+      You confront Mayor Menéndez with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> alvaro_response
+
+  alvaro_response:
+    type: tweet
+    from: nuria
+    text: >
+      Mi cliente toma nota de sus alegaciones. Cualquier difusión
+      pública de afirmaciones difamatorias será objeto de acciones
+      legales inmediatas. — Bufete Santamaría & Asociados, Madrid
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Menéndez and SolVerde's destruction — and there
+      isn't one beyond political protection — your evidence is
+      insufficient.
+
+      SolVerde continues clearing. Raquel continues watching. Miguel's
+      death remains an "accident."
+
+      Six months later, @AbejaOscura creates a new account. It
+      follows Carmen.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PEÑABLANCA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Miguel's story explores themes of
+      environmental destruction, corporate greed, obsessive behaviour,
+      rural community solidarity, and the courage to defend the land.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Teléfono de atención a víctimas: 016 (gratuito)
+      ANAR (acoso menores): 900 20 20 10
+      Denuncia ambiental: 062 (Guardia Civil - SEPRONA)

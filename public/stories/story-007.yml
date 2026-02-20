@@ -1,0 +1,1511 @@
+# DEAD ACCOUNT — Story 007: Carrigmore (Ireland)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-007.yml
+#
+# Player investigates the disappearance of traditional musician and
+# podcast host Aoife Brennan in the fictional west coast town of Carrigmore.
+
+meta:
+  title: "Dead Account"
+  state:
+    trust_ciaran: 0
+    trust_siobhan: 0
+    trust_niamh: 0
+    trust_padraig: 0
+    trust_oisin: 0
+    trust_saoirse: 0
+    trust_fionn: 0
+    trust_declan: 0
+    trust_orla: 0
+    trust_seamus: 0
+    trust_maeve: 0
+    trust_brendan: 0
+    trust_colm: 0
+    trust_bridget: 0
+    trust_ronan: 0
+    trust_grainne: 0
+    trust_murphy: 0
+    trust_eamon: 0
+    trust_kathleen: 0
+    trust_daithi: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    heritage_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to carrigmore. finding my feet on the west coast"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Carrigmore.social"
+    description: "Welcome to Carrigmore community - west coast of Ireland"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    aoife:
+      name: "Aoife Brennan"
+      bio: "trad musician | The Carrigmore Sessions podcast | fiddle & concertina | this coast is sacred"
+      avatar: avatars/aoife.jpg
+    ciaran:
+      name: "Ciaran Brennan"
+      bio: "aoife's da | carpenter | if you hurt my daughter i will find you"
+      avatar: avatars/ciaran.jpg
+    siobhan:
+      name: "Siobhan Ni Bhriain"
+      bio: "archaeologist | NUI Galway | heritage is not optional | Aoife's friend"
+      avatar: avatars/siobhan.jpg
+    niamh:
+      name: "Niamh Gallagher"
+      bio: "pub owner | The Standing Stone | trad sessions wed & sun | the heart of carrigmore"
+      avatar: avatars/niamh.jpg
+    padraig:
+      name: "Padraig O'Sullivan"
+      bio: "farmer | 200 acres | 5th generation | the land remembers"
+      avatar: avatars/padraig.jpg
+    oisin:
+      name: "Oisin"
+      bio: "16 | trad & rock | pure deadly on the bodhran | carrigmore til i die"
+      avatar: avatars/oisin.jpg
+    saoirse:
+      name: "Saoirse"
+      bio: "17 | podcast addict | aoife's show is class | fierce into local history"
+      avatar: avatars/saoirse.jpg
+    fionn:
+      name: "Fionn"
+      bio: "15 | gamer | rugby | carrigmore is grand like but there's no cinema"
+      avatar: avatars/fionn.jpg
+    declan:
+      name: "Declan Hartigan"
+      bio: "CEO | Atlantic View Resorts | bringing world-class golf to the west coast"
+      avatar: avatars/declan.jpg
+    orla:
+      name: "Orla Fitzpatrick"
+      bio: "county council | heritage officer | protecting what matters"
+      avatar: avatars/orla.jpg
+    seamus:
+      name: "Seamus Daly"
+      bio: "retired teacher | local history | if the stones could talk they'd have plenty to say"
+      avatar: avatars/seamus.jpg
+    maeve:
+      name: "Maeve Connolly"
+      bio: "journalist | Connacht Tribune | west coast stories | tips: maeve@tribune.ie"
+      avatar: avatars/maeve.jpg
+    brendan:
+      name: "Garda Brendan Walsh"
+      bio: "An Garda Siochana | Carrigmore Station | community policing"
+      avatar: avatars/brendan.jpg
+    bridget:
+      name: "Bridget Moran"
+      bio: "post office | Carrigmore PO | 30 years behind the counter | I know everyone"
+      avatar: avatars/bridget.jpg
+    colm:
+      name: "Colm Regan"
+      bio: "solicitor | Regan & Associates | property | planning | conveyancing"
+      avatar: avatars/colm.jpg
+    ronan:
+      name: "Ronan"
+      bio: "."
+      avatar: avatars/anon.jpg
+    grainne:
+      name: "Grainne Murphy"
+      bio: "B&B owner | Sea View House | best breakfast on the coast or your money back"
+      avatar: avatars/grainne.jpg
+    murphy:
+      name: "Fr. Tomas Murphy"
+      bio: "parish priest | St. Brendan's | mass times: sat 7pm, sun 10am & 12pm"
+      avatar: avatars/murphy.jpg
+    eamon:
+      name: "Eamon Burke"
+      bio: "site foreman | Hartigan Construction | building the future of the west"
+      avatar: avatars/eamon.jpg
+    kathleen:
+      name: "Kathleen O'Malley"
+      bio: "pharmacist | O'Malley's Pharmacy | health advice | open 6 days"
+      avatar: avatars/kathleen.jpg
+    daithi:
+      name: "Daithi Keane"
+      bio: "fisherman | carrigmore harbour | lobster & crab | the sea is my office"
+      avatar: avatars/daithi.jpg
+    garda:
+      name: "Carrigmore Garda Station"
+      bio: "An Garda Siochana | Emergency: 999/112 | Confidential: 1800 666 111"
+      avatar: avatars/garda.jpg
+    atlantic_view:
+      name: "Atlantic View Resorts"
+      bio: "World-class golf resort | Coming 2027 | Wild Atlantic luxury | #AtlanticView"
+      avatar: avatars/atlantic_view.jpg
+    council:
+      name: "County Council - West"
+      bio: "Official account | Planning | Services | Community"
+      avatar: avatars/council.jpg
+    carrigmore_gaa:
+      name: "Carrigmore GAA"
+      bio: "hurling & football | training tue & thu | up the parish"
+      avatar: avatars/gaa.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN CARRIGMORE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to carrigmore.social — the community Mastodon instance for
+      Carrigmore, a small town on the west coast of Ireland. Stone walls,
+      green fields, Atlantic storms.
+
+      The local feed is troubled. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      One name dominates the feed: @aoife_brennan.
+
+      A traditional musician and the host of "The Carrigmore Sessions,"
+      a podcast about local history, music, and culture. She hasn't
+      posted in twelve days. Her last episode was never published.
+    choices:
+      - Look at her profile -> aoife_profile
+
+  aoife_profile:
+    type: tweet
+    from: aoife
+    text: "The ringfort at Dun Carrig is 3,000 years old. Someone is about to destroy it for a golf course. Episode 47 drops Friday."
+    choices:
+      - That was her last real post... -> dead_post
+
+  dead_post:
+    type: message
+    text: >
+      Episode 47 never dropped. Four days after that post, her account
+      published a brief message: "Taking a break from the podcast and
+      social media. Need some time. Thanks for understanding."
+
+      Her father says she would never write that. Aoife doesn't take
+      breaks. The Guards say she's an adult who chose to step away.
+    choices:
+      - Read the Garda statement -> garda_statement
+      - See what people are saying -> community_reaction
+
+  garda_statement:
+    type: tweet
+    from: garda
+    text: >
+      An Garda Siochana has received a report regarding a Carrigmore
+      resident. There is no evidence of criminal activity at this time.
+      The individual is believed to have left the area voluntarily.
+      Contact Carrigmore Station with any information.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The town is split. Her father Ciaran is beside himself. Siobhan,
+      her archaeologist friend, is posting evidence about the ringfort
+      destruction. Niamh at the pub says the trad session chair is
+      empty.
+
+      And an anonymous account called @ronan keeps posting: "She should
+      have stayed in her lane. Music, not politics."
+
+      An account that has been listening to her podcast for two years.
+      Every episode. Every comment section. Every live show.
+    effects: { trust_ciaran: "+5", trust_siobhan: "+5" }
+    choices:
+      - Start following Aoife's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Carrigmore. A town of stone walls and strong opinions.
+      Follow Aoife's contacts and understand what she was working on.
+    choices:
+      - Talk to Niamh at the pub -> niamh_intro
+      - Talk to Seamus the retired teacher -> seamus_intro
+      - Check what the teens are saying -> oisin_intro
+      - Browse the feed -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a mix of GAA results, weather complaints, sheep
+      photos, and worry about Aoife. Everyone knows everyone. People
+      tag each other in photos of sunsets, pints, and stone walls.
+
+      Key names: Ciaran (her da, furious), Siobhan (archaeologist,
+      has evidence), Niamh (pub owner, community hub), Declan Hartigan
+      (developer, suspiciously quiet), Maeve (journalist, digging).
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Niamh -> niamh_intro
+      - Talk to Seamus -> seamus_intro
+      - Check the teens -> oisin_intro
+
+  # --- Niamh (social map) ---
+
+  niamh_intro:
+    type: tweet
+    from: niamh
+    text: >
+      Wednesday session tonight as always. Aoife's chair will be there.
+      It'll be empty but it'll be there. Come in and play. She'd want
+      that.
+    effects: { trust_niamh: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Niamh -> niamh_talk
+
+  niamh_talk:
+    type: message
+    text: >
+      NIAMH: You're new? Grand, welcome. Sit down, I'll get you a tea
+      or something stronger.
+
+      Aoife is the soul of this place. Not just the music — though
+      she's deadly on the fiddle — but the way she connected people.
+      That podcast brought the whole parish together. Old people
+      sharing stories, young ones listening.
+
+      Then she started looking into the golf resort and things got
+      fierce complicated. Declan Hartigan wants to build on the
+      headland. Right where the ringfort is. Right where the ancient
+      field systems are.
+
+      Aoife found out the planning application left out the
+      archaeological survey. She went on the podcast about it. That's
+      when things changed.
+    effects: { trust_niamh: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Declan Hartigan -> niamh_declan
+      - Ask about the podcast listener -> niamh_listener
+      - Thank her and move on -> quest1_hub
+
+  niamh_declan:
+    type: message
+    text: >
+      NIAMH: Declan Hartigan isn't from here. Dublin money. He bought
+      200 acres on the headland three years ago. The planning
+      application went through fierce fast — too fast, people say.
+
+      His solicitor Colm Regan handled everything. Colm's been here
+      years, does all the property work. Sound enough usually, but
+      this deal... the heritage survey was supposed to happen before
+      planning was approved. It didn't.
+
+      Aoife got hold of the planning file. The archaeological assessment
+      was done by a firm Hartigan hired himself. They found "nothing
+      of significance." On a site with a visible ringfort. That's gas,
+      that is.
+    effects: { trust_niamh: "+5" }
+    choices:
+      - Ask about the listener -> niamh_listener
+      - Move on -> quest1_hub
+
+  niamh_listener:
+    type: message
+    text: >
+      NIAMH: There was a fella — I never saw his face. He came to every
+      live show Aoife did here. Sat in the back corner, never ordered
+      more than a mineral. Always alone. Took photos on his phone.
+
+      Aoife noticed him about six months ago. She said it was grand,
+      probably just a fan. But then she started getting these long DMs
+      after every episode. Not threatening exactly — more like... intense.
+      Like someone who thought they knew her personally from listening
+      to the show.
+
+      She blocked the account. A new one appeared. She blocked that one
+      too. Three times this happened.
+    effects: { trust_niamh: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Seamus (the historian) ---
+
+  seamus_intro:
+    type: tweet
+    from: seamus
+    text: >
+      Dun Carrig ringfort is a scheduled monument. Protected under
+      the National Monuments Act. But paper protections mean nothing
+      when there's money involved.
+    effects: { trust_seamus: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Seamus -> seamus_talk
+
+  seamus_talk:
+    type: message
+    text: >
+      SEAMUS: I taught history in Carrigmore for thirty-five years.
+      Every child in this parish knows about Dun Carrig. It's Iron Age.
+      The field systems around it could be even older.
+
+      Aoife's podcast episode on the ringfort — episode 44 — got more
+      downloads than anything she'd done. She interviewed me, she
+      interviewed Siobhan from the university, she interviewed farmers
+      whose families have worked that land for generations.
+
+      After that episode, Hartigan's people tried to have it taken down.
+      Copyright claim on some background music. Ridiculous. Aoife
+      fought it and won. But it was a warning shot.
+    effects: { trust_seamus: "+10", contacts_followed: "+1" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Oisin (teen witness) ---
+
+  oisin_intro:
+    type: tweet
+    from: oisin
+    text: >
+      aoife's podcast was literally the only class thing about living
+      here and now its gone. like this town is pure dead without her.
+      someone needs to do something like
+    effects: { trust_oisin: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Oisin -> oisin_talk
+
+  oisin_talk:
+    type: message
+    text: >
+      OISIN: ah here are ya new? grand so welcome. yeah aoife was
+      deadly like. she taught me bodhran. she was going to have me
+      on the podcast and all.
+
+      saoirse is fierce upset about it. she was like aoife's biggest
+      fan. she has every episode saved. and fionn says he saw something
+      weird at the headland the other night but sure no one listens
+      to fionn.
+
+      yer man ronan though — that account gives me the creeps like.
+      pure obsessive vibes. saoirse showed me some of the DMs he
+      sent aoife and they were LONG. like essays. about what her
+      music "meant to him." gas but also not gas at all like
+    effects: { trust_oisin: "+10" }
+    choices:
+      - What did Fionn see? -> oisin_fionn
+      - Move on -> quest1_hub
+
+  oisin_fionn:
+    type: message
+    text: >
+      OISIN: fionn was out the headland with his da checking sheep
+      and he said there was a digger up there. like a JCB. at night.
+      on the site where the ringfort is. who does construction work
+      at night on a protected monument?
+
+      he told his ma and she said dont be going up there. but like
+      thats pure dodgy isnt it
+    effects: { trust_oisin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      Carrigmore is revealing itself. A tight community facing a
+      developer with deep pockets. A woman who spoke up. An obsessive
+      listener. A heritage site in danger.
+    choices:
+      - Talk to Ciaran (Aoife's father) -> ciaran_q1
+      - Talk to Siobhan (archaeologist) -> siobhan_q1
+      - Talk to Padraig (farmer, owns adjacent land) -> padraig_q1
+      - I'm ready to investigate the night she vanished -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Ciaran Q1 ---
+
+  ciaran_q1:
+    type: tweet
+    from: ciaran
+    text: >
+      My daughter does not "take breaks." She has played the fiddle
+      every single day since she was nine years old. Someone wrote
+      that post. It was not Aoife. THE GUARDS NEED TO LISTEN.
+    effects: { trust_ciaran: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ciaran -> ciaran_q1_talk
+
+  ciaran_q1_talk:
+    type: message
+    text: >
+      CIARAN: Who are you? Are you another one of Hartigan's crowd?
+      Because if you are, you can turn around and walk out.
+
+      My daughter was investigating that man's resort. She found things
+      he didn't want found. And now she's gone and the Guards say
+      there's "no evidence."
+
+      Her fiddle is still in her room. Aoife does not go anywhere
+      without that fiddle. THAT is your evidence.
+    effects: { trust_ciaran: "+10" }
+    choices:
+      - What did she find? -> ciaran_evidence
+      - Move on -> quest1_hub
+
+  ciaran_evidence:
+    type: message
+    text: >
+      CIARAN: She found that the archaeological survey was a sham.
+      The company that did it — Emerald Heritage Solutions — has done
+      three surveys for Hartigan in the past five years. All three
+      found "nothing of significance." On sites where there are clearly
+      visible remains.
+
+      She also found that Colm Regan, the solicitor who handled the
+      planning, sits on a county council subcommittee that fast-tracked
+      the application. Conflict of interest that nobody declared.
+
+      She had documents. I don't know where they are now.
+    effects: { trust_ciaran: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Siobhan Q1 ---
+
+  siobhan_q1:
+    type: tweet
+    from: siobhan
+    text: >
+      I have conducted a preliminary survey of the Dun Carrig site.
+      The ringfort is intact but there is fresh disturbance on the
+      eastern perimeter. Someone has been digging. This needs immediate
+      attention from the National Monuments Service.
+    effects: { trust_siobhan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Siobhan -> siobhan_q1_talk
+
+  siobhan_q1_talk:
+    type: message
+    text: >
+      SIOBHAN: Aoife contacted me eight months ago when she first heard
+      about the golf resort plan. I assessed the site. Dun Carrig is
+      significant — Iron Age ringfort, possible early medieval reuse,
+      surrounded by pre-famine field systems.
+
+      The developer's survey missed all of this. Or rather, deliberately
+      ignored it. The report is professionally negligent at best,
+      fraudulent at worst.
+
+      Aoife recorded two podcast episodes with me about it. She was
+      also collecting evidence of unauthorized ground disturbance —
+      someone was already preparing the site before planning approval.
+    effects: { trust_siobhan: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Padraig Q1 ---
+
+  padraig_q1:
+    type: tweet
+    from: padraig
+    text: >
+      Five generations my family has farmed this land. The ringfort
+      was here before us and it should be here after us. Some things
+      are more important than money.
+    effects: { trust_padraig: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Padraig -> padraig_q1_talk
+
+  padraig_q1_talk:
+    type: message
+    text: >
+      PADRAIG: Hartigan offered me three times the market value for
+      my fields. I said no. He came back with four times. I said no
+      again. Then the county council sent me a letter about
+      "compulsory purchase" for a "strategic development."
+
+      Aoife helped me fight it. She put me on the podcast. Episode 45.
+      After that, Hartigan's solicitor sent me a cease and desist.
+      For being on a podcast. For telling the truth about my own land.
+
+      That's when I knew these people would do anything.
+    effects: { trust_padraig: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Aoife was last seen at The Standing Stone pub on a Wednesday
+      night, after the trad session. She left at 23:30. She never
+      arrived home. Her car was found the next morning at the headland
+      car park, near Dun Carrig.
+
+      Collect witness accounts. You need at least 4.
+    choices:
+      - Find Daithi (was at the harbour that night) -> daithi_interview
+      - Find Grainne (B&B overlooks the road) -> grainne_interview
+      - Find Fionn (was at the headland) -> fionn_interview
+      - Find Bridget (was closing the post office late) -> bridget_interview
+
+  # --- Daithi (saw the car) ---
+
+  daithi_interview:
+    type: tweet
+    from: daithi
+    text: >
+      was out checking the pots at dawn and saw aoife's car up at
+      the headland. door open. no one around. that's not right.
+    effects: { trust_daithi: "+5" }
+    choices:
+      - Ask Daithi what he saw -> daithi_talk
+
+  daithi_talk:
+    type: message
+    text: >
+      DAITHI: I was heading out to the harbour around half five in
+      the morning. Passed the headland car park and saw her car.
+      Green Yaris, everyone knows it. Driver door open, interior
+      light on. Her bag was on the passenger seat. No Aoife.
+
+      I called Ciaran straightaway. Then the Guards. They took three
+      hours to come out. THREE HOURS.
+
+      I've been fishing these waters thirty years. I know what it
+      looks like when someone walks into the sea. That's what the
+      Guards are hinting at. But Aoife Brennan did not walk into the
+      sea. I'd stake my life on it.
+    effects:
+      trust_daithi: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Grainne (saw someone following) ---
+
+  grainne_interview:
+    type: tweet
+    from: grainne
+    text: >
+      my B&B faces the coast road. i was up with a sick guest that
+      night. i saw things i should have paid more attention to.
+    effects: { trust_grainne: "+5" }
+    choices:
+      - Ask Grainne what she saw -> grainne_talk
+
+  grainne_talk:
+    type: message
+    text: >
+      GRAINNE: Around midnight I was in the front room getting hot
+      water for a guest. I saw Aoife's car going past, heading toward
+      the headland. Normal enough — she sometimes goes up there after
+      sessions, says it clears her head.
+
+      But then, maybe two minutes later, another car went the same way.
+      No headlights. Just the parking lights. Following her.
+
+      I didn't think anything of it at the time. Lord forgive me, I
+      thought it was someone heading home. But who drives without
+      headlights on the coast road at midnight?
+
+      The car was dark. A big car. SUV type.
+    effects:
+      trust_grainne: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Fionn (heard something) ---
+
+  fionn_interview:
+    type: tweet
+    from: fionn
+    text: >
+      ok so like i know no one takes me seriously but i was up at the
+      headland that night. i heard stuff. its grand if ye dont believe
+      me but im telling ye what happened
+    effects: { trust_fionn: "+5" }
+    choices:
+      - Ask Fionn what happened -> fionn_talk
+
+  fionn_talk:
+    type: message
+    text: >
+      FIONN: right so me and oisin were up the headland. we go up
+      there sometimes at night, dont tell me ma. we were near the
+      ringfort like just messing about.
+
+      around half twelve we heard a car pull up in the car park.
+      then another one like 2 minutes later. then voices. a woman
+      and a man. she sounded fierce angry. he was like trying to
+      calm her down but she wasnt having it.
+
+      then it went quiet for a bit. then we heard her say "leave me
+      ALONE" dead loud. and running. footsteps on the path.
+
+      we legged it. we were scared like. we ran back through
+      padraig's fields. i feel pure sick about it now.
+    effects:
+      trust_fionn: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Bridget (saw the man) ---
+
+  bridget_interview:
+    type: tweet
+    from: bridget
+    text: >
+      I was late closing up. I saw someone I didn't recognise going
+      into the pub after the session. He didn't stay long.
+    effects: { trust_bridget: "+5" }
+    choices:
+      - Ask Bridget what she saw -> bridget_talk
+
+  bridget_talk:
+    type: message
+    text: >
+      BRIDGET: I was sorting the last post at about eleven. A man I
+      didn't recognise went into The Standing Stone. He wasn't from
+      here. City clothes. He sat near the door, watching the session.
+      Watching Aoife specifically.
+
+      He left when she left. Went to a dark SUV parked on the street.
+      Sat in it for a moment. Then drove off the same direction
+      she did.
+
+      I've been behind that counter thirty years. I notice people.
+      That man was there for Aoife, not for the music.
+    effects:
+      trust_bridget: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      Keep collecting testimonies or talk to key contacts.
+    choices:
+      - Find Daithi -> daithi_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Grainne -> grainne_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Fionn -> fionn_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Bridget -> bridget_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Saoirse (Aoife's biggest fan) -> saoirse_early
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Saoirse early ---
+
+  saoirse_early:
+    type: tweet
+    from: saoirse
+    text: >
+      i have literally every episode of the carrigmore sessions saved.
+      episode 47 was going to be class. she told me what was in it.
+      someone doesnt want people to hear it.
+    effects: { trust_saoirse: "+5" }
+    choices:
+      - Ask Saoirse about episode 47 -> saoirse_episode
+      - Come back later -> quest2_hub
+
+  saoirse_episode:
+    type: message
+    text: >
+      SAOIRSE: aoife told me episode 47 was going to be the big one.
+      she had documents showing hartigan's company already started
+      work on the ringfort site BEFORE planning was approved. like
+      actual bulldozer tracks. she had photos.
+
+      and she had something else. she said someone had been following
+      her. not hartigan's people — someone different. someone who knew
+      her podcast schedule, who showed up at every live recording.
+      she was proper scared like.
+
+      she gave me a USB stick the day before she vanished. said "keep
+      this safe. if anything happens, give it to maeve at the tribune."
+      i havent opened it. im fierce afraid to.
+    effects:
+      trust_saoirse: "+10"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      23:30 — Aoife leaves The Standing Stone after trad session
+      23:30 — Unknown man follows her out (Bridget)
+      00:00 — Aoife's car passes Sea View House heading for headland (Grainne)
+      00:02 — Dark SUV follows without headlights (Grainne)
+      00:30 — Two cars arrive at headland. Voices: angry woman, man
+      trying to calm her down. "Leave me ALONE." Running. (Fionn)
+      05:30 — Aoife's car found at headland, door open, bag inside (Daithi)
+
+      Someone followed Aoife to the headland. There was a confrontation.
+      Then she vanished.
+
+      Two threads to pull:
+      - Heritage destruction: What was Hartigan doing at Dun Carrig?
+      - The stalker: Who followed her from the pub?
+    choices:
+      - Investigate the heritage destruction -> heritage_hub
+      - Investigate the stalker -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      HERITAGE THREAD: Evidence collected: ${heritage_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the heritage thread -> heritage_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: heritage_evidence, gte: 5 }
+            - { state: stalker_evidence, gte: 3 }
+
+  # =====================================================================
+  # HERITAGE THREAD
+  # =====================================================================
+
+  heritage_hub:
+    type: message
+    text: >
+      THE HERITAGE THREAD
+
+      A 3,000-year-old ringfort being destroyed for a golf course.
+      A fraudulent survey. Unauthorized construction. Who is covering
+      this up?
+
+      Heritage evidence: ${heritage_evidence}
+    choices:
+      - Investigate the planning application -> planning_investigation
+      - Visit the ringfort site -> ringfort_visit
+      - Talk to Siobhan about the survey fraud -> siobhan_survey
+      - Talk to Orla (heritage officer) -> orla_interview
+      - Talk to Eamon (site foreman) -> eamon_interview
+      - Talk to Colm Regan (solicitor) -> colm_interview
+      - Talk to Maeve (journalist) -> maeve_interview
+      - Talk to Declan Hartigan directly -> declan_interview
+      - Talk to Padraig about the land -> padraig_heritage
+      - Back to hub -> investigation_hub
+
+  # --- Planning Investigation ---
+
+  planning_investigation:
+    type: message
+    text: >
+      The planning file for "Atlantic View Golf Resort" is a public
+      document. The archaeological assessment is attached.
+
+      "Emerald Heritage Solutions Ltd. — No features of archaeological
+      significance were identified within the proposed development area."
+
+      But the ringfort is clearly visible on satellite imagery. It's
+      listed on the Record of Monuments and Places. It's a scheduled
+      monument under the National Monuments Act.
+
+      How did a heritage survey miss a listed monument?
+    effects:
+      heritage_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check Emerald Heritage Solutions -> emerald_check
+      - Back to heritage thread -> heritage_hub
+
+  emerald_check:
+    type: message
+    text: >
+      Emerald Heritage Solutions Ltd. Registered address: a serviced
+      office in Dublin. One director: a name that appears on three other
+      surveys, all for Hartigan developments, all finding "nothing of
+      significance."
+
+      The company has no published research, no academic affiliations,
+      no accreditation with the Institute of Archaeologists of Ireland.
+
+      It is a shell company producing fraudulent surveys to clear the
+      way for development on protected sites.
+    effects:
+      heritage_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Ringfort Visit ---
+
+  ringfort_visit:
+    type: message
+    text: >
+      DUN CARRIG
+
+      The ringfort sits on the headland, overlooking the Atlantic.
+      Stone walls, green grass, three thousand years of human presence.
+
+      But the eastern side tells a different story. Fresh earth turned
+      over. Tyre tracks from heavy machinery. A section of the outer
+      bank has been cut through — not by time, but by a digger.
+
+      Someone has already begun destroying the monument. Before
+      planning approval. Before any legitimate survey.
+
+      There are wooden stakes in the ground with surveyors' markings.
+      They read: "AVR — Phase 1." Atlantic View Resorts.
+    effects:
+      heritage_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Siobhan Survey ---
+
+  siobhan_survey:
+    type: message
+    text: >
+      SIOBHAN: The survey is fraudulent. I wrote to the National
+      Monuments Service with a detailed rebuttal. Point by point,
+      I showed how Emerald Heritage Solutions ignored visible features,
+      misidentified soil types, and failed to conduct geophysical survey
+      as required by the guidelines.
+
+      Aoife helped me gather the evidence. She photographed the site
+      weekly, documenting the unauthorized disturbance. She had photos
+      of machinery operating at night.
+
+      She was building the case that would stop the development. And
+      someone decided that case should never be made.
+    effects:
+      trust_siobhan: "+15"
+      heritage_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Orla ---
+
+  orla_interview:
+    type: message
+    text: >
+      ORLA: As heritage officer, I flagged concerns about the Dun
+      Carrig assessment eight months ago. My report was acknowledged
+      and then... nothing. The planning application proceeded.
+
+      I wrote to the Department. I wrote to the National Monuments
+      Service. I was told my concerns would be "considered." The
+      planning permission was granted anyway.
+
+      Colm Regan sits on the county council subcommittee that approved
+      it. He is also Hartigan's solicitor. I raised this conflict of
+      interest formally. My letter was "received and noted."
+
+      Aoife was the only person who made this story public. Her podcast
+      reached more people than all my official reports combined.
+    effects:
+      trust_orla: "+15"
+      heritage_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Eamon ---
+
+  eamon_interview:
+    type: message
+    text: >
+      EAMON: I work for Hartigan. Or I did. I'm not proud of
+      everything I've done on his sites.
+
+      He had us up at the headland six weeks ago. Night work. "Clearance
+      and preparation" he called it. We cut through the ringfort bank
+      with a digger. I knew what it was. Everyone did. But the pay was
+      good and work is scarce.
+
+      When Aoife showed up with a camera, Hartigan went ballistic. He
+      called someone — I don't know who — and said "She's here again.
+      Sort it out."
+
+      I'm telling you this because what happened to that woman isn't
+      right. And what we did to that monument isn't right either.
+    effects:
+      trust_eamon: "+20"
+      heritage_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Colm ---
+
+  colm_interview:
+    type: message
+    text: >
+      COLM: My client's development is fully compliant with all planning
+      regulations. The archaeological assessment was conducted by a
+      qualified firm. Any suggestion of impropriety is defamatory.
+
+      I have no further comment. Contact my office if you wish to
+      discuss this formally.
+    effects: { trust_colm: "+5" }
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Maeve ---
+
+  maeve_interview:
+    type: message
+    text: >
+      MAEVE: I've been investigating Hartigan for months. Aoife was my
+      source. She had photographs of nighttime construction, documents
+      showing the survey fraud, and evidence of the conflict of interest
+      on the planning committee.
+
+      She was going to give me everything for a piece in the Tribune.
+      Then she vanished.
+
+      I still have my notes. I need her photographs and documents to
+      publish. Without them, it's my word against Hartigan's lawyers.
+
+      There's a USB stick. Aoife told me she made a copy of everything.
+      She gave it to someone she trusted.
+    effects:
+      trust_maeve: "+15"
+      heritage_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Someone followed Aoife from the pub. Someone has been attending
+      every show, sending obsessive messages, creating new accounts when
+      blocked.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate the @ronan account -> ronan_investigation
+      - Talk to Saoirse (has Aoife's DMs) -> saoirse_dms
+        when:
+          state: trust_saoirse
+          gte: 20
+      - Get Saoirse's USB stick -> saoirse_usb
+        when:
+          state: trust_saoirse
+          gte: 30
+      - Talk to Niamh about the pub regular -> niamh_stalker
+      - Talk to Fr. Murphy -> murphy_interview
+      - Talk to Kathleen (pharmacist) -> kathleen_interview
+      - Talk to Garda Brendan -> brendan_interview
+        when:
+          state: trust_brendan
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Ronan Investigation ---
+
+  ronan_investigation:
+    type: tweet
+    from: ronan
+    text: >
+      Episode 44 was her best work. The way she described the ringfort
+      in the morning light. I was there that morning too. She didn't
+      see me but I was there. I'm always there.
+    choices:
+      - Look at Ronan's other posts -> ronan_posts
+
+  ronan_posts:
+    type: message
+    text: >
+      @ronan's posts span two years. Every podcast episode reviewed
+      in obsessive detail. Comments about Aoife's voice, her laugh,
+      the way she plays fiddle. Intimate, possessive language.
+
+      "She played the reel in D minor tonight. Only I noticed she
+      changed the bowing in the third bar."
+
+      "I was at the session. She wore the blue scarf. She looked
+      directly at me during the slow air. She knows I'm there."
+
+      "Nobody understands her music the way I do. Nobody."
+
+      Three accounts blocked by Aoife. Each time, a new one appeared
+      within days with the same writing style.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Saoirse DMs ---
+
+  saoirse_dms:
+    type: message
+    text: >
+      SAOIRSE: aoife showed me the messages. they were fierce creepy
+      like. not threats exactly but like... this person thought they
+      were in a relationship with her? through the podcast?
+
+      "i know you play that reel for me. our song."
+      "when you talked about the headland in episode 38, you were
+      describing our place. where we'll go together."
+      "you blocked me again. that hurts. you know we're connected."
+
+      the last message before she disappeared was different though.
+      it said: "if i can't listen to you, nobody will."
+
+      aoife screenshotted everything. she reported it to the guards.
+      they said there wasnt enough for a barring order because she
+      didn't know who it was.
+    effects:
+      trust_saoirse: "+15"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Niamh stalker ---
+
+  niamh_stalker:
+    type: message
+    text: >
+      NIAMH: Your man in the corner. I've been thinking about him.
+
+      He was here at least a dozen times. Always alone. Always watched
+      the session. I tried to chat to him once — he was polite but
+      distant. Dublin accent. Maybe forties. Well dressed.
+
+      The last time — the night Aoife disappeared — he was at the bar
+      when she was leaving. He said something to her. I couldn't hear
+      what. She walked past him fast without responding.
+
+      He finished his drink, left money on the bar, and followed her
+      out. I should have said something. God help me, I should have
+      said something.
+    effects:
+      trust_niamh: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Fr. Murphy ---
+
+  murphy_interview:
+    type: message
+    text: >
+      FR. MURPHY: I spoke with Aoife the week before she disappeared.
+      She came to me not for spiritual guidance but because she was
+      frightened and didn't know who to trust.
+
+      She told me two things. First, that she had evidence that would
+      stop the golf resort. Second, that someone was following her —
+      not connected to the resort, but a listener. Someone who believed
+      they had a personal connection to her through the podcast.
+
+      She said: "Father, if something happens to me, the evidence is
+      safe. But the person I'm afraid of isn't Hartigan."
+
+      I urged her to go to the Guards. She said she had. They didn't
+      take it seriously.
+    effects:
+      trust_murphy: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Saoirse DMs (full) ---
+
+  saoirse_usb:
+    type: message
+    text: >
+      SAOIRSE: right so ive been thinking about it and if this usb
+      can help find aoife then ye can have it.
+
+      she told me what was on it. the documents about hartigan.
+      the photos of the ringfort destruction. the nighttime
+      construction footage. and the DM screenshots from the stalker.
+
+      everything. she put everything on one stick and gave it to
+      me because she said "youre the only person they wont think
+      to look at."
+
+      a seventeen year old keeping the evidence that could bring
+      down a developer and catch a stalker. no pressure like.
+    choices:
+      - I'll keep it safe and get it to the right people -> saoirse_usb_give
+      - Hold onto it for now -> saoirse_usb_hold
+
+  saoirse_usb_give:
+    type: message
+    text: >
+      Saoirse hands you the USB stick. Her hands are shaking.
+
+      SAOIRSE: find her. please. shes the best person i know.
+    effects:
+      heritage_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  saoirse_usb_hold:
+    type: message
+    text: >
+      SAOIRSE: grand. but come back for it. aoife trusted me and
+      i trust you. dont make me regret it.
+    effects: { trust_saoirse: "+10" }
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Declan (direct encounter) ---
+
+  declan_interview:
+    type: tweet
+    from: declan
+    text: >
+      Atlantic View Resorts is committed to sustainable development
+      that respects the landscape and heritage of the west coast.
+      Speculation about our project is unhelpful and inaccurate.
+    effects: { trust_declan: "+5" }
+    choices:
+      - Try to speak to Declan directly -> declan_talk
+
+  declan_talk:
+    type: message
+    text: >
+      DECLAN: I run a legitimate business. The golf resort will bring
+      200 jobs to a community that desperately needs them. Tourism,
+      hospitality, groundskeeping, management.
+
+      Ms. Brennan has a romantic view of history that doesn't pay
+      bills. Old stones don't employ people.
+
+      I had no contact with Ms. Brennan. My solicitor handled all
+      communications. Whatever has happened to her is regrettable
+      but nothing to do with my company.
+
+      Now if you'll excuse me, I have investors to meet.
+
+      [Declan's polish is perfect. But Eamon told you he said "sort
+      it out" about Aoife. And Colm, his solicitor, is on the planning
+      committee that approved his project.]
+    effects: { trust_declan: "+5" }
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Padraig (heritage witness) ---
+
+  padraig_heritage:
+    type: message
+    text: >
+      PADRAIG: My grandfather told me stories about Dun Carrig. The
+      fairy fort, he called it. You never disturb a fairy fort. Bad
+      luck follows.
+
+      That's superstition. But the principle is right. You don't
+      destroy what others built before you. The field systems on my
+      land — the lazy beds, the stone walls — they're pre-famine.
+      They tell the story of people who lived and worked and died
+      here. That matters.
+
+      Aoife understood. She recorded my grandfather's stories on the
+      podcast. Episode 32. My grandfather cried when he heard it.
+      First time anyone had asked him about the old days in forty years.
+
+      Hartigan offered me money. I told him the land isn't for sale.
+      Because some things don't have a price. That's what Aoife taught
+      this community. And that's why they wanted her gone.
+    effects:
+      trust_padraig: "+10"
+      heritage_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to heritage thread -> heritage_hub
+
+  # --- Kathleen ---
+
+  kathleen_interview:
+    type: message
+    text: >
+      KATHLEEN: Aoife came in the week before she disappeared. She
+      was not sleeping. She was checking over her shoulder constantly.
+      She asked about personal safety alarms.
+
+      I gave her one from behind the counter. I keep them for customers
+      who ask. She said "I hope I never need it." Then she said "But
+      I think I will."
+    effects:
+      trust_kathleen: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Brendan ---
+
+  brendan_interview:
+    type: message
+    text: >
+      BRENDAN: Between ourselves? This case bothers me.
+
+      Aoife reported the online harassment three times. Each time my
+      sergeant said the messages didn't meet the threshold for criminal
+      harassment because we couldn't identify the sender.
+
+      But that night — I was on duty. I drove past the headland car
+      park at 01:00. I saw two cars. Aoife's Yaris and a dark BMW SUV.
+      Dublin registration. I noted the plate but didn't stop — I had
+      no reason to at that point.
+
+      By morning, Aoife was gone and the BMW was gone. I ran the plate.
+      It's registered to a rental company. The rental was paid for with
+      a corporate card belonging to a Dublin marketing firm.
+
+      My sergeant told me to leave it. "She left voluntarily," he said.
+      But people who leave voluntarily take their bags.
+    effects:
+      trust_brendan: "+15"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      Two forces drove Aoife away: a developer destroying heritage, and
+      an obsessive listener who crossed every line. Who do you pursue?
+    choices:
+      - Expose Hartigan (heritage case to authorities) -> confront_hartigan
+        when:
+          state: heritage_evidence
+          gte: 5
+      - Identify the stalker (present evidence to Gardai) -> confront_stalker
+        when:
+          state: stalker_evidence
+          gte: 3
+      - Present both cases simultaneously -> confront_both
+        when:
+          all:
+            - { state: heritage_evidence, gte: 5 }
+            - { state: stalker_evidence, gte: 3 }
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Both (Best Ending) ---
+
+  confront_both:
+    type: message
+    text: >
+      You compile everything. Saoirse gives you the USB stick — Aoife's
+      complete archive of photographs, documents, and recordings. You
+      send the heritage evidence to Maeve at the Tribune and to the
+      National Monuments Service. You send the stalker evidence, the
+      BMW plate, and the DM screenshots to the Garda Siochana in Galway
+      city — bypassing the local station.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE FULL PICTURE
+
+      Two things happen.
+
+      The National Monuments Service issues an emergency preservation
+      order on Dun Carrig. An investigation is opened into Emerald
+      Heritage Solutions. Hartigan's planning permission is revoked.
+      Colm Regan is suspended from the county council subcommittee
+      pending an ethics inquiry. Maeve publishes a front-page story
+      in the Tribune.
+
+      The Gardai in Galway trace the BMW rental to a Dublin man named
+      Ronan Cassidy. A marketing executive who became obsessed with
+      Aoife's podcast. He drove to Carrigmore twelve times in six months.
+      He followed her to the headland that night. She ran. She made it
+      to the cliffs and hid in a sea cave until dawn. Then she walked to
+      the nearest village and called Siobhan, who drove her to Galway.
+
+      Aoife has been staying with Siobhan, too frightened to return.
+      Too afraid the man who followed her would find her again.
+
+      With Cassidy identified and arrested for harassment and stalking,
+      Aoife calls her father.
+
+      "I'm coming home, Da. Tell Niamh to keep my chair warm."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: aoife
+    text: >
+      episode 47 is live. it's about what happened. about the ringfort,
+      about the podcast, about all of it. the carrigmore sessions
+      aren't going anywhere. neither am i.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Hartigan Only (Partial Ending) ---
+
+  confront_hartigan:
+    type: message
+    text: >
+      You present the heritage evidence to the National Monuments Service
+      and to Maeve. The golf resort is stopped. Hartigan's company is
+      investigated. Dun Carrig is saved.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE MONUMENT
+
+      The ringfort is saved. Hartigan's development is halted. The
+      fraudulent survey company is shut down. The story makes national
+      news.
+
+      But the stalker is never identified. The BMW plate leads nowhere
+      without a formal Garda investigation. Ronan Cassidy remains
+      anonymous.
+
+      Aoife reads about the ringfort being saved online. She is
+      relieved. But she does not come home. Not yet. She is still
+      afraid. She moves to Cork, changes her name online, stops
+      making the podcast.
+
+      Carrigmore saved its monument but lost its musician. The
+      Wednesday sessions at The Standing Stone continue. The chair
+      stays empty.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: aoife
+    text: "glad about dun carrig. can't come back yet. maybe someday."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Stalker Only (Wrong Ending) ---
+
+  confront_stalker:
+    type: message
+    text: >
+      You present the stalker evidence to the Gardai. They investigate
+      the BMW rental, trace it to Ronan Cassidy.
+    choices:
+      - Wait for the result -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE LISTENER
+
+      Cassidy is arrested and charged. Aoife's immediate fear is
+      addressed. She returns to Carrigmore.
+
+      But without the heritage evidence being presented, Hartigan's
+      resort proceeds. The ringfort is destroyed within months. The
+      field systems are bulldozed. Three thousand years of history,
+      gone for eighteen holes of golf.
+
+      Aoife stands at the headland and watches the construction.
+      She starts recording episode 47. Then she stops.
+
+      "What's the point," she says. "It's gone."
+
+      She never finishes the episode.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Heritage evidence: ${heritage_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Aoife's story explores themes of heritage
+      destruction, obsessive parasocial relationships, community
+      silencing, and the courage of speaking up.
+
+      If you or someone you know is experiencing stalking or harassment,
+      help is available:
+      Women's Aid Ireland: 1800 341 900
+      Crime Victims Helpline: 116 006
+      Samaritans Ireland: 116 123
+      Emergency: 999 / 112

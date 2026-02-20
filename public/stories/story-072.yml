@@ -1,0 +1,1524 @@
+# DEAD ACCOUNT — Story 072: Tiszavirág (Hungary, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-072.yml
+#
+# Player investigates the death of weaver Réka Szabó
+# in the fictional Tisza river village of Tiszavirág.
+
+meta:
+  title: "Dead Account — Tiszavirág"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_eszter: 0
+    trust_tamas: 0
+    trust_margit: 0
+    trust_istvan: 0
+    trust_petra: 0
+    trust_zoltan: 0
+    trust_anna: 0
+    trust_sandor: 0
+    trust_katalin: 0
+    trust_gabor: 0
+    trust_dora: 0
+    trust_bela: 0
+    trust_virag: 0
+    trust_laszlo: 0
+    trust_nora: 0
+    trust_pal: 0
+    trust_reni: 0
+    trust_jozsef: 0
+    trust_orsi: 0
+    trust_hadnagy: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    damming_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Új Lakos
+    bio: "frissen költöztem tiszavirágra. fedezem az alföldet lépésről lépésre"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Tiszavirag.social"
+    description: "Üdvözlünk a Tiszavirág közösségi Mastodon szerverén"
+    avatar_url: /gamepatch/assets/dead-account/tiszavirag_bot.png
+
+  npcs:
+    # === Réka's Inner Circle ===
+    reka:
+      name: "Réka Szabó"
+      bio: "szövőasszony | hagyományos tiszai minták | a szál nem hazudik"
+      avatar: avatars/reka.jpg
+    eszter:
+      name: "Eszter Kis"
+      bio: "réka legjobb barátnője | óvónő | kávé nélkül nem ember | tiszavirág"
+      avatar: avatars/eszter.jpg
+    tamas:
+      name: "Tamás Szabó"
+      bio: "réka bátyja | villanyszerelő | debrecen | a húgom nem tűnik el csak úgy"
+      avatar: avatars/tamas.jpg
+    katalin:
+      name: "Katalin Fekete"
+      bio: "népművész | réka mestere a szövésben | tiszavirág | hagyomány kötelez"
+      avatar: avatars/katalin.jpg
+
+    # === Local Government ===
+    istvan:
+      name: "István Varga"
+      bio: "Tiszavirág polgármestere | a közösségért 2015 óta | #TiszavirágFejlődik"
+      avatar: avatars/istvan.jpg
+    sandor:
+      name: "Sándor Tóth"
+      bio: "alpolgármester | környezetvédelem | Tiszavirág | a Tisza a miénk"
+      avatar: avatars/sandor.jpg
+    onkormanyzat:
+      name: "Tiszavirág Önkormányzat"
+      bio: "Hivatalos fiók | Községi hírek | Ügyfélfogadás: H-P 8-16"
+      avatar: avatars/onkormanyzat.jpg
+
+    # === Local Business & Community ===
+    margit:
+      name: "Margit Néni"
+      bio: "Halászcsárda a Tiszánál | halászlé | túrós csusza | nyitva 1991 óta"
+      avatar: avatars/margit.jpg
+    csarda:
+      name: "Tiszai Halászcsárda"
+      bio: "Házi halászlé | Tiszai hal | Élőzene pénteken | Tiszavirág szíve"
+      avatar: avatars/csarda.jpg
+    gabor:
+      name: "Gábor Molnár"
+      bio: "halász | 35 éve a Tiszán | ez a folyó az életem"
+      avatar: avatars/gabor.jpg
+    bela:
+      name: "Béla Kovács"
+      bio: "révész | tiszavirági komp | kedd-szombat szolgálat"
+      avatar: avatars/bela.jpg
+    anna:
+      name: "Anna Horváth"
+      bio: "gyógyszertár | tiszavirág | egészség & tanácsadás | vasárnap is nyitva"
+      avatar: avatars/anna.jpg
+    dora:
+      name: "Dóra Németh"
+      bio: "pékség németh | kenyér | lángos | kalács | hajnal 4-kor kelünk"
+      avatar: avatars/dora.jpg
+    laszlo:
+      name: "László Papp"
+      bio: "könyvtáros | tiszavirági közkönyvtár | olvasókör szerdán"
+      avatar: avatars/laszlo.jpg
+
+    # === Journalist ===
+    nora:
+      name: "Nóra Balogh"
+      bio: "független újságíró | környezet & vidék | tippek: nora@balogh-media.hu"
+      avatar: avatars/nora.jpg
+
+    # === DunaCorp (corporate) ===
+    dunacorp:
+      name: "DunaCorp Kft."
+      bio: "Vízügyi megoldások | Tiszavirági telephely | ISO 14001 tanúsítvány"
+      avatar: avatars/dunacorp.jpg
+    pal:
+      name: "Pál Szűcs"
+      bio: "DunaCorp telephelyvezető | Tiszavirág | ipar és terület"
+      avatar: avatars/pal.jpg
+    jozsef:
+      name: "József Bodnár"
+      bio: "Ügyvéd | Bodnár & Társai Iroda | Gazdasági jog | Budapest"
+      avatar: avatars/jozsef.jpg
+
+    # === Teens ===
+    petra:
+      name: "Petra"
+      bio: "16 | fényképezés | tiszavirág | a Tisza az élet komolyan"
+      avatar: avatars/petra.jpg
+    zoltan:
+      name: "Zoltán"
+      bio: "17 | horgász & bmx | napkelte session | a víz gyógyít"
+      avatar: avatars/zoltan.jpg
+    virag:
+      name: "Virág"
+      bio: "15 | rajz & festés | a folyópart fekete-fehérben | réka a példaképem"
+      avatar: avatars/virag.jpg
+
+    # === Media & Community ===
+    tisza_hirek:
+      name: "Tisza Hírek"
+      bio: "Tiszavirág és vidéke | Hírek | tippek: szerk@tiszahirek.hu"
+      avatar: avatars/tisza_hirek.jpg
+    idojaras:
+      name: "Időjárás Tiszavirág"
+      bio: "Előrejelzés | Vízállás | Automata mérőállomás | Óránkénti frissítés"
+      avatar: avatars/idojaras.jpg
+    tisza_or:
+      name: "Tiszaőrök Egyesület"
+      bio: "A Tisza védelméért | Önkéntesek | Szennyezés bejelentés"
+      avatar: avatars/tisza_or.jpg
+
+    # === Suspicious / Other ===
+    reni:
+      name: "Reni Takács"
+      bio: "laboráns | DunaCorp | csinálom a dolgom, ennyi"
+      avatar: avatars/reni.jpg
+    orsi:
+      name: "Orsi Farkas"
+      bio: "."
+      avatar: avatars/anon.jpg
+    hadnagy:
+      name: "Hadnagy Király"
+      bio: "Tiszavirági Rendőrőrs | Körzeti megbízott | segélyhívó: 107"
+      avatar: avatars/hadnagy.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN TISZAVIRÁG
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Tiszavirag.social — the community Mastodon instance for
+      the Tisza river village of Tiszavirág.
+
+      The local feed is unsettled today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @reka_szabo.
+
+      A weaver. Traditional Tisza patterns. She documented the old crafts
+      and the river ecology. People are worried. She hasn't posted in
+      six days.
+    choices:
+      - Look at her profile -> reka_profile
+
+  reka_profile:
+    type: tweet
+    from: reka
+    text: "A Tisza-parti réteket elárasztják. Valaki gátat épít az Öreg-foknál. Van bizonyítékom. Ez nem vízügy — ez üzlet."
+    choices:
+      - That's her last real post... -> grey_thread
+
+  grey_thread:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of river reeds, overexposed, shot at a strange
+      angle. Posted at 2am. No caption.
+
+      Her friends say that's not her style. Réka always wrote long
+      poetic captions about her weaving and the river. The police say
+      she probably went to visit family. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: hadnagy
+    text: >
+      Bejelentés érkezett tiszavirági lakos eltűnéséről. Jelenlegi
+      ismereteink szerint bűncselekmény gyanúja nem áll fenn. Minden
+      hasznos információt a 107-es számon vagy az őrsön fogadunk.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @eszter_kis is
+      desperate. Her brother @tamas_szabo is driving down from Debrecen.
+      Her weaving master @katalin_fekete is posting worried messages.
+      The fisherman @gabor_molnar says she was right about the water
+      levels.
+
+      And the journalist @nora_balogh is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Réka just "went to
+      visit family."
+    effects: { trust_eszter: "+5", trust_tamas: "+5" }
+    choices:
+      - Start following Réka's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Tiszavirág. Follow Réka's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Margit (csárda owner, knows everyone) -> margit_intro
+      - Talk to Gábor (fisherman, saw the water change) -> gabor_intro
+      - Talk to Petra (teen photographer, seems shaken) -> petra_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Réka with the rhythms of a small
+      river village: water level reports, the bakery's lángos specials,
+      fishing conditions, ferry schedules.
+
+      Key names surface: Eszter (best friend, kindergarten teacher),
+      Katalin (weaving master, rattled), Nóra (journalist, oddly quiet),
+      and the teens — Petra, Zoltán, Virág — who adored Réka's craft
+      and river photography.
+
+      Also prominent: DunaCorp Kft., the water engineering company with
+      a site at the edge of the village. Their posts are corporate PR.
+      Réka's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Margit -> margit_intro
+      - Talk to Gábor -> gabor_intro
+      - Talk to Petra -> petra_intro
+
+  # --- Margit (social map) ---
+
+  margit_intro:
+    type: tweet
+    from: margit
+    text: >
+      Nyitva a csárda, de a szívem nehéz. @reka_szabo, a törzsasztalod
+      vár. Gyere haza, kislányom.
+    effects: { trust_margit: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Margit -> margit_talk
+
+  margit_talk:
+    type: message
+    text: >
+      MARGIT: Új vagy itt? Isten hozott. Szörnyű időben érkeztél.
+      Mindenki kiakad Réka miatt.
+
+      Hadd meséljek, ki kicsoda. Eszter a legjobb barátnője — együtt
+      nőttek fel, mint két nővér. Katalin néni tanította szőni, az ő
+      műhelyében dolgozott. Tamás a bátyja, Debrecenből jön le.
+
+      És Nóra Balogh — az újságírónő — ő és Réka együtt dolgoztak
+      valamin. A Tiszáról, a vízszintekről. Nóra egy szót sem szólt,
+      mióta Réka eltűnt. Ez nem rá vall.
+
+      Ja, és a DunaCorp-os PR posztokat felejtsd el. Hazugság az
+      egész, ISO papírba csomagolva.
+    effects: { trust_margit: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Katalin -> margit_katalin
+      - Ask about DunaCorp -> margit_dunacorp
+      - Thank her and move on -> quest1_hub
+
+  margit_katalin:
+    type: message
+    text: >
+      MARGIT: Katalin? Réka mestere volt. Ötven éve szövi a tiszai
+      mintákat. Réka volt az egyetlen fiatal, aki megtanulta. De az
+      utóbbi hónapokban Katalin furcsán viselkedett. Mindenhol ott volt,
+      ahol Réka. A csárdában, a piacon, a folyóparton. Mindig fényképezte
+      Rékát munka közben. Réka udvarias volt, de láttam rajta, hogy
+      zavarja.
+
+      Réka egyszer mondta nekem: "Katalin néni a szövést figyeli, nem
+      engem." De nem hangzott úgy, mintha ő maga hinné.
+    effects: { trust_margit: "+5" }
+    choices:
+      - Ask about DunaCorp -> margit_dunacorp
+      - Move on -> quest1_hub
+
+  margit_dunacorp:
+    type: message
+    text: >
+      MARGIT: Az a cég két éve van itt. Vízügyi munkákat csinálnak,
+      gátakat, csatornákat, nem tudom pontosan. A falu eltűrte, mert
+      munkát adtak. De a halászok már régóta panaszkodnak — a víz
+      szintje változik, a halak eltűnnek, a rétek kiszáradnak.
+
+      Réka volt az első, aki kiment a fényképezőgépével és a
+      mintavevőjével. Azt mondta, bizonyítéka van, hogy a DunaCorp
+      illegálisan gátat épít, eltereli a vizet. Két héttel később
+      eltűnt.
+    effects: { trust_margit: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Gábor (the river, witness tease) ---
+
+  gabor_intro:
+    type: tweet
+    from: gabor
+    text: >
+      harmincöt éve halászok ezen a folyón. a víz nem az, ami volt.
+      @reka_szabo igazat mondott. és most eltűnt. gondolkodjatok el.
+    effects: { trust_gabor: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Gábor -> gabor_talk
+
+  gabor_talk:
+    type: message
+    text: >
+      GÁBOR: Tizenöt éves korom óta halászok itt. Ismerem a Tisza
+      minden áramlatát, minden színét. És mondom neked — a víz az
+      Öreg-foknál nincs rendben. Hónapok óta. A hálóm üres, a
+      halak eltűntek. A mederben valami megváltozott.
+
+      Réka mintákat vett. Lemerült a fokhoz. Lefényképezett mindent.
+      Ügyet épített. Aztán egyszer csak — nincs.
+
+      Véletlennek gondolod? Én nem hiszek a véletlenekben, ha a
+      Tiszáról van szó.
+    effects: { trust_gabor: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> gabor_night
+      - Move on -> quest1_hub
+
+  gabor_night:
+    type: message
+    text: >
+      GÁBOR: Az éjjel, mielőtt eltűnt — éjszakai horgászatról jöttem
+      haza, éjfél körül. Lámpákat láttam a műhely felé. Nem szokatlan,
+      a szövők néha későn dolgoznak. De két kocsi állt a közelben. Az
+      egyik Réka kis Suzukija. A másik egy fekete furgon DunaCorp
+      matricával.
+
+      Éjfélkor. A szövőműhely mellett.
+
+      Akkor nem gondoltam bele. Most állandóan ezen gondolkodom.
+    effects: { trust_gabor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Petra (teen photographer, witness tease) ---
+
+  petra_intro:
+    type: tweet
+    from: petra
+    text: >
+      a kurva életbe @reka_szabo ő tanított meg fotózni a folyóparton
+      komolyan nem lehet h csak úgy eltűnt. ha vki tud vmit pls írjatok
+    effects: { trust_petra: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Petra -> petra_talk_early
+
+  petra_talk_early:
+    type: message
+    text: >
+      PETRA: új vagy? bazmeg szar időben jöttél ide. amúgy réka a
+      legjobb ember ezen a falun. ő tanította meg a tinédzsereket
+      fotózni, szőni, tisztelni a folyót. geci cool volt.
+
+      és most kiakadok mert zoli látott vmi furát a kompnál de nem
+      akar beszélni róla. mondja h semmi de nem semmi bazmeg
+    effects: { trust_petra: "+10" }
+    choices:
+      - What did Zoltán see? -> petra_zoltan_hint
+      - Move on -> quest1_hub
+
+  petra_zoltan_hint:
+    type: message
+    text: >
+      PETRA: nem tudom pontosan. horgászott az estében a kompnál és
+      látott valakit aki a réka műhelyében szarakodott. vagy a
+      kocsijánál. baszd meg nem tudom. zoli fél, nem akar beszélni.
+      kérdezd meg direktbe de előbb beszélj horgászatról vele mert
+      gyanakszik az ismeretlenekre lol
+    effects: { trust_petra: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Tiszavirág. A small Tisza river village
+      built around the water and old crafts. A weaver who was exposing
+      illegal river damming. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Eszter (Réka's best friend) -> eszter_q1
+      - Talk to Katalin (Réka's weaving master) -> katalin_q1
+      - Check what Tamás (Réka's brother) is saying -> tamas_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Eszter Q1 ---
+
+  eszter_q1:
+    type: tweet
+    from: eszter
+    text: >
+      ha valaki tud bármit @reka_szabo-ról, hívjatok kérlek. a szobája
+      érintetlen. a szövőszéke ott áll. soha nem hagyta volna ott a
+      munkát befejezés nélkül.
+    effects: { trust_eszter: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Eszter -> eszter_q1_talk
+
+  eszter_q1_talk:
+    type: message
+    text: >
+      ESZTER: Köszi, hogy írsz, de nem ismerlek. Rékának sok barátja
+      van itt. Biztos vagyok benne, hogy visszajön.
+
+      ...ezt mondom mindenkinek. Magamnak már nem hiszem el.
+
+      [Eszter óvatos. Több bizalomra lesz szükség, mielőtt megnyílik.]
+    effects: { trust_eszter: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Katalin Q1 ---
+
+  katalin_q1:
+    type: tweet
+    from: katalin
+    text: >
+      A műhely üres @reka_szabo nélkül. A szövőszéken félig kész a
+      minta. A fonalai az asztalon. Soha nem hagyta volna abba a
+      munkát félúton. Valami történt.
+    effects: { trust_katalin: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Katalin -> katalin_q1_talk
+
+  katalin_q1_talk:
+    type: message
+    text: >
+      KATALIN: Réka a legjobb tanítványom volt. Öt éve tanítom szőni.
+      Egyedülálló tehetség. Ez a szennyezés-vizsgálat — mindent beleadott.
+      Fotókat, mintákat, elemzéseket készített. Közel járt ahhoz, hogy
+      nyilvánosságra hozza.
+
+      Felajánlottam a segítségemet. Többször is. Azt mondta, kézben
+      tartja. Azt mondta, egy újságíróval dolgozik. Én csak támogatni
+      akartam.
+
+      [Katalin őszintének tűnik. Vagy megszállottnak?]
+    effects: { trust_katalin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tamás Q1 ---
+
+  tamas_q1:
+    type: tweet
+    from: tamas
+    text: >
+      A HÚGOM ELTŰNT és a rendőrség azt mondja talán elment a
+      rokonokhoz??? NEM MEGY EL SZÓLÁS NÉLKÜL. debrecenből megyek.
+      valaki el fogja mondani mi történt.
+    effects: { trust_tamas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Tamás -> tamas_q1_talk
+
+  tamas_q1_talk:
+    type: message
+    text: >
+      TAMÁS: Ki vagy te? Még egy ember abból a faluból, aki azt mondja
+      nyugodjak le? A húgom hívott az éjjel, mielőtt eltűnt. Azt mondta,
+      van valami nagy dolog. Azt mondta, "ha bármi történik, nézd meg
+      a DunaCorp-ot." Aztán letette.
+
+      Ez az utolsó, amit hallottam tőle.
+    effects: { trust_tamas: "+10" }
+    choices:
+      - What do you think happened? -> tamas_theory
+      - Move on -> quest1_hub
+
+  tamas_theory:
+    type: message
+    text: >
+      TAMÁS: Szerintem kiderítette, hogy a DunaCorp illegálisan gátol
+      és eltüntették a bizonyítékait. De az is lehet, hogy az a fura
+      szövőmester — Katalin — többet tud, mint amennyit mond. Ahogy
+      Rékáról beszél... az nem csak szakmai aggódás. Az valami más.
+
+      Réka hónapokkal ezelőtt mondta, hogy valaki járkál a műhely
+      körül éjszaka. Fényképezi őt. Azt hitte, semmiség. Szerintem
+      nem semmiség.
+    effects: { trust_tamas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Réka went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Zoltán (was fishing at sunset near the ferry) -> zoltan_interview
+      - Find Béla (ferryman, works late) -> bela_interview
+      - Find Gábor (fisherman, early morning on the river) -> gabor_interview
+      - Find Dóra (baker, starts at 4am, saw something) -> dora_interview
+
+  # --- Zoltán (saw someone at Réka's workshop) ---
+
+  zoltan_interview:
+    type: tweet
+    from: zoltan
+    text: >
+      jó session volt az estés horgászat de a kompnál fura a hangulat
+      mostanában. vmi nem stimmel. nem tudom megmagyarázni
+    effects: { trust_zoltan: "+5" }
+    choices:
+      - Ask Zoltán about that evening -> zoltan_talk
+
+  zoltan_talk:
+    type: message
+    text: >
+      ZOLTÁN: faszom oké de ne mondd el senkinek. a kompnál voltam
+      este hét körül, horgásztam. és láttam katalin nénit réka
+      műhelyénél. kurvára furcsa volt, bent volt egyedül, az asztalnál
+      babrált. mikor meglátott engem, rohant ki mint akit kergetnek.
+
+      geci nem szóltam senkinek mert ugye ki hinné el. egy
+      tinédzser vádolja a híres szövőmestert. bazmeg lol nem.
+    effects:
+      trust_zoltan: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Béla (ferryman, saw late-night meeting) ---
+
+  bela_interview:
+    type: tweet
+    from: bela
+    text: >
+      Figyelem: a komp este 10 után nem közlekedik. Az utóbbi
+      éjszakákon illetéktelen forgalmat észleltem a rakodóparton.
+    effects: { trust_bela: "+5" }
+    choices:
+      - Ask Béla what he saw -> bela_talk
+
+  bela_talk:
+    type: message
+    text: >
+      BÉLA: Este tíz körül zártam a kompot. Láttam, hogy Réka kocsija
+      még ott áll a műhely mellett. Mellette egy fekete furgon — DunaCorp
+      logóval. Két férfi állt a műhely bejáratánál. Az egyiket
+      felismertem: Pál Szűcs, a telephelyvezető.
+
+      Este tíz. A szövőműhelynél. Ez nem normális.
+
+      Beírtam a kompos naplóba. Senki nem kérte el.
+    effects:
+      trust_bela: "+10"
+      night_witnesses: "+1"
+      damming_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Gábor (saw Réka fleeing) ---
+
+  gabor_interview:
+    type: tweet
+    from: gabor
+    text: >
+      hajnali négykor keltem a hálóhoz. a gát nem volt üres abban a
+      korán. valaki futott a töltésen. a sötétben. nem kocogó volt az.
+    effects: { trust_gabor: "+5" }
+    choices:
+      - Ask Gábor what he saw -> gabor_talk_night
+
+  gabor_talk_night:
+    type: message
+    text: >
+      GÁBOR: Hajnali négykor kelek a hálók miatt. Azon a reggelen —
+      Réka utolsó posztja utáni reggelen — láttam valakit a töltésen.
+      Futott. Egy nő, táskával, az Öreg-fok felé. Még sötét volt.
+      Gyorsan mozgott, mintha félne.
+
+      Kiáltottam, de nem állt meg. Gondoltam, futó, de... ki fut
+      hajnali négykor oldaltáskával?
+
+      Mikor meghallottam Rékáról, összeraktam a képet. Szerintem ő
+      volt az. Menekült valami elől.
+    effects:
+      trust_gabor: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dóra (saw car chase) ---
+
+  dora_interview:
+    type: tweet
+    from: dora
+    text: >
+      Négykor sütöm a kenyeret, ahogy mindig. De azon a reggelen
+      egy autó rohant végig a gátúton. Sokkal túl gyorsan.
+    effects: { trust_dora: "+5" }
+    choices:
+      - Ask Dóra what she saw -> dora_talk
+
+  dora_talk:
+    type: message
+    text: >
+      DÓRA: Hajnali négykor kelek sütni, minden nap. Azon a reggelen
+      nyitottam a redőnyt és egy kocsi rohant el — gyorsan, sokkal túl
+      gyorsan a gátúton. Sötét furgon. Aztán talán két perccel később
+      egy másik. Kisebb, világosabb. Üldözés? Nem tudom.
+
+      A második kocsi letért az öreg halászkunyhóknál az Öreg-foknál.
+      Az első ment tovább a 33-as felé.
+
+      Mondtam a rendőröknek. Leírták. Ennyi volt.
+    effects:
+      trust_dora: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Eszter (best friend)
+      and Virág (saw Katalin watching the workshop).
+    choices:
+      - Talk to Eszter about that night -> eszter_interview
+      - Talk to Virág -> virag_interview
+      - Find Zoltán -> zoltan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Béla -> bela_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Gábor -> gabor_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dóra -> dora_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Eszter (last to see Réka) ---
+
+  eszter_interview:
+    type: tweet
+    from: eszter
+    text: >
+      az a fotó réka fiókjában. nem ő volt. réka soha nem posztol
+      képaláírás nélkül. réka nem posztol hajnali kettőkor. valaki más
+      csinálta.
+    effects: { trust_eszter: "+5" }
+    choices:
+      - DM Eszter -> eszter_talk_low
+        when:
+          state: trust_eszter
+          lt: 50
+      - DM Eszter -> eszter_talk_high
+        when:
+          state: trust_eszter
+          gte: 50
+
+  eszter_talk_low:
+    type: message
+    text: >
+      ESZTER: Köszönöm az aggódást, de tényleg nem akarok
+      idegenekkel erről beszélni most.
+
+      [Eszter needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_eszter: "+5" }
+    choices:
+      - Share what you've learned about the night -> eszter_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  eszter_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the van at the workshop, the
+      company men, the running figure. Eszter is silent for a while.
+
+      ESZTER: Tényleg próbálod megtalálni. Oké. Beszélek.
+    effects: { trust_eszter: "+25" }
+    choices:
+      - What happened that night? -> eszter_talk_high
+
+  eszter_talk_high:
+    type: message
+    text: >
+      ESZTER: Este tizenegykor jött haza. Az esti műszakomra készültem.
+      Sápadt volt, remegett. Azt mondta, "tudják, mi van nálam." Fogta
+      a laptopját és a kamera merevlemezeit.
+
+      Kérdeztem, kik. Azt mondta, "a cég. Embereket küldtek a
+      műhelybe." Aztán mondott még valamit — "és ő is ott volt.
+      Mindig ott van."
+
+      Nem mondta meg, ki az az "ő". Megölelt, mondta "ne aggódj," és
+      elment egy táskával. Ennyi. Reggelre a kocsija eltűnt és a
+      homályos fotó fent volt a fiókján.
+    effects:
+      trust_eszter: "+15"
+      night_witnesses: "+1"
+      damming_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Virág (saw Katalin watching the workshop) ---
+
+  virag_interview:
+    type: message
+    text: >
+      VIRÁG: oké geci tudom h fura amit mondok de a szövőmester —
+      katalin néni — háromszor láttam réka műhelye előtt este. csak
+      állt ott és nézte az ablakokat. faszom creepy volt.
+
+      utoljára két nappal azelőtt láttam mielőtt réka eltűnt. a
+      kocsijában ült szemben a műhellyel. csak ült. a lámpák le
+      voltak kapcsolva.
+    effects:
+      trust_virag: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Katalin seen inside Réka's workshop alone (Zoltán)
+      22:00 — DunaCorp van at the workshop, Pál Szűcs present (Béla)
+      23:00 — Réka arrives home, shaken, grabs laptop and drives (Eszter)
+      04:00 — Woman running on the levee toward Öreg-fok (Gábor)
+      04:15 — Two cars speeding on the levee road, one toward Öreg-fok (Dóra)
+
+      DunaCorp confronted Réka at her workshop. She fled home, grabbed
+      her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is DunaCorp hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Katalin really doing? Why was she in
+        the workshop?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Katalin -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${damming_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: damming_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      DunaCorp is hiding something. Réka had proof. Now she's gone and
+      her evidence is missing from the workshop.
+
+      Damming evidence: ${damming_evidence}
+    choices:
+      - Search the workshop records -> workshop_records
+      - Talk to Nóra the journalist -> nora_interview
+      - Talk to Reni (DunaCorp lab tech) -> reni_interview
+      - Talk to Sándor (environment deputy mayor) -> sandor_interview
+      - Check the Tiszaőrök association -> tisza_or_investigation
+      - Talk to Gábor about the damming -> gabor_damming
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Records ---
+
+  workshop_records:
+    type: message
+    text: >
+      Réka's workshop is also her research base. Her public blog shows
+      her recent work: water level measurements from eight sites along
+      the Tisza. The data for Öreg-fok is marked "PENDING REVIEW" —
+      the only site with that status.
+
+      Her photo log, shared with the Tiszaőrök for documentation,
+      shows she made 14 field trips to the DunaCorp dam construction
+      site in the past month. The last entry: "Photographed secondary
+      channel diversion. Undeclared earthworks. Water flow is not
+      what they report to the vízügy."
+    effects:
+      damming_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Nóra ---
+
+  nora_interview:
+    type: message
+    text: >
+      NÓRA: Nem beszélek forrásokról. Pont.
+    effects: { trust_nora: "+5" }
+    choices:
+      - Show Nóra the evidence you have -> nora_with_evidence
+        when:
+          state: damming_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  nora_with_evidence:
+    type: message
+    text: >
+      NÓRA: ...többed van, mint gondoltam.
+
+      Oké. Réka és én együtt dolgoztunk. Fotói voltak egy be nem
+      jelentett gátról — a DunaCorp egy másodlagos csatornát épített,
+      ami semmilyen engedélyen nem szerepel. Vízszint-mérései bizonyították,
+      hogy a Tisza ártéri vizét szándékosan elterelik — a nedves rétek
+      kiszáradnak, az ökoszisztéma összeomlik.
+
+      Együtt akartuk publikálni. Aztán eltűnt. Két nappal később
+      valaki betört a kocsimba és ellopta a biztonsági merevlemezemet.
+
+      Réka él. Egyszer felhívott egy ismeretlen számról. Azt mondta,
+      bujkál. Azt mondta, "megfenyegettek a műhelyben és van valaki más
+      is, aki nem hagy békén."
+
+      Nem mondhatom meg, hol van. De elég bizonyítékkal publikálni
+      tudok, és biztonságos lesz hazajönnie.
+    effects:
+      trust_nora: "+25"
+      damming_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> nora_hint
+      - Back to investigation hub -> investigation_hub
+
+  nora_hint:
+    type: message
+    text: >
+      NÓRA: A cég elküldte a telephelyvezetőt — Szűcsöt — meg valami
+      ügyvédet a műhelybe azon az estén. Megmondták neki, adjon át
+      mindent, különben jogi következményei lesznek. Megfélemlítés,
+      jogi köntösbe bújtatva.
+
+      De mondott valamit egy másik emberről is. Valakiről a
+      műhelyből. Valakiről, aki folyton a fájljaiban kutakodott.
+      Valakiről, aki mindig tudta, hol van. Az egy másik probléma.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Reni (DunaCorp whistleblower) ---
+
+  reni_interview:
+    type: message
+    text: >
+      RENI: A DunaCorp-nál dolgozom. Csak egy laboráns vagyok.
+      Méréseket végzek, jelentéseket írok.
+
+      De a jelentések, amiket írok... nem mindig azok a jelentések
+      kerülnek a vízügyhöz.
+    effects: { trust_reni: "+10" }
+    choices:
+      - What do you mean? -> reni_detail
+
+  reni_detail:
+    type: message
+    text: >
+      RENI: Vízszintet mérek. Áramlási sebességet, üledékszintet. A
+      számok a főnökömhöz mennek. Valahol az asztalom és a hatósági
+      jelentés között megváltoznak. Mindig lefelé. A vízszint mindig
+      magasabb a papíron, mint a valóságban.
+
+      Réka mérései kívülről igazolták az ÉN eredeti számaimat, nem a
+      hivatalos jelentésben szereplőket. Független bizonyítéka volt arra,
+      hogy a DunaCorp meghamisítja a vízelvezetési adatokat.
+
+      Félek. Van családom. De megőriztem az eredeti jelentéseimet. Ha
+      valaki megvéd, megosztom.
+    effects:
+      trust_reni: "+15"
+      damming_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sándor ---
+
+  sandor_interview:
+    type: message
+    text: >
+      SÁNDOR: Alpolgármesterként komolyan veszem ezeket a vádakat.
+      De a DunaCorp kétszáz embert foglalkoztat ebben a községben. A
+      polgármester ragaszkodik hozzá, hogy "fenn kell tartani a
+      párbeszédet."
+
+      Nem hivatalosan? Láttam a vízügyi jelentéseket. A DunaCorp minden
+      ellenőrzésen átmegy. De az ellenőrzéseket két héttel előre
+      bejelentik. Addigra rendbe teszik a számokat.
+
+      Rékánál be nem jelentett adatok voltak. Ettől veszélyes.
+    effects:
+      trust_sandor: "+10"
+      damming_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Tiszaőrök ---
+
+  tisza_or_investigation:
+    type: tweet
+    from: tisza_or
+    text: >
+      FIGYELEM: Rendellenes vízszintcsökkenés az Öreg-foknál.
+      Dokumentáció és mintavétel folyamatban. Be nem jelentett
+      vízügyi ellenőrzést kérünk a DunaCorp telephelyén.
+    choices:
+      - Check their data -> tisza_or_data
+
+  tisza_or_data:
+    type: message
+    text: >
+      The Tiszaőrök have been documenting water levels for four years.
+      Their data shows a clear pattern: water level drops at Öreg-fok
+      that correspond to DunaCorp's construction schedule. Lower during
+      work days, stable on weekends. Sudden drops at night, recovery
+      during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate illegal
+      water diversion timed to avoid detection.
+
+      Réka was a founding member. She contributed most of the field
+      photography and weaving-pattern-inspired data visualizations.
+    effects:
+      damming_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gábor damming ---
+
+  gabor_damming:
+    type: message
+    text: >
+      GÁBOR: Mutatok neked valamit. Múlt hónapban a hálóimat a foknál
+      húztam ki és találtam ezeket — betondarabok, vasmaradványok, nem
+      természetes hordalék. A DunaCorp tételszámmal.
+
+      Lefotóztam és elküldtem Rékának. Azt mondta, ez a hiányzó darab —
+      bizonyíték, hogy nem csak vizet terelnek el, hanem a medret is
+      átépítik. Illegális gátépítés a Tiszán.
+
+      Megvannak a fotók. És a tételszám.
+    effects:
+      trust_gabor: "+10"
+      damming_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Katalin Fekete. Weaving master. Mentor. Something more?
+      Someone was going through Réka's workshop at night. Someone was
+      watching the building. Someone was photographing her constantly.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Katalin's workshop access -> workshop_access
+      - Talk to Eszter about Katalin -> eszter_katalin
+        when:
+          state: trust_eszter
+          gte: 20
+      - Talk to Zoltán (more detail on workshop incident) -> zoltan_detail
+      - Talk to Anna the pharmacist -> anna_interview
+      - Check the anonymous account @orsi_farkas -> orsi_investigation
+      - Talk to László the bookseller -> laszlo_interview
+        when:
+          state: trust_laszlo
+          gte: 40
+      - Talk to Hadnagy Király -> hadnagy_interview
+        when:
+          state: trust_hadnagy
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Access ---
+
+  workshop_access:
+    type: message
+    text: >
+      The weaving workshop has a simple sign-in book — Réka was
+      old-fashioned about it. Checking the entries: Réka signed in
+      38 times last month. Katalin signed in 61 times. Nearly double.
+
+      Cross-referencing: on 27 of Katalin's 61 visits, she arrived
+      within twenty minutes of Réka. She arrived after her and left
+      after her. Every time.
+
+      Katalin's own workshop is across the village.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Eszter on Katalin ---
+
+  eszter_katalin:
+    type: message
+    text: >
+      ESZTER: Katalin? Rékát zaklatta. Mindig ott volt a csárdában,
+      amikor Réka. Felajánlotta, hogy hazakíséri. Minden egyes
+      posztjára perceken belül kommentelt.
+
+      Réka megmondta neki, hogy nem érdekli, amit keres. Világosan,
+      kedvesen. Katalin azt mondta, érti. Aztán semmi nem változott.
+      Csak... folyton ott volt. Mindig ott.
+
+      Egy hónapja Réka észrevette, hogy valaki járt a műhelyében
+      munkaidőn kívül. A kutatási anyagai meg voltak nyitva. Katalinra
+      gyanakodott, de nem tudta bizonyítani.
+    effects:
+      trust_eszter: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Zoltán detail ---
+
+  zoltan_detail:
+    type: message
+    text: >
+      ZOLTÁN: a kurva életbe oké nem mondtam el mindent. mikor láttam
+      katalin nénit réka műhelyében, volt nála vmi. egy kis gép, olyan
+      mint egy fényképezőgép. de nem fényképezett hanem réka szövőszékére
+      rakta. mint egy rejtett kamera bazmeg.
+
+      geci nem vagyok szakértő de kurvára úgy nézett ki mint egy
+      megfigyelő kamera. olyan amit a filmekben látsz.
+
+      szólnom kellett volna de ki hitt volna el. egy tinédzser vádol
+      egy híres mesterszövőt. faszom na nem.
+    effects:
+      trust_zoltan: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anna ---
+
+  anna_interview:
+    type: message
+    text: >
+      ANNA: Ez bizalmas, de gyógyszerész vagyok, nem pap. Katalin Fekete
+      rendszeresen bejön. Olyan dolgokat vesz, amik... arra utalnak,
+      hogy nem alszik. Szorongásoldót, altatót, energiaitalokat. A
+      minta egy szélsőségesen stresszes emberre utal.
+
+      Egyszer megkérdezte tőlem, nagyon lazán, hogy van-e nálunk
+      nyomkövető. Mondtam, "ez egy gyógyszertár, nem egy műszaki bolt."
+      Nevetett. Nem gondoltam rá többet, amíg Réka el nem tűnt.
+    effects:
+      trust_anna: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Orsi (anonymous account) ---
+
+  orsi_investigation:
+    type: tweet
+    from: orsi
+    text: >
+      Hallgatnia kellett volna rám. Próbáltam megvédeni. Senki más nem
+      értette a munkáját úgy, mint én.
+    choices:
+      - Look at this account's history -> orsi_posts
+
+  orsi_posts:
+    type: message
+    text: >
+      @orsi_farkas: account created 9 months ago. Posts are all about
+      Réka's work. Comments on every weaving photo, every river sample,
+      every craft update. The tone shifts over time:
+
+      Month 1: "Gyönyörű munka. Azt csinálod, amire senki más nem mer
+      vállalkozni."
+      Month 3: "Miért nem válaszolsz az üzeneteimre? Csak együtt akarok
+      dolgozni."
+      Month 6: "Látlak a csárdában másokkal. Rájuk van időd, rám nincs?"
+      Month 8: "Tudom, hova jársz. Ismerem a napirendedet. Mindig
+      közel vagyok."
+
+      The account has no photos, no personal details. Just Réka.
+      Only Réka.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> orsi_style
+
+  orsi_style:
+    type: message
+    text: >
+      Comparing @orsi_farkas with @katalin_fekete:
+
+      Same use of weaving terminology — the specific old Tisza dialect
+      words for patterns. Same Hungarian spelling habits — the way she
+      hyphenates compound craft terms. Same knowledge of Réka's research
+      that only a workshop colleague would have.
+
+      And one post from @orsi_farkas: "A 7-es mintád a szövőszéken
+      csodálatos volt." The "7-es minta" is an internal workshop
+      designation for a traditional pattern. Not public knowledge.
+
+      It's Katalin. The anonymous account is Katalin.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- László ---
+
+  laszlo_interview:
+    type: message
+    text: >
+      LÁSZLÓ: Réka hagyott nálam valamit. Egy lezárt vízálló dobozt.
+      Azt mondta, "ha valaki kérdezi, mi van az Öreg-foknál a víz
+      alatt, add oda."
+
+      Ijedt volt. Azt mondta, mindenről csinált másolatot, de kell egy
+      készlet külső helyen, ahol senki nem gondolná. Egy könyvtár
+      tökéletes.
+    effects: { trust_laszlo: "+10" }
+    choices:
+      - What's under the water at Öreg-fok? -> laszlo_case
+
+  laszlo_case:
+    type: message
+    text: >
+      László lenyúl a pult alá és előhúz egy vízálló Pelican dobozt.
+
+      LÁSZLÓ: Mondta, hogy jössz. Vidd.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show an underwater concrete structure — not the official water
+      management channel, but a second, hidden dam diverting flow away
+      from the floodplains. The USB drive contains water level data,
+      ecological surveys, and Réka's detailed report with woven pattern
+      illustrations showing water flow changes.
+    effects:
+      damming_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Hadnagy Király ---
+
+  hadnagy_interview:
+    type: message
+    text: >
+      HADNAGY KIRÁLY: Nem hivatalosan — és ez teljesen nem hivatalos —
+      nyomozni akartam a DunaCorp ellen. A felettesem megállított.
+      Azt mondta, a vízügy "illetékes." Ez annyit jelent: ne nyúlj
+      hozzá.
+
+      A Katalin-ügyről nem is tudtam eddig. Ha van bizonyítékod
+      zaklatásra, azzal foglalkozni tudok. Az egyértelműen az én
+      hatásköröm.
+
+      Hozz nekem valami szilárd bizonyítékot és újranyitom az ügyet.
+    effects:
+      trust_hadnagy: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Réka than anyone in Tiszavirág. Who is responsible?
+    choices:
+      - Confront Katalin Fekete (the obsessive mentor) -> confront_katalin
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Pál Szűcs (the site director) -> confront_pal
+        when:
+          state: damming_evidence
+          gte: 3
+      - Confront Mayor Varga (political protection) -> confront_istvan
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Katalin (Best Ending) ---
+
+  confront_katalin:
+    type: message
+    text: >
+      You present your evidence to Katalin:
+
+      "I know @orsi_farkas is your account. I know you put a hidden
+      camera in Réka's workshop. I know you went through her files
+      at the workshop. I know you were watching the building at night.
+      I have witnesses and I have the access records."
+    choices:
+      - Send -> katalin_response
+
+  katalin_response:
+    type: message
+    text: >
+      Katalin doesn't reply for a long time. Then:
+
+      KATALIN: Nem érted. Védtem őt. A DunaCorp veszélyeztette és nem
+      engedett segíteni. Tudnom kellett, hogy biztonságban van. Mindent
+      azért tettem, mert törődöm vele. Ő a tanítványom. Ő a legjobb.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Hadnagy Király. And to
+      Nóra Balogh.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Hadnagy Király reopens the case. With your evidence — the
+      anonymous account, the hidden camera, the access records, the
+      witness testimonies — Katalin is arrested for stalking and
+      harassment. A hidden camera is recovered from Réka's loom at
+      the workshop.
+
+      Nóra Balogh, finally in possession of Réka's full evidence
+      package, publishes the DunaCorp story in HVG. The vízügy orders
+      an unannounced inspection. The illegal dam is ordered demolished
+      pending environmental remediation. Pál Szűcs faces criminal
+      charges for falsifying water management reports and illegal
+      construction.
+
+      And Réka Szabó, reading the story from a friend's house in
+      Szeged, calls her brother for the first time in nine days.
+
+      "Hazamegyek."
+
+      If you or someone you know is experiencing stalking or harassment,
+      help is available:
+      NANE Segélyvonal (nők elleni erőszak): 06-80-505-101 (ingyenes)
+      Kék Vonal (gyerekek, fiatalok): 116 111
+      Környezetvédelmi bejelentés: 06-80-201-301
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: reka
+    text: >
+      a szál nem hazudik. és tiszavirág emberei sem. köszi, hogy nem
+      adtátok fel.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Pál (Partial Ending) ---
+
+  confront_pal:
+    type: message
+    text: >
+      You present the damming evidence to Pál Szűcs:
+
+      "I have photographs of the undeclared dam construction. I have
+      water level measurements proving illegal diversion. I have your
+      original reports showing the data was falsified. I have the
+      concrete fragments with your batch numbers."
+    choices:
+      - Send -> pal_response
+
+  pal_response:
+    type: message
+    text: >
+      PÁL: Ezt a beszélgetést továbbítom a jogi osztályunknak. Bármilyen
+      rágalmazó anyag közzététele azonnali jogi eljárást von maga után.
+      A DunaCorp mindig a jogszabályi előírásoknak megfelelően működött.
+
+      But it's too late. You've sent the evidence to Nóra, to the
+      Tiszaőrök, and to the vízügy.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The damming story breaks. DunaCorp is ordered to halt construction
+      pending investigation. The illegal dam may be demolished. Two
+      hundred jobs hang in the balance. The village is divided.
+
+      But Réka?
+
+      Without the stalking evidence, Katalin is never investigated. She
+      continues to visit the workshop. She continues to monitor Réka's
+      accounts. She creates a new anonymous profile.
+
+      Three months later, Réka reads about DunaCorp online. She returns
+      quietly. She changes workshops. She stops working alone at night.
+      She checks her loom every morning for cameras.
+
+      The corporation is exposed. But the person who terrorised Réka
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: reka
+    text: "hazajöttem. a folyó szabadabb. a többi... majd meglátjuk."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_istvan:
+    type: message
+    text: >
+      You confront Mayor Varga with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> istvan_response
+
+  istvan_response:
+    type: tweet
+    from: jozsef
+    text: >
+      Ügyfelünk tudomásul veszi az Ön állításait. Bármilyen rágalmazó
+      tartalom közzététele azonnali jogi eljárást von maga után.
+      — Bodnár & Társai Iroda, Budapest
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct link
+      between Varga and DunaCorp's damming — and there isn't one
+      beyond political protection — your evidence is insufficient.
+
+      DunaCorp continues to operate. Katalin continues to watch.
+      Réka stays in hiding.
+
+      Six months later, @orsi_farkas creates a new account. It follows
+      Réka's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: TISZAVIRÁG — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Damming evidence: ${damming_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Réka's story explores themes of corporate
+      impunity, environmental destruction, obsessive behaviour, rural
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      NANE Segélyvonal (nők elleni erőszak): 06-80-505-101 (ingyenes)
+      Kék Vonal (gyerekek, fiatalok): 116 111
+      Környezetvédelmi bejelentés: 06-80-201-301

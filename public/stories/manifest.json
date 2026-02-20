@@ -1,0 +1,1308 @@
+{
+  "game": "Dead Account",
+  "version": "1.0",
+  "description": "A TactCheck Gamepatch investigation game. Each story is set in a different EU town with a unique Mastodon-like social instance.",
+  "total_stories": 100,
+  "stories": [
+    {
+      "id": "story-001",
+      "file": "story-001.yml",
+      "country": "Netherlands",
+      "town": "Zuidhaven",
+      "instance": "Zuidhaven.social",
+      "victim": "Noor El Amrani",
+      "role": "artist & illustrator",
+      "threads": [
+        "stalking",
+        "corruption"
+      ]
+    },
+    {
+      "id": "story-002",
+      "file": "story-002.yml",
+      "country": "France",
+      "town": "Port-Lunel",
+      "instance": "PortLunel.social",
+      "victim": "Chloé Moreau",
+      "role": "marine biologist",
+      "threads": [
+        "obsession",
+        "corporate pollution"
+      ]
+    },
+    {
+      "id": "story-003",
+      "file": "story-003.yml",
+      "country": "Germany",
+      "town": "Grünwald",
+      "instance": "Gruenwald.social",
+      "victim": "Lena Hoffmann",
+      "role": "music student",
+      "threads": [
+        "stalking",
+        "university fraud"
+      ]
+    },
+    {
+      "id": "story-004",
+      "file": "story-004.yml",
+      "country": "Spain",
+      "town": "Caleta del Faro",
+      "instance": "CaletaDelFaro.social",
+      "victim": "Carmen Ruiz",
+      "role": "flamenco teacher",
+      "threads": [
+        "obsessive ex",
+        "tourism corruption"
+      ]
+    },
+    {
+      "id": "story-005",
+      "file": "story-005.yml",
+      "country": "Italy",
+      "town": "Colleverdi",
+      "instance": "Colleverdi.social",
+      "victim": "Davide Ferraro",
+      "role": "street artist",
+      "threads": [
+        "obsessive rival",
+        "land seizure"
+      ]
+    },
+    {
+      "id": "story-006",
+      "file": "story-006.yml",
+      "country": "Portugal",
+      "town": "Vila do Sal",
+      "instance": "ViladoSal.social",
+      "victim": "Beatriz Santos",
+      "role": "marine conservationist",
+      "threads": [
+        "threats",
+        "illegal fishing"
+      ]
+    },
+    {
+      "id": "story-007",
+      "file": "story-007.yml",
+      "country": "Ireland",
+      "town": "Carrigmore",
+      "instance": "Carrigmore.social",
+      "victim": "Aoife Brennan",
+      "role": "traditional musician",
+      "threads": [
+        "obsessive listener",
+        "heritage destruction"
+      ]
+    },
+    {
+      "id": "story-008",
+      "file": "story-008.yml",
+      "country": "Sweden",
+      "town": "Silverby",
+      "instance": "Silverby.social",
+      "victim": "Astrid Lindqvist",
+      "role": "climate activist",
+      "threads": [
+        "ex-partner surveillance",
+        "mining pollution"
+      ]
+    },
+    {
+      "id": "story-009",
+      "file": "story-009.yml",
+      "country": "Poland",
+      "town": "Brzeziny",
+      "instance": "Brzeziny.social",
+      "victim": "Kasia Kowalska",
+      "role": "theater student & activist",
+      "threads": [
+        "troll network",
+        "police misconduct"
+      ]
+    },
+    {
+      "id": "story-010",
+      "file": "story-010.yml",
+      "country": "Greece",
+      "town": "Thalassa",
+      "instance": "Thalassa.social",
+      "victim": "Elena Papadopoulos",
+      "role": "archaeology student",
+      "threads": [
+        "academic rival",
+        "antiquities trafficking"
+      ]
+    },
+    {
+      "id": "story-011",
+      "file": "story-011.yml",
+      "country": "Austria",
+      "town": "Bergfeld",
+      "instance": "Bergfeld.social",
+      "victim": "Hannah Steiner",
+      "role": "mountain guide",
+      "threads": [
+        "obsessive ex-partner",
+        "construction corruption"
+      ]
+    },
+    {
+      "id": "story-012",
+      "file": "story-012.yml",
+      "country": "Belgium",
+      "town": "Ferrières-les-Forges",
+      "instance": "Ferrières.social",
+      "victim": "Noémie Claessens",
+      "role": "chocolatier",
+      "threads": [
+        "obsessive competitor",
+        "chemical dumping"
+      ]
+    },
+    {
+      "id": "story-013",
+      "file": "story-013.yml",
+      "country": "Croatia",
+      "town": "Kamenica",
+      "instance": "Kamenica.social",
+      "victim": "Nikola Jurić",
+      "role": "freedive instructor",
+      "threads": [
+        "stalking",
+        "illegal trawling"
+      ]
+    },
+    {
+      "id": "story-014",
+      "file": "story-014.yml",
+      "country": "Czech Republic",
+      "town": "Skelné Údolí",
+      "instance": "SkelneUdoli.social",
+      "victim": "Marek Dvořák",
+      "role": "glassblower",
+      "threads": [
+        "obsessive mentor",
+        "toxic waste"
+      ]
+    },
+    {
+      "id": "story-015",
+      "file": "story-015.yml",
+      "country": "Denmark",
+      "town": "Thyborøn",
+      "instance": "Thyborøn.social",
+      "victim": "Mads Vestergaard",
+      "role": "wind energy engineer",
+      "threads": [
+        "stalking",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-016",
+      "file": "story-016.yml",
+      "country": "Estonia",
+      "town": "Rannaküla",
+      "instance": "Rannaküla.social",
+      "victim": "Marten Tamm",
+      "role": "programmer & digital artist",
+      "threads": [
+        "online stalker",
+        "data harvesting"
+      ]
+    },
+    {
+      "id": "story-017",
+      "file": "story-017.yml",
+      "country": "Finland",
+      "town": "Savukoski",
+      "instance": "Savukoski.social",
+      "victim": "Elina Mäkinen",
+      "role": "reindeer herder",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-018",
+      "file": "story-018.yml",
+      "country": "Hungary",
+      "town": "Hévízkút",
+      "instance": "Hévízkút.közösség",
+      "victim": "Bence Szilágyi",
+      "role": "folk musician",
+      "threads": [
+        "obsessive ex",
+        "thermal water privatization"
+      ]
+    },
+    {
+      "id": "story-019",
+      "file": "story-019.yml",
+      "country": "Latvia",
+      "town": "Dzintarkrasts",
+      "instance": "Dzintarkrasts.social",
+      "victim": "Elīna Bērziņa",
+      "role": "beekeeper",
+      "threads": [
+        "jealousy",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-020",
+      "file": "story-020.yml",
+      "country": "Lithuania",
+      "town": "Žvejūnai",
+      "instance": "Zvejunai.social",
+      "victim": "Emilija Jonaitis",
+      "role": "folk singer",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-021",
+      "file": "story-021.yml",
+      "country": "Luxembourg",
+      "town": "Bëschkräiz",
+      "instance": "Bëschkräiz.social",
+      "victim": "Marc Kayser",
+      "role": "finance blogger",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-022",
+      "file": "story-022.yml",
+      "country": "Malta",
+      "town": "Marsaskala Bay",
+      "instance": "MarsaskalaBay.social",
+      "victim": "Toni Camilleri",
+      "role": "marine archaeologist",
+      "threads": [
+        "obsessive dive partner",
+        "construction on archaeological site"
+      ]
+    },
+    {
+      "id": "story-023",
+      "file": "story-023.yml",
+      "country": "Romania",
+      "town": "Sălașul de Sus",
+      "instance": "SalasulDeSus.social",
+      "victim": "Andrei Mihailescu",
+      "role": "woodcarver",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-024",
+      "file": "story-024.yml",
+      "country": "Slovakia",
+      "town": "Brezová pod Tatrami",
+      "instance": "Brezova.social",
+      "victim": "Katarína Kováčová",
+      "role": "folk dancer",
+      "threads": [
+        "obsessive ex",
+        "resort development"
+      ]
+    },
+    {
+      "id": "story-025",
+      "file": "story-025.yml",
+      "country": "Slovenia",
+      "town": "Rovtarje",
+      "instance": "Rovtarje.social",
+      "victim": "Žan Kavčič",
+      "role": "caver & geologist",
+      "threads": [
+        "obsession",
+        "quarry exploitation"
+      ]
+    },
+    {
+      "id": "story-026",
+      "file": "story-026.yml",
+      "country": "Bulgaria",
+      "town": "Morska Polyana",
+      "instance": "MorskaPolyana.social",
+      "victim": "Desislava Ivanova",
+      "role": "yoga instructor",
+      "threads": [
+        "stalking",
+        "trafficking"
+      ]
+    },
+    {
+      "id": "story-027",
+      "file": "story-027.yml",
+      "country": "Cyprus",
+      "town": "Pano Lefkara",
+      "instance": "PanoLefkara.social",
+      "victim": "Elena Georgiou",
+      "role": "lace embroiderer",
+      "threads": [
+        "obsessive collector",
+        "resort development"
+      ]
+    },
+    {
+      "id": "story-028",
+      "file": "story-028.yml",
+      "country": "Netherlands",
+      "town": "Aldtsjerk",
+      "instance": "Aldtsjerk.social",
+      "victim": "Sjoerd Visser",
+      "role": "speed skater & coach",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-029",
+      "file": "story-029.yml",
+      "country": "France",
+      "town": "Valensole-sur-Laye",
+      "instance": "Valensole.social",
+      "victim": "Aurélien Roux",
+      "role": "organic lavender farmer",
+      "threads": [
+        "obsessive neighbor",
+        "illegal pesticides"
+      ]
+    },
+    {
+      "id": "story-030",
+      "file": "story-030.yml",
+      "country": "Germany",
+      "town": "Tannhausen",
+      "instance": "Tannhausen.social",
+      "victim": "Florian Kessler",
+      "role": "traditional clockmaker",
+      "threads": [
+        "stalking",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-031",
+      "file": "story-031.yml",
+      "country": "Spain",
+      "town": "Arrantzale",
+      "instance": "Arrantzale.social",
+      "victim": "Iker Etxebarria",
+      "role": "pelota player",
+      "threads": [
+        "match fixing",
+        "doping corruption"
+      ]
+    },
+    {
+      "id": "story-032",
+      "file": "story-032.yml",
+      "country": "Italy",
+      "town": "Porticello",
+      "instance": "Porticello.social",
+      "victim": "Lucia Ferrante",
+      "role": "ceramics artist",
+      "threads": [
+        "obsessive collector",
+        "construction corruption"
+      ]
+    },
+    {
+      "id": "story-033",
+      "file": "story-033.yml",
+      "country": "Portugal",
+      "town": "Ponta do Falcão",
+      "instance": "PontadoFalcao.social",
+      "victim": "Gonçalo Ferreira",
+      "role": "surf instructor",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-034",
+      "file": "story-034.yml",
+      "country": "Ireland",
+      "town": "Rosscarrig",
+      "instance": "Rosscarrig.social",
+      "victim": "Eoin Kelleher",
+      "role": "traditional boat builder",
+      "threads": [
+        "forum stalker",
+        "salmon farm pollution"
+      ]
+    },
+    {
+      "id": "story-035",
+      "file": "story-035.yml",
+      "country": "Italy",
+      "town": "Mezzocorona",
+      "instance": "Mezzocorona.social",
+      "victim": "Giulia Conti",
+      "role": "vineyard worker",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-036",
+      "file": "story-036.yml",
+      "country": "Poland",
+      "town": "Skalnopole",
+      "instance": "Skalnopole.social",
+      "victim": "Wojciech Gazdowicz",
+      "role": "highland shepherd",
+      "threads": [
+        "stalker tourist",
+        "resort construction"
+      ]
+    },
+    {
+      "id": "story-037",
+      "file": "story-037.yml",
+      "country": "Ireland",
+      "town": "Dunquin Bay",
+      "instance": "DunquinBay.social",
+      "victim": "Niamh Fitzgerald",
+      "role": "seaweed forager",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-038",
+      "file": "story-038.yml",
+      "country": "Austria",
+      "town": "Steinbach an der Donau",
+      "instance": "Steinbach.social",
+      "victim": "Florian Lechner",
+      "role": "organic winemaker",
+      "threads": [
+        "obsessive wine critic",
+        "chemical dumping"
+      ]
+    },
+    {
+      "id": "story-039",
+      "file": "story-039.yml",
+      "country": "Belgium",
+      "town": "Spierevelde",
+      "instance": "Spierevelde.social",
+      "victim": "Lotte Vermeersch",
+      "role": "lace maker & textile artist",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-040",
+      "file": "story-040.yml",
+      "country": "Croatia",
+      "town": "Vranići",
+      "instance": "Vranići.social",
+      "victim": "Matej Barić",
+      "role": "truffle hunter & forager",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-041",
+      "file": "story-041.yml",
+      "country": "Czech Republic",
+      "town": "Rybníkov",
+      "instance": "Rybnikov.social",
+      "victim": "Filip Černý",
+      "role": "craft brewer",
+      "threads": [
+        "intimidation",
+        "water contamination"
+      ]
+    },
+    {
+      "id": "story-042",
+      "file": "story-042.yml",
+      "country": "Denmark",
+      "town": "Havø",
+      "instance": "Havoe.social",
+      "victim": "Sofie Andersen",
+      "role": "ceramicist",
+      "threads": [
+        "obsessive customer",
+        "gentrification scheme"
+      ]
+    },
+    {
+      "id": "story-043",
+      "file": "story-043.yml",
+      "country": "Estonia",
+      "town": "Saareküla",
+      "instance": "Saarekyula.social",
+      "victim": "Marten Kask",
+      "role": "wildlife biologist",
+      "threads": [
+        "maritime history stalker",
+        "wind farm conflict"
+      ]
+    },
+    {
+      "id": "story-044",
+      "file": "story-044.yml",
+      "country": "Finland",
+      "town": "Revontulivaara",
+      "instance": "Revontulivaara.social",
+      "victim": "Aino Korhonen",
+      "role": "aurora & night sky guide",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-045",
+      "file": "story-045.yml",
+      "country": "Finland",
+      "town": "Kittilä",
+      "instance": "Kittila.social",
+      "victim": "Juho Lehtonen",
+      "role": "aurora photographer",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-046",
+      "file": "story-046.yml",
+      "country": "Latvia",
+      "town": "Dzintarkrasti",
+      "instance": "Dzintarkrasti.social",
+      "victim": "Māris Kalniņš",
+      "role": "woodworker",
+      "threads": [
+        "stalking",
+        "illegal logging"
+      ]
+    },
+    {
+      "id": "story-047",
+      "file": "story-047.yml",
+      "country": "Lithuania",
+      "town": "Gintaruostis",
+      "instance": "Gintaruostis.social",
+      "victim": "Dovydas Kazlauskas",
+      "role": "fisherman & boat captain",
+      "threads": [
+        "stalking",
+        "port corruption"
+      ]
+    },
+    {
+      "id": "story-048",
+      "file": "story-048.yml",
+      "country": "Latvia",
+      "town": "Siguldas Meži",
+      "instance": "SiguldasMezi.social",
+      "victim": "Elīna Kalniņa",
+      "role": "folk dancer",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-049",
+      "file": "story-049.yml",
+      "country": "Malta",
+      "town": "Wied il-Għasel",
+      "instance": "WiedGħasel.social",
+      "victim": "Aaron Camilleri",
+      "role": "beekeeper",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-050",
+      "file": "story-050.yml",
+      "country": "Lithuania",
+      "town": "Kernavė",
+      "instance": "Kernave.social",
+      "victim": "Tomas Balčiūnas",
+      "role": "amateur archaeologist",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-051",
+      "file": "story-051.yml",
+      "country": "Luxembourg",
+      "town": "Vianden-les-Prés",
+      "instance": "ViandenLesPres.social",
+      "victim": "Léa Hoffmann",
+      "role": "beekeeper",
+      "threads": [
+        "obsession",
+        "quarry exploitation"
+      ]
+    },
+    {
+      "id": "story-052",
+      "file": "story-052.yml",
+      "country": "Malta",
+      "town": "Għarb Fields",
+      "instance": "GharbFields.social",
+      "victim": "Joseph Vella",
+      "role": "salt harvester",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-053",
+      "file": "story-053.yml",
+      "country": "Romania",
+      "town": "Bran Vechi",
+      "instance": "BranVechi.social",
+      "victim": "Maria Ionescu",
+      "role": "folk weaver",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-054",
+      "file": "story-054.yml",
+      "country": "Slovakia",
+      "town": "Demanovske Jaskyne",
+      "instance": "DemanovskeJaskyne.social",
+      "victim": "Lukas Novak",
+      "role": "cave guide",
+      "threads": [
+        "mining exploitation",
+        "stalking"
+      ]
+    },
+    {
+      "id": "story-055",
+      "file": "story-055.yml",
+      "country": "Netherlands",
+      "town": "Mosselkerke",
+      "instance": "Mosselkerke.social",
+      "victim": "Bram Willemse",
+      "role": "mussel farmer",
+      "threads": [
+        "stalking",
+        "illegal dumping"
+      ]
+    },
+    {
+      "id": "story-056",
+      "file": "story-056.yml",
+      "country": "France",
+      "town": "Riquewihr-les-Vignes",
+      "instance": "Riquewihr.social",
+      "victim": "Aurélie Kessler",
+      "role": "natural winemaker",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-057",
+      "file": "story-057.yml",
+      "country": "Germany",
+      "town": "Weilersbach",
+      "instance": "Weilersbach.social",
+      "victim": "Jonas Müller",
+      "role": "craft woodworker",
+      "threads": [
+        "obsessive apprentice",
+        "illegal logging"
+      ]
+    },
+    {
+      "id": "story-058",
+      "file": "story-058.yml",
+      "country": "Spain",
+      "town": "Areira de Mar",
+      "instance": "Areira.social",
+      "victim": "Brais Oubiña",
+      "role": "percebeiro",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-059",
+      "file": "story-059.yml",
+      "country": "Italy",
+      "town": "Borgo di Luna",
+      "instance": "BorgoDiLuna.social",
+      "victim": "Marco Bianchi",
+      "role": "truffle hunter",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-060",
+      "file": "story-060.yml",
+      "country": "Portugal",
+      "town": "Quinta do Rio",
+      "instance": "QuintaDoRio.social",
+      "victim": "Tiago Ferreira",
+      "role": "street muralist",
+      "threads": [
+        "art dealer",
+        "dam construction"
+      ]
+    },
+    {
+      "id": "story-061",
+      "file": "story-061.yml",
+      "country": "Ireland",
+      "town": "Ballynure",
+      "instance": "Ballynure.social",
+      "victim": "Siobhan Walsh",
+      "role": "sheep farmer",
+      "threads": [
+        "wind farm conflict",
+        "obsessive neighbour"
+      ]
+    },
+    {
+      "id": "story-062",
+      "file": "story-062.yml",
+      "country": "Sweden",
+      "town": "Visby Strand",
+      "instance": "VisbySocial.se",
+      "victim": "Saga Lindqvist",
+      "role": "archaeological illustrator",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-063",
+      "file": "story-063.yml",
+      "country": "Poland",
+      "town": "Dolina Zielona",
+      "instance": "DolinaZielona.social",
+      "victim": "Zofia Mazur",
+      "role": "folk painter",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-064",
+      "file": "story-064.yml",
+      "country": "Greece",
+      "town": "Petra Loutra",
+      "instance": "PetraLoutra.social",
+      "victim": "Nikos Papadakis",
+      "role": "olive farmer",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-065",
+      "file": "story-065.yml",
+      "country": "Austria",
+      "town": "Alpenrose",
+      "instance": "Alpenrose.social",
+      "victim": "Maria Huber",
+      "role": "cheese maker",
+      "threads": [
+        "stalking",
+        "quarry exploitation"
+      ]
+    },
+    {
+      "id": "story-066",
+      "file": "story-066.yml",
+      "country": "Belgium",
+      "town": "Hoeve-aan-Zee",
+      "instance": "HoeveAanZee.social",
+      "victim": "Jules Vanderberghe",
+      "role": "mussel farmer",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-067",
+      "file": "story-067.yml",
+      "country": "Croatia",
+      "town": "Podmorje",
+      "instance": "Podmorje.social",
+      "victim": "Ana Kovačić",
+      "role": "diving instructor",
+      "threads": [
+        "obsession",
+        "marina development"
+      ]
+    },
+    {
+      "id": "story-068",
+      "file": "story-068.yml",
+      "country": "Czech Republic",
+      "town": "Modřanské Sady",
+      "instance": "ModranskeSady.social",
+      "victim": "Petra Nováková",
+      "role": "beekeeper",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-069",
+      "file": "story-069.yml",
+      "country": "Denmark",
+      "town": "Lynghøj",
+      "instance": "Lynghoj.social",
+      "victim": "Mads Jensen",
+      "role": "organic farmer",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-070",
+      "file": "story-070.yml",
+      "country": "Estonia",
+      "town": "Metsavälja",
+      "instance": "Metsavalja.social",
+      "victim": "Liis Tamm",
+      "role": "textile artist",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-071",
+      "file": "story-071.yml",
+      "country": "Finland",
+      "town": "Järvenpohja",
+      "instance": "Jarvenpohja.social",
+      "victim": "Aino Virtanen",
+      "role": "sauna builder",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-072",
+      "file": "story-072.yml",
+      "country": "Hungary",
+      "town": "Tiszavirág",
+      "instance": "Tiszavirag.social",
+      "victim": "Réka Szabó",
+      "role": "weaver",
+      "threads": [
+        "dam construction",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-073",
+      "file": "story-073.yml",
+      "country": "Latvia",
+      "town": "Priežkalns",
+      "instance": "Priezkalns.social",
+      "victim": "Dace Bērziņa",
+      "role": "herbalist",
+      "threads": [
+        "obsession",
+        "forced development"
+      ]
+    },
+    {
+      "id": "story-074",
+      "file": "story-074.yml",
+      "country": "Lithuania",
+      "town": "Gintarupė",
+      "instance": "Gintarupe.social",
+      "victim": "Rūta Kazlauskienė",
+      "role": "amber jeweler",
+      "threads": [
+        "mining exploitation",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-075",
+      "file": "story-075.yml",
+      "country": "Luxembourg",
+      "town": "Mullerthal-les-Bains",
+      "instance": "MullerthalLesBains.social",
+      "victim": "Sophie Muller",
+      "role": "potter",
+      "threads": [
+        "obsession",
+        "quarry exploitation"
+      ]
+    },
+    {
+      "id": "story-076",
+      "file": "story-076.yml",
+      "country": "Malta",
+      "town": "Xlendi Gardens",
+      "instance": "XlendiGardens.social",
+      "victim": "Maria Borg",
+      "role": "lace maker",
+      "threads": [
+        "stalking",
+        "forced development"
+      ]
+    },
+    {
+      "id": "story-077",
+      "file": "story-077.yml",
+      "country": "Romania",
+      "town": "Valea Verde",
+      "instance": "ValeaVerde.social",
+      "victim": "Ioana Popescu",
+      "role": "shepherd",
+      "threads": [
+        "stalking",
+        "mining exploitation"
+      ]
+    },
+    {
+      "id": "story-078",
+      "file": "story-078.yml",
+      "country": "Slovakia",
+      "town": "Oravská Lehota",
+      "instance": "OravskaLehota.social",
+      "victim": "Marek Hrdina",
+      "role": "bryndza maker",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-079",
+      "file": "story-079.yml",
+      "country": "Slovenia",
+      "town": "Triglavski Kot",
+      "instance": "TriglavskiKot.social",
+      "victim": "Maja Horvat",
+      "role": "beekeeper",
+      "threads": [
+        "obsessive researcher",
+        "highway construction"
+      ]
+    },
+    {
+      "id": "story-080",
+      "file": "story-080.yml",
+      "country": "Bulgaria",
+      "town": "Smilyan",
+      "instance": "Smilyan.social",
+      "victim": "Kaloyan Daskalov",
+      "role": "gaida maker & musician",
+      "threads": [
+        "obsessive collector",
+        "resort development"
+      ]
+    },
+    {
+      "id": "story-081",
+      "file": "story-081.yml",
+      "country": "Cyprus",
+      "town": "Lefkara Heights",
+      "instance": "LefkaraHeights.social",
+      "victim": "Andreas Christou",
+      "role": "lace maker",
+      "threads": [
+        "obsessive collector",
+        "quarry exploitation"
+      ]
+    },
+    {
+      "id": "story-082",
+      "file": "story-082.yml",
+      "country": "Netherlands",
+      "town": "Kalkenberg",
+      "instance": "Kalkenberg.social",
+      "victim": "Jesse van Hoof",
+      "role": "mural painter",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-083",
+      "file": "story-083.yml",
+      "country": "France",
+      "town": "Clos-de-Brenne",
+      "instance": "ClosDeBrene.social",
+      "victim": "Margaux Dubois",
+      "role": "goat cheese maker",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-084",
+      "file": "story-084.yml",
+      "country": "Germany",
+      "town": "Schwarzbach",
+      "instance": "Schwarzbach.social",
+      "victim": "Annika Bauer",
+      "role": "potter",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-085",
+      "file": "story-085.yml",
+      "country": "Spain",
+      "town": "Peñablanca",
+      "instance": "Penablanca.social",
+      "victim": "Miguel Torres",
+      "role": "beekeeper",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-086",
+      "file": "story-086.yml",
+      "country": "Italy",
+      "town": "Val di Ferro",
+      "instance": "ValDiFerro.social",
+      "victim": "Matteo Zeni",
+      "role": "rifugista",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-087",
+      "file": "story-087.yml",
+      "country": "Portugal",
+      "town": "Vila das Furnas",
+      "instance": "ViladasFurnas.social",
+      "victim": "Diogo Medeiros",
+      "role": "whale watching guide",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-088",
+      "file": "story-088.yml",
+      "country": "Ireland",
+      "town": "Dún Mara",
+      "instance": "DunMara.social",
+      "victim": "Róisín Murphy",
+      "role": "seaweed harvester",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-089",
+      "file": "story-089.yml",
+      "country": "Sweden",
+      "town": "Storsjövik",
+      "instance": "Storsjovik.social",
+      "victim": "Maja Lindström",
+      "role": "glass artist",
+      "threads": [
+        "obsession",
+        "mine reopening"
+      ]
+    },
+    {
+      "id": "story-090",
+      "file": "story-090.yml",
+      "country": "Poland",
+      "town": "Puszcza Wielka",
+      "instance": "PuszczaWielka.social",
+      "victim": "Jakub Wiśniewski",
+      "role": "forest guide",
+      "threads": [
+        "corporate corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-091",
+      "file": "story-091.yml",
+      "country": "Greece",
+      "town": "Ampelakia",
+      "instance": "Ampelakia.social",
+      "victim": "Stavros Economou",
+      "role": "winemaker",
+      "threads": [
+        "obsessive critic",
+        "hotel development"
+      ]
+    },
+    {
+      "id": "story-092",
+      "file": "story-092.yml",
+      "country": "Austria",
+      "town": "Seebründl",
+      "instance": "Seebründl.social",
+      "victim": "Anna Gruber",
+      "role": "herb farmer",
+      "threads": [
+        "resort development",
+        "stalking"
+      ]
+    },
+    {
+      "id": "story-093",
+      "file": "story-093.yml",
+      "country": "Belgium",
+      "town": "Vlamertinge",
+      "instance": "Vlamertinge.social",
+      "victim": "Emile Peeters",
+      "role": "craft brewer",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-094",
+      "file": "story-094.yml",
+      "country": "Croatia",
+      "town": "Toplička Vas",
+      "instance": "TopličkaVas.social",
+      "victim": "Petra Novaković",
+      "role": "thermal spring herbalist",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-095",
+      "file": "story-095.yml",
+      "country": "Czech Republic",
+      "town": "Šumavské Pláně",
+      "instance": "SumavskePlane.social",
+      "victim": "Jana Procházková",
+      "role": "mushroom forager & herbalist",
+      "threads": [
+        "stalking",
+        "illegal logging"
+      ]
+    },
+    {
+      "id": "story-096",
+      "file": "story-096.yml",
+      "country": "Denmark",
+      "town": "Marskhøj",
+      "instance": "Marskhøj.social",
+      "victim": "Kasper Nørgaard",
+      "role": "thatched roof craftsman",
+      "threads": [
+        "obsession",
+        "gas drilling"
+      ]
+    },
+    {
+      "id": "story-097",
+      "file": "story-097.yml",
+      "country": "Estonia",
+      "town": "Kadakalda",
+      "instance": "Kadakalda.social",
+      "victim": "Tõnis Rebane",
+      "role": "boat builder",
+      "threads": [
+        "port corruption",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-098",
+      "file": "story-098.yml",
+      "country": "Finland",
+      "town": "Kuusijärvi",
+      "instance": "Kuusijarvi.social",
+      "victim": "Elias Korhonen",
+      "role": "wilderness guide",
+      "threads": [
+        "mining exploitation",
+        "obsession"
+      ]
+    },
+    {
+      "id": "story-099",
+      "file": "story-099.yml",
+      "country": "Hungary",
+      "town": "Paprikafalva",
+      "instance": "Paprikafalva.social",
+      "victim": "Zsófia Tóth",
+      "role": "paprika farmer",
+      "threads": [
+        "obsession",
+        "corporate corruption"
+      ]
+    },
+    {
+      "id": "story-100",
+      "file": "story-100.yml",
+      "country": "Latvia",
+      "town": "Jūraskrasti",
+      "instance": "Juraskrasti.social",
+      "victim": "Aija Ozoliņa",
+      "role": "fisherwoman",
+      "threads": [
+        "construction corruption",
+        "obsession"
+      ]
+    }
+  ]
+}

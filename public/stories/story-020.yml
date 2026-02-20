@@ -1,0 +1,1556 @@
+# DEAD ACCOUNT — Story 020: Žvejūnai (Lithuania)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-020.yml
+#
+# Player investigates the disappearance of folk singer Emilija Jonaitis
+# in the fictional Curonian Spit fishing village of Žvejūnai.
+
+meta:
+  title: "Dead Account — Žvejūnai"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_ruta: 0
+    trust_matas: 0
+    trust_ona: 0
+    trust_darius: 0
+    trust_giedre: 0
+    trust_lukas: 0
+    trust_agne: 0
+    trust_vytautas: 0
+    trust_birute: 0
+    trust_tomas: 0
+    trust_jurga: 0
+    trust_kazys: 0
+    trust_dovile: 0
+    trust_mindaugas: 0
+    trust_ieva: 0
+    trust_saulius: 0
+    trust_neringa: 0
+    trust_valdas: 0
+    trust_zilvinas: 0
+    trust_egle: 0
+    trust_komisaras: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "ką tik persikėliau į žvejūnus. atrandu kuršių neriją po vieną kopą"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Zvejunai.social"
+    description: "Sveiki atvykę į Žvejūnų bendruomenės Mastodon instanciją"
+    avatar_url: /gamepatch/assets/dead-account/zvejunai_bot.png
+
+  npcs:
+    # === Emilija's Inner Circle ===
+    emilija:
+      name: "Emilija Jonaitis"
+      bio: "liaudies dainininkė | kopų balsas | jūra mano namai"
+      avatar: avatars/emilija.jpg
+    ruta:
+      name: "Rūta Kazlauskaitė"
+      bio: "emilijos geriausia draugė | mokytoja žvejūnų mokykloje | kava ir dainos"
+      avatar: avatars/ruta.jpg
+    matas:
+      name: "Matas Jonaitis"
+      bio: "emilijos brolis | žvejys | klaipėda | ji niekada nedingsta be žodžio"
+      avatar: avatars/matas.jpg
+    darius:
+      name: "Darius Stankevičius"
+      bio: "etnomuzikologas | vilniaus universitetas | emilijos bendradarbis lauko tyrimuose"
+      avatar: avatars/darius.jpg
+
+    # === Local Government ===
+    valdas:
+      name: "Valdas Rimkus"
+      bio: "Žvejūnų seniūnas | tarnauju bendruomenei nuo 2016 | #ŽvejūnaiPirmyn"
+      avatar: avatars/valdas.jpg
+    dovile:
+      name: "Dovilė Mikašauskaitė"
+      bio: "aplinkos apsaugos specialistė | Žvejūnų seniūnija | gamtos paveldas"
+      avatar: avatars/dovile.jpg
+    seniunija:
+      name: "Žvejūnų seniūnija"
+      bio: "Oficiali paskyra | Bendruomenės naujienos | Darbo laikas: Pr-Pn 8-17"
+      avatar: avatars/seniunija.jpg
+
+    # === Local Business & Community ===
+    ona:
+      name: "Ona Bartkienė"
+      bio: "užeiga 'Pas Oną' | žuvienė | naminis alus | kopų vaizdas | nuo 1994"
+      avatar: avatars/ona.jpg
+    uzeiga:
+      name: "Užeiga 'Pas Oną'"
+      bio: "Naminis maistas | Rūkyta žuvis | Gyva muzika penktadieniais | Žvejūnų širdis"
+      avatar: avatars/uzeiga.jpg
+    kazys:
+      name: "Kazys Vaitkus"
+      bio: "žvejys | 45 metai jūroje | ši pakrantė — mano gyvenimas"
+      avatar: avatars/kazys.jpg
+    vytautas:
+      name: "Vytautas Petrauskas"
+      bio: "uosto viršininkas | Žvejūnai | budėjimas ant-šešt"
+      avatar: avatars/vytautas.jpg
+    birute:
+      name: "Birutė Jankauskienė"
+      bio: "vaistininkė | Žvejūnai | sveikata ir patarimai | sekmadienį iki 12"
+      avatar: avatars/birute.jpg
+    jurga:
+      name: "Jurga Navickienė"
+      bio: "kepykla 'Jurgos duona' | ruginė duona | šakotis | nuo 5 ryto kasdien"
+      avatar: avatars/jurga.jpg
+    tomas:
+      name: "Tomas Grigas"
+      bio: "gintaro meistras | dirbtuvė prie jūros | kiekvienas gabalas pasakoja istoriją"
+      avatar: avatars/tomas.jpg
+    mindaugas:
+      name: "Mindaugas Zakarevičius"
+      bio: "knygynėlis 'Nerija' | knygos senos ir naujos | skaitymai trečiadieniais"
+      avatar: avatars/mindaugas.jpg
+
+    # === Journalist ===
+    neringa:
+      name: "Neringa Šimkutė"
+      bio: "nepriklausoma žurnalistė | aplinka ir pakrantė | info: neringa@simkute-press.lt"
+      avatar: avatars/neringa.jpg
+
+    # === BalticPipe (corporate) ===
+    balticpipe:
+      name: "BalticPipe Energy UAB"
+      bio: "Dujotiekio infrastruktūra | Žvejūnų aikštelė | ISO 14001 sertifikuota"
+      avatar: avatars/balticpipe.jpg
+    zilvinas:
+      name: "Žilvinas Mockus"
+      bio: "BalticPipe Energy aikštelės direktorius | Žvejūnai | industrija ir teritorija"
+      avatar: avatars/zilvinas.jpg
+    saulius:
+      name: "Saulius Urbonas"
+      bio: "Advokatas | Kontora Urbonas ir partneriai | Verslo teisė | Vilnius"
+      avatar: avatars/saulius.jpg
+
+    # === Teens ===
+    giedre:
+      name: "Giedrė"
+      bio: "16 | surfas ir kopų takai | žvejūnai gimusi | jūra gydo viską nx"
+      avatar: avatars/giedre.jpg
+    lukas:
+      name: "Lukas"
+      bio: "17 | riedlentė ir muzika | emilijos dainos mano saundtrekas | saulėlydis ant kopos"
+      avatar: avatars/lukas.jpg
+    agne:
+      name: "Agnė"
+      bio: "15 | piešiu ir fotografuoju | pakrantė juodai balta | emilija mano įkvėpimas"
+      avatar: avatars/agne.jpg
+
+    # === Media & Community ===
+    actu_zvejunai:
+      name: "Žvejūnų žinios"
+      bio: "Žvejūnų ir Kuršių nerijos naujienos | info: redakcija@zvejunai-zinios.lt"
+      avatar: avatars/actu_zvejunai.jpg
+    meteo_nerija:
+      name: "Orai Žvejūnai"
+      bio: "Prognozės ir įspėjimai | Automatinė stotis | Atnaujinama kas valandą"
+      avatar: avatars/meteo_nerija.jpg
+    asso_kopos:
+      name: "Draugija 'Kopų sargai'"
+      bio: "Kuršių nerijos kopų apsauga | Savanoriai | Pranešimai apie pažeidimus"
+      avatar: avatars/asso_kopos.jpg
+
+    # === Suspicious / Other ===
+    ieva:
+      name: "Ieva Rutkaitė"
+      bio: "BalticPipe technikė | darau savo darbą ir tiek"
+      avatar: avatars/ieva.jpg
+    egle:
+      name: "Eglė Žukauskaitė"
+      bio: "."
+      avatar: avatars/anon.jpg
+    komisaras:
+      name: "Komisaras Butkus"
+      bio: "Žvejūnų policijos komisariatas | Bendruomenės pareigūnas | Skubiai: 112"
+      avatar: avatars/komisaras.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN ŽVEJŪNAI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Zvejunai.social — the community Mastodon instance for
+      the Curonian Spit fishing village of Žvejūnai, Lithuania.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @emilija_jonaitis.
+
+      A folk singer. Voice of the dunes. She collected and performed
+      traditional Curonian fishing songs. People are worried. She hasn't
+      posted in six days.
+    choices:
+      - Look at her profile -> emilija_profile
+
+  emilija_profile:
+    type: tweet
+    from: emilija
+    text: "Kopos ties Juodųjų paukščių kyšuliu nebėra tos pačios. Kažkas kasa. Turiu įrodymus."
+    choices:
+      - That's her last real post... -> grey_dune
+
+  grey_dune:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a grey dune. Blurred, overexposed, shot at a strange angle.
+      Posted at 2am. No caption.
+
+      Her friends say that's not her style. The police say she
+      probably went travelling. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: komisaras
+    text: >
+      Gavome pranešimą dėl Žvejūnų gyventojos. Šiuo metu nėra
+      pagrindo manyti, kad įvykdyta nusikalstama veika. Bet kokią
+      naudingą informaciją prašome pateikti telefonu 112 arba
+      komisariatui tiesiogiai.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @ruta_kazlauskaite is
+      desperate. Her brother @matas_jonaitis is driving down from
+      Klaipėda. Her colleague @darius_stankevicius is posting worried
+      messages. The fisherman @kazys_vaitkus says she was right about
+      the dunes.
+
+      And the journalist @neringa_simkute is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Emilija just
+      "went travelling."
+    effects: { trust_ruta: "+5", trust_matas: "+5" }
+    choices:
+      - Start following Emilija's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Žvejūnai. Follow Emilija's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Ona (tavern owner, knows everyone) -> ona_intro
+      - Talk to Kazys (fisherman, saw the digging) -> kazys_intro
+      - Talk to Giedrė (teen surfer, seems shaken) -> giedre_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Emilija with the rhythms of a small
+      fishing village: tide schedules, the bakery's šakotis of the
+      day, storm warnings off the Baltic.
+
+      Key names surface: Rūta (best friend, teacher), Darius
+      (ethnomusicology colleague, seems rattled), Neringa (journalist,
+      oddly quiet), and the teens — Giedrė, Lukas, Agnė — who
+      worshipped Emilija's folk songs.
+
+      Also prominent: BalticPipe Energy UAB, the gas pipeline company
+      with a construction site at the edge of the dunes. Their posts
+      are corporate PR. Emilija's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Ona -> ona_intro
+      - Talk to Kazys -> kazys_intro
+      - Talk to Giedrė -> giedre_intro
+
+  # --- Ona (social map) ---
+
+  ona_intro:
+    type: tweet
+    from: ona
+    text: >
+      Užeiga atidaryta, bet širdis ne savo vietoj. @emilija_jonaitis,
+      tavo vieta laukia. Grįžk greičiau.
+    effects: { trust_ona: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ona -> ona_talk
+
+  ona_talk:
+    type: message
+    text: >
+      ONA: Ai, naujas žmogus? Sveiki. Blogas laikas atvažiuoti.
+      Visi ant nervų dėl Emilijos.
+
+      Let me tell you who's who. Rūta is Emilija's best friend — they
+      share a flat above the pharmacy. Sweetest girl, devastated
+      right now. Darius Stankevičius works with Emilija on field
+      recordings — ethnomusicologist from Vilnius. Smart man, but...
+      intense about her. Matas is Emilija's older brother, coming down
+      from Klaipėda.
+
+      And Neringa Šimkutė — the journalist — she and Emilija were
+      working on something together. Something about the dunes. Neringa
+      hasn't said a word since Emilija vanished. That's not like her
+      at all.
+
+      Oh, and ignore BalticPipe's PR posts. Lies wrapped in ISO
+      certificates.
+    effects: { trust_ona: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Darius -> ona_darius
+      - Ask about BalticPipe -> ona_balticpipe
+      - Thank her and move on -> quest1_hub
+
+  ona_darius:
+    type: message
+    text: >
+      ONA: Darius? He's been coming to Žvejūnai for three years for
+      his research. Brilliant scholar. But since Emilija started
+      singing with him, he's been... orbiting her. At the tavern every
+      time she performed. Offered to co-produce every recording. She
+      was polite about it but I could tell it made her uncomfortable.
+
+      After she started investigating the dune damage, he got worse.
+      Wanted to be part of everything. She told me once, "jis nesupranta
+      žodžio ne." I thought she meant professionally. Now I'm not so sure.
+    effects: { trust_ona: "+5" }
+    choices:
+      - Ask about BalticPipe -> ona_balticpipe
+      - Move on -> quest1_hub
+
+  ona_balticpipe:
+    type: message
+    text: >
+      ONA: That pipeline project arrived two years ago. They said it
+      would bring gas security, jobs, prosperity. The village tolerated
+      them because of the money. But the fishermen have been complaining
+      for years — strange machinery running at night near the protected
+      dunes, sand displacement shifting the shoreline, nesting sites
+      destroyed.
+
+      Emilija was the first person to actually document it. She went
+      out with a camera and a drone. She had proof, she said. Real
+      proof that they were excavating inside the UNESCO buffer zone.
+      Two weeks later she's gone.
+    effects: { trust_ona: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kazys (the dunes, witness tease) ---
+
+  kazys_intro:
+    type: tweet
+    from: kazys
+    text: >
+      keturiasdešimt penkerius metus žvejoju čia. kopos nebėra tokios.
+      @emilija_jonaitis buvo teisi. ir dabar ji dingo. susidarykite
+      vaizdą patys.
+    effects: { trust_kazys: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kazys -> kazys_talk
+
+  kazys_talk:
+    type: message
+    text: >
+      KAZYS: I've fished this coast since I was fourteen. I know every
+      dune, every current, every colour the sand makes. And I'm telling
+      you — the dunes near Juodųjų paukščių kyšulys are wrong. Have
+      been for months. The sand is shifting where it shouldn't. Heavy
+      machinery tracks where only foxes should walk.
+
+      Emilija documented it. She flew her drone over the construction
+      zone at night. She photographed the excavation pits inside the
+      protected area. She was building a case. And then poof — gone.
+
+      You think that's a coincidence? Blet, I don't believe in
+      coincidences on this spit.
+    effects: { trust_kazys: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> kazys_night
+      - Move on -> quest1_hub
+
+  kazys_night:
+    type: message
+    text: >
+      KAZYS: The night before she vanished — I was coming back from
+      night fishing, around 1am. I saw lights at the cultural centre
+      where Emilija rehearses. Not unusual, she works late on
+      recordings. But there were two vehicles in the lot. One was
+      Emilija's old Škoda. The other was a black SUV with BalticPipe
+      plates.
+
+      At 1am. At the village cultural centre.
+
+      I noted it in my fishing log. Nobody's asked to see it.
+    effects: { trust_kazys: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Giedrė (teen surfer, witness tease) ---
+
+  giedre_intro:
+    type: tweet
+    from: giedre
+    text: >
+      blet nu nx @emilija_jonaitis ji man išmokė mylėt šitą jūrą
+      tipo sah nėra šansų kad ji tiesiog dingo. jei kas nors žino
+      ką nors rašykit blet prašau
+    effects: { trust_giedre: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Giedrė -> giedre_talk_early
+
+  giedre_talk_early:
+    type: message
+    text: >
+      GIEDRĖ: a tu naujas čia? šūdas koks laikas atvažiuot. realiai
+      emilija tai tipo geriausia žmogus šitam kaime. ji mus mokė
+      dainų, vedė ant kopų, pasakojo apie senuosius žvejus. toooop
+      buvo.
+
+      ir dabar aš flipinu nes lukas matė kažką keisto tą vakarą
+      prie uosto bet jis nenori kalbėt. sako kad nx nieko bet
+      tipo... tai ne nieko po velnių
+    effects: { trust_giedre: "+10" }
+    choices:
+      - What did Lukas see? -> giedre_lukas_hint
+      - Move on -> quest1_hub
+
+  giedre_lukas_hint:
+    type: message
+    text: >
+      GIEDRĖ: nžn tiksliai. jis buvo ant kopos saulėlydžio session
+      ir tipo matė kažką prie emilijos mašinos?? ar kažką tokio.
+      jis flipina per daug nenori kalbėt. reik jam tiesiai pasakyt
+      bet jis nepasitiki žmonėm kurių nepažįsta. pabandyk pirma
+      apie muziką pakalbėt su juo lol
+    effects: { trust_giedre: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Žvejūnai. A Curonian Spit fishing
+      village built around the sea and the dunes. A folk singer who
+      was exposing illegal construction. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Rūta (Emilija's best friend) -> ruta_q1
+      - Talk to Darius (Emilija's colleague) -> darius_q1
+      - Check what Matas (Emilija's brother) is saying -> matas_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Rūta Q1 ---
+
+  ruta_q1:
+    type: tweet
+    from: ruta
+    text: >
+      jei kas nors turi žinių apie @emilija_jonaitis skambinkit man
+      prašau. jos kambarys nepaliestas. jos gitara čia. ji niekada
+      neišeitų be gitaros.
+    effects: { trust_ruta: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rūta -> ruta_q1_talk
+
+  ruta_q1_talk:
+    type: message
+    text: >
+      RŪTA: I appreciate you reaching out but I don't know you.
+      Emilija has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Rūta is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_ruta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Darius Q1 ---
+
+  darius_q1:
+    type: tweet
+    from: darius
+    text: >
+      Kultūros centras tuščias be @emilija_jonaitis. Jos įrašai vis
+      dar serveryje. Jos dainų sąsiuviniai ant stalo. Ji niekada
+      nepaliktų nebaigto darbo.
+    effects: { trust_darius: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Darius -> darius_q1_talk
+
+  darius_q1_talk:
+    type: message
+    text: >
+      DARIUS: Emilija and I have worked together for over a year.
+      She's the most dedicated folk musician I know. This dune
+      investigation — it became everything to her. She had drone
+      footage, photos, GPS coordinates of illegal excavation. She was
+      so close to going public.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to support her.
+
+      [Darius seems earnest. Or obsessive?]
+    effects: { trust_darius: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Matas Q1 ---
+
+  matas_q1:
+    type: tweet
+    from: matas
+    text: >
+      mano sesuo DINGO ir policija sako kad ji gal išvažiavo
+      atostogaut??? JI NEIŠVAŽIUOJA NEPERSPĖJUSI. aš važiuoju iš
+      klaipėdos. kas nors man paaiškins.
+    effects: { trust_matas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Matas -> matas_q1_talk
+
+  matas_q1_talk:
+    type: message
+    text: >
+      MATAS: Who are you? Another person from that village who's going
+      to tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "jei kas
+      nors nutiks, žiūrėk į BalticPipe." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_matas: "+10" }
+    choices:
+      - What do you think happened? -> matas_theory
+      - Move on -> quest1_hub
+
+  matas_theory:
+    type: message
+    text: >
+      MATAS: I think she found proof that BalticPipe is destroying
+      protected dunes and they shut her up. But I also think that
+      creepy colleague of hers — Darius — knows more than he's saying.
+      The way he talks about her... it's not just professional concern.
+      It's something else.
+
+      Emilija told me months ago that someone was going through her
+      recording files. She thought it was nothing. I don't think it
+      was nothing.
+    effects: { trust_matas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Emilija went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Lukas (was on the dune at sunset near the port) -> lukas_interview
+      - Find Vytautas (harbour master, works late) -> vytautas_interview
+      - Find Tomas (amber craftsman, early morning on the shore) -> tomas_interview
+      - Find Jurga (baker, starts at 5am, saw something) -> jurga_interview
+
+  # --- Lukas (saw someone at Emilija's car) ---
+
+  lukas_interview:
+    type: tweet
+    from: lukas
+    text: >
+      geras saulėlydis šįvakar bet atmosfera prie uosto tipo keista
+      paskutiniais laikais. kažkas ne taip. nžn kaip paaiškint
+    effects: { trust_lukas: "+5" }
+    choices:
+      - Ask Lukas about that evening -> lukas_talk
+
+  lukas_talk:
+    type: message
+    text: >
+      LUKAS: blet ok bet tu niekam nesakyk gerai. buvau ant kopos
+      apie 19h, saulėlydžio session. ir mačiau tą tipą iš
+      universiteto — darių — prie emilijos mašinos. jis tipo kažką
+      darė viduj ar kažką dėjo. kai mane pamatė tai nupiso per greitai.
+
+      tipo aš nieko nesakiau nes nenorėjau bėdų bet dabar tai šūdas.
+      jo elgesys tai ne normalus po velnių
+    effects:
+      trust_lukas: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Vytautas (harbour master, saw late-night meeting) ---
+
+  vytautas_interview:
+    type: tweet
+    from: vytautas
+    text: >
+      Priminimas: uostas draudžiamas tarp 22h ir 6h.
+      Pastebėjau neleistinų praėjimų pastarosiomis naktimis.
+    effects: { trust_vytautas: "+5" }
+    choices:
+      - Ask Vytautas what he saw -> vytautas_talk
+
+  vytautas_talk:
+    type: message
+    text: >
+      VYTAUTAS: I was closing the harbour office around 22h30. I saw
+      Emilija's car still in the cultural centre car park. And a black
+      SUV — BalticPipe plates — parked next to it. Two men were
+      standing by the entrance. One of them I recognised: Žilvinas
+      Mockus, the site director.
+
+      At 22h30. At the cultural centre. That's not normal.
+
+      I noted it in my harbour log. Nobody's asked to see it.
+    effects:
+      trust_vytautas: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tomas (saw Emilija fleeing) ---
+
+  tomas_interview:
+    type: tweet
+    from: tomas
+    text: >
+      atsikėliau 4h gintaro rinkti. paplūdimys nebuvo tuščias.
+      kažkas bėgo pakrantės taku. tamsoje. ne bėgikas.
+    effects: { trust_tomas: "+5" }
+    choices:
+      - Ask Tomas what he saw -> tomas_talk
+
+  tomas_talk:
+    type: message
+    text: >
+      TOMAS: I get up at 4am for amber collecting — best after a storm.
+      That morning — the morning after Emilija's last post — I saw
+      someone on the coastal path. Running. A woman, carrying a bag,
+      heading toward the lighthouse. It was still dark. She was moving
+      fast, like she was afraid.
+
+      I called out but she didn't stop. I figured it was an early
+      jogger but... who jogs at 4am carrying a guitar case?
+
+      When I heard about Emilija, I put it together. I think that
+      was her. Running from something.
+    effects:
+      trust_tomas: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jurga (saw car chase) ---
+
+  jurga_interview:
+    type: tweet
+    from: jurga
+    text: >
+      Pirmoji kepalų partija 5h kaip visada. Bet tą rytą automobilis
+      lėkė pakrantės keliu per greitai.
+    effects: { trust_jurga: "+5" }
+    choices:
+      - Ask Jurga what she saw -> jurga_talk
+
+  jurga_talk:
+    type: message
+    text: >
+      JURGA: I start baking at 5am every day. That morning I was
+      opening the shutters and a car went past — fast, much too fast
+      for the spit road. Dark SUV. Then maybe two minutes later, a
+      second car. Smaller, older. Chasing? I don't know.
+
+      The second car turned off toward the old fisherman's huts at
+      the south lagoon. The first kept going toward the Klaipėda
+      highway.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_jurga: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Rūta (best friend)
+      and Agnė (saw Darius watching the flat).
+    choices:
+      - Talk to Rūta about that night -> ruta_interview
+      - Talk to Agnė -> agne_interview
+      - Find Lukas -> lukas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Vytautas -> vytautas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tomas -> tomas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Jurga -> jurga_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Rūta (last to see Emilija) ---
+
+  ruta_interview:
+    type: tweet
+    from: ruta
+    text: >
+      ta nuotrauka emilijos paskyroj. tai ne ji. emilija niekada
+      neposti be aprašymo. emilija neposti 2 val. nakties. kažkas
+      kitas tai padarė.
+    effects: { trust_ruta: "+5" }
+    choices:
+      - DM Rūta -> ruta_talk_low
+        when:
+          state: trust_ruta
+          lt: 50
+      - DM Rūta -> ruta_talk_high
+        when:
+          state: trust_ruta
+          gte: 50
+
+  ruta_talk_low:
+    type: message
+    text: >
+      RŪTA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Rūta needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_ruta: "+5" }
+    choices:
+      - Share what you've learned about the night -> ruta_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  ruta_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the cultural centre,
+      the company men, the running figure. Rūta is silent for a while.
+
+      RŪTA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_ruta: "+25" }
+    choices:
+      - What happened that night? -> ruta_talk_high
+
+  ruta_talk_high:
+    type: message
+    text: >
+      RŪTA: She came home around 23h. I was grading papers so I was
+      still up. She was pale, shaking. She said "jie žino ką turiu."
+      She grabbed her laptop and her camera drives.
+
+      I asked who. She said "the pipeline company. They sent people
+      to the centre." Then she said something else — "ir jis ten
+      irgi buvo. jis visada ten."
+
+      She wouldn't say who "he" was. She hugged me, said "nesijaudink,"
+      and left with a bag and her guitar. That was it. By morning her
+      car was gone and the grey dune was on her account.
+    effects:
+      trust_ruta: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Agnė (saw Darius watching the flat) ---
+
+  agne_interview:
+    type: message
+    text: >
+      AGNĖ: ok realiai čia keista ką pasakysiu bet tipo tas tipas
+      iš universiteto — darius — aš jį mačiau tipo 3 kartus prie
+      emilijos buto vakarais. tiesiog stovi ir žiūri į langus. per
+      creepy po velnių.
+
+      paskutinį kartą buvo tipo 2 dienas prieš jai dingstant. jis
+      sėdėjo savo mašinoj priešais. tiesiog sėdėjo. žibintai
+      išjungti.
+    effects:
+      trust_agne: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Darius seen at Emilija's car at the port (Lukas)
+      22:30 — BalticPipe SUV at the cultural centre, Žilvinas Mockus present (Vytautas)
+      23:00 — Emilija arrives home, shaken, grabs laptop and drives (Rūta)
+      04:00 — Woman running on coastal path toward the lighthouse (Tomas)
+      05:00 — Two cars speeding on the spit road, one toward the lagoon huts (Jurga)
+
+      BalticPipe confronted Emilija at the cultural centre. She fled
+      home, grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is BalticPipe hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Darius really doing? Why was he at
+        her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Darius -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      BalticPipe is hiding something. Emilija had proof. Now she's
+      gone and her evidence is missing from the cultural centre.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the cultural centre records -> centre_records
+      - Talk to Neringa the journalist -> neringa_interview
+      - Talk to Ieva (BalticPipe technician) -> ieva_interview
+      - Talk to Dovilė (environment specialist) -> dovile_interview
+      - Check the Kopų sargai association -> asso_investigation
+      - Talk to Kazys about the excavation -> kazys_excavation
+      - Back to hub -> investigation_hub
+
+  # --- Cultural Centre Records ---
+
+  centre_records:
+    type: message
+    text: >
+      The cultural centre's public archive shows Emilija's recent
+      work: field recordings from nine sites across the Curonian Spit.
+      The data for the Juodųjų paukščių area is marked
+      "LAUKIA PERŽIŪROS" — the only site with that status.
+
+      Her drone flight log, shared with the centre for safety, shows
+      she made 14 flights over the BalticPipe construction zone in the
+      past month. The last entry: "Nufotografavau kasimo vietas
+      UNESCO apsaugos zonoje. Pažeidimai akivaizdūs. Tai ne kas
+      nurodyta leidime."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Neringa ---
+
+  neringa_interview:
+    type: message
+    text: >
+      NERINGA: I don't talk about sources. Period.
+    effects: { trust_neringa: "+5" }
+    choices:
+      - Show Neringa the evidence you have -> neringa_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  neringa_with_evidence:
+    type: message
+    text: >
+      NERINGA: ...you have more than I expected.
+
+      Okay. Emilija and I were working together. She had drone footage
+      of illegal excavation inside the UNESCO buffer zone — BalticPipe
+      is digging test bore holes and staging heavy equipment on
+      protected dunes that don't appear on any permit. She had GPS
+      coordinates, time-stamped photos, sand displacement measurements.
+
+      We were going to publish together in Lietuvos rytas. Then she
+      went dark. And two days later, someone broke into my car and
+      stole my backup drive.
+
+      Emilija is alive. She contacted me once, from a burner phone.
+      She said she was hiding. She said "jie grasino man centre ir
+      dar kažkas nepaliks manęs ramybėje."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_neringa: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> neringa_hint
+      - Back to investigation hub -> investigation_hub
+
+  neringa_hint:
+    type: message
+    text: >
+      NERINGA: The pipeline company sent their site director — Mockus —
+      and some lawyer to the centre that night. They told her to hand
+      over everything or face legal consequences. Intimidation dressed
+      up as legal process.
+
+      But she also said something about someone from the university.
+      Someone who'd been accessing her recordings. Someone who always
+      seemed to know where she was. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Ieva (BalticPipe whistleblower) ---
+
+  ieva_interview:
+    type: message
+    text: >
+      IEVA: I work at BalticPipe. I'm just a site technician. I run
+      geological surveys, I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the ministry.
+    effects: { trust_ieva: "+10" }
+    choices:
+      - What do you mean? -> ieva_detail
+
+  ieva_detail:
+    type: message
+    text: >
+      IEVA: I measure ground stability, sand composition, water table
+      levels. My numbers go to my supervisor. Somewhere between my
+      desk and the environmental filing, they change. The excavation
+      zones shrink. The buffer distances grow. The impact assessments
+      soften.
+
+      Emilija's drone footage matched MY original survey markers, not
+      the ones in the official reports. She had independent proof that
+      BalticPipe is falsifying their environmental impact data and
+      digging in protected zones.
+
+      I'm scared. I have a family. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_ieva: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Dovilė ---
+
+  dovile_interview:
+    type: message
+    text: >
+      DOVILĖ: As the seniūnija's environment specialist, I take these
+      allegations seriously. But BalticPipe employs 150 people in this
+      area. The seniūnas insists we need to "maintain dialogue."
+
+      Off the record? I've seen the ministry inspection reports.
+      BalticPipe passes every time. But those inspections are
+      announced two weeks in advance. They restore the dune surface
+      before the inspectors arrive.
+
+      Emilija had unannounced data. That's what makes it dangerous.
+    effects:
+      trust_dovile: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Kopų sargai ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_kopos
+    text: >
+      PERSPĖJIMAS: Pranešimas apie neleistiną kasimo veiklą
+      Juodųjų paukščių kyšulyje. Nuotraukos ir matavimai atliekami.
+      Reikalaujame neplanuoto BalticPipe aikštelės patikrinimo.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Kopų sargai have been documenting dune integrity for four
+      years. Their data shows a clear pattern: sand displacement
+      and vegetation loss that corresponds to BalticPipe's construction
+      schedule. Greater damage on workdays, less on weekends. Greater
+      at night, less during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal excavation timed to avoid detection.
+
+      Emilija was a member. She contributed most of the drone
+      photography and folk-ecological knowledge.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Kazys excavation ---
+
+  kazys_excavation:
+    type: message
+    text: >
+      KAZYS: I'll show you something. Last month I was checking my
+      nets near the south lagoon and found this — a section of dune
+      that had been freshly bulldozed and then re-covered with sand.
+      Sloppy job. You could see the machinery tracks underneath.
+
+      I photographed it and sent it to Emilija. She said it was the
+      missing piece — proof they were expanding the construction
+      corridor into the UNESCO core zone, not just the buffer. Active
+      destruction of irreplaceable Holocene dunes.
+
+      I still have the photos. And the GPS coordinates.
+    effects:
+      trust_kazys: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Darius Stankevičius. Colleague. Ethnomusicologist. Something
+      more? Someone was accessing Emilija's files. Someone was watching
+      her flat. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Darius's access to the cultural centre -> centre_access
+      - Talk to Rūta about Darius -> ruta_darius
+        when:
+          state: trust_ruta
+          gte: 20
+      - Talk to Lukas (more detail on the car incident) -> lukas_detail
+      - Talk to Birutė the pharmacist -> birute_interview
+      - Check the anonymous account @egle_zukauskaite -> egle_investigation
+      - Talk to Mindaugas the bookseller -> mindaugas_interview
+        when:
+          state: trust_mindaugas
+          gte: 40
+      - Talk to Komisaras Butkus -> komisaras_interview
+        when:
+          state: trust_komisaras
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Cultural Centre Access Logs ---
+
+  centre_access:
+    type: message
+    text: >
+      The cultural centre's door access system is logged electronically.
+      Emilija's key card was used 52 times last month. Darius's guest
+      research card: 89 times. Nearly double.
+
+      Cross-referencing: on 36 of Darius's 89 entries, he accessed
+      the centre within 15 minutes of Emilija. He arrived after her
+      and left after her. Every time.
+
+      His own research workspace is in a different building — the
+      university's field office in Nida.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rūta on Darius ---
+
+  ruta_darius:
+    type: message
+    text: >
+      RŪTA: Darius? He made Emilija uncomfortable. He'd show up at
+      the tavern when she performed. He'd offer to walk her home.
+      He'd comment on every single one of her posts within minutes.
+
+      She told him she wasn't interested. Clearly, kindly. He said
+      he understood. Then nothing changed. He just... kept being
+      there. Always there.
+
+      A month ago she found that someone had accessed her laptop at
+      the centre after hours. Her drone footage files had been copied.
+      She suspected Darius but couldn't prove it.
+    effects:
+      trust_ruta: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lukas detail ---
+
+  lukas_detail:
+    type: message
+    text: >
+      LUKAS: ok blet realiai aš ne viską pasakiau. kai mačiau darių
+      prie emilijos mašinos jis turėjo kažką rankose. tipo mažą
+      dėžutę. jis ją priklijavo po mašina. tipo prie vairuotojo
+      pusės apačios.
+
+      aš ne ekspertas bet tai atrodė tipo kaip gps seklys nx.
+      tokius filmose rodo.
+
+      turėjau kažką pasakyt bet tipo kas patikėtų paaugliu kuris
+      kaltina profesorių. atsiknisk lol ne.
+    effects:
+      trust_lukas: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Birutė ---
+
+  birute_interview:
+    type: message
+    text: >
+      BIRUTĖ: This is confidential but I'm a pharmacist, not a
+      priest. Darius Stankevičius comes in regularly. He's been buying
+      things that... suggest he's not sleeping. Anti-anxiety
+      medication, sleep aids, caffeine supplements. The pattern is
+      someone under extreme stress.
+
+      He also asked me once, very casually, if we sold GPS tracking
+      devices. I said "this is a pharmacy, not Maxima." He laughed
+      it off. I didn't think about it again until Emilija disappeared.
+    effects:
+      trust_birute: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Eglė (anonymous account) ---
+
+  egle_investigation:
+    type: tweet
+    from: egle
+    text: >
+      Ji turėjo klausyti. Aš bandžiau ją apsaugoti. Niekas kitas
+      nesuprato jos darbo kaip aš.
+    choices:
+      - Look at this account's history -> egle_posts
+
+  egle_posts:
+    type: message
+    text: >
+      @egle_zukauskaite: account created 9 months ago. Posts are all
+      about Emilija's work. Comments on every performance video, every
+      field recording, every dune photo. The tone shifts over time:
+
+      Month 1: "Neįtikėtinas talentas. Darai tai ko niekas nedrįsta."
+      Month 3: "Kodėl neatsakai į mano žinutes? Noriu tik bendradarbiauti."
+      Month 6: "Matau tave užeigoj su kitais. Jiems turi laiko bet ne man?"
+      Month 8: "Žinau kur tu vaikštai. Žinau tavo grafiką. Visada esu šalia."
+
+      The account has no photos, no personal details. Just Emilija.
+      Only Emilija.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> egle_style
+
+  egle_style:
+    type: message
+    text: >
+      Comparing @egle_zukauskaite with @darius_stankevicius:
+
+      Same use of ethnomusicology terminology. Same Lithuanian
+      academic writing style — the specific way he structures compound
+      sentences. Same knowledge of Emilija's fieldwork that only a
+      research partner would have.
+
+      And one post from @egle_zukauskaite: "Tavo įrašas Aikštelėje
+      7 buvo nuostabus." Aikštelė 7 is an internal field designation.
+      Not public.
+
+      It's Darius. The anonymous account is Darius.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mindaugas ---
+
+  mindaugas_interview:
+    type: message
+    text: >
+      MINDAUGAS: Emilija left something with me. A sealed waterproof
+      case. She said "if someone asks you about what's happening to the
+      dunes at Juodųjų paukščių kyšulys, give them this."
+
+      She looked frightened. She said she'd made copies of everything
+      but needed one set off-site, somewhere nobody would think to
+      look. A small bookshop on a side street seemed perfect.
+    effects: { trust_mindaugas: "+10" }
+    choices:
+      - What's happening to the dunes? -> mindaugas_case
+
+  mindaugas_case:
+    type: message
+    text: >
+      Mindaugas reaches under the counter and produces a waterproof
+      Pelican case.
+
+      MINDAUGAS: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show excavation pits inside the UNESCO core zone — heavy machinery
+      tracks, bore holes, staging areas — and drone footage time-stamps
+      proving night-time construction. The USB drive contains GPS data,
+      sand displacement measurements, and Emilija's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Komisaras Butkus ---
+
+  komisaras_interview:
+    type: message
+    text: >
+      KOMISARAS BUTKUS: Off the record — and I mean completely off
+      the record — I wanted to investigate BalticPipe. My superior
+      told me to stand down. He said the ministry had "jurisdiction."
+      That's code for "don't touch it."
+
+      The Stankevičius situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_komisaras: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Emilija than anyone in Žvejūnai. Who is responsible?
+    choices:
+      - Confront Darius Stankevičius (the obsessive colleague) -> confront_darius
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Žilvinas Mockus (the site director) -> confront_zilvinas
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Seniūnas Rimkus (political protection) -> confront_valdas
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Darius (Best Ending) ---
+
+  confront_darius:
+    type: message
+    text: >
+      You present your evidence to Darius:
+
+      "I know @egle_zukauskaite is your account. I know you put a GPS
+      tracker on Emilija's car. I know you accessed her files at the
+      cultural centre. I know you were watching her flat. I have
+      witnesses and I have the access logs."
+    choices:
+      - Send -> darius_response
+
+  darius_response:
+    type: message
+    text: >
+      Darius doesn't reply for a long time. Then:
+
+      DARIUS: You don't understand. I was protecting her. She was
+      in danger from BalticPipe and she wouldn't let me help. I
+      needed to know she was safe. Everything I did was because I
+      care about her.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Komisaras Butkus. And to
+      Neringa Šimkutė.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Komisaras Butkus reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the witness
+      testimonies — Darius is arrested for stalking and harassment.
+      A GPS tracker is recovered from under Emilija's car at the old
+      fisherman's huts near the south lagoon.
+
+      Neringa Šimkutė, finally in possession of Emilija's full
+      evidence package, publishes the BalticPipe story in Lietuvos
+      rytas. The ministry orders an unannounced inspection. The
+      construction site is shut down pending environmental remediation.
+      The dunes at Juodųjų paukščių kyšulys are declared a strict
+      no-access zone. Žilvinas Mockus faces criminal charges for
+      falsifying environmental impact reports and destroying UNESCO
+      heritage.
+
+      And Emilija Jonaitis, reading the story from a friend's flat
+      in Kaunas, calls her brother for the first time in nine days.
+
+      "Grįžtu namo."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: emilija
+    text: >
+      kopos nemeluoja. ir žvejūnų žmonės irgi ne.
+      ačiū kad nepaleidot.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Žilvinas (Partial Ending) ---
+
+  confront_zilvinas:
+    type: message
+    text: >
+      You present the dune destruction evidence to Žilvinas Mockus:
+
+      "I have drone footage of illegal excavation inside the UNESCO
+      core zone. I have GPS coordinates of bore holes in protected
+      dunes. I have your original survey reports showing the data was
+      falsified. I have photographs of machinery tracks on Holocene
+      dune formations."
+    choices:
+      - Send -> zilvinas_response
+
+  zilvinas_response:
+    type: message
+    text: >
+      ŽILVINAS: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. BalticPipe Energy has always operated
+      within regulatory requirements.
+
+      But it's too late. You've sent the evidence to Neringa, to
+      the Kopų sargai, and to the ministry.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The dune destruction story breaks. BalticPipe is ordered to
+      halt construction pending investigation. The pipeline project
+      may be cancelled. A hundred and fifty jobs hang in the balance.
+      The village is divided.
+
+      But Emilija?
+
+      Without the stalking evidence, Darius is never investigated.
+      He continues to visit the village. He continues to monitor her
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Emilija reads about BalticPipe online.
+      She returns quietly. She changes her rehearsal space. She stops
+      walking the dunes alone. She checks her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Emilija walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: emilija
+    text: "grįžau. kopos saugesnės. likusi dalis... pažiūrėsim."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Seniūnas (Wrong Ending) ---
+
+  confront_valdas:
+    type: message
+    text: >
+      You confront Seniūnas Rimkus with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> valdas_response
+
+  valdas_response:
+    type: tweet
+    from: saulius
+    text: >
+      Mano klientas priima domėn jūsų pareiškimus. Bet koks
+      šmeižiančios medžiagos viešinimas bus nedelsiant persekiojamas
+      teismine tvarka. — Kontora Urbonas ir partneriai, Vilnius
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The seniūnas's lawyer buries your accusation. Without a direct
+      link between Rimkus and BalticPipe's illegal construction — and
+      there isn't one beyond political protection — your evidence is
+      insufficient.
+
+      BalticPipe continues to dig. Darius continues to watch. Emilija
+      stays in hiding.
+
+      Six months later, @egle_zukauskaite creates a new account. It
+      follows Emilija's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: ŽVEJŪNAI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Emilija's story explores themes of
+      corporate impunity, environmental destruction of irreplaceable
+      natural heritage, obsessive behaviour, community solidarity,
+      and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Pagalbos moterims linija: 8 800 66366 (nemokama)
+      Vaikų linija (priekabiavimas internete): 116 111
+      Aplinkos apsaugos pranešimai: 8 800 02 003

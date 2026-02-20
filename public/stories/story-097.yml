@@ -1,0 +1,1564 @@
+# DEAD ACCOUNT — Story 097: Kadakalda (Estonia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-097.yml
+#
+# Player investigates the disappearance of boat builder Tõnis Rebane
+# in the fictional Saaremaa island village of Kadakalda.
+
+meta:
+  title: "Dead Account — Kadakalda"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marika: 0
+    trust_sten: 0
+    trust_helgi: 0
+    trust_jaan: 0
+    trust_liis: 0
+    trust_karl: 0
+    trust_maris: 0
+    trust_anu: 0
+    trust_peeter: 0
+    trust_tiina: 0
+    trust_olev: 0
+    trust_sirje: 0
+    trust_andres: 0
+    trust_kaia: 0
+    trust_priit: 0
+    trust_merike: 0
+    trust_toomas: 0
+    trust_erik: 0
+    trust_komissar: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    port_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Uustulnuk
+    bio: "just moved to kadakalda. discovering saaremaa one coast at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Kadakalda.social"
+    description: "Tere tulemast Kadakalda kogukonna Mastodoni instantsile"
+    avatar_url: /gamepatch/assets/dead-account/kadakalda_bot.png
+
+  npcs:
+    # === Tõnis's Inner Circle ===
+    tonis:
+      name: "Tõnis Rebane"
+      bio: "paadimeister | traditsioonilised puupaadid | meri on mu elu"
+      avatar: avatars/tonis.jpg
+    marika:
+      name: "Marika Rebane"
+      bio: "tõnise naine | kooliõpetaja kadakaldas | kus on mu mees"
+      avatar: avatars/marika.jpg
+    sten:
+      name: "Sten Rebane"
+      bio: "tõnise vend | kalur | pärnus | ta ei kao lihtsalt ära"
+      avatar: avatars/sten.jpg
+    liis:
+      name: "Liis Tamm"
+      bio: "tõnise õpipoiss | puidutööd | tartu ülikool ja kadakalda"
+      avatar: avatars/liis.jpg
+
+    # === Local Government ===
+    jaan:
+      name: "Jaan Kask"
+      bio: "Kadakalda vallavanem | Kogukonna teenistuses alates 2018 | #KadakaldaKasvab"
+      avatar: avatars/jaan.jpg
+    sirje:
+      name: "Sirje Mets"
+      bio: "Volikogu liige, keskkond | Kadakalda | rannakaitse Saaremaal"
+      avatar: avatars/sirje.jpg
+    vallavalitsus:
+      name: "Kadakalda Vallavalitsus"
+      bio: "Ametlik konto | Vallauudised | E-R 9-17"
+      avatar: avatars/vallavalitsus.jpg
+
+    # === Local Business & Community ===
+    helgi:
+      name: "Helgi Saar"
+      bio: "Rannatalu puhvet | kiluvõileib | kohalik õlu | avatud 1979. aastast"
+      avatar: avatars/helgi.jpg
+    puhvet:
+      name: "Rannatalu Puhvet"
+      bio: "Saaremaa kööki | Kohalik kala | Elavmuusika reedeti | Kadakalda süda"
+      avatar: avatars/puhvet.jpg
+    peeter:
+      name: "Peeter Võsu"
+      bio: "kalur | kadakalda sadam | räim ja koha | kolm põlvkonda merel"
+      avatar: avatars/peeter.jpg
+    tiina:
+      name: "Tiina Rand"
+      bio: "sadamamaster | kadakalda sadam | vastuvõtt T-L"
+      avatar: avatars/tiina.jpg
+    olev:
+      name: "Olev Kuusk"
+      bio: "apteeker | kadakalda | rohud ja nõu | laupäeval ka avatud"
+      avatar: avatars/olev.jpg
+    priit:
+      name: "Priit Lepp"
+      bio: "merepääste kadakalda | vabatahtlik | meri on elu"
+      avatar: avatars/priit.jpg
+    anu:
+      name: "Anu Kivi"
+      bio: "raamatukoguhoidja | Kadakalda raamatukogu | lugemisõhtud kolmapäeviti"
+      avatar: avatars/anu.jpg
+
+    # === Journalist ===
+    merike:
+      name: "Merike Laas"
+      bio: "ajakirjanik | saarte hääl | keskkond ja rannikuelu | vihjed: merike@saartehaal.ee"
+      avatar: avatars/merike.jpg
+
+    # === BalticPort OÜ (corporate) ===
+    balticport:
+      name: "BalticPort OÜ"
+      bio: "Sadamaarendus | Kadakalda sadamaprojekt | Jätkusuutlik majanduskasv"
+      avatar: avatars/balticport.jpg
+    andres:
+      name: "Andres Tammsaare"
+      bio: "BalticPort OÜ juhataja | Kadakalda sadamaprojekt | Tuleviku sadam"
+      avatar: avatars/andres.jpg
+    toomas:
+      name: "Toomas Ilves"
+      bio: "Advokaat | Ilves & Partnerid | Äriõigus | Tallinn"
+      avatar: avatars/toomas.jpg
+
+    # === Teens ===
+    karl:
+      name: "Karl"
+      bio: "16 | surfikas & paat | kadakalda born | meri on kõik oida"
+      avatar: avatars/karl.jpg
+    maris:
+      name: "Maris"
+      bio: "17 | foto & maalid | kadakalda rannik | tõnis on legend"
+      avatar: avatars/maris.jpg
+    kaia:
+      name: "Kaia"
+      bio: "15 | joonistamine & puit | tõnis õpetas mulle paadi ehitada | kadakalda 4ever"
+      avatar: avatars/kaia.jpg
+
+    # === Media & Community ===
+    saarte_uudised:
+      name: "Saarte Uudised"
+      bio: "Saaremaa uudised ja rannikuelu | Vihjed: toimetus@saarteuudised.ee"
+      avatar: avatars/saarte_uudised.jpg
+    ilm_kadakalda:
+      name: "Kadakalda Ilm"
+      bio: "Ilmajaam | Ennustused ja hoiatused | Uuendus iga tund"
+      avatar: avatars/ilm_kadakalda.jpg
+    rannakaitse:
+      name: "Rannakaitse Selts"
+      bio: "Kadakalda ranniku kaitse | Vabatahtlik | Reostuse teated"
+      avatar: avatars/rannakaitse.jpg
+
+    # === Suspicious / Other ===
+    erik:
+      name: "Erik Vainola"
+      bio: "mereajaloolane | viikingilaevad ja vanad sadamad | kadakalda ajalugu on mu elu"
+      avatar: avatars/erik.jpg
+    meremees:
+      name: "Meremees"
+      bio: "."
+      avatar: avatars/anon.jpg
+    komissar:
+      name: "Komissar Pärn"
+      bio: "Kadakalda politseijaoskond | Saare prefektuur | hädaabi: 112"
+      avatar: avatars/komissar.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN KADAKALDA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Kadakalda.social — the community Mastodon instance for
+      the coastal village of Kadakalda on the island of Saaremaa,
+      Estonia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @tonis_rebane.
+
+      A boat builder. He crafted traditional wooden boats by hand.
+      Taught workshops. Fought to preserve the old harbour. People
+      loved him. He hasn't posted in seven days.
+    choices:
+      - Look at his profile -> tonis_profile
+
+  tonis_profile:
+    type: tweet
+    from: tonis
+    text: "Kadakalda vana sadam on ohus. BalticPort tahab kõik lammutada ja betoonkai ehitada. Mul on dokumendid ja fotod. See ei jää vaikseks."
+    choices:
+      - That's his last real post... -> grey_sea
+
+  grey_sea:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a blurred photo of grey sea. Overexposed, shot from a strange
+      angle. Posted at 4am. No caption.
+
+      His friends say that's not his style. Tõnis always wrote long
+      captions about every plank, every joint, every boat. The police
+      say he probably went sailing and hasn't returned yet. The
+      weather's been fine. His boat is still in the harbour.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: komissar
+    text: >
+      Seoses Kadakalda elaniku kadumise teatega: hetkel puuduvad
+      tõendid kuriteo kohta. Tegemist on tõenäoliselt vabatahtliku
+      eemalviibimisega. Vihjed palun 112 või Kadakalda
+      politseijaoskonnale.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His wife @marika_rebane is desperate.
+      His brother @sten_rebane is driving down from Pärnu. His
+      apprentice @liis_tamm is posting worried messages. The fisherman
+      @peeter_vosu says Tõnis was right about the harbour.
+
+      And the maritime historian @erik_vainola, who had been commenting
+      obsessively on Tõnis's boat-building posts for months, has gone
+      completely silent.
+
+      Nobody buys the police line. Nobody thinks Tõnis just "went
+      sailing."
+    effects: { trust_marika: "+5", trust_sten: "+5" }
+    choices:
+      - Start following Tõnis's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Kadakalda. Follow Tõnis's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Helgi (pub owner, knows everyone) -> helgi_intro
+      - Talk to Peeter (fisherman, knows the harbour) -> peeter_intro
+      - Talk to Karl (teen surfer, seems shaken) -> karl_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Tõnis with the rhythms of a small
+      island village: weather warnings, fish market prices, ferry
+      schedules, the pub's daily specials.
+
+      Key names surface: Marika (wife, teacher), Sten (brother, coming
+      from the mainland), Liis (apprentice, scared), and the teens —
+      Karl, Maris, Kaia — who spent summers in Tõnis's workshop
+      learning to work wood.
+
+      Also prominent: BalticPort OÜ, the port development company.
+      Their posts are corporate PR about "sustainable maritime growth."
+      Tõnis's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Helgi -> helgi_intro
+      - Talk to Peeter -> peeter_intro
+      - Talk to Karl -> karl_intro
+
+  # --- Helgi (social map) ---
+
+  helgi_intro:
+    type: tweet
+    from: helgi
+    text: >
+      Puhvet on lahti aga tuju on perses. @tonis_rebane, su õlu
+      seisab leti peal. Tule tagasi.
+    effects: { trust_helgi: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Helgi -> helgi_talk
+
+  helgi_talk:
+    type: message
+    text: >
+      HELGI: Sa oled uus? Tere tulemast. Kehv aeg tulemiseks. Kõik
+      on Tõnise pärast närvis.
+
+      Ma räägin sulle kes on kes. Marika on Tõnise naine, õpetaja,
+      täiesti läbi praegu. Sten on vend, tuleb Pärnust. Liis on
+      õpipoiss, tudeng Tartust, kes suveti Tõnise juures puutööd
+      teeb.
+
+      Ja siis on Erik Vainola. Mereajaloolane. Kolis siia kaks aastat
+      tagasi, kirjutab raamatut viikingilaevadest. Kleepis Tõnise
+      külge nagu puuk. Tahtis koostööd teha, tahtis paadiehitust
+      "dokumenteerida." Tõnis oli viisakas, aga mulle ütles ta: "See
+      mees ei jäta mind rahule."
+
+      Ja BalticPort — need tahavad vana sadama lammutada ja
+      kaubaterminali ehitada. Tõnise töökoda on täpselt seal.
+    effects: { trust_helgi: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Erik -> helgi_erik
+      - Ask about BalticPort -> helgi_balticport
+      - Thank her and move on -> quest1_hub
+
+  helgi_erik:
+    type: message
+    text: >
+      HELGI: Erik? Kurat, see on omaette lugu. Tuli siia kaks aastat
+      tagasi. Ütles et kirjutab teaduslikku raamatut Saaremaa
+      mereajaloo kohta. Alguses oli normaalne — käis arhiivis, tegi
+      märkmeid, küsis küsimusi.
+
+      Siis avastas Tõnise töökoja. Ja perse läks asi. Hakkas käima
+      iga päev. Filmis Tõnist tööd tegemas. Tahtis iga tehnikat,
+      iga liitmist, iga traditsiooni "dokumenteerida." Tõnis ütles
+      lõpuks viisakalt et aitab. Erik ei lõpetanud.
+
+      Hakkas öösel töökoja juures käima. Tõnis leidis oma tööriistu
+      liigutatuna. Ja siis hakkas Erik postitama et Tõnis "ei austa
+      merenduse ajalugu" ja "varjab tehnikaid maailma eest."
+
+      Täiesti hull.
+    effects: { trust_helgi: "+5" }
+    choices:
+      - Ask about BalticPort -> helgi_balticport
+      - Move on -> quest1_hub
+
+  helgi_balticport:
+    type: message
+    text: >
+      HELGI: BalticPort. Suured plaanid, suured investorid, suur
+      sõnavara. Tahavad Kadakalda vana sadama ümber ehitada
+      kaubaterminaliks. Uus kai, kraanasild, laadimisalad. Viiskümmend
+      töökohta, ütlevad. Aga vana sadam — seda on kasutatud sajandeid.
+      Tõnise töökoda on seal, kalurite paadid on seal, kogu küla
+      meri-elu on seal.
+
+      Tõnis ütles esimesena: see ei lähe nii. Tõnis alustas
+      allkirjade kogumist. Tal olid dokumendid mis näitasid, et
+      BalticPort'i keskkonnamõju hindamine oli vale. Et ehitamine
+      hävitaks ranniku ökosüsteemi.
+
+      Kaks nädalat hiljem on ta kadunud. Mõtle ise.
+    effects: { trust_helgi: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Peeter (fisherman, witness tease) ---
+
+  peeter_intro:
+    type: tweet
+    from: peeter
+    text: >
+      kolmkümmend aastat merel. kadakalda sadam on mu kodu.
+      @tonis_rebane ütles tõtt ja nüüd on ta kadunud. ärge olge
+      rumalad.
+    effects: { trust_peeter: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Peeter -> peeter_talk
+
+  peeter_talk:
+    type: message
+    text: >
+      PEETER: Ma olen selles sadamas kala püüdnud kolmkümmend aastat.
+      Ma tunnen iga kivi, iga tala, iga tuult. Ja ma ütlen sulle —
+      see mis BalticPort plaanib, tapab selle koha. Betoonkai hävitab
+      ranniku. Laevaliiklus ajab kalad minema. Vana sadam, kus mu
+      isa ja tema isa kalatasid — läheb.
+
+      Tõnis oli ainus kes seisis vastu. Tal olid dokumendid. Ta
+      sukeldus ja fotografeeris merepõhja, näitas et ehitamine
+      hävitaks kaldajoone. Ta kogus allkirju.
+
+      Ja siis — kadunud. Sa arvad et see on juhus? Ma ei usu
+      juhustesse merel.
+    effects: { trust_peeter: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> peeter_night
+      - Move on -> quest1_hub
+
+  peeter_night:
+    type: message
+    text: >
+      PEETER: Sel ööl — enne kui ta kadus — ma tulin hilja sadamasse,
+      umbes kell üks öösel. Kalastasin. Nägin tuled Tõnise töökoja
+      juures. Mitte ebatavaline, ta töötab tihti hilja.
+
+      Aga siis nägin teist autot. Must maastur. Tallinna numbrid.
+      Kell üks öösel. Kadakalda sadamas.
+
+      Sellele ma mõtlen iga päev.
+    effects: { trust_peeter: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Karl (teen surfer, witness tease) ---
+
+  karl_intro:
+    type: tweet
+    from: karl
+    text: >
+      vittu @tonis_rebane on ainus inimene kes mulle seletas kuidas
+      puitu austada. kui keegi midagi teab siis rääkige perse. see
+      pole normaalne et ta lihtsalt kaob
+    effects: { trust_karl: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Karl -> karl_talk_early
+
+  karl_talk_early:
+    type: message
+    text: >
+      KARL: sa oled uus vä? kurat sitt aeg tulemiseks. tõnis on nagu
+      parim inimene siin külas. ta õpetas meile paadi ehitamist,
+      puutööd, meresõlmi. kõike. ja nüüd politsei ütleb "läks
+      purjetama"?? mida kuradit. ta paat on sadamas.
+
+      ja kuule, maris nägi midagi imelikku eelmisel nädalal sadamas.
+      ta ei taha rääkida. ütleb et pole midagi. aga valetab nii
+      halvasti et perse
+    effects: { trust_karl: "+10" }
+    choices:
+      - What did Maris see? -> karl_maris_hint
+      - Move on -> quest1_hub
+
+  karl_maris_hint:
+    type: message
+    text: >
+      KARL: täpselt ei tea. ta oli sadamas päikeseloojangul, fotosid
+      tegemas, ja nägi kedagi tõnise töökoja juures. keegi soris seal
+      asjades. ja kui see inimene teda märkas siis kadus ära kiirest.
+
+      maris ütleb et ta pole kindel kes see oli aga ma arvan et ta
+      kardab. proovi temaga kunsti teemadel rääkida, siis ta lõdvestub
+      haha
+    effects: { trust_karl: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Kadakalda. A Saaremaa island village
+      built around its old harbour. A boat builder who was fighting a
+      port expansion. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Marika (Tõnis's wife) -> marika_q1
+      - Talk to Liis (Tõnis's apprentice) -> liis_q1
+      - Check what Sten (Tõnis's brother) is saying -> sten_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marika Q1 ---
+
+  marika_q1:
+    type: tweet
+    from: marika
+    text: >
+      palun kui keegi on näinud @tonis_rebane helistage mulle. tema
+      tööriistad on töökojas. tema paat on sadamas. ta ei läinud
+      kuhugi.
+    effects: { trust_marika: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marika -> marika_q1_talk
+
+  marika_q1_talk:
+    type: message
+    text: >
+      MARIKA: Ma ei tunne sind. Ma ei tea miks ma peaksin sinuga
+      rääkima. Tõnisel on palju sõpru siin. Ma olen kindel et ta
+      tuleb tagasi.
+
+      ...Ma ütlen seda endale iga päev. Ma ei usu enam.
+
+      [Marika is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_marika: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Liis Q1 ---
+
+  liis_q1:
+    type: tweet
+    from: liis
+    text: >
+      @tonis_rebane töökoda on tühi. Tema viimane paat on pooleli.
+      Tammeplanke on saetud. Ta ei jätaks kunagi tööd pooleli.
+    effects: { trust_liis: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Liis -> liis_q1_talk
+
+  liis_q1_talk:
+    type: message
+    text: >
+      LIIS: Tõnis ja mina oleme koos töötanud kaks suve. Ta on parim
+      õpetaja keda ma tean. Traditsiooniline paadiehitus — see pole
+      lihtsalt käsitöö, see on ajalugu. Iga liide, iga tehnika.
+
+      Mis mind muretsema paneb: Tõnis ütles eelmisel nädalal et keegi
+      käis tema töökojas. Asjad olid nihkunud. Tema märkmed olid lahti,
+      kuigi ta paneb need alati kinni. Ja tema arvuti oli sisse
+      lülitatud, kuigi ta lülitab selle alati välja.
+
+      [Liis seems genuinely frightened.]
+    effects: { trust_liis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sten Q1 ---
+
+  sten_q1:
+    type: tweet
+    from: sten
+    text: >
+      mu vend on KADUNUD ja politsei ütleb et ta vist läks
+      purjetama??? TEMA PAAT ON SADAMAS. ta ei lähe ilma ütlemata.
+      ma sõidan pärnust. keegi hakkab mulle seletama.
+    effects: { trust_sten: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Sten -> sten_q1_talk
+
+  sten_q1_talk:
+    type: message
+    text: >
+      STEN: Kes sa oled? Veel üks inimene sellest külast kes ütleb
+      et ma rahuneks? Mu vend helistas mulle ööl enne kadumist. Ta
+      ütles et tal on midagi suurt. Ta ütles "kui midagi juhtub,
+      vaata BalticPort'i." Siis ta ütles veel midagi — "ja see Erik
+      ei jäta mind rahule."
+
+      See on viimane asi mida ma temalt kuulsin.
+    effects: { trust_sten: "+10" }
+    choices:
+      - What do you think happened? -> sten_theory
+      - Move on -> quest1_hub
+
+  sten_theory:
+    type: message
+    text: >
+      STEN: Ma arvan et BalticPort sundis ta vaikima. Tal olid
+      tõendid et nende keskkonnamõju hindamine on vale. Et ehitamine
+      hävitaks ranniku. See oleks projekti peatanud.
+
+      Aga ma arvan et see Erik Vainola on ka selles sees. Mitte
+      seepärast et ta on BalticPort'iga seotud — hoopis midagi muud.
+      See kuidas ta Tõnisest räägib... see pole normaalne huvi. Tõnis
+      ütles mulle kuid tagasi et keegi käib ta töökojas. Et keegi
+      jälgib teda. Ta arvas et see oli Eriku tegemine.
+
+      Firmaintress ja hull mees. Tõnis võitles mõlema vastu korraga.
+    effects: { trust_sten: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Tõnis went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Maris (was at the harbour at sunset) -> maris_interview
+      - Find Tiina (harbour master, works late) -> tiina_interview
+      - Find Priit (sea rescue, early morning patrol) -> priit_interview
+      - Find Olev (pharmacist, saw headlights) -> olev_interview
+
+  # --- Maris (saw someone at the workshop) ---
+
+  maris_interview:
+    type: tweet
+    from: maris
+    text: >
+      tegin fotosid sadamas aga mingi vibe on nii off praegu. kurat
+      midagi on valesti siin. ei oska seletada
+    effects: { trust_maris: "+5" }
+    choices:
+      - Ask Maris about that evening -> maris_talk
+
+  maris_talk:
+    type: message
+    text: >
+      MARIS: okei see on perses aga sa ei ütle kellelegi eks. ma olin
+      sadamas umbes kell seitse, fotosid tegemas. ja ma nägin kedagi
+      tõnise töökoja juures. soris tema asjades. kui ta mind märkas
+      siis jooksis ära.
+
+      ja kurat... ma pole sajaprotsendiliselt kindel aga see nägi välja
+      nagu erik vainola. sama jope, sama müts. aga oli juba hämar.
+
+      vittu ma oleks pidanud midagi ütlema aga kes usub seitsmeteist-
+      aastast tüdrukut
+    effects:
+      trust_maris: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tiina (harbour master, saw late-night meeting) ---
+
+  tiina_interview:
+    type: tweet
+    from: tiina
+    text: >
+      Meeldetuletus: sadam on suletud kell 22-06. Viimastel öödel
+      on täheldatud volitamata liikumist.
+    effects: { trust_tiina: "+5" }
+    choices:
+      - Ask Tiina what she saw -> tiina_talk
+
+  tiina_talk:
+    type: message
+    text: >
+      TIINA: Ma lõpetasin tööd sadamakontoris umbes kell kümme
+      õhtul. Tõnise töökoja tuli põles veel. Ja kõrval seisis must
+      maastur — Tallinna numbrid. Kaks meest seisid töökoja ukse
+      juures. Ühe tundsin ära: Andres Tammsaare, BalticPort'i juht.
+
+      Kell kümme õhtul. Kadakalda sadamas. See pole normaalne.
+
+      Ma kirjutasin selle sadamapäevikusse. Keegi pole küsinud seda
+      vaadata.
+    effects:
+      trust_tiina: "+10"
+      night_witnesses: "+1"
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Priit (sea rescue, heard commotion) ---
+
+  priit_interview:
+    type: tweet
+    from: priit
+    text: >
+      Merepääste: öised mootorihääled sadama piirkonnas. Olge
+      ettevaatlikud. Sadam on öösel suletud.
+    effects: { trust_priit: "+5" }
+    choices:
+      - Ask Priit what he heard -> priit_talk
+
+  priit_talk:
+    type: message
+    text: >
+      PRIIT: Ma olin valves sel ööl. Kell üksteist kuulsin sadamast
+      häält — hääli, karjumist. Mees ja teine mees. Üks karjus
+      midagi nagu "Jätke mind rahule!"
+
+      Jooksin sadamasse aga selleks ajaks kui kohale jõudsin oli
+      vaikne. Ainult värksed rehvijäljed kail. Ja Tõnise töökoda
+      oli lahti. Tuled põlesid, kedagi sees polnud.
+
+      Ma teatasin politseile. Nad ütlesid et tegelevad. See oli
+      seitse päeva tagasi.
+    effects:
+      trust_priit: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Olev (pharmacist, saw cars at dawn) ---
+
+  olev_interview:
+    type: tweet
+    from: olev
+    text: >
+      Hommikul kell viis apteeki avamas. Rannateel sõitis auto liiga
+      kiiresti. See polnud kohalik.
+    effects: { trust_olev: "+5" }
+    choices:
+      - Ask Olev what he saw -> olev_talk
+
+  olev_talk:
+    type: message
+    text: >
+      OLEV: Ma avan apteegi kell viis iga päev. Sel hommikul — auto,
+      liiga kiiresti, mööda rannateed. Must maastur. Siis, viis
+      minutit hiljem, teine auto. Väiksem, vanem. Tõnise pruun
+      Volvo? Ma pole kindel. Aga värv sobis.
+
+      Väiksem auto keerab vana paadikuuri poole. Suur sõidab edasi
+      Kuressaare suunas.
+
+      Ma ütlesin politseile. Nad tänasid. Rohkem ei juhtunud.
+    effects:
+      trust_olev: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marika (wife)
+      and Kaia (saw Erik near Tõnis's house).
+    choices:
+      - Talk to Marika about that night -> marika_interview
+      - Talk to Kaia -> kaia_interview
+      - Find Maris -> maris_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tiina -> tiina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Priit -> priit_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Olev -> olev_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marika (last to see Tõnis) ---
+
+  marika_interview:
+    type: tweet
+    from: marika
+    text: >
+      see foto tõnise kontol. see pole tema. tõnis ei postita kell
+      neli hommikul. tõnis ei postita ilma tekstita. keegi teine
+      tegi seda.
+    effects: { trust_marika: "+5" }
+    choices:
+      - DM Marika -> marika_talk_low
+        when:
+          state: trust_marika
+          lt: 50
+      - DM Marika -> marika_talk_high
+        when:
+          state: trust_marika
+          gte: 50
+
+  marika_talk_low:
+    type: message
+    text: >
+      MARIKA: Ma hindan sinu muret aga ma tõesti ei taha praegu
+      võõrastega sellest rääkida.
+
+      [Marika needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_marika: "+5" }
+    choices:
+      - Share what you've learned about the night -> marika_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marika_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the harbour, the
+      shouting at the workshop, the cars at dawn. Marika is silent for
+      a long time.
+
+      MARIKA: Sa tõesti proovid teda leida. Okei. Ma räägin.
+    effects: { trust_marika: "+25" }
+    choices:
+      - What happened that night? -> marika_talk_high
+
+  marika_talk_high:
+    type: message
+    text: >
+      MARIKA: Ta tuli koju umbes kell üheksa õhtul. Kahvatu, värisev.
+      Ta ütles "nad teavad mis mul on." Ta võttis oma sülearvuti ja
+      välise kõvaketta fotodega.
+
+      Ma küsisin kes. Ta ütles "BalticPort. Nad saatsid inimesi
+      töökotta." Siis ütles ta veel midagi — "ja tema oli jälle
+      seal. Ta on alati seal."
+
+      Ta ei öelnud kes "tema" on. Ta kallistas mind, ütles "ära
+      muretse" ja läks koos kotiga. Hommikuks oli tema auto kadunud
+      ja see imelik foto tema kontol.
+    effects:
+      trust_marika: "+15"
+      night_witnesses: "+1"
+      port_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Kaia (saw Erik watching Tõnis's house) ---
+
+  kaia_interview:
+    type: message
+    text: >
+      KAIA: okei see on perses aga see erik vainola — ma tean teda
+      sest ta tuli kooli ajaloo tundi rääkima laevadest — olin teda
+      kolm korda näinud õhtul tõnise maja ees. lihtsalt seisis ja
+      vaatas aknaid.
+
+      viimane kord oli kaks päeva enne kui tõnis kadus. erik istus
+      oma autos. mootor kinni. tuled kustus. lihtsalt istus ja
+      vaatas. ma mõtlesin okei äkki ootab kedagi. aga nüüd... kurat
+      see on creepy
+    effects:
+      trust_kaia: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Someone seen at Tõnis's workshop, searching (Maris)
+      21:00 — Tõnis arrives home, shaken, grabs laptop (Marika)
+      22:00 — BalticPort SUV at the harbour, Andres Tammsaare present (Tiina)
+      23:00 — Shouting at the harbour, "Leave me alone!" (Priit)
+      05:00 — Two cars speeding, one to old boat shed (Olev)
+
+      BalticPort confronted Tõnis at his workshop. He fled home,
+      grabbed his evidence, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is BalticPort hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Erik Vainola really doing? Why was he
+        at the workshop?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Erik -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${port_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: port_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      BalticPort OÜ is hiding something. Tõnis had proof. Now he's
+      gone and his evidence is missing from the workshop.
+
+      Port evidence: ${port_evidence}
+    choices:
+      - Search the municipal records -> vald_records
+      - Talk to Merike the journalist -> merike_interview
+      - Talk to Sirje (environment councillor) -> sirje_interview
+      - Check the Rannakaitse Selts -> rannakaitse_investigation
+      - Talk to Peeter about the coast damage -> peeter_coast
+      - Talk to Liis about Tõnis's research -> liis_research
+      - Back to hub -> investigation_hub
+
+  # --- Municipal Records ---
+
+  vald_records:
+    type: message
+    text: >
+      The municipal planning database shows the BalticPort project:
+      "Kadakalda Kaubasadam — sadamaarenduse detailplaneering." Status:
+      "Keskkonnamõju hindamine pooleli." Environmental impact
+      assessment still ongoing.
+
+      But satellite imagery from Tõnis's posts shows fresh earthwork
+      at the harbour dated two weeks ago. Heavy machinery tracks.
+      Demolished stone walls. Construction before approval.
+
+      Tõnis's formal objection is listed: "Vastuväide Rebane —
+      merebioloogilised uuringud tõestavad ranniku ökosüsteemi
+      hävitamist." His objection was the only thing blocking the
+      project.
+    effects:
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Merike ---
+
+  merike_interview:
+    type: message
+    text: >
+      MERIKE: Ma ei räägi allikatest. Punkt.
+    effects: { trust_merike: "+5" }
+    choices:
+      - Show Merike the evidence you have -> merike_with_evidence
+        when:
+          state: port_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  merike_with_evidence:
+    type: message
+    text: >
+      MERIKE: ...sul on rohkem kui ma ootasin.
+
+      Okei. Tõnis ja mina tegime koostööd. Tal olid veealused fotod
+      mis näitasid et BalticPort'i ehitamine hävitaks kogu ranniku
+      ökosüsteemi — hülge pesitsusala, kalade kudealad, mererohud.
+      Nende keskkonnamõju hindamine ütles "minimaalne mõju." Tõnise
+      fotod näitasid vastupidist.
+
+      Me valmistasime artiklit. Siis ta kadus. Ja kaks päeva hiljem
+      murtakse mu autosse ja varastatakse mu varukoopia kõvaketas.
+
+      Tõnis elab. Ta kontakteerus minuga üks kord, võõra telefoniga.
+      Ütles et peidab ennast. Ütles et "nad ähvardasid mind töökojas
+      ja keegi teine ei jäta mind rahule."
+
+      Ma ei saa sulle öelda kus ta on. Aga piisavate tõenditega saan
+      avaldada ja siis on tal turvaline tagasi tulla.
+    effects:
+      trust_merike: "+25"
+      port_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> merike_hint
+      - Back to investigation hub -> investigation_hub
+
+  merike_hint:
+    type: message
+    text: >
+      MERIKE: Tammsaare — BalticPort'i juht — tuli advokaadiga töökotta.
+      Öösel. Ütlesid et Tõnis peab kõik üle andma või saab kohtuasja.
+      Ähvardamine juriidiliseks protsessiks maskeeritud.
+
+      Aga ta rääkis ka kellestki teisest. Kellestki töökojas. Kellestki
+      kes alati teadis kus ta oli. See on teine probleem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sirje (environment councillor) ---
+
+  sirje_interview:
+    type: message
+    text: >
+      SIRJE: Volikogu liikmena keskkonnaasjade eest vastutajana võtan
+      seda tõsiselt. Aga BalticPort lubab viiskümmend töökohta ja
+      vallavanem nõuab "dialoogi investoritega."
+
+      Mitteametlikult? Olen näinud ehituslubasid. BalticPort alustas
+      tööd enne kui keskkonnamõju hindamine valmis oli. See on
+      ebaseaduslik. Aga järelevalve tuli "plaanilisele kontrollile"
+      — kaks nädalat ette teatatud. Loomulikult oli kõik korras.
+
+      Tõnise andmed olid etteteatamata. Seepärast olid nad ohtlikud.
+    effects:
+      trust_sirje: "+10"
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Rannakaitse Selts ---
+
+  rannakaitse_investigation:
+    type: tweet
+    from: rannakaitse
+    text: >
+      ALARM: Ebaseaduslikud ehitustööd Kadakalda vana sadama
+      piirkonnas dokumenteeritud. Ranniku ökosüsteem ohus. Nõuame
+      viivitamatut ehituskeeldu.
+    choices:
+      - Check their data -> rannakaitse_data
+
+  rannakaitse_data:
+    type: message
+    text: >
+      Rannakaitse Selts on kolm aastat jälginud Kadakalda ranniku
+      tervist. Nende andmed näitavad: hülge pesitsusala viiesaja
+      meetri kaugusel ehituskohast. Kolm ohustatud meretaime liiki
+      ehituspiirkonnas. Kalade kudealad mis häviksid
+      süvendamisega.
+
+      BalticPort'i keskkonnamõju hindamine ütleb: "Projektipiirkonnas
+      kaitstavaid liike ei esine." See on tõestatult vale.
+
+      Tõnis oli seltsi liige. Ta tegi enamiku veealustest uuringutest.
+    effects:
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Peeter coast ---
+
+  peeter_coast:
+    type: message
+    text: >
+      PEETER: Ma näitan sulle midagi. Eelmisel kuul tõmbasin ma
+      võrgud välja kai äärest ja seal oli — betoonijäägid. Värske
+      betoon merepõhjas. BalticPort on juba hakanud ehitama. Mitte
+      ametlikult. Öösel. Salaja.
+
+      Ma tegin fotod. Ja ma leidsin ehituse jäägid mille peal oli
+      BalticPort'i logo. Saatsin Tõnisele. Ta ütles et see on
+      puuduv tõend — nad ei oota luba, nad ehitavad juba.
+
+      Mul on fotod alles. Ja GPS koordinaadid.
+    effects:
+      trust_peeter: "+10"
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Liis research ---
+
+  liis_research:
+    type: message
+    text: >
+      LIIS: Tõnis usaldas mind. Enne kadumist andis ta mulle koopia
+      kõigest — veealused fotod, merebioloogilised uuringud, GPS
+      koordinaadid salajasest ehitustööst, ja kirjavahetus
+      vallavalitsusega kus nad lükkavad järelevalvet edasi.
+
+      Ta ütles: "Kui mulle midagi juhtub, vii see Merike Laasile
+      Saarte Häälde."
+
+      Andmed tõestavad et BalticPort ehitab kaitstaval alal ja et
+      vallavalitsus vaatab teisele poole.
+    effects:
+      trust_liis: "+10"
+      port_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Erik Vainola. Maritime historian. Moved to Kadakalda two years ago.
+      Someone was breaking into the workshop. Someone was watching the
+      house. Someone was searching through tools.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Erik's online presence -> erik_online
+      - Talk to Marika about Erik -> marika_erik
+        when:
+          state: trust_marika
+          gte: 20
+      - Talk to Maris (more detail on the workshop incident) -> maris_detail
+      - Talk to Olev about Erik -> olev_erik
+      - Check the anonymous account @meremees -> meremees_investigation
+      - Talk to Anu the librarian -> anu_interview
+        when:
+          state: trust_anu
+          gte: 40
+      - Talk to Komissar Pärn -> komissar_interview
+        when:
+          state: trust_komissar
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Erik Online ---
+
+  erik_online:
+    type: message
+    text: >
+      Erik Vainola's Kadakalda.social profile: 580 posts in 22 months.
+      First three months: standard maritime history content. Viking ship
+      reconstructions. Historical harbour surveys.
+
+      Then he discovered Tõnis's workshop. From month 4 onward, his
+      content shifts:
+
+      Month 4: "Incredible craftsmanship! This is living maritime
+      heritage. I must document everything."
+      Month 8: "Why won't he let me film the full process? This
+      knowledge belongs to the world."
+      Month 12: "He's hiding traditional techniques. He has no right
+      to gatekeep this heritage."
+      Month 18: "I know his methods better than he knows them himself.
+      I've studied every joint, every plank."
+      Month 20: No posts. Just silent likes on every Tõnis post.
+
+      His academic page lists a book manuscript: "The Last Boat
+      Builder: Kadakalda's Living Maritime Heritage." Tõnis never
+      agreed to be in any book.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marika on Erik ---
+
+  marika_erik:
+    type: message
+    text: >
+      MARIKA: Erik? Kurat. See inimene on õudusunenägu. Kolis siia
+      kaks aastat tagasi ja kleepus kohe Tõnise külge. Tahtis kõike
+      filmida, kõike salvestada, iga tehnikat "teaduse jaoks
+      dokumenteerida."
+
+      Tõnis ütles lõpuks et ei. Viisakalt, selgelt. Erik ütles et
+      saab aru. Siis ei muutunud mitte midagi. Ta lihtsalt... oli
+      alati kohal. Alati.
+
+      Kuu aega tagasi leidis Tõnis et keegi oli töökojas käinud.
+      Midagi polnud varastatud. Aga tööriistad olid liigutatud.
+      Ja Tõnise isiklik märkmik — paadiehituse saladused, tema isa
+      ja vanaisa tehnikad — oli lahti jäetud lehekülgedel mida ta
+      polnud kunagi kellelegi näidanud.
+    effects:
+      trust_marika: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Maris detail ---
+
+  maris_detail:
+    type: message
+    text: >
+      MARIS: okei kurat ma ei öelnud kõike. kui ma nägin seda inimest
+      tõnise töökojas siis tal oli käes kaamera. mitte telefon,
+      päris kaamera. filmis tõnise tööriistu, tema paadi jooniseid,
+      kõike. ja ta oli avanud tõnise laua sahtlid.
+
+      ja vittu... järgmisel päeval nägin eriku seda sama kaamerat
+      tema kaelas sadamas. samasugune. okei see on perses aga kes
+      usub teismekat
+    effects:
+      trust_maris: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Olev on Erik ---
+
+  olev_erik:
+    type: message
+    text: >
+      OLEV: Erik Vainola. Käib regulaarselt. Ostab rahusteid,
+      unerohte, kofeiini tablette. Muster on inimene kes ei maga
+      ja on pidevalt pinges.
+
+      Ja ta küsis kord, väga juhusliku näoga, kas ma müün GPS
+      jälgijaid. Ma ütlesin "see on apteek, mitte elektroonikakauplus."
+      Ta naeris. Ütles et mõtles jälgijat oma auto jaoks.
+
+      Pärast Tõnise kadumist pole teda enam näinud. See on ka
+      ebatavaline. Enne oli ta iga teine päev siin.
+    effects:
+      trust_olev: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Meremees (anonymous account) ---
+
+  meremees_investigation:
+    type: tweet
+    from: meremees
+    text: >
+      Ta oleks pidanud mind kuulama. Ma tahtsin ainult tema teadmisi
+      kaitsta. Keegi teine ei mõista seda tööd nii nagu mina.
+    choices:
+      - Look at this account's history -> meremees_posts
+
+  meremees_posts:
+    type: message
+    text: >
+      @meremees: konto loodud 14 kuud tagasi. Kõik postitused on
+      Tõnise tööst. Kommentaarid iga paadifoto, iga tööprotsessi,
+      iga töökoja postituse all. Toon muutub:
+
+      Kuu 1: "Uskumatu meistritöö. Sa oled elav ajalugu."
+      Kuu 4: "Miks sa mu sõnumitele ei vasta? Ma tahan ainult
+      koostööd teha."
+      Kuu 8: "Ma näen sind sadamas teiste inimestega. Nende jaoks
+      on sul aega, minu jaoks mitte?"
+      Kuu 12: "Ma tean kus sa käid. Ma tean su graafikut. Ma olen
+      alati lähedal."
+
+      Kontol pole fotosid, pole isiklikke andmeid. Ainult Tõnis.
+      Alati ainult Tõnis.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> meremees_style
+
+  meremees_style:
+    type: message
+    text: >
+      Võrdlus @meremees ja @erik_vainola:
+
+      Sama merenduse terminoloogia. Samad akadeemilised väljendid —
+      "traditsiooniline klinkerplangutus," "tammepuidu
+      töötlemistehnika." Sama teadmine Tõnise tööst mida ainult
+      keegi kes on töökoja seest näinud saaks teada.
+
+      Ja üks postitus @meremees'ilt: "Sinu kolmas paat kasutab
+      Kuressaare tehnikat." See tehnikanimi on Tõnise isiklik
+      termin. Seda pole kuskil avaldatud. See oli ainult tema
+      märkmikus.
+
+      See on Erik. Anonüümne konto on Erik Vainola.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anu ---
+
+  anu_interview:
+    type: message
+    text: >
+      ANU: Tõnis jättis mulle midagi. Veekindla kasti. Ta ütles:
+      "Kui keegi küsib mis toimub sadamas, anna see talle."
+
+      Ta nägi hirmunud välja. Ta ütles et tal on vaja koopiaid kohas
+      kuhu keegi ei mõtle otsida. Raamatukogu sobib ideaalselt.
+    effects: { trust_anu: "+10" }
+    choices:
+      - What's in the box? -> anu_box
+
+  anu_box:
+    type: message
+    text: >
+      Anu toob leti alt veekindla Pelicani kasti.
+
+      ANU: Ta ütles et sa tuled. Võta.
+
+      Sees: USB-mälupulk ja prinditud fotod. Fotod näitavad
+      salajast ehitustööd sadamas — betoonivalu öösel, masinad
+      BalticPort'i logoga, hävitatud ajaloolist kivi-kaid. USB-
+      mälupulgal on veealused uuringud, merebioloogilised andmed
+      ja Tõnise täielik raport vallavalitsusele — mida nad pole
+      kunagi menetlenud.
+    effects:
+      port_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Komissar Pärn ---
+
+  komissar_interview:
+    type: message
+    text: >
+      KOMISSAR PÄRN: Mitteametlikult — ja ma mõtlen täiesti
+      mitteametlikult — ma tahtsin uurida BalticPort'i. Mu ülemus
+      ütles et jätaks. Ütles et "maakond tegeleb sellega." See on
+      ametikeel "ära puutu."
+
+      Eriku asi on teistmoodi. Sellest ma ei teadnud midagi enne
+      praegust. Kui sul on tõendeid jälitamise kohta, siis saan
+      tegutseda. See on selgelt minu pädevus.
+
+      Too mulle midagi konkreetset ja ma avan asja uuesti.
+    effects:
+      trust_komissar: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Tõnis than anyone in Kadakalda. Who is responsible?
+    choices:
+      - Confront Erik Vainola (the obsessive historian) -> confront_erik
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Andres Tammsaare (the port director) -> confront_andres
+        when:
+          state: port_evidence
+          gte: 3
+      - Confront Elder Kask (political protection) -> confront_jaan
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Erik (Best Ending) ---
+
+  confront_erik:
+    type: message
+    text: >
+      You present your evidence to Erik Vainola:
+
+      "I know @meremees is your account. I know you broke into Tõnis's
+      workshop and filmed his techniques. I know you put a tracker on
+      his tools. I know you were watching his house. I have witnesses
+      and I have the anonymous posts that match your writing style."
+    choices:
+      - Send -> erik_response
+
+  erik_response:
+    type: message
+    text: >
+      Erik doesn't reply for a long time. Then:
+
+      ERIK: Sa ei mõista. Tõnise teadmised on hindamatu pärand. Ta
+      oleks lasknud neil kaduda. Ma pidin neid säilitama. Kõik mida
+      ma tegin oli selleks et tema töö elaks igavesti. See on armastus
+      pärandi vastu.
+
+      That's not preservation. That's obsession.
+
+      You've already sent the evidence to Komissar Pärn. And to
+      Merike Laas.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Komissar Pärn reopens the case. With your evidence — the
+      anonymous account, the workshop break-ins, the surveillance,
+      the witness testimonies — Erik Vainola is arrested for
+      stalking, unlawful entry, and harassment. A hidden camera is
+      recovered from Tõnis's workshop ceiling beam.
+
+      Merike Laas, in possession of Tõnis's full evidence package,
+      publishes the BalticPort story in Postimees. The
+      Keskkonnaamet orders an immediate halt to all construction at
+      Kadakalda harbour. Andres Tammsaare faces criminal charges for
+      illegal construction on protected coastline.
+
+      And Tõnis Rebane, reading the story from a friend's farmhouse
+      on Hiiumaa, calls his wife for the first time in ten days.
+
+      "Ma tulen koju."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Ohvriabi kriisitelefon: 116 006 (tasuta, 24/7)
+      Politsei- ja Piirivalveamet: 112
+      Lasteabi telefon: 116 111
+      Veebipõhine nõustamine: www.palunabi.ee
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: tonis
+    text: >
+      meri on alles. sadam on alles. ja kadakalda rahvas ka. aitäh
+      et te ei loobunud.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Andres (Partial Ending) ---
+
+  confront_andres:
+    type: message
+    text: >
+      You present the environmental evidence to Andres Tammsaare:
+
+      "I have photographs of illegal construction on protected
+      coastline. I have the marine biology surveys proving ecosystem
+      destruction. I have the building permits that don't exist. I
+      have your concrete in the sea with your company logo."
+    choices:
+      - Send -> andres_response
+
+  andres_response:
+    type: message
+    text: >
+      ANDRES: See vestlus edastatakse meie juriidilisele osakonnale.
+      Igasugune laimava materjali avaldamine toob kaasa kohesed
+      õiguslikud sammud. BalticPort OÜ on alati tegutsenud vastavalt
+      kehtivatele seadustele.
+
+      But it's too late. You've sent the evidence to Merike, to the
+      Rannakaitse Selts, and to the Keskkonnaamet.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The construction scandal breaks. BalticPort is ordered to halt
+      all work pending investigation. The project may be cancelled.
+      Fifty promised jobs vanish. The village is divided.
+
+      But Tõnis?
+
+      Without the stalking evidence, Erik is never investigated. He
+      continues to live in Kadakalda. He starts a new research project.
+      He creates a new anonymous account. He watches.
+
+      Three months later, Tõnis reads about BalticPort online. He
+      returns quietly. He moves his workshop inland. He installs
+      security cameras. He locks every door.
+
+      The corporation is exposed. But the person who terrorised Tõnis
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: tonis
+    text: "ma olen tagasi. sadam on päästetud. ülejäänu... vaatame."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_jaan:
+    type: message
+    text: >
+      You confront vallavanem Kask with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> jaan_response
+
+  jaan_response:
+    type: tweet
+    from: toomas
+    text: >
+      Minu klient on teie süüdistustest teadlik. Igasugune
+      auhaavavate väidete levitamine toob kaasa viivitamatud
+      kohtulikud sammud. — Ilves & Partnerid, Tallinn
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Kask and BalticPort's illegal construction — and
+      there isn't one beyond political protection — your evidence is
+      insufficient.
+
+      BalticPort continues to build. Erik continues to watch. Tõnis
+      stays in hiding.
+
+      Six months later, @meremees creates a new account. It follows
+      Tõnis's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: KADAKALDA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Port evidence: ${port_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Tõnis's story explores themes of
+      corporate greed, coastal destruction, obsessive behaviour,
+      island community solidarity, and the courage to protect
+      tradition and nature.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Ohvriabi kriisitelefon: 116 006 (tasuta, 24/7)
+      Politsei- ja Piirivalveamet: 112
+      Keskkonnainspektsioon: 1313

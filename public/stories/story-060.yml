@@ -1,0 +1,1572 @@
+# DEAD ACCOUNT — Story 060: Quinta do Rio (Portugal 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-060.yml
+#
+# Player investigates the disappearance of young street muralist Tiago Ferreira
+# in the fictional Douro Valley wine village of Quinta do Rio.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_beatriz: 0
+    trust_miguel: 0
+    trust_leonor: 0
+    trust_diogo: 0
+    trust_ines: 0
+    trust_rui: 0
+    trust_catarina: 0
+    trust_manuel: 0
+    trust_sofia: 0
+    trust_henrique: 0
+    trust_margarida: 0
+    trust_andre: 0
+    trust_joana: 0
+    trust_vasco: 0
+    trust_teresa: 0
+    trust_bernardo: 0
+    trust_filipa: 0
+    trust_jorge: 0
+    trust_gnr: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    dealer_evidence: 0
+    dam_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Novo Residente
+    bio: "acabei de chegar a quinta do rio. a descobrir o douro aos poucos"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "QuintaDoRio.social"
+    description: "Bem-vindos a instancia comunitaria de Quinta do Rio, Vale do Douro"
+    avatar_url: /gamepatch/assets/dead-account/quintadorio_bot.png
+
+  npcs:
+    # === Tiago's Inner Circle ===
+    tiago:
+      name: "Tiago Ferreira"
+      bio: "muralista | a pintar o douro desde os 14 | as paredes falam por nos"
+      avatar: avatars/tiago.jpg
+    beatriz:
+      name: "Beatriz Lopes"
+      bio: "melhor amiga do tiago | trabalho na adega | vinho e arte e a mesma cena"
+      avatar: avatars/beatriz.jpg
+    miguel:
+      name: "Miguel Ferreira"
+      bio: "irmao do tiago | pescador no douro | brest | ele nao desaparece assim"
+      avatar: avatars/miguel.jpg
+    leonor:
+      name: "Leonor Cardoso"
+      bio: "namorada do tiago | enfermeira no centro de saude | volta para casa por favor"
+      avatar: avatars/leonor.jpg
+
+    # === Local Government ===
+    henrique:
+      name: "Henrique Monteiro"
+      bio: "Presidente da Camara de Quinta do Rio | Ao servico do municipio desde 2017 | #QuintaAvanca"
+      avatar: avatars/henrique.jpg
+    margarida:
+      name: "Margarida Sousa"
+      bio: "Vereadora do Ambiente e Urbanismo | Camara de Quinta do Rio | sustentabilidade"
+      avatar: avatars/margarida.jpg
+    camara:
+      name: "Camara Municipal de Quinta do Rio"
+      bio: "Conta oficial | Noticias do municipio | Horario: Seg-Sex 9h-17h"
+      avatar: avatars/camara.jpg
+
+    # === Local Business & Community ===
+    rui:
+      name: "Rui Oliveira"
+      bio: "Taberna do Rui | petiscos | vinho do douro | aberto desde 1993"
+      avatar: avatars/rui.jpg
+    catarina:
+      name: "Catarina Mendes"
+      bio: "dona da adega velha | vinho biologico | vinhas herdadas do avo"
+      avatar: avatars/catarina.jpg
+    manuel:
+      name: "Manuel Braga"
+      bio: "viticultor | 50 anos nas vinhas | os terracos sao a nossa alma"
+      avatar: avatars/manuel.jpg
+    teresa:
+      name: "Teresa Figueiredo"
+      bio: "farmacia central | Quinta do Rio | aberta ao domingo de manha"
+      avatar: avatars/teresa.jpg
+    jorge:
+      name: "Jorge Pinto"
+      bio: "barqueiro no douro | passeios turisticos | o rio e a minha estrada"
+      avatar: avatars/jorge.jpg
+
+    # === Journalist ===
+    joana:
+      name: "Joana Ribeiro"
+      bio: "jornalista independente | ambiente e patrimonio | tips: joana@ribeiro-press.pt"
+      avatar: avatars/joana.jpg
+
+    # === Art Dealer / Outsider ===
+    filipa:
+      name: "Filipa Vasconcelos"
+      bio: "Galeria Vasconcelos | Arte contemporanea | Lisboa-Porto-Douro | talentos emergentes"
+      avatar: avatars/filipa.jpg
+    bernardo:
+      name: "Bernardo Faria"
+      bio: "Advogado | Faria & Associados | Direito Imobiliario | Porto"
+      avatar: avatars/bernardo.jpg
+
+    # === Dam Project ===
+    hidroduero:
+      name: "HidroDouro SA"
+      bio: "Gestao de recursos hidricos | Projeto Barragem do Douro Superior | ISO 9001"
+      avatar: avatars/hidroduero.jpg
+    vasco:
+      name: "Vasco Teixeira"
+      bio: "diretor de projeto | HidroDouro SA | infraestruturas hidricas"
+      avatar: avatars/vasco.jpg
+
+    # === Teens ===
+    diogo:
+      name: "Diogo"
+      bio: "17 | graffiti e skate | quinta do rio born | o tiago e o meu mestre"
+      avatar: avatars/diogo.jpg
+    ines:
+      name: "Ines"
+      bio: "16 | fotografia | as cores do douro | tiago ensinou-me a ver"
+      avatar: avatars/ines.jpg
+    sofia:
+      name: "Sofia"
+      bio: "15 | musica e poesia | o vale e inspiracao | #voltaTiago"
+      avatar: avatars/sofia.jpg
+
+    # === Media & Community ===
+    actu_douro:
+      name: "Noticias do Douro"
+      bio: "Noticias de Quinta do Rio e do Vale do Douro | tips: redacao@noticiasdouro.pt"
+      avatar: avatars/actu_douro.jpg
+    meteo_douro:
+      name: "Meteo Douro"
+      bio: "Previsoes e alertas | Estacao automatica | Atualizacao de hora a hora"
+      avatar: avatars/meteo_douro.jpg
+    asso_terracos:
+      name: "Associacao Terracos Vivos"
+      bio: "Protecao dos terracos vinhateiros do Douro | Património UNESCO | voluntarios"
+      avatar: avatars/asso_terracos.jpg
+
+    # === Suspicious / Other ===
+    andre:
+      name: "Andre Valente"
+      bio: "tecnico de topografia | HidroDouro | faco o meu trabalho"
+      avatar: avatars/andre.jpg
+    fantasma_douro:
+      name: "fantasma.do"
+      bio: "."
+      avatar: avatars/anon.jpg
+    gnr:
+      name: "Sargento Carvalho"
+      bio: "GNR Quinta do Rio | Posto Territorial | urgencias: 112"
+      avatar: avatars/gnr.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN QUINTA DO RIO
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to quintadorio.social — the community Mastodon instance for
+      the wine village of Quinta do Rio, in the Douro Valley.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @tiago_ferreira.
+
+      A street muralist. Graffiti artist. He painted the crumbling walls
+      of Douro terraces into living stories. People are worried. He
+      hasn't posted in six days.
+    choices:
+      - Look at his profile -> tiago_profile
+
+  tiago_profile:
+    type: tweet
+    from: tiago
+    text: "Estao a destruir os terracos para a barragem. As vinhas do Manuel vao ficar debaixo de agua. Eu vou pintar o que eles querem apagar."
+    choices:
+      - That's his last real post... -> grey_wall
+
+  grey_wall:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a grey wall. No mural. No colour. Just concrete, shot at a strange
+      angle. Posted at 4am. No caption.
+
+      His friends say that's the opposite of everything Tiago is. The
+      GNR says he probably left town to paint somewhere else. Something
+      doesn't add up.
+    choices:
+      - Read the GNR statement -> gnr_statement
+      - Look at what people are saying -> community_reaction
+
+  gnr_statement:
+    type: tweet
+    from: gnr
+    text: >
+      Recebemos uma participacao relativa a um residente de Quinta do Rio.
+      Nesta fase, nenhum elemento permite concluir por atividade criminosa.
+      Qualquer informacao util pode ser comunicada ao 112 ou ao posto da GNR.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His best friend @beatriz_lopes is desperate.
+      His brother @miguel_ferreira is driving down from Porto. His girlfriend
+      @leonor_cardoso is posting tearful messages. The old viticultor
+      @manuel_braga says Tiago was the only one who understood what the
+      terraces mean.
+
+      And the journalist @joana_ribeiro is strangely silent.
+
+      Nobody buys the GNR's line. Nobody thinks Tiago just "left town
+      to paint somewhere else."
+    effects: { trust_beatriz: "+5", trust_miguel: "+5" }
+    choices:
+      - Start following Tiago's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Quinta do Rio. Follow Tiago's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Rui (taberna owner, knows everyone) -> rui_intro
+      - Talk to Manuel (viticultor, saw what's happening to the terraces) -> manuel_intro
+      - Talk to Diogo (teen graffiti kid, seems shaken) -> diogo_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Tiago with the rhythms of a small Douro
+      village: harvest schedules, the taberna's daily specials, river
+      level warnings.
+
+      Key names surface: Beatriz (best friend, works at the adega),
+      Leonor (girlfriend, nurse, devastated), Miguel (brother, coming
+      from Porto), and the teens — Diogo, Ines, Sofia — who learned
+      to paint and see the valley through Tiago's eyes.
+
+      Also prominent: HidroDouro SA, the company behind the new dam
+      project. Their posts are corporate PR about "sustainable water
+      management." Tiago's posts were the opposite — murals of drowned
+      vineyards and displaced families.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Rui -> rui_intro
+      - Talk to Manuel -> manuel_intro
+      - Talk to Diogo -> diogo_intro
+
+  # --- Rui (social map) ---
+
+  rui_intro:
+    type: tweet
+    from: rui
+    text: >
+      A taberna esta aberta mas falta-nos o Tiago. O canto dele esta
+      vazio. @tiago_ferreira volta ca rapaz.
+    effects: { trust_rui: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Rui -> rui_talk
+
+  rui_talk:
+    type: message
+    text: >
+      RUI: Ah, es novo aqui? Bem-vindo. Pessimo timing para chegares.
+      A vila toda esta de rastos por causa do Tiago.
+
+      Deixa-me explicar quem e quem. A Beatriz e a melhor amiga dele —
+      trabalham juntos na adega da Catarina. Uma miuda fixe, esta
+      destruida. A Leonor e a namorada, enfermeira. O Miguel e o irmao
+      mais velho, vem de Porto.
+
+      E a Joana Ribeiro — a jornalista — ela e o Tiago andavam a
+      trabalhar juntos numa cena. Uma cena sobre a barragem e os
+      contratos do presidente. A Joana nao abriu a boca desde que o
+      Tiago desapareceu. Isso nao e normal.
+
+      Ah, e cuidado com uma gaja de Lisboa chamada Filipa Vasconcelos.
+      Dona de galeria. Andava atras do Tiago como louca. Ele nao
+      queria nada com ela e a tipa nao aceitava um nao.
+    effects: { trust_rui: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Filipa -> rui_filipa
+      - Ask about the dam -> rui_dam
+      - Thank him and move on -> quest1_hub
+
+  rui_filipa:
+    type: message
+    text: >
+      RUI: A Filipa? Foda-se, aquela mulher e uma obsessao ambulante.
+      Apareceu aqui ha uns meses, dona de uma galeria em Lisboa. Viu
+      os murais do Tiago e ficou maluca. Ofereceu-lhe contratos,
+      exposicoes, dinheiro. Ele disse que nao, que a arte dele e da
+      rua, nao de galerias.
+
+      Ela nao aceitou. Continuou a aparecer. Na taberna, nos muros onde
+      ele pintava, ate na casa dele. A Leonor ficou passada. O Tiago
+      disse-me uma vez: "Aquela mulher nao aceita um nao, mano. E creepy."
+
+      Depois do ultimo nao, ela comecou a ficar estranha. Tipo, a seguir
+      os miudos que pintam com ele. A aparecer nos sitios onde ele ia
+      estar. Tipo, a gaja sabia sempre onde ele estava.
+    effects: { trust_rui: "+5" }
+    choices:
+      - Ask about the dam -> rui_dam
+      - Move on -> quest1_hub
+
+  rui_dam:
+    type: message
+    text: >
+      RUI: A barragem? Merda, isso e a cena maior. A HidroDouro quer
+      construir uma barragem a montante. Vai inundar terracos vinhateiros
+      que tem duzentos anos. Patrimonio UNESCO, mano. Vinhas do Manuel,
+      da Catarina, de metade da vila.
+
+      E o presidente da camara — o Henrique Monteiro — esta todo
+      contente. Dizem que tem contratos com a HidroDouro. A construtora
+      que vai fazer a obra e da familia dele. O Tiago andava a pintar
+      murais sobre isso. Murais enormes nos muros da vila. Vinhas
+      debaixo de agua. Gente a chorar.
+
+      A camara mandou apagar dois deles. Disseram que era "vandalismo."
+      Foda-se, vandalismo. Era a verdade.
+    effects: { trust_rui: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Manuel (the terraces, witness tease) ---
+
+  manuel_intro:
+    type: tweet
+    from: manuel
+    text: >
+      cinquenta anos a cuidar destas vinhas. agora querem afoga-las.
+      @tiago_ferreira era o unico que pintava a verdade. e agora
+      desapareceu. facam as contas.
+    effects: { trust_manuel: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Manuel -> manuel_talk
+
+  manuel_talk:
+    type: message
+    text: >
+      MANUEL: Eu cuido destas vinhas desde que era miudo. O meu avo
+      construiu estes terracos a mao. Pedra sobre pedra. Agora querem
+      encher isto tudo de agua para uma barragem que so serve para
+      encher os bolsos do presidente.
+
+      O Tiago era o unico jovem que percebia. Ele pintava os terracos
+      como ninguem. Fez um mural enorme na parede da adega velha —
+      as vinhas a desaparecer debaixo de agua. Lindo e triste.
+
+      E agora ele desapareceu. A noite antes, eu vi-o a sair de casa
+      a correr. Com a mochila e os sprays. As duas da manha. Nao e
+      normal.
+    effects: { trust_manuel: "+10" }
+    choices:
+      - Did you see anything else? -> manuel_night
+      - Move on -> quest1_hub
+
+  manuel_night:
+    type: message
+    text: >
+      MANUEL: A noite antes de desaparecer — eu levanto-me as quatro
+      para as vinhas, como sempre. Vi luzes na estrada de cima. Um
+      carro grande, preto, com logotipo da HidroDouro. Parado ao pe
+      do mural novo que o Tiago tinha pintado nessa noite.
+
+      As quatro da manha. Um carro da empresa. Na estrada onde o
+      Tiago tinha acabado de pintar.
+
+      Eu nao pensei muito na altura. Agora nao paro de pensar nisso.
+    effects: { trust_manuel: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Diogo (teen graffiti kid, witness tease) ---
+
+  diogo_intro:
+    type: tweet
+    from: diogo
+    text: >
+      ya mano o tiago e tipo o maior. ensinou-me tudo sobre murais
+      e graffiti. nao e possivel que se tenha ido embora assim. se
+      alguem souber de alguma cena diga pfv caralho
+    effects: { trust_diogo: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Diogo -> diogo_talk_early
+
+  diogo_talk_early:
+    type: message
+    text: >
+      DIOGO: ya mano es novo aqui? bue mau timing. o tiago e tipo a
+      melhor pessoa desta vila. ensinou-nos a pintar, a ver as cenas
+      de maneira diferente. tipo ele olhava para um muro velho e via
+      uma historia.
+
+      e agora to bue assustado porque a ines viu uma cena estranha
+      no outro dia perto da galeria da filipa mas nao quer falar.
+      diz que nao e nada mas tipo... e alguma cena ya
+    effects: { trust_diogo: "+10" }
+    choices:
+      - What did Ines see? -> diogo_ines_hint
+      - Move on -> quest1_hub
+
+  diogo_ines_hint:
+    type: message
+    text: >
+      DIOGO: nao sei bem. ela tava a tirar fotos perto da casa que
+      a filipa alugou e viu tipo a filipa a meter cenas na carrinha
+      do tiago?? ou alguma cena assim. ela ta bue assustada nao quer
+      falar. tenta falar com ela mas tipo sem pressao, a miuda e
+      timida. fala primeiro de fotografia que ela abre-se
+    effects: { trust_diogo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Quinta do Rio. A Douro Valley village
+      built around the terraces and the river. A muralist who was
+      painting the truth about a dam project. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Beatriz (Tiago's best friend) -> beatriz_q1
+      - Talk to Leonor (Tiago's girlfriend) -> leonor_q1
+      - Check what Miguel (Tiago's brother) is saying -> miguel_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Beatriz Q1 ---
+
+  beatriz_q1:
+    type: tweet
+    from: beatriz
+    text: >
+      se alguem tiver noticias do @tiago_ferreira por favor liguem-me.
+      os sprays dele estao no atelier. o caderno de desenhos ta la.
+      ele nunca iria embora sem o caderno. nunca.
+    effects: { trust_beatriz: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Beatriz -> beatriz_q1_talk
+
+  beatriz_q1_talk:
+    type: message
+    text: >
+      BEATRIZ: Agradeco a preocupacao mas nao te conheco. O Tiago tem
+      muitos amigos aqui. Tenho a certeza que ele vai voltar.
+
+      ...ando a dizer isto a mim propria. Ja nao acredito.
+
+      [Beatriz is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_beatriz: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Leonor Q1 ---
+
+  leonor_q1:
+    type: tweet
+    from: leonor
+    text: >
+      o meu namorado desapareceu e a gnr diz que se calhar foi pintar
+      para outra terra. o tiago nao sai daqui sem me dizer. sem me
+      abracar. sem o caderno dele. puta que pariu facam alguma coisa.
+    effects: { trust_leonor: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Leonor -> leonor_q1_talk
+
+  leonor_q1_talk:
+    type: message
+    text: >
+      LEONOR: Quem es tu? Mais uma pessoa que vai dizer para eu ter
+      calma? O Tiago ligou-me naquela noite. Disse que tinha descoberto
+      uma cena enorme sobre os contratos da barragem. Disse "se me
+      acontecer alguma coisa, procura nos ficheiros do presidente."
+
+      Depois desligou. Foi a ultima vez que ouvi a voz dele.
+    effects: { trust_leonor: "+10" }
+    choices:
+      - What do you think happened? -> leonor_theory
+      - Move on -> quest1_hub
+
+  leonor_theory:
+    type: message
+    text: >
+      LEONOR: Acho que ele descobriu que o Henrique Monteiro esta a
+      lucrar com a barragem e eles calaram-no. Mas tambem acho que
+      aquela gaja — a Filipa da galeria — sabe mais do que diz.
+      A maneira como ela falava do Tiago... nao era so negocio.
+      Era outra coisa.
+
+      O Tiago disse-me ha meses que alguem andava a seguir o trabalho
+      dele de uma forma estranha. Que aparecia sempre nos sitios onde
+      ele ia pintar. Ele achou que era coincidencia. Eu acho que nao era.
+    effects: { trust_leonor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Miguel Q1 ---
+
+  miguel_q1:
+    type: tweet
+    from: miguel
+    text: >
+      o meu irmao DESAPARECEU e a gnr diz-me que se calhar foi viajar???
+      O TIAGO NAO VIAJA SEM AVISAR. venho de porto. alguem me vai
+      explicar o que se passou caralho.
+    effects: { trust_miguel: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Miguel -> miguel_q1_talk
+
+  miguel_q1_talk:
+    type: message
+    text: >
+      MIGUEL: Quem es? Mais um da vila que me vai dizer para ter calma?
+      O meu irmao nao desaparece assim. Ele ama esta terra. Ama as
+      vinhas, o rio, os muros. Ele nunca ia embora sem avisar.
+
+      E eu sei que ele andava metido numa cena grande. Andava a
+      investigar os contratos da barragem. Disse-me que tinha encontrado
+      documentos que provavam que a construtora era da familia do
+      presidente. Filho da puta.
+    effects: { trust_miguel: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Tiago went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Ines (was photographing near the gallery) -> ines_interview
+      - Find Jorge (boatman, works early on the river) -> jorge_interview
+      - Find Catarina (adega owner, heard something at night) -> catarina_interview
+      - Find Teresa (pharmacist, saw something at dawn) -> teresa_interview
+
+  # --- Ines (saw someone at Tiago's van) ---
+
+  ines_interview:
+    type: tweet
+    from: ines
+    text: >
+      tava a tirar fotos ao por do sol e vi uma cena que nao devia
+      ter visto. to com medo de falar. desculpem.
+    effects: { trust_ines: "+5" }
+    choices:
+      - Ask Ines what she saw -> ines_talk
+
+  ines_talk:
+    type: message
+    text: >
+      INES: ya ok mas nao dizes a ninguem. eu tava perto da casa que
+      a filipa alugou, a tirar fotos da luz no rio. e vi a filipa a
+      mexer na carrinha do tiago. tipo, a porta de tras tava aberta e
+      ela tava a meter alguma cena la dentro. tipo uma caixa pequena.
+
+      quando me viu ficou bue estranha e disse que tava so a devolver
+      uma cena ao tiago. mas tipo... as dez da noite? sozinha?
+
+      eu fiquei bue assustada e fui-me embora. no dia seguinte o
+      tiago desapareceu.
+    effects:
+      trust_ines: "+10"
+      night_witnesses: "+1"
+      dealer_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jorge (boatman, saw late-night meeting) ---
+
+  jorge_interview:
+    type: tweet
+    from: jorge
+    text: >
+      Lembrete: o cais esta fechado entre as 23h e as 6h. Tenho
+      notado movimentos estranhos a noite no caminho do rio.
+    effects: { trust_jorge: "+5" }
+    choices:
+      - Ask Jorge what he saw -> jorge_talk
+
+  jorge_talk:
+    type: message
+    text: >
+      JORGE: Eu tava a preparar o barco de madrugada, por volta das
+      cinco. Vi dois homens no caminho de cima, perto do mural novo
+      que o Tiago tinha acabado de pintar. Estavam a tapar o mural
+      com tinta cinzenta. A apaga-lo.
+
+      Um deles eu reconheci: o Vasco Teixeira, o diretor de projeto
+      da HidroDouro. O outro nao sei.
+
+      As cinco da manha. A apagar um mural. No dia em que o Tiago
+      desapareceu. Escrevi no meu diario de bordo. Ninguem me
+      perguntou nada.
+    effects:
+      trust_jorge: "+10"
+      night_witnesses: "+1"
+      dam_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Catarina (heard confrontation at night) ---
+
+  catarina_interview:
+    type: tweet
+    from: catarina
+    text: >
+      Nao dormi naquela noite. Ouvi vozes altas perto da adega.
+      Discussao. Nao fui ver. Devia ter ido.
+    effects: { trust_catarina: "+5" }
+    choices:
+      - Ask Catarina what she heard -> catarina_talk
+
+  catarina_talk:
+    type: message
+    text: >
+      CATARINA: A minha adega fica no caminho entre a vila e os
+      terracos de cima. Naquela noite, por volta da uma da manha,
+      ouvi uma discussao. Vozes de homens. Uma delas era do Tiago
+      — tenho a certeza, conheco a voz dele. A outra era mais
+      grave, mais velha.
+
+      Ouvi o Tiago dizer: "Eu sei o que voces estao a fazer. Tenho
+      os documentos." A outra voz disse qualquer coisa como "tens
+      nocao do que estas a fazer, rapaz?"
+
+      Depois ouvi um carro a arrancar. Rapido. No sentido da estrada
+      do rio.
+    effects:
+      trust_catarina: "+10"
+      night_witnesses: "+1"
+      dam_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Teresa (saw car at dawn) ---
+
+  teresa_interview:
+    type: tweet
+    from: teresa
+    text: >
+      Abro a farmacia as 8h mas naquela manha estava acordada desde
+      as 5h. Vi um carro na estrada que nao devia la estar.
+    effects: { trust_teresa: "+5" }
+    choices:
+      - Ask Teresa what she saw -> teresa_talk
+
+  teresa_talk:
+    type: message
+    text: >
+      TERESA: Eu tenho insonia. Naquela manha levantei-me as cinco e
+      fui a janela. Vi a carrinha do Tiago estacionada junto ao rio,
+      perto do miradouro velho. As portas estavam abertas. Ninguem
+      por perto.
+
+      Depois vi outro carro — um SUV preto, vidros escuros — a sair
+      devagar pela estrada do rio. Sem luzes. As cinco da manha.
+      Sem luzes. Quem faz isso?
+
+      Disse a GNR. Escreveram num papel. Nunca mais ouvi nada.
+    effects:
+      trust_teresa: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Beatriz (best friend)
+      and Sofia (saw Filipa following Tiago).
+    choices:
+      - Talk to Beatriz about that night -> beatriz_interview
+      - Talk to Sofia -> sofia_interview
+      - Find Ines -> ines_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Jorge -> jorge_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Catarina -> catarina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Teresa -> teresa_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Beatriz (last to see Tiago) ---
+
+  beatriz_interview:
+    type: tweet
+    from: beatriz
+    text: >
+      aquela foto no perfil do tiago. nao e ele. o tiago nunca
+      publicaria um muro cinzento sem legenda. nunca. alguem fez isso.
+    effects: { trust_beatriz: "+5" }
+    choices:
+      - DM Beatriz -> beatriz_talk_low
+        when:
+          state: trust_beatriz
+          lt: 50
+      - DM Beatriz -> beatriz_talk_high
+        when:
+          state: trust_beatriz
+          gte: 50
+
+  beatriz_talk_low:
+    type: message
+    text: >
+      BEATRIZ: Agradeco a preocupacao mas nao me apetece falar com
+      desconhecidos sobre isto agora.
+
+      [Beatriz needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_beatriz: "+5" }
+    choices:
+      - Share what you've learned about the night -> beatriz_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  beatriz_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the confrontation at the adega,
+      the company car, the open van by the river. Beatriz is silent
+      for a long time.
+
+      BEATRIZ: Tu estas mesmo a tentar encontra-lo. Ok. Eu falo.
+    effects: { trust_beatriz: "+25" }
+    choices:
+      - What happened that night? -> beatriz_talk_high
+
+  beatriz_talk_high:
+    type: message
+    text: >
+      BEATRIZ: Ele veio a adega por volta das onze da noite. Estava
+      excitado, tipo nervoso mas cheio de energia. Disse que tinha
+      acabado um mural novo — o maior que ja fez — sobre a barragem.
+      E que tinha encontrado documentos. Contratos entre a HidroDouro
+      e a empresa do primo do presidente.
+
+      Eu disse-lhe para ter cuidado. Ele disse "foda-se Bia, alguem
+      tem que falar." Depois disse uma coisa estranha — "e aquela
+      gaja da galeria apareceu outra vez. Estava la quando eu estava
+      a pintar. Sozinha. No escuro."
+
+      Ele nao disse quem. So disse "ela esta sempre la. Sempre."
+      Deu-me um abraco e saiu. Nunca mais o vi.
+    effects:
+      trust_beatriz: "+15"
+      night_witnesses: "+1"
+      dam_evidence: "+1"
+      dealer_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sofia (saw Filipa following Tiago) ---
+
+  sofia_interview:
+    type: message
+    text: >
+      SOFIA: ya ok tipo isto e bue creepy mas a mulher da galeria —
+      a filipa — eu vi-a tipo quatro vezes a seguir o tiago. a serio.
+      tipo, ele ia pintar um muro e ela aparecia. ele ia a taberna
+      e ela aparecia. uma vez vi-a no carro dela, parada perto da
+      casa do tiago. com as luzes apagadas. as dez da noite.
+
+      a ultima vez foi tipo dois dias antes dele desaparecer. ela
+      tava a tirar fotos ao mural dele. nao ao mural. ao tiago.
+      ao tiago a pintar. bue zoom. bue creepy.
+    effects:
+      trust_sofia: "+10"
+      dealer_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      22:00 — Filipa seen at Tiago's van, placing something inside (Ines)
+      23:00 — Tiago arrives at the adega, excited about new mural and documents (Beatriz)
+      01:00 — Confrontation near the adega, Tiago and unknown man (Catarina)
+      05:00 — HidroDouro men painting over Tiago's mural (Jorge)
+      05:00 — Tiago's van by the river, doors open, black SUV leaving without lights (Teresa)
+
+      Someone confronted Tiago about his investigation. He fled or was
+      taken. His mural was erased. His van was abandoned by the river.
+
+      But there are two threats: the dam corruption AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is HidroDouro hiding? Who profits from the
+        dam contracts?
+      — The obsession: What is Filipa really doing? Why was she at
+        his van?
+    choices:
+      - Investigate the dam corruption -> corruption_hub
+      - Investigate Filipa -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      DAM THREAD: Evidence collected: ${dam_evidence}
+      OBSESSION THREAD: Evidence collected: ${dealer_evidence}
+    choices:
+      - Work on the dam thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: dealer_evidence, gte: 5 }
+            - { state: dam_evidence, gte: 3 }
+
+  # =====================================================================
+  # DAM CORRUPTION THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE DAM THREAD
+
+      HidroDouro is building a dam that will flood UNESCO-protected
+      vineyard terraces. Tiago had documents proving the presidente
+      da camara profits from the contracts. Now he's gone and his
+      murals are being erased.
+
+      Dam evidence: ${dam_evidence}
+    choices:
+      - Search the municipal records -> municipal_records
+      - Talk to Joana the journalist -> joana_interview
+      - Talk to Andre (HidroDouro technician) -> andre_interview
+      - Talk to Margarida (environment deputy) -> margarida_interview
+      - Check the Terracos Vivos association -> asso_investigation
+      - Talk to Manuel about the contracts -> manuel_contracts
+      - Back to hub -> investigation_hub
+
+  # --- Municipal Records ---
+
+  municipal_records:
+    type: message
+    text: >
+      The municipal website has the dam project documentation. Buried
+      in the annexes of the environmental impact assessment, you find
+      the construction contracts. The primary contractor is Monteiro
+      & Filhos Construcoes.
+
+      Monteiro. Same surname as the presidente da camara, Henrique
+      Monteiro. The company is registered to his cousin, Antonio
+      Monteiro. The contract value: 47 million euros.
+
+      Tiago's last mural — now painted over — showed these exact
+      numbers. He had found them too.
+    effects:
+      dam_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Joana ---
+
+  joana_interview:
+    type: message
+    text: >
+      JOANA: Nao falo de fontes. Ponto final.
+    effects: { trust_joana: "+5" }
+    choices:
+      - Show Joana the evidence you have -> joana_with_evidence
+        when:
+          state: dam_evidence
+          gte: 3
+      - Back to dam thread -> corruption_hub
+
+  joana_with_evidence:
+    type: message
+    text: >
+      JOANA: ...tens mais do que eu esperava.
+
+      Ok. Eu e o Tiago andavamos a trabalhar juntos. Ele tinha
+      documentos — contratos, emails, atas de reunioes da camara que
+      nunca foram publicadas. Provavam que o Henrique Monteiro
+      adjudicou a obra da barragem ao primo sem concurso publico.
+      47 milhoes de euros. E que a HidroDouro pagou "consultoria"
+      a uma empresa fantasma que e do presidente.
+
+      Iamos publicar juntos. Depois o Tiago desapareceu. E dois
+      dias depois alguem entrou no meu carro e roubou o meu disco
+      de backup.
+
+      O Tiago esta vivo. Contactou-me uma vez, de um telefone
+      descartavel. Disse que esta escondido. Disse "eles ameacaram-me
+      no caminho e outra pessoa nao me larga."
+
+      Nao te posso dizer onde ele esta. Mas com provas suficientes,
+      posso publicar e tornar seguro para ele voltar.
+    effects:
+      trust_joana: "+25"
+      dam_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> joana_hint
+      - Back to investigation hub -> investigation_hub
+
+  joana_hint:
+    type: message
+    text: >
+      JOANA: A HidroDouro mandou o diretor de projeto — o Vasco
+      Teixeira — e um advogado ao caminho onde o Tiago andava a
+      pintar naquela noite. Disseram-lhe para entregar tudo ou
+      enfrentar consequencias legais. Intimidacao vestida de processo
+      juridico.
+
+      Mas ele tambem falou de outra pessoa. Alguem que andava sempre
+      a aparecer. Alguem que sabia sempre onde ele estava. Alguem
+      que lhe mexeu na carrinha. Isso e um problema diferente.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Andre (HidroDouro whistleblower) ---
+
+  andre_interview:
+    type: message
+    text: >
+      ANDRE: Trabalho na HidroDouro. Sou tecnico de topografia. Faco
+      medicoes, mapas, calculos.
+
+      Mas os mapas que eu faco... nao sao sempre os mapas que chegam
+      a camara.
+    effects: { trust_andre: "+10" }
+    choices:
+      - What do you mean? -> andre_detail
+
+  andre_detail:
+    type: message
+    text: >
+      ANDRE: Eu faco os levantamentos topograficos. Sei exactamente
+      que terracos vao ficar debaixo de agua. Os meus mapas mostram
+      que o nivel da barragem vai inundar 340 hectares de vinhas
+      classificadas pela UNESCO.
+
+      Mas os mapas que foram apresentados na consulta publica dizem
+      200 hectares. Alguem alterou os numeros. O impacto real e quase
+      o dobro do que foi declarado.
+
+      O Tiago tinha os meus numeros originais. Nao sei como os
+      conseguiu, mas ele sabia a verdade. Pintou-a num mural. Os
+      numeros reais. 340 hectares.
+
+      Eu tenho medo. Tenho familia. Mas guardei copias dos mapas
+      originais. Se alguem me proteger, partilho.
+    effects:
+      trust_andre: "+15"
+      dam_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to dam thread -> corruption_hub
+
+  # --- Margarida ---
+
+  margarida_interview:
+    type: message
+    text: >
+      MARGARIDA: Como vereadora do ambiente, levo estas questoes a serio.
+      Mas a HidroDouro promete 500 empregos neste municipio. O presidente
+      insiste que temos de "manter o dialogo."
+
+      Fora do registo? Vi os pareceres ambientais. A HidroDouro passou
+      sempre. Mas os pareceres foram feitos por uma empresa de consultoria
+      contratada pela propria HidroDouro. Quem avalia e quem paga sao
+      os mesmos.
+
+      O Tiago tinha dados independentes. Isso e o que torna isto
+      perigoso.
+    effects:
+      trust_margarida: "+10"
+      dam_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to dam thread -> corruption_hub
+
+  # --- Terracos Vivos ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_terracos
+    text: >
+      ALERTA: Terracos vinhateiros classificados pela UNESCO em risco.
+      Projeto de barragem HidroDouro vai inundar 340 hectares, nao 200
+      como declarado. Exigimos revisao do impacto ambiental.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      A Associacao Terracos Vivos tem monitorizado o projeto da barragem
+      ha dois anos. Os seus dados mostram que os terracos ameacados
+      incluem vinhas com mais de 200 anos, muros de pedra seca
+      construidos a mao, e biodiversidade unica.
+
+      O padrao e claro: a HidroDouro subestimou sistematicamente o
+      impacto ambiental para obter aprovacao. Os verdadeiros numeros
+      so agora comecam a aparecer.
+
+      O Tiago era membro da associacao. Contribuiu com a maioria dos
+      registos fotograficos e com os murais de sensibilizacao.
+    effects:
+      dam_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to dam thread -> corruption_hub
+
+  # --- Manuel contracts ---
+
+  manuel_contracts:
+    type: message
+    text: >
+      MANUEL: Vou mostrar-te uma coisa. O Tiago deixou-me uma pasta.
+      Disse: "Se me acontecer alguma coisa, da isto a alguem que
+      queira saber a verdade."
+
+      A pasta tem copias de emails entre o Henrique Monteiro e o
+      Vasco Teixeira da HidroDouro. Discutem "compensacoes" por
+      "facilitar o processo camarario." Palavras bonitas para
+      subornos.
+
+      Tem tambem a ata de uma reuniao secreta da camara — nunca
+      publicada — onde votaram a classificacao dos terrenos como
+      "nao agricolas" para permitir a barragem. O Tiago conseguiu
+      isto de alguem la dentro.
+    effects:
+      trust_manuel: "+10"
+      dam_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Filipa Vasconcelos. Art dealer. Businesswoman. Something more?
+      Someone was at Tiago's van. Someone was following him to his
+      painting spots. Someone was photographing him in the dark.
+
+      Obsession evidence: ${dealer_evidence}
+    choices:
+      - Investigate Filipa's gallery records -> gallery_records
+      - Talk to Beatriz about Filipa -> beatriz_filipa
+        when:
+          state: trust_beatriz
+          gte: 20
+      - Talk to Ines (more detail on the van incident) -> ines_detail
+      - Talk to Teresa about Filipa's visits -> teresa_filipa
+      - Check the anonymous account @fantasma.do -> fantasma_investigation
+      - Talk to Rui about Filipa's behaviour -> rui_filipa_deep
+        when:
+          state: trust_rui
+          gte: 40
+      - Talk to Sargento Carvalho -> gnr_interview
+        when:
+          state: trust_gnr
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Gallery Records ---
+
+  gallery_records:
+    type: message
+    text: >
+      A galeria da Filipa Vasconcelos em Lisboa tem um website. A seccao
+      "artistas representados" mostra 12 nomes. Tiago Ferreira nao
+      esta na lista. Mas a seccao "em aquisicao" tem um perfil inteiro
+      sobre ele — 47 fotografias do trabalho dele, biografia detalhada,
+      calendario de murais recentes.
+
+      47 fotografias. Muitas delas tiradas de perto. Varias de noite.
+      Varias focadas no Tiago, nao na arte.
+
+      O portfolio tem notas: "artista recusa representacao. insistir.
+      talento demasiado valioso para perder. estabelecer contacto
+      alternativo."
+    effects:
+      dealer_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Beatriz on Filipa ---
+
+  beatriz_filipa:
+    type: message
+    text: >
+      BEATRIZ: A Filipa? Foda-se aquela mulher. O Tiago disse-lhe
+      umas dez vezes que nao queria ser representado. Que a arte dele
+      e da rua, e publica, nao e para galerias. Ela nao aceitou.
+
+      Comecou a aparecer nos sitios onde ele pintava. Ofereceu-lhe
+      dinheiro — tipo, muito dinheiro. Ele recusou. Depois comecou a
+      falar com os miudos — o Diogo, a Ines — a perguntar onde ele ia
+      pintar a seguir. A Leonor quase lhe bateu uma vez.
+
+      Ha um mes atras o Tiago disse-me: "Bia, aquela gaja apareceu no
+      meu atelier. A porta estava fechada." Eu disse-lhe para ir a
+      GNR. Ele disse que ninguem ia acreditar que uma mulher rica de
+      Lisboa andava a perseguir um graffiteiro.
+    effects:
+      trust_beatriz: "+10"
+      dealer_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ines detail ---
+
+  ines_detail:
+    type: message
+    text: >
+      INES: ya ok mano eu nao disse tudo. quando vi a filipa na
+      carrinha do tiago ela tinha uma cena na mao. tipo um aparelho
+      pequeno. ela meteu-o debaixo do banco do condutor. tipo colado.
+
+      eu nao sou expert mas aquilo parecia bue um localizador gps.
+      tipo aquelas cenas dos filmes ya.
+
+      eu devia ter dito alguma cena mas tipo quem ia acreditar em
+      mim? uma miuda de 16 contra uma dona de galeria de lisboa. ya
+      right.
+    effects:
+      trust_ines: "+10"
+      dealer_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Teresa on Filipa ---
+
+  teresa_filipa:
+    type: message
+    text: >
+      TERESA: A Filipa vem a farmacia regularmente. Compra coisas
+      que me fazem pensar — ansioliticos, suplementos para nao dormir,
+      cafe em comprimidos. O padrao e de alguem que nao esta bem.
+      Alguem obsessivo.
+
+      Uma vez perguntou-me, muito casualmente, se vendia localizadores
+      GPS. Eu disse "isto e uma farmacia, nao uma loja de electronica."
+      Ela riu-se. Eu nao pensei mais nisso ate o Tiago desaparecer.
+    effects:
+      trust_teresa: "+10"
+      dealer_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Fantasma (anonymous account) ---
+
+  fantasma_investigation:
+    type: tweet
+    from: fantasma_douro
+    text: >
+      Ele devia ter ouvido. Eu so queria mostrar o talento dele ao
+      mundo. Ninguem mais entendia a arte dele como eu.
+    choices:
+      - Look at this account's history -> fantasma_posts
+
+  fantasma_posts:
+    type: message
+    text: >
+      @fantasma.do: conta criada ha 7 meses. Publicacoes sao todas
+      sobre o trabalho do Tiago. Comentarios em cada mural, cada foto,
+      cada atualizacao. O tom muda ao longo do tempo:
+
+      Mes 1: "Trabalho incrivel. Es o artista mais importante do Douro."
+      Mes 3: "Porque nao respondes as minhas mensagens? So quero
+      colaborar."
+      Mes 5: "Vejo-te no taberna com outras pessoas. Tens tempo para
+      eles mas nao para mim?"
+      Mes 7: "Eu sei onde vais. Sei o teu horario. Estou sempre perto."
+
+      A conta nao tem fotos, nao tem dados pessoais. So Tiago.
+      So o Tiago.
+    effects:
+      dealer_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> fantasma_style
+
+  fantasma_style:
+    type: message
+    text: >
+      A comparar @fantasma.do com as publicacoes da @filipa_vasconcelos:
+
+      Mesmo vocabulario de arte — terminologia especifica de galeria.
+      Mesma forma de escrever — frases curtas, sem acentos, pontuacao
+      minima. Mesmo conhecimento dos locais de pintura do Tiago que
+      so alguem que o seguia saberia.
+
+      E uma publicacao de @fantasma.do: "O teu mural no socalco 14
+      e a tua obra-prima." Socalco 14 e a designacao interna dos
+      viticultores. Nao e publica. Mas a Filipa andou a falar com
+      os viticultores sobre os locais do Tiago.
+
+      E a Filipa. A conta anonima e da Filipa.
+    effects:
+      dealer_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rui deep ---
+
+  rui_filipa_deep:
+    type: message
+    text: >
+      RUI: O Tiago deixou-me uma cena. Uma caixa impermeavel. Disse:
+      "Se alguem perguntar sobre o que esta a acontecer nos terracos,
+      da-lhes isto."
+
+      Estava assustado. Disse que fez copias de tudo mas precisava de
+      um conjunto fora de casa, num sitio onde ninguem pensasse em
+      procurar. Uma taberna pareceu perfeito.
+    effects: { trust_rui: "+10" }
+    choices:
+      - What's in the box? -> rui_box
+
+  rui_box:
+    type: message
+    text: >
+      O Rui tira uma caixa debaixo do balcao.
+
+      RUI: Ele disse que irias aparecer. Toma.
+
+      La dentro: uma pen USB e um conjunto de fotografias impressas.
+      As fotos mostram os contratos entre a HidroDouro e a Monteiro
+      & Filhos. Emails do presidente. Mapas originais com os 340
+      hectares. E algo mais — fotografias de uma mulher a seguir o
+      Tiago. Tiradas das camaras de seguranca da adega. A Filipa.
+      Noite apos noite. Sempre la.
+    effects:
+      dam_evidence: "+1"
+      dealer_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- GNR ---
+
+  gnr_interview:
+    type: message
+    text: >
+      SARGENTO CARVALHO: Fora do registo — e quero dizer completamente
+      fora do registo — eu queria investigar a HidroDouro e o presidente.
+      O meu superior disse para eu recuar. Disse que a "tutela" tinha
+      "jurisdicao." Codigo para "nao mexas nisso."
+
+      A situacao da Vasconcelos e diferente. Eu nem sabia disso ate
+      agora. Se tens provas de perseguicao, posso agir. Isso e
+      claramente da minha jurisdicao.
+
+      Traz-me algo solido e eu reabro o caso.
+    effects:
+      trust_gnr: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Tiago than anyone in Quinta do Rio. Who is responsible?
+    choices:
+      - Confront Filipa Vasconcelos (the obsessive dealer) -> confront_filipa
+        when:
+          state: dealer_evidence
+          gte: 5
+      - Confront Vasco Teixeira (the HidroDouro director) -> confront_vasco
+        when:
+          state: dam_evidence
+          gte: 3
+      - Confront Presidente Monteiro (political corruption) -> confront_henrique
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Filipa (Best Ending) ---
+
+  confront_filipa:
+    type: message
+    text: >
+      You present your evidence to Filipa:
+
+      "I know @fantasma.do is your account. I know you put a GPS tracker
+      in Tiago's van. I know you followed him to every painting site.
+      I know you were photographing him at night. I have witnesses and
+      I have the security camera footage."
+    choices:
+      - Send -> filipa_response
+
+  filipa_response:
+    type: message
+    text: >
+      Filipa doesn't reply for a long time. Then:
+
+      FILIPA: You don't understand. I was trying to protect his career.
+      He's the most talented artist I've ever seen and he was wasting
+      it on walls that get painted over. Everything I did was because
+      I believe in him. I wanted to give him the life he deserves.
+
+      That's not belief. That's obsession.
+
+      You've already sent the evidence to Sargento Carvalho. And to
+      Joana Ribeiro.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sargento Carvalho reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the security footage, the
+      witness testimonies — Filipa Vasconcelos is arrested for
+      stalking and harassment. A GPS tracker is recovered from under
+      the seat of Tiago's van at the riverside viewpoint.
+
+      Joana Ribeiro, finally in possession of Tiago's full evidence
+      package, publishes the HidroDouro story in the Publico. The
+      ministerio do ambiente orders a full review. The dam project is
+      suspended pending investigation. Henrique Monteiro faces criminal
+      charges for corruption. His cousin's construction company is
+      under audit.
+
+      And Tiago Ferreira, reading the story from a friend's house in
+      Coimbra, calls his brother for the first time in nine days.
+
+      "Eu volto para casa, mano."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: tiago
+    text: >
+      as paredes falam por nos. e o povo de quinta do rio tambem. obrigado
+      por nao desistirem. vou pintar o mural de novo. maior.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Vasco (Partial Ending) ---
+
+  confront_vasco:
+    type: message
+    text: >
+      You present the dam evidence to Vasco Teixeira:
+
+      "I have the original topographic maps showing 340 hectares, not
+      200. I have the contracts between HidroDouro and Monteiro & Filhos.
+      I have emails discussing bribes. I have the minutes of a secret
+      council meeting."
+    choices:
+      - Send -> vasco_response
+
+  vasco_response:
+    type: message
+    text: >
+      VASCO: Esta conversa esta a ser reencaminhada para o nosso
+      departamento juridico. Qualquer publicacao de material
+      difamatorio resultara em acao judicial imediata. A HidroDouro
+      opera sempre dentro dos requisitos regulamentares.
+
+      But it's too late. You've sent the evidence to Joana, to the
+      Terracos Vivos, and to the ministerio do ambiente.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE DAM
+
+      The corruption story breaks. HidroDouro is ordered to suspend
+      the project pending investigation. The dam may never be built.
+      The terraces may be saved. The presidente faces criminal charges.
+
+      But Tiago?
+
+      Without the stalking evidence, Filipa is never investigated.
+      She continues to visit Quinta do Rio. She continues to monitor
+      his accounts. She creates a new anonymous profile.
+
+      Three months later, Tiago reads about HidroDouro online. He
+      returns quietly. He changes his painting spots. He locks his
+      van every time. He checks for trackers every morning.
+
+      The corruption is exposed. But the person who terrorised Tiago
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: tiago
+    text: "voltei. os terracos estao salvos. o resto... veremos."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Presidente (Wrong Ending) ---
+
+  confront_henrique:
+    type: message
+    text: >
+      You confront Presidente Monteiro with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> henrique_response
+
+  henrique_response:
+    type: tweet
+    from: bernardo
+    text: >
+      O meu cliente toma nota das suas alegacoes. Qualquer difusao
+      publica de conteudo difamatorio sera objeto de processo judicial
+      imediato. — Faria & Associados, Porto
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The presidente's lawyer buries your accusation. Without a direct
+      link between Monteiro and the dam company's intimidation of Tiago
+      — and there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      HidroDouro continues the dam project. Filipa continues to watch.
+      Tiago stays in hiding.
+
+      Six months later, @fantasma.do creates a new account. It follows
+      Tiago's girlfriend.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: QUINTA DO RIO — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Dam evidence: ${dam_evidence}
+      Obsession evidence: ${dealer_evidence}
+
+      Thank you for playing. Tiago's story explores themes of political
+      corruption, environmental destruction, obsessive behaviour,
+      community solidarity, and the courage to defend cultural heritage.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      SOS Voz Amiga: 213 544 545
+      APAV (Apoio a Vitima): 116 006
+      Queixa ambiental: IGAMAOT 213 223 500

@@ -1,0 +1,1540 @@
+# DEAD ACCOUNT — Story 090: Puszcza Wielka (Poland — Podlasie)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-090.yml
+#
+# Player investigates the disappearance of forest guide Jakub Wiśniewski
+# in the fictional Podlasie village of Puszcza Wielka near Białowieża.
+
+meta:
+  title: "Dead Account — Puszcza Wielka"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_zofia: 0
+    trust_marek: 0
+    trust_bozena: 0
+    trust_tadeusz: 0
+    trust_kasia: 0
+    trust_bartek: 0
+    trust_ola: 0
+    trust_wieslaw: 0
+    trust_halina: 0
+    trust_tomek: 0
+    trust_dorota: 0
+    trust_pawel: 0
+    trust_agnieszka: 0
+    trust_henryk: 0
+    trust_malgorzata: 0
+    trust_kamil: 0
+    trust_jadwiga: 0
+    trust_krzysztof: 0
+    trust_renata: 0
+    trust_komisarz: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Nowy Mieszkaniec
+    bio: "świeżo w puszczy wielkiej. podlasie odkrywam krok po kroku"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "PuszczaWielka.social"
+    description: "Witamy na instancji społecznościowej Puszczy Wielkiej, Podlasie"
+    avatar_url: /gamepatch/assets/dead-account/puszczawielka_bot.png
+
+  npcs:
+    # === Jakub's Inner Circle ===
+    jakub:
+      name: "Jakub Wiśniewski"
+      bio: "przewodnik leśny | puszcza wielka | tropiciel żubrów | las nie kłamie"
+      avatar: avatars/jakub.jpg
+    zofia:
+      name: "Zofia Kowalska"
+      bio: "dziewczyna jakuba | pielęgniarka w ośrodku zdrowia | kawa i cisza lasu"
+      avatar: avatars/zofia.jpg
+    marek:
+      name: "Marek Wiśniewski"
+      bio: "brat jakuba | mechanik | białystok | on tak nie znika"
+      avatar: avatars/marek.jpg
+    renata:
+      name: "Renata Nowak"
+      bio: "blogerka przyrodnicza | las moim domem | zdjęcia puszczy | współpraca z jakubem"
+      avatar: avatars/renata.jpg
+
+    # === Local Government ===
+    tadeusz:
+      name: "Tadeusz Grabowski"
+      bio: "Wójt Gminy Puszcza Wielka | Tradycja i rozwój | #PuszczaWielkaRośnie"
+      avatar: avatars/tadeusz.jpg
+    bozena:
+      name: "Bożena Kamińska"
+      bio: "Radna ds. środowiska | Gmina Puszcza Wielka | chrońmy naszą puszczę"
+      avatar: avatars/bozena.jpg
+    gmina:
+      name: "Gmina Puszcza Wielka"
+      bio: "Profil oficjalny | Wiadomości gminne | Czynne: Pn-Pt 7:30-15:30"
+      avatar: avatars/gmina.jpg
+
+    # === Local Business & Community ===
+    wieslaw:
+      name: "Wiesław Zieliński"
+      bio: "Gospoda Pod Żubrem | kuchnia podlaska od 1978 | kartacze i sękacz"
+      avatar: avatars/wieslaw.jpg
+    gospoda:
+      name: "Gospoda Pod Żubrem"
+      bio: "Kuchnia regionalna | Sękacz | Nalewki | Otwarte: Śr-Nd od 12:00"
+      avatar: avatars/gospoda.jpg
+    halina:
+      name: "Halina Wrońska"
+      bio: "aptekarka | puszcza wielka | zdrowie i porada | także w soboty"
+      avatar: avatars/halina.jpg
+    tomek:
+      name: "Tomek Leśnik"
+      bio: "leśniczy | nadleśnictwo puszcza wielka | 25 lat w lesie | drzewa pamiętają wszystko"
+      avatar: avatars/tomek.jpg
+    dorota:
+      name: "Dorota Pawlak"
+      bio: "piekarnia pawlak | chleb na zakwasie | od piątej rano | wszystko ręcznie"
+      avatar: avatars/dorota.jpg
+    pawel:
+      name: "Paweł Sikorski"
+      bio: "rękodzieło | rzeźba w drewnie | tradycja podlaska | warsztat na rynku"
+      avatar: avatars/pawel.jpg
+    jadwiga:
+      name: "Jadwiga Mazur"
+      bio: "nauczycielka | szkoła podstawowa puszcza wielka | przyroda i historia | dzieci kochają las"
+      avatar: avatars/jadwiga.jpg
+
+    # === Journalist ===
+    malgorzata:
+      name: "Małgorzata Wilk"
+      bio: "dziennikarka niezależna | środowisko i region | kontakt: gosia@wilk-press.pl"
+      avatar: avatars/malgorzata.jpg
+
+    # === PodlasDrewno Sp. z o.o. (corporate) ===
+    podlasdrewno:
+      name: "PodlasDrewno Sp. z o.o."
+      bio: "Zakład drzewny | Oddział Puszcza Wielka | Certyfikat FSC | Odpowiedzialna gospodarka leśna"
+      avatar: avatars/podlasdrewno.jpg
+    henryk:
+      name: "Henryk Maj"
+      bio: "Prezes PodlasDrewno Sp. z o.o. | Oddział Puszcza Wielka | Gospodarka i region"
+      avatar: avatars/henryk.jpg
+    krzysztof:
+      name: "Krzysztof Duda"
+      bio: "Radca prawny | Kancelaria Duda i Wspólnicy | Prawo gospodarcze | Białystok"
+      avatar: avatars/krzysztof.jpg
+
+    # === Teens ===
+    kasia:
+      name: "Kasia"
+      bio: "16 | puszcza wielka na zawsze | rower i las | jakub nauczył mnie tropić żubry"
+      avatar: avatars/kasia.jpg
+    bartek:
+      name: "Bartek"
+      bio: "17 | fotografia przyrodnicza | las jest wszystkim | puszcza gang"
+      avatar: avatars/bartek.jpg
+    ola:
+      name: "Ola"
+      bio: "15 | rysunek & przyroda | las w czerni i bieli | jakub jest moim wzorem"
+      avatar: avatars/ola.jpg
+
+    # === Media & Community ===
+    wiadomosci_puszcza:
+      name: "Wiadomości Puszcza Wielka"
+      bio: "Lokalne wiadomości z Puszczy Wielkiej i Podlasia | Kontakt: redakcja@wiadomosci-puszcza.pl"
+      avatar: avatars/wiadomosci_puszcza.jpg
+    pogoda_podlasie:
+      name: "Pogoda Puszcza Wielka"
+      bio: "Prognozy i ostrzeżenia | Stacja automatyczna | Aktualizacja co godzinę"
+      avatar: avatars/pogoda_podlasie.jpg
+    straz_puszczy:
+      name: "Straż Puszczy"
+      bio: "Ochrona Puszczy Wielkiej | Przeciw nielegalnej wycince | Wolontariat | Dołącz do nas!"
+      avatar: avatars/straz_puszczy.jpg
+
+    # === Suspicious / Other ===
+    agnieszka:
+      name: "Agnieszka Lis"
+      bio: "laborantka | podlasdrewno sp. z o.o. | robię swoje i tyle"
+      avatar: avatars/agnieszka.jpg
+    kamil:
+      name: "Kamil Wójcik"
+      bio: "."
+      avatar: avatars/anon.jpg
+    komisarz:
+      name: "Komisarz Nowicki"
+      bio: "Posterunek Policji Puszcza Wielka | Dzielnicowy | Numer alarmowy: 112"
+      avatar: avatars/komisarz.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PUSZCZA WIELKA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to PuszczaWielka.social — the community Mastodon instance
+      for the village of Puszcza Wielka, Podlasie, on the edge of
+      the primeval forest.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @jakub_wisniewski.
+
+      A forest guide. Bison tracker. He documented the primeval forest
+      and its ancient ecosystem. People are worried. He hasn't posted
+      in six days.
+    choices:
+      - Look at his profile -> jakub_profile
+
+  jakub_profile:
+    type: tweet
+    from: jakub
+    text: "Wycinka w strefie ochronnej. Ciężki sprzęt na leśnych duktach. Stare dęby padają. Mam wszystko udokumentowane."
+    choices:
+      - That's his last real post... -> grey_forest
+
+  grey_forest:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a blurred photo of grey tree bark. Shot from a strange angle.
+      Posted at 3am. No caption.
+
+      His friends say that's not him. Jakub always posted carefully
+      composed wildlife shots with detailed descriptions. The police
+      say he probably went on a hiking trip. Something doesn't add up.
+    choices:
+      - Read the police statement -> policja_statement
+      - Look at what people are saying -> community_reaction
+
+  policja_statement:
+    type: tweet
+    from: komisarz
+    text: >
+      Przyjęliśmy zgłoszenie dotyczące zaginięcia mieszkańca Puszczy
+      Wielkiej. Na tym etapie brak przesłanek wskazujących na
+      przestępstwo. Wszelkie informacje prosimy kierować na posterunek
+      lub pod numer 112.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @zofia_kowalska is
+      desperate. His brother @marek_wisniewski is driving down from
+      Białystok. The nature blogger @renata_nowak who worked with him
+      is posting worried messages. The forester @tomek_lesnik says
+      Jakub was right about the logging.
+
+      And the journalist @malgorzata_wilk is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Jakub just
+      "went hiking."
+    effects: { trust_zofia: "+5", trust_marek: "+5" }
+    choices:
+      - Start following Jakub's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Puszcza Wielka. Follow Jakub's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Wiesław (inn owner, knows everyone) -> wieslaw_intro
+      - Talk to Tomek (forester, knows the logging) -> tomek_intro
+      - Talk to Kasia (teen, seems upset) -> kasia_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Jakub with the rhythms of a small
+      Podlasie village: forest weather warnings, bakery specials, bison
+      sighting reports, mushroom season updates.
+
+      Key names surface: Zofia (girlfriend, nurse), Renata (nature
+      blogger, seems fixated on him), Małgorzata (journalist, oddly
+      quiet), and the teens — Kasia, Bartek, Ola — who idolised
+      Jakub's forest tracking work.
+
+      Also prominent: PodlasDrewno Sp. z o.o., the logging company
+      operating at the forest edge. Their posts are corporate PR.
+      Jakub's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Wiesław -> wieslaw_intro
+      - Talk to Tomek -> tomek_intro
+      - Talk to Kasia -> kasia_intro
+
+  # --- Wiesław (social map) ---
+
+  wieslaw_intro:
+    type: tweet
+    from: wieslaw
+    text: >
+      Gospoda otwarta, ale smutno tu dziś. @jakub_wisniewski, twoje
+      miejsce przy oknie czeka. Wracaj.
+    effects: { trust_wieslaw: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Wiesław -> wieslaw_talk
+
+  wieslaw_talk:
+    type: message
+    text: >
+      WIESŁAW: A, nowy jesteś? Witaj. Kiepski moment na przyjazd.
+      Wszyscy się trzęsą o Jakuba.
+
+      Powiem ci kto jest kto. Zofia to dziewczyna Jakuba — razem
+      mieszkają nad apteką. Kochana dziewczyna, teraz w rozsypce.
+      Renata Nowak, ta blogerka, robiła z Jakubem materiały o puszczy.
+      Fajna laska, ale... trochę za bardzo się na niego wieszała.
+      Marek to brat Jakuba, jedzie z Białegostoku.
+
+      I Małgorzata Wilk — dziennikarka — ona z Jakubem pracowała nad
+      czymś. Nad tą aferą z wycinką. Od kiedy Jakub zniknął,
+      Małgorzata milczy jak zaklęta. To do niej nie pasuje.
+
+      A, i te brednie PodlasDrewna możesz sobie darować.
+      Greenwashing jak z podręcznika.
+    effects: { trust_wieslaw: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Renata -> wieslaw_renata
+      - Ask about the logging -> wieslaw_drewno
+      - Thank him and move on -> quest1_hub
+
+  wieslaw_renata:
+    type: message
+    text: >
+      WIESŁAW: Renata? Przyjechała z Warszawy, chyba z dwa lata temu.
+      Blog przyrodniczy, zdjęcia puszczy, takie rzeczy. Poznała Jakuba
+      na szlaku i od tamtej pory on był jej jedynym tematem. Każdy
+      post, każde zdjęcie — Jakub tu, Jakub tam. Setki fotek z nim,
+      z jego tropów, z lasu.
+
+      On na początku był zadowolony z rozgłosu. Potem mu to zaczęło
+      przeszkadzać. Powiedział mi kiedyś: "Ona nie rozumie, że nie
+      chcę." Myślałem, że chodzi o współpracę. Teraz nie jestem
+      pewien.
+    effects: { trust_wieslaw: "+5" }
+    choices:
+      - Ask about the logging -> wieslaw_drewno
+      - Move on -> quest1_hub
+
+  wieslaw_drewno:
+    type: message
+    text: >
+      WIESŁAW: PodlasDrewno jest tu od lat dziewięćdziesiątych. Ale
+      od kiedy Maj został prezesem, to się robi coraz gorzej. Wycinają
+      w strefie ochronnej, ciężkim sprzętem rozjeżdżają leśne dukty,
+      stare dęby padają jak zapałki. I teraz chcą się rozszerzyć —
+      prosto w rezerwat, gdzie żubry mają przejście.
+
+      Jakub był pierwszy, który to porządnie udokumentował. Zdjęcia,
+      nagrania, pomiary. Miał dowody, mówił. Prawdziwe dowody. Dwa
+      tygodnie później go nie ma.
+    effects: { trust_wieslaw: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tomek (the forest, witness tease) ---
+
+  tomek_intro:
+    type: tweet
+    from: tomek
+    text: >
+      dwadzieścia pięć lat chodzę po tej puszczy. las umiera.
+      @jakub_wisniewski miał rację. a teraz go nie ma. pomyślcie
+      nad tym.
+    effects: { trust_tomek: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tomek -> tomek_talk
+
+  tomek_talk:
+    type: message
+    text: >
+      TOMEK: Znam każde drzewo w tej puszczy. I mówię ci — co
+      PodlasDrewno tu wyrabia, to jest przestępstwo. Wycinają w
+      strefie ochronnej, tam gdzie mają zakaz wjazdu. Stare dęby,
+      dwieście lat, trzysta lat — padają za jedną noc. Żubry tracą
+      korytarze przejścia.
+
+      Jakub chodził tam z kamerą. Dokumentował wszystko. Nagrania
+      z pułapek, zdjęcia GPS, pomiary. Budował akta. A potem — fru
+      — nie ma go.
+
+      Zbieg okoliczności? Ja nie wierzę w zbiegi okoliczności w lesie.
+    effects: { trust_tomek: "+10" }
+    choices:
+      - Have you seen anything unusual lately? -> tomek_night
+      - Move on -> quest1_hub
+
+  tomek_night:
+    type: message
+    text: >
+      TOMEK: Noc przed zniknięciem — obchodziłem rewir, koło
+      północy. Patrol nocny, normalna sprawa. Widziałem światło w
+      chatce Jakuba, tej przy szlaku żubrowym. Normalka, on często
+      pracuje w nocy. Ale przed chatką stał czarny pickup z logo
+      PodlasDrewna.
+
+      O północy. Przed chatką przewodnika leśnego.
+
+      Zanotowałem to w dzienniku obchodu. Nikt mnie o to nie pytał.
+    effects: { trust_tomek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kasia (teen, witness tease) ---
+
+  kasia_intro:
+    type: tweet
+    from: kasia
+    text: >
+      ja pierdolę @jakub_wisniewski nauczył mnie tropić żubry, to jest
+      jak starszy brat dla mnie. on nie znika tak po prostu. jak ktoś
+      coś wie to powiedzcie błagam
+    effects: { trust_kasia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kasia -> kasia_talk_early
+
+  kasia_talk_early:
+    type: message
+    text: >
+      KASIA: co, nowy jesteś? kurwa mać ale timing. słuchaj, jakub
+      to jest najlepsza osoba w tej wsi. nauczył nas tropić żubry,
+      pokazywał dziuple sów, mówił jak las oddycha. spoko gość,
+      naprawdę.
+
+      i teraz jestem w totalnej panice bo bartek widział coś dziwnego
+      przy szlaku ale nie chce gadać. mówi że nic takiego ale daj
+      spokój, to NIE jest nic takiego
+    effects: { trust_kasia: "+10" }
+    choices:
+      - What did Bartek see? -> kasia_bartek_hint
+      - Move on -> quest1_hub
+
+  kasia_bartek_hint:
+    type: message
+    text: >
+      KASIA: nie wiem dokładnie. jechał na rowerze koło chatki jakuba
+      i widział jak renata — ta blogerka — grzebała w czymś koło
+      drzwi. tak jakby zostawiała coś albo sprawdzała. mega creepy.
+      bartek ma stracha że nikt mu nie uwierzy. spróbuj z nim
+      pogadać najpierw o zdjęciach przyrody czy coś lol
+    effects: { trust_kasia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Puszcza Wielka. A Podlasie village
+      on the edge of primeval forest. A guide who was exposing illegal
+      logging. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Zofia (Jakub's girlfriend) -> zofia_q1
+      - Talk to Renata (nature blogger) -> renata_q1
+      - Check what Marek (Jakub's brother) is saying -> marek_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Zofia Q1 ---
+
+  zofia_q1:
+    type: tweet
+    from: zofia
+    text: >
+      ktoś słyszał coś o @jakub_wisniewski? błagam dzwońcie. jego
+      chatka stoi otwarta. plecak jest. sprzęt tropicielski jest. on
+      nigdy by nie poszedł w las bez tego.
+    effects: { trust_zofia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Zofia -> zofia_q1_talk
+
+  zofia_q1_talk:
+    type: message
+    text: >
+      ZOFIA: Dzięki że piszesz, ale cię nie znam. Jakub ma tu dużo
+      przyjaciół. Na pewno wróci.
+
+      ...Ciągle to powtarzam. Sama już nie wierzę.
+
+      [Zofia is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_zofia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Renata Q1 ---
+
+  renata_q1:
+    type: tweet
+    from: renata
+    text: >
+      Chatka przy szlaku żubrowym jest pusta bez @jakub_wisniewski.
+      Jego notatki leżą na biurku. Ostatnie zdjęcia z fotopułapek
+      wciąż na karcie. On nigdy by nie zostawił niedokończonej pracy.
+      Coś się stało.
+    effects: { trust_renata: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Renata -> renata_q1_talk
+
+  renata_q1_talk:
+    type: message
+    text: >
+      RENATA: Jakub i ja pracujemy razem od ponad roku. On tropił, ja
+      pisałam i fotografowałam. Dokumentowanie tego co wyrabia
+      PodlasDrewno — to był dla niego priorytet. Miał dane, zdjęcia,
+      nagrania GPS. Był o krok od opublikowania.
+
+      Proponowałam mu pomoc. Wiele razy. Mówił, że ma to pod
+      kontrolą. Że pracuje z dziennikarką. Ja tylko chciałam go
+      wesprzeć.
+
+      [Renata seems earnest. Or obsessive?]
+    effects: { trust_renata: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marek Q1 ---
+
+  marek_q1:
+    type: tweet
+    from: marek
+    text: >
+      mój brat ZAGINĄŁ a policja mi mówi że może poszedł na
+      wycieczkę??? ON NIE IDZIE W LAS BEZ UPRZEDZENIA. jadę z
+      białegostoku. ktoś mi to wytłumaczy.
+    effects: { trust_marek: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marek -> marek_q1_talk
+
+  marek_q1_talk:
+    type: message
+    text: >
+      MAREK: Kim jesteś? Jeszcze jeden z tej wsi, co mi powie żebym
+      się uspokoił? Mój brat dzwonił do mnie wieczorem przed
+      zniknięciem. Powiedział, że ma coś dużego. Powiedział: "jak
+      coś się stanie, patrz na PodlasDrewno." I się rozłączył.
+
+      To ostatnie co od niego słyszałem.
+    effects: { trust_marek: "+10" }
+    choices:
+      - What do you think happened? -> marek_theory
+      - Move on -> quest1_hub
+
+  marek_theory:
+    type: message
+    text: >
+      MAREK: Myślę, że znalazł dowody na to, że PodlasDrewno wycina
+      nielegalnie i oni go uciszyli. Ale myślę też, że ta blogerka —
+      Renata — wie więcej niż mówi. Jak ona o nim gada... to nie jest
+      tylko robota. To jest coś innego.
+
+      Jakub mi powiedział miesiące temu, że ktoś grzebał w jego
+      rzeczach w chatce. W komputerze. Myślał, że to nic. Ja myślę,
+      że to było coś.
+    effects: { trust_marek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Jakub went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Bartek (was cycling near the cabin) -> bartek_interview
+      - Find Tomek (forester, patrols at night) -> tomek_interview
+      - Find Paweł (woodcarver, early morning at workshop) -> pawel_interview
+      - Find Dorota (baker, starts at 5am, saw something) -> dorota_interview
+
+  # --- Bartek (saw Renata at the cabin) ---
+
+  bartek_interview:
+    type: tweet
+    from: bartek
+    text: >
+      byłem dzisiaj na rowerze przy szlaku i klimat jest dziwny.
+      coś tu nie gra. nie umiem tego wytłumaczyć ale czuję to
+    effects: { trust_bartek: "+5" }
+    choices:
+      - Ask Bartek about that evening -> bartek_talk
+
+  bartek_talk:
+    type: message
+    text: >
+      BARTEK: spoko, ale nikomu nie mów ok? jechałem na rowerze koło
+      chatki jakuba, koło siódmej. i widziałem renatę — tę blogerkę
+      — przy drzwiach chatki. grzebała przy zamku albo coś takiego.
+      jak mnie zobaczyła, to se poszła mega szybko.
+
+      ja pierdolę, nie powiedziałem nic bo co za gówno — kto uwierzy
+      siedemnastoletniemu chłopakowi co oskarża dorosłą. ale to nie
+      jest normalne zachowanie kurwa
+    effects:
+      trust_bartek: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tomek (forester, saw late-night meeting) ---
+
+  tomek_interview:
+    type: tweet
+    from: tomek
+    text: >
+      Przypominam: leśne dukty zamknięte po zmroku dla ruchu
+      kołowego. Mimo to w ostatnich nocach widziałem samochody.
+    effects: { trust_tomek: "+5" }
+    choices:
+      - Ask Tomek what he saw -> tomek_talk_q2
+
+  tomek_talk_q2:
+    type: message
+    text: >
+      TOMEK: Obchodziłem rewir, koło dziesiątej wieczorem. Z ambony
+      widzisz na pół puszczy. Przed chatką Jakuba stały dwa samochody.
+      Jego stary land cruiser. I czarny pickup z logo PodlasDrewna.
+      Dwóch ludzi stało przy drzwiach. Jednego rozpoznałem: Henryk
+      Maj, prezes. Znam go.
+
+      O dziesiątej wieczorem. Przed chatką przewodnika. To nie jest
+      normalne.
+
+      Zanotowałem to w dzienniku obchodu. Nikt nie pytał.
+    effects:
+      trust_tomek: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Paweł (saw Jakub fleeing) ---
+
+  pawel_interview:
+    type: tweet
+    from: pawel
+    text: >
+      dzisiaj o czwartej w warsztacie. droga przy rynku nie była pusta.
+      ktoś biegł leśną ścieżką. w ciemności. nie biegacz.
+    effects: { trust_pawel: "+5" }
+    choices:
+      - Ask Paweł what he saw -> pawel_talk
+
+  pawel_talk:
+    type: message
+    text: >
+      PAWEŁ: Wstaję o czwartej, przygotowuję drewno do rzeźbienia.
+      Tego ranka — rano po ostatnim poście Jakuba — widziałem kogoś
+      na leśnej ścieżce. Biegł. Mężczyzna, z plecakiem, w stronę
+      Wysokiej Polany. Było ciemno. Biegł jakby się bał.
+
+      Zawołałem, ale nie stanął. Pomyślałem, biegacz, ale kto biega
+      o czwartej rano z plecakiem turystycznym?
+
+      Jak usłyszałem o Jakubie, to poskładałem. To był on. Uciekał
+      przed czymś.
+    effects:
+      trust_pawel: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dorota (saw car chase) ---
+
+  dorota_interview:
+    type: tweet
+    from: dorota
+    text: >
+      Chleb i bułki jak zwykle od piątej. Ale tego ranka samochód
+      przejechał za szybko drogą leśną.
+    effects: { trust_dorota: "+5" }
+    choices:
+      - Ask Dorota what she saw -> dorota_talk
+
+  dorota_talk:
+    type: message
+    text: >
+      DOROTA: Zaczynam codziennie o piątej. Tego dnia otworzyłam
+      okiennice i samochód przejechał — za szybko jak na leśną drogę.
+      Czarny pickup. Potem może dwie minuty później drugi samochód.
+      Mniejszy, starszy. Za nim?
+
+      Mniejszy skręcił na polną drogę w stronę Starego Młyna. Pickup
+      pojechał dalej na drogę wojewódzką.
+
+      Powiedziałam policji. Zapisali. I tyle.
+    effects:
+      trust_dorota: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Zofia (girlfriend)
+      and Ola (saw Renata watching the cabin).
+    choices:
+      - Talk to Zofia about that night -> zofia_interview
+      - Talk to Ola -> ola_interview
+      - Find Bartek -> bartek_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tomek -> tomek_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Paweł -> pawel_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dorota -> dorota_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Zofia (last to see Jakub) ---
+
+  zofia_interview:
+    type: tweet
+    from: zofia
+    text: >
+      to zdjęcie na koncie jakuba. to nie on. jakub nigdy nie postuje
+      bez opisu. jakub nie postuje o trzeciej w nocy. ktoś inny to
+      zrobił.
+    effects: { trust_zofia: "+5" }
+    choices:
+      - DM Zofia -> zofia_talk_low
+        when:
+          state: trust_zofia
+          lt: 50
+      - DM Zofia -> zofia_talk_high
+        when:
+          state: trust_zofia
+          gte: 50
+
+  zofia_talk_low:
+    type: message
+    text: >
+      ZOFIA: Doceniam to, ale naprawdę nie chcę teraz gadać z obcymi
+      o tym.
+
+      [Zofia needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_zofia: "+5" }
+    choices:
+      - Share what you've learned about the night -> zofia_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  zofia_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the pickup at the cabin, the
+      company men, the fleeing figure. Zofia is silent for a while.
+
+      ZOFIA: Naprawdę próbujesz go znaleźć. Dobra. Powiem ci.
+    effects: { trust_zofia: "+25" }
+    choices:
+      - What happened that night? -> zofia_talk_high
+
+  zofia_talk_high:
+    type: message
+    text: >
+      ZOFIA: Przyszedł do mnie koło jedenastej. Miałam nocny dyżur,
+      szykowałam się do wyjścia. Był biały na twarzy, trzęsły mu się
+      ręce. Powiedział: "wiedzą co mam." Złapał laptop i dysk
+      z nagraniami.
+
+      Spytałam kto. Powiedział: "ci z tartaku. weszli do chatki."
+      A potem powiedział jeszcze coś — "i ona znowu tam była. ona
+      jest zawsze wszędzie."
+
+      Nie chciał powiedzieć kto to "ona." Przytulił mnie, powiedział
+      "nie martw się," i wyszedł z plecakiem. To było tyle. Rano jego
+      samochodu nie było, a to zdjęcie pojawiło się na koncie.
+    effects:
+      trust_zofia: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ola (saw Renata watching the cabin) ---
+
+  ola_interview:
+    type: message
+    text: >
+      OLA: spoko, to jest dziwne co powiem ale ta blogerka — renata —
+      widziałam ją z trzy razy wieczorem koło chatki jakuba. stała
+      tak i patrzyła na okna. mega creepy.
+
+      ostatni raz to było dwa dni przed tym jak zniknął. siedziała
+      w swoim samochodzie naprzeciwko. silnik wyłączony. światła
+      zgaszone. co za gówno
+    effects:
+      trust_ola: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Renata seen tampering at Jakub's cabin door (Bartek)
+      22:00 — PodlasDrewno pickup at the cabin, Henryk Maj present (Tomek)
+      23:00 — Jakub arrives at Zofia's, shaken, grabs laptop and drives (Zofia)
+      04:00 — Man running on forest path toward Wysoka Polana (Paweł)
+      05:00 — Two vehicles speeding on forest road, one toward Stary Młyn (Dorota)
+
+      PodlasDrewno confronted Jakub at his cabin. He fled to his
+      girlfriend, grabbed his evidence, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is PodlasDrewno hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Renata really doing? Why was she
+        at his cabin?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Renata -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      PodlasDrewno is hiding something. Jakub had proof. Now he's
+      gone and his evidence is missing from the cabin.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the cabin records -> cabin_records
+      - Talk to Małgorzata the journalist -> malgorzata_interview
+      - Talk to Agnieszka (PodlasDrewno lab tech) -> agnieszka_interview
+      - Talk to Bożena (environment councillor) -> bozena_interview
+      - Check the Straż Puszczy group -> straz_investigation
+      - Talk to Tomek about the illegal cutting -> tomek_cutting
+      - Back to hub -> investigation_hub
+
+  # --- Cabin Records ---
+
+  cabin_records:
+    type: message
+    text: >
+      Jakub's cabin has a shared folder with Straż Puszczy where he
+      stored his documentation. The folder for the protected zone
+      is marked "DO WERYFIKACJI" — the only folder with that status.
+
+      His camera trap log, shared with the group for transparency,
+      shows he set 18 traps along the logging perimeter in the past
+      month. The last entry: "Camera 14 captured heavy machinery in
+      protected zone. Night operations. Species corridor destroyed.
+      Not what they report to RDOŚ."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Małgorzata ---
+
+  malgorzata_interview:
+    type: message
+    text: >
+      MAŁGORZATA: Nie rozmawiam o źródłach. Kropka.
+    effects: { trust_malgorzata: "+5" }
+    choices:
+      - Show Małgorzata the evidence you have -> malgorzata_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  malgorzata_with_evidence:
+    type: message
+    text: >
+      MAŁGORZATA: ...masz więcej niż myślałam.
+
+      Dobra. Jakub i ja pracowaliśmy razem. Miał nagrania z
+      fotopułapek — PodlasDrewno wycina w strefie ochronnej, nocami,
+      ciężkim sprzętem. Niszczą korytarze żubrów. Miał dane GPS,
+      pomiary, wszystko.
+
+      Mieliśmy razem opublikować. Potem zniknął. A dwa dni później
+      ktoś włamał się do mojego samochodu i zabrał dysk zapasowy.
+
+      Jakub żyje. Odezwał się raz, z karty prepaid. Powiedział, że
+      się ukrywa. Powiedział: "zagrozili mi w chatce i jest jeszcze
+      ktoś, kto mnie nie zostawia w spokoju."
+
+      Nie powiem ci gdzie jest. Ale z wystarczającymi dowodami mogę
+      opublikować i będzie mógł bezpiecznie wrócić.
+    effects:
+      trust_malgorzata: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> malgorzata_hint
+      - Back to investigation hub -> investigation_hub
+
+  malgorzata_hint:
+    type: message
+    text: >
+      MAŁGORZATA: Maj wysłał swojego dyrektora i jakiegoś prawnika
+      do chatki tamtego wieczoru. Powiedzieli mu żeby oddał wszystko
+      albo będą konsekwencje prawne. Zastraszanie udające procedurę
+      prawną.
+
+      Ale mówił też coś o kimś bliskim. O kimś, kto grzebał w jego
+      rzeczach. O kimś, kto zawsze wiedział gdzie jest. To jest inny
+      problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Agnieszka (PodlasDrewno whistleblower) ---
+
+  agnieszka_interview:
+    type: message
+    text: >
+      AGNIESZKA: Pracuję w PodlasDrewnie. Zwykła laborantka. Robię
+      testy, piszę raporty.
+
+      Ale raporty, które piszę... nie zawsze są tymi raportami, które
+      idą do RDOŚ.
+    effects: { trust_agnieszka: "+10" }
+    choices:
+      - What do you mean? -> agnieszka_detail
+
+  agnieszka_detail:
+    type: message
+    text: >
+      AGNIESZKA: Mierzę wpływ na ekosystem. Inwentaryzacja gatunków,
+      poziom hałasu, uszkodzenia gleby. Moje wyniki idą do szefa.
+      Gdzieś pomiędzy moim biurkiem a raportem dla RDOŚ się zmieniają.
+      Niższe. Zawsze niższe.
+
+      Dane Jakuba z kamer w terenie pasowały do MOICH oryginalnych
+      wyników, nie do oficjalnych raportów. Miał niezależne dowody,
+      że PodlasDrewno fałszuje dane środowiskowe.
+
+      Boję się. Mam rodzinę. Ale zachowałam kopie moich oryginalnych
+      raportów. Jak ktoś mnie ochroni, to je udostępnię.
+    effects:
+      trust_agnieszka: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Bożena ---
+
+  bozena_interview:
+    type: message
+    text: >
+      BOŻENA: Jako radna ds. środowiska traktuję te zarzuty poważnie.
+      Ale PodlasDrewno daje pracę stu ludziom w gminie. Wójt nalega
+      na "dialog."
+
+      Nieoficjalnie? Widziałam raporty z RDOŚ. PodlasDrewno przechodzi
+      każdą kontrolę. Ale kontrole są zapowiadane dwa tygodnie wcześniej.
+      Przed kontrolą sprzątają.
+
+      Jakub miał niezapowiedziane dane. To jest niebezpieczne.
+    effects:
+      trust_bozena: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Straż Puszczy ---
+
+  straz_investigation:
+    type: tweet
+    from: straz_puszczy
+    text: >
+      ALARM: Wykryto świeże ślady ciężkiego sprzętu w strefie ochronnej.
+      Pobrano próbki. Żądamy niezapowiedzianej kontroli PodlasDrewno
+      Sp. z o.o.
+    choices:
+      - Check their data -> straz_data
+
+  straz_data:
+    type: message
+    text: >
+      Straż Puszczy has been documenting forest damage for five years.
+      Their data shows a clear pattern: heavy equipment tracks and fresh
+      stumps that match PodlasDrewno's delivery schedule. More activity
+      on weekdays, less on weekends. More at night, less during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate illegal
+      logging in a protected zone, timed to avoid detection.
+
+      Jakub was a founding member. He contributed most of the camera
+      trap footage and GPS data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Tomek cutting ---
+
+  tomek_cutting:
+    type: message
+    text: >
+      TOMEK: Pokażę ci coś. Miesiąc temu szedłem starym szlakiem
+      przez strefę ochronną. Z góry widzisz: PodlasDrewno wyciął
+      pięć hektarów starodrzewu w rezerwacie. Dęby i graby, dwieście,
+      trzysta lat. Powalone w jedną noc. Korytarz żubrowy
+      przecięty. Tego nie ma w żadnym planie urządzenia lasu.
+
+      Zrobiłem zdjęcia i wysłałem Jakubowi. Powiedział, że to
+      brakujący element — dowód, że nie tylko fałszują dane, ale
+      wycinają w miejscach bez żadnego pozwolenia. Nielegalna wycinka.
+      Czysta i prosta.
+
+      Mam jeszcze te zdjęcia. I współrzędne GPS.
+    effects:
+      trust_tomek: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Renata Nowak. Blogger. Collaborator. Something more?
+      Someone was accessing Jakub's files. Someone was watching
+      his cabin. Someone was at his door.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Renata's access to the cabin -> cabin_access
+      - Talk to Zofia about Renata -> zofia_renata
+        when:
+          state: trust_zofia
+          gte: 20
+      - Talk to Bartek (more detail on the door incident) -> bartek_detail
+      - Talk to Halina the pharmacist -> halina_interview
+      - Check the anonymous account @kamil_wojcik -> kamil_investigation
+      - Talk to Paweł the woodcarver -> pawel_interview_2
+        when:
+          state: trust_pawel
+          gte: 40
+      - Talk to Komisarz Nowicki -> komisarz_interview
+        when:
+          state: trust_komisarz
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Cabin Access ---
+
+  cabin_access:
+    type: message
+    text: >
+      Jakub's cabin has a basic electronic lock with a log. His code
+      was used 58 times last month. Renata's guest code — he gave her
+      one for joint photo sessions — was used 97 times. Nearly double.
+
+      Cross-referencing: on 38 of Renata's 97 entries, she accessed
+      the cabin within 20 minutes of Jakub. She arrived after him and
+      left after him. Every time.
+
+      The guest code has no reason to be used when Jakub isn't doing
+      joint work.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Zofia on Renata ---
+
+  zofia_renata:
+    type: message
+    text: >
+      ZOFIA: Renata? Jakubowi na nerwy działała. Pojawiała się w
+      gospodzie jak on tam był. Chciała go odprowadzać do chatki.
+      Komentowała każdy jego post w ciągu minut.
+
+      Powiedział jej, że nie jest zainteresowany. Jasno, spokojnie,
+      po dobroci. Powiedziała, że rozumie. I nic się nie zmieniło.
+      Po prostu... była wszędzie. Zawsze.
+
+      Miesiąc temu zauważył, że ktoś nocą był przy jego komputerze
+      w chatce. Pliki były otwarte. Podejrzewał Renatę, ale nie
+      mógł udowodnić.
+    effects:
+      trust_zofia: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Bartek detail ---
+
+  bartek_detail:
+    type: message
+    text: >
+      BARTEK: ok kurwa mać, tak naprawdę nie powiedziałem wszystkiego.
+      jak widziałem renatę przy drzwiach chatki, miała coś w ręce.
+      takie małe coś. przyczepiła to do futryny. od zewnątrz.
+
+      ja pierdolę to wyglądało jak minikamera albo coś takiego. jak
+      w filmach.
+
+      powinienem był coś powiedzieć ale co za gówno — kto uwierzy
+      nastolatowi co oskarża dorosłą kobietę. daj spokój
+    effects:
+      trust_bartek: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Halina ---
+
+  halina_interview:
+    type: message
+    text: >
+      HALINA: To jest poufne, ale jestem aptekarką, nie księdzem.
+      Renata Nowak przychodzi regularnie. Kupuje rzeczy, które...
+      wskazują, że nie sypia. Leki uspokajające, tabletki nasenne,
+      suplementy na energię. Wzorzec kogoś pod ekstremalnym stresem.
+
+      I zapytała mnie raz, tak niby od niechcenia, czy sprzedajemy
+      kamery do monitoringu. Powiedziałam: "to apteka, nie media
+      expert." Zaśmiała się i machnęła ręką. Nie myślałam o tym
+      więcej aż Jakub zniknął.
+    effects:
+      trust_halina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kamil (anonymous account) ---
+
+  kamil_investigation:
+    type: tweet
+    from: kamil
+    text: >
+      Powinien był mnie posłuchać. Próbowałam go chronić. Nikt inny
+      nie rozumiał jego pracy tak jak ja.
+    choices:
+      - Look at this account's history -> kamil_posts
+
+  kamil_posts:
+    type: message
+    text: >
+      @kamil_wojcik: account created 10 months ago. Posts are all
+      about Jakub's work. Comments on every forest photo, every bison
+      tracking post, every camera trap update. The tone shifts over time:
+
+      Month 1: "Niesamowita robota. Robisz to, na co inni nie mają odwagi."
+      Month 3: "Czemu nie odpowiadasz na moje wiadomości? Chcę tylko
+      współpracować."
+      Month 7: "Widzę cię w gospodzie z innymi. Na nich masz czas,
+      ale na mnie nie?"
+      Month 9: "Wiem dokąd chodzisz. Znam twój rozkład. Jestem
+      zawsze blisko."
+
+      The account has no photos, no personal details. Just Jakub.
+      Only Jakub.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> kamil_style
+
+  kamil_style:
+    type: message
+    text: >
+      Comparing @kamil_wojcik with @renata_nowak:
+
+      Same use of ecology terminology. Same Polish punctuation habits —
+      the specific way she structures her dashes and parentheticals.
+      Same knowledge of Jakub's tracking routes that only a field
+      partner would have.
+
+      And one post from @kamil_wojcik: "Twoje nagranie z pułapki
+      numer 14 było niesamowite." Camera trap 14 is Jakub's internal
+      designation. Not public. He never posts trap numbers.
+
+      It's Renata. The anonymous account is Renata.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Paweł interview 2 ---
+
+  pawel_interview_2:
+    type: message
+    text: >
+      PAWEŁ: Jakub mi coś zostawił. Wodoodporną torbę. Powiedział:
+      "jak ktoś zapyta co się dzieje w lesie, daj mu to."
+
+      Wyglądał na przestraszonego. Powiedział, że zrobił kopie
+      wszystkiego, ale jeden zestaw musiał być w miejscu, gdzie
+      nikt nie będzie szukać. Warsztat snycerski wydawał się idealny.
+    effects: { trust_pawel: "+10" }
+    choices:
+      - What's happening in the forest? -> pawel_case
+
+  pawel_case:
+    type: message
+    text: >
+      Paweł reaches under his workbench and produces a waterproof
+      dry bag.
+
+      PAWEŁ: Mówił, że przyjdziesz. Masz, bierz.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show the illegal logging zone — not the permitted area, but a
+      massive undeclared extension into the protected species corridor —
+      and heavy machinery operating at night. The USB drive contains
+      camera trap footage, GPS coordinates, and Jakub's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Komisarz Nowicki ---
+
+  komisarz_interview:
+    type: message
+    text: >
+      KOMISARZ NOWICKI: Nieoficjalnie — i poważnie, nieoficjalnie —
+      chciałem wszcząć postępowanie przeciwko PodlasDrewnu. Mój
+      przełożony powiedział żebym dał spokój. RDOŚ ma "kompetencje."
+      Czyli: nie ruszaj.
+
+      Sprawa z Nowak to co innego. O tym nie wiedziałem do tej pory.
+      Jak pan ma dowody na stalking, mogę działać. To jest wyraźnie
+      moja kompetencja.
+
+      Niech mi pan przyniesie coś solidnego i sprawa zostanie
+      otwarta na nowo.
+    effects:
+      trust_komisarz: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Jakub than anyone in Puszcza Wielka. Who is responsible?
+    choices:
+      - Confront Renata Nowak (the obsessive blogger) -> confront_renata
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Henryk Maj (the logging company director) -> confront_henryk
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Wójt Grabowski (political protection) -> confront_tadeusz
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Renata (Best Ending) ---
+
+  confront_renata:
+    type: message
+    text: >
+      You present your evidence to Renata:
+
+      "I know @kamil_wojcik is your account. I know you put a camera
+      on Jakub's cabin door. I know you accessed his cabin at night.
+      I know you were watching from your car. I have witnesses and
+      I have the access logs."
+    choices:
+      - Send -> renata_response
+
+  renata_response:
+    type: message
+    text: >
+      Renata doesn't reply for a long time. Then:
+
+      RENATA: Nie rozumiesz. Chroniłam go. Był w niebezpieczeństwie
+      przez tartak i nie chciał przyjąć mojej pomocy. Musiałam
+      wiedzieć, że jest bezpieczny. Wszystko co robiłam, to dlatego
+      że mi na nim zależy.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Komisarz Nowicki. And to
+      Małgorzata Wilk.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Komisarz Nowicki reopens the case. With your evidence — the
+      anonymous account, the hidden camera, the access logs, the
+      witness testimonies — Renata is arrested for stalking and
+      harassment. A miniature camera is recovered from Jakub's
+      cabin door frame.
+
+      Małgorzata Wilk, finally in possession of Jakub's full evidence
+      package, publishes the PodlasDrewno story in Gazeta Wyborcza
+      and it's picked up by national media. RDOŚ orders an unannounced
+      inspection. The illegal logging zone is shut down and PodlasDrewno
+      is ordered to begin reforestation. Henryk Maj faces criminal
+      charges for falsifying environmental reports and operating
+      without permits in a protected area.
+
+      And Jakub Wiśniewski, reading the story from a friend's house
+      in Hajnówka, calls his brother for the first time in ten days.
+
+      "Wracam do domu."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: jakub
+    text: >
+      las nie kłamie. i ludzie z puszczy wielkiej też nie. dzięki,
+      że nie odpuściliście.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Henryk (Partial Ending) ---
+
+  confront_henryk:
+    type: message
+    text: >
+      You present the logging evidence to Henryk Maj:
+
+      "I have camera trap footage of heavy equipment in the protected
+      zone. I have GPS coordinates of illegal cutting. I have your
+      original environmental reports showing the data was falsified.
+      I have photographs of destroyed species corridors."
+    choices:
+      - Send -> henryk_response
+
+  henryk_response:
+    type: message
+    text: >
+      HENRYK: Ta rozmowa jest przekazywana do naszego działu prawnego.
+      Każda publikacja materiałów zniesławiających pociągnie za sobą
+      natychmiastowe postępowanie prawne. PodlasDrewno zawsze
+      działało zgodnie z wymogami regulacyjnymi.
+
+      But it's too late. You've sent the evidence to Małgorzata, to
+      Straż Puszczy, and to RDOŚ.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The logging story breaks. PodlasDrewno is ordered to halt all
+      operations pending investigation. The company may close entirely.
+      One hundred jobs hang in the balance. The village is divided.
+
+      But Jakub?
+
+      Without the stalking evidence, Renata is never investigated. She
+      continues to blog about the forest. She continues to monitor his
+      accounts. She creates a new anonymous profile.
+
+      Three months later, Jakub reads about PodlasDrewno online. He
+      returns quietly. He moves to a different cabin. He installs
+      better locks. He checks his surroundings before every patrol.
+
+      The corporation is exposed. But the person who terrorised
+      Jakub walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: jakub
+    text: "wróciłem. las się odnawia. reszta... zobaczymy."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Wójt (Wrong Ending) ---
+
+  confront_tadeusz:
+    type: message
+    text: >
+      You confront Wójt Grabowski with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> tadeusz_response
+
+  tadeusz_response:
+    type: tweet
+    from: krzysztof
+    text: >
+      Mój klient przyjmuje do wiadomości Pana/Pani zarzuty. Wszelkie
+      publiczne rozpowszechnianie treści zniesławiających będzie
+      ścigane z całą surowością prawa. — Kancelaria Duda i Wspólnicy,
+      Białystok
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The wójt's lawyer buries your accusation. Without a direct
+      link between Grabowski and PodlasDrewno's illegal logging —
+      and there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      PodlasDrewno continues to operate. Renata continues to watch.
+      Jakub stays in hiding.
+
+      Six months later, @kamil_wojcik creates a new account. It
+      follows Jakub's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PUSZCZA WIELKA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Jakub's story explores themes of
+      corporate impunity, environmental destruction, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Niebieska Linia (przemoc): 800 120 002 (bezpłatnie, 24/7)
+      Telefon Zaufania dla Młodzieży: 116 111
+      Policja: 112
+      Centrum Ochrony Środowiska: Inspekcja Ochrony Środowiska 22 825 05 05

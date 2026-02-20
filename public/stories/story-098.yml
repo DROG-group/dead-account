@@ -1,0 +1,1525 @@
+# DEAD ACCOUNT — Story 098: Kuusijärvi (Finland)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-098.yml
+#
+# Player investigates the disappearance of wilderness guide Elias Korhonen
+# in the fictional Kainuu village of Kuusijärvi.
+
+meta:
+  title: "Dead Account — Kuusijärvi"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_sanna: 0
+    trust_mikko: 0
+    trust_ritva: 0
+    trust_juhani: 0
+    trust_noora: 0
+    trust_veeti: 0
+    trust_aino: 0
+    trust_marjatta: 0
+    trust_tapani: 0
+    trust_henna: 0
+    trust_pekka: 0
+    trust_liisa: 0
+    trust_ville: 0
+    trust_eero: 0
+    trust_jenni: 0
+    trust_tuomas: 0
+    trust_antti: 0
+    trust_kaisa: 0
+    trust_ylikonstaapeli: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    mining_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "muuttanut juuri kuusijärvelle. opettelen kainuulaista elämää"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Kuusijarvi.social"
+    description: "Tervetuloa Kuusijärven kyläyhteisön Mastodon-instanssille"
+    avatar_url: /gamepatch/assets/dead-account/kuusijarvi_bot.png
+
+  npcs:
+    # === Elias's Inner Circle ===
+    elias:
+      name: "Elias Korhonen"
+      bio: "eräopas | valokuvaaja | kainuun erämaat | luonto ei valehtele"
+      avatar: avatars/elias.jpg
+    sanna:
+      name: "Sanna Korhonen"
+      bio: "eliaksen sisko | sairaanhoitaja kuusijärven terveyskeskus | huolissaan"
+      avatar: avatars/sanna.jpg
+    mikko:
+      name: "Mikko Laine"
+      bio: "eliaksen paras kaveri | puuseppä | kuusijärvi | mettässä kasvanut"
+      avatar: avatars/mikko.jpg
+    henna:
+      name: "Henna Virtanen"
+      bio: "luontokuvaaja | freelancer | eliaksen ex | mutta silti kaveri"
+      avatar: avatars/henna.jpg
+
+    # === Local Government ===
+    juhani:
+      name: "Juhani Mäkelä"
+      bio: "Kuusijärven kunnanjohtaja | Kainuun kehitys | #KuusijärviKasvaa"
+      avatar: avatars/juhani.jpg
+    kaisa:
+      name: "Kaisa Repo"
+      bio: "ympäristölautakunnan puheenjohtaja | Kuusijärven kunta | luonnonsuojelu"
+      avatar: avatars/kaisa.jpg
+    kunta:
+      name: "Kuusijärven kunta"
+      bio: "Virallinen tili | Kuntatiedotteet | Palveluajat: Ma-Pe 8-16"
+      avatar: avatars/kunta.jpg
+
+    # === Local Business & Community ===
+    ritva:
+      name: "Ritva Heikkinen"
+      bio: "Erätupa Ritva | kahvia ja lihapiirakka | auki aina kun savua nousee"
+      avatar: avatars/ritva.jpg
+    eratupa:
+      name: "Erätupa Ritva"
+      bio: "Kuusijärven kyläkauppa-kahvila | paikallinen ruoka | retkeilyvarusteet"
+      avatar: avatars/eratupa.jpg
+    tapani:
+      name: "Tapani Karjalainen"
+      bio: "kalastaja | kuusijärven rannalla 60 vuotta | järvi on mun elämä"
+      avatar: avatars/tapani.jpg
+    marjatta:
+      name: "Marjatta Koistinen"
+      bio: "kyläyhdistyksen puheenjohtaja | Kuusijärvi | yhteisöllisyys on voimaa"
+      avatar: avatars/marjatta.jpg
+    pekka:
+      name: "Pekka Niemelä"
+      bio: "metsästäjä & eränkävijä | kuusijärvi | erätaidot 40v kokemuksella"
+      avatar: avatars/pekka.jpg
+    liisa:
+      name: "Liisa Tuominen"
+      bio: "apteekkari | Kuusijärven apteekki | arkisin 9-17 | terveyttä"
+      avatar: avatars/liisa.jpg
+    eero:
+      name: "Eero Hämäläinen"
+      bio: "kirjastonhoitaja | Kuusijärven kirjasto | kirjat & netti | ti-la 10-18"
+      avatar: avatars/eero.jpg
+
+    # === Journalist ===
+    antti:
+      name: "Antti Rautio"
+      bio: "toimittaja | Kainuun Sanomat | ympäristö & paikallisuutiset | vihjeet: antti@kainuunsanomat.fi"
+      avatar: avatars/antti.jpg
+
+    # === NorthRock Mining (corporate) ===
+    northrock:
+      name: "NorthRock Mining Oy"
+      bio: "Vastuullista kaivostoimintaa Pohjois-Suomessa | Kuusijärven hanke | ISO 14001"
+      avatar: avatars/northrock.jpg
+    tuomas:
+      name: "Tuomas Lehtonen"
+      bio: "hankepäällikkö NorthRock Mining | Kuusijärven kaivoshanke | yhteistyö & avoimuus"
+      avatar: avatars/tuomas.jpg
+    lakimies:
+      name: "Asianajotoimisto Järvinen & Co"
+      bio: "Liikejuridiikka | Ympäristöoikeus | Helsinki | toimisto@jarvinenco.fi"
+      avatar: avatars/lakimies.jpg
+
+    # === Teens ===
+    noora:
+      name: "Noora"
+      bio: "17 | kuusijärvi | retkeily & luonto | elias opetti mut kalastaa"
+      avatar: avatars/noora.jpg
+    veeti:
+      name: "Veeti"
+      bio: "16 | moottorikelkka & erä | kuusijärvi | metsä on koti"
+      avatar: avatars/veeti.jpg
+    aino:
+      name: "Aino"
+      bio: "15 | piirtäminen & valokuvaus | kuusijärven luonto | eliaksen kuvauskurssilla"
+      avatar: avatars/aino.jpg
+
+    # === Media & Community ===
+    kainuun_sanomat:
+      name: "Kainuun Sanomat"
+      bio: "Kainuun alueen uutiset | Vihjeet: toimitus@kainuunsanomat.fi"
+      avatar: avatars/kainuun_sanomat.jpg
+    saatiedotus:
+      name: "Sää Kuusijärvi"
+      bio: "Paikallissää ja varoitukset | Automaattinen asema | Päivittyy tunneittain"
+      avatar: avatars/saatiedotus.jpg
+    luontoyhdistys:
+      name: "Kuusijärven Luonnonsuojeluyhdistys"
+      bio: "Kainuun erämaat & vesistöt | Vapaaehtoiset | Havainnot & ilmoitukset"
+      avatar: avatars/luontoyhdistys.jpg
+
+    # === Suspicious / Other ===
+    jenni:
+      name: "Jenni Aaltonen"
+      bio: "retkeilyopas | NorthRock-yhteistyö? ei. elias tietää miksi."
+      avatar: avatars/jenni.jpg
+    varjo:
+      name: "Varjo Vaeltaja"
+      bio: "."
+      avatar: avatars/anon.jpg
+    ylikonstaapeli:
+      name: "Ylikonstaapeli Kivinen"
+      bio: "Kuusijärven poliisiasema | Oulun poliisilaitos | Hätänumero: 112"
+      avatar: avatars/ylikonstaapeli.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN KUUSIJÄRVI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Kuusijarvi.social — the community Mastodon instance for
+      the village of Kuusijärvi, deep in the Kainuu wilderness of Finland.
+
+      The local feed is unusually active today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see one name repeated everywhere:
+      @elias_korhonen.
+
+      A wilderness guide. Nature photographer. He led groups through the
+      Kainuu old-growth forests and documented the pristine lake. People
+      are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> elias_profile
+
+  elias_profile:
+    type: tweet
+    from: elias
+    text: "Kuusijärven pohjavesi on pilaantumassa. Koeporaukset ovat vuotaneet. Mulla on todisteet."
+    choices:
+      - That's his last real post... -> grey_forest
+
+  grey_forest:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a grey forest. Blurred, overexposed, shot from a strange angle.
+      Posted at 4am. No caption.
+
+      His friends say that's not his style. The police say he probably
+      went on a hiking trip. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: ylikonstaapeli
+    text: >
+      Olemme vastaanottaneet ilmoituksen Kuusijärven asukkaasta. Tässä
+      vaiheessa mikään ei viittaa rikokseen. Kaikki hyödylliset tiedot
+      voi ilmoittaa numeroon 112 tai Kuusijärven poliisiasemalle.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @sanna_korhonen is
+      desperate. His best friend @mikko_laine is posting angry
+      messages. His colleague @henna_virtanen is asking for information.
+      The fisherman @tapani_karjalainen says Elias was right about
+      the water.
+
+      And the journalist @antti_rautio is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Elias just
+      "went hiking."
+    effects: { trust_sanna: "+5", trust_mikko: "+5" }
+    choices:
+      - Start following Elias's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Kuusijärvi. Follow Elias's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Ritva (café owner, knows everyone) -> ritva_intro
+      - Talk to Tapani (fisherman, saw the water change) -> tapani_intro
+      - Talk to Noora (teen, seems shaken) -> noora_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Elias with the rhythms of a remote
+      Kainuu village: weather warnings, the shop's stock updates,
+      mushroom sightings, aurora forecasts.
+
+      Key names surface: Sanna (sister, nurse), Mikko (best friend,
+      furious), Henna (ex-girlfriend, photographer), and the teens —
+      Noora, Veeti, Aino — who loved Elias's wilderness courses.
+
+      Also prominent: NorthRock Mining Oy, the company pushing a
+      mining permit on the lake's watershed. Their posts are
+      corporate PR. Elias's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Ritva -> ritva_intro
+      - Talk to Tapani -> tapani_intro
+      - Talk to Noora -> noora_intro
+
+  # --- Ritva (social map) ---
+
+  ritva_intro:
+    type: tweet
+    from: ritva
+    text: >
+      Erätupa on auki mutta tunnelma on paskana. @elias_korhonen,
+      sun kahvi odottaa. Tuu takas.
+    effects: { trust_ritva: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ritva -> ritva_talk
+
+  ritva_talk:
+    type: message
+    text: >
+      RITVA: Ai, sä oot uus täällä? Tervetuloa. Huono aika muuttaa.
+      Kaikki on ihan sekaisin Eliaksen takia.
+
+      Kerron sulle kuka on kuka. Sanna on Eliaksen sisko — hoitaja
+      terveyskeskuksessa. Hyvä tyttö, ihan rikki nyt. Mikko Laine on
+      Eliaksen paras kaveri, puuseppä. Ne on tunteneet lapsuudesta.
+      Henna Virtanen on Eliaksen ex, mutta ne jäi kavereiksi — molemmat
+      luontokuvaajia.
+
+      Ja sitte on tää Jenni Aaltonen. Retkeilyopas jostain Oulusta.
+      Tuli tänne puol vuotta sitten. Käy kaikilla Eliaksen retkillä.
+      Aina samassa pöydässä kahvilassa. Elias sano mulle kerran: "toi
+      muija ei anna olla rauhassa."
+
+      Ja pysy kaukana NorthRockin mainospuheista. Valheita ISO-
+      sertifikaateilla päällystettyinä.
+    effects: { trust_ritva: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Jenni -> ritva_jenni
+      - Ask about NorthRock -> ritva_northrock
+      - Thank her and move on -> quest1_hub
+
+  ritva_jenni:
+    type: message
+    text: >
+      RITVA: Jenni? Se ilmesty tänne viime keväänä. Sano olevansa
+      retkeilyopas, haluu yhteistyötä Eliaksen kanssa. Elias oli
+      kohtelias, mutta mä näin et se oli epämukava. Jenni oli aina
+      siellä missä Eliaskin. Samalla polulla, samassa laavulla.
+
+      Kerran Elias tuli tänne kahville ja sano "vittu toi seuraa mua
+      joka paikkaan." Mä luulin et se liioitteli. Nyt en oo enää varma.
+
+      Ja se Jennin sometili — @jenni_aaltonen — siel on pelkkää Eliasta.
+      Joka ikinen kuva, joka ikinen reissu. Se on vähän creepy.
+    effects: { trust_ritva: "+5" }
+    choices:
+      - Ask about NorthRock -> ritva_northrock
+      - Move on -> quest1_hub
+
+  ritva_northrock:
+    type: message
+    text: >
+      RITVA: NorthRock Mining Oy. Ne tuli tänne kaks vuotta sitten
+      tekemään "tutkimuksia." Koeporauksia järven valuma-alueella.
+      Sano et se on nikkeliä — arvokasta, tarpeellista, vihreän
+      siirtymän metalli.
+
+      Mutta kalastajat huomas et vesi muuttu. Pohjamudat nousi.
+      Tapani löysi kuolleita kaloja. Elias otti näytteitä ja sukelsi
+      porauspaikkoihin. Sillä oli todisteita et koeporaukset vuotaa
+      raskasmetalleja suoraan järveen.
+
+      Kaks viikkoa myöhemmin se katosi.
+    effects: { trust_ritva: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tapani (the water, witness tease) ---
+
+  tapani_intro:
+    type: tweet
+    from: tapani
+    text: >
+      kuuskyt vuotta oon kalastanu tätä järvee. vesi ei oo enää sama.
+      @elias_korhonen oli oikeessa. ja nyt se on kadonnu. miettikää
+      ite.
+    effects: { trust_tapani: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tapani -> tapani_talk
+
+  tapani_talk:
+    type: message
+    text: >
+      TAPANI: Mä oon kalastanu tätä järvee siitä asti ku olin viistoista.
+      Mä tiiän joka lahden, joka virran, joka värin minkä se vesi tekee.
+      Ja mä sanon sulle — se vesi porapaikkojen lähellä on vääränlaista.
+      Samea. Haisee metallille.
+
+      Verkot tulee ylös kuolleitten kalojen kanssa. Pohjaeläimet on
+      kuollu. Jotain valuu sinne porarei'istä.
+
+      Elias otti vesinäytteitä. Sukelsi sinne. Kuvasi kaiken. Se oli
+      rakentamassa juttuu. Ja sitte — puff — kadonnu.
+
+      Sä luulet et se on sattuma? Mä en usko sattumiin järvellä.
+    effects: { trust_tapani: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> tapani_night
+      - Move on -> quest1_hub
+
+  tapani_night:
+    type: message
+    text: >
+      TAPANI: Sen yönä ku se katosi — mä olin verkoilla, yökalastelee.
+      Noin yks yöllä. Mä näin valoja Eliaksen mökillä. Ei ihmeellistä,
+      sehän on yökyöpeli. Mutta sitte näin auton. Mustan maasturin.
+      NorthRockin logo kyljessä.
+
+      Yöllä yheltä. Eräoppaan mökillä.
+
+      En ajatellu silloin mitään. Nyt mä ajattelen sitä joka yö.
+    effects: { trust_tapani: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Noora (teen, witness tease) ---
+
+  noora_intro:
+    type: tweet
+    from: noora
+    text: >
+      vittu mä oon niin huolissani. @elias_korhonen opetti mut
+      kalastamaan ja retkeilee. se on paras ihminen tässä kylässä.
+      ei se oo lähteny mihinkään ite. jos joku tietää jotain niin
+      kertokaa vittu
+    effects: { trust_noora: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Noora -> noora_talk_early
+
+  noora_talk_early:
+    type: message
+    text: >
+      NOORA: kuka sä oot? uus täällä? no tervetuloa helvettiin.
+      siis elias on niinku paras aikuinen tässä kylässä. se opetti
+      meille eräjuttuja, kalastusta, kuvaamista. se välitti oikeesti.
+
+      ja nyt mä oon ihan flippaa koska veeti näki jotain outoa sinä
+      iltana mutta se ei suostu puhuu siitä. se sanoo et se ei oo
+      mitään mutta siis... kyllä se on jotain vittu
+    effects: { trust_noora: "+10" }
+    choices:
+      - What did Veeti see? -> noora_veeti_hint
+      - Move on -> quest1_hub
+
+  noora_veeti_hint:
+    type: message
+    text: >
+      NOORA: en mä tiiä tarkkaan. se oli kelkkailemassa illalla ja
+      näki jonkun eliaksen mökillä. tai niinku eliaksen pihalla.
+      joku nainen. veeti flippaili siitä mutta ei haluu puhuu
+      tuntemattomille. yritä jutella sille ensin kelkkailusta tai
+      metsäjutuista niin se ehkä avautuu haha
+    effects: { trust_noora: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Kuusijärvi. A remote Kainuu village
+      built around a pristine lake. A wilderness guide who was exposing
+      mining pollution. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Sanna (Elias's sister) -> sanna_q1
+      - Talk to Mikko (Elias's best friend) -> mikko_q1
+      - Check what Henna (Elias's ex) is saying -> henna_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Sanna Q1 ---
+
+  sanna_q1:
+    type: tweet
+    from: sanna
+    text: >
+      jos kellään on tietoa @elias_korhonen soittakaa mulle heti.
+      sen sukelluskamppeet on mökillä. reppu on siellä. se ei olis
+      ikinä lähteny ilman varusteita.
+    effects: { trust_sanna: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Sanna -> sanna_q1_talk
+
+  sanna_q1_talk:
+    type: message
+    text: >
+      SANNA: Kiitos et otat yhteyttä mutta mä en tunne sua. Eliaksella
+      on paljon kavereita täällä. Se tulee varmaan takas.
+
+      ...mä jatkan sanomista niin. En enää usko siihen.
+
+      [Sanna is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_sanna: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mikko Q1 ---
+
+  mikko_q1:
+    type: tweet
+    from: mikko
+    text: >
+      mun paras kaveri on KADONNU ja poliisi sanoo et se on ehkä
+      vaeltamassa?? ELIAS EI LÄHDE VAELTAMAAN SANOMATTA MULLE.
+      perkele. joku tietää jotain.
+    effects: { trust_mikko: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mikko -> mikko_q1_talk
+
+  mikko_q1_talk:
+    type: message
+    text: >
+      MIKKO: Kuka vittu sä oot? Taas joku joka tulee kertomaan et
+      pitää rauhoittua? Elias soitti mulle sinä iltana. Se sano et
+      sillä on jotain isoa. Se sano "jos mulle tapahtuu jotain, kato
+      NorthRockia." Sit se sulki puhelimen.
+
+      Se on viimenen mitä mä kuulin siltä.
+    effects: { trust_mikko: "+10" }
+    choices:
+      - What do you think happened? -> mikko_theory
+      - Move on -> quest1_hub
+
+  mikko_theory:
+    type: message
+    text: >
+      MIKKO: Mä luulen et Elias löysi todisteita et NorthRock pilaa
+      järven ja ne hiljensi sen. Mutta mä luulen kans et se Jenni
+      Aaltonen — se retkeilyopas Oulusta — tietää enemmän ku se sanoo.
+      Se seuraa Eliasta kaikkialle. Millon vaan mä tulin Eliaksen
+      luo, Jenni oli jo siellä. Tai just lähteny.
+
+      Elias sano mulle kuukausia sitten et joku käy sen mökillä ku
+      se ei oo kotona. Tavaroita oli siirrelty. Kamera oli eri
+      paikassa. Se luuli et se kuvittelee. Mä en luule et se kuvitteli.
+    effects: { trust_mikko: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Henna Q1 ---
+
+  henna_q1:
+    type: tweet
+    from: henna
+    text: >
+      @elias_korhonen ei oo vastannu viesteihin kuuteen päivään.
+      me erottiin mutta oltiin silti kavereita. eliaksen kuvat on
+      maailman parhaita. kukaan ei tunne tätä erämaat niinku se.
+      pliis kerro jotain.
+    effects: { trust_henna: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Henna -> henna_q1_talk
+
+  henna_q1_talk:
+    type: message
+    text: >
+      HENNA: Me oltiin Eliaksen kanssa yhdessä kaks vuotta. Erottiin
+      kavereina — me molemmat ollaan liian itsenäisiä suhteeseen. Mutta
+      me pidettiin yhteyttä. Kuvattiin yhdessä. Hän oli mulle tärkee.
+
+      Ja nyt tää Jenni... se ilmesty viime keväänä ja alkoi seurata
+      Eliasta kaikkialle. Elias sano mulle et se tuntuu ahdistavalta.
+      Se sano "se nainen tietää missä mä oon ennen ku mä ite tiiän."
+
+      Mä sanoin et puhu poliisille. Se sano et ei oo mitään konkreettista.
+      Nyt mä kadun etten painostanu enemmän.
+    effects: { trust_henna: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Elias went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Veeti (was out snowmobiling that evening) -> veeti_interview
+      - Find Tapani (fisherman, was on the lake at night) -> tapani_interview
+      - Find Pekka (hunter, early morning in the forest) -> pekka_interview
+      - Find Marjatta (community chair, heard a car) -> marjatta_interview
+
+  # --- Veeti (saw someone at Elias's cabin) ---
+
+  veeti_interview:
+    type: tweet
+    from: veeti
+    text: >
+      kelkkailin eilen illalla ja metsässä oli outoo liikettä. en
+      tiiä miten selittää. joku ei kuulu sinne.
+    effects: { trust_veeti: "+5" }
+    choices:
+      - Ask Veeti about that evening -> veeti_talk
+
+  veeti_talk:
+    type: message
+    text: >
+      VEETI: okei mut sä et kerro tätä kellekään. mä olin
+      kelkkailemassa noin seitsemän aikaan illalla ja ajoin eliaksen
+      mökin ohi. ja mä näin sen — jenni aaltosen — eliaksen pihalla.
+      se teki jotain eliaksen autolla. niinku kumartu sen alle tai
+      jotain.
+
+      ku se näki mut se lähti vitun nopeesti. mä en sanonu mitään
+      koska eihän kukaan usko teiniä joka syyttää aikuista. perkele.
+      oisin pitäny sanoa.
+    effects:
+      trust_veeti: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tapani (saw late-night meeting at cabin) ---
+
+  tapani_interview:
+    type: tweet
+    from: tapani
+    text: >
+      Muistutus: järvellä liikkuminen yöaikaan omalla vastuulla.
+      Viime aikoina outoa liikennettä rantatiellä öisin.
+    effects: { trust_tapani: "+5" }
+    choices:
+      - Ask Tapani what he saw -> tapani_talk_night
+
+  tapani_talk_night:
+    type: message
+    text: >
+      TAPANI: Mä olin yökalassa, noin puol yheltätoista illalla. Näin
+      valot Eliaksen mökillä — ei ihmeellistä. Mutta sitte rantatielle
+      ajo musta maasturi. NorthRockin logo kyljessä. Kaks miestä
+      nousi autosta ja meni Eliaksen ovelle.
+
+      Puol yheltätoista. Eräoppaan mökille. Se ei oo normaalia.
+
+      Kirjotin sen ylös kalastuspäiväkirjaan. Kukaan ei oo kysyny
+      sitä.
+    effects:
+      trust_tapani: "+10"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pekka (saw Elias fleeing) ---
+
+  pekka_interview:
+    type: tweet
+    from: pekka
+    text: >
+      aamulla neljältä mettään niinku aina. mutta tänä aamuna
+      joku juoksi polulla. pimeessä. ei ollu lenkkeilijä.
+    effects: { trust_pekka: "+5" }
+    choices:
+      - Ask Pekka what he saw -> pekka_talk
+
+  pekka_talk:
+    type: message
+    text: >
+      PEKKA: Mä nousen neljältä aamulla mettästämään. Sinä aamuna —
+      aamuna Eliaksen viimeisen postauksen jälkeen — mä näin jonkun
+      metsäpolulla. Juoksi. Mies, reppu selässä, meni kohti vanhoja
+      eräkämppiä Petäjävaaralla. Oli vielä pimeää. Se liikku nopeesti,
+      niinku olis pelänny jotain.
+
+      Huusin perään mutta se ei pysähtyny. Aattelin et joku lenkkeilijä
+      mutta... kuka lenkkeillee neljältä aamulla reppu selässä pimeessä
+      metsässä?
+
+      Ku kuulin Eliaksesta, yhdistin. Se oli varmaan Elias. Pakeni
+      jotain.
+    effects:
+      trust_pekka: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marjatta (heard car chase) ---
+
+  marjatta_interview:
+    type: tweet
+    from: marjatta
+    text: >
+      Sinä aamuna auto ajo kylätiellä aivan liian lujaa. Viideltä
+      aamulla. Herätty siihen. Ei tällaista täällä tapahdu.
+    effects: { trust_marjatta: "+5" }
+    choices:
+      - Ask Marjatta what she heard -> marjatta_talk
+
+  marjatta_talk:
+    type: message
+    text: >
+      MARJATTA: Mä heräsin viideltä aamulla autoon joka ajo kylätietä
+      pitkin — liian lujaa, paljon liian lujaa tälle tielle. Iso auto,
+      tumma. Sitte ehkä kaks minuuttia myöhemmin toinen auto. Pienempi.
+      Ajoiko perässä? En tiiä.
+
+      Pienempi auto kääntyi kohti Petäjävaaran eräkämppiä. Isompi
+      jatko kohti valtatietä.
+
+      Kerroin poliisille. Ne kirjotti ylös. Siinä se.
+    effects:
+      trust_marjatta: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Sanna (sister)
+      and Aino (saw Jenni watching the cabin).
+    choices:
+      - Talk to Sanna about that night -> sanna_interview
+      - Talk to Aino -> aino_interview
+      - Find Veeti -> veeti_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tapani -> tapani_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Pekka -> pekka_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Marjatta -> marjatta_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Sanna (last to hear from Elias) ---
+
+  sanna_interview:
+    type: tweet
+    from: sanna
+    text: >
+      se kuva eliaksen tilillä. se ei oo eliaksen ottama. elias ei
+      postaa ilman kuvatekstiä. elias ei postaa neljältä aamulla.
+      joku muu teki sen.
+    effects: { trust_sanna: "+5" }
+    choices:
+      - DM Sanna -> sanna_talk_low
+        when:
+          state: trust_sanna
+          lt: 50
+      - DM Sanna -> sanna_talk_high
+        when:
+          state: trust_sanna
+          gte: 50
+
+  sanna_talk_low:
+    type: message
+    text: >
+      SANNA: Kiitos huolenpidosta mutta en mä haluu puhuu
+      tuntemattomille tästä nyt.
+
+      [Sanna needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_sanna: "+5" }
+    choices:
+      - Share what you've learned about the night -> sanna_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  sanna_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the cabin, the
+      company men, the running figure. Sanna is silent for a while.
+
+      SANNA: Sä oikeesti yrität selvittää tätä. Okei. Mä puhun.
+    effects: { trust_sanna: "+25" }
+    choices:
+      - What happened that night? -> sanna_talk_high
+
+  sanna_talk_high:
+    type: message
+    text: >
+      SANNA: Elias soitti mulle noin yhdeltätoista illalla. Se oli
+      kalpee, ääni täris. Se sano "ne tietää mitä mulla on." Se otti
+      läppärin ja kameran kovalevyt.
+
+      Mä kysyin kuka. Se sano "kaivosyhtiö. Ne lähetti porukkaa
+      mökille." Sitte se sano vielä jotain — "ja se on taas täällä.
+      Se on aina täällä."
+
+      Se ei sanonu kuka "se" on. Se halasi mua, sano "älä huoli,"
+      ja lähti reppu selässä. Aamulla sen auto oli poissa ja se harmaa
+      kuva oli tilillä.
+    effects:
+      trust_sanna: "+15"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Aino (saw Jenni watching the cabin) ---
+
+  aino_interview:
+    type: message
+    text: >
+      AINO: okei siis tää on ihan creepy mut se jenni aaltonen —
+      mä oon nähny sen eliaksen mökin lähellä niinku kolme kertaa
+      illalla. ihan vaan seisoo siellä ja tuijottaa. ihan vitun
+      outo.
+
+      viimeks se oli niinku kaks päivää ennen ku elias katosi.
+      se istu autossaan tien varrella. valot sammutettuina. vaan
+      istu siellä.
+    effects:
+      trust_aino: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Jenni seen at Elias's car at his cabin (Veeti)
+      22:30 — NorthRock car at Elias's cabin, two men at the door (Tapani)
+      23:00 — Elias calls Sanna, shaken, grabs laptop and drives (Sanna)
+      04:00 — Man running on forest trail toward Petäjävaara (Pekka)
+      05:00 — Two cars on village road, one toward Petäjävaara (Marjatta)
+
+      NorthRock confronted Elias at his cabin. He fled, grabbed his
+      evidence, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is NorthRock Mining hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Jenni really doing? Why was she
+        at his car?
+    choices:
+      - Investigate the mining cover-up -> corruption_hub
+      - Investigate Jenni -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      MINING THREAD: Evidence collected: ${mining_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the mining thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: mining_evidence, gte: 3 }
+
+  # =====================================================================
+  # MINING COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE MINING THREAD
+
+      NorthRock Mining is hiding something. Elias had proof. Now he's
+      gone and his evidence is missing from the cabin.
+
+      Mining evidence: ${mining_evidence}
+    choices:
+      - Search the permit records -> permit_records
+      - Talk to Antti the journalist -> antti_interview
+      - Talk to Jenni about NorthRock connection -> jenni_northrock
+      - Talk to Kaisa (environment committee chair) -> kaisa_interview
+      - Check the Luonnonsuojeluyhdistys -> luonto_investigation
+      - Talk to Tapani about the water samples -> tapani_samples
+      - Back to hub -> investigation_hub
+
+  # --- Permit Records ---
+
+  permit_records:
+    type: message
+    text: >
+      The regional environmental authority's public database shows
+      NorthRock's exploration permit for Kuusijärvi. The permit allows
+      "geological core sampling" in six sites around the lake watershed.
+      One site — Site 4 near Petäjävaara — is marked "PENDING REVIEW."
+
+      Elias's dive log, shared with the Luonnonsuojeluyhdistys for
+      documentation, shows he made 15 dives near the drilling sites
+      in the past two months. The last entry: "Photographed borehole
+      casing failure at Site 4. Drilling fluid leaking directly into
+      groundwater. Heavy metal contamination confirmed."
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Antti ---
+
+  antti_interview:
+    type: message
+    text: >
+      ANTTI: I don't talk about sources. Period.
+    effects: { trust_antti: "+5" }
+    choices:
+      - Show Antti the evidence you have -> antti_with_evidence
+        when:
+          state: mining_evidence
+          gte: 3
+      - Back to mining thread -> corruption_hub
+
+  antti_with_evidence:
+    type: message
+    text: >
+      ANTTI: ...sulla on enemmän ku mä odotin.
+
+      Okei. Elias ja mä tehtiin yhteistyötä. Sillä oli kuvia
+      rikkoutuneesta poraputkesta — NorthRockin koeporaus vuotaa
+      porausnestettä suoraan pohjaveteen. Sillä oli vesinäytteet
+      joissa raskasmetallipitoisuudet on kymmenkertaiset raja-arvoihin
+      nähden.
+
+      Me oltiin julkaisemassa yhdessä. Sit se meni hiljaiseksi. Ja
+      kaks päivää myöhemmin joku mursi mun auton ja varasti
+      varakovalevyn.
+
+      Elias on elossa. Se otti muhun yhteyttä kerran, prepaid-
+      liittymästä. Se sano et se piilottelee. Se sano "ne uhkasi mua
+      mökillä ja joku muu ei jätä rauhaan."
+
+      En voi sanoo missä se on. Mutta tarpeeksi todisteilla mä voin
+      julkasta ja tehä turvalliseksi palata.
+    effects:
+      trust_antti: "+25"
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> antti_hint
+      - Back to investigation hub -> investigation_hub
+
+  antti_hint:
+    type: message
+    text: >
+      ANTTI: Kaivosyhtiö lähetti hankepäällikkönsä — Lehtosen — ja
+      jonkun lakimiehen Eliaksen mökille sinä iltana. Ne sano et
+      Eliaksen pitää luovuttaa kaikki tai edessä on oikeustoimet.
+      Pelottelua lainopilliseksi naamioituna.
+
+      Mutta se sano myös jotain labran tyylistä. Joku joka oli käyny
+      sen tiedostoissa. Joku joka aina tiesi missä se on. Se on eri
+      ongelma.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Jenni NorthRock connection ---
+
+  jenni_northrock:
+    type: message
+    text: >
+      JENNI: Mä en oo NorthRockin palveluksessa. Mä oon retkeilyopas.
+      Mä vaan halusin tehdä yhteistyötä Eliaksen kanssa.
+
+      [Jenni's bio mentions NorthRock. Her social media shows photos
+      from inside NorthRock facilities. She posted a photo with
+      Tuomas Lehtonen three months ago: "Great meeting about Kainuu
+      outdoor tourism potential!"]
+
+      Something doesn't add up.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Kaisa ---
+
+  kaisa_interview:
+    type: message
+    text: >
+      KAISA: Ympäristölautakunnan puheenjohtajana mä otan nää
+      väitteet vakavasti. Mutta NorthRock Mining työllistää jo nyt
+      30 ihmistä tutkimusvaiheessa. Kaivos toisi 200 työpaikkaa.
+      Kunnanjohtaja vaatii "vuoropuhelua."
+
+      Epävirallisesti? Mä oon nähny ELY-keskuksen tarkastusraportit.
+      NorthRock läpäisee joka kerta. Mutta tarkastuksista ilmoitetaan
+      kaks viikkoa etukäteen. Ne siivoaa ennen ku tarkastajat tulee.
+
+      Eliaksella oli yllätystarkastuksen dataa. Siksi se on vaarallista.
+    effects:
+      trust_kaisa: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Luonnonsuojeluyhdistys ---
+
+  luonto_investigation:
+    type: tweet
+    from: luontoyhdistys
+    text: >
+      HÄLYTYS: Poikkeavia raskasmetallipitoisuuksia Kuusijärven
+      itärannalla. Näytteet ja kuvat kerätty. Vaadimme ELY-keskukselta
+      yllätystarakastusta NorthRock Miningin porauspaikoille.
+    choices:
+      - Check their data -> luonto_data
+
+  luonto_data:
+    type: message
+    text: >
+      The Luonnonsuojeluyhdistys has been documenting water quality
+      for two years. Their data shows a clear pattern: heavy metal
+      spikes that correspond to NorthRock's drilling schedule.
+      Higher on drilling days, lower on breaks. Higher downstream
+      from Site 4, normal upstream.
+
+      The pattern is unmistakable. This is ongoing contamination from
+      failed borehole casings that NorthRock has not repaired.
+
+      Elias was a founding member. He contributed most of the
+      underwater documentation.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Tapani water samples ---
+
+  tapani_samples:
+    type: message
+    text: >
+      TAPANI: Mä näytän sulle jotain. Viime kuussa mä vedin verkon
+      ylös porapaikan läheltä ja löysin tän — muoviastia, NorthRockin
+      merkintä, täynnä porausnestettä. Vuotaa järveen.
+
+      Kuvasin sen ja lähetin Eliakselle. Se sano et tää on puuttuva
+      palanen — todiste et ne dumppaavat jätettä, ei pelkästään
+      vahinkopäästöjä. Tahallista.
+
+      Mulla on vielä kuvat. Ja eränumero.
+    effects:
+      trust_tapani: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Jenni Aaltonen. Outdoor guide. Collaborator? Something more?
+      Someone was entering Elias's cabin. Someone was watching him.
+      Someone was at his car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Jenni's online presence -> jenni_online
+      - Talk to Sanna about Jenni -> sanna_jenni
+        when:
+          state: trust_sanna
+          gte: 20
+      - Talk to Veeti (more detail on the car incident) -> veeti_detail
+      - Talk to Liisa the pharmacist -> liisa_interview
+      - Check the anonymous account @varjo_vaeltaja -> varjo_investigation
+      - Talk to Eero the librarian -> eero_interview
+        when:
+          state: trust_eero
+          gte: 40
+      - Talk to Ylikonstaapeli Kivinen -> ylikonstaapeli_interview
+        when:
+          state: trust_ylikonstaapeli
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Jenni Online ---
+
+  jenni_online:
+    type: message
+    text: >
+      Jenni Aaltonen's Kuusijarvi.social profile: created 7 months ago.
+      Every post is about Elias's work, Elias's routes, Elias's
+      photographs. She comments on everything he posts. She shares
+      his location updates. She posts photos from the same trails —
+      taken at the same time.
+
+      Cross-referencing timestamps: on 23 occasions, Jenni posted a
+      photo from the same location as Elias within 30 minutes of his
+      post. She was following his routes in real time.
+
+      Her followers: 4. Her following: 1. Elias.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sanna on Jenni ---
+
+  sanna_jenni:
+    type: message
+    text: >
+      SANNA: Jenni? Se teki Eliaksen olon epämukavaksi. Se ilmesty
+      joka retkelle. Se tarjosi apua kaikessa. Se kommentoi joka
+      ikistä postausta minuuteissa.
+
+      Elias sano sille selvästi et ei kiinnosta. Kohteliaasti mutta
+      selvästi. Jenni sano et ymmärtää. Sitte mikään ei muuttunu.
+      Se oli aina siellä. Aina.
+
+      Kuukausi sitten Elias huomas et joku oli käyny sen mökillä ku
+      se oli poissa. Kalenterit oli avattu, kamera siirretty. Se
+      epäili Jenniä mutta ei pystyny todistamaan.
+    effects:
+      trust_sanna: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Veeti detail ---
+
+  veeti_detail:
+    type: message
+    text: >
+      VEETI: okei siis mä en kertonu kaikkea. ku mä näin jennin
+      eliaksen autolla niin sillä oli joku pieni laite kädessä.
+      se laitto sen auton alle. niinku liimasi sinne pohjaan.
+
+      siis mä en oo mikään asiantuntija mut se näytti ihan gps-
+      paikantimelta. sellaselta ku leffois näkee.
+
+      mun olis pitäny sanoa mut saatana kuka uskois teiniä joka
+      syyttää aikuista. vittu mä oon tyhmä.
+    effects:
+      trust_veeti: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Liisa ---
+
+  liisa_interview:
+    type: message
+    text: >
+      LIISA: Tää on luottamuksellista mutta mä oon apteekkari, en
+      pappi. Jenni Aaltonen käy täällä säännöllisesti. Se ostaa
+      tavaraa joka viittaa siihen et se ei nuku. Ahdistuslääkkeitä,
+      unilääkkeitä, energialisää. Se on jonkun ahdistaman ihmisen
+      profiili.
+
+      Se kysy multa kerran ihan ohimennen myydäänkö täällä GPS-
+      paikantimia. Mä sanoin "tää on apteekki, ei Verkkokauppa.com."
+      Se nauro. En ajatellu sitä enempää ennen ku Elias katosi.
+    effects:
+      trust_liisa: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Varjo Vaeltaja (anonymous account) ---
+
+  varjo_investigation:
+    type: tweet
+    from: varjo
+    text: >
+      Sen olis pitäny kuunnella. Mä yritin suojella sitä. Kukaan muu
+      ei ymmärtäny sen työtä niinku mä.
+    choices:
+      - Look at this account's history -> varjo_posts
+
+  varjo_posts:
+    type: message
+    text: >
+      @varjo_vaeltaja: account created 6 months ago. Posts are all
+      about Elias's work. Comments on every wilderness photo, every
+      trail report, every nature update. The tone shifts over time:
+
+      Month 1: "Uskomattomia kuvia. Teet mitä kukaan muu ei uskalla."
+      Month 2: "Mikset vastaa viesteihini? Haluan vain tehdä yhteistyötä."
+      Month 4: "Näen sut kahvilassa muiden kanssa. Sulle riittää aikaa
+      niille mutta ei mulle?"
+      Month 5: "Tiedän missä sä käyt. Tiedän sun aikataulun. Oon aina
+      lähellä."
+
+      The account has no photos, no personal details. Just Elias.
+      Only Elias.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> varjo_style
+
+  varjo_style:
+    type: message
+    text: >
+      Comparing @varjo_vaeltaja with @jenni_aaltonen:
+
+      Same use of wilderness and outdoor terminology. Same Finnish
+      dialect markers — the specific Oulu-area way she shortens words.
+      Same knowledge of Elias's routes that only someone who'd been
+      on his trips would have.
+
+      And one post from @varjo_vaeltaja: "Sun retki Reitille 7 oli
+      kaunis." Reitti 7 is Elias's internal numbering for his guide
+      routes. Not public.
+
+      It's Jenni. The anonymous account is Jenni.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Eero ---
+
+  eero_interview:
+    type: message
+    text: >
+      EERO: Elias jätti mulle jotain. Vedenpitävän rasian. Se sano
+      "jos joku kysyy mitä on Kuusijärven pohjassa, anna tää."
+
+      Se näytti pelokkaalta. Se sano et se on tehny kopiot kaikesta
+      mutta tarvii yhden setin muualle, paikkaan josta kukaan ei
+      hakis. Kirjasto vaikutti täydelliseltä.
+    effects: { trust_eero: "+10" }
+    choices:
+      - What's at the bottom of Kuusijärvi? -> eero_case
+
+  eero_case:
+    type: message
+    text: >
+      Eero ottaa tiskin alta vedenpitävän Pelican-rasian.
+
+      EERO: Se sano et sä tulet. Ota tää.
+
+      Sisällä: USB-tikku ja tulostetut valokuvat. Kuvissa näkyy
+      rikkoutunut poraputki — ei virallinen näytteenottopaikka vaan
+      toinen, korjaamaton porausreikä — ja porausnestettä valumassa
+      järveen. USB-tikulla on vesinäytteiden data, kemiallinen
+      analyysi ja Eliaksen yksityiskohtainen raportti.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Ylikonstaapeli Kivinen ---
+
+  ylikonstaapeli_interview:
+    type: message
+    text: >
+      YLIKONSTAAPELI KIVINEN: Epävirallisesti — ja mä tarkotan
+      täysin epävirallisesti — mä halusin tutkia NorthRockia.
+      Esimieheni käski lopettaa. Se sano et ELY-keskuksella on
+      "toimivalta." Se tarkottaa "älä koske."
+
+      Jenni-juttu on eri asia. Siitä mä en tienny mitään ennen
+      nyt. Jos sulla on todisteita vainoamisesta, mä voin toimia.
+      Se on selvästi mun toimivaltaa.
+
+      Tuo mulle jotain konkreettista niin mä avaan jutun uudelleen.
+    effects:
+      trust_ylikonstaapeli: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Elias than anyone in Kuusijärvi. Who is responsible?
+    choices:
+      - Confront Jenni Aaltonen (the obsessive stalker) -> confront_jenni
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Tuomas Lehtonen (the project manager) -> confront_tuomas
+        when:
+          state: mining_evidence
+          gte: 3
+      - Confront Juhani Mäkelä (political protection) -> confront_juhani
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Jenni (Best Ending) ---
+
+  confront_jenni:
+    type: message
+    text: >
+      You present your evidence to Jenni:
+
+      "I know @varjo_vaeltaja is your account. I know you put a GPS
+      tracker on Elias's car. I know you entered his cabin when he
+      wasn't home. I know you watched him from the road. I have
+      witnesses and I have the access patterns."
+    choices:
+      - Send -> jenni_response
+
+  jenni_response:
+    type: message
+    text: >
+      Jenni doesn't reply for a long time. Then:
+
+      JENNI: Sä et ymmärrä. Mä suojelin sitä. Se oli vaarassa
+      kaivosyhtiön takia ja se ei antanu mun auttaa. Mun piti tietää
+      et se on turvassa. Kaikki mitä mä tein oli koska mä välitän
+      siitä.
+
+      Se ei oo välittämistä. Se on pakkomielle.
+
+      You've already sent the evidence to Ylikonstaapeli Kivinen.
+      And to Antti Rautio.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Ylikonstaapeli Kivinen reopens the case. With your evidence —
+      the anonymous account, the GPS tracker, the cabin intrusions,
+      the witness testimonies — Jenni is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Elias's car
+      at the old wilderness cabin in Petäjävaara.
+
+      Antti Rautio, finally in possession of Elias's full evidence
+      package, publishes the NorthRock story in Helsingin Sanomat.
+      The ELY-keskus orders an unannounced inspection. The drilling
+      operation is shut down pending environmental remediation.
+      Tuomas Lehtonen faces criminal charges for falsifying
+      environmental reports.
+
+      And Elias Korhonen, reading the story from a friend's cabin
+      in Suomussalmi, calls his sister for the first time in nine
+      days.
+
+      "Mä tuun kotiin."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: elias
+    text: >
+      luonto ei valehtele. eikä kuusijärven ihmiset. kiitos et ette
+      antanu periksi.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Tuomas (Partial Ending) ---
+
+  confront_tuomas:
+    type: message
+    text: >
+      You present the mining evidence to Tuomas Lehtonen:
+
+      "I have photographs of the failed borehole casing. I have water
+      samples showing heavy metal levels ten times the legal limit.
+      I have your original drilling reports showing the data was
+      falsified. I have the waste containers with your batch numbers."
+    choices:
+      - Send -> tuomas_response
+
+  tuomas_response:
+    type: message
+    text: >
+      TUOMAS: Tämä keskustelu ohjataan lakiosastollemme. NorthRock
+      Mining Oy on aina toiminut ympäristölupien mukaisesti.
+      Kunnianloukkausmateriaalin levittäminen johtaa välittömiin
+      oikeustoimiin.
+
+      But it's too late. You've sent the evidence to Antti, to
+      the Luonnonsuojeluyhdistys, and to the ELY-keskus.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The mining story breaks. NorthRock is ordered to halt drilling
+      pending investigation. The mine project may be cancelled. Two
+      hundred promised jobs evaporate. The village is divided.
+
+      But Elias?
+
+      Without the stalking evidence, Jenni is never investigated.
+      She continues to hike the same trails. She continues to
+      monitor his accounts. She creates a new anonymous profile.
+
+      Three months later, Elias reads about NorthRock online.
+      He returns quietly. He changes his routes. He stops guiding
+      alone. He checks his car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Elias walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: elias
+    text: "mä oon takas. vesi on puhtaampaa. muu... katotaan."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Juhani (Wrong Ending) ---
+
+  confront_juhani:
+    type: message
+    text: >
+      You confront Kunnanjohtaja Mäkelä with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> juhani_response
+
+  juhani_response:
+    type: tweet
+    from: lakimies
+    text: >
+      Asiakkaamme on vastaanottanut väitteenne. Kunnianloukkaus-
+      materiaalin julkinen levittäminen johtaa välittömiin oikeus-
+      toimiin. — Asianajotoimisto Järvinen & Co, Helsinki
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The municipal manager's lawyers bury your accusation. Without
+      a direct link between Mäkelä and NorthRock's contamination —
+      and there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      NorthRock continues to drill. Jenni continues to watch. Elias
+      stays in hiding.
+
+      Six months later, @varjo_vaeltaja creates a new account. It
+      follows Elias's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: KUUSIJÄRVI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Mining evidence: ${mining_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Elias's story explores themes of
+      corporate exploitation of natural resources, environmental
+      crime, obsessive behaviour, community solidarity, and the
+      courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Rikosuhripäivystys (RIKU): 116 006 (maksuton)
+      Nollalinja (väkivalta): 080 005 005 (maksuton)
+      Ympäristörikokset: ilmoitus poliisille 112 tai ELY-keskus

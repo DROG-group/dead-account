@@ -1,0 +1,1586 @@
+# DEAD ACCOUNT — Story 050: Kernavė (Lithuania, Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-050.yml
+#
+# Player investigates the disappearance of amateur archaeologist Tomas Balčiūnas
+# in the fictional Lithuanian village of Kernavė, near the medieval capital ruins.
+
+meta:
+  title: "Dead Account — Kernavė"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_ruta: 0
+    trust_matas: 0
+    trust_giedre: 0
+    trust_jonas: 0
+    trust_agne: 0
+    trust_dovydas: 0
+    trust_ieva: 0
+    trust_birute: 0
+    trust_valdas: 0
+    trust_zilvinas: 0
+    trust_daina: 0
+    trust_lukas: 0
+    trust_gabija: 0
+    trust_viktoras: 0
+    trust_simona: 0
+    trust_petras: 0
+    trust_renata: 0
+    trust_kazimieras: 0
+    trust_neringa: 0
+    trust_anon: 0
+    trust_pareigunas: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Naujas Gyventojas
+    bio: "ką tik atsikraustęs į kernavę. tyrinėju lietuvos istoriją žingsnis po žingsnio"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Kernave.social"
+    description: "Sveiki atvykę į Kernavės bendruomenės Mastodon instanciją"
+    avatar_url: /gamepatch/assets/dead-account/kernave_bot.png
+
+  npcs:
+    # === Tomas's Inner Circle ===
+    tomas:
+      name: "Tomas Balčiūnas"
+      bio: "mėgėjas archeologas | piliakalniai mano gyvenimas | kernavė amžiams"
+      avatar: avatars/tomas.jpg
+    ruta:
+      name: "Rūta Kazlauskaitė"
+      bio: "tomo draugė | mokytoja kernavės mokykloj | arbata ir knygos"
+      avatar: avatars/ruta.jpg
+    matas:
+      name: "Matas Balčiūnas"
+      bio: "tomo brolis | vilnius | programuotojas | jei kas nors žino kur jis — rašykit"
+      avatar: avatars/matas.jpg
+    giedre:
+      name: "Giedrė Navickienė"
+      bio: "archeologė | vilniaus universitetas | kernavės kasinėjimai nuo 2015"
+      avatar: avatars/giedre.jpg
+
+    # === Local Government ===
+    jonas:
+      name: "Jonas Rimkus"
+      bio: "Kernavės seniūnas | tarnauju bendruomenei nuo 2018 | #KernavėAuga"
+      avatar: avatars/jonas.jpg
+    agne:
+      name: "Agnė Paulauskienė"
+      bio: "Paveldosaugos specialistė | Kernavės archeologinė vietovė | UNESCO"
+      avatar: avatars/agne.jpg
+    seniunija:
+      name: "Kernavės seniūnija"
+      bio: "Oficiali paskyra | Bendruomenės naujienos | Darbo laikas: I-V 8-17"
+      avatar: avatars/seniunija.jpg
+
+    # === Local Business & Community ===
+    birute:
+      name: "Birutė Stankevičienė"
+      bio: "kavinė Piliakalnio Šešėlis | naminiai cepelinai | kava | nuo 1998"
+      avatar: avatars/birute.jpg
+    kavine:
+      name: "Piliakalnio Šešėlis"
+      bio: "Kavinė ir užkandinė | Cepelinai, šaltibarščiai | Gyvoji muzika penktadieniais"
+      avatar: avatars/kavine.jpg
+    valdas:
+      name: "Valdas Jonaitis"
+      bio: "ūkininkas | ekologiškas medus ir daržovės | kernavės turgus šeštadieniais"
+      avatar: avatars/valdas.jpg
+    zilvinas:
+      name: "Žilvinas Mockus"
+      bio: "muziejaus prižiūrėtojas | kernavės archeologinis muziejus | ekskursijos"
+      avatar: avatars/zilvinas.jpg
+    daina:
+      name: "Daina Česnulytė"
+      bio: "vaistininkė | kernavės vaistinė | sveikata ir patarimai | sekmadienis nuo 9"
+      avatar: avatars/daina.jpg
+    neringa:
+      name: "Neringa Kubilienė"
+      bio: "biblioteka | kernavė | knygos visiems | skaitymai trečiadieniais"
+      avatar: avatars/neringa.jpg
+    petras:
+      name: "Petras Grušas"
+      bio: "miškininkystė | kernavės girininkija | gamtos apsauga"
+      avatar: avatars/petras.jpg
+
+    # === Journalist ===
+    simona:
+      name: "Simona Vaičiulytė"
+      bio: "žurnalistė | paveldas & aplinkosauga | tips: simona@vaiciulyte.lt"
+      avatar: avatars/simona.jpg
+
+    # === BaltInvest (corporate) ===
+    baltinvest:
+      name: "BaltInvest Development"
+      bio: "Nekilnojamojo turto vystymas | Kernavės regiono projektas | #AugameKartu"
+      avatar: avatars/baltinvest.jpg
+    viktoras:
+      name: "Viktoras Gedminas"
+      bio: "BaltInvest projektų vadovas | Kernavės gyvenamasis kvartalas | plėtra"
+      avatar: avatars/viktoras.jpg
+    renata:
+      name: "Renata Bieliauskienė"
+      bio: "Advokatė | Kontora Bieliauskienė & Partneriai | Nekilnojamasis turtas | Vilnius"
+      avatar: avatars/renata.jpg
+
+    # === Teens ===
+    dovydas:
+      name: "Dovydas"
+      bio: "16 | bmx | kernavė born | piliakalniai yra mūsų"
+      avatar: avatars/dovydas.jpg
+    ieva:
+      name: "Ieva"
+      bio: "17 | foto & piešimas | senovė juodai baltai | tomo paskaitos geriausios"
+      avatar: avatars/ieva.jpg
+    lukas:
+      name: "Lukas"
+      bio: "15 | gamer | kernavė | metalas | tomas mokė kur kas slypi po žeme"
+      avatar: avatars/lukas.jpg
+
+    # === Media & Community ===
+    naujienos:
+      name: "Kernavės Naujienos"
+      bio: "Kernavės ir apylinkių aktualijos | Tips: redakcija@kernave-naujienos.lt"
+      avatar: avatars/naujienos.jpg
+    orai:
+      name: "Orai Kernavė"
+      bio: "Prognozės ir įspėjimai | Automatinė stotis | Atnaujinama kas valandą"
+      avatar: avatars/orai.jpg
+    draugija:
+      name: "Kernavės Paveldosaugos Draugija"
+      bio: "Paveldo apsauga | Savanoriai | Pranešimai apie pažeidimus"
+      avatar: avatars/draugija.jpg
+
+    # === Suspicious / Other ===
+    gabija:
+      name: "Gabija Morkūnaitė"
+      bio: "technikė | BaltInvest | darau ką liepė ir tiek"
+      avatar: avatars/gabija.jpg
+    kazimieras:
+      name: "Kazimieras"
+      bio: "."
+      avatar: avatars/anon.jpg
+    pareigunas:
+      name: "Pareigūnas Darius Kazlauskas"
+      bio: "Kernavės policijos nuovada | Apylinkės įgaliotinis | Pagalba: 112"
+      avatar: avatars/pareigunas.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN KERNAVĖ
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Kernave.social — the community Mastodon instance for
+      the village of Kernavė, Lithuania, in the shadow of its ancient
+      hillforts.
+
+      The local feed is buzzing with worry today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @tomas_balciunas.
+
+      An amateur archaeologist. Hillfort enthusiast. He mapped forgotten
+      burial sites and documented medieval artefacts. People are worried.
+      He hasn't posted in six days.
+    choices:
+      - Look at his profile -> tomas_profile
+
+  tomas_profile:
+    type: tweet
+    from: tomas
+    text: "Radau dar vieną kapavietę šalia BaltInvest statybų aikštelės. Jie stato ant mūsų protėvių kaulų. Turiu įrodymus."
+    choices:
+      - That's his last real post... -> strange_photo
+
+  strange_photo:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurry photo of a hillfort silhouette at dusk. Posted at 4am.
+      No caption. No hashtags.
+
+      His friends say that's not his style. Tomas always wrote long
+      captions about what he found, always tagged the location. The
+      police say he probably went hiking in the forests. Something
+      doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: pareigunas
+    text: >
+      Gavome pranešimą dėl Kernavės gyventojo. Šiuo metu nėra pagrindo
+      įtarti nusikalstamą veiką. Bet kokią informaciją galite pranešti
+      telefonu 112 arba atvykti į nuovadą.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @ruta_kazlauskaite is
+      desperate. His brother @matas_balciunas is driving down from Vilnius.
+      His colleague at the digs @giedre_navickiene is posting frantic
+      messages. The farmer @valdas_jonaitis says Tomas was right about
+      the construction site.
+
+      And the journalist @simona_vaiciulyte is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Tomas just "went
+      hiking."
+    effects: { trust_ruta: "+5", trust_matas: "+5" }
+    choices:
+      - Start following Tomas's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Kernavė. Follow Tomas's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Birutė (café owner, knows everyone) -> birute_intro
+      - Talk to Valdas (farmer, saw the construction) -> valdas_intro
+      - Talk to Dovydas (teen BMXer, seems shaken) -> dovydas_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Tomas with the rhythms of a small
+      Lithuanian village: market days, mushroom picking reports,
+      weather warnings, hillfort festival planning.
+
+      Key names surface: Rūta (girlfriend, teacher), Giedrė
+      (archaeologist colleague, seems rattled), Simona (journalist,
+      oddly quiet), and the teens — Dovydas, Ieva, Lukas — who loved
+      Tomas's archaeology walks.
+
+      Also prominent: BaltInvest Development, the construction company
+      building a housing estate on the edge of the archaeological zone.
+      Their posts are glossy PR. Tomas's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Birutė -> birute_intro
+      - Talk to Valdas -> valdas_intro
+      - Talk to Dovydas -> dovydas_intro
+
+  # --- Birutė (social map) ---
+
+  birute_intro:
+    type: tweet
+    from: birute
+    text: >
+      Kavinė atidaryta, bet širdis skauda. @tomas_balciunas, tavo
+      stalas laukia. Grįžk greičiau.
+    effects: { trust_birute: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Birutė -> birute_talk
+
+  birute_talk:
+    type: message
+    text: >
+      BIRUTĖ: Oh, you're new here? Welcome to Kernavė. Terrible time
+      to arrive. Everyone's worried sick about Tomas.
+
+      Let me tell you who's who. Rūta is Tomas's girlfriend — they've
+      been together three years, she teaches at the village school.
+      Sweet girl, devastated right now. Giedrė Navickienė is a real
+      archaeologist from Vilnius University who works the summer digs
+      here. She was close to Tomas. Too close, some say. Matas is
+      Tomas's younger brother, he's coming from Vilnius.
+
+      And Simona Vaičiulytė — the journalist — she and Tomas were
+      working on something together. Something about the construction
+      site. Simona hasn't said a word since Tomas vanished. That's not
+      like her at all.
+
+      Oh, and don't waste your time reading BaltInvest's PR posts.
+      Lies wrapped in architectural renders.
+    effects: { trust_birute: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Giedrė -> birute_giedre
+      - Ask about BaltInvest -> birute_baltinvest
+      - Thank her and move on -> quest1_hub
+
+  birute_giedre:
+    type: message
+    text: >
+      BIRUTĖ: Giedrė? She's been leading the university digs here for
+      years. Brilliant woman. But since Tomas started volunteering at
+      the excavation, she's been... orbiting him. At the café every
+      time he was here. Offering to supervise every project. She's a
+      professor, he's a self-taught amateur, but she treated him
+      like... I don't know. Not a student.
+
+      After he started documenting the burial sites near the
+      construction zone, she got worse. Wanted access to everything he
+      found. He told me once, "ji neatstoja nuo manęs." I thought he
+      meant professionally. Now I'm not so sure.
+    effects: { trust_birute: "+5" }
+    choices:
+      - Ask about BaltInvest -> birute_baltinvest
+      - Move on -> quest1_hub
+
+  birute_baltinvest:
+    type: message
+    text: >
+      BIRUTĖ: That construction company showed up two years ago.
+      BaltInvest. Big money from Vilnius. They bought farmland on the
+      edge of the archaeological protection zone and started building
+      a luxury housing estate. "Kernavės Dvaras" — Kernavė Manor.
+      Sounds grand, right?
+
+      Problem is, everyone local knows those fields are full of
+      medieval remains. Tomas was the first person to actually go out
+      there with a metal detector and a camera and document what was
+      being bulldozed. He had photos of bones, pottery, iron tools —
+      all being dumped into rubble piles by excavators.
+
+      Two weeks later he's gone.
+    effects: { trust_birute: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Valdas (the construction, witness tease) ---
+
+  valdas_intro:
+    type: tweet
+    from: valdas
+    text: >
+      trisdešimt metų ūkininkauju čia. ta žemė ne statyboms. ten
+      mūsų protėviai palaidoti. @tomas_balciunas turėjo teisę. o
+      dabar jo nebėra. pagalvokit.
+    effects: { trust_valdas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Valdas -> valdas_talk
+
+  valdas_talk:
+    type: message
+    text: >
+      VALDAS: I've been farming this land since my father died. I know
+      every field, every slope, every stone. And I'm telling you — that
+      land BaltInvest bought is sacred ground. My grandfather used to
+      find arrowheads ploughing those fields. Iron age stuff.
+
+      Tomas came to me with a metal detector. We spent three Sundays
+      mapping what was there. He found a burial site — real medieval
+      graves, right where they're pouring foundations. He photographed
+      everything. He was building a case for the heritage inspectorate.
+      And then poof — dingo.
+
+      You think that's a coincidence? I don't believe in coincidences
+      on this land.
+    effects: { trust_valdas: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> valdas_night
+      - Move on -> quest1_hub
+
+  valdas_night:
+    type: message
+    text: >
+      VALDAS: The night before Tomas vanished — I was up late checking
+      on my beehives, around midnight. I saw lights at the construction
+      site. Not unusual, they sometimes run night shifts. But there was
+      a car parked near Tomas's house. A black BMW with Vilnius plates.
+      Expensive car. Not from around here.
+
+      At midnight. Parked outside Tomas's house.
+
+      I didn't think much of it then. Now I can't stop thinking
+      about it.
+    effects: { trust_valdas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dovydas (teen BMXer, witness tease) ---
+
+  dovydas_intro:
+    type: tweet
+    from: dovydas
+    text: >
+      blet nx @tomas_balciunas jis man pasakojo apie piliakalnių
+      istoriją kai visi kiti sakė eik namo ir žaisk. jei kas nors
+      žino kur jis rašykit po velnių
+    effects: { trust_dovydas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dovydas -> dovydas_talk_early
+
+  dovydas_talk_early:
+    type: message
+    text: >
+      DOVYDAS: nx tu naujas čia? šūdas koks laikas atvažiuot. tomas
+      tai geriausias žmogus šitam kaime. jis mus vesdavo prie
+      piliakalnių, rodydavo kur vikinkai gyveno, kur rado kalavijų.
+      mega gerai.
+
+      o dabar aš biški bijau nes ieva matė keistą dalyką prie tomo
+      namo bet ji nenori pasakot. sako kad tai niekis bet blet tai
+      ne niekis nx
+    effects: { trust_dovydas: "+10" }
+    choices:
+      - What did Ieva see? -> dovydas_ieva_hint
+      - Move on -> quest1_hub
+
+  dovydas_ieva_hint:
+    type: message
+    text: >
+      DOVYDAS: nežinau tiksliai. ji važiavo pro tomo namą vakare
+      dviračiu ir matė kažką šalia jo durų. kaip stovėjo ir žiūrėjo
+      pro langą. ji sako kad tai ta profesorė iš vilniaus — giedrė.
+      tiesiog stovėjo ir žiūrėjo.
+
+      aš būčiau pasakęs bet blet kas patikės paaugliu prieš
+      profesorę. pabandyk su ieva pakalbėt bet ji nepasitiki
+      nepažįstamais. pirmiau pakalbėk apie fotografiją ar ką ptdr
+    effects: { trust_dovydas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Kernavė. A Lithuanian village in the
+      shadow of ancient hillforts. An amateur archaeologist who was
+      exposing destruction of heritage sites. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Rūta (Tomas's girlfriend) -> ruta_q1
+      - Talk to Giedrė (Tomas's colleague) -> giedre_q1
+      - Check what Matas (Tomas's brother) is saying -> matas_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Rūta Q1 ---
+
+  ruta_q1:
+    type: tweet
+    from: ruta
+    text: >
+      jei kas nors turi naujienų apie @tomas_balciunas skambinkit man.
+      jo kambarys nepaliestas. jo metalo detektorius čia. jis niekada
+      neišeitų be jo.
+    effects: { trust_ruta: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rūta -> ruta_q1_talk
+
+  ruta_q1_talk:
+    type: message
+    text: >
+      RŪTA: I appreciate you writing but I don't know you. Tomas has
+      many friends here. I'm sure he'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Rūta is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_ruta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Giedrė Q1 ---
+
+  giedre_q1:
+    type: tweet
+    from: giedre
+    text: >
+      Kasinėjimų aikštelė tuščia be @tomas_balciunas. Jo užrašai ant
+      stalo. Jo radiniai neregistruoti. Jis niekada nepaliktų
+      nebaigto darbo. Kažkas atsitiko.
+    effects: { trust_giedre: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Giedrė -> giedre_q1_talk
+
+  giedre_q1_talk:
+    type: message
+    text: >
+      GIEDRĖ: Tomas and I have worked together on the digs for over
+      two years. He's the most passionate amateur I've ever supervised.
+      This burial site investigation — it was everything to him. He had
+      photographs, GPS coordinates, pottery analysis. He was so close
+      to filing a formal complaint with the heritage inspectorate.
+
+      I offered to help him. Many times. He said he had it under
+      control. He said he was working with a journalist. I just wanted
+      to support his work.
+
+      [Giedrė seems earnest. Or obsessive?]
+    effects: { trust_giedre: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Matas Q1 ---
+
+  matas_q1:
+    type: tweet
+    from: matas
+    text: >
+      mano brolis DINGO ir policija man sako kad gal nuėjo į miškus
+      pasivaikščiot??? JIS NEINA BE PERSPĖJIMO. važiuoju iš vilniaus.
+      kas nors man paaiškins.
+    effects: { trust_matas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Matas -> matas_q1_talk
+
+  matas_q1_talk:
+    type: message
+    text: >
+      MATAS: Who are you? Another person from that village who's going
+      to tell me to calm down? My brother called me the night before he
+      disappeared. He said he had something big. He said "jei kas nors
+      atsitiks, žiūrėk į BaltInvest." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_matas: "+10" }
+    choices:
+      - What do you think happened? -> matas_theory
+      - Move on -> quest1_hub
+
+  matas_theory:
+    type: message
+    text: >
+      MATAS: I think he found proof that BaltInvest is building on
+      protected burial sites and they shut him up. But I also think
+      that professor — Giedrė — knows more than she's saying. The way
+      she talks about him... it's not just professional concern. It's
+      something else.
+
+      Tomas told me months ago that someone was going through his field
+      notebooks at the dig site. He thought it was nothing. I don't
+      think it was nothing.
+    effects: { trust_matas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Tomas went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Ieva (was cycling past Tomas's house) -> ieva_interview
+      - Find Žilvinas (museum warden, works late) -> zilvinas_interview
+      - Find Petras (forester, early morning in the woods) -> petras_interview
+      - Find Daina (pharmacist, saw something at dawn) -> daina_interview
+
+  # --- Ieva (saw someone at Tomas's house) ---
+
+  ieva_interview:
+    type: tweet
+    from: ieva
+    text: >
+      padariau naują piešinį piliakalnio. bet nuotaika šūdas. kažkas
+      ne taip šitam kaime. nežinau kaip paaiškint
+    effects: { trust_ieva: "+5" }
+    choices:
+      - Ask Ieva about that evening -> ieva_talk
+
+  ieva_talk:
+    type: message
+    text: >
+      IEVA: blet ok bet tu niekam nesakyk. aš važiavau dviračiu pro
+      tomo namą apie septintą vakaro. ir mačiau tą profesorę — giedrę
+      — šalia jo durų. ji tiesiog stovėjo ir žiūrėjo pro langą. kai
+      mane pamatė — pabėgo tiesiai prie savo mašinos.
+
+      nx aš nieko nesakiau nes kas patikės paauglei prieš universitetą
+      bet šūdas tai nėra normalus elgesys
+    effects:
+      trust_ieva: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Žilvinas (museum warden, saw late-night meeting) ---
+
+  zilvinas_interview:
+    type: tweet
+    from: zilvinas
+    text: >
+      Priminimas: archeologinė teritorija uždara nuo 22 iki 6 val.
+      Pastebėjau neleistinų apsilankymų pastarosiomis naktimis.
+    effects: { trust_zilvinas: "+5" }
+    choices:
+      - Ask Žilvinas what he saw -> zilvinas_talk
+
+  zilvinas_talk:
+    type: message
+    text: >
+      ŽILVINAS: I was locking up the museum around 22:30. I saw Tomas's
+      old Volkswagen still parked by his house. And a black BMW — Vilnius
+      plates — parked next to the construction site fence. Two men were
+      standing by the gate. One of them I recognised: Viktoras Gedminas,
+      the BaltInvest project manager.
+
+      At 22:30. At the construction site. That's not normal.
+
+      I noted it in my security log. Nobody's asked to see it.
+    effects:
+      trust_zilvinas: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petras (saw Tomas fleeing) ---
+
+  petras_interview:
+    type: tweet
+    from: petras
+    text: >
+      keliuosi ketvirtą ryte. miške buvo kažkas. bėgo takais.
+      tamsoje. ne grybautas.
+    effects: { trust_petras: "+5" }
+    choices:
+      - Ask Petras what he saw -> petras_talk
+
+  petras_talk:
+    type: message
+    text: >
+      PETRAS: I get up at 4am for my forest rounds. That morning — the
+      morning after Tomas's last post — I saw someone on the trail
+      toward the hillforts. Running. A man, carrying a bag, heading
+      deeper into the woods. It was still dark. He was moving fast,
+      like he was afraid.
+
+      I called out but he didn't stop. I figured it was a mushroom
+      picker but... who picks mushrooms at 4am running with a
+      messenger bag?
+
+      When I heard about Tomas, I put it together. I think that was
+      him. Running from something.
+    effects:
+      trust_petras: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Daina (saw car chase) ---
+
+  daina_interview:
+    type: tweet
+    from: daina
+    text: >
+      Vaistinė atidaryta nuo 7 kaip visada. Bet tą rytą apie penktą
+      kažkoks automobilis lakstė kaimo keliais per greitai.
+    effects: { trust_daina: "+5" }
+    choices:
+      - Ask Daina what she saw -> daina_talk
+
+  daina_talk:
+    type: message
+    text: >
+      DAINA: I open the pharmacy at 7 but I was up at 5 that morning
+      preparing stock. I looked out the window and a car drove past —
+      fast, much too fast for the village road. Dark BMW. Then maybe
+      two minutes later, a second car. Smaller, older. Following? I
+      don't know.
+
+      The second car turned off toward the old forest road near the
+      hillforts. The first kept going toward the A2 motorway.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_daina: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Rūta (girlfriend)
+      and Lukas (saw Giedrė watching the house).
+    choices:
+      - Talk to Rūta about that night -> ruta_interview
+      - Talk to Lukas -> lukas_interview
+      - Find Ieva -> ieva_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Žilvinas -> zilvinas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Petras -> petras_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Daina -> daina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Rūta (last to see Tomas) ---
+
+  ruta_interview:
+    type: tweet
+    from: ruta
+    text: >
+      ta nuotrauka tomo paskyroj. tai ne jis. tomas niekada
+      neįkeldavo be aprašymo. tomas nerašo ketvirtą ryto. kažkas
+      kitas tai padarė.
+    effects: { trust_ruta: "+5" }
+    choices:
+      - DM Rūta -> ruta_talk_low
+        when:
+          state: trust_ruta
+          lt: 50
+      - DM Rūta -> ruta_talk_high
+        when:
+          state: trust_ruta
+          gte: 50
+
+  ruta_talk_low:
+    type: message
+    text: >
+      RŪTA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Rūta needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_ruta: "+5" }
+    choices:
+      - Share what you've learned about the night -> ruta_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  ruta_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the construction
+      site, the company men, the running figure. Rūta is silent for
+      a while.
+
+      RŪTA: You're actually trying to find him. Okay. I'll talk.
+    effects: { trust_ruta: "+25" }
+    choices:
+      - What happened that night? -> ruta_talk_high
+
+  ruta_talk_high:
+    type: message
+    text: >
+      RŪTA: He came home around 23h. I was grading papers. He was
+      pale, shaking. He said "jie žino ką aš turiu." He grabbed his
+      laptop and his camera memory cards.
+
+      I asked who. He said "statybininkai. Jie atsiuntė žmones prie
+      aikštelės." Then he said something else — "ir ji vėl ten buvo.
+      Ji visada ten."
+
+      He wouldn't say who "ji" was. He hugged me, said "nesijaudink,"
+      and left with a bag. That was it. By morning his car was gone
+      and the strange photo was on his account.
+    effects:
+      trust_ruta: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lukas (saw Giedrė watching the house) ---
+
+  lukas_interview:
+    type: message
+    text: >
+      LUKAS: blet ok žiūrėk tai keista bet ta profesorė — giedrė —
+      aš ją mačiau gal tris kartus vakare prie tomo namo. tiesiog
+      stovėjo ir žiūrėjo pro langus. po velnių mega creepy.
+
+      paskutinį kartą tai buvo gal dvi dienos prieš jam dingstant.
+      ji sėdėjo savo mašinoj priešais jo namą. tiesiog sėdėjo.
+      žiburiai išjungti.
+    effects:
+      trust_lukas: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Giedrė seen outside Tomas's house, watching through
+      the windows (Ieva)
+      22:30 — BaltInvest BMW at the construction site, Viktoras Gedminas
+      present (Žilvinas)
+      23:00 — Tomas arrives home, shaken, grabs laptop and drives (Rūta)
+      04:00 — Man running on forest trail toward the hillforts (Petras)
+      05:00 — Two cars speeding through the village, one toward hillforts
+      (Daina)
+
+      BaltInvest confronted Tomas at the construction site. He fled
+      home, grabbed his evidence, and ran into the forest. Someone
+      chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is BaltInvest hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Giedrė really doing? Why was she at
+        his house?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Giedrė -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      BaltInvest is hiding something. Tomas had proof. Now he's gone
+      and his evidence is missing from his house.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the heritage inspection records -> heritage_records
+      - Talk to Simona the journalist -> simona_interview
+      - Talk to Gabija (BaltInvest technician) -> gabija_interview
+      - Talk to Agnė (heritage specialist) -> agne_interview
+      - Check the Paveldosaugos Draugija -> draugija_investigation
+      - Talk to Valdas about the burial sites -> valdas_burial
+      - Back to hub -> investigation_hub
+
+  # --- Heritage Records ---
+
+  heritage_records:
+    type: message
+    text: >
+      The heritage inspectorate's public database shows Tomas's recent
+      filings: reports on six sites within the Kernavė archaeological
+      zone. The report for the BaltInvest construction area is marked
+      "PENDING REVIEW" — the only one with that status.
+
+      His field log, shared with the dig team for coordination, shows
+      he made 14 site visits to the BaltInvest construction perimeter
+      in the past month. The last entry: "Photographed foundation
+      trenches. Undisturbed medieval burial layer exposed. Human
+      remains visible. Construction has not stopped."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Simona ---
+
+  simona_interview:
+    type: message
+    text: >
+      SIMONA: I don't talk about sources. Period.
+    effects: { trust_simona: "+5" }
+    choices:
+      - Show Simona the evidence you have -> simona_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  simona_with_evidence:
+    type: message
+    text: >
+      SIMONA: ...you have more than I expected.
+
+      Okay. Tomas and I were working together. He had photos of
+      medieval graves being bulldozed — human remains, pottery,
+      weapons — all pushed into rubble piles. He had GPS coordinates
+      proving the construction extends into the protected UNESCO
+      buffer zone.
+
+      We were going to publish together. Then he went dark. And
+      two days later, someone broke into my flat and stole my
+      backup drive.
+
+      Tomas is alive. He contacted me once, from a borrowed phone.
+      He said he was hiding in the countryside. He said "jie man
+      grasino prie aikštelės ir dar kažkas neatstoja."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come back.
+    effects:
+      trust_simona: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> simona_hint
+      - Back to investigation hub -> investigation_hub
+
+  simona_hint:
+    type: message
+    text: >
+      SIMONA: The construction company sent their project manager —
+      Gedminas — and some lawyer to the site that night. They told
+      Tomas to hand over everything or face legal consequences for
+      trespassing on private property. Intimidation dressed up as
+      property law.
+
+      But he also said something about someone from the university.
+      Someone who'd been going through his field notebooks. Someone
+      who always seemed to know his schedule. That's a different
+      problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Gabija (BaltInvest whistleblower) ---
+
+  gabija_interview:
+    type: message
+    text: >
+      GABIJA: I work at BaltInvest. I'm just a site technician. I
+      run soil tests, I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the inspectorate.
+    effects: { trust_gabija: "+10" }
+    choices:
+      - What do you mean? -> gabija_detail
+
+  gabija_detail:
+    type: message
+    text: >
+      GABIJA: I do ground surveys. Soil composition, structural
+      integrity, archaeological presence indicators. My reports go to
+      my supervisor. Somewhere between my desk and the official filing,
+      they change. "No archaeological remains detected" — that's what
+      the inspectorate sees. My original reports say the opposite.
+
+      Tomas's photos from the trenches matched MY original findings,
+      not the ones in the official submission. He had independent proof
+      that BaltInvest is falsifying their archaeological impact
+      assessments.
+
+      I'm scared. I have kids. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_gabija: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Agnė ---
+
+  agne_interview:
+    type: message
+    text: >
+      AGNĖ: As the heritage protection specialist for the Kernavė
+      site, I take these allegations seriously. But BaltInvest has
+      political connections in Vilnius. The seniūnas insists we need
+      to "maintain dialogue" with investors.
+
+      Off the record? I've seen the inspection reports.
+      BaltInvest passes every time. But those inspections are
+      announced two weeks in advance. They cover the trenches before
+      the inspectors arrive.
+
+      Tomas had unannounced documentation. That's what makes it
+      dangerous.
+    effects:
+      trust_agne: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Paveldosaugos Draugija ---
+
+  draugija_investigation:
+    type: tweet
+    from: draugija
+    text: >
+      PERSPĖJIMAS: Pranešimas apie archeologinių radinių naikinimą
+      BaltInvest statybų aikštelėje. Nuotraukos ir dokumentai
+      renkami. Reikalaujame neplaninio patikrinimo.
+    choices:
+      - Check their data -> draugija_data
+
+  draugija_data:
+    type: message
+    text: >
+      The Paveldosaugos Draugija has been documenting the construction
+      zone for eighteen months. Their data shows a clear pattern:
+      archaeological remains discovered, reported internally, then
+      covered or destroyed before official inspections.
+
+      Satellite images from different dates show trenches being
+      backfilled with construction waste. Before-and-after photos
+      show medieval stone foundations being broken up and mixed with
+      concrete rubble.
+
+      The pattern is unmistakable. This is systematic destruction of
+      heritage timed to avoid detection.
+
+      Tomas was their most active volunteer. He contributed most of
+      the ground-level photography.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Valdas burial sites ---
+
+  valdas_burial:
+    type: message
+    text: >
+      VALDAS: I'll show you something. Last month I was walking my
+      field boundary near the construction zone and found this — a pile
+      of earth pushed out through a gap in the fence. In that earth:
+      human bones. Old ones. Medieval. And fragments of pottery with
+      patterns I've seen at the museum.
+
+      I photographed everything and sent it to Tomas. He said it was
+      the missing piece — proof they were pushing burial remains off-
+      site to hide them. Not just building on graves, but actively
+      removing and dumping the evidence.
+
+      I still have the photos. And GPS coordinates.
+    effects:
+      trust_valdas: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Giedrė Navickienė. Professor. Archaeologist. Something more?
+      Someone was going through Tomas's field notebooks. Someone was
+      watching his house. Someone was always at his door.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Giedrė's site access logs -> site_access
+      - Talk to Rūta about Giedrė -> ruta_giedre
+        when:
+          state: trust_ruta
+          gte: 20
+      - Talk to Ieva (more detail on the house incident) -> ieva_detail
+      - Talk to Daina the pharmacist -> daina_detail_interview
+      - Check the anonymous account @kazimieras -> kazimieras_investigation
+      - Talk to Neringa the librarian -> neringa_interview
+        when:
+          state: trust_neringa
+          gte: 40
+      - Talk to Pareigūnas Kazlauskas -> pareigunas_interview
+        when:
+          state: trust_pareigunas
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Site Access Logs ---
+
+  site_access:
+    type: message
+    text: >
+      The dig site's volunteer log is kept manually but photographed
+      daily. Tomas signed in 38 times last month. Giedrė signed in
+      71 times. Nearly double.
+
+      Cross-referencing: on 29 of Giedrė's 71 sign-ins, she arrived
+      within 20 minutes of Tomas. She arrived after him and left
+      after him. Every time.
+
+      Her own research sector is on the opposite side of the
+      archaeological zone.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rūta on Giedrė ---
+
+  ruta_giedre:
+    type: message
+    text: >
+      RŪTA: Giedrė? She made Tomas uncomfortable. She'd show up at
+      the café when he was there. She'd offer to drive him to remote
+      dig sites. She'd comment on every single one of his posts within
+      minutes.
+
+      He told her he wasn't interested — that he had a girlfriend,
+      that their relationship was professional. She said she
+      understood. Then nothing changed. She just... kept being there.
+      Always there.
+
+      A month ago he found that someone had been reading his field
+      notebooks at the dig site. Pages photographed, then put back
+      slightly wrong. He suspected Giedrė but couldn't prove it.
+    effects:
+      trust_ruta: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ieva detail ---
+
+  ieva_detail:
+    type: message
+    text: >
+      IEVA: ok blet aš ne viską pasakiau. kai mačiau giedrę prie tomo
+      durų ji turėjo kažką rankose. tokį mažą daiktelį. ji jį pakišo
+      po tomo mašinos sparnu. kaip priklijavo apačioj.
+
+      nx aš nesu ekspertė bet tai atrodė kaip gps sekiklis. toks
+      dalykas kaip iš filmų.
+
+      šūdas turėjau kažkam pasakyt bet blet kas patikės septyniolikmetei
+      prieš profesorę iš universiteto. atsiknisk niekas nebūtų klausęs
+    effects:
+      trust_ieva: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Daina pharmacist ---
+
+  daina_detail_interview:
+    type: message
+    text: >
+      DAINA: This is confidential but I'm a pharmacist, not a priest.
+      Giedrė Navickienė comes in regularly. She's been buying things
+      that... suggest she's not sleeping. Anti-anxiety medication,
+      sleep aids, energy supplements. The pattern is someone under
+      extreme stress.
+
+      She also asked me once, very casually, if we sold GPS tracking
+      devices. I said "čia vaistinė, ne elektronikos parduotuvė." She
+      laughed it off. I didn't think about it again until Tomas
+      disappeared.
+    effects:
+      trust_daina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kazimieras (anonymous account) ---
+
+  kazimieras_investigation:
+    type: tweet
+    from: kazimieras
+    text: >
+      Jis turėjo klausyti. Aš bandžiau jį apsaugoti. Niekas kitas
+      nesuprato jo darbo taip kaip aš.
+    choices:
+      - Look at this account's history -> kazimieras_posts
+
+  kazimieras_posts:
+    type: message
+    text: >
+      @kazimieras: account created 9 months ago. Posts are all about
+      Tomas's work. Comments on every dig photo, every artefact find,
+      every heritage report. The tone shifts over time:
+
+      Month 1: "Neįtikėtinas darbas. Tu darai tai ko niekas nedrįsta."
+      Month 3: "Kodėl neatsakai į mano žinutes? Aš tik noriu
+      bendradarbiauti."
+      Month 6: "Matau tave kavinėje su kitais žmonėmis. Jiems turi
+      laiko, o man ne?"
+      Month 8: "Aš žinau kur tu eini. Žinau tavo tvarkaraštį. Aš
+      visada arti."
+
+      The account has no photos, no personal details. Just Tomas.
+      Only Tomas.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> kazimieras_style
+
+  kazimieras_style:
+    type: message
+    text: >
+      Comparing @kazimieras with @giedre_navickiene:
+
+      Same use of archaeological terminology. Same Lithuanian academic
+      writing conventions — the specific way she references stratigraphic
+      layers and dating methods. Same knowledge of Tomas's fieldwork
+      that only a dig supervisor would have.
+
+      And one post from @kazimieras: "Tavo radinys Sektoriuje D buvo
+      nuostabus." Sektorius D is an internal dig designation. Not
+      public.
+
+      It's Giedrė. The anonymous account is Giedrė.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Neringa ---
+
+  neringa_interview:
+    type: message
+    text: >
+      NERINGA: Tomas left something with me. A sealed waterproof
+      tube — the kind archaeologists use for field documents. He said
+      "jei kas nors klausia apie tai kas po žeme prie statybos
+      aikštelės, duok jiems tai."
+
+      He looked frightened. He said he'd made copies of everything
+      but needed one set off-site, somewhere nobody would think to
+      look. A village library seemed perfect.
+    effects: { trust_neringa: "+10" }
+    choices:
+      - What's under the ground at the construction site? -> neringa_tube
+
+  neringa_tube:
+    type: message
+    text: >
+      Neringa reaches under the counter and produces a document tube.
+
+      NERINGA: He said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show foundation trenches cutting through medieval burials — human
+      skulls visible in cross-section, pottery fragments crushed by
+      concrete, iron weapons bent and broken by excavator teeth. The USB
+      contains GPS survey data, archaeological context analysis, and
+      Tomas's detailed report for the heritage inspectorate.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Pareigūnas Kazlauskas ---
+
+  pareigunas_interview:
+    type: message
+    text: >
+      PAREIGŪNAS KAZLAUSKAS: Off the record — and I mean completely
+      off the record — I wanted to investigate BaltInvest. My superior
+      told me to stand down. He said the inspectorate in Vilnius had
+      "jurisdiction." That's code for "don't touch it."
+
+      The Navickienė situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_pareigunas: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Tomas than anyone in Kernavė. Who is responsible?
+    choices:
+      - Confront Giedrė Navickienė (the obsessive professor) -> confront_giedre
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Viktoras Gedminas (the project manager) -> confront_viktoras
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Seniūnas Rimkus (political protection) -> confront_jonas
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Giedrė (Best Ending) ---
+
+  confront_giedre:
+    type: message
+    text: >
+      You present your evidence to Giedrė:
+
+      "I know @kazimieras is your account. I know you put a GPS
+      tracker on Tomas's car. I know you went through his field
+      notebooks at the dig site. I know you were watching his house.
+      I have witnesses and I have the site logs."
+    choices:
+      - Send -> giedre_response
+
+  giedre_response:
+    type: message
+    text: >
+      Giedrė doesn't reply for a long time. Then:
+
+      GIEDRĖ: You don't understand. I was protecting him. He was in
+      danger from BaltInvest and he wouldn't let me help. I needed to
+      know he was safe. Everything I did was because I care about his
+      work. About him.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Pareigūnas Kazlauskas. And
+      to Simona Vaičiulytė.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Pareigūnas Kazlauskas reopens the case. With your evidence —
+      the anonymous account, the GPS tracker, the site logs, the
+      witness testimonies — Giedrė is arrested for persekiojimas
+      and harassment. A GPS tracker is recovered from under Tomas's
+      Volkswagen at the old forest road near the hillforts.
+
+      Simona Vaičiulytė, finally in possession of Tomas's full
+      evidence package, publishes the BaltInvest story in Lietuvos
+      Rytas. The inspectorate orders an unannounced investigation.
+      Construction is halted pending archaeological assessment.
+      Viktoras Gedminas faces criminal charges for falsifying
+      heritage impact reports. The burial sites are secured.
+
+      And Tomas Balčiūnas, reading the story from a friend's farm
+      near Trakai, calls his brother for the first time in nine days.
+
+      "Grįžtu namo."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Pagalbos Moterims Linija: 8 800 66366 (nemokama)
+      Vaikų Linija: 116 111
+      Jaunimo Linija: 8 800 28888
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: tomas
+    text: >
+      žemė nemelavo. ir kernavės žmonės irgi ne. ačiū kad
+      nepasitraukėt.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Viktoras (Partial Ending) ---
+
+  confront_viktoras:
+    type: message
+    text: >
+      You present the heritage destruction evidence to Viktoras
+      Gedminas:
+
+      "I have photographs of medieval burials being bulldozed. I have
+      GPS data proving construction extends into the UNESCO buffer
+      zone. I have your original site reports showing the archaeological
+      assessments were falsified. I have the bones your workers dumped
+      through the fence."
+    choices:
+      - Send -> viktoras_response
+
+  viktoras_response:
+    type: message
+    text: >
+      VIKTORAS: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. BaltInvest has always operated within
+      planning regulations.
+
+      But it's too late. You've sent the evidence to Simona, to the
+      Paveldosaugos Draugija, and to the heritage inspectorate.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The heritage destruction story breaks. BaltInvest is ordered to
+      halt all construction pending investigation. The housing project
+      may be cancelled. Local jobs and investment hang in the balance.
+      The village is divided.
+
+      But Tomas?
+
+      Without the stalking evidence, Giedrė is never investigated. She
+      continues to work the dig site. She continues to monitor his
+      accounts. She creates a new anonymous profile.
+
+      Three months later, Tomas reads about BaltInvest online. He
+      returns quietly. He changes his phone number. He stops going to
+      dig sites alone. He checks his car every morning.
+
+      The corporation is exposed. But the person who terrorised Tomas
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: tomas
+    text: "grįžau. piliakalniai apsaugoti. visa kita... pamatysim."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Seniūnas (Wrong Ending) ---
+
+  confront_jonas:
+    type: message
+    text: >
+      You confront Seniūnas Rimkus with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> jonas_response
+
+  jonas_response:
+    type: tweet
+    from: renata
+    text: >
+      Mano klientas priima dėmesin jūsų kaltinimus. Bet koks
+      šmeižikiškos medžiagos viešinimas bus baudžiamas teismine
+      tvarka. — Kontora Bieliauskienė & Partneriai, Vilnius
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The seniūnas's lawyer buries your accusation. Without a direct
+      link between Rimkus and BaltInvest's destruction — and there
+      isn't one beyond political protection — your evidence is
+      insufficient.
+
+      BaltInvest continues to build. Giedrė continues to watch.
+      Tomas stays in hiding.
+
+      Six months later, @kazimieras creates a new account. It follows
+      Tomas's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: KERNAVĖ — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Tomas's story explores themes of heritage
+      destruction, corporate impunity, obsessive behaviour, community
+      solidarity, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Pagalbos Moterims Linija: 8 800 66366 (nemokama)
+      Vaikų Linija: 116 111
+      Jaunimo Linija: 8 800 28888
+      Paveldosaugos pranešimai: 8 706 68 074

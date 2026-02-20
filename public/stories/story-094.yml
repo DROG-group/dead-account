@@ -1,0 +1,1540 @@
+# DEAD ACCOUNT — Story 094: Toplička Vas (Croatia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-094.yml
+#
+# Player investigates the disappearance of young thermal spring herbalist
+# Petra Novaković in the fictional Zagorje castle region village of Toplička Vas.
+
+meta:
+  title: "Dead Account — Toplička Vas"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_mislav: 0
+    trust_barbara: 0
+    trust_lovro: 0
+    trust_ema: 0
+    trust_domagoj: 0
+    trust_ana: 0
+    trust_ivan: 0
+    trust_katarina: 0
+    trust_zdravko: 0
+    trust_jasmina: 0
+    trust_branko: 0
+    trust_nikolina: 0
+    trust_goran: 0
+    trust_maja: 0
+    trust_tomislav: 0
+    trust_renata: 0
+    trust_filip: 0
+    trust_vesna: 0
+    trust_damir: 0
+    trust_lucija: 0
+    trust_nacelnik: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Novi Stanovnik
+    bio: "upravo se preselio/la u topličku vas. istražujem zagorje korak po korak"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "TopličkaVas.social"
+    description: "Dobrodošli na zajedničku instancu Topličke Vasi i zagorskog kraja"
+    avatar_url: /gamepatch/assets/dead-account/toplickavas_bot.png
+
+  npcs:
+    # === Petra's Inner Circle ===
+    petra:
+      name: "Petra Novaković"
+      bio: "herbalistica | termalni izvori | zagorske trave liječe sve | 🌿"
+      avatar: avatars/petra.jpg
+    mislav:
+      name: "Mislav Horvat"
+      bio: "petrin najbolji frend | kuhar u gostionici | zagorski kotlec i gemišt"
+      avatar: avatars/mislav.jpg
+    barbara:
+      name: "Barbara Novaković"
+      bio: "petrina sestra | zagreb | frizerka | ak ikome nekaj znaš javi se MOLIM TE"
+      avatar: avatars/barbara.jpg
+    lovro:
+      name: "Lovro Šimunić"
+      bio: "biolog | istraživač termalnih izvora | kolega petre | zagorje je laboratorij"
+      avatar: avatars/lovro.jpg
+
+    # === Local Government ===
+    zdravko:
+      name: "Zdravko Kramarić"
+      bio: "Načelnik Općine Toplička Vas | Za naš kraj | EU fondovi za budućnost | #ZagorjeNaprijed"
+      avatar: avatars/zdravko.jpg
+    katarina:
+      name: "Katarina Jelić"
+      bio: "zamjenica načelnika za okoliš | Općina Toplička Vas | zaštita prirode"
+      avatar: avatars/katarina.jpg
+    opcina:
+      name: "Općina Toplička Vas"
+      bio: "Službeni račun | Vijesti iz općine | Radno vrijeme: Pon-Pet 8-16h"
+      avatar: avatars/opcina.jpg
+
+    # === Local Business & Community ===
+    ivan:
+      name: "Ivan Tkalčec"
+      bio: "Gostionica Stari Kaštel | zagorski štrukli | gemišt | od 1978"
+      avatar: avatars/ivan.jpg
+    gostionica:
+      name: "Gostionica Stari Kaštel"
+      bio: "Zagorska kuhinja | Gemišt | Živa glazba petkom | Srce Topličke Vasi"
+      avatar: avatars/gostionica.jpg
+    jasmina:
+      name: "Jasmina Posavec"
+      bio: "ljekarnica | Toplička Vas | savjeti i lijekovi | otvoreno i nedjeljom ujutro"
+      avatar: avatars/jasmina.jpg
+    branko:
+      name: "Branko Vuković"
+      bio: "vinogradar | zagorski bregi | graševina & škrlet | trsje me hrani 40 let"
+      avatar: avatars/branko.jpg
+    nikolina:
+      name: "Nikolina Bogdanović"
+      bio: "voditeljica wellness centra Toplice | termalna voda | masaže | opuštanje"
+      avatar: avatars/nikolina.jpg
+    goran:
+      name: "Goran Habijanec"
+      bio: "šumar | zagorske šume | svaki stablo poznam | tišina me liječi"
+      avatar: avatars/goran.jpg
+    renata:
+      name: "Renata Špoljar"
+      bio: "knjižničarka | Knjižnica Toplička Vas | čitanje | kreativne radionice srijedom"
+      avatar: avatars/renata.jpg
+
+    # === Journalist ===
+    ana:
+      name: "Ana Matić"
+      bio: "novinarka | okoliš & lokalna politika | tips: ana@maticpress.hr"
+      avatar: avatars/ana.jpg
+
+    # === GeoTerma (corporate) ===
+    geoterma:
+      name: "GeoTerma d.o.o."
+      bio: "Geotermalna energija | Projekt Zagorje | ISO 14001 | Održivi razvoj"
+      avatar: avatars/geoterma.jpg
+    damir:
+      name: "Damir Požgaj"
+      bio: "direktor GeoTerma Zagorje | energetika & teritorij | zelena tranzicija"
+      avatar: avatars/damir.jpg
+    vesna:
+      name: "Vesna Kunić"
+      bio: "Odvjetnica | Kunić & partneri | Pravo gospodarstva | Zagreb"
+      avatar: avatars/vesna.jpg
+
+    # === Teens ===
+    ema:
+      name: "Ema"
+      bio: "16 | toplička vas born | petra me naučila sve o travama | fakat sam zabrinuta"
+      avatar: avatars/ema.jpg
+    filip:
+      name: "Filip"
+      bio: "17 | skate & muzika | zagorje represent | buraz nešto tu ne štima"
+      avatar: avatars/filip.jpg
+    lucija:
+      name: "Lucija"
+      bio: "15 | foto & crtanje | zagorski bregi u boji | petra je moja inspiracija"
+      avatar: avatars/lucija.jpg
+
+    # === Media & Community ===
+    vijesti_zagorje:
+      name: "Vijesti Zagorje"
+      bio: "Vijesti iz Zagorja i okolice | Tips: redakcija@vijesti-zagorje.hr"
+      avatar: avatars/vijesti_zagorje.jpg
+    meteo_zagorje:
+      name: "Meteo Toplička Vas"
+      bio: "Prognoza i upozorenja | Automatska stanica | Ažuriranje svaki sat"
+      avatar: avatars/meteo_zagorje.jpg
+    udruga_izvori:
+      name: "Udruga Čuvari Izvora"
+      bio: "Zaštita termalnih izvora Zagorja | Volonteri | Prijave zagađenja"
+      avatar: avatars/udruga_izvori.jpg
+
+    # === Suspicious / Other ===
+    maja:
+      name: "Maja Brekalo"
+      bio: "klijentica wellness centra | zdravlje je najvažnije | petra mi je spasila život"
+      avatar: avatars/maja.jpg
+    tomislav:
+      name: "Tomislav Čehulić"
+      bio: "."
+      avatar: avatars/anon.jpg
+    nacelnik_policija:
+      name: "Inspektor Marković"
+      bio: "Policijska postaja Toplička Vas | prijave: 192"
+      avatar: avatars/inspektor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN TOPLIČKA VAS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to toplickavas.social — the community Mastodon instance for
+      Toplička Vas, a village nestled in the Zagorje castle hills of
+      northern Croatia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @petra_novakovic.
+
+      A young herbalist. She ran workshops at the thermal springs, made
+      natural remedies from Zagorje wildflowers and thermal water. She
+      documented the healing properties of every local plant. People
+      adored her.
+
+      She hasn't posted in six days.
+    choices:
+      - Look at her profile -> petra_profile
+
+  petra_profile:
+    type: tweet
+    from: petra
+    text: "GeoTerma bušotine su 200m od izvora. Termalna voda se mijenja — temperatura pada, minerali nestaju. Imam dokaze. Ovo moraju svi vidjeti."
+    choices:
+      - That's her last real post... -> grey_hills
+
+  grey_hills:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurry photo of the Zagorje hills at night. Out of focus, shot
+      at a strange angle. Posted at 2am. No caption, no hashtags.
+
+      Her friends say that's not Petra. She always wrote long poetic
+      captions about every plant, every spring. The police say she
+      probably went to visit friends in Zagreb. Nobody believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: nacelnik_policija
+    text: >
+      Zaprimili smo prijavu nestanka stanovnice Topličke Vasi. U ovom
+      trenutku nema elemenata koji bi upućivali na kazneno djelo. Svaka
+      korisna informacija može se prijaviti na 192 ili osobno u postaji.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @mislav_horvat is posting
+      desperately from the gostionica kitchen. Her sister @barbara_novakovic
+      is driving up from Zagreb. Her colleague @lovro_simunic is sending
+      worried messages about unfinished research.
+
+      The old vinegrower @branko_vukovic says Petra was right about the
+      water changing. The wellness centre owner @nikolina_bogdanovic is
+      furious — half her clients came for Petra's herbal treatments.
+
+      And the journalist @ana_matic has gone silent.
+
+      Nobody buys the police line. Nobody thinks Petra just "went to
+      Zagreb."
+    effects: { trust_mislav: "+5", trust_barbara: "+5" }
+    choices:
+      - Start following Petra's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Toplička Vas. Follow Petra's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Ivan (gostionica owner, knows everyone) -> ivan_intro
+      - Talk to Branko (vinegrower, noticed the water) -> branko_intro
+      - Talk to Ema (teen, learned herbs from Petra) -> ema_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Petra with the rhythms of a Zagorje
+      village: vineyard updates, thermal pool schedules, castle
+      festival announcements, štrukli recipes.
+
+      Key names surface: Mislav (best friend, cook at the gostionica),
+      Lovro (biology researcher, seems agitated), Ana (journalist,
+      oddly quiet), and the teens — Ema, Filip, Lucija — who looked
+      up to Petra like an older sister.
+
+      Also prominent: GeoTerma d.o.o., the geothermal energy company
+      drilling near the springs. Their posts are corporate PR about
+      "green transition." Petra's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Ivan -> ivan_intro
+      - Talk to Branko -> branko_intro
+      - Talk to Ema -> ema_intro
+
+  # --- Ivan (social map) ---
+
+  ivan_intro:
+    type: tweet
+    from: ivan
+    text: >
+      Gostionica je otvorena ali srce nije tu. @petra_novakovic, tvoj
+      čaj od kadulje te čeka. Vrati se. 🌿
+    effects: { trust_ivan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ivan -> ivan_talk
+
+  ivan_talk:
+    type: message
+    text: >
+      IVAN: A, ti si novi? Dobro došli, ali loš timing, buraz. Svi su
+      na iglama zbog Petre.
+
+      Da ti kažem tko je tko. Mislav je Petrin najbolji frend — kuhaju
+      skupa u gostionici kad joj se zatraži, ona donese trave, on kuha.
+      Lovro Šimunić je biolog, radi na istraživanju termalnih izvora.
+      Pametan čovjek, ali... malo previše zainteresiran za nju, kužiš.
+      Barbara je Petrina starija sestra, dolazi iz Zagreba.
+
+      A Ana Matić — novinarka — ona i Petra su radile na nečemu skupa.
+      Nešto oko vode i bušotina. Ana ni riječ otkad je Petra nestala.
+      To joj nije u stilu, fakat.
+
+      I nemoj se zamarati s GeoTerminim PR objavama. Laži u ISO
+      certifikatima. Jebote, kakva sramota.
+    effects: { trust_ivan: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Lovro -> ivan_lovro
+      - Ask about GeoTerma -> ivan_geoterma
+      - Thank him and move on -> quest1_hub
+
+  ivan_lovro:
+    type: message
+    text: >
+      IVAN: Lovro? Tu je dvije godine duže od Petre. Solidan biolog,
+      moram priznat. Ali otkad je Petra došla... brate, tip je non-stop
+      oko nje. U gostionici svaki put kad je ona tu. Nudi se za svaki
+      projekt. Ona je bila pristojno oko toga, ali ja sam vidio — smetalo
+      joj je.
+
+      Kad je počela istraživat bušotine i termalne izvore, on je bio
+      još gori. Htio je bit dio svega. Jednom mi je rekla: "Ne prihvaća
+      ne kao odgovor." Ja sam mislio profesionalno. Sad više nisam siguran.
+    effects: { trust_ivan: "+5" }
+    choices:
+      - Ask about GeoTerma -> ivan_geoterma
+      - Move on -> quest1_hub
+
+  ivan_geoterma:
+    type: message
+    text: >
+      IVAN: GeoTerma je tu od prošle godine. Bušotine za geotermalnu
+      energiju, kažu. EU fondovi, zelena tranzicija, pizdarije. Ali
+      vinogradari i stari ljudi — svi kažu isto: termalna voda se
+      mijenja. Temperatura pada, smrad se pojavio, neke trave uz izvor
+      su počele umirat.
+
+      Petra je bila prva koja je to dokumentirala. Mjerila temperaturu,
+      uzimala uzorke, slikala biljke. Imala je dokaze, rekla je. Prave
+      dokaze. Dva tjedna kasnije — nestala.
+
+      Koji kurac, buraz. Poklopi se previše toga.
+    effects: { trust_ivan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Branko (vinegrower, water witness) ---
+
+  branko_intro:
+    type: tweet
+    from: branko
+    text: >
+      četrdeset let sam na ovom bregu. voda iz izvora je bila topla i
+      čista cijeli moj život. sad smrdi na sumpor i pola trave je crno.
+      @petra_novakovic je imala pravo. i sad je nema.
+    effects: { trust_branko: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Branko -> branko_talk
+
+  branko_talk:
+    type: message
+    text: >
+      BRANKO: Četrdeset godina pijem tu vodu. Termalni izvor Svete
+      Katarine — najljepša voda u cijelom Zagorju. Topla, mineralna,
+      liječila je sve. Moja baka je s tom vodom liječila reumu, zglobove,
+      kožu.
+
+      Otkad je GeoTerma počela bušit — dvjesto metara od izvora, jebote
+      — voda se promijenila. Temperatura je pala za tri stupnja. Pojavio
+      se smrad. Trave koje su rasle uz izvor stotinama godina — mrtve.
+
+      Petra je uzimala uzorke. Ronila u izvor s bočicama. Fotografirala
+      sve. Gradila slučaj. I onda — puf. Nema je.
+
+      Misliš da je to slučajnost? Ja ne vjerujem u slučajnosti kad se
+      radi o vodi.
+    effects: { trust_branko: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> branko_night
+      - Move on -> quest1_hub
+
+  branko_night:
+    type: message
+    text: >
+      BRANKO: Noć prije nego je nestala — kasno sam bio u vinogradu,
+      branje je blizu. Oko ponoći sam vidio svjetla kod Petrine
+      radionice. Ona ima malu kućicu uz izvor di radi s travama. Dva
+      auta. Jedan Petrin mali Renault. Drugi crni SUV s GeoTerma
+      naljepnicama.
+
+      U ponoć. Kod radionice za trave.
+
+      Nisam puno razmišljao tad. Sad razmišljam stalno.
+    effects: { trust_branko: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ema (teen, Petra's student) ---
+
+  ema_intro:
+    type: tweet
+    from: ema
+    text: >
+      fakat sam u kurcu ekipa @petra_novakovic je ona koja me naučila
+      sve o travama i liječenju i to. nemoguće da je samo otišla. ak
+      iko zna bilo šta molim vas javite se
+    effects: { trust_ema: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ema -> ema_talk_early
+
+  ema_talk_early:
+    type: message
+    text: >
+      EMA: čekaj ti si novi tu? sranje timing fakat. u biti petra je
+      najjača osoba u cijelom selu. naučila nas je sve o biljkama,
+      vodila nas na izvor, pokazivala nam koje trave liječe šta. tipa
+      fakat joj dugujemo sve.
+
+      i sad sam prestrašena jer filip je vidio nešto čudno zadnje
+      večeri kod dvorca ali neće pričat. kaže da je ništa ali fakat
+      to nije ništa buraz
+    effects: { trust_ema: "+10" }
+    choices:
+      - What did Filip see? -> ema_filip_hint
+      - Move on -> quest1_hub
+
+  ema_filip_hint:
+    type: message
+    text: >
+      EMA: neznam točno. bio je na skateu kod starog dvorca i vidio je
+      nekoga kako nešto stavlja u petrin auto?? il tak nekak. frka mu
+      je previše i neće pričat. moraš ga pitat direktno ali ne
+      vjeruje ljudima koje nezna. probaj prvo priča o muzici il skateu
+      s njim lol
+
+      jebote koji kurac se tu događa
+    effects: { trust_ema: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Toplička Vas. A Zagorje village in
+      the castle hills, built around thermal springs. A young herbalist
+      who was exposing damage to the springs. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Mislav (Petra's best friend) -> mislav_q1
+      - Talk to Lovro (Petra's colleague) -> lovro_q1
+      - Check what Barbara (Petra's sister) is saying -> barbara_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Mislav Q1 ---
+
+  mislav_q1:
+    type: tweet
+    from: mislav
+    text: >
+      ak iko ima vijesti o @petra_novakovic nazovite me molim vas.
+      njena radionica je zatvorena. biljke se suše. ona nikad ne bi
+      ostavila biljke da se osuše. nikad.
+    effects: { trust_mislav: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mislav -> mislav_q1_talk
+
+  mislav_q1_talk:
+    type: message
+    text: >
+      MISLAV: Hvala ti šta si se javil ali ne poznajem te. Petra ima
+      puno prijatelja tu. Sigurno će se vratit.
+
+      ...Stalno to govorim. Više ne vjerujem u to.
+
+      [Mislav is guarded. You'll need to build more trust before he
+      opens up.]
+    effects: { trust_mislav: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lovro Q1 ---
+
+  lovro_q1:
+    type: tweet
+    from: lovro
+    text: >
+      Laboratorij je prazan bez @petra_novakovic. Njeni uzorci su još
+      u hladnjaku. Njen dnevnik termalnih mjerenja je na stolu. Nikad
+      ne bi napustila istraživanje u tijeku. Nešto se dogodilo.
+    effects: { trust_lovro: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lovro -> lovro_q1_talk
+
+  lovro_q1_talk:
+    type: message
+    text: >
+      LOVRO: Petra i ja smo radili skupa više od godinu dana. Najposvećenija
+      istraživačica koju poznajem. Ovo istraživanje o termalnim izvorima —
+      to joj je bilo sve. Imala je podatke, fotografije, kemijske analize.
+      Bila je tako blizu objavljivanju.
+
+      Nudil sam joj pomoć. Mnogo puta. Rekla je da ima sve pod kontrolom.
+      Rekla je da radi s novinarkom. Samo sam ju htio podržat.
+
+      [Lovro seems earnest. Or obsessive?]
+    effects: { trust_lovro: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Barbara Q1 ---
+
+  barbara_q1:
+    type: tweet
+    from: barbara
+    text: >
+      moja sestra je NESTALA a policija mi govori da je možda otišla
+      na put??? ONA NE IDE NIGDJE BEZ DA KAŽE. dolazim iz zagreba.
+      neko mi mora objasnit šta se tu jebeno događa.
+    effects: { trust_barbara: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Barbara -> barbara_q1_talk
+
+  barbara_q1_talk:
+    type: message
+    text: >
+      BARBARA: Tko si ti? Još jedna osoba iz tog sela koja će mi reć
+      da se smirim? Sestra me nazvala noć prije nego je nestala. Rekla
+      je da ima nešto veliko. Rekla je "ako se išta dogodi, gledaj u
+      GeoTermu." I prekinula.
+
+      To je zadnje šta sam čula od nje. Pičku materinu.
+    effects: { trust_barbara: "+10" }
+    choices:
+      - What do you think happened? -> barbara_theory
+      - Move on -> quest1_hub
+
+  barbara_theory:
+    type: message
+    text: >
+      BARBARA: Mislim da je našla dokaz da GeoTerma uništava termalne
+      izvore i da su ju ušutkali. Ali isto mislim da taj creepy kolega
+      — Lovro — zna više nego šta govori. Način na koji priča o njoj...
+      to nije samo profesionalna briga. To je nešto drugo, buraz.
+
+      Petra mi je rekla prije mjesec dana da joj netko u labu prolazi
+      po fajlovima. Mislila je da je bezveze. Ja mislim da nije
+      bezveze. Fakat ne mislim da je bezveze.
+    effects: { trust_barbara: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Petra went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Filip (was skating near the old castle) -> filip_interview
+      - Find Goran (forester, patrols the hills at night) -> goran_interview
+      - Find Nikolina (wellness centre, saw late meeting) -> nikolina_interview
+      - Find Branko (vinegrower, saw vehicles at the workshop) -> branko_interview
+
+  # --- Filip (saw someone at Petra's car) ---
+
+  filip_interview:
+    type: tweet
+    from: filip
+    text: >
+      opet sam bio skateat kod dvorca i brate mili atmosfera u selu
+      je pre čudna zadnjih dana. nekaj ne valja i svi to osjećaju
+    effects: { trust_filip: "+5" }
+    choices:
+      - Ask Filip about that evening -> filip_talk
+
+  filip_talk:
+    type: message
+    text: >
+      FILIP: buraz ok ali fakat nikomu ne govori jel. bio sam kod
+      dvorca oko 19h, sunset session. i vidim tog tipa iz laba —
+      lovro — pored petrinog auta. kak da pretražuje nešt il stavlja
+      nešt. kad me vidio otišo je brzo u kurac.
+
+      ja sam šutil jer nisam htio dramu al sad je sranje. to nije
+      normalno ponašanje brate mili jebote
+    effects:
+      trust_filip: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Goran (forester, saw Petra fleeing) ---
+
+  goran_interview:
+    type: tweet
+    from: goran
+    text: >
+      obilazak šume u 4 ujutro. staza prema izvoru nije bila prazna.
+      netko je trčao. u mraku. sa torbom. to nije šetač.
+    effects: { trust_goran: "+5" }
+    choices:
+      - Ask Goran what he saw -> goran_talk
+
+  goran_talk:
+    type: message
+    text: >
+      GORAN: Ustajem u 4 ujutro za obilazak šume. To jutro — jutro
+      nakon Petrine zadnje objave — vidio sam nekoga na stazi prema
+      Svetoj Katarini. Žena, trči, nosi torbu. Bilo je još mrak.
+      Kretala se brzo, kao da je uplašena.
+
+      Vikao sam ali se nije zaustavila. Mislio sam da je neka trkaćica
+      ali... tko trči u 4 ujutro s messenger torbom?
+
+      Kad sam čuo za Petru, sklopio sam kockice. Mislim da je to bila
+      ona. Bježi od nečega.
+    effects:
+      trust_goran: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nikolina (wellness centre, saw late meeting) ---
+
+  nikolina_interview:
+    type: tweet
+    from: nikolina
+    text: >
+      Podsjetnik: wellness centar otvoren do 22h. Ali sinoć sam
+      primijetila svjetla u Petrinoj radionici nakon ponoći. I aute
+      koji ne pripadaju nikome od nas.
+    effects: { trust_nikolina: "+5" }
+    choices:
+      - Ask Nikolina what she saw -> nikolina_talk
+
+  nikolina_talk:
+    type: message
+    text: >
+      NIKOLINA: Zatvarala sam wellness centar oko 22:30. Petra radionica
+      je pedesetak metara dalje, uz sam izvor. Vidila sam njezin Renault
+      i još jedan auto — crni SUV s GeoTerma logom. Dva muškarca su
+      stajala ispred radionice. Jednog sam prepoznala: Damir Požgaj,
+      direktor GeoTerme.
+
+      U 22:30. Kod radionice za trave. To nije normalno.
+
+      Zapisala sam u dnevnik centra. Nitko me nije pitao za to.
+    effects:
+      trust_nikolina: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Branko (saw car chase at dawn) ---
+
+  branko_interview:
+    type: tweet
+    from: branko
+    text: >
+      U vinogradu sam bio u 5 ujutro kak i uvijek. Ali to jutro je
+      auto projurio cestom prema starom gradu previše brzo.
+      Iza njega drugi, manji.
+    effects: { trust_branko: "+5" }
+    choices:
+      - Ask Branko what he saw -> branko_talk_night
+
+  branko_talk_night:
+    type: message
+    text: >
+      BRANKO: Svako jutro sam u vinogradu u 5. To jutro sam otvarao
+      vrata od podruma i auto je prošo — brzo, prebrzo za brdsku
+      cestu. Crni SUV. Onda možda dvije minute kasnije, drugi auto.
+      Manji, svjetliji. Juri za njim? Neznam.
+
+      Drugi auto je skrenuo prema staroj kući kod izvora Svete
+      Katarine. Prvi je nastavio prema autoputu za Zagreb.
+
+      Rekao sam policiji. Zapisali su. I to je bilo to. Kurac.
+    effects:
+      trust_branko: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Mislav (best friend)
+      and Lucija (saw Lovro watching the workshop).
+    choices:
+      - Talk to Mislav about that night -> mislav_interview
+      - Talk to Lucija -> lucija_interview
+      - Find Filip -> filip_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Goran -> goran_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Nikolina -> nikolina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Branko -> branko_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Mislav (last to see Petra) ---
+
+  mislav_interview:
+    type: tweet
+    from: mislav
+    text: >
+      ta slika na petrinom profilu. to NIJE ona. petra nikad ne objavi
+      bez opisa biljke ili izvora. petra ne objavljuje u 2 ujutro.
+      netko drugi je to napravil. u pičku materinu
+    effects: { trust_mislav: "+5" }
+    choices:
+      - DM Mislav -> mislav_talk_low
+        when:
+          state: trust_mislav
+          lt: 50
+      - DM Mislav -> mislav_talk_high
+        when:
+          state: trust_mislav
+          gte: 50
+
+  mislav_talk_low:
+    type: message
+    text: >
+      MISLAV: Hvala na brizi ali fakat ne želim pričat s nepoznatima
+      o ovome sad.
+
+      [Mislav needs to trust you more. Show him you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_mislav: "+5" }
+    choices:
+      - Share what you've learned about the night -> mislav_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  mislav_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the workshop, the
+      GeoTerma men, the running figure. Mislav is silent for a while.
+
+      MISLAV: Ti fakat pokušavaš to riješit. Ok. Pričat ću.
+    effects: { trust_mislav: "+25" }
+    choices:
+      - What happened that night? -> mislav_talk_high
+
+  mislav_talk_high:
+    type: message
+    text: >
+      MISLAV: Došla je u gostionicu oko 23h. Bio sam još u kuhinji.
+      Bila je blijeda, tresla se. Rekla je "znaju šta imam." Zgrabila
+      je laptop i hard diskove sa slikama.
+
+      Pitao sam tko. Rekla je "firma. Poslali su ljude u radionicu."
+      I onda je rekla još nešto — "i on je opet tu. uvijek je tu."
+
+      Nije htjela reć tko je "on". Zagrlila me, rekla "ne brini" i
+      otišla s torbom. To je bilo to. Ujutro njenog auta više nije
+      bilo i ta čudna slika je bila na njenom profilu.
+
+      Jebote buraz, trebao sam ić za njom.
+    effects:
+      trust_mislav: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lucija (saw Lovro watching the workshop) ---
+
+  lucija_interview:
+    type: message
+    text: >
+      LUCIJA: ovo je fakat creepy šta ću reć al ono... taj tip iz
+      laba — lovro — vidila sam ga tipa 3 puta pred petrinom
+      radionicom navečer. stoji tam i gleda u prozore. too creepy buraz.
+
+      zadnji put je bio tipa 2 dana prije nego je nestala. bio je u
+      autu parkiranom nasuprot. samo sjedi. svjetla ugašena. u pičku
+      materinu koji je to kurac
+    effects:
+      trust_lucija: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Lovro seen at Petra's car near the old castle (Filip)
+      22:30 — GeoTerma car at the workshop, Damir Požgaj present (Nikolina)
+      23:00 — Petra arrives at gostionica, shaken, grabs laptop and drives (Mislav)
+      04:00 — Woman running on forest path toward Sveta Katarina (Goran)
+      05:00 — Two cars speeding on mountain road, one toward Zagreb highway (Branko)
+
+      GeoTerma confronted Petra at her workshop. She fled to the
+      gostionica, grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is GeoTerma hiding? Who approved the
+        drilling near the springs?
+      — The obsession: What is Lovro really doing? Why was he at
+        her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Lovro -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      GeoTerma is hiding something. Petra had proof. Now she's gone
+      and her samples are missing from the workshop.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the research records -> research_records
+      - Talk to Ana the journalist -> ana_interview
+      - Talk to Maja (wellness client, heard things) -> maja_corporate
+      - Talk to Katarina (environment deputy) -> katarina_interview
+      - Check the Čuvari Izvora association -> udruga_investigation
+      - Talk to Branko about the drilling damage -> branko_drilling
+      - Back to hub -> investigation_hub
+
+  # --- Research Records ---
+
+  research_records:
+    type: message
+    text: >
+      Petra's publicly shared research database shows her recent work:
+      water temperature and mineral content measurements from eight
+      thermal springs in the region. The data for Izvor Svete Katarine
+      is marked "UNDER REVIEW" — the only spring with that status.
+
+      Her field notes, shared with the biology department for safety,
+      show she made 15 visits to the GeoTerma drilling site in the
+      past month. The last entry: "Drilled into thermal aquifer.
+      Pressure drop confirmed. Temperature loss 4.2°C in 60 days.
+      The springs are dying. GeoTerma knows."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Ana ---
+
+  ana_interview:
+    type: message
+    text: >
+      ANA: Ne govorim o izvorima informacija. Točka.
+    effects: { trust_ana: "+5" }
+    choices:
+      - Show Ana the evidence you have -> ana_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  ana_with_evidence:
+    type: message
+    text: >
+      ANA: ...imaš više nego sam očekivala.
+
+      Ok. Petra i ja smo radile skupa. Imala je podatke koji dokazuju
+      da su GeoTermine bušotine probušile u termalni akvifer —
+      uništavaju izvor koji postoji tisućama godina. Temperatura pada,
+      mineralni sastav se mijenja, ekosustav oko izvora umire.
+
+      Htjele smo zajedno objavit. Onda je ona nestala. I dva dana
+      kasnije, netko je provalio u moj auto i ukrao backup disk.
+
+      Petra je živa. Javila mi se jednom, s nepoznatog broja. Rekla
+      je da se skriva. Rekla je "prijetili su mi u radionici i još
+      me netko non-stop prati."
+
+      Ne mogu ti reć gdje je. Ali s dovoljno dokaza, mogu objavit
+      priču i napravit da bude sigurno da se vrati.
+    effects:
+      trust_ana: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> ana_hint
+      - Back to investigation hub -> investigation_hub
+
+  ana_hint:
+    type: message
+    text: >
+      ANA: Firma je poslala direktora — Požgaja — i nekog odvjetnika
+      u radionicu tu noć. Rekli su joj da preda sve ili će bit pravnih
+      posljedica. Zastrašivanje zamaskirano u pravni proces.
+
+      Ali rekla je i nešto o nekome u labu. Nekome tko joj je
+      pristupao fajlovima. Nekome tko je uvijek znao di je ona. To je
+      drugi problem. Sranje, totalno sranje.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Maja (wellness client) ---
+
+  maja_corporate:
+    type: message
+    text: >
+      MAJA: Dolazim u wellness centar tri puta tjedno. Petrine trave
+      su mi promijenile život — njezin čaj od matičnjaka mi je pomogao
+      više nego bilo koji lijek.
+
+      Ali čula sam nešto. Prošli tjedan, dok sam čekala masažu, čula
+      sam načelnika Kramarića na telefonu u hodniku centra. Govorio je
+      nekome: "Reci GeoTermi da ću riješit tu curu. Samo neka potpiše
+      ugovor za drugu fazu. EU sredstva idu na moj račun kao i dosad."
+
+      Fakat me strah. Ali to sam čula. Točno to.
+    effects:
+      trust_maja: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Katarina ---
+
+  katarina_interview:
+    type: message
+    text: >
+      KATARINA: Kao zamjenica načelnika za okoliš, ozbiljno shvaćam ove
+      optužbe. Ali GeoTerma zapošljava 80 ljudi u općini. Načelnik
+      inzistira da moramo "održavati dijalog."
+
+      Neslužbeno? Vidjela sam izvještaje o utjecaju na okoliš. GeoTerma
+      prolazi svaki put. Ali te procjene rade tvrtke koje GeoTerma plaća.
+      Lažirani podaci, buraz. Petra je imala neovisne podatke. To je ono
+      šta je opasno.
+
+      I EU fondovi — načelnik je potpisao ugovor s GeoTermom za "drugu
+      fazu bušenja" koji uključuje nekakve "konzultantske naknade" koje
+      idu na račun koji... nisam sigurna čiji je. Fakat.
+    effects:
+      trust_katarina: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Udruga Čuvari Izvora ---
+
+  udruga_investigation:
+    type: tweet
+    from: udruga_izvori
+    text: >
+      UPOZORENJE: Termalni izvor Svete Katarine — temperatura pala za
+      4°C u 60 dana. Mineralni sastav se mijenja. Tražimo hitnu
+      neovisnu procjenu utjecaja GeoTerma bušotina.
+    choices:
+      - Check their data -> udruga_data
+
+  udruga_data:
+    type: message
+    text: >
+      The Čuvari Izvora have been monitoring thermal spring temperatures
+      for five years. Their data shows a clear pattern: since GeoTerma
+      began drilling eight months ago, every spring within 500 meters
+      of the drill sites shows temperature decline, mineral content
+      changes, and ecosystem damage.
+
+      The pattern is unmistakable. The drilling is destroying the
+      thermal aquifer that feeds the springs.
+
+      Petra was their most active volunteer. She contributed most of
+      the botanical documentation — photographing how the spring-fed
+      plants were dying as the water changed.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Branko drilling ---
+
+  branko_drilling:
+    type: message
+    text: >
+      BRANKO: Pokazat ću ti nešto. Prošli mjesec sam hodao vinogradom
+      i našao ovo — bušotina, napuštena, tri metra od mog terena.
+      Voda curi van, ali nije termalna — smrdi na kemikalije. Bušotinski
+      fluid. GeoTerma je trebala zapečatit svaku bušotinu po protokolu.
+      Ova nije zapečaćena.
+
+      Slikao sam i poslao Petri. Rekla je da je to zadnji dio
+      slagalice — dokaz da ne poštuju ni minimalne standarde. Bušotine
+      zagađuju podzemne vode.
+
+      Još imam slike. I GPS koordinate.
+    effects:
+      trust_branko: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Lovro Šimunić. Colleague. Researcher. Something more?
+      Someone was accessing Petra's files. Someone was watching her
+      workshop. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Lovro's lab access logs -> lab_access
+      - Talk to Mislav about Lovro -> mislav_lovro
+        when:
+          state: trust_mislav
+          gte: 20
+      - Talk to Filip (more detail on the car incident) -> filip_detail
+      - Talk to Jasmina the pharmacist -> jasmina_interview
+      - Check the anonymous account @tomislav_cehulic -> tomislav_investigation
+      - Talk to Renata the librarian -> renata_interview
+        when:
+          state: trust_renata
+          gte: 40
+      - Talk to Inspektor Marković -> inspektor_interview
+        when:
+          state: trust_nacelnik
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Lab Access Logs ---
+
+  lab_access:
+    type: message
+    text: >
+      The biology department's access system is logged electronically.
+      Petra's access card was used 52 times last month. Lovro's card:
+      94 times. Nearly double.
+
+      Cross-referencing: on 38 of Lovro's 94 entries, he accessed the
+      lab within 10 minutes of Petra. He arrived after her and left
+      after her. Every single time.
+
+      His own research station is in a different building.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mislav on Lovro ---
+
+  mislav_lovro:
+    type: message
+    text: >
+      MISLAV: Lovro? Petri je bilo neugodno oko njega. Pojavljivao se
+      u gostionici kad je ona bila tu. Nudio se da je prati doma.
+      Komentirao svaku njenu objavu u roku od par minuta.
+
+      Rekla mu je da nije zainteresirana. Jasno, ljubazno. Rekao je
+      da razumije. I onda se ništa nije promijenilo. Samo je... stalno
+      bio tu. Uvijek tu.
+
+      Prije mjesec dana otkrila je da joj je netko pristupao kompjuteru
+      u labu poslije radnog vremena. Njeni fajlovi su bili otvarani.
+      Sumnjala je na Lovru ali nije mogla dokazat.
+
+      Jebote, trebao sam napravit nešto tad. Sranje.
+    effects:
+      trust_mislav: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Filip detail ---
+
+  filip_detail:
+    type: message
+    text: >
+      FILIP: buraz ok fakat nisam sve rekao. kad sam vidio lovru kod
+      petrinog auta imal je nešt u ruci. mali uređaj. stavio ga je
+      ispod auta, na stranu vozača. tipa zalijepio ispod.
+
+      meni to izgleda ko gps tracker brate. onaj šta vidiš u filmovima
+      i to.
+
+      trebao sam nešt reć al tko bi meni vjerovao jebote. tinejdžer
+      optužuje istraživača. koji kurac. da sam barem rekao petri...
+    effects:
+      trust_filip: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Jasmina ---
+
+  jasmina_interview:
+    type: message
+    text: >
+      JASMINA: Ovo je povjerljivo, ali ja sam ljekarnica, ne svećenica.
+      Lovro Šimunić dolazi redovito. Kupuje stvari koje... govore da
+      ne spava. Anksiolitici, tablete za spavanje, energetski dodaci.
+      To je obrazac nekoga pod ekstremnim stresom.
+
+      I jednom me pitao, tipa sasvim ležerno, prodajemo li GPS
+      trackere. Rekla sam "ovo je ljekarna, ne Elipso." Nasmijao se.
+      Nisam više razmišljala o tome do Petrinog nestanka.
+
+      Pičku materinu, sad mi je jasno.
+    effects:
+      trust_jasmina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Tomislav (anonymous account) ---
+
+  tomislav_investigation:
+    type: tweet
+    from: tomislav
+    text: >
+      Trebala je slušat. Pokušavao sam je zaštitit. Nitko drugi nije
+      razumio njen rad kao ja.
+    choices:
+      - Look at this account's history -> tomislav_posts
+
+  tomislav_posts:
+    type: message
+    text: >
+      @tomislav_cehulic: account created 9 months ago. Posts are all
+      about Petra's work. Comments on every herb photo, every spring
+      measurement, every workshop announcement. The tone shifts over time:
+
+      Month 1: "Nevjerojatan rad. Radiš ono šta se nitko ne usudi."
+      Month 3: "Zašto ne odgovaraš na moje poruke? Samo želim surađivat."
+      Month 6: "Vidim te u gostionici s drugim ljudima. Za njih imaš
+      vremena ali za mene ne?"
+      Month 8: "Znam kuda ideš. Znam tvoj raspored. Uvijek sam blizu."
+
+      The account has no photos, no personal details. Just Petra.
+      Only Petra.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> tomislav_style
+
+  tomislav_style:
+    type: message
+    text: >
+      Comparing @tomislav_cehulic with @lovro_simunic:
+
+      Same use of thermal biology terminology. Same Croatian spelling
+      patterns — the specific way he writes compound botanical terms.
+      Same knowledge of Petra's research that only a lab colleague
+      would have.
+
+      And one post from @tomislav_cehulic: "Tvoje mjerenje na Lokaciji
+      7 je bilo savršeno." Location 7 is an internal research
+      designation. Not public.
+
+      It's Lovro. The anonymous account is Lovro.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Renata ---
+
+  renata_interview:
+    type: message
+    text: >
+      RENATA: Petra mi je ostavila nešto. Zapečaćenu vodootpornu
+      kutiju. Rekla je "ako netko pita o izvorima i bušotinama,
+      daj mu ovo."
+
+      Izgledala je prestrašena. Rekla je da je napravila kopije
+      svega ali da treba jedan set negdje di nitko ne bi tražio.
+      Knjižnica je savršena, rekla je.
+    effects: { trust_renata: "+10" }
+    choices:
+      - What's in the box? -> renata_box
+
+  renata_box:
+    type: message
+    text: >
+      Renata poseže ispod pulta i izvadi vodootpornu kutiju.
+
+      RENATA: Rekla je da ćeš doći. Uzmi.
+
+      Unutra: USB stick i set printanih fotografija. Fotografije
+      pokazuju bušotine — ne one službene, nego neprijavljene testne
+      bušotine koje su probušile u termalni akvifer. USB drive sadrži
+      podatke o temperaturi vode, kemijske analize, i Petrin detaljan
+      izvještaj s dokazima o EU fondovima koje načelnik preusmjerava.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspektor Marković ---
+
+  inspektor_interview:
+    type: message
+    text: >
+      INSPEKTOR MARKOVIĆ: Neslužbeno — i mislim potpuno neslužbeno —
+      htio sam istraživat GeoTermu. Šef mi je rekao da se maknem.
+      Rekao je da županija ima "jurisdikciju." To je šifra za "ne
+      diraj."
+
+      Situacija s Lovrom je druga stvar. Za to nisam ni znao do sad.
+      Ako imaš dokaze o uhođenju, mogu postupit. To je jasno u mojoj
+      nadležnosti.
+
+      Donesi mi nešto čvrsto i ponovno ću otvorit slučaj.
+    effects:
+      trust_nacelnik: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Petra than anyone in Toplička Vas. Who is responsible?
+    choices:
+      - Confront Lovro Šimunić (the obsessive colleague) -> confront_lovro
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Damir Požgaj (the GeoTerma director) -> confront_damir
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Načelnik Kramarić (political protection & EU kickbacks) -> confront_zdravko
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Lovro (Best Ending) ---
+
+  confront_lovro:
+    type: message
+    text: >
+      You present your evidence to Lovro:
+
+      "Znam da je @tomislav_cehulic tvoj račun. Znam da si stavio GPS
+      tracker na Petrin auto. Znam da si joj pristupao fajlovima u
+      labu. Znam da si je promatrao iz auta ispred radionice. Imam
+      svjedoke i pristupne logove."
+    choices:
+      - Send -> lovro_response
+
+  lovro_response:
+    type: message
+    text: >
+      Lovro doesn't reply for a long time. Then:
+
+      LOVRO: Ne razumiješ. Štitio sam je. Bila je u opasnosti od
+      GeoTerme i nije mi dala da joj pomognem. Morao sam znati da
+      je sigurna. Sve šta sam napravio je jer mi je stalo do nje.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Inspektor Marković. And to
+      Ana Matić.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektor Marković reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the witness
+      testimonies — Lovro is arrested for stalking and harassment. A
+      GPS tracker is recovered from under Petra's Renault at the old
+      house near Izvor Svete Katarine.
+
+      Ana Matić, finally in possession of Petra's full evidence package,
+      publishes the GeoTerma story in Jutarnji list. The county orders
+      an immediate halt to all drilling operations. GeoTerma's permits
+      are revoked pending environmental review. Damir Požgaj faces
+      criminal charges for falsifying environmental impact assessments.
+      Načelnik Kramarić is investigated for misuse of EU funds — the
+      "consultancy fees" were kickbacks for approving GeoTerma's
+      drilling permits.
+
+      And Petra Novaković, reading the story from a friend's apartment
+      in Varaždin, calls her sister for the first time in nine days.
+
+      "Dolazim doma."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: petra
+    text: >
+      termalna voda ne laže. i ljudi topličke vasi ne lažu.
+      hvala šta niste odustali. 🌿
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Damir (Partial Ending) ---
+
+  confront_damir:
+    type: message
+    text: >
+      You present the drilling evidence to Damir Požgaj:
+
+      "Imam fotografije neprijavljenih bušotina. Imam podatke koji
+      pokazuju pad temperature izvora za 4 stupnja. Imam izvorne
+      procjene utjecaja na okoliš koje su falsificirane. Imam dokaze
+      o EU fondovima koji završavaju na načelnikovom računu."
+    choices:
+      - Send -> damir_response
+
+  damir_response:
+    type: message
+    text: >
+      DAMIR: Ovaj razgovor se prosljeđuje našem pravnom odjelu. Svako
+      objavljivanje klevete će rezultirati trenutnim tužbama. GeoTerma
+      je uvijek poslovala u skladu sa svim propisima.
+
+      But it's too late. You've sent the evidence to Ana, to the
+      Čuvari Izvora, and to the county administration.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The drilling story breaks. GeoTerma is ordered to halt all
+      operations pending investigation. The company may leave the
+      region. Eighty jobs hang in the balance. The village is divided.
+      Načelnik Kramarić resigns amid the EU funds scandal.
+
+      But Petra?
+
+      Without the stalking evidence, Lovro is never investigated. He
+      continues to work at the biology department. He continues to
+      monitor her accounts. He creates a new anonymous profile.
+
+      Three months later, Petra reads about GeoTerma online. She
+      returns quietly. She changes her research location. She stops
+      going to the springs alone. She checks her car every morning.
+
+      The corporation is exposed. The springs begin to recover. But
+      the person who terrorised Petra walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: petra
+    text: "vratila sam se. izvori se oporavljaju. ostatak... vidjet ćemo."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Načelnik (Wrong Ending) ---
+
+  confront_zdravko:
+    type: message
+    text: >
+      You confront Načelnik Kramarić with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> zdravko_response
+
+  zdravko_response:
+    type: tweet
+    from: vesna
+    text: >
+      Moj klijent prima na znanje vaše navode. Svako javno iznošenje
+      klevete rezultirat će trenutnim pravnim postupkom.
+      — Odvjetnički ured Kunić & partneri, Zagreb
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The načelnik's lawyer buries your accusation. Without a direct
+      link between Kramarić and GeoTerma's drilling damage — and the
+      EU fund trail is complex enough to stall for years — your
+      evidence is insufficient to force immediate action.
+
+      GeoTerma continues to drill. Lovro continues to watch. Petra
+      stays in hiding. The springs grow colder week by week.
+
+      Six months later, @tomislav_cehulic creates a new account. It
+      follows Petra's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: TOPLIČKA VAS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Petra's story explores themes of corporate
+      greed, environmental destruction, EU fund corruption, obsessive
+      behaviour, community solidarity, and the courage to protect what
+      matters.
+
+      If you or someone you know is experiencing stalking, harassment,
+      or needs help:
+      Plavi telefon: 0800 0551
+      Hrabri telefon (za djecu i mlade): 116 111
+      Policija: 192

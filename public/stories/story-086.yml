@@ -1,0 +1,1586 @@
+# DEAD ACCOUNT — Story 086: Val di Ferro (Italy — Dolomites)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-086.yml
+#
+# Player investigates the disappearance of young rifugista Matteo Zeni
+# in the fictional South Tyrolean mountain village of Val di Ferro.
+
+meta:
+  title: "Dead Account — Val di Ferro"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_elisa: 0
+    trust_lorenzo: 0
+    trust_francesca: 0
+    trust_andreas: 0
+    trust_giulia: 0
+    trust_marco: 0
+    trust_sofia: 0
+    trust_hans: 0
+    trust_pietro: 0
+    trust_chiara: 0
+    trust_luca: 0
+    trust_nina: 0
+    trust_thomas: 0
+    trust_rosa: 0
+    trust_stefan: 0
+    trust_valentina: 0
+    trust_bruno: 0
+    trust_marta: 0
+    trust_maresciallo: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Hiker
+    bio: "appena arrivato a val di ferro. discovering the dolomites one trail at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "ValDiFerro.social"
+    description: "Benvenuti sull'istanza comunitaria di Val di Ferro, Dolomiti"
+    avatar_url: /gamepatch/assets/dead-account/valdiferro_bot.png
+
+  npcs:
+    # === Matteo's Inner Circle ===
+    matteo:
+      name: "Matteo Zeni"
+      bio: "rifugista al rifugio stella alpina | 2.450m | la montagna non tradisce mai"
+      avatar: avatars/matteo.jpg
+    elisa:
+      name: "Elisa Zeni"
+      bio: "sorella di matteo | infermiera a bolzano | se non lo trovate voi lo trovo io"
+      avatar: avatars/elisa.jpg
+    lorenzo:
+      name: "Lorenzo Bianchi"
+      bio: "guida alpina | val di ferro | compagno di cordata di matteo | le cime non dimenticano"
+      avatar: avatars/lorenzo.jpg
+    francesca:
+      name: "Francesca Moretti"
+      bio: "la ragazza di matteo | studentessa geologia a trento | mi manca da morire"
+      avatar: avatars/francesca.jpg
+
+    # === Local Government ===
+    andreas:
+      name: "Andreas Hofer"
+      bio: "Sindaco di Val di Ferro | Turismo e tradizione | #ValDiFerroCresce"
+      avatar: avatars/andreas.jpg
+    giulia:
+      name: "Giulia Dellamonica"
+      bio: "Assessore all'ambiente | Comune di Val di Ferro | tutela del territorio"
+      avatar: avatars/giulia.jpg
+    comune:
+      name: "Comune di Val di Ferro"
+      bio: "Profilo ufficiale | Notizie comunali | Orari: Lun-Ven 8:30-12:30"
+      avatar: avatars/comune.jpg
+
+    # === Local Business & Community ===
+    hans:
+      name: "Hans Platter"
+      bio: "Gasthof Platter | stube tirolese | strudel della nonna | dal 1953"
+      avatar: avatars/hans.jpg
+    gasthof:
+      name: "Gasthof Platter"
+      bio: "Cucina tirolese | Knödel | Speck | Aperitivo con vista Dolomiti"
+      avatar: avatars/gasthof.jpg
+    pietro:
+      name: "Pietro Dallavalle"
+      bio: "pastore | 300 pecore | questi sentieri li conosco da 50 anni"
+      avatar: avatars/pietro.jpg
+    rosa:
+      name: "Rosa Winkler"
+      bio: "farmacia val di ferro | salute & montagna | aperto anche sabato mattina"
+      avatar: avatars/rosa.jpg
+    stefan:
+      name: "Stefan Gruber"
+      bio: "soccorso alpino | val di ferro | ogni chiamata conta"
+      avatar: avatars/stefan.jpg
+    bruno:
+      name: "Bruno Tessadri"
+      bio: "gestore funivia vecchia | la montagna va rispettata non sfruttata"
+      avatar: avatars/bruno.jpg
+
+    # === Journalist ===
+    valentina:
+      name: "Valentina Rigoni"
+      bio: "giornalista freelance | ambiente & montagna | segnalazioni: v.rigoni@altoadigenews.it"
+      avatar: avatars/valentina.jpg
+
+    # === DoloCable (corporate) ===
+    dolocable:
+      name: "DoloCable SpA"
+      bio: "Impianti a fune | Sviluppo turistico sostenibile | Progetto Croda Rossa"
+      avatar: avatars/dolocable.jpg
+    marco:
+      name: "Marco Tessari"
+      bio: "CEO DoloCable SpA | innovazione turistica | le Dolomiti meritano il meglio"
+      avatar: avatars/marco.jpg
+    marta:
+      name: "Marta Fabbri"
+      bio: "Avvocato | Studio Legale Fabbri & Partners | Diritto ambientale | Bolzano"
+      avatar: avatars/marta.jpg
+
+    # === Teens ===
+    chiara:
+      name: "Chiara"
+      bio: "16 | arrampicata & trail | val di ferro nata | la roccia è vita fra"
+      avatar: avatars/chiara.jpg
+    luca:
+      name: "Luca"
+      bio: "17 | freeride & mtb | sessione alba | la montagna cura tutto"
+      avatar: avatars/luca.jpg
+    nina:
+      name: "Nina"
+      bio: "15 | foto & natura | le dolomiti in bianco e nero | matteo è il mio mito"
+      avatar: avatars/nina.jpg
+
+    # === Media & Community ===
+    actu_ferro:
+      name: "Notizie Val di Ferro"
+      bio: "Attualità della valle e delle Dolomiti | Tips: redazione@notizievaldiferro.it"
+      avatar: avatars/actu_ferro.jpg
+    meteo_dolomiti:
+      name: "Meteo Val di Ferro"
+      bio: "Previsioni e allerte | Stazione automatica | Aggiornamento ogni ora"
+      avatar: avatars/meteo_dolomiti.jpg
+    asso_montagna:
+      name: "Associazione Sentinelle delle Dolomiti"
+      bio: "Protezione del territorio dolomitico | Volontari | Segnalazioni ambientali"
+      avatar: avatars/asso_montagna.jpg
+
+    # === Suspicious / Other ===
+    sofia:
+      name: "Sofia Keller"
+      bio: "turista | amo le dolomiti | ci torno sempre"
+      avatar: avatars/sofia.jpg
+    thomas:
+      name: "Thomas Brenner"
+      bio: "."
+      avatar: avatars/anon.jpg
+    maresciallo:
+      name: "Maresciallo De Luca"
+      bio: "Carabinieri Stazione di Val di Ferro | Emergenze: 112"
+      avatar: avatars/maresciallo.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VAL DI FERRO
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to valdiferro.social — the community Mastodon instance for
+      the Dolomite mountain village of Val di Ferro, South Tyrol.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @matteo_zeni.
+
+      A young rifugista — keeper of the Rifugio Stella Alpina at 2,450
+      metres. He knew every trail, every rock face, every weather pattern.
+      People are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> matteo_profile
+
+  matteo_profile:
+    type: tweet
+    from: matteo
+    text: "Hanno iniziato a scavare sotto la Croda Rossa. La via ferrata è compromessa. Ho le foto. Qualcuno deve fermarli."
+    choices:
+      - That's his last real post... -> grey_peak
+
+  grey_peak:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a grey mountain peak. Blurred, overexposed, taken from a strange
+      angle. Posted at 4am. No caption.
+
+      His friends say that's not his style. The Carabinieri say he
+      probably went on a solo hike. Something doesn't add up.
+    choices:
+      - Read the Carabinieri statement -> carabinieri_statement
+      - Look at what people are saying -> community_reaction
+
+  carabinieri_statement:
+    type: tweet
+    from: maresciallo
+    text: >
+      Abbiamo ricevuto una segnalazione riguardante un residente di
+      Val di Ferro. Allo stato attuale non risultano elementi che
+      facciano pensare a un atto criminoso. Chiunque abbia informazioni
+      utili è pregato di contattare il 112 o la Stazione.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @elisa_zeni is furious. His
+      climbing partner @lorenzo_bianchi is organising search parties. His
+      girlfriend @francesca_moretti is posting desperate messages. The
+      old shepherd @pietro_dallavalle says the mountain doesn't lie.
+
+      And the journalist @valentina_rigoni is strangely silent.
+
+      Nobody buys the Carabinieri's line. Nobody thinks Matteo just
+      "went hiking."
+    effects: { trust_elisa: "+5", trust_lorenzo: "+5" }
+    choices:
+      - Start following Matteo's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Val di Ferro. Follow Matteo's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Hans (Gasthof owner, knows everyone) -> hans_intro
+      - Talk to Pietro (shepherd, saw the construction) -> pietro_intro
+      - Talk to Chiara (teen climber, seems shaken) -> chiara_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Matteo with the rhythms of a small
+      mountain village: weather warnings, trail conditions, the Gasthof's
+      daily specials, Alpine rescue updates.
+
+      Key names surface: Elisa (sister, nurse in Bolzano), Lorenzo
+      (climbing partner, seems wrecked), Francesca (girlfriend, studying
+      geology in Trento), and the teens — Chiara, Luca, Nina — who
+      looked up to Matteo.
+
+      Also prominent: DoloCable SpA, the cable car company building a
+      new lift through protected Dolomite territory. Their posts are
+      corporate PR. Matteo's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Hans -> hans_intro
+      - Talk to Pietro -> pietro_intro
+      - Talk to Chiara -> chiara_intro
+
+  # --- Hans (social map) ---
+
+  hans_intro:
+    type: tweet
+    from: hans
+    text: >
+      La Stube è aperta ma senza @matteo_zeni non è lo stesso. Quel
+      ragazzo passava sempre dopo la discesa. Matteo, il tuo tavolo
+      ti aspetta.
+    effects: { trust_hans: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Hans -> hans_talk
+
+  hans_talk:
+    type: message
+    text: >
+      HANS: Ah, you're new? Willkommen. Bad time to arrive. The whole
+      valley is on edge about Matteo.
+
+      Let me tell you who's who. Elisa is his sister — a nurse up in
+      Bolzano. Strong woman, she'll tear the mountain apart looking for
+      him. Lorenzo Bianchi is his climbing partner, a guide. Those two
+      were like brothers. Francesca is his girlfriend, studies geology
+      in Trento. Comes up every weekend.
+
+      And then there's Sofia Keller. Tourist from Munich. Came here
+      three summers in a row. Always at the rifugio. Always with
+      Matteo. Started coming more often. Then every week. Francesca
+      didn't like it but Matteo said she was harmless.
+
+      Oh, and DoloCable — don't get me started. They want to build a
+      cable car through the Croda Rossa. Matteo was the loudest voice
+      against it. The sindaco is in their pocket.
+    effects: { trust_hans: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Sofia -> hans_sofia
+      - Ask about DoloCable -> hans_dolocable
+      - Thank him and move on -> quest1_hub
+
+  hans_sofia:
+    type: message
+    text: >
+      HANS: Sofia? Boh, how do I put this. She came for the mountains
+      at first. Then she came for Matteo. You could see it — the way
+      she looked at him, the way she'd find excuses to stay at the
+      rifugio longer.
+
+      Matteo was kind to everyone. Too kind, maybe. She'd sit at the
+      bar for hours just watching him work. He told Francesca it was
+      nothing. But I run a Gasthof — I know when someone is drinking
+      at my bar for the food, and when they're drinking for something
+      else.
+
+      After he told her he had a girlfriend, she got... strange. Quiet.
+      But she didn't stop coming. If anything she came more.
+    effects: { trust_hans: "+5" }
+    choices:
+      - Ask about DoloCable -> hans_dolocable
+      - Move on -> quest1_hub
+
+  hans_dolocable:
+    type: message
+    text: >
+      HANS: DoloCable wants to build a cable car from the valley floor
+      to the Croda Rossa ridge. Right through protected Natura 2000
+      territory. UNESCO Dolomites buffer zone. They say it'll bring
+      tourists and jobs.
+
+      The sindaco — Andreas — he's all for it. Porco dio, the man sees
+      euro signs where the rest of us see chamois and edelweiss. Matteo
+      found out DoloCable was already doing test drilling up there
+      before the permits were approved. He had photos. Raga, the kid
+      was brave.
+
+      Two weeks after he posted those photos, he's gone.
+    effects: { trust_hans: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pietro (the mountain, witness tease) ---
+
+  pietro_intro:
+    type: tweet
+    from: pietro
+    text: >
+      cinquant'anni che porto le pecore su questi sentieri. la
+      montagna non è più la stessa. @matteo_zeni lo sapeva. e adesso
+      è sparito. fate voi il collegamento.
+    effects: { trust_pietro: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Pietro -> pietro_talk
+
+  pietro_talk:
+    type: message
+    text: >
+      PIETRO: I've been herding sheep on these paths since I was
+      fifteen. I know every rock, every stream, every sound the wind
+      makes through the pass. And I'm telling you — something is wrong
+      up at the Croda Rossa.
+
+      They've been bringing heavy equipment up the old mule track at
+      night. Drilling rigs, concrete mixers. Before any permit. Before
+      any approval. Matteo hiked up there and photographed everything.
+      He was building a case.
+
+      Then poof — sparito.
+
+      You think that's a coincidence? In these mountains, nothing is
+      a coincidence.
+    effects: { trust_pietro: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> pietro_night
+      - Move on -> quest1_hub
+
+  pietro_night:
+    type: message
+    text: >
+      PIETRO: The night before he vanished — I was coming down from
+      the high pasture around midnight. I saw lights at the rifugio.
+      Not unusual, Matteo works late. But there were headlights on
+      the access road. A big SUV, the kind with the DoloCable logo.
+      Black. Expensive.
+
+      At midnight. On a mountain road that's normally closed after
+      dark.
+
+      I didn't think much of it then. Madonna, I think about it
+      every night now.
+    effects: { trust_pietro: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Chiara (teen climber, witness tease) ---
+
+  chiara_intro:
+    type: tweet
+    from: chiara
+    text: >
+      cazzo raga @matteo_zeni è lui che mi ha insegnato ad
+      arrampicare tipo sul serio non è possibile che sia partito
+      così. se qualcuno sa qualcosa per favore dite qualcosa
+    effects: { trust_chiara: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Chiara -> chiara_talk_early
+
+  chiara_talk_early:
+    type: message
+    text: >
+      CHIARA: fra sei nuovo? boh che timing di merda. comunque
+      matteo è tipo la persona migliore di questa valle. ci ha
+      insegnato ad arrampicare, ci portava sui sentieri, ci
+      raccontava le storie delle montagne. troppo forte.
+
+      e adesso sono in para perché luca ha visto una roba strana
+      l'altra sera vicino al rifugio ma non ne vuole parlare. dice
+      che non è niente ma fra... non è niente un cazzo
+    effects: { trust_chiara: "+10" }
+    choices:
+      - What did Luca see? -> chiara_luca_hint
+      - Move on -> quest1_hub
+
+  chiara_luca_hint:
+    type: message
+    text: >
+      CHIARA: boh non so di preciso. era in sessione trail running
+      e ha visto tipo una tipa vicino al rifugio che guardava dentro
+      dalle finestre?? o qualcosa del genere. lui flippa troppo non
+      vuole parlarne. devi chiedergli te ma è diffidente con la gente
+      che non conosce. prova prima a parlare di mtb con lui lol
+    effects: { trust_chiara: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Val di Ferro. A Dolomite village
+      between Italian and Tyrolean cultures. A young rifugista who
+      was fighting a cable car development. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Francesca (Matteo's girlfriend) -> francesca_q1
+      - Talk to Lorenzo (Matteo's climbing partner) -> lorenzo_q1
+      - Check what Elisa (Matteo's sister) is saying -> elisa_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Francesca Q1 ---
+
+  francesca_q1:
+    type: tweet
+    from: francesca
+    text: >
+      se qualcuno ha notizie di @matteo_zeni chiamatemi vi prego.
+      il rifugio è chiuso. la sua attrezzatura è ancora lì. non
+      sarebbe mai partito senza i suoi ramponi.
+    effects: { trust_francesca: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Francesca -> francesca_q1_talk
+
+  francesca_q1_talk:
+    type: message
+    text: >
+      FRANCESCA: I appreciate you reaching out but I don't know you.
+      Matteo has a lot of friends here. I'm sure he'll come back.
+
+      ...I keep telling myself that. Non ci credo più.
+
+      [Francesca is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_francesca: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Lorenzo Q1 ---
+
+  lorenzo_q1:
+    type: tweet
+    from: lorenzo
+    text: >
+      Squadra di ricerca domani alle 6. Partenza dal parcheggio
+      della funivia. Portate corda, lampade frontali, radio.
+      @matteo_zeni lo troviamo noi se i carabinieri non si muovono.
+    effects: { trust_lorenzo: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lorenzo -> lorenzo_q1_talk
+
+  lorenzo_q1_talk:
+    type: message
+    text: >
+      LORENZO: Matteo and I have climbed together for five years.
+      Every via ferrata, every parete, every winter route. He knows
+      these mountains like his hands. He doesn't just disappear.
+
+      The last thing he told me was about DoloCable. He said they'd
+      started drilling at night, up on the Croda Rossa. Said he had
+      photos that would stop the whole project. Then he went quiet.
+
+      I've searched every trail, every bivacco, every crevasse I know.
+      Nothing. He's not lost in the mountains. Something happened to
+      him at the rifugio.
+    effects: { trust_lorenzo: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Elisa Q1 ---
+
+  elisa_q1:
+    type: tweet
+    from: elisa
+    text: >
+      mio fratello è SPARITO e i carabinieri mi dicono che forse è
+      andato a fare un'escursione??? MA CHE CAZZO. NON PARTE SENZA
+      AVVISARE. arrivo da bolzano. qualcuno mi deve spiegare.
+    effects: { trust_elisa: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Elisa -> elisa_q1_talk
+
+  elisa_q1_talk:
+    type: message
+    text: >
+      ELISA: Who are you? Another one from this valley who's going
+      to tell me to calm down? My brother called me the night before
+      he disappeared. He said he had something big. He said "se
+      succede qualcosa, guarda DoloCable." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_elisa: "+10" }
+    choices:
+      - What do you think happened? -> elisa_theory
+      - Move on -> quest1_hub
+
+  elisa_theory:
+    type: message
+    text: >
+      ELISA: I think he found proof that DoloCable is building
+      illegally in a protected zone and they shut him up. The
+      sindaco is in on it — everyone knows Andreas gets kickbacks
+      from the tourism revenue.
+
+      But there's something else. Matteo told me months ago about
+      this woman — a tourist — who kept coming to the rifugio.
+      Sofia, something. She was always there. Following him on the
+      trails. He said it was nothing but I could hear it in his
+      voice. He was creeped out.
+
+      Cazzo, I should have listened.
+    effects: { trust_elisa: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Matteo went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Luca (was trail running near the rifugio) -> luca_interview
+      - Find Bruno (old cable car operator, works early) -> bruno_interview
+      - Find Stefan (mountain rescue, got a strange call) -> stefan_interview
+      - Find Rosa (pharmacist, opens early, saw something) -> rosa_interview
+
+  # --- Luca (saw someone at the rifugio) ---
+
+  luca_interview:
+    type: tweet
+    from: luca
+    text: >
+      bella sessione oggi ma l'atmosfera in valle è strana tipo.
+      c'è qualcosa che non va. boh non so spiegare
+    effects: { trust_luca: "+5" }
+    choices:
+      - Ask Luca about that evening -> luca_talk
+
+  luca_talk:
+    type: message
+    text: >
+      LUCA: fra ok ma non dirlo a nessuno eh. ero su al sentiero
+      verso le 18 tipo sessione sunset. e ho visto una tipa vicino
+      al rifugio. la bionda — quella tedesca che viene sempre — la
+      sofia. stava tipo a guardare dentro dalle finestre. quando mi
+      ha visto è scappata via velocissima giù per il sentiero.
+
+      tipo io non ho detto niente perché non volevo casini ma fra
+      adesso è pesante. non è normale sto comportamento dio cane
+    effects:
+      trust_luca: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Bruno (old cable car, saw late-night vehicles) ---
+
+  bruno_interview:
+    type: tweet
+    from: bruno
+    text: >
+      Promemoria: la strada di accesso alla Croda Rossa è chiusa
+      al traffico dopo le 20. Ho notato passaggi non autorizzati
+      queste ultime notti.
+    effects: { trust_bruno: "+5" }
+    choices:
+      - Ask Bruno what he saw -> bruno_talk
+
+  bruno_talk:
+    type: message
+    text: >
+      BRUNO: I was closing the old cable car station around 22h. I
+      saw headlights going up the mountain road — the one that leads
+      past the rifugio to the Croda Rossa. A big black SUV. DoloCable
+      plates. And behind it, a truck with drilling equipment covered
+      by tarps.
+
+      At 22h. On a road that's supposed to be closed.
+
+      Then around midnight, I heard the SUV come back down. Fast.
+      Too fast for that road. I noted it in the station log. Nobody's
+      asked to see it.
+    effects:
+      trust_bruno: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Stefan (mountain rescue, got a call) ---
+
+  stefan_interview:
+    type: tweet
+    from: stefan
+    text: >
+      soccorso alpino: nessuna chiamata di emergenza registrata
+      riguardo matteo zeni. il che è strano. in queste montagne
+      se qualcuno è disperso, qualcuno chiama.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Ask Stefan what he knows -> stefan_talk
+
+  stefan_talk:
+    type: message
+    text: >
+      STEFAN: Here's what's strange. Around 2am that night, I got
+      a call on the rescue line. A woman's voice — foreign accent,
+      maybe German — saying someone was hurt near the rifugio. I
+      asked for details. She hung up.
+
+      I dispatched a team at first light. We found nothing. No
+      injured hiker. But the rifugio door was open, lights still
+      on, Matteo's dinner half-eaten on the table. His emergency
+      radio was still charging. His rucksack was packed by the door
+      like he was about to leave.
+
+      Whoever called either made a mistake or wanted us to find
+      something. Or not find someone.
+    effects:
+      trust_stefan: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Rosa (saw someone running) ---
+
+  rosa_interview:
+    type: tweet
+    from: rosa
+    text: >
+      Aperta alle 7 come sempre. Ma stamattina c'era qualcuno
+      che correva giù dal sentiero della Croda Rossa. Nel buio.
+      Non era un escursionista.
+    effects: { trust_rosa: "+5" }
+    choices:
+      - Ask Rosa what she saw -> rosa_talk
+
+  rosa_talk:
+    type: message
+    text: >
+      ROSA: I open the pharmacy at 7am. That morning — the morning
+      after Matteo's last post — I was unlocking the shutters and I
+      saw someone coming down the mountain path. Running. A man,
+      carrying a bag, heading toward the DoloCable car park.
+
+      It was still half dark. He was moving fast, looking over his
+      shoulder. He got into a black car and drove off toward Bolzano.
+
+      When I heard about Matteo, I put it together. I told the
+      Carabinieri. They wrote it down. That was it.
+    effects:
+      trust_rosa: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Francesca
+      (girlfriend) and Nina (saw Sofia watching the rifugio).
+    choices:
+      - Talk to Francesca about that night -> francesca_interview
+      - Talk to Nina -> nina_interview
+      - Find Luca -> luca_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Bruno -> bruno_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Stefan -> stefan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Rosa -> rosa_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Francesca (last to talk to Matteo) ---
+
+  francesca_interview:
+    type: tweet
+    from: francesca
+    text: >
+      quella foto sul profilo di matteo. non è lui. matteo non
+      posta mai senza didascalia. matteo non posta alle 4 di notte.
+      qualcun altro l'ha fatto.
+    effects: { trust_francesca: "+5" }
+    choices:
+      - DM Francesca -> francesca_talk_low
+        when:
+          state: trust_francesca
+          lt: 50
+      - DM Francesca -> francesca_talk_high
+        when:
+          state: trust_francesca
+          gte: 50
+
+  francesca_talk_low:
+    type: message
+    text: >
+      FRANCESCA: I appreciate the concern but I really don't want
+      to talk to strangers about this right now.
+
+      [Francesca needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_francesca: "+5" }
+    choices:
+      - Share what you've learned about the night -> francesca_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  francesca_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV on the mountain road,
+      the DoloCable truck, the mysterious phone call, the running man.
+      Francesca is silent for a while.
+
+      FRANCESCA: You're actually trying to find him. Ok. Ti racconto.
+    effects: { trust_francesca: "+25" }
+    choices:
+      - What happened that night? -> francesca_talk_high
+
+  francesca_talk_high:
+    type: message
+    text: >
+      FRANCESCA: I called him around 22h. I was in Trento studying.
+      He sounded scared, which never happens — Matteo is the guy who
+      free-solos in winter. He said "they came to the rifugio. They
+      told me to delete everything or they'd bury me with the mountain."
+
+      I asked who. He said "DoloCable. Tessari sent his people." Then
+      he said something else — "and she was here again. She's always
+      here. I found things she left."
+
+      He wouldn't say what "things." He said "ti amo, non preoccuparti"
+      and hung up. By morning his account posted that grey photo and
+      his phone was dead.
+    effects:
+      trust_francesca: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Nina (saw Sofia watching the rifugio) ---
+
+  nina_interview:
+    type: message
+    text: >
+      NINA: ok fra in realtà è assurdo quello che devo dire ma
+      tipo la turista — la sofia — l'ho vista tipo 4 volte vicino
+      al rifugio la sera. stava lì a guardare le finestre. troppo
+      creepy madonna.
+
+      l'ultima volta era tipo 2 giorni prima che matteo sparisse.
+      era seduta su una roccia a 50 metri dal rifugio. nel buio.
+      con il binocolo. giuro su dio. col cazzo che è normale.
+    effects:
+      trust_nina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      18:00 — Sofia seen watching the rifugio windows (Luca)
+      22:00 — DoloCable SUV and drilling truck heading up Croda Rossa (Bruno)
+      22:00 — Matteo tells Francesca "they came, she's always here" (Francesca)
+      02:00 — Anonymous female caller reports injury at rifugio (Stefan)
+      07:00 — Man running from Croda Rossa to DoloCable car park (Rosa)
+
+      DoloCable sent people to threaten Matteo at the rifugio. He
+      packed to flee. Someone — maybe Sofia — was also there watching.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The development: What is DoloCable hiding? Who ordered the
+        threats? Where are the sindaco's kickbacks going?
+      — The obsession: What is Sofia really doing? Why won't she
+        stop coming?
+    choices:
+      - Investigate the DoloCable cover-up -> corruption_hub
+      - Investigate Sofia -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      DoloCable is building through protected Dolomite territory.
+      Matteo had photos of illegal drilling. Now he's gone and his
+      camera SD cards are missing from the rifugio.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the rifugio records -> rifugio_records
+      - Talk to Valentina the journalist -> valentina_interview
+      - Talk to Giulia (environment assessore) -> giulia_interview
+      - Talk to Bruno about DoloCable's night operations -> bruno_dolocable
+      - Check the Sentinelle delle Dolomiti association -> asso_investigation
+      - Talk to Pietro about the drilling -> pietro_drilling
+      - Back to hub -> investigation_hub
+
+  # --- Rifugio Records ---
+
+  rifugio_records:
+    type: message
+    text: >
+      The rifugio's public guest book, shared online for mountain
+      safety, shows Matteo's recent entries: weather reports, trail
+      conditions, wildlife sightings. But the last three entries are
+      different.
+
+      "20:15 — Heavy vehicle traffic on Croda Rossa access road.
+      Drilling equipment. No permits displayed. Photographed."
+
+      "21:30 — Second night of drilling. Measured noise at 75dB.
+      Chamois herd displaced from east face."
+
+      "19:45 — Found survey markers on via ferrata route. DoloCable
+      logo. The planned cable car station is directly on the ferrata
+      anchor points. This destroys the route."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Valentina ---
+
+  valentina_interview:
+    type: message
+    text: >
+      VALENTINA: I don't talk about sources. Period.
+    effects: { trust_valentina: "+5" }
+    choices:
+      - Show Valentina the evidence you have -> valentina_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  valentina_with_evidence:
+    type: message
+    text: >
+      VALENTINA: ...you have more than I expected.
+
+      Ok. Matteo and I were working together. He had photos of
+      DoloCable drilling on Natura 2000 land — before any permit
+      was issued. He had noise measurements showing violations. He
+      had drone footage of the drilling site with GPS coordinates
+      proving it's inside the protected zone.
+
+      We were going to publish together. Then he went dark. And
+      two days later, someone broke into my office in Bolzano and
+      took my backup hard drive.
+
+      Matteo is alive. He contacted me once, from a burner phone.
+      He said he was hiding in a bivacco. He said "they threatened
+      me at the rifugio and someone else won't leave me alone."
+
+      I can't tell you where he is. But with enough evidence, I
+      can publish and make it safe for him to come back.
+    effects:
+      trust_valentina: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> valentina_hint
+      - Back to investigation hub -> investigation_hub
+
+  valentina_hint:
+    type: message
+    text: >
+      VALENTINA: DoloCable sent their CEO — Marco Tessari — and
+      some hired muscle to the rifugio that night. They told him
+      to hand over every photo and SD card or they'd make sure he
+      never worked in these mountains again. Intimidation. Pure
+      and simple.
+
+      But he also said something about a woman. Someone who'd been
+      showing up at the rifugio constantly. Someone who left things
+      for him — gifts, letters. Someone who knew his routes before
+      he posted them. That's a different kind of threat.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Giulia (environment assessore) ---
+
+  giulia_interview:
+    type: message
+    text: >
+      GIULIA: As assessore all'ambiente, I take these allegations
+      very seriously. But DoloCable has promised 150 jobs and the
+      sindaco says we can't block progress. He keeps saying "il
+      turismo è il futuro della valle."
+
+      Off the record? I've seen the provincial environmental impact
+      assessment. DoloCable passed. But that assessment was done by
+      a firm that DoloCable also pays as a consultant. Madonna, it's
+      the same people writing and reviewing the report.
+
+      Matteo had independent data — drone footage, noise levels,
+      wildlife displacement counts. Data they couldn't control.
+      That's what makes it dangerous.
+    effects:
+      trust_giulia: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Bruno on DoloCable ---
+
+  bruno_dolocable:
+    type: message
+    text: >
+      BRUNO: I've run the old cable car for 30 years. DoloCable
+      wants to demolish my station and build their mega-lift. But
+      that's not the worst part.
+
+      I've been keeping a log. Every night they send equipment up
+      the mountain. I have dates, times, vehicle registrations. In
+      six weeks I've counted 23 illegal night transports. Drilling
+      rigs, concrete, steel cable. They're building the foundations
+      before the permit is even signed.
+
+      The sindaco knows. He signed a "preliminary agreement" with
+      DoloCable for a "tourism development fee" — merda, it's a
+      bribe. 200,000 euro to the comune's "development fund." The
+      fund that only the sindaco controls.
+    effects:
+      trust_bruno: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sentinelle delle Dolomiti ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_montagna
+    text: >
+      ALLARME: Attività di scavo non autorizzata sulla Croda Rossa
+      in zona Natura 2000. Foto e documentazione in corso. Chiediamo
+      ispezione immediata della Provincia.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Sentinelle delle Dolomiti have been documenting the Croda
+      Rossa area for two years. Their data shows a devastating
+      pattern: chamois population down 40%. Golden eagle nesting
+      site abandoned due to noise. Rare alpine flora destroyed at
+      three drill sites.
+
+      The drilling coordinates fall squarely within the Natura 2000
+      zone — the one DoloCable's environmental assessment said
+      would not be affected.
+
+      Matteo was their most active volunteer. He contributed most
+      of the wildlife surveys and all of the drone footage.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Pietro drilling ---
+
+  pietro_drilling:
+    type: message
+    text: >
+      PIETRO: I'll show you something. Last week I found this near
+      my high pasture — a concrete foundation block, poured fresh,
+      with DoloCable rebar markers embedded in it. Right in the
+      middle of a chamois migration route.
+
+      I photographed it and sent it to Matteo the day before he
+      disappeared. He said it was the missing piece — proof they
+      were building permanent structures in the protected zone,
+      not just doing "test surveys" like they claim.
+
+      I still have the photos. And the GPS coordinates.
+    effects:
+      trust_pietro: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Sofia Keller. Tourist. Repeat visitor. Something more? Someone
+      was watching the rifugio. Someone left gifts and letters.
+      Someone knew his routes before he posted them. Someone called
+      mountain rescue at 2am with a fake report.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Sofia's visit history -> visit_history
+      - Talk to Francesca about Sofia -> francesca_sofia
+        when:
+          state: trust_francesca
+          gte: 20
+      - Talk to Luca (more detail on the rifugio) -> luca_detail
+      - Talk to Rosa about Sofia -> rosa_sofia
+      - Check the anonymous account @thomas_brenner -> thomas_investigation
+      - Talk to Hans about Sofia's stays -> hans_sofia_detail
+        when:
+          state: trust_hans
+          gte: 40
+      - Talk to Maresciallo De Luca -> maresciallo_interview
+        when:
+          state: trust_maresciallo
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Visit History ---
+
+  visit_history:
+    type: message
+    text: >
+      The rifugio's guest book is public. Cross-referencing Sofia
+      Keller's name: she signed in 34 times in the past 8 months.
+      She lives in Munich — that's a 4-hour drive each way.
+
+      The pattern escalates: once a month, then twice, then weekly,
+      then three times a week. Her comments in the guest book change
+      too.
+
+      Month 1: "Beautiful mountains! Matteo is a wonderful host."
+      Month 4: "Why didn't you answer my message? I came all this
+      way."
+      Month 7: "I know you're avoiding me. I can see the light in
+      your window."
+
+      The last entry, two days before Matteo vanished: "I left
+      something for you. You'll find it."
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Francesca on Sofia ---
+
+  francesca_sofia:
+    type: message
+    text: >
+      FRANCESCA: Sofia? Cazzo. That woman made Matteo uncomfortable
+      and me furious. She'd show up at the rifugio every weekend. At
+      first she was friendly — just another tourist. Then she started
+      staying until closing. Then she'd appear on trails that Matteo
+      hadn't even announced yet.
+
+      He told her he had a girlfriend. Clearly, kindly. She said she
+      understood. Nothing changed. She just... kept coming. Always
+      there. Always watching.
+
+      A month ago Matteo found gifts outside the rifugio door in the
+      morning. A carved edelweiss. A handwritten letter. Twenty pages
+      long. He didn't read it to me but I saw his face. He looked sick.
+    effects:
+      trust_francesca: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Luca detail ---
+
+  luca_detail:
+    type: message
+    text: >
+      LUCA: fra ok in realtà non ho detto tutto. quando ho visto la
+      sofia al rifugio quella sera aveva una roba in mano. tipo una
+      busta. l'ha infilata sotto la porta del rifugio e poi è rimasta
+      lì a guardare per tipo mezz'ora.
+
+      e un'altra volta — una settimana prima — l'ho vista sul
+      sentiero dietro al rifugio con una telecamerina. tipo quelle
+      piccole che si nascondono. l'ha attaccata a un albero puntata
+      sulla porta di matteo.
+
+      fra io non sono un esperto ma quella è una telecamera spia.
+      porco dio. chi fa ste cose.
+    effects:
+      trust_luca: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rosa on Sofia ---
+
+  rosa_sofia:
+    type: message
+    text: >
+      ROSA: This is confidential but I'm a pharmacist, not a priest.
+      Sofia Keller came into the pharmacy several times. She bought
+      binoculars — the expensive kind. And she asked me, very casually,
+      where she could buy a trail camera. The kind hunters use. Motion
+      activated.
+
+      She also asked about Matteo's schedule. When does the rifugio
+      open, when does he come to town, does he have a girlfriend. She
+      said she was "just a fan of his mountain work."
+
+      I didn't think about it until he disappeared. Madonna, I should
+      have said something.
+    effects:
+      trust_rosa: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Thomas (anonymous account) ---
+
+  thomas_investigation:
+    type: tweet
+    from: thomas
+    text: >
+      He should have listened. I was trying to show him how much
+      I care. Nobody else understands the mountains like I do.
+    choices:
+      - Look at this account's history -> thomas_posts
+
+  thomas_posts:
+    type: message
+    text: >
+      @thomas_brenner: account created 7 months ago. Posts are all
+      about Matteo's work at the rifugio. Comments on every sunset
+      photo, every trail report, every weather update. The tone shifts
+      over time:
+
+      Month 1: "Amazing work. You make the mountains come alive."
+      Month 3: "Why don't you reply to me? I just want to hike
+      with you."
+      Month 5: "I see you with that girl. She doesn't deserve you.
+      I would never leave the mountains like she does."
+      Month 7: "I know your routes. I know your schedule. I'm always
+      nearby."
+
+      The account has no photos, no personal details. Just Matteo.
+      Only Matteo.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> thomas_style
+
+  thomas_style:
+    type: message
+    text: >
+      Comparing @thomas_brenner with @sofia_keller:
+
+      Same use of German-influenced phrasing when writing in Italian.
+      Same misspelling of "sentiero" as "sentero." Same detailed
+      knowledge of routes that Sofia posted about on her public
+      hiking account last summer.
+
+      And one post from @thomas_brenner: "Your view from the north
+      window at sunset was beautiful tonight." The north window of the
+      rifugio faces a rock outcrop 50 metres away. Not visible from
+      any trail. Only from someone standing on that outcrop. With
+      binoculars.
+
+      It's Sofia. The anonymous account is Sofia.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Hans detail ---
+
+  hans_sofia_detail:
+    type: message
+    text: >
+      HANS: Sofia stayed at my Gasthof 17 times in the last six
+      months. Always asked for the room facing the mountain path
+      — the one where you can see the rifugio trail.
+
+      She'd leave at dawn and come back after dark. One time my
+      daughter cleaned her room and found a wall covered in photos.
+      All Matteo. Printed from his social media, from the rifugio
+      webcam, from the village security camera at the piazza. Photos
+      of him she couldn't have taken without following him.
+
+      Vaffanculo, I should have thrown her out. But she was a paying
+      guest and I thought it was just a crush.
+
+      Last time she checked out, she left a note on the table.
+      "This isn't over."
+    effects:
+      trust_hans: "+15"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Maresciallo De Luca ---
+
+  maresciallo_interview:
+    type: message
+    text: >
+      MARESCIALLO DE LUCA: Off the record — and I mean completely
+      off the record — I wanted to investigate DoloCable. My
+      superiore told me to stand down. He said the Provincia had
+      "jurisdiction." That means "don't touch it."
+
+      The Keller situation is different. I didn't even know about
+      the stalking until now. If you have evidence of persecutory
+      behaviour, I can act on that. That's clearly within my
+      jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_maresciallo: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Matteo than anyone in Val di Ferro. Who is responsible?
+    choices:
+      - Confront Sofia Keller (the obsessive tourist) -> confront_sofia
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Marco Tessari (the DoloCable CEO) -> confront_tessari
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Sindaco Hofer (political protection) -> confront_andreas
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Sofia (Best Ending) ---
+
+  confront_sofia:
+    type: message
+    text: >
+      You present your evidence to Sofia:
+
+      "I know @thomas_brenner is your account. I know you installed
+      a hidden camera outside the rifugio. I know about the letters,
+      the binoculars, the wall of photos at the Gasthof. I know you
+      made the fake rescue call at 2am. I have witnesses and I have
+      the guest book entries."
+    choices:
+      - Send -> sofia_response
+
+  sofia_response:
+    type: message
+    text: >
+      Sofia doesn't reply for a long time. Then:
+
+      SOFIA: You don't understand. I love him. The mountains, the
+      rifugio, everything — it's not the same without him. I was
+      protecting him. He's in danger from those DoloCable people and
+      he won't let anyone help. I needed to be close. Everything I
+      did was because I care about him.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Maresciallo De Luca. And
+      to Valentina Rigoni.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Maresciallo De Luca reopens the case. With your evidence —
+      the anonymous account, the hidden camera, the wall of photos,
+      the fake rescue call, the witness testimonies — Sofia Keller
+      is arrested for stalking and harassment under Italian law. A
+      trail camera is recovered from the tree outside the rifugio.
+      Her phone contains 2,000 photos of Matteo taken without his
+      knowledge.
+
+      Valentina Rigoni, finally in possession of Matteo's full
+      evidence package, publishes the DoloCable story in Corriere
+      della Sera. The Provincia di Bolzano orders an immediate halt
+      to all construction on the Croda Rossa. Marco Tessari faces
+      criminal charges for building in a Natura 2000 zone without
+      permits. The sindaco's "development fund" is investigated by
+      the Guardia di Finanza.
+
+      And Matteo Zeni, reading the story from a bivacco above the
+      tree line, calls his sister for the first time in nine days.
+
+      "Torno a casa."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: matteo
+    text: >
+      la montagna non tradisce mai. e la gente di val di ferro
+      nemmeno. grazie di non aver mollato.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Tessari (Partial Ending) ---
+
+  confront_tessari:
+    type: message
+    text: >
+      You present the construction evidence to Marco Tessari:
+
+      "I have drone footage of your drilling sites inside the Natura
+      2000 zone. I have noise measurements and wildlife displacement
+      data. I have Bruno's transport log with 23 illegal night
+      deliveries. I have the sindaco's 'development fund' agreement.
+      I have the concrete foundations with your rebar markers."
+    choices:
+      - Send -> tessari_response
+
+  tessari_response:
+    type: message
+    text: >
+      TESSARI: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate legal action. DoloCable has always operated within
+      applicable regulations and holds all necessary permits.
+
+      But it's too late. You've sent the evidence to Valentina, to
+      the Sentinelle delle Dolomiti, and to the Provincia.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The development story breaks. DoloCable is ordered to halt all
+      work pending investigation. The cable car project may be dead.
+      The promised 150 jobs evaporate. The valley is divided between
+      relief and fury.
+
+      But Matteo?
+
+      Without the stalking evidence, Sofia is never investigated.
+      She continues to visit the valley. She creates a new anonymous
+      account. She buys new cameras.
+
+      Three months later, Matteo reads about DoloCable online. He
+      returns quietly. He reopens the rifugio. He installs locks on
+      every window. He stops hiking alone. He checks the trees around
+      the rifugio every morning.
+
+      The corporation is stopped. But the person who terrorised
+      Matteo walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: matteo
+    text: "sono tornato. la croda rossa è salva. il resto... si vedrà."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Sindaco (Wrong Ending) ---
+
+  confront_andreas:
+    type: message
+    text: >
+      You confront Sindaco Hofer with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> andreas_response
+
+  andreas_response:
+    type: tweet
+    from: marta
+    text: >
+      Il mio cliente prende atto delle sue accuse. Qualsiasi
+      diffusione pubblica di affermazioni diffamatorie sarà oggetto
+      di immediata azione legale. — Studio Legale Fabbri & Partners,
+      Bolzano
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The sindaco's lawyer buries your accusation. Without a direct
+      link between Hofer and DoloCable's illegal construction — and
+      the "development fund" is technically legal — your evidence is
+      insufficient to prove corruption.
+
+      DoloCable continues to build. Sofia continues to watch. Matteo
+      stays in hiding.
+
+      Six months later, @thomas_brenner creates a new account. It
+      follows Matteo's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VAL DI FERRO — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Matteo's story explores themes of
+      corporate greed, environmental destruction, obsessive behaviour,
+      mountain community solidarity, and the courage to defend the
+      landscape we love.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Telefono Amico: 02 2327 2327
+      Anti Stalking: 800 014 414 (numero verde)
+      Emergenze Ambientali: 1515 (Corpo Forestale)

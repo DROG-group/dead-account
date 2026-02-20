@@ -1,0 +1,1570 @@
+# DEAD ACCOUNT — Story 076: Xlendi Gardens (Malta, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-076.yml
+#
+# Player investigates the disappearance of lace maker Maria Borg
+# in the fictional Gozo village of Xlendi Gardens.
+
+meta:
+  title: "Dead Account — Xlendi Gardens"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_carmen: 0
+    trust_pawlu: 0
+    trust_rita: 0
+    trust_toni: 0
+    trust_leli: 0
+    trust_kurt: 0
+    trust_bettina: 0
+    trust_wenzu: 0
+    trust_grace: 0
+    trust_frankie: 0
+    trust_sandro: 0
+    trust_doris: 0
+    trust_noel: 0
+    trust_josette: 0
+    trust_ruben: 0
+    trust_mireille: 0
+    trust_daniela: 0
+    trust_charlene: 0
+    trust_jake: 0
+    trust_ispettur: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    stalker_evidence: 0
+    development_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to xlendi gardens. discovering gozo one limestone wall at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "XlendiGardens.social"
+    description: "Merħba fuq l-instance komunitarja ta' Xlendi Gardens"
+    avatar_url: /gamepatch/assets/dead-account/xlendigardens_bot.png
+
+  npcs:
+    # === Maria's Inner Circle ===
+    maria:
+      name: "Maria Borg"
+      bio: "bizzilla maker | il-ħajt jgħid l-istorja | xlendi gardens born & raised"
+      avatar: avatars/maria.jpg
+    carmen:
+      name: "Carmen Borg"
+      bio: "oħt maria | għalliema tal-primarja | xlendi gardens | fejn hi oħti"
+      avatar: avatars/carmen.jpg
+    pawlu:
+      name: "Pawlu Borg"
+      bio: "missier maria u carmen | sajjied retired | il-baħar jaf kollox"
+      avatar: avatars/pawlu.jpg
+    rita:
+      name: "Rita Camilleri"
+      bio: "l-aħjar ħabiba ta' maria | ħajjata wkoll | craft market kull ħadd"
+      avatar: avatars/rita.jpg
+
+    # === Local Government ===
+    toni:
+      name: "Toni Vella"
+      bio: "Sindku ta' Xlendi Gardens | Naħdmu għal komunità | #XlendiGardensAhjar"
+      avatar: avatars/toni.jpg
+    doris:
+      name: "Doris Grech"
+      bio: "Kunsillier tal-kultura u wirt | Kunsill Xlendi Gardens | protezzjoni tal-patrimonju"
+      avatar: avatars/doris.jpg
+    kunsill:
+      name: "Kunsill Xlendi Gardens"
+      bio: "Kont uffiċjali | Aħbarijiet komunali | Ħinijiet: Tne-Ġim 9am-4pm"
+      avatar: avatars/kunsill.jpg
+
+    # === Local Business & Community ===
+    leli:
+      name: "Leli Galea"
+      bio: "bar tal-pjazza | pastizzi | kinnie | ftit gossip | miftuħ minn 1972"
+      avatar: avatars/leli.jpg
+    wenzu:
+      name: "Wenzu Farrugia"
+      bio: "sajjied | 35 sena fuq il-baħar | dawn l-ilmijiet huma ħajti"
+      avatar: avatars/wenzu.jpg
+    grace:
+      name: "Grace Attard"
+      bio: "spiżjara | Xlendi Gardens | mediċina u pariri | merħba dejjem"
+      avatar: avatars/grace.jpg
+    josette:
+      name: "Josette Mifsud"
+      bio: "ħanina | ħobż u ftajjar | il-forn miftuħ mis-5am | Xlendi Gardens"
+      avatar: avatars/josette.jpg
+    noel:
+      name: "Noel Zammit"
+      bio: "mastrudaxxa | restawr tal-knejjes | xogħol fil-ġebla ta' veru"
+      avatar: avatars/noel.jpg
+
+    # === Journalist ===
+    sandro:
+      name: "Sandro Cassar"
+      bio: "ġurnalist indipendenti | ambjent u żvilupp | tips: sandro@cassarpress.mt"
+      avatar: avatars/sandro.jpg
+
+    # === GozoGold Developments (corporate) ===
+    gozogold:
+      name: "GozoGold Developments Ltd"
+      bio: "Luxury Living in Gozo | Xlendi Gardens Marina Project | #GozoGoldLiving"
+      avatar: avatars/gozogold.jpg
+    frankie:
+      name: "Frankie Schembri"
+      bio: "CEO GozoGold Developments | żvilupp sostenibbli | Gozo merits the best"
+      avatar: avatars/frankie.jpg
+    bettina:
+      name: "Bettina Psaila"
+      bio: "Avukat | Psaila & Associates | Liġi tal-proprjetà | Valletta"
+      avatar: avatars/bettina.jpg
+
+    # === Teens ===
+    kurt:
+      name: "Kurt"
+      bio: "17 | diver | xlendi gardens | il-baħar huwa l-classroom tiegħi frr"
+      avatar: avatars/kurt.jpg
+    charlene:
+      name: "Charlene"
+      bio: "16 | fotografia | xlendi gardens | every wall has a story"
+      avatar: avatars/charlene.jpg
+    ruben:
+      name: "Ruben"
+      bio: "15 | skate & ħut | xlendi born | mela x'sar hawn"
+      avatar: avatars/ruben.jpg
+
+    # === Media & Community ===
+    actu_xlendi:
+      name: "Aħbarijiet Xlendi"
+      bio: "Aħbarijiet ta' Xlendi Gardens u Għawdex | Tips: info@ahbarijietxlendi.mt"
+      avatar: avatars/actu_xlendi.jpg
+    temp_gozo:
+      name: "Temp Għawdex"
+      bio: "Tbassir u twissijiet | Stazzjon awtomatiku | Aġġornament kull siegħa"
+      avatar: avatars/temp_gozo.jpg
+    wirt_ghawdex:
+      name: "Wirt Għawdex"
+      bio: "Protezzjoni tal-wirt kulturali Għawdxi | Volontarji | Rappurtar żvilupp illegali"
+      avatar: avatars/wirt_ghawdex.jpg
+
+    # === Suspicious / Other ===
+    mireille:
+      name: "Mireille Bonnici"
+      bio: "land surveyor | GozoGold | nagħmel xogħli u daqshekk"
+      avatar: avatars/mireille.jpg
+    daniela:
+      name: "Daniela Spiteri"
+      bio: "."
+      avatar: avatars/anon.jpg
+    jake:
+      name: "Jake Thornton"
+      bio: "photographer | travel writer | capturing the real mediterranean | currently: gozo"
+      avatar: avatars/jake.jpg
+    ispettur:
+      name: "Ispettur Borg"
+      bio: "Pulizija ta' Xlendi Gardens | Għassa distrettwali | emerġenzi: 112"
+      avatar: avatars/ispettur.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN XLENDI GARDENS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to XlendiGardens.social — the community Mastodon instance for
+      the village of Xlendi Gardens, Gozo.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @maria_borg.
+
+      A bizzilla lace maker. Heritage keeper. She documented the old craft
+      traditions of the village. People are worried. She hasn't posted
+      in six days.
+    choices:
+      - Look at her profile -> maria_profile
+
+  maria_profile:
+    type: tweet
+    from: maria
+    text: "They want to tear down Triq il-Bizzilla for a marina car park. Over my dead body. I have the heritage protection documents."
+    choices:
+      - That's her last real post... -> grey_lace
+
+  grey_lace:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a close-up of tangled lace threads. Blurred, harsh flash, posted
+      at 2am. No caption.
+
+      Her friends say that's not her style. Maria photographed her lace
+      in natural light, always with a story. The police say she probably
+      went to visit relatives in Australia. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: ispettur
+    text: >
+      Irċivejna rapport dwar residenta ta' Xlendi Gardens. F'dan
+      l-istadju, m'hemm l-ebda element li jissuġġerixxi att kriminali.
+      Kull informazzjoni utli tista' tiġi kkomunikata lill-għassa jew
+      fuq 112.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her sister @carmen_borg is begging for
+      information. Her father @pawlu_borg is pacing the harbour. Her best
+      friend @rita_camilleri says Maria would never leave without her
+      lace frame.
+
+      The fisherman @wenzu_farrugia says something is wrong with the
+      village since GozoGold started buying property. And the journalist
+      @sandro_cassar has gone very quiet.
+
+      There's also a foreign photographer — @jake_thornton — who's been
+      on the instance for months. He seemed to photograph Maria a lot.
+
+      Nobody buys the police line. Nobody thinks Maria just "went to
+      Australia."
+    effects: { trust_carmen: "+5", trust_pawlu: "+5" }
+    choices:
+      - Start following Maria's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Xlendi Gardens. Follow Maria's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Leli (bar owner, knows everyone) -> leli_intro
+      - Talk to Wenzu (fisherman, worried about the village) -> wenzu_intro
+      - Talk to Kurt (teen diver, seems upset) -> kurt_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Maria with the rhythms of a small Gozo
+      village: festa preparations, pastizzi reviews, weather warnings for
+      the channel crossing.
+
+      Key names surface: Carmen (sister, teacher), Rita (best friend,
+      fellow lace maker), Sandro (journalist, oddly silent), and the
+      teens — Kurt, Charlene, Ruben — who admired Maria's craft work.
+
+      Also prominent: GozoGold Developments Ltd, the company building a
+      luxury marina project. Their posts are glossy renders. Maria's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Leli -> leli_intro
+      - Talk to Wenzu -> wenzu_intro
+      - Talk to Kurt -> kurt_intro
+
+  # --- Leli (social map) ---
+
+  leli_intro:
+    type: tweet
+    from: leli
+    text: >
+      Il-bar miftuħ imma l-qalb mhux hemm. @maria_borg, il-mejda
+      tiegħek qed tistenna. Ejja lura.
+    effects: { trust_leli: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Leli -> leli_talk
+
+  leli_talk:
+    type: message
+    text: >
+      LELI: Ah, you're new? Merħba. Bad timing to arrive, ħabib.
+      Everyone's on edge about Maria.
+
+      Let me tell you who's who. Carmen is Maria's younger sister — she
+      teaches at the primary school. Sweet girl, terrified right now.
+      Pawlu is their father, retired fisherman, tough man but he's
+      breaking. Rita Camilleri is Maria's best friend, they do the
+      craft market together every Sunday.
+
+      And there's this photographer — Jake Thornton. English. Been here
+      six months writing some travel book. He's always around Maria.
+      Always taking photos of her working the lace. She told me once
+      it was getting qisek. Uncomfortable. He doesn't take hints.
+
+      Oh, and stay away from GozoGold's PR posts. Gideb wrapped in
+      fancy renders.
+    effects: { trust_leli: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Jake -> leli_jake
+      - Ask about GozoGold -> leli_gozogold
+      - Thank him and move on -> quest1_hub
+
+  leli_jake:
+    type: message
+    text: >
+      LELI: Jake? He showed up maybe six months ago. Said he was writing
+      a book about Mediterranean crafts. He zeroed in on Maria straight
+      away. At first she was flattered — mela, someone interested in
+      bizzilla, finally. But then it got weird.
+
+      He'd be at the craft market every Sunday. He'd sit in my bar
+      waiting for her. He'd walk past her workshop three, four times a
+      day. She told him to give her space. He said he was just "being
+      thorough with research."
+
+      Xi ħmerija. That's not research. That's something else.
+    effects: { trust_leli: "+5" }
+    choices:
+      - Ask about GozoGold -> leli_gozogold
+      - Move on -> quest1_hub
+
+  leli_gozogold:
+    type: message
+    text: >
+      LELI: GozoGold. Mela, where do I start. They bought half of
+      Triq il-Bizzilla — that's the old lace-makers' street, the heart
+      of the village. They want to demolish the workshops and build a
+      marina car park and luxury apartments.
+
+      Maria was the last holdout. She owns her workshop. She has heritage
+      protection documents going back to the British period. Without her
+      signature, GozoGold can't complete the project.
+
+      Two weeks after she started fighting them publicly, she's gone.
+      You do the maths, ħabib.
+    effects: { trust_leli: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Wenzu (the village, witness tease) ---
+
+  wenzu_intro:
+    type: tweet
+    from: wenzu
+    text: >
+      35 sena sajjied hawn. ir-raħal qed jinbidel. @maria_borg kellha
+      raġun. u issa sparixxiet. agħmlu l-konnessjoni.
+    effects: { trust_wenzu: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Wenzu -> wenzu_talk
+
+  wenzu_talk:
+    type: message
+    text: >
+      WENZU: I've been fishing these waters since I was a boy. I know
+      every rock, every current around Xlendi. And I'm telling you —
+      this village is being eaten alive. GozoGold bought the old
+      boathouse, the chandlery, three houses on Triq il-Bizzilla. They
+      want to turn us into a parking lot for yachts.
+
+      Maria was the only one fighting them properly. She had documents —
+      heritage listings, old permits, legal protections. She was building
+      a case with that journalist, Sandro. And then — spariet.
+
+      You think that's a coincidence? Ma nemminx f'koinċidenzi fuq
+      il-baħar.
+    effects: { trust_wenzu: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> wenzu_night
+      - Move on -> quest1_hub
+
+  wenzu_night:
+    type: message
+    text: >
+      WENZU: The night before she vanished — I was coming back from
+      night fishing, around midnight. I saw lights in Maria's workshop
+      on Triq il-Bizzilla. Not unusual, she works late. But there was
+      a rental car parked outside. White Hyundai, tourist plates.
+
+      And there was a man sitting in it. Just sitting there in the
+      dark, watching the workshop windows.
+
+      I didn't think much of it then. Now I think about it constantly.
+    effects: { trust_wenzu: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kurt (teen diver, witness tease) ---
+
+  kurt_intro:
+    type: tweet
+    from: kurt
+    text: >
+      fuck sake mela @maria_borg hi li għallmitni napprezza l-heritage
+      ta' hawn. mhux possibli li telqet hekk. jekk xi ħadd jaf xi ħaġa
+      pls għidu
+    effects: { trust_kurt: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kurt -> kurt_talk_early
+
+  kurt_talk_early:
+    type: message
+    text: >
+      KURT: mela int ġdid hawn? qisek timing. fil-verità maria hija
+      l-aqwa persuna f'dan ir-raħal. hi għallmitna l-istorja tal-post,
+      il-bizzilla, l-affarijiet antiki. wisq cool.
+
+      u issa jien imbeżża' għax charlene rat xi ħaġa stramba l-oħra
+      fil-għaxija ħdejn il-workshop imma ma tridx titkellem. tgħid li
+      mhu xejn imma mela... mhux xejn sah
+    effects: { trust_kurt: "+10" }
+    choices:
+      - What did Charlene see? -> kurt_charlene_hint
+      - Move on -> quest1_hub
+
+  kurt_charlene_hint:
+    type: message
+    text: >
+      KURT: ma nafx eżatt. kienet qed tieħu ritratti fil-pjazza u rat
+      dak il-photographer barrani — jake — qed jipprova jidħol fil-workshop
+      ta' maria. jipprova l-bieb. meta raw li xi ħadd qed jarah, telaq
+      malajr.
+
+      mela min jagħmel hekk?? charlene tibża' titkellem għax jake dejjem
+      iħares lejha meta tieħu ritratti u tħossha skomda. ipprova
+      tkellimha int imma kun ġentili ħi
+    effects: { trust_kurt: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Xlendi Gardens. A Gozo village built
+      around limestone and lace. A heritage keeper who was fighting
+      overdevelopment. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Carmen (Maria's sister) -> carmen_q1
+      - Talk to Rita (Maria's best friend) -> rita_q1
+      - Check what Pawlu (Maria's father) is saying -> pawlu_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Carmen Q1 ---
+
+  carmen_q1:
+    type: tweet
+    from: carmen
+    text: >
+      jekk xi ħadd għandu aħbarijiet ta' @maria_borg ċemplu pls. il-kamra
+      tagħha intatta. il-frame tal-bizzilla hemm. qatt ma kienet titlaq
+      mingħajr il-frame tagħha.
+    effects: { trust_carmen: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Carmen -> carmen_q1_talk
+
+  carmen_q1_talk:
+    type: message
+    text: >
+      CARMEN: I appreciate you reaching out but I don't know you. Maria
+      has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. Ma nemminx aktar.
+
+      [Carmen is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_carmen: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Rita Q1 ---
+
+  rita_q1:
+    type: tweet
+    from: rita
+    text: >
+      il-craft market tal-ħadd mingħajr @maria_borg. il-mejda tagħha
+      vojta. il-bizzilla tagħha nofsinhar lesta fuq il-frame. hi qatt
+      ma tħalli xogħol nofsu lest.
+    effects: { trust_rita: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rita -> rita_q1_talk
+
+  rita_q1_talk:
+    type: message
+    text: >
+      RITA: Maria u jien ilna naħdmu flimkien għaxar snin. I know her
+      better than anyone. She would NEVER leave her lace unfinished.
+      Never. That's how I know something happened.
+
+      And she was scared, the last week. She told me someone was
+      following her. And she told me GozoGold sent people to threaten
+      her about the workshop.
+
+      [Rita seems willing to talk more later.]
+    effects: { trust_rita: "+10" }
+    choices:
+      - Who was following her? -> rita_follower
+      - Move on -> quest1_hub
+
+  rita_follower:
+    type: message
+    text: >
+      RITA: That English photographer. Jake. He started as a customer —
+      bought some lace, asked about techniques. Fine. But then he kept
+      coming back. Every day. Taking photos of her without asking. Waiting
+      outside the workshop.
+
+      She told him to stop. He said she was "his muse" or some xi ħmerija
+      like that. Muse? She's a lace maker, not a painting.
+
+      The last week before she disappeared, she found him inside her
+      workshop. He said the door was open. It wasn't.
+    effects: { trust_rita: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Pawlu Q1 ---
+
+  pawlu_q1:
+    type: tweet
+    from: pawlu
+    text: >
+      BINTI SPARIET u l-pulizija jgħiduli li forsi marret l-Awstralja???
+      QATT MA TMUR MINGĦAJR MA TGĦID. qed niġi l-għassa. xi ħadd se
+      jispjegali.
+    effects: { trust_pawlu: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Pawlu -> pawlu_q1_talk
+
+  pawlu_q1_talk:
+    type: message
+    text: >
+      PAWLU: Min int? Ieħor li se jgħidli nikkalma? Binti ċemplitni
+      l-lejla ta' qabel ma spariet. Qalet li kellha xi ħaġa kbira.
+      Qalet "jekk jiġri xi ħaġa, ħares lejn GozoGold." Imbagħad
+      għalqet.
+
+      Dik l-aħħar kelma li smajt mingħandha.
+    effects: { trust_pawlu: "+10" }
+    choices:
+      - What do you think happened? -> pawlu_theory
+      - Move on -> quest1_hub
+
+  pawlu_theory:
+    type: message
+    text: >
+      PAWLU: I think GozoGold wants her workshop and she said no. So
+      they shut her up. But I also think that barrani — that foreigner,
+      Jake — he knows something. The way he looks at her... it's not
+      professional. It's something else.
+
+      Maria told me weeks ago that someone was watching her workshop at
+      night. She thought it was nothing. I don't think it was nothing.
+    effects: { trust_pawlu: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Maria went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Charlene (was photographing in the square) -> charlene_interview
+      - Find Wenzu (fisherman, was at the harbour late) -> wenzu_interview
+      - Find Josette (baker, starts at 5am, saw something) -> josette_interview
+      - Find Noel (stonemason, was working late nearby) -> noel_interview
+
+  # --- Charlene (saw Jake at the workshop) ---
+
+  charlene_interview:
+    type: tweet
+    from: charlene
+    text: >
+      kienet lejla sabiħa għar-ritratti imma l-atmosfera fil-pjazza
+      kienet stramba. qisek xi ħaġa fl-arja. ma nafx kif nispjega
+    effects: { trust_charlene: "+5" }
+    choices:
+      - Ask Charlene about that evening -> charlene_talk
+
+  charlene_talk:
+    type: message
+    text: >
+      CHARLENE: mela ok imma ma tgħid lil ħadd sah. kont fil-pjazza
+      ħdejn is-7pm nieħu ritratti. u rajt lil jake — dak il-photographer
+      ingliż — ħdejn il-workshop ta' maria. kien qed jipprova jiftaħ
+      il-bieb. meta rani telaq malajr wisq.
+
+      fuck sake mela jien xi ħmerija ma għidtx xejn qabel imma issa
+      qed nibża'. dak ir-raġel mhux normali kif int tħares lejh
+    effects:
+      trust_charlene: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Wenzu (saw late-night meeting at workshop) ---
+
+  wenzu_interview:
+    type: tweet
+    from: wenzu
+    text: >
+      Tfakkira: il-port magħluq bejn l-10pm u s-6am. Rajt moviment
+      mhux normali dawn l-aħħar iljieli fuq Triq il-Bizzilla.
+    effects: { trust_wenzu: "+5" }
+    choices:
+      - Ask Wenzu what he saw -> wenzu_talk_night
+
+  wenzu_talk_night:
+    type: message
+    text: >
+      WENZU: I was tying up the boat around 10:30pm. I saw Maria's
+      workshop light still on. And a black BMW — GozoGold company plates
+      — parked at the end of Triq il-Bizzilla. Two men were standing by
+      the workshop door. One of them I recognised: Frankie Schembri,
+      the GozoGold boss himself.
+
+      At 10:30pm. At a lace workshop. That's not normal.
+
+      I noted it in my fishing log. Nobody's asked to see it.
+    effects:
+      trust_wenzu: "+10"
+      night_witnesses: "+1"
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Josette (saw car leaving at dawn) ---
+
+  josette_interview:
+    type: tweet
+    from: josette
+    text: >
+      il-forn miftuħ mis-5am bħal dejjem. imma dik l-għodwa, karozza
+      għaddiet wisq malajr fuq it-triq tal-kosta. mhux normali.
+    effects: { trust_josette: "+5" }
+    choices:
+      - Ask Josette what she saw -> josette_talk
+
+  josette_talk:
+    type: message
+    text: >
+      JOSETTE: I start baking at 5am every day. That morning I was
+      opening the shutters and a car went past — fast, too fast for the
+      village road. White rental car. Then maybe five minutes later, a
+      bigger car. Dark. Chasing? I don't know.
+
+      The first car turned toward the Ggantija road. The second kept
+      going toward the ferry terminal at Mgarr.
+
+      I told the pulizija. They wrote it down. Daqshekk.
+    effects:
+      trust_josette: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Noel (heard argument at workshop) ---
+
+  noel_interview:
+    type: tweet
+    from: noel
+    text: >
+      kont naħdem tard fuq il-knisja. smajt vuċijiet minn Triq
+      il-Bizzilla. mhux normali għal dik il-ħin.
+    effects: { trust_noel: "+5" }
+    choices:
+      - Ask Noel what he heard -> noel_talk
+
+  noel_talk:
+    type: message
+    text: >
+      NOEL: I was restoring stonework at the chapel until midnight.
+      Around 11pm I heard raised voices from Triq il-Bizzilla. A man
+      shouting in English — "You don't understand what you're throwing
+      away." Then a woman — Maria, I think — saying "Itlaq minn hawn."
+      Get out.
+
+      Then another voice. Different man. Maltese this time. Calmer but
+      threatening. Something about "last chance" and "reasonable offer."
+
+      Two different men. Two different arguments. Same night.
+    effects:
+      trust_noel: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      development_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Carmen (sister)
+      and Ruben (saw Jake following Maria).
+    choices:
+      - Talk to Carmen about that night -> carmen_interview
+      - Talk to Ruben -> ruben_interview
+      - Find Charlene -> charlene_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Wenzu -> wenzu_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Josette -> josette_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Noel -> noel_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Carmen (last to see Maria) ---
+
+  carmen_interview:
+    type: tweet
+    from: carmen
+    text: >
+      dik ir-ritratt fuq il-kont ta' maria. mhux hi. maria qatt ma
+      tippowstja mingħajr storja. maria ma tippostjax fis-2am.
+      xi ħadd ieħor għamel hekk.
+    effects: { trust_carmen: "+5" }
+    choices:
+      - DM Carmen -> carmen_talk_low
+        when:
+          state: trust_carmen
+          lt: 50
+      - DM Carmen -> carmen_talk_high
+        when:
+          state: trust_carmen
+          gte: 50
+
+  carmen_talk_low:
+    type: message
+    text: >
+      CARMEN: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Carmen needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_carmen: "+5" }
+    choices:
+      - Share what you've learned about the night -> carmen_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  carmen_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the men at the workshop, the
+      argument Noel heard, the cars at dawn. Carmen is silent for a while.
+
+      CARMEN: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_carmen: "+25" }
+    choices:
+      - What happened that night? -> carmen_talk_high
+
+  carmen_talk_high:
+    type: message
+    text: >
+      CARMEN: She came to my flat around midnight. I was correcting
+      homework. She was shaking, white as limestone. She said "they
+      came to the workshop." She grabbed her laptop and the heritage
+      documents from the safe.
+
+      I asked who. She said "GozoGold. Frankie himself. With a lawyer."
+      Then she said something else — "and he was there again. Before
+      them. Always before them."
+
+      She wouldn't say who "he" was. She hugged me, said "tinkwetax,"
+      and left with a bag. By morning her car was gone and that photo
+      was on her account.
+    effects:
+      trust_carmen: "+15"
+      night_witnesses: "+1"
+      development_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ruben (saw Jake following Maria) ---
+
+  ruben_interview:
+    type: message
+    text: >
+      RUBEN: mela ok qisek ħa ngħid xi ħaġa stramba. dak jake —
+      il-photographer — rajtu jmur wara maria aktar minn darba.
+      literally jimxi warajha fit-triq. meta hi ddur hu jieqaf u
+      jippretendi li qed jieħu ritratti tal-bini.
+
+      l-aħħar darba kienet ġurnata qabel ma spariet. kien bil-camera
+      barra l-workshop tagħha fis-sitta ta' fil-għodu. SIS-SITTA
+      TA' FIL-GĦODU mela. min joqgħod barra fis-6am jieħu ritratti
+      ta' bieb? fuck sake
+    effects:
+      trust_ruben: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      06:00 — Jake seen photographing Maria's workshop door (Ruben)
+      19:00 — Jake seen trying workshop door handle (Charlene)
+      22:30 — GozoGold car at workshop, Frankie Schembri present (Wenzu)
+      23:00 — Argument heard: English voice, then Maltese voice (Noel)
+      00:00 — Maria arrives at Carmen's, shaken, grabs documents (Carmen)
+      05:00 — Two cars speeding through village at dawn (Josette)
+
+      Jake was at the workshop before GozoGold arrived. Then Frankie
+      Schembri showed up with threats. Maria fled in the middle of the
+      night.
+
+      But there are two threats: the developer AND the stalker.
+
+      Two threads to pull:
+      — The obsession: What is Jake really doing in Xlendi Gardens?
+        Why was he at her workshop?
+      — The cover-up: What is GozoGold hiding? Who ordered the threats?
+    choices:
+      - Investigate Jake the stalker -> stalker_hub
+      - Investigate the development cover-up -> corruption_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+      DEVELOPMENT THREAD: Evidence collected: ${development_evidence}
+    choices:
+      - Work on the stalker thread -> stalker_hub
+      - Work on the development thread -> corruption_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: development_evidence, gte: 3 }
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Jake Thornton. Photographer. Travel writer. Something more?
+      Someone was at Maria's workshop at dawn. Someone was trying
+      the door. Someone was following her through the village.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Search Jake's online presence -> jake_online
+      - Talk to Rita about Jake -> rita_jake
+        when:
+          state: trust_rita
+          gte: 20
+      - Talk to Charlene (more detail on the door incident) -> charlene_detail
+      - Talk to Grace the pharmacist -> grace_interview
+      - Check the anonymous account @daniela_spiteri -> daniela_investigation
+      - Talk to Leli about Jake's habits -> leli_jake_habits
+        when:
+          state: trust_leli
+          gte: 40
+      - Talk to Ispettur Borg -> ispettur_interview
+        when:
+          state: trust_ispettur
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Jake's Online Presence ---
+
+  jake_online:
+    type: message
+    text: >
+      Jake Thornton's travel photography website shows work from twelve
+      countries. But his Gozo page is different. Of 247 photos tagged
+      "Xlendi Gardens," 89 feature Maria. Close-ups of her hands working
+      lace. Her face in profile through the workshop window. Her walking
+      to the market. Many taken with a long lens, from a distance.
+
+      His blog entries about Xlendi are increasingly focused on one
+      person: "The Lace Maker of Xlendi" — a 4,000-word essay that reads
+      less like journalism and more like a love letter to someone who
+      doesn't know they're being watched.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Rita on Jake ---
+
+  rita_jake:
+    type: message
+    text: >
+      RITA: Jake made Maria's skin crawl. He'd appear at the craft
+      market and stand there photographing her for hours. He'd comment
+      on every single one of her posts within minutes — mela, like he
+      had notifications on just for her.
+
+      She told him clearly: "I'm not interested. Please stop." He said
+      he respected that. Nothing changed. He just kept being there.
+      Always there.
+
+      A month ago she found photos of her workshop interior on his
+      website — taken through the window. From outside. At night. You
+      could see her lace frame, her tools, her coat on the hook. She
+      confronted him. He said the light was "artistically compelling."
+    effects:
+      trust_rita: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Charlene detail ---
+
+  charlene_detail:
+    type: message
+    text: >
+      CHARLENE: mela ok fil-verità ma għidtx kollox. meta rajt lil jake
+      ħdejn il-bieb tal-workshop, kellu xi ħaġa f'idu. bħal ċavetta
+      żgħira. ipprova jiftaħ is-serratura bih.
+
+      meta rani hu ħeba idu u telaq. imma jien rajt — kellu lock pick
+      set. bħal dawk li tara fil-films.
+
+      kif int min iġorr lock picks magħu?? xi ħmerija. kont imbeżża'
+      ngħid xi ħaġa għax hu adult u jien tfajla imma issa... fuck sake
+      kelli ngħid qabel
+    effects:
+      trust_charlene: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Grace ---
+
+  grace_interview:
+    type: message
+    text: >
+      GRACE: This is confidential but I'm a pharmacist, not a confessor.
+      Jake Thornton comes in regularly. He buys things that suggest he's
+      not sleeping well. Melatonin, anxiety medication, energy
+      supplements. The pattern is someone under extreme stress.
+
+      He also asked me once, very casually, where Maria lives. I said
+      "this is a pharmacy, not the tourist office." He laughed it off.
+      But the way he asked — it wasn't casual at all.
+
+      And once he bought binoculars. From me. We sell marine binoculars
+      for the birdwatchers. He said they were for "landscape
+      photography." Mela, with binoculars?
+    effects:
+      trust_grace: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Daniela (anonymous account) ---
+
+  daniela_investigation:
+    type: tweet
+    from: daniela
+    text: >
+      She should have understood. I was trying to preserve something
+      beautiful. Nobody else sees her art the way I do.
+    choices:
+      - Look at this account's history -> daniela_posts
+
+  daniela_posts:
+    type: message
+    text: >
+      @daniela_spiteri: account created 5 months ago. Posts are all
+      about Maria's lace work. Comments on every craft photo, every
+      market post, every workshop update. The tone shifts over time:
+
+      Month 1: "Stunning craftsmanship. You're keeping a dying art alive."
+      Month 2: "Why don't you respond to my messages? I just want to
+      document your process."
+      Month 3: "I see you at the market talking to everyone else. You
+      have time for them but not for me?"
+      Month 4: "I know your schedule. I know when you open the workshop.
+      I'm always watching."
+
+      The account has no photos, no personal details. Just Maria.
+      Only Maria.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> daniela_style
+
+  daniela_style:
+    type: message
+    text: >
+      Comparing @daniela_spiteri with @jake_thornton:
+
+      Same photography terminology. Same way of describing lace — "the
+      tension of thread against light" appears in both. Same spelling
+      patterns — British English, Oxford comma, specific compound
+      hyphenation.
+
+      And one post from @daniela_spiteri: "Your Genovese Point stitch
+      on the altar cloth was magnificent." Genovese Point is a technical
+      lace term. Jake's travel blog uses the exact same term in his
+      unpublished Xlendi draft.
+
+      It's Jake. The anonymous account is Jake.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Leli on Jake's habits ---
+
+  leli_jake_habits:
+    type: message
+    text: >
+      LELI: Mela, I'll tell you about Jake. He sits in my bar every
+      day. Same seat — the one with a view of Triq il-Bizzilla. He
+      orders one Kinnie and sits for three hours. Always has his camera
+      with the long lens.
+
+      Last month I asked him straight: "Ħabib, what are you actually
+      doing?" He said he was "immersing in the local rhythm." Mela, the
+      local rhythm of staring at one woman's workshop?
+
+      And I found something. He left his notebook on the table once. I
+      looked. Pages and pages about Maria. Her schedule. What time she
+      opens. What time she goes to the market. What she wears. The
+      colour of her lace on different days.
+
+      That's not a travel book. That's a stalker's diary.
+    effects:
+      trust_leli: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Ispettur Borg ---
+
+  ispettur_interview:
+    type: message
+    text: >
+      ISPETTUR BORG: Off the record — u verament off the record — I
+      wanted to investigate GozoGold. My superior told me to stand down.
+      He said the Planning Authority had "jurisdiction." That's code
+      for "don't touch it."
+
+      The Jake situation is different. I didn't even know about that
+      until now. If you have evidence of stalking, I can act on that.
+      That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_ispettur: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # DEVELOPMENT COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE DEVELOPMENT THREAD
+
+      GozoGold is hiding something. Maria had heritage protection
+      documents. Now she's gone and the documents are missing from
+      her workshop.
+
+      Development evidence: ${development_evidence}
+    choices:
+      - Search the heritage records -> heritage_records
+      - Talk to Sandro the journalist -> sandro_interview
+      - Talk to Mireille (GozoGold land surveyor) -> mireille_interview
+      - Talk to Doris (culture councillor) -> doris_interview
+      - Check the Wirt Għawdex association -> wirt_investigation
+      - Talk to Wenzu about the waterfront changes -> wenzu_waterfront
+      - Back to hub -> investigation_hub
+
+  # --- Heritage Records ---
+
+  heritage_records:
+    type: message
+    text: >
+      The Superintendence of Cultural Heritage database shows Triq
+      il-Bizzilla has been a scheduled heritage site since 1978. The
+      lace workshops are Grade 2 listed. Any demolition requires
+      Superintendence approval.
+
+      GozoGold's planning application for the marina car park lists
+      Triq il-Bizzilla as "derelict structures — no heritage value."
+      The planning drawings show Maria's workshop as "to be demolished."
+
+      But the Superintendence has never been consulted. The file is
+      marked "PENDING" — for three years.
+    effects:
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Sandro ---
+
+  sandro_interview:
+    type: message
+    text: >
+      SANDRO: I don't talk about sources. Period.
+    effects: { trust_sandro: "+5" }
+    choices:
+      - Show Sandro the evidence you have -> sandro_with_evidence
+        when:
+          state: development_evidence
+          gte: 3
+      - Back to development thread -> corruption_hub
+
+  sandro_with_evidence:
+    type: message
+    text: >
+      SANDRO: ...you have more than I expected.
+
+      Okay. Maria and I were working together. She had the original
+      heritage protection documents — signed by the British Governor in
+      1944, confirmed by the Superintendence in 1978. Those documents
+      make GozoGold's project illegal. They can't demolish Triq
+      il-Bizzilla without overturning a scheduled listing.
+
+      We were going to publish together. Then she went dark. And two
+      days later, someone broke into my office and stole my backup
+      copies.
+
+      Maria is alive. She contacted me once, from a phone I didn't
+      recognise. She said she was hiding. She said "they threatened me
+      at the workshop and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_sandro: "+25"
+      development_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> sandro_hint
+      - Back to investigation hub -> investigation_hub
+
+  sandro_hint:
+    type: message
+    text: >
+      SANDRO: GozoGold sent Frankie Schembri himself with a lawyer to
+      the workshop that night. They offered her €500,000 for the
+      property. When she said no, they said they'd "find other ways."
+      Intimidation dressed up as a business meeting.
+
+      But she also said something about a man who was always there.
+      Someone who'd been photographing her, following her, trying to
+      get into the workshop. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Mireille (GozoGold whistleblower) ---
+
+  mireille_interview:
+    type: message
+    text: >
+      MIREILLE: I work for GozoGold. I'm just a land surveyor. I
+      measure plots, I draw boundaries.
+
+      But the boundaries I draw... are not always the boundaries that
+      appear on the planning applications.
+    effects: { trust_mireille: "+10" }
+    choices:
+      - What do you mean? -> mireille_detail
+
+  mireille_detail:
+    type: message
+    text: >
+      MIREILLE: I survey the land. My measurements go to my supervisor.
+      Somewhere between my desk and the Planning Authority, they change.
+      Boundaries shift. Heritage buffer zones shrink. Building footprints
+      grow.
+
+      Maria's workshop is 3 metres inside the heritage buffer zone. In
+      my survey, it's clearly protected. In the filed application, the
+      buffer zone has been redrawn. Her workshop is suddenly outside it.
+
+      I'm scared. I have a family. But I kept copies of my original
+      surveys. If someone can protect me, I'll share them.
+    effects:
+      trust_mireille: "+15"
+      development_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to development thread -> corruption_hub
+
+  # --- Doris ---
+
+  doris_interview:
+    type: message
+    text: >
+      DORIS: As councillor for culture and heritage, I take these
+      matters seriously. But GozoGold employs 80 people on this project.
+      The sindku insists we need to "maintain dialogue."
+
+      Off the record? I've seen the Planning Authority files. GozoGold's
+      application was fast-tracked. No heritage consultation. No
+      environmental impact assessment. The normal process takes two
+      years. This one took four months.
+
+      Maria had the documents that proved it was all illegal. That's
+      what makes it dangerous.
+    effects:
+      trust_doris: "+10"
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to development thread -> corruption_hub
+
+  # --- Wirt Għawdex ---
+
+  wirt_investigation:
+    type: tweet
+    from: wirt_ghawdex
+    text: >
+      TWISSIJA: Żvilupp illegali rrapportat fi Triq il-Bizzilla, Xlendi
+      Gardens. Ritratti u dokumentazzjoni miġbura. Nitolbu investigazzjoni
+      immedjata mill-Awtorità tal-Ippjanar.
+    choices:
+      - Check their data -> wirt_data
+
+  wirt_data:
+    type: message
+    text: >
+      Wirt Għawdex have been documenting the destruction of Xlendi
+      Gardens' heritage for two years. Their files show a clear pattern:
+      GozoGold buys property, applies for permits, demolishes before
+      permits are reviewed, then pays the fine — which is cheaper than
+      the delay.
+
+      They've demolished three heritage structures already. Fined
+      €10,000 each time. The project is worth €40 million.
+
+      Maria's workshop is the last original lace workshop on Triq
+      il-Bizzilla. If it goes, the heritage listing can be revoked
+      entirely. That's the real game.
+    effects:
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to development thread -> corruption_hub
+
+  # --- Wenzu waterfront ---
+
+  wenzu_waterfront:
+    type: message
+    text: >
+      WENZU: I'll show you something. Last month the GozoGold crew
+      started demolition work on the old chandlery — at night. No
+      permits displayed. I photographed it. I have the date stamps.
+
+      But here's the thing. While I was photographing, I saw Frankie
+      Schembri on the phone. He was laughing. He said: "The old woman
+      will sell or she'll disappear. Either way we break ground in
+      March."
+
+      I heard him say that. "Disappear." His word.
+
+      I have the recording. My phone was running.
+    effects:
+      trust_wenzu: "+10"
+      development_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Maria than anyone in Xlendi Gardens. Who is responsible?
+    choices:
+      - Confront Jake Thornton (the obsessive photographer) -> confront_jake
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Frankie Schembri (the developer) -> confront_frankie
+        when:
+          state: development_evidence
+          gte: 3
+      - Confront Sindku Vella (political protection) -> confront_toni
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Jake (Best Ending) ---
+
+  confront_jake:
+    type: message
+    text: >
+      You present your evidence to Jake:
+
+      "I know @daniela_spiteri is your account. I know you had lock
+      picks at Maria's workshop. I know you photographed her through
+      her windows at night. I know you followed her daily. I have
+      witnesses, your notebook, and your website."
+    choices:
+      - Send -> jake_response
+
+  jake_response:
+    type: message
+    text: >
+      Jake doesn't reply for a long time. Then:
+
+      JAKE: You don't understand. She's extraordinary. Her craft, her
+      dedication — nobody appreciates it like I do. I was documenting
+      something precious. I was protecting her story. Everything I did
+      was because I care about preserving her art.
+
+      That's not preservation. That's obsession.
+
+      You've already sent the evidence to Ispettur Borg. And to
+      Sandro Cassar.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Ispettur Borg reopens the case. With your evidence — the anonymous
+      account, the lock picks, the surveillance photos, the notebook,
+      the witness testimonies — Jake Thornton is arrested for stalking,
+      harassment, and attempted breaking and entering. His hard drives
+      contain thousands of photos of Maria taken without consent.
+
+      Sandro Cassar, finally in possession of Maria's full heritage
+      documentation, publishes the GozoGold story in the Times of Malta.
+      The Superintendence of Cultural Heritage orders an immediate review.
+      GozoGold's permits are revoked. The marina car park project is
+      halted. Frankie Schembri faces criminal charges for falsifying
+      planning applications and threatening a protected heritage site
+      owner.
+
+      And Maria Borg, reading the story from her cousin's house in
+      Marsaxlokk, calls her sister for the first time in nine days.
+
+      "Ġejja lura d-dar."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: maria
+    text: >
+      il-bizzilla ma tinqatax. u n-nies ta' xlendi gardens lanqas.
+      grazzi li ma waqaftux.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Frankie (Partial Ending) ---
+
+  confront_frankie:
+    type: message
+    text: >
+      You present the development evidence to Frankie Schembri:
+
+      "I have the original heritage documents. I have the falsified
+      planning boundaries. I have a recording of you saying Maria would
+      'disappear.' I have the original land surveys showing you redrew
+      the heritage buffer zone."
+    choices:
+      - Send -> frankie_response
+
+  frankie_response:
+    type: message
+    text: >
+      FRANKIE: This conversation is being forwarded to our legal team.
+      Any publication of defamatory material will result in immediate
+      proceedings. GozoGold has always operated within planning
+      regulations.
+
+      But it's too late. You've sent the evidence to Sandro, to Wirt
+      Għawdex, and to the Superintendence.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE DEVELOPMENT
+
+      The heritage story breaks. GozoGold is ordered to halt all
+      construction pending review. The marina project may be cancelled.
+      Eighty jobs hang in the balance. The village is divided.
+
+      But Maria?
+
+      Without the stalking evidence, Jake is never investigated. He
+      continues to photograph. He continues to visit the village. He
+      creates a new anonymous account. He starts writing about "the
+      lace maker who fought back."
+
+      Three months later, Maria reads about GozoGold online. She returns
+      quietly. She moves her workshop. She installs new locks. She
+      checks the windows every night before working.
+
+      The developer is exposed. But the person who terrorised Maria
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: maria
+    text: "ġejt lura. triq il-bizzilla salva. il-bqija... naraw."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_toni:
+    type: message
+    text: >
+      You confront Sindku Vella with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> toni_response
+
+  toni_response:
+    type: tweet
+    from: bettina
+    text: >
+      Il-klijent tiegħi ħa nota tal-allegazzjonijiet tiegħek.
+      Kull distribuzzjoni pubblika ta' materjal libelluż se tirriżulta
+      f'proċedimenti immedjati. — Psaila & Associates, Valletta
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The sindku's lawyer buries your accusation. Without a direct link
+      between Vella and GozoGold's threats — and there isn't one beyond
+      political protection — your evidence is insufficient.
+
+      GozoGold continues to build. Jake continues to watch. Maria stays
+      in hiding.
+
+      Six months later, @daniela_spiteri creates a new account. It
+      follows Maria's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: XLENDI GARDENS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Stalker evidence: ${stalker_evidence}
+      Development evidence: ${development_evidence}
+
+      Thank you for playing. Maria's story explores themes of
+      overdevelopment destroying village character, obsessive behaviour
+      disguised as artistic appreciation, heritage protection,
+      community solidarity, and the courage to stand your ground.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Victim Support Malta: 2122 8333
+      Commission on Domestic Violence: 179
+      Appogg Helpline: 179
+      Planning Authority Complaints: 2290 0000

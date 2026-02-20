@@ -1,0 +1,1574 @@
+# DEAD ACCOUNT — Story 019: Dzintarkrasts (Latvia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-019.yml
+#
+# Player investigates the disappearance of young beekeeper Elīna Bērziņa
+# in the fictional Baltic coast village of Dzintarkrasts.
+
+meta:
+  title: "Dead Account — Dzintarkrasts"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_liga: 0
+    trust_arturs: 0
+    trust_marta: 0
+    trust_janis: 0
+    trust_raimonds: 0
+    trust_zane: 0
+    trust_andris: 0
+    trust_ilze: 0
+    trust_karlis: 0
+    trust_dace: 0
+    trust_gatis: 0
+    trust_inga: 0
+    trust_peteris: 0
+    trust_agita: 0
+    trust_sandis: 0
+    trust_edgars: 0
+    trust_laima: 0
+    trust_viesturs: 0
+    trust_aivars: 0
+    trust_anon: 0
+    trust_policija: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    jealousy_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Jaunais iedzīvotājs
+    bio: "tikko pārcēlos uz dzintarkrastu. jūras gaiss un meža takas"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Dzintarkrasts.social"
+    description: "Laipni lūgti Dzintarkrastas kopienas Mastodon instancē"
+    avatar_url: /gamepatch/assets/dead-account/dzintarkrasts_bot.png
+
+  npcs:
+    # === Elīna's Inner Circle ===
+    elina:
+      name: "Elīna Bērziņa"
+      bio: "biškope | medus | daba nepieviļ | dzintarkrasts"
+      avatar: avatars/elina.jpg
+    liga:
+      name: "Līga Kalniņa"
+      bio: "elīnas labākā draudzene | veterinārārste | kaķi > cilvēki"
+      avatar: avatars/liga.jpg
+    arturs:
+      name: "Artūrs Bērziņš"
+      bio: "elīnas brālis | rīga | programmētājs | viņa nepazūd vienkārši tā"
+      avatar: avatars/arturs.jpg
+    marta:
+      name: "Marta Ozoliņa"
+      bio: "bioloģijas skolotāja | dzintarkrastas skola | daba ir viss"
+      avatar: avatars/marta.jpg
+
+    # === Local Government ===
+    raimonds:
+      name: "Raimonds Liepiņš"
+      bio: "Dzintarkrastas pagasta vadītājs | Kopā stiprāki | #DzintarkrastsAug"
+      avatar: avatars/raimonds.jpg
+    ilze:
+      name: "Ilze Vītola"
+      bio: "vides speciāliste | Dzintarkrastas pašvaldība | zaļāka nākotne"
+      avatar: avatars/ilze.jpg
+    pasvaldiba:
+      name: "Dzintarkrastas pašvaldība"
+      bio: "Oficiālais konts | Jaunumi un pakalpojumi | P-Pk 9:00-17:00"
+      avatar: avatars/pasvaldiba.jpg
+
+    # === Local Business & Community ===
+    zane:
+      name: "Zane Lagzdiņa"
+      bio: "kafejnīca Jūras Vējš | kūkas | kafija | skats uz jūru | kopš 2003"
+      avatar: avatars/zane.jpg
+    kafejnica:
+      name: "Kafejnīca Jūras Vējš"
+      bio: "Mājīgā vieta pie jūras | Kūkas un kafija | Dzīvā mūzika piektdienās"
+      avatar: avatars/kafejnica.jpg
+    janis:
+      name: "Jānis Ozols"
+      bio: "zemnieks | 30 ha blakus elīnas dravām | graudaugi un rapsis"
+      avatar: avatars/janis.jpg
+    andris:
+      name: "Andris Kalējs"
+      bio: "zvejnieks | dzintarkrastas osta | jūra ir mana dzīve"
+      avatar: avatars/andris.jpg
+    karlis:
+      name: "Kārlis Dreimanis"
+      bio: "aptiekārs | dzintarkrasts | veselība un padoms | arī svētdienās no rīta"
+      avatar: avatars/karlis.jpg
+    dace:
+      name: "Dace Puriņa"
+      bio: "maizes ceptuve | rudzu maize | sākam cept 4:00 | katru dienu"
+      avatar: avatars/dace.jpg
+    gatis:
+      name: "Gatis Siliņš"
+      bio: "mežsargs | valsts meži | dzintarkrastas iecirknis | dabas sardzē"
+      avatar: avatars/gatis.jpg
+
+    # === Journalist ===
+    inga:
+      name: "Inga Liepa"
+      bio: "neatkarīga žurnāliste | vide un lauki | tips: inga@liepa-press.lv"
+      avatar: avatars/inga.jpg
+
+    # === AgroBaltic (corporate) ===
+    agrobaltic:
+      name: "AgroBaltic SIA"
+      bio: "Agroķīmiskie risinājumi | Dzintarkrastas ražotne | ISO 14001 sertificēts"
+      avatar: avatars/agrobaltic.jpg
+    peteris:
+      name: "Pēteris Vanags"
+      bio: "AgroBaltic direktors | Dzintarkrastas ražotne | rūpniecība un reģions"
+      avatar: avatars/peteris.jpg
+    agita:
+      name: "Agita Kalēja"
+      bio: "Juriste | Kalēja & Partneri | Uzņēmējdarbības tiesības | Rīga"
+      avatar: avatars/agita.jpg
+
+    # === Teens ===
+    sandis:
+      name: "Sandis"
+      bio: "16 | skeitbords | dzintarkrasts born | meži un jūra frr"
+      avatar: avatars/sandis.jpg
+    edgars:
+      name: "Edgars"
+      bio: "17 | BMX | pludmales sessions | jūra dziedē visu"
+      avatar: avatars/edgars.jpg
+    laima:
+      name: "Laima"
+      bio: "15 | foto & zīmēšana | bites ir forši | elīna ir mana inspo"
+      avatar: avatars/laima.jpg
+
+    # === Media & Community ===
+    ziņas_dzintarkrasts:
+      name: "Ziņas Dzintarkrasts"
+      bio: "Dzintarkrastas jaunumi | Tips: redakcija@zinas-dzintarkrasts.lv"
+      avatar: avatars/zinas_dzintarkrasts.jpg
+    meteo_piejura:
+      name: "Laika ziņas Dzintarkrasts"
+      bio: "Prognozes un brīdinājumi | Automātiskā stacija | Atjaunina katru stundu"
+      avatar: avatars/meteo_piejura.jpg
+    biedri_dabai:
+      name: "Biedrība Dabas Sargi"
+      bio: "Piekrastes un meža aizsardzība | Brīvprātīgie | Piesārņojuma ziņojumi"
+      avatar: avatars/biedri_dabai.jpg
+
+    # === Suspicious / Other ===
+    viesturs:
+      name: "Viesturs Kļaviņš"
+      bio: "laborants | AgroBaltic | daru savu darbu un viss"
+      avatar: avatars/viesturs.jpg
+    aivars:
+      name: "aivars_meza"
+      bio: "."
+      avatar: avatars/anon.jpg
+    policija:
+      name: "Inspektors Krūmiņš"
+      bio: "Valsts policija Dzintarkrasts | Iecirknis | neatliekamie: 110"
+      avatar: avatars/policija.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN DZINTARKRASTS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to dzintarkrasts.social — the community Mastodon instance for
+      the Baltic coast village of Dzintarkrasts, Latvia.
+
+      The local feed feels wrong today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @elina_berzina.
+
+      A young beekeeper. Honey producer. She documented her bees and the
+      wildflower meadows along the coast. People are worried. She hasn't
+      posted in six days.
+    choices:
+      - Look at her profile -> elina_profile
+
+  elina_profile:
+    type: tweet
+    from: elina
+    text: "manas bites mirst. kaut kas ir ūdenī, augsnē. AgroBaltic pesticīdi nonāk manās pļavās. man ir pierādījumi."
+    choices:
+      - That's her last real post... -> grey_field
+
+  grey_field:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a grey, blurred photo of an empty field. Posted at 2am. No caption.
+
+      Her friends say that's not her style. Elīna always wrote long
+      captions about her bees, the flowers, the seasons. The police say
+      she probably went to visit relatives. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: policija
+    text: >
+      Saņemts ziņojums par Dzintarkrastas iedzīvotāju. Šobrīd nav
+      pamata uzskatīt, ka noticis noziedzīgs nodarījums. Informāciju
+      lūdzam sniegt pa tālruni 110 vai iecirknī.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @liga_kalnina is
+      desperate. Her brother @arturs_berzins is driving down from Riga.
+      The biology teacher @marta_ozolina says Elīna was right about the
+      pesticides. The fisherman @andris_kalejs says the water has changed.
+
+      And the journalist @inga_liepa is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Elīna just
+      "went to visit relatives."
+    effects: { trust_liga: "+5", trust_arturs: "+5" }
+    choices:
+      - Start following Elīna's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Dzintarkrasts. Follow Elīna's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Zane (cafe owner, knows everyone) -> zane_intro
+      - Talk to Andris (fisherman, noticed the water) -> andris_intro
+      - Talk to Sandis (teen skater, seems shaken) -> sandis_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Elīna with the rhythms of a small
+      coastal village: tide warnings, the bakery's daily bread,
+      weather updates, mushroom foraging tips.
+
+      Key names surface: Līga (best friend, vet), Marta (biology
+      teacher, alarmed), Inga (journalist, oddly quiet), and the
+      teens — Sandis, Edgars, Laima — who loved visiting Elīna's
+      beehives.
+
+      Also prominent: AgroBaltic SIA, the agrochemical plant outside
+      town. Their posts are corporate PR. Elīna's posts were the
+      opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Zane -> zane_intro
+      - Talk to Andris -> andris_intro
+      - Talk to Sandis -> sandis_intro
+
+  # --- Zane (social map) ---
+
+  zane_intro:
+    type: tweet
+    from: zane
+    text: >
+      Kafejnīca ir atvērta, bet sirds nav vietā. @elina_berzina, tavs
+      medus tējas galdiņš gaida. Atgriezies.
+    effects: { trust_zane: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Zane -> zane_talk
+
+  zane_talk:
+    type: message
+    text: >
+      ZANE: Čau, tu esi jaunais? Laipni lūgti. Slikts laiks ierasties.
+      Visi ir nervozi par Elīnu.
+
+      Let me tell you who's who. Līga is Elīna's best friend — vet now.
+      Marta Ozoliņa is the biology teacher, helped Elīna test soil samples.
+      Artūrs is Elīna's brother, driving down from Riga.
+
+      And Jānis Ozols — farmer next door. Jealous of Elīna's honey
+      business for years. She got into the Riga farmers' markets and his
+      rapeseed oil got pushed aside. Complained about her bees constantly.
+
+      Oh, and Inga Liepa — the journalist — she and Elīna were working
+      on something about the pesticides. Inga hasn't said a word since
+      Elīna vanished. Not like her.
+    effects: { trust_zane: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Jānis -> zane_janis
+      - Ask about AgroBaltic -> zane_agrobaltic
+      - Thank her and move on -> quest1_hub
+
+  zane_janis:
+    type: message
+    text: >
+      ZANE: Jānis? Sūds, where do I start. He's farmed that land
+      twenty years. When Elīna's grandmother left her the meadows,
+      Jānis lost it. Said those fields should be his.
+
+      He filed complaints about the bees — said they were aggressive.
+      Total bullshit. Elīna's bees were gentle. She bred them that way.
+
+      Last month he was screaming at her outside the post office
+      about how she was "destroying his livelihood" by reporting him.
+      He sprays like crazy — whatever AgroBaltic sells him.
+      Elīna said his spraying was killing her colonies.
+    effects: { trust_zane: "+5" }
+    choices:
+      - Ask about AgroBaltic -> zane_agrobaltic
+      - Move on -> quest1_hub
+
+  zane_agrobaltic:
+    type: message
+    text: >
+      ZANE: That factory has been outside town since the nineties.
+      Pesticides, herbicides, fertilizers. Half the farmers use their
+      products. Town tolerated them because — jobs.
+
+      But Elīna's bees started dying. Colony collapse. She tested the
+      soil, water, pollen. Found AgroBaltic chemicals way over legal
+      limits. Said they were dumping waste, not just selling products.
+
+      Two weeks after she went public, she's gone. Bļe, you don't
+      need to be a detective.
+    effects: { trust_zane: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Andris (fisherman, water observations) ---
+
+  andris_intro:
+    type: tweet
+    from: andris
+    text: >
+      divdesmit gadus es zvejoju šeit. ūdens vairs nav tāds pats.
+      @elina_berzina bija taisnība. un tagad viņa ir pazudusi.
+      savelciet kopā.
+    effects: { trust_andris: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Andris -> andris_talk
+
+  andris_talk:
+    type: message
+    text: >
+      ANDRIS: I've fished this coast since I was a kid. The streams
+      that feed the bay come through AgroBaltic's land. Last spring
+      the water started smelling chemical. My nets — dead fish.
+      Not rotten. Freshly dead. Poisoned.
+
+      Elīna connected it. Pesticide runoff killing streams, killing
+      bees, killing the whole ecosystem. She was mapping it all.
+      Building a case. And then — pazūd. Gone.
+
+      You think that's a coincidence? Ellē, I don't believe in
+      coincidences.
+    effects: { trust_andris: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> andris_night
+      - Move on -> quest1_hub
+
+  andris_night:
+    type: message
+    text: >
+      ANDRIS: Night before she disappeared — driving back from night
+      fishing around midnight. Passed Elīna's meadow. Lights. Not
+      cabin lights — car headlights. Two vehicles. One near the
+      hives, one on the road. At midnight. In a bee meadow.
+
+      Next morning Elīna's bees were agitated. Gatis the forest
+      ranger found fresh tire tracks through the meadow grass.
+    effects: { trust_andris: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sandis (teen skater, witness tease) ---
+
+  sandis_intro:
+    type: tweet
+    from: sandis
+    text: >
+      čau es esmu pilnīgā šokā @elina_berzina viņa mums mācīja par
+      bitēm un dabu un forši bija un tagad viņa ir prom. ja kāds ko
+      zina plīz sakiet
+    effects: { trust_sandis: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sandis -> sandis_talk_early
+
+  sandis_talk_early:
+    type: message
+    text: >
+      SANDIS: bļe tu esi jaunais? sūds kāds laiks lai atnāktu. forši
+      ka tev rūp tho. elīna ir literally labākais cilvēks šajā ciemā.
+      viņa mums ļāva nākt pie stropiem un mācīja kā bites strādā.
+      tā bija pists interesanti.
+
+      un tagad es esmu noflipojis jo edgars redzēja kaut ko dīvainu
+      pie elīnas pļavas bet viņš negrib runāt. viņš saka ka tas ir
+      nekas bet bļe tas NAV nekas
+    effects: { trust_sandis: "+10" }
+    choices:
+      - What did Edgars see? -> sandis_edgars_hint
+      - Move on -> quest1_hub
+
+  sandis_edgars_hint:
+    type: message
+    text: >
+      SANDIS: bļe nezinu tieši. viņš braukāja ar bmx pa ceļu gar
+      pļavu un redzēja kaut ko — kādu cilvēku kas kaut ko lēja?
+      vai meta? viņš flipoja un aizbrauca. negrib runāt jo viņš
+      domā ka neviens neticēs pusaudzim pret pieaugušu.
+
+      pamēģini parunāt ar viņu bet viņš ir piesardzīgs ar
+      svešiniekiem. sāc ar bmx tēmu lol tad viņš atvērsies
+    effects: { trust_sandis: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Dzintarkrasts. A quiet Baltic coast
+      village built around the sea and the forest. A young beekeeper
+      exposing pesticide contamination. A disappearance nobody believes
+      is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Līga (Elīna's best friend) -> liga_q1
+      - Talk to Marta (biology teacher, helped with samples) -> marta_q1
+      - Check what Artūrs (Elīna's brother) is saying -> arturs_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Līga Q1 ---
+
+  liga_q1:
+    type: tweet
+    from: liga
+    text: >
+      ja kādam ir ziņas par @elina_berzina lūdzu zvaniet man. viņas
+      biškopības aprīkojums ir vietā. viņas dienasgrāmata ir uz galda.
+      viņa nekad neaizietu bez sava biškopja tērpa.
+    effects: { trust_liga: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Līga -> liga_q1_talk
+
+  liga_q1_talk:
+    type: message
+    text: >
+      LĪGA: I appreciate it but I don't know you. Elīna has a lot of
+      friends here. I'm sure she'll come back.
+
+      ...I keep telling myself that. I don't believe it anymore.
+
+      [Līga is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_liga: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marta Q1 ---
+
+  marta_q1:
+    type: tweet
+    from: marta
+    text: >
+      @elina_berzina augsnes paraugi ir joprojām manā laboratorijā.
+      Viņa nekad nepamestu savu pētniecību. Kaut kas ir noticis.
+    effects: { trust_marta: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marta -> marta_q1_talk
+
+  marta_q1_talk:
+    type: message
+    text: >
+      MARTA: Elīna and I worked together for eight months. She brought
+      me soil and water samples from her meadows. I tested them in the
+      school lab — it's basic equipment but sufficient.
+
+      The results were alarming. Neonicotinoid levels far above the
+      EU maximum. And something else — industrial solvents that
+      shouldn't be in agricultural soil at all. That's not spray
+      drift. That's dumping.
+
+      She was building a report. She was so close to sending it to
+      the Valsts vides dienests. Then she vanished.
+
+      [Marta seems genuinely concerned. And scientifically precise.]
+    effects: { trust_marta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Artūrs Q1 ---
+
+  arturs_q1:
+    type: tweet
+    from: arturs
+    text: >
+      mana māsa ir PAZUDUSI un policija man saka ka viņa droši vien
+      ir aizbraukusi ciemos??? VIŅA NEAIZBRAUC NEBRĪDINOT. es braucu
+      no rīgas. kāds man paskaidros kas notiek.
+    effects: { trust_arturs: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Artūrs -> arturs_q1_talk
+
+  arturs_q1_talk:
+    type: message
+    text: >
+      ARTŪRS: Who the fuck are you? Another person from that village
+      who's going to tell me to calm down? My sister called me the
+      night before she disappeared. She said she had something big.
+      She said "if anything happens, look at AgroBaltic. And look at
+      Jānis."
+
+      Then she hung up. That's the last I heard from her.
+    effects: { trust_arturs: "+10" }
+    choices:
+      - What do you think happened? -> arturs_theory
+      - Move on -> quest1_hub
+
+  arturs_theory:
+    type: message
+    text: >
+      ARTŪRS: Two things. Either AgroBaltic found out she had proof
+      of illegal dumping and shut her up. Or that piece of shit
+      neighbour Jānis finally lost it. He's been threatening her for
+      months. Everyone in the village knows.
+
+      Sūds, maybe it's both. Jānis uses AgroBaltic products. He's
+      their best customer. Maybe he didn't want Elīna exposing
+      what's in those products because it would expose what he's
+      been spraying on his land too.
+
+      She told me he poisoned one of her hives last autumn. Poured
+      something in the entrance at night. Fifty thousand bees dead
+      by morning. She couldn't prove it was him.
+    effects: { trust_arturs: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Elīna went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Edgars (was cycling near the meadow) -> edgars_interview
+      - Find Gatis (forest ranger, patrols at dawn) -> gatis_interview
+      - Find Dace (baker, starts at 4am, heard something) -> dace_interview
+      - Find Andris (fisherman, saw cars at midnight) -> andris_interview_q2
+
+  # --- Edgars (saw someone dumping near hives) ---
+
+  edgars_interview:
+    type: tweet
+    from: edgars
+    text: >
+      laba sesija šodien bet atmosfēra ciemā ir dīvaina. kaut kas nav
+      ok. nezinu kā paskaidrot
+    effects: { trust_edgars: "+5" }
+    choices:
+      - Ask Edgars about that evening -> edgars_talk
+
+  edgars_talk:
+    type: message
+    text: >
+      EDGARS: bļe ok bet tu nevienam nesaki jā? es braucu ar bmx pa
+      lauku ceļu gar elīnas pļavu ap 20:00. un es redzēju jāni —
+      zemnieku no blakus — pie viņas stropiem. viņam bija kaut kāds
+      kanniņš rokā. viņš kaut ko lēja uz stropiem.
+
+      bļe viņš mani pamanīja un sāka skriet man pakaļ. es aizbraucu
+      tik ātri cik varēju. viņš kliedza ka ja es kādam pateikšu
+      viņš man dirsā iedos.
+
+      pists es neesmu par to runājis jo viņš ir liels vīrs un es
+      esmu tikai 17 un kas man ticēs
+    effects:
+      trust_edgars: "+10"
+      night_witnesses: "+1"
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Gatis (forest ranger, found evidence at dawn) ---
+
+  gatis_interview:
+    type: tweet
+    from: gatis
+    text: >
+      Rīta patrulēšanā konstatēti svaigi riepu nospiedumi meža ceļā
+      pie Bērziņu pļavas. Neatļauta braukšana pa meža ceļiem. Lūdzu
+      ziņot par neparastu transporta kustību.
+    effects: { trust_gatis: "+5" }
+    choices:
+      - Ask Gatis what he found -> gatis_talk
+
+  gatis_talk:
+    type: message
+    text: >
+      GATIS: I patrol the forest roads every morning at 5am. That
+      morning I found fresh tire tracks on the forest road behind
+      her meadow. Two vehicles. Tracks went through the meadow gate
+      to the stream.
+
+      Empty chemical containers near the stream. AgroBaltic batch
+      numbers. Someone was dumping waste directly into the stream.
+      Not spray drift. Deliberate.
+
+      I reported it to the pašvaldība. Raimonds said he'd "look
+      into it." Six days ago. Nothing.
+    effects:
+      trust_gatis: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dace (baker, heard an argument) ---
+
+  dace_interview:
+    type: tweet
+    from: dace
+    text: >
+      Maize gatava 5:00 kā vienmēr. Bet tajā naktī ap 3:00 es
+      dzirdēju kliegšanu no ceļa puses. Neierasta skaņa šajā ciematā.
+    effects: { trust_dace: "+5" }
+    choices:
+      - Ask Dace what she heard -> dace_talk
+
+  dace_talk:
+    type: message
+    text: >
+      DACE: I start baking at 4am but I was up at 3am that night.
+      Heard shouting from the road past Elīna's property.
+
+      A man screaming. Pure rage. Then a woman — Elīna, I think —
+      shouting back. Something like "I saw what you did."
+
+      Then a car door. Engine. Fast toward the forest road.
+
+      I told police. They wrote it down. That was it. Sūds.
+    effects:
+      trust_dace: "+10"
+      night_witnesses: "+1"
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Andris Q2 (saw cars at midnight, more detail) ---
+
+  andris_interview_q2:
+    type: message
+    text: >
+      ANDRIS: Ok, more detail. Driving back from the harbour around
+      midnight. Slowed near Elīna's meadow — lights.
+
+      Two vehicles. Jānis Ozols' old Toyota pickup — I know it,
+      cracked left taillight, Latvija bumper sticker. Parked by the
+      hives. Second car — black company van. AgroBaltic logo.
+
+      At midnight. At a bee meadow. Together.
+    effects:
+      trust_andris: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      jealousy_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Līga (best friend)
+      and Laima (saw Jānis watching Elīna's property).
+    choices:
+      - Talk to Līga about that night -> liga_interview
+      - Talk to Laima -> laima_interview
+      - Find Edgars -> edgars_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Gatis -> gatis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Dace -> dace_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Andris -> andris_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Līga (last contact with Elīna) ---
+
+  liga_interview:
+    type: tweet
+    from: liga
+    text: >
+      tā fotogrāfija elīnas kontā. tā NAV viņa. elīna nekad
+      nepublicē bez paraksta. elīna nepublicē 2:00 naktī. kāds
+      cits to izdarīja.
+    effects: { trust_liga: "+5" }
+    choices:
+      - DM Līga -> liga_talk_low
+        when:
+          state: trust_liga
+          lt: 50
+      - DM Līga -> liga_talk_high
+        when:
+          state: trust_liga
+          gte: 50
+
+  liga_talk_low:
+    type: message
+    text: >
+      LĪGA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Līga needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_liga: "+5" }
+    choices:
+      - Share what you've learned about the night -> liga_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  liga_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the cars at the meadow, the
+      dumping, the argument. Līga is silent for a while.
+
+      LĪGA: You're actually trying to find her. Ok. I'll talk.
+    effects: { trust_liga: "+25" }
+    choices:
+      - What happened that night? -> liga_talk_high
+
+  liga_talk_high:
+    type: message
+    text: >
+      LĪGA: She called at 1am. Whispering. "I caught them. Jānis
+      and someone from AgroBaltic. Dumping chemicals on my meadow.
+      I have it on camera."
+
+      I said call the police. She said "police won't do shit.
+      Raimonds is in AgroBaltic's pocket."
+
+      Then: "Jānis saw me. He screamed at me. Said if I talk
+      he'll burn down the hives and the cabin with me in it."
+
+      She was packing her evidence and leaving. Then the call
+      cut. Nothing since. Bļe, I should have gone to her.
+    effects:
+      trust_liga: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      jealousy_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Laima (saw Jānis watching Elīna's property) ---
+
+  laima_interview:
+    type: message
+    text: >
+      LAIMA: ok čau es nezinu vai tas ir svarīgi bet jānis — tas
+      zemnieks — es viņu redzēju kādas 4 reizes pēdējā mēnesī
+      stāvam pie ceļa un skatāmies uz elīnas pļavu. vienkārši
+      stāvēja un skatījās. dažreiz ar binokli.
+
+      un vienu reizi viņš bija pie viņas mājas naktī. es gāju
+      mājās no drauga un redzēju viņa piku stāvam pretī viņas
+      ēkai. gaismas izslēgtas. viņš sēdēja iekšā.
+
+      pists creepy sah
+    effects:
+      trust_laima: "+10"
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Jānis seen pouring something on Elīna's hives (Edgars)
+      00:00 — Jānis' truck and AgroBaltic van at the meadow (Andris)
+      01:00 — Elīna calls Līga, says she caught them dumping on camera (Līga)
+      03:00 — Argument heard on the road, man screaming, woman responding (Dace)
+      05:00 — Fresh tire tracks and chemical containers at the stream (Gatis)
+
+      Jānis and AgroBaltic were dumping chemicals on Elīna's land.
+      She caught them. Jānis threatened her. She fled with her evidence.
+
+      But there are two threats: the jealous neighbour AND the corporation
+      behind him.
+
+      Two threads to pull:
+      — The cover-up: What is AgroBaltic hiding? Who authorized the
+        dumping? Why is the pašvaldība silent?
+      — The jealousy: How far did Jānis go? Is it just about the land,
+        or something darker?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Jānis -> jealousy_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      JEALOUSY THREAD: Evidence collected: ${jealousy_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the jealousy thread -> jealousy_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: jealousy_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AgroBaltic is hiding something. Elīna had proof. Now she's
+      gone and her evidence may be gone too.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search Elīna's published data -> elina_data
+      - Talk to Inga the journalist -> inga_interview
+      - Talk to Viesturs (AgroBaltic technician) -> viesturs_interview
+      - Talk to Ilze (environment specialist) -> ilze_interview
+      - Check the Dabas Sargi association -> biedri_investigation
+      - Talk to Gatis about the dumping site -> gatis_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Elīna's Data ---
+
+  elina_data:
+    type: message
+    text: >
+      Elīna's public posts contain detailed records. 14 colonies lost
+      in 8 months. Soil maps showing neonicotinoid concentrations
+      radiating from the stream that crosses AgroBaltic land. Water
+      pH readings far outside normal range.
+
+      Her most damning post — shared with a private group — compares
+      AgroBaltic's reported waste disposal with actual chemical levels
+      in local waterways. The gap is enormous. They're disposing of
+      far more waste than reported. The rest goes into the ground,
+      the water, Elīna's meadows.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Inga ---
+
+  inga_interview:
+    type: message
+    text: >
+      INGA: I don't discuss sources. Period.
+    effects: { trust_inga: "+5" }
+    choices:
+      - Show Inga the evidence you have -> inga_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  inga_with_evidence:
+    type: message
+    text: >
+      INGA: ...you have more than I expected.
+
+      Ok. Elīna and I were working together. Soil samples, water
+      samples, dead bee counts, photos of the dumping. She caught
+      Jānis and an AgroBaltic employee dumping barrels into the
+      stream — on camera.
+
+      We were going to send it to Latvijas Televīzija. Then she
+      went dark. Two days later someone broke into my office and
+      took my backup drive.
+
+      Elīna is alive. She contacted me once from a borrowed phone.
+      Said she was hiding. "Jānis threatened to burn me out and
+      AgroBaltic sent people to my door."
+
+      I can't say where she is. But with enough evidence, I can
+      publish and make it safe for her to return.
+    effects:
+      trust_inga: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who sent people to her door? -> inga_hint
+      - Back to investigation hub -> investigation_hub
+
+  inga_hint:
+    type: message
+    text: >
+      INGA: The factory sent Pēteris Vanags and a lawyer to Elīna's
+      cabin the day before. Told her to hand over all data or face
+      a defamation suit. She told them to get off her land.
+
+      But Jānis is the immediate danger. Local, violent, AgroBaltic's
+      useful idiot. They supply him cheap chemicals, he dumps overflow
+      on Elīna's land. Whether they ordered it or just looked the
+      other way — that's what we need to prove.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Viesturs (AgroBaltic whistleblower) ---
+
+  viesturs_interview:
+    type: message
+    text: >
+      VIESTURS: I work at AgroBaltic. I'm just a lab technician. I
+      run tests, I file reports.
+
+      But the reports I file... are not always the reports that reach
+      the Vides dienests.
+    effects: { trust_viesturs: "+10" }
+    choices:
+      - What do you mean? -> viesturs_detail
+
+  viesturs_detail:
+    type: message
+    text: >
+      VIESTURS: I measure waste concentrations. Neonicotinoids,
+      glyphosate, solvents. My numbers go to my supervisor. Between
+      my desk and the regulatory filing, they change. Lower. Always.
+
+      The excess waste doesn't disappear. I think it goes to local
+      farmers like Jānis who take it for a fee. Illegal disposal
+      through a middleman.
+
+      Elīna's dead bees prove it. Her soil samples match MY original
+      numbers, not the official ones.
+
+      Ellē, I'm scared. But I kept copies. If someone can protect
+      me, I'll share them.
+    effects:
+      trust_viesturs: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Ilze ---
+
+  ilze_interview:
+    type: message
+    text: >
+      ILZE: As environment specialist, I take these allegations
+      seriously. But AgroBaltic employs 150 people. Raimonds insists
+      we "maintain partnership."
+
+      Off the record? Inspections are announced two weeks in advance.
+      They clean up before inspectors arrive. And Raimonds personally
+      reviews which complaints reach the Valsts vides dienests. Some
+      never make it.
+
+      Elīna's complaint about dead bees? Filed three months ago.
+      Status: "under review." Meaning buried.
+    effects:
+      trust_ilze: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Dabas Sargi ---
+
+  biedri_investigation:
+    type: tweet
+    from: biedri_dabai
+    text: >
+      BRĪDINĀJUMS: Konstatēts piesārņojums Dzintarkrastas upītē.
+      Paraugu ņemšana un fotofiksācija notiek. Pieprasām neplānotu
+      AgroBaltic rūpnīcas pārbaudi.
+    choices:
+      - Check their data -> biedri_data
+
+  biedri_data:
+    type: message
+    text: >
+      Dabas Sargi have monitored water quality for two years. Clear
+      pattern: pesticide spikes matching AgroBaltic's production
+      schedule. Higher weekdays. Higher at night.
+
+      But the worst contamination isn't at the factory outflow. It's
+      downstream — where Jānis' land borders Elīna's meadow. Someone
+      is dumping upstream, using her meadow as a chemical sink.
+
+      Elīna was a member. She contributed most of the data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gatis dumping ---
+
+  gatis_dumping:
+    type: message
+    text: >
+      GATIS: I went back to the stream three days later. Behind
+      bushes — six more chemical barrels. Empty, stinking. AgroBaltic
+      labels. Some months old. Not a one-time thing.
+
+      And something else. A trail camera. Mounted on a tree, pointed
+      at the stream. Battery dead but memory card still in it.
+
+      Elīna's camera. She set it to record the dumping. If that card
+      has footage from that night — sūds, that's everything.
+
+      I still have it. Didn't trust the police with it.
+    effects:
+      trust_gatis: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # JEALOUSY THREAD
+  # =====================================================================
+
+  jealousy_hub:
+    type: message
+    text: >
+      THE JEALOUSY THREAD
+
+      Jānis Ozols. Neighbouring farmer. Jealous of Elīna's success.
+      Furious about her complaints. Seen at her hives. Threatened her.
+      How far did he go?
+
+      Jealousy evidence: ${jealousy_evidence}
+    choices:
+      - Investigate Jānis' land disputes -> land_dispute
+      - Talk to Līga about Jānis -> liga_janis
+        when:
+          state: trust_liga
+          gte: 20
+      - Talk to Edgars (more detail on the hive incident) -> edgars_detail
+      - Talk to Kārlis the pharmacist -> karlis_interview
+      - Check the anonymous account @aivars_meza -> aivars_investigation
+      - Talk to Zane about Jānis' behavior -> zane_janis_deep
+        when:
+          state: trust_zane
+          gte: 40
+      - Talk to Inspektors Krūmiņš -> policija_interview
+        when:
+          state: trust_policija
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Land Dispute Records ---
+
+  land_dispute:
+    type: message
+    text: >
+      The pašvaldība records show three formal complaints from Jānis
+      Ozols regarding Elīna Bērziņa's beekeeping operation:
+
+      Complaint 1 (11 months ago): "Bees from adjacent property
+      swarming onto my rapeseed fields. Requesting removal."
+      — Status: Dismissed.
+
+      Complaint 2 (7 months ago): "Beekeeper operating commercial
+      enterprise on agricultural land without proper permits."
+      — Status: Investigated. Permits found in order.
+
+      Complaint 3 (3 months ago): "Beekeeping operation devaluing
+      adjacent farmland. Requesting boundary review."
+      — Status: Pending.
+
+      In parallel, Elīna filed two complaints about pesticide spray
+      drift from Jānis' fields causing bee deaths. Both were marked
+      "under review." Neither was actioned.
+    effects:
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to jealousy thread -> jealousy_hub
+
+  # --- Līga on Jānis ---
+
+  liga_janis:
+    type: message
+    text: >
+      LĪGA: Jānis has hated Elīna since she started selling honey.
+      He was the big local producer before her. Elīna's honey started
+      winning awards, getting featured in Rīga food magazines. He
+      couldn't compete. Generic vs artisanal.
+
+      Three months ago he came to her door at 11pm. Drunk. Screaming
+      she'd ruined him. She filed a police report. Nothing happened.
+
+      And bļe — last autumn one colony died overnight. Fifty thousand
+      bees. Elīna tested them. Pure concentrated pesticide. Not spray
+      drift. Someone poured it into the hive. She was sure it was
+      Jānis.
+    effects:
+      trust_liga: "+10"
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to jealousy thread -> jealousy_hub
+
+  # --- Edgars detail ---
+
+  edgars_detail:
+    type: message
+    text: >
+      EDGARS: bļe ok ir vēl kas ko es neteicu. kad es redzēju jāni
+      pie stropiem viņš nebija viens. tur bija vēl viens vīrs.
+      formas drēbēs — kā darba apģērbā. ar uzņēmuma logo uz muguras.
+      es nevarēju izlasīt bet tas bija tumši zils ar baltu rakstu.
+
+      agrobaltic. tieši tā viņu formastērps izskatās.
+
+      viņi strādāja kopā. jānis pie stropiem, tas otrs pie upes ar
+      mucām. es redzēju kā viņš izlēja mucu upē. ellē tieši upē.
+
+      es esmu pists nobijies bet kādam tas jāzina
+    effects:
+      trust_edgars: "+10"
+      jealousy_evidence: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to jealousy thread -> jealousy_hub
+
+  # --- Kārlis ---
+
+  karlis_interview:
+    type: message
+    text: >
+      KĀRLIS: This is confidential but I'm a pharmacist, not a priest.
+      Jānis Ozols comes in regularly. He's been buying things that
+      suggest he's not doing well. Anti-anxiety medication, sleeping
+      pills, painkillers. The pattern is someone under extreme stress
+      — or extreme guilt.
+
+      He also bought a large quantity of concentrated insecticide
+      last autumn. Not the agricultural kind — we sell small bottles
+      for household use. He bought eight bottles. I asked what for.
+      He said "rats."
+
+      You don't kill rats with insecticide. But you could kill bees
+      with it.
+    effects:
+      trust_karlis: "+10"
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to jealousy thread -> jealousy_hub
+
+  # --- Aivars (anonymous account) ---
+
+  aivars_investigation:
+    type: tweet
+    from: aivars
+    text: >
+      Viņai vajadzēja klausīties. Tā zeme pieder tiem, kas to
+      apstrādā. Nevis tiem, kas tur bites.
+    choices:
+      - Look at this account's history -> aivars_posts
+
+  aivars_posts:
+    type: message
+    text: >
+      @aivars_meza: account created 6 months ago. Posts are all
+      about land use, farming rights, and complaints about beekeeping.
+      The tone escalates over time:
+
+      Month 1: "Traditional farming is under threat from hobby farmers."
+      Month 3: "Some people think they can take land that real farmers
+      need. They'll learn."
+      Month 4: "Bees are pests. Ask any real farmer."
+      Month 5: "She thinks she can report me and get away with it?
+      We'll see who leaves first."
+      Month 6: "The land will be mine again. One way or another."
+
+      The last post, two days before Elīna disappeared: "Tonight it
+      ends."
+    effects:
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> aivars_style
+
+  aivars_style:
+    type: message
+    text: >
+      Comparing @aivars_meza with @janis_ozols:
+
+      Same Latvian dialect patterns — the specific Kurzeme regional
+      expressions. Same agricultural terminology. Same misspelling of
+      "pesticīdi" as "pesticidi" without the long vowel. Same grudge
+      against beekeepers.
+
+      And one post from @aivars_meza references "my rapeseed being
+      devalued." Only one farmer in Dzintarkrasts grows rapeseed.
+
+      It's Jānis. The anonymous account is Jānis.
+    effects:
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to jealousy thread -> jealousy_hub
+
+  # --- Zane deep ---
+
+  zane_janis_deep:
+    type: message
+    text: >
+      ZANE: Sit down. I'll tell you what nobody wants to say out loud.
+
+      Jānis has a history. Ten years ago, before Elīna inherited the
+      meadows, there was another beekeeper there. Old Pēteris Bērziņš —
+      Elīna's grandfather. He and Jānis had the same dispute. The bees,
+      the land, the spraying.
+
+      Old Pēteris' hives burned down one winter night. "Electrical
+      fault," the report said. Pēteris was devastated. He sold his
+      remaining land to Jānis for almost nothing. Died a year later.
+
+      Elīna inherited the meadows from a separate deed — her
+      grandmother's land, not the part Jānis bought. When she started
+      beekeeping again, Jānis went white. He thought the bees were
+      gone forever.
+
+      History repeating, čau.
+    effects:
+      trust_zane: "+10"
+      jealousy_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to jealousy thread -> jealousy_hub
+
+  # --- Policija ---
+
+  policija_interview:
+    type: message
+    text: >
+      INSPEKTORS KRŪMIŅŠ: Off the record — and I mean completely
+      off the record — I wanted to investigate AgroBaltic and Jānis
+      both. My superior told me to stand down on AgroBaltic. Said
+      the Valsts vides dienests had "jurisdiction." That's code for
+      "don't touch it."
+
+      As for Jānis — I received three complaints from Elīna about
+      harassment and property damage. I filed them all. They went
+      to the district prosecutor. Nothing came back.
+
+      Raimonds — the pagasta vadītājs — called me personally and
+      said it was "a neighbour dispute" and I should "let it calm
+      down." Raimonds' brother works at AgroBaltic. Did you know that?
+
+      Bring me something solid — something I can take over Raimonds'
+      head, directly to the district — and I'll reopen the case.
+    effects:
+      trust_policija: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to jealousy thread -> jealousy_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Elīna than anyone in Dzintarkrasts. Who is responsible?
+    choices:
+      - Confront Jānis Ozols (the jealous neighbour) -> confront_janis
+        when:
+          state: jealousy_evidence
+          gte: 5
+      - Confront Pēteris Vanags (the plant director) -> confront_peteris
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Raimonds Liepiņš (political protection) -> confront_raimonds
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Jānis (Best Ending) ---
+
+  confront_janis:
+    type: message
+    text: >
+      You present your evidence to Jānis:
+
+      "I know @aivars_meza is your account. I know you poisoned
+      Elīna's hives with concentrated insecticide. I know you were
+      dumping AgroBaltic waste on her meadow. I know Edgars saw you
+      at the hives. I know Andris saw your truck at midnight. I have
+      the trail camera footage from the stream."
+    choices:
+      - Send -> janis_response
+
+  janis_response:
+    type: message
+    text: >
+      Jānis doesn't reply for a long time. Then:
+
+      JĀNIS: You don't understand. That land should be mine. Her
+      grandfather's bees ruined my father's crops. Then she comes
+      back and starts the whole thing again. And then she reports
+      ME? For spraying MY land? I was here first. I'll be here last.
+
+      AgroBaltic offered me money to take their waste. I needed the
+      money because HER bees were destroying MY rapeseed yield. She
+      caused this. All of it.
+
+      That's not justification. That's confession.
+
+      You've already sent the evidence to Inspektors Krūmiņš. And
+      to Inga Liepa. And to the Valsts vides dienests.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE JEALOUS NEIGHBOUR
+
+      Three things happen in quick succession.
+
+      Inspektors Krūmiņš arrests Jānis Ozols. With your evidence —
+      the anonymous account, the witness testimonies, the trail camera
+      footage, the insecticide purchases, the land dispute history —
+      Jānis is charged with criminal harassment, destruction of
+      property, illegal waste disposal, and threatening behaviour.
+      The trail camera shows him and an AgroBaltic worker dumping
+      barrels into the stream. Clear as day.
+
+      Inga Liepa, finally in possession of Elīna's full evidence
+      package, publishes the AgroBaltic story on Latvijas Televīzija.
+      The Valsts vides dienests orders an unannounced inspection.
+      AgroBaltic's factory is shut down pending environmental
+      remediation. Pēteris Vanags faces criminal charges for
+      falsifying waste disposal reports. Raimonds Liepiņš resigns
+      when his brother's role at AgroBaltic becomes public.
+
+      And Elīna Bērziņa, reading the story from a friend's farmhouse
+      in Vidzeme, calls her brother for the first time in nine days.
+
+      "Es braucu mājās."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: elina
+    text: >
+      bites nepieviļ. un dzintarkrastas cilvēki arī ne.
+      paldies ka nepadevāties.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Pēteris (Partial Ending) ---
+
+  confront_peteris:
+    type: message
+    text: >
+      You present the pollution evidence to Pēteris Vanags:
+
+      "I have soil samples showing neonicotinoid levels ten times
+      the EU maximum. I have your technician's original reports
+      showing the data was falsified. I have photographs of your
+      barrels in the stream. I have the trail camera footage."
+    choices:
+      - Send -> peteris_response
+
+  peteris_response:
+    type: message
+    text: >
+      PĒTERIS: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. AgroBaltic has always operated within
+      regulatory requirements.
+
+      But it's too late. You've sent the evidence to Inga, to the
+      Dabas Sargi, and to the Valsts vides dienests.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. AgroBaltic is ordered to halt
+      production pending investigation. The factory may close.
+      A hundred and fifty jobs hang in the balance. The village
+      is divided.
+
+      But Elīna?
+
+      Without the jealousy evidence, Jānis is never investigated
+      for the harassment, the threats, the poisoned hives. He
+      continues to farm next to Elīna's meadows. He watches her
+      property. He creates a new anonymous account.
+
+      Three months later, Elīna reads about AgroBaltic online.
+      She returns quietly. She rebuilds her colonies. She installs
+      cameras on every hive. She checks the meadow every morning
+      before dawn, looking for tire tracks.
+
+      The corporation is exposed. But the man who terrorised Elīna
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: elina
+    text: "esmu mājās. bites atgriežas. pārējais... redzēsim."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Raimonds (Wrong Ending) ---
+
+  confront_raimonds:
+    type: message
+    text: >
+      You confront pagasta vadītājs Raimonds Liepiņš with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> raimonds_response
+
+  raimonds_response:
+    type: tweet
+    from: agita
+    text: >
+      Mans klients pieņem zināšanai Jūsu apgalvojumus. Jebkāda
+      publisku apmelojošu materiālu izplatīšana radīs tūlītējas
+      tiesvedības sekas. — Kalēja & Partneri, Rīga
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The pagasta vadītājs' lawyer buries your accusation. Without
+      a direct link between Raimonds and the dumping — and there
+      isn't one beyond political negligence — your evidence is
+      insufficient.
+
+      AgroBaltic continues to operate. Jānis continues to farm.
+      Elīna stays in hiding.
+
+      Six months later, another beekeeper in the next parish reports
+      colony collapse. The stream still runs dirty. @aivars_meza
+      creates a new account. It follows Elīna's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: DZINTARKRASTS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Jealousy evidence: ${jealousy_evidence}
+
+      Thank you for playing. Elīna's story explores themes of
+      corporate impunity, environmental destruction, neighbour
+      violence, community silence, and the courage to speak up
+      for nature.
+
+      If you or someone you know is experiencing harassment,
+      threats, or feels unsafe, help is available:
+      Uzticības tālrunis: 8006 2226
+      Valsts policija: 110
+      Vides pārkāpumu ziņošana: 8000 2200

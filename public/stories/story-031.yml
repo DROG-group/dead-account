@@ -1,0 +1,1742 @@
+meta:
+  title: "Dead Account"
+  state:
+    trust_unai: 0
+    trust_nerea: 0
+    trust_mikel: 0
+    trust_amaia: 0
+    trust_gorka: 0
+    trust_aitor: 0
+    trust_begona: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    thread1_evidence: 0
+    thread2_evidence: 0
+    evidence_total: 0
+    confrontation_ready: 0
+    talked_to_coach: 0
+    talked_to_bookie: 0
+    found_doping_list: 0
+    found_betting_slips: 0
+    iker_phone_unlocked: 0
+  player:
+    name: New Resident
+    bio: "Just moved to Arrantzale. Trying to find my way around this beautiful Basque town."
+    avatar: avatars/default_citizen.png
+  bot:
+    display_name: "Arrantzale.social"
+    description: "Ongi etorri! Welcome to the local instance for the coastal town of Arrantzale, Basque Country. Our community is reeling from the sudden disappearance of beloved pelota player and sports blogger Iker Etxebarria. His account went dark three weeks ago. Help us find out what happened."
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+  npcs:
+    unai:
+      name: "Unai Zubieta"
+      bio: "16. Pelota player. Iker was my coach basically. Still can't believe he's gone. #JusticeForIker"
+      avatar: avatars/unai.jpg
+    nerea:
+      name: "Nerea Agirre"
+      bio: "17. Journalism student. If nobody else is going to ask questions about Iker, I will. Photographer. She/her."
+      avatar: avatars/nerea.jpg
+    mikel:
+      name: "Mikel Larrea"
+      bio: "15. Gamer. Iker helped me get into pelota when I was having a rough time. He deserved better."
+      avatar: avatars/mikel.jpg
+    amaia:
+      name: "Amaia Etxebarria"
+      bio: "Iker's older sister. Nurse at Arrantzale Health Centre. I won't stop until I know what happened to my brother."
+      avatar: avatars/amaia.jpg
+    gorka:
+      name: "Gorka Mendizabal"
+      bio: "Head coach, Arrantzale Pelota Club. 30 years coaching champions. Our community is our strength."
+      avatar: avatars/gorka.jpg
+    aitor:
+      name: "Aitor Ibarra"
+      bio: "Sports journalist, Diario Vasco freelancer. Covering regional pelota since 2009. The truth matters."
+      avatar: avatars/aitor.jpg
+    begona:
+      name: "Amona Begona"
+      bio: "Begona Arregui. Retired schoolteacher. 78 years in Arrantzale. I know everyone and I forget nothing."
+      avatar: avatars/begona.jpg
+    patxi:
+      name: "Patxi Goikoetxea"
+      bio: "Owner of Bar Frontoia. Best pintxos in town. Pelota on the big screen every match day."
+      avatar: avatars/patxi.jpg
+    miren:
+      name: "Miren Uribe"
+      bio: "Pharmacist. Arrantzale is a small town and small towns talk. Sometimes too much, sometimes not enough."
+      avatar: avatars/miren.jpg
+    joseba:
+      name: "Joseba Alonso"
+      bio: "President, Regional Pelota Federation. Dedicated to the growth and integrity of our beloved sport."
+      avatar: avatars/joseba.jpg
+    leire:
+      name: "Leire Gorostiza"
+      bio: "17. Nerea's best friend. Student council. I organize things. Currently organizing my grief."
+      avatar: avatars/leire.jpg
+    txema:
+      name: "Txema Aranburu"
+      bio: "Retired fisherman. I sit at the port and watch the boats. I also watch the people."
+      avatar: avatars/txema.jpg
+    koldo:
+      name: "Koldo Zabala"
+      bio: "Betting shop manager, Apuestas Zabala. Legal, licensed, legitimate. Don't believe rumours."
+      avatar: avatars/koldo.jpg
+    edurne:
+      name: "Edurne Lasa"
+      bio: "Town librarian. Iker used to come in to research old pelota records. He was onto something."
+      avatar: avatars/edurne.jpg
+    andoni:
+      name: "Andoni Retegi"
+      bio: "Star pelota player. Two-time regional champion. I play clean and I play to win."
+      avatar: avatars/andoni.jpg
+    ane:
+      name: "Ane Bilbao"
+      bio: "Social worker, Arrantzale youth services. These kids need support right now. DMs open."
+      avatar: avatars/ane.jpg
+    igor:
+      name: "Igor Perez"
+      bio: "IT support, town council. I keep the servers running. I also kept Iker's blog running."
+      avatar: avatars/igor.jpg
+    maite:
+      name: "Maite Etxebarria"
+      bio: "Iker and Amaia's ama. I just want my son back. Please."
+      avatar: avatars/maite.jpg
+    xabi:
+      name: "Xabi Dorronsoro"
+      bio: "22. University student home for summer. Used to train with Iker. Something was off those last weeks."
+      avatar: avatars/xabi.jpg
+    irati:
+      name: "Irati Azkue"
+      bio: "Local police officer. The case is under investigation. Please direct any information through proper channels."
+      avatar: avatars/irati.jpg
+
+entry: welcome
+
+nodes:
+  welcome:
+    type: message
+    text: >
+      You've just created an account on Arrantzale.social, the local Mastodon instance
+      for this small coastal town in the Basque Country. Your feed immediately fills with
+      posts about Iker Etxebarria, a 24-year-old pelota player and sports blogger who
+      disappeared three weeks ago. His account @iker went silent overnight. The local police
+      say they're investigating, but the community is frustrated by the lack of answers.
+      Iker's last blog posts were about corruption in regional pelota leagues. Now his
+      family and friends are desperate for help.
+    choices:
+      - Browse the local timeline -> local_timeline
+      - Look at Iker's archived posts -> iker_archive
+      - Read the welcome guide -> welcome_guide
+
+  welcome_guide:
+    type: message
+    text: >
+      ARRANTZALE.SOCIAL - COMMUNITY GUIDE
+
+      Ongi etorri! This instance serves our beautiful fishing town. Please be respectful
+      of our community during this difficult time. Many of us knew Iker personally.
+
+      To get oriented: follow local accounts, check the #JusticeForIker hashtag, and
+      visit the fronton (pelota court) area where many gather in the evenings.
+
+      Instance admin: @igor
+    choices:
+      - Browse the local timeline -> local_timeline
+      - Look at Iker's archived posts -> iker_archive
+
+  local_timeline:
+    type: tweet
+    from: nerea
+    text: >
+      Bua tio three weeks and NOTHING from the police. Iker didn't just vanish into thin
+      air. He was investigating something and someone didn't like it. Open your eyes
+      #JusticeForIker
+    choices:
+      - Reply to Nerea -> reply_nerea_first
+      - Keep scrolling -> timeline_scroll_2
+
+  reply_nerea_first:
+    type: message
+    text: >
+      You reply to Nerea's post, introducing yourself and saying you want to help.
+    effects: { trust_nerea: "+5", contacts_followed: "+1" }
+    choices:
+      - Keep scrolling the timeline -> timeline_scroll_2
+      - DM Nerea directly -> dm_nerea_intro
+
+  dm_nerea_intro:
+    type: tweet
+    from: nerea
+    text: >
+      Oh hey, you're new here. Look I don't want to sound paranoid but Iker was
+      getting threats before he disappeared. He showed me some of the messages.
+      They were about his blog posts on match-fixing in pelota. Flipa tio, it was
+      heavy stuff. If you actually want to help, talk to Unai and Mikel too.
+      They trained with Iker.
+    effects: { trust_nerea: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask about the threats -> nerea_threats_detail
+      - Ask about the blog posts -> nerea_blog_detail
+      - Go talk to Unai -> find_unai
+
+  nerea_threats_detail:
+    type: tweet
+    from: nerea
+    text: >
+      He got DMs from anonymous accounts. Like proper scary ones. Stuff like
+      "stop digging or you'll regret it" and "we know where your ama lives."
+      I told him to go to the police but he said the police here wouldn't do
+      anything because some of the people involved have connections. Ostia tio
+      I should have pushed harder.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask who he thought was behind it -> nerea_suspects
+      - Go talk to Unai -> find_unai
+      - Check the local timeline -> timeline_scroll_2
+
+  nerea_suspects:
+    type: tweet
+    from: nerea
+    text: >
+      He never said names directly but he kept mentioning "the betting people"
+      and said Gorka the coach was acting weird whenever Iker brought up certain
+      players' performance. And Koldo from the betting shop, Iker said he had
+      proof Koldo was connected to a bigger syndicate. Bua I'm scared even
+      typing this honestly.
+    effects: { thread1_evidence: "+1", thread2_evidence: "+1", evidence_total: "+2" }
+    choices:
+      - Go investigate Koldo -> find_koldo
+      - Go talk to Gorka -> find_gorka
+      - Find Unai first -> find_unai
+
+  nerea_blog_detail:
+    type: tweet
+    from: nerea
+    text: >
+      His blog "Pelota Garbia" (Clean Pelota) started as match reviews but
+      then he started noticing patterns. Players underperforming in specific
+      sets, weird betting odds before matches, that kind of thing. The last
+      post before he disappeared was titled "Following the Money" and it got
+      taken down like two days after he vanished. Ama mia someone deleted it.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask if anyone saved the blog post -> nerea_saved_post
+      - Go talk to Unai -> find_unai
+      - Check the timeline -> timeline_scroll_2
+
+  nerea_saved_post:
+    type: tweet
+    from: nerea
+    text: >
+      Edurne at the library might have something. Iker used to print stuff
+      out there, old school style. And Igor who runs the instance might have
+      server logs or cached versions. Worth asking both.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Visit Edurne at the library -> find_edurne
+      - Talk to Igor about server logs -> find_igor
+      - Find Unai -> find_unai
+
+  timeline_scroll_2:
+    type: tweet
+    from: unai
+    text: >
+      Training at the fronton felt wrong today without Iker. He was the one
+      who made me believe I could actually be good at this. Gorka barely
+      mentioned him. Like bro how can you just pretend everything's normal??
+      #JusticeForIker
+    choices:
+      - Reply to Unai -> reply_unai_first
+      - Keep scrolling -> timeline_scroll_3
+
+  reply_unai_first:
+    type: message
+    text: >
+      You reply to Unai's post with support and mention you'd like to help find answers.
+    effects: { trust_unai: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Unai -> dm_unai_intro
+      - Keep scrolling -> timeline_scroll_3
+
+  dm_unai_intro:
+    type: tweet
+    from: unai
+    text: >
+      Tio for real? Most people here just post hashtags and do nothing.
+      Look Iker was my mentor basically. Last time I saw him he was super
+      stressed. Said he had evidence that could "blow the whole thing open"
+      about match-fixing. He was going to meet someone that night. He
+      never came home.
+    effects: { trust_unai: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask who he was meeting -> unai_meeting
+      - Ask about the evidence -> unai_evidence
+      - Ask about Gorka -> unai_on_gorka
+
+  unai_meeting:
+    type: tweet
+    from: unai
+    text: >
+      He didn't say exactly but he mentioned the port area. Said someone
+      was going to give him documents. Txema the old fisherman hangs around
+      the port all day and night. He might have seen something. Bua tio
+      I should have gone with him that night.
+    effects: { thread1_evidence: "+1", evidence_total: "+1", night_witnesses: "+1" }
+    choices:
+      - Go find Txema at the port -> find_txema
+      - Ask Unai about the evidence -> unai_evidence
+      - Check the timeline -> timeline_scroll_3
+
+  unai_evidence:
+    type: tweet
+    from: unai
+    text: >
+      He had screenshots of betting patterns, like someone was placing huge
+      bets right before matches where the favourite lost. And he said he'd
+      found a list of players who were being paid to throw sets. Ostia tio
+      he said it went higher than just local leagues. Regional federation
+      level stuff.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask about the player list -> unai_player_list
+      - Go find Txema -> find_txema
+      - Check the timeline -> timeline_scroll_3
+
+  unai_player_list:
+    type: tweet
+    from: unai
+    text: >
+      I don't know all the names but he mentioned Andoni Retegi for sure.
+      Andoni's the star player, two-time regional champion. If he's involved...
+      bua that's massive. But careful tio, Andoni has a temper and a lot of
+      friends in this town.
+    effects: { thread1_evidence: "+1", evidence_total: "+1", found_doping_list: "+1" }
+    choices:
+      - Go confront Andoni -> find_andoni
+      - Talk to Gorka the coach -> find_gorka
+      - Go to the port to find Txema -> find_txema
+
+  unai_on_gorka:
+    type: tweet
+    from: unai
+    text: >
+      Gorka's been coaching here forever and everyone respects him but tio
+      I swear he's been acting different since Iker disappeared. Like
+      nervous. He told us not to talk about Iker's blog at training. Said
+      it would "create problems for the club." To loco bro what kind of
+      coach says that?
+    effects: { trust_unai: "+5", thread1_evidence: "+1", evidence_total: "+1", talked_to_coach: "+1" }
+    choices:
+      - Go confront Gorka -> find_gorka
+      - Find Txema at the port -> find_txema
+      - Check timeline -> timeline_scroll_3
+
+  timeline_scroll_3:
+    type: tweet
+    from: mikel
+    text: >
+      Nobody at school wants to talk about Iker anymore. Like he just stopped
+      existing. I was in a bad place last year and he's the one who got me
+      out of it. Got me playing pelota, checking in on me every week. And now
+      people act like it's just normal that he's gone?? Flipa.
+    choices:
+      - Reply to Mikel -> reply_mikel_first
+      - Keep scrolling -> timeline_scroll_4
+
+  reply_mikel_first:
+    type: message
+    text: >
+      You reply to Mikel acknowledging how important Iker was to him and that you want
+      to help find answers.
+    effects: { trust_mikel: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mikel -> dm_mikel_intro
+      - Keep scrolling -> timeline_scroll_4
+
+  dm_mikel_intro:
+    type: tweet
+    from: mikel
+    text: >
+      Thanks tio. Most adults just say "the police are handling it" and change
+      the subject. Look I know something that might help. Iker gave me a USB
+      drive like a week before he disappeared. Said "keep this safe and don't
+      tell anyone." I haven't opened it because I'm honestly scared.
+    effects: { trust_mikel: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask Mikel to open the USB -> mikel_usb
+      - Tell Mikel to keep it safe for now -> mikel_keep_safe
+      - Ask what Iker was like those last days -> mikel_last_days
+
+  mikel_usb:
+    type: tweet
+    from: mikel
+    text: >
+      Ok I opened it. Tio there's a spreadsheet with dates, match results,
+      and amounts of money. And there's a folder called "Syndicate" with
+      photos of betting slips and screenshots of encrypted chats. One of
+      the chat names is "KZ_Boss." Ostia bro this is real. I'm shaking.
+    effects: { thread1_evidence: "+2", thread2_evidence: "+1", evidence_total: "+3", found_betting_slips: "+1" }
+    choices:
+      - Ask about KZ_Boss -> mikel_kz_boss
+      - Tell Mikel to make copies -> mikel_copies
+      - Go investigate Koldo -> find_koldo
+
+  mikel_kz_boss:
+    type: tweet
+    from: mikel
+    text: >
+      KZ... Koldo Zabala? He runs the betting shop. Bua tio that tracks
+      because Iker always said the betting shop was the centre of everything.
+      But if Koldo is the boss of some syndicate then this is way bigger
+      than Arrantzale. What do we do??
+    effects: { thread2_evidence: "+1", evidence_total: "+1", talked_to_bookie: "+1" }
+    choices:
+      - Go investigate Koldo -> find_koldo
+      - Tell Mikel to send you copies -> mikel_copies
+      - Check timeline -> timeline_scroll_4
+
+  mikel_copies:
+    type: tweet
+    from: mikel
+    text: >
+      Done. Sent you the spreadsheet encrypted. Password is the name of
+      Iker's first pelota victory tournament, lowercase, no spaces. Ask
+      Amaia or Unai, they'd know. I'm going to hide the USB somewhere
+      safe. Flipa tio we're actually doing this.
+    effects: { trust_mikel: "+10", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Go ask Amaia about the tournament -> find_amaia
+      - Go investigate Koldo -> find_koldo
+      - Check timeline -> timeline_scroll_4
+
+  mikel_keep_safe:
+    type: tweet
+    from: mikel
+    text: >
+      Yeah ok. I'll keep it hidden. But tio if something happens to me too...
+      I don't know. Maybe I should make a copy? Iker trusted me with this
+      for a reason. I just wish he'd told me what it was about.
+    effects: { trust_mikel: "+5" }
+    choices:
+      - Ask Mikel to open it when he's ready -> mikel_usb
+      - Ask about Iker's last days -> mikel_last_days
+      - Check the timeline -> timeline_scroll_4
+
+  mikel_last_days:
+    type: tweet
+    from: mikel
+    text: >
+      He was different tio. Normally Iker was super chill, always joking
+      around. But those last two weeks he was paranoid. Kept looking over
+      his shoulder. He told me once that "not everyone at the club is who
+      they seem." And he started going to the port at night which was
+      weird. He wasn't a fishing person at all.
+    effects: { thread1_evidence: "+1", evidence_total: "+1", night_witnesses: "+1" }
+    choices:
+      - Ask about the port visits -> mikel_port
+      - Open the USB drive -> mikel_usb
+      - Check the timeline -> timeline_scroll_4
+
+  mikel_port:
+    type: tweet
+    from: mikel
+    text: >
+      I followed him once. Don't judge me tio I was worried. He went to
+      the old warehouse at the end of the dock. Met someone there but I
+      couldn't see who because it was dark. They talked for like 20 minutes
+      and then Iker left looking even more stressed. Bua I should have said
+      something.
+    effects: { thread2_evidence: "+1", evidence_total: "+1", night_witnesses: "+1" }
+    choices:
+      - Go investigate the warehouse -> investigate_warehouse
+      - Find Txema at the port -> find_txema
+      - Check timeline -> timeline_scroll_4
+
+  timeline_scroll_4:
+    type: tweet
+    from: amaia
+    text: >
+      My brother didn't just disappear. Someone made him disappear. The police
+      found his phone smashed at the port but won't tell us anything else.
+      Iker was brave and he was right about the corruption. I will not be
+      silenced. #JusticeForIker
+    choices:
+      - Reply to Amaia -> reply_amaia_first
+      - Keep scrolling -> timeline_scroll_5
+
+  reply_amaia_first:
+    type: message
+    text: >
+      You reply to Amaia offering your help and condolences.
+    effects: { trust_amaia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Amaia -> dm_amaia_intro
+      - Keep scrolling -> timeline_scroll_5
+
+  dm_amaia_intro:
+    type: tweet
+    from: amaia
+    text: >
+      Thank you. I'm exhausted but I can't stop. Iker was my little brother
+      and I was supposed to look after him. He came to me two days before he
+      disappeared and said he had proof of a match-fixing ring connected to
+      gambling syndicates. He named Koldo Zabala and said there were people
+      in the pelota federation involved too. He was going to publish everything.
+    effects: { trust_amaia: "+10", thread1_evidence: "+1", thread2_evidence: "+1", evidence_total: "+2" }
+    choices:
+      - Ask about the federation connection -> amaia_federation
+      - Ask about Iker's phone -> amaia_phone
+      - Ask about Koldo -> amaia_koldo
+
+  amaia_federation:
+    type: tweet
+    from: amaia
+    text: >
+      Joseba Alonso, the federation president. Iker said Joseba was getting
+      kickbacks from the syndicate for looking the other way on suspicious
+      matches. And Gorka the coach was pressuring certain players to
+      underperform in specific sets. It's all connected. The sport we love
+      is rotten from the inside.
+    effects: { thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask about Gorka specifically -> amaia_gorka
+      - Go talk to Joseba -> find_joseba
+      - Ask about Iker's phone -> amaia_phone
+
+  amaia_gorka:
+    type: tweet
+    from: amaia
+    text: >
+      Gorka came to our house after Iker disappeared. Told our ama that Iker
+      had been "under a lot of stress" and that maybe he just needed time
+      away. Like he was trying to make it seem like Iker chose to leave.
+      But I saw his face. He was scared, not sympathetic. He knows something.
+    effects: { thread1_evidence: "+1", evidence_total: "+1", talked_to_coach: "+1" }
+    choices:
+      - Go confront Gorka -> find_gorka
+      - Ask about Iker's phone -> amaia_phone
+      - Go to the federation -> find_joseba
+
+  amaia_phone:
+    type: tweet
+    from: amaia
+    text: >
+      The police have it but they told us the screen was smashed and it was
+      wiped. But here's what they don't know - Iker backed everything up
+      to a cloud drive. I have his login but I can't bring myself to look.
+      The password is the name of his first tournament win. "Torneo Arrantzale
+      Gaztea" - lowercase, no spaces.
+    effects: { thread1_evidence: "+1", thread2_evidence: "+1", evidence_total: "+2", iker_phone_unlocked: "+1" }
+    choices:
+      - Access Iker's cloud backup -> iker_cloud
+      - Go investigate Gorka -> find_gorka
+      - Talk to the police officer Irati -> find_irati
+
+  iker_cloud:
+    type: message
+    text: >
+      You access Iker's cloud backup. Inside you find folders meticulously
+      organised: "Match Data," "Betting Patterns," "Threats," "Sources."
+      The Threats folder contains 47 screenshots of anonymous messages
+      warning him to stop investigating. The Match Data folder has detailed
+      analysis of 23 suspicious matches over two seasons. There's also an
+      unsent email draft to a national newspaper with all the evidence
+      attached, dated the day he disappeared.
+    effects: { thread1_evidence: "+3", thread2_evidence: "+2", evidence_total: "+5" }
+    choices:
+      - Read the threatening messages -> iker_threats_folder
+      - Examine the match data -> iker_match_data
+      - Read the unsent email -> iker_email_draft
+
+  iker_threats_folder:
+    type: message
+    text: >
+      The threats escalated over three months. Early ones were vague warnings.
+      Later ones mentioned his family by name - Amaia, Maite, their home
+      address. The last message, sent two days before he disappeared, reads:
+      "Final warning. Drop everything or we drop you. The port. Midnight.
+      Come alone or your ama pays." Several messages came from an account
+      linked to a phone number that traces back to Apuestas Zabala.
+    effects: { thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Go confront Koldo at the betting shop -> find_koldo
+      - Share this with Nerea -> share_with_nerea
+      - Examine match data -> iker_match_data
+
+  iker_match_data:
+    type: message
+    text: >
+      Iker's analysis is devastating. He tracked betting odds across multiple
+      platforms and found that massive bets were placed on underdogs in 23
+      matches where favoured players, including Andoni Retegi, inexplicably
+      lost specific sets. The pattern is impossible to explain by chance.
+      He estimated over 200,000 euros in suspicious winnings funnelled
+      through Apuestas Zabala. There are also notes about performance-enhancing
+      drug use among players being used as blackmail leverage.
+    effects: { thread1_evidence: "+3", evidence_total: "+3" }
+    choices:
+      - Read the unsent email -> iker_email_draft
+      - Confront Andoni about doping -> find_andoni
+      - Go to the betting shop -> find_koldo
+
+  iker_email_draft:
+    type: message
+    text: >
+      The email was addressed to the investigative desk at El Diario. Subject
+      line: "Match-fixing syndicate in Basque pelota - full evidence package."
+      Iker wrote: "I have been investigating systematic match-fixing in regional
+      pelota for eight months. I have evidence connecting a local betting
+      operation to a wider gambling syndicate, involving the federation president,
+      at least one coach, and multiple players. I am sending this because I
+      believe I am in danger. If something happens to me, this evidence must
+      not disappear." It was never sent.
+    effects: { thread1_evidence: "+2", thread2_evidence: "+1", evidence_total: "+3" }
+    choices:
+      - Share evidence with Aitor the journalist -> find_aitor
+      - Confront the federation president -> find_joseba
+      - Go to the police -> find_irati
+
+  share_with_nerea:
+    type: tweet
+    from: nerea
+    text: >
+      Ostia tio... this is everything. Iker had it all documented. The
+      threats trace back to the betting shop?? Koldo always acts so
+      respectable in town. Bua we need to be careful. If these people
+      made Iker disappear they won't think twice about us. Let me
+      talk to Aitor the journalist. He has national contacts.
+    effects: { trust_nerea: "+10", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Go with Nerea to see Aitor -> find_aitor
+      - Investigate Koldo first -> find_koldo
+      - Check the timeline -> timeline_scroll_5
+
+  timeline_scroll_5:
+    type: tweet
+    from: begona
+    text: >
+      I have lived in Arrantzale for 78 years. I taught half this town to
+      read. And I will say what others are afraid to say: there are powerful
+      people in this town who benefit from silence. Iker was not silent.
+      That made him dangerous to them.
+    choices:
+      - Reply to Amona Begona -> reply_begona
+      - Keep scrolling -> timeline_scroll_6
+
+  reply_begona:
+    type: message
+    text: >
+      You reply to Amona Begona, asking if she knows more about who these powerful
+      people might be.
+    effects: { trust_begona: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Amona Begona -> dm_begona
+      - Keep scrolling -> timeline_scroll_6
+
+  dm_begona:
+    type: tweet
+    from: begona
+    text: >
+      Ah, young one. Sit down and listen. I taught Gorka Mendizabal when he
+      was seven years old. He was always ambitious, always wanting more than
+      this small town could give. Koldo Zabala's father was the same. These
+      families have been entangled for decades. Money, power, sport. And
+      Joseba at the federation owes his position to Koldo's backing. When
+      you understand the web, you understand why a boy asking questions
+      becomes a problem.
+    effects: { trust_begona: "+10", thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask about Gorka and Koldo's connection -> begona_connection
+      - Ask what she saw the night Iker disappeared -> begona_night
+      - Go investigate the key players -> investigation_hub
+
+  begona_connection:
+    type: tweet
+    from: begona
+    text: >
+      Koldo finances Gorka's coaching programme and the club facilities.
+      In return, Gorka ensures certain match outcomes. It has been this
+      way for at least five years. The federation turns a blind eye
+      because Joseba gets his share. Everyone wins except the honest
+      players. And now, except Iker.
+    effects: { thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask about the night Iker disappeared -> begona_night
+      - Go to investigation hub -> investigation_hub
+
+  begona_night:
+    type: tweet
+    from: begona
+    text: >
+      I don't sleep well these days. I was at my window that night, as I
+      often am. I saw Iker walking towards the port at around 11. And I
+      saw a car following him slowly. A dark car. I know that car. It
+      belongs to the betting shop. Koldo's car. I told the police. They
+      wrote it down. Nothing happened.
+    effects: { thread2_evidence: "+2", evidence_total: "+2", night_witnesses: "+1" }
+    choices:
+      - Ask if she told anyone else -> begona_told_anyone
+      - Confront Koldo -> find_koldo
+      - Go to investigation hub -> investigation_hub
+
+  begona_told_anyone:
+    type: tweet
+    from: begona
+    text: >
+      I told Irati the police officer and she seemed genuinely concerned
+      but said her superiors told her the case was "being handled at a
+      higher level." I told Amaia. And now I'm telling you. An old woman's
+      testimony may not seem like much, but I know what I saw. That car
+      followed that boy.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Go find Irati -> find_irati
+      - Confront Koldo -> find_koldo
+      - Investigation hub -> investigation_hub
+
+  timeline_scroll_6:
+    type: tweet
+    from: patxi
+    text: >
+      Bar Frontoia will be hosting a memorial evening for Iker this Friday.
+      Pintxos and drinks. Share memories. He was one of ours. Also, I want
+      to say publicly: certain people have asked me to stop allowing
+      #JusticeForIker discussions in my bar. I told them where to put
+      that suggestion.
+    choices:
+      - Reply to Patxi -> reply_patxi
+      - Go to investigation hub -> investigation_hub
+
+  reply_patxi:
+    type: tweet
+    from: patxi
+    text: >
+      Good to see new faces caring about this. Between you and me, the
+      night Iker disappeared, Koldo and two men I didn't recognise were
+      in my bar until about 10pm. They were in the back room, speaking
+      quietly. When they left, Koldo looked stressed. That's all I know
+      but it's something, no?
+    effects: { trust_gorka: "+0", thread2_evidence: "+1", evidence_total: "+1", night_witnesses: "+1", contacts_followed: "+1" }
+    choices:
+      - Ask about the two men -> patxi_two_men
+      - Go to investigation hub -> investigation_hub
+
+  patxi_two_men:
+    type: tweet
+    from: patxi
+    text: >
+      Not local. Suits. One was big, like security type. The other was
+      older, carried a briefcase. They spoke Spanish, not Euskera. I
+      got the feeling they were from Bilbao or San Sebastian. Syndicate
+      types if you ask me. I've seen enough crime shows to recognise
+      the look.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Go to investigation hub -> investigation_hub
+
+  investigation_hub:
+    type: message
+    text: >
+      You review your notes. Two threads are emerging: the sports corruption
+      around match-fixing and doping, and the threatening messages connected
+      to the betting syndicate. Several key people still need to be interviewed.
+      Where do you go next?
+    choices:
+      - Visit Gorka at the pelota club -> find_gorka
+      - Go to Koldo's betting shop -> find_koldo
+      - Find Andoni the star player -> find_andoni
+      - Talk to Joseba at the federation -> find_joseba
+      - Visit Edurne at the library -> find_edurne
+      - Find Txema at the port -> find_txema
+      - Talk to officer Irati -> find_irati
+      - Talk to Aitor the journalist -> find_aitor
+      - Visit Xabi who trained with Iker -> find_xabi
+      - Talk to Miren the pharmacist -> find_miren
+      - Visit Ane the social worker -> find_ane
+      - Check if you're ready to confront someone -> check_confrontation
+
+  find_gorka:
+    type: tweet
+    from: gorka
+    text: >
+      Another person asking questions about Iker. Look, I'm as concerned
+      as anyone. He was one of our best. But spreading conspiracy theories
+      about the club helps nobody. The police are handling it. We should
+      let them do their job and focus on supporting the players.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Press him about match-fixing -> gorka_matchfixing
+      - Ask about his relationship with Koldo -> gorka_koldo
+      - Ask about Iker's behaviour before disappearing -> gorka_iker_behaviour
+      - Return to investigation hub -> investigation_hub
+
+  gorka_matchfixing:
+    type: tweet
+    from: gorka
+    text: >
+      Match-fixing? That's a very serious accusation. Our players train
+      hard and compete honestly. Iker was... passionate, but sometimes
+      passion leads to seeing patterns that aren't there. I won't have
+      our club's reputation damaged by unfounded claims.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Mention the betting patterns Iker documented -> gorka_confront_evidence
+      - Ask about Andoni's performances -> gorka_andoni
+      - Back off and return to hub -> investigation_hub
+
+  gorka_confront_evidence:
+    type: tweet
+    from: gorka
+    text: >
+      I... what evidence? Look, I don't know what Iker told people but
+      whatever he had was probably misinterpreted. Statistics can say
+      anything you want them to. I have 30 years of honest coaching.
+      I won't be interrogated by someone who just arrived in this town.
+    effects: { thread1_evidence: "+1", evidence_total: "+1", talked_to_coach: "+1" }
+    choices:
+      - Push harder about Koldo -> gorka_koldo
+      - Leave and investigate elsewhere -> investigation_hub
+
+  gorka_andoni:
+    type: tweet
+    from: gorka
+    text: >
+      Andoni is the best player this town has produced in a generation.
+      His record speaks for itself. If he has the occasional bad set,
+      that's sport. It happens. Don't drag a champion's name through
+      the mud because of some blogger's conspiracy theory.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask about his relationship with Koldo -> gorka_koldo
+      - Return to hub -> investigation_hub
+
+  gorka_koldo:
+    type: tweet
+    from: gorka
+    text: >
+      Koldo is a businessman who supports local sport. He sponsors the
+      club, yes. Is that a crime? Every sports club has sponsors. You're
+      trying to make something sinister out of normal community support.
+      I think we're done talking.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Return to investigation hub -> investigation_hub
+
+  gorka_iker_behaviour:
+    type: tweet
+    from: gorka
+    text: >
+      Iker had been... agitated. Missing training sessions. Asking
+      questions that made people uncomfortable. I tried to talk to
+      him as a coach but he was convinced everyone was against him.
+      I worry he may have had a mental health episode. It's sad but
+      sometimes that's the explanation.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Challenge the mental health narrative -> gorka_challenge
+      - Return to hub -> investigation_hub
+
+  gorka_challenge:
+    type: tweet
+    from: gorka
+    text: >
+      I'm not diagnosing him, I'm just saying what I observed. Multiple
+      people will tell you the same thing. Now please, I have training
+      to run. The club needs stability right now, not more chaos.
+    choices:
+      - Return to investigation hub -> investigation_hub
+
+  find_koldo:
+    type: tweet
+    from: koldo
+    text: >
+      Apuestas Zabala is a legal, licensed betting establishment. I've
+      operated in this town for 15 years with a clean record. Whatever
+      that boy was writing about me on his blog was defamation, pure and
+      simple. I was considering legal action before he... left.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Ask about the night Iker disappeared -> koldo_night
+      - Mention the betting patterns -> koldo_patterns
+      - Ask about KZ_Boss -> koldo_kz_boss
+        when:
+          state: found_betting_slips
+          gte: 1
+      - Return to investigation hub -> investigation_hub
+
+  koldo_night:
+    type: tweet
+    from: koldo
+    text: >
+      I was at Bar Frontoia until about 10pm with business associates,
+      then I went home. My wife can confirm. I had nothing to do with
+      whatever happened to Iker. This obsession with blaming me is
+      getting tiresome.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Mention Begona saw his car at the port -> koldo_car
+        when:
+          state: night_witnesses
+          gte: 1
+      - Ask about the betting patterns -> koldo_patterns
+      - Return to hub -> investigation_hub
+
+  koldo_car:
+    type: tweet
+    from: koldo
+    text: >
+      That old woman needs glasses. My car was parked at home all night.
+      And even if a similar car was at the port, there are other dark
+      cars in this town. You're grasping at straws. Unless you have
+      something concrete, I suggest you stop harassing a respectable
+      businessman.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Mention the betting patterns -> koldo_patterns
+      - Ask about KZ_Boss -> koldo_kz_boss
+        when:
+          state: found_betting_slips
+          gte: 1
+      - Return to hub -> investigation_hub
+
+  koldo_patterns:
+    type: tweet
+    from: koldo
+    text: >
+      Betting patterns fluctuate. That's the nature of gambling. Iker
+      was a sports blogger, not a forensic accountant. He saw what he
+      wanted to see. My operation is fully audited and compliant. If
+      you have actual evidence of wrongdoing, take it to the police.
+      Otherwise this is harassment.
+    effects: { thread1_evidence: "+1", evidence_total: "+1", talked_to_bookie: "+1" }
+    choices:
+      - Ask about KZ_Boss -> koldo_kz_boss
+        when:
+          state: found_betting_slips
+          gte: 1
+      - Return to hub -> investigation_hub
+
+  koldo_kz_boss:
+    type: tweet
+    from: koldo
+    text: >
+      ...Where did you get that name? That's... look, I don't know what
+      you're talking about. KZ could be anyone's initials. You're making
+      dangerous assumptions. I strongly advise you to stop this line of
+      inquiry. For your own good.
+    effects: { thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Note the implicit threat -> koldo_threat_noted
+      - Return to hub -> investigation_hub
+
+  koldo_threat_noted:
+    type: message
+    text: >
+      Koldo's reaction to "KZ_Boss" was telling. His demeanour shifted from
+      dismissive to threatening in an instant. The same pattern Iker must
+      have encountered. You screenshot the conversation.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Return to investigation hub -> investigation_hub
+
+  find_andoni:
+    type: tweet
+    from: andoni
+    text: >
+      I play pelota. I play to win. Whatever people say about me, my
+      record speaks for itself. Two regional championships. You don't
+      win those by cheating.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Ask about the matches he lost unexpectedly -> andoni_losses
+      - Ask about doping rumours -> andoni_doping
+      - Ask about Iker -> andoni_iker
+      - Return to hub -> investigation_hub
+
+  andoni_losses:
+    type: tweet
+    from: andoni
+    text: >
+      Every player loses sometimes. The pressure in those matches is
+      immense. I don't need to explain my career to a stranger on the
+      internet. Next question.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask about doping -> andoni_doping
+      - Ask about Iker -> andoni_iker
+      - Return to hub -> investigation_hub
+
+  andoni_doping:
+    type: tweet
+    from: andoni
+    text: >
+      That's a disgusting accusation. I train every day. My body is
+      my career. I would never... look, Iker was throwing accusations
+      around without proof. Is that what you're doing too? Because
+      I know lawyers.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Mention the evidence from Iker's files -> andoni_evidence
+        when:
+          state: found_doping_list
+          gte: 1
+      - Ask about his relationship with Koldo -> andoni_koldo
+      - Return to hub -> investigation_hub
+
+  andoni_evidence:
+    type: tweet
+    from: andoni
+    text: >
+      ...Files? What files? Look... ok. Off the record. Iker came to me
+      before he disappeared. He said he had evidence and gave me a chance
+      to come clean. I told him to mind his own business. I... maybe I
+      shouldn't have. But I was scared. Koldo's people don't mess around.
+      That's all I'm saying.
+    effects: { thread1_evidence: "+2", thread2_evidence: "+1", evidence_total: "+3" }
+    choices:
+      - Ask what Koldo's people did -> andoni_koldo_people
+      - Ask if he'll go on record -> andoni_on_record
+      - Return to hub -> investigation_hub
+
+  andoni_koldo_people:
+    type: tweet
+    from: andoni
+    text: >
+      They approached me two years ago. Said they could "help my career"
+      if I cooperated. When I hesitated, they showed me photos of my
+      family. My little sister at school. My parents' house. You don't
+      say no to people like that. I threw sets when they told me to.
+      I'm not proud of it. And yes, they gave me supplements. I don't
+      even know what was in them.
+    effects: { thread1_evidence: "+2", thread2_evidence: "+1", evidence_total: "+3" }
+    choices:
+      - Ask if he'll testify -> andoni_on_record
+      - Return to hub -> investigation_hub
+
+  andoni_on_record:
+    type: tweet
+    from: andoni
+    text: >
+      I... I don't know. If I talk, they'll come for me too. Look what
+      happened to Iker. But living like this... I'm tired of it. Let me
+      think about it. If you can guarantee protection, maybe. Talk to
+      that journalist, Aitor. He might know how to make this safe.
+    effects: { trust_aitor: "+5", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Go find Aitor -> find_aitor
+      - Return to hub -> investigation_hub
+
+  andoni_koldo:
+    type: tweet
+    from: andoni
+    text: >
+      Koldo sponsors local sport. That's it. I don't have a personal
+      relationship with him. Can we change the subject?
+    choices:
+      - Return to hub -> investigation_hub
+
+  andoni_iker:
+    type: tweet
+    from: andoni
+    text: >
+      Iker was talented and passionate but he was in over his head. I
+      told him to be careful. Some things in this world are bigger
+      than one person's blog. He didn't listen.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask about doping -> andoni_doping
+      - Return to hub -> investigation_hub
+
+  find_joseba:
+    type: tweet
+    from: joseba
+    text: >
+      The Regional Pelota Federation takes all allegations seriously.
+      We have robust integrity protocols. Iker Etxebarria's
+      disappearance is a police matter and we are cooperating fully.
+      I have no further comment at this time.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Press about federation corruption -> joseba_corruption
+      - Ask about his relationship with Koldo -> joseba_koldo
+      - Ask about match integrity reviews -> joseba_integrity
+      - Return to hub -> investigation_hub
+
+  joseba_corruption:
+    type: tweet
+    from: joseba
+    text: >
+      Corruption? The federation undergoes annual audits. Our finances
+      are transparent. I find it irresponsible that anonymous internet
+      users are making such claims during a sensitive time. Focus your
+      energy on supporting the community, not undermining its institutions.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Mention the financial evidence -> joseba_evidence
+        when:
+          state: thread1_evidence
+          gte: 8
+      - Ask about Koldo -> joseba_koldo
+      - Return to hub -> investigation_hub
+
+  joseba_evidence:
+    type: tweet
+    from: joseba
+    text: >
+      I... what evidence specifically? Any allegations should be directed
+      to the proper authorities. I won't engage with unverified claims
+      on social media. This conversation is over. I'm contacting my
+      lawyer and the instance administrator.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Note his panic and return -> investigation_hub
+
+  joseba_koldo:
+    type: tweet
+    from: joseba
+    text: >
+      Koldo Zabala is a valued sponsor of regional pelota. His contributions
+      help fund youth programmes and facility improvements. There is
+      nothing unusual about this relationship. Good day.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Return to hub -> investigation_hub
+
+  joseba_integrity:
+    type: tweet
+    from: joseba
+    text: >
+      We review all flagged matches through an independent committee.
+      To date, no irregularities have been confirmed. Our sport is
+      clean and I stand by that.
+    choices:
+      - Return to hub -> investigation_hub
+
+  find_edurne:
+    type: tweet
+    from: edurne
+    text: >
+      Oh, you're looking into Iker's research? He was in here almost
+      every week for the last six months. Printing articles, looking
+      through old newspaper archives about pelota matches going back
+      years. He was building a very thorough case. And yes, I kept
+      copies of what he printed. Librarian's instinct.
+    effects: { trust_begona: "+0", contacts_followed: "+1", thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask to see the copies -> edurne_copies
+      - Ask what he was researching specifically -> edurne_research
+      - Return to hub -> investigation_hub
+
+  edurne_copies:
+    type: tweet
+    from: edurne
+    text: >
+      Here. Printouts of betting data, match results cross-referenced
+      with odds movements, even a timeline showing when Koldo's shop
+      started handling unusually large volumes. Iker was methodical.
+      He also found old articles about a betting scandal in Navarra
+      ten years ago involving some of the same names. This pattern
+      isn't new.
+    effects: { thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask about the Navarra connection -> edurne_navarra
+      - Return to hub -> investigation_hub
+
+  edurne_navarra:
+    type: tweet
+    from: edurne
+    text: >
+      A betting ring was busted in Navarra in 2016. Minor charges, most
+      people walked free. One of the names mentioned in the newspaper
+      articles? A young man called Koldo Zabala. He moved to Arrantzale
+      the following year and opened his betting shop. History has a way
+      of repeating itself when people don't learn.
+    effects: { thread1_evidence: "+2", thread2_evidence: "+1", evidence_total: "+3" }
+    choices:
+      - Return to hub -> investigation_hub
+
+  edurne_research:
+    type: tweet
+    from: edurne
+    text: >
+      He was tracking suspicious match outcomes across three seasons.
+      Cross-referencing them with betting volume data he somehow obtained.
+      He also researched the ownership structure behind Apuestas Zabala.
+      It's not just Koldo. There's a holding company registered in
+      Andorra. Iker said it was a money laundering front.
+    effects: { thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask to see the copies -> edurne_copies
+      - Return to hub -> investigation_hub
+
+  find_txema:
+    type: tweet
+    from: txema
+    text: >
+      Ah, the port. I sit here every day, every night. The boats, the
+      water, the comings and goings. People think an old fisherman
+      doesn't notice things. People are wrong.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Ask about the night Iker disappeared -> txema_that_night
+      - Ask about the warehouse -> txema_warehouse
+      - Return to hub -> investigation_hub
+
+  txema_that_night:
+    type: tweet
+    from: txema
+    text: >
+      I was mending nets near my boat. Around 11, I saw the boy walk
+      down to the old warehouse. Ten minutes later, a dark car arrived.
+      Two men got out. Big men. Then Koldo's car pulled up. Voices
+      raised. Something that sounded like a struggle. Then silence.
+      The cars left around midnight. The boy never walked back.
+    effects: { thread2_evidence: "+3", evidence_total: "+3", night_witnesses: "+1" }
+    choices:
+      - Ask if he told the police -> txema_police
+      - Ask about the warehouse -> txema_warehouse
+      - Return to hub -> investigation_hub
+
+  txema_police:
+    type: tweet
+    from: txema
+    text: >
+      I told Irati. She believed me, I could see it in her eyes. But
+      the next day a senior officer from Bilbao came and told me my
+      "testimony was unreliable due to age and lighting conditions."
+      They didn't even write it down properly. Someone is protecting
+      those men.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask about the warehouse -> txema_warehouse
+      - Go talk to Irati -> find_irati
+      - Return to hub -> investigation_hub
+
+  txema_warehouse:
+    type: tweet
+    from: txema
+    text: >
+      The old fish processing warehouse. Been abandoned for years.
+      But lately there's been activity. Cars at night. People going
+      in and out. I thought maybe someone bought it for renovation.
+      Now I think it was being used for meetings. And maybe worse.
+      Be careful if you go there. I've seen those men come back
+      since that night.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Investigate the warehouse -> investigate_warehouse
+      - Return to hub -> investigation_hub
+
+  investigate_warehouse:
+    type: message
+    text: >
+      You visit the old warehouse during daylight. The door is padlocked
+      but a window is broken. Inside, you can see a table with chairs,
+      cigarette butts on the floor, and what looks like a dark stain
+      near the back wall. On the ground near the entrance, you spot
+      a fragment of a phone screen protector. Iker's phone was found
+      smashed. This could be where it happened. You photograph everything.
+    effects: { thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Return to investigation hub -> investigation_hub
+
+  find_irati:
+    type: tweet
+    from: irati
+    text: >
+      I appreciate public concern but I must remind everyone that this
+      is an active investigation. Please direct any information through
+      official channels. I cannot discuss case details publicly.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - DM Irati privately -> dm_irati
+      - Return to hub -> investigation_hub
+
+  dm_irati:
+    type: tweet
+    from: irati
+    text: >
+      Ok, privately... I believe something terrible happened to Iker
+      and I believe it's connected to the betting operation. But my
+      superiors have essentially told me to stand down. A senior
+      officer from Bilbao took over the case and nothing has happened
+      since. I think someone with influence is blocking the investigation.
+      If you have evidence, please be careful who you share it with.
+    effects: { thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Share what you've found -> irati_share
+        when:
+          state: evidence_total
+          gte: 10
+      - Ask who the senior officer is -> irati_senior
+      - Return to hub -> investigation_hub
+
+  irati_share:
+    type: tweet
+    from: irati
+    text: >
+      This is... comprehensive. Iker built an incredible case. With this
+      evidence I can go to the Ertzaintza internal affairs division
+      directly, bypassing my compromised superiors. But I need the
+      journalist Aitor to publish simultaneously so they can't bury
+      it again. Can you coordinate that?
+    effects: { thread1_evidence: "+1", thread2_evidence: "+1", evidence_total: "+2" }
+    choices:
+      - Go coordinate with Aitor -> find_aitor
+      - Return to hub -> investigation_hub
+
+  irati_senior:
+    type: tweet
+    from: irati
+    text: >
+      I shouldn't say but... his name came up in that old Navarra
+      betting scandal. He was the investigating officer who somehow
+      let most of the suspects walk. Draw your own conclusions. The
+      corruption goes deeper than this town.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Return to hub -> investigation_hub
+
+  find_aitor:
+    type: tweet
+    from: aitor
+    text: >
+      You want to talk about Iker? Good. Nobody at the mainstream
+      papers wants to touch this story. Too many powerful people
+      involved, they say. But I've been a sports journalist long
+      enough to know when something stinks. What have you got?
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Share your investigation -> aitor_share
+        when:
+          state: evidence_total
+          gte: 8
+      - Ask about his own investigation -> aitor_own
+      - Return to hub -> investigation_hub
+
+  aitor_share:
+    type: tweet
+    from: aitor
+    text: >
+      Ostia. This is everything I've been trying to piece together
+      for months but couldn't prove. The USB data, the cloud backup,
+      the witness testimony, the Navarra connection. With this, I can
+      write the story. And I have contacts at El Mundo and ETB who
+      will run it if I can deliver a complete package. Iker's
+      investigation won't die with his account.
+    effects: { trust_aitor: "+10", thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask about the next steps -> aitor_next_steps
+      - Check confrontation readiness -> check_confrontation
+
+  aitor_next_steps:
+    type: tweet
+    from: aitor
+    text: >
+      We need to move fast and we need to move together. Publish the
+      story, get Irati to file with internal affairs, and get Andoni
+      on the record if possible. If we do it all at once, they can't
+      suppress it. Iker deserved better than silence. Let's finish
+      what he started.
+    effects: { confrontation_ready: "+1" }
+    choices:
+      - Prepare for the confrontation -> check_confrontation
+      - Return to hub for more evidence -> investigation_hub
+
+  aitor_own:
+    type: tweet
+    from: aitor
+    text: >
+      I've been looking into suspicious betting patterns in regional
+      pelota for two years. Iker contacted me about six months ago.
+      We were sharing information. He was braver than me, publishing
+      openly. I should have warned him more strongly about the risks.
+      I have some pieces but I need the hard evidence Iker collected
+      to complete the picture.
+    effects: { trust_aitor: "+5", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Return to hub -> investigation_hub
+
+  find_xabi:
+    type: tweet
+    from: xabi
+    text: >
+      I trained with Iker for years before I went to uni. When I came
+      back this summer, he was different. Intense. He told me he'd
+      found something that would "change everything" about how people
+      see pelota. He also said he didn't trust Gorka anymore.
+    effects: { contacts_followed: "+1", thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask about Gorka -> xabi_gorka
+      - Ask about the last time he saw Iker -> xabi_last_time
+      - Return to hub -> investigation_hub
+
+  xabi_gorka:
+    type: tweet
+    from: xabi
+    text: >
+      Iker told me Gorka was getting payments from Koldo that weren't
+      going through the club accounts. Cash. And that Gorka was
+      selecting certain players for certain matches based on instructions,
+      not merit. Iker said he had bank records or something. He was
+      building an airtight case.
+    effects: { thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Ask about the last time he saw Iker -> xabi_last_time
+      - Return to hub -> investigation_hub
+
+  xabi_last_time:
+    type: tweet
+    from: xabi
+    text: >
+      The afternoon before he disappeared. We had coffee at Bar Frontoia.
+      He was nervous but also determined. He said "by tomorrow everyone
+      will know." He asked me to look after Unai and Mikel if anything
+      happened. Like he knew... God. I thought he was being dramatic.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Return to hub -> investigation_hub
+
+  find_miren:
+    type: tweet
+    from: miren
+    text: >
+      I'm the town pharmacist. People tell me things they won't tell
+      anyone else, maybe because of the privacy of the counter. I
+      can't share patient information, of course. But I can tell you
+      that certain people in this town have been purchasing things
+      that raised my eyebrows.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Ask what kind of purchases -> miren_purchases
+      - Ask if Iker ever came to her -> miren_iker
+      - Return to hub -> investigation_hub
+
+  miren_purchases:
+    type: tweet
+    from: miren
+    text: >
+      I can't name names but someone connected to the pelota club
+      has been buying certain supplements that are on the banned
+      substance list for athletes. And before you ask, no, I didn't
+      sell them - they were buying online and having them delivered
+      to my post office box by mistake once. I reported it to the
+      pharmacist's association but heard nothing back.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Ask if Iker knew about this -> miren_iker
+      - Return to hub -> investigation_hub
+
+  miren_iker:
+    type: tweet
+    from: miren
+    text: >
+      Iker came to me about a month before he disappeared. Asked if I
+      could identify certain substances from photos. He showed me
+      pictures of vials and pills. I told him they were anabolic agents
+      and EPO derivatives. He looked like he was going to be sick. He
+      said "they're doping the players and using it as leverage." Poor boy.
+    effects: { thread1_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Return to hub -> investigation_hub
+
+  find_ane:
+    type: tweet
+    from: ane
+    text: >
+      I work with young people in Arrantzale and I'm worried about
+      the impact of Iker's disappearance on the kids who looked up
+      to him. Unai, Mikel, Nerea, Leire - they're all struggling.
+      If you're investigating, please be mindful of their wellbeing.
+    effects: { contacts_followed: "+1" }
+    choices:
+      - Ask about Iker's youth work -> ane_youth_work
+      - Ask about the kids' mental health -> ane_mental_health
+      - Return to hub -> investigation_hub
+
+  ane_youth_work:
+    type: tweet
+    from: ane
+    text: >
+      Iker was incredible with the young people here. He ran informal
+      coaching sessions, mentored kids who were struggling. He got
+      Mikel through a very dark period. He was the kind of person a
+      community can't afford to lose. And someone took him from us.
+    effects: { trust_amaia: "+5" }
+    choices:
+      - Ask about the kids' wellbeing -> ane_mental_health
+      - Return to hub -> investigation_hub
+
+  ane_mental_health:
+    type: tweet
+    from: ane
+    text: >
+      They're angry and scared. Unai is channelling it into pelota but
+      I can see he's hurting. Mikel has gone quiet again which worries
+      me. Nerea is turning grief into activism which is healthy to a
+      point. Please, whatever you find out, think about how to share
+      it. The truth matters but so does how it lands.
+    choices:
+      - Return to hub -> investigation_hub
+
+  find_igor:
+    type: tweet
+    from: igor
+    text: >
+      I run the instance infrastructure. Iker's account was deactivated
+      remotely three days after he disappeared. Someone logged in with
+      his credentials and deleted it. The IP address traced to a VPN.
+      I preserved the server logs and a backup of his posts before the
+      deletion. Want to see them?
+    effects: { contacts_followed: "+1", thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Yes, show the logs -> igor_logs
+      - Ask who could have had his credentials -> igor_credentials
+      - Return to hub -> investigation_hub
+
+  igor_logs:
+    type: tweet
+    from: igor
+    text: >
+      The login came from a VPN exit node in Romania. Whoever did it
+      knew exactly what they were doing - deleted all posts, DMs,
+      media, everything. Professional job. But they missed the server
+      backups because those are on a different system. I have every
+      post Iker ever made. Including his last DM conversations where
+      someone was trying to arrange a meeting at the port.
+    effects: { thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - Read the DM conversations -> igor_dms
+      - Return to hub -> investigation_hub
+
+  igor_dms:
+    type: message
+    text: >
+      Igor shares the preserved DMs. The last conversation was with an
+      anonymous account that has since been deleted. It reads:
+
+      Anonymous: "I have documents about the federation payments. I can
+      prove everything you've been writing about."
+      Iker: "How do I know I can trust you?"
+      Anonymous: "You don't. But you want the truth. Port warehouse.
+      Tonight. 11pm. Come alone."
+      Iker: "I'll be there."
+
+      The timestamp is the night he disappeared.
+    effects: { thread2_evidence: "+2", evidence_total: "+2" }
+    choices:
+      - This was a trap. Return to hub -> investigation_hub
+
+  igor_credentials:
+    type: tweet
+    from: igor
+    text: >
+      Iker used a strong password but if someone had physical access to
+      his phone... and his phone was found smashed at the port. They
+      could have accessed it before destroying it. Or forced him to
+      unlock it. Either way, they wanted his online presence erased.
+      Like he never existed.
+    effects: { thread2_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - See the server logs -> igor_logs
+      - Return to hub -> investigation_hub
+
+  iker_archive:
+    type: message
+    text: >
+      You search for cached versions of Iker's posts. A few survive on web
+      archives and reblogs. His last public post, made the afternoon before
+      he disappeared, reads:
+
+      "Eight months of investigation. Twenty-three suspicious matches. One
+      syndicate. The truth about corruption in Basque pelota will come out.
+      If not through me, then through the evidence I've left behind. Some
+      things are bigger than one person. #PelotaGarbia #CleanSport"
+
+      It was reblogged 47 times before his account was deleted.
+    effects: { thread1_evidence: "+1", evidence_total: "+1" }
+    choices:
+      - Browse the local timeline -> local_timeline
+      - Go to investigation hub -> investigation_hub
+
+  check_confrontation:
+    type: message
+    text: >
+      You review all the evidence you've gathered across both investigation
+      threads. The sports corruption thread covers match-fixing, doping, and
+      financial fraud. The threatening messages thread connects the betting
+      syndicate to Iker's disappearance. Time to decide how to act.
+    choices:
+      - Publish everything with Aitor and go to authorities -> ending_justice
+        when:
+          all:
+            - state: thread1_evidence
+              gte: 12
+            - state: thread2_evidence
+              gte: 10
+      - Share partial evidence with police only -> ending_partial
+        when:
+          any:
+            - state: thread1_evidence
+              gte: 8
+            - state: thread2_evidence
+              gte: 8
+      - Give up the investigation -> ending_silence
+
+  ending_justice:
+    type: message
+    text: >
+      ENDING 1: JUSTICE FOR IKER
+
+      Working with Aitor, Irati, and the community, you coordinate a
+      simultaneous action. Aitor publishes a devastating expose in El Mundo
+      with all of Iker's evidence. Irati files a formal complaint with the
+      Ertzaintza internal affairs division. Andoni agrees to testify in
+      exchange for protection.
+
+      Koldo Zabala is arrested within 48 hours, along with the two men from
+      Bilbao who were identified through CCTV footage. Gorka Mendizabal
+      confesses to his role in facilitating match-fixing. Joseba Alonso
+      resigns from the federation and is charged with corruption.
+
+      The investigation into Iker's disappearance is reopened by a special
+      unit. Evidence from the warehouse leads to charges. Three months later,
+      Iker's remains are found. His family finally has answers.
+
+      The community of Arrantzale is shattered but united in grief and
+      determination. Unai, Nerea, and Mikel establish the Iker Etxebarria
+      Foundation for clean sport and youth mentoring. His blog is republished
+      in full.
+
+      Iker's last unsent email finally reaches the world. His voice,
+      silenced by violence, echoes louder than ever.
+
+      #JusticeForIker was not just a hashtag. It was a promise, kept.
+    choices:
+      - Read the memorial messages -> memorial_messages
+      - View resources -> resources
+
+  ending_partial:
+    type: message
+    text: >
+      ENDING 2: PARTIAL JUSTICE
+
+      You share what you've gathered with Officer Irati, who escalates
+      it through back channels. An investigation is opened but without
+      media pressure, it moves slowly. Koldo's betting shop is audited
+      and eventually shut down for irregularities. Gorka is quietly
+      removed from coaching.
+
+      But the syndicate's wider connections are never fully exposed.
+      Joseba remains in his position at the federation. The two men
+      from Bilbao are never identified. Iker's disappearance is
+      reclassified as a missing persons case, never officially solved.
+
+      Amaia continues her campaign for answers. The teens carry Iker's
+      memory but the full truth remains buried. Some of the corruption
+      is disrupted, but the root system survives.
+
+      Arrantzale returns to a fragile normality. But the questions
+      never quite go away, and every time a pelota match produces an
+      unexpected result, someone in the crowd remembers Iker's words
+      and wonders.
+
+      Sometimes partial justice is all a small town can get.
+    choices:
+      - Read community reactions -> partial_reactions
+      - View resources -> resources
+
+  partial_reactions:
+    type: tweet
+    from: nerea
+    text: >
+      At least Koldo's shop is gone but tio we both know this isn't
+      over. The people behind the people are still out there. Iker
+      deserved better. We all do. I'm going to journalism school
+      next year. This story isn't finished. #JusticeForIker
+    choices:
+      - View resources -> resources
+
+  ending_silence:
+    type: message
+    text: >
+      ENDING 3: SILENCE WINS
+
+      Without enough evidence or courage to act, the investigation stalls.
+      Koldo's betting operation continues. Gorka keeps coaching. The
+      federation carries on as before. Iker's disappearance becomes just
+      another unsolved case in a system that protects the powerful.
+
+      The #JusticeForIker posts gradually slow down. The community moves
+      on, or appears to. Maite stops posting altogether. Amaia goes
+      quiet. The teens carry a wound that changes how they see the world.
+
+      Unai quits pelota. Mikel retreats back into isolation. Nerea's
+      anger hardens into something colder. The adults who could have
+      acted didn't, and the young people noticed.
+
+      The old warehouse at the port is demolished six months later.
+      Whatever evidence it held is gone. Koldo expands his operation.
+      The syndicate grows bolder.
+
+      Silence was always their most powerful weapon. And in the end,
+      it won again.
+
+      But somewhere, on a backed-up server, Iker's posts still exist.
+      Waiting for someone brave enough to read them. The truth doesn't
+      disappear. It just waits.
+    choices:
+      - View resources -> resources
+
+  memorial_messages:
+    type: tweet
+    from: unai
+    text: >
+      Iker, tio. You did it. We did it. The whole country knows now
+      what you found. Your foundation is going to help so many kids
+      the way you helped me. I'm going to keep playing pelota, clean
+      pelota, the way you always wanted. Eskerrik asko, forever.
+      #JusticeForIker #PelotaGarbia
+    choices:
+      - Read more memorial messages -> memorial_messages_2
+      - View resources -> resources
+
+  memorial_messages_2:
+    type: tweet
+    from: amaia
+    text: >
+      My brother was the bravest person I ever knew. He saw injustice
+      and he refused to look away, even when it cost him everything.
+      Today we have answers. Today the people who hurt him face
+      consequences. Today, finally, Iker can rest. We love you,
+      brother. Always.
+    choices:
+      - View resources -> resources
+
+  resources:
+    type: message
+    text: >
+      IMPORTANT RESOURCES
+
+      If you or someone you know is experiencing threats, bullying,
+      or is in danger because of speaking out about wrongdoing:
+
+      Spain - Telefono de la Esperanza: 717 003 717
+      Spain - Anar Foundation (minors): 900 20 20 10
+      Spain - National Police: 091
+      Spain - Civil Guard: 062
+
+      Whistleblower protection (EU): Directive 2019/1937 protects
+      those who report breaches of EU law.
+
+      Corruption can be reported anonymously to the Fiscalia
+      Anticorrupcion.
+
+      Remember: speaking up about wrongdoing is brave, not dangerous.
+      There are systems and people designed to protect you. You are
+      never alone.
+
+      If you are a young person feeling overwhelmed, talk to a
+      trusted adult, contact a helpline, or reach out to your local
+      youth services. Your voice matters and your safety comes first.
+    choices:
+      - Return to the beginning -> welcome

@@ -1,0 +1,1567 @@
+# DEAD ACCOUNT — Story 037: Dunquin Bay (Ireland, Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-037.yml
+#
+# Player investigates the disappearance of seaweed forager Niamh Fitzgerald
+# in the fictional west Kerry coastal village of Dunquin Bay.
+
+meta:
+  title: "Dead Account — Dunquin Bay"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_saoirse: 0
+    trust_cillian: 0
+    trust_padraig: 0
+    trust_bridget: 0
+    trust_oisin: 0
+    trust_roisin: 0
+    trust_declan: 0
+    trust_siobhan: 0
+    trust_tommy: 0
+    trust_grainne: 0
+    trust_fionnuala: 0
+    trust_eamon: 0
+    trust_aoife: 0
+    trust_cathal: 0
+    trust_orla: 0
+    trust_donal: 0
+    trust_sean: 0
+    trust_murphy: 0
+    trust_kieran: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to dunquin bay. learning to love the atlantic one storm at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "DunquinBay.social"
+    description: "Fáilte go dtí instance pobail Dhún Chaoin — Welcome to the Dunquin Bay community instance"
+    avatar_url: /gamepatch/assets/dead-account/dunquinbay_bot.png
+
+  npcs:
+    # === Niamh's Inner Circle ===
+    niamh:
+      name: "Niamh Fitzgerald"
+      bio: "seaweed forager | wild atlantic kitchen | the shore gives everything if you listen"
+      avatar: avatars/niamh.jpg
+    saoirse:
+      name: "Saoirse Brennan"
+      bio: "niamh's housemate | primary teacher at scoil an daingin | tea solves most things"
+      avatar: avatars/saoirse.jpg
+    cillian:
+      name: "Cillian Fitzgerald"
+      bio: "niamh's brother | carpenter | galway | she wouldn't just feckin vanish"
+      avatar: avatars/cillian.jpg
+    oisin:
+      name: "Oisín Kavanagh"
+      bio: "marine ecologist | kerry coastal research | colleague of niamh's | kelp restoration"
+      avatar: avatars/oisin.jpg
+
+    # === Local Government ===
+    padraig:
+      name: "Pádraig Ó Sé"
+      bio: "Cathaoirleach | Dunquin Bay Community Council | keeping the lights on since 2016"
+      avatar: avatars/padraig.jpg
+    siobhan:
+      name: "Siobhán Ní Shúilleabháin"
+      bio: "Councillor for Environment | Kerry County Council | coastal protection & heritage"
+      avatar: avatars/siobhan.jpg
+    council:
+      name: "Dunquin Bay Community Council"
+      bio: "Official account | Local news & events | Meetings every second Tuesday"
+      avatar: avatars/council.jpg
+
+    # === Local Business & Community ===
+    bridget:
+      name: "Bridget O'Sullivan"
+      bio: "The Harbour Bar & Kitchen | chowder | pints | trad sessions friday | est. 1974"
+      avatar: avatars/bridget.jpg
+    harbour_bar:
+      name: "The Harbour Bar"
+      bio: "Dunquin Bay's living room since 1974 | Food served 12-9 | Trad Fridays"
+      avatar: avatars/harbour_bar.jpg
+    tommy:
+      name: "Tommy Daly"
+      bio: "fisherman | 35 years on the water | these currents are in my blood"
+      avatar: avatars/tommy.jpg
+    declan:
+      name: "Declan Moriarty"
+      bio: "harbour master | Dunquin Bay pier | tides & moorings | VHF Ch 16"
+      avatar: avatars/declan.jpg
+    fionnuala:
+      name: "Fionnuala Healy"
+      bio: "pharmacist | Dunquin Bay | open 7 days | we look after our own"
+      avatar: avatars/fionnuala.jpg
+    eamon:
+      name: "Éamon Clifford"
+      bio: "Clifford's bakery | sourdough | soda bread | up at 4am so you don't have to be"
+      avatar: avatars/eamon.jpg
+    grainne:
+      name: "Gráinne Walsh"
+      bio: "runs the post office & general store | if we don't have it you don't need it"
+      avatar: avatars/grainne.jpg
+    cathal:
+      name: "Cathal O'Brien"
+      bio: "bookshop & secondhand vinyl | The Blasket Shelf | open when i'm here"
+      avatar: avatars/cathal.jpg
+
+    # === Journalist ===
+    donal:
+      name: "Donal Keane"
+      bio: "freelance journalist | environment & rural ireland | tips: donal@keane.ie"
+      avatar: avatars/donal.jpg
+
+    # === AquaKerry (corporate) ===
+    aquakerry:
+      name: "AquaKerry Salmon Ltd"
+      bio: "Sustainable aquaculture | Dunquin Bay facility | BIM certified | #FeedingIreland"
+      avatar: avatars/aquakerry.jpg
+    kieran:
+      name: "Kieran Buckley"
+      bio: "site manager | AquaKerry Salmon Dunquin Bay | aquaculture & community"
+      avatar: avatars/kieran.jpg
+    murphy:
+      name: "Sergeant Murphy"
+      bio: "An Garda Síochána | Dunquin Bay station | community policing | 999 / 112"
+      avatar: avatars/murphy.jpg
+
+    # === Teens ===
+    aoife:
+      name: "Aoife"
+      bio: "16 | kayaker | dunquin bay born | the sea is literally therapy"
+      avatar: avatars/aoife.jpg
+    roisin:
+      name: "Róisín"
+      bio: "17 | trad flute | wild swimming | niamh taught me everything about the shore"
+      avatar: avatars/roisin.jpg
+    orla:
+      name: "Orla"
+      bio: "15 | photography | rock pools | the coast is my whole personality tbh"
+      avatar: avatars/orla.jpg
+
+    # === Media & Community ===
+    kerry_eye:
+      name: "Kerry Eye News"
+      bio: "Local news for the Dingle Peninsula & West Kerry | tips: news@kerryeye.ie"
+      avatar: avatars/kerry_eye.jpg
+    meteo_kerry:
+      name: "Kerry Weather Watch"
+      bio: "Atlantic forecasts & storm warnings | Automated station | Updated hourly"
+      avatar: avatars/meteo_kerry.jpg
+    coastwatch:
+      name: "Coastwatch Kerry"
+      bio: "Volunteer coastal monitoring | Water quality | Pollution reports | #CleanSeas"
+      avatar: avatars/coastwatch.jpg
+
+    # === Suspicious / Other ===
+    sean:
+      name: "Seán Gallagher"
+      bio: "lab tech | AquaKerry Salmon | a job is a job like"
+      avatar: avatars/sean.jpg
+    anon_hiker:
+      name: "WildAtlanticWalker"
+      bio: "."
+      avatar: avatars/anon.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN DUNQUIN BAY
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to DunquinBay.social — the community Mastodon instance for
+      Dunquin Bay, a small village on the west Kerry coast.
+
+      The local feed is thick with worry today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name everywhere:
+      @niamh_fitzgerald.
+
+      A seaweed forager. Wild food expert. She knew every rock pool and
+      tidal shelf on this coast. People are frightened. She hasn't posted
+      in six days.
+    choices:
+      - Look at her profile -> niamh_profile
+
+  niamh_profile:
+    type: tweet
+    from: niamh
+    text: "The kelp beds past Clogher are dead. Completely dead. Three months ago they were thriving. Something from the fish farm is killing the shore. I have samples."
+    choices:
+      - That's her last real post... -> grey_shore
+
+  grey_shore:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single photo:
+      a grey shore. Rocks and foam, blurred, shot low to the ground.
+      Posted at 2am. No caption. No hashtags.
+
+      Her friends say Niamh never posts without a story. The Guards say
+      she probably went hillwalking. Something doesn't add up.
+    choices:
+      - Read the Garda statement -> garda_statement
+      - Look at what people are saying -> community_reaction
+
+  garda_statement:
+    type: tweet
+    from: murphy
+    text: >
+      We have received a report regarding a Dunquin Bay resident.
+      At this time there is no evidence of foul play. Ms Fitzgerald
+      is an experienced outdoorsperson and may have travelled
+      voluntarily. Any information can be reported to the station
+      or by calling 999.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her housemate @saoirse_brennan is
+      frantic. Her brother @cillian_fitzgerald is driving down from
+      Galway. Her colleague @oisin_kavanagh is posting worried messages.
+      The fisherman @tommy_daly says she was right about the water.
+
+      And the journalist @donal_keane has gone strangely quiet.
+
+      Nobody buys the Guards' line. Nobody thinks Niamh just went
+      for a feckin walk.
+    effects: { trust_saoirse: "+5", trust_cillian: "+5" }
+    choices:
+      - Start following Niamh's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Dunquin Bay. Follow Niamh's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Bridget (pub owner, knows everyone) -> bridget_intro
+      - Talk to Tommy (fisherman, saw the water) -> tommy_intro
+      - Talk to Aoife (teen kayaker, seems shaken) -> aoife_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Niamh with the rhythms of a small
+      coastal village: tide tables, the bakery's bread of the day,
+      storm warnings rolling in off the Atlantic.
+
+      Key names surface: Saoirse (housemate, teacher), Oisín (research
+      colleague, seems rattled), Donal (journalist, oddly silent),
+      and the teens — Aoife, Róisín, Orla — who adored Niamh's
+      foraging walks.
+
+      Also prominent: AquaKerry Salmon Ltd, the fish farm in the bay.
+      Their posts are glossy PR. Niamh's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Bridget -> bridget_intro
+      - Talk to Tommy -> tommy_intro
+      - Talk to Aoife -> aoife_intro
+
+  # --- Bridget (social map) ---
+
+  bridget_intro:
+    type: tweet
+    from: bridget
+    text: >
+      Pint pulled, fire lit, but the heart's not in it. @niamh_fitzgerald,
+      your stool's waiting. Come home to us love.
+    effects: { trust_bridget: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Bridget -> bridget_talk
+
+  bridget_talk:
+    type: message
+    text: >
+      BRIDGET: Ah, you're new? Welcome pet, terrible timing. The whole
+      village is in bits over Niamh.
+
+      Right, let me give you the lay of the land. Saoirse is Niamh's
+      housemate — they share a cottage up past the church. Lovely girl,
+      absolutely devastated. Oisín Kavanagh works on the marine research
+      with Niamh. Smart lad, but he's been a bit... intense about her,
+      if you know what I mean. Cillian is Niamh's older brother, he's
+      coming down from Galway.
+
+      And Donal Keane — the journalist — himself and Niamh were working
+      on something together. Something about the fish farm. Donal hasn't
+      said a word since she vanished. That's not like him at all.
+
+      Oh, and don't be reading AquaKerry's shite about "sustainable
+      aquaculture." The state of that water would make you sick.
+    effects: { trust_bridget: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Oisín -> bridget_oisin
+      - Ask about AquaKerry -> bridget_aquakerry
+      - Thank her and move on -> quest1_hub
+
+  bridget_oisin:
+    type: message
+    text: >
+      BRIDGET: Oisín? He's been doing research on this coast longer
+      than Niamh. Grand fella, brilliant with the science. But since
+      she arrived, he's been... orbiting her, like. In the pub every
+      time she was. Offering to carry her kelp baskets. Commenting on
+      every feckin post she made.
+
+      She was polite about it but I could see it wore on her. After
+      she started investigating the fish farm, he got worse. Wanted
+      to be involved in everything. She told me once, "He doesn't
+      take a hint." I thought she meant about the work. Now I'm
+      not so sure.
+    effects: { trust_bridget: "+5" }
+    choices:
+      - Ask about AquaKerry -> bridget_aquakerry
+      - Move on -> quest1_hub
+
+  bridget_aquakerry:
+    type: message
+    text: >
+      BRIDGET: That fish farm's been there since the early 2000s.
+      Salmon pens, right out in the bay. The village tolerated them
+      because they brought a few jobs. But the fishermen have been
+      giving out for years — dead shellfish, chemical shite in the
+      water, the kelp dying off.
+
+      Niamh was the first person to actually go down to the shore
+      with sample bottles and a proper plan. She had evidence, she
+      said. Real evidence. Feck me, two weeks later she's gone.
+    effects: { trust_bridget: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tommy (the water, witness tease) ---
+
+  tommy_intro:
+    type: tweet
+    from: tommy
+    text: >
+      35 years fishing this coast. the water is not right. @niamh_fitzgerald
+      was telling the truth. now she's gone. connect the feckin dots lads.
+    effects: { trust_tommy: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tommy -> tommy_talk
+
+  tommy_talk:
+    type: message
+    text: >
+      TOMMY: I've fished out of this bay since I was a young fella.
+      I know every current, every colour the sea makes at every time
+      of year. And I'm telling you — the water past the salmon pens
+      is wrong. Has been for months. My pots come up with dead
+      lobsters. The seabed stinks of chemicals.
+
+      Niamh took water samples. She went out at low tide and
+      photographed the discharge pipes. She was building a case.
+      And then poof — gone.
+
+      You think that's a coincidence? Gobshite talk. I don't believe
+      in coincidences on the sea.
+    effects: { trust_tommy: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> tommy_night
+      - Move on -> quest1_hub
+
+  tommy_night:
+    type: message
+    text: >
+      TOMMY: The night before she vanished — I was coming in from
+      night fishing, around midnight. I saw lights down at the
+      research hut by the pier. Not unusual, scientists work late.
+      But there were two vehicles in the car park. One was Niamh's
+      little red Micra. The other was a white van with AquaKerry
+      branding on the side.
+
+      At midnight. At the marine research hut.
+
+      I noted it in my catch log. Nobody's asked to see it.
+    effects: { trust_tommy: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Aoife (teen kayaker, witness tease) ---
+
+  aoife_intro:
+    type: tweet
+    from: aoife
+    text: >
+      i'm actually so scared like @niamh_fitzgerald is literally the
+      nicest person in this village she taught us about the shore and
+      the seaweed and everything. if anyone knows anything please say
+      something. this is so fucked.
+    effects: { trust_aoife: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Aoife -> aoife_talk_early
+
+  aoife_talk_early:
+    type: message
+    text: >
+      AOIFE: oh right you're new here? shite timing like. niamh is
+      honestly the best person in this whole village. she took us
+      foraging on the shore, showed us which seaweed you can eat,
+      how to read the tides. she was class.
+
+      and now i'm freaking out because roisin saw something weird
+      the other night down by the pier but she won't talk about it.
+      she says it's nothing but like... it's not nothing. you can
+      tell she's scared.
+    effects: { trust_aoife: "+10" }
+    choices:
+      - What did Róisín see? -> aoife_roisin_hint
+      - Move on -> quest1_hub
+
+  aoife_roisin_hint:
+    type: message
+    text: >
+      AOIFE: i don't know exactly. she was coming back from trad
+      practice at the hall and she saw someone messing around niamh's
+      car?? or something like that. she's proper spooked. you'd have
+      to ask her yourself but she's fierce wary of strangers. maybe
+      talk about the music or swimming first, get her to relax like.
+      she's sound once she trusts you.
+    effects: { trust_aoife: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Dunquin Bay. A west Kerry village
+      built around the sea. A forager who was exposing pollution from
+      the fish farm. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Saoirse (Niamh's housemate) -> saoirse_q1
+      - Talk to Oisín (Niamh's colleague) -> oisin_q1
+      - Check what Cillian (Niamh's brother) is saying -> cillian_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Saoirse Q1 ---
+
+  saoirse_q1:
+    type: tweet
+    from: saoirse
+    text: >
+      if anyone has news about @niamh_fitzgerald please ring me. her
+      room is untouched. her foraging basket is here. her wellies are
+      by the door. she would NEVER leave without her gear.
+    effects: { trust_saoirse: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Saoirse -> saoirse_q1_talk
+
+  saoirse_q1_talk:
+    type: message
+    text: >
+      SAOIRSE: I appreciate you reaching out but I don't know you
+      from Adam. Niamh has loads of friends here. I'm sure she'll
+      come back.
+
+      ...I keep saying that. I don't believe it anymore, in fairness.
+
+      [Saoirse is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_saoirse: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Oisín Q1 ---
+
+  oisin_q1:
+    type: tweet
+    from: oisin
+    text: >
+      The research hut is empty without @niamh_fitzgerald. Her samples
+      are still in the fridge. Her shore survey notes are on the desk.
+      She would never abandon ongoing fieldwork. Something happened.
+    effects: { trust_oisin: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Oisín -> oisin_q1_talk
+
+  oisin_q1_talk:
+    type: message
+    text: >
+      OISÍN: Niamh and I have been working this coast together for
+      over a year. She's the most passionate researcher I know. This
+      fish farm investigation — it was everything to her. She had
+      data, photos, chemical analysis. She was so close to going
+      public with it.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to support her.
+
+      [Oisín seems earnest. Or obsessive?]
+    effects: { trust_oisin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Cillian Q1 ---
+
+  cillian_q1:
+    type: tweet
+    from: cillian
+    text: >
+      my sister has DISAPPEARED and the guards are telling me she
+      probably went walking?? ARE YOU HAVING A FECKIN LAUGH. she
+      doesn't just vanish without telling anyone. i'm driving down
+      from galway. someone better have answers.
+    effects: { trust_cillian: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Cillian -> cillian_q1_talk
+
+  cillian_q1_talk:
+    type: message
+    text: >
+      CILLIAN: Who are you? Another person from that village who's
+      going to tell me to calm down? My sister rang me the night
+      before she disappeared. She said she had something big. She
+      said "if anything happens to me, look at AquaKerry." Then
+      she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_cillian: "+10" }
+    choices:
+      - What do you think happened? -> cillian_theory
+      - Move on -> quest1_hub
+
+  cillian_theory:
+    type: message
+    text: >
+      CILLIAN: I think she found proof that AquaKerry is poisoning
+      the bay and they shut her up. But I also think that creepy
+      colleague of hers — Oisín — knows more than he's letting on.
+      The way he talks about her... it's not just professional
+      concern. It's something else.
+
+      Niamh told me months ago that someone was following her on
+      her foraging routes. She'd see the same figure on the cliff
+      paths, always at a distance. She thought it was a hiker. I
+      don't think it was a hiker.
+    effects: { trust_cillian: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Niamh went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Róisín (was at trad practice, saw something at the car) -> roisin_interview
+      - Find Declan (harbour master, works late) -> declan_interview
+      - Find Éamon (baker, starts at 4am, saw something) -> eamon_interview
+      - Find Gráinne (post office, early riser, heard something) -> grainne_interview
+
+  # --- Róisín (saw someone at Niamh's car) ---
+
+  roisin_interview:
+    type: tweet
+    from: roisin
+    text: >
+      trad was grand tonight but the village feels wrong. like
+      something bad is sitting in the air. can't explain it.
+    effects: { trust_roisin: "+5" }
+    choices:
+      - Ask Róisín about that evening -> roisin_talk
+
+  roisin_talk:
+    type: message
+    text: >
+      RÓISÍN: right ok but you can't tell anyone yeah? i was walking
+      home from trad practice at the hall, about half seven. and i
+      saw that fella from the research — oisin — at niamh's car.
+      like right beside it, crouched down by the driver's side. when
+      he saw me he just stood up dead casual and walked off.
+
+      what the actual fuck was he doing like? i said nothing because
+      who'd believe me? a teenager saying a scientist is being a
+      creep. they'd say i was making shite up.
+    effects:
+      trust_roisin: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Declan (harbour master, saw late-night visit) ---
+
+  declan_interview:
+    type: tweet
+    from: declan
+    text: >
+      Reminder: the pier is closed between 10pm and 6am. Unauthorised
+      vehicles noted in the car park after hours again. This is getting
+      out of hand.
+    effects: { trust_declan: "+5" }
+    choices:
+      - Ask Declan what he saw -> declan_talk
+
+  declan_talk:
+    type: message
+    text: >
+      DECLAN: I was locking up the harbour office around half ten.
+      I saw Niamh's red Micra still parked by the research hut.
+      And next to it — a white AquaKerry van. Two men standing
+      at the hut door. One of them I recognised: Kieran Buckley,
+      the fish farm manager.
+
+      At half ten at night. At the marine research hut. That's not
+      feckin normal.
+
+      I logged it in the harbour book. Nobody from the Guards has
+      asked to see it.
+    effects:
+      trust_declan: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Éamon (saw Niamh fleeing) ---
+
+  eamon_interview:
+    type: tweet
+    from: eamon
+    text: >
+      up at 4 as usual. the coast road was not empty this morning.
+      someone running on the cliff path in the dark. not a jogger.
+    effects: { trust_eamon: "+5" }
+    choices:
+      - Ask Éamon what he saw -> eamon_talk
+
+  eamon_talk:
+    type: message
+    text: >
+      ÉAMON: I'm up at four every morning for the bread. That
+      morning — the morning after Niamh's last post — I saw someone
+      on the cliff path. Running. A woman, carrying a bag, heading
+      west toward Clogher. It was pitch dark. She was moving like
+      the devil was behind her.
+
+      I called out but she didn't stop. I figured it was a runner
+      but... who runs at 4am on a cliff path carrying a rucksack?
+
+      When I heard about Niamh, it clicked. I think that was her.
+      Running from something.
+    effects:
+      trust_eamon: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Gráinne (heard vehicles) ---
+
+  grainne_interview:
+    type: tweet
+    from: grainne
+    text: >
+      Didn't sleep well last night. Vehicles tearing up the coast
+      road at all hours. This village used to be quiet after dark.
+    effects: { trust_grainne: "+5" }
+    choices:
+      - Ask Gráinne what she heard -> grainne_talk
+
+  grainne_talk:
+    type: message
+    text: >
+      GRÁINNE: I live above the post office, right on the coast road.
+      That night I was woken at about half four by a vehicle going
+      far too fast. Then maybe a minute later, a second one. Both
+      heading west toward Clogher and Slea Head.
+
+      The first sounded like a van — heavy engine, diesel. The second
+      was smaller, lighter. Chasing? I don't know.
+
+      I told the Guards. They wrote it down in their notebook. That
+      was the height of it.
+    effects:
+      trust_grainne: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Saoirse (housemate)
+      and Orla (saw Oisín watching the cottage).
+    choices:
+      - Talk to Saoirse about that night -> saoirse_interview
+      - Talk to Orla -> orla_interview
+      - Find Róisín -> roisin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Declan -> declan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Éamon -> eamon_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Gráinne -> grainne_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Saoirse (last to see Niamh) ---
+
+  saoirse_interview:
+    type: tweet
+    from: saoirse
+    text: >
+      that photo on niamh's account. that's not her. niamh never posts
+      without a caption. niamh doesn't post at 2am. someone else did
+      that.
+    effects: { trust_saoirse: "+5" }
+    choices:
+      - DM Saoirse -> saoirse_talk_low
+        when:
+          state: trust_saoirse
+          lt: 50
+      - DM Saoirse -> saoirse_talk_high
+        when:
+          state: trust_saoirse
+          gte: 50
+
+  saoirse_talk_low:
+    type: message
+    text: >
+      SAOIRSE: I appreciate the concern but I really don't want to
+      talk to a stranger about this right now. Sorry.
+
+      [Saoirse needs to trust you more. Show her you're investigating
+      seriously, not just being nosy.]
+    effects: { trust_saoirse: "+5" }
+    choices:
+      - Share what you've learned about the night -> saoirse_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  saoirse_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the van at the research hut,
+      the company men, the running figure. Saoirse is quiet for a
+      long time.
+
+      SAOIRSE: You're actually trying to find her. Right so. I'll talk.
+    effects: { trust_saoirse: "+25" }
+    choices:
+      - What happened that night? -> saoirse_talk_high
+
+  saoirse_talk_high:
+    type: message
+    text: >
+      SAOIRSE: She came home around eleven. I was marking copybooks
+      in the kitchen. She was white as a sheet, shaking. She said
+      "they know what I have." She grabbed her laptop and her hard
+      drives — the ones with all the water sample data.
+
+      I asked who. She said "the fish farm. They sent people to the
+      hut." Then she said something else — "and he was there again.
+      He's always feckin there."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry pet," and left with a bag. That was it. By morning her
+      car was gone and that grey photo was on her account.
+    effects:
+      trust_saoirse: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Orla (saw Oisín watching the cottage) ---
+
+  orla_interview:
+    type: message
+    text: >
+      ORLA: ok so like this is going to sound mad but that fella
+      from the research — oisin — i've seen him outside niamh's
+      cottage like three different times in the evening. just sitting
+      in his car across the road with the lights off. staring at
+      the windows.
+
+      the last time was two days before she disappeared. he was just
+      sat there. in the dark. the state of him like. proper creepy.
+    effects:
+      trust_orla: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:30 — Oisín seen crouched at Niamh's car at the pier (Róisín)
+      22:30 — AquaKerry van at the research hut, Kieran Buckley present (Declan)
+      23:00 — Niamh arrives home, shaken, grabs laptop and drives (Saoirse)
+      04:00 — Woman running on cliff path toward Clogher (Éamon)
+      04:30 — Two vehicles speeding west on coast road (Gráinne)
+
+      AquaKerry confronted Niamh at the research hut. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AquaKerry hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Oisín really doing? Why was he at
+        her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Oisín -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AquaKerry is hiding something. Niamh had proof. Now she's gone
+      and her evidence is missing from the research hut.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the research hut records -> hut_records
+      - Talk to Donal the journalist -> donal_interview
+      - Talk to Seán (AquaKerry lab tech) -> sean_interview
+      - Talk to Siobhán (environment councillor) -> siobhan_interview
+      - Check the Coastwatch Kerry data -> coastwatch_investigation
+      - Talk to Tommy about the dumping -> tommy_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Research Hut Records ---
+
+  hut_records:
+    type: message
+    text: >
+      The marine research hut's shared database shows Niamh's recent
+      work: water quality samples from eight sites along the coast.
+      The data for Clogher Strand is marked "UNDER REVIEW" — the
+      only site with that status.
+
+      Her shore survey log, shared with the research group for safety,
+      shows she made 15 sampling trips near the AquaKerry pens in the
+      past month. The last entry: "Photographed discharge outlet.
+      Undeclared secondary pipe below waterline. Chemical levels off
+      the charts."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Donal ---
+
+  donal_interview:
+    type: message
+    text: >
+      DONAL: I don't reveal sources. Full stop.
+    effects: { trust_donal: "+5" }
+    choices:
+      - Show Donal the evidence you have -> donal_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  donal_with_evidence:
+    type: message
+    text: >
+      DONAL: ...you have more than I expected.
+
+      Right. Niamh and I were working together. She had photos of
+      an undeclared waste pipe — AquaKerry has a second discharge
+      outlet that doesn't appear on any EPA licence. She had water
+      samples showing pesticide and antibiotic levels way beyond
+      anything legal.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my car and stole my backup
+      drive.
+
+      Niamh is alive. She contacted me once, from a burner phone.
+      She said she was hiding. She said "they threatened me at the
+      hut and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come home.
+    effects:
+      trust_donal: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> donal_hint
+      - Back to investigation hub -> investigation_hub
+
+  donal_hint:
+    type: message
+    text: >
+      DONAL: The fish farm sent their site manager — Buckley — and
+      some solicitor to the research hut that night. They told her
+      to hand over everything or face legal action. Intimidation
+      dressed up in legalese.
+
+      But she also said something about someone from the research
+      group. Someone who'd been going through her files. Someone
+      who always seemed to know her routes. That's a different
+      problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Seán (AquaKerry whistleblower) ---
+
+  sean_interview:
+    type: message
+    text: >
+      SEÁN: I work at AquaKerry. I'm just a lab tech. I run tests,
+      I file reports. A job is a job like.
+
+      But the reports I file... are not always the reports that end
+      up with the EPA.
+    effects: { trust_sean: "+10" }
+    choices:
+      - What do you mean? -> sean_detail
+
+  sean_detail:
+    type: message
+    text: >
+      SEÁN: I measure water quality around the pens. Pesticide
+      residues, antibiotics, ammonia, the lot. My numbers go to
+      my supervisor. Somewhere between my desk and the EPA filing,
+      they change. Lower. Always lower.
+
+      Niamh's samples from outside the pens matched MY original
+      numbers, not the ones in the official reports. She had
+      independent proof that AquaKerry is falsifying their
+      discharge data.
+
+      I'm shitting myself. I have a young family. But I kept copies
+      of my original reports. If someone can protect me, I'll share
+      them.
+    effects:
+      trust_sean: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Siobhán ---
+
+  siobhan_interview:
+    type: message
+    text: >
+      SIOBHÁN: As environment councillor, I take these allegations
+      seriously. But AquaKerry employs 80 people in this area. The
+      council chair insists we need to "maintain a working relationship."
+
+      Off the record? I've seen the EPA inspection reports. AquaKerry
+      passes every time. But those inspections are announced weeks in
+      advance. They flush the system and clean up before the
+      inspectors arrive.
+
+      Niamh had unannounced data. That's what makes it dangerous.
+    effects:
+      trust_siobhan: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Coastwatch Kerry ---
+
+  coastwatch_investigation:
+    type: tweet
+    from: coastwatch
+    text: >
+      ALERT: Abnormal water discolouration reported at Clogher Strand.
+      Samples collected. Dead kelp documented. We are requesting an
+      unannounced EPA inspection of the AquaKerry facility.
+    choices:
+      - Check their data -> coastwatch_data
+
+  coastwatch_data:
+    type: message
+    text: >
+      Coastwatch Kerry has been monitoring water quality for four
+      years. Their data shows a clear pattern: chemical spikes that
+      correspond to AquaKerry's production schedule. Higher during
+      feeding cycles, lower during fallow periods. Higher at night,
+      lower during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal discharge timed to avoid detection.
+
+      Niamh was their most active volunteer. She contributed most
+      of the shore photography.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Tommy dumping ---
+
+  tommy_dumping:
+    type: message
+    text: >
+      TOMMY: I'll show you something. Last month I pulled my pots
+      near the fish pens and found this — a plastic drum, corroded
+      to shite, leaking some class of chemical. The label was half
+      gone but I could read "Emamectin" and an AquaKerry batch
+      number.
+
+      Emamectin is a sea lice treatment. Toxic as feck to shellfish.
+      They're supposed to contain it in the pens. This barrel was
+      on the open seabed.
+
+      I photographed it and sent it to Niamh. She said it was the
+      missing piece — proof they were dumping waste chemicals, not
+      just discharging dirty water. I still have the photos. And
+      the batch number.
+    effects:
+      trust_tommy: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Oisín Kavanagh. Colleague. Researcher. Something more?
+      Someone was following Niamh on her foraging routes. Someone
+      was watching her cottage. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Oisín's research hut access logs -> hut_access
+      - Talk to Saoirse about Oisín -> saoirse_oisin
+        when:
+          state: trust_saoirse
+          gte: 20
+      - Talk to Róisín (more detail on the car incident) -> roisin_detail
+      - Talk to Fionnuala the pharmacist -> fionnuala_interview
+      - Check the anonymous account @WildAtlanticWalker -> anon_hiker_investigation
+      - Talk to Cathal the bookseller -> cathal_interview
+        when:
+          state: trust_cathal
+          gte: 40
+      - Talk to Sergeant Murphy -> murphy_interview
+        when:
+          state: trust_murphy
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Research Hut Access Logs ---
+
+  hut_access:
+    type: message
+    text: >
+      The research hut has a simple keypad lock. The code logs every
+      entry. Niamh accessed the hut 42 times last month. Oisín's
+      code: 79 times. Nearly double.
+
+      Cross-referencing: on 28 of Oisín's 79 entries, he accessed
+      the hut within 20 minutes of Niamh. He arrived after her and
+      left after her. Every single time.
+
+      His own research sites are on a different stretch of coast.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Saoirse on Oisín ---
+
+  saoirse_oisin:
+    type: message
+    text: >
+      SAOIRSE: Oisín? He made Niamh uncomfortable. He'd show up at
+      the pub when she was there. He'd offer to drive her to her
+      foraging spots. He'd comment on every single one of her posts
+      within minutes.
+
+      She told him she wasn't interested. Clearly, kindly. He said
+      he understood. Then nothing changed. He just... kept being
+      there. Always feckin there.
+
+      A month ago she found that someone had been through her files
+      in the research hut. Her sample data had been copied. She
+      suspected Oisín but couldn't prove it.
+    effects:
+      trust_saoirse: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Róisín detail ---
+
+  roisin_detail:
+    type: message
+    text: >
+      RÓISÍN: right ok i didn't tell you everything. when i saw
+      oisin at niamh's car he had something in his hand. like a
+      small box, black. he stuck it under the car, like underneath
+      by the wheel. he didn't see me at first and when he did he
+      just walked off dead calm.
+
+      it looked like one of those GPS tracker things you'd see in
+      a crime show. i swear to god that's what it was.
+
+      i should have said something but like who'd believe me? a
+      teenager accusing a researcher. the state of ye they'd say.
+      go home and do your homework.
+    effects:
+      trust_roisin: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Fionnuala ---
+
+  fionnuala_interview:
+    type: message
+    text: >
+      FIONNUALA: This is confidential but I'm a pharmacist, not a
+      priest. Oisín Kavanagh comes in regularly. He's been buying
+      things that... suggest he's not sleeping. Anti-anxiety tablets,
+      sleep aids, caffeine supplements. The pattern is someone under
+      savage stress.
+
+      He also asked me once, very casually, if we sold any kind of
+      tracking device. I said "this is a pharmacy, not Currys."
+      He laughed it off. I didn't think about it again until Niamh
+      disappeared.
+    effects:
+      trust_fionnuala: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- WildAtlanticWalker (anonymous account) ---
+
+  anon_hiker_investigation:
+    type: tweet
+    from: anon_hiker
+    text: >
+      She should have listened. I was trying to protect her. Nobody
+      else understood the shore like I do. Like we do.
+    choices:
+      - Look at this account's history -> anon_hiker_posts
+
+  anon_hiker_posts:
+    type: message
+    text: >
+      @WildAtlanticWalker: account created 9 months ago. Posts are
+      all about Niamh's work. Comments on every foraging photo, every
+      shore survey, every seaweed identification. The tone shifts
+      over time:
+
+      Month 1: "Beautiful work. You're a guardian of this coast."
+      Month 3: "Why won't you reply to my messages? I just want to
+      learn from you."
+      Month 5: "I saw you at Bridget's with other people. You have
+      time for them but not for me?"
+      Month 8: "I know your routes. I know your schedule. I walk
+      where you walk. I'm always close."
+
+      The account has no photos, no personal details. Just Niamh.
+      Only Niamh.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_hiker_style
+
+  anon_hiker_style:
+    type: message
+    text: >
+      Comparing @WildAtlanticWalker with @oisin_kavanagh:
+
+      Same use of marine ecology terminology. Same way of writing
+      Latin species names — the specific formatting only a researcher
+      would use. Same knowledge of Niamh's fieldwork that only a
+      colleague would have.
+
+      And one post from @WildAtlanticWalker: "Your collection at
+      Site C was stunning today." Site C is an internal research
+      designation. Not public.
+
+      It's Oisín. The anonymous account is Oisín.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Cathal ---
+
+  cathal_interview:
+    type: message
+    text: >
+      CATHAL: Niamh left something with me. A waterproof dry bag,
+      sealed up. She said "if someone comes asking about what's in
+      the water at Clogher, give them this."
+
+      She looked frightened. She said she'd made copies of everything
+      but needed one set somewhere nobody would think to look. A
+      bookshop in a village this size seemed perfect.
+    effects: { trust_cathal: "+10" }
+    choices:
+      - What's in the water at Clogher? -> cathal_bag
+
+  cathal_bag:
+    type: message
+    text: >
+      Cathal reaches under the counter and produces a sealed dry bag.
+
+      CATHAL: She said someone like you would come. Take it.
+
+      Inside: a USB stick and a set of printed photographs. The
+      photos show an underwater pipe — not the official discharge
+      point, but a second, hidden outlet below the waterline — and
+      chemical drums on the seabed. The USB stick contains water
+      sample data, chemical analysis, and Niamh's detailed report.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sergeant Murphy ---
+
+  murphy_interview:
+    type: message
+    text: >
+      SERGEANT MURPHY: Off the record — and I mean completely off
+      the record — I wanted to investigate AquaKerry. My
+      superintendent told me to stand down. He said the EPA had
+      "jurisdiction." That's code for "leave it alone."
+
+      The stalking situation is different. I didn't even know about
+      that until now. If you have evidence of harassment, I can act
+      on that. That's clearly Garda business.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_murphy: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Niamh than anyone in Dunquin Bay. Who is responsible?
+    choices:
+      - Confront Oisín Kavanagh (the obsessive colleague) -> confront_oisin
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Kieran Buckley (the fish farm manager) -> confront_kieran
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Pádraig Ó Sé (political protection) -> confront_padraig
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Oisín (Best Ending) ---
+
+  confront_oisin:
+    type: message
+    text: >
+      You present your evidence to Oisín:
+
+      "I know @WildAtlanticWalker is your account. I know you put a
+      GPS tracker on Niamh's car. I know you accessed her files in
+      the research hut. I know you were watching her cottage. I have
+      witnesses and I have the access logs."
+    choices:
+      - Send -> oisin_response
+
+  oisin_response:
+    type: message
+    text: >
+      Oisín doesn't reply for a long time. Then:
+
+      OISÍN: You don't understand. I was protecting her. She was in
+      danger from AquaKerry and she wouldn't let me help. I needed
+      to know she was safe. I followed her routes because the cliff
+      paths are dangerous and she went alone. Everything I did was
+      because I care about her.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Sergeant Murphy. And to
+      Donal Keane.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sergeant Murphy reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witness testimonies — Oisín is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Niamh's
+      Micra, found abandoned near an old farmhouse past Clogher.
+
+      Donal Keane, finally in possession of Niamh's full evidence
+      package, publishes the AquaKerry story in the Irish Times.
+      The EPA orders an unannounced inspection. The fish farm is
+      shut down pending environmental remediation. Kieran Buckley
+      faces criminal charges for falsifying discharge reports.
+
+      And Niamh Fitzgerald, reading the story from a friend's
+      kitchen in Kenmare, calls her brother for the first time
+      in nine days.
+
+      "I'm coming home, Cillian."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: niamh
+    text: >
+      the shore doesn't lie. and neither do the people of dunquin bay.
+      thank you for not giving up.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Kieran (Partial Ending) ---
+
+  confront_kieran:
+    type: message
+    text: >
+      You present the pollution evidence to Kieran Buckley:
+
+      "I have photographs of the undeclared discharge pipe. I have
+      water samples showing pesticide and antibiotic levels way over
+      the legal limit. I have your original lab reports showing the
+      data was falsified. I have the barrel with your batch number."
+    choices:
+      - Send -> kieran_response
+
+  kieran_response:
+    type: message
+    text: >
+      KIERAN: This correspondence is being forwarded to our legal
+      team. Any publication of defamatory material will result in
+      immediate proceedings. AquaKerry Salmon has always operated
+      in full compliance with EPA licensing requirements.
+
+      But it's too late. You've sent the evidence to Donal, to
+      Coastwatch Kerry, and to the EPA.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. AquaKerry is ordered to cease
+      discharge pending investigation. The fish farm may close.
+      Eighty jobs hang in the balance. The village is divided.
+
+      But Niamh?
+
+      Without the stalking evidence, Oisín is never investigated.
+      He continues to work on the coast. He continues to monitor
+      her accounts. He creates a new anonymous profile.
+
+      Three months later, Niamh reads about AquaKerry online. She
+      returns quietly. She changes her research area. She stops
+      foraging alone. She checks under her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Niamh walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: niamh
+    text: "i'm home. the water is cleaner. the rest... we'll see."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Pádraig (Wrong Ending) ---
+
+  confront_padraig:
+    type: message
+    text: >
+      You confront Community Council Chair Pádraig Ó Sé with your
+      evidence.
+
+      Within the hour, you receive a message from his solicitor:
+    choices:
+      - Read the response -> padraig_response
+
+  padraig_response:
+    type: tweet
+    from: padraig
+    text: >
+      My client notes your allegations. Any public dissemination of
+      defamatory material will be met with immediate legal proceedings.
+      — O'Connell & Associates, Tralee
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The solicitor's letter buries your accusation. Without a direct
+      link between Pádraig and AquaKerry's dumping — and there isn't
+      one beyond political protection — your evidence is insufficient.
+
+      AquaKerry continues to operate. Oisín continues to watch.
+      Niamh stays in hiding.
+
+      Six months later, @WildAtlanticWalker creates a new account.
+      It follows Niamh's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: DUNQUIN BAY — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Niamh's story explores themes of
+      corporate impunity, environmental destruction, obsessive
+      behaviour, community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Women's Aid Ireland: 1800 341 900 (Freephone, 24hr)
+      Stalking & Harassment — An Garda Síochána: 999 / 112
+      EPA Environmental Complaints: 1890 335 599
+      Samaritans Ireland: 116 123 (Free, 24hr)

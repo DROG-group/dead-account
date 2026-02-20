@@ -1,0 +1,1589 @@
+# DEAD ACCOUNT — Story 052: Għarb Fields (Malta, Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-052.yml
+#
+# Player investigates the disappearance of salt harvester Joseph Vella
+# in the fictional Gozitan village of Għarb Fields, near the ancient salt pans.
+
+meta:
+  title: "Dead Account — Għarb Fields"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_maria: 0
+    trust_mark: 0
+    trust_carmen: 0
+    trust_pawlu: 0
+    trust_daniela: 0
+    trust_nathan: 0
+    trust_kyra: 0
+    trust_antonia: 0
+    trust_saviour: 0
+    trust_george: 0
+    trust_doris: 0
+    trust_luke: 0
+    trust_jade: 0
+    trust_charles: 0
+    trust_sylvana: 0
+    trust_victor: 0
+    trust_rachel: 0
+    trust_fredu: 0
+    trust_anon: 0
+    trust_spettur: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to għarb fields. discovering gozo one limestone step at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "GharbFields.social"
+    description: "Merħba fil-community Mastodon instance ta' Għarb Fields, Għawdex"
+    avatar_url: /gamepatch/assets/dead-account/gharbfields_bot.png
+
+  npcs:
+    # === Joseph's Inner Circle ===
+    joseph:
+      name: "Joseph Vella"
+      bio: "mellaħ | il-mitħan ta' għawdex huwa ħajti | salt pans since I was 12"
+      avatar: avatars/joseph.jpg
+    maria:
+      name: "Maria Vella"
+      bio: "joseph's wife | teacher tal-primarja | il-familja tiġi l-ewwel"
+      avatar: avatars/maria.jpg
+    mark:
+      name: "Mark Vella"
+      bio: "joseph's brother | valletta | engineer | jekk xi ħadd jaf fejn hu — iktbuli"
+      avatar: avatars/mark.jpg
+    carmen:
+      name: "Carmen Camilleri"
+      bio: "storja u kultura ta' għawdex | folklore society | il-mitħan hu l-identità tagħna"
+      avatar: avatars/carmen.jpg
+
+    # === Local Government ===
+    pawlu:
+      name: "Pawlu Grech"
+      bio: "Kunsillier ta' Għarb Fields | inservi l-komunità minn 2016 | #GħarbJikber"
+      avatar: avatars/pawlu.jpg
+    daniela:
+      name: "Daniela Borg"
+      bio: "Uffiċjal tal-Wirt Kulturali | Għarb Fields salt heritage | UNESCO tentative"
+      avatar: avatars/daniela.jpg
+    kunsill:
+      name: "Kunsill Lokali Għarb Fields"
+      bio: "Kont uffiċjali | Aħbarijiet tal-komunità | Ħinijiet: T-Ġ 8am-4pm"
+      avatar: avatars/kunsill.jpg
+
+    # === Local Business & Community ===
+    antonia:
+      name: "Antonia Farrugia"
+      bio: "bar tal-bajja | hobż biż-żejt u ftira | kafe u inbid | minn 1991"
+      avatar: avatars/antonia.jpg
+    bar_bajja:
+      name: "Bar tal-Bajja"
+      bio: "Ftira, ġbejniet, inbid Għawdxi | Live music il-Ġimgħa | Il-qalb ta' Għarb Fields"
+      avatar: avatars/bar_bajja.jpg
+    saviour:
+      name: "Saviour Galea"
+      bio: "sajjied | dgħajsa tradizzjonali | il-baħar ta' għawdex sa 40 sena"
+      avatar: avatars/saviour.jpg
+    george:
+      name: "George Attard"
+      bio: "tal-luzzu | boat tours u diving | Għarb Fields harbour | kull jum"
+      avatar: avatars/george.jpg
+    doris:
+      name: "Doris Spiteri"
+      bio: "spiżerija | Għarb Fields pharmacy | saħħa u pariri | il-Ħadd mis-9"
+      avatar: avatars/doris.jpg
+    fredu:
+      name: "Fredu Zammit"
+      bio: "bżar ta' l-inbid | Għarb Fields winery | dwieli Għawdxin | tours kull nhar ta' Sibt"
+      avatar: avatars/fredu.jpg
+    victor:
+      name: "Victor Busuttil"
+      bio: "mastrudaxxa | Għarb Fields | restoration tal-knejjes u bini antik"
+      avatar: avatars/victor.jpg
+
+    # === Journalist ===
+    sylvana:
+      name: "Sylvana Zammit"
+      bio: "ġurnalista | wirt u ambjent | tips: sylvana@zammitmedia.com.mt"
+      avatar: avatars/sylvana.jpg
+
+    # === Azure Hospitality (corporate) ===
+    azurehosp:
+      name: "Azure Hospitality Group"
+      bio: "Luxury hotel development | Għarb Fields Coastal Resort | #GozoRising"
+      avatar: avatars/azurehosp.jpg
+    charles:
+      name: "Charles Fenech"
+      bio: "Azure Hospitality project director | Għarb Fields resort development | investment"
+      avatar: avatars/charles.jpg
+    rachel:
+      name: "Rachel Mifsud"
+      bio: "Avukatessa | Mifsud & Associates | Property law | Valletta"
+      avatar: avatars/rachel.jpg
+
+    # === Teens ===
+    nathan:
+      name: "Nathan"
+      bio: "16 | spearfishing | għarb fields born | il-mitħan tagħna"
+      avatar: avatars/nathan.jpg
+    kyra:
+      name: "Kyra"
+      bio: "17 | photography u art | gozo in black and white | joseph taught me the salt"
+      avatar: avatars/kyra.jpg
+    luke:
+      name: "Luke"
+      bio: "15 | gamer | għarb fields | metal | joseph showed us what's beneath the crust"
+      avatar: avatars/luke.jpg
+
+    # === Media & Community ===
+    aħbarijiet:
+      name: "Għarb Fields News"
+      bio: "Aħbarijiet ta' Għarb Fields u l-inħawi | Tips: newsdesk@gharbfields.mt"
+      avatar: avatars/ahbarijiet.jpg
+    temp:
+      name: "Temp Għarb Fields"
+      bio: "Previżjoni u twissijiet | Stazzjon awtomatika | Aġġornata kull siegħa"
+      avatar: avatars/temp.jpg
+    għaqda:
+      name: "Għaqda Ħbieb tal-Mitħan"
+      bio: "Preservazzjoni tas-salt pans | Voluntiera | Rapporti dwar ħsarat"
+      avatar: avatars/ghaqda.jpg
+
+    # === Suspicious / Other ===
+    jade:
+      name: "Jade Borg"
+      bio: "technician | Azure Hospitality | nagħmel xogħli u daqshekk"
+      avatar: avatars/jade.jpg
+    karmenu:
+      name: "Karmenu"
+      bio: "."
+      avatar: avatars/anon.jpg
+    spettur:
+      name: "Spettur Chetcuti"
+      bio: "Pulizija ta' Għarb Fields | Għassa Distrettwali | Emerġenzi: 112"
+      avatar: avatars/spettur.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN GĦARB FIELDS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to GharbFields.social — the community Mastodon instance
+      for the coastal village of Għarb Fields, Gozo, built around its
+      ancient salt pans.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @joseph_vella.
+
+      A salt harvester. Third generation. He maintained the ancient
+      salt pans that have been carved into the limestone for centuries.
+      People are worried. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> joseph_profile
+
+  joseph_profile:
+    type: tweet
+    from: joseph
+    text: "Sibt dawn il-pegs tal-Azure Hospitality fil-mitħan tiegħi. Iridu jibnu lukanda fuq il-mitħan ta' missierijietna. Għandi l-provi."
+    choices:
+      - That's his last real post... -> strange_photo
+
+  strange_photo:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a blurry photo of salt pans at twilight. Posted at 3am. No
+      caption. No location tag.
+
+      His friends say that's not his style. Joseph always wrote about
+      the harvest, always tagged the pans by their family names. The
+      police say he probably took the ferry to Malta for a few days.
+      Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: spettur
+    text: >
+      Rċevejna rapport dwar resident ta' Għarb Fields. Bħalissa
+      m'hemmx bażi biex nissuspettaw att kriminali. Kull informazzjoni
+      tista' tiġi rrapportata fuq 112 jew fl-għassa.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His wife @maria_vella is desperate.
+      His brother @mark_vella is taking the ferry from Valletta. The
+      folklore historian @carmen_camilleri is posting frantic messages.
+      The fisherman @saviour_galea says Joseph was right about the
+      construction pegs.
+
+      And the journalist @sylvana_zammit is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Joseph just "took
+      the ferry."
+    effects: { trust_maria: "+5", trust_mark: "+5" }
+    choices:
+      - Start following Joseph's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Għarb Fields. Follow Joseph's contacts and read
+      their posts. The more you engage with the community, the more
+      they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Antonia (bar owner, knows everyone) -> antonia_intro
+      - Talk to Saviour (fisherman, saw the pegs) -> saviour_intro
+      - Talk to Nathan (teen spearfisher, seems shaken) -> nathan_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Joseph with the rhythms of a small
+      Gozitan village: festa preparations, fishing reports, ferry
+      schedules, ftira specials at the bar.
+
+      Key names surface: Maria (wife, primary school teacher), Carmen
+      (folklore historian, seems rattled), Sylvana (journalist, oddly
+      quiet), and the teens — Nathan, Kyra, Luke — who helped Joseph
+      at the salt pans every summer.
+
+      Also prominent: Azure Hospitality Group, the development company
+      planning a luxury resort on the coastline. Their posts are
+      polished investor PR. Joseph's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Antonia -> antonia_intro
+      - Talk to Saviour -> saviour_intro
+      - Talk to Nathan -> nathan_intro
+
+  # --- Antonia (social map) ---
+
+  antonia_intro:
+    type: tweet
+    from: antonia
+    text: >
+      Il-bar miftuħ imma l-qalb mhix hemm. @joseph_vella, il-mejda
+      tiegħek qed tistenna. Ejja lura.
+    effects: { trust_antonia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Antonia -> antonia_talk
+
+  antonia_talk:
+    type: message
+    text: >
+      ANTONIA: Oh, you're new? Merħba. Welcome to Għarb Fields.
+      Terrible time to arrive. The whole village is sick with worry
+      about Joseph.
+
+      Let me tell you who's who. Maria is Joseph's wife — they've been
+      married fifteen years, she teaches at the primary school. Heart
+      of gold, destroyed right now. Carmen Camilleri is the folklore
+      society woman, she's been documenting the salt pans for years.
+      She was close to Joseph. Too close, mela, some say. Mark is
+      Joseph's brother, he's coming from Valletta.
+
+      And Sylvana Zammit — the journalist — she and Joseph were working
+      on something together. Something about the hotel development.
+      Sylvana hasn't said a word since Joseph vanished. Mela that's
+      not like her at all.
+
+      Oh, and don't waste your time reading Azure Hospitality's PR.
+      Xi ħmerija — lies wrapped in architectural renders.
+    effects: { trust_antonia: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Carmen -> antonia_carmen
+      - Ask about Azure Hospitality -> antonia_azure
+      - Thank her and move on -> quest1_hub
+
+  antonia_carmen:
+    type: message
+    text: >
+      ANTONIA: Carmen? She's been researching the salt heritage for
+      years. PhD from the University of Malta. Brilliant woman. But
+      since Joseph started talking publicly about the development
+      threat, she's been... orbiting him. At the bar every time he was
+      here. Volunteering to help with every campaign. She's a
+      historian, he's a salt farmer, but she treated him like...
+      mela, I don't know. Not a research subject.
+
+      After he found the survey pegs, she got worse. Wanted access
+      to everything he documented. He told me once, "qisha ma
+      titlaqnix." I thought he meant professionally. Now I'm not
+      so sure.
+    effects: { trust_antonia: "+5" }
+    choices:
+      - Ask about Azure Hospitality -> antonia_azure
+      - Move on -> quest1_hub
+
+  antonia_azure:
+    type: message
+    text: >
+      ANTONIA: That development company showed up eighteen months ago.
+      Azure Hospitality. Big money from the mainland — Maltese
+      developers with foreign investors behind them. They bought
+      coastal land next to the salt pans and announced a five-star
+      resort. "Għarb Fields Azure" — sounds grand, right?
+
+      Problem is, the salt pans are on the edge of their site. Joseph
+      was the first person to go out there and document what they were
+      really planning. The survey pegs were IN the salt pans. Not next
+      to them — in them. They're going to build over the pans.
+
+      Two weeks later he's gone. Mela, you do the maths.
+    effects: { trust_antonia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Saviour (the pegs, witness tease) ---
+
+  saviour_intro:
+    type: tweet
+    from: saviour
+    text: >
+      erbgħin sena nisikka hawn. il-baħar mhux l-istess. u issa
+      iridu jeqirdu l-mitħan. @joseph_vella kellu raġun. u issa
+      sparixa. agħmlu l-konnessjoni.
+    effects: { trust_saviour: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Saviour -> saviour_talk
+
+  saviour_talk:
+    type: message
+    text: >
+      SAVIOUR: I've been fishing this coast since I was fifteen. I
+      know every rock, every current, every colour the water makes.
+      And I'm telling you — those salt pans have been there since the
+      Phoenicians. Maybe longer. They're part of Gozo.
+
+      Joseph found the survey pegs. They were hammered into the
+      limestone RIGHT IN the ancient pans. Not the edge — the middle.
+      He photographed everything. He was building a case for the
+      heritage authority. And then — sparixxa. Gone.
+
+      You think that's a coincidence? Fuck sake, I don't believe in
+      coincidences at sea.
+    effects: { trust_saviour: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> saviour_night
+      - Move on -> quest1_hub
+
+  saviour_night:
+    type: message
+    text: >
+      SAVIOUR: The night before he vanished — I was coming back from
+      night fishing, around 1am. I saw lights at the salt pans. Not
+      unusual, Joseph sometimes checked the evaporation at night. But
+      there was a car parked on the coastal road. A black Mercedes
+      with personalised plates. Expensive. Not from Gozo.
+
+      At 1am. Parked by the salt pans.
+
+      I didn't think much of it then. Now I can't stop thinking
+      about it.
+    effects: { trust_saviour: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nathan (teen spearfisher, witness tease) ---
+
+  nathan_intro:
+    type: tweet
+    from: nathan
+    text: >
+      fuck sake @joseph_vella hu li għallimni nisikka u nirrespetta
+      l-baħar. mela mhux possibbli li telaq hekk. jekk xi ħadd jaf
+      xi ħaġa iktbu please
+    effects: { trust_nathan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Nathan -> nathan_talk_early
+
+  nathan_talk_early:
+    type: message
+    text: >
+      NATHAN: mela int ġdid hawn? fuck sake what timing. honestly
+      joseph is like the best person in this village. he taught us
+      the salt — how to read the pans, when to harvest, the whole
+      thing. legend.
+
+      u issa qed nibża għax kyra rat xi ħaġa stramba ħdejn il-mitħan
+      imma ma tridx titkellem. she says it's nothing but qisek it's
+      not nothing
+    effects: { trust_nathan: "+10" }
+    choices:
+      - What did Kyra see? -> nathan_kyra_hint
+      - Move on -> quest1_hub
+
+  nathan_kyra_hint:
+    type: message
+    text: >
+      NATHAN: I don't know exactly. she was walking near the pans in
+      the evening taking photos and she saw someone near joseph's
+      shed. mela like standing there and watching. she says it was
+      that historian woman — carmen. just standing and staring at the
+      shed.
+
+      I would have said something but fuck sake who's gonna believe a
+      teenager against a PhD. try talking to kyra but she doesn't
+      trust people she doesn't know. maybe start with photography
+      talk haha
+    effects: { trust_nathan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Għarb Fields. A Gozitan coastal
+      village built around its ancient salt pans. A salt harvester
+      who was exposing destruction of heritage. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Maria (Joseph's wife) -> maria_q1
+      - Talk to Carmen (folklore historian) -> carmen_q1
+      - Check what Mark (Joseph's brother) is saying -> mark_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Maria Q1 ---
+
+  maria_q1:
+    type: tweet
+    from: maria
+    text: >
+      jekk xi ħadd għandu aħbar ta' @joseph_vella ċemplu please.
+      il-kamra tiegħu l-istess. l-għodda tal-mitħan hemm. qatt ma
+      kien jitlaq mingħajrhom.
+    effects: { trust_maria: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Maria -> maria_q1_talk
+
+  maria_q1_talk:
+    type: message
+    text: >
+      MARIA: I appreciate you writing but I don't know you. Joseph
+      has many friends here. I'm sure he'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Maria is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_maria: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Carmen Q1 ---
+
+  carmen_q1:
+    type: tweet
+    from: carmen
+    text: >
+      Il-mitħan vojt mingħajr @joseph_vella. In-noti tiegħu fuq
+      il-mejda. Il-kampjuni tal-mitħan mhux irreġistrati. Qatt ma
+      kien iħalli xogħol mhux lest. Xi ħaġa ġrat.
+    effects: { trust_carmen: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Carmen -> carmen_q1_talk
+
+  carmen_q1_talk:
+    type: message
+    text: >
+      CARMEN: Joseph and I have worked together documenting the salt
+      heritage for over three years. He's the most knowledgeable
+      person about these pans. This development threat — it was
+      everything to him. He had photographs, GPS coordinates, heritage
+      impact analysis. He was so close to filing a formal objection
+      with the planning authority.
+
+      I offered to help him. Many times. He said he had it under
+      control. He said he was working with a journalist. I just wanted
+      to support his cause.
+
+      [Carmen seems earnest. Or obsessive?]
+    effects: { trust_carmen: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mark Q1 ---
+
+  mark_q1:
+    type: tweet
+    from: mark
+    text: >
+      ħija SPARIXA u l-pulizija qed jgħiduli li forsi ħa l-vapur
+      lejn malta??? QATT MA JITLAQ MINGĦAJR MA JGĦIDLI. Ġej
+      mill-belt. xi ħadd se jispjegali.
+    effects: { trust_mark: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mark -> mark_q1_talk
+
+  mark_q1_talk:
+    type: message
+    text: >
+      MARK: Who are you? Another person from that village who's going
+      to tell me to calm down? My brother called me the night before
+      he disappeared. He said he had something big. He said "jekk xi
+      ħaġa tiġrili, ħares lejn Azure Hospitality." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_mark: "+10" }
+    choices:
+      - What do you think happened? -> mark_theory
+      - Move on -> quest1_hub
+
+  mark_theory:
+    type: message
+    text: >
+      MARK: I think he found proof that Azure Hospitality is planning
+      to destroy the salt pans and they shut him up. But mela I also
+      think that historian woman — Carmen — knows more than she's
+      saying. The way she talks about him... it's not just academic
+      interest. It's something else.
+
+      Joseph told me months ago that someone was going through his
+      salt shed — his tools moved, his harvest logs photographed. He
+      thought it was nothing. I don't think it was nothing.
+    effects: { trust_mark: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Joseph went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Kyra (was taking photos near the salt pans) -> kyra_interview
+      - Find George (boat tour guide, works late) -> george_interview
+      - Find Fredu (winemaker, early morning at the vineyard) -> fredu_interview
+      - Find Doris (pharmacist, saw something at dawn) -> doris_interview
+
+  # --- Kyra (saw someone at Joseph's shed) ---
+
+  kyra_interview:
+    type: tweet
+    from: kyra
+    text: >
+      ħdimt ritratt ġdid tal-mitħan. but the mood is shit. xi ħaġa
+      mhix sew f'dan il-villaġġ. I can't explain it
+    effects: { trust_kyra: "+5" }
+    choices:
+      - Ask Kyra about that evening -> kyra_talk
+
+  kyra_talk:
+    type: message
+    text: >
+      KYRA: ok mela but you don't tell anyone. I was near the salt
+      pans around 7pm taking photos and I saw that historian woman —
+      carmen — near joseph's storage shed. she was just standing there
+      looking through the window. when she saw me she walked off real
+      quick toward her car.
+
+      fuck sake I didn't say anything because who's gonna believe a
+      teenager against a university researcher but qisek that's not
+      normal behaviour
+    effects:
+      trust_kyra: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- George (boat guide, saw late-night meeting) ---
+
+  george_interview:
+    type: tweet
+    from: george
+    text: >
+      Reminder: il-port magħluq bejn 10pm u 6am. Ħassejt movimenti
+      mhux awtorizzati dawn l-aħħar iljieli.
+    effects: { trust_george: "+5" }
+    choices:
+      - Ask George what he saw -> george_talk
+
+  george_talk:
+    type: message
+    text: >
+      GEORGE: I was tying up my luzzu around 10:30pm. I saw Joseph's
+      old van still parked by the salt pans. And a black Mercedes —
+      personalised plates, very flash — parked on the coastal road.
+      Two men were standing near the boundary fence of the Azure
+      Hospitality site. One of them I recognised: Charles Fenech, the
+      project director.
+
+      At 10:30pm. On the coastal road. Mela that's not normal.
+
+      I noted it in my harbour log. Nobody's asked to see it.
+    effects:
+      trust_george: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Fredu (saw Joseph fleeing) ---
+
+  fredu_interview:
+    type: tweet
+    from: fredu
+    text: >
+      inqum fl-4 għad-dwieli. il-mogħdija tal-kosta ma kinitx vojta
+      dak il-għodu. kien hemm xi ħadd jiġri. fid-dlam. mhux jogger.
+    effects: { trust_fredu: "+5" }
+    choices:
+      - Ask Fredu what he saw -> fredu_talk
+
+  fredu_talk:
+    type: message
+    text: >
+      FREDU: I get up at 4am for the vineyard. That morning — the
+      morning after Joseph's last post — I saw someone on the coastal
+      path. Running. A man, carrying a bag, heading toward the old
+      boathouse caves. It was still dark. He was moving fast, like he
+      was afraid.
+
+      I called out but he didn't stop. I figured it was a fisherman
+      but... who goes fishing at 4am running with a rucksack?
+
+      When I heard about Joseph, I put it together. Mela I think that
+      was him. Running from something.
+    effects:
+      trust_fredu: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Doris (saw car chase) ---
+
+  doris_interview:
+    type: tweet
+    from: doris
+    text: >
+      Spiżerija miftuħa mis-7 bħas-soltu. Imma dak il-għodu ħamsa
+      xi karozza kienet tiġri wisq fit-toroq tal-villaġġ.
+    effects: { trust_doris: "+5" }
+    choices:
+      - Ask Doris what she saw -> doris_talk
+
+  doris_talk:
+    type: message
+    text: >
+      DORIS: I open the pharmacy at 7 but I was up at 5 that morning
+      doing inventory. I looked out the window and a car drove past —
+      fast, much too fast for the village road. Dark Mercedes. Then
+      maybe two minutes later, a second vehicle. Smaller, older van.
+      Following? I don't know.
+
+      The van turned off toward the old boathouse caves. The Mercedes
+      kept going toward the ferry terminal.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_doris: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Maria (wife)
+      and Luke (saw Carmen watching the shed).
+    choices:
+      - Talk to Maria about that night -> maria_interview
+      - Talk to Luke -> luke_interview
+      - Find Kyra -> kyra_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find George -> george_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Fredu -> fredu_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Doris -> doris_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Maria (last to see Joseph) ---
+
+  maria_interview:
+    type: tweet
+    from: maria
+    text: >
+      dik ir-ritratt fuq il-kont ta' joseph. dik mhix hu. joseph
+      qatt ma jpoggi ritratt mingħajr deskrizzjoni. joseph ma
+      jiktibx fit-3am. xi ħadd ieħor għamel dak.
+    effects: { trust_maria: "+5" }
+    choices:
+      - DM Maria -> maria_talk_low
+        when:
+          state: trust_maria
+          lt: 50
+      - DM Maria -> maria_talk_high
+        when:
+          state: trust_maria
+          gte: 50
+
+  maria_talk_low:
+    type: message
+    text: >
+      MARIA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Maria needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_maria: "+5" }
+    choices:
+      - Share what you've learned about the night -> maria_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  maria_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car on the coastal road,
+      the company men, the running figure. Maria is silent for a
+      while.
+
+      MARIA: You're actually trying to find him. Okay. I'll talk.
+    effects: { trust_maria: "+25" }
+    choices:
+      - What happened that night? -> maria_talk_high
+
+  maria_talk_high:
+    type: message
+    text: >
+      MARIA: He came home around 11pm. I was putting the children to
+      bed. He was pale, shaking. He said "jafu x'għandi." He grabbed
+      his laptop and his camera cards.
+
+      I asked who. He said "il-kumpanija. Bagħtu nies ħdejn
+      il-mitħan." Then he said something else — "u hi kienet hemm
+      ukoll. dejjem hemm."
+
+      He wouldn't say who "hi" was. He hugged me, said "tinkwetax,"
+      and left with a bag. That was it. By morning his van was gone
+      and the strange photo was on his account.
+    effects:
+      trust_maria: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Luke (saw Carmen watching the shed) ---
+
+  luke_interview:
+    type: message
+    text: >
+      LUKE: ok mela look this is weird but that historian woman —
+      carmen — I saw her like three times in the evening near
+      joseph's salt shed. just standing there staring through the
+      window. fuck sake mega creepy.
+
+      the last time was like two days before he vanished. she was
+      sitting in her car parked opposite the shed. just sitting.
+      lights off.
+    effects:
+      trust_luke: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Carmen seen outside Joseph's salt shed, watching through
+      the window (Kyra)
+      22:30 — Azure Hospitality Mercedes on coastal road, Charles Fenech
+      present (George)
+      23:00 — Joseph arrives home, shaken, grabs laptop and drives (Maria)
+      04:00 — Man running on coastal path toward old boathouse caves (Fredu)
+      05:00 — Two vehicles speeding through village, one toward caves
+      (Doris)
+
+      Azure Hospitality confronted Joseph at the salt pans. He fled
+      home, grabbed his evidence, and ran. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is Azure Hospitality hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Carmen really doing? Why was she at
+        his shed?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Carmen -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Azure Hospitality is hiding something. Joseph had proof. Now
+      he's gone and his evidence is missing from the salt shed.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the planning authority records -> planning_records
+      - Talk to Sylvana the journalist -> sylvana_interview
+      - Talk to Jade (Azure Hospitality technician) -> jade_interview
+      - Talk to Daniela (heritage officer) -> daniela_interview
+      - Check the Għaqda Ħbieb tal-Mitħan -> ghaqda_investigation
+      - Talk to Saviour about the survey pegs -> saviour_pegs
+      - Back to hub -> investigation_hub
+
+  # --- Planning Records ---
+
+  planning_records:
+    type: message
+    text: >
+      The planning authority's public database shows Joseph's recent
+      objections: filings on six aspects of the Azure Hospitality
+      development. The objection regarding salt pan encroachment is
+      marked "PENDING REVIEW" — the only one with that status.
+
+      His salt harvest log, shared with the heritage authority for
+      documentation, shows he visited the Azure Hospitality boundary
+      17 times in the past month. The last entry: "Photographed
+      new survey pegs. Three placed directly in Pan 7 and Pan 12 —
+      inside the heritage boundary. The site plan they submitted does
+      not match what's happening on the ground."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Sylvana ---
+
+  sylvana_interview:
+    type: message
+    text: >
+      SYLVANA: I don't talk about sources. Period.
+    effects: { trust_sylvana: "+5" }
+    choices:
+      - Show Sylvana the evidence you have -> sylvana_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  sylvana_with_evidence:
+    type: message
+    text: >
+      SYLVANA: ...you have more than I expected.
+
+      Okay. Joseph and I were working together. He had photos of
+      survey pegs hammered into the ancient salt pans — inside the
+      heritage protection zone. He had GPS data proving the actual
+      construction footprint extends far beyond what was approved.
+      The submitted site plan is a lie.
+
+      We were going to publish together. Then he went dark. And two
+      days later, someone broke into my car on the ferry and stole
+      my backup drive.
+
+      Joseph is alive. He contacted me once, from a borrowed phone.
+      He said he was hiding on a farm somewhere in Gozo. He said
+      "heddudni ħdejn il-mitħan u xi ħadd ieħor ma jitlaqnix."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come back.
+    effects:
+      trust_sylvana: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> sylvana_hint
+      - Back to investigation hub -> investigation_hub
+
+  sylvana_hint:
+    type: message
+    text: >
+      SYLVANA: The development company sent their director — Fenech —
+      and some lawyer to the salt pans that night. They told Joseph
+      to hand over everything or face legal consequences for
+      trespassing on their development site. Intimidation dressed up
+      as property law.
+
+      But he also said something about someone from the folklore
+      society. Someone who'd been going through his shed. Someone who
+      always seemed to know where he'd be. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Jade (Azure Hospitality whistleblower) ---
+
+  jade_interview:
+    type: message
+    text: >
+      JADE: I work at Azure Hospitality. I'm just a site technician.
+      I do ground surveys, I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to the planning authority.
+    effects: { trust_jade: "+10" }
+    choices:
+      - What do you mean? -> jade_detail
+
+  jade_detail:
+    type: message
+    text: >
+      JADE: I survey the site boundaries. I map the actual footprint
+      against the approved plans. My measurements go to my supervisor.
+      Somewhere between my desk and the planning submission, they
+      change. The footprint shrinks. The salt pans disappear from the
+      drawings.
+
+      Joseph's photos from the pans matched MY original survey data,
+      not the plans submitted to the authority. He had independent
+      proof that Azure Hospitality is building beyond their permit —
+      directly onto protected heritage.
+
+      I'm scared. Xi ħmerija, I have a family. But I kept copies of
+      my original surveys. If someone can protect me, I'll share them.
+    effects:
+      trust_jade: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Daniela ---
+
+  daniela_interview:
+    type: message
+    text: >
+      DANIELA: As the heritage officer for Għarb Fields, I take these
+      allegations seriously. But Azure Hospitality has political
+      connections in Valletta. The kunsillier insists we need to
+      "maintain dialogue" with investors.
+
+      Off the record? I've seen the site inspection reports. Azure
+      Hospitality passes every time. But those inspections are
+      scheduled two weeks in advance. They pull the pegs before the
+      inspectors arrive and hammer them back in after.
+
+      Joseph had unannounced documentation. That's what makes it
+      dangerous.
+    effects:
+      trust_daniela: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Għaqda Ħbieb tal-Mitħan ---
+
+  ghaqda_investigation:
+    type: tweet
+    from: għaqda
+    text: >
+      TWISSIJA: Rapport dwar survey pegs ġodda fil-mitħan antik.
+      Ritratti u dokumenti qed jinġabru. Nitolbu ispezzjoni
+      mhux ippjanata tas-sit ta' Azure Hospitality.
+    choices:
+      - Check their data -> ghaqda_data
+
+  ghaqda_data:
+    type: message
+    text: >
+      The Għaqda Ħbieb tal-Mitħan has been documenting the salt pans
+      for two years. Their data shows a clear pattern: survey pegs
+      appearing inside the heritage zone, documented and reported,
+      then removed before inspections, then replaced.
+
+      Drone photographs from different dates show the actual
+      construction boundary creeping closer to the pans. Before-and-
+      after photos show limestone being cut away from the edges of
+      ancient pans to accommodate drainage channels.
+
+      The pattern is unmistakable. This is systematic encroachment
+      timed to avoid detection.
+
+      Joseph was their most active member. He contributed most of the
+      ground-level documentation.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Saviour survey pegs ---
+
+  saviour_pegs:
+    type: message
+    text: >
+      SAVIOUR: I'll show you something. Last month I was walking the
+      coastal path near the development site and found this — a pile
+      of broken limestone pushed over the cliff. In that rubble: carved
+      salt pan walls. Ancient ones. Cut clean and dumped.
+
+      I photographed everything and sent it to Joseph. He said it was
+      the missing piece — proof they weren't just building near the
+      pans, they were actively destroying them and dumping the remains
+      into the sea.
+
+      I still have the photos. And GPS coordinates.
+    effects:
+      trust_saviour: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Carmen Camilleri. Folklore historian. PhD researcher. Something
+      more? Someone was going through Joseph's shed. Someone was
+      watching his salt pans. Someone was always at his door.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Carmen's visit records -> visit_records
+      - Talk to Maria about Carmen -> maria_carmen
+        when:
+          state: trust_maria
+          gte: 20
+      - Talk to Kyra (more detail on the shed incident) -> kyra_detail
+      - Talk to Doris the pharmacist -> doris_detail_interview
+      - Check the anonymous account @karmenu -> karmenu_investigation
+      - Talk to Victor the stonemason -> victor_interview
+        when:
+          state: trust_victor
+          gte: 40
+      - Talk to Spettur Chetcuti -> spettur_interview
+        when:
+          state: trust_spettur
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Visit Records ---
+
+  visit_records:
+    type: message
+    text: >
+      The salt pan heritage volunteers keep a sign-in log for safety.
+      Joseph signed in 41 times last month. Carmen signed in 78 times.
+      Nearly double.
+
+      Cross-referencing: on 33 of Carmen's 78 visits, she arrived
+      within 20 minutes of Joseph. She arrived after him and left
+      after him. Every time.
+
+      Her own research focuses on a different set of pans on the
+      opposite side of the bay.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Maria on Carmen ---
+
+  maria_carmen:
+    type: message
+    text: >
+      MARIA: Carmen? Mela, she made Joseph uncomfortable. She'd show
+      up at the bar when he was there. She'd offer to drive him to
+      conferences in Valletta. She'd comment on every single one of
+      his posts within minutes.
+
+      He told her he wasn't interested — that he had a wife and
+      children, that their relationship was professional. She said
+      she understood. Then nothing changed. She just... kept being
+      there. Always there.
+
+      A month ago he found that someone had been in his salt shed.
+      His harvest logs moved, his tools rearranged. Nothing stolen but
+      things were... wrong. He suspected Carmen but couldn't prove it.
+    effects:
+      trust_maria: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Kyra detail ---
+
+  kyra_detail:
+    type: message
+    text: >
+      KYRA: ok mela I didn't say everything. when I saw carmen at
+      joseph's shed she had something in her hands. like a small
+      device. she stuck it under joseph's van — like attached it
+      underneath near the wheel.
+
+      fuck sake I'm not an expert but it looked like a GPS tracker.
+      like the things you see in movies.
+
+      I should have said something but qisek who's gonna believe a
+      seventeen year old against a university researcher. xi ħmerija
+      nobody would have listened
+    effects:
+      trust_kyra: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Doris pharmacist ---
+
+  doris_detail_interview:
+    type: message
+    text: >
+      DORIS: This is confidential but I'm a pharmacist, not a priest.
+      Carmen Camilleri comes in regularly. She's been buying things
+      that... suggest she's not sleeping. Anti-anxiety medication,
+      sleep aids, energy supplements. The pattern is someone under
+      extreme stress.
+
+      She also asked me once, very casually, if we sold tracking
+      devices. I said "din spiżerija, mhux electronics shop." She
+      laughed it off. I didn't think about it again until Joseph
+      disappeared.
+    effects:
+      trust_doris: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Karmenu (anonymous account) ---
+
+  karmenu_investigation:
+    type: tweet
+    from: karmenu
+    text: >
+      Kellu jisma'. Kont qed nipprova nipproteġih. Ħadd ieħor ma
+      fehem ix-xogħol tiegħu bħali.
+    choices:
+      - Look at this account's history -> karmenu_posts
+
+  karmenu_posts:
+    type: message
+    text: >
+      @karmenu: account created 10 months ago. Posts are all about
+      Joseph's work. Comments on every salt harvest photo, every pan
+      documentation, every heritage update. The tone shifts over time:
+
+      Month 1: "Xogħol inkredibbli. Qed tagħmel dak li ħadd ma jażżarda."
+      Month 3: "Għalfejn ma twieġibx il-messaġġi tiegħi? Irrid
+      biss nikkollabora."
+      Month 7: "Narak fil-bar ma' nies oħra. Għalihom għandek ħin
+      imma għalija le?"
+      Month 9: "Naf fejn tmur. Naf it-timetable tiegħek. Dejjem
+      qrib."
+
+      The account has no photos, no personal details. Just Joseph.
+      Only Joseph.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> karmenu_style
+
+  karmenu_style:
+    type: message
+    text: >
+      Comparing @karmenu with @carmen_camilleri:
+
+      Same use of heritage and folklore terminology. Same Maltese
+      spelling conventions — the specific way she handles the għ and
+      ħ in technical terms. Same knowledge of Joseph's salt harvesting
+      methods that only someone documenting his work would have.
+
+      And one post from @karmenu: "Il-ħsad ta' Pan 7 kien sabiħ."
+      Pan 7 is a family designation Joseph uses privately. Not public.
+
+      It's Carmen. The anonymous account is Carmen.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Victor ---
+
+  victor_interview:
+    type: message
+    text: >
+      VICTOR: Joseph left something with me. A sealed waterproof
+      case — the kind divers use for cameras. He said "jekk xi ħadd
+      jistaqsi dwar x'qed jiġri fil-mitħan, agħtihom dan."
+
+      He looked frightened. He said he'd made copies of everything
+      but needed one set off-site, somewhere nobody would think to
+      look. A stonemason's workshop seemed perfect.
+    effects: { trust_victor: "+10" }
+    choices:
+      - What's happening at the salt pans? -> victor_case
+
+  victor_case:
+    type: message
+    text: >
+      Victor reaches behind his workbench and produces a waterproof
+      case.
+
+      VICTOR: He said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show survey pegs driven into ancient salt pans, limestone walls
+      being cut away by machinery, and construction drainage channels
+      carved through heritage rock. The USB contains GPS survey data,
+      heritage impact analysis, and Joseph's detailed objection to the
+      planning authority.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Spettur Chetcuti ---
+
+  spettur_interview:
+    type: message
+    text: >
+      SPETTUR CHETCUTI: Off the record — and I mean completely off
+      the record — I wanted to investigate Azure Hospitality. My
+      superior told me to stand down. He said the planning authority
+      had "jurisdiction." Mela that's code for "don't touch it."
+
+      The Camilleri situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_spettur: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Joseph than anyone in Għarb Fields. Who is responsible?
+    choices:
+      - Confront Carmen Camilleri (the obsessive historian) -> confront_carmen
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Charles Fenech (the project director) -> confront_charles
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Kunsillier Grech (political protection) -> confront_pawlu
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Carmen (Best Ending) ---
+
+  confront_carmen:
+    type: message
+    text: >
+      You present your evidence to Carmen:
+
+      "I know @karmenu is your account. I know you put a GPS tracker
+      on Joseph's van. I know you went through his salt shed. I know
+      you were watching the pans every time he was there. I have
+      witnesses and I have the visit logs."
+    choices:
+      - Send -> carmen_response
+
+  carmen_response:
+    type: message
+    text: >
+      Carmen doesn't reply for a long time. Then:
+
+      CARMEN: You don't understand. I was protecting him. He was in
+      danger from Azure Hospitality and he wouldn't let me help. I
+      needed to know he was safe. Everything I did was because I care
+      about his work. About the heritage. About him.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Spettur Chetcuti. And to
+      Sylvana Zammit.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Spettur Chetcuti reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the visit logs, the witness
+      testimonies — Carmen is arrested for stalking and harassment.
+      A GPS tracker is recovered from under Joseph's van at the old
+      boathouse caves.
+
+      Sylvana Zammit, finally in possession of Joseph's full evidence
+      package, publishes the Azure Hospitality story in the Times of
+      Malta. The planning authority orders an unannounced inspection.
+      Construction is halted pending heritage assessment. Charles
+      Fenech faces criminal charges for falsifying planning
+      submissions. The salt pans are secured.
+
+      And Joseph Vella, reading the story from a friend's farmhouse
+      near Xagħra, calls his wife for the first time in eight days.
+
+      "Ġej lura d-dar."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Victim Support Malta: 2122 8333
+      Appoġġ Helpline: 179
+      Commission for Domestic Violence: 2568 9000
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: joseph
+    text: >
+      il-mitħan ma jigdibx. u n-nies ta' għarb fields lanqas.
+      grazzi li ma waqaftux.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Charles (Partial Ending) ---
+
+  confront_charles:
+    type: message
+    text: >
+      You present the development evidence to Charles Fenech:
+
+      "I have photographs of survey pegs driven into ancient salt
+      pans. I have GPS data proving construction extends into the
+      heritage zone. I have your original site surveys showing the
+      planning submissions were falsified. I have the limestone walls
+      your crews dumped over the cliff."
+    choices:
+      - Send -> charles_response
+
+  charles_response:
+    type: message
+    text: >
+      CHARLES: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Azure Hospitality has always operated
+      within planning regulations.
+
+      But it's too late. You've sent the evidence to Sylvana, to the
+      Għaqda Ħbieb tal-Mitħan, and to the planning authority.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The heritage destruction story breaks. Azure Hospitality is
+      ordered to halt all construction pending investigation. The
+      resort project may be cancelled. Local investment and promised
+      jobs hang in the balance. The village is divided.
+
+      But Joseph?
+
+      Without the stalking evidence, Carmen is never investigated. She
+      continues to visit the salt pans. She continues to monitor his
+      accounts. She creates a new anonymous profile.
+
+      Three months later, Joseph reads about Azure Hospitality online.
+      He returns quietly. He changes his phone number. He stops going
+      to the pans alone. He checks his van every morning.
+
+      The corporation is exposed. But the person who terrorised Joseph
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: joseph
+    text: "erġajt lura. il-mitħan safe. il-bqija... naraw."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Kunsillier (Wrong Ending) ---
+
+  confront_pawlu:
+    type: message
+    text: >
+      You confront Kunsillier Grech with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> pawlu_response
+
+  pawlu_response:
+    type: tweet
+    from: rachel
+    text: >
+      Il-klijent tiegħi jieħu nota tal-allegazzjonijiet tiegħek.
+      Kull pubblikazzjoni ta' materjal libelluż se tirriżulta
+      fi proċeduri legali immedjati. — Mifsud & Associates, Valletta
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The kunsillier's lawyer buries your accusation. Without a direct
+      link between Grech and Azure Hospitality's destruction — and
+      there isn't one beyond political protection — your evidence is
+      insufficient.
+
+      Azure Hospitality continues to build. Carmen continues to watch.
+      Joseph stays in hiding.
+
+      Six months later, @karmenu creates a new account. It follows
+      Joseph's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: GĦARB FIELDS — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Joseph's story explores themes of
+      heritage destruction, development impunity, obsessive behaviour,
+      community solidarity, and the courage to protect what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Victim Support Malta: 2122 8333
+      Appoġġ Helpline: 179
+      Commission for Domestic Violence: 2568 9000
+      Heritage Malta reports: 2295 4000

@@ -1,0 +1,1539 @@
+# DEAD ACCOUNT — Story 077: Valea Verde (Romania)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-077.yml
+#
+# Player investigates the disappearance of shepherd Ioana Popescu
+# in the fictional Maramureș village of Valea Verde.
+
+meta:
+  title: "Dead Account — Valea Verde"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_radu: 0
+    trust_elena: 0
+    trust_gheorghe: 0
+    trust_maria: 0
+    trust_andrei: 0
+    trust_dana: 0
+    trust_mihai: 0
+    trust_florin: 0
+    trust_violeta: 0
+    trust_cosmin: 0
+    trust_liviu: 0
+    trust_anca: 0
+    trust_petru: 0
+    trust_claudia: 0
+    trust_bogdan: 0
+    trust_nicoleta: 0
+    trust_sergiu: 0
+    trust_dorina: 0
+    trust_marius: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    mining_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "tocmai m-am mutat în valea verde. descopăr maramureșul pas cu pas"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "ValeaVerde.social"
+    description: "Bine ai venit pe instanța comunitară din Valea Verde, Maramureș"
+    avatar_url: /gamepatch/assets/dead-account/valeaverde_bot.png
+
+  npcs:
+    # === Ioana's Inner Circle ===
+    ioana:
+      name: "Ioana Popescu"
+      bio: "ciobăniță | munții mei, oile mele | fotografii de pe dealuri | valea verde e acasă"
+      avatar: avatars/ioana.jpg
+    radu:
+      name: "Radu Popescu"
+      bio: "fratele Ioanei | mecanic auto la sighet | dacă știi ceva despre sora mea, scrie-mi"
+      avatar: avatars/radu.jpg
+    elena:
+      name: "Elena Lazăr"
+      bio: "cea mai bună prietenă a Ioanei | profesoară la școala din sat | Valea Verde"
+      avatar: avatars/elena.jpg
+    gheorghe:
+      name: "Gheorghe Popescu"
+      bio: "tatăl Ioanei | cioban de 40 de ani | oile nu se păzesc singure"
+      avatar: avatars/gheorghe.jpg
+
+    # === Local Government ===
+    maria:
+      name: "Maria Moldovan"
+      bio: "Primar Valea Verde | pentru comunitate, pentru tradiție | #ValeaVerdeÎnainte"
+      avatar: avatars/maria.jpg
+    andrei:
+      name: "Andrei Crișan"
+      bio: "Viceprimar | mediu și dezvoltare rurală | Comuna Valea Verde"
+      avatar: avatars/andrei.jpg
+    primaria:
+      name: "Primăria Valea Verde"
+      bio: "Cont oficial | Anunțuri comunale | Program: Luni-Vineri 8-16"
+      avatar: avatars/primaria.jpg
+
+    # === Local Business & Community ===
+    dana:
+      name: "Dana Rus"
+      bio: "Bodega la Dana | țuică, mici, suflet | deschis din '95 | Valea Verde"
+      avatar: avatars/dana.jpg
+    bodega:
+      name: "Bodega la Dana"
+      bio: "Mâncare tradițională | Țuică de prune | Muzică live vinerea | Inima satului"
+      avatar: avatars/bodega.jpg
+    mihai:
+      name: "Mihai Toma"
+      bio: "pădurar | Ocolul Silvic Valea Verde | pădurea e sacră"
+      avatar: avatars/mihai.jpg
+    florin:
+      name: "Florin Ardelean"
+      bio: "doctor veterinar | Valea Verde & împrejurimi | urgențe non-stop"
+      avatar: avatars/florin.jpg
+    violeta:
+      name: "Violeta Bârsan"
+      bio: "farmacistă | Valea Verde | sănătate & sfat | și duminica dimineața"
+      avatar: avatars/violeta.jpg
+    cosmin:
+      name: "Cosmin Mureșan"
+      bio: "brutar | pâine de casă | cozonaci | în fiecare dimineață de la 4"
+      avatar: avatars/cosmin.jpg
+    anca:
+      name: "Anca Vaida"
+      bio: "bibliotecar | Casa de Cultură Valea Verde | cărți & evenimente"
+      avatar: avatars/anca.jpg
+
+    # === Journalist ===
+    liviu:
+      name: "Liviu Pintea"
+      bio: "jurnalist independent | mediu & comunități rurale | tips: liviu@pintea-press.ro"
+      avatar: avatars/liviu.jpg
+
+    # === AuroCarp Mining (corporate) ===
+    aurocarp:
+      name: "AuroCarp Mining SRL"
+      bio: "Soluții miniere sustenabile | Proiect Valea Verde | ISO 14001 certificat"
+      avatar: avatars/aurocarp.jpg
+    bogdan:
+      name: "Bogdan Ionescu"
+      bio: "director proiect AuroCarp Mining | Valea Verde | industrie & comunitate"
+      avatar: avatars/bogdan.jpg
+    nicoleta:
+      name: "Nicoleta Dragomir"
+      bio: "Avocat | Cabinet Dragomir & Asociații | Drept comercial | Cluj-Napoca"
+      avatar: avatars/nicoleta.jpg
+
+    # === Teens ===
+    claudia:
+      name: "Claudia"
+      bio: "16 | fotografii cu munții | valea verde born | natura e totul frr"
+      avatar: avatars/claudia.jpg
+    sergiu:
+      name: "Sergiu"
+      bio: "17 | mountain bike & drumeții | dimineți pe crestă | ioana m-a învățat muntele"
+      avatar: avatars/sergiu.jpg
+    dorina:
+      name: "Dorina"
+      bio: "15 | desen & poezie | peisaje din maramureș | ioana e inspirația mea"
+      avatar: avatars/dorina.jpg
+
+    # === Media & Community ===
+    actu_verde:
+      name: "Actu Valea Verde"
+      bio: "Știri din Valea Verde și Maramureș | Tips: redactia@actu-valeaverde.ro"
+      avatar: avatars/actu_verde.jpg
+    meteo_mures:
+      name: "Meteo Valea Verde"
+      bio: "Prognoză și alerte | Stație automată | Actualizare la fiecare oră"
+      avatar: avatars/meteo_mures.jpg
+    asso_munte:
+      name: "Asociația Munții Noștri"
+      bio: "Protecția mediului montan | Voluntari | Semnalări poluare & defrișare"
+      avatar: avatars/asso_munte.jpg
+
+    # === Suspicious / Other ===
+    petru:
+      name: "Petru Varga"
+      bio: "ghid montan | trasee Maramureș | fiecare potecă are o poveste"
+      avatar: avatars/petru.jpg
+    marius:
+      name: "Marius Neagu"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sergent:
+      name: "Sergent Stanciu"
+      bio: "Poliția Valea Verde | Post comunal | urgențe: 112"
+      avatar: avatars/sergent.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VALEA VERDE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to ValeaVerde.social — the community Mastodon instance for
+      the village of Valea Verde, Maramureș.
+
+      The local feed is tense today. Something has happened in the
+      mountains.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps appearing:
+      @ioana_popescu.
+
+      A shepherd. Photographer of mountain landscapes. She documented
+      the valleys and ridges above the village. People are worried.
+      She hasn't posted in six days. Her flock came down the mountain
+      alone.
+    choices:
+      - Look at her profile -> ioana_profile
+
+  ioana_profile:
+    type: tweet
+    from: ioana
+    text: "Apa din pârâul de sub Vârful Roșu e portocalie. Cineva toarnă chimicale de la sondaj. Am poze, am probe. Nu mai tac."
+    choices:
+      - That's her last real post... -> grey_mountain
+
+  grey_mountain:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of fog over a mountain ridge. Posted at 2am.
+      No caption.
+
+      Her friends say that's not her style. Ioana always wrote long
+      captions about the land. The police say she probably went to
+      visit relatives. But her flock came back without her. A shepherd
+      doesn't abandon her sheep.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: sergent
+    text: >
+      Am primit o sesizare privind o locuitoare din Valea Verde. La
+      acest moment, nu există indicii care să confirme o faptă penală.
+      Orice informație utilă poate fi comunicată la 112 sau la postul
+      de poliție comunal.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @elena_lazar is
+      desperate. Her brother @radu_popescu is driving down from Sighet.
+      Her father @gheorghe_popescu hasn't said a word — just went up
+      the mountain with the dogs. The vet @florin_ardelean says
+      Ioana's sheep came back stressed, as if they'd been running.
+
+      And the journalist @liviu_pintea, who was working with her on
+      something, is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Ioana just "went
+      to visit relatives."
+    effects: { trust_elena: "+5", trust_radu: "+5" }
+    choices:
+      - Start following Ioana's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Valea Verde. Follow Ioana's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Dana (bodega owner, knows everyone) -> dana_intro
+      - Talk to Mihai (forester, knows the mountains) -> mihai_intro
+      - Talk to Claudia (teen photographer, seems shaken) -> claudia_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Ioana with the slow rhythms of a
+      Maramureș village: weather warnings for the peaks, the bakery's
+      cozonac recipe, church announcements, someone's cow breaking
+      through a fence.
+
+      Key names surface: Elena (best friend, teacher), Petru Varga
+      (mountain guide, oddly fixated on Ioana's routes), Liviu
+      (journalist, gone quiet), and the teens — Claudia, Sergiu,
+      Dorina — who loved Ioana's mountain photography.
+
+      Also prominent: AuroCarp Mining SRL, the gold exploration
+      company with drilling rigs above the village. Their posts are
+      corporate PR. Ioana's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Dana -> dana_intro
+      - Talk to Mihai -> mihai_intro
+      - Talk to Claudia -> claudia_intro
+
+  # --- Dana (social map) ---
+
+  dana_intro:
+    type: tweet
+    from: dana
+    text: >
+      Bodega e deschisă da' nu-i chef de nimic. @ioana_popescu,
+      masa ta te așteaptă. Hai acasă, fată.
+    effects: { trust_dana: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dana -> dana_talk
+
+  dana_talk:
+    type: message
+    text: >
+      DANA: Ești nou pe aici? Bine ai venit, da' ai nimerit prost
+      cu timing-ul. Toată lumea e pe jar din cauza Ioanei.
+
+      Stai că-ți zic eu cine-i cine. Elena e cea mai bună prietenă
+      a Ioanei — profesoară la școală, sufletul ei. Gheorghe e tac-su,
+      cioban de o viață, nu vorbește mult da' suferă în tăcere. Radu
+      e fratele ei, vine de la Sighet.
+
+      Petru Varga — ghidul montan — ăla-i ciudat. Îl vedeam mereu
+      pe urmele Ioanei pe munte. Zicea că-i studiază traseele pentru
+      turiști, da' mie mi se părea altceva. Ioana s-a plâns odată
+      că o urmărește.
+
+      Și AuroCarp Mining — firma aia cu sondajele de aur. Ioana
+      le-a găsit de cap. A zis că otrăvesc apa. Doi săptămâni mai
+      târziu, a dispărut. Fă tu legătura.
+    effects: { trust_dana: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Petru Varga -> dana_petru
+      - Ask about AuroCarp -> dana_aurocarp
+      - Thank her and move on -> quest1_hub
+
+  dana_petru:
+    type: message
+    text: >
+      DANA: Petru? E ghid montan de vreo cinci ani. Știe fiecare
+      potecă, fiecare stână. Da' de când a venit Ioana cu turma pe
+      traseele de sus, s-a lipit de ea. Venea la bodegă când era ea
+      aici. Se oferea să o însoțească pe munte. Ea zicea nu, el tot
+      insista.
+
+      Odată mi-a zis: "Dana, ăla mă urmărește. Știe exact pe unde
+      merg cu oile. E ca și cum ar avea GPS pe mine." Am zis că
+      exagerează. Acum nu mai cred că exagera.
+    effects: { trust_dana: "+5" }
+    choices:
+      - Ask about AuroCarp -> dana_aurocarp
+      - Move on -> quest1_hub
+
+  dana_aurocarp:
+    type: message
+    text: >
+      DANA: AuroCarp Mining. Au venit acum doi ani cu promisiuni —
+      locuri de muncă, dezvoltare, investiții. Primarul a semnat tot
+      ce i-au pus în față. Au început sondaje explorative pe dealul
+      de deasupra pârâului.
+
+      De atunci, apa din pârâul de sub Vârful Roșu e portocalie.
+      Oile nu mai beau de acolo. Peștii au murit. Copiii se îmbolnăveau
+      de la apa din fântâni.
+
+      Ioana a fost prima care a luat probe, a făcut poze, a trimis
+      la laborator. Avea dovezi. Dovezi reale. Și acum a dispărut.
+    effects: { trust_dana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mihai (forester, mountains, witness tease) ---
+
+  mihai_intro:
+    type: tweet
+    from: mihai
+    text: >
+      35 de ani de pădure. apa din pâraie nu mai e cum era.
+      @ioana_popescu avea dreptate. și acum nu mai e. gândiți-vă.
+    effects: { trust_mihai: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Mihai -> mihai_talk
+
+  mihai_talk:
+    type: message
+    text: >
+      MIHAI: Eu sunt pădurar de când mă știu. Cunosc fiecare vale,
+      fiecare izvor. Și-ți spun clar — apa de sub sondajele AuroCarp
+      e otrăvită. Am văzut cu ochii mei cum iese portocalie din
+      pământ lângă platformele lor.
+
+      Ioana a luat probe. A coborât pe vale cu sticle de apă și le-a
+      trimis la Cluj, la laborator. Rezultatele au arătat cianuri și
+      metale grele de zece ori peste limită.
+
+      Tu crezi că-i coincidență? Eu nu cred în coincidențe pe munte.
+    effects: { trust_mihai: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> mihai_night
+      - Move on -> quest1_hub
+
+  mihai_night:
+    type: message
+    text: >
+      MIHAI: În noaptea dinainte să dispară — eu făceam tură de noapte,
+      pe la 11 seara. Am văzut lumini sus la stâna Ioanei. Nu-i
+      neobișnuit, ciobanii stau noaptea. Da' erau două mașini acolo.
+      Una era Dacia ei veche. Cealaltă era un SUV negru cu numere de
+      Cluj — am văzut sigla AuroCarp pe ușă.
+
+      La 11 noaptea. La stâna din munte. Asta nu-i normal.
+
+      Am notat în registru. Nimeni nu m-a întrebat.
+    effects: { trust_mihai: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Claudia (teen photographer, witness tease) ---
+
+  claudia_intro:
+    type: tweet
+    from: claudia
+    text: >
+      ce pula mea se întâmplă @ioana_popescu ea m-a învățat să fac
+      poze pe munte gen nu e posibil să fi plecat așa. dacă știe
+      cineva ceva ziceți vă rog
+    effects: { trust_claudia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Claudia -> claudia_talk_early
+
+  claudia_talk_early:
+    type: message
+    text: >
+      CLAUDIA: ești nou? nasol timing frr. ioana e gen cea mai mișto
+      persoană din sat. ne-a învățat să facem poze, ne ducea pe munte,
+      ne arăta animalele. era ca o soră mai mare pt noi.
+
+      și acum sunt flipată rău pcq sergiu a văzut ceva ciudat pe
+      munte da' nu vrea să zică. zice că nu-i nimic da' gen... se
+      vede pe el că-i speriat. bags pula dacă nu-i ceva nasol
+    effects: { trust_claudia: "+10" }
+    choices:
+      - What did Sergiu see? -> claudia_sergiu_hint
+      - Move on -> quest1_hub
+
+  claudia_sergiu_hint:
+    type: message
+    text: >
+      CLAUDIA: nu știu exact. el era pe bicicletă pe drumul forestier
+      și a văzut gen pe cineva lângă stâna Ioanei care scotea chestii
+      din mașina ei? sau punea ceva? nu știu. când l-a văzut Sergiu,
+      ăla a fugit.
+
+      sergiu e panicat, nu vrea probleme. trebuie să-i vorbești
+      direct da' e méfiant cu oamenii noi. încearcă să-i vorbești
+      despre mountain bike întâi lol
+    effects: { trust_claudia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Valea Verde. A Maramureș mountain
+      village built around shepherding and forest. A young shepherd
+      who was exposing mining pollution. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Elena (Ioana's best friend) -> elena_q1
+      - Talk to Petru Varga (mountain guide) -> petru_q1
+      - Check what Radu (Ioana's brother) is saying -> radu_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Elena Q1 ---
+
+  elena_q1:
+    type: tweet
+    from: elena
+    text: >
+      dacă cineva are vești de @ioana_popescu sunați-mă vă rog.
+      camera ei e neatinsă. ciobănescul ei e aici. ea nu pleacă
+      niciodată fără Rex.
+    effects: { trust_elena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Elena -> elena_q1_talk
+
+  elena_q1_talk:
+    type: message
+    text: >
+      ELENA: Apreciez că scrii, da' nu te cunosc. Ioana are mulți
+      prieteni aici. Sunt sigură că o să revină.
+
+      ...tot repet asta. Nu mai cred.
+
+      [Elena is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_elena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Petru Q1 ---
+
+  petru_q1:
+    type: tweet
+    from: petru
+    text: >
+      Am bătut toate traseele de pe Vârful Roșu. Nici urmă de
+      @ioana_popescu. Stâna e goală. Focul stins de zile. Cineva
+      trebuie să facă ceva.
+    effects: { trust_petru: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Petru -> petru_q1_talk
+
+  petru_q1_talk:
+    type: message
+    text: >
+      PETRU: Ioana și cu mine suntem colegi de munte. Eu ghid, ea
+      ciobăniță. Cunosc fiecare potecă pe care merge cu turma.
+      Le-am cartografiat pe toate — pentru turiști, evident.
+
+      Am fost sus și am căutat-o. Stâna e abandonată. Focul e stins
+      de cel puțin patru zile. Lucrurile ei sunt acolo — sacul de
+      dormit, lanterna, caietul. Dar ea nu e.
+
+      Și ceva e ciudat — laptopul ei lipsește. De ce ar lua laptopul
+      și ar lăsa totul?
+
+      [Petru seems very knowledgeable about Ioana's movements. Almost
+      too knowledgeable.]
+    effects: { trust_petru: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Radu Q1 ---
+
+  radu_q1:
+    type: tweet
+    from: radu
+    text: >
+      sora mea A DISPĂRUT și poliția îmi zice că poate a plecat la
+      rude??? EA NU PLEACĂ FĂRĂ SĂ ZICĂ. vin de la sighet. cineva
+      o să-mi explice ce dracu s-a întâmplat.
+    effects: { trust_radu: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Radu -> radu_q1_talk
+
+  radu_q1_talk:
+    type: message
+    text: >
+      RADU: Cine ești tu? Încă unul din sat care-mi zice să mă
+      calmez? Sora mea m-a sunat în seara dinainte să dispară. A zis
+      că are ceva mare. A zis "dacă se întâmplă ceva, uită-te la
+      AuroCarp." Apoi a închis.
+
+      Ăla e ultimul lucru pe care l-am auzit de la ea.
+    effects: { trust_radu: "+10" }
+    choices:
+      - What do you think happened? -> radu_theory
+      - Move on -> quest1_hub
+
+  radu_theory:
+    type: message
+    text: >
+      RADU: Eu cred că a găsit dovezi că AuroCarp otrăvește apa și
+      ăia au făcut-o să tacă. Da' mai cred și altceva — ghidul ăla,
+      Petru Varga, știe mai mult decât zice. Cum vorbește el despre
+      ea... nu-i doar grijă de coleg. E altceva.
+
+      Ioana mi-a zis acum câteva luni că cineva îi urmărește traseele.
+      Găsea urme pe potecile ei, urme de bocanci care nu erau ale
+      ciobănilor. Ea a crezut că-i nimic. Eu nu mai cred că-i nimic.
+    effects: { trust_radu: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Ioana went silent. Multiple people
+      saw or heard things in the mountains. Piece together the timeline
+      from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Sergiu (was biking on the forest road) -> sergiu_interview
+      - Find Mihai (forester, night patrol) -> mihai_interview
+      - Find Cosmin (baker, starts at 4am) -> cosmin_interview
+      - Find Florin (vet, called out that night) -> florin_interview
+
+  # --- Sergiu (saw someone at Ioana's truck) ---
+
+  sergiu_interview:
+    type: tweet
+    from: sergiu
+    text: >
+      am fost pe trail ieri da' vibe-ul pe munte e altfel acum.
+      gen e un feeling nasol. la naiba nu știu cum să explic
+    effects: { trust_sergiu: "+5" }
+    choices:
+      - Ask Sergiu about that evening -> sergiu_talk
+
+  sergiu_talk:
+    type: message
+    text: >
+      SERGIU: frr ok da' nu zici la nimeni. eram pe drumul forestier
+      pe la 7 seara, trail session. și l-am văzut pe petru varga —
+      ghidul — lângă Dacia Ioanei de la stână. părea că scotea ceva
+      de sub mașină. sau punea ceva. nu știu.
+
+      când m-a văzut, a plecat repede de acolo. futu-i ce ciudat
+      era. gen tipul ăla e mereu pe munte da' nu la stâna ei la
+      ora aia.
+
+      eu n-am zis nimic pcq cine mă crede pe mine? un puști cu
+      bicicletă. ce pula mea.
+    effects:
+      trust_sergiu: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Mihai (forester, saw late-night meeting at sheepfold) ---
+
+  mihai_interview:
+    type: tweet
+    from: mihai
+    text: >
+      Reamintesc: accesul pe drumurile forestiere este interzis între
+      orele 22 și 6. Am constatat treceri neautorizate în ultimele
+      nopți.
+    effects: { trust_mihai: "+5" }
+    choices:
+      - Ask Mihai what he saw -> mihai_talk_q2
+
+  mihai_talk_q2:
+    type: message
+    text: >
+      MIHAI: Închideam cabana forestieră pe la 10:30 seara. Am văzut
+      lumini la stâna Ioanei. Două mașini — Dacia ei și un SUV negru
+      cu logo AuroCarp. Doi bărbați la intrarea în stână. Pe unul
+      l-am recunoscut: Bogdan Ionescu, directorul de proiect.
+
+      La 10:30 noaptea. La stâna din munte. Asta nu-i treabă de
+      firmă.
+
+      Am notat totul în jurnalul de pădure. N-a cerut nimeni să-l
+      vadă.
+    effects:
+      trust_mihai: "+10"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Cosmin (baker, saw someone running) ---
+
+  cosmin_interview:
+    type: tweet
+    from: cosmin
+    text: >
+      treaz de la 4 ca-n fiecare zi. da' în dimineața aia, cineva
+      alerga pe drumul spre pădure. în bezna. nu era un alergător.
+    effects: { trust_cosmin: "+5" }
+    choices:
+      - Ask Cosmin what he saw -> cosmin_talk
+
+  cosmin_talk:
+    type: message
+    text: >
+      COSMIN: Mă trezesc la 4 în fiecare dimineață pentru pâine. În
+      dimineața aia — dimineața de după ultimul post al Ioanei — am
+      văzut pe cineva pe drumul forestier. Alerga. O femeie, cu un
+      rucsac, se ducea spre Vârful Roșu. Era încă întuneric. Se
+      mișca repede, ca și cum se temea de ceva.
+
+      Am strigat dar nu s-a oprit. Am crezut că-i o drumeață
+      nebună dar... cine aleargă la 4 dimineața cu rucsac pe munte?
+
+      Când am auzit de Ioana, am pus cap la cap. Cred că era ea.
+      Fugea de ceva.
+    effects:
+      trust_cosmin: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Florin (vet, saw car chase on mountain road) ---
+
+  florin_interview:
+    type: tweet
+    from: florin
+    text: >
+      Chemat la urgență la 5 dimineața. Pe drumul spre fermă, o
+      mașină mergea mult prea repede pe drumul forestier.
+    effects: { trust_florin: "+5" }
+    choices:
+      - Ask Florin what he saw -> florin_talk
+
+  florin_talk:
+    type: message
+    text: >
+      FLORIN: M-a sunat un fermier la 5 dimineața pentru o vacă
+      bolnavă. Mergeam pe drumul forestier și m-a depășit o mașină
+      ca nebunul — SUV negru. Apoi la vreo două minute, altă mașină.
+      Dacia veche, mai mică. Ca și cum o urmărea.
+
+      SUV-ul a luat-o spre drumul național. Dacia a cotit pe drumul
+      de pământ spre colibele vechi de la Vâlcea.
+
+      Am zis la poliție. Au scris. Atât.
+    effects:
+      trust_florin: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Elena (best
+      friend) and Dorina (saw Petru watching the village).
+    choices:
+      - Talk to Elena about that night -> elena_interview
+      - Talk to Dorina -> dorina_interview
+      - Find Sergiu -> sergiu_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Mihai -> mihai_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Cosmin -> cosmin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Florin -> florin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Elena (last to see Ioana) ---
+
+  elena_interview:
+    type: tweet
+    from: elena
+    text: >
+      poza aia de pe contul Ioanei. nu e ea. Ioana nu postează
+      niciodată fără text. Ioana nu postează la 2 noaptea. altcineva
+      a făcut asta.
+    effects: { trust_elena: "+5" }
+    choices:
+      - DM Elena -> elena_talk_low
+        when:
+          state: trust_elena
+          lt: 50
+      - DM Elena -> elena_talk_high
+        when:
+          state: trust_elena
+          gte: 50
+
+  elena_talk_low:
+    type: message
+    text: >
+      ELENA: Apreciez grija dar chiar nu vreau să vorbesc cu
+      străini despre asta acum.
+
+      [Elena needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_elena: "+5" }
+    choices:
+      - Share what you've learned about the night -> elena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  elena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the sheepfold,
+      the company men, the running figure. Elena is silent for a
+      long time.
+
+      ELENA: Tu chiar încerci s-o găsești. Bine. Vorbesc.
+    effects: { trust_elena: "+25" }
+    choices:
+      - What happened that night? -> elena_talk_high
+
+  elena_talk_high:
+    type: message
+    text: >
+      ELENA: A venit la mine pe la 11 noaptea. Eram la școală, mai
+      corectam lucrări. Era palidă, tremura. A zis "știu ce au ei."
+      A luat laptopul și hard disk-urile cu poze.
+
+      Am întrebat-o cine. A zis "firma. Au trimis oameni la stână."
+      Apoi a zis altceva — "și el era acolo. E mereu acolo."
+
+      N-a vrut să zică cine e "el." M-a îmbrățișat, a zis "nu-ți
+      face griji," și a plecat cu rucsacul. Dimineața, Dacia ei nu
+      mai era, și pe contul ei era poza aia ciudată.
+    effects:
+      trust_elena: "+15"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Dorina (saw Petru watching the village) ---
+
+  dorina_interview:
+    type: message
+    text: >
+      DORINA: ok gen e ciudat ce zic da' ghidul ăla — petru — l-am
+      văzut de vreo 3 ori seara în sat, pe dealul de deasupra casei
+      Ioanei. stătea acolo și se uita la ferestre. super creepy frr.
+
+      ultima dată a fost gen cu 2 zile înainte să dispară. era în
+      mașina lui parcată pe drum. stătea acolo. cu farurile stinse.
+      bags pula ce nasol era.
+    effects:
+      trust_dorina: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Petru seen at Ioana's truck near the sheepfold (Sergiu)
+      22:30 — AuroCarp SUV at the sheepfold, Bogdan Ionescu present (Mihai)
+      23:00 — Ioana arrives at Elena's, shaken, grabs laptop and drives (Elena)
+      04:00 — Woman running on forest road toward Vârful Roșu (Cosmin)
+      05:00 — Two vehicles speeding on forest road, one toward Vâlcea (Florin)
+
+      AuroCarp confronted Ioana at her sheepfold. She fled to Elena,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AuroCarp hiding? Who ordered the
+        confrontation?
+      — The stalker: What is Petru really doing? Why does he know
+        her every route?
+    choices:
+      - Investigate the mining cover-up -> corruption_hub
+      - Investigate Petru Varga -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      MINING THREAD: Evidence collected: ${mining_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the mining thread -> corruption_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: mining_evidence, gte: 3 }
+
+  # =====================================================================
+  # MINING COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE MINING THREAD
+
+      AuroCarp is hiding something. Ioana had proof. Now she's gone
+      and her evidence is missing from the sheepfold.
+
+      Mining evidence: ${mining_evidence}
+    choices:
+      - Search the water sample records -> water_records
+      - Talk to Liviu the journalist -> liviu_interview
+      - Talk to Andrei (vice-mayor, environment) -> andrei_interview
+      - Check the Munții Noștri association -> asso_investigation
+      - Talk to Mihai about the drilling sites -> mihai_drilling
+      - Talk to Gheorghe (Ioana's father) -> gheorghe_interview
+      - Back to hub -> investigation_hub
+
+  # --- Water Records ---
+
+  water_records:
+    type: message
+    text: >
+      Ioana posted her water sample results on a public Google Drive
+      before she disappeared. Six sampling points along the stream
+      below AuroCarp's drilling sites. The data for the site closest
+      to the rigs is marked "RESULTS PENDING" — the only one.
+
+      Her field notebook, photographed and uploaded, shows she took
+      23 samples in the past month. The last entry: "Probe lângă
+      platforma 3. Apă portocalie. Miros de chimicale. Conductă
+      nedeclarată de scurgere directă în pârâu."
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Liviu ---
+
+  liviu_interview:
+    type: message
+    text: >
+      LIVIU: Nu vorbesc despre surse. Punct.
+    effects: { trust_liviu: "+5" }
+    choices:
+      - Show Liviu the evidence you have -> liviu_with_evidence
+        when:
+          state: mining_evidence
+          gte: 3
+      - Back to mining thread -> corruption_hub
+
+  liviu_with_evidence:
+    type: message
+    text: >
+      LIVIU: ...ai mai mult decât credeam.
+
+      Bine. Ioana și cu mine lucram împreună. Avea poze cu o conductă
+      de scurgere nedeclarată — AuroCarp descarcă direct apă cu cianuri
+      în pârâu, fără nicio autorizație. Avea probe care arătau metale
+      grele de zece ori peste limită.
+
+      Urma să publicăm împreună. Apoi ea a tăcut. Și la două zile
+      după, cineva mi-a spart mașina și mi-a furat stick-ul cu backup.
+
+      Ioana e în viață. M-a contactat o dată, de pe un telefon
+      prepaid. A zis că se ascunde. A zis "m-au amenințat la stână
+      și altcineva nu mă lasă în pace."
+
+      Nu-ți pot spune unde e. Dar cu suficiente dovezi, pot publica
+      și o să fie safe să se întoarcă.
+    effects:
+      trust_liviu: "+25"
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> liviu_hint
+      - Back to investigation hub -> investigation_hub
+
+  liviu_hint:
+    type: message
+    text: >
+      LIVIU: Firma a trimis pe directorul lor — Ionescu — și un
+      avocat la stână în noaptea aia. I-au zis să predea totul sau
+      o să aibă probleme legale. Intimidare mascată în procedură
+      juridică.
+
+      Dar a zis și altceva — despre cineva de pe munte. Cineva care
+      îi știa mereu locația. Cineva care părea să fie acolo oriunde
+      se ducea. Asta e altă problemă.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Andrei (vice-mayor) ---
+
+  andrei_interview:
+    type: message
+    text: >
+      ANDREI: Ca viceprimar pentru mediu, iau aceste acuzații în
+      serios. Dar AuroCarp a adus 50 de locuri de muncă în comună.
+      Primarul insistă să "menținem dialogul."
+
+      Neoficial? Am văzut rapoartele de inspecție. AuroCarp trece
+      mereu. Dar inspecțiile sunt anunțate cu două săptămâni înainte.
+      Curăță totul înainte să vină inspectorii.
+
+      Ioana avea date neanunțate. Aia le face periculoase.
+    effects:
+      trust_andrei: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Munții Noștri ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_munte
+    text: >
+      ALERTĂ: Apă portocalie semnalată în pârâul de sub Vârful Roșu.
+      Probe și fotografii în curs. Cerem inspecție neanunțată la
+      sondajele AuroCarp Mining.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Asociația Munții Noștri monitorizează calitatea apei de doi ani.
+      Datele lor arată un tipar clar: vârfuri de metale grele care
+      corespund programului de forare al AuroCarp. Mai mari în zilele
+      de lucru, mai mici în weekend. Mai mari noaptea, mai mici ziua.
+
+      Tiparul e inconfundabil. Descărcare ilegală continuă,
+      programată pentru a evita detectarea.
+
+      Ioana era membră. Ea a contribuit cele mai multe fotografii
+      de teren.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Mihai drilling ---
+
+  mihai_drilling:
+    type: message
+    text: >
+      MIHAI: Să-ți arăt ceva. Luna trecută am găsit pe vale, sub
+      platforma de sondaj 3, un butoi metalic corodat, care curgea.
+      Eticheta era pe jumătate ștearsă dar am putut citi "cianură"
+      și un număr de lot AuroCarp.
+
+      Am fotografiat totul și am trimis Ioanei. Ea a zis că-i piesa
+      care lipsea — dovada că descarcă deșeuri solide, nu doar ape
+      uzate. Butoaie în pârâu.
+
+      Am încă pozele. Și numărul de lot.
+    effects:
+      trust_mihai: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Gheorghe ---
+
+  gheorghe_interview:
+    type: message
+    text: >
+      GHEORGHE: Fetița mea e ciobăniță de când avea 14 ani. I-am dat
+      turma. I-am învățat-o pe munte. Ea nu pleacă fără oi.
+
+      Am urcat la stână. Am găsit scrum de foc vechi de zile, sacul
+      ei de dormit, lanterna. Câinele Rex era legat. Ea nu leagă
+      câinele niciodată — doar dacă vrea să plece și să nu o urmeze.
+
+      A legat câinele ca să fugă. Cineva a speriat-o de moarte ca
+      să fugă noaptea din stâna ei.
+
+      Am mai găsit ceva — urme de cauciuc în noroi. Două mașini
+      diferite. Una mare — SUV. Una mică — Dacia ei.
+    effects:
+      trust_gheorghe: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Petru Varga. Mountain guide. Something more? Someone was
+      tracking Ioana's routes. Someone was watching her house from
+      the hill. Someone was at her truck.
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate Petru's trail records -> trail_records
+      - Talk to Elena about Petru -> elena_petru
+        when:
+          state: trust_elena
+          gte: 20
+      - Talk to Sergiu (more detail on the truck incident) -> sergiu_detail
+      - Talk to Violeta the pharmacist -> violeta_interview
+      - Check the anonymous account @marius_neagu -> marius_investigation
+      - Talk to Anca the librarian -> anca_interview
+        when:
+          state: trust_anca
+          gte: 40
+      - Talk to Sergent Stanciu -> sergent_interview
+        when:
+          state: trust_sergent
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Trail Records ---
+
+  trail_records:
+    type: message
+    text: >
+      Petru's public trail logs, posted on his guide website, list
+      every route he's walked this year. Cross-referencing with
+      Ioana's posts about her grazing routes:
+
+      On 28 of 35 days logged, Petru walked a trail that intersected
+      with Ioana's route. He posted GPS tracks. His paths consistently
+      pass within 200 meters of her sheepfold.
+
+      His official guiding clients confirmed only 12 of those 35
+      days were paid work. The other 23 days, he was walking alone.
+      Following her routes.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Elena on Petru ---
+
+  elena_petru:
+    type: message
+    text: >
+      ELENA: Petru? O făcea pe Ioana să se simtă prost. Se apărea
+      pe munte când era ea acolo. Se oferea să o însoțească. Comenta
+      la fiecare poză a ei.
+
+      Ea i-a zis clar, frumos, că nu-i interesată. El a zis că
+      înțelege. Apoi nimic nu s-a schimbat. Era mereu acolo. Mereu.
+
+      Acum o lună, a găsit urme de bocanci pe poteca secretă spre
+      stâna ei. O potecă pe care n-o știa nimeni. Doar ea și tatăl
+      ei. Și cineva care o urmărea.
+    effects:
+      trust_elena: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Sergiu detail ---
+
+  sergiu_detail:
+    type: message
+    text: >
+      SERGIU: ok frr de fapt n-am zis tot. când l-am văzut pe petru
+      la mașina Ioanei, avea ceva în mână. un dispozitiv mic, negru.
+      l-a lipit sub mașină, pe partea șoferului. gen l-a fixat
+      dedesubt.
+
+      nu sunt expert da' părea un tracker GPS. gen din alea din
+      filme frr.
+
+      futu-i trebuia să zic ceva da' gen cine m-ar fi crezut. un
+      puști pe bicicletă acuză un ghid montan. ce pula mea.
+    effects:
+      trust_sergiu: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Violeta ---
+
+  violeta_interview:
+    type: message
+    text: >
+      VIOLETA: E confidențial dar sunt farmacistă, nu preot. Petru
+      Varga vine regulat. Cumpără lucruri care... sugerează că nu
+      doarme. Anxiolitice, somnifere, suplimente energizante. Tiparul
+      e al cuiva sub stres extrem.
+
+      M-a întrebat odată, foarte lejer, dacă vindem trackere GPS.
+      I-am zis "asta-i farmacie, nu Altex." A râs. Nu m-am mai
+      gândit la asta până a dispărut Ioana.
+    effects:
+      trust_violeta: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Marius (anonymous account) ---
+
+  marius_investigation:
+    type: tweet
+    from: marius
+    text: >
+      Trebuia să asculte. Încercam s-o protejez. Nimeni altcineva
+      nu-i înțelegea munca ca mine.
+    choices:
+      - Look at this account's history -> marius_posts
+
+  marius_posts:
+    type: message
+    text: >
+      @marius_neagu: cont creat acum 7 luni. Postările sunt toate
+      despre munca Ioanei. Comentarii la fiecare poză de pe munte,
+      la fiecare rută de pășunat. Tonul se schimbă în timp:
+
+      Luna 1: "Muncă incredibilă. Faci ce nimeni altcineva nu
+      îndrăznește."
+      Luna 3: "De ce nu-mi răspunzi la mesaje? Vreau doar să
+      colaborăm."
+      Luna 5: "Te văd la bodegă cu alți oameni. Ai timp pentru ei
+      dar nu și pentru mine?"
+      Luna 6: "Știu pe unde mergi. Îți cunosc programul. Sunt mereu
+      aproape."
+
+      Contul nu are poze, niciun detaliu personal. Doar Ioana.
+      Numai Ioana.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> marius_style
+
+  marius_style:
+    type: message
+    text: >
+      Comparing @marius_neagu with @petru_varga:
+
+      Aceeași terminologie de montaniardism. Aceleași convenții
+      ortografice — modul specific în care folosește cratima. Aceeași
+      cunoaștere a traseelor Ioanei pe care doar un ghid local le-ar
+      ști.
+
+      Și o postare de la @marius_neagu: "Traseul tău pe Poteca 7 a
+      fost superb." Poteca 7 e o denumire internă din hărțile ghizilor
+      montani. Nu e publică.
+
+      E Petru. Contul anonim e al lui Petru.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Anca ---
+
+  anca_interview:
+    type: message
+    text: >
+      ANCA: Ioana a lăsat ceva la mine. O cutie etanșă. A zis "dacă
+      cineva te întreabă despre apa de la Vârful Roșu, dă-i asta."
+
+      Părea speriată. A zis că a făcut copii la tot dar avea nevoie
+      de un set în afara muntelui, undeva unde nimeni nu s-ar gândi.
+      O bibliotecă părea perfectă.
+    effects: { trust_anca: "+10" }
+    choices:
+      - What's at Vârful Roșu? -> anca_box
+
+  anca_box:
+    type: message
+    text: >
+      Anca scoate de sub tejghea o cutie Pelican etanșă.
+
+      ANCA: A zis că o să vii. Ia-o.
+
+      Înăuntru: un stick USB și un set de fotografii printate.
+      Pozele arată o conductă de scurgere — nu punctul oficial de
+      descărcare, ci o a doua conductă, ascunsă — și butoaie pe
+      malul pârâului. Stick-ul conține date cu probe de apă, analize
+      chimice, și raportul detaliat al Ioanei.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sergent Stanciu ---
+
+  sergent_interview:
+    type: message
+    text: >
+      SERGENT STANCIU: Strict neoficial — și chiar neoficial — am
+      vrut să investighez AuroCarp. Superiorul meu mi-a zis să las
+      baltă. A zis că prefectura "are jurisdicție." Asta înseamnă
+      "nu te băga."
+
+      Situația cu Varga e diferită. Nici nu știam de ea până acum.
+      Dacă ai dovezi de hărțuire, pot acționa. Aia e clar
+      jurisdicția mea.
+
+      Adu-mi ceva solid și redeschid cazul.
+    effects:
+      trust_sergent: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Ioana than anyone in Valea Verde. Who is responsible?
+    choices:
+      - Confront Petru Varga (the obsessive hiker) -> confront_petru
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Bogdan Ionescu (the mining director) -> confront_bogdan
+        when:
+          state: mining_evidence
+          gte: 3
+      - Confront Mayor Moldovan (political protection) -> confront_maria
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Petru (Best Ending) ---
+
+  confront_petru:
+    type: message
+    text: >
+      You present your evidence to Petru:
+
+      "I know @marius_neagu is your account. I know you put a GPS
+      tracker on Ioana's truck. I know you followed her routes for
+      months. I know you were watching her house from the hill. I
+      have witnesses and I have the trail logs."
+    choices:
+      - Send -> petru_response
+
+  petru_response:
+    type: message
+    text: >
+      Petru doesn't reply for a long time. Then:
+
+      PETRU: Nu înțelegi. O protejam. Era în pericol din cauza
+      firmei și nu mă lăsa s-o ajut. Trebuia să știu că e în
+      siguranță. Tot ce am făcut a fost pentru că-mi pasă de ea.
+
+      Asta nu e grijă. E obsesie.
+
+      Ai trimis deja dovezile la Sergent Stanciu. Și la Liviu
+      Pintea.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sergent Stanciu redeschide cazul. Cu dovezile tale — contul
+      anonim, tracker-ul GPS, log-urile de traseu, mărturiile — Petru
+      Varga e arestat pentru urmărire și hărțuire. Un tracker GPS e
+      recuperat de sub Dacia Ioanei de la colibele vechi de la Vâlcea.
+
+      Liviu Pintea, cu dosarul complet de dovezi, publică povestea
+      AuroCarp în Libertatea. Prefectura ordonă inspecție neanunțată.
+      Sondajele sunt oprite. Bogdan Ionescu e pus sub urmărire
+      penală pentru falsificarea rapoartelor de mediu.
+
+      Și Ioana Popescu, citind articolul dintr-o casă la Baia Mare,
+      își sună fratele pentru prima dată în nouă zile.
+
+      "Vin acasă."
+
+      If you or someone you know is experiencing stalking or
+      harassment, call:
+      Telefonul Sufletului (copii și adolescenți): 116 111
+      Linia verde anti-violență: 0800 500 333
+      Urgențe mediu: 0800 888 677
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: ioana
+    text: >
+      muntele nu minte. și oamenii din valea verde nici atât.
+      mulțumesc că nu ați renunțat.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Bogdan (Partial Ending) ---
+
+  confront_bogdan:
+    type: message
+    text: >
+      You present the pollution evidence to Bogdan Ionescu:
+
+      "Am fotografii cu conducta nedeclarată de scurgere. Am probe de
+      apă cu metale grele de zece ori peste limita legală. Am
+      rapoartele originale care arată că datele au fost falsificate.
+      Am butoiul cu numărul vostru de lot."
+    choices:
+      - Send -> bogdan_response
+
+  bogdan_response:
+    type: message
+    text: >
+      BOGDAN: Această conversație va fi transmisă departamentului
+      juridic. Orice publicare de materiale defăimătoare va duce la
+      acțiuni legale imediate. AuroCarp Mining a operat întotdeauna
+      în limitele reglementărilor.
+
+      Dar e prea târziu. Ai trimis dovezile la Liviu, la Munții
+      Noștri, și la prefectură.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      Povestea poluării explodează. AuroCarp primește ordin de oprire
+      a sondajelor. Firma s-ar putea închide. 50 de locuri de muncă
+      atârnă în balanță. Satul e împărțit.
+
+      Dar Ioana?
+
+      Fără dovezile de urmărire, Petru nu e niciodată investigat.
+      Continuă să ghideze pe munte. Continuă să-i monitorizeze
+      conturile. Creează un nou profil anonim.
+
+      Trei luni mai târziu, Ioana citește despre AuroCarp online.
+      Se întoarce în liniște. Își schimbă traseele. Nu mai urcă pe
+      munte singură. Verifică mașina în fiecare dimineață.
+
+      Firma e expusă. Dar persoana care a terorizat-o pe Ioana umblă
+      liberă.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: ioana
+    text: "m-am întors. apa e mai curată. restul... vom vedea."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_maria:
+    type: message
+    text: >
+      You confront Mayor Moldovan with your evidence.
+
+      Within the hour, you receive a message from her office:
+    choices:
+      - Read the response -> maria_response
+
+  maria_response:
+    type: tweet
+    from: nicoleta
+    text: >
+      Clienta mea ia act de acuzațiile dumneavoastră. Orice
+      publicare de afirmații defăimătoare va face obiectul unor
+      proceduri legale imediate. — Cabinet Dragomir & Asociații,
+      Cluj-Napoca
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      Avocatul primarului îți îneacă acuzația. Fără o legătură
+      directă între Moldovan și poluarea AuroCarp — și nu există
+      una dincolo de protecție politică — dovezile tale sunt
+      insuficiente.
+
+      AuroCarp continuă să foreze. Petru continuă să urmărească.
+      Ioana rămâne ascunsă.
+
+      Șase luni mai târziu, @marius_neagu creează un cont nou. Îl
+      urmărește pe fratele Ioanei.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VALEA VERDE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Mining evidence: ${mining_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Ioana's story explores themes of
+      corporate environmental crime, obsessive stalking, rural
+      community solidarity, and the courage to protect the land.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Telefonul Sufletului (copii și adolescenți): 116 111
+      Linia verde anti-violență: 0800 500 333
+      Urgențe mediu: 0800 888 677

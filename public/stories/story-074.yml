@@ -1,0 +1,1528 @@
+# DEAD ACCOUNT — Story 074: Gintarupė (Lithuania, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-074.yml
+#
+# Player investigates the death of amber jeweler Rūta Kazlauskienė
+# in the fictional Samogitia village of Gintarupė.
+
+meta:
+  title: "Dead Account — Gintarupė"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_inga: 0
+    trust_dovydas: 0
+    trust_aldona: 0
+    trust_vytautas: 0
+    trust_gabija: 0
+    trust_lukas: 0
+    trust_birute: 0
+    trust_antanas: 0
+    trust_danute: 0
+    trust_marius: 0
+    trust_egle: 0
+    trust_petras: 0
+    trust_ugne: 0
+    trust_jonas: 0
+    trust_ausra: 0
+    trust_valdas: 0
+    trust_simona: 0
+    trust_rokas: 0
+    trust_neringa: 0
+    trust_virsila: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    mining_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Naujas Gyventojas
+    bio: "ką tik persikėliau į gintarupę. atrandu žemaitiją žingsnis po žingsnio"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Gintarupe.social"
+    description: "Sveiki atvykę į Gintarupės bendruomeninę Mastodon instanciją"
+    avatar_url: /gamepatch/assets/dead-account/gintarupe_bot.png
+
+  npcs:
+    # === Rūta's Inner Circle ===
+    ruta:
+      name: "Rūta Kazlauskienė"
+      bio: "gintaro juvelyrė | žemaitiški raštai | gintaras nemeluoja"
+      avatar: avatars/ruta.jpg
+    inga:
+      name: "Inga Rimkutė"
+      bio: "rūtos geriausia draugė | slaugytoja ambulatorijoj | be kavos negyva | gintarupė"
+      avatar: avatars/inga.jpg
+    dovydas:
+      name: "Dovydas Kazlauskas"
+      bio: "rūtos brolis | elektrikas | klaipėda | sesuo taip šiaip nedingsta"
+      avatar: avatars/dovydas.jpg
+    danute:
+      name: "Danutė Vaičiulienė"
+      bio: "gintaro meistrė | rūtos mokytoja | gintarupė | tradicija įpareigoja"
+      avatar: avatars/danute.jpg
+
+    # === Local Government ===
+    vytautas:
+      name: "Vytautas Paulauskas"
+      bio: "Gintarupės seniūnas | bendruomenei nuo 2016 | #GintarupėAuga"
+      avatar: avatars/vytautas.jpg
+    antanas:
+      name: "Antanas Žukauskas"
+      bio: "seniūno pavaduotojas | aplinkosauga | Gintarupė | pajūris yra mūsų"
+      avatar: avatars/antanas.jpg
+    seniunija:
+      name: "Gintarupės seniūnija"
+      bio: "Oficiali paskyra | Seniūnijos naujienos | Priėmimas: I-V 8-16"
+      avatar: avatars/seniunija.jpg
+
+    # === Local Business & Community ===
+    aldona:
+      name: "Aldona Mockienė"
+      bio: "Žvejų Užeiga prie jūros | cepelinai | alus | atidaryta nuo 1993"
+      avatar: avatars/aldona.jpg
+    uzeiga:
+      name: "Žvejų Užeiga"
+      bio: "Naminiai cepelinai | Žemaitiškas alus | Muzika penktadieniais | Gintarupės širdis"
+      avatar: avatars/uzeiga.jpg
+    marius:
+      name: "Marius Stankus"
+      bio: "žvejys | 30 metų prie jūros | šitas krantas yra mano gyvenimas"
+      avatar: avatars/marius.jpg
+    petras:
+      name: "Petras Butkus"
+      bio: "uosto prižiūrėtojas | gintarupė | budėjimas A-Š"
+      avatar: avatars/petras.jpg
+    birute:
+      name: "Birutė Navickienė"
+      bio: "vaistinė | gintarupė | sveikata & patarimai | sekmadieniais irgi dirbu"
+      avatar: avatars/birute.jpg
+    egle:
+      name: "Eglė Kazlauskaitė"
+      bio: "kepykla kazlauskaitė | duona | šakotis | kibinai | nuo 4 ryto keliamės"
+      avatar: avatars/egle.jpg
+    jonas:
+      name: "Jonas Grigas"
+      bio: "knygininkas | Gintarupės knygynas | skaitymo ratelis trečiadieniais"
+      avatar: avatars/jonas.jpg
+
+    # === Journalist ===
+    ausra:
+      name: "Aušra Mikalauskienė"
+      bio: "nepriklausoma žurnalistė | aplinka & pajūris | patarimai: ausra@mikalauskas-media.lt"
+      avatar: avatars/ausra.jpg
+
+    # === BalticMineral (corporate) ===
+    balticmineral:
+      name: "BalticMineral UAB"
+      bio: "Mineraliniai ištekliai | Gintarupės padalinys | ISO 14001 sertifikuotas"
+      avatar: avatars/balticmineral.jpg
+    valdas:
+      name: "Valdas Norvilas"
+      bio: "BalticMineral padalinio vadovas | Gintarupė | verslas & teritorija"
+      avatar: avatars/valdas.jpg
+    rokas:
+      name: "Rokas Janulis"
+      bio: "Advokatas | Janulio ir partnerių kontora | Verslo teisė | Vilnius"
+      avatar: avatars/rokas.jpg
+
+    # === Teens ===
+    gabija:
+      name: "Gabija"
+      bio: "16 | fotografija | gintarupė | jūra yra gyvenimas rimtai"
+      avatar: avatars/gabija.jpg
+    lukas:
+      name: "Lukas"
+      bio: "17 | banglentė & žvejyba | saulėtekio sesija | vanduo gydo"
+      avatar: avatars/lukas.jpg
+    ugne:
+      name: "Ugnė"
+      bio: "15 | piešimas & tapyba | pajūris juodai baltai | rūta yra mano įkvėpimas"
+      avatar: avatars/ugne.jpg
+
+    # === Media & Community ===
+    pajurio_zinios:
+      name: "Pajūrio Žinios"
+      bio: "Gintarupės ir pajūrio naujienos | Patarimai: red@pajurio-zinios.lt"
+      avatar: avatars/pajurio_zinios.jpg
+    orai:
+      name: "Orai Gintarupė"
+      bio: "Prognozės ir perspėjimai | Automatinė stotis | Atnaujinimas kas valandą"
+      avatar: avatars/orai.jpg
+    pajurio_sargyba:
+      name: "Pajūrio Sargyba"
+      bio: "Pajūrio apsaugai | Savanoriai | Taršos pranešimai"
+      avatar: avatars/pajurio_sargyba.jpg
+
+    # === Suspicious / Other ===
+    simona:
+      name: "Simona Grigaitė"
+      bio: "laborantė | BalticMineral | dirbu savo darbą, tiek"
+      avatar: avatars/simona.jpg
+    neringa:
+      name: "Neringa Juodkaitė"
+      bio: "."
+      avatar: avatars/anon.jpg
+    virsila:
+      name: "Viršila Kairys"
+      bio: "Gintarupės policijos nuovada | Apylinkės pareigūnas | pagalba: 112"
+      avatar: avatars/virsila.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN GINTARUPĖ
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Gintarupe.social — the community Mastodon instance for
+      the Samogitian coastal village of Gintarupė.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @ruta_kazlauskiene.
+
+      An amber jeweler. Traditional Samogitian patterns. She documented
+      the old craft and the coastal ecology. People are worried. She
+      hasn't posted in six days.
+    choices:
+      - Look at her profile -> ruta_profile
+
+  ruta_profile:
+    type: tweet
+    from: ruta
+    text: "Paplūdimys prie Gintarupės upelio naikinamas. Kažkas nelegaliai kasa gintarą naktimis. Turiu įrodymų. Tai ne verslas — tai nusikaltimas."
+    choices:
+      - That's her last real post... -> grey_amber
+
+  grey_amber:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a blurred photo of beach sand, overexposed, shot at a strange
+      angle. Posted at 3am. No caption.
+
+      Her friends say that's not her style. Rūta always wrote long
+      poetic captions about amber and the sea. The police say she
+      probably went to visit relatives in Klaipėda. Something doesn't
+      add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: virsila
+    text: >
+      Gautas pranešimas dėl Gintarupės gyventojos dingimo. Šiuo metu
+      nėra duomenų, leidžiančių įtarti nusikalstamą veiką. Visa
+      naudinga informacija priimama telefonu 112 arba nuovadoje.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @inga_rimkute is
+      desperate. Her brother @dovydas_kazlauskas is driving down from
+      Klaipėda. Her amber master @danute_vaiciuliene is posting worried
+      messages. The fisherman @marius_stankus says she was right about
+      the beach destruction.
+
+      And the journalist @ausra_mikalauskiene is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Rūta just "went to
+      visit relatives."
+    effects: { trust_inga: "+5", trust_dovydas: "+5" }
+    choices:
+      - Start following Rūta's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Gintarupė. Follow Rūta's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Aldona (tavern owner, knows everyone) -> aldona_intro
+      - Talk to Marius (fisherman, saw the beach damage) -> marius_intro
+      - Talk to Gabija (teen photographer, seems shaken) -> gabija_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Rūta with the rhythms of a small
+      coastal village: weather warnings, the bakery's šakotis specials,
+      fishing conditions, harbour schedules.
+
+      Key names surface: Inga (best friend, nurse), Danutė (amber
+      master, rattled), Aušra (journalist, oddly quiet), and the
+      teens — Gabija, Lukas, Ugnė — who adored Rūta's amber craft
+      and coastal photography.
+
+      Also prominent: BalticMineral UAB, the mining company with a
+      facility at the edge of the village. Their posts are corporate
+      PR. Rūta's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Aldona -> aldona_intro
+      - Talk to Marius -> marius_intro
+      - Talk to Gabija -> gabija_intro
+
+  # --- Aldona (social map) ---
+
+  aldona_intro:
+    type: tweet
+    from: aldona
+    text: >
+      Užeiga atidaryta, bet širdis sunku. @ruta_kazlauskiene, tavo
+      staliukas laukia. Grįžk, mergaite.
+    effects: { trust_aldona: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Aldona -> aldona_talk
+
+  aldona_talk:
+    type: message
+    text: >
+      ALDONA: Naujas čia? Sveiki atvykę. Blogu metu atvažiavot.
+      Visi nervuojasi dėl Rūtos.
+
+      Papasakosiu, kas yra kas. Inga — geriausia draugė, kartu užaugo
+      kaip dvi seserys. Danutė — meistrė, mokė Rūtą gintaro amatui,
+      jos dirbtuvėse dirbo. Dovydas — brolis, iš Klaipėdos atvažiuoja.
+
+      Ir Aušra Mikalauskienė — žurnalistė — ji ir Rūta kažką kartu
+      tyrė. Apie paplūdimį, apie kasybą. Aušra nė žodžio nepratarė,
+      kai Rūta dingo. Tai ne į ją panašu.
+
+      O, ir BalticMineral PR postus pamirškit. Melas, suvyniotas į
+      ISO sertifikatus.
+    effects: { trust_aldona: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Danutė -> aldona_danute
+      - Ask about BalticMineral -> aldona_balticmineral
+      - Thank her and move on -> quest1_hub
+
+  aldona_danute:
+    type: message
+    text: >
+      ALDONA: Danutė? Rūtos mokytoja. Trisdešimt metų dirba su gintaru.
+      Rūta buvo vienintelė jaunuolė, kuri išmoko. Bet pastaruosius
+      mėnesius Danutė keistai elgėsi. Visur kur Rūta — ir ji ten.
+      Užeigoje, turguje, paplūdimyje. Nuolat fotografavo Rūtą dirbančią.
+      Rūta buvo mandagi, bet mačiau, kad ją nervuoja.
+
+      Rūta man kartą sakė: "Danutė stebi mano darbą, ne mane." Bet
+      neskambėjo taip, lyg pati tuo tikėtų.
+    effects: { trust_aldona: "+5" }
+    choices:
+      - Ask about BalticMineral -> aldona_balticmineral
+      - Move on -> quest1_hub
+
+  aldona_balticmineral:
+    type: message
+    text: >
+      ALDONA: Ta firma čia trejus metus. Kasybos darbai — gintarą,
+      mineralus, nežinau tiksliai. Kaimas pakentė, nes davė darbo.
+      Bet žvejai jau seniai skundžiasi — paplūdimys griūva, kopos
+      nyksta, gintaro nebėra ten, kur buvo.
+
+      Rūta pirma nuėjo su fotoaparatu ir mėginiais. Sakė, turi
+      įrodymų, kad BalticMineral nelegaliai kasa gintarą naktimis,
+      naudodami vandens siurblius, naikindami paplūdimį. Po dviejų
+      savaičių dingo.
+    effects: { trust_aldona: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marius (the beach, witness tease) ---
+
+  marius_intro:
+    type: tweet
+    from: marius
+    text: >
+      trisdešimt metų žveju prie šito kranto. paplūdimys nebe toks.
+      @ruta_kazlauskiene sakė tiesą. ir dabar ji dingo. pagalvokit.
+    effects: { trust_marius: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Marius -> marius_talk
+
+  marius_talk:
+    type: message
+    text: >
+      MARIUS: Nuo penkiolikos žveju prie šito kranto. Pažįstu kiekvieną
+      bangą, kiekvieną spalvą. Ir sakau tau — paplūdimys prie Gintarupės
+      upelio nebe toks. Jau mėnesiais. Kopos griūva, smėlis dingsta.
+      Naktimis girdžiu siurblių garsą.
+
+      Rūta ėmė mėginius. Fotografavo viską. Rinko bylą. Ir tada —
+      puf — nebėra.
+
+      Manai, kad atsitiktinumas? Aš netikiu atsitiktinumais prie
+      jūros.
+    effects: { trust_marius: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> marius_night
+      - Move on -> quest1_hub
+
+  marius_night:
+    type: message
+    text: >
+      MARIUS: Tą naktį, prieš jai dingstant — grįžau iš naktinės
+      žvejybos, apie pirmą valandą. Mačiau šviesas prie dirbtuvių.
+      Nieko neįprasto, meistrai kartais dirba vėlai. Bet stovėjo du
+      automobiliai. Vienas Rūtos mažas Opel. Kitas — juodas
+      mikroautobusas su BalticMineral lipdukas.
+
+      Pirmą valandą nakties. Prie gintaro dirbtuvių.
+
+      Tada nesusimąsčiau. Dabar galvoju apie tai nuolat.
+    effects: { trust_marius: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Gabija (teen photographer, witness tease) ---
+
+  gabija_intro:
+    type: tweet
+    from: gabija
+    text: >
+      blet @ruta_kazlauskiene ji mane išmokė fotografuot paplūdimį
+      rimtai negali būt kad ji šiaip dingo. jei kas žinot ką nors
+      pls rašykit
+    effects: { trust_gabija: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Gabija -> gabija_talk_early
+
+  gabija_talk_early:
+    type: message
+    text: >
+      GABIJA: naujas? po velnių blogu laiku atvažiavai. šiaip rūta
+      geriausia žmogus šitam kaime. ji mokė paauglius fotografuot,
+      dirbti su gintaru, gerbti jūrą. nx cool buvo.
+
+      ir dabar aš flipinu nes lukas matė kažką keisto prie uosto bet
+      nesinori kalbėt. sako kad nieko bet tai ne nieko blet
+    effects: { trust_gabija: "+10" }
+    choices:
+      - What did Lukas see? -> gabija_lukas_hint
+      - Move on -> quest1_hub
+
+  gabija_lukas_hint:
+    type: message
+    text: >
+      GABIJA: tiksliai nežinau. jis žvejojo vakare prie uosto ir matė
+      kažką kas šnekėjosi prie rūtos dirbtuvių. arba prie jos mašinos.
+      šūdas nežinau. lukas bijo, nenori kalbėt. paklausk tiesiogiai
+      bet pirma pakalbėk apie žvejybą nes jis nepasitiki nepažįstamais
+      lol
+    effects: { trust_gabija: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Gintarupė. A small Samogitian coastal
+      village built around amber and the sea. A jeweler who was exposing
+      illegal beach mining. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Inga (Rūta's best friend) -> inga_q1
+      - Talk to Danutė (Rūta's amber master) -> danute_q1
+      - Check what Dovydas (Rūta's brother) is saying -> dovydas_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Inga Q1 ---
+
+  inga_q1:
+    type: tweet
+    from: inga
+    text: >
+      jei kas nors žinot ką apie @ruta_kazlauskiene, skambikit prašau.
+      kambarys nepaliestas. jos įrankiai ant stalo. ji niekada
+      nepaliktų nebaigto darbo.
+    effects: { trust_inga: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Inga -> inga_q1_talk
+
+  inga_q1_talk:
+    type: message
+    text: >
+      INGA: Ačiū, kad rašai, bet aš tavęs nepažįstu. Rūta turi daug
+      draugų čia. Esu tikra, kad ji grįš.
+
+      ...vis tai kartoju. Pati jau nebetikiu.
+
+      [Inga is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_inga: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Danutė Q1 ---
+
+  danute_q1:
+    type: tweet
+    from: danute
+    text: >
+      Dirbtuvės tuščios be @ruta_kazlauskiene. Ant stalo nebaigtas
+      gintaro papuošalas. Jos įrankiai sudėti. Niekada nepaliktų
+      darbo pusiau. Kažkas atsitiko.
+    effects: { trust_danute: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Danutė -> danute_q1_talk
+
+  danute_q1_talk:
+    type: message
+    text: >
+      DANUTĖ: Rūta buvo geriausia mokinė. Penkerius metus mokiau ją
+      gintaro amato. Nepakartojamas talentas. Šis tyrimas dėl kasybos —
+      visą save atidavė. Nuotraukas, mėginius, analizes darė. Buvo
+      arti viešo paskelbimo.
+
+      Siūliau pagalbą. Daug kartų. Sakė, kad kontroliuoja situaciją.
+      Sakė, kad dirba su žurnaliste. Aš tik norėjau padėti.
+
+      [Danutė seems earnest. Or obsessive?]
+    effects: { trust_danute: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dovydas Q1 ---
+
+  dovydas_q1:
+    type: tweet
+    from: dovydas
+    text: >
+      MANO SESUO DINGO ir policija sako gal nuvažiavo pas gimines???
+      JI NEIŠVAŽIUOJA NEPRANEŠUSI. važiuoju iš klaipėdos. kažkas
+      man paaiškinks.
+    effects: { trust_dovydas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Dovydas -> dovydas_q1_talk
+
+  dovydas_q1_talk:
+    type: message
+    text: >
+      DOVYDAS: Kas tu? Dar vienas žmogus iš to kaimo, kuris sakys
+      nusiraminkit? Sesuo skambino man tą naktį, prieš dingstant.
+      Sakė, kad turi kažką didelio. Sakė, "jei kas nors atsitiks,
+      žiūrėk BalticMineral." Tada padėjo ragelį.
+
+      Tai paskutinis kartas, kai ją girdėjau.
+    effects: { trust_dovydas: "+10" }
+    choices:
+      - What do you think happened? -> dovydas_theory
+      - Move on -> quest1_hub
+
+  dovydas_theory:
+    type: message
+    text: >
+      DOVYDAS: Manau, kad ji rado įrodymų, jog BalticMineral nelegaliai
+      kasa gintarą, ir jie sunaikino jos įrodymus. Bet taipogi manau,
+      kad ta keista meistrė — Danutė — žino daugiau negu sako. Kaip
+      ji kalba apie Rūtą... tai ne tik profesinis rūpestis. Tai kažkas
+      kita.
+
+      Rūta prieš kelis mėnesius sakė, kad kažkas vaikšto aplink
+      dirbtuves naktimis. Fotografuoja ją. Manė, kad nieko tokio. Aš
+      manau, kad labai net tokio.
+    effects: { trust_dovydas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Rūta went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Lukas (was fishing at sunset near the harbour) -> lukas_interview
+      - Find Petras (harbour master, works late) -> petras_interview
+      - Find Marius (fisherman, early morning at the shore) -> marius_interview
+      - Find Eglė (baker, starts at 4am, saw something) -> egle_interview
+
+  # --- Lukas (saw someone at Rūta's workshop) ---
+
+  lukas_interview:
+    type: tweet
+    from: lukas
+    text: >
+      gera sesija buvo vakarinė žvejyba bet prie uosto kažkaip keistai
+      pastaruoju metu. kažkas ne taip. negaliu paaiškint
+    effects: { trust_lukas: "+5" }
+    choices:
+      - Ask Lukas about that evening -> lukas_talk
+
+  lukas_talk:
+    type: message
+    text: >
+      LUKAS: blet ok bet niekam nesakyk. buvau prie uosto apie septintą,
+      žvejojau. ir mačiau danutę prie rūtos dirbtuvių. nx keista buvo,
+      ji buvo viduj viena, kažką darė prie stalo. kai pamatė mane,
+      išbėgo kaip pašėlus.
+
+      šūdas nesakiau niekam nes kas patikės. paauglys kaltina garsią
+      gintaro meistrę. po velnių ne lol
+    effects:
+      trust_lukas: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petras (harbour master, saw late-night meeting) ---
+
+  petras_interview:
+    type: tweet
+    from: petras
+    text: >
+      Primenu: uostas uždarytas nuo 22 val. iki 6 val.
+      Pastebėjau neleistinus įvažiavimus pastaraisiais vakarais.
+    effects: { trust_petras: "+5" }
+    choices:
+      - Ask Petras what he saw -> petras_talk
+
+  petras_talk:
+    type: message
+    text: >
+      PETRAS: Apie dešimtą valandą vakaro uždarinėjau uostą. Mačiau,
+      kad Rūtos mašina dar stovi prie dirbtuvių. O šalia — juodas
+      mikroautobusas su BalticMineral logotipu. Du vyrai stovėjo prie
+      dirbtuvių durų. Vieną atpažinau: Valdas Norvilas, padalinio
+      vadovas.
+
+      Dešimtą vakaro. Prie gintaro dirbtuvių. Tai nenormalu.
+
+      Įrašiau į uosto žurnalą. Niekas neprašė parodyti.
+    effects:
+      trust_petras: "+10"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marius (saw Rūta fleeing) ---
+
+  marius_interview:
+    type: tweet
+    from: marius
+    text: >
+      keturias ryto keliausi tinklams. paplūdimys nebuvo tuščias tą
+      rytą. kažkas bėgo pakrante. tamsoj. ne bėgikas tai buvo.
+    effects: { trust_marius: "+5" }
+    choices:
+      - Ask Marius what he saw -> marius_talk_night
+
+  marius_talk_night:
+    type: message
+    text: >
+      MARIUS: Keliu ketvirtą ryto dėl tinklų. Tą rytą — rytą po Rūtos
+      paskutinio posto — mačiau kažką paplūdimyje. Bėgo. Moteris, su
+      krepšiu, link Gintarupės upelio žiočių. Dar buvo tamsu. Judėjo
+      greitai, tarsi bijotų.
+
+      Sušukau, bet nesustojo. Galvojau, bėgikė, bet... kas begi
+      ketvirtą ryto su krepšiu per petį?
+
+      Kai išgirdau apie Rūtą, sudėjau vaizdą. Manau, tai buvo ji.
+      Bėgo nuo kažko.
+    effects:
+      trust_marius: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Eglė (saw car chase) ---
+
+  egle_interview:
+    type: tweet
+    from: egle
+    text: >
+      Nuo keturių ryto kepu duoną kaip visada. Bet tą rytą mašina
+      praūžė pakrantės keliu. Per greitai. Gerokai per greitai.
+    effects: { trust_egle: "+5" }
+    choices:
+      - Ask Eglė what she saw -> egle_talk
+
+  egle_talk:
+    type: message
+    text: >
+      EGLĖ: Keliu ketvirtą ryto kepti, kiekvieną dieną. Tą rytą
+      atidariau langines ir mašina praūžė pro šalį — greitai, per
+      greitai pakrantės keliui. Tamsi furgonėlė. Tada gal po dviejų
+      minučių — kita. Mažesnė, šviesesnė. Vijosi? Nežinau.
+
+      Antra mašina pasuko link senų žvejų namelių prie Gintarupės
+      upelio. Pirma toliau važiavo link magistralės.
+
+      Pasakiau policininkams. Užsirašė. Tiek.
+    effects:
+      trust_egle: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Inga (best friend)
+      and Ugnė (saw Danutė watching the workshop).
+    choices:
+      - Talk to Inga about that night -> inga_interview
+      - Talk to Ugnė -> ugne_interview
+      - Find Lukas -> lukas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Petras -> petras_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Marius -> marius_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Eglė -> egle_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Inga (last to see Rūta) ---
+
+  inga_interview:
+    type: tweet
+    from: inga
+    text: >
+      ta nuotrauka rūtos paskyroj. ne ji tai padarė. rūta niekada
+      neposta be aprašymo. rūta neposta trečią nakties. kažkas kitas
+      tai padarė.
+    effects: { trust_inga: "+5" }
+    choices:
+      - DM Inga -> inga_talk_low
+        when:
+          state: trust_inga
+          lt: 50
+      - DM Inga -> inga_talk_high
+        when:
+          state: trust_inga
+          gte: 50
+
+  inga_talk_low:
+    type: message
+    text: >
+      INGA: Dėkui už rūpestį, bet tikrai nenoriu su nepažįstamais
+      apie tai kalbėt dabar.
+
+      [Inga needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_inga: "+5" }
+    choices:
+      - Share what you've learned about the night -> inga_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  inga_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the van at the workshop, the
+      company men, the running figure. Inga is silent for a while.
+
+      INGA: Tu tikrai bandai ją rasti. Gerai. Kalbėsiu.
+    effects: { trust_inga: "+25" }
+    choices:
+      - What happened that night? -> inga_talk_high
+
+  inga_talk_high:
+    type: message
+    text: >
+      INGA: Grįžo apie vienuoliktą vakare. Ruošiausi naktinei
+      pamainai. Buvo blyški, drebėjo. Sakė: "jie žino, ką turiu."
+      Pasiėmė laptopą ir fotoaparato diskus.
+
+      Paklausiau, kas jie. Sakė: "firma. Atsiuntė žmonių į dirbtuves."
+      Paskui dar kažką pasakė — "ir ji ten buvo. Ji visada ten."
+
+      Nepasakė, kas ta "ji." Apkabino mane, sakė "nesijaudink," ir
+      išėjo su krepšiu. Tiek. Rytą jos mašinos nebebuvo, o ta
+      neryški nuotrauka buvo jos paskyroj.
+    effects:
+      trust_inga: "+15"
+      night_witnesses: "+1"
+      mining_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ugnė (saw Danutė watching the workshop) ---
+
+  ugne_interview:
+    type: message
+    text: >
+      UGNĖ: blet ok žinau kad keistai skamba bet ta gintaro meistrė —
+      danutė — mačiau ją gal tris kartus vakare prie rūtos dirbtuvių.
+      tiesiog stovi ir žiūri pro langus. atsiknisk creepy buvo.
+
+      paskutinį kartą mačiau gal dvi dienas prieš rūtai dingstant.
+      sėdėjo savo mašinoj priešais dirbtuves. tiesiog sėdėjo. šviesos
+      užgesintos.
+    effects:
+      trust_ugne: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Danutė seen inside Rūta's workshop alone (Lukas)
+      22:00 — BalticMineral van at the workshop, Valdas Norvilas present (Petras)
+      23:00 — Rūta arrives home, shaken, grabs laptop and drives (Inga)
+      04:00 — Woman running on beach toward Gintarupė creek (Marius)
+      04:15 — Two cars speeding on coast road, one toward creek (Eglė)
+
+      BalticMineral confronted Rūta at her workshop. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is BalticMineral hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Danutė really doing? Why was she in
+        the workshop?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Danutė -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${mining_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: mining_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      BalticMineral is hiding something. Rūta had proof. Now she's gone
+      and her evidence is missing from the workshop.
+
+      Mining evidence: ${mining_evidence}
+    choices:
+      - Search the workshop records -> workshop_records
+      - Talk to Aušra the journalist -> ausra_interview
+      - Talk to Simona (BalticMineral lab tech) -> simona_interview
+      - Talk to Antanas (environment deputy) -> antanas_interview
+      - Check the Pajūrio Sargyba association -> sargyba_investigation
+      - Talk to Marius about the mining -> marius_mining
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Records ---
+
+  workshop_records:
+    type: message
+    text: >
+      Rūta's workshop doubles as her research base. Her public blog
+      shows her recent work: coastal erosion measurements from six
+      sites along the beach. The data for Gintarupė creek mouth is
+      marked "PENDING REVIEW" — the only site with that status.
+
+      Her photo log, shared with Pajūrio Sargyba for documentation,
+      shows she made 16 field visits to the BalticMineral operation
+      site in the past month. The last entry: "Photographed night
+      pumping equipment. Undeclared extraction site. Beach erosion
+      is not natural — it's industrial."
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Aušra ---
+
+  ausra_interview:
+    type: message
+    text: >
+      AUŠRA: Apie šaltinius nekalbu. Taškas.
+    effects: { trust_ausra: "+5" }
+    choices:
+      - Show Aušra the evidence you have -> ausra_with_evidence
+        when:
+          state: mining_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  ausra_with_evidence:
+    type: message
+    text: >
+      AUŠRA: ...daugiau turi negu tikėjausi.
+
+      Gerai. Rūta ir aš dirbom kartu. Ji turėjo nuotraukų nelegalios
+      kasybos aikštelės — BalticMineral naktimis naudoja vandens
+      siurblius gintarui išplauti iš smėlio. Nedeklaruota veikla.
+      Jos matavimais, paplūdimio erozija dešimt kartų viršija
+      natūralų lygį.
+
+      Ketinom kartu publikuoti. Tada ji dingo. Po dviejų dienų
+      kažkas įsilaužė į mano mašiną ir pavogė atsarginį diską.
+
+      Rūta gyva. Kartą man paskambino iš nežinomo numerio. Sakė, kad
+      slepiasi. Sakė: "jie grasino man dirbtuvėse ir yra dar kažkas,
+      kuris nepalieka manęs ramybėje."
+
+      Negaliu pasakyti, kur ji. Bet su pakankamai įrodymų galiu
+      publikuoti ir bus saugu jai grįžti.
+    effects:
+      trust_ausra: "+25"
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> ausra_hint
+      - Back to investigation hub -> investigation_hub
+
+  ausra_hint:
+    type: message
+    text: >
+      AUŠRA: Firma atsiuntė padalinio vadovą — Norvilą — ir kažkokį
+      advokatą į dirbtuves tą vakarą. Liepė atiduoti viską, kitaip
+      bus teisinių pasekmių. Gąsdinimas, apsirengęs teisine forma.
+
+      Bet ji dar kažką pasakė apie žmogų dirbtuvėse. Kažką, kas
+      landžiojo po jos failus. Kažką, kas visada žinojo, kur ji.
+      Tai kita problema.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Simona (BalticMineral whistleblower) ---
+
+  simona_interview:
+    type: message
+    text: >
+      SIMONA: Dirbu BalticMineral. Esu tik laborantė. Darau testus,
+      rašau ataskaitas.
+
+      Bet ataskaitos, kurias rašau... ne visada tokios siunčiamos
+      aplinkos apsaugos agentūrai.
+    effects: { trust_simona: "+10" }
+    choices:
+      - What do you mean? -> simona_detail
+
+  simona_detail:
+    type: message
+    text: >
+      SIMONA: Matuoju erozijos lygį. Smėlio judėjimą, kopos stabilumą.
+      Mano skaičiai eina viršininkui. Kažkur tarp mano stalo ir
+      oficialios ataskaitos jie pasikeičia. Žemyn. Visada žemyn.
+
+      Rūtos matavimai iš lauko sutapo su MANO pirminiais skaičiais,
+      ne su oficialiais. Ji turėjo nepriklausomų įrodymų, kad
+      BalticMineral falsifikuoja kasybos poveikio duomenis.
+
+      Bijau. Turiu šeimą. Bet saugau originalių ataskaitų kopijas.
+      Jei kas nors mane apsaugos, pasidalinsiu.
+    effects:
+      trust_simona: "+15"
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Antanas ---
+
+  antanas_interview:
+    type: message
+    text: >
+      ANTANAS: Kaip seniūno pavaduotojas aplinkosaugai, šiuos kaltinimus
+      vertinu rimtai. Bet BalticMineral duoda darbą dviem šimtams
+      žmonių šitoje seniūnijoje. Seniūnas reikalauja "palaikyti
+      dialogą."
+
+      Ne oficialiai? Mačiau aplinkos inspekcijos ataskaitas.
+      BalticMineral visada praeina. Bet patikrinimai skelbiami dvi
+      savaites iš anksto. Iki tol sutvarkosi.
+
+      Rūta turėjo nepaskelbtus duomenis. Dėl to pavojinga.
+    effects:
+      trust_antanas: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Pajūrio Sargyba ---
+
+  sargyba_investigation:
+    type: tweet
+    from: pajurio_sargyba
+    text: >
+      PERSPĖJIMAS: Neįprasta paplūdimio erozija prie Gintarupės upelio
+      žiočių. Dokumentavimas ir mėginiai vyksta. Reikalaujame
+      neplaninės BalticMineral padalinio inspekcijos.
+    choices:
+      - Check their data -> sargyba_data
+
+  sargyba_data:
+    type: message
+    text: >
+      The Pajūrio Sargyba have been documenting coastal erosion for
+      three years. Their data shows a clear pattern: erosion spikes
+      that correspond to BalticMineral's operation schedule. Worse on
+      weeknights, stable on weekends. Worse between midnight and dawn,
+      stable during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate illegal
+      amber extraction timed to avoid detection.
+
+      Rūta was a founding member. She contributed most of the field
+      photography and amber-craft-inspired data visualizations.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Marius mining ---
+
+  marius_mining:
+    type: message
+    text: >
+      MARIUS: Parodysiu tau kažką. Praeitą mėnesį tinklus traukiau
+      prie upelio žiočių ir radau šitą — metalinius vamzdžius,
+      surūdijusius, su siurblių jungtimis. BalticMineral partijos
+      numeris.
+
+      Nufotografavau ir nusiunčiau Rūtai. Sakė, tai trūkstama detalė —
+      įrodymas, kad jie ne tik kasa, bet naudoja pramoninę techniką
+      paplūdimyje. Nelegalus kasimas su vandens siurbliais.
+
+      Turiu nuotraukas. Ir partijos numerį.
+    effects:
+      trust_marius: "+10"
+      mining_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Danutė Vaičiulienė. Amber master. Mentor. Something more?
+      Someone was going through Rūta's workshop at night. Someone was
+      watching the building. Someone was photographing her constantly.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Danutė's workshop access -> workshop_access
+      - Talk to Inga about Danutė -> inga_danute
+        when:
+          state: trust_inga
+          gte: 20
+      - Talk to Lukas (more detail on workshop incident) -> lukas_detail
+      - Talk to Birutė the pharmacist -> birute_interview
+      - Check the anonymous account @neringa_juodkaite -> neringa_investigation
+      - Talk to Jonas the bookseller -> jonas_interview
+        when:
+          state: trust_jonas
+          gte: 40
+      - Talk to Viršila Kairys -> virsila_interview
+        when:
+          state: trust_virsila
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Access ---
+
+  workshop_access:
+    type: message
+    text: >
+      Rūta's workshop has a simple guest book — she was old-fashioned
+      about it. Checking the entries: Rūta signed in 42 times last
+      month. Danutė signed in 67 times. More than half again as many.
+
+      Cross-referencing: on 34 of Danutė's 67 visits, she arrived
+      within fifteen minutes of Rūta. She came after her and left
+      after her. Every time.
+
+      Danutė's own workshop is across the village.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Inga on Danutė ---
+
+  inga_danute:
+    type: message
+    text: >
+      INGA: Danutė? Ji persekiojo Rūtą. Visada buvo užeigoj, kai
+      Rūta. Siūlėsi palydėti namo. Kiekvieną Rūtos postą komentavo
+      per kelias minutes.
+
+      Rūta jai pasakė, kad nedomina tai, ko ji ieško. Aiškiai,
+      maloniai. Danutė sakė, kad supranta. Tada niekas nepasikeitė.
+      Ji tiesiog... buvo ten. Visada ten.
+
+      Prieš mėnesį Rūta rado, kad kažkas buvo jos dirbtuvėse po
+      darbo valandų. Jos tyrimo failai buvo atidaryti. Įtarė Danutę,
+      bet negalėjo įrodyti.
+    effects:
+      trust_inga: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lukas detail ---
+
+  lukas_detail:
+    type: message
+    text: >
+      LUKAS: blet ok nepasakiau visko. kai mačiau danutę rūtos
+      dirbtuvėj ji turėjo kažką rankoj. tokį mažą prietaisą. ne
+      fotoaparatas, ji kažką padėjo prie rūtos darbo stalo. po velnių
+      atrodė kaip paslėpta kamera. tokia kokia filmuose būna.
+
+      nx nesu ekspertas bet šūdas labai panašu buvo į stebėjimo
+      kamerą. atsiknisk creepy.
+
+      turėjau kažką sakyt bet kas patikės. paauglys kaltina garsią
+      meistrę. blet ne tikrai.
+    effects:
+      trust_lukas: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Birutė ---
+
+  birute_interview:
+    type: message
+    text: >
+      BIRUTĖ: Tai konfidencialu, bet esu vaistininkė, ne kunigė.
+      Danutė Vaičiulienė reguliariai ateina. Perka dalykų, kurie...
+      rodo, kad nemiega. Raminamųjų, migdomųjų, energijos papildų.
+      Modelis — žmogus po ekstremalius stresu.
+
+      Kartą manęs paklausė, labai nerimtai, ar parduodam GPS
+      sekiklius. Sakiau: "čia vaistinė, ne elektronikos parduotuvė."
+      Nusijuokė. Nebegalvojau apie tai, kol Rūta nedingo.
+    effects:
+      trust_birute: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Neringa (anonymous account) ---
+
+  neringa_investigation:
+    type: tweet
+    from: neringa
+    text: >
+      Ji turėjo manęs klausyti. Bandžiau ją apsaugoti. Niekas kitas
+      nesuprato jos darbo taip kaip aš.
+    choices:
+      - Look at this account's history -> neringa_posts
+
+  neringa_posts:
+    type: message
+    text: >
+      @neringa_juodkaite: account created 10 months ago. Posts are all
+      about Rūta's work. Comments on every amber photo, every beach
+      survey, every craft update. The tone shifts over time:
+
+      Month 1: "Nuostabus darbas. Darai tai, ko niekas kitas nedrįsta."
+      Month 3: "Kodėl neatsakai į mano žinutes? Tik noriu kartu
+      dirbti."
+      Month 7: "Matau tave užeigoj su kitais. Jiems turi laiko, o man
+      ne?"
+      Month 9: "Žinau, kur vaikštai. Žinau tavo tvarkaraštį. Visada
+      esu arti."
+
+      The account has no photos, no personal details. Just Rūta.
+      Only Rūta.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> neringa_style
+
+  neringa_style:
+    type: message
+    text: >
+      Comparing @neringa_juodkaite with @danute_vaiciuliene:
+
+      Same use of amber terminology — the specific old Samogitian
+      dialect words for resin clarity grades. Same Lithuanian spelling
+      habits — the way she compounds craft terms. Same knowledge of
+      Rūta's research that only a workshop colleague would have.
+
+      And one post from @neringa_juodkaite: "Tavo 7-asis gintaro
+      kūrinys buvo nuostabus." The "7-asis kūrinys" is an internal
+      workshop numbering system for amber pieces. Not public knowledge.
+
+      It's Danutė. The anonymous account is Danutė.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Jonas ---
+
+  jonas_interview:
+    type: message
+    text: >
+      JONAS: Rūta paliko man kažką. Užantspauduotą vandeniui atsparią
+      dėžutę. Sakė: "jei kas nors klaus, kas vyksta paplūdimyje prie
+      upelio, duok jiems tai."
+
+      Buvo išsigandusi. Sakė, kad pasidarė visų kopijas, bet reikia
+      vieno komplekto kažkur kitur, kur niekas nepagalvotų ieškoti.
+      Knygynas atrodė tobulai.
+    effects: { trust_jonas: "+10" }
+    choices:
+      - What's happening at the creek beach? -> jonas_case
+
+  jonas_case:
+    type: message
+    text: >
+      Jonas pasiekia po prekystalio ir ištraukia vandeniui atsparią
+      Pelican dėžutę.
+
+      JONAS: Sakė, kad ateisi. Imk.
+
+      Inside: a USB drive and a set of printed photographs. The photos
+      show industrial water pumps on the beach at night — not the
+      official research sampling, but full-scale illegal amber extraction
+      washing away the sand and dunes. The USB drive contains erosion
+      data, geological surveys, and Rūta's detailed report with
+      amber-craft illustrations showing the destruction timeline.
+    effects:
+      mining_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Viršila Kairys ---
+
+  virsila_interview:
+    type: message
+    text: >
+      VIRŠILA KAIRYS: Ne oficialiai — ir tai visiškai ne oficialiai —
+      norėjau tirti BalticMineral. Viršininkas sustabdė. Sakė, kad
+      aplinkos inspekcija "turi jurisdikciją." Tai reiškia: neliesti.
+
+      Apie Danutės situaciją net nežinojau iki šiol. Jei turi
+      persekiojimo įrodymų, galiu veikti. Tai aiškiai mano
+      jurisdikcija.
+
+      Atnešk man kažką solidaus ir aš atnaujinsiu bylą.
+    effects:
+      trust_virsila: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Rūta than anyone in Gintarupė. Who is responsible?
+    choices:
+      - Confront Danutė Vaičiulienė (the obsessive mentor) -> confront_danute
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Valdas Norvilas (the site director) -> confront_valdas
+        when:
+          state: mining_evidence
+          gte: 3
+      - Confront Elder Paulauskas (political protection) -> confront_vytautas
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Danutė (Best Ending) ---
+
+  confront_danute:
+    type: message
+    text: >
+      You present your evidence to Danutė:
+
+      "I know @neringa_juodkaite is your account. I know you put a
+      hidden camera in Rūta's workshop. I know you went through her
+      files at night. I know you were watching the building. I have
+      witnesses and I have the access records."
+    choices:
+      - Send -> danute_response
+
+  danute_response:
+    type: message
+    text: >
+      Danutė doesn't reply for a long time. Then:
+
+      DANUTĖ: Tu nesupranti. Aš ją saugojau. BalticMineral jai grėsė
+      ir ji neleido man padėti. Turėjau žinoti, kad ji saugi. Viską
+      dariau, nes man rūpi. Ji mano mokinė. Ji geriausia.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Viršila Kairys. And to
+      Aušra Mikalauskienė.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Viršila Kairys reopens the case. With your evidence — the
+      anonymous account, the hidden camera, the access records, the
+      witness testimonies — Danutė is arrested for stalking and
+      harassment. A hidden camera is recovered from Rūta's workbench
+      at the workshop.
+
+      Aušra Mikalauskienė, finally in possession of Rūta's full
+      evidence package, publishes the BalticMineral story in Delfi.
+      The aplinkos apsaugos agentūra orders an unannounced inspection.
+      The illegal mining operation is shut down pending environmental
+      remediation. Valdas Norvilas faces criminal charges for
+      falsifying extraction reports and illegal coastal mining.
+
+      And Rūta Kazlauskienė, reading the story from a friend's house
+      in Šiauliai, calls her brother for the first time in nine days.
+
+      "Grįžtu namo."
+
+      If you or someone you know is experiencing stalking or harassment,
+      help is available:
+      Pagalbos moterims linija: 8 800 66366 (nemokama)
+      Vaikų linija: 116 111
+      Aplinkos apsaugos pranešimai: 8 800 02024
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: ruta
+    text: >
+      gintaras nemeluoja. ir gintarupės žmonės irgi. ačiū, kad
+      nepasitraukėt.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Valdas (Partial Ending) ---
+
+  confront_valdas:
+    type: message
+    text: >
+      You present the mining evidence to Valdas Norvilas:
+
+      "I have photographs of the undeclared extraction site. I have
+      erosion measurements proving illegal mining. I have your original
+      lab reports showing the data was falsified. I have the pump
+      equipment with your batch numbers."
+    choices:
+      - Send -> valdas_response
+
+  valdas_response:
+    type: message
+    text: >
+      VALDAS: Šis pokalbis perduodamas mūsų teisiniam skyriui. Bet
+      kokios šmeižikiškos medžiagos paskelbimas sukels neatidėliotinas
+      teisines pasekmes. BalticMineral visada veikė pagal teisės aktų
+      reikalavimus.
+
+      But it's too late. You've sent the evidence to Aušra, to
+      Pajūrio Sargyba, and to the aplinkos apsaugos agentūra.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The mining story breaks. BalticMineral is ordered to halt
+      extraction pending investigation. The illegal operation may be
+      dismantled. Two hundred jobs hang in the balance. The village
+      is divided.
+
+      But Rūta?
+
+      Without the stalking evidence, Danutė is never investigated.
+      She continues to visit the workshop. She continues to monitor
+      Rūta's accounts. She creates a new anonymous profile.
+
+      Three months later, Rūta reads about BalticMineral online.
+      She returns quietly. She changes workshops. She stops working
+      alone at night. She checks her workbench every morning for
+      cameras.
+
+      The corporation is exposed. But the person who terrorised Rūta
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: ruta
+    text: "grįžau. paplūdimys sveikas. visa kita... pamatysim."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Elder (Wrong Ending) ---
+
+  confront_vytautas:
+    type: message
+    text: >
+      You confront Elder Paulauskas with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> vytautas_response
+
+  vytautas_response:
+    type: tweet
+    from: rokas
+    text: >
+      Mūsų klientas priima domėn Jūsų teiginius. Bet kokios
+      šmeižikiškos medžiagos viešinimas sukels neatidėliotinas teisines
+      pasekmes. — Janulio ir partnerių kontora, Vilnius
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The elder's lawyer buries your accusation. Without a direct link
+      between Paulauskas and BalticMineral's mining — and there isn't
+      one beyond political protection — your evidence is insufficient.
+
+      BalticMineral continues to operate. Danutė continues to watch.
+      Rūta stays in hiding.
+
+      Six months later, @neringa_juodkaite creates a new account. It
+      follows Rūta's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: GINTARUPĖ — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Mining evidence: ${mining_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Rūta's story explores themes of corporate
+      impunity, environmental destruction, obsessive behaviour, coastal
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Pagalbos moterims linija: 8 800 66366 (nemokama)
+      Vaikų linija: 116 111
+      Aplinkos apsaugos pranešimai: 8 800 02024

@@ -1,0 +1,1576 @@
+# DEAD ACCOUNT — Story 039: Spierevelde (Belgium 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-039.yml
+#
+# Player investigates the disappearance of young lace maker and textile
+# artist Lotte Vermeersch in the fictional Flemish canal village of
+# Spierevelde.
+
+meta:
+  title: "Dead Account — Spierevelde"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_wout: 0
+    trust_noor: 0
+    trust_jef: 0
+    trust_fien: 0
+    trust_arne: 0
+    trust_roos: 0
+    trust_bram: 0
+    trust_lies: 0
+    trust_pieter: 0
+    trust_els: 0
+    trust_tibo: 0
+    trust_emma: 0
+    trust_sofie: 0
+    trust_koen: 0
+    trust_jolien: 0
+    trust_dieter: 0
+    trust_mieke: 0
+    trust_filip: 0
+    trust_hilde: 0
+    trust_commissaris: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to spierevelde. discovering flanders one canal at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Spierevelde.social"
+    description: "Welkom op de community-instantie van Spierevelde"
+    avatar_url: /gamepatch/assets/dead-account/spierevelde_bot.png
+
+  npcs:
+    # === Lotte's Inner Circle ===
+    lotte:
+      name: "Lotte Vermeersch"
+      bio: "kantklosster & textielkunstenares | het kanaal vertelt alles | spierevelde"
+      avatar: avatars/lotte.jpg
+    wout:
+      name: "Wout De Smedt"
+      bio: "lottes beste vriend | fietsenmaker | baal het hier zonder haar"
+      avatar: avatars/wout.jpg
+    noor:
+      name: "Noor Peeters"
+      bio: "lottes zus | studeert in gent | als ze niet antwoordt klopt er iets niet"
+      avatar: avatars/noor.jpg
+    jef:
+      name: "Jef Vermeersch"
+      bio: "lottes nonkel | timmerman | spierevelde geboren en getogen | ze is niet zomaar weg"
+      avatar: avatars/jef.jpg
+
+    # === Local Government ===
+    pieter:
+      name: "Pieter Van Damme"
+      bio: "Schepen van Ruimtelijke Ordening | Gemeente Spierevelde | #SpiereveldeVooruit"
+      avatar: avatars/pieter.jpg
+    els:
+      name: "Els Claeys"
+      bio: "Schepen van Milieu | Gemeente Spierevelde | duurzaamheid & waterbeheer"
+      avatar: avatars/els.jpg
+    gemeente:
+      name: "Gemeente Spierevelde"
+      bio: "Officieel account | Gemeentenieuws | Openingstijden: ma-vr 9u-12u"
+      avatar: avatars/gemeente.jpg
+
+    # === Local Business & Community ===
+    lies:
+      name: "Lies Janssen"
+      bio: "café 't kanaaltje | koffie | taart | terras aan het water | open sinds 1991"
+      avatar: avatars/lies.jpg
+    cafe_kanaal:
+      name: "Café 't Kanaaltje"
+      bio: "Koffie & gebak | Terras aan het kanaal | Elke vrijdag live muziek"
+      avatar: avatars/cafe_kanaal.jpg
+    bram:
+      name: "Bram Wouters"
+      bio: "visser | 30 jaar op het kanaal | dit water is mijn leven"
+      avatar: avatars/bram.jpg
+    roos:
+      name: "Roos De Wilde"
+      bio: "galerij de spoel | hedendaagse textielkunst | lottes werk hangt hier"
+      avatar: avatars/roos.jpg
+    mieke:
+      name: "Mieke Goossens"
+      bio: "apotheker | spierevelde | gezondheid & advies | ook zaterdagvoormiddag open"
+      avatar: avatars/mieke.jpg
+    koen:
+      name: "Koen Maes"
+      bio: "bakkerij maes | pistolets | koffiekoeken | elke ochtend vanaf 5u"
+      avatar: avatars/koen.jpg
+    jolien:
+      name: "Jolien Leclercq"
+      bio: "boekhandel de veer | nieuwe & tweedehands | leesclub woensdag"
+      avatar: avatars/jolien.jpg
+
+    # === Journalist ===
+    hilde:
+      name: "Hilde Mertens"
+      bio: "freelance journaliste | milieu & erfgoed | tips: hilde@mertens-pers.be"
+      avatar: avatars/hilde.jpg
+
+    # === VlaamsChem (corporate) ===
+    vlaamschem:
+      name: "VlaamsChem NV"
+      bio: "Industriële textielverven | Site Spierevelde | ISO 14001 gecertificeerd"
+      avatar: avatars/vlaamschem.jpg
+    filip:
+      name: "Filip Rogiers"
+      bio: "directeur VlaamsChem Spierevelde | industrie & regio"
+      avatar: avatars/filip.jpg
+    dieter:
+      name: "Dieter Coppens"
+      bio: "Advocaat | Kantoor Coppens & Partners | Ondernemingsrecht | Brussel"
+      avatar: avatars/dieter.jpg
+
+    # === Teens ===
+    fien:
+      name: "Fien"
+      bio: "16 | skater | spierevelde born | het kanaal is mijn plek amai"
+      avatar: avatars/fien.jpg
+    arne:
+      name: "Arne"
+      bio: "17 | bmx & graffiti | spierevelde | lotte leerde mij alles over kleur"
+      avatar: avatars/arne.jpg
+    emma:
+      name: "Emma"
+      bio: "15 | foto & textiel | lotte is mijn grote voorbeeld | ik mis haar"
+      avatar: avatars/emma.jpg
+
+    # === Media & Community ===
+    actu_spiere:
+      name: "Actu Spierevelde"
+      bio: "Nieuws uit Spierevelde en omgeving | Tips: redactie@actu-spierevelde.be"
+      avatar: avatars/actu_spiere.jpg
+    weer_vlaanderen:
+      name: "Weer Spierevelde"
+      bio: "Voorspellingen & waarschuwingen | Automatisch station | Elk uur bijgewerkt"
+      avatar: avatars/weer_vlaanderen.jpg
+    erfgoed_kanaal:
+      name: "Erfgoedvereniging Het Kanaal"
+      bio: "Bescherming kanaalerfgoed Vlaanderen | Vrijwilligers | Meldingen vervuiling"
+      avatar: avatars/erfgoed_kanaal.jpg
+
+    # === Suspicious / Other ===
+    sofie:
+      name: "Sofie Martens"
+      bio: "labotechnieker | VlaamsChem | ik doe gewoon mijn job"
+      avatar: avatars/sofie.jpg
+    tibo:
+      name: "Tibo Geerts"
+      bio: "."
+      avatar: avatars/anon.jpg
+    commissaris:
+      name: "Commissaris Verbeke"
+      bio: "Politiezone Spierevelde | Lokale recherche | Noodgevallen: 101"
+      avatar: avatars/commissaris.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SPIEREVELDE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to spierevelde.social — the community Mastodon instance for
+      the Flemish canal village of Spierevelde.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @lotte_vermeersch.
+
+      A lace maker. Textile artist. She turned ancient Flemish
+      kloswerk into contemporary art. People are worried. She hasn't
+      posted in six days.
+    choices:
+      - Look at her profile -> lotte_profile
+
+  lotte_profile:
+    type: tweet
+    from: lotte
+    text: "De kleur van het kanaal klopt niet meer. Iemand dumpt verf in het water. Ik heb foto's."
+    choices:
+      - That's her last real post... -> grey_lace
+
+  grey_lace:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a tangled piece of lace, grey and stained, photographed under
+      harsh fluorescent light. Posted at 2am. No caption.
+
+      Her friends say that's not her style. Lotte's photos were always
+      soft, natural light, carefully composed. The politie says she
+      probably needed a break from social media. Something doesn't
+      add up.
+    choices:
+      - Read the politie statement -> politie_statement
+      - Look at what people are saying -> community_reaction
+
+  politie_statement:
+    type: tweet
+    from: commissaris
+    text: >
+      We hebben een melding ontvangen over een inwoner van Spierevelde.
+      Op dit moment zijn er geen aanwijzingen voor een misdrijf.
+      Informatie kan worden doorgegeven aan het lokale commissariaat
+      of via 101.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @wout_de_smedt is
+      furious. Her sister @noor_peeters is on her way from Gent.
+      The gallery owner @roos_de_wilde keeps posting her work.
+      The fisherman @bram_wouters says she was right about the water.
+
+      And the journalist @hilde_mertens is strangely silent.
+
+      Nobody buys the politie's line. Nobody thinks Lotte just
+      "needed a break."
+    effects: { trust_wout: "+5", trust_noor: "+5" }
+    choices:
+      - Start following Lotte's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Spierevelde. Follow Lotte's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Lies (café owner, knows everyone) -> lies_intro
+      - Talk to Bram (fisherman, saw the water) -> bram_intro
+      - Talk to Fien (teen skater, seems shaken) -> fien_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Lotte with the rhythms of a small
+      Flemish village: lock schedules for the canal, the bakery's
+      daily specials, weather warnings for the polder.
+
+      Key names surface: Wout (best friend, bike mechanic), Roos
+      (gallery owner, showed Lotte's work), Hilde (journalist,
+      oddly quiet), and the teens — Fien, Arne, Emma — who looked
+      up to Lotte as a mentor.
+
+      Also prominent: VlaamsChem NV, the textile dye factory at the
+      edge of the village. Their posts are corporate PR. Lotte's
+      posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Lies -> lies_intro
+      - Talk to Bram -> bram_intro
+      - Talk to Fien -> fien_intro
+
+  # --- Lies (social map) ---
+
+  lies_intro:
+    type: tweet
+    from: lies
+    text: >
+      't Kanaaltje is open maar het voelt leeg. @lotte_vermeersch, uw
+      vaste tafeltje staat klaar. Kom terug meisje.
+    effects: { trust_lies: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Lies -> lies_talk
+
+  lies_talk:
+    type: message
+    text: >
+      LIES: Amai, ge zijt nieuw hier? Welkom, maar slechte timing.
+      Iedereen is overstuur door Lotte.
+
+      Ik zal u uitleggen wie wie is. Wout is Lottes beste vriend —
+      ze zijn samen opgegroeid, hij heeft een fietsenzaak aan het
+      kanaal. Roos De Wilde heeft de galerij waar Lottes werk hangt.
+      Noor is Lottes jongere zus, studeert in Gent, is onderweg.
+      En nonkel Jef — die is als een vader voor haar sinds haar
+      ouders zijn gescheiden.
+
+      En Hilde Mertens — de journaliste — zij en Lotte werkten samen
+      aan iets. Iets over het water. Hilde heeft geen woord gezegd
+      sinds Lotte weg is. Da's niet normaal.
+
+      Ah ja, en negeer die posts van VlaamsChem. Leugens verpakt in
+      ISO-certificaten.
+    effects: { trust_lies: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Roos -> lies_roos
+      - Ask about VlaamsChem -> lies_vlaamschem
+      - Thank her and move on -> quest1_hub
+
+  lies_roos:
+    type: message
+    text: >
+      LIES: Roos? Die heeft de galerij drie jaar geleden geopend.
+      Hedendaagse textielkunst, heel hip. Lotte was haar paradepaard —
+      haar werk verkocht goed, vooral bij een bepaalde klant.
+
+      Er was een man — ik ken zijn naam niet — die al zes stukken van
+      Lotte had gekocht. Maar het ging verder dan kunst kopen. Hij
+      begon speciale opdrachten te geven. Persoonlijke dingen.
+      Portretten in kant. Haar gezicht geweven in stof. Lotte vond
+      het eerst vleiend, daarna... niet meer.
+
+      Ze zei me eens: "Die man wil geen kunst. Die wil mij." Dat
+      klonk als een grap. Nu niet meer.
+    effects: { trust_lies: "+5" }
+    choices:
+      - Ask about VlaamsChem -> lies_vlaamschem
+      - Move on -> quest1_hub
+
+  lies_vlaamschem:
+    type: message
+    text: >
+      LIES: Die fabriek staat er al sinds de jaren 80. Textielverf,
+      chemische solventen, gekleurde rommel. Het dorp tolereerde het
+      voor de jobs. Maar de vissers klagen al jaren — vreemd gekleurde
+      vlekken in het kanaal, dode vissen bij de sluis.
+
+      Lotte was de eerste die effectief ging kijken met een camera en
+      monsterpotten. Ze had bewijs, zei ze. Echt bewijs. Foto's van
+      buizen die 's nachts lozen. Twee weken later is ze weg.
+
+      Godverdomme, iemand moet iets doen.
+    effects: { trust_lies: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bram (the water, witness tease) ---
+
+  bram_intro:
+    type: tweet
+    from: bram
+    text: >
+      dertig jaar dat ik hier vis. het kanaal is kapot. @lotte_vermeersch
+      had gelijk. en nu is ze verdwenen. trek zelf uw conclusies.
+    effects: { trust_bram: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Bram -> bram_talk
+
+  bram_talk:
+    type: message
+    text: >
+      BRAM: Ik vis dit kanaal al sinds ik een jongen was. Ik ken elke
+      stroming, elke kleur die het water maakt. En ik zeg u — het
+      kanaal bij de sluis is kapot. Al maanden. Mijn netten komen
+      leeg boven. De bodem stinkt naar chemicaliën.
+
+      Lotte nam watermonsters. Ze fotografeerde alles. Ze was een
+      dossier aan het opbouwen. En toen — poef — weg.
+
+      Denkt ge dat dit toeval is? Amai, ik geloof niet in toevallen
+      op het water.
+    effects: { trust_bram: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> bram_night
+      - Move on -> quest1_hub
+
+  bram_night:
+    type: message
+    text: >
+      BRAM: De nacht voor ze verdween — ik was terug van nachtvisserij,
+      rond 1u. Ik zag licht in haar atelier aan het kanaal. Niet
+      ongewoon, ze werkte laat. Maar er stond een auto geparkeerd die
+      ik niet kende. Donkere BMW met Brusselse nummerplaat.
+
+      Om 1u 's nachts. Bij het atelier van Lotte.
+
+      Ik dacht er toen niks van. Nu denk ik er de hele tijd aan.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Fien (teen skater, witness tease) ---
+
+  fien_intro:
+    type: tweet
+    from: fien
+    text: >
+      amai echt nie te geloven he @lotte_vermeersch die heeft mij leren
+      kleuren mengen voor mijn graffiti. echt een toffe madame. als ge
+      iets weet zegt het aub
+    effects: { trust_fien: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Fien -> fien_talk_early
+
+  fien_talk_early:
+    type: message
+    text: >
+      FIEN: zenne ge zijt nieuw hier? kut timing. maar echt lotte is
+      de max. ze leerde ons kleuren mengen, textielkunst, echt alles.
+      ze was meer als een lerares, ze was gewoon echt cool.
+
+      en nu ben ik bang want arne heeft iets gezien de andere avond
+      bij het kanaal maar hij wilt er niet over praten. hij zegt dat
+      het niks was maar amai... het was duidelijk niet niks zenne
+    effects: { trust_fien: "+10" }
+    choices:
+      - What did Arne see? -> fien_arne_hint
+      - Move on -> quest1_hub
+
+  fien_arne_hint:
+    type: message
+    text: >
+      FIEN: ik weet nie precies. hij was aan het bmxen bij het kanaal
+      en hij zag iemand die dingen in lottes atelier aan het zetten
+      was?? of zoiets. hij flipt er echt van. ge moet het hem zelf
+      vragen maar hij vertrouwt nie zomaar mensen. probeer eerst over
+      graffiti te praten ofzo lol
+    effects: { trust_fien: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Spierevelde. A Flemish canal village
+      built around water and textile heritage. A young lace maker who
+      was exposing pollution. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Wout (Lotte's best friend) -> wout_q1
+      - Talk to Roos (gallery owner) -> roos_q1
+      - Check what Noor (Lotte's sister) is saying -> noor_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Wout Q1 ---
+
+  wout_q1:
+    type: tweet
+    from: wout
+    text: >
+      als iemand iets weet over @lotte_vermeersch bel mij. haar
+      atelier is dicht. haar fiets staat er nog. ze gaat godverdomme
+      nergens naartoe zonder haar fiets.
+    effects: { trust_wout: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Wout -> wout_q1_talk
+
+  wout_q1_talk:
+    type: message
+    text: >
+      WOUT: Wie zijt gij? Nog iemand uit dat dorp die mij gaat
+      vertellen da ik me moet kalmeren? Lotte belde mij de avond
+      voor ze verdween. Ze zei dat ze iets groots had. Ze zei "als
+      er iets gebeurt, kijk naar VlaamsChem." Dan hing ze op.
+
+      Da's het laatste wat ik van haar gehoord heb.
+    effects: { trust_wout: "+10" }
+    choices:
+      - What do you think happened? -> wout_theory
+      - Move on -> quest1_hub
+
+  wout_theory:
+    type: message
+    text: >
+      WOUT: Ik denk dat ze bewijs had dat VlaamsChem illegaal loost
+      en dat ze haar de mond gesnoerd hebben. Maar ik denk ook dat
+      die klant van de galerij — die gast die al die speciale
+      opdrachten gaf — meer weet dan hij zegt. De manier waarop hij
+      over haar praatte... da's nie normaal. Da's tering creepy.
+
+      Lotte vertelde mij maanden geleden dat iemand haar post
+      opende voor ze thuiskwam. Ze dacht dat het niks was. Ik denk
+      dat het niet niks was.
+    effects: { trust_wout: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Roos Q1 ---
+
+  roos_q1:
+    type: tweet
+    from: roos
+    text: >
+      De galerij is stil vandaag. @lotte_vermeersch haar nieuwste
+      werk hangt klaar voor de expo. Zij niet. Kom terug Lotte.
+    effects: { trust_roos: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Roos -> roos_q1_talk
+
+  roos_q1_talk:
+    type: message
+    text: >
+      ROOS: Lotte is mijn beste kunstenares. Haar werk verkoopt als
+      zoete broodjes, vooral bij één klant. Hij heet — ik mag eigenlijk
+      geen namen noemen. Maar hij kocht zes stukken en gaf dan
+      opdrachten. Steeds persoonlijker. Een portret van haarzelf in
+      kant. Een stuk gebaseerd op haar handschrift. Foto's van haar
+      handen terwijl ze werkt.
+
+      Lotte begon zich ongemakkelijk te voelen. Ze wilde stoppen met
+      de opdrachten. Hij werd... moeilijk.
+
+      [Roos aarzelt. Ze wil meer zeggen maar vertrouwt je nog niet
+      helemaal.]
+    effects: { trust_roos: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Noor Q1 ---
+
+  noor_q1:
+    type: tweet
+    from: noor
+    text: >
+      mijn zus is VERDWENEN en de politie zegt dat ze misschien
+      gewoon op reis is??? ZE GAAT NIET OP REIS ZONDER IETS TE
+      ZEGGEN. ik kom vanuit gent. iemand gaat mij uitleg geven.
+    effects: { trust_noor: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Noor -> noor_q1_talk
+
+  noor_q1_talk:
+    type: message
+    text: >
+      NOOR: Wie zijt gij? Weer iemand die gaat zeggen dat ik mij
+      geen zorgen moet maken? Mijn zus heeft mij niet gebeld. Haar
+      telefoon gaat naar voicemail. Haar atelier is op slot.
+
+      Lottes kantwerk lag op tafel, halfaf. Ze laat nooit een stuk
+      halfaf achter. Nooit. Dat is alsof een chirurg midden in een
+      operatie opstaat en weggaat.
+
+      ...ik ben bang.
+    effects: { trust_noor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Lotte went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Arne (was BMXing near the canal) -> arne_interview
+      - Find Bram (fisherman, was out late) -> bram_interview
+      - Find Koen (baker, starts at 5am, saw something) -> koen_interview
+      - Find Mieke (pharmacist, late-night call) -> mieke_interview
+
+  # --- Arne (saw someone at Lotte's studio) ---
+
+  arne_interview:
+    type: tweet
+    from: arne
+    text: >
+      heb vanacht nie geslapen. rare sfeer in het dorp. ik zeg niks
+      meer online maar als ge mij kent weet ge waar ge mij vindt
+    effects: { trust_arne: "+5" }
+    choices:
+      - Ask Arne about that evening -> arne_talk
+
+  arne_talk:
+    type: message
+    text: >
+      ARNE: amai ok maar ge zegt het aan niemand he. ik was bij het
+      kanaal rond 19u, bmx sessie. en ik zag die gast — ge weet wel
+      die van de galerij, die rijke klant — bij lottes atelier. hij
+      stond door het raam te kijken. toen hij mij zag liep hij weg
+      naar zijn auto. donkere bmw.
+
+      tering man ik heb niks gezegd want wie gaat mij geloven. een
+      tiener die een rijke gast beschuldigt. kut.
+    effects:
+      trust_arne: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Bram (saw late-night activity at VlaamsChem) ---
+
+  bram_interview:
+    type: tweet
+    from: bram
+    text: >
+      Herinnering: nachtvisserij op het kanaal is toegestaan met
+      vergunning. Maar wat ik de laatste nachten zie heeft niks met
+      vissen te maken.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Ask Bram what he saw -> bram_talk_night
+
+  bram_talk_night:
+    type: message
+    text: >
+      BRAM: Ik was aan het vissen, rond 23u. Ik zag het licht aangaan
+      in Lottes atelier. Ze was nog aan het werk. En dan, rond
+      middernacht, kwam er een bestelwagen van VlaamsChem langs het
+      kanaal gereden. Twee mannen stapten uit en gingen naar de
+      zijingang van de fabriek. Ze droegen iets — bakken, gesloten.
+
+      Om middernacht. Aan het kanaal. En twintig minuten later was
+      het water bij de sluis paars. Paars.
+
+      Ik heb foto's gemaakt met mijn telefoon. De kwaliteit is niet
+      geweldig maar ge kunt de kleur duidelijk zien.
+    effects:
+      trust_bram: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Koen (baker, saw car chase at dawn) ---
+
+  koen_interview:
+    type: tweet
+    from: koen
+    text: >
+      Pistolets gebakken om 5u zoals elke dag. Maar die ochtend was
+      het niet stil buiten. Helemaal niet stil.
+    effects: { trust_koen: "+5" }
+    choices:
+      - Ask Koen what he saw -> koen_talk
+
+  koen_talk:
+    type: message
+    text: >
+      KOEN: Ik begin elke dag om 5u. Die ochtend stond ik de ovens
+      aan te steken en er reed een auto voorbij — veel te snel voor
+      de kanaaldijk. Donkere BMW. Dan misschien twee minuten later
+      een tweede auto, kleiner. Die reed ook snel.
+
+      De tweede auto sloeg af naar het jaagpad richting de oude
+      sluis. De BMW reed door richting de E17.
+
+      Ik heb het aan de politie gezegd. Ze schreven het op. Dat
+      was het.
+    effects:
+      trust_koen: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Mieke (pharmacist, late night) ---
+
+  mieke_interview:
+    type: tweet
+    from: mieke
+    text: >
+      Die nacht was ik wakker door een telefoon. Nachtdienst. Maar
+      het gesprek dat ik hoorde op straat was geen noodgeval.
+    effects: { trust_mieke: "+5" }
+    choices:
+      - Ask Mieke what she heard -> mieke_talk
+
+  mieke_talk:
+    type: message
+    text: >
+      MIEKE: Ik had nachtdienst — we draaien om de beurt. Rond 2u
+      hoorde ik stemmen op straat. Twee mannen. Ze spraken luid,
+      in het Nederlands, maar een van hen had duidelijk een accent.
+      Brussels, denk ik.
+
+      Een van hen zei: "Ze heeft alles. Foto's, monsters, alles.
+      Als dat uitlekt is het gedaan." De ander zei: "Dan zorgen we
+      dat het niet uitlekt."
+
+      Ik keek door het raam. Twee mannen in pakken. Om 2u 's nachts.
+      Aan het kanaal van Spierevelde. Dat is niet normaal.
+    effects:
+      trust_mieke: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Wout (best friend)
+      and Emma (saw the obsessive client at the studio).
+    choices:
+      - Talk to Wout about that night -> wout_interview
+      - Talk to Emma -> emma_interview
+      - Find Arne -> arne_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Bram -> bram_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Koen -> koen_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Mieke -> mieke_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Wout (last to see Lotte) ---
+
+  wout_interview:
+    type: tweet
+    from: wout
+    text: >
+      die foto op lottes account. dat is zij nie. lotte post nooit
+      zonder beschrijving. lotte post nie om 2u 's nachts. iemand
+      anders heeft dat gedaan.
+    effects: { trust_wout: "+5" }
+    choices:
+      - DM Wout -> wout_talk_low
+        when:
+          state: trust_wout
+          lt: 50
+      - DM Wout -> wout_talk_high
+        when:
+          state: trust_wout
+          gte: 50
+
+  wout_talk_low:
+    type: message
+    text: >
+      WOUT: Ik waardeer dat ge u zorgen maakt maar ik ken u niet.
+      Ik wil niet met vreemden praten hierover.
+
+      [Wout moet je meer vertrouwen. Toon hem dat je serieus
+      onderzoekt, niet gewoon roddelt.]
+    effects: { trust_wout: "+5" }
+    choices:
+      - Share what you've learned about the night -> wout_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  wout_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the studio, the
+      VlaamsChem van, the men at the canal, the chase at dawn. Wout
+      is silent for a while.
+
+      WOUT: Ge probeert haar echt te vinden. Ok. Ik praat.
+    effects: { trust_wout: "+25" }
+    choices:
+      - What happened that night? -> wout_talk_high
+
+  wout_talk_high:
+    type: message
+    text: >
+      WOUT: Ze belde mij rond 23u. Ik was thuis. Ze klonk bang. Ze
+      zei "ze weten wat ik heb." Ze pakte haar laptop en haar harde
+      schijven met foto's.
+
+      Ik vroeg wie. Ze zei "de fabriek. Ze hebben mensen gestuurd."
+      En dan zei ze nog iets — "en hij was er ook. Hij is er altijd."
+
+      Ze wilde niet zeggen wie "hij" was. Ze zei "maak u geen
+      zorgen," en vertrok met een tas. Da's het laatste. 's Ochtends
+      was haar fiets er nog maar zij niet. En die grijze foto stond
+      op haar account.
+
+      Godverdomme, ik had mee moeten gaan.
+    effects:
+      trust_wout: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Emma (saw the obsessive client) ---
+
+  emma_interview:
+    type: message
+    text: >
+      EMMA: amai ok echt creepy maar ik heb die man gezien — die
+      klant van de galerij — hij stond zeker drie keer 's avonds
+      voor lottes atelier. gewoon daar. te staren naar de ramen.
+
+      de laatste keer was twee dagen voor ze verdween. hij zat in
+      zijn auto geparkeerd aan de overkant. lichten uit. gewoon
+      zitten. tering eng man.
+    effects:
+      trust_emma: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Obsessive client seen watching Lotte's studio (Arne)
+      23:00 — Lotte calls Wout, panicking, grabs evidence (Wout)
+      00:00 — VlaamsChem van at the canal, illegal dumping (Bram)
+      02:00 — Two men discussing "shutting it down" near canal (Mieke)
+      05:00 — Two cars speeding on the canal road, one toward old lock (Koen)
+
+      VlaamsChem confronted Lotte about her evidence. She fled with
+      her files. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is VlaamsChem hiding? Who ordered the
+        intimidation?
+      — The obsession: Who is this client? Why is he watching her?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate the obsessive client -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      VlaamsChem is hiding something. Lotte had proof. Now she's
+      gone and her evidence is missing from the studio.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the studio records -> studio_records
+      - Talk to Hilde the journalist -> hilde_interview
+      - Talk to Sofie (VlaamsChem technician) -> sofie_interview
+      - Talk to Els (environment schepen) -> els_interview
+      - Check the Erfgoedvereniging Het Kanaal -> erfgoed_investigation
+      - Talk to Bram about the dumping -> bram_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Studio Records ---
+
+  studio_records:
+    type: message
+    text: >
+      Lotte kept meticulous records in her studio — not just of her
+      art, but of everything she saw on the canal. Her public blog
+      shows dated photographs of water discoloration at six points
+      along the waterway. The entries near the VlaamsChem outfall are
+      marked "EVIDENCE — DO NOT DELETE."
+
+      Her last entry: "Nachtlozing gefotografeerd. Ongekende
+      secundaire buis. De concentraties zijn tien keer boven de
+      norm. Dit is misdaad."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Hilde ---
+
+  hilde_interview:
+    type: message
+    text: >
+      HILDE: Ik praat niet over bronnen. Punt.
+    effects: { trust_hilde: "+5" }
+    choices:
+      - Show Hilde the evidence you have -> hilde_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  hilde_with_evidence:
+    type: message
+    text: >
+      HILDE: ...ge hebt meer dan ik verwachtte.
+
+      Ok. Lotte en ik werkten samen. Ze had foto's van een illegale
+      lozingsbuis — VlaamsChem heeft een tweede uitlaat die op geen
+      enkele vergunning staat. Ze had watermonsters met zware metalen
+      concentraties die tien keer boven de wettelijke limiet lagen.
+
+      We zouden samen publiceren. Dan werd ze stil. En twee dagen
+      later brak iemand in mijn auto in en stal mijn backup-schijf.
+
+      Lotte leeft. Ze contacteerde mij een keer, van een
+      wegwerp-telefoon. Ze zei dat ze zich verstopt. Ze zei "ze
+      bedreigden mij bij het atelier en er is nog iemand die mij
+      niet met rust laat."
+
+      Ik kan u niet zeggen waar ze is. Maar met genoeg bewijs kan ik
+      publiceren en het veilig maken voor haar om terug te komen.
+    effects:
+      trust_hilde: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> hilde_hint
+      - Back to investigation hub -> investigation_hub
+
+  hilde_hint:
+    type: message
+    text: >
+      HILDE: De fabriek stuurde hun directeur — Rogiers — en een
+      advocaat naar haar atelier die avond. Ze zeiden dat ze alles
+      moest overhandigen of juridische gevolgen riskeerde.
+      Intimidatie vermomd als legale procedure.
+
+      Maar ze zei ook iets over een klant. Iemand die haar overal
+      volgde. Iemand die altijd wist waar ze was. Dat is een ander
+      probleem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sofie (VlaamsChem whistleblower) ---
+
+  sofie_interview:
+    type: message
+    text: >
+      SOFIE: Ik werk bij VlaamsChem. Ik ben labotechnieker. Ik doe
+      testen, ik schrijf rapporten.
+
+      Maar de rapporten die ik schrijf... zijn niet altijd de
+      rapporten die naar de overheid gaan.
+    effects: { trust_sofie: "+10" }
+    choices:
+      - What do you mean? -> sofie_detail
+
+  sofie_detail:
+    type: message
+    text: >
+      SOFIE: Ik meet zware metalen. Cadmium, kwik, lood. En kleurstoffen
+      — aniline, azokleuren, het hele gamma. Mijn cijfers gaan naar mijn
+      baas. Ergens tussen mijn bureau en het officiële rapport veranderen
+      ze. Lager. Altijd lager.
+
+      Lottes monsters van buiten de buis kwamen overeen met MIJN
+      originele cijfers, niet met wat in de officiële rapporten staat.
+      Ze had onafhankelijk bewijs dat VlaamsChem hun lozingsdata
+      vervalst.
+
+      Ik ben bang. Ik heb een gezin. Maar ik heb kopieën van mijn
+      originele rapporten bewaard. Als iemand mij kan beschermen,
+      deel ik ze.
+    effects:
+      trust_sofie: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Els (environment schepen) ---
+
+  els_interview:
+    type: message
+    text: >
+      ELS: Als schepen van milieu neem ik deze beschuldigingen
+      ernstig. Maar VlaamsChem geeft werk aan 150 mensen in deze
+      gemeente. De burgemeester dringt aan op "dialoog."
+
+      Officieus? Ik heb de inspectierapporten van de provincie
+      gezien. VlaamsChem slaagt elke keer. Maar die inspecties
+      worden twee weken op voorhand aangekondigd. Ze kuisen op
+      voor de inspecteurs komen.
+
+      Lotte had onaangekondigde data. Da's wat het gevaarlijk maakt.
+
+      En schepen Pieter Van Damme — die van ruimtelijke ordening —
+      die blokkeert elke milieumotie die ik indien. Ik denk dat hij
+      betaald wordt door VlaamsChem. Maar ik kan het niet bewijzen.
+    effects:
+      trust_els: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Erfgoedvereniging Het Kanaal ---
+
+  erfgoed_investigation:
+    type: tweet
+    from: erfgoed_kanaal
+    text: >
+      ALARM: Melding van abnormale verkleuring van het kanaalwater
+      bij de sluis. Foto's en monsters genomen. We eisen een
+      onaangekondigde inspectie van VlaamsChem.
+    choices:
+      - Check their data -> erfgoed_data
+
+  erfgoed_data:
+    type: message
+    text: >
+      De Erfgoedvereniging Het Kanaal documenteert waterkwaliteit
+      al vier jaar. Hun data toont een duidelijk patroon: pieken in
+      zware metalen en kleurstoffen die overeenkomen met het
+      productieschema van VlaamsChem. Hoger op weekdagen, lager in
+      het weekend. Hoger 's nachts, lager overdag.
+
+      Het patroon is onmiskenbaar. Dit is structurele, opzettelijke
+      illegale lozing getimed om detectie te vermijden.
+
+      Lotte was lid. Ze maakte de meeste foto's van het kanaal.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Bram dumping ---
+
+  bram_dumping:
+    type: message
+    text: >
+      BRAM: Ik toon u iets. Vorige maand trok ik mijn netten op
+      bij de sluis en vond dit — een plastic vat, aangevreten,
+      lekkend. Het etiket was halfweg weg maar ik kon lezen
+      "textielverf" en een VlaamsChem batchnummer.
+
+      Ik fotografeerde het en stuurde het naar Lotte. Ze zei dat
+      het het ontbrekende stuk was — bewijs dat ze niet alleen
+      lozen via buizen maar ook vaten dumpen. In het kanaal.
+
+      Ik heb de foto's nog. En het batchnummer.
+    effects:
+      trust_bram: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      A mysterious client. Six commissioned pieces. Personal requests.
+      Watching the studio at night. Someone who always knew where
+      Lotte was.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Ask Roos about the client's identity -> roos_client
+        when:
+          state: trust_roos
+          gte: 5
+      - Talk to Wout about the obsessive client -> wout_client
+        when:
+          state: trust_wout
+          gte: 20
+      - Talk to Arne (more detail on the studio incident) -> arne_detail
+      - Talk to Mieke about a strange visitor -> mieke_visitor
+      - Check the anonymous account @tibo_geerts -> tibo_investigation
+      - Talk to Jolien the bookseller -> jolien_interview
+        when:
+          state: trust_jolien
+          gte: 40
+      - Talk to Commissaris Verbeke -> commissaris_interview
+        when:
+          state: trust_commissaris
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Roos reveals the client ---
+
+  roos_client:
+    type: message
+    text: >
+      ROOS: Ok, ik zeg het. De klant heet Marc Desmet. Zakenman uit
+      Brussel. Rijke textielhandelaar. Hij kocht zes stukken van
+      Lotte — voor duizenden euro's. Dan begonnen de opdrachten.
+
+      Eerst: "een stuk geïnspireerd door vrouwelijke schoonheid."
+      Dan: "een portret van een specifieke vrouw." Dan: "haar
+      handen, close-up, in kant."
+
+      Het was Lotte. Altijd Lotte. Hij wilde niet haar kunst. Hij
+      wilde haar.
+
+      De laatste opdracht weigerde ze. Het was een levensgrote
+      figuur, haar lichaam, in kant. Ze zei nee. Hij werd kwaad.
+      Zei dat ze ondankbaar was. Dat hij haar carrière had gemaakt.
+
+      Een week later was ze weg.
+    effects:
+      trust_roos: "+15"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Wout on the client ---
+
+  wout_client:
+    type: message
+    text: >
+      WOUT: Die Marc Desmet? Tering man, die gast is ziek. Lotte
+      vertelde mij dat hij haar begon te stalken. Berichten om 3u
+      's nachts. Cadeaus die voor haar deur lagen — dure kant uit
+      Brussel, parfum, shit die ze nooit gevraagd had.
+
+      Ze blokkeerde hem op alle sociale media. Dan maakte hij een
+      nieuw account aan. En nog een. En nog een.
+
+      Een maand geleden vond ze een GPS-tracker in haar fietstas.
+      Klein ding, vastgeklikt aan de binnenkant. Ze flipte. Ze
+      gooide het in het kanaal.
+
+      Maar hij wist nog steeds waar ze was. Altijd.
+    effects:
+      trust_wout: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Arne detail ---
+
+  arne_detail:
+    type: message
+    text: >
+      ARNE: ok zenne ik heb nie alles gezegd. toen ik die gast zag
+      bij lottes atelier had hij iets in zijn hand. een sleutel.
+      hij probeerde de deur open te maken. niet inbreken — hij had
+      een echte sleutel.
+
+      hoe heeft een klant een sleutel van haar atelier? kut man
+      dat klopt nie. ik denk dat hij een kopie heeft laten maken
+      of zoiets.
+
+      en hij had een tas bij zich. zo'n zwarte laptoptas. hij ging
+      naar binnen en kwam vijf minuten later terug. zonder tas.
+
+      hij heeft iets achtergelaten. of iets meegenomen.
+    effects:
+      trust_arne: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mieke strange visitor ---
+
+  mieke_visitor:
+    type: message
+    text: >
+      MIEKE: Er is een man die de laatste maanden regelmatig in de
+      apotheek komt. Niet van hier. Brussels accent. Dure kleren.
+      Hij kocht dingen die... niet normaal zijn voor een bezoeker.
+
+      Een verrekijker. "Voor vogelkijken." Batterijen voor een klein
+      apparaat. En hij vroeg mij eens, heel terloops, of ik wist
+      waar Lotte Vermeersch haar atelier had. Ik zei: "Aan het
+      kanaal, iedereen weet dat."
+
+      Nu denk ik: waarom vraagt een vreemdeling dat? Hij wist het
+      al. Hij wilde bevestiging.
+    effects:
+      trust_mieke: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Tibo (anonymous account) ---
+
+  tibo_investigation:
+    type: tweet
+    from: tibo
+    text: >
+      Ze had moeten luisteren. Ik probeerde haar te beschermen.
+      Niemand begreep haar werk zoals ik.
+    choices:
+      - Look at this account's history -> tibo_posts
+
+  tibo_posts:
+    type: message
+    text: >
+      @tibo_geerts: account aangemaakt 7 maanden geleden. Posts gaan
+      allemaal over Lottes werk. Commentaar op elke foto, elk stuk,
+      elke update. De toon verschuift over tijd:
+
+      Maand 1: "Prachtig werk. Ge doet wat niemand anders durft."
+      Maand 3: "Waarom antwoordt ge niet op mijn berichten? Ik wil
+      gewoon samenwerken."
+      Maand 5: "Ik zie u in het café met andere mensen. Ge hebt wel
+      tijd voor hen maar niet voor mij?"
+      Maand 7: "Ik weet waar ge naartoe gaat. Ik ken uw schema.
+      Ik ben altijd dichtbij."
+
+      Het account heeft geen foto's, geen persoonlijke details.
+      Alleen Lotte. Altijd Lotte.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> tibo_style
+
+  tibo_style:
+    type: message
+    text: >
+      @tibo_geerts vergelijken met bekende teksten van Marc Desmet:
+
+      Zelfde gebruik van textieljargon. Zelfde manier van schrijven —
+      formeel Nederlands met Brusselse wendingen. Zelfde kennis van
+      Lottes specifieke technieken die alleen iemand die haar werk
+      van dichtbij volgt zou hebben.
+
+      En een post van @tibo_geerts: "Uw nieuw stuk met de
+      Binche-techniek is magnifiek." Die techniek wordt niet
+      vermeld op de galerij-website. Alleen in Lottes privé
+      werknota's.
+
+      Het is Desmet. Het anonieme account is Marc Desmet.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Jolien ---
+
+  jolien_interview:
+    type: message
+    text: >
+      JOLIEN: Lotte liet iets bij mij achter. Een waterdichte
+      koffer. Ze zei: "als iemand vraagt naar het kanaal bij de
+      sluis, geef ze dit."
+
+      Ze zag er bang uit. Ze zei dat ze kopieën had gemaakt van
+      alles maar dat ze één set op een plek nodig had waar niemand
+      zou zoeken. Een boekhandel leek perfect.
+    effects: { trust_jolien: "+10" }
+    choices:
+      - What's in the case? -> jolien_case
+
+  jolien_case:
+    type: message
+    text: >
+      Jolien haalt een waterdichte Pelican-koffer vanonder de
+      toonbank.
+
+      JOLIEN: Ze zei dat ge zou komen. Hier.
+
+      Binnenin: een USB-stick en een set afgedrukte foto's. De
+      foto's tonen een ondergrondse buis — niet het officiële
+      lozingspunt, maar een tweede, verborgen uitlaat — en vaten
+      op de kanaalbodem. De USB-stick bevat watermonsters, chemische
+      analyses en Lottes gedetailleerd rapport.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Commissaris Verbeke ---
+
+  commissaris_interview:
+    type: message
+    text: >
+      COMMISSARIS VERBEKE: Off the record — en ik meen het,
+      volledig off the record — ik wilde VlaamsChem onderzoeken.
+      Mijn overste zei dat ik moest stoppen. Hij zei dat de
+      provincie "bevoegd" was. Dat is code voor "blijf eraf."
+
+      De Desmet-situatie is anders. Daar wist ik niets van tot nu.
+      Als ge bewijs hebt van stalking kan ik daarmee aan de slag.
+      Dat is duidelijk mijn bevoegdheid.
+
+      Breng mij iets stevigs en ik heropen de zaak.
+    effects:
+      trust_commissaris: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Lotte than anyone in Spierevelde. Who is responsible?
+    choices:
+      - Confront Marc Desmet (the obsessive client) -> confront_desmet
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Filip Rogiers (VlaamsChem director) -> confront_rogiers
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Schepen Pieter Van Damme (political protection) -> confront_pieter
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Marc Desmet (Best Ending) ---
+
+  confront_desmet:
+    type: message
+    text: >
+      You present your evidence to Marc Desmet:
+
+      "I know @tibo_geerts is your account. I know you put a GPS
+      tracker in Lotte's bike bag. I know you had a key to her
+      studio. I know you watched her from your car at night. I have
+      witnesses, the anonymous posts, and the gallery records."
+    choices:
+      - Send -> desmet_response
+
+  desmet_response:
+    type: message
+    text: >
+      Desmet doesn't reply for a long time. Then:
+
+      DESMET: You don't understand. I was her biggest supporter. I
+      made her career. Without my purchases, nobody would know her
+      name. I just wanted to be close to the art. Close to the
+      process. She owes me that.
+
+      That's not support. That's obsession.
+
+      You've already sent the evidence to Commissaris Verbeke. And
+      to Hilde Mertens.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Commissaris Verbeke reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the studio key, the witness
+      testimonies — Marc Desmet is arrested for stalking and
+      harassment. A second GPS tracker is recovered from under the
+      seat of Lotte's bicycle.
+
+      Hilde Mertens, finally in possession of Lotte's full evidence
+      package, publishes the VlaamsChem story in De Standaard. The
+      provincie orders an unannounced inspection. The factory is shut
+      down pending environmental remediation. Filip Rogiers faces
+      criminal charges for falsifying discharge reports. Schepen
+      Pieter Van Damme resigns when his financial ties to VlaamsChem
+      are revealed.
+
+      And Lotte Vermeersch, reading the story from a friend's house
+      in Brugge, calls her sister for the first time in ten days.
+
+      "Ik kom naar huis."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lotte
+    text: >
+      het kanaal liegt niet. en de mensen van spierevelde ook niet.
+      merci om niet op te geven.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Filip Rogiers (Partial Ending) ---
+
+  confront_rogiers:
+    type: message
+    text: >
+      You present the pollution evidence to Filip Rogiers:
+
+      "I have photographs of the undeclared discharge pipe. I have
+      water samples showing heavy metal and dye concentrations ten
+      times the legal limit. I have your original lab reports showing
+      the data was falsified. I have the barrel with your batch
+      number."
+    choices:
+      - Send -> rogiers_response
+
+  rogiers_response:
+    type: message
+    text: >
+      ROGIERS: Dit gesprek wordt doorgestuurd naar onze juridische
+      dienst. Elke publicatie van lasterlijke beweringen zal leiden
+      tot onmiddellijke gerechtelijke stappen. VlaamsChem heeft
+      altijd binnen de wettelijke kaders geopereerd.
+
+      Maar het is te laat. Je hebt het bewijs naar Hilde gestuurd,
+      naar de Erfgoedvereniging Het Kanaal, en naar de provincie.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. VlaamsChem is ordered to halt all
+      discharge pending investigation. The factory may close. A
+      hundred and fifty jobs hang in the balance. The village is
+      divided.
+
+      But Lotte?
+
+      Without the stalking evidence, Marc Desmet is never
+      investigated. He continues to visit Spierevelde. He creates a
+      new anonymous profile. He finds a new artist to "support."
+
+      Three months later, Lotte reads about VlaamsChem online. She
+      returns quietly. She moves her studio. She locks everything
+      twice. She checks her bike every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Lotte walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lotte
+    text: "ik ben terug. het water is proper. de rest... we zien wel."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Schepen Van Damme (Wrong Ending) ---
+
+  confront_pieter:
+    type: message
+    text: >
+      You confront Schepen Pieter Van Damme with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> pieter_response
+
+  pieter_response:
+    type: tweet
+    from: dieter
+    text: >
+      Mijn cliënt neemt kennis van uw beschuldigingen. Elke publieke
+      verspreiding van lasterlijke beweringen zal leiden tot
+      onmiddellijke juridische stappen. — Kantoor Coppens & Partners,
+      Brussel
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The schepen's lawyer buries your accusation. Without a direct
+      link between Van Damme and VlaamsChem's dumping — and there
+      isn't one beyond political protection — your evidence is
+      insufficient.
+
+      VlaamsChem continues to operate. Desmet continues to watch.
+      Lotte stays in hiding.
+
+      Six months later, @tibo_geerts creates a new account. It
+      follows Lotte's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SPIEREVELDE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Lotte's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      artistic freedom, and the courage of small communities.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or thoughts of suicide, help is available:
+      Zelfmoordlijn: 1813 (gratis en anoniem)
+      1712 (geweld, misbruik, stalking)
+      Meldpunt milieuhinder: 1700

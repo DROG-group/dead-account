@@ -1,0 +1,1803 @@
+# DEAD ACCOUNT — A TactCheck Gamepatch Scenario
+# Story 047: Lithuania 2 — Gintaruostis
+# An investigation game on a simulated Mastodon instance
+#
+# Player investigates the disappearance of young fisherman/boat captain
+# Dovydas Kazlauskas in the fictional coastal fishing town of Gintaruostis
+# near Klaipeda, Lithuania.
+
+meta:
+  title: "Dead Account — Gintaruostis"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_matas: 0
+    trust_ugne: 0
+    trust_gintare: 0
+    trust_rokas: 0
+    trust_vilte: 0
+    trust_lukas: 0
+    trust_agne: 0
+    trust_tomas: 0
+    trust_ruta: 0
+    trust_andrius: 0
+    trust_dalia: 0
+    trust_jonas: 0
+    trust_egle: 0
+    trust_vytautas: 0
+    trust_sigita: 0
+    trust_paulius: 0
+    trust_birute: 0
+    trust_antanas: 0
+    trust_ieva: 0
+    trust_komisaras: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    stalker_evidence: 0
+    port_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to gintaruostis. sea air and new beginnings"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Gintaruostis.social"
+    description: "Sveiki atvyke i Gintaruoscio bendruomenes Mastodon instance"
+    avatar_url: /gamepatch/assets/dead-account/gintaruostis_bot.png
+
+  npcs:
+    # === Dovydas's Inner Circle ===
+    dovydas:
+      name: "Dovydas Kazlauskas"
+      bio: "laivo kapitonas | zvejas is gintaruoscio | jura yra namai"
+      avatar: avatars/dovydas.jpg
+    matas:
+      name: "Matas Butkus"
+      bio: "17 | dovydo ipainis | bracom su juo ant laivo | #JusticiaDevui"
+      avatar: avatars/matas.jpg
+    ugne:
+      name: "Ugne Rimkute"
+      bio: "16 | fotografija & jura | dovydas ismooke mane plaukioti | kur jis"
+      avatar: avatars/ugne.jpg
+    rokas:
+      name: "Rokas Kazlauskas"
+      bio: "dovydo brolis | klaipeda | mano brolis neisnyksta be priezasties"
+      avatar: avatars/rokas.jpg
+    vilte:
+      name: "Vilte Stankeviciute"
+      bio: "dovydo draugio | slaugytoja | gintaruostis | kur tu dovydai"
+      avatar: avatars/vilte.jpg
+
+    # === The Ex-Girlfriend / Stalker Thread ===
+    gintare:
+      name: "Gintare Paulauskaite"
+      bio: "23 | muzika & menas | gintaruostis born | some people dont appreciate what they have"
+      avatar: avatars/gintare.jpg
+    anon_juros:
+      name: "juros.sirdis"
+      bio: "."
+      avatar: avatars/anon.jpg
+
+    # === Local Government / Port Expansion ===
+    tomas:
+      name: "Tomas Zaremba"
+      bio: "Gintaruoscio meras | Bendruomene ir pletrai | #GintaruostisAuga"
+      avatar: avatars/tomas.jpg
+    andrius:
+      name: "Andrius Petrauskas"
+      bio: "Uosto pletros projekto direktorius | BalticPort Development | infrastruktura ateiciai"
+      avatar: avatars/andrius.jpg
+    savivaldybe:
+      name: "Gintaruoscio savivaldybe"
+      bio: "Oficiali paskyra | Naujienos ir paslaugu informacija | Darbo laikas: Pr-Pn 8-17"
+      avatar: avatars/savivaldybe.jpg
+    dalia:
+      name: "Dalia Navickiene"
+      bio: "advokate | Navickiene & Partners | verslo teise | klaipeda"
+      avatar: avatars/dalia.jpg
+
+    # === Local Community ===
+    ruta:
+      name: "Ruta Jankauskiene"
+      bio: "zveju kooperatyvo pirmininke | gintaruostis | musu jura musu gyvenimas"
+      avatar: avatars/ruta.jpg
+    jonas:
+      name: "Jonas Simulis"
+      bio: "zvejas | 45 metai juuroj | cia mano namai ir niekas tu neatims"
+      avatar: avatars/jonas.jpg
+    egle:
+      name: "Egle Vaiciulyte"
+      bio: "zurnaliste | Pajurio zinios | vietines naujienos | tiesa pirmiausia"
+      avatar: avatars/egle.jpg
+    birute:
+      name: "Birute Mockiene"
+      bio: "kavinininke | Gintaro Puodas kavine | gintaruostis | kava ir paskalos"
+      avatar: avatars/birute.jpg
+    antanas:
+      name: "Antanas Gricius"
+      bio: "uosto meistras | gintaruostis | laivai yra mano gyvenimas"
+      avatar: avatars/antanas.jpg
+    sigita:
+      name: "Sigita Butkuviene"
+      bio: "vaistininke | gintaruoscio vaistine | sveikata pirmiausia"
+      avatar: avatars/sigita.jpg
+    vytautas:
+      name: "Vytautas Jankauskas"
+      bio: "pensininkas zvejas | pamena viską | gintaruostis nuo 1960"
+      avatar: avatars/vytautas.jpg
+    paulius:
+      name: "Paulius Dargis"
+      bio: "aplinkosaugos inspektorius | klaipedos regionas | gamta ir istatymas"
+      avatar: avatars/paulius.jpg
+    ieva:
+      name: "Ieva Kazlauskiene"
+      bio: "dovydo ir roko mama | kur mano sunus | pagalba: 116 123"
+      avatar: avatars/ieva.jpg
+
+    # === Teens ===
+    lukas:
+      name: "Lukas"
+      bio: "15 | surfas & skeitas | gintaruostis | jura gydo"
+      avatar: avatars/lukas.jpg
+    agne:
+      name: "Agne"
+      bio: "16 | dailininke | gintaruostis | juros spalvos ant drobe"
+      avatar: avatars/agne.jpg
+
+    # === Police ===
+    komisaras:
+      name: "Komisaras Kavaliauskas"
+      bio: "Gintaruoscio policija | Pagalba: 112 | Informacija: komisariatas@gintaruostis.lt"
+      avatar: avatars/komisaras.jpg
+
+    # === Media / Community accounts ===
+    pajurio_zinios:
+      name: "Pajurio zinios"
+      bio: "Gintaruoscio ir pajurio naujienos | redakcija@pajuriozinios.lt"
+      avatar: avatars/pajurio_zinios.jpg
+    oru_prognoze:
+      name: "Oru prognoze — Gintaruostis"
+      bio: "Oru prognoze ir perspėjimai | Automatine stotis | Atnaujinimas kas valanda"
+      avatar: avatars/oru_prognoze.jpg
+    zveju_draugija:
+      name: "Gintaruoscio zveju draugija"
+      bio: "Nuo 1923 | Zvejai uz zvejus | Tradicijos ir teises"
+      avatar: avatars/zveju_draugija.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN GINTARUOSTIS
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to gintaruostis.social — the community Mastodon instance for
+      the coastal fishing town of Gintaruostis, near Klaipeda, Lithuania.
+
+
+      The local feed is agitated. Something is wrong. Posts keep mentioning
+      the same name. People are scared, angry, desperate.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name dominates everything:
+      @dovydas_kazlauskas.
+
+
+      A 24-year-old fisherman and boat captain. Born and raised in
+      Gintaruostis. He ran his grandfather's fishing boat, the Neringa.
+      People loved him. He taught kids to sail. He organized beach cleanups.
+      He fought against the port expansion that threatens to destroy the
+      fishing harbor.
+
+
+      Six days ago, his boat was found drifting empty two kilometers off
+      the coast. No sign of Dovydas. His phone, his jacket, his life
+      vest — all still on the boat.
+    choices:
+      - Look at his profile -> dovydas_profile
+
+  dovydas_profile:
+    type: tweet
+    from: dovydas
+    text: >
+      jie nori sunaikinti viska ka musu seneliai statė. uostas nėra
+      korporacijų žaislą. šitas kaimelis gyvena iš juros ir jura
+      gyvena iš musu. rytoj einu i tarybos posedi. turiu irodymu apie
+      mero kyšius.
+    choices:
+      - That's his last post... -> grey_sea
+
+  grey_sea:
+    type: message
+    text: >
+      Two days after that post, his account uploaded a single image:
+      a grey sea photograph. Blurred, taken at night from what looks
+      like a boat deck. No caption. Posted at 4:17am.
+
+
+      His friends say Dovydas never posted without a caption. He never
+      posted at 4am. He always signed off with "Geros nakties, jura."
+
+
+      The police say he probably fell overboard while night fishing.
+      Nobody buys it. Dovydas could swim before he could walk.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: komisaras
+    text: >
+      Del Gintaruoscio gyventojo dingimo: tyrimas vyksta.
+      Preliminariai vertinama kaip nelaimingas atsitikimas juoroje.
+      Bet kokia informacija prašome pranešti tel. 112 arba atvykti
+      i komisariata.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The feed is chaos. Dovydas's friend @vilte_stankeviciute is
+      posting desperately. His brother @rokas_kazlauskas is driving down
+      from Klaipeda threatening to "flip this town upside down." The old
+      fisherman @jonas_simulis says he warned Dovydas to be careful. The
+      teens — @matas, @ugne, @lukas — are furious.
+
+
+      The fishing cooperative chair @ruta_jankauskiene is posting about
+      the port expansion vote that was scheduled for the day after Dovydas
+      disappeared.
+
+
+      And @gintare_paulauskaite — Dovydas's ex-girlfriend — is posting
+      cryptic, unsettling things about destiny and people who don't
+      appreciate what they have.
+
+
+      The journalist @egle_vaiciulyte is asking hard questions.
+
+
+      Nobody believes Dovydas fell off his own boat.
+    effects: { trust_matas: "+5", trust_rokas: "+5" }
+    choices:
+      - Start following Dovydas's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+
+      Get to know Gintaruostis. Follow Dovydas's contacts and read their
+      posts. The fishing community is tight — earn their trust and they
+      will talk.
+
+
+      Start with the people who seem most willing to open up.
+    choices:
+      - Talk to Birute (cafe owner, knows everyone) -> birute_intro
+      - Talk to Jonas (old fisherman, knew Dovydas since birth) -> jonas_intro
+      - Talk to Matas (teen, Dovydas's apprentice) -> matas_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief about Dovydas with the daily rhythms of
+      a Lithuanian fishing town: weather warnings, catch reports, the
+      cafe's daily soup, the church bell schedule.
+
+
+      Key names keep appearing: Vilte (close friend, nurse), Rokas
+      (brother, angry), Ruta (fishing cooperative, political), Jonas
+      (veteran fisherman, deeply sad).
+
+
+      Also prominent: BalticPort Development — the company behind the
+      port expansion. Their posts are corporate polish. Dovydas's posts
+      were raw truth.
+
+
+      And then there's Gintare. The ex. Her posts are... strange.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Birute -> birute_intro
+      - Talk to Jonas -> jonas_intro
+      - Talk to Matas -> matas_intro
+
+  # --- Birute (cafe owner, social map) ---
+
+  birute_intro:
+    type: tweet
+    from: birute
+    text: >
+      Gintaro Puodas kavine atidaryta kaip visada. Dovydo staliukas
+      laukia. Jo kava ant stalo. Grizk namo, vaikeli.
+    effects: { trust_birute: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Birute -> birute_talk
+
+  birute_talk:
+    type: message
+    text: >
+      BIRUTE: Oh, you're new here? Nu, bad timing, bad timing. The
+      whole town is falling apart over Dovydas.
+
+
+      Let me tell you who's who. Vilte — she's a nurse, one of Dovydas's
+      best friends since childhood. She's devastated. Rokas is his older
+      brother from Klaipeda, tipo very angry, that one will punch walls
+      before he cries. Jonas Simulis — oldest fisherman here, taught
+      Dovydas's grandfather. He knows this sea better than anyone.
+
+
+      Ruta Jankauskiene runs the fishing cooperative. She and Dovydas
+      were fighting the port expansion together. The meras — Tomas
+      Zaremba — he wants to sell our harbor to BalticPort Development.
+      Dovydas had proof the meras was taking kickbacks.
+
+
+      And then... nu, there's Gintare. His ex. That girl is not right
+      in the head, I'm telling you. After they broke up she tipo just...
+      didn't stop. You know what I mean.
+    effects: { trust_birute: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Gintare -> birute_gintare
+      - Ask about the port expansion -> birute_port
+      - Thank her and move on -> quest1_hub
+
+  birute_gintare:
+    type: message
+    text: >
+      BIRUTE: Blet, where do I start. They dated for a year. Dovydas
+      broke it off because she was ziauriai controlling. Checked his
+      phone, showed up at the harbor unannounced, got angry when he
+      talked to other women. Classic stuff.
+
+
+      After the breakup she'd come to the cafe and just... sit there.
+      Watching the door. Waiting for him. She'd order one coffee and
+      nurse it for three hours. She posted stuff online too — weird
+      poetry about the sea taking what it wants. She followed him
+      everywhere.
+
+
+      Dovydas told me once, "Birute, she scares me." A man who goes
+      out to sea in storms said that about a 23-year-old girl.
+    effects: { trust_birute: "+5" }
+    choices:
+      - Ask about the port -> birute_port
+      - Move on -> quest1_hub
+
+  birute_port:
+    type: message
+    text: >
+      BIRUTE: The port expansion. Nu, it's simple. BalticPort Development
+      wants to build a container terminal. Modern, big, international.
+      Sounds great, right? Except it would destroy the fishing harbor.
+      Our boats, our livelihoods, our history — nachui, gone.
+
+
+      The meras supports it because — and everyone knows this — he's
+      getting paid. Dovydas had documents. Contracts, bank transfers,
+      something. He was going to present them at the council meeting.
+
+
+      The council meeting that was supposed to happen the day after he
+      disappeared.
+
+
+      Coincidence? Sūdas. I don't believe in coincidences.
+    effects: { trust_birute: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jonas (old fisherman, witness tease) ---
+
+  jonas_intro:
+    type: tweet
+    from: jonas
+    text: >
+      45 metu ant šitos juros. Išauginau vaikus, palaidojau draugu.
+      Dovydas buvo kaip sunus. Jis neiškrito iš savo laivo. Nebukit
+      kvaili.
+    effects: { trust_jonas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jonas -> jonas_talk
+
+  jonas_talk:
+    type: message
+    text: >
+      JONAS: I taught that boy's grandfather to mend nets. I watched
+      Dovydas grow up on these docks. He could handle the Neringa in
+      any weather. He's been captain since he was eighteen. Six years
+      without a single incident.
+
+
+      And now they want me to believe he fell overboard? At night? On
+      a calm sea? Nx, that's shit and everyone knows it.
+
+
+      The night before he disappeared, I saw something. I'm old, not
+      blind. There was a car at the harbor at midnight. Not a fisherman's
+      car. A new car. Dark windows. I wrote down the plate number out
+      of habit. An old fisherman's paranoia.
+    effects: { trust_jonas: "+10" }
+    choices:
+      - What was the plate number? -> jonas_plate
+      - Move on -> quest1_hub
+
+  jonas_plate:
+    type: message
+    text: >
+      JONAS: The plate was registered in Klaipeda. I asked a friend —
+      retired police — to check it quietly. It belongs to a leasing
+      company. The leasing company's biggest client? BalticPort
+      Development.
+
+
+      I told the police this. Komisaras Kavaliauskas wrote it down.
+      That was a week ago. Nobody's followed up.
+
+
+      Something stinks worse than a three-day-old catch.
+    effects: { trust_jonas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Matas (teen apprentice, witness tease) ---
+
+  matas_intro:
+    type: tweet
+    from: matas
+    text: >
+      blet kas cia darosi. dovydas buvo tipo geriausias zmogus šitam
+      kaimelyje ir visi tiesiog sedi ant subines ir nieko nedaro.
+      policija sako nelaimingas atsitikimas?? nx koks atsitikimas blet
+      jis geriausiai plaukioja is visu cia
+    effects: { trust_matas: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Matas -> matas_talk_early
+
+  matas_talk_early:
+    type: message
+    text: >
+      MATAS: tu kas? naujas cia? nu ok whatever. tipo dovydas ismooke
+      mane visko apie zvejoklę. jis buvo kaip vyresnis brolis man.
+      kiekviena savaitgali ant Neringos — mokino laivo daliu, mazgu,
+      navigacijos. ziauriai kietas zmogus.
+
+
+      ir tipo as maciau kazkoka suda pries jam dingstant bet visi sako
+      kad as vaikiukas ir neismanau nieko. blet man 17 as nesu aklas.
+
+
+      ta jo buvusi — gintare — ji sedejo savo masinoj prie uosto ta
+      vakara. tiesiog sedejo tamsoj ir ziurejo i Neringą. tipo ziauriai
+      creepy sudas
+    effects: { trust_matas: "+10" }
+    choices:
+      - What else did you see? -> matas_hint
+      - Move on -> quest1_hub
+
+  matas_hint:
+    type: message
+    text: >
+      MATAS: nu dar maciau tipo kazka ant laivo. buvo sutemę ir as
+      ziurejau per telefono kamera su zoom tipo. ant Neringos denio
+      kazkos judejo. ne dovydas — per mažas. ir paskui isejo ir
+      nuejo i ta tamsia masina prie uosto.
+
+
+      as nezinau ar tai gintare ar kas bet blet kazkos buvo ant to
+      laivo prieš jam dingstant. ir niekas manęs neklauso nachui
+    effects: { trust_matas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're building a picture of Gintaruostis. A Lithuanian coastal
+      fishing town where generations have lived off the sea. A young
+      boat captain who was fighting to protect his community. A
+      disappearance nobody believes was an accident.
+
+
+      Two shadows hang over this: a stalker ex-girlfriend and a corrupt
+      port expansion deal.
+
+
+      Keep building trust. More people will talk.
+    choices:
+      - Talk to Vilte (Dovydas's close friend) -> vilte_q1
+      - Talk to Rokas (Dovydas's brother) -> rokas_q1
+      - Talk to Ruta (fishing cooperative chair) -> ruta_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Vilte Q1 ---
+
+  vilte_q1:
+    type: tweet
+    from: vilte
+    text: >
+      dovydai, jeigu tu kur nors skaitai šita — paskambink. bet kam.
+      roka, mane, mama. mes visi laukiam. tavo laivas laukia.
+    effects: { trust_vilte: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Vilte -> vilte_q1_talk
+
+  vilte_q1_talk:
+    type: message
+    text: >
+      VILTE: I don't know you. Why should I talk to you?
+
+
+      ...sorry. I'm exhausted. I've been working double shifts at the
+      clinic and spending every free hour putting up posters. Nobody
+      sleeps in this town anymore.
+
+
+      [Vilte is guarded. Build more trust before she opens up.]
+    effects: { trust_vilte: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Rokas Q1 ---
+
+  rokas_q1:
+    type: tweet
+    from: rokas
+    text: >
+      MANO BROLIS DINGO IR POLICIJA SAKO KAD JIS TIKRIAUSIAI IŠKRITO
+      IŠ LAIVO??? JIS PLAUKIOJA NUO 5 METU AMŽIAUS. ATVAŽIUOJU IŠ
+      KLAIPEDOS IR KAŽKAS MAN PAAIŠKINS KAS CIA VYKSTA.
+    effects: { trust_rokas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Rokas -> rokas_q1_talk
+
+  rokas_q1_talk:
+    type: message
+    text: >
+      ROKAS: Who the fuck are you? Another person who's going to tell
+      me to calm down?
+
+
+      My brother called me two nights before he vanished. He said he
+      had proof the meras was taking money from BalticPort. Bank
+      transfers, contracts, emails. He was going to blow it up at the
+      council meeting.
+
+
+      He also said... he said Gintare was getting worse. She was
+      following him again. Showing up at the harbor, leaving stuff on
+      his boat. He found flowers tied to the Neringa's wheel. She
+      carved their initials into the hull. He was scared of her but
+      felt stupid saying it because blet she's a girl and people don't
+      take that shit seriously.
+    effects: { trust_rokas: "+10" }
+    choices:
+      - What do you think happened? -> rokas_theory
+      - Move on -> quest1_hub
+
+  rokas_theory:
+    type: message
+    text: >
+      ROKAS: I think two things happened at the same time and one of
+      them got him. Either BalticPort's people did something because he
+      was about to expose their dirty deal with the meras. Or Gintare
+      finally crossed the line.
+
+
+      Maybe both. I don't know. But I know my brother didn't fall off
+      his own fucking boat. He practically slept on that boat. It was
+      his life.
+
+
+      Find out what happened. I'll help however I can.
+    effects: { trust_rokas: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ruta Q1 ---
+
+  ruta_q1:
+    type: tweet
+    from: ruta
+    text: >
+      Tarybos posedis del uosto pletros atidetas "neribotam laikui."
+      Dovydui dingus, jo irodymai taip pat dingo. Kaip patogu merai
+      Zarembai.
+    effects: { trust_ruta: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ruta -> ruta_q1_talk
+
+  ruta_q1_talk:
+    type: message
+    text: >
+      RUTA: The port expansion would destroy 40 fishing families. Our
+      harbor, our boats, our tradition — everything sacrificed for a
+      container terminal that benefits nobody in this town.
+
+
+      Dovydas had documents proving the meras received payments from
+      BalticPort Development through a shell company. He was going to
+      present them at the council meeting. Now he's gone and nobody
+      can find the documents.
+
+
+      The council vote has been "postponed." Without Dovydas's evidence
+      and without his voice, the opposition crumbles. The meras wins.
+
+
+      Tell me that's a coincidence. I dare you.
+    effects: { trust_ruta: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+
+      Something happened the night Dovydas went out to sea and didn't
+      come back. His boat was found drifting the next morning — engine
+      off, nets untouched, his personal belongings still aboard.
+
+
+      Multiple people saw or heard things that night. Piece together the
+      timeline. You need accounts from at least 4 people.
+    choices:
+      - Find Lukas (teen, was skateboarding near the harbor) -> lukas_interview
+      - Find Antanas (harbor master, works late) -> antanas_interview
+      - Find Vytautas (retired fisherman, insomnia) -> vytautas_interview
+      - Find Agne (teen artist, was sketching the sunset) -> agne_interview
+
+  # --- Lukas (saw Gintare at the harbor) ---
+
+  lukas_interview:
+    type: tweet
+    from: lukas
+    text: >
+      vakar buvau uoste seske bet kazkoks sudas vyksta naktimis
+      tipo uostas nebeyra safe. kazkas vaiksto tamsoj
+    effects: { trust_lukas: "+5" }
+    choices:
+      - Ask Lukas what he saw -> lukas_talk
+
+  lukas_talk:
+    type: message
+    text: >
+      LUKAS: blet ok bet niekam nesakyk. tipo as buvau uoste apie 21
+      valanda skeitas sesija po sauleleydzia. ir maciau gintare —
+      dovydo buvusia — ji slinko prie Neringos. tipo ne kaip normalus
+      zmogus eina. slinko. kaip tipo žiurinejo ar kas nemato.
+
+
+      ji uzlipo ant laivo ir ten buvo tipo 10 minuciu. paskui nulipo
+      ir nubego prie savo masinos. blet as tiesiog stovejau tamsoj
+      su skeitu ir ji manes nemateee.
+
+
+      as turėjau kazkam pasakyt bet blet kas patiketų penkiolikmeciu
+      su skeitu nachui
+    effects:
+      trust_lukas: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Antanas (harbor master, saw corporate meeting) ---
+
+  antanas_interview:
+    type: tweet
+    from: antanas
+    text: >
+      Primenu: uostas uzdarytas nuo 22 iki 6 val. Pastebejau
+      neigaliotu asmenu judejima paskutinemis naktimis. Prasom
+      laikytis taisykliu.
+    effects: { trust_antanas: "+5" }
+    choices:
+      - Ask Antanas what he saw -> antanas_talk
+
+  antanas_talk:
+    type: message
+    text: >
+      ANTANAS: I was locking up the harbor office around 23:00. I saw
+      two men at the end of the pier near where the Neringa was moored.
+      One of them was Andrius Petrauskas — the BalticPort Development
+      director. I recognized him from the council meetings.
+
+
+      The other I didn't recognize. Big man. Not from here.
+
+
+      They were standing by Dovydas's boat having a conversation. When
+      they saw my flashlight, they left quickly. Got into a dark SUV
+      with Klaipeda plates.
+
+
+      I noted it in the harbor log. Nobody's asked to see it yet.
+      Story of this town — nobody asks the right questions.
+    effects:
+      trust_antanas: "+10"
+      night_witnesses: "+1"
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Vytautas (retired fisherman, heard engine at 3am) ---
+
+  vytautas_interview:
+    type: tweet
+    from: vytautas
+    text: >
+      nemiegu naktimis. senatvė. bet girdžiu viską. ta naktį girdejau
+      laivo varikli 3 valanda ryto. Neringos varikli. tą garsą žinau
+      kaip savo širdies plakima.
+    effects: { trust_vytautas: "+5" }
+    choices:
+      - Ask Vytautas what he heard -> vytautas_talk
+
+  vytautas_talk:
+    type: message
+    text: >
+      VYTAUTAS: I live above the harbor. Haven't slept properly since
+      my wife died. Every night I sit by the window and listen to the
+      sea. I know every sound this harbor makes.
+
+
+      That night — around 3:00 in the morning — I heard the Neringa's
+      engine start. I know that engine. It's a Volvo Penta MD22. It has
+      a specific rumble. Dovydas and I rebuilt it together two years ago.
+
+
+      But here's the thing. The engine started, ran for maybe 30 seconds,
+      then changed. The throttle pattern was wrong. Dovydas always
+      warmed the engine for two minutes before engaging gear. This
+      person gunned it immediately. That's not how you treat that engine.
+
+
+      Someone else took that boat out. Not Dovydas.
+    effects:
+      trust_vytautas: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Agne (teen artist, saw argument) ---
+
+  agne_interview:
+    type: tweet
+    from: agne
+    text: >
+      piesiau saulėleidį prie uosto ir tipo girdejau kaip kazkos
+      recka ant dovydo. moteriskas balsas. ziauriai pykusi
+    effects: { trust_agne: "+5" }
+    choices:
+      - Ask Agne what she saw -> agne_talk
+
+  agne_talk:
+    type: message
+    text: >
+      AGNE: nu as buvau ant molo tipo 20 valanda piesiau sauleleydzi
+      ir girdejau balsus. gintare ir dovydas. ji recke ant jo. tipo
+      labai garsiai. as girdejau ja sakant "jeigu as tavęs negaliu
+      turet tai niekas negalės" ir tipo "tu nežinai ką as galiu padaryti."
+
+
+      dovydas bande ja nuraminti bet ji tipo vis labiau pykosi.
+      paskui ji nuejo ir jis liko ant laivo. jis atrodė tipo labai
+      pavargęs. nuliudęs.
+
+
+      as turėjau kazkam pasakyti bet blet as tik šešiolika ir tipo
+      kas manęs klausys. dabar jaučiuosi kaip sudas del to
+    effects:
+      trust_agne: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+
+      You can keep collecting testimonies or talk to other contacts
+      about what they know.
+    choices:
+      - Talk to Vilte about that night -> vilte_interview
+      - Talk to Ugne -> ugne_interview
+      - Find Lukas -> lukas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Antanas -> antanas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Vytautas -> vytautas_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Agne -> agne_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Vilte (last to see Dovydas) ---
+
+  vilte_interview:
+    type: tweet
+    from: vilte
+    text: >
+      ta nuotrauka jo paskyroje — tai ne jis. dovydas niekada
+      neirasinedavo be paraso. dovydas nepostina 4 ryto. kazkos
+      kitas tai padare.
+    effects: { trust_vilte: "+5" }
+    choices:
+      - DM Vilte -> vilte_talk_low
+        when:
+          state: trust_vilte
+          lt: 50
+      - DM Vilte -> vilte_talk_high
+        when:
+          state: trust_vilte
+          gte: 50
+
+  vilte_talk_low:
+    type: message
+    text: >
+      VILTE: I told you, I don't want to talk to strangers about
+      this. Everyone's a detective now that something happened to
+      Dovydas. Where were you all before?
+
+
+      [Vilte needs to trust you more. Show her you're investigating
+      seriously.]
+    effects: { trust_vilte: "+5" }
+    choices:
+      - Share what you've learned about the night -> vilte_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  vilte_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — Gintare on the boat, the
+      BalticPort men at the pier, the engine at 3am, the argument
+      overheard at sunset. Vilte is quiet for a long time.
+
+
+      VILTE: You actually give a shit. Okay. Sit down. I'll talk.
+    effects: { trust_vilte: "+25" }
+    choices:
+      - What happened that night? -> vilte_talk_high
+
+  vilte_talk_high:
+    type: message
+    text: >
+      VILTE: He called me around 22:00. He was on the Neringa. He was
+      agitated. He said two things.
+
+
+      First: "BalticPort sent people. They offered me money to shut up
+      about the meras. When I said no, they said I should think about
+      my family's safety."
+
+
+      Second: "Gintare was on my boat again. She left photos of us on
+      the navigation table. Old photos. She wrote on the back of one:
+      'the sea takes everything.' What does that even mean?"
+
+
+      He said he was going to stay on the boat that night to guard his
+      documents. He had the original files about the meras's kickbacks
+      hidden on the boat.
+
+
+      That's the last time I heard his voice.
+    effects:
+      trust_vilte: "+15"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      port_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ugne (saw Gintare watching Dovydas's house) ---
+
+  ugne_interview:
+    type: message
+    text: >
+      UGNE: nu ok tipo as fotografuoju naktimis kartais — ilga
+      ekspozicija, zvaigzdes, tokie dalykai. ir tipo tris kartus per
+      paskutini menesi maciau gintare sedincią masinoj pries dovydo
+      namu. tiesiog sedejo tamsoj. sviesos isjungtos. ziurejo i
+      langus.
+
+
+      paskutini karta buvo tipo pora dienu prieš jam dingstant.
+      ji ten sedejo iki 2 nakties. as zinau nes as irgi buvau
+      lauke fotografuodama ir ji manes nemateee.
+
+
+      tipo ziauriai creepy sudas. as pasakiau dovydui ir jis
+      sake "zinau. ji visada ten."
+    effects:
+      trust_ugne: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+
+      20:00 — Gintare argues with Dovydas at the boat. Threatens him:
+      "if I can't have you nobody can" (Agne)
+
+      21:00 — Gintare seen sneaking onto the Neringa, on board for 10
+      minutes (Lukas)
+
+      22:00 — Dovydas calls Vilte, scared. Reports BalticPort threats
+      and Gintare leaving photos on his boat (Vilte)
+
+      23:00 — Antanas sees BalticPort's Andrius Petrauskas and another
+      man at the Neringa's mooring (Antanas)
+
+      03:00 — The Neringa's engine starts. Wrong throttle pattern.
+      Someone else is driving (Vytautas)
+
+      04:17 — Grey sea photo posted to Dovydas's account
+
+
+      Two threats converging on one man. The corporation wanted his
+      silence. The ex-girlfriend wanted... him. Or nobody to have him.
+
+
+      Two threads to pull:
+
+      — The stalker: What is Gintare really capable of? What was she
+        doing on that boat?
+
+      — The port deal: What is BalticPort hiding? How deep do the
+        meras's kickbacks go?
+    choices:
+      - Investigate Gintare (the stalker ex) -> stalker_hub
+      - Investigate the port expansion deal -> corruption_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+
+      PORT CORRUPTION THREAD: Evidence collected: ${port_evidence}
+    choices:
+      - Work on the stalker thread -> stalker_hub
+      - Work on the port corruption thread -> corruption_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: port_evidence, gte: 3 }
+
+  # =====================================================================
+  # STALKER THREAD — GINTARE
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+
+      Gintare Paulauskaite. Ex-girlfriend. The breakup was six months
+      ago but she never let go. She was on the boat the night he
+      disappeared. She threatened him hours before.
+
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Check Gintare's posting history -> gintare_posts
+      - Talk to Vilte about Gintare -> vilte_gintare
+        when:
+          state: trust_vilte
+          gte: 20
+      - Talk to Sigita the pharmacist -> sigita_interview
+      - Investigate the anonymous account @juros.sirdis -> anon_investigation
+      - Talk to Matas (more detail on what he saw) -> matas_detail
+      - Talk to Komisaras Kavaliauskas -> komisaras_interview
+        when:
+          state: trust_komisaras
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Gintare's posts ---
+
+  gintare_posts:
+    type: tweet
+    from: gintare
+    text: >
+      kai kurie zmonės nesupranta ka turi kol nepraranda. jura atima
+      ir jura duoda. mes visi tik bangos.
+    choices:
+      - Look at her posting history -> gintare_history
+
+  gintare_history:
+    type: message
+    text: >
+      @gintare_paulauskaite posting history tells a story:
+
+
+      6 months ago: Normal posts. Music, art, selfies with Dovydas.
+      Happy.
+
+      5 months ago (breakup): "Some people throw away diamonds."
+      "He'll realize what he lost."
+
+      4 months ago: "I drive past the harbor every night. Old habits."
+      "The Neringa looks lonely without me."
+
+      3 months ago: "I know his schedule better than he does." "Watched
+      him from the pier today. He didn't see me. He never sees me."
+
+      2 months ago: "New girl? LOL she's nothing. Temporary." "I left
+      him something on the boat. He'll understand."
+
+      1 month ago: "If the sea wants you, it takes you." "Some bonds
+      can't be broken by running." "He sleeps on the boat now. I watch
+      the lights go out."
+
+      1 week ago: "Everything comes back to the sea."
+
+
+      The trajectory is unmistakable. Obsession accelerating.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Vilte on Gintare ---
+
+  vilte_gintare:
+    type: message
+    text: >
+      VILTE: Gintare was... I don't know how to say this. After the
+      breakup she tipo became a different person. She'd message me
+      asking where Dovydas was. What he was doing. Who he was with.
+      When I stopped answering, she created fake accounts to message me.
+
+
+      She showed up at the clinic once pretending to be sick just to
+      ask me about him. She waited outside his mother Ieva's house.
+      She told Jonas at the harbor that she was Dovydas's fiancee —
+      they'd been broken up for months.
+
+
+      Dovydas went to the police. Komisaras Kavaliauskas told him
+      to "work it out between yourselves." A restraining order? In
+      Gintaruostis? Against a woman? They laughed at him.
+    effects:
+      trust_vilte: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Sigita (pharmacist) ---
+
+  sigita_interview:
+    type: message
+    text: >
+      SIGITA: This is confidential, but I care more about Dovydas
+      than about pharmacy ethics right now. Gintare has been coming in
+      regularly. She buys things that worry me — sleeping pills,
+      seasickness medication in large quantities, heavy-duty rope from
+      the hardware section.
+
+
+      Two days before Dovydas disappeared, she bought a marine-grade
+      padlock. I asked what it was for. She said "my boat." She doesn't
+      have a boat.
+
+
+      She also asked me once if I sold GPS trackers. I said this is
+      a pharmacy, not an electronics shop. She laughed but her eyes
+      didn't.
+    effects:
+      trust_sigita: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_juros
+    text: >
+      jis turejo likti su manim. dabar jura ji turi. as bent jau
+      visada buvau salia. net kai jis nežinojo.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @juros.sirdis: account created 4 months ago. No profile photo.
+      No bio except a period. Every post is about Dovydas — never by
+      name, but unmistakable.
+
+
+      Month 1: "He fixes his nets and doesn't know I'm watching from
+      the seawall."
+
+      Month 2: "I touched his boat today. It smells like him. Salt
+      and diesel and warmth."
+
+      Month 3: "He talked to another girl at the cafe. She's nothing.
+      I'll make sure he knows."
+
+      Month 3: "I went on the boat at night. Left something for him.
+      He'll know it's from me."
+
+      Month 4: "If he leaves this town I'll follow. If he sails away
+      I'll follow. If he goes under the waves I'll follow."
+
+
+      The final post, timed at 04:30 — 13 minutes after the grey sea
+      photo on Dovydas's account: "It's done. The sea takes what it
+      wants. So do I."
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Analyze the writing -> anon_analysis
+
+  anon_analysis:
+    type: message
+    text: >
+      Comparing @juros.sirdis with @gintare_paulauskaite:
+
+
+      Same unusual comma placement before conjunctions. Same use of the
+      word "tipo" in deleted draft posts recovered from the instance
+      cache. Same metaphors about the sea "taking" and "giving."
+
+
+      One @juros.sirdis post references "the song I played him on the
+      molo." One week earlier, @gintare_paulauskaite posted a video of
+      herself playing guitar on the harbor pier.
+
+
+      It's Gintare. The anonymous account is Gintare.
+
+
+      And the final post — "It's done" — was posted 13 minutes after
+      someone used Dovydas's account to upload the grey sea photo.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Matas detail ---
+
+  matas_detail:
+    type: message
+    text: >
+      MATAS: ok blet as pasakysiu viska. ta vakara kai gintare buvo
+      ant Neringos — as priėjau arciau tipo pasislapes. ir maciau ka
+      ji dare. ji kazkoka mazą daikta tipo priklijavo po navigacijos
+      stalu. ir tipo kazka paeme is stalciaus — popierius ar kazka
+      tokio.
+
+
+      as manau ji pritvirtino ta GPS trackerį ir pavoge dovydo
+      dokumentus. tuos apie mera ir uosta.
+
+
+      blet jeigu as buciu ka nors pasakęs gal jis dar butu cia.
+      tipo as negaliu miegoti del to nachui
+    effects:
+      trust_matas: "+10"
+      stalker_evidence: "+1"
+      port_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Komisaras Kavaliauskas ---
+
+  komisaras_interview:
+    type: message
+    text: >
+      KOMISARAS: Off the record — completely off the record — I know
+      Dovydas came to us about Gintare. I told him to handle it himself.
+      That was a mistake. I see that now.
+
+
+      The BalticPort situation is different. My superiors told me not to
+      investigate. They said it's "above our jurisdiction." Meaning
+      someone in Klaipeda made a phone call.
+
+
+      But the stalking — if you bring me solid evidence, I can act on
+      that. That's local. That's mine. Bring me something concrete
+      and I'll reopen the case properly.
+    effects:
+      trust_komisaras: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # PORT CORRUPTION THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE PORT CORRUPTION THREAD
+
+
+      BalticPort Development wants to build a container terminal that
+      will destroy the fishing harbor. The meras is taking kickbacks.
+      Dovydas had proof. Now Dovydas is gone and the proof is missing.
+
+
+      Port evidence: ${port_evidence}
+    choices:
+      - Search council records -> council_records
+      - Talk to Egle the journalist -> egle_interview
+      - Talk to Ruta about the port deal -> ruta_detail
+      - Talk to Paulius (environmental inspector) -> paulius_interview
+      - Check the fishing cooperative records -> cooperative_records
+      - Talk to Jonas about the harbor -> jonas_harbor
+      - Back to hub -> investigation_hub
+
+  # --- Council Records ---
+
+  council_records:
+    type: message
+    text: >
+      The council's public records show the port expansion vote has been
+      "postponed indefinitely" following Dovydas's disappearance. But
+      buried in the minutes from three months ago:
+
+
+      "Meras Zaremba recused himself from the environmental impact
+      vote due to a potential conflict of interest."
+
+
+      He recused himself. Then two weeks later, he un-recused himself
+      and voted in favor. The reason for the conflict of interest is
+      redacted. Who redacted it? The meras's office.
+
+
+      Also in the records: BalticPort Development hired the meras's
+      wife's consulting firm to produce a "community impact report"
+      for 85,000 euros. The report is 12 pages long.
+    effects:
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Egle (journalist) ---
+
+  egle_interview:
+    type: message
+    text: >
+      EGLE: I don't reveal sources. That's rule number one.
+    effects: { trust_egle: "+5" }
+    choices:
+      - Show Egle the evidence you have -> egle_with_evidence
+        when:
+          state: port_evidence
+          gte: 3
+      - Back to port thread -> corruption_hub
+
+  egle_with_evidence:
+    type: message
+    text: >
+      EGLE: ...okay. You know more than I expected.
+
+
+      Dovydas and I were working together. He had bank statements
+      showing payments from a company called "Baltic Horizon Consulting"
+      to the meras's personal account. Baltic Horizon Consulting is a
+      shell company registered at the same address as BalticPort
+      Development's legal office in Klaipeda.
+
+
+      150,000 euros over 18 months. Labeled as "advisory fees."
+
+
+      We were going to publish the day after the council meeting.
+      The story was ready. Then Dovydas vanished and my laptop was
+      stolen from my car outside the office. Everything was on it.
+
+
+      But Dovydas is smart. He kept the originals somewhere. He told
+      me "if something happens, the documents are where I feel safest."
+      I think he meant the Neringa. But the boat's been searched and
+      nothing was found.
+    effects:
+      trust_egle: "+25"
+      port_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Where are the documents now? -> egle_theory
+      - Back to investigation hub -> investigation_hub
+
+  egle_theory:
+    type: message
+    text: >
+      EGLE: I think someone got there first. The boat was found
+      "drifting" but the cabin was searched — drawers open, papers
+      scattered. The police called it "wave action." Blet, waves
+      don't open locked drawers.
+
+
+      Someone took those documents. The question is who. BalticPort's
+      people were at the boat that night. But so was Gintare. Matas
+      says she took papers from the navigation table.
+
+
+      Two vultures circling the same boat. One wanted the documents.
+      The other wanted... everything.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Ruta detail ---
+
+  ruta_detail:
+    type: message
+    text: >
+      RUTA: Let me show you the numbers. The fishing harbor generates
+      2.3 million euros annually for this community. 40 families depend
+      on it directly. Another 200 people work in processing, sales,
+      tourism.
+
+
+      The container terminal would create 50 jobs. Fifty. Mostly for
+      crane operators they'll bring from Klaipeda. And BalticPort
+      gets a 40-year concession on public harbor land for a one-time
+      payment of 800,000 euros. The land is worth 12 million.
+
+
+      It's theft. Legal, bureaucratic, merasstamped theft. And Dovydas
+      was the only one brave enough to say it with proof in his hands.
+    effects:
+      trust_ruta: "+10"
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to port thread -> corruption_hub
+
+  # --- Paulius (environmental inspector) ---
+
+  paulius_interview:
+    type: message
+    text: >
+      PAULIUS: The environmental impact assessment for the port
+      expansion is... problematic. I reviewed it. It claims the harbor
+      ecosystem is "minimal biological value." I've worked this coast
+      for 15 years. That harbor is a nursery for flounder, perch, and
+      pike-perch. It's not minimal. It's critical.
+
+
+      The assessment was done by a firm called GreenPath Environmental
+      Solutions. Their biggest client? BalticPort Development. Conflict
+      of interest? Nobody checked.
+
+
+      Dovydas asked me to write an official objection. I did. It was
+      overruled at the regional level. Someone made a phone call.
+    effects:
+      trust_paulius: "+10"
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to port thread -> corruption_hub
+
+  # --- Cooperative records ---
+
+  cooperative_records:
+    type: message
+    text: >
+      The fishing cooperative's records tell the story of a community
+      under siege. In the past year:
+
+
+      Three fishermen had their licenses "reviewed" after speaking
+      against the port expansion. Two had their boats cited for safety
+      violations that didn't exist. Jonas was threatened with losing
+      his mooring.
+
+
+      All the "reviews" came from the harbor authority — which reports
+      to the meras's office. Bureaucratic intimidation. Make life
+      impossible for the opposition until they shut up.
+
+
+      Dovydas documented all of this. He had the paper trail. Letters,
+      inspection reports, dates, names. Everything the cooperative needed
+      to fight back legally.
+
+
+      All of it was on the Neringa. All of it is gone.
+    effects:
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to port thread -> corruption_hub
+
+  # --- Jonas on the harbor ---
+
+  jonas_harbor:
+    type: message
+    text: >
+      JONAS: I'll tell you what BalticPort doesn't want you to know.
+      Their "container terminal" plan includes demolishing the old
+      harbor wall. That wall has stood since 1847. It's the only
+      breakwater that protects our boats from northwest storms.
+
+
+      Without it, no fishing boat can moor here safely. They know
+      that. That's the point. Destroy the wall, destroy the fishing
+      fleet, and suddenly the fishermen "voluntarily" leave. No
+      displacement, no compensation. Just... gone.
+
+
+      Dovydas figured this out. He got the engineering plans from
+      someone inside BalticPort. Those plans were in the documents
+      he was keeping on the Neringa.
+
+
+      Someone took those documents. And someone took Dovydas.
+    effects:
+      trust_jonas: "+10"
+      port_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+
+      You've gathered evidence on two fronts. You know more about what
+      happened to Dovydas than anyone in Gintaruostis. The question
+      remains: who is responsible for his disappearance?
+    choices:
+      - Confront Gintare Paulauskaite (the stalker ex) -> confront_gintare
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Andrius Petrauskas (BalticPort director) -> confront_andrius
+        when:
+          state: port_evidence
+          gte: 3
+      - Confront Meras Zaremba (political corruption) -> confront_meras
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Gintare (Best Ending) ---
+
+  confront_gintare:
+    type: message
+    text: >
+      You present your evidence to Gintare:
+
+
+      "I know @juros.sirdis is your account. I know you put a GPS
+      tracker on the Neringa. I know you were on the boat that night.
+      I know you took documents from the navigation table. I know you
+      threatened him: 'if I can't have you nobody can.' I have witnesses
+      and I have the anonymous account timeline."
+
+
+      You also send the evidence package to Komisaras Kavaliauskas and
+      to Egle at Pajurio Zinios.
+    choices:
+      - Send -> gintare_response
+
+  gintare_response:
+    type: message
+    text: >
+      Gintare doesn't respond for hours. Then, at 2am:
+
+
+      GINTARE: You think you understand but you don't. I loved him.
+      Nobody else loved him like I did. I was protecting him. I needed
+      to know where he was because the world is dangerous and he was
+      too trusting.
+
+
+      I went on the boat that night. I took the papers because I knew
+      they'd get him in trouble. I was protecting him.
+
+
+      But I didn't take him. I didn't do anything to him. When I left
+      the boat at 21:30 he was alive and angry at me. Someone else came
+      after me.
+
+
+      Ask BalticPort what happened after midnight.
+
+
+      She's lying about some things. But the timeline confirms she left
+      before the engine started at 3am. Someone else was there after her.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE FULL PICTURE
+
+
+      Three things happen in quick succession.
+
+
+      Komisaras Kavaliauskas reopens the case. With your evidence —
+      the anonymous account, the GPS tracker, the witnesses, the
+      threatening messages — Gintare is arrested for stalking,
+      harassment, and theft of documents. She confesses to being on
+      the boat and taking Dovydas's documents about the meras. The
+      documents are recovered from her apartment.
+
+
+      With the documents recovered, Egle publishes the full story about
+      Meras Zaremba's kickbacks from BalticPort Development. The story
+      goes national. The meras resigns. BalticPort Development's permits
+      are suspended pending investigation.
+
+
+      And the boat. The police, now properly investigating, find
+      something on the Neringa they missed before: marks on the gunwale
+      consistent with a struggle. DNA that isn't Dovydas's or Gintare's.
+      It matches a known associate of BalticPort Development's security
+      contractor.
+
+
+      Three weeks later, Dovydas is found. He's alive — barely.
+      Hiding in an abandoned fisherman's hut on the Curonian Spit,
+      injured, surviving on what he could catch. He'd been attacked on
+      the boat, fought back, jumped into the sea, and swum to shore.
+      He'd been too scared to come home.
+
+
+      The BalticPort associate is arrested. Andrius Petrauskas faces
+      criminal charges. The fishing harbor is saved.
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: dovydas
+    text: >
+      grizau namo. neringa laukia. jura nemirstam. aciu visiems kurie
+      netylejo. gintaruostis yra musu.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Andrius / BalticPort (Partial Ending) ---
+
+  confront_andrius:
+    type: message
+    text: >
+      You present the port corruption evidence to Andrius Petrauskas:
+
+
+      "I have the shell company records. The bank transfers to the
+      meras. The falsified environmental assessment. The engineering
+      plans showing the harbor wall demolition. The fishing cooperative's
+      documentation of systematic intimidation."
+    choices:
+      - Send -> andrius_response
+
+  andrius_response:
+    type: message
+    text: >
+      ANDRIUS: BalticPort Development operates within all legal
+      frameworks. Any allegations of improper payments are defamatory.
+      Our legal counsel will be in contact.
+
+
+      But it's too late. The evidence has already gone to Egle, to the
+      fishing cooperative, and to the regional prosecutor.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+
+      The port corruption story breaks. Meras Zaremba's kickbacks are
+      exposed. He resigns in disgrace. The port expansion is halted.
+      The fishing harbor is saved. Gintaruostis celebrates.
+
+
+      But Dovydas?
+
+
+      Without investigating Gintare's stalking, the full picture of
+      that night remains incomplete. The police treat his disappearance
+      as an unsolved accident. Gintare is never charged. She creates
+      new accounts. She watches the Neringa from the seawall.
+
+
+      Four months later, Dovydas returns quietly. He's been hiding,
+      injured and afraid. He comes back to a saved harbor but a town
+      that still doesn't understand what happened to him. He changes
+      his locks. He sleeps on the boat with the cabin bolted. He checks
+      over his shoulder when he walks to the pier.
+
+
+      The harbor is saved. The man who saved it is still haunted.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: dovydas
+    text: >
+      grizau. uostas saugus. as... dirbam ties tuo.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Meras (Wrong Ending) ---
+
+  confront_meras:
+    type: message
+    text: >
+      You confront Meras Zaremba directly with your evidence.
+
+
+      Within the hour, you receive a response — not from the meras,
+      but from his lawyer:
+    choices:
+      - Read the response -> meras_response
+
+  meras_response:
+    type: tweet
+    from: dalia
+    text: >
+      Mano klientas atkreipia demesį i jusu kaltinimus. Bet kokio
+      šmeižikiško turinio platinimas bus persekiojamas teismine tvarka.
+      — Advokate D. Navickiene, Klaipeda
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+
+      The meras's lawyer buries your accusation. Without the original
+      documents — which Gintare stole from the boat — your evidence
+      is circumstantial. Not enough for a prosecution.
+
+
+      BalticPort Development continues its push. The council votes in
+      favor of the expansion. Construction begins within six months.
+      The old harbor wall comes down.
+
+
+      Gintare continues to watch. She creates new accounts. She follows
+      Dovydas's brother Rokas. She follows his mother Ieva.
+
+
+      Dovydas doesn't come back. The Neringa sits in the harbor,
+      empty, rocking in the waves. One year later, it's towed away
+      to make room for the container cranes.
+
+
+      Nobody has seen Dovydas since.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: GINTARUOSTIS — GAME COMPLETE
+
+
+      Evidence collected: ${evidence_total}
+
+      Stalker evidence: ${stalker_evidence}
+
+      Port corruption evidence: ${port_evidence}
+
+
+      Thank you for playing. Dovydas's story explores themes of
+      stalking by a former partner, corporate corruption, the
+      destruction of traditional communities, bureaucratic complicity,
+      and the courage to fight for what matters.
+
+
+      Stalking is not only perpetrated by men against women. Anyone can
+      be a victim. If you or someone you know is experiencing stalking,
+      harassment, or domestic abuse, help is available:
+
+
+      Vilties linija: 116 123
+
+      Pagalbos moterims linija: 8 800 66 366
+
+      Bendras pagalbos telefonas: 112

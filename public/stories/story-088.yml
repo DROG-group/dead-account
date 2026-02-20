@@ -1,0 +1,1611 @@
+# DEAD ACCOUNT — Story 088: Dún Mara (Ireland)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-088.yml
+#
+# Player investigates the disappearance of seaweed harvester Róisín Murphy
+# in the fictional West Cork fishing village of Dún Mara.
+
+meta:
+  title: "Dead Account — Dún Mara"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_siobhan: 0
+    trust_cillian: 0
+    trust_padraig: 0
+    trust_deirdre: 0
+    trust_saoirse: 0
+    trust_oisin: 0
+    trust_niamh: 0
+    trust_colm: 0
+    trust_bridie: 0
+    trust_tadgh: 0
+    trust_fionnuala: 0
+    trust_eamon: 0
+    trust_grainne: 0
+    trust_declan: 0
+    trust_aoife: 0
+    trust_lorcan: 0
+    trust_maeve: 0
+    trust_sean: 0
+    trust_cathal: 0
+    trust_orla: 0
+    trust_sergeant: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just landed in dún mara. salt air and slow wifi. grand so"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "DunMara.social"
+    description: "Fáilte go DunMara.social — community instance for Dún Mara, West Cork"
+    avatar_url: /gamepatch/assets/dead-account/dunmara_bot.png
+
+  npcs:
+    # === Róisín's Inner Circle ===
+    roisin:
+      name: "Róisín Murphy"
+      bio: "bailitheoir feamainne | grianghrafadóir cósta | an fharraige ní insíonn sí bréag"
+      avatar: avatars/roisin.jpg
+    siobhan:
+      name: "Siobhán Ní Shúilleabháin"
+      bio: "cara is fearr le róisín | múinteoir bunscoile | caife agus comhrá | dún mara go deo"
+      avatar: avatars/siobhan.jpg
+    cillian:
+      name: "Cillian Murphy"
+      bio: "deartháir róisín | innealtóir i gcorcaigh | tá sí imithe agus níl aon duine ag éisteacht"
+      avatar: avatars/cillian.jpg
+    fionnuala:
+      name: "Fionnuala Brennan"
+      bio: "máistir ceardaíochta feamainne | comhpháirtí gnó róisín | dún mara seaweed co-op"
+      avatar: avatars/fionnuala.jpg
+
+    # === Local Government ===
+    padraig:
+      name: "Pádraig Ó Drisceoil"
+      bio: "Cathaoirleach Chomhairle Dún Mara | Ag freastal ar an bpobal ó 2016 | #DúnMaraAbú"
+      avatar: avatars/padraig.jpg
+    grainne:
+      name: "Gráinne Ní Mhurchú"
+      bio: "Comhairleoir Comhshaoil | Comhairle Dún Mara | caomhnú cósta & bithéagsúlacht"
+      avatar: avatars/grainne.jpg
+    council:
+      name: "Comhairle Dún Mara"
+      bio: "Cuntas oifigiúil | Nuacht an bhaile | Uaireanta: Luan-Aoine 9rn-5in"
+      avatar: avatars/council.jpg
+
+    # === Local Business & Community ===
+    bridie:
+      name: "Bridie Harrington"
+      bio: "An Seanphoirtéir Pub | toasts & pints ó 1963 | croí an bhaile | Dún Mara"
+      avatar: avatars/bridie.jpg
+    pub_account:
+      name: "An Seanphoirtéir"
+      bio: "Pub & Grub | Trad seisiún gach Aoine | Beoir áitiúil | Fáilte roimh chách"
+      avatar: avatars/pub_account.jpg
+    colm:
+      name: "Colm Ó Céileachair"
+      bio: "iascaire | 35 bliain ar an bhfarraige | dún mara mo shaol | an t-iasc agus an fharraige"
+      avatar: avatars/colm.jpg
+    tadgh:
+      name: "Tadgh Mac Cárthaigh"
+      bio: "máistir calafoirt | Dún Mara | ar dualgas Máirt-Sath"
+      avatar: avatars/tadgh.jpg
+    deirdre:
+      name: "Deirdre Ní Laoire"
+      bio: "cógaiseoir | Dún Mara | comhairle sláinte | oscailte Domhnaigh ar maidin"
+      avatar: avatars/deirdre.jpg
+    maeve:
+      name: "Maeve Crowley"
+      bio: "siopa an chearnóg | éadaí & earraí | lámhdhéanta i nDún Mara | cruthaitheoir áitiúil"
+      avatar: avatars/maeve.jpg
+    eamon:
+      name: "Éamon Ó Briain"
+      bio: "feirmeoirí oisrí | Dún Mara Shellfish | trá, taoide, agus obair chrua"
+      avatar: avatars/eamon.jpg
+    declan:
+      name: "Declan Ó Tuama"
+      bio: "leabharlannaí | Leabharlann Dún Mara | léitheoireacht gach Céadaoin | focal saor in aisce"
+      avatar: avatars/declan.jpg
+
+    # === Journalist ===
+    aoife:
+      name: "Aoife Kelleher"
+      bio: "iriseoir neamhspleách | comhshaol & cósta | tips: aoife@kelleher-press.ie"
+      avatar: avatars/aoife.jpg
+
+    # === AtlanticHarvest (corporate) ===
+    atlanticharvest:
+      name: "AtlanticHarvest Aquaculture"
+      bio: "Sustainable Salmon Farming | Dún Mara Bay Site | BIM Certified | #FeedingIreland"
+      avatar: avatars/atlanticharvest.jpg
+    cathal:
+      name: "Cathal Fitzgerald"
+      bio: "stiúrthóir suímh AtlanticHarvest Dún Mara | tionscal & pobal | talmhaíocht mara"
+      avatar: avatars/cathal.jpg
+    sean:
+      name: "Seán Hegarty"
+      bio: "Aturnae | Hegarty & Comhpháirtithe | Dlí Corparáideach | Corcaigh"
+      avatar: avatars/sean.jpg
+
+    # === Teens ===
+    saoirse:
+      name: "Saoirse"
+      bio: "16 | surfálaí | dún mara born n bred | the sea is everything like"
+      avatar: avatars/saoirse.jpg
+    oisin:
+      name: "Oisín"
+      bio: "17 | surf & kayak | dawn patrol every day | salt in me veins"
+      avatar: avatars/oisin.jpg
+    niamh:
+      name: "Niamh"
+      bio: "15 | grianghrafadóir | the coast in black & white | róisín showed me everything"
+      avatar: avatars/niamh.jpg
+
+    # === Media & Community ===
+    west_cork_news:
+      name: "West Cork Herald"
+      bio: "Nuacht Iarthar Chorcaí | Local news since 1987 | tips: news@westcorkherald.ie"
+      avatar: avatars/west_cork_news.jpg
+    weather_dunmara:
+      name: "Aimsir Dún Mara"
+      bio: "Réamhaisnéisí & rabhaidh | Stáisiún uathoibríoch | Nuashonrú gach uair"
+      avatar: avatars/weather_dunmara.jpg
+    coastal_watch:
+      name: "Faire na Cósta — Dún Mara"
+      bio: "Caomhnú cósta Iarthar Chorcaí | Oibrithe deonacha | Tuairiscí truaillithe"
+      avatar: avatars/coastal_watch.jpg
+
+    # === Suspicious / Other ===
+    lorcan:
+      name: "Lorcan Reid"
+      bio: "surfálaí | instructor | just moved to dún mara | chasing atlantic swells"
+      avatar: avatars/lorcan.jpg
+    orla:
+      name: "Orla Dunne"
+      bio: "."
+      avatar: avatars/anon.jpg
+    sergeant:
+      name: "Sergeant Brennan"
+      bio: "An Garda Síochána — Dún Mara | Stáisiún áitiúil | Éigeandálaí: 999/112"
+      avatar: avatars/sergeant.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN DÚN MARA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to DunMara.social — the community Mastodon instance for
+      the coastal village of Dún Mara, West Cork, Ireland.
+
+      The local feed is uneasy today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name over and over:
+      @roisin_murphy.
+
+      A seaweed harvester. Coastal photographer. She documented the
+      shoreline and the bay's ecosystem for years. People are worried.
+      She hasn't posted in six days.
+    choices:
+      - Look at her profile -> roisin_profile
+
+  roisin_profile:
+    type: tweet
+    from: roisin
+    text: "Dead fish washing up on Trá Bán again. Three days running now. The salmon farm discharge is killing the bay. I have the water samples to prove it."
+    choices:
+      - That's her last real post... -> grey_wave
+
+  grey_wave:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a grey wave. Blurred, overexposed, shot at a strange angle.
+      Posted at 2am. No caption.
+
+      Her friends say that's not Róisín. She writes long captions
+      about every tide, every strand, every harvest. The Guards say
+      she probably went travelling. Nobody in Dún Mara believes that
+      for a second.
+    choices:
+      - Read the Garda statement -> garda_statement
+      - Look at what people are saying -> community_reaction
+
+  garda_statement:
+    type: tweet
+    from: sergeant
+    text: >
+      We have received a report concerning a Dún Mara resident.
+      At this stage, there is no evidence of foul play. The individual
+      may have chosen to travel. Any information can be provided to
+      the local station or by calling 999.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are pure chaos. Her best friend @siobhan is
+      beside herself. Her brother @cillian is driving down from Cork
+      city. Her business partner @fionnuala is posting desperate pleas.
+      The fisherman @colm says she was right about the bay.
+
+      And the journalist @aoife_kelleher hasn't said a word. Not one.
+      That's not like her at all.
+
+      Nobody buys the Guards' line. Nobody thinks Róisín just fecked
+      off on holiday without telling a soul.
+    effects: { trust_siobhan: "+5", trust_cillian: "+5" }
+    choices:
+      - Start following Róisín's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Dún Mara. Follow Róisín's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Bridie (pub owner, knows everyone) -> bridie_intro
+      - Talk to Colm (fisherman, saw the dead fish) -> colm_intro
+      - Talk to Saoirse (teen surfer, seems shaken) -> saoirse_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Róisín with the rhythms of a small
+      coastal village: tide tables, trad session announcements, weather
+      warnings, someone's dog on the strand.
+
+      Key names surface: Siobhán (best friend, teacher), Fionnuala
+      (business partner, rattled), Aoife (journalist, strangely quiet),
+      and the teens — Saoirse, Oisín, Niamh — who idolised Róisín's
+      coastal work.
+
+      Also prominent: AtlanticHarvest Aquaculture, the salmon farm
+      in the bay. Their posts are corporate PR. Róisín's posts were
+      the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Bridie -> bridie_intro
+      - Talk to Colm -> colm_intro
+      - Talk to Saoirse -> saoirse_intro
+
+  # --- Bridie (social map) ---
+
+  bridie_intro:
+    type: tweet
+    from: bridie
+    text: >
+      The pub is open but the heart is gone out of it. @roisin_murphy,
+      your stool is waiting for you love. Come home to us.
+    effects: { trust_bridie: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Bridie -> bridie_talk
+
+  bridie_talk:
+    type: message
+    text: >
+      BRIDIE: Ah, you're new? Welcome to Dún Mara. Terrible time to
+      land, I won't lie to you. The whole village is in bits over
+      Róisín.
+
+      Let me give you the lay of the land. Siobhán is Róisín's best
+      friend since they were in nappies — primary school teacher, salt
+      of the earth, absolutely destroyed right now. Fionnuala Brennan
+      runs the seaweed co-op with Róisín. Cillian is Róisín's older
+      brother, he's coming down from Cork.
+
+      And Aoife Kelleher — the journalist — herself and Róisín were
+      working on something together. Something about the bay. Aoife
+      hasn't said a word since Róisín vanished. That's not right.
+
+      Oh, and that new fella, Lorcan Reid. The surfer. Moved here
+      six months ago. He's been hanging around Róisín something fierce.
+      Friendly at first but she told me it was getting a bit much.
+    effects: { trust_bridie: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Lorcan -> bridie_lorcan
+      - Ask about AtlanticHarvest -> bridie_atlantic
+      - Thank her and move on -> quest1_hub
+
+  bridie_lorcan:
+    type: message
+    text: >
+      BRIDIE: Lorcan? He landed in here about six months back.
+      English fella, or half-English anyway. Surfer, instructor,
+      that type. Good-looking and he knows it. Started chatting up
+      Róisín from day one — asking about the coast, the tides, the
+      best spots.
+
+      She was polite about it at first. Showed him the strands. But
+      then he started turning up everywhere she was. Down at the shore
+      when she was harvesting. At the co-op when she was working. In
+      the pub every time she came in.
+
+      She said to me one night, "Bridie, that fella doesn't take a
+      hint." I thought she meant he was a bit keen. Now I'm not so
+      sure it was just that.
+    effects: { trust_bridie: "+5" }
+    choices:
+      - Ask about AtlanticHarvest -> bridie_atlantic
+      - Move on -> quest1_hub
+
+  bridie_atlantic:
+    type: message
+    text: >
+      BRIDIE: That salmon farm has been in the bay three years now.
+      AtlanticHarvest. Big operation — pens out past the headland.
+      The village tolerated them because they brought jobs. But the
+      fishermen have been giving out for ages — dead fish on the
+      strand, the water going murky, sea lice everywhere.
+
+      Róisín was the first to actually do something about it. Took
+      water samples, photographed the discharge, documented everything.
+      She had proof, she said. Real proof that they were dumping
+      chemical treatments straight into the bay.
+
+      Two weeks later she's gone. You do the maths.
+    effects: { trust_bridie: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Colm (the water, witness tease) ---
+
+  colm_intro:
+    type: tweet
+    from: colm
+    text: >
+      tríocha cúig bliain ag iascaireacht anseo. tá an fharraige
+      athraithe. bhí an ceart ag @roisin_murphy. agus anois tá sí
+      imithe. déan an ceangal.
+    effects: { trust_colm: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Colm -> colm_talk
+
+  colm_talk:
+    type: message
+    text: >
+      COLM: I've been fishing this bay since I was a young fella.
+      I know every current, every rock, every colour the water makes.
+      And I'm telling you — the bay is fucked. Pardon the language
+      but there's no other word for it.
+
+      Dead crabs in my pots. Sea lice on everything. The seabed near
+      those pens smells like a chemical plant. Róisín took water
+      samples. She dove down near the discharge pipes. She photographed
+      everything. She was building a case.
+
+      And then poof — gone. Like a mackerel off a line.
+
+      You think that's a coincidence? There's no such thing as a
+      coincidence in a village this size.
+    effects: { trust_colm: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> colm_night
+      - Move on -> quest1_hub
+
+  colm_night:
+    type: message
+    text: >
+      COLM: The night before she vanished — I was coming in from
+      night fishing, around half twelve. I saw lights at the co-op
+      shed. Not unusual, Róisín works late sometimes. But there was
+      a jeep parked outside that I didn't recognise. Big thing,
+      black, with an AtlanticHarvest sticker on the door.
+
+      Half twelve at night. At Róisín's co-op shed. That's not
+      normal.
+
+      I noted it in my log. Nobody's asked to see it.
+    effects: { trust_colm: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Saoirse (teen surfer, witness tease) ---
+
+  saoirse_intro:
+    type: tweet
+    from: saoirse
+    text: >
+      i'm actually so upset rn like @roisin_murphy is literally
+      the nicest person in this village?? she taught me everything
+      about the shore. if anyone knows anything PLEASE say it
+    effects: { trust_saoirse: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Saoirse -> saoirse_talk_early
+
+  saoirse_talk_early:
+    type: message
+    text: >
+      SAOIRSE: oh you're new here? mad timing like. róisín is
+      honestly the best person in dún mara no word of a lie. she
+      showed us all the rockpools, taught us about the seaweed,
+      took us kayaking. absolute legend.
+
+      and now i'm actually bricking it because oisín saw something
+      weird the other night down at the pier but he won't talk
+      about it. says it's nothing but like... it's clearly not
+      nothing. he's acting well sketchy about the whole thing
+    effects: { trust_saoirse: "+10" }
+    choices:
+      - What did Oisín see? -> saoirse_oisin_hint
+      - Move on -> quest1_hub
+
+  saoirse_oisin_hint:
+    type: message
+    text: >
+      SAOIRSE: i don't know exactly like. he was down at the pier
+      doing a sunset session and he saw someone messing around
+      róisín's van?? or something like that. he's being well cagey.
+
+      you'd have to ask him yourself but he's mad suspicious of
+      people he doesn't know. try talking about surfing first or
+      something lol. he's sound once he trusts you but like... good
+      luck with that
+    effects: { trust_saoirse: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Dún Mara. A West Cork fishing
+      village built around the bay. A seaweed harvester who was
+      exposing pollution. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Siobhán (Róisín's best friend) -> siobhan_q1
+      - Talk to Fionnuala (Róisín's business partner) -> fionnuala_q1
+      - Check what Cillian (Róisín's brother) is saying -> cillian_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Siobhán Q1 ---
+
+  siobhan_q1:
+    type: tweet
+    from: siobhan
+    text: >
+      má tá nuacht ag aon duine faoi @roisin_murphy glaoigí orm
+      le bhur dtoil. tá a seomra slán. tá a mála tumadóireachta
+      ann. ní imeodh sí riamh gan a cuid trealaimh.
+    effects: { trust_siobhan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Siobhán -> siobhan_q1_talk
+
+  siobhan_q1_talk:
+    type: message
+    text: >
+      SIOBHÁN: I appreciate you reaching out but I don't know you
+      from Adam. Róisín has a lot of friends here. I'm sure she'll
+      come home.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Siobhán is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_siobhan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Fionnuala Q1 ---
+
+  fionnuala_q1:
+    type: tweet
+    from: fionnuala
+    text: >
+      The co-op shed is empty without @roisin_murphy. Her samples
+      are still drying on the racks. Her harvest log is on the desk.
+      She would never abandon a harvest mid-season. Something happened.
+    effects: { trust_fionnuala: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Fionnuala -> fionnuala_q1_talk
+
+  fionnuala_q1_talk:
+    type: message
+    text: >
+      FIONNUALA: Myself and Róisín built this co-op from nothing.
+      Five years of work. She knows every strand, every tide, every
+      species of kelp on this coast. The harvest season is on and
+      she just vanished? That's not her. That's not remotely her.
+
+      She was working on something beyond the seaweed. The water
+      quality investigation. She had data, photos, chemical analysis.
+      She was so close to going public.
+
+      I offered to help. She said she had it under control. She said
+      she was working with a journalist.
+
+      [Fionnuala seems earnest but exhausted.]
+    effects: { trust_fionnuala: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Cillian Q1 ---
+
+  cillian_q1:
+    type: tweet
+    from: cillian
+    text: >
+      my sister has DISAPPEARED and the Guards tell me she might
+      have gone on holiday??? SHE DOESN'T GO ON FECKING HOLIDAY
+      WITHOUT TELLING SOMEONE. i'm driving down from cork. someone
+      better have answers.
+    effects: { trust_cillian: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Cillian -> cillian_q1_talk
+
+  cillian_q1_talk:
+    type: message
+    text: >
+      CILLIAN: Who are you? Another person from that village who's
+      going to tell me to calm down? My sister rang me the night
+      before she disappeared. She said she had something big. She
+      said "if anything happens, look at AtlanticHarvest." Then the
+      line went dead.
+
+      That's the last I heard from her.
+    effects: { trust_cillian: "+10" }
+    choices:
+      - What do you think happened? -> cillian_theory
+      - Move on -> quest1_hub
+
+  cillian_theory:
+    type: message
+    text: >
+      CILLIAN: I think she found proof that AtlanticHarvest is
+      dumping chemical shite into the bay and they shut her up. But
+      I also think that surfer fella — Lorcan — knows more than he's
+      letting on. The way he talks about her... it's not just friendly.
+      It's something else. Something off.
+
+      Róisín told me months ago that someone was following her on
+      her morning harvests. She thought it was nothing. She laughed
+      it off, said "sure he's just keen." I don't think it was
+      nothing. Not anymore.
+    effects: { trust_cillian: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Róisín went silent. Multiple
+      people saw or heard things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Oisín (was surfing at sunset near the pier) -> oisin_interview
+      - Find Tadgh (harbour master, works late) -> tadgh_interview
+      - Find Éamon (oyster farmer, early morning at the shore) -> eamon_interview
+      - Find Maeve (shop owner, saw something at dawn) -> maeve_interview
+
+  # --- Oisín (saw someone at Róisín's van) ---
+
+  oisin_interview:
+    type: tweet
+    from: oisin
+    text: >
+      unreal session this evening but the vibes at the pier are
+      so off lately. something's not right. can't explain it like
+    effects: { trust_oisin: "+5" }
+    choices:
+      - Ask Oisín about that evening -> oisin_talk
+
+  oisin_talk:
+    type: message
+    text: >
+      OISÍN: right ok but you can't tell anyone yeah. i was at the
+      pier around 7, sunset session. and i saw that surfer lad —
+      lorcan — at róisín's van. like proper rooting around in it.
+      he had the door open and he was putting something in or taking
+      something out i couldn't tell.
+
+      when he copped i was watching he just legged it. like sprinted
+      off. what the actual fuck is that about.
+
+      i said nothing cos like who's gonna believe me. i'm just some
+      young fella. but that was well dodgy like
+    effects:
+      trust_oisin: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tadgh (harbour master, saw late-night meeting) ---
+
+  tadgh_interview:
+    type: tweet
+    from: tadgh
+    text: >
+      Meabhrúchán: tá an cé dúnta idir 10in agus 6rn.
+      Tá gluaiseachtaí neamhúdaraithe feicthe agam na hoícheanta
+      seo caite.
+    effects: { trust_tadgh: "+5" }
+    choices:
+      - Ask Tadgh what he saw -> tadgh_talk
+
+  tadgh_talk:
+    type: message
+    text: >
+      TADGH: I was locking up the harbour office around half ten.
+      I saw Róisín's van still at the co-op shed. And a black jeep —
+      AtlanticHarvest branding on the side — parked right next to it.
+      Two fellas were standing by the shed door. One of them I knew:
+      Cathal Fitzgerald, the site director.
+
+      At half ten at night. At the seaweed co-op. That's not right.
+
+      I wrote it in my harbour log. Nobody's asked to see it. The
+      Guards didn't even ring me.
+    effects:
+      trust_tadgh: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Éamon (saw Róisín fleeing) ---
+
+  eamon_interview:
+    type: tweet
+    from: eamon
+    text: >
+      suas ag 4rn le haghaidh na bpáirceanna. ní raibh an trá
+      folamh ar maidin. bhí duine éigin ag rith ar an gcosán cósta.
+      sa dorchadas. ní jogger a bhí ann.
+    effects: { trust_eamon: "+5" }
+    choices:
+      - Ask Éamon what he saw -> eamon_talk
+
+  eamon_talk:
+    type: message
+    text: >
+      ÉAMON: I get up at 4am for the oyster beds. That morning —
+      the morning after Róisín's last post — I saw someone on the
+      coast path. Running. A woman, carrying a bag, heading toward
+      the headland. It was still dark. She was moving fast, like
+      she was terrified.
+
+      I called out but she didn't stop. I figured it was a jogger
+      but... who goes jogging at 4am with a messenger bag?
+
+      When I heard about Róisín, I put two and two together. I think
+      that was her. Running from something. Or someone.
+    effects:
+      trust_eamon: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Maeve (saw car chase) ---
+
+  maeve_interview:
+    type: tweet
+    from: maeve
+    text: >
+      Stoc nua isteach ar maidin mar is gnáth. Ach an mhaidin
+      sin, bhí feithicil ag tiomáint i bhfad róthapa ar an mbóthar
+      cósta.
+    effects: { trust_maeve: "+5" }
+    choices:
+      - Ask Maeve what she saw -> maeve_talk
+
+  maeve_talk:
+    type: message
+    text: >
+      MAEVE: I open the shop at half five to sort deliveries. That
+      morning I was unlocking the shutters and a car flew past — way
+      too fast for the coast road. Dark jeep. Then maybe two minutes
+      later, a smaller car. A van. Chasing? I don't know.
+
+      The van turned off toward the old boathouses at Trá Bán. The
+      jeep kept going toward the N71.
+
+      I told the Guards. They wrote it down. That was it. Grand so,
+      case closed apparently.
+    effects:
+      trust_maeve: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Siobhán (best
+      friend) and Niamh (saw Lorcan watching the cottage).
+    choices:
+      - Talk to Siobhán about that night -> siobhan_interview
+      - Talk to Niamh -> niamh_interview
+      - Find Oisín -> oisin_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tadgh -> tadgh_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Éamon -> eamon_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Maeve -> maeve_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Siobhán (last to see Róisín) ---
+
+  siobhan_interview:
+    type: tweet
+    from: siobhan
+    text: >
+      an grianghraf sin ar chuntas róisín. ní hí a rinne é. ní
+      postálann róisín riamh gan fotheideal. ní postálann sí ag
+      2rn. rinne duine éigin eile é sin.
+    effects: { trust_siobhan: "+5" }
+    choices:
+      - DM Siobhán -> siobhan_talk_low
+        when:
+          state: trust_siobhan
+          lt: 50
+      - DM Siobhán -> siobhan_talk_high
+        when:
+          state: trust_siobhan
+          gte: 50
+
+  siobhan_talk_low:
+    type: message
+    text: >
+      SIOBHÁN: I appreciate the concern but I really don't want
+      to talk to strangers about this right now. I'm sorry.
+
+      [Siobhán needs to trust you more. Show her you're investigating
+      seriously, not just being nosy.]
+    effects: { trust_siobhan: "+5" }
+    choices:
+      - Share what you've learned about the night -> siobhan_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  siobhan_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the jeep at the co-op, the
+      company men, the running figure. Siobhán is quiet for a long
+      time.
+
+      SIOBHÁN: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_siobhan: "+25" }
+    choices:
+      - What happened that night? -> siobhan_talk_high
+
+  siobhan_talk_high:
+    type: message
+    text: >
+      SIOBHÁN: She came to my house around 11. I was marking copies
+      at the kitchen table. She was white as a sheet, shaking. She
+      said "they know what I have." She grabbed her laptop and her
+      camera from the press.
+
+      I asked who. She said "the farm. They sent people to the
+      co-op." Then she said something else — "and he was there too.
+      He's always fecking there."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry pet," and left with a bag. That was it. By morning her
+      van was gone and the grey wave was on her account.
+    effects:
+      trust_siobhan: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Niamh (saw Lorcan watching the cottage) ---
+
+  niamh_interview:
+    type: message
+    text: >
+      NIAMH: ok this is gonna sound mad but like that surfer lad —
+      lorcan — i've seen him outside róisín's cottage like three
+      different times in the evenings. just sitting in his car.
+      lights off. staring at the windows. proper creepy like.
+
+      the last time was like two days before she disappeared. he
+      was parked up the boreen across from her place. just sitting
+      there. headlights off. i nearly rang the guards but like
+      what would i even say? "there's a lad sitting in a car"?
+    effects:
+      trust_niamh: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Lorcan seen at Róisín's van at the pier (Oisín)
+      22:30 — AtlanticHarvest jeep at the co-op, Cathal Fitzgerald present (Tadgh)
+      23:00 — Róisín arrives at Siobhán's, shaken, grabs laptop and drives (Siobhán)
+      04:00 — Woman running on coast path toward headland (Éamon)
+      05:30 — Two vehicles speeding on coast road, one toward Trá Bán (Maeve)
+
+      AtlanticHarvest confronted Róisín at the co-op. She fled to
+      her friend's house, grabbed her evidence, and ran. Someone
+      chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is AtlanticHarvest hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Lorcan really doing? Why was he
+        at her van?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Lorcan -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AtlanticHarvest is hiding something. Róisín had proof. Now
+      she's gone and her evidence is missing from the co-op.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the co-op records -> coop_records
+      - Talk to Aoife the journalist -> aoife_interview
+      - Talk to Gráinne (environment councillor) -> grainne_interview
+      - Check the Coastal Watch reports -> coastal_investigation
+      - Talk to Colm about the dumping -> colm_dumping
+      - Talk to Fionnuala about the samples -> fionnuala_samples
+      - Back to hub -> investigation_hub
+
+  # --- Co-op Records ---
+
+  coop_records:
+    type: message
+    text: >
+      The co-op's shared drive shows Róisín's recent work: water
+      quality samples from eight sites around the bay. The data for
+      Trá Bán is marked "PENDING — DO NOT SHARE" — the only site
+      with that status.
+
+      Her harvest log, shared with the co-op for planning, shows
+      she made 14 sample dives near the AtlanticHarvest pens in
+      the past month. The last entry: "Photographed discharge pipe.
+      Undeclared chemical treatment released directly into bay.
+      Levels are criminal."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Aoife ---
+
+  aoife_interview:
+    type: message
+    text: >
+      AOIFE: I don't talk about sources. Full stop.
+    effects: { trust_aoife: "+5" }
+    choices:
+      - Show Aoife the evidence you have -> aoife_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  aoife_with_evidence:
+    type: message
+    text: >
+      AOIFE: ...you have more than I expected from someone who just
+      got here.
+
+      Okay. Herself and I were working together. She had photographs
+      of undeclared discharge — AtlanticHarvest has been pumping
+      chemical sea lice treatments directly into the bay without
+      any environmental licence. She had water samples showing
+      emamectin benzoate at fifty times the safe level. Lethal to
+      shellfish. Lethal to seaweed.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my car and took my backup
+      drive.
+
+      Róisín is alive. She contacted me once, from a burner phone.
+      She said she was hiding. She said "they threatened me at the
+      co-op and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come home.
+    effects:
+      trust_aoife: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> aoife_hint
+      - Back to investigation hub -> investigation_hub
+
+  aoife_hint:
+    type: message
+    text: >
+      AOIFE: The farm sent their site director — Fitzgerald — and
+      some solicitor to the co-op that night. Told her to hand
+      everything over or face legal consequences. Intimidation in a
+      suit, basically.
+
+      But she also said something about someone in the village.
+      Someone who always seemed to know where she was. Someone who'd
+      been going through her things. That's a different problem
+      entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Fionnuala (co-op partner, has backup data) ---
+
+  fionnuala_samples:
+    type: message
+    text: >
+      FIONNUALA: Róisín was meticulous. Every sample labelled,
+      every dive logged, every photograph catalogued. When the
+      co-op shed was broken into two days after she vanished, they
+      took her laptop and her sample folders. Professional job —
+      nothing else touched.
+
+      But here's the thing. Róisín always made duplicates. Always.
+      She kept backup samples in a coolbox at my house. I still
+      have them. Three months of water quality data that
+      AtlanticHarvest would very much like to disappear.
+    effects:
+      trust_fionnuala: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gráinne ---
+
+  grainne_interview:
+    type: message
+    text: >
+      GRÁINNE: As environment councillor, I take these allegations
+      dead seriously. But AtlanticHarvest employs 80 people in this
+      parish. The Cathaoirleach insists we need to "maintain
+      dialogue." That's politician talk for "shut up about it."
+
+      Off the record? I've seen the Inland Fisheries inspection
+      reports. AtlanticHarvest passes every time. But those
+      inspections are announced weeks in advance. They clean up
+      before anyone shows.
+
+      Róisín had unannounced data. That's what makes it dangerous.
+    effects:
+      trust_grainne: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Coastal Watch ---
+
+  coastal_investigation:
+    type: tweet
+    from: coastal_watch
+    text: >
+      RABHADH: Tuairisc ar dhath neamhghnách uisce ag Trá Bán.
+      Grianghraif agus samplaí á dtógáil. Éilímid cigireacht gan
+      fhógra ar AtlanticHarvest.
+    choices:
+      - Check their data -> coastal_data
+
+  coastal_data:
+    type: message
+    text: >
+      Faire na Cósta have been documenting bay water quality for
+      two years. Their data shows a clear pattern: chemical spikes
+      that correspond to AtlanticHarvest's treatment schedule.
+      Higher after sea lice treatments. Lower between cycles.
+      Higher at night, lower during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal discharge timed to avoid detection.
+
+      Róisín was their most active member. She contributed most
+      of the underwater photography and sample analysis.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Colm dumping ---
+
+  colm_dumping:
+    type: message
+    text: >
+      COLM: I'll show you something. Last month I pulled my pots
+      near the farm pens and found this — a chemical drum, half
+      corroded, leaking into the water. The label was barely
+      readable but I could make out "emamectin" and an
+      AtlanticHarvest batch number.
+
+      I photographed it and sent it to Róisín. She said it was
+      the missing piece — proof they were dumping solid chemical
+      waste, not just discharge. Drums in the sea.
+
+      I still have the photos. And the batch number.
+    effects:
+      trust_colm: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Lorcan Reid. Surfer. Instructor. Something more? Someone was
+      going through Róisín's things. Someone was watching her cottage.
+      Someone was at her van.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Lorcan's social media history -> lorcan_history
+      - Talk to Siobhán about Lorcan -> siobhan_lorcan
+        when:
+          state: trust_siobhan
+          gte: 20
+      - Talk to Oisín (more detail on the van incident) -> oisin_detail
+      - Talk to Deirdre the pharmacist -> deirdre_interview
+      - Check the anonymous account @orla_dunne -> orla_investigation
+      - Talk to Declan the librarian -> declan_interview
+        when:
+          state: trust_declan
+          gte: 40
+      - Talk to Sergeant Brennan -> sergeant_interview
+        when:
+          state: trust_sergeant
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Lorcan Social Media History ---
+
+  lorcan_history:
+    type: message
+    text: >
+      Lorcan Reid's DunMara.social account was created six months
+      ago. His early posts are standard surfer stuff — wave reports,
+      session photos, sunset shots. Normal enough.
+
+      But scroll through and a pattern emerges. Every post from
+      Róisín gets a like and comment within minutes. He tags her in
+      posts she has no connection to. He photographs "his favourite
+      spots" — all of which happen to be Róisín's harvesting sites.
+
+      His old Instagram — still public — tells a different story.
+      Before Dún Mara, he was in Lahinch. Before that, Bundoran.
+      Same pattern: six months in each place, enthusiastic about one
+      particular woman, then abrupt departure.
+
+      In Lahinch, a woman named Sarah posted a warning about him.
+      The post was taken down. But the replies are still there:
+      "believe her," "he did the same to my friend," "stay safe."
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Siobhán on Lorcan ---
+
+  siobhan_lorcan:
+    type: message
+    text: >
+      SIOBHÁN: Lorcan? That fella gives me the fear. He latched
+      onto Róisín from the moment he arrived. At first it was all
+      charm — offering to help with the harvest, asking about the
+      best spots, complimenting her work.
+
+      She was polite about it. Showed him around. But then he
+      started showing up everywhere. At the co-op when she was
+      working. On the strand when she was harvesting. In the pub
+      every time she walked in.
+
+      She told him she wasn't interested. Clearly. Kindly. He said
+      he understood. Then nothing changed. He just kept being there.
+      Always there.
+
+      A month ago she found that someone had gone through her van
+      while she was harvesting. Her sample notes had been moved.
+      She suspected Lorcan but couldn't prove it.
+    effects:
+      trust_siobhan: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Oisín detail ---
+
+  oisin_detail:
+    type: message
+    text: >
+      OISÍN: right ok so i didn't tell you everything. when i saw
+      lorcan at róisín's van he had something in his hand. like a
+      small black box. he stuck it under the van. like underneath,
+      on the chassis.
+
+      i'm not thick like. that's a gps tracker. the kind of thing
+      you see in crime shows.
+
+      i should've said something but who's gonna believe me? i'm
+      17. he's a grown man. and what if he came after me? that
+      lad's built like a fecking tank
+    effects:
+      trust_oisin: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Deirdre ---
+
+  deirdre_interview:
+    type: message
+    text: >
+      DEIRDRE: This is confidential but I'm a pharmacist, not a
+      priest. Lorcan Reid comes in regularly. He's been buying
+      things that... suggest he's not sleeping well. Anti-anxiety
+      medication, sleep aids, energy supplements. The pattern is
+      someone under serious stress. Or someone keeping very odd
+      hours.
+
+      He also asked me once, dead casual, if we sold tracking
+      devices. I said "this is a pharmacy, not Currys." He laughed
+      it off. I didn't think about it again until Róisín disappeared.
+    effects:
+      trust_deirdre: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Orla (anonymous account) ---
+
+  orla_investigation:
+    type: tweet
+    from: orla
+    text: >
+      She should have listened to me. I was trying to protect her.
+      Nobody else understands the coast like I do.
+    choices:
+      - Look at this account's history -> orla_posts
+
+  orla_posts:
+    type: message
+    text: >
+      @orla_dunne: account created five months ago. Posts are all
+      about Róisín's work. Comments on every harvest photo, every
+      water sample post, every coastal update. The tone shifts over
+      time:
+
+      Month 1: "Amazing work. You're doing what nobody else will."
+      Month 2: "Why won't you respond to my DMs? I just want to
+      help with the harvest."
+      Month 4: "I see you at the pub with other people. You have
+      time for them but not for me?"
+      Month 5: "I know your schedule. I know your routes. I'm
+      always close by."
+
+      The account has no photos, no personal details. Just Róisín.
+      Only Róisín.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> orla_style
+
+  orla_style:
+    type: message
+    text: >
+      Comparing @orla_dunne with @lorcan_reid:
+
+      Same use of surfing and coastal terminology. Same distinctive
+      habit of writing "the coast" instead of "the shore" — the way
+      someone not originally from here would phrase it. Same knowledge
+      of Róisín's harvesting schedule that only someone who'd been
+      watching closely would have.
+
+      And one post from @orla_dunne: "Your harvest at Site C was
+      beautiful today." Site C is an internal co-op designation for
+      a strand. Not public. Only someone who'd seen the harvest log
+      would know it.
+
+      It's Lorcan. The anonymous account is Lorcan.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Declan ---
+
+  declan_interview:
+    type: message
+    text: >
+      DECLAN: Róisín left something with me. A waterproof Pelican
+      case. She came into the library one evening, looking over her
+      shoulder, and said "Declan, if someone asks you about what's
+      in the bay at Trá Bán, give them this."
+
+      She looked frightened. She said she'd made copies of
+      everything but needed one set off-site, somewhere nobody
+      would think to look. A village library seemed perfect.
+    effects: { trust_declan: "+10" }
+    choices:
+      - What's in the bay at Trá Bán? -> declan_case
+
+  declan_case:
+    type: message
+    text: >
+      Declan reaches under the returns desk and produces a
+      waterproof Pelican case.
+
+      DECLAN: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show underwater discharge pipes — not the official
+      outlets, but hidden ones — and corroded chemical drums on
+      the seabed. The USB drive contains water sample data,
+      chemical analysis, and Róisín's detailed report documenting
+      two years of illegal discharge.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Sergeant Brennan ---
+
+  sergeant_interview:
+    type: message
+    text: >
+      SERGEANT BRENNAN: Off the record — and I mean completely
+      off the record — I wanted to investigate AtlanticHarvest.
+      My superintendent told me to stand down. Said the EPA had
+      "jurisdiction." That's code for "don't touch it, they have
+      friends."
+
+      The Reid situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act
+      on that. That's clearly Garda business.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_sergeant: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Róisín than anyone in Dún Mara. Who is responsible?
+    choices:
+      - Confront Lorcan Reid (the obsessive surfer) -> confront_lorcan
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Cathal Fitzgerald (the site director) -> confront_cathal
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Cathaoirleach Ó Drisceoil (political protection) -> confront_padraig
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Lorcan (Best Ending) ---
+
+  confront_lorcan:
+    type: message
+    text: >
+      You present your evidence to Lorcan:
+
+      "I know @orla_dunne is your account. I know you put a GPS
+      tracker on Róisín's van. I know you went through her things.
+      I know you were watching her cottage. I have witnesses and
+      I have your post history from Lahinch and Bundoran."
+    choices:
+      - Send -> lorcan_response
+
+  lorcan_response:
+    type: message
+    text: >
+      Lorcan doesn't reply for a long time. Then:
+
+      LORCAN: You don't understand. I was looking out for her. She
+      was in danger from that fish farm and she wouldn't let me
+      help. I needed to know she was safe. Everything I did was
+      because I care about her. I've never met anyone like her.
+
+      That's not care. That's obsession. And it's the third time
+      he's done it.
+
+      You've already sent the evidence to Sergeant Brennan. And
+      to Aoife Kelleher.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Sergeant Brennan reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the witness testimonies,
+      the pattern from Lahinch and Bundoran — Lorcan is arrested
+      for stalking and harassment. A GPS tracker is recovered from
+      under Róisín's van at the old boathouses in Trá Bán. The
+      women in Lahinch and Bundoran come forward. It's a serial
+      pattern.
+
+      Aoife Kelleher, finally in possession of Róisín's full
+      evidence package, publishes the AtlanticHarvest story in
+      The Irish Times. The EPA orders an unannounced inspection.
+      The farm is shut down pending environmental remediation.
+      Cathal Fitzgerald faces criminal charges for illegal
+      discharge of chemical treatments.
+
+      And Róisín Murphy, reading the story from a friend's house
+      in Skibbereen, calls her brother for the first time in
+      nine days.
+
+      "I'm coming home, Cillian."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Women's Aid Freephone Helpline: 1800 341 900
+      Gardaí: 999 / 112
+      Cyber-bullying: Hotline.ie
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: roisin
+    text: >
+      the sea doesn't lie. and neither does dún mara. go raibh
+      maith agaibh go léir. i'm home.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Cathal (Partial Ending) ---
+
+  confront_cathal:
+    type: message
+    text: >
+      You present the pollution evidence to Cathal Fitzgerald:
+
+      "I have photographs of undeclared discharge pipes. I have
+      water samples showing emamectin benzoate at fifty times the
+      safe level. I have your original chemical logs showing the
+      data was falsified. I have the drum with your batch number."
+    choices:
+      - Send -> cathal_response
+
+  cathal_response:
+    type: message
+    text: >
+      CATHAL: This conversation is being forwarded to our legal
+      team. Any publication of defamatory material will result in
+      immediate proceedings. AtlanticHarvest has always operated
+      within regulatory requirements and holds full BIM
+      certification.
+
+      But it's too late. You've sent the evidence to Aoife, to
+      Faire na Cósta, and to the EPA.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. AtlanticHarvest is ordered to
+      cease all chemical treatments pending investigation. The farm
+      may close permanently. Eighty jobs hang in the balance. The
+      village is divided.
+
+      But Róisín?
+
+      Without the stalking evidence, Lorcan is never investigated.
+      He stays in Dún Mara. He continues to monitor her accounts.
+      He creates a new anonymous profile. He'll do what he always
+      does — six months, then move on to the next village, the next
+      woman.
+
+      Three months later, Róisín reads about AtlanticHarvest online.
+      She returns quietly. She changes her locks. She stops
+      harvesting alone. She checks under her van every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Róisín walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: roisin
+    text: "i'm home. the bay is cleaner. the rest... we'll see."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Cathaoirleach (Wrong Ending) ---
+
+  confront_padraig:
+    type: message
+    text: >
+      You confront Cathaoirleach Ó Drisceoil with your evidence.
+
+      Within the hour, you receive a message from his solicitor:
+    choices:
+      - Read the response -> padraig_response
+
+  padraig_response:
+    type: tweet
+    from: sean
+    text: >
+      Tógann mo chliant nóta de do chuid líomhaintí. Déanfar
+      imeachtaí dlíthiúla láithreach má fhoilsítear ábhar
+      clúmhillteach. — Hegarty & Comhpháirtithe, Corcaigh
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The Cathaoirleach's solicitor buries your accusation. Without
+      a direct link between Ó Drisceoil and AtlanticHarvest's
+      dumping — and there isn't one beyond political protection —
+      your evidence is insufficient.
+
+      AtlanticHarvest continues to operate. Lorcan continues to
+      watch. Róisín stays in hiding.
+
+      Six months later, @orla_dunne creates a new account. This
+      time it follows Róisín's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: DÚN MARA — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Róisín's story explores themes of
+      corporate pollution, environmental crime, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Women's Aid Freephone Helpline: 1800 341 900 (24hr)
+      An Garda Síochána: 999 / 112
+      Samaritans Ireland: 116 123 (free, 24hr)
+      Hotline.ie (online harassment)

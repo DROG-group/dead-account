@@ -1,0 +1,1627 @@
+# DEAD ACCOUNT — Story 021: Bëschkräiz (Luxembourg)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-021.yml
+#
+# Player investigates the disappearance of finance blogger Marc Kayser
+# in the fictional Müllerthal region town of Bëschkräiz.
+
+meta:
+  title: "Dead Account — Bëschkräiz"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_anais: 0
+    trust_luc: 0
+    trust_tom: 0
+    trust_leonie: 0
+    trust_joao: 0
+    trust_nora: 0
+    trust_felix: 0
+    trust_sara: 0
+    trust_claude_m: 0
+    trust_martine: 0
+    trust_thierry: 0
+    trust_mireille: 0
+    trust_roger: 0
+    trust_ben: 0
+    trust_julie: 0
+    trust_alex: 0
+    trust_pit: 0
+    trust_carole: 0
+    trust_romain: 0
+    trust_commissaire: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just arrived in bëschkräiz. hiking the müllerthal trail, discovering luxembourg"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Bëschkräiz.social"
+    description: "Wëllkomm op der Communautéits-Instanz vu Bëschkräiz"
+    avatar_url: /gamepatch/assets/dead-account/beschkraiz_bot.png
+
+  npcs:
+    # === Marc's Inner Circle ===
+    marc:
+      name: "Marc Kayser"
+      bio: "finance blogger | investigative journalism | luxembourg's dirty money secrets | the numbers don't lie"
+      avatar: avatars/marc.jpg
+    anais:
+      name: "Anaïs Kayser"
+      bio: "sœur de marc | étudiante en droit à l'uni.lu | il ne partirait jamais sans prévenir"
+      avatar: avatars/anais.jpg
+    luc:
+      name: "Luc Hoffmann"
+      bio: "bëschkräiz born | meilleur ami de marc | photographe freelance | müllerthal trails"
+      avatar: avatars/luc.jpg
+    tom:
+      name: "Tom Weber"
+      bio: "coloc de marc | programmeur | café addict | bëschkräiz since 2021"
+      avatar: avatars/tom.jpg
+
+    # === Local Government ===
+    thierry:
+      name: "Thierry Schmit"
+      bio: "Bourgmestre de Bëschkräiz | Au service de la commune depuis 2017 | #BëschkräizViraus"
+      avatar: avatars/thierry.jpg
+    carole:
+      name: "Carole Muller"
+      bio: "Échevine à l'urbanisme | Commune de Bëschkräiz | développement durable"
+      avatar: avatars/carole.jpg
+    commune:
+      name: "Commune de Bëschkräiz"
+      bio: "Compte officiel | Informatiounen | Horaires: Lu-Ve 8h-16h30"
+      avatar: avatars/commune.jpg
+
+    # === Local Business & Community ===
+    martine:
+      name: "Martine Thill"
+      bio: "Café am Bësch | quetschetaart | crémant | ouvert depuis 1994 | d'Häerz vu Bëschkräiz"
+      avatar: avatars/martine.jpg
+    cafe_besch:
+      name: "Café am Bësch"
+      bio: "Pâtisseries luxembourgeoises | Crémant | Concerts le samedi | Le cœur de Bëschkräiz"
+      avatar: avatars/cafe_besch.jpg
+    roger:
+      name: "Roger Faber"
+      bio: "forestier | 35 ans dans le Müllerthal | je connais chaque sentier, chaque rocher"
+      avatar: avatars/roger.jpg
+    mireille:
+      name: "Mireille Clement"
+      bio: "pharmacienne | Bëschkräiz | conseil & santé | permanence samedi matin"
+      avatar: avatars/mireille.jpg
+    pit:
+      name: "Pit Scholtes"
+      bio: "boulanger | Bäckerei Scholtes | bréidel & kachkéis | 4h du matin tous les jours"
+      avatar: avatars/pit.jpg
+    romain:
+      name: "Romain Biver"
+      bio: "agent immobilier | GoldenStone Immo | villas & appartements | région müllerthal"
+      avatar: avatars/romain.jpg
+
+    # === Journalist ===
+    nora:
+      name: "Nora Lopes"
+      bio: "journaliste | Reporter.lu | finance & corruption | tips: nora@reporter.lu"
+      avatar: avatars/nora.jpg
+
+    # === GoldenStone Holdings (corporate) ===
+    goldenstone:
+      name: "GoldenStone Holdings S.à r.l."
+      bio: "Real estate investment | Luxembourg | Sustainable development | ISO certified"
+      avatar: avatars/goldenstone.jpg
+    claude_m:
+      name: "Claude Mersch"
+      bio: "directeur GoldenStone Holdings | immobilier & investissement | Bëschkräiz & région"
+      avatar: avatars/claude_m.jpg
+    joao:
+      name: "João Ferreira"
+      bio: "Avocat | Cabinet Ferreira & Associés | Droit des affaires | Luxembourg-Ville"
+      avatar: avatars/joao.jpg
+
+    # === Teens ===
+    leonie:
+      name: "Léonie"
+      bio: "17 | trail running | bëschkräiz meedchen | d'natur ass alles"
+      avatar: avatars/leonie.jpg
+    felix:
+      name: "Félix"
+      bio: "16 | skate & urbex | müllerthal born | exploring the rocks"
+      avatar: avatars/felix.jpg
+    sara:
+      name: "Sara"
+      bio: "15 | fotografie & poésie | les gorges en noir et blanc | marc est mon inspi"
+      avatar: avatars/sara.jpg
+
+    # === Media & Community ===
+    actu_besch:
+      name: "Actu Bëschkräiz"
+      bio: "Actualités de Bëschkräiz et du Müllerthal | Tips: redaction@actu-beschkraiz.lu"
+      avatar: avatars/actu_besch.jpg
+    meteo_lux:
+      name: "Météo Bëschkräiz"
+      bio: "Prévisions et alertes | Station automatique | Mise à jour toutes les heures"
+      avatar: avatars/meteo_lux.jpg
+    asso_muellerthal:
+      name: "Frënn vum Müllerthal"
+      bio: "Protection de la nature | Bénévoles | Randonnées guidées | Patrimoine"
+      avatar: avatars/asso_muellerthal.jpg
+
+    # === Suspicious / Other ===
+    ben:
+      name: "Ben Stein"
+      bio: "analyste financier | freelance | les chiffres racontent des histoires"
+      avatar: avatars/ben.jpg
+    julie:
+      name: "Julie Klein"
+      bio: "comptable | GoldenStone Holdings | je fais mon travail c'est tout"
+      avatar: avatars/julie.jpg
+    alex:
+      name: "Alex Reding"
+      bio: "."
+      avatar: avatars/anon.jpg
+    commissaire:
+      name: "Commissaire Reuter"
+      bio: "Police Grand-Ducale | Commissariat Bëschkräiz | urgences: 113"
+      avatar: avatars/commissaire.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN BËSCHKRÄIZ
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to beschkraiz.social — the community Mastodon instance for
+      the Müllerthal town of Bëschkräiz, Luxembourg.
+
+      The local feed is uneasy today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice one name flooding every
+      thread: @marc_kayser.
+
+      A finance blogger. Investigative journalist. He dug into where
+      Luxembourg's money really goes. People are worried. He hasn't
+      posted in six days.
+    choices:
+      - Look at his profile -> marc_profile
+
+  marc_profile:
+    type: tweet
+    from: marc
+    text: "GoldenStone Holdings owns 14 properties in Bëschkräiz through 6 shell companies. The bourgmestre approved every permit. Follow the money."
+    choices:
+      - That's his last real post... -> dead_signal
+
+  dead_signal:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurry photo of sandstone rocks at night. No caption. Posted at
+      2:47am. The metadata was stripped.
+
+      His friends say Marc was meticulous — every post had context, every
+      claim had receipts. This isn't him. The police say he probably went
+      travelling. Nobody believes that.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: commissaire
+    text: >
+      D'Police Grand-Ducale huet eng Vermësstmeldung kritt betreffend
+      en Awunner vu Bëschkräiz. Am Moment gëtt et keng Hiwäiser op eng
+      Stroftat. All nëtzlech Informatiounen kënnen un den 113 oder un
+      de Commissariat gemellt ginn.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His sister @anais_kayser is losing it
+      on the feed. His best friend @luc_hoffmann is organising search
+      parties in the Müllerthal gorges. His flatmate @tom_weber says
+      Marc's laptop and external drives are gone.
+
+      The journalist @nora_lopes, who Marc was feeding information to,
+      has gone completely silent.
+
+      And the real estate people — GoldenStone Holdings — are posting
+      cheerful property listings like nothing happened.
+
+      Nobody buys the police line. Nobody thinks Marc just "went
+      travelling."
+    effects: { trust_anais: "+5", trust_luc: "+5" }
+    choices:
+      - Start following Marc's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Bëschkräiz. Follow Marc's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Martine (café owner, knows everyone) -> martine_intro
+      - Talk to Roger (forestier, knows the trails) -> roger_intro
+      - Talk to Léonie (teen trail runner, seems shaken) -> leonie_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Marc with the rhythms of a small
+      Müllerthal town: trail conditions, the bakery's quetschetaart,
+      weather alerts for the gorges.
+
+      Key names surface: Anaïs (sister, law student), Luc (best friend,
+      photographer, visibly angry), Tom (flatmate, rattled), and the
+      teens — Léonie, Félix, Sara — who admired Marc's blog.
+
+      Also prominent: GoldenStone Holdings S.à r.l., the investment
+      company buying up half the commune. Their posts are corporate PR.
+      Marc's posts were the sledgehammer cracking them open.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Martine -> martine_intro
+      - Talk to Roger -> roger_intro
+      - Talk to Léonie -> leonie_intro
+
+  # --- Martine (social map) ---
+
+  martine_intro:
+    type: tweet
+    from: martine
+    text: >
+      De Café ass op mee d'Häerz ass schwéier. @marc_kayser, däin
+      Dësch waart op dech. Komm séier zréck.
+    effects: { trust_martine: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Martine -> martine_talk
+
+  martine_talk:
+    type: message
+    text: >
+      MARTINE: Moien! You're new? Bienvenue. Bad timing to arrive, though.
+      Everyone's on edge about Marc.
+
+      Let me tell you who's who. Anaïs is his little sister — she's
+      studying law at uni.lu, sharp girl, completely devastated. Luc
+      Hoffmann is his best friend since childhood — photographer, does the
+      trail guides. He's furious right now, won't stop posting about the
+      police doing nothing.
+
+      Tom is Marc's flatmate. Quiet guy, programmer. But he's been weird
+      since Marc vanished — nervous, checking his phone constantly.
+
+      And then there's that Ben Stein character. He started showing up at
+      the café a few months ago. Always reading Marc's blog on his laptop.
+      Left comments on every post. He tried to buy Marc a drink once and
+      Marc told him to schäisst off. Not like Marc to be rude. Something
+      about Ben made him uncomfortable.
+    effects: { trust_martine: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Ben -> martine_ben
+      - Ask about GoldenStone -> martine_goldenstone
+      - Thank her and move on -> quest1_hub
+
+  martine_ben:
+    type: message
+    text: >
+      MARTINE: Ben? He calls himself a financial analyst. Freelance,
+      whatever that means. He showed up in Bëschkräiz about six months
+      ago, rented a room above the pharmacie. Said he was working on
+      "research."
+
+      But all he researched was Marc. He'd sit in the corner with his
+      laptop open on Marc's blog, taking notes. He followed Marc on
+      every platform. He'd show up wherever Marc was — the gorges, the
+      market, even at Luc's photo exhibitions.
+
+      Marc called it "putain de weird" and I agreed with him. There's
+      admiration and then there's whatever that was.
+    effects: { trust_martine: "+5" }
+    choices:
+      - Ask about GoldenStone -> martine_goldenstone
+      - Move on -> quest1_hub
+
+  martine_goldenstone:
+    type: message
+    text: >
+      MARTINE: GoldenStone Holdings. Merde, don't get me started. They
+      started buying properties here three years ago. Old farmhouses,
+      plots of land, even the old gendarmerie building. Always through
+      different company names — you'd never know it was the same buyer.
+
+      Marc figured it out. He traced the shell companies back to one
+      guy: Claude Mersch. And Mersch's companies kept getting building
+      permits approved by the commune. Every single one. Fast-tracked.
+
+      Marc said on his blog that the bourgmestre was getting kickbacks.
+      That's when things got serious.
+    effects: { trust_martine: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Roger (the forestier, trails witness tease) ---
+
+  roger_intro:
+    type: tweet
+    from: roger
+    text: >
+      35 joer am Bësch. ech kennen all Pad, all Fiels. @marc_kayser
+      war ëmmer op de Weeër. hien ass net einfach ewech.
+    effects: { trust_roger: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Roger -> roger_talk
+
+  roger_talk:
+    type: message
+    text: >
+      ROGER: I've walked every trail in the Müllerthal for thirty-five
+      years. I know when a tree falls, when a path shifts. And I know
+      when something isn't right.
+
+      Marc hiked here every week. He said the gorges were where he
+      thought best. He'd sit on the Schéissendëmpel bridge and write
+      his blog posts on his phone. I'd see him out there at dawn
+      sometimes.
+
+      The morning after his last post, I found fresh tyre tracks on the
+      forest road near Heringer Millen. That road is gated — only
+      forestry vehicles use it. Someone drove up there at night. There
+      were two sets of tracks. One vehicle going in. One coming out.
+    effects: { trust_roger: "+10" }
+    choices:
+      - Did you tell the police? -> roger_police
+      - Move on -> quest1_hub
+
+  roger_police:
+    type: message
+    text: >
+      ROGER: I called the commissariat. They wrote it down. That was it.
+      Nobody came to look at the tracks. By the time it rained, they
+      were gone.
+
+      But I took photos. I'm a forestier — I document everything. Two
+      sets of tyre tracks, one heavier than the other. The heavy one
+      was a large vehicle — SUV or van. The lighter one could be Marc's
+      Renault Clio.
+
+      Something happened on that forest road.
+    effects: { trust_roger: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Léonie (teen trail runner, witness tease) ---
+
+  leonie_intro:
+    type: tweet
+    from: leonie
+    text: >
+      ech sinn komplett schockéiert @marc_kayser huet eis all inspiréiert
+      mat sengem blog. hien huet gewisen datt d'Wahrheet wichteg ass.
+      wann ee eppes weess sot et svp
+    effects: { trust_leonie: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Léonie -> leonie_talk_early
+
+  leonie_talk_early:
+    type: message
+    text: >
+      LÉONIE: moien, t'es nouveau? c'est un timing de schäisst. marc
+      c'est genre le mec le plus courageux de cette ville. il a écrit
+      des trucs que personne d'autre osait dire sur les magouilles
+      immobilières.
+
+      et la jsuis flippée pcq félix il a vu un truc chelou l'autre
+      soir au parking du trail mais il veut pas en parler. il dit que
+      c rien mais genre... c'est clairement pas rien putain
+    effects: { trust_leonie: "+10" }
+    choices:
+      - What did Félix see? -> leonie_felix_hint
+      - Move on -> quest1_hub
+
+  leonie_felix_hint:
+    type: message
+    text: >
+      LÉONIE: jsp exactement. il était en session urbex genre vers les
+      ruines du moulin et il a vu qqn qui fouillait dans la voiture de
+      marc?? ou qqch comme ça. il flippe trop il veut pas en parler.
+      faut lui demander direct mais il est méfiant avec les gens qu'il
+      connaît pas. essaie d'abord de lui parler de skate ou d'urbex
+      mdr
+    effects: { trust_leonie: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Bëschkräiz. A small Luxembourg town
+      in the Müllerthal gorges. A finance blogger who was exposing shell
+      company corruption. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Anaïs (Marc's sister) -> anais_q1
+      - Talk to Luc (Marc's best friend) -> luc_q1
+      - Check what Tom (Marc's flatmate) is saying -> tom_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Anaïs Q1 ---
+
+  anais_q1:
+    type: tweet
+    from: anais
+    text: >
+      mon frère a DISPARU et la police me dit qu'il est peut-être
+      parti en voyage??? IL NE PART PAS SANS PRÉVENIR. jsuis en route
+      de luxembourg-ville. quelqu'un va m'expliquer putain.
+    effects: { trust_anais: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Anaïs -> anais_q1_talk
+
+  anais_q1_talk:
+    type: message
+    text: >
+      ANAÏS: Who the fuck are you? Another person from this town who's
+      going to tell me to calm down? My brother called me the night
+      before he disappeared. He said he had everything — bank transfers,
+      company registrations, the whole chain from the shell companies to
+      the bourgmestre's accounts.
+
+      He said "if anything happens to me, look at GoldenStone Holdings."
+      Then he said something weird — "and tell that guy to stop following
+      me." He hung up.
+
+      That's the last I heard from him.
+    effects: { trust_anais: "+10" }
+    choices:
+      - What guy? -> anais_theory
+      - Move on -> quest1_hub
+
+  anais_theory:
+    type: message
+    text: >
+      ANAÏS: I don't know exactly. Marc told me a few weeks ago that
+      someone was obsessed with his blog. Not just a fan — someone who
+      was showing up in person, trying to "collaborate," sending him
+      long DMs analysing his work. Marc said the guy knew shit about
+      finance that wasn't public. Like he had access to the same
+      documents Marc was investigating.
+
+      Marc blocked him online. The guy started showing up at the café.
+      Marc was genuinely creeped out. And that's not easy — my brother
+      wasn't scared of anything. Not the corporations, not the
+      politicians. But this guy got under his skin.
+    effects: { trust_anais: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Luc Q1 ---
+
+  luc_q1:
+    type: tweet
+    from: luc
+    text: >
+      JOUR 6 SANS NOUVELLES DE MARC. la police fait RIEN. le bourgmestre
+      dit RIEN. GoldenStone poste des annonces immobilières comme si de
+      rien n'était. C'EST UNE BLAGUE PUTAIN??
+    effects: { trust_luc: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Luc -> luc_q1_talk
+
+  luc_q1_talk:
+    type: message
+    text: >
+      LUC: Moien. Yeah, I'm angry. My best friend vanished and this
+      whole fucking town acts like it's normal. It's not normal.
+
+      Marc was about to blow the whole GoldenStone thing wide open. He
+      had documents showing that Claude Mersch was laundering money
+      through real estate purchases here — buying properties through
+      chains of shell companies, inflating the prices, then selling
+      them to "investors" who were just more shell companies. Classic
+      money laundering. And the bourgmestre was rubber-stamping every
+      building permit.
+
+      Marc had it all. The company registrations from the RCS, the
+      bank transfers, the permit approvals. Everything.
+
+      Now he's gone and his laptop is gone with him.
+    effects: { trust_luc: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tom Q1 ---
+
+  tom_q1:
+    type: tweet
+    from: tom
+    text: >
+      marc si tu lis ça stp réponds. tes affaires sont la. ton vélo est
+      la. t'es pas parti de ton plein gré. je sais que t'es pas parti.
+    effects: { trust_tom: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Tom -> tom_q1_talk
+
+  tom_q1_talk:
+    type: message
+    text: >
+      TOM: I appreciate you reaching out but I don't really know you.
+      Marc has a lot of contacts. People are reaching out from
+      everywhere.
+
+      ...I keep telling myself he'll walk through the door. It's been
+      six days.
+
+      [Tom is guarded. You'll need to build more trust before he
+      opens up.]
+    effects: { trust_tom: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Marc went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Félix (was doing urbex near the old mill) -> felix_interview
+      - Find Roger (forestier, found tyre tracks) -> roger_interview
+      - Find Pit (baker, starts at 4am) -> pit_interview
+      - Find Romain (estate agent, works late) -> romain_interview
+
+  # --- Félix (saw someone at Marc's car) ---
+
+  felix_interview:
+    type: tweet
+    from: felix
+    text: >
+      session urbex tranquille aux ruines du moulin mais l'ambiance
+      dans le village c chelou en ce moment. genre y a un truc qui va
+      pas. jsp comment expliquer
+    effects: { trust_felix: "+5" }
+    choices:
+      - Ask Félix about that evening -> felix_talk
+
+  felix_talk:
+    type: message
+    text: >
+      FÉLIX: wsh frr ok mais tu le dis à personne hein. j'étais aux
+      ruines vers 19h pour des photos et j'ai vu le mec — ben stein,
+      le gars chelou qui traîne au café — à côté de la voiture de marc
+      au parking du trail. il avait l'air de fouiller dans le coffre.
+      quand il m'a vu il s'est barré trop vite.
+
+      genre moi j'ai rien dit pcq je voulais pas d'embrouilles mais
+      la c'est chaud. c'est pas normal putain. un mec random qui
+      fouille dans la caisse d'un autre à la tombée de la nuit? schäisst
+    effects:
+      trust_felix: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Roger (forestier, tyre tracks at night) ---
+
+  roger_interview:
+    type: tweet
+    from: roger
+    text: >
+      D'Bëschweeër si fir Forstfuerwierker. Ech hunn frësch
+      Reimspueren fonnt um Waldwee bäi Heringer Millen. Dat ass
+      net normal.
+    effects: { trust_roger: "+5" }
+    choices:
+      - Ask Roger what he found -> roger_talk_night
+
+  roger_talk_night:
+    type: message
+    text: >
+      ROGER: The forest road to Heringer Millen is gated. Only my
+      service vehicle and the commune trucks have keys. But that
+      morning — the morning after Marc's last post — I found fresh
+      tyre tracks. Two sets.
+
+      One heavy vehicle. SUV class. Deep treads. And one lighter
+      car — could be Marc's Clio. The heavy vehicle went in first.
+      The lighter one followed.
+
+      Only the heavy vehicle came out. The lighter tracks just...
+      stop. In the middle of the forest road. Like the car was
+      left there. Or moved off-road.
+
+      I photographed everything before the rain came.
+    effects:
+      trust_roger: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pit (baker, saw car at dawn) ---
+
+  pit_interview:
+    type: tweet
+    from: pit
+    text: >
+      Backzäit ëm 4 Auer wéi ëmmer. Mee dee Moien war eppes anescht.
+      E grousst Gefier op der Strooss am Duerf. Ze séier. Ze fréi.
+    effects: { trust_pit: "+5" }
+    choices:
+      - Ask Pit what he saw -> pit_talk
+
+  pit_talk:
+    type: message
+    text: >
+      PIT: I start the ovens at 4am. Every morning. That morning I
+      was pulling the bréidel out and I heard a car. Not unusual — we
+      get early deliveries. But this was a big vehicle, dark coloured,
+      moving fast through the village. No headlights. At 4:15am.
+
+      It came from the direction of the forest road — Heringer Millen
+      way — and headed toward the N10 motorway.
+
+      Then maybe twenty minutes later, a smaller car. Also heading
+      toward the N10 but slower, like the driver wasn't sure where
+      they were going. That one had its lights on. I saw the driver
+      for a second. Wasn't Marc. Younger guy. Nervous looking.
+    effects:
+      trust_pit: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Romain (estate agent, late night office) ---
+
+  romain_interview:
+    type: tweet
+    from: romain
+    text: >
+      Travail tard ce soir au bureau. Beaucoup de nouveaux dossiers.
+      Le marché ne s'arrête jamais à Bëschkräiz.
+    effects: { trust_romain: "+5" }
+    choices:
+      - Ask Romain what he saw -> romain_talk
+
+  romain_talk:
+    type: message
+    text: >
+      ROMAIN: I was at the GoldenStone office until late — maybe 23h.
+      I know, unhealthy hours, but Mersch is demanding. As I was
+      locking up, I saw Marc's car parked near the trail entrance.
+      That's not unusual — he hikes at weird hours.
+
+      But then I saw Claude Mersch's Range Rover pull in next to it.
+      Mersch and another man — I think it was the bourgmestre's
+      assistant — got out and walked toward the trail. At 23h. In
+      the dark.
+
+      I didn't think about it. Now I do. Constantly.
+
+      Look, I work for GoldenStone. I'm telling you this because...
+      Marc didn't deserve whatever happened.
+    effects:
+      trust_romain: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Tom (flatmate)
+      and Sara (saw Ben watching Marc's flat).
+    choices:
+      - Talk to Tom about that night -> tom_interview
+      - Talk to Sara -> sara_interview
+      - Find Félix -> felix_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Roger -> roger_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Pit -> pit_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Romain -> romain_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Tom (last to see Marc) ---
+
+  tom_interview:
+    type: tweet
+    from: tom
+    text: >
+      cette photo floue sur le compte de marc. c'est pas lui. marc
+      ne poste jamais sans contexte. marc ne poste pas à 2h47 du
+      matin. quelqu'un d'autre a fait ça.
+    effects: { trust_tom: "+5" }
+    choices:
+      - DM Tom -> tom_talk_low
+        when:
+          state: trust_tom
+          lt: 50
+      - DM Tom -> tom_talk_high
+        when:
+          state: trust_tom
+          gte: 50
+
+  tom_talk_low:
+    type: message
+    text: >
+      TOM: I appreciate the concern but I really don't want to talk
+      to strangers about this. Everyone's suddenly interested. Where
+      were you all when Marc was getting threats?
+
+      [Tom needs to trust you more. Show him you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_tom: "+5" }
+    choices:
+      - Share what you've learned about the night -> tom_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  tom_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the Range Rover at the trail,
+      the tyre tracks in the forest, the car fleeing at dawn. Tom is
+      silent for a while.
+
+      TOM: Schäisst. You actually found stuff. Okay. I'll talk.
+    effects: { trust_tom: "+25" }
+    choices:
+      - What happened that night? -> tom_talk_high
+
+  tom_talk_high:
+    type: message
+    text: >
+      TOM: He came home around 22h. He was wired — like, energetic
+      but scared. He said "they know I'm publishing tomorrow." He
+      grabbed his laptop, both external drives, and his phone charger.
+
+      I asked who. He said "Mersch. GoldenStone. They've got people
+      in the commune." Then he said something else — "and that
+      fucking guy is outside again. He's always outside."
+
+      He wouldn't say who "that guy" was. He hugged me — Marc never
+      hugs anyone — and said "if I'm not back by morning, call Anaïs."
+      Then he left. By 3am that blurry photo was on his account.
+    effects:
+      trust_tom: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sara (saw Ben watching the flat) ---
+
+  sara_interview:
+    type: message
+    text: >
+      SARA: ok en vrai c'est chelou ce que je vais dire mais genre
+      le mec — ben stein — je l'ai vu genre 4 fois devant l'appart de
+      marc le soir. juste posé la à regarder les fenêtres. trop creepy
+      putain.
+
+      la dernière fois c'était genre 2 jours avant que marc disparaisse.
+      il était assis sur le banc en face. les écouteurs, le laptop ouvert.
+      genre il faisait semblant de travailler mais il regardait la fenêtre
+      de marc tout le temps. schäisst c'est flippant
+    effects:
+      trust_sara: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Ben Stein seen at Marc's car at the trail parking (Félix)
+      22:00 — Marc comes home, grabs laptop and drives, leaves (Tom)
+      23:00 — Mersch's Range Rover at trail entrance with Marc's car (Romain)
+      04:15 — Large dark vehicle leaving village, no lights (Pit)
+      04:35 — Smaller car following, nervous driver (Pit)
+      Dawn — Two sets of tyre tracks on gated forest road (Roger)
+
+      GoldenStone's people confronted Marc on the trail. He fled into
+      the forest with his evidence. Someone chased him.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is GoldenStone hiding? Who protects them?
+      — The obsession: What is Ben Stein really doing? Why was he
+        at Marc's car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Ben Stein -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      GoldenStone Holdings is a web of shell companies laundering
+      money through real estate in Bëschkräiz. Marc had proof. Now
+      he's gone and his evidence is missing.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search company registrations -> company_records
+      - Talk to Nora the journalist -> nora_interview
+      - Talk to Julie (GoldenStone accountant) -> julie_interview
+      - Talk to Carole (urbanisme deputy) -> carole_interview
+      - Check the Frënn vum Müllerthal association -> asso_investigation
+      - Talk to Roger about the construction sites -> roger_construction
+      - Back to hub -> investigation_hub
+
+  # --- Company Records ---
+
+  company_records:
+    type: message
+    text: >
+      Luxembourg's Registre de Commerce et des Sociétés is public.
+      Searching for GoldenStone Holdings leads to a web:
+
+      GoldenStone Holdings S.à r.l. → owns BëschImmo S.A. → owns
+      Müllerthal Properties S.à r.l. → owns LuxStone Invest S.A.
+      → owns Kräiz Developments S.C.S. → owns Valley Real S.à r.l.
+
+      Six companies. Same registered agent: Cabinet Ferreira &
+      Associés. Same beneficial owner buried four layers deep:
+      Claude Mersch.
+
+      Together they've purchased 14 properties in Bëschkräiz in
+      three years. Total declared value: €23 million. Estimated
+      market value: €9 million. The properties were bought at
+      2.5x their worth.
+
+      That's not investment. That's money laundering.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Nora ---
+
+  nora_interview:
+    type: message
+    text: >
+      NORA: I don't discuss sources. Ever.
+    effects: { trust_nora: "+5" }
+    choices:
+      - Show Nora the evidence you have -> nora_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  nora_with_evidence:
+    type: message
+    text: >
+      NORA: ...you have more than I expected from someone new in town.
+
+      Okay. Marc and I were working together. He had everything — the
+      shell company chain, the inflated purchase prices, the bank
+      transfers from accounts in Cyprus and Dubai. He had emails between
+      Mersch and the bourgmestre discussing "facilitation fees." Actual
+      kickbacks for fast-tracking building permits.
+
+      We were going to publish on Reporter.lu. Then he went dark. And
+      two days later someone broke into my car in Luxembourg-Ville and
+      took my backup drives.
+
+      Marc is alive. He contacted me once from a burner phone. He said
+      he was hiding in the Müllerthal — he knows those gorges like the
+      back of his hand. He said "they cornered me on the trail and
+      someone else won't stop following me."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come back.
+    effects:
+      trust_nora: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who cornered him? -> nora_hint
+      - Back to investigation hub -> investigation_hub
+
+  nora_hint:
+    type: message
+    text: >
+      NORA: Mersch sent people. Himself and some guy who works for the
+      commune — probably the bourgmestre's fixer. They showed up at
+      the trail that night with a lawyer's letter demanding he hand
+      over everything or face "legal consequences." That's how these
+      people work — intimidation dressed up as due process.
+
+      But he also said something about someone else. Someone who'd
+      been shadowing him for months. Someone who always knew where he
+      was. That's a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Julie (GoldenStone whistleblower) ---
+
+  julie_interview:
+    type: message
+    text: >
+      JULIE: I work at GoldenStone. I'm just the accountant. I process
+      the numbers.
+
+      But the numbers I process... they don't always make sense.
+    effects: { trust_julie: "+10" }
+    choices:
+      - What do you mean? -> julie_detail
+
+  julie_detail:
+    type: message
+    text: >
+      JULIE: I see the purchase prices. I see the valuations. I see
+      the "renovation budgets" that are twice what any renovation
+      costs. I see money coming in from companies in Cyprus that have
+      no employees and no websites.
+
+      Marc Kayser's blog described exactly what I see every day. He
+      had it right — the inflated prices, the circular transfers, the
+      shell company layers. Someone inside must have been feeding him
+      information.
+
+      It wasn't me. But I've kept copies of everything I've processed.
+      If someone can protect me — really protect me — I'll hand it
+      over. This is Luxembourg. These people know lawyers. They know
+      judges. I'm scared, putain.
+    effects:
+      trust_julie: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Carole ---
+
+  carole_interview:
+    type: message
+    text: >
+      CAROLE: As échevine for urbanisme, I review building permits.
+      And I can tell you that GoldenStone's applications were...
+      unusual.
+
+      Normally a permit takes 6-8 weeks. GoldenStone's went through
+      in 10 days. Every time. The bourgmestre signed off personally.
+      He told me it was "economic development." I asked questions. He
+      told me to stick to my lane.
+
+      Off the record? I've documented every irregularity. The fast-
+      tracked permits, the meetings that weren't in the calendar, the
+      phone calls between Thierry and Mersch that I overheard. Marc
+      knew about some of this. I think someone in the commune was
+      feeding him information.
+
+      I'm risking my career telling you this.
+    effects:
+      trust_carole: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Frënn vum Müllerthal ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_muellerthal
+    text: >
+      ALERTE: Travaux de construction non autorisés constatés près du
+      sentier de Heringer Millen. Zone protégée Natura 2000. Nous
+      demandons une suspension immédiate et une enquête.
+    choices:
+      - Check their records -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Frënn vum Müllerthal have been tracking construction in
+      the region for five years. Their data shows a clear pattern:
+      GoldenStone properties are built beyond their permit scope.
+
+      Extensions not in the plans. Additional floors. Parking garages
+      where gardens should be. In one case, construction in a Natura
+      2000 buffer zone — illegal under EU law.
+
+      The commune inspectors signed off on everything. The same
+      inspector every time: a man hired six months after GoldenStone's
+      first purchase. Before that, he worked for Claude Mersch's
+      previous company.
+
+      Marc was a member of the association. He contributed most of
+      the financial analysis.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Roger construction ---
+
+  roger_construction:
+    type: message
+    text: >
+      ROGER: I'll show you something. Last month I was doing my rounds
+      near the Heringer Millen trail and found a construction site
+      that shouldn't exist. Right at the edge of the protected zone.
+      No signs, no fencing, just a cleared area with foundation work.
+
+      I checked the commune records. No permit. I asked the bourgmestre.
+      He said it was "preliminary surveying." Surveying doesn't need
+      concrete foundations.
+
+      Marc photographed it. He said it was connected to GoldenStone —
+      another property purchase that would be worth millions once
+      "developed." Except you can't develop in a Natura 2000 zone.
+      Unless someone changes the zoning maps. Which someone did.
+    effects:
+      trust_roger: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Ben Stein. "Financial analyst." Showed up six months ago.
+      Someone was following Marc everywhere. Someone was at his car.
+      Someone was watching his flat.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Search Ben's online presence -> ben_online
+      - Talk to Martine about Ben's behaviour -> martine_ben_detail
+        when:
+          state: trust_martine
+          gte: 20
+      - Talk to Félix (more detail on the car incident) -> felix_detail
+      - Talk to Mireille the pharmacist -> mireille_interview
+      - Check the anonymous account @alex_reding -> alex_investigation
+      - Talk to Luc about Marc's concerns -> luc_ben
+        when:
+          state: trust_luc
+          gte: 40
+      - Talk to Commissaire Reuter -> commissaire_interview
+        when:
+          state: trust_commissaire
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Ben's Online Presence ---
+
+  ben_online:
+    type: message
+    text: >
+      Ben Stein's online presence is... peculiar. His LinkedIn says
+      "Independent Financial Analyst — Luxembourg." No company, no
+      clients listed, no endorsements. Account created 7 months ago.
+
+      His Mastodon follows: 1. Marc Kayser. That's it. He follows
+      one person.
+
+      His posts: all responses to Marc's blog entries. Detailed,
+      lengthy analyses of Marc's work. The tone is admiring at first,
+      then increasingly frustrated when Marc doesn't engage.
+
+      His latest DM to Marc (Marc screenshotted it to Luc before
+      vanishing): "You don't understand. We're working on the same
+      thing. I have information you need. Stop ignoring me. I know
+      where you are. I can help you."
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Martine on Ben ---
+
+  martine_ben_detail:
+    type: message
+    text: >
+      MARTINE: Ben came to the café every day for months. Always the
+      same table — the one with a view of the street, so he could see
+      Marc walking to the trail. He'd order a coffee and sit for four
+      hours.
+
+      He'd try to talk to Marc. Marc was polite at first, then firm,
+      then rude. Ben didn't stop. He'd follow Marc to the trailhead.
+      He'd show up at Luc's photo exhibitions because Marc would be
+      there.
+
+      Once I heard him say to Marc: "I know about the Cyprus
+      transfers. I can prove the Mersch connection." Marc went white.
+      He said "how the fuck do you know about Cyprus?" Ben just
+      smiled.
+
+      After that Marc stopped coming to the café. That was a month
+      before he disappeared.
+    effects:
+      trust_martine: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Félix detail ---
+
+  felix_detail:
+    type: message
+    text: >
+      FÉLIX: ok frr en vrai j'ai pas tout dit. quand j'ai vu ben
+      stein à la voiture de marc il avait un truc à la main. genre un
+      petit boîtier noir. il l'a collé sous le pare-chocs arrière.
+
+      moi jsuis pas expert mais ça ressemblait trop à un traceur GPS
+      sah. le genre de truc qu'on voit dans les séries. putain j'aurais
+      du dire qqch mais genre qui m'aurait cru? un ado qui accuse un
+      adulte? schäisst non personne m'aurait écouté
+    effects:
+      trust_felix: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Mireille ---
+
+  mireille_interview:
+    type: message
+    text: >
+      MIREILLE: Professional discretion means I shouldn't say this.
+      But a man's life might be at stake so merde, here goes.
+
+      Ben Stein comes in regularly. Anti-anxiety meds, sleep aids,
+      caffeine supplements. The pattern is someone who doesn't sleep
+      and manages his anxiety with pills. Classic obsessive behaviour.
+
+      He also asked me once if I knew where to buy "small electronic
+      tracking devices." I said "this is a pharmacy, not Saturn." He
+      laughed and left. I thought it was bizarre. Now I think it was
+      a warning sign I should have reported.
+    effects:
+      trust_mireille: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Alex Reding (anonymous account) ---
+
+  alex_investigation:
+    type: tweet
+    from: alex
+    text: >
+      He should have listened. I had the pieces he was missing. Nobody
+      else understood his work like I do.
+    choices:
+      - Look at this account's history -> alex_posts
+
+  alex_posts:
+    type: message
+    text: >
+      @alex_reding: account created 5 months ago. Posts are all about
+      Marc's blog. Comments on every article, every document dump,
+      every analysis. The tone shifts over time:
+
+      Month 1: "Brilliant work. You're exposing what nobody else dares."
+      Month 2: "Why won't you respond to my DMs? I just want to
+      collaborate."
+      Month 4: "I see you at the café with other people. You have time
+      for them but not for me? I have MORE than they do."
+      Month 5: "I know your schedule. I know your routes. I'm always
+      close. You'll understand eventually."
+
+      The account has no personal details. No photos. Just Marc.
+      Only Marc.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> alex_style
+
+  alex_style:
+    type: message
+    text: >
+      Comparing @alex_reding with Ben Stein's LinkedIn posts and café
+      conversation notes:
+
+      Same financial terminology. Same analytical style — the specific
+      way he structures arguments around "transfer chains" and "value
+      inflation." Same knowledge of GoldenStone's internal operations
+      that no outsider should have.
+
+      And one post from @alex_reding: "Your analysis of Entity 4 was
+      close but you missed the Dubai connection." Entity 4 is Marc's
+      internal codename for one of the shell companies. Not public.
+      Only someone who'd read Marc's private notes would know that.
+
+      It's Ben. The anonymous account is Ben Stein.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Luc on Ben ---
+
+  luc_ben:
+    type: message
+    text: >
+      LUC: Marc was genuinely scared of that guy. And Marc wasn't
+      scared of anyone — not Mersch, not the bourgmestre, not the
+      lawyers.
+
+      But Ben Stein? Marc said: "He knows things he shouldn't know.
+      He was outside the flat again last night. He follows me on the
+      trail."
+
+      Marc changed his running routes. He started varying his
+      schedule. He asked me to check if anyone was following when
+      we went to the gorges together.
+
+      A month ago Marc found a tracker on his car. Under the rear
+      bumper. He destroyed it. He didn't report it because — and
+      this is the fucked up part — he thought the police wouldn't
+      care. And he was probably right.
+    effects:
+      trust_luc: "+15"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Commissaire Reuter ---
+
+  commissaire_interview:
+    type: message
+    text: >
+      COMMISSAIRE REUTER: Off the record — completely off the record —
+      I wanted to investigate GoldenStone. My superiors in Luxembourg-
+      Ville told me to stand down. They said the Parquet had
+      "jurisdiction." That's code for "don't touch the money people."
+
+      This country protects its financial sector. Even when the money
+      is dirty. Especially when the money is dirty.
+
+      The stalking situation is different. If you have evidence of
+      harassment and surveillance, I can act on that. That's clearly
+      local jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_commissaire: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Marc Kayser than anyone in Bëschkräiz. Who is responsible?
+    choices:
+      - Confront Ben Stein (the obsessive fan) -> confront_ben
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Claude Mersch (GoldenStone director) -> confront_mersch
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Bourgmestre Schmit (political protection) -> confront_thierry
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Ben Stein (Best Ending) ---
+
+  confront_ben:
+    type: message
+    text: >
+      You present your evidence to Ben Stein:
+
+      "I know @alex_reding is your account. I know you put a GPS
+      tracker on Marc's car. I know you've been watching his flat.
+      I know you followed him to the trail the night he disappeared.
+      I have witnesses. I have the posts. I have the pharmacy records."
+    choices:
+      - Send -> ben_response
+
+  ben_response:
+    type: message
+    text: >
+      Ben doesn't reply for a long time. Then:
+
+      BEN: You don't understand. I was helping him. His investigation
+      was incomplete — I had information he needed. He refused to work
+      with me. I needed to be close so I could protect him when
+      GoldenStone made their move. Everything I did was because I
+      believed in his work.
+
+      That's not belief. That's obsession.
+
+      You've already sent the evidence to Commissaire Reuter. And to
+      Nora Lopes.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Commissaire Reuter reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the surveillance pattern,
+      the witness testimonies — Ben Stein is arrested for stalking
+      and harassment. A second GPS tracker is recovered from Marc's
+      car, abandoned on the Heringer Millen forest road.
+
+      Nora Lopes, finally in possession of Marc's full evidence
+      package plus Julie's accounting records, publishes the
+      GoldenStone story on Reporter.lu. The Parquet de Luxembourg
+      opens a criminal investigation into money laundering. Claude
+      Mersch's accounts are frozen. Bourgmestre Schmit is suspended
+      pending inquiry into corruption charges. Fourteen property
+      transactions are voided.
+
+      And Marc Kayser, reading the story from a hiking shelter deep
+      in the Müllerthal gorges where he's been hiding for eight days
+      with nothing but his laptop and a sleeping bag, calls his sister
+      for the first time since he vanished.
+
+      "Ech kommen heem."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: marc
+    text: >
+      the numbers don't lie. and neither did the people of bëschkräiz.
+      merci. villmools merci.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Claude Mersch (Partial Ending) ---
+
+  confront_mersch:
+    type: message
+    text: >
+      You present the money laundering evidence to Claude Mersch:
+
+      "I have the shell company chain from the RCS. I have the
+      inflated purchase prices. I have the Cyprus and Dubai transfers.
+      I have the facilitation fee emails. I have the accounting
+      records showing circular transactions."
+    choices:
+      - Send -> mersch_response
+
+  mersch_response:
+    type: message
+    text: >
+      MERSCH: This conversation is being forwarded to my legal
+      counsel. Any publication of defamatory material will result in
+      immediate proceedings. GoldenStone Holdings operates fully
+      within Luxembourg law.
+
+      But it's too late. You've sent the evidence to Nora, to the
+      Frënn vum Müllerthal, and to the Parquet.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The money laundering story breaks. GoldenStone Holdings is
+      placed under judicial investigation. Fourteen property
+      transactions are frozen. The bourgmestre faces questions. The
+      commune is in turmoil.
+
+      But Marc?
+
+      Without the stalking evidence, Ben Stein is never investigated.
+      He leaves Bëschkräiz but creates new accounts. He continues to
+      monitor Marc's blog. He follows Marc's sister online. He moves
+      to another small town and finds another subject.
+
+      Three months later, Marc reads about GoldenStone online. He
+      returns quietly. He changes his routes. He locks his car
+      obsessively. He checks for trackers every morning. He stops
+      hiking alone.
+
+      The corporation is exposed. But the person who terrorised
+      Marc Kayser walks free to do it again.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marc
+    text: "i'm back. the money trail is public. the rest... we'll see."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Bourgmestre (Wrong Ending) ---
+
+  confront_thierry:
+    type: message
+    text: >
+      You confront Bourgmestre Schmit with your evidence.
+
+      Within the hour, you receive a message from his lawyer:
+    choices:
+      - Read the response -> thierry_response
+
+  thierry_response:
+    type: tweet
+    from: joao
+    text: >
+      Mon client prend note de vos allégations. Toute diffusion
+      publique de propos diffamatoires fera l'objet de poursuites
+      immédiates devant les juridictions luxembourgeoises. — Cabinet
+      Ferreira & Associés, Luxembourg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The bourgmestre's lawyer buries your accusation. Without a
+      direct link between Schmit and the money laundering itself —
+      and the kickbacks are hard to prove without Marc's documents —
+      your evidence is insufficient.
+
+      GoldenStone continues to operate. The shell companies multiply.
+      Ben Stein continues to watch. Marc stays hidden in the gorges.
+
+      Six months later, @alex_reding creates a new account. It
+      follows Marc's sister. Then his best friend. Then his flatmate.
+
+      The bourgmestre wins re-election. GoldenStone breaks ground on
+      three new projects. The money keeps washing through.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: BËSCHKRÄIZ — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Marc's story explores themes of
+      financial crime, money laundering, political corruption,
+      obsessive behaviour, and the courage to investigate power.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or emotional distress, help is available:
+      SOS Détresse: 45 45 45 (24h/24, 7j/7)
+      BEE SECURE Helpline: 8002 1234
+      Police Grand-Ducale: 113

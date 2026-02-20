@@ -1,0 +1,1587 @@
+# DEAD ACCOUNT — Story 062: Visby Strand (Sweden — Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-062.yml
+#
+# Player investigates the disappearance of archaeological illustrator
+# Saga Lindqvist on a fictional Gotland island village.
+
+meta:
+  title: "Dead Account — Visby Strand"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_arvid: 0
+    trust_wilma: 0
+    trust_edvin: 0
+    trust_tuva: 0
+    trust_nils: 0
+    trust_freja: 0
+    trust_oskar: 0
+    trust_signe: 0
+    trust_birger: 0
+    trust_magnus: 0
+    trust_elin: 0
+    trust_lova: 0
+    trust_rasmus: 0
+    trust_astrid: 0
+    trust_karl: 0
+    trust_maja: 0
+    trust_viktor: 0
+    trust_ingrid: 0
+    trust_hampus: 0
+    trust_saga: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Ny Invånare
+    bio: "precis flyttat till visby strand. upptäcker gotland en sten i taget"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "VisbySocial.se"
+    description: "Välkommen till Visby Strands lokala Mastodon-instans"
+    avatar_url: /gamepatch/assets/dead-account/visbysocial_bot.png
+
+  npcs:
+    # === Saga's Inner Circle ===
+    saga:
+      name: "Saga Lindqvist"
+      bio: "arkeologisk illustratör | gotländska stenar berättar | pennan är mitt verktyg"
+      avatar: avatars/saga.jpg
+    arvid:
+      name: "Arvid Lindqvist"
+      bio: "sagas bror | snickare i visby | hon bara försvinner inte"
+      avatar: avatars/arvid.jpg
+    wilma:
+      name: "Wilma Ekström"
+      bio: "sagas bästis | jobbar på museet | kaffe & arkeologi"
+      avatar: avatars/wilma.jpg
+    edvin:
+      name: "Edvin Holm"
+      bio: "arkeolog | fältledare visby strand | sagas kollega"
+      avatar: avatars/edvin.jpg
+
+    # === Local Government ===
+    birger:
+      name: "Birger Söderström"
+      bio: "Kommunalråd Gotland | Lokalt engagemang sedan 2010 | #GotlandFramåt"
+      avatar: avatars/birger.jpg
+    elin:
+      name: "Elin Norrby"
+      bio: "Kulturansvarig | Region Gotland | kulturarv & utveckling"
+      avatar: avatars/elin.jpg
+    kommun:
+      name: "Gotlands Kommun"
+      bio: "Officiellt konto | Kommunal information | Öppet mån-fre 8-16"
+      avatar: avatars/kommun.jpg
+
+    # === Local Business & Community ===
+    signe:
+      name: "Signe Almkvist"
+      bio: "Café Ringmuren | fika & utsikt | öppet sedan 1995"
+      avatar: avatars/signe.jpg
+    cafe_ringmuren:
+      name: "Café Ringmuren"
+      bio: "Hembakat | Gotländsk saffranspannkaka | Öppet alla dagar | Hjärtat av Visby Strand"
+      avatar: avatars/cafe_ringmuren.jpg
+    nils:
+      name: "Nils Jakobsson"
+      bio: "fiskare | 35 år på havet | gotland i blodet"
+      avatar: avatars/nils.jpg
+    magnus:
+      name: "Magnus Öberg"
+      bio: "hamnkapten | Visby Strand | jour tis-lör"
+      avatar: avatars/magnus.jpg
+    astrid:
+      name: "Astrid Berglund"
+      bio: "apotekare | Visby Strand | hälsa & råd | söndagsöppet"
+      avatar: avatars/astrid.jpg
+    karl:
+      name: "Karl Pettersson"
+      bio: "bageri Pettersson | surdegsbröd | gotlandslimpa | 04:30 varje dag"
+      avatar: avatars/karl.jpg
+    lova:
+      name: "Lova Engström"
+      bio: "keramiker | gotländsk lera | verkstad vid hamnen | kurser sommar"
+      avatar: avatars/lova.jpg
+    rasmus:
+      name: "Rasmus Dahl"
+      bio: "antikvariat & bokhandel | Bokskeppet | böcker & kaffe | onsdagsläsning"
+      avatar: avatars/rasmus.jpg
+
+    # === Journalist ===
+    maja:
+      name: "Maja Forsberg"
+      bio: "journalist | Gotlands Allehanda freelance | tips: maja@forsbergpress.se"
+      avatar: avatars/maja.jpg
+
+    # === NordCruise (corporate) ===
+    nordcruise:
+      name: "NordCruise AB"
+      bio: "Skandinavisk kryssningsturism | Gotlandsprojektet | Hållbar tillväxt"
+      avatar: avatars/nordcruise.jpg
+    viktor:
+      name: "Viktor Lund"
+      bio: "projektchef NordCruise Gotland | infrastruktur & utveckling"
+      avatar: avatars/viktor.jpg
+    hampus:
+      name: "Hampus Åkerlund"
+      bio: "Advokat | Åkerlund & Partners | Affärsjuridik | Stockholm"
+      avatar: avatars/hampus.jpg
+
+    # === Teens ===
+    tuva:
+      name: "Tuva"
+      bio: "16 | klättring & historia | visby strand born | gotland e livet asså"
+      avatar: avatars/tuva.jpg
+    oskar:
+      name: "Oskar"
+      bio: "17 | skejt & musik | solnedgång vid hamnen | havet fixar allt"
+      avatar: avatars/oskar.jpg
+    freja:
+      name: "Freja"
+      bio: "15 | foto & illustration | saga är min inspo typ | gotlands bästa"
+      avatar: avatars/freja.jpg
+
+    # === Media & Community ===
+    actu_gotland:
+      name: "Gotlands Nyheter"
+      bio: "Nyheter från Gotland | Tips: redaktion@gotlandsnyheter.se"
+      avatar: avatars/actu_gotland.jpg
+    vader_gotland:
+      name: "Väder Gotland"
+      bio: "Prognoser & varningar | Automatisk station | Uppdateras varje timme"
+      avatar: avatars/vader_gotland.jpg
+    fornvanner:
+      name: "Gotlands Fornvänner"
+      bio: "Förening för Gotlands kulturarv | Frivilliga | Rapportera fornfynd"
+      avatar: avatars/fornvanner.jpg
+
+    # === Suspicious / Other ===
+    ingrid:
+      name: "Ingrid Voss"
+      bio: "digital konstnär | freelance | berlin/visby | illustrationer & mer"
+      avatar: avatars/ingrid.jpg
+    anon_runsten:
+      name: "Runsten99"
+      bio: "."
+      avatar: avatars/anon.jpg
+    polisen:
+      name: "Polis Gotland"
+      bio: "Polismyndigheten Region Gotland | Nödnummer: 112 | Tipsa: 114 14"
+      avatar: avatars/polisen.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VISBY STRAND
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to VisbySocial.se — the community Mastodon instance for
+      the village of Visby Strand, on the island of Gotland, Sweden.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @saga_lindqvist.
+
+      An archaeological illustrator. She drew the stones, the ruins,
+      the Viking-age finds that Gotland is famous for. People are
+      worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> saga_profile
+
+  saga_profile:
+    type: tweet
+    from: saga
+    text: "Vikingagraven vid Strandudden. NordCruise vill bygga sin hamn exakt här. Jag har dokumenterat ALLT. Det här försvinner inte."
+    choices:
+      - That's her last real post... -> grey_stone
+
+  grey_stone:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a grey stone. Blurry, overexposed, shot from a strange angle.
+      Posted at 2am. No caption.
+
+      Her friends say that's not her style. Saga always captioned her
+      illustrations with historical context. The police say she
+      probably went to the mainland for a break. Something doesn't
+      add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: polisen
+    text: >
+      Vi har mottagit en anmälan om en försvunnen person bosatt i
+      Visby Strand. I nuläget finns inga uppgifter som tyder på brott.
+      Information kan lämnas via 114 14 eller till närmaste
+      polisstation.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @wilma_ekstrom is
+      desperate. Her brother @arvid_lindqvist is driving down from
+      Visby town. Her colleague @edvin_holm is posting worried
+      messages. The fisherman @nils_jakobsson says she was right
+      about the Viking grave.
+
+      And the journalist @maja_forsberg is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Saga just
+      "went to the mainland."
+    effects: { trust_arvid: "+5", trust_wilma: "+5" }
+    choices:
+      - Start following Saga's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Visby Strand. Follow Saga's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Signe (café owner, knows everyone) -> signe_intro
+      - Talk to Nils (fisherman, knows the coast) -> nils_intro
+      - Talk to Tuva (teen climber, seems shaken) -> tuva_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Saga with the rhythms of a small
+      island village: ferry schedules, the bakery's daily specials,
+      weather warnings about Baltic storms.
+
+      Key names surface: Wilma (best friend, museum worker), Edvin
+      (field archaeologist, seems rattled), Maja (journalist, oddly
+      quiet), and the teens — Tuva, Oskar, Freja — who loved Saga's
+      illustration work.
+
+      Also prominent: NordCruise AB, the cruise ship company planning
+      a mega-port at Strandudden. Their posts are corporate PR.
+      Saga's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Signe -> signe_intro
+      - Talk to Nils -> nils_intro
+      - Talk to Tuva -> tuva_intro
+
+  # --- Signe (social map) ---
+
+  signe_intro:
+    type: tweet
+    from: signe
+    text: >
+      Caféet är öppet men hjärtat är inte med. @saga_lindqvist, din
+      plats vid fönstret väntar. Kom tillbaka.
+    effects: { trust_signe: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Signe -> signe_talk
+
+  signe_talk:
+    type: message
+    text: >
+      SIGNE: Oh, you're new? Welcome. Terrible timing. Everyone's on
+      edge about Saga.
+
+      Let me tell you who's who. Wilma is Saga's best friend — they
+      share a flat above the pottery workshop. Sweet girl, devastated
+      right now. Edvin Holm is the field archaeologist — he ran the
+      dig at Strandudden with Saga. Smart man, but... there's
+      something about the way he watches her. Arvid is Saga's older
+      brother, he's coming from Visby town.
+
+      And Maja Forsberg — the journalist — she and Saga were working
+      on something together. Something about NordCruise and the
+      Viking site. Maja hasn't said a word since Saga vanished.
+      That's not like her at all.
+
+      Oh, and don't bother reading NordCruise's PR posts. Lies
+      wrapped in sustainability reports.
+    effects: { trust_signe: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Edvin -> signe_edvin
+      - Ask about NordCruise -> signe_nordcruise
+      - Thank her and move on -> quest1_hub
+
+  signe_edvin:
+    type: message
+    text: >
+      SIGNE: Edvin? He's been on the dig team three years longer
+      than Saga. Brilliant archaeologist. But since she arrived, he's
+      been... orbiting her. At the café every time she was there.
+      Offered to help with every illustration project. She was polite
+      about it but I could tell it bothered her.
+
+      After she started documenting the Viking site for the campaign
+      against NordCruise, he got worse. Wanted to be part of
+      everything. She told me once, "He doesn't hear no." I thought
+      she meant professionally. Now I'm not so sure.
+    effects: { trust_signe: "+5" }
+    choices:
+      - Ask about NordCruise -> signe_nordcruise
+      - Move on -> quest1_hub
+
+  signe_nordcruise:
+    type: message
+    text: >
+      SIGNE: NordCruise has been circling Gotland for two years.
+      They want to build a cruise terminal at Strandudden — the
+      headland south of the village. Deep water access, they say.
+      "Sustainable tourism," they say. Hundreds of jobs.
+
+      Problem is, Strandudden has a Viking-age burial site. Not
+      officially excavated yet, but Saga found grave goods,
+      runestones, ship rivets. Incredible stuff. She documented
+      everything — illustrated it beautifully, mapped the site.
+
+      Her documentation was the only thing stopping the port
+      construction permit. Two weeks later she's gone.
+    effects: { trust_signe: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nils (the coast, witness tease) ---
+
+  nils_intro:
+    type: tweet
+    from: nils
+    text: >
+      trettifem år jag fiskat här. strandudden är heligt. vikingarna
+      vilar där. @saga_lindqvist visste det. nu är hon borta.
+      dra era jävla slutsatser.
+    effects: { trust_nils: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Nils -> nils_talk
+
+  nils_talk:
+    type: message
+    text: >
+      NILS: I've fished this coast since I was sixteen. I know every
+      rock, every current around Gotland. And I'm telling you —
+      Strandudden is sacred ground. The fishermen have always known
+      there were graves there. We leave the headland alone.
+
+      Saga was the first person to properly document it. She spent
+      months drawing every stone, every artifact. She built a case
+      that would stop NordCruise dead in their tracks. She had
+      county board approval pending for full protection status.
+
+      And then poof — gone.
+
+      You think that's a coincidence? Fan, I don't believe in
+      coincidences on this island.
+    effects: { trust_nils: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> nils_night
+      - Move on -> quest1_hub
+
+  nils_night:
+    type: message
+    text: >
+      NILS: The night before she vanished — I was coming back from
+      night fishing, around midnight. I saw lights at the dig site
+      office. Not unusual, archaeologists work late. But there was a
+      black SUV in the car park. Not a local car. Stockholm plates.
+
+      At midnight. At the archaeological field office.
+
+      I noted it in my fishing log. Nobody's asked to see it.
+    effects: { trust_nils: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tuva (teen climber, witness tease) ---
+
+  tuva_intro:
+    type: tweet
+    from: tuva
+    text: >
+      asså jag e fett ledsen typ @saga_lindqvist hon lärde mig allt
+      om gotlands historia. det e inte möjligt att hon bara stack.
+      om nån vet nåt snälla skriv
+    effects: { trust_tuva: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tuva -> tuva_talk_early
+
+  tuva_talk_early:
+    type: message
+    text: >
+      TUVA: asså du e ny här? fett dålig timing typ. saga e
+      bokstavligen den bästa personen i hela byn. hon visade oss
+      vikingagrejerna, lärde oss om runstenarna. fett coolt.
+
+      och nu e jag typ livrädd för oskar han såg nåt skumt nere
+      vid hamnen men han vill inte snacka om det. han säger att
+      det e inget men asså... det e inte inget fan
+    effects: { trust_tuva: "+10" }
+    choices:
+      - What did Oskar see? -> tuva_oskar_hint
+      - Move on -> quest1_hub
+
+  tuva_oskar_hint:
+    type: message
+    text: >
+      TUVA: typ jag vet inte exakt. han var nere vid hamnen på
+      kvällen och han såg nån som typ gick igenom sagas grejer i
+      fältkontoret?? eller nåt. han flippar ur han vill inte
+      snacka om det. du måste fråga honom direkt men han e
+      misstänksam mot folk han inte känner. snacka om skejt
+      med honom först typ haha
+    effects: { trust_tuva: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Visby Strand. A Gotland island
+      village built around the sea and its Viking heritage. An
+      archaeological illustrator who was blocking a corporate port
+      project. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Wilma (Saga's best friend) -> wilma_q1
+      - Talk to Edvin (Saga's colleague) -> edvin_q1
+      - Check what Arvid (Saga's brother) is saying -> arvid_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Wilma Q1 ---
+
+  wilma_q1:
+    type: tweet
+    from: wilma
+    text: >
+      om nån har hört nåt från @saga_lindqvist ring mig snälla.
+      hennes rum e orört. hennes ritgrejer e kvar. hon hade aldrig
+      lämnat utan sina pennor.
+    effects: { trust_wilma: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Wilma -> wilma_q1_talk
+
+  wilma_q1_talk:
+    type: message
+    text: >
+      WILMA: I appreciate you reaching out but I don't know you.
+      Saga has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Wilma is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_wilma: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Edvin Q1 ---
+
+  edvin_q1:
+    type: tweet
+    from: edvin
+    text: >
+      Fältkontoret är tomt utan @saga_lindqvist. Hennes
+      illustrationer ligger kvar på ritbordet. Hennes fältdagbok
+      är öppen. Hon lämnar aldrig pågående dokumentation. Något
+      har hänt.
+    effects: { trust_edvin: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Edvin -> edvin_q1_talk
+
+  edvin_q1_talk:
+    type: message
+    text: >
+      EDVIN: Saga and I have worked together for over a year.
+      She's the most dedicated illustrator I know. This
+      documentation project — mapping the Viking burial site —
+      it was everything to her. She had drawings, measurements,
+      soil analysis, artefact photos. She was so close to getting
+      full protection status for Strandudden.
+
+      I offered to help her. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to support her.
+
+      [Edvin seems earnest. Or obsessive?]
+    effects: { trust_edvin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Arvid Q1 ---
+
+  arvid_q1:
+    type: tweet
+    from: arvid
+    text: >
+      min syster har FÖRSVUNNIT och polisen säger att hon kanske
+      åkte till fastlandet??? HON ÅKER INTE UTAN ATT SÄGA TILL.
+      jag kommer från visby. nån ska fan förklara.
+    effects: { trust_arvid: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Arvid -> arvid_q1_talk
+
+  arvid_q1_talk:
+    type: message
+    text: >
+      ARVID: Who the hell are you? Another person from this village
+      who's going to tell me to calm down? My sister called me the
+      night before she disappeared. She said she had something big.
+      She said "if anything happens, look at NordCruise." Then she
+      hung up.
+
+      That's the last I heard from her. Fan.
+    effects: { trust_arvid: "+10" }
+    choices:
+      - What do you think happened? -> arvid_theory
+      - Move on -> quest1_hub
+
+  arvid_theory:
+    type: message
+    text: >
+      ARVID: I think she found proof that NordCruise bribed the
+      kommunalråd to push the port through and they shut her up.
+      But I also think that creepy colleague of hers — Edvin —
+      knows more than he's saying. The way he talks about her...
+      it's not just professional concern. It's something else.
+      Jävlar.
+
+      Saga told me months ago that someone at the dig site was
+      going through her field notes. She thought it was nothing.
+      I don't think it was nothing.
+    effects: { trust_arvid: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Saga went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Oskar (was skateboarding near the harbour) -> oskar_interview
+      - Find Magnus (harbour master, works late) -> magnus_interview
+      - Find Lova (ceramicist, early morning at the workshop) -> lova_interview
+      - Find Karl (baker, starts at 4:30am, saw something) -> karl_interview
+
+  # --- Oskar (saw someone at the field office) ---
+
+  oskar_interview:
+    type: tweet
+    from: oskar
+    text: >
+      bra session ikväll men stämningen vid hamnen e skum asså.
+      typ nåt e fel. vet inte hur jag ska förklara
+    effects: { trust_oskar: "+5" }
+    choices:
+      - Ask Oskar about that evening -> oskar_talk
+
+  oskar_talk:
+    type: message
+    text: >
+      OSKAR: asså ok men du säger inget till nån va. jag var vid
+      hamnen typ 19 och skejta. och jag såg snubben från utgrävningen
+      — edvin — vid sagas fältkontor. han typ gick igenom hennes
+      lådor. hennes ritningar och skit. när han såg mig stack han
+      fett snabbt.
+
+      typ jag sa inget för jag ville inte ha drama men nu e det
+      fett skumt. inte normalt beteende asså för helvete
+    effects:
+      trust_oskar: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Magnus (harbour master, saw late-night meeting) ---
+
+  magnus_interview:
+    type: tweet
+    from: magnus
+    text: >
+      Påminnelse: hamnområdet är stängt mellan 22 och 06.
+      Obehöriga fordon har noterats de senaste nätterna.
+    effects: { trust_magnus: "+5" }
+    choices:
+      - Ask Magnus what he saw -> magnus_talk
+
+  magnus_talk:
+    type: message
+    text: >
+      MAGNUS: I was closing the harbour office around 22:30. I saw
+      Saga's bicycle still at the dig site. And a black SUV —
+      Stockholm plates — parked next to the field office. Two men
+      in suits were standing by the entrance. One of them I
+      recognised: Viktor Lund, NordCruise's project director.
+
+      At 22:30. At an archaeological field office. That is not
+      normal.
+
+      I noted it in my harbour log. Nobody has asked to see it.
+    effects:
+      trust_magnus: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lova (saw Saga fleeing) ---
+
+  lova_interview:
+    type: tweet
+    from: lova
+    text: >
+      uppe klockan 4 för att elda ugnen. stranden var inte tom i
+      morse. nån sprang på stigen mot klipporna. i mörkret. inte
+      en jogger.
+    effects: { trust_lova: "+5" }
+    choices:
+      - Ask Lova what she saw -> lova_talk
+
+  lova_talk:
+    type: message
+    text: >
+      LOVA: I get up at 4am to fire the kiln. That morning — the
+      morning after Saga's last post — I saw someone on the coastal
+      path. Running. A woman, carrying a bag, heading toward
+      Strandudden. It was still dark. She was moving fast, like
+      she was frightened.
+
+      I called out but she didn't stop. I figured it was someone
+      out early but... who runs at 4am with a messenger bag full
+      of drawing tubes?
+
+      When I heard about Saga, I put it together. I think that was
+      her. Running from something.
+    effects:
+      trust_lova: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Karl (saw car chase) ---
+
+  karl_interview:
+    type: tweet
+    from: karl
+    text: >
+      Bakade som vanligt klockan halv fem. Men den morgonen körde
+      en bil alldeles för fort på kustvägen.
+    effects: { trust_karl: "+5" }
+    choices:
+      - Ask Karl what he saw -> karl_talk
+
+  karl_talk:
+    type: message
+    text: >
+      KARL: I start baking at 4:30 every day. That morning I was
+      opening the shutters and a car went past — fast, much too
+      fast for the coast road. Dark SUV. Then maybe two minutes
+      later, a smaller car. Following? I don't know.
+
+      The smaller car turned off toward the old fishing huts at
+      Strandudden. The SUV kept going toward the ferry terminal.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_karl: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Wilma (best
+      friend) and Freja (saw Edvin watching the flat).
+    choices:
+      - Talk to Wilma about that night -> wilma_interview
+      - Talk to Freja -> freja_interview
+      - Find Oskar -> oskar_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Magnus -> magnus_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Lova -> lova_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Karl -> karl_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Wilma (last to see Saga) ---
+
+  wilma_interview:
+    type: tweet
+    from: wilma
+    text: >
+      det där fotot på sagas konto. det e inte hon. saga postar
+      aldrig utan bildtext. saga postar inte klockan 2 på natten.
+      nån annan har gjort det.
+    effects: { trust_wilma: "+5" }
+    choices:
+      - DM Wilma -> wilma_talk_low
+        when:
+          state: trust_wilma
+          lt: 50
+      - DM Wilma -> wilma_talk_high
+        when:
+          state: trust_wilma
+          gte: 50
+
+  wilma_talk_low:
+    type: message
+    text: >
+      WILMA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Wilma needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_wilma: "+5" }
+    choices:
+      - Share what you've learned about the night -> wilma_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  wilma_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the field office,
+      the corporate men, the running figure. Wilma is silent for a
+      while.
+
+      WILMA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_wilma: "+25" }
+    choices:
+      - What happened that night? -> wilma_talk_high
+
+  wilma_talk_high:
+    type: message
+    text: >
+      WILMA: She came home around 23:00. I was studying for my
+      museum certification so I was up. She was pale, shaking. She
+      said "they know what I have." She grabbed her laptop and her
+      drawing portfolios.
+
+      I asked who. She said "the cruise company. They sent people
+      to the field office." Then she said something else — "and he
+      was there again. He's always there."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry," and left with a bag. That was it. By morning her
+      bicycle was gone and that grey stone was on her account.
+    effects:
+      trust_wilma: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Freja (saw Edvin watching the flat) ---
+
+  freja_interview:
+    type: message
+    text: >
+      FREJA: asså ok det här e fett creepy men typ snubben från
+      utgrävningen — edvin — jag har sett honom typ 3 gånger
+      utanför sagas lägenhet på kvällen. bara stått där och
+      stirrat på fönstren. fett obehagligt asså.
+
+      senaste gången var typ 2 dagar innan hon försvann. han satt
+      i sin bil parkerad mittemot. bara satt där. lamporna
+      släckta. för helvete.
+    effects:
+      trust_freja: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Edvin seen going through Saga's field office (Oskar)
+      22:30 — NordCruise SUV at the field office, Viktor Lund present (Magnus)
+      23:00 — Saga arrives home, shaken, grabs laptop and drawings (Wilma)
+      04:00 — Woman running on coastal path toward Strandudden (Lova)
+      04:30 — Two cars speeding on coast road, one toward fishing huts (Karl)
+
+      NordCruise confronted Saga at the field office. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is NordCruise hiding? Who bribed the
+        kommunalråd?
+      — The obsession: What is Edvin really doing? Why was he
+        in her office?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Edvin -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      NordCruise is hiding something. Saga had proof the Viking
+      burial site would stop the port. Now she's gone and her
+      documentation is missing from the field office.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the field office records -> field_records
+      - Talk to Maja the journalist -> maja_interview
+      - Talk to Elin (cultural heritage officer) -> elin_interview
+      - Talk to the Fornvänner association -> fornvanner_investigation
+      - Talk to Nils about the bribe -> nils_bribe
+      - Check kommunalråd Birger's finances -> birger_investigation
+      - Back to hub -> investigation_hub
+
+  # --- Field Office Records ---
+
+  field_records:
+    type: message
+    text: >
+      The archaeological field office's public database shows Saga's
+      recent work: site documentation from twelve locations along the
+      Strandudden headland. The drawings for the main burial chamber
+      are marked "PENDING REVIEW" — the only section with that
+      status.
+
+      Her field log, shared with the county board for compliance,
+      shows she documented 47 individual finds in the past month.
+      The last entry: "Photographed intact ship burial. Rivets,
+      sword fragments, amber beads. This is nationally significant.
+      NordCruise cannot build here."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Maja ---
+
+  maja_interview:
+    type: message
+    text: >
+      MAJA: I don't talk about sources. Period.
+    effects: { trust_maja: "+5" }
+    choices:
+      - Show Maja the evidence you have -> maja_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  maja_with_evidence:
+    type: message
+    text: >
+      MAJA: ...you have more than I expected.
+
+      Okay. Saga and I were working together. She had complete
+      archaeological documentation of a nationally significant
+      Viking burial site — the kind of find that would make
+      Strandudden a protected national monument. That would
+      kill NordCruise's port project permanently.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my office and stole my
+      backup hard drive.
+
+      Saga is alive. She contacted me once, from a prepaid phone.
+      She said she was hiding on the mainland. She said "they
+      threatened me at the office and someone else won't leave
+      me alone."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_maja: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> maja_hint
+      - Back to investigation hub -> investigation_hub
+
+  maja_hint:
+    type: message
+    text: >
+      MAJA: The cruise company sent their project director — Viktor
+      Lund — and some Stockholm lawyer to the field office that
+      night. They told her to hand over all documentation or face
+      legal action for trespassing on what they claimed was
+      "NordCruise development land." Intimidation dressed up as
+      legal process.
+
+      But she also said something about someone at the dig. Someone
+      who'd been going through her field notes. Someone who always
+      seemed to know where she was. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Elin (cultural heritage officer) ---
+
+  elin_interview:
+    type: message
+    text: >
+      ELIN: As the regional cultural heritage officer, I take these
+      discoveries seriously. But NordCruise has promised 400 jobs to
+      Gotland. The kommunalråd insists we need to "balance heritage
+      with development."
+
+      Off the record? I've seen the county board assessment. The
+      Viking site at Strandudden absolutely qualifies for national
+      monument status. But the assessment has been sitting on
+      Birger Söderström's desk for three months. He won't forward
+      it to the national board. He keeps saying he needs "more
+      information."
+
+      Saga's documentation was the final piece. That's what makes
+      her disappearance so convenient.
+    effects:
+      trust_elin: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Fornvänner ---
+
+  fornvanner_investigation:
+    type: tweet
+    from: fornvanner
+    text: >
+      VARNING: Olaglig markberedning observerad vid Strandudden.
+      Foton och rapporter skickade till Länsstyrelsen. Vi kräver
+      omedelbart byggstopp för NordCruise-projektet.
+    choices:
+      - Check their data -> fornvanner_data
+
+  fornvanner_data:
+    type: message
+    text: >
+      The Gotlands Fornvänner have been monitoring the Strandudden
+      site for two years. Their records show a clear pattern:
+      NordCruise has been conducting "geological surveys" that are
+      actually preliminary construction work — test drilling,
+      ground clearance, vegetation removal — all before permits
+      were granted.
+
+      The pattern is unmistakable. This is a company building
+      first and asking permission later, counting on political
+      protection to smooth things over.
+
+      Saga was a member. She contributed most of the archaeological
+      illustrations and site maps.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Nils bribe ---
+
+  nils_bribe:
+    type: message
+    text: >
+      NILS: I'll tell you something. Last month I was repairing my
+      nets at the harbour at night. Birger Söderström — the
+      kommunalråd himself — was on the pier with Viktor Lund from
+      NordCruise. They didn't know I was there.
+
+      I heard Birger say "the heritage assessment stays on my desk
+      until after the permits go through." Viktor said "the
+      foundation will make the donation as agreed. Your wife's
+      consultancy firm, wasn't it?"
+
+      Birger's wife Margareta runs a "tourism consultancy." Last
+      year it received 800,000 kronor from a foundation registered
+      in Cyprus. That foundation's only donor? NordCruise AB.
+
+      Saga found the same connection. She had the financial records.
+    effects:
+      trust_nils: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Birger investigation ---
+
+  birger_investigation:
+    type: message
+    text: >
+      Public records show kommunalråd Birger Söderström's asset
+      declarations for the past three years. His salary is standard
+      for a regional politician. But his wife Margareta Söderström's
+      consultancy — Gotland Tourism Solutions — declared income of
+      over 2 million kronor since NordCruise arrived on the island.
+
+      Her only client: a foundation called "Baltic Heritage
+      Foundation," registered in Nicosia, Cyprus. The foundation's
+      board includes one name: a former NordCruise executive.
+
+      The county board heritage assessment for Strandudden was
+      submitted to Birger's office 14 weeks ago. It has not been
+      forwarded to the national board. The statutory deadline for
+      forwarding is 8 weeks.
+
+      He is actively blocking the protection that would stop the
+      port.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Edvin Holm. Colleague. Field archaeologist. Something more?
+      Someone was accessing Saga's field notes. Someone was watching
+      her flat. Someone was in her office.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Edvin's site access logs -> site_access
+      - Talk to Wilma about Edvin -> wilma_edvin
+        when:
+          state: trust_wilma
+          gte: 20
+      - Talk to Oskar (more detail on the office incident) -> oskar_detail
+      - Talk to Astrid the pharmacist -> astrid_interview
+      - Check the anonymous account @runsten99 -> anon_investigation
+      - Talk to Rasmus the bookseller -> rasmus_interview
+        when:
+          state: trust_rasmus
+          gte: 40
+      - Talk to Polis Gotland -> polisen_interview
+        when:
+          state: trust_polisen
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Site Access Logs ---
+
+  site_access:
+    type: message
+    text: >
+      The archaeological field office uses a key card system logged
+      electronically. Saga's card was used 52 times last month.
+      Edvin's card: 94 times. Nearly double.
+
+      Cross-referencing: on 38 of Edvin's 94 entries, he accessed
+      the office within 15 minutes of Saga. He arrived after her
+      and left after her. Every time.
+
+      His own workspace is in the main dig trench, not the office.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Wilma on Edvin ---
+
+  wilma_edvin:
+    type: message
+    text: >
+      WILMA: Edvin? He made Saga uncomfortable. He'd show up at the
+      café when she was there. He'd offer to walk her home along the
+      coast path. He'd comment on every single one of her posts
+      within minutes.
+
+      She told him she wasn't interested. Clearly, kindly. He said
+      he understood. Then nothing changed. He just... kept being
+      there. Always there.
+
+      A month ago she found that someone had been in her locked
+      office drawer after hours. Her original field illustrations
+      had been handled — she could tell because she works with
+      charcoal and someone had smudged them. She suspected Edvin
+      but couldn't prove it.
+    effects:
+      trust_wilma: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Oskar detail ---
+
+  oskar_detail:
+    type: message
+    text: >
+      OSKAR: ok asså jag sa inte allt. när jag såg edvin i sagas
+      kontor hade han nåt i handen. typ en liten grej. han la det
+      i hennes väska. typ gömt under papper.
+
+      jag e inte expert men det såg ut som en sån där gps-tracker
+      asså. typ som i filmerna.
+
+      jag borde ha sagt nåt men asså vem hade trott mig. en tonåring
+      som anklagar en arkeolog. fan nej.
+    effects:
+      trust_oskar: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Astrid ---
+
+  astrid_interview:
+    type: message
+    text: >
+      ASTRID: This is confidential but I'm a pharmacist, not a
+      priest. Edvin Holm comes in regularly. He's been purchasing
+      things that... suggest he's not sleeping. Anti-anxiety
+      medication, sleep aids, caffeine supplements. The pattern is
+      someone under extreme stress.
+
+      He also asked me once, very casually, if we sold tracking
+      devices. I said "this is a pharmacy, not Kjell & Company."
+      He laughed it off. I didn't think about it again until Saga
+      disappeared.
+    effects:
+      trust_astrid: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Runsten99 (anonymous account) ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_runsten
+    text: >
+      Hon borde ha lyssnat. Jag försökte skydda henne. Ingen annan
+      förstod hennes arbete som jag gör.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @runsten99: account created 9 months ago. Posts are all about
+      Saga's work. Comments on every illustration, every site
+      photograph, every archaeological update. The tone shifts over
+      time:
+
+      Month 1: "Incredible work. You're capturing what nobody else
+      can see."
+      Month 3: "Why won't you respond to my messages? I just want
+      to collaborate."
+      Month 6: "I see you at the café with other people. You have
+      time for them but not for me?"
+      Month 8: "I know where you go. I know your schedule. I'm
+      always close by."
+
+      The account has no photos, no personal details. Just Saga.
+      Only Saga.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @runsten99 with @edvin_holm:
+
+      Same use of archaeological terminology. Same Swedish spelling
+      habits — the specific way he abbreviates technical terms in
+      field reports. Same knowledge of Saga's documentation that
+      only a dig site colleague would have.
+
+      And one post from @runsten99: "Your illustration of Context
+      14 was beautiful." Context 14 is an internal dig site
+      designation. Not public.
+
+      It's Edvin. The anonymous account is Edvin.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Rasmus ---
+
+  rasmus_interview:
+    type: message
+    text: >
+      RASMUS: Saga left something with me. A sealed waterproof
+      tube — the kind used for storing large-format drawings. She
+      said "if someone asks you about what's buried at Strandudden,
+      give them this."
+
+      She looked frightened. She said she'd made copies of
+      everything but needed one set somewhere nobody would think
+      to look. An antiquarian bookshop seemed perfect.
+    effects: { trust_rasmus: "+10" }
+    choices:
+      - What's buried at Strandudden? -> rasmus_tube
+
+  rasmus_tube:
+    type: message
+    text: >
+      Rasmus reaches behind the counter and produces a waterproof
+      drawing tube.
+
+      RASMUS: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of Saga's original
+      illustrations. The drawings show the complete Viking burial
+      site — ship burial, grave goods, runestones — and detailed
+      maps proving it extends directly under NordCruise's proposed
+      port foundation. The USB drive contains photographs, soil
+      analysis, artefact catalogues, and Saga's formal heritage
+      protection application.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Polisen ---
+
+  polisen_interview:
+    type: message
+    text: >
+      POLICE CONTACT: Off the record — and I mean completely off
+      the record — I wanted to investigate NordCruise's activities
+      at Strandudden. My superior told me to stand down. He said
+      the county board had "jurisdiction over heritage matters."
+      That's code for "don't touch it."
+
+      The Holm situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act
+      on that. That's clearly our jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_polisen: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Saga than anyone in Visby Strand. Who is responsible?
+    choices:
+      - Confront Edvin Holm (the obsessive colleague) -> confront_edvin
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Viktor Lund (NordCruise project director) -> confront_viktor
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Kommunalråd Söderström (political protection) -> confront_birger
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Edvin (Best Ending) ---
+
+  confront_edvin:
+    type: message
+    text: >
+      You present your evidence to Edvin:
+
+      "I know @runsten99 is your account. I know you put a GPS
+      tracker in Saga's bag. I know you accessed her field office
+      after hours. I know you were watching her flat. I have
+      witnesses and I have the access logs."
+    choices:
+      - Send -> edvin_response
+
+  edvin_response:
+    type: message
+    text: >
+      Edvin doesn't reply for a long time. Then:
+
+      EDVIN: You don't understand. I was protecting her. She was
+      in danger from NordCruise and she wouldn't let me help. I
+      needed to know she was safe. Everything I did was because I
+      care about her work. About her.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Polis Gotland. And to
+      Maja Forsberg.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Polis Gotland reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witness testimonies — Edvin is arrested for stalking and
+      harassment. A GPS tracker is recovered from Saga's
+      messenger bag at a friend's house in Kalmar.
+
+      Maja Forsberg, finally in possession of Saga's full
+      documentation, publishes the NordCruise story in Dagens
+      Nyheter. The national heritage board orders an immediate
+      site assessment. Strandudden is declared a national
+      monument. The port project is cancelled. Kommunalråd
+      Söderström's wife's consultancy is investigated for money
+      laundering. Viktor Lund faces charges for intimidation
+      and destruction of cultural heritage.
+
+      And Saga Lindqvist, reading the story from a friend's
+      apartment in Kalmar, calls her brother for the first time
+      in nine days.
+
+      "Jag kommer hem."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: saga
+    text: >
+      stenarna ljuger inte. och folket i visby strand heller inte.
+      tack för att ni inte gav upp.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Viktor (Partial Ending) ---
+
+  confront_viktor:
+    type: message
+    text: >
+      You present the heritage evidence to Viktor Lund:
+
+      "I have complete archaeological documentation of a nationally
+      significant Viking burial site. I have proof that the
+      kommunalråd blocked the heritage assessment. I have financial
+      records showing NordCruise funnelled money through a Cyprus
+      foundation to Söderström's wife's consultancy."
+    choices:
+      - Send -> viktor_response
+
+  viktor_response:
+    type: message
+    text: >
+      VIKTOR: This correspondence is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. NordCruise AB has always operated
+      within applicable regulations and respects local cultural
+      heritage.
+
+      But it's too late. You've sent the evidence to Maja, to the
+      Gotlands Fornvänner, and to the national heritage board.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The heritage story breaks. NordCruise is ordered to halt
+      all construction pending a full archaeological survey. The
+      port project collapses. Four hundred promised jobs vanish.
+      The island is divided.
+
+      But Saga?
+
+      Without the stalking evidence, Edvin is never investigated.
+      He continues to work at the dig site. He continues to
+      monitor her accounts. He creates a new anonymous profile.
+
+      Three months later, Saga reads about NordCruise online.
+      She returns quietly. She changes dig sites. She stops
+      working alone. She checks her bag every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Saga walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: saga
+    text: "jag är tillbaka. vikingarna är skyddade. resten... vi får se."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Kommunalråd (Wrong Ending) ---
+
+  confront_birger:
+    type: message
+    text: >
+      You confront Kommunalråd Söderström with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> birger_response
+
+  birger_response:
+    type: tweet
+    from: hampus
+    text: >
+      Min klient noterar era anklagelser. All offentlig spridning
+      av förtalande material kommer att leda till omedelbar rättslig
+      åtgärd. — Åkerlund & Partners, Stockholm
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The kommunalråd's lawyer buries your accusation. Without a
+      direct link between Söderström and Saga's disappearance —
+      and there isn't one beyond political protection — your
+      evidence is insufficient.
+
+      NordCruise continues to build. Edvin continues to watch.
+      Saga stays in hiding.
+
+      Six months later, @runsten99 creates a new account. It
+      follows Saga's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VISBY STRAND — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Saga's story explores themes of
+      corporate greed, cultural heritage destruction, obsessive
+      behaviour, political corruption, and the courage to
+      protect what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Mind Självmordslinjen: 90101
+      Kvinnofridslinjen: 020-50 50 50
+      Polisens tipslinje: 114 14

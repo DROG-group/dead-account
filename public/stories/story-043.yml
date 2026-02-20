@@ -1,0 +1,1495 @@
+# DEAD ACCOUNT — A TactCheck Gamepatch Scenario
+# Story 043: Estonia 2 — Saarekyula
+# An investigation game on a simulated Mastodon instance
+#
+# Player investigates the disappearance of wildlife biologist Marten Kask
+# in the fictional island town of Saarekyula on Saaremaa.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_priit: 0
+    trust_katrin: 0
+    trust_urmas: 0
+    trust_aino: 0
+    trust_markus: 0
+    trust_liisa: 0
+    trust_henri: 0
+    trust_toomas: 0
+    trust_marika: 0
+    trust_andres: 0
+    trust_tiina: 0
+    trust_juhan: 0
+    trust_epp: 0
+    trust_rein: 0
+    trust_maris: 0
+    trust_kalev: 0
+    trust_sirje: 0
+    trust_tonis: 0
+    trust_helgi: 0
+    trust_anu: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    permits_evidence: 0
+    threats_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to saarekyula. getting to know the island"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Saarekyula.social"
+    description: "Welcome to the Saarekyula community instance — Saaremaa"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    # === Marten's Inner Circle ===
+    marten:
+      name: "Marten Kask"
+      bio: "wildlife biologist & drone photographer | saaremaa eagles | protecting what matters"
+      avatar: avatars/marten.jpg
+    priit:
+      name: "Priit Tamm"
+      bio: "ornithologist | saaremaa bird station | marten's research partner"
+      avatar: avatars/priit.jpg
+    katrin:
+      name: "Katrin Rebane"
+      bio: "marine biologist | saarekyula harbor | marten's girlfriend"
+      avatar: avatars/katrin.jpg
+    urmas:
+      name: "Urmas Sepp"
+      bio: "forester | saaremaa metsaühistu | trees and truth"
+      avatar: avatars/urmas.jpg
+    marika:
+      name: "Marika Kask"
+      bio: "marten's sister | tallinn | where is my brother"
+      avatar: avatars/marika.jpg
+
+    # === Local Government ===
+    toomas:
+      name: "Toomas Oja"
+      bio: "Vallavanem | Saareküla vald | Arendame koos kogukonda"
+      avatar: avatars/toomas.jpg
+    andres:
+      name: "Andres Luik"
+      bio: "Keskkonnaspetsialist | Saareküla vald | Loodus ja seadused"
+      avatar: avatars/andres.jpg
+    tiina:
+      name: "Tiina Laan"
+      bio: "Vallavalitsus Saareküla | sekretär | kohv ja dokumendid"
+      avatar: avatars/tiina.jpg
+    politsei:
+      name: "Politsei — Saaremaa"
+      bio: "Ametlik konto | Häirekeskus: 112 | Info: 612 3000"
+      avatar: avatars/politsei.jpg
+    rein:
+      name: "Rein Kukk"
+      bio: "Konstaabel | Saareküla jaoskond | Vastuvõtt: K 10-12"
+      avatar: avatars/rein.jpg
+
+    # === Wind Farm / Construction ===
+    kalev:
+      name: "Kalev Rand"
+      bio: "Objektijuht | TuuleTech OÜ | Building the future of energy"
+      avatar: avatars/kalev.jpg
+    tuuletech:
+      name: "TuuleTech OÜ"
+      bio: "Tuuleenergia | Saaremaa tuulepark | Roheline tulevik"
+      avatar: avatars/tuuletech.jpg
+    tonis:
+      name: "Tõnis Mets"
+      bio: "Advokaat | Mets & Partners | Äriõigus ja energeetika"
+      avatar: avatars/tonis.jpg
+
+    # === Local Community ===
+    aino:
+      name: "Vanaema Aino"
+      bio: "85 aastat saaremaal | mäletan veel kõiki kotkaid | leib ja mesi igal reedel"
+      avatar: avatars/aino.jpg
+    epp:
+      name: "Epp Saar"
+      bio: "apteeker | saareküla apteek | tervis on kõige tähtsam"
+      avatar: avatars/epp.jpg
+    juhan:
+      name: "Juhan Vaher"
+      bio: "kalur | saareküla sadam | meri on mu kodu"
+      avatar: avatars/juhan.jpg
+    maris:
+      name: "Maris Ilves"
+      bio: "raamatukogu juhataja | saareküla | raamatud ja merevaade"
+      avatar: avatars/maris.jpg
+    sirje:
+      name: "Sirje Aas"
+      bio: "ajakirjanik | Saarte Hääl | vihjed: sirje@saartehaal.ee"
+      avatar: avatars/sirje.jpg
+    helgi:
+      name: "Helgi Pärn"
+      bio: "automehaanik | saareküla | parandused ja hooldus"
+      avatar: avatars/helgi.jpg
+    anu:
+      name: "Anu Kivi"
+      bio: "õpetaja | saareküla põhikool | lapsed on tulevik"
+      avatar: avatars/anu.jpg
+
+    # === Teens ===
+    markus:
+      name: "Markus"
+      bio: "16 | skater | saareküla sadam on chill koht | lol"
+      avatar: avatars/markus.jpg
+    liisa:
+      name: "Liisa"
+      bio: "17 | loodushuviline | @marten_wildlife on normaalne legend | tbh"
+      avatar: avatars/liisa.jpg
+    henri:
+      name: "Henri"
+      bio: "15 | droonid | kalastamine | nägin midagi krt"
+      avatar: avatars/henri.jpg
+
+    # === Media / Misc ===
+    uudised:
+      name: "Saareküla Uudised"
+      bio: "Kohalikud uudised | Vihjed: uudised@saarekyula.ee"
+      avatar: avatars/uudised.jpg
+    ilm:
+      name: "Ilm Saareküla"
+      bio: "Automaatne ilmajaam | Uuendus iga tund"
+      avatar: avatars/ilm.jpg
+    raamatukogu:
+      name: "Saareküla Raamatukogu"
+      bio: "Raamatud | Üritused | Wifi | Teadmised kõigile"
+      avatar: avatars/raamatukogu.jpg
+    tipster:
+      name: "Anonüümne"
+      bio: "."
+      avatar: avatars/anon.jpg
+    linnuvaatlus:
+      name: "Saaremaa Linnuvaatlus"
+      bio: "Linnuvaatlused | Kaitse | Teadus | Koosolekud igal kuul"
+      avatar: avatars/linnuvaatlus.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SAAREKYULA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to saarekyula.social — the community Mastodon instance
+      for the village of Saarekyula on Saaremaa island, Estonia.
+
+      The local feed is buzzing with alarm. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name dominates: @marten_wildlife.
+
+      A local wildlife biologist and drone photographer. He documented
+      the island's eagle populations and coastal ecosystems. Thousands
+      of followers loved his aerial footage. He hasn't posted in nine
+      days.
+    choices:
+      - Look at his profile -> marten_profile
+
+  marten_profile:
+    type: tweet
+    from: marten
+    text: "Three nesting sites destroyed. Permits signed by a man who's never visited the site. This stops now."
+    choices:
+      - That's his last real post... -> black_square
+
+  black_square:
+    type: message
+    text: >
+      Two days after that post, his account shared a single image:
+      a solid black square. No caption. Posted at 2am.
+
+      His friends say that's not Marten. The police say there's no
+      evidence of a crime. But a biologist doesn't vanish after
+      exposing destroyed eagle nests.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: politsei
+    text: >
+      Oleme saanud teate Saareküla elaniku kohta. Hetkel puuduvad
+      tõendid kuriteo kohta. Info: 612 3000.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The feed is divided. Marten's girlfriend @katrin_bio is posting
+      desperate pleas. His research partner @priit_orni is posting
+      cryptic references to "corrupted environmental permits." His
+      sister @marika_kask is threatening to involve EU authorities.
+
+      Vanaema Aino says the eagles have lived on these cliffs for
+      hundreds of years and "those windmill people are killing them
+      all."
+
+      Nobody believes Marten just left. He was exposing something
+      dangerous.
+    effects: { trust_katrin: "+5", trust_marika: "+5" }
+    choices:
+      - Start following Marten's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Saarekyula. Follow Marten's contacts and read their
+      posts. The more you engage, the more islanders will trust you.
+    choices:
+      - Talk to Vanaema Aino (island elder) -> aino_intro
+      - Talk to Juhan the fisherman (knows the coast) -> juhan_intro
+      - Talk to Markus (teen skater, saw something) -> markus_intro
+      - Browse the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Marten with everyday island life.
+      Ferry schedules, weather, fishing reports. And a growing debate
+      about TuuleTech — the wind energy company building turbines on
+      the island's northwest coast.
+
+      Key names: Katrin (marine biologist, Marten's girlfriend), Priit
+      (ornithologist, research partner), Urmas (forester, local
+      knowledge), Sirje (journalist, strangely quiet about all this).
+
+      TuuleTech's corporate account keeps posting about "green energy"
+      and "sustainable development." The locals seem split — some want
+      the jobs, others want the eagles.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Vanaema Aino -> aino_intro
+      - Talk to Juhan -> juhan_intro
+      - Talk to Markus -> markus_intro
+
+  # --- Vanaema Aino (elder, history) ---
+
+  aino_intro:
+    type: tweet
+    from: aino
+    text: >
+      kotkad on elanud neil kaljudel sada aastat. nüüd tuulikud
+      tapavad neid. marten teadis. marten rääkis. nüüd on marten
+      kadunud.
+    effects: { trust_aino: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Vanaema Aino -> aino_talk
+
+  aino_talk:
+    type: message
+    text: >
+      AINO: Come, sit. Have some bread and honey.
+
+      The northwest cliffs have been eagle territory forever. White-
+      tailed eagles. Magnificent birds. Marten counted twelve nesting
+      pairs — one of the largest colonies in the Baltic.
+
+      Then TuuleTech got permits to build turbines on those very cliffs.
+      The environmental assessment said "no significant impact on
+      wildlife." Marten said that assessment was fraudulent. He had
+      drone footage of dead eagles under the turbine towers.
+
+      The permits were signed by Andres Luik — the municipal
+      environmental specialist. Andres has never visited the site. Not
+      once. Marten checked the visitor logs.
+    effects: { trust_aino: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about TuuleTech -> aino_tuuletech
+      - Ask about the town leadership -> aino_politics
+      - Thank her and move on -> quest1_hub
+
+  aino_tuuletech:
+    type: message
+    text: >
+      AINO: TuuleTech came two years ago. They promised jobs, money,
+      "green energy." The municipal elder Toomas Oja welcomed them with
+      open arms. Signed a partnership agreement. TuuleTech "donated"
+      money for the village hall renovation.
+
+      Then the construction started. On the eagle cliffs. Nobody voted
+      for that specific location. The permits appeared. Andres Luik
+      signed them. The turbines went up.
+
+      Marten started documenting everything. Drone flights. Dead birds.
+      Destroyed nests. He posted it all online. And then Kalev Rand —
+      TuuleTech's site manager — started "visiting" him.
+    effects: { trust_aino: "+5" }
+    choices:
+      - Ask about the town leadership -> aino_politics
+      - Move on -> quest1_hub
+
+  aino_politics:
+    type: message
+    text: >
+      AINO: Toomas Oja is the municipal elder. He's not a bad man, just
+      a weak one. He wants the village to survive. Young people leave.
+      TuuleTech promised to keep them here.
+
+      Andres Luik is supposed to protect the environment. Instead he
+      rubber-stamps whatever TuuleTech asks for. Marten said Andres
+      gets "consulting fees" from TuuleTech on the side. Off the books.
+
+      And Kalev Rand — the construction boss. A big man. Loud. He came
+      to Marten's house. Katrin told me. He "suggested" Marten should
+      "focus on other species." That was a threat.
+    effects: { trust_aino: "+10", contacts_followed: "+2" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Juhan (fisherman, coastal knowledge) ---
+
+  juhan_intro:
+    type: tweet
+    from: juhan
+    text: >
+      kotkad ei lenda enam ranniku kohal. tuulikud on nende teel.
+      kolmkümmend aastat olen vaadanud neid lendamas. nüüd ainult
+      tuulikud.
+    effects: { trust_juhan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Juhan -> juhan_talk
+
+  juhan_talk:
+    type: message
+    text: >
+      JUHAN: I fish these waters every day. I used to watch the eagles
+      hunt from my boat. Now I find them dead on the rocks below the
+      turbines.
+
+      Marten asked me to document what I found. I photographed seven
+      dead eagles over three months. He said the official count was
+      "zero wildlife fatalities." Zero. When I had photographs of seven
+      dead birds.
+
+      The environmental reports are lies. Someone is signing off on
+      false data. Marten knew who. And now Marten is gone.
+    effects: { trust_juhan: "+10", contacts_followed: "+1" }
+    choices:
+      - Ask about the dead eagles -> juhan_eagles
+      - Move on -> quest1_hub
+
+  juhan_eagles:
+    type: message
+    text: >
+      JUHAN: White-tailed eagles are protected under EU law. Natura
+      2000. The cliffs are supposed to be a protected zone. TuuleTech's
+      permits specifically exclude that area — but they built there
+      anyway.
+
+      The construction crew moved the boundary markers. Literally picked
+      up the Natura 2000 signs and moved them 500 metres south. Marten
+      photographed it. He had GPS coordinates showing the original
+      boundary versus the current one.
+
+      That's not a paperwork error. That's deliberate environmental
+      fraud.
+    effects: { trust_juhan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Markus (teen witness) ---
+
+  markus_intro:
+    type: tweet
+    from: markus
+    text: >
+      okei nii ma nägin midagi marteni maja juures sel ööl. peaks
+      ma politseile ütlema?? nad ei võta mind kunagi tõsiselt lol
+    effects: { trust_markus: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Markus -> markus_talk_early
+
+  markus_talk_early:
+    type: message
+    text: >
+      MARKUS: jou nii ma olin sadamas ja skeitimas umbes kell 11
+      öösel ja nägin kuidas marteni maja juurde sõitis kaubik.
+      TuuleTech logo küljel. kaks tüüpi läksid sisse. nad olid
+      seal umbes pool tundi. tulid välja kastidega. nagu karbid
+      ja kõvakettad ja asju.
+
+      marten polnud kodus. tema auto polnud seal. kes käib kellegi
+      teise majas kell 11 öösel krt?
+    effects: { trust_markus: "+10" }
+    choices:
+      - Can you describe the men? -> markus_describe
+      - Thanks Markus, I'll come back -> quest1_hub
+
+  markus_describe:
+    type: message
+    text: >
+      MARKUS: üks oli normaalne suur tüüp. ehitustöölise moodi.
+      teine oli noorem, kiire. neil olid võtmed — nad ei murdnud
+      sisse. neil olid päriselt võtmed marteni majja.
+
+      ja see kaubik... TuuleTech logo. sama kaubik mis ehitusplatsil
+      sõidab. tbh see on chill pole see on üsna kahtlane.
+    effects: { trust_markus: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're building a picture. A small island village. A biologist
+      who documented eagles being killed by illegally-placed wind
+      turbines. A corrupt environmental official signing false permits.
+      And now the whistleblower is gone.
+    choices:
+      - Talk to Katrin (Marten's girlfriend) -> katrin_q1
+      - Talk to Priit (ornithologist, research partner) -> priit_q1
+      - Talk to Urmas (forester) -> urmas_q1
+      - Investigate the night Marten disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Katrin Q1 ---
+
+  katrin_q1:
+    type: tweet
+    from: katrin
+    text: >
+      palun kui keegi teab midagi @marten_wildlife kohta, kirjutage
+      mulle. see ei ole tema moodi. palun.
+    effects: { trust_katrin: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Katrin -> katrin_q1_talk
+
+  katrin_q1_talk:
+    type: message
+    text: >
+      KATRIN: I don't know you. But I'll talk to anyone now. Marten
+      wouldn't just disappear. We've been together five years. He tells
+      me everything.
+
+      The last two weeks he was different. Sleeping badly. Checking
+      the windows. He said the construction crew had been "watching"
+      his house. He found boot prints in the garden that weren't his.
+
+      The night he disappeared, he said he was going to check the
+      eagle nests. He took his drone. He didn't come back.
+    effects: { trust_katrin: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Priit Q1 ---
+
+  priit_q1:
+    type: tweet
+    from: priit
+    text: >
+      ma ei ütle veel mida marten leidis. aga kui keegi
+      vallavalitsusest seda loeb — te teate mis nendes lubades on.
+      te olete alati teadnud.
+    effects: { trust_priit: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Priit -> priit_q1_talk
+
+  priit_q1_talk:
+    type: message
+    text: >
+      PRIIT: Who are you? Another internet person? Marten and I spent
+      two years documenting those eagles. Real science. Peer-reviewed
+      methodology. And now he's gone and I'm getting messages from
+      strangers.
+
+      Unless you have something useful to offer, leave me alone.
+
+      [Priit is scared. Build more trust.]
+    effects: { trust_priit: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Urmas Q1 ---
+
+  urmas_q1:
+    type: tweet
+    from: urmas
+    text: >
+      metsas on vaiksem nüüd. kotkad ei häälitse enam. tuulikute
+      müra on kõik muutnud. marten teadis mida see tähendab.
+    effects: { trust_urmas: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Urmas -> urmas_q1_talk
+
+  urmas_q1_talk:
+    type: message
+    text: >
+      URMAS: I manage the forests on the northwest side. Where the
+      turbines are. The construction destroyed three hectares of
+      nesting habitat. Marten documented everything — GPS coordinates,
+      drone footage, dead bird counts.
+
+      He filed a complaint with the Environment Board in Tallinn. They
+      said they'd investigate. That was six months ago. Nothing
+      happened. Marten said someone was blocking his complaint from
+      inside the system.
+    effects: { trust_urmas: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Marten went silent. Piece together
+      the timeline from at least 4 witnesses.
+    choices:
+      - Find Katrin (was waiting at home) -> katrin_interview
+      - Find Helgi (mechanic, saw vehicles on the coast road) -> helgi_interview
+      - Find Juhan (fisherman, was on the water that night) -> juhan_interview
+      - Find Urmas (forester, heard something in the woods) -> urmas_interview
+
+  # --- Katrin (waiting at home) ---
+
+  katrin_interview:
+    type: message
+    text: >
+      KATRIN: He left around 20:00. Said he was going to check the
+      nesting sites — he'd gotten a report of a new dead eagle. He
+      took his drone, his camera, and a folder of documents he'd been
+      carrying everywhere.
+
+      He didn't come home. By 23:00 I drove to the cliffs. His car was
+      parked at the trailhead but he wasn't there. His drone case was
+      on the passenger seat — open, drone missing. I called the police
+      at midnight.
+    effects:
+      trust_katrin: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Helgi (mechanic, saw vehicles) ---
+
+  helgi_interview:
+    type: tweet
+    from: helgi
+    text: >
+      töötasin hilja eile. rannatee peal sõitis kaks TuuleTech
+      kaubikut. kell 21 paiku. kiirelt. kuhu nad nii hilja lähevad?
+    effects: { trust_helgi: "+5" }
+    choices:
+      - Ask Helgi what he saw -> helgi_talk
+
+  helgi_talk:
+    type: message
+    text: >
+      HELGI: I was in the workshop. Around 21:00 two TuuleTech vans
+      drove past on the coast road. Fast. Lights off. That's the road
+      to the turbine site and the eagle cliffs.
+
+      I service TuuleTech's vehicles. Those were crew vans — the
+      ones with tool storage in the back. No reason for them to be
+      driving to the site at night. Construction stops at 18:00.
+
+      An hour later they came back. Same direction. Same speed. Still
+      no lights. Something was wrong about that.
+    effects:
+      trust_helgi: "+10"
+      night_witnesses: "+1"
+      threats_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Juhan (fisherman, on the water) ---
+
+  juhan_interview:
+    type: message
+    text: >
+      JUHAN: I was night fishing below the cliffs. Around 22:00 I
+      heard voices above — at the turbine site. Men shouting. Then a
+      buzzing sound — a drone. Someone was flying a drone in the dark.
+
+      Then I heard a crash. Like something hitting metal. The drone
+      sound stopped. More shouting. Someone said "Get that camera."
+
+      Then a scream. Not a shout — a scream. Like someone was hurt. I
+      pulled up anchor and left. I'm not proud of that.
+
+      The next morning I went back. Found a broken drone on the rocks.
+      Marten's drone. The memory card was gone.
+    effects:
+      trust_juhan: "+15"
+      night_witnesses: "+1"
+      threats_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Urmas (forester, heard something) ---
+
+  urmas_interview:
+    type: message
+    text: >
+      URMAS: I was doing a late patrol in the forest near the turbine
+      site. Around 22:30 I heard vehicles at the construction access
+      road. Doors slamming. Then men walking through the forest — not
+      on the path, through the undergrowth. Like they were searching
+      for someone.
+
+      I heard someone call out: "He went toward the coast path."
+      Another voice: "Cut him off at the lookout."
+
+      They were hunting someone. In the dark. In the forest. I stayed
+      hidden. I'm ashamed to say it but I was afraid.
+
+      By morning, Marten's car was at the trailhead and Marten was
+      gone.
+    effects:
+      trust_urmas: "+15"
+      night_witnesses: "+1"
+      threats_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+    choices:
+      - Talk to Liisa (teen activist, saved Marten's posts) -> liisa_interview
+      - Talk to Henri (teen, has drone footage) -> henri_interview
+      - Find Katrin -> katrin_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Helgi the mechanic -> helgi_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Juhan the fisherman -> juhan_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Urmas the forester -> urmas_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Liisa (saved posts) ---
+
+  liisa_interview:
+    type: tweet
+    from: liisa
+    text: >
+      okei nii ma salvestasin kõik marteni postitused kotkaste kohta
+      ja mõned on KUSTUTATUD tema kontolt?? kes kustutab kellegi
+      teise postitusi krt??
+    effects: { trust_liisa: "+5" }
+    choices:
+      - Ask Liisa for the saved posts -> liisa_posts
+
+  liisa_posts:
+    type: message
+    text: >
+      LIISA: siin on mis mul on:
+
+      Day -1: "Fourth dead eagle this month. All within 200m of
+      Turbine 7. The official count remains 'zero.' Someone is
+      falsifying data."
+      Day -3: "Construction crew 'visited' me at home again. Big guy.
+      Said I should find a new hobby. I said eagles aren't a hobby."
+      Day -6: "Filed with the EU Natura 2000 enforcement office.
+      If Estonia won't protect these birds, Brussels will."
+      Day -9: "The boundary markers have been moved. I have GPS proof.
+      Original boundary vs current: 500m difference. The turbines are
+      inside the protected zone."
+      Day -14: "Someone took my backup drive from the office. Nothing
+      else. Just the drive with the eagle data."
+
+      kõik kustutatud postitused on kotkaste ja ähvarduste kohta.
+      keegi kustutab need spetsiaalselt. tbh see on normaalne hull.
+    effects:
+      trust_liisa: "+15"
+      permits_evidence: "+1"
+      threats_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Henri (drone footage) ---
+
+  henri_interview:
+    type: tweet
+    from: henri
+    text: >
+      lennutasin oma drooni tuulikute kohal. nägin midagi krt
+      kahtlast. marten ütles et see on oluline
+    effects: { trust_henri: "+5" }
+    choices:
+      - Ask Henri about the footage -> henri_footage
+
+  henri_footage:
+    type: message
+    text: >
+      HENRI: jou nii marten õpetas mind drooni lendama. ta palus
+      mul filmida tuulikuala lõunast — kuna tema drooni tunti ära.
+
+      filmisin kaks asja. esiteks: surnud kotkad tuuliku nr 7 all.
+      vähemalt kolm. keegi ei ole neid koristanud. teiseks:
+      ehitusmeeskond nihutamas Natura 2000 piiripostid. päriselt.
+      käsitsi. mina filmisin seda.
+
+      marten ütles et see video on "kullafond." ta kopeeris selle
+      oma pilve. andis mulle ka SD kaardi varukoopiaks.
+    effects:
+      trust_henri: "+15"
+      permits_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Marten leaves home with drone and documents (Katrin)
+      21:00 — Two TuuleTech vans drive to coast, lights off (Helgi)
+      22:00 — Drone flying at turbine site, voices, crash (Juhan)
+      22:00 — Scream. "Get that camera." (Juhan)
+      22:30 — Men searching forest: "He went toward coast path" (Urmas)
+      22:00 — TuuleTech vans return (Helgi)
+      Next AM — Marten's car at trailhead, drone broken on rocks, memory
+      card missing (Katrin, Juhan)
+
+      Marten went to document dead eagles. The construction crew was
+      waiting. They destroyed his drone, took the memory card, and
+      chased him through the forest.
+
+      Two threads to pull:
+      — The permits: Who signed the fraudulent environmental permits?
+      — The threats: Who sent the crew after Marten?
+    choices:
+      - Investigate the permits thread -> permits_hub
+      - Investigate the threats thread -> threats_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      PERMITS THREAD: Evidence collected: ${permits_evidence}
+      THREATS THREAD: Evidence collected: ${threats_evidence}
+    choices:
+      - Work on the permits thread -> permits_hub
+      - Work on the threats thread -> threats_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: permits_evidence, gte: 5 }
+            - { state: threats_evidence, gte: 3 }
+
+  # =====================================================================
+  # PERMITS THREAD
+  # =====================================================================
+
+  permits_hub:
+    type: message
+    text: >
+      THE PERMITS THREAD
+
+      Environmental permits for the wind farm were signed by Andres Luik
+      without visiting the site. The environmental assessment contains
+      false data. The construction is inside a Natura 2000 protected
+      zone.
+
+      Permits evidence: ${permits_evidence}
+    choices:
+      - Talk to Priit (has the eagle research data) -> priit_permits
+        when:
+          state: trust_priit
+          gte: 10
+      - Check the environmental assessment -> assessment_check
+      - Investigate the boundary markers -> boundary_investigation
+      - Check the anonymous tip account -> tipster_investigation
+      - Talk to Sirje (journalist) -> sirje_investigation
+      - Talk to Maris (librarian, public records) -> maris_investigation
+      - Back to hub -> investigation_hub
+
+  # --- Priit (eagle research) ---
+
+  priit_permits:
+    type: message
+    text: >
+      PRIIT: I'll tell you because Marten would want me to. We
+      documented 23 eagle fatalities over eighteen months. The official
+      environmental monitoring report lists zero. Zero.
+
+      We mapped every nesting site. We have GPS tracks of eagle flight
+      paths. We proved the turbines were placed directly in the primary
+      hunting corridor. The environmental assessment said eagles "do
+      not regularly use this airspace." That's a lie.
+
+      Marten backed everything up to encrypted cloud storage. I have
+      the access codes. He said "if anything happens to me, send this
+      to the EU Environment Directorate."
+    effects:
+      trust_priit: "+15"
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Ask about the backup -> priit_backup
+      - Back to permits thread -> permits_hub
+
+  priit_backup:
+    type: message
+    text: >
+      PRIIT: The cloud storage has everything. Two years of drone
+      footage. GPS data. Dead eagle photographs with timestamps.
+      The original boundary marker coordinates versus the moved ones.
+      Screenshots of the environmental assessment with our annotations
+      showing every false claim.
+
+      I'm scared. After Marten disappeared, someone broke into the
+      bird station office. Just took the hard drives. Nothing else.
+      But the cloud backup is safe. They don't know about it.
+    effects:
+      trust_priit: "+10"
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to permits thread -> permits_hub
+
+  # --- Assessment Check ---
+
+  assessment_check:
+    type: message
+    text: >
+      The environmental impact assessment for the TuuleTech wind farm
+      is a public document. Filed by Andres Luik as municipal
+      environmental specialist.
+
+      Key claims: "No eagle nesting sites within 2km of proposed turbine
+      locations." FALSE — Marten documented sites within 300m.
+      "Eagle flight paths do not intersect turbine zone." FALSE — GPS
+      tracking shows daily intersection.
+      "Site inspection conducted on June 15, 2024." But the visitor log
+      at the nature reserve gate shows no visit by Andres on that date.
+
+      The assessment is fiction. Signed without a site visit. Based on
+      fabricated data.
+    effects:
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to permits thread -> permits_hub
+
+  # --- Boundary Investigation ---
+
+  boundary_investigation:
+    type: message
+    text: >
+      The Natura 2000 protected area boundary for the Saarekyula
+      coastal zone is recorded in the EU database. GPS coordinates are
+      precise.
+
+      Comparing the EU coordinates with the current physical markers on
+      the ground: the markers have been moved 500 metres south. The
+      turbine site — which should be inside the protected zone — now
+      appears to be outside it.
+
+      Henri's drone footage shows TuuleTech crew physically moving the
+      boundary posts. Marten's GPS logs prove the original positions.
+
+      This isn't an error. Someone deliberately falsified a protected
+      area boundary to allow construction in a prohibited zone.
+    effects:
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to permits thread -> permits_hub
+
+  # --- Tipster ---
+
+  tipster_investigation:
+    type: tweet
+    from: tipster
+    text: >
+      Andres Luik. Keskkonnahinnang. Kohapealne ülevaatus "16. juuni."
+      Kontrollige külastajate logi. Ta ei olnud seal.
+    choices:
+      - Look at other posts -> tipster_posts
+
+  tipster_posts:
+    type: message
+    text: >
+      @anonuumne posts between 18:00 and 21:00:
+
+      "Andres Luik saab TuuleTechilt 'konsultatsioonitasu.' Igal kuul."
+      "Keskkonnahinnang on koopia teisest projektist. Muudetud on ainult nimed."
+      "Toomas Oja teab. Ta allkirjastas partnerluse enne keskkonnahinnangut."
+      "Küsige Tiina Laanelt mis on lukustatud kapis."
+
+      Someone with access to municipal files. Posting after work hours.
+    choices:
+      - Check Tiina Laan (the secretary) -> tiina_connection
+      - Back to permits thread -> permits_hub
+
+  tiina_connection:
+    type: message
+    text: >
+      Comparing @anonuumne with Tiina Laan: same posting hours, same
+      knowledge of filing procedures, same frustrated tone about
+      bureaucratic failures.
+
+      Tiina once posted: "Sometimes I file documents I know are wrong.
+      What choice do I have?" The tipster's voice is identical.
+
+      It's Tiina. The municipal secretary is the anonymous leaker.
+    choices:
+      - Confront Tiina -> tiina_confront
+
+  tiina_confront:
+    type: message
+    text: >
+      You DM Tiina, mentioning "the locked cabinet."
+
+      Long pause.
+
+      TIINA: ...please. If Toomas finds out, I lose my job. This
+      is a small island. There's nowhere else to work.
+
+      But yes. I have copies. Andres Luik's consulting contract with
+      TuuleTech — 3000 euros per month. The original environmental
+      assessment template — it's copied from a mainland project, names
+      changed. The partnership agreement Toomas signed before any
+      environmental review was done.
+
+      Marten asked me for these documents. I was too scared to give
+      them to him. Now I wish I had.
+    effects:
+      trust_tiina: "+30"
+      permits_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Keep them safe. I'll come back when ready -> investigation_hub
+
+  # --- Sirje (journalist) ---
+
+  sirje_investigation:
+    type: message
+    text: >
+      SIRJE: I know what you're going to ask. The paper hasn't covered
+      this because TuuleTech is our biggest advertiser. Every story I
+      pitch gets killed. "Green energy is good for the island." "Don't
+      bite the hand that feeds us."
+
+      Marten was my source. He had everything documented. If you can
+      find his data, I'll get it to ERR — Estonian public broadcasting.
+      They have no advertising conflicts.
+    effects:
+      trust_sirje: "+15"
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to permits thread -> permits_hub
+
+  # --- Maris (librarian, records) ---
+
+  maris_investigation:
+    type: message
+    text: >
+      MARIS: Public records are my area. Here's what's odd:
+
+      TuuleTech OÜ was registered one month before the municipal
+      partnership was signed. Its registered address is a mailbox in
+      Tallinn. The beneficial owner traces to a holding company in
+      Cyprus.
+
+      The "environmental consultant" who prepared the assessment is
+      listed as a firm called GreenVerify OÜ. One employee. No website.
+      Registered at the same address as TuuleTech.
+
+      The company that builds the turbines hired the company that
+      assesses the environmental impact. And the environmental official
+      who signed off gets paid by both.
+    effects:
+      trust_maris: "+10"
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to permits thread -> permits_hub
+
+  # =====================================================================
+  # THREATS THREAD
+  # =====================================================================
+
+  threats_hub:
+    type: message
+    text: >
+      THE THREATS THREAD
+
+      Someone sent the construction crew after Marten. Someone stole
+      his drone footage. Someone posted the black square from his
+      account. Who gave the orders?
+
+      Threats evidence: ${threats_evidence}
+    choices:
+      - Investigate Kalev Rand (TuuleTech site manager) -> kalev_investigation
+      - Talk to Katrin about the intimidation -> katrin_threats
+        when:
+          state: trust_katrin
+          gte: 20
+      - Talk to Anu (teacher, saw something at school) -> anu_investigation
+      - Visit Marten's house -> house_visit
+      - Talk to Rein (police officer) -> rein_interview
+        when:
+          state: trust_rein
+          gte: 20
+      - Talk to Epp (pharmacist) -> epp_interview
+      - Back to hub -> investigation_hub
+
+  # --- Kalev Investigation ---
+
+  kalev_investigation:
+    type: tweet
+    from: kalev
+    text: >
+      TuuleTech OÜ ehitusplats toimib vastavalt kõigile
+      ohutusnõuetele. Loata sisenemine on keelatud.
+    choices:
+      - Check Kalev's post history -> kalev_posts
+
+  kalev_posts:
+    type: message
+    text: >
+      Kalev Rand posts construction updates. Professional. But the
+      timing tells a story:
+
+      Two weeks before Marten disappeared: "Site security increased.
+      Zero tolerance for unauthorized drone flights over construction
+      zone."
+
+      One week before: "Management briefing on external threats to
+      project timeline. All crew on high alert."
+
+      Three days before: "Reminder: any contact with media or activists
+      must go through legal @mets_partners."
+
+      "Unauthorized drone flights." "External threats." "Activists."
+      That's Marten they're targeting.
+    effects:
+      threats_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to threats thread -> threats_hub
+
+  # --- Katrin on threats ---
+
+  katrin_threats:
+    type: message
+    text: >
+      KATRIN: The visits started two months ago. Kalev Rand — the
+      site manager — came to our house. Told Marten to "stop flying
+      drones over the construction site." Marten said the eagles don't
+      know where the construction site ends and the nature reserve
+      begins.
+
+      Kalev came back a week later. This time he said: "Your girlfriend
+      works at the harbour, right? Small harbour. One employer. Would
+      be a shame if budget cuts..." He didn't finish the sentence. He
+      didn't need to.
+
+      That's when Marten started encrypting everything and making
+      backups. He said "These people will destroy evidence. I need
+      copies they can't reach."
+    effects:
+      trust_katrin: "+15"
+      threats_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to threats thread -> threats_hub
+
+  # --- Anu (teacher) ---
+
+  anu_investigation:
+    type: message
+    text: >
+      ANU: Marten came to the school the day before he disappeared.
+      He was looking for Henri — he'd asked Henri to fly a drone for
+      him because TuuleTech knew his drone signature.
+
+      They talked in the schoolyard. Marten gave Henri an SD card and
+      said "Keep this safe. Don't tell anyone where it is."
+
+      Marten looked... tired. Scared. But determined. He said to me:
+      "If anything happens, the kids know where the evidence is." I
+      didn't understand then. I do now.
+    effects:
+      trust_anu: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to threats thread -> threats_hub
+
+  # --- House Visit ---
+
+  house_visit:
+    type: message
+    text: >
+      MARTEN'S HOUSE
+
+      A small cottage near the coast. Neat garden. The back door lock
+      has been forced — repaired clumsily with tape.
+
+      Inside: the study is wrecked. Hard drives pulled from the desk.
+      Filing cabinet open and empty. His drone equipment shelf is bare.
+      But the living room is untouched. This was a targeted search.
+
+      On the wall: a detailed map of the coast with eagle nesting sites
+      in blue and turbine locations in red. The overlap is obvious.
+      Someone has circled Turbine 7 in black marker: "KILL ZONE."
+    effects:
+      threats_evidence: "+1"
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Search for hidden items -> house_hidden
+      - Examine the map -> house_map
+      - Back to threats thread -> threats_hub
+
+  house_map:
+    type: message
+    text: >
+      The map shows Marten's two years of work clearly. Blue dots for
+      nesting sites. Red triangles for turbines. Yellow lines for eagle
+      flight paths. The turbines sit directly in the flight corridor.
+
+      A dotted line shows the original Natura 2000 boundary. A solid
+      line shows the current boundary markers. The gap is 500 metres.
+      Every turbine on the north ridge should be inside the protected
+      zone.
+
+      At the bottom, in Marten's handwriting: "Andres signed 16 June.
+      Visitor log: not present. Assessment: copied from Hiiumaa project."
+    effects:
+      permits_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Search for hidden items -> house_hidden
+      - Back to threats thread -> threats_hub
+
+  house_hidden:
+    type: message
+    text: >
+      Behind a loose panel in the woodshed — a waterproof box. Inside:
+      a USB drive, printed photographs of dead eagles with GPS
+      coordinates and timestamps, and a handwritten note:
+
+      "If you found this, I'm probably not home. Cloud access codes
+      with Priit. SD card with Henri. Documents with Maris at the
+      library. Sirje at the newspaper has the background.
+
+      Don't trust Andres. Don't trust Toomas. Don't trust Kalev.
+
+      The eagles need someone to speak for them. — M."
+    effects:
+      threats_evidence: "+1"
+      permits_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Rein (police officer) ---
+
+  rein_interview:
+    type: message
+    text: >
+      REIN: Between us? Marten filed three complaints about
+      intimidation. I took them all. My supervisor forwarded them to
+      Toomas Oja for "consultation" — which is not procedure.
+
+      Toomas called the station and said Marten was "an activist
+      harassing a legitimate business." My boss reclassified all three
+      complaints as "neighbourhood disputes."
+
+      If you can get enough to take this to the Tallinn prosecutor's
+      office, it goes over everyone's head. That's the only way.
+    effects:
+      trust_rein: "+15"
+      threats_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to threats thread -> threats_hub
+
+  # --- Epp (pharmacist) ---
+
+  epp_interview:
+    type: message
+    text: >
+      EPP: Marten came in two weeks before he disappeared. Sleep
+      medication. He said he hadn't slept properly in weeks.
+
+      He also bought waterproof containers. Three of them. The kind
+      you use for camping. I think he was hiding things around the
+      island. He said "I need to make sure the evidence survives
+      even if I don't."
+
+      That scared me. He wasn't talking about leaving. He was talking
+      about not coming back.
+    effects:
+      trust_epp: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to threats thread -> threats_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence about the fraudulent permits and the
+      intimidation campaign. Who is responsible?
+    choices:
+      - Confront Kalev Rand (TuuleTech site manager) -> confront_kalev
+        when:
+          state: threats_evidence
+          gte: 3
+      - Confront Andres Luik (corrupt environmental official) -> confront_andres
+        when:
+          state: permits_evidence
+          gte: 5
+      - Confront Toomas Oja (municipal elder) -> confront_toomas
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Kalev (Best Ending) ---
+
+  confront_kalev:
+    type: message
+    text: >
+      You present your evidence publicly:
+
+      "Kalev Rand sent TuuleTech crew to intimidate Marten Kask. They
+      visited his home, threatened his girlfriend's job, broke into his
+      house, stole his research data, ambushed him at the eagle cliffs,
+      and destroyed his drone. I have witness statements, drone footage
+      of the crew moving boundary markers, and physical evidence Marten
+      hid across the island."
+    choices:
+      - Post it -> kalev_response
+
+  kalev_response:
+    type: message
+    text: >
+      Kalev doesn't respond. TuuleTech's lawyer does:
+
+      TONIS: These allegations are defamatory. TuuleTech operates
+      within all legal frameworks and will pursue legal remedies.
+
+      But you've already sent everything to Rein at the local police,
+      the Tallinn prosecutor's office, and ERR (Estonian public
+      broadcasting). Marten's physical evidence — hidden across the
+      island — is the key.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE ENFORCER
+
+      The Tallinn prosecutor opens a criminal investigation. TuuleTech's
+      site is raided. Kalev Rand is arrested for intimidation, breaking
+      and entering, destruction of evidence, and assault.
+
+      Andres Luik is charged with issuing fraudulent environmental
+      permits and accepting bribes. The Natura 2000 boundary fraud is
+      referred to the EU Environment Directorate. Every turbine on the
+      north ridge is ordered shut down.
+
+      And Marten Kask? He's found alive. He'd been hiding in a
+      fisherman's cabin on Vilsandi island since that night. Urmas had
+      taken him there by boat in the dark. Marten had been too scared to
+      surface — the construction crew had chased him to the cliff edge,
+      and he'd only escaped by scrambling down the rocks to Juhan's
+      fishing boat below.
+
+      ERR broadcasts the full story. "The Eagles of Saaremaa" becomes
+      an EU-wide investigation into wind farm permits across the Baltic.
+      The eagle colony is placed under enhanced protection.
+
+      Marten returns to Saarekyula. His first post:
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: marten
+    text: >
+      twelve nesting pairs. still here. still flying. the turbines
+      are off and the eagles don't care about politics. tanan koiki.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Andres (Partial Ending) ---
+
+  confront_andres:
+    type: message
+    text: >
+      You present the permit fraud evidence to Andres Luik:
+
+      "You signed environmental assessments without visiting the site.
+      You copied assessments from other projects. You accepted consulting
+      fees from TuuleTech while approving their permits. You certified
+      zero wildlife fatalities when 23 eagles died. I have the original
+      documents, the visitor logs, and the financial records."
+    choices:
+      - Send -> andres_response
+
+  andres_response:
+    type: message
+    text: >
+      ANDRES: These allegations are entirely without foundation. All
+      environmental assessments followed proper procedure.
+
+      But the evidence is already with the EU Environment Directorate
+      and Estonian public broadcasting.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE OFFICIAL
+
+      The permit fraud story breaks. Andres Luik is suspended. The EU
+      launches an investigation. TuuleTech's permits are revoked and
+      the turbines are ordered shut down pending review.
+
+      But without the threat evidence, Kalev Rand is never charged.
+      TuuleTech replaces its "site management team" and issues a
+      statement about "individual failures." Nobody is held accountable
+      for what happened to Marten personally.
+
+      Marten reads about the permit revocation online. He returns
+      quietly three months later. He resumes his eagle monitoring but
+      never flies drones after dark again. He installed motion sensors
+      around his cottage.
+
+      The eagles survive. The justice is incomplete.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: marten
+    text: "tagasi. kotkad on alles. see on piisav. praegu."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Toomas (Wrong Ending) ---
+
+  confront_toomas:
+    type: message
+    text: >
+      You confront municipal elder Toomas Oja with your evidence.
+
+      Toomas looks flustered and immediately calls the municipal
+      lawyer.
+    choices:
+      - Read the response -> tonis_response
+
+  tonis_response:
+    type: tweet
+    from: tonis
+    text: >
+      Minu klient lükkab kõik süüdistused tagasi. Igasugune jätkuv
+      laimamine toob kaasa kohtulikud tagajärjed. — Mets & Partners
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE ELDER
+
+      Toomas is a figurehead who signed the partnership because he
+      wanted jobs for the village. He doesn't understand the permit
+      details and can't meaningfully respond to technical allegations.
+
+      Without targeting Kalev for the threats and Andres for the permit
+      fraud, your evidence scatters. The lawyer buries the complaint.
+      TuuleTech issues a press release about "baseless attacks on green
+      energy." The local paper doesn't cover it.
+
+      Marten stays hidden. The turbines keep spinning. The eagles keep
+      dying. Six months later, the nesting count drops from twelve pairs
+      to seven. Nobody investigates.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Permit fraud evidence: ${permits_evidence}
+      Threats evidence: ${threats_evidence}
+
+      Thank you for playing. Marten's story explores themes of
+      environmental crime, wildlife protection, corruption in permitting,
+      and the courage of those who document the truth.
+
+      If you or someone you know is experiencing threats or intimidation,
+      help is available:
+      Ohvriabi (victim support): 116 006
+      Politsei: 112
+      Lasteabi (child helpline): 116 111

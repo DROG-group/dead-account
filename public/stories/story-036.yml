@@ -1,0 +1,1637 @@
+# DEAD ACCOUNT — Story 036: Skalnopole (Poland 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-036.yml
+#
+# Player investigates the disappearance of young highland shepherd and
+# cheese maker Wojciech Gazdowicz in the fictional Tatra mountain village
+# of Skalnopole. Two threads: a stalker tourist obsessed with "mountain
+# life" and a luxury ski resort built on protected national park land
+# with the wójt bribed to approve it.
+
+meta:
+  title: "Dead Account — Skalnopole"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_kasia: 0
+    trust_bartek: 0
+    trust_ola: 0
+    trust_jan: 0
+    trust_marta: 0
+    trust_piotrek: 0
+    trust_zofia: 0
+    trust_andrzej: 0
+    trust_helena: 0
+    trust_stefan: 0
+    trust_dorota: 0
+    trust_grzegorz: 0
+    trust_magda: 0
+    trust_kamil: 0
+    trust_patrycja: 0
+    trust_krzysztof: 0
+    trust_ewa: 0
+    trust_agnieszka: 0
+    trust_adam: 0
+    trust_aspirant: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    resort_evidence: 0
+    stalker_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to skalnopole. mountain air and hiking trails"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Skalnopole.social"
+    description: "Witamy na instancji społeczności Skalnopole — góry, tradycja, ludzie"
+    avatar_url: /gamepatch/assets/dead-account/skalnopole_bot.png
+
+  npcs:
+    # === Wojciech (the victim) ===
+    wojciech:
+      name: "Wojciech Gazdowicz"
+      bio: "bacówka na Kośniej Polanie | oscypki | owce | te góry to mój dom"
+      avatar: avatars/wojciech.jpg
+
+    # === Wojciech's Inner Circle ===
+    kasia:
+      name: "Kasia Gazdowicz"
+      bio: "siostra wojtka | studia w krakowie | etnografia | wracam do skalnopola szukać brata"
+      avatar: avatars/kasia.jpg
+    bartek:
+      name: "Bartek Kubica"
+      bio: "najlepszy kumpel wojtka | ratownik GOPR | szlaki i jaskinie | szukam go kurwa"
+      avatar: avatars/bartek.jpg
+    ola:
+      name: "Ola Stachura"
+      bio: "17 | ex wojtka | nadal się martwimy | pisze poezje o górach"
+      avatar: avatars/ola.jpg
+
+    # === Local Government ===
+    andrzej:
+      name: "Andrzej Hałat"
+      bio: "Wójt Gminy Skalnopole | 3 kadencja | #SkalnopoleRośnie | tradycja i rozwój"
+      avatar: avatars/andrzej.jpg
+    dorota:
+      name: "Dorota Biel"
+      bio: "sekretarz gminy | urząd Skalnopole | sprawy administracyjne | pn-pt 8-16"
+      avatar: avatars/dorota.jpg
+    gmina:
+      name: "Gmina Skalnopole"
+      bio: "Oficjalny profil Gminy Skalnopole | informacje | ogłoszenia | kontakt: gmina@skalnopole.pl"
+      avatar: avatars/gmina.jpg
+
+    # === Local Community ===
+    jan:
+      name: "Jan Mostowiak"
+      bio: "najstarszy baca w Skalnopolu | 70 lat na hali | owce to jest życie"
+      avatar: avatars/jan.jpg
+    marta:
+      name: "Marta Kozłowska"
+      bio: "schronisko Pod Limną | noclegi | bigos i herbata | góry leczą"
+      avatar: avatars/marta.jpg
+    helena:
+      name: "Helena Gazdowicz"
+      bio: "babcia wojtka i kasi | 83 lata | oscypki robiłam zanim to było modne | mój wnuk wróci"
+      avatar: avatars/helena.jpg
+    stefan:
+      name: "Stefan Nowobilski"
+      bio: "leśniczy | Tatrzański Park Narodowy | ochrona przyrody | zgłoszenia: stefan@tpn.gov.pl"
+      avatar: avatars/stefan.jpg
+    zofia:
+      name: "Zofia Kupiec"
+      bio: "sklep spożywczy | Skalnopole centrum | 6-22 codziennie | gazety i plotki za darmo"
+      avatar: avatars/zofia.jpg
+    grzegorz:
+      name: "Grzegorz Matuszek"
+      bio: "górski przewodnik | PTTK | 20 lat na szlakach | znam każdy kamień"
+      avatar: avatars/grzegorz.jpg
+
+    # === Journalist ===
+    magda:
+      name: "Magda Walczak"
+      bio: "dziennikarka | Tygodnik Podhalański | środowisko i korupcja | tips: magda@tygodnikpodhalanski.pl"
+      avatar: avatars/magda.jpg
+
+    # === Resort / Corporate ===
+    resort:
+      name: "Tatra Summit Resort"
+      bio: "Luxury mountain living | Coming 2026 | Ski, spa, nature | Investment opportunities"
+      avatar: avatars/resort.jpg
+    krzysztof:
+      name: "Krzysztof Baran"
+      bio: "CEO | Alpine Luxury Development | Tatra Summit Resort | budujemy przyszłość gór"
+      avatar: avatars/krzysztof.jpg
+    ewa:
+      name: "Ewa Dudek"
+      bio: "prawnik | Kancelaria Dudek & Wspolnicy | prawo nieruchomości | Kraków"
+      avatar: avatars/ewa.jpg
+    agnieszka:
+      name: "Agnieszka Malik"
+      bio: "ekolog | Fundacja Tatry Dzikie | ochrona TPN | nie damy się"
+      avatar: avatars/agnieszka.jpg
+
+    # === Teens ===
+    piotrek:
+      name: "Piotrek"
+      bio: "16 | wspinaczka | mountain bike | skalnopole ziom | #GdzieJestWojtek"
+      avatar: avatars/piotrek.jpg
+    kamil:
+      name: "Kamil"
+      bio: "17 | fotka | drony | góry z lotu ptaka | widziałem coś dziwnego na hali"
+      avatar: avatars/kamil.jpg
+    patrycja:
+      name: "Patrycja"
+      bio: "15 | rysuje | piesze wędrówki | wojtek uczył mnie rozpoznawać zioła"
+      avatar: avatars/patrycja.jpg
+
+    # === Media & Community ===
+    aktualnosci:
+      name: "Aktualności Skalnopole"
+      bio: "Wiadomości lokalne | Gmina Skalnopole i okolice | redakcja@aktualnosci-skalnopole.pl"
+      avatar: avatars/aktualnosci.jpg
+    pogoda:
+      name: "Pogoda Tatry"
+      bio: "Prognoza i ostrzeżenia | Stacja automatyczna | Aktualizacja co godzinę"
+      avatar: avatars/pogoda.jpg
+
+    # === Suspicious / Stalker Tourist ===
+    adam:
+      name: "Adam Wieloch"
+      bio: "📸 góry | pasterstwo | autentyczny styl życia | z Warszawy ale sercem góral"
+      avatar: avatars/adam.jpg
+    anon_konto:
+      name: "mountain_soul_77"
+      bio: "."
+      avatar: avatars/anon.jpg
+
+    # === Police ===
+    aspirant:
+      name: "Aspirant Nowak"
+      bio: "Posterunek Policji Skalnopole | dzielnicowy | kontakt: 47 834 22 10"
+      avatar: avatars/aspirant.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SKALNOPOLE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to skalnopole.social — the community Mastodon instance for
+      the Tatra mountain village of Skalnopole.
+
+      The local feed is full of worry. Something has happened in the
+      mountains.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling the feed, one name dominates: @wojciech_gazdowicz.
+
+      A young shepherd. Cheese maker. He ran a bacówka — a traditional
+      highland hut — on Kośnia Polana, making oscypki the old way. He
+      was 22. He hasn't posted in six days. His sheep were found
+      wandering the meadow unattended. That never happens.
+    choices:
+      - Look at his profile -> wojciech_profile
+
+  wojciech_profile:
+    type: tweet
+    from: wojciech
+    text: "Znalazłem coś na hali. Ślady maszyn na terenie parku. Ktoś wjeżdża ciężkim sprzętem nocą na Kośnią Polanę. Nie odpuszczę."
+    choices:
+      - That's his last real post... -> grey_mountain
+
+  grey_mountain:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurred photo of a mountain ridge in fog. Posted at 2am. No
+      caption. No hashtags.
+
+      His friends say Wojtek never posted without a caption. He always
+      wrote something about the sheep, the weather, the cheese. This
+      isn't him.
+
+      The police say he probably went hiking and got lost. Nobody in
+      Skalnopole believes that. Wojtek knew these mountains better than
+      anyone alive.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: aspirant
+    text: >
+      Informujemy, że prowadzone są czynności wyjaśniające w sprawie
+      zaginięcia mieszkańca gminy Skalnopole. Na chwilę obecną brak
+      podstaw do wszczęcia postępowania karnego. Prosimy o zgłaszanie
+      informacji pod nr 47 834 22 10.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are wild. His sister @kasia_gazdowicz is driving
+      down from Kraków. His best friend @bartek_kubica — a GOPR mountain
+      rescue volunteer — is already searching the trails. His grandma
+      @helena_gazdowicz is posting in ALL CAPS.
+
+      @jan_mostowiak, the oldest shepherd in the valley, says Wojtek
+      would never leave his sheep. That's all you need to know.
+
+      And there's a name that keeps coming up: the Tatra Summit Resort.
+      A luxury ski development that's been clearing land on the edge of
+      the national park. Right next to Wojtek's meadow.
+
+      Something stinks worse than week-old bundz.
+    effects: { trust_kasia: "+5", trust_bartek: "+5" }
+    choices:
+      - Start following Wojtek's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Skalnopole. Follow Wojtek's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Marta (runs the mountain shelter, knows everyone) -> marta_intro
+      - Talk to Jan (oldest shepherd, saw things at night) -> jan_intro
+      - Talk to Piotrek (teen climber, seems angry) -> piotrek_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Wojtek with everyday mountain village
+      life: weather warnings, sheep auction notices, mushroom foraging
+      tips, someone's babcia making pierogi.
+
+      Key names surface: Kasia (sister, ethnography student), Bartek
+      (best friend, GOPR), Ola (ex-girlfriend, still cares), and the
+      teens — Piotrek, Kamil, Patrycja — who looked up to Wojtek like
+      an older brother.
+
+      Also prominent: Tatra Summit Resort. Their posts are glossy
+      renders of a luxury ski complex. The locals' posts are furious
+      replies. And one account — @adam_wieloch — posts obsessively about
+      "authentic mountain life" and tags Wojtek in everything.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Marta -> marta_intro
+      - Talk to Jan -> jan_intro
+      - Talk to Piotrek -> piotrek_intro
+
+  # --- Marta (social map) ---
+
+  marta_intro:
+    type: tweet
+    from: marta
+    text: >
+      Schronisko otwarte jak zawsze ale cicho tu dzisiaj. @wojciech_gazdowicz,
+      twoje miejsce przy piecu czeka. Wracaj ziom.
+    effects: { trust_marta: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Marta -> marta_talk
+
+  marta_talk:
+    type: message
+    text: >
+      MARTA: O, nowy w Skalnopolu? Nie najlepszy moment na przeprowadzkę,
+      szczerze. Cała wioska stoi na uszach przez Wojtka.
+
+      Słuchaj, powiem ci kto jest kto. Kasia to siostra Wojtka — studiuje
+      w Krakowie, ale wraca. Bartek Kubica to jego najlepszy ziom, jest
+      w GOPR, szuka go po szlakach. Ola Stachura to jego ex, ale nadal
+      się kręcą wokół siebie, wiesz jak to jest.
+
+      Babcia Helena — ja pierdolę, ta kobieta ma 83 lata i więcej energii
+      niż my wszyscy. Nie daj się zwieść, ostro gada.
+
+      A ten gość, Adam Wieloch? Z Warszawy, przyjechał tu pół roku temu,
+      udaje górala. Non stop łazi za Wojtkiem, robi mu zdjęcia, pisze
+      posty o "autentycznym życiu w górach." Wojtek mówił że go to
+      wkurwia ale facet nie odpuszczał.
+
+      I jest jeszcze sprawa tego jebantgo resortu. Ale to osobny temat.
+    effects: { trust_marta: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Adam Wieloch -> marta_adam
+      - Ask about the resort -> marta_resort
+      - Thank her and move on -> quest1_hub
+
+  marta_adam:
+    type: message
+    text: >
+      MARTA: Adam? Kurwa, ten typ jest dziwny. Przyjechał z Warszawy,
+      mówi że rzucił korpo życie żeby "żyć autentycznie." Wynajął chałupę
+      na skraju wsi, kupił sobie ciupagę na allegro i chodzi po górach
+      w nowych góralkach z metkę jeszcze na podeszwie.
+
+      Ale najgorsze to jak się przyczepił do Wojtka. Chodził za nim na
+      hale, siedział pod bacówką, robił tysiące zdjęć. Wojtek próbował
+      być grzeczny ale w końcu mu powiedział żeby spierdolił.
+
+      Adam nie spierdolił. Zaczął przychodzić nocami. Patrycja widziała
+      go raz o trzeciej w nocy pod bacówką. Kto normalny robi takie
+      rzeczy?
+    effects: { trust_marta: "+5" }
+    choices:
+      - Ask about the resort -> marta_resort
+      - Move on -> quest1_hub
+
+  marta_resort:
+    type: message
+    text: >
+      MARTA: Tatra Summit Resort. Jebany koszmar. Jakiś gość z Krakowa
+      — Krzysztof Baran — chce postawić luksusowy ośrodek narciarski na
+      Kośniej Polanie. W PARKU NARODOWYM. Na terenie chronionym.
+
+      Wójt Hałat mówi że to "szansa rozwojowa dla gminy." Jasne.
+      Bo Skalnopole potrzebuje hotelu za dwa tysiące za noc.
+
+      Wojtek odkrył że ktoś już zaczął prace — ślady maszyn budowlanych
+      na hali, wycięte drzewa, dziury w ziemi. Na terenie parku. Bez
+      pozwolenia. Albo z pozwoleniem którego nie powinno być.
+
+      Tydzień po tym jak to nagłośnił, zniknął.
+    effects: { trust_marta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jan (oldest shepherd, witnessed things at night) ---
+
+  jan_intro:
+    type: tweet
+    from: jan
+    text: >
+      Siedemdziesiąt lat na hali. Nigdy żaden baca nie zostawił owiec
+      samych. NIGDY. @wojciech_gazdowicz nie uciekł. Coś mu się stało.
+      Widziałem rzeczy nocami na Kośniej Polanie. Nikt mnie nie słucha.
+    effects: { trust_jan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jan -> jan_talk
+
+  jan_talk:
+    type: message
+    text: >
+      JAN: Słuchaj mnie uważnie, młody. Ja mam siedemdziesiąt lat na
+      tych halach. Znam tu każdy kamień, każdą owcę, każdy szum wiatru.
+
+      Wojtek to był najlepszy młody baca jakiego widziałem. Owce go
+      kochały, psy go słuchały, oscypki robił jak moja babka. Nie
+      zostawiłby owiec. Wolałby zdechnąć na hali.
+
+      A ja widziałem coś dwa tygodnie temu. Koparki. W nocy. Na terenie
+      parku. Z wyłączonymi światłami. Ktoś rozjeżdża Kośnią Polanę pod
+      osłoną ciemności. Powiedziałem policji. Aspirant Nowak napisał
+      notatkę i poszedł na obiad.
+    effects: { trust_jan: "+10" }
+    choices:
+      - Did you see anything else? -> jan_night
+      - Move on -> quest1_hub
+
+  jan_night:
+    type: message
+    text: >
+      JAN: Noc przed zniknięciem Wojtka. Byłem na mojej hali, sąsiednia
+      polana. Słyszałem głosy. Kłótnię. Wojtek i ktoś. Nie rozumiałem
+      słów, wiatr niósł, ale ton był jasny — Wojtek krzyczał.
+
+      Potem samochód. Silnik. Na hali. O drugiej w nocy samochód na hali
+      gdzie nie wolno wjechać. Wielki, ciemny SUV, pojechał leśną drogą
+      w stronę Zakopanego.
+
+      Rano owce Wojtka chodziły same. Bacówka zamknięta. Pies szczekał
+      jak szalony.
+    effects: { trust_jan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Piotrek (teen climber, angry and scared) ---
+
+  piotrek_intro:
+    type: tweet
+    from: piotrek
+    text: >
+      ja pierdolę ziomki @wojciech_gazdowicz to jest najfajniejszy
+      człowiek w tej wsi i ktoś mu coś zrobił. policja ma to w dupie.
+      sami musimy go szukać. #GdzieJestWojtek
+    effects: { trust_piotrek: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Piotrek -> piotrek_talk_early
+
+  piotrek_talk_early:
+    type: message
+    text: >
+      PIOTREK: elo ziom jesteś nowy? spoko. słuchaj, wojtek to jest
+      kozak, uczył mnie wspinaczki, pokazywał szlaki których nie ma na
+      mapach. jak mówię ci że on nie uciekł to wierz mi.
+
+      i jeszcze jedno — kamil latał dronem nad Kośnią Polaną tydzień
+      temu i nagrał coś pojebango. ślady maszyn, wycięte drzewa, coś
+      jakby fundamenty. na TERENIE PARKU. wójt twierdzi że nic nie wie
+      ale spoko, jasne, kurwa.
+
+      kamil nie chce tego wrzucić w neta bo się boi. ale nagranie jest
+      ostre.
+    effects: { trust_piotrek: "+10" }
+    choices:
+      - What did Kamil film? -> piotrek_kamil_hint
+      - Move on -> quest1_hub
+
+  piotrek_kamil_hint:
+    type: message
+    text: >
+      PIOTREK: ziom musisz z nim pogadać sam. on jest bardziej ogarnia
+      technologicznie niż ja, jest taki trochę cichy ale jak mu pokażesz
+      że nie jesteś jakiś random to ci pokaże nagranie.
+
+      i jeszcze — ten warszawiak, adam wieloch? widziałem go jak łaził
+      po szlaku do bacówki wojtka nocą. z latarką. sam. kto kurwa tak
+      robi? mówię ci, ten gość jest pojebany.
+    effects: { trust_piotrek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Skalnopole. A Tatra mountain village
+      built around shepherding and tradition. A young cheese maker who
+      exposed illegal construction in a national park. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Kasia (Wojtek's sister) -> kasia_q1
+      - Talk to Bartek (Wojtek's best friend) -> bartek_q1
+      - Check what Ola (Wojtek's ex) is saying -> ola_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Kasia Q1 ---
+
+  kasia_q1:
+    type: tweet
+    from: kasia
+    text: >
+      jadę z Krakowa. 2 godziny. jak ktoś z was widział mojego brata
+      to DZWOŃCIE. nie piszcie. DZWOŃCIE. @wojciech_gazdowicz, trzymaj
+      się kurwa. jadę.
+    effects: { trust_kasia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Kasia -> kasia_q1_talk
+
+  kasia_q1_talk:
+    type: message
+    text: >
+      KASIA: Kim jesteś? Jeszcze jeden turysta co chce się poczuć jak
+      detektyw? Mój brat zaginął a ludzie robią z tego content.
+
+      ...przepraszam. Jestem na nerwach. Wojtek dzwonił do mnie dwa
+      dni przed zniknięciem. Mówił że znalazł coś dużego na hali.
+      Że wójt jest w to wplątany. Że ktoś go śledzi.
+
+      [Kasia jest ostrożna. Musisz zdobyć jej zaufanie zanim powie
+      więcej.]
+    effects: { trust_kasia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bartek Q1 ---
+
+  bartek_q1:
+    type: tweet
+    from: bartek
+    text: >
+      3 dzień poszukiwań. Przeszedłem każdy szlak, każdą grotę, każdy
+      żleb od Kośniej Polany po Murowaniec. NIC. @wojciech_gazdowicz
+      nie jest w tych górach. Ktoś go zabrał z hali.
+    effects: { trust_bartek: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Bartek -> bartek_q1_talk
+
+  bartek_q1_talk:
+    type: message
+    text: >
+      BARTEK: Jestem ratownik GOPR, ziom. Znam te góry. Szukałem
+      trzy dni z psami tropiącymi. Ślad się urywa przy leśnej drodze,
+      tej co prowadzi do drogi na Zakopane.
+
+      Psy brały trop, szły do bacówki, potem drogą w dół i na parkingu
+      leśnym — KONIEC. Wojtek wsiadł do samochodu. Albo ktoś go
+      wsadził.
+
+      I jeszcze jedno — na hali, przy bacówce, znalazłem ślady opon.
+      Duży samochód. SUV albo pickup. Wojtek ma starego Fiata Pandę.
+      To nie jego ślady.
+    effects: { trust_bartek: "+10" }
+    choices:
+      - What do you think happened? -> bartek_theory
+      - Move on -> quest1_hub
+
+  bartek_theory:
+    type: message
+    text: >
+      BARTEK: Dwie opcje. Albo ten jebany resort go zabrał bo im
+      przeszkadzał z tym nagłośnieniem nielegalnych prac. Albo ten
+      psychiczny stalker turysta — Adam Wieloch — w końcu przesadził.
+
+      Bo widzisz, Wojtek mi mówił że ten Adam to jest pojebany. Łaził
+      za nim dosłownie wszędzie. Robił mu zdjęcia, pisał do niego
+      codziennie, chciał się "uczyć pasterstwa." Wojtek mu powiedział
+      żeby się odpierdolił. Adam zaczął przychodzić nocami.
+
+      Dwa tygodnie przed zniknięciem Wojtek znalazł kamerę ukrytą
+      w drzewie naprzeciwko bacówki. Taką myśliwską fotopułapkę. Adam
+      się nie przyznał ale kurwa, kto inny?
+    effects: { trust_bartek: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ola Q1 ---
+
+  ola_q1:
+    type: tweet
+    from: ola
+    text: >
+      nie umiem pisać wierszy kiedy @wojciech_gazdowicz nie jest tutaj.
+      te góry bez niego nie mają sensu. proszę, niech ktoś go znajdzie.
+    effects: { trust_ola: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Ola -> ola_q1_talk
+
+  ola_q1_talk:
+    type: message
+    text: >
+      OLA: Wojtek i ja... to skomplikowane. Zerwaliśmy pół roku temu
+      ale wiadomo, w małej wsi ciągle się widzisz. Nadal mi na nim
+      zależało. Nadal mi zależy.
+
+      Ostatni raz go widziałam dzień przed zniknięciem, w sklepie u
+      Zofii. Był dziwny. Nerwowy. Mówił że ktoś włamał mu się do
+      bacówki i przeglądał jego rzeczy. Nic nie zginęło ale ktoś tam
+      był.
+
+      I powiedział jeszcze coś — "Mam dowody które mogą położyć
+      wójta." Nie powiedział jakie.
+    effects: { trust_ola: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Wojtek went silent. Multiple people
+      saw or heard things on the mountain. Piece together the timeline
+      from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Kamil (was flying drone, saw heavy equipment) -> kamil_interview
+      - Find Grzegorz (mountain guide, heard vehicles at night) -> grzegorz_interview
+      - Find Zofia (shopkeeper, saw Wojtek buying supplies) -> zofia_interview
+      - Find Stefan (park ranger, found evidence of trespass) -> stefan_interview
+
+  # --- Kamil (drone footage of illegal construction) ---
+
+  kamil_interview:
+    type: tweet
+    from: kamil
+    text: >
+      Latam dronem nad Tatrami co weekend. Piękne góry. Ale ostatnio
+      widzę rzeczy których nie powinienem widzieć. Chyba. Nie wiem.
+    effects: { trust_kamil: "+5" }
+    choices:
+      - Ask Kamil about his footage -> kamil_talk
+
+  kamil_talk:
+    type: message
+    text: >
+      KAMIL: ok ziom ale musisz obiecać że nie powiesz skąd masz ten
+      materiał. moi starzy mi zabiją jak się dowiedzą. serio.
+
+      leciałem dronem nad Kośnią Polaną w sobotę rano. i widzę —
+      kurwa mać — ślady koparek. na terenie parku. wyrwane drzewa,
+      rozjechana ziemia, coś jakby wykopy pod fundamenty. i kawałek
+      dalej — beton. ktoś wylał fundamenty NA TERENIE PARKU.
+
+      mam nagranie w 4K. ślady prowadzą od drogi leśnej prosto do
+      polany wojtka. i wiesz co? na nagraniu widać też kamerę
+      zamontowaną na drzewie. fotopułapkę. skierowaną na bacówkę.
+    effects:
+      trust_kamil: "+10"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Grzegorz (mountain guide, heard vehicles) ---
+
+  grzegorz_interview:
+    type: tweet
+    from: grzegorz
+    text: >
+      Nocna cisza w Tatrach to jest coś świętego. Kto ją zakłóca
+      silnikami o drugiej w nocy nie ma szacunku dla gór.
+    effects: { trust_grzegorz: "+5" }
+    choices:
+      - Ask Grzegorz what he heard -> grzegorz_talk
+
+  grzegorz_talk:
+    type: message
+    text: >
+      GRZEGORZ: Byłem na szlaku przed świtem, lubię chodzić na wschód
+      słońca. To było jakoś 2:30 w nocy. Szedłem pod Kośnią Polaną i
+      usłyszałem silnik. Duży silnik, diesel. Na leśnej drodze która
+      jest ZAMKNIĘTA dla ruchu.
+
+      Potem drugi silnik. Mniejszy. I głosy. Nie krzyki, ale stanowczą
+      rozmowę. Potem trzask drzwi. I cisza.
+
+      Rano dowiedziałem się że Wojtek zniknął. Połączyłem fakty.
+
+      I jeszcze — ten SUV, ciemny, widziałem go wcześniej. Parkował
+      przy drodze do Zakopanego, obok tablicy z logiem "Alpine Luxury
+      Development." Firma od tego resortu.
+    effects:
+      trust_grzegorz: "+10"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Zofia (shopkeeper, last to see Wojtek) ---
+
+  zofia_interview:
+    type: tweet
+    from: zofia
+    text: >
+      @wojciech_gazdowicz był u mnie w sklepie tego wieczoru. Kupił
+      chleb, ser, zapałki. Normalnie. Ale miał takie oczy jakby nie
+      spał od tygodnia.
+    effects: { trust_zofia: "+5" }
+    choices:
+      - Ask Zofia about that evening -> zofia_talk
+
+  zofia_talk:
+    type: message
+    text: >
+      ZOFIA: Wszedł koło siódmej wieczorem. Kupił normalne rzeczy —
+      chleb, mleko, zapałki. Ale rozmawialiśmy chwilę i widzę że jest
+      dziwny. Nerwowy. Rozglądał się za siebie.
+
+      Powiedział: "Pani Zofio, jak mi się coś stanie, proszę powiedzieć
+      Kasi żeby sprawdziła skrzynkę pod kamieniem na polanie. Ona wie
+      którą."
+
+      Myślałam że żartuje. Teraz nie śpię.
+
+      I widziałam jeszcze — jak wychodził, ten warszawiak Adam stał
+      naprzeciwko sklepu. Pod drzewem. Stał i patrzył. Wojtek go
+      zobaczył i kurwa — widziałam jego twarz — był wściekły. Poszedł
+      w jego stronę ale Adam odszedł szybko.
+    effects:
+      trust_zofia: "+10"
+      night_witnesses: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Stefan (park ranger, found evidence) ---
+
+  stefan_interview:
+    type: tweet
+    from: stefan
+    text: >
+      Jako pracownik TPN informuję: odnotowano nieautoryzowane wjazdy
+      na teren parku w rejonie Kośniej Polany. Sprawa zgłoszona do
+      dyrekcji.
+    effects: { trust_stefan: "+5" }
+    choices:
+      - Ask Stefan about the trespass -> stefan_talk
+
+  stefan_talk:
+    type: message
+    text: >
+      STEFAN: Oficjalnie — sprawa jest zgłoszona. Nieoficjalnie —
+      pierdolę ostrożność, ten park jest niszczony.
+
+      Znalazłem ślady ciężkiego sprzętu na leśnej drodze do Kośniej
+      Polany. Koparki, ładowarki. Ktoś wyciął kilkanaście świerków
+      na terenie ścisłej ochrony. Wylał beton w trzech miejscach.
+      To jest przygotowanie pod budowę.
+
+      Zgłosiłem do dyrekcji parku. Dyrekcja napisała pismo do wójta.
+      Wójt odpowiedział że "nie ma wiedzy o żadnych pracach." Kurwa,
+      beton sam się nie wylał.
+
+      Wojtek Gazdowicz robił zdjęcia tych prac i wrzucał w internet.
+      Potem zniknął. Nie wierzę w zbieg okoliczności.
+    effects:
+      trust_stefan: "+10"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Kasia (sister) and
+      Helena (grandmother).
+    choices:
+      - Talk to Kasia about that night -> kasia_interview
+      - Talk to Helena -> helena_interview
+      - Find Kamil -> kamil_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Grzegorz -> grzegorz_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Zofia -> zofia_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Stefan -> stefan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Kasia (the sister, bridge to both threads) ---
+
+  kasia_interview:
+    type: tweet
+    from: kasia
+    text: >
+      Jestem w Skalnopolu. Byłam w bacówce. Drzwi zamknięte ale nie
+      na klucz. Jedzenie na stole. Telefon na ładowarce. Kto
+      ODCHODZI bez telefonu? Nikt kurwa. Nikt.
+    effects: { trust_kasia: "+5" }
+    choices:
+      - DM Kasia -> kasia_talk_low
+        when:
+          state: trust_kasia
+          lt: 50
+      - DM Kasia -> kasia_talk_high
+        when:
+          state: trust_kasia
+          gte: 50
+
+  kasia_talk_low:
+    type: message
+    text: >
+      KASIA: Dzięki za troskę ale nie znam cię. Za dużo ludzi się
+      nagle interesuje moim bratem a nikt nic nie robi.
+
+      [Kasia potrzebuje więcej zaufania. Pokaż jej że naprawdę
+      szukasz odpowiedzi.]
+    effects: { trust_kasia: "+5" }
+    choices:
+      - Share what you've learned about the night -> kasia_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  kasia_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the vehicles at night, the
+      construction evidence, Adam watching the shop. Kasia goes quiet.
+
+      KASIA: Ty naprawdę szukasz. Okej. Pogadajmy.
+    effects: { trust_kasia: "+25" }
+    choices:
+      - What happened that night? -> kasia_talk_high
+
+  kasia_talk_high:
+    type: message
+    text: >
+      KASIA: Wojtek dzwonił do mnie tego wieczoru, koło dziesiątej.
+      Był nakręcony. Mówił że znalazł dokumenty — pozwolenie na budowę
+      podpisane przez wójta Hałata. Pozwolenie na teren parku
+      narodowego. Coś co jest kurwa NIELEGALNE.
+
+      Mówił że jutro idzie z tym do dziennikarki — Magdy Walczak.
+      Że ma zdjęcia, dokumenty, wszystko.
+
+      A potem — "Kasiu, ten gość znowu tu jest. Widzę światło
+      latarki na szlaku." Spytałam kto. Powiedział "ten pojeb z
+      Warszawy, Adam." Potem się rozłączył.
+
+      Rano telefon nie odpowiadał. Pojechałam.
+    effects:
+      trust_kasia: "+15"
+      night_witnesses: "+1"
+      resort_evidence: "+1"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Helena (grandmother, fierce) ---
+
+  helena_interview:
+    type: message
+    text: >
+      HELENA: Nie mów mi żebym się uspokoiła bo chuj ci w dupę. Mam
+      83 lata i mojego wnuka ktoś zabrał. Policja ma to gdzieś bo
+      wójt im mówi żeby mieli gdzieś.
+
+      Znam tą wioskę od urodzenia. Wójt Hałat to złodziej. Jego
+      ojciec był złodziej, dziadek był złodziej. Trzy pokolenia
+      złodziejstwa. Teraz sprzedaje góry jakiemuś deweloperowi z
+      Krakowa.
+
+      Wojtek stanął im na drodze. Mojego wnuka zabrali bo nie dał
+      się kupić.
+    effects:
+      trust_helena: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Wojtek buys supplies at Zofia's, nervous, says to tell
+      Kasia about a hidden box. Adam watching from across the street.
+      22:00 — Wojtek calls Kasia, says he found construction permits,
+      plans to meet journalist. Sees flashlight on trail — Adam.
+      02:30 — Grzegorz hears diesel engines and voices near the
+      bacówka. Doors slam. SUV with Alpine Luxury plates.
+      Dawn — Wojtek's sheep found wandering. Bacówka closed. Phone
+      left behind. Dog barking.
+
+      Weekend prior — Kamil's drone footage shows construction,
+      tire tracks, hidden camera pointed at bacówka. Stefan confirms
+      illegal clearing in park.
+
+      Two threats: the resort developers AND someone closer.
+
+      Two threads to pull:
+      — The corruption: Who approved illegal construction in a national
+        park? What did the wójt sign?
+      — The obsession: What is Adam Wieloch really doing? Why was he
+        on the trail at night?
+    choices:
+      - Investigate the resort corruption -> corruption_hub
+      - Investigate Adam Wieloch -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      RESORT THREAD: Evidence collected: ${resort_evidence}
+      STALKER THREAD: Evidence collected: ${stalker_evidence}
+    choices:
+      - Work on the resort thread -> corruption_hub
+      - Work on the stalker thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: stalker_evidence, gte: 5 }
+            - { state: resort_evidence, gte: 3 }
+
+  # =====================================================================
+  # RESORT CORRUPTION THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE RESORT THREAD
+
+      Tatra Summit Resort is building on protected national park land.
+      Wojtek had proof. Someone made him disappear.
+
+      Resort evidence: ${resort_evidence}
+    choices:
+      - Search the permit records -> permit_records
+      - Talk to Magda the journalist -> magda_interview
+      - Talk to Agnieszka (environmental activist) -> agnieszka_interview
+      - Investigate the wójt's finances -> wojt_finances
+      - Check the Tatra Summit Resort posts -> resort_investigation
+      - Talk to Stefan about the construction -> stefan_construction
+      - Back to hub -> investigation_hub
+
+  # --- Permit Records ---
+
+  permit_records:
+    type: message
+    text: >
+      The gmina's public register shows a construction permit issued
+      three months ago. Reference: GS/2025/B/447. Location: "Kośnia
+      Polana — teren przyległy do granic TPN."
+
+      But a cross-check with the national park boundaries shows the
+      permit covers land that is INSIDE the park. The boundary
+      description in the permit is wrong — shifted 200 meters west.
+      Whether by accident or design, this permit authorizes building
+      in a strictly protected zone.
+
+      Signed by: Andrzej Hałat, Wójt Gminy Skalnopole.
+      Applicant: Alpine Luxury Development Sp. z o.o.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Magda (journalist) ---
+
+  magda_interview:
+    type: message
+    text: >
+      MAGDA: Nie rozmawiam o źródłach. Zasada numer jeden.
+    effects: { trust_magda: "+5" }
+    choices:
+      - Show Magda the evidence you have -> magda_with_evidence
+        when:
+          state: resort_evidence
+          gte: 3
+      - Back to resort thread -> corruption_hub
+
+  magda_with_evidence:
+    type: message
+    text: >
+      MAGDA: ...masz więcej niż się spodziewałam.
+
+      Okej. Wojtek i ja pracowaliśmy razem. Miał zdjęcia nielegalnych
+      prac, nagrania z drona, i — najważniejsze — kopię pozwolenia na
+      budowę z przesunięta granicą parku. Sfałszowany dokument.
+
+      Miał się ze mną spotkać dzień po zniknięciu. Nie przyszedł.
+
+      Wojtek żyje. Jestem pewna. Ktoś go zastraszył i ukrył. Albo
+      sam się ukrył bo wiedział że go szukają.
+
+      Dzwoniła do mnie Kasia — Wojtek zostawił coś w skrzynce pod
+      kamieniem na polanie. Kasia wie gdzie. Jak zbierzemy dość
+      dowodów, publikuję artykuł i wtedy będzie bezpiecznie.
+    effects:
+      trust_magda: "+25"
+      resort_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who is behind it? -> magda_hint
+      - Back to investigation hub -> investigation_hub
+
+  magda_hint:
+    type: message
+    text: >
+      MAGDA: Krzysztof Baran — CEO Alpine Luxury — to gość który ma
+      więcej kasy niż sumienia. Kupił wójta Hałata. Hałat podpisał
+      pozwolenie za — według moich źródeł — trzysta tysięcy złotych
+      i udział w spółce.
+
+      Ale Wojtek też mówił o czymś innym. O kimś kto go śledzi.
+      Jakiś turysta z Warszawy. Mówił że to osobna sprawa ale nie
+      jestem pewna. Bo ten turysta pojawił się w Skalnopolu dokładnie
+      wtedy kiedy Alpine Luxury zaczęła tu inwestować.
+
+      Może zbieg okoliczności. Może nie.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Agnieszka (environmental activist) ---
+
+  agnieszka_interview:
+    type: message
+    text: >
+      AGNIESZKA: Fundacja Tatry Dzikie walczy z tym resortem od
+      pierwszego dnia. Mamy trzy skargi w ministerstwie, dwa
+      zawiadomienia do prokuratury, cztery interpelacje poselskie.
+      Efekt? Zero.
+
+      Wiesz dlaczego? Bo Krzysztof Baran to kolega ze studiów
+      wiceministra. Nikt nie ruszy firmy która ma takie koneksje.
+
+      Wojtek Gazdowicz to był nasz najważniejszy świadek. Jedyny
+      który mieszkał na hali i widział prace na własne oczy. Jedyny
+      który mógł zeznawać w sądzie.
+
+      Myślisz że to przypadek że zniknął?
+    effects:
+      trust_agnieszka: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> corruption_hub
+
+  # --- Wójt's finances ---
+
+  wojt_finances:
+    type: message
+    text: >
+      Publiczny rejestr oświadczeń majątkowych wójta Hałata:
+
+      2023: mieszkanie w Skalnopolu (oszacowane na 300 000 zł),
+      samochód (Škoda Octavia 2019), oszczędności 45 000 zł.
+
+      2024: mieszkanie w Skalnopolu, NOWE mieszkanie w Krakowie
+      (950 000 zł), samochód (BMW X5 2024), oszczędności 180 000 zł.
+
+      Roczna pensja wójta gminy: 12 000 zł miesięcznie.
+
+      W jednym roku kupił mieszkanie za prawie milion, bmw i potroił
+      oszczędności. Na pensji wójta małej górskiej gminy.
+
+      Oświadczenie podpisane i złożone. Nikt nie zadał pytań.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> corruption_hub
+
+  # --- Resort posts ---
+
+  resort_investigation:
+    type: tweet
+    from: resort
+    text: >
+      🏔️ Tatra Summit Resort — Where luxury meets nature. Phase 1
+      construction beginning Q2 2026. Premium chalets, world-class
+      ski facilities, organic restaurant. Invest in the mountains.
+      #TatraSummit #LuxuryLiving
+    choices:
+      - Check their planning documents -> resort_docs
+
+  resort_docs:
+    type: message
+    text: >
+      Alpine Luxury Development's public filings show:
+
+      — Company registered 14 months ago. Single shareholder: Krzysztof
+      Baran. Registered address: Kraków.
+      — Initial capital: 5 000 zł (minimum). Current declared investment:
+      47 000 000 zł.
+      — Land purchased from gmina Skalnopole, 8 months ago. Price:
+      120 000 zł per hectare. Market value for mountain land in that
+      area: 800 000+ zł per hectare.
+      — Environmental impact assessment: "in progress." Construction
+      permit: issued before the assessment was completed.
+
+      Someone sold protected land for peanuts and issued a building
+      permit before the environmental review. That someone is the wójt.
+    effects:
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to resort thread -> corruption_hub
+
+  # --- Stefan construction detail ---
+
+  stefan_construction:
+    type: message
+    text: >
+      STEFAN: Pokażę ci coś. Mam zdjęcia z obchodu parku. Trzy
+      fundamenty betonowe, każdy 20 na 30 metrów. Droga dojazdowa
+      wyrąbana w lesie. Rury kanalizacyjne złożone na polanie.
+
+      To nie są przygotowania. To jest budowa. Bez pozwolenia od
+      dyrekcji parku, bo dyrekcja pozwolenia NIE WYDAŁA.
+
+      Wójt wydał pozwolenie sam. Na terenie na którym nie ma
+      jurysdykcji. Ja pierdolę, ten człowiek sprzedał park
+      narodowy deweloperowi.
+
+      I widziałem jeszcze — na jednym ze zdjęć, w tle, stoi facet
+      i robi zdjęcia aparatem z telezoomem. Nie robotnik. Turysta.
+      Sądzę że to ten Adam Wieloch. Był na placu budowy o szóstej
+      rano. Co on tam robił?
+    effects:
+      trust_stefan: "+10"
+      resort_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # STALKER THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE STALKER THREAD
+
+      Adam Wieloch. Tourist from Warsaw. Self-proclaimed mountain
+      life enthusiast. Something much darker underneath?
+
+      Stalker evidence: ${stalker_evidence}
+    choices:
+      - Investigate Adam's social media history -> adam_history
+      - Talk to Bartek about the hidden camera -> bartek_camera
+        when:
+          state: trust_bartek
+          gte: 20
+      - Talk to Ola about Adam -> ola_adam
+      - Talk to Marta (more detail on Adam's behaviour) -> marta_adam_detail
+      - Check the anonymous account @mountain_soul_77 -> anon_investigation
+      - Talk to Patrycja (saw Adam at night) -> patrycja_interview
+      - Talk to Aspirant Nowak -> aspirant_interview
+        when:
+          state: trust_aspirant
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Adam's social media ---
+
+  adam_history:
+    type: message
+    text: >
+      @adam_wieloch: konto założone 7 miesięcy temu. Pierwsze posty:
+      zdjęcia gór, hashtagi #GóralskieŻycie, #AutentycznośćTakWygląda.
+      Turystyczne bzdury.
+
+      Miesiąc 2: zaczyna tagować @wojciech_gazdowicz. "Prawdziwy góral!"
+      "Tego mi trzeba w życiu!" "Mogę się od ciebie uczyć?"
+
+      Miesiąc 3: posty codziennie. Wszystkie o Wojtku. Zdjęcia robione
+      z daleka — Wojtek przy owcach, Wojtek w bacówce, Wojtek schodzący
+      ze szlaku. Wojtek wyraźnie nie pozuje.
+
+      Miesiąc 5: "Dlaczego mnie ignorujesz? Chcę tylko się uczyć."
+      "Jesteś jedyną autentyczną osobą jaką znam." "Bez ciebie te góry
+      nie mają sensu."
+
+      Miesiąc 6: posty znikają. Konto prawie puste. Ale Adam nadal jest
+      w Skalnopolu.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Bartek on the camera ---
+
+  bartek_camera:
+    type: message
+    text: >
+      BARTEK: Ta fotopułapka co Wojtek znalazł? Wziąłem ją. Jest u
+      mnie. Karta pamięci ma tysiące zdjęć Wojtka. Dosłownie —
+      tysiące. Wojtek wstaje, Wojtek karmi owce, Wojtek robi oscypki,
+      Wojtek idzie spać.
+
+      I nocne zdjęcia. Ktoś podchodził do bacówki w nocy i robił
+      zdjęcia przez okno. Kamera to zarejestrowała. Na jednym zdjęciu
+      widać twarz. Adama Wielocha.
+
+      To nie jest fan. To nie jest turysta. To jest obsesja. Ten
+      człowiek żyje życiem Wojtka przez kamerę.
+    effects:
+      trust_bartek: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Ola on Adam ---
+
+  ola_adam:
+    type: message
+    text: >
+      OLA: Adam? Ten facet jest chory. Podszedł do mnie raz w sklepie
+      i pytał o Wojtka. Jakie lubi jedzenie, gdzie chodzi wieczorami,
+      czy ma dziewczynę.
+
+      Mówię mu — to nie twoja sprawa. A on na to — "Wojtek jest
+      wyjątkowy. Ludzie wyjątkowi muszą być chronieni."
+
+      Chronieni? Przez kogo? Przez niego? Co za pojebana logika.
+
+      A potem — dwa tygodnie przed zniknięciem Wojtka — Adam
+      przyszedł pod moją chałupę. Zapukał. Było 11 w nocy. Spytał
+      czy Wojtek u mnie jest. Powiedziałam "spierdolaj" i zamknęłam
+      drzwi.
+
+      Stał pod domem jeszcze pół godziny. Widziałam przez firankę.
+    effects:
+      trust_ola: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Marta detail on Adam ---
+
+  marta_adam_detail:
+    type: message
+    text: >
+      MARTA: Słuchaj, ten Adam wynajmuje pokój u Wiśniewskich na
+      końcu wsi. Wiśniewska mi mówi że facet nie śpi nocami. Wychodzi
+      o drugiej, trzeciej w nocy z plecakiem i aparatem. Wraca przed
+      świtem.
+
+      W pokoju ma ścianę ze zdjęciami Wojtka. Mapy szlaków z zaznaczoną
+      trasą Wojtka. Notatki z godzinami — kiedy Wojtek wstaje, kiedy
+      karmi owce, kiedy schodzi do wsi.
+
+      Wiśniewska chciała go wyrzucić ale facet płaci trzy razy więcej
+      niż normalna stawka. Kurwa, skąd on ma tyle kasy? Mówi że żyje
+      oszczędnościami z korpo ale te oszczędności to by musiały być
+      spore.
+    effects:
+      trust_marta: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Anonymous account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_konto
+    text: >
+      He should have accepted my help. I understand the mountains
+      better than he thinks. We could have done this together.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @mountain_soul_77: konto założone 5 miesięcy temu. Posty
+      wyłącznie o Wojtku i jego pracy na hali.
+
+      Miesiąc 1: "Jego oscypki to dzieło sztuki. Prawdziwe rzemiosło."
+      Miesiąc 2: "Widzę go codziennie ale on mnie nie widzi. Może
+      tak jest lepiej."
+      Miesiąc 3: "Powiedział żebym odszedł. Nie rozumie. Ja go
+      chronię."
+      Miesiąc 4: "Wiem o budowie. Wiem co robią na polanie. Mam
+      dowody. On też je ma. Moglibyśmy razem to ujawnić."
+      Miesiąc 5: "Jeśli mnie nie chce, to jego wybór. Ale nie
+      pozwolę żeby mu się stała krzywda. Nawet jeśli mnie to będzie
+      kosztować."
+
+      Ostatni post, dzień po zniknięciu: "Jest bezpieczny. Musi mi
+      zaufać."
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Porównanie @mountain_soul_77 z @adam_wieloch:
+
+      Ten sam sposób pisania o górach — romantyzujący, podniosły.
+      Te same błędy gramatyczne — "gór" zamiast "gór" w dopełniaczu,
+      identyczna interpunkcja.
+
+      I kluczowy post: "Widziałem jak schodzi szlakiem od Murowańca
+      o 16:47." Dokładna godzina. Ktoś kto obserwuje i notuje.
+
+      Post z 3 tygodnie temu: "Fundamenty rosną. Mam zdjęcia. On
+      też." Skąd @mountain_soul_77 wie o zdjęciach Wojtka jeśli nie
+      jest blisko niego?
+
+      To Adam. Anonimowe konto to Adam Wieloch.
+    effects:
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Patrycja (saw Adam at night near bacówka) ---
+
+  patrycja_interview:
+    type: message
+    text: >
+      PATRYCJA: okej to jest creepy. trzy razy widziałam tego adama
+      nocą pod bacówką wojtka. pierwszy raz myślałam że jest turystą
+      który się zgubił ale on stał i patrzył. stał pod drzewem z
+      aparatem. o drugiej w nocy.
+
+      drugi raz usłyszałam jak mówi do siebie. coś w stylu "jest
+      bezpieczny, śpi." kto mówi takie rzeczy?
+
+      trzeci raz — to było dwa dni przed zniknięciem — widziałam go
+      jak wchodzi do bacówki. wojtka nie było, poszedł do wsi. adam
+      wszedł, był w środku może 15 minut i wyszedł.
+
+      nie powiedziałam nikomu bo się bałam. teraz żałuję.
+    effects:
+      trust_patrycja: "+10"
+      stalker_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # --- Aspirant Nowak ---
+
+  aspirant_interview:
+    type: message
+    text: >
+      ASPIRANT NOWAK: Nieoficjalnie — chciałem prowadzić tę sprawę
+      poważnie. Mój komendant powiedział że wójt "prosi o dyskrecję."
+      Dyskrecja w sprawie zaginionego człowieka. Kurwa mać.
+
+      Jeśli chodzi o tego Wielocha — mamy na niego skargę od Wojtka
+      z miesiąc temu. Wojtek zgłosił śledzenie. Napisałem notatkę,
+      wezwałem Wielocha na posterunek. Powiedział że to "nieporozumienie."
+      Puściłem go bo nie miałem podstaw do zatrzymania.
+
+      Gdybym miał dowody — zdjęcia, zeznania, to konto anonimowe —
+      mógłbym wszcząć postępowanie. Przynieś mi coś solidnego.
+    effects:
+      trust_aspirant: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to stalker thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Wojtek than anyone in Skalnopole. Who is responsible?
+    choices:
+      - Confront Adam Wieloch (the obsessive stalker) -> confront_adam
+        when:
+          state: stalker_evidence
+          gte: 5
+      - Confront Krzysztof Baran (the resort developer) -> confront_krzysztof
+        when:
+          state: resort_evidence
+          gte: 3
+      - Confront Wójt Hałat (the corrupt village head) -> confront_wojt
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Adam Wieloch (Best Ending) ---
+
+  confront_adam:
+    type: message
+    text: >
+      You present your evidence to Adam:
+
+      "I know @mountain_soul_77 is your account. I know about the
+      camera in the tree. I know you were in the bacówka when Wojtek
+      wasn't there. I know you followed him at night for months. I
+      have witnesses and I have the photos from the trail cam."
+    choices:
+      - Send -> adam_response
+
+  adam_response:
+    type: message
+    text: >
+      Adam doesn't reply for a long time. Then:
+
+      ADAM: You don't understand. I wasn't stalking him. I was
+      PROTECTING him. Those developers — they were going to destroy
+      everything. His meadow, his sheep, his whole way of life. And
+      nobody was doing anything. I had to watch over him.
+
+      And then that night — I saw them. The men from the resort
+      company. They came to the bacówka. I heard shouting. I saw
+      them put Wojtek in the SUV. I FOLLOWED them. I know where
+      they took him.
+
+      I saved him. I got him out. He's safe. He's in my cousin's
+      cabin near Białka Tatrzańska. I brought him food every day.
+      He's SAFE.
+
+      ...why is everyone treating me like I'm the problem?
+
+      That's not protection. That's a cage.
+
+      You've already sent the evidence to Aspirant Nowak. And to
+      Magda Walczak.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen fast.
+
+      Aspirant Nowak, with your evidence — the anonymous account,
+      the trail camera, the break-ins, the witnesses — arrests Adam
+      Wieloch. A joint GOPR-police team finds Wojtek Gazdowicz at the
+      cabin near Białka Tatrzańska. He's unharmed but shaken. Adam
+      had been "rescuing" him — taking him from the resort thugs but
+      then keeping him locked in, insisting he wasn't safe to go home.
+
+      Magda Walczak publishes the resort corruption story in Tygodnik
+      Podhalański, picked up by Gazeta Wyborcza. The falsified permit,
+      the wójt's wealth, the illegal construction — all public. The
+      prokuratura opens a case. Wójt Hałat is suspended. Krzysztof
+      Baran faces charges. The construction is halted.
+
+      Wojtek Gazdowicz walks back to Kośnia Polana ten days after he
+      disappeared. His sheep rush to meet him. His dog won't stop
+      barking.
+
+      "Wróciłem. Nikt mnie stąd nie ruszy."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: wojciech
+    text: >
+      Owce nakarmione. Oscypki na jutro. Góry stoją gdzie stały.
+      Dzięki wam, ziomy. Dzięki Skalnopole.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Krzysztof Baran (Partial Ending) ---
+
+  confront_krzysztof:
+    type: message
+    text: >
+      You present the corruption evidence to Krzysztof Baran:
+
+      "I have the falsified construction permit. I have the wójt's
+      financial records showing unexplained wealth. I have drone
+      footage of illegal construction in a national park. I have
+      the park ranger's reports. I have Wojtek's photographs."
+    choices:
+      - Send -> krzysztof_response
+
+  krzysztof_response:
+    type: message
+    text: >
+      KRZYSZTOF: This conversation will be forwarded to our legal
+      team. Alpine Luxury Development operates in full compliance
+      with local planning regulations. Any defamatory publication
+      will result in immediate legal proceedings.
+
+      But it's too late. You've sent the evidence to Magda Walczak,
+      to Agnieszka at Fundacja Tatry Dzikie, and to the prokuratura.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The corruption story breaks. The construction is halted pending
+      investigation. Wójt Hałat faces questions. Alpine Luxury
+      Development's investors start pulling out.
+
+      But Wojtek?
+
+      Without the stalking evidence, Adam Wieloch is never
+      investigated. He continues to live in Skalnopole. He continues
+      to watch. He posts on @mountain_soul_77 that he's "keeping
+      Wojtek safe."
+
+      Two weeks later, Bartek and the GOPR find Wojtek in a cabin
+      near Białka Tatrzańska — but only after Adam, feeling
+      pressure from the media attention, panics and abandons him
+      there. Wojtek is dehydrated and confused.
+
+      The resort is stopped. But the person who imprisoned Wojtek
+      in a mountain cabin — calling it protection — walks free.
+      He moves to another village. He follows another account.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: wojciech
+    text: "Wróciłem na halę. Góry stoją. Ale w nocy nadal słucham czy ktoś idzie szlakiem."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Wójt (Wrong Ending) ---
+
+  confront_wojt:
+    type: message
+    text: >
+      You confront Wójt Hałat with your evidence.
+
+      Within hours, you receive a message from his lawyer:
+    choices:
+      - Read the response -> wojt_response
+
+  wojt_response:
+    type: tweet
+    from: ewa
+    text: >
+      Informuję, że mój klient Wójt Gminy Skalnopole nie komentuje
+      bezpodstawnych zarzutów rozpowszechnianych w internecie. Wszelkie
+      dalsze działania mogące naruszać dobre imię mojego klienta będą
+      ścigane drogą prawną. — Kancelaria Dudek & Wspólnicy, Kraków
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The wójt's lawyer buries the accusation. Without connecting
+      Hałat directly to Wojtek's disappearance — and the permit
+      scandal alone isn't enough — the evidence sits in a legal
+      limbo.
+
+      Alpine Luxury Development continues construction. Adam
+      Wieloch continues to watch. Wojtek stays hidden in a cabin,
+      alone, "protected" by a man he never asked for help from.
+
+      A month later, @mountain_soul_77 posts: "He'll understand
+      eventually. I'm the only one who really cares."
+
+      Kasia drives to every cabin in the Białka Tatrzańska region.
+      She doesn't find him. Not yet.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SKALNOPOLE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Resort evidence: ${resort_evidence}
+      Stalker evidence: ${stalker_evidence}
+
+      Thank you for playing. Wojtek's story explores themes of
+      obsessive fixation disguised as admiration, corruption in
+      local government, the destruction of protected natural
+      environments, and the strength of mountain communities.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or feels unsafe, help is available:
+      Telefon Zaufania: 116 123
+      Niebieska Linia (przemoc): 800 120 002
+      Policja: 112

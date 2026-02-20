@@ -1,0 +1,2323 @@
+meta:
+  title: "Dead Account"
+  subtitle: "Story 011 - Bergfeld"
+  locale: AT
+  state:
+    trust_franz: 0
+    trust_katharina: 0
+    trust_stefan: 0
+    trust_hofer: 0
+    trust_lukas: 0
+    trust_lena: 0
+    trust_moritz: 0
+    trust_brigitte: 0
+    trust_werner: 0
+    trust_anneliese: 0
+    trust_tobias: 0
+    trust_markus: 0
+    trust_rosa: 0
+    trust_sepp: 0
+    trust_ingrid: 0
+    trust_eva: 0
+    trust_christoph: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    construction_evidence: 0
+    partner_evidence: 0
+    evidence_total: 0
+  player:
+    name: New Resident
+    bio: "Recently moved to Bergfeld. Interested in mountain culture and local community."
+    avatar: avatars/default_citizen.png
+  bot:
+    display_name: "Bergfeld.social"
+    description: "Welcome to Bergfeld.social - the Alpine community instance for Bergfeld, Tyrol. Respect the mountains, respect each other."
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+  npcs:
+    franz:
+      name: "Franz Gruber"
+      bio: "Mountain rescue volunteer. 20 years in Bergfeld. Hannah's hiking partner. Knows every trail in the Zillertal."
+      avatar: avatars/franz.jpg
+    katharina:
+      name: "Katharina Moser"
+      bio: "Owner of Cafe Edelweiss. Community gossip hub. Been here since forever."
+      avatar: avatars/katharina.jpg
+    stefan:
+      name: "Stefan Brandner"
+      bio: "Local journalist at Bergfelder Kurier. Covers municipal politics and environment."
+      avatar: avatars/stefan.jpg
+    hofer:
+      name: "Herr Johann Hofer"
+      bio: "Municipal building inspector. 30 years of service. Chair of the Alpine preservation committee."
+      avatar: avatars/hofer.jpg
+    lukas:
+      name: "Lukas Eder"
+      bio: "16. Skateboarder. Hangs out at the Bahnhof. Knows things people think he doesn't."
+      avatar: avatars/lukas.jpg
+    lena:
+      name: "Lena Wimmer"
+      bio: "17. Photography student. Was learning nature photography from Hannah. Runs @bergfeld_shots."
+      avatar: avatars/lena.jpg
+    moritz:
+      name: "Moritz Pichler"
+      bio: "15. Gamer and tech kid. Built the school website. Noticed something weird about Hannah's account."
+      avatar: avatars/moritz.jpg
+    brigitte:
+      name: "Brigitte Steiner"
+      bio: "Hannah's mother. Retired schoolteacher. Worried sick but trying to stay strong."
+      avatar: avatars/brigitte.jpg
+    werner:
+      name: "Werner Kaltenbrunner"
+      bio: "Construction company owner. Kaltenbrunner Bau GmbH. Big donor to the Bergfeld tourism board."
+      avatar: avatars/werner.jpg
+    anneliese:
+      name: "Anneliese Huber"
+      bio: "Runs the Bergfeld Alpenverein hut. Saw Hannah the day before she disappeared."
+      avatar: avatars/anneliese.jpg
+    tobias:
+      name: "Tobias Reiter"
+      bio: "Hannah's ex-boyfriend and current hiking partner. Trail runner. Works at the outdoor shop."
+      avatar: avatars/tobias.jpg
+    markus:
+      name: "Markus Fink"
+      bio: "Deputy mayor. Ambitious. Wants to modernize Bergfeld with new resort development."
+      avatar: avatars/markus.jpg
+    rosa:
+      name: "Rosa Thaler"
+      bio: "Elderly farmer on the Sonnberg slope. Her land borders the protected zone."
+      avatar: avatars/rosa.jpg
+    sepp:
+      name: "Sepp Wallner"
+      bio: "Retired Gendarmerie officer. Knows everyone's secrets. Drinks at Cafe Edelweiss every afternoon."
+      avatar: avatars/sepp.jpg
+    ingrid:
+      name: "Ingrid Mayr"
+      bio: "Pharmacist. Bergfeld health committee. Noticed Hannah hadn't picked up her prescription."
+      avatar: avatars/ingrid.jpg
+    eva:
+      name: "Eva Schuster"
+      bio: "Environmental lawyer in Innsbruck. Hannah had been emailing her about the construction case."
+      avatar: avatars/eva.jpg
+    christoph:
+      name: "Christoph Wenger"
+      bio: "IT admin for the Bergfeld municipal servers. Quiet. Keeps to himself."
+      avatar: avatars/christoph.jpg
+
+entry: welcome
+
+nodes:
+  welcome:
+    type: message
+    text: >
+      Welcome to Bergfeld.social, the community instance for our small Alpine town in Tyrol.
+      You've just moved here, and the mountains are beautiful -- but something is wrong.
+      Hannah Steiner, a beloved mountain guide and environmental blogger, hasn't posted in
+      12 days. Her last post was about construction activity near the Adlergrat ridge
+      in a protected Alpine zone. Her account shows no activity since. Some people say
+      she just went on a long hike. Others whisper that she found something she shouldn't have.
+      Your feed is filling up with worried messages. Maybe you should look into it.
+    choices:
+      - "Browse the local timeline" -> local_timeline
+      - "Check Hannah's last post" -> hannah_last_post
+
+  local_timeline:
+    type: message
+    text: >
+      You scroll through the Bergfeld.social local timeline. The usual mix of mountain
+      photos, event announcements, and cafe menus. But between the normal posts, you
+      notice a pattern -- people asking about Hannah. Where is she? Has anyone heard
+      from her? A few accounts seem particularly active in discussing her absence.
+    choices:
+      - "Read Katharina's post about Hannah" -> katharina_worried_post
+      - "Check the teens' conversation" -> teen_thread_intro
+      - "Look at Hannah's last post" -> hannah_last_post
+
+  hannah_last_post:
+    type: tweet
+    from: hannah_steiner
+    text: >
+      Walked up to Adlergrat today. What I found there is unbelievable. Heavy machinery
+      tracks in the PROTECTED ZONE. Fresh concrete foundations where there should be
+      nothing but grass and marmots. I have photos. I have GPS coordinates. Someone
+      is building illegally in our mountains and I will not stay silent about this.
+      Thread coming tomorrow with all the evidence. #BergfeldNatur #Adlergrat
+    choices:
+      - "Look at the responses to this post" -> hannah_post_responses
+      - "Check who follows Hannah" -> hannah_followers
+      - "Search for the hashtag #Adlergrat" -> adlergrat_search
+
+  hannah_post_responses:
+    type: message
+    text: >
+      The post got 47 boosts and 89 replies. Most are supportive locals, but a few
+      stand out. Franz Gruber replied: "Hannah, bitte sei vorsichtig. Call me before
+      you go up there again." Stefan Brandner from the Kurier wrote: "Can we talk?
+      This could be the story of the year." And one reply from a now-deleted account
+      simply said: "Mind your own business if you know what's good for you."
+    choices:
+      - "Follow Franz Gruber" -> follow_franz
+      - "Follow Stefan Brandner" -> follow_stefan
+      - "Try to find the deleted account" -> deleted_account_search
+
+  hannah_followers:
+    type: message
+    text: >
+      Hannah had 312 followers on Bergfeld.social. Mostly locals, some hikers from
+      other instances. You notice Franz Gruber, Lena Wimmer, Stefan Brandner, and
+      Tobias Reiter all follow her. Interestingly, Herr Hofer from the building
+      inspection office does NOT follow her, but he liked several of her older posts
+      about mountain conservation.
+    choices:
+      - "Follow Franz Gruber" -> follow_franz
+      - "Follow Lena Wimmer" -> follow_lena
+      - "Follow Tobias Reiter" -> follow_tobias
+
+  adlergrat_search:
+    type: message
+    text: >
+      The #Adlergrat hashtag brings up Hannah's environmental posts going back months.
+      She documented wildflower blooms, trail erosion, and ibex sightings. But in the
+      last three weeks before she vanished, the tone shifted. More posts about vehicle
+      tracks, noise complaints from hikers, and a mysterious access road being graded.
+      One post from two weeks before her disappearance mentions "Kaltenbrunner trucks
+      on the forest road at 5 AM."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Search for Kaltenbrunner" -> kaltenbrunner_search
+      - "Read Hannah's environmental thread" -> hannah_env_thread
+      - "Go back to the timeline" -> local_timeline
+
+  katharina_worried_post:
+    type: tweet
+    from: katharina
+    text: >
+      Has anyone seen Hannah? She hasn't been to the cafe in almost two weeks. This
+      isn't like her -- she always comes in for her Melange on Tuesdays. I spoke to
+      Brigitte and she's beside herself. If anyone knows anything, please speak up.
+      This town looks after its own. #WhereIsHannah
+    choices:
+      - "Follow Katharina and reply" -> follow_katharina
+      - "Check what Brigitte posted" -> brigitte_post
+      - "Read the replies" -> katharina_post_replies
+
+  katharina_post_replies:
+    type: message
+    text: >
+      The replies are a mix of concern and deflection. Sepp Wallner wrote: "She probably
+      just went on one of her solo treks. She'll turn up." Franz Gruber: "This isn't
+      normal. I've called her 30 times." Tobias Reiter: "She told me she needed space.
+      I'm respecting that." Markus Fink, the deputy mayor: "Let's not start rumours.
+      I'm sure there's a simple explanation."
+    choices:
+      - "Follow Franz Gruber" -> follow_franz
+      - "Follow Tobias Reiter" -> follow_tobias
+      - "Follow Markus Fink" -> follow_markus
+
+  follow_franz:
+    type: message
+    text: >
+      You follow Franz Gruber. He follows you back almost immediately. His feed is
+      full of mountain rescue updates, weather warnings, and photos of the Zillertal
+      peaks. But his recent posts are all about Hannah. He seems genuinely distraught.
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "Send Franz a DM" -> dm_franz_intro
+      - "Read Franz's recent posts" -> franz_posts
+      - "Continue browsing" -> local_timeline
+
+  dm_franz_intro:
+    type: message
+    text: >
+      You send Franz a direct message introducing yourself as a new resident who
+      noticed the posts about Hannah. He replies within minutes.
+    choices:
+      - "Ask about Hannah's disappearance" -> franz_about_hannah
+      - "Ask about the Adlergrat construction" -> franz_about_construction
+
+  franz_about_hannah:
+    type: message
+    text: >
+      Franz: "I've known Hannah for fifteen years. We've hiked together hundreds of
+      times. She would NEVER just disappear without telling anyone. Something happened
+      to her up on that ridge, I'm sure of it. I wanted to go look for her but the
+      Gendarmerie told me to stay out of it. They say she's an adult who can do what
+      she wants. But her phone is off. Her car is still at her flat. Her rucksack
+      and boots are gone. That tells me she went up the mountain and didn't come back."
+    effects:
+      trust_franz: "+10"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about Tobias" -> franz_about_tobias
+      - "Ask about the construction" -> franz_about_construction
+      - "Ask about the deleted account threat" -> franz_about_threat
+
+  franz_about_tobias:
+    type: message
+    text: >
+      Franz pauses before typing. "Tobias. Ja. Look, he and Hannah dated for two
+      years. She broke it off last spring. He didn't take it well. He kept showing
+      up on her hikes, saying they were 'just friends hiking together.' But I saw
+      how he looked at her. Possessive. She told me once she felt like she couldn't
+      go anywhere without him appearing. And that last week before she vanished --
+      they had a massive argument at the trailhead. Anneliese at the Alpenverein hut
+      heard shouting."
+    effects:
+      trust_franz: "+10"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the construction" -> franz_about_construction
+      - "Talk to Anneliese about the argument" -> follow_anneliese
+      - "Talk to Tobias directly" -> follow_tobias
+
+  franz_about_construction:
+    type: message
+    text: >
+      Franz: "The construction on Adlergrat? That's Kaltenbrunner. Werner Kaltenbrunner.
+      Everyone knows it but nobody says anything because he employs half the valley.
+      Hannah had real evidence -- drone photos, dates, GPS data. She was building a
+      case. She told me she'd contacted a lawyer in Innsbruck. But she also told me
+      someone warned her to stop. Anonymous message. She laughed it off. Hannah was
+      never afraid of anything. Maybe she should have been."
+    effects:
+      trust_franz: "+5"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about Werner Kaltenbrunner" -> franz_about_werner
+      - "Ask about the anonymous threat" -> franz_about_threat
+      - "Talk to the Innsbruck lawyer" -> follow_eva
+
+  franz_about_werner:
+    type: message
+    text: >
+      Franz: "Werner Kaltenbrunner has been building in this valley for 30 years.
+      Started with barns and chalets, now he wants a luxury wellness resort up on
+      the Adlergrat. Problem is, it's in the Natura 2000 protected zone. He needs
+      permits that should be impossible to get. But somehow, the deputy mayor Markus
+      Fink keeps finding 'exceptions' and 'special provisions.' Hannah found the
+      paperwork. Fake environmental impact assessments. Forged signatures. The whole
+      thing stinks."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Investigate Werner Kaltenbrunner" -> kaltenbrunner_search
+      - "Look into Markus Fink" -> follow_markus
+      - "Ask about the forged documents" -> franz_forged_docs
+
+  franz_about_threat:
+    type: message
+    text: >
+      Franz: "About a week before she disappeared, Hannah got a DM from an account
+      that was created that same day. No avatar, no bio, username was just random
+      numbers. It said something like 'The mountains can be dangerous for people who
+      don't watch their step.' She screenshotted it and showed me. I told her to
+      go to the Polizei. She said she would, but I don't know if she did. The account
+      was deleted by the next day. Moritz -- that kid who does the IT stuff -- he
+      might be able to trace it."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Talk to Moritz about the account" -> follow_moritz
+      - "Check if Hannah filed a police report" -> police_report_check
+      - "Go back to the timeline" -> local_timeline
+
+  franz_forged_docs:
+    type: message
+    text: >
+      Franz: "Hannah showed me copies. The environmental impact assessment for the
+      Adlergrat site was signed by a Dr. Reinhold Brunner from the University of
+      Innsbruck. Only problem? I looked him up. He's been dead for three years.
+      Someone forged a dead professor's name on an official document. That's not
+      just corruption -- that's criminal fraud. Hannah had the originals scanned
+      and backed up somewhere safe, she said. But she wouldn't tell me where."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Search for Dr. Brunner" -> brunner_search
+      - "Ask about Hannah's backups" -> franz_backups
+      - "Talk to Herr Hofer about the permits" -> follow_hofer
+
+  franz_backups:
+    type: message
+    text: >
+      Franz: "She was careful. Said she had copies in three places -- her laptop,
+      a USB stick she kept at her mother's house, and somewhere online. She mentioned
+      something about a 'cloud' but I'm not a tech person. Maybe Moritz or Christoph
+      would know more about that. The laptop was in her flat. I don't know if it's
+      still there."
+    choices:
+      - "Talk to Moritz about the cloud backup" -> follow_moritz
+      - "Talk to Brigitte about the USB stick" -> brigitte_usb
+      - "Talk to Christoph about online backups" -> follow_christoph
+
+  franz_posts:
+    type: tweet
+    from: franz
+    text: >
+      Day 12 without word from Hannah. I've walked the Adlergrat trail three times
+      this week. Found nothing. Mountain rescue says there's no official search
+      because she's not officially missing -- "adults can choose to be unreachable."
+      I don't accept this. Something is wrong. If you've seen Hannah Steiner anywhere
+      in the Zillertal valley, please contact me or the Gendarmerie. Please.
+    effects:
+      trust_franz: "+5"
+    choices:
+      - "Send Franz a DM" -> dm_franz_intro
+      - "Read responses to this post" -> franz_post_responses
+      - "Continue investigating" -> local_timeline
+
+  franz_post_responses:
+    type: message
+    text: >
+      Most replies express sympathy. But Tobias Reiter's reply is defensive: "Franz,
+      stop making this into a conspiracy. She told me she was going away for a while.
+      You're scaring her mother." And Werner Kaltenbrunner's official company account
+      posted: "Our thoughts are with the Steiner family. Kaltenbrunner Bau is offering
+      a reward for information." Several people found that last one suspicious.
+    choices:
+      - "Follow Tobias Reiter" -> follow_tobias
+      - "Look at the Kaltenbrunner company account" -> kaltenbrunner_search
+      - "Talk to Brigitte" -> brigitte_post
+
+  teen_thread_intro:
+    type: message
+    text: >
+      You find a semi-private thread between three teens on the local timeline.
+      They're using a mix of German and local slang, but you can follow most of it.
+      They seem to know something.
+    choices:
+      - "Read the thread" -> teen_thread
+
+  teen_thread:
+    type: tweet
+    from: lukas
+    text: >
+      oida heast habt ihr des gsehn? der kaltenbrunner lastwagen is scho wieder
+      um 4 in da fruah durchgfahrn. i war no wach wegen zocken lol. des is jetzt
+      schon des dritte mal diese woche @lena_w @moritz_p
+    choices:
+      - "Read Lena's reply" -> teen_thread_lena
+      - "Read Moritz's reply" -> teen_thread_moritz
+
+  teen_thread_lena:
+    type: tweet
+    from: lena
+    text: >
+      @lukas ja fix. i hab fotos von der baustelle oben gmacht letzte woche.
+      ur creepy oida. da steht jetzt so a riesiger betonmischer und kein mensch
+      weit und breit. und wissts was? i hab an tobias dort oben gsehn. allein.
+      hat voi komisch gschaut als er mi gsehn hat. hat gsagt i soll da net
+      umadum rennen weils gfährlich is. seit wann is wandern gfährlich??
+    effects:
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Read Moritz's reply" -> teen_thread_moritz
+      - "Follow Lena and ask about the photos" -> follow_lena
+
+  teen_thread_moritz:
+    type: tweet
+    from: moritz
+    text: >
+      @lukas @lena_w oida passts auf. i hab mir den account angschaut der die
+      hannah bedroht hat. also den der glöscht worden is. i hab no an screenshot
+      vom server cache ghabt. die IP war vom rathaus-netzwerk. oida. VOM RATHAUS.
+      des is heast net normal. sog des niemandem weiter bitte
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Follow Moritz and ask about the IP" -> follow_moritz
+      - "Follow Lena and ask about the photos" -> follow_lena
+      - "Investigate the Rathaus connection" -> rathaus_connection
+
+  follow_lena:
+    type: message
+    text: >
+      You follow Lena Wimmer. She's cautious but follows you back after checking
+      your profile. Her feed is beautiful nature photography mixed with typical teen
+      posts about school and friends. But recently, her photos have shifted -- she's
+      been documenting the Adlergrat area, almost continuing Hannah's work.
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "DM Lena about her photos" -> dm_lena_photos
+      - "DM Lena about seeing Tobias" -> dm_lena_tobias
+      - "Look at Lena's photo gallery" -> lena_photos
+
+  dm_lena_photos:
+    type: message
+    text: >
+      Lena: "ja hallo. du bist der/die neue im ort oder? ok also. hannah hat mir
+      fotografie beigebracht. landschaftsfotografie. sie war ur lieb und hat sich
+      immer zeit gnommen. und jetzt is sie weg und alle tun so als wärs normal??
+      i hab ihre arbeit weitergmacht. bin rauf zum adlergrat. da oben is jetzt
+      a riesige baustelle. betonmischer, bagger, alles. mitten im naturschutzgebiet.
+      i hab alles fotografiert. willst die fotos sehn?"
+    effects:
+      trust_lena: "+10"
+    choices:
+      - "Yes, show me the photos" -> lena_construction_photos
+      - "Ask about Tobias on the ridge" -> dm_lena_tobias
+      - "Ask if Hannah seemed scared before disappearing" -> lena_hannah_scared
+
+  lena_construction_photos:
+    type: message
+    text: >
+      Lena sends you a folder of photos. They're damning -- heavy machinery on
+      pristine Alpine meadow, concrete foundations laid in what is clearly protected
+      grassland, and most critically, close-up shots of the construction company
+      logos: Kaltenbrunner Bau GmbH. Timestamps show activity at dawn, 4-6 AM,
+      when nobody would normally be on the trail. One photo shows a figure in
+      a high-vis vest that looks like it could be Herr Hofer, the building inspector.
+    effects:
+      trust_lena: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the figure in the high-vis vest" -> lena_hofer_photo
+      - "Ask about Tobias" -> dm_lena_tobias
+      - "Share this with Stefan at the Kurier" -> share_with_stefan
+
+  lena_hofer_photo:
+    type: message
+    text: >
+      Lena: "ja des hab i a gsehn. schaut aus wie der hofer. der bauinspektor.
+      was macht der um 5 in da fruah auf aner illegalen baustelle? der soll doch
+      genau sowas VERHINDERN. i trau mi net des laut zu sagn weil mei mama
+      arbeitet bei der gemeinde und i will ihr net schaden. aber des is net richtig."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about Tobias on the ridge" -> dm_lena_tobias
+      - "Promise to keep her identity safe" -> lena_promise_safety
+      - "Investigate Herr Hofer" -> follow_hofer
+
+  lena_promise_safety:
+    type: message
+    text: >
+      You assure Lena you won't reveal her as a source. She seems relieved.
+      "danke. i mach mir echt sorgen. hannah hat a gmeint sie passt auf und
+      schau was passiert is. bitte pass du a auf. die leut hier im ort die
+      geld haben die san net zum spaßen."
+    effects:
+      trust_lena: "+15"
+    choices:
+      - "Ask about Tobias" -> dm_lena_tobias
+      - "Continue investigating" -> investigation_hub
+
+  dm_lena_tobias:
+    type: message
+    text: >
+      Lena: "der tobias? oida der is so creepy. also er und hannah warn zam aber
+      sie hat schluss gmacht. und er is trotzdem immer aufkreuzt. bei jeder
+      wanderung, bei jedem stammtisch. sie hat zu mir gsagt 'der lena i werd
+      den net los.' und letzte woche bevor sie verschwunden is hab i die zwei
+      am parkplatz beim wanderweg gsehn. er hat sie am arm packt und sie hat
+      gschrien 'lass mi los!' i wollt was sagn aber dann is er abghaut.
+      des war am donnerstag. freitag war sie dann weg."
+    effects:
+      trust_lena: "+10"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Follow Tobias" -> follow_tobias
+      - "Tell Franz about this" -> tell_franz_tobias_incident
+      - "Continue investigating" -> investigation_hub
+
+  lena_hannah_scared:
+    type: message
+    text: >
+      Lena: "ja. die letzte woche war sie anders. net angstlich genau, aber...
+      vorsichtig. sie hat gsagt i soll aufhören zum adlergrat raufzugehen.
+      hat gsagt es is gfährlich und sie meint net die berge. sie hat ihre
+      ganzen fotos auf an usb stick kopiert und mir an zweiten gebn. hat
+      gsagt 'wenn mir was passiert schick des an den stefan vom kurier.'
+      i hab den stick no. soll i dir zeigen was drauf is?"
+    effects:
+      trust_lena: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Yes, tell me what's on the USB stick" -> lena_usb_contents
+      - "Keep it safe, we might need it as evidence" -> lena_keep_usb
+      - "Send it to Stefan now" -> share_with_stefan
+
+  lena_usb_contents:
+    type: message
+    text: >
+      Lena describes the contents: drone footage of the construction site on three
+      different dates, scanned copies of building permit applications with forged
+      signatures, screenshots of bank transfers between Kaltenbrunner Bau and an
+      account belonging to Markus Fink, and a scanned letter from Eva Schuster,
+      the Innsbruck environmental lawyer, confirming the construction violates
+      EU Natura 2000 regulations. This is a comprehensive evidence package.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "This is critical evidence - investigate Markus Fink" -> follow_markus
+      - "Contact the environmental lawyer Eva" -> follow_eva
+      - "Share with Stefan at the Kurier" -> share_with_stefan
+
+  lena_keep_usb:
+    type: message
+    text: >
+      You tell Lena to keep the USB stick in a safe place and not tell anyone else
+      about it. She agrees. "i habs in meinem schulspind. niemand schaut da rein.
+      aber bitte find die hannah. sie is die einzige erwachsene die mich je
+      ernst gnommen hat."
+    effects:
+      trust_lena: "+10"
+    choices:
+      - "Continue investigating" -> investigation_hub
+      - "Follow Tobias" -> follow_tobias
+      - "Investigate the construction permits" -> follow_hofer
+
+  lena_photos:
+    type: message
+    text: >
+      Lena's public photo gallery shows beautiful Alpine landscapes, sunsets over
+      the Zillertal, close-ups of edelweiss and gentian. But the most recent uploads
+      are different -- shot at dawn, showing construction equipment silhouetted
+      against the morning sky. Concrete mixers. Excavators. Steel rebar poking out
+      of the mountain meadow like bones. These photos tell a story of environmental
+      destruction that Hannah started documenting.
+    choices:
+      - "DM Lena about her photos" -> dm_lena_photos
+      - "Continue investigating" -> investigation_hub
+
+  follow_moritz:
+    type: message
+    text: >
+      You follow Moritz Pichler. He follows back immediately. His feed is a mix of
+      gaming clips, tech memes, and surprisingly sharp observations about local
+      politics for a fifteen-year-old.
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "DM Moritz about the IP trace" -> dm_moritz_ip
+      - "DM Moritz about Hannah's online backups" -> dm_moritz_backups
+      - "Read Moritz's recent posts" -> moritz_posts
+
+  dm_moritz_ip:
+    type: message
+    text: >
+      Moritz: "oida bam du hast des gsehn? ok also. i bin der admin vom schulserver
+      und i kenn mi a bissl aus mit netzwerk zeug. der account der die hannah
+      bedroht hat -- i hab den server cache no ghabt bevor der account glöscht
+      worn is. die IP adresse war 83.164.22.41. des is die statische IP vom
+      rathaus bergfeld. i hab des dreimal gecheckt. jemand im rathaus hat den
+      account erstellt, die nachricht gschickt und dann alles glöscht. aber
+      den cache ham sie vergessen."
+    effects:
+      trust_moritz: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask who has access to Rathaus computers" -> moritz_rathaus_access
+      - "Ask about Hannah's online backups" -> dm_moritz_backups
+      - "Investigate the Rathaus connection" -> rathaus_connection
+
+  moritz_rathaus_access:
+    type: message
+    text: >
+      Moritz: "also wer hat zugang zu de rathaus computer? der bürgermeister,
+      der vizebürgermeister markus fink, die sekretärin, der christoph wenger
+      der IT typ, und theoretisch jeder der ins gebäude reinkommt weils
+      WLAN net amol a passwort hat lol. aber um an account am bergfeld.social
+      zu erstellen brauchst du zugang zum admin panel. und des hat nur der
+      christoph. also entweder war er es oder jemand hat sein passwort ghabt.
+      der christoph is aber ur nett i glaub net dass er sowas machen würd."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Talk to Christoph" -> follow_christoph
+      - "Investigate Markus Fink" -> follow_markus
+      - "Continue investigating" -> investigation_hub
+
+  dm_moritz_backups:
+    type: message
+    text: >
+      Moritz: "ja also die hannah hat mich vor a paar wochen gfragt wie man
+      dateien sicher online speichert. i hab ihr an verschlüsselten cloud
+      speicher eingerichtet. mit passwort und zwei-faktor und allem. die daten
+      san no dort. i hab zwar net ihr passwort aber i weiß wo der speicher is.
+      soll i dirs zeigen? i mein... sie hat gsagt wenns ihr was passiert solls
+      jemand vertrauenswürdiges kriegen."
+    effects:
+      trust_moritz: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Yes, help me access the backup" -> moritz_cloud_access
+      - "Keep it safe for now" -> moritz_keep_backup
+      - "Continue investigating" -> investigation_hub
+
+  moritz_cloud_access:
+    type: message
+    text: >
+      Moritz: "ok i kann dir den link schicken aber des passwort weiß i net.
+      die hannah hat gsagt sie hats ihrer mama brigitte gebn. 'falls mir
+      was passiert.' damals hab i no dacht sie übertreibt. jetzt..."
+      He sends you the cloud storage link. The login page shows it's a Swiss
+      encrypted storage service. You'll need the password from Brigitte.
+    effects:
+      trust_moritz: "+10"
+    choices:
+      - "Talk to Brigitte about the password" -> brigitte_password
+      - "Continue investigating other leads" -> investigation_hub
+
+  moritz_keep_backup:
+    type: message
+    text: >
+      You tell Moritz to keep the information about the cloud backup quiet
+      for now. He agrees. "fix oida. i sog nix. aber bitte find heraus
+      was mit der hannah is. sie war leiwand zu uns kids."
+    effects:
+      trust_moritz: "+5"
+    choices:
+      - "Continue investigating" -> investigation_hub
+
+  moritz_posts:
+    type: tweet
+    from: moritz
+    text: >
+      oida wer auch immer denkt dass man im internet anonym is hat kan plan.
+      jede aktion hinterlässt spuren. jeder glöschte account hat an cache.
+      jede IP kann zruckverfolgt werden. i sag nur so. #justsaying
+    choices:
+      - "DM Moritz about the IP trace" -> dm_moritz_ip
+      - "Continue browsing" -> investigation_hub
+
+  follow_tobias:
+    type: message
+    text: >
+      You follow Tobias Reiter. He takes a while to follow back. His profile shows
+      trail running photos, outdoor gear reviews, and pictures from the shop where
+      he works. His recent posts are defensive -- telling people to stop "spreading
+      rumours" about Hannah.
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "DM Tobias about Hannah" -> dm_tobias_intro
+      - "Read Tobias's recent posts" -> tobias_posts
+      - "Continue investigating" -> investigation_hub
+
+  dm_tobias_intro:
+    type: message
+    text: >
+      You message Tobias, saying you're new in town and noticed the concern about
+      Hannah. His reply is guarded.
+    choices:
+      - "Ask about his relationship with Hannah" -> tobias_relationship
+      - "Ask about her disappearance" -> tobias_disappearance
+      - "Ask about the Adlergrat construction" -> tobias_construction
+
+  tobias_relationship:
+    type: message
+    text: >
+      Tobias: "We dated, we broke up, we stayed friends. That's it. People in this
+      town love to gossip. Yes, we still hiked together sometimes. Is that a crime?
+      I care about her. I'm worried too. But everyone keeps looking at me like I
+      did something wrong and I'm sick of it. She said she needed time alone. I
+      respected that. End of story."
+    effects:
+      trust_tobias: "+5"
+    choices:
+      - "Ask about the argument at the trailhead" -> tobias_argument
+      - "Ask about her disappearance" -> tobias_disappearance
+      - "Ask about the construction" -> tobias_construction
+
+  tobias_argument:
+    type: message
+    text: >
+      Tobias's tone shifts. "Who told you about that? Franz? Or that Wimmer girl
+      who's always snooping around? Fine. Yes, we argued. She was going up to
+      Adlergrat AGAIN to photograph the construction and I told her it was dangerous.
+      Not because of the mountain -- because of the people involved. Kaltenbrunner
+      doesn't play games. I grabbed her arm because she was walking away and I
+      wanted her to listen. That's ALL that happened. Next day she was gone. And
+      now everyone thinks I... I would never hurt Hannah. Never."
+    effects:
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask why he was on the ridge alone" -> tobias_on_ridge
+      - "Ask about Kaltenbrunner" -> tobias_construction
+      - "Ask about her last message to him" -> tobias_last_message
+
+  tobias_on_ridge:
+    type: message
+    text: >
+      Tobias: "I was looking for her! After she didn't answer her phone for three
+      days I went up there. Thought maybe she'd gone to the ridge to take more photos
+      and got hurt or something. I didn't find anything. Just the construction site.
+      It's gotten bigger since she last posted about it. When that teenager -- Lena --
+      saw me up there, I told her to stay away because it's genuinely not safe.
+      There's heavy machinery and no safety barriers. That's all."
+    effects:
+      trust_tobias: "+5"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about his last message from Hannah" -> tobias_last_message
+      - "Ask about Kaltenbrunner" -> tobias_construction
+      - "Continue investigating" -> investigation_hub
+
+  tobias_last_message:
+    type: message
+    text: >
+      Tobias hesitates, then shares a screenshot. Hannah's last message to him,
+      Thursday evening: "Tobias, I need you to understand something. What I found
+      on Adlergrat is bigger than a construction site. There are people in this town
+      who will do anything to keep it quiet. I'm going to the ridge tomorrow at dawn
+      to get final drone footage before I go public. Don't follow me this time.
+      Please. If anything happens, talk to Eva Schuster in Innsbruck." That was
+      the last anyone heard from her.
+    effects:
+      partner_evidence: "+1"
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - "This message seems important - who is Eva Schuster?" -> follow_eva
+      - "Ask Tobias if he followed her anyway" -> tobias_followed
+      - "Continue investigating" -> investigation_hub
+
+  tobias_followed:
+    type: message
+    text: >
+      Long pause. Then: "No. She told me not to and I listened. For once I actually
+      listened. And now she's gone and I'll never forgive myself. I should have been
+      there. I should have gone with her. I know I was possessive and I know that's
+      why she broke up with me. I was trying to be better. But being better meant
+      she went up that mountain alone and now..." He stops responding. When he comes
+      back, minutes later: "Find out what happened to her. Please. I'll help however
+      I can."
+    effects:
+      trust_tobias: "+15"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask what he knows about Kaltenbrunner" -> tobias_construction
+      - "Contact Eva Schuster" -> follow_eva
+      - "Continue investigating" -> investigation_hub
+
+  tobias_disappearance:
+    type: message
+    text: >
+      Tobias: "She told me Thursday night she was going to the ridge Friday at dawn.
+      Final photos for her case. She'd been working on this for months -- documenting
+      the illegal construction. Friday afternoon I texted her. Nothing. Saturday,
+      nothing. Sunday I went to her flat. Car was there. Lights off. Nobody home.
+      That's when I got scared. Monday I told Franz. He contacted mountain rescue.
+      Gendarmerie said she's a grown woman who can go where she wants. It's been
+      twelve days now."
+    effects:
+      trust_tobias: "+5"
+    choices:
+      - "Ask about the argument at the trailhead" -> tobias_argument
+      - "Ask about his last message from her" -> tobias_last_message
+      - "Continue investigating" -> investigation_hub
+
+  tobias_construction:
+    type: message
+    text: >
+      Tobias: "Kaltenbrunner wants to build a luxury wellness resort. Yoga retreats,
+      infinity pools with mountain views, the whole deal. Worth millions. The land
+      is protected but he's got the deputy mayor in his pocket. Hannah found proof.
+      I told her to let it go, give it to the authorities, let someone else handle
+      it. But that wasn't Hannah. She had to be the one to expose it. She had to
+      climb that mountain and get the evidence herself. Stubborn doesn't begin to
+      cover it. I loved that about her. And I hated it."
+    effects:
+      trust_tobias: "+5"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Investigate Kaltenbrunner" -> kaltenbrunner_search
+      - "Look into the deputy mayor" -> follow_markus
+      - "Continue investigating" -> investigation_hub
+
+  tobias_posts:
+    type: tweet
+    from: tobias
+    text: >
+      To everyone sending me accusatory DMs: STOP. I did not do anything to Hannah.
+      I love her and I'm terrified for her. If you want to help, pressure the
+      Gendarmerie to actually investigate instead of sitting on their hands. Stop
+      blaming the ex-boyfriend and start asking why a woman who exposed powerful
+      people suddenly vanished.
+    choices:
+      - "DM Tobias" -> dm_tobias_intro
+      - "Continue investigating" -> investigation_hub
+
+  follow_katharina:
+    type: message
+    text: >
+      You follow Katharina and reply to her post expressing concern. She follows
+      you back quickly. "Grüß Gott! You're new here, ja? Come by the cafe sometime.
+      Everyone comes through Cafe Edelweiss eventually."
+    effects:
+      contacts_followed: "+1"
+      trust_katharina: "+10"
+    choices:
+      - "Ask Katharina about Hannah" -> katharina_about_hannah
+      - "Ask about the town gossip" -> katharina_gossip
+      - "Continue investigating" -> investigation_hub
+
+  katharina_about_hannah:
+    type: message
+    text: >
+      Katharina: "Hannah came in every Tuesday for a Melange and Apfelstrudel.
+      Always sat at the corner table and worked on her blog. Two Tuesdays she's
+      missed now. In fifteen years she's never missed more than one. And her mother
+      Brigitte is a wreck. The Gendarmerie won't do anything because technically
+      she's just 'not answering her phone.' But I've lived here 40 years. I know
+      when something's wrong. And this is wrong."
+    effects:
+      trust_katharina: "+5"
+    choices:
+      - "Ask about town gossip" -> katharina_gossip
+      - "Ask about the last time she saw Hannah" -> katharina_last_saw
+      - "Continue investigating" -> investigation_hub
+
+  katharina_gossip:
+    type: message
+    text: >
+      Katharina: "You want to know what people are saying? Some say she ran off with
+      a man from Innsbruck. Nonsense -- Hannah wasn't like that. Others say Tobias
+      finally snapped. Possible but I don't think so -- the boy is possessive but
+      not violent. What nobody wants to say out loud? That Werner Kaltenbrunner made
+      her disappear because she was about to blow up his million-euro resort project.
+      But you didn't hear that from me. In Bergfeld, you don't say the Kaltenbrunner
+      name in vain."
+    effects:
+      trust_katharina: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about Kaltenbrunner" -> katharina_kaltenbrunner
+      - "Ask about Tobias" -> katharina_about_tobias
+      - "Continue investigating" -> investigation_hub
+
+  katharina_last_saw:
+    type: message
+    text: >
+      Katharina: "Last time was the Tuesday before she disappeared. She was... intense.
+      Focused. She had her laptop and was typing furiously. She got a phone call --
+      I don't normally eavesdrop but the cafe was quiet -- and she said 'I have
+      everything I need. After Friday, it's going public.' Then she lowered her
+      voice. I heard the name 'Fink' and 'permits.' She left in a hurry. Didn't
+      finish her Strudel. Hannah always finishes her Strudel."
+    effects:
+      trust_katharina: "+5"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Who is Fink?" -> follow_markus
+      - "Ask more about Kaltenbrunner" -> katharina_kaltenbrunner
+      - "Continue investigating" -> investigation_hub
+
+  katharina_kaltenbrunner:
+    type: message
+    text: >
+      Katharina lowers her voice, even in text. "Werner Kaltenbrunner built this
+      town. Literally. Half the buildings are his. The ski lift, the hotel, the new
+      apartments. He employs 200 people directly. You don't cross him. The last person
+      who tried was old Rosa Thaler -- she refused to sell her farmland for his
+      parking lot. Next thing you know, her water supply 'accidentally' got diverted
+      during his construction next door. Took her six months to get it back. Hannah
+      was challenging something much bigger than a parking lot."
+    effects:
+      trust_katharina: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Talk to Rosa Thaler" -> follow_rosa
+      - "Investigate Kaltenbrunner directly" -> kaltenbrunner_search
+      - "Continue investigating" -> investigation_hub
+
+  katharina_about_tobias:
+    type: message
+    text: >
+      Katharina: "Tobias? A good boy but... he didn't handle the breakup well.
+      He came into the cafe the week after and drank four Bier. Told me Hannah
+      was the only woman he'd ever love. I said 'Then let her go, Schatzi, that's
+      what love is.' He didn't listen. Kept showing up wherever she was. I told
+      him it wasn't healthy. He said 'I'm just making sure she's safe.' Where's
+      that concern now, I wonder? She's not safe and he's posting on the internet
+      about how he's the victim."
+    effects:
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Follow Tobias" -> follow_tobias
+      - "Continue investigating" -> investigation_hub
+
+  follow_stefan:
+    type: message
+    text: >
+      You follow Stefan Brandner from the Bergfelder Kurier. He follows back and
+      sends an immediate DM: "New in town and already interested in the Hannah
+      Steiner story? Smart. Or dangerous. Let's talk."
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "Talk to Stefan about Hannah" -> stefan_about_hannah
+      - "Ask about his investigation" -> stefan_investigation
+      - "Continue investigating" -> investigation_hub
+
+  stefan_about_hannah:
+    type: message
+    text: >
+      Stefan: "Hannah contacted me three weeks before she disappeared. She had a
+      story -- a big one. Illegal construction in the Natura 2000 zone on Adlergrat.
+      Forged permits. Bribery. She had documentation. We were going to co-publish
+      it -- her blog, my paper, same day. She was careful. Methodical. The kind of
+      source every journalist dreams of. And then she just... vanished. Three days
+      before we were supposed to go to print."
+    effects:
+      trust_stefan: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about his investigation" -> stefan_investigation
+      - "Ask about the timing" -> stefan_timing
+      - "Share what you've learned" -> share_with_stefan
+
+  stefan_investigation:
+    type: message
+    text: >
+      Stefan: "I've been investigating on my own since she disappeared. The Kurier
+      editor told me to drop it -- too many advertisers connected to Kaltenbrunner.
+      So I'm working on it privately. Here's what I know: the permits for the
+      Adlergrat development were fast-tracked through Markus Fink's office. The
+      environmental impact assessment is a forgery. And three days after Hannah
+      vanished, someone broke into the Kurier office and stole the backup hard drive
+      where I kept copies of her evidence. They knew exactly where to look."
+    effects:
+      trust_stefan: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the break-in" -> stefan_breakin
+      - "Ask about Markus Fink" -> stefan_about_fink
+      - "Share what you've found" -> share_with_stefan
+
+  stefan_timing:
+    type: message
+    text: >
+      Stefan: "The timing is everything. She disappears three days before publication.
+      The break-in at my office happens three days after. Someone is systematically
+      destroying evidence. They knew what Hannah had and they knew I had copies.
+      Which means someone in a very small circle leaked the plan. Hannah, me,
+      Eva Schuster the lawyer, and... she said she'd told one other person. Her
+      hiking partner. Tobias."
+    effects:
+      construction_evidence: "+1"
+      partner_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - "Ask about the break-in" -> stefan_breakin
+      - "Investigate Tobias's connection" -> tobias_leak_theory
+      - "Continue investigating" -> investigation_hub
+
+  stefan_breakin:
+    type: message
+    text: >
+      Stefan: "Professional job. No broken windows -- they had a key or picked the
+      lock. Went straight to my desk, took only the hard drive. Didn't touch the
+      camera equipment worth thousands. This wasn't a burglary. This was targeted
+      evidence destruction. I reported it to the Gendarmerie. Officer took notes,
+      said they'd look into it. That was ten days ago. Nothing since."
+    effects:
+      trust_stefan: "+5"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about Markus Fink" -> stefan_about_fink
+      - "Continue investigating" -> investigation_hub
+
+  stefan_about_fink:
+    type: message
+    text: >
+      Stefan: "Markus Fink is the deputy mayor and he wants to be mayor. His platform
+      is 'modernizing Bergfeld' -- which means more tourism infrastructure, more
+      hotels, more money. Kaltenbrunner's resort project is the centrepiece. If it
+      goes through, Fink gets the credit and the campaign donations. If Hannah's
+      evidence goes public, Fink goes to prison. He has every motive in the world
+      to make that evidence disappear. And maybe the person who found it."
+    effects:
+      trust_stefan: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Investigate Markus Fink" -> follow_markus
+      - "Share what you've found" -> share_with_stefan
+      - "Continue investigating" -> investigation_hub
+
+  tobias_leak_theory:
+    type: message
+    text: >
+      Stefan: "Think about it. Hannah told Tobias about the evidence and the
+      publication plan. Tobias works at the outdoor shop -- which is supplied by
+      Kaltenbrunner's sporting goods subsidiary. If Tobias mentioned it to his
+      boss, and his boss mentioned it to Kaltenbrunner... the chain is short.
+      I'm not saying Tobias did anything to Hannah deliberately. But he may have
+      been the leak that put her in danger."
+    effects:
+      partner_evidence: "+1"
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - "Confront Tobias about this" -> tobias_confrontation
+      - "Investigate Kaltenbrunner" -> kaltenbrunner_search
+      - "Continue investigating" -> investigation_hub
+
+  share_with_stefan:
+    type: message
+    text: >
+      You share what you've gathered -- the IP trace from the Rathaus, Lena's photos,
+      the forged environmental assessment, the threats. Stefan is quiet for a long
+      time, then: "This is enough. Combined with what I already have, this is enough
+      to go to the Landespolizei in Innsbruck. The local Gendarmerie can't be trusted
+      with this -- too many connections. But I need one more thing. I need Hannah's
+      original evidence files. The cloud backup. Do you have access?"
+    effects:
+      trust_stefan: "+15"
+    choices:
+      - "Work on getting the cloud backup password" -> brigitte_password
+      - "Tell Stefan about Lena's USB stick" -> stefan_lena_usb
+      - "Continue investigating first" -> investigation_hub
+
+  stefan_lena_usb:
+    type: message
+    text: >
+      Stefan: "Lena has a copy? That brave girl. But we need to be careful. If
+      Kaltenbrunner finds out a teenager has evidence against him... look, I know
+      these people. They already made one woman disappear. We need to get that
+      evidence to the Landespolizei as quickly as possible. Can you get Lena to
+      bring the USB stick to my office? I'll make copies and drive to Innsbruck
+      tonight."
+    choices:
+      - "Coordinate with Lena and Stefan" -> evidence_coordination
+      - "We need more evidence first" -> investigation_hub
+
+  follow_markus:
+    type: message
+    text: >
+      You follow Deputy Mayor Markus Fink. His feed is polished municipal PR --
+      ribbon cuttings, community events, tourism statistics. Everything carefully
+      curated. He follows you back with a generic welcome message about Bergfeld's
+      "dynamic community."
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "DM Markus about the Adlergrat development" -> dm_markus_adlergrat
+      - "Read his public statements" -> markus_public_statements
+      - "Continue investigating" -> investigation_hub
+
+  dm_markus_adlergrat:
+    type: message
+    text: >
+      Markus: "The Adlergrat Wellness & Nature Resort is a transformative project
+      for Bergfeld. All permits have been properly obtained through standard municipal
+      processes. The environmental impact assessment was conducted by qualified
+      professionals. I understand there have been concerns raised online, but I
+      assure you this project follows all applicable regulations. Bergfeld needs
+      economic growth. That's what I'm delivering."
+    effects:
+      trust_markus: "+5"
+    choices:
+      - "Press him about the forged assessment" -> markus_confront_forgery
+      - "Ask about Hannah Steiner" -> markus_about_hannah
+      - "Continue investigating" -> investigation_hub
+
+  markus_confront_forgery:
+    type: message
+    text: >
+      You mention that the environmental assessment was signed by a deceased professor.
+      Long pause. "I don't know where you're getting your information, but that is
+      a serious accusation. Dr. Brunner was a respected scientist. If you have concerns
+      about the validity of the assessment, I suggest you file a formal complaint with
+      the Tiroler Landesregierung. Now if you'll excuse me, I have a town to run."
+      He doesn't block you, but he stops responding.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "He didn't deny it directly" -> markus_non_denial
+      - "Investigate further" -> investigation_hub
+
+  markus_non_denial:
+    type: message
+    text: >
+      You notice something: Markus didn't deny the forgery. He didn't say "Dr. Brunner
+      signed it before he died" or "You must be mistaken." He deflected. Told you to
+      file a complaint through official channels -- channels he controls. This is
+      the behaviour of someone who knows exactly what's on that document and is
+      hoping the bureaucracy will bury any inquiry. You take a screenshot of the
+      exchange.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Share with Stefan" -> share_with_stefan
+      - "Continue investigating" -> investigation_hub
+
+  markus_about_hannah:
+    type: message
+    text: >
+      Markus: "Hannah Steiner is a valued member of our community. We're all
+      concerned about her wellbeing. The Gendarmerie is handling the situation.
+      I've personally spoken with them to ensure they're giving it appropriate
+      attention. Let's not turn a private matter into public speculation."
+      The response is so carefully worded it might as well have been written by a lawyer.
+    effects:
+      trust_markus: "+5"
+    choices:
+      - "Press him about the Adlergrat project" -> dm_markus_adlergrat
+      - "Continue investigating" -> investigation_hub
+
+  markus_public_statements:
+    type: tweet
+    from: markus
+    text: >
+      Exciting progress on the Bergfeld 2030 Vision! The Adlergrat Wellness & Nature
+      Resort will create 150 permanent jobs, attract 20,000 additional overnight stays
+      per year, and put Bergfeld on the map as a premium Alpine destination. Sustainable
+      development that respects our traditions. #Bergfeld2030 #AlpineExcellence
+    choices:
+      - "Check the comments" -> markus_statement_comments
+      - "DM Markus" -> dm_markus_adlergrat
+      - "Continue investigating" -> investigation_hub
+
+  markus_statement_comments:
+    type: message
+    text: >
+      Most comments are supportive -- local business owners, tourism workers. But
+      Rosa Thaler replied: "Sustainable? You're pouring concrete on protected meadows.
+      My grandmother grazed sheep there. Hannah knew the truth and now she's gone.
+      Shame on you, Markus Fink." The comment got 34 boosts. Markus didn't reply.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Follow Rosa Thaler" -> follow_rosa
+      - "Continue investigating" -> investigation_hub
+
+  follow_hofer:
+    type: message
+    text: >
+      You follow Herr Johann Hofer, the building inspector. He follows back with
+      notable delay. His feed is minimal -- official inspection reports, committee
+      minutes, the occasional post about his garden.
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "DM Hofer about the Adlergrat permits" -> dm_hofer_permits
+      - "Ask about his early morning site visit" -> dm_hofer_dawn
+      - "Continue investigating" -> investigation_hub
+
+  dm_hofer_permits:
+    type: message
+    text: >
+      Hofer: "The Adlergrat development has been processed through proper channels.
+      My office inspects what is brought to our attention through official applications.
+      I cannot comment on specific permit details due to administrative confidentiality.
+      If you have concerns, please submit them in writing to the Bauamt."
+      Textbook bureaucratic deflection.
+    choices:
+      - "Ask about his dawn visit to the site" -> dm_hofer_dawn
+      - "Press him on the Natura 2000 violations" -> hofer_natura_press
+      - "Continue investigating" -> investigation_hub
+
+  dm_hofer_dawn:
+    type: message
+    text: >
+      You mention that someone matching his description was photographed at the
+      construction site at 5 AM. Very long pause. "I don't know what you're talking
+      about. I conduct inspections during normal business hours. If someone resembled
+      me at that location, it was a coincidence. Bergfeld is a small town. Many people
+      have similar builds." He's rattled. You can tell by the sudden formality.
+    effects:
+      trust_hofer: "+5"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Press harder" -> hofer_pressure
+      - "Back off and investigate from another angle" -> investigation_hub
+
+  hofer_natura_press:
+    type: message
+    text: >
+      You ask directly how a building permit was issued for a Natura 2000 protected
+      zone. Hofer: "There are... provisions. Exemptions can be granted when the
+      economic benefit outweighs the environmental impact and adequate mitigation
+      measures are in place. The assessment was conducted by a qualified expert."
+      You ask if he means Dr. Reinhold Brunner. Silence. He goes offline.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "He's clearly involved" -> hofer_pressure
+      - "Continue investigating" -> investigation_hub
+
+  hofer_pressure:
+    type: message
+    text: >
+      An hour later, Hofer sends you a DM. "Listen. I'm retiring in eight months.
+      I have a pension. I have a family. I was told to approve the permits. I was
+      told not to ask questions. I didn't know about the forged assessment until
+      Hannah Steiner showed me. I told her to drop it. She wouldn't. The last thing
+      I said to her was 'You don't know who you're dealing with.' I should have
+      helped her instead. I live with that every day. But I can't help you either.
+      They'll destroy me."
+    effects:
+      trust_hofer: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask who told him to approve the permits" -> hofer_who
+      - "Promise to protect his identity" -> hofer_protect
+      - "Continue investigating" -> investigation_hub
+
+  hofer_who:
+    type: message
+    text: >
+      Hofer: "Fink. Markus Fink. He called me into his office and said the permits
+      needed to be processed 'without complications.' Said it was for the good of
+      Bergfeld. Said the mayor was on board. When I raised concerns about the
+      protected zone, he said 'That's what the assessment is for.' I didn't know
+      the assessment was forged. Not then. But when Hannah showed me... I should
+      have gone to the Landesregierung. I was a coward. I'm still a coward."
+    effects:
+      trust_hofer: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Would you testify?" -> hofer_testify
+      - "Continue investigating" -> investigation_hub
+
+  hofer_testify:
+    type: message
+    text: >
+      Very long pause. "If you can guarantee my pension is protected... if you
+      can get the Landespolizei involved so this doesn't stay in local hands...
+      maybe. But only if others come forward too. I won't be the only one."
+    effects:
+      trust_hofer: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Note this - Hofer could be a key witness" -> investigation_hub
+
+  hofer_protect:
+    type: message
+    text: >
+      You promise discretion. Hofer seems marginally less tense. "Thank you. I'm
+      not a bad man. I just... I was weak when it mattered. Please find out what
+      happened to that girl. She deserved better than this town gave her."
+    effects:
+      trust_hofer: "+10"
+    choices:
+      - "Continue investigating" -> investigation_hub
+
+  follow_rosa:
+    type: message
+    text: >
+      You follow Rosa Thaler. She follows back and sends a voice-message-style DM
+      full of warmth and directness. "So you're the new one asking questions about
+      Hannah! Good. Someone should. Come up to the farm if you want, I'll tell
+      you everything. These old bones don't fear Kaltenbrunner."
+    effects:
+      contacts_followed: "+1"
+      trust_rosa: "+10"
+    choices:
+      - "Ask Rosa about Kaltenbrunner" -> rosa_kaltenbrunner
+      - "Ask about Hannah" -> rosa_hannah
+      - "Continue investigating" -> investigation_hub
+
+  rosa_kaltenbrunner:
+    type: message
+    text: >
+      Rosa: "Werner Kaltenbrunner. My neighbour for forty years. Used to be a decent
+      man. His father built honest houses for honest people. But Werner got greedy.
+      Started with the ski lift, then the hotel, now this resort madness. He tried
+      to buy my land five years ago. I said no. Suddenly my water pipe 'broke.'
+      Coincidence, they said. Took me six months and a lawyer to prove it was sabotage.
+      That man does not accept the word no. And Hannah told him no. Loudly. Publicly."
+    effects:
+      trust_rosa: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask what she saw from her farm" -> rosa_witnessed
+      - "Ask about Hannah" -> rosa_hannah
+      - "Continue investigating" -> investigation_hub
+
+  rosa_witnessed:
+    type: message
+    text: >
+      Rosa: "My farm sits above the valley. I see everything. The trucks going up
+      at 4 AM. The lights on the ridge at night. And the morning Hannah disappeared --
+      a Friday it was -- I saw two things. First, Hannah's headlamp going up the
+      trail at 5:30 AM. Alone. Then at 6:15, a black SUV driving up the construction
+      access road. Fast. Werner Kaltenbrunner drives a black Range Rover. I didn't
+      think about it then. Now I think about it every night."
+    effects:
+      trust_rosa: "+10"
+      night_witnesses: "+1"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Did you tell the police?" -> rosa_police
+      - "Could you identify the SUV?" -> rosa_suv
+      - "Continue investigating" -> investigation_hub
+
+  rosa_police:
+    type: message
+    text: >
+      Rosa: "I told the Gendarmerie officer who came around asking. He wrote it
+      down. Then nothing. A week later Sepp Wallner -- the retired officer, you know
+      him -- Sepp told me the report was 'filed.' In Bergfeld, 'filed' means buried.
+      The local police won't touch Kaltenbrunner. The Landespolizei needs to be
+      involved but nobody has asked them. It's all being kept very quiet."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "This needs to go higher - talk to Stefan" -> follow_stefan
+      - "Talk to Eva Schuster the lawyer" -> follow_eva
+      - "Continue investigating" -> investigation_hub
+
+  rosa_suv:
+    type: message
+    text: >
+      Rosa: "It was dark, barely dawn. I saw the shape -- big, boxy, like those
+      expensive ones. Could have been Kaltenbrunner's Range Rover. Could have been
+      someone else's. But who else drives up to an illegal construction site at
+      6 AM? I can tell you one more thing -- it came back down at 7:30 AM. Fast.
+      Like someone in a hurry."
+    effects:
+      night_witnesses: "+1"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "This is critical witness testimony" -> investigation_hub
+      - "Talk to Stefan about publishing" -> share_with_stefan
+
+  rosa_hannah:
+    type: message
+    text: >
+      Rosa: "Hannah was a Bergfeld girl through and through. Loved these mountains
+      like they were family. When she found out about the construction, she came to
+      me first. Sat in my kitchen, drank my Schnaps, and cried. Not from fear --
+      from anger. She said 'Tante Rosa, they're destroying our mountain and nobody
+      cares.' I told her people do care but they're afraid. She said 'Then I'll be
+      brave enough for all of them.' She was."
+    effects:
+      trust_rosa: "+10"
+    choices:
+      - "Ask about what Rosa witnessed" -> rosa_witnessed
+      - "Continue investigating" -> investigation_hub
+
+  kaltenbrunner_search:
+    type: message
+    text: >
+      You look up Kaltenbrunner Bau GmbH on Bergfeld.social. The company account
+      is professional and active -- project updates, community sponsorship, job
+      postings. Werner Kaltenbrunner's personal account is sparse. A few posts
+      about business awards and charity donations. Nothing about Adlergrat.
+      Nothing about Hannah. Conspicuous silence.
+    choices:
+      - "DM Werner Kaltenbrunner" -> dm_werner
+      - "Check the company's public records" -> kaltenbrunner_records
+      - "Continue investigating" -> investigation_hub
+
+  dm_werner:
+    type: message
+    text: >
+      You message Werner Kaltenbrunner expressing interest in the Adlergrat project
+      as a new resident. His reply is smooth. "Welcome to Bergfeld! The Adlergrat
+      Wellness Resort will be a jewel of the Alps. Sustainable luxury in harmony
+      with nature. Creating jobs and opportunities for the next generation. I'd be
+      happy to show you the plans sometime. My office door is always open."
+    effects:
+      trust_werner: "+5"
+    choices:
+      - "Ask about Hannah" -> werner_about_hannah
+      - "Ask about the protected zone" -> werner_protected_zone
+      - "Continue investigating" -> investigation_hub
+
+  werner_about_hannah:
+    type: message
+    text: >
+      Werner: "Hannah Steiner? A passionate young woman. Misguided, perhaps, in her
+      opposition to progress, but passionate. I hope she's safe wherever she is.
+      I know people are talking, connecting her absence to the resort project. That's
+      absurd. I'm a businessman, not a villain. I build things. I create jobs.
+      If Hannah had concerns, my door was open to her too. She never came to talk
+      to me. She preferred to shout on the internet."
+    effects:
+      trust_werner: "+5"
+    choices:
+      - "Ask about the threats" -> werner_threats
+      - "Ask about the protected zone" -> werner_protected_zone
+      - "Continue investigating" -> investigation_hub
+
+  werner_threats:
+    type: message
+    text: >
+      You mention the threatening anonymous account. Werner: "I don't know anything
+      about that. I don't threaten people. I don't need to. My lawyers handle
+      disputes. If someone threatened Ms. Steiner, I hope the police investigate.
+      But don't look at me for that. I'm too busy running a company to play games
+      on social media." His tone has shifted -- still polished but with an edge.
+    choices:
+      - "Press him about the Rathaus IP" -> werner_ip_confront
+      - "Back off" -> investigation_hub
+
+  werner_ip_confront:
+    type: message
+    text: >
+      You tell him the threatening account was traced to the Rathaus network. Very
+      long pause. "I have no connection to the Rathaus IT systems. You should ask
+      the people who work there. Now I think this conversation has run its course.
+      Good day." He blocks you. Interesting reaction for someone with "nothing to hide."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Note: Werner blocked you after the IP mention" -> investigation_hub
+
+  werner_protected_zone:
+    type: message
+    text: >
+      Werner: "The Natura 2000 designation is complex. There are provisions for
+      sustainable development that benefits the local economy while maintaining
+      ecological balance. Our project meets all criteria. We have a full environmental
+      impact assessment by a respected academic. I understand environmentalists are
+      concerned, but progress and conservation can coexist. Our architects have
+      designed the resort to blend with the landscape."
+    choices:
+      - "Mention Dr. Brunner" -> werner_brunner
+      - "Continue investigating" -> investigation_hub
+
+  werner_brunner:
+    type: message
+    text: >
+      You casually mention that Dr. Brunner, who signed the assessment, passed away
+      three years ago. The typing indicator appears and disappears three times.
+      Finally: "Dr. Brunner's work was completed before his passing. The assessment
+      is valid and on file. I suggest you verify your facts before making implications.
+      I have lawyers who take defamation very seriously." He stops responding.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Note his defensive reaction" -> investigation_hub
+
+  kaltenbrunner_records:
+    type: message
+    text: >
+      You search public business records. Kaltenbrunner Bau GmbH is a mid-size
+      construction firm, registered in Bergfeld since 1987. Recent filings show
+      a subsidiary -- Adlergrat Wellness GmbH -- registered six months ago.
+      Directors: Werner Kaltenbrunner and, surprisingly, Markus Fink. The deputy
+      mayor is a co-director of the company that's building in the protected zone
+      he authorized permits for. This is a massive conflict of interest.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "This links Fink and Kaltenbrunner directly" -> investigation_hub
+      - "Share this with Stefan" -> share_with_stefan
+
+  follow_eva:
+    type: message
+    text: >
+      You find Eva Schuster on a federated Innsbruck instance. Environmental lawyer,
+      specializing in EU nature conservation law. You follow her and explain the
+      situation.
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "Tell Eva about Hannah's disappearance" -> eva_about_hannah
+      - "Ask about the legal case" -> eva_legal_case
+
+  eva_about_hannah:
+    type: message
+    text: >
+      Eva: "Hannah contacted me two months ago with one of the most clear-cut
+      Natura 2000 violations I've ever seen. I was preparing a complaint to the
+      European Commission. We had a meeting scheduled for the Monday after she
+      disappeared. She never showed up. I tried calling, emailing, nothing.
+      I've been sick with worry. I reported it to the Landespolizei myself but
+      they said without evidence of a crime, there's nothing to investigate.
+      The local police said she's just 'unreachable.' This is not normal."
+    effects:
+      trust_eva: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the legal case" -> eva_legal_case
+      - "Tell her about the evidence you've gathered" -> eva_share_evidence
+      - "Continue investigating" -> investigation_hub
+
+  eva_legal_case:
+    type: message
+    text: >
+      Eva: "The case is iron-clad if we have the evidence. Illegal construction in
+      a Natura 2000 zone, forged environmental assessment, corrupt permits, financial
+      connections between the developer and the official who approved them. This is
+      criminal. Not just administrative -- criminal. If Hannah's evidence files
+      still exist, I can have the Landespolizei and EU enforcement involved within
+      48 hours. The question is: do the files still exist?"
+    effects:
+      trust_eva: "+10"
+    choices:
+      - "Tell her about the cloud backup" -> eva_cloud_backup
+      - "Tell her about Lena's USB" -> eva_lena_usb
+      - "Continue investigating" -> investigation_hub
+
+  eva_share_evidence:
+    type: message
+    text: >
+      You share everything -- the IP trace, Lena's photos, Hofer's confession,
+      the company records linking Fink and Kaltenbrunner, Rosa's witness testimony.
+      Eva: "This is more than enough to open a criminal investigation. But we need
+      Hannah's original files for the strongest case. And we need to find Hannah.
+      I'm coming to Bergfeld tomorrow. Can you meet me?"
+    effects:
+      trust_eva: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Prepare for the final confrontation" -> pre_confrontation
+      - "Gather last pieces of evidence" -> investigation_hub
+
+  eva_cloud_backup:
+    type: message
+    text: >
+      Eva: "A cloud backup with all the evidence? That changes everything. If we
+      can access those files, I can file the complaint immediately. The Landespolizei
+      will have to act. Get me access to those files and I promise you, the people
+      responsible for this -- for the construction AND for whatever happened to
+      Hannah -- will answer for it."
+    effects:
+      trust_eva: "+10"
+    choices:
+      - "Work on getting the password from Brigitte" -> brigitte_password
+      - "Continue investigating" -> investigation_hub
+
+  eva_lena_usb:
+    type: message
+    text: >
+      Eva: "A copy on a USB stick held by a teenager. Brave girl. But that evidence
+      needs to be in secure hands -- mine or the Landespolizei. Every day it sits
+      in a school locker is a day someone could find it and destroy it. Can you
+      get it to me?"
+    choices:
+      - "Coordinate evidence handoff" -> evidence_coordination
+      - "Continue investigating" -> investigation_hub
+
+  follow_christoph:
+    type: message
+    text: >
+      You follow Christoph Wenger, the municipal IT admin. He follows back but
+      doesn't send any greeting. His feed is almost empty -- a few tech articles
+      shared without comment.
+    effects:
+      contacts_followed: "+1"
+    choices:
+      - "DM Christoph about the anonymous account" -> dm_christoph_account
+      - "Ask about Hannah's cloud setup" -> dm_christoph_cloud
+      - "Continue investigating" -> investigation_hub
+
+  dm_christoph_account:
+    type: message
+    text: >
+      Christoph takes hours to reply. "I know what you're going to ask. The account
+      that threatened Hannah. Yes, it was created from the Rathaus network. No, I
+      didn't create it. But someone used my admin access. I leave my workstation
+      unlocked when I go for lunch. Stupid, I know. Anyone in the building could
+      have done it. Fink, Werner when he visits, the secretary. I reported the
+      security breach to Fink. He told me to 'forget about it.' I should have
+      pushed harder."
+    effects:
+      trust_christoph: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask who visits the Rathaus regularly" -> christoph_visitors
+      - "Ask about the cloud backups" -> dm_christoph_cloud
+      - "Continue investigating" -> investigation_hub
+
+  christoph_visitors:
+    type: message
+    text: >
+      Christoph: "Werner Kaltenbrunner comes in at least twice a week. Always goes
+      straight to Fink's office. Sometimes they're in there for hours. The day
+      the threatening account was created -- I checked the door log afterwards --
+      Kaltenbrunner signed in at 11:30 AM and left at 2 PM. I was at lunch from
+      12 to 1. The account was created at 12:17 PM. Draw your own conclusions."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "This is very strong evidence" -> investigation_hub
+      - "Ask about cloud backups" -> dm_christoph_cloud
+
+  dm_christoph_cloud:
+    type: message
+    text: >
+      Christoph: "Hannah asked me for advice on encrypted cloud storage. I recommended
+      a Swiss service -- Tresorit. End-to-end encrypted, servers in Switzerland,
+      outside Austrian jurisdiction. I helped her set it up. The data is safe there.
+      Even if someone had her laptop, they couldn't access the cloud without her
+      password and her phone for the two-factor code. Her phone is presumably with
+      her -- wherever she is."
+    effects:
+      trust_christoph: "+10"
+    choices:
+      - "Can the two-factor be bypassed?" -> christoph_two_factor
+      - "Continue investigating" -> investigation_hub
+
+  christoph_two_factor:
+    type: message
+    text: >
+      Christoph: "She set up backup codes in case she lost her phone. Ten one-time
+      codes. She wrote them down and gave them to someone she trusted. Not me -- she
+      was smart about compartmentalizing. Said different people had different pieces
+      so no one person could be pressured into giving up everything. I think her
+      mother has the password and someone else has the backup codes."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Talk to Brigitte" -> brigitte_password
+      - "Continue investigating" -> investigation_hub
+
+  brigitte_post:
+    type: tweet
+    from: brigitte
+    text: >
+      My Hannah. Twelve days. If anyone knows where my daughter is, please. She
+      would never leave without telling me. Something has happened to her. I feel it
+      in my bones. The police say she is an adult and can choose to be alone. But she
+      didn't choose this. A mother knows. Please help us find her. #WhereIsHannah
+    choices:
+      - "Follow Brigitte" -> follow_brigitte
+      - "Continue investigating" -> investigation_hub
+
+  follow_brigitte:
+    type: message
+    text: >
+      You follow Brigitte Steiner. She follows back immediately. "Thank you for
+      caring. Most people in this town are too afraid to even ask questions."
+    effects:
+      contacts_followed: "+1"
+      trust_brigitte: "+10"
+    choices:
+      - "Ask about Hannah" -> brigitte_about_hannah
+      - "Ask about the USB stick" -> brigitte_usb
+      - "Ask about the cloud backup password" -> brigitte_password
+
+  brigitte_about_hannah:
+    type: message
+    text: >
+      Brigitte: "Hannah is my only child. She's strong, independent, fierce.
+      She loves these mountains more than anything. When she found out about the
+      construction, she was... driven. I told her to be careful. She said 'Mama,
+      somebody has to stand up.' The last time I spoke to her was Thursday evening.
+      She said she was going up to the ridge at dawn on Friday. She said 'I'll
+      call you by lunch.' She never called."
+    effects:
+      trust_brigitte: "+10"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the USB stick" -> brigitte_usb
+      - "Ask about the cloud password" -> brigitte_password
+      - "Ask about Tobias" -> brigitte_about_tobias
+
+  brigitte_about_tobias:
+    type: message
+    text: >
+      Brigitte: "Tobias loved Hannah. Too much. He couldn't let go. She told me
+      once -- 'Mama, he watches my location on his phone.' She changed her passwords
+      after that. But he would still appear wherever she went. I liked the boy once.
+      Now I don't know what to think. He keeps saying she told him she needed space.
+      She didn't tell ME that. And Hannah tells her mother everything."
+    effects:
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the USB stick" -> brigitte_usb
+      - "Ask about the cloud password" -> brigitte_password
+      - "Continue investigating" -> investigation_hub
+
+  brigitte_usb:
+    type: message
+    text: >
+      Brigitte: "The USB stick? Yes, she gave me one. Told me to keep it in the
+      safe with the important documents. Said it was her 'insurance.' I haven't
+      looked at what's on it. Should I? Can it help find her?"
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Yes, that evidence is crucial" -> brigitte_usb_handover
+      - "Ask about the cloud password first" -> brigitte_password
+
+  brigitte_usb_handover:
+    type: message
+    text: >
+      Brigitte: "I'll give it to you. Or to that journalist, Stefan. Or the police.
+      Whoever can use it to find my Hannah. Just... promise me you'll find her.
+      Promise me she's alive. I can't... I can't think about the alternative."
+    effects:
+      trust_brigitte: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the cloud password" -> brigitte_password
+      - "Coordinate evidence delivery" -> evidence_coordination
+
+  brigitte_password:
+    type: message
+    text: >
+      Brigitte: "The cloud password? Yes. She wrote it on a card and put it in
+      a sealed envelope. Said 'Don't open this unless something happens to me.'
+      I thought she was being dramatic. I have the envelope. The password is
+      'Adlergrat-Edelweiss-2024-Wahrheit.' She chose it so I could remember it --
+      the mountain, the flower, the year, and the German word for truth. My Hannah."
+    effects:
+      trust_brigitte: "+15"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "With the password, you can access all the evidence" -> evidence_coordination
+      - "Continue investigating before accessing the files" -> investigation_hub
+
+  follow_sepp:
+    type: message
+    text: >
+      You follow Sepp Wallner, the retired Gendarmerie officer. He follows back
+      and sends a knowing message. "You're the one poking around about Hannah.
+      Be careful who you trust in this town."
+    effects:
+      contacts_followed: "+1"
+      trust_sepp: "+10"
+    choices:
+      - "Ask Sepp about the police investigation" -> sepp_police
+      - "Ask about Kaltenbrunner" -> sepp_kaltenbrunner
+      - "Continue investigating" -> investigation_hub
+
+  sepp_police:
+    type: message
+    text: >
+      Sepp: "There IS no investigation. That's the problem. I spent 35 years in
+      the Gendarmerie. I know a cover-up when I see one. The local officer filed
+      Rosa's statement and then... nothing. No follow-up. No search. No forensics
+      at Hannah's flat. Nothing. Someone is telling the local cops to stand down.
+      And in Bergfeld, there's only one person with that kind of pull."
+    effects:
+      trust_sepp: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Kaltenbrunner?" -> sepp_kaltenbrunner
+      - "Ask what should be done" -> sepp_advice
+      - "Continue investigating" -> investigation_hub
+
+  sepp_kaltenbrunner:
+    type: message
+    text: >
+      Sepp: "When I was active, Kaltenbrunner tried to bribe me once. Wanted me to
+      look the other way on a zoning violation. I refused. He went over my head.
+      My report disappeared from the system. That was twenty years ago. He's only
+      gotten more powerful since. If he's behind Hannah's disappearance -- and I
+      believe he is -- you won't find justice in Bergfeld. You need to go to
+      Innsbruck. The Landespolizei. Or higher."
+    effects:
+      trust_sepp: "+10"
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask for advice" -> sepp_advice
+      - "Continue investigating" -> investigation_hub
+
+  sepp_advice:
+    type: message
+    text: >
+      Sepp: "Get the evidence. Get witnesses willing to talk. Get the lawyer involved.
+      And then go to the Landespolizei in Innsbruck directly. Don't tell anyone
+      in Bergfeld what you're doing. Not until it's done. Once the Landespolizei
+      opens a case, the local boys can't shut it down. That's your path. It's the
+      only one."
+    effects:
+      trust_sepp: "+15"
+    choices:
+      - "Prepare the case" -> pre_confrontation
+      - "Continue investigating" -> investigation_hub
+
+  follow_ingrid:
+    type: message
+    text: >
+      You follow Ingrid Mayr, the pharmacist. She follows back. "Grüß Gott. I've
+      been worried about Hannah. She takes a daily medication and hasn't picked
+      up her prescription in two weeks. That's not something you just forget."
+    effects:
+      contacts_followed: "+1"
+      trust_ingrid: "+10"
+    choices:
+      - "Ask about the prescription" -> ingrid_prescription
+      - "Continue investigating" -> investigation_hub
+
+  ingrid_prescription:
+    type: message
+    text: >
+      Ingrid: "I can't tell you what the medication is -- patient confidentiality.
+      But I can tell you it's something you don't stop taking voluntarily. If Hannah
+      were somewhere by choice, she would have arranged for her prescription. The
+      fact that she didn't tells me this wasn't planned. She didn't choose to
+      disappear. Something or someone made her."
+    effects:
+      trust_ingrid: "+10"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "This confirms it wasn't voluntary" -> investigation_hub
+
+  deleted_account_search:
+    type: message
+    text: >
+      You search the instance for the deleted account. The username was something
+      like @user38294710 -- a random number string. The account was created and
+      deleted within 24 hours. The post is gone, but several people screenshotted
+      the threatening message before it was removed. Moritz Pichler, the tech-savvy
+      teenager, seems to have the most information about it.
+    choices:
+      - "Follow Moritz" -> follow_moritz
+      - "Continue investigating" -> investigation_hub
+
+  brunner_search:
+    type: message
+    text: >
+      You search for Dr. Reinhold Brunner. He was a professor of Environmental
+      Sciences at the University of Innsbruck. He passed away in 2021 from cancer.
+      His publication list includes dozens of environmental impact assessments for
+      Alpine regions. His name on the Adlergrat assessment would have seemed credible --
+      if he weren't dead. Whoever forged it knew his work well enough to make it
+      convincing.
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "This confirms the forgery" -> investigation_hub
+      - "Share this with Eva Schuster" -> follow_eva
+
+  rathaus_connection:
+    type: message
+    text: >
+      The Rathaus connection is explosive. The threatening account came from the
+      municipal building's IP. That means someone with access to the Rathaus --
+      a government official, an employee, or a visitor -- created a fake account
+      specifically to threaten Hannah. Combined with the forged permits and the
+      Fink-Kaltenbrunner business connection, this points to a coordinated effort
+      by town officials and the developer to silence her.
+    choices:
+      - "Talk to Christoph about Rathaus access" -> follow_christoph
+      - "Investigate Markus Fink" -> follow_markus
+      - "Continue investigating" -> investigation_hub
+
+  police_report_check:
+    type: message
+    text: >
+      You search for any public record of Hannah filing a police report about the
+      threat. Nothing comes up. But Sepp Wallner, the retired officer, might know
+      if she did. The current Gendarmerie isn't exactly responsive to online inquiries.
+    choices:
+      - "Talk to Sepp Wallner" -> follow_sepp
+      - "Continue investigating" -> investigation_hub
+
+  tobias_confrontation:
+    type: message
+    text: >
+      You message Tobias with Stefan's theory -- that he may have inadvertently
+      leaked Hannah's plans to Kaltenbrunner's network through his workplace.
+      Tobias goes very quiet. Then: "Oh God. Oh God, no. My boss asked me why
+      Hannah was always posting about the construction. I said she had evidence
+      and was going to publish it. I thought it was just conversation. He... he
+      told Kaltenbrunner, didn't he? I put her in danger. I was trying to protect
+      her and I put her in danger."
+    effects:
+      partner_evidence: "+1"
+      construction_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - "Tobias was the leak - but did he know?" -> tobias_aftermath
+      - "Continue investigating" -> investigation_hub
+
+  tobias_aftermath:
+    type: message
+    text: >
+      Tobias: "I'll testify. I'll tell the police everything. I'll tell them about
+      my boss, about the conversation, about the timeline. This is my fault. Not
+      directly but... if I hadn't opened my stupid mouth... I need to make this
+      right. Whatever you need from me, you have it. Just find Hannah. Please."
+    effects:
+      trust_tobias: "+20"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Prepare the final case" -> pre_confrontation
+      - "Continue investigating" -> investigation_hub
+
+  tell_franz_tobias_incident:
+    type: message
+    text: >
+      You tell Franz about what Lena witnessed at the parking lot. Franz: "He
+      GRABBED her? I'll... no. No, getting angry won't help Hannah. But this is
+      important. The police need to hear this. Lena would testify? She's young
+      but she's brave. I always said Tobias was dangerous. Not violent-dangerous
+      but... unstable. Hannah deserved better."
+    effects:
+      trust_franz: "+5"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Continue investigating" -> investigation_hub
+
+  investigation_hub:
+    type: message
+    text: >
+      You review your notes. The investigation has two clear threads: the illegal
+      construction conspiracy (Kaltenbrunner, Fink, Hofer, forged permits) and
+      the personal angle (Tobias's possessiveness, the argument, the leak). Both
+      threads converge on Hannah's disappearance. You need evidence from both
+      to build the full picture.
+    choices:
+      - "Focus on the construction conspiracy" -> construction_hub
+      - "Focus on the personal angle" -> personal_hub
+      - "Check if you have enough evidence" -> evidence_check
+      - "Talk to someone new" -> new_contacts
+
+  construction_hub:
+    type: message
+    text: >
+      The construction thread involves: Werner Kaltenbrunner (developer), Markus Fink
+      (deputy mayor/co-director), Herr Hofer (pressured building inspector), a forged
+      environmental assessment, threats from a Rathaus IP, and a coordinated effort to
+      suppress Hannah's evidence.
+    choices:
+      - "Talk to Werner Kaltenbrunner" -> kaltenbrunner_search
+      - "Investigate Markus Fink" -> follow_markus
+      - "Talk to Herr Hofer" -> follow_hofer
+      - "Check public records" -> kaltenbrunner_records
+      - "Talk to Eva Schuster" -> follow_eva
+      - "Back to investigation hub" -> investigation_hub
+
+  personal_hub:
+    type: message
+    text: >
+      The personal thread involves: Tobias Reiter (possessive ex), the parking lot
+      argument witnessed by Lena, Tobias's presence on the ridge, the information
+      leak through his workplace, and the question of whether his controlling behaviour
+      crossed into something worse.
+    choices:
+      - "Talk to Tobias" -> follow_tobias
+      - "Talk to Franz about Tobias" -> franz_about_tobias
+      - "Talk to Lena about what she saw" -> dm_lena_tobias
+      - "Talk to Brigitte about Tobias" -> brigitte_about_tobias
+      - "Back to investigation hub" -> investigation_hub
+
+  new_contacts:
+    type: message
+    text: >
+      There are still people you could talk to. Who do you want to reach out to?
+    choices:
+      - "Katharina at Cafe Edelweiss" -> follow_katharina
+      - "Rosa Thaler the farmer" -> follow_rosa
+      - "Sepp Wallner the retired officer" -> follow_sepp
+      - "Ingrid Mayr the pharmacist" -> follow_ingrid
+      - "Christoph Wenger the IT admin" -> follow_christoph
+      - "Anneliese at the Alpenverein hut" -> follow_anneliese
+      - "Back to investigation hub" -> investigation_hub
+
+  follow_anneliese:
+    type: message
+    text: >
+      You follow Anneliese Huber who runs the Alpenverein hut near the Adlergrat
+      trailhead. She follows back. "Servus! You're asking about Hannah? Ja, I was
+      probably the last person to see her before... well. Before."
+    effects:
+      contacts_followed: "+1"
+      trust_anneliese: "+10"
+    choices:
+      - "Tell me about the last time you saw Hannah" -> anneliese_last_sighting
+      - "Tell me about the argument you heard" -> anneliese_argument
+      - "Continue investigating" -> investigation_hub
+
+  anneliese_last_sighting:
+    type: message
+    text: >
+      Anneliese: "She came by the hut Thursday afternoon. Late, around 4 PM. She
+      was checking the trail conditions for the next morning -- said she was going
+      up to the ridge at dawn. She looked determined but also... nervous. She asked
+      me if I'd seen any unusual vehicles on the access road. I told her a black
+      SUV had been going up and down all week. She nodded like she expected that.
+      Then she said something strange: 'Anneliese, if I don't come back by Saturday,
+      call Franz Gruber.' I laughed and said 'Don't be dramatic.' I wish I hadn't
+      laughed."
+    effects:
+      trust_anneliese: "+15"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the argument" -> anneliese_argument
+      - "Ask about the black SUV" -> anneliese_suv
+      - "Continue investigating" -> investigation_hub
+
+  anneliese_argument:
+    type: message
+    text: >
+      Anneliese: "The argument? That was earlier in the week. Tuesday. Hannah and
+      Tobias at the trailhead car park. I was closing up the hut and I heard shouting.
+      Hannah yelling: 'You have no right to follow me!' and Tobias: 'I'm worried
+      about you!' Then Hannah: 'Being worried doesn't mean you own me!' He grabbed
+      her arm. She pulled free. He walked away. She stood there shaking. I went
+      down to check on her. She said 'I'm fine, Anneliese. Just Tobias being Tobias.'
+      But she wasn't fine."
+    effects:
+      trust_anneliese: "+10"
+      partner_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Ask about the black SUV" -> anneliese_suv
+      - "Continue investigating" -> investigation_hub
+
+  anneliese_suv:
+    type: message
+    text: >
+      Anneliese: "The black SUV. Big thing, expensive. Started coming up the access
+      road about a month ago. Always early morning or late evening. Never during
+      normal hours. I mentioned it to the forest ranger and he said it was 'authorized
+      construction traffic.' But since when does a luxury SUV count as construction
+      traffic? It had Innsbruck plates, I think. Couldn't get the number."
+    effects:
+      construction_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - "Continue investigating" -> investigation_hub
+
+  evidence_check:
+    type: message
+    text: >
+      You take stock of what you've gathered. Two investigation threads are active.
+      The construction thread and the personal angle. For the best outcome, you
+      need strong evidence on both fronts before confronting the suspects. Consider
+      whether you have enough to go to the authorities.
+    choices:
+      - "Ready to confront - I have enough" -> pre_confrontation
+      - "Need more evidence on the construction" -> construction_hub
+      - "Need more evidence on the personal angle" -> personal_hub
+      - "Back to investigation hub" -> investigation_hub
+
+  evidence_coordination:
+    type: message
+    text: >
+      You coordinate the evidence. Brigitte's USB stick, Lena's copy, Moritz's
+      server cache screenshots, the cloud backup password from Brigitte, Rosa's
+      witness testimony, Hofer's potential testimony, Stefan's journalistic
+      documentation, and Eva's legal analysis. This is a comprehensive case.
+    choices:
+      - "Proceed to the confrontation" -> pre_confrontation
+      - "Gather more evidence" -> investigation_hub
+
+  pre_confrontation:
+    type: message
+    text: >
+      You have assembled evidence on two fronts. The construction conspiracy
+      (Kaltenbrunner, Fink, forged permits, threats) and the personal dimension
+      (Tobias's possessiveness, the leak, the argument). Now you must decide
+      how to proceed. Your choices will determine the outcome -- for Hannah,
+      for Bergfeld, and for justice.
+    choices:
+      - "Take everything to Eva and the Landespolizei" -> confrontation_full
+      - "Confront Kaltenbrunner publicly on the instance" -> confrontation_public
+      - "Focus only on Tobias as the suspect" -> confrontation_tobias_only
+
+  confrontation_full:
+    type: message
+    text: >
+      You coordinate with Eva Schuster, Stefan Brandner, and Sepp Wallner. Eva
+      drives from Innsbruck with a formal complaint ready for the Landespolizei.
+      You provide the cloud backup access, Brigitte's USB stick, Lena's photos,
+      Moritz's IP evidence, and Hofer's willingness to testify. Stefan publishes
+      the story simultaneously -- not in the Bergfelder Kurier, which killed it,
+      but in the Tiroler Tageszeitung. The story goes regional.
+    choices:
+      - "What happens next?" -> ending_best_part2
+
+  ending_best_part2:
+    type: message
+    text: >
+      The Landespolizei arrives in Bergfeld within hours. They search the Adlergrat
+      construction site and find something in a sealed drainage culvert -- Hannah's
+      phone and rucksack, hidden there by whoever confronted her on the ridge that
+      Friday morning. GPS data from her drone, which was found smashed, shows she
+      was recording when someone approached her.
+    choices:
+      - "Continue" -> ending_best_part3
+
+  ending_best_part3:
+    type: message
+    text: >
+      Werner Kaltenbrunner is arrested at his office. Under questioning, his driver
+      admits he drove Kaltenbrunner to the ridge that Friday morning. They confronted
+      Hannah, destroyed her drone, took her phone and bag, and drove her to a
+      property Kaltenbrunner owns near Mayrhofen. She's been held there -- alive
+      but imprisoned. Markus Fink is arrested for corruption and conspiracy.
+      Hofer turns state witness.
+    choices:
+      - "See the resolution" -> ending_best_resolution
+    when:
+      all:
+        - { state: construction_evidence, gte: 6 }
+        - { state: partner_evidence, gte: 3 }
+        - { state: evidence_total, gte: 12 }
+
+  ending_best_resolution:
+    type: message
+    text: >
+      Hannah is found alive. Shaken, dehydrated, but alive. She was held in a
+      basement room for twelve days. The first thing she says to the police is:
+      "Did someone publish the evidence?" When they tell her about the Tageszeitung
+      story, she cries. Kaltenbrunner and Fink face charges for kidnapping, false
+      imprisonment, fraud, corruption, and environmental crimes. The Adlergrat resort
+      project is permanently cancelled. The protected zone is restored.
+      Tobias is not charged with a crime, but the investigation reveals the extent
+      of his controlling behaviour. He voluntarily enters counselling. Franz visits
+      Hannah every day in hospital. Lena posts the first photo of Hannah's homecoming
+      on Bergfeld.social. It gets 500 boosts. Brigitte makes Apfelstrudel for the
+      entire town.
+
+      BEST ENDING: Justice for Hannah. The truth about Bergfeld's corruption is
+      exposed. The mountains are saved.
+
+      If you or someone you know is in danger, contact:
+      Frauenhelpline gegen Gewalt - 0800 222 555 (Austria, 24h, free)
+      Polizei Notruf - 133
+      Opfernotruf - 0800 112 112
+    choices:
+      - "Play again" -> welcome
+
+  confrontation_public:
+    type: message
+    text: >
+      You post a public thread on Bergfeld.social laying out all the evidence --
+      the forged permits, the Fink-Kaltenbrunner connection, the threats from the
+      Rathaus IP, Rosa's witness testimony. The thread goes viral on the local
+      instance. But you've shown your hand too early.
+    choices:
+      - "What happens?" -> ending_partial_part2
+
+  ending_partial_part2:
+    type: message
+    text: >
+      Within hours, Kaltenbrunner's lawyers issue takedown demands. The Bergfeld.social
+      admin -- under pressure -- removes the thread citing "unverified claims." But
+      screenshots are already circulating. Stefan runs a shortened version in the
+      Kurier before his editor can kill it. The Landespolizei gets involved, but
+      Kaltenbrunner has had time to destroy physical evidence at the site. The case
+      is weakened.
+    choices:
+      - "Continue" -> ending_partial_part3
+
+  ending_partial_part3:
+    type: message
+    text: >
+      The Landespolizei investigates but the trail is muddied. They find Hannah's
+      belongings on the ridge -- her phone, smashed, and her rucksack. But no
+      forensic evidence linking Kaltenbrunner directly. He claims he was in
+      Innsbruck that Friday. His driver corroborates the alibi (it's a lie, but
+      proving it is harder now). Hannah is eventually found at the Mayrhofen
+      property after an anonymous tip -- possibly from Hofer, whose conscience
+      finally won out. She's alive but the case against Kaltenbrunner is
+      circumstantial.
+
+      Fink resigns. Hofer retires early. Kaltenbrunner faces environmental charges
+      but the kidnapping case is weak. Hannah is safe but the full truth may never
+      see a courtroom. The construction is halted but not permanently cancelled.
+      Bergfeld is divided. Some call you a hero. Others blame you for the chaos.
+
+      PARTIAL ENDING: Hannah is found alive, but justice is incomplete. The
+      corruption runs deep and you exposed it too early to fully uproot it.
+
+      If you or someone you know is in danger, contact:
+      Frauenhelpline gegen Gewalt - 0800 222 555 (Austria, 24h, free)
+      Polizei Notruf - 133
+      Opfernotruf - 0800 112 112
+    choices:
+      - "Play again" -> welcome
+
+  confrontation_tobias_only:
+    type: message
+    text: >
+      You focus your accusation on Tobias Reiter -- the possessive ex-boyfriend
+      who grabbed Hannah, who followed her, who was the last person to admit seeing
+      her. You report him to the Gendarmerie with the testimony from Lena and
+      Anneliese.
+    choices:
+      - "What happens?" -> ending_wrong_part2
+
+  ending_wrong_part2:
+    type: message
+    text: >
+      The Gendarmerie brings Tobias in for questioning. He's devastated but
+      cooperates fully. His phone data confirms he was at home Friday morning
+      when Hannah went to the ridge. He has an alibi. He's released. But the
+      arrest makes the news and Tobias is publicly branded as a suspect.
+      Meanwhile, the real perpetrators breathe a sigh of relief.
+    choices:
+      - "Continue" -> ending_wrong_part3
+
+  ending_wrong_part3:
+    type: message
+    text: >
+      With attention focused on Tobias, Kaltenbrunner quietly completes the
+      evidence destruction at the construction site. Fink buries the remaining
+      permit paperwork. The cloud backup is never accessed. Weeks later, Hannah
+      is found wandering near Mayrhofen, disoriented and dehydrated -- she escaped
+      from the property where she was held. But with no evidence trail, no one is
+      charged with her kidnapping. Kaltenbrunner's resort proceeds. Fink becomes
+      mayor.
+
+      Tobias, cleared of suspicion, leaves Bergfeld permanently -- the stigma is
+      too much. Franz blames you for letting the real criminals escape. Lena stops
+      taking photos. Bergfeld's mountains will never be the same.
+
+      WRONG ENDING: Hannah survives, but justice fails. The real conspiracy was
+      never exposed because you chased the wrong lead. The possessive ex was a
+      problem -- but he wasn't the villain.
+
+      If you or someone you know is in danger, contact:
+      Frauenhelpline gegen Gewalt - 0800 222 555 (Austria, 24h, free)
+      Polizei Notruf - 133
+      Opfernotruf - 0800 112 112
+    choices:
+      - "Play again" -> welcome

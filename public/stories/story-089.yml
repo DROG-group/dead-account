@@ -1,0 +1,1560 @@
+# DEAD ACCOUNT — Story 089: Storsjövik (Sweden)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-089.yml
+#
+# Player investigates the disappearance of glass artist Maja Lindström
+# in the fictional Jämtland village of Storsjövik.
+
+meta:
+  title: "Dead Account — Storsjövik"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_elias: 0
+    trust_saga: 0
+    trust_birgitta: 0
+    trust_gunnar: 0
+    trust_wilma: 0
+    trust_noah: 0
+    trust_alice: 0
+    trust_sven: 0
+    trust_kerstin: 0
+    trust_erik: 0
+    trust_linnea: 0
+    trust_anders: 0
+    trust_frida: 0
+    trust_tommy: 0
+    trust_margareta: 0
+    trust_oskar: 0
+    trust_nils: 0
+    trust_hanna: 0
+    trust_kommissarie: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    mine_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Ny Invånare
+    bio: "precis flyttat till storsjövik. upptäcker jämtland en dag i taget"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Storsjovik.social"
+    description: "Välkommen till Storsjöviks gemenskapsinstans"
+    avatar_url: /gamepatch/assets/dead-account/storsjovik_bot.png
+
+  npcs:
+    # === Maja's Inner Circle ===
+    maja:
+      name: "Maja Lindström"
+      bio: "glaskonst | ljus & vatten | storsjövik | naturen ljuger aldrig"
+      avatar: avatars/maja.jpg
+    elias:
+      name: "Elias Berglund"
+      bio: "majas ex | mekaniker | storsjövik | det är inte över"
+      avatar: avatars/elias.jpg
+    saga:
+      name: "Saga Lindström"
+      bio: "majas syster | lärare i östersund | vem fan har tagit min syster"
+      avatar: avatars/saga.jpg
+    linnea:
+      name: "Linnea Hedlund"
+      bio: "majas bästa vän | bibliotekarie | storsjövik | kaffe & böcker"
+      avatar: avatars/linnea.jpg
+
+    # === Local Government ===
+    kerstin:
+      name: "Kerstin Norberg"
+      bio: "Kommunalråd Storsjövik | Socialdemokraterna | för bygden sedan 2010"
+      avatar: avatars/kerstin.jpg
+    anders:
+      name: "Anders Moberg"
+      bio: "Miljönämnden | Storsjöviks kommun | hållbar utveckling"
+      avatar: avatars/anders.jpg
+    kommun:
+      name: "Storsjöviks Kommun"
+      bio: "Officiellt konto | Kommuninformation | Öppettider: mån-fre 8-16"
+      avatar: avatars/kommun.jpg
+
+    # === Local Business & Community ===
+    birgitta:
+      name: "Birgitta Ek"
+      bio: "Värdshuset Storsjön | husmanskost | lokalt öl | öppet sedan 1952"
+      avatar: avatars/birgitta.jpg
+    vardshuset:
+      name: "Värdshuset Storsjön"
+      bio: "Husmanskost | Lokalt bryggeri | Livemusik fredagar | Hjärtat av Storsjövik"
+      avatar: avatars/vardshuset.jpg
+    gunnar:
+      name: "Gunnar Åström"
+      bio: "fiskare | storsjön är mitt liv | 45 år på vattnet"
+      avatar: avatars/gunnar.jpg
+    sven:
+      name: "Sven Johansson"
+      bio: "hamnkapten | Storsjöviks båthamn | jour tis-lör"
+      avatar: avatars/sven.jpg
+    frida:
+      name: "Frida Söderström"
+      bio: "apotekare | Storsjöviks Apotek | öppet även söndagar"
+      avatar: avatars/frida.jpg
+    margareta:
+      name: "Margareta Lind"
+      bio: "bageri Lind | kanelbullar | surdegsbaket | kl 5 varje morgon"
+      avatar: avatars/margareta.jpg
+    tommy:
+      name: "Tommy Persson"
+      bio: "jordbrukare | mjölkbonde | Storsjövik | tredje generationen"
+      avatar: avatars/tommy.jpg
+    oskar:
+      name: "Oskar Wiklund"
+      bio: "bokhandlare | Fjällboken | nya & begagnade | läscirkel onsdagar"
+      avatar: avatars/oskar.jpg
+
+    # === Journalist ===
+    hanna:
+      name: "Hanna Bergqvist"
+      bio: "frilansjournalist | miljö & norrland | tips: hanna@bergqvist-press.se"
+      avatar: avatars/hanna.jpg
+
+    # === NordGruve (mining corporate) ===
+    nordgruve:
+      name: "NordGruve AB"
+      bio: "Gruvdrift & mineralutvinning | Storsjövik-anläggningen | ISO 14001"
+      avatar: avatars/nordgruve.jpg
+    erik:
+      name: "Erik Dahlström"
+      bio: "platschef NordGruve Storsjövik | industri & samhälle"
+      avatar: avatars/erik.jpg
+    nils:
+      name: "Nils Forsberg"
+      bio: "Advokat | Forsberg & Partners | Affärsjuridik | Stockholm"
+      avatar: avatars/nils.jpg
+
+    # === Teens ===
+    wilma:
+      name: "Wilma"
+      bio: "16 | snowboard & foto | storsjövik born | sjön är livet asså"
+      avatar: avatars/wilma.jpg
+    noah:
+      name: "Noah"
+      bio: "17 | skate & fiske | sunrise sessions | naturen fixar allt"
+      avatar: avatars/noah.jpg
+    alice:
+      name: "Alice"
+      bio: "15 | konst & musik | norrländsk vinter i akvarell | maja är min inspo"
+      avatar: avatars/alice.jpg
+
+    # === Media & Community ===
+    lokaltnytt:
+      name: "Storsjövik Lokalt"
+      bio: "Nyheter från Storsjövik och Jämtland | Tips: redaktion@storsjovik-lokalt.se"
+      avatar: avatars/lokaltnytt.jpg
+    vader_jamtland:
+      name: "Väder Storsjövik"
+      bio: "Prognos & varningar | Automatisk station | Uppdatering varje timme"
+      avatar: avatars/vader_jamtland.jpg
+    sjoforening:
+      name: "Storsjöns Vattenförening"
+      bio: "Skydd av Storsjön | Volontärer | Rapportera föroreningar"
+      avatar: avatars/sjoforening.jpg
+
+    # === Suspicious / Other ===
+    viktor:
+      name: "Viktor Strand"
+      bio: "tekniker | NordGruve | jag gör mitt jobb det är allt"
+      avatar: avatars/viktor.jpg
+    skansen99:
+      name: "skansen99"
+      bio: "."
+      avatar: avatars/anon.jpg
+    kommissarie:
+      name: "Kommissarie Lund"
+      bio: "Polisen Storsjövik | Lokalpolisområde Jämtland | nödsamtal: 112"
+      avatar: avatars/kommissarie.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN STORSJÖVIK
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Storsjovik.social — the community Mastodon instance for
+      the village of Storsjövik, Jämtland, northern Sweden.
+
+      The local feed is unsettled today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @maja_lindstrom.
+
+      A glass artist. Nature photographer. She captured the light on
+      the lake in blown glass. People are worried. She hasn't posted
+      in six days.
+    choices:
+      - Look at her profile -> maja_profile
+
+  maja_profile:
+    type: tweet
+    from: maja
+    text: "Vattnet vid Norrbergsudden har fel färg. Någon dumpar gruvavfall i sjön. Jag har bevis."
+    choices:
+      - That's her last real post... -> grey_lake
+
+  grey_lake:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a grey lake surface. Blurred, overexposed, shot from a strange
+      angle. Posted at 3am. No caption.
+
+      Her friends say that's not her style. The police say she
+      probably went hiking. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: kommissarie
+    text: >
+      Vi har mottagit en anmälan gällande en invånare i Storsjövik.
+      I nuläget finns inga uppgifter som tyder på brott. Information
+      kan lämnas till 114 14 eller till lokalpolisen.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @linnea_hedlund is
+      desperate. Her sister @saga_lindstrom is driving up from
+      Östersund. Her ex @elias_berglund is posting frantic messages.
+      The fisherman @gunnar_astrom says she was right about the water.
+
+      And the journalist @hanna_bergqvist is strangely silent.
+
+      Nobody buys the police's line. Nobody thinks Maja just
+      "went hiking."
+    effects: { trust_saga: "+5", trust_linnea: "+5" }
+    choices:
+      - Start following Maja's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Storsjövik. Follow Maja's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Birgitta (värdshus owner, knows everyone) -> birgitta_intro
+      - Talk to Gunnar (fisherman, saw the water) -> gunnar_intro
+      - Talk to Wilma (teen, seems shaken) -> wilma_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Maja with the rhythms of a small
+      Jämtland village: weather warnings, the bakery's kanelbullar,
+      ice reports on the lake, snowmobile trails.
+
+      Key names surface: Linnea (best friend, librarian), Elias (ex,
+      mechanic, seems rattled), Hanna (journalist, oddly quiet),
+      and the teens — Wilma, Noah, Alice — who worshipped Maja's
+      glass art.
+
+      Also prominent: NordGruve AB, the mining company at the edge
+      of the village. Their posts are corporate PR. Maja's posts
+      were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Birgitta -> birgitta_intro
+      - Talk to Gunnar -> gunnar_intro
+      - Talk to Wilma -> wilma_intro
+
+  # --- Birgitta (social map) ---
+
+  birgitta_intro:
+    type: tweet
+    from: birgitta
+    text: >
+      Värdshuset är öppet men glädjen är borta. @maja_lindstrom,
+      ditt bord väntar. Kom tillbaka snart.
+    effects: { trust_birgitta: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Birgitta -> birgitta_talk
+
+  birgitta_talk:
+    type: message
+    text: >
+      BIRGITTA: Ah, you're new? Welcome. Awful time to arrive.
+      Everyone's on edge about Maja.
+
+      Let me tell you who's who. Linnea is Maja's best friend — they
+      practically live at the library together. Elias Berglund is
+      her ex-boyfriend. Mechanic. They broke up eight months ago but
+      he never accepted it. Sweet man on the surface but... obsessive
+      underneath. Saga is Maja's older sister, she's coming up from
+      Östersund.
+
+      And Hanna Bergqvist — the journalist — she and Maja were working
+      on something together. Something about the lake. Hanna hasn't
+      said a word since Maja vanished. That's not like her.
+
+      Oh, and don't bother reading NordGruve's PR posts. Lies
+      wrapped in ISO certifications.
+    effects: { trust_birgitta: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Elias -> birgitta_elias
+      - Ask about NordGruve -> birgitta_nordgruve
+      - Thank her and move on -> quest1_hub
+
+  birgitta_elias:
+    type: message
+    text: >
+      BIRGITTA: Elias? Herregud asså. They dated for two years. He
+      was charming at first, everyone liked him. But he got
+      possessive. Wanted to know where she was at all times. Got
+      jealous if she spent time in her studio alone.
+
+      Maja ended it. Clearly. She told him it was over. He said he
+      understood. But then he'd show up at the värdshus whenever she
+      was here. He'd drive past her studio at night. She told me
+      once, "He doesn't understand what 'no' means."
+
+      After she started the pollution investigation, he got worse.
+      Said she was "putting herself in danger" and he needed to
+      "protect her." She didn't want his protection.
+    effects: { trust_birgitta: "+5" }
+    choices:
+      - Ask about NordGruve -> birgitta_nordgruve
+      - Move on -> quest1_hub
+
+  birgitta_nordgruve:
+    type: message
+    text: >
+      BIRGITTA: That mine has been there since the 90s. They extract
+      copper and zinc. The village tolerated them because they brought
+      jobs. But the fishermen have been complaining for years —
+      strange colours in the water near Norrbergsudden, dead fish
+      floating up, a chemical smell when the wind blows wrong.
+
+      Maja was the first person to actually take samples. She dove
+      into the lake with her camera. She found tailings — mine waste
+      — dumped straight into the water through a hidden pipe. She
+      had proof. Real proof.
+
+      Two weeks later she's gone.
+    effects: { trust_birgitta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Gunnar (the water, witness tease) ---
+
+  gunnar_intro:
+    type: tweet
+    from: gunnar
+    text: >
+      fyrtifem år har jag fiskat i storsjön. vattnet är inte sig
+      likt. @maja_lindstrom hade rätt. och nu har hon försvunnit.
+      dra era slutsatser.
+    effects: { trust_gunnar: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Gunnar -> gunnar_talk
+
+  gunnar_talk:
+    type: message
+    text: >
+      GUNNAR: I've been fishing this lake since I was a boy. I know
+      every current, every depth, every colour the water makes. And
+      I'm telling you — the water near Norrbergsudden is wrong. Has
+      been for months. My nets come up with dead perch. The lake
+      bottom smells like metal.
+
+      Maja took water samples. She dove down near the old mining
+      outfall. She photographed everything. She was building a case.
+      And then — poof. Gone.
+
+      You think that's a coincidence? Fan ta, I don't believe in
+      coincidences on this lake.
+    effects: { trust_gunnar: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> gunnar_night
+      - Move on -> quest1_hub
+
+  gunnar_night:
+    type: message
+    text: >
+      GUNNAR: The night before she vanished — I was out on the lake,
+      night fishing for öring, around midnight. I saw lights at
+      Maja's glass studio. Not unusual, she works late. But there
+      was a car parked on the road that shouldn't have been there.
+      A dark SUV. Company plates — NordGruve.
+
+      At midnight. Outside a glass artist's studio.
+
+      I noted it in my fishing log. Nobody has asked to see it.
+    effects: { trust_gunnar: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Wilma (teen, witness tease) ---
+
+  wilma_intro:
+    type: tweet
+    from: wilma
+    text: >
+      jävlar asså @maja_lindstrom hon lärde mig fota naturen på
+      riktigt liksom det går inte att hon bara stack. om nån vet
+      nåt skriv snälla
+    effects: { trust_wilma: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Wilma -> wilma_talk_early
+
+  wilma_talk_early:
+    type: message
+    text: >
+      WILMA: va fan du är ny här? skitdålig timing. men asså maja
+      är typ den bästa personen i hela byn. hon lärde oss att blåsa
+      glas, visa oss ljuset på sjön, hur man ser naturen på riktigt.
+      skit coolt.
+
+      och nu är jag livrädd för noah han såg nåt konstigt vid hamnen
+      den kvällen men han vill inte prata om det. han säger att det
+      är inget men herregud asså... det är inte inget
+    effects: { trust_wilma: "+10" }
+    choices:
+      - What did Noah see? -> wilma_noah_hint
+      - Move on -> quest1_hub
+
+  wilma_noah_hint:
+    type: message
+    text: >
+      WILMA: jag vet inte exakt. han var ute och fiskade sent vid
+      hamnen och han såg typ nån som höll på med majas bil?? eller
+      nåt sånt. han flippar helt han vill inte prata. du måste fråga
+      honom direkt men han litar inte på folk han inte känner. snacka
+      om fiske först lol så kanske han öppnar sig
+    effects: { trust_wilma: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Storsjövik. A Jämtland village
+      built around the lake. A glass artist who was exposing mining
+      pollution. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Linnea (Maja's best friend) -> linnea_q1
+      - Talk to Elias (Maja's ex) -> elias_q1
+      - Check what Saga (Maja's sister) is saying -> saga_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Linnea Q1 ---
+
+  linnea_q1:
+    type: tweet
+    from: linnea
+    text: >
+      om någon har hört nåt om @maja_lindstrom ring mig snälla.
+      hennes studio är orörd. hennes glasverktyg ligger kvar. hon
+      skulle aldrig lämna sitt arbete.
+    effects: { trust_linnea: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Linnea -> linnea_q1_talk
+
+  linnea_q1_talk:
+    type: message
+    text: >
+      LINNEA: I appreciate you reaching out but I don't know you.
+      Maja has a lot of friends here. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Linnea is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_linnea: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Elias Q1 ---
+
+  elias_q1:
+    type: tweet
+    from: elias
+    text: >
+      @maja_lindstrom svara mig snälla. jag vet att vi inte är
+      tillsammans längre men jag bryr mig fortfarande. jag kan
+      hjälpa. ring mig.
+    effects: { trust_elias: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Elias -> elias_q1_talk
+
+  elias_q1_talk:
+    type: message
+    text: >
+      ELIAS: Who are you? You don't know Maja. I know Maja. We were
+      together for two years. I know her better than anyone in this
+      village.
+
+      She's in trouble, I can feel it. Those NordGruve bastards did
+      something. She was poking around the mine and they didn't like
+      it. I told her a hundred times to stop but she never listens
+      to me. She never listened.
+
+      [Elias seems earnest. Or possessive?]
+    effects: { trust_elias: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Saga Q1 ---
+
+  saga_q1:
+    type: tweet
+    from: saga
+    text: >
+      min syster har FÖRSVUNNIT och polisen säger att hon kanske gick
+      ut och vandrade??? HON VANDRAR INTE UTAN ATT SÄGA TILL. jag
+      åker upp nu. nån ska fan förklara.
+    effects: { trust_saga: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Saga -> saga_q1_talk
+
+  saga_q1_talk:
+    type: message
+    text: >
+      SAGA: Who are you? Another person from that village who's going
+      to tell me to calm down? My sister called me the night before
+      she disappeared. She said she had something big. She said "if
+      anything happens, look at NordGruve." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_saga: "+10" }
+    choices:
+      - What do you think happened? -> saga_theory
+      - Move on -> quest1_hub
+
+  saga_theory:
+    type: message
+    text: >
+      SAGA: I think she found proof that NordGruve is dumping mine
+      tailings in the lake and they shut her up. But I also think
+      that creepy ex of hers — Elias — knows more than he's saying.
+      The way he talks about her... it's not just concern from an
+      ex-boyfriend. It's something else.
+
+      Maja told me months ago that someone was following her. She'd
+      see the same car parked outside her studio at night. She
+      thought it was nothing. I don't think it was nothing.
+    effects: { trust_saga: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Maja went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Noah (was fishing at the harbour late) -> noah_interview
+      - Find Sven (harbour master, works late) -> sven_interview
+      - Find Tommy (dairy farmer, early morning at the barn) -> tommy_interview
+      - Find Margareta (baker, starts at 5am, saw something) -> margareta_interview
+
+  # --- Noah (saw someone at Maja's car) ---
+
+  noah_interview:
+    type: tweet
+    from: noah
+    text: >
+      bra fiske ikväll men stämningen i byn är skum asså. typ
+      nånting är fel. kan inte förklara
+    effects: { trust_noah: "+5" }
+    choices:
+      - Ask Noah about that evening -> noah_talk
+
+  noah_talk:
+    type: message
+    text: >
+      NOAH: va fan ok men du säger det inte till nån va. jag satt
+      vid hamnen typ klockan 20 och fiskade. och jag såg elias —
+      majas ex — vid majas bil. han höll på och pillade med nåt
+      under bilen. när han såg mig drog han skitfort.
+
+      asså jag sa inget för jag ville inte ha bråk men skit också
+      det är inte normalt hans beteende. herregud asså
+    effects:
+      trust_noah: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sven (harbour master, saw late-night meeting) ---
+
+  sven_interview:
+    type: tweet
+    from: sven
+    text: >
+      Påminnelse: hamnen är avstängd mellan 22 och 06.
+      Jag har noterat obehöriga besök de senaste nätterna.
+    effects: { trust_sven: "+5" }
+    choices:
+      - Ask Sven what he saw -> sven_talk
+
+  sven_talk:
+    type: message
+    text: >
+      SVEN: I was locking up the harbour office around 23:00. I saw
+      Maja's car still parked at her studio. And a black SUV —
+      NordGruve plates — parked next to it. Two men were standing by
+      the studio entrance. One of them I recognised: Erik Dahlström,
+      the mine site manager.
+
+      At 23:00. At a glass artist's studio. That's not normal.
+
+      I noted it in my harbour log. Nobody's asked to see it.
+    effects:
+      trust_sven: "+10"
+      night_witnesses: "+1"
+      mine_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tommy (saw Maja fleeing) ---
+
+  tommy_interview:
+    type: tweet
+    from: tommy
+    text: >
+      uppe klockan 4 för mjölkningen. vägen var inte tom idag. nån
+      sprang längs sjöstigen. i mörkret. inte en joggare.
+    effects: { trust_tommy: "+5" }
+    choices:
+      - Ask Tommy what he saw -> tommy_talk
+
+  tommy_talk:
+    type: message
+    text: >
+      TOMMY: I get up at 4am for the milking. That morning — the
+      morning after Maja's last post — I saw someone on the lake
+      path. Running. A woman, carrying a bag, heading toward
+      Norrbergsudden. It was still dark. She was moving fast, like
+      she was afraid.
+
+      I called out but she didn't stop. I figured it was a jogger
+      but... who jogs at 4am carrying a rucksack?
+
+      When I heard about Maja, I put it together. I think that was
+      her. Running from something.
+    effects:
+      trust_tommy: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Margareta (saw car chase) ---
+
+  margareta_interview:
+    type: tweet
+    from: margareta
+    text: >
+      Degen jäser klockan 5 som vanligt. Men den morgonen körde
+      en bil alldeles för fort på sjövägen.
+    effects: { trust_margareta: "+5" }
+    choices:
+      - Ask Margareta what she saw -> margareta_talk
+
+  margareta_talk:
+    type: message
+    text: >
+      MARGARETA: I start baking at 5am every day. That morning I was
+      opening the shutters and a car went past — fast, much too fast
+      for the lake road. Dark SUV. Then maybe two minutes later, a
+      second car. Smaller, lighter colour. Chasing? I don't know.
+
+      The second car turned off toward the old fishing cabins at
+      Norrbergsudden. The first kept going toward the E45.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_margareta: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Linnea (best
+      friend) and Alice (saw Elias watching the studio).
+    choices:
+      - Talk to Linnea about that night -> linnea_interview
+      - Talk to Alice -> alice_interview
+      - Find Noah -> noah_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sven -> sven_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tommy -> tommy_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Margareta -> margareta_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Linnea (last to see Maja) ---
+
+  linnea_interview:
+    type: tweet
+    from: linnea
+    text: >
+      det där fotot på majas konto. det är inte hon. maja postar
+      aldrig utan bildtext. maja postar inte klockan 3 på natten.
+      någon annan har gjort det.
+    effects: { trust_linnea: "+5" }
+    choices:
+      - DM Linnea -> linnea_talk_low
+        when:
+          state: trust_linnea
+          lt: 50
+      - DM Linnea -> linnea_talk_high
+        when:
+          state: trust_linnea
+          gte: 50
+
+  linnea_talk_low:
+    type: message
+    text: >
+      LINNEA: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Linnea needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_linnea: "+5" }
+    choices:
+      - Share what you've learned about the night -> linnea_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  linnea_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the studio, the
+      company men, the running figure. Linnea is silent for a while.
+
+      LINNEA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_linnea: "+25" }
+    choices:
+      - What happened that night? -> linnea_talk_high
+
+  linnea_talk_high:
+    type: message
+    text: >
+      LINNEA: She came to the library around 22:00. I was closing up.
+      She was pale, shaking. She said "they know what I have." She
+      grabbed her laptop and her backup hard drives from the locker
+      I let her use.
+
+      I asked who. She said "the mine. They sent people to my
+      studio." Then she said something else — "and he was there
+      again. He's always there."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry," and ran out. By morning her car was at the fishing
+      cabins and the grey lake photo was on her account.
+    effects:
+      trust_linnea: "+15"
+      night_witnesses: "+1"
+      mine_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Alice (saw Elias watching the studio) ---
+
+  alice_interview:
+    type: message
+    text: >
+      ALICE: herregud ok det här är typ creepy men majas ex — elias
+      — jag har sett honom typ 3 gånger utanför hennes studio på
+      kvällen. bara stod där och stirrade på fönstren. skit obehagligt
+      asså.
+
+      sista gången var typ 2 dagar innan hon försvann. han satt i
+      sin bil parkerad mittemot. bara satt. med lamporna släckta.
+    effects:
+      trust_alice: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Elias seen at Maja's car at the harbour (Noah)
+      23:00 — NordGruve SUV at the studio, Erik Dahlström present (Sven)
+      22:00 — Maja arrives at library, shaken, grabs laptop and drives (Linnea)
+      04:00 — Woman running on lake path toward Norrbergsudden (Tommy)
+      05:00 — Two cars speeding on lake road, one toward fishing cabins (Margareta)
+
+      NordGruve confronted Maja at her studio. She fled to the
+      library, grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is NordGruve hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Elias really doing? Why was he
+        at her car?
+    choices:
+      - Investigate the mining cover-up -> corruption_hub
+      - Investigate Elias -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      MINING THREAD: Evidence collected: ${mine_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the mining thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: mine_evidence, gte: 3 }
+
+  # =====================================================================
+  # MINING COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE MINING THREAD
+
+      NordGruve is hiding something. Maja had proof. Now she's
+      gone and her evidence is missing from the studio.
+
+      Mine evidence: ${mine_evidence}
+    choices:
+      - Search the studio records -> studio_records
+      - Talk to Hanna the journalist -> hanna_interview
+      - Talk to Viktor (NordGruve technician) -> viktor_interview
+      - Talk to Anders (environment board) -> anders_interview
+      - Check the Vattenförening association -> sjoforening_investigation
+      - Talk to Gunnar about the dumping -> gunnar_dumping
+      - Back to hub -> investigation_hub
+
+  # --- Studio Records ---
+
+  studio_records:
+    type: message
+    text: >
+      Maja kept meticulous records alongside her art. Her publicly
+      shared portfolio includes a series called "Under Ytan" — photos
+      from beneath the lake surface at six locations. The images
+      from Norrbergsudden are marked "DOKUMENTATION — EJ KONST."
+
+      Her dive log, shared with the local diving club for safety,
+      shows she made 14 dives near the NordGruve outfall in the past
+      month. The last entry: "Photographed pipe junction. Undeclared
+      secondary outfall. Tailings discharge does not match reports."
+    effects:
+      mine_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Hanna ---
+
+  hanna_interview:
+    type: message
+    text: >
+      HANNA: I don't discuss sources. Period.
+    effects: { trust_hanna: "+5" }
+    choices:
+      - Show Hanna the evidence you have -> hanna_with_evidence
+        when:
+          state: mine_evidence
+          gte: 3
+      - Back to mining thread -> corruption_hub
+
+  hanna_with_evidence:
+    type: message
+    text: >
+      HANNA: ...you have more than I expected.
+
+      Okay. Maja and I were working together. She had photos of an
+      undeclared tailings pipe — NordGruve has a second outfall that
+      doesn't appear on any permit. She had water samples showing
+      heavy metal levels fifteen times the legal limit. Cadmium,
+      arsenic, lead.
+
+      We were going to publish together in Dagens Nyheter. Then she
+      went dark. And two days later, someone broke into my cabin
+      and stole my backup drive.
+
+      Maja is alive. She contacted me once, from a burner phone. She
+      said she was hiding. She said "they threatened me at the studio
+      and someone else won't leave me alone."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_hanna: "+25"
+      mine_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> hanna_hint
+      - Back to investigation hub -> investigation_hub
+
+  hanna_hint:
+    type: message
+    text: >
+      HANNA: The mine sent their site manager — Dahlström — and
+      some Stockholm lawyer to her studio that night. They told her
+      to hand over everything or face legal consequences. Intimidation
+      dressed up in legal language.
+
+      But she also said something about someone in her life. Someone
+      who'd been tracking her movements. Someone who always seemed to
+      know where she was. That's a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Viktor (NordGruve whistleblower) ---
+
+  viktor_interview:
+    type: message
+    text: >
+      VIKTOR: I work at NordGruve. I'm just a technician. I run
+      tests, I file reports.
+
+      But the reports I file... are not always the reports that get
+      sent to Länsstyrelsen.
+    effects: { trust_viktor: "+10" }
+    choices:
+      - What do you mean? -> viktor_detail
+
+  viktor_detail:
+    type: message
+    text: >
+      VIKTOR: I measure heavy metals in the discharge water.
+      Cadmium, arsenic, lead, mercury. My numbers go to my
+      supervisor. Somewhere between my desk and the regulatory
+      filing, they change. Lower. Always lower.
+
+      Maja's samples from outside the pipe matched MY original
+      numbers, not the ones in the official reports. She had
+      independent proof that NordGruve is falsifying their
+      discharge data.
+
+      I'm scared. I have kids. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_viktor: "+15"
+      mine_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Anders ---
+
+  anders_interview:
+    type: message
+    text: >
+      ANDERS: As the environment board representative, I take these
+      allegations seriously. But NordGruve employs 150 people in
+      this kommun. The kommunalråd insists we need to "maintain
+      dialogue."
+
+      Off the record? I've seen the Länsstyrelsen inspection reports.
+      NordGruve passes every time. But those inspections are
+      announced three weeks in advance. They clean up before the
+      inspectors arrive.
+
+      Maja had unannounced data. That's what makes it dangerous.
+    effects:
+      trust_anders: "+10"
+      mine_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Vattenföreningen ---
+
+  sjoforening_investigation:
+    type: tweet
+    from: sjoforening
+    text: >
+      VARNING: Rapporter om onormal vattenfärg vid Norrbergsudden.
+      Prover och fotografering pågår. Vi kräver en oanmäld inspektion
+      av NordGruve-anläggningen.
+    choices:
+      - Check their data -> sjoforening_data
+
+  sjoforening_data:
+    type: message
+    text: >
+      The Storsjöns Vattenförening have been documenting water quality
+      for four years. Their data shows a clear pattern: heavy metal
+      spikes that correspond to NordGruve's production schedule.
+      Higher on weekdays, lower on weekends. Higher at night, lower
+      during the day.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal discharge of mine tailings timed to avoid detection.
+
+      Maja was a member. She contributed most of the underwater
+      photography.
+    effects:
+      mine_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to mining thread -> corruption_hub
+
+  # --- Gunnar dumping ---
+
+  gunnar_dumping:
+    type: message
+    text: >
+      GUNNAR: I'll show you something. Last month I pulled my nets
+      near the outfall and found this — a rusted drum, corroded,
+      leaking grey sludge. The label was half gone but I could read
+      "gruvavfall" and a NordGruve batch number.
+
+      I photographed it and sent it to Maja. She said it was the
+      missing piece — proof they were dumping solid tailings, not
+      just discharge. Drums on the lake bottom.
+
+      I still have the photos. And the batch number.
+    effects:
+      trust_gunnar: "+10"
+      mine_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Elias Berglund. Ex-boyfriend. Mechanic. Something more?
+      Someone was tracking Maja's movements. Someone was watching
+      her studio. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Elias's workshop records -> workshop_records
+      - Talk to Linnea about Elias -> linnea_elias
+        when:
+          state: trust_linnea
+          gte: 20
+      - Talk to Noah (more detail on the car incident) -> noah_detail
+      - Talk to Frida the pharmacist -> frida_interview
+      - Check the anonymous account @skansen99 -> skansen_investigation
+      - Talk to Oskar the bookseller -> oskar_interview
+        when:
+          state: trust_oskar
+          gte: 40
+      - Talk to Kommissarie Lund -> kommissarie_interview
+        when:
+          state: trust_kommissarie
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Workshop Records ---
+
+  workshop_records:
+    type: message
+    text: >
+      Elias's workshop has a public social media page showing his
+      custom car work. Scrolling through the posts, one stands out
+      from two months ago: "GPS-spårare installerad. Diskret
+      montering under chassi. Professionellt jobb."
+
+      The post was deleted within an hour but cached by search
+      engines. Cross-referencing the date: it was three days after
+      Maja changed the locks on her studio.
+
+      As a mechanic, Elias has access to GPS tracking devices and
+      the skills to install them.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Linnea on Elias ---
+
+  linnea_elias:
+    type: message
+    text: >
+      LINNEA: Elias? Jävlar. He made Maja miserable after the breakup.
+      He'd show up at the värdshus when she was there. He'd offer to
+      drive her home. He'd comment on every single one of her posts
+      within minutes.
+
+      She told him it was over. Clearly, firmly. He said he
+      understood. Then nothing changed. He just... kept being
+      there. Always there.
+
+      A month ago she found that someone had been in her studio after
+      hours. Her research files had been moved. Her dive logs copied.
+      She suspected Elias — he still had a key she thought she'd
+      gotten back.
+    effects:
+      trust_linnea: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Noah detail ---
+
+  noah_detail:
+    type: message
+    text: >
+      NOAH: ok fan asså jag sa inte allt. när jag såg elias vid
+      majas bil hade han nåt i handen. typ en liten dosa. han la
+      den under bilen, på förarens sida. typ klistrade fast den
+      undertill.
+
+      asså jag är ingen expert men det såg ut som en gps-spårare.
+      såna man ser i filmer liksom.
+
+      jag borde ha sagt nåt men fan vem hade trott mig?? en tonåring
+      som anklagar en vuxen. skit också liksom.
+    effects:
+      trust_noah: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Frida ---
+
+  frida_interview:
+    type: message
+    text: >
+      FRIDA: This is confidential but I'm a pharmacist, not a
+      priest. Elias Berglund comes in regularly. He's been buying
+      things that... suggest he's not sleeping. Anti-anxiety
+      medication, sleep aids, energy supplements. The pattern is
+      someone under extreme stress.
+
+      He also asked me once, very casually, if we sold miniature
+      tracking devices. I said "this is a pharmacy, not Kjell &
+      Company." He laughed it off. I didn't think about it again
+      until Maja disappeared.
+    effects:
+      trust_frida: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Skansen99 (anonymous account) ---
+
+  skansen_investigation:
+    type: tweet
+    from: skansen99
+    text: >
+      Hon borde ha lyssnat. Jag försökte skydda henne. Ingen annan
+      förstod hennes konst som jag.
+    choices:
+      - Look at this account's history -> skansen_posts
+
+  skansen_posts:
+    type: message
+    text: >
+      @skansen99: account created 7 months ago. Posts are all about
+      Maja's work. Comments on every glass piece, every lake photo,
+      every exhibition post. The tone shifts over time:
+
+      Month 1: "Otrolig konst. Du gör det ingen annan vågar."
+      Month 3: "Varför svarar du inte på mina meddelanden? Jag vill
+      bara samarbeta."
+      Month 5: "Jag ser dig på värdshuset med andra. Du har tid för
+      dem men inte för mig?"
+      Month 6: "Jag vet var du går. Jag vet ditt schema. Jag är
+      alltid nära."
+
+      The account has no photos, no personal details. Just Maja.
+      Only Maja.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> skansen_style
+
+  skansen_style:
+    type: message
+    text: >
+      Comparing @skansen99 with @elias_berglund:
+
+      Same Jämtland dialect markers. Same spelling habits — the
+      specific way he writes compound words, the same grammatical
+      tics. Same knowledge of Maja's exhibition schedule that only
+      someone close to her would have.
+
+      And one post from @skansen99: "Ditt dyk vid Punkt 4 var
+      vackert." Punkt 4 is a designation from Maja's private dive
+      log. Not public.
+
+      It's Elias. The anonymous account is Elias.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Oskar ---
+
+  oskar_interview:
+    type: message
+    text: >
+      OSKAR: Maja left something with me. A sealed waterproof case.
+      She said "if someone asks you about what's under the water at
+      Norrbergsudden, give them this."
+
+      She looked frightened. She said she'd made copies of
+      everything but needed one set off-site, somewhere nobody
+      would think to look. A bookshop seemed perfect.
+    effects: { trust_oskar: "+10" }
+    choices:
+      - What's under the water at Norrbergsudden? -> oskar_case
+
+  oskar_case:
+    type: message
+    text: >
+      Oskar reaches under the counter and produces a waterproof
+      Pelican case.
+
+      OSKAR: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show an underwater pipe — not the official discharge
+      point, but a second, hidden outfall — and corroded drums on
+      the lake bottom. The USB drive contains water sample data,
+      chemical analysis, and Maja's detailed report connecting the
+      tailings to NordGruve's extraction process.
+    effects:
+      mine_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Kommissarie Lund ---
+
+  kommissarie_interview:
+    type: message
+    text: >
+      KOMMISSARIE LUND: Off the record — and I mean completely off
+      the record — I wanted to investigate NordGruve. My superior
+      said the Länsstyrelsen had "jurisdiction." That's code for
+      "don't touch it."
+
+      The Berglund situation is different. I didn't even know about
+      the stalking until now. If you have evidence, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_kommissarie: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Maja than anyone in Storsjövik. Who is responsible?
+    choices:
+      - Confront Elias Berglund (the obsessive ex) -> confront_elias
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Erik Dahlström (the mine director) -> confront_erik
+        when:
+          state: mine_evidence
+          gte: 3
+      - Confront Kommunalråd Norberg (political protection) -> confront_kerstin
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Elias (Best Ending) ---
+
+  confront_elias:
+    type: message
+    text: >
+      You present your evidence to Elias:
+
+      "I know @skansen99 is your account. I know you put a GPS
+      tracker on Maja's car. I know you broke into her studio and
+      copied her files. I know you were watching her every night.
+      I have witnesses and I have the logs."
+    choices:
+      - Send -> elias_response
+
+  elias_response:
+    type: message
+    text: >
+      Elias doesn't reply for a long time. Then:
+
+      ELIAS: You don't understand. I was protecting her. She was in
+      danger from NordGruve and she wouldn't let me help. I needed
+      to know she was safe. Everything I did was because I love her.
+
+      That's not love. That's obsession.
+
+      You've already sent the evidence to Kommissarie Lund. And to
+      Hanna Bergqvist.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Kommissarie Lund reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the workshop post, the
+      studio break-in, the witness testimonies — Elias is arrested
+      for stalking and harassment. A GPS tracker is recovered from
+      under Maja's car at the old fishing cabins near Norrbergsudden.
+
+      Hanna Bergqvist, finally in possession of Maja's full evidence
+      package, publishes the NordGruve story in Dagens Nyheter. The
+      Länsstyrelsen orders an unannounced inspection. The mine is
+      shut down pending environmental remediation. Erik Dahlström
+      faces criminal charges for falsifying discharge reports and
+      illegal dumping of mine tailings.
+
+      And Maja Lindström, reading the story from a friend's house
+      in Sundsvall, calls her sister for the first time in nine days.
+
+      "Jag kommer hem."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Kvinnofridslinjen: 020-50 50 50 (gratis, dygnet runt)
+      Polisen: 114 14
+      Bris (för barn och unga): 116 111
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: maja
+    text: >
+      naturen ljuger aldrig. och folket i storsjövik heller. tack
+      för att ni inte gav upp.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Erik (Partial Ending) ---
+
+  confront_erik:
+    type: message
+    text: >
+      You present the pollution evidence to Erik Dahlström:
+
+      "I have photographs of the undeclared tailings pipe. I have
+      water samples showing heavy metal levels fifteen times the
+      legal limit. I have your original lab reports showing the data
+      was falsified. I have the drums with your batch numbers."
+    choices:
+      - Send -> erik_response
+
+  erik_response:
+    type: message
+    text: >
+      ERIK: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will
+      result in immediate proceedings. NordGruve has always operated
+      within regulatory requirements.
+
+      But it's too late. You've sent the evidence to Hanna, to the
+      Vattenförening, and to the Länsstyrelsen.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pollution story breaks. NordGruve is ordered to halt all
+      discharge pending investigation. The mine may close. One
+      hundred and fifty jobs hang in the balance. The village is
+      divided.
+
+      But Maja?
+
+      Without the stalking evidence, Elias is never investigated.
+      He continues to work at his workshop. He continues to monitor
+      her accounts. He creates a new anonymous profile.
+
+      Three months later, Maja reads about NordGruve online. She
+      returns quietly. She moves her studio to Östersund. She stops
+      diving alone. She checks her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Maja walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: maja
+    text: "jag är tillbaka. vattnet är renare. resten... vi får se."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Kommunalråd (Wrong Ending) ---
+
+  confront_kerstin:
+    type: message
+    text: >
+      You confront Kommunalråd Norberg with your evidence.
+
+      Within the hour, you receive a message from her office:
+    choices:
+      - Read the response -> kerstin_response
+
+  kerstin_response:
+    type: tweet
+    from: nils
+    text: >
+      Min klient noterar era påståenden. All offentlig spridning
+      av förtalande material kommer att leda till omedelbart
+      rättsligt förfarande. — Forsberg & Partners, Stockholm
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The kommunalråd's lawyer buries your accusation. Without a
+      direct link between Norberg and NordGruve's dumping — and
+      there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      NordGruve continues to operate. Elias continues to watch.
+      Maja stays in hiding.
+
+      Six months later, @skansen99 creates a new account. It follows
+      Maja's sister.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: STORSJÖVIK — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Mine evidence: ${mine_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Maja's story explores themes of
+      corporate impunity, environmental crime, obsessive behaviour,
+      community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Kvinnofridslinjen: 020-50 50 50 (gratis, dygnet runt)
+      Polisen: 114 14
+      Bris (för barn och unga): 116 111
+      Naturvårdsverkets miljöjour: 010-698 10 00

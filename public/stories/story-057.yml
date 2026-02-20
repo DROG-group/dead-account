@@ -1,0 +1,1684 @@
+# DEAD ACCOUNT — Story 057: Weilersbach (Germany, Round 3)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-057.yml
+#
+# Player investigates the death of craft woodworker Jonas Müller
+# in the fictional Black Forest village of Weilersbach.
+
+meta:
+  title: "Dead Account — Weilersbach"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lena: 0
+    trust_felix: 0
+    trust_annika: 0
+    trust_klaus: 0
+    trust_maren: 0
+    trust_tim: 0
+    trust_sophie: 0
+    trust_hilde: 0
+    trust_gerhard: 0
+    trust_ralf: 0
+    trust_petra: 0
+    trust_nico: 0
+    trust_sabine: 0
+    trust_tobias: 0
+    trust_lisa: 0
+    trust_jens: 0
+    trust_uli: 0
+    trust_monika: 0
+    trust_dieter: 0
+    trust_tanja: 0
+    trust_hauptkomm: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    logging_evidence: 0
+    apprentice_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Neuer Bewohner
+    bio: "frisch nach weilersbach gezogen. den schwarzwald entdecken, ein baum nach dem anderen"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Weilersbach.social"
+    description: "Willkommen auf der Community-Instanz von Weilersbach im Schwarzwald"
+    avatar_url: /gamepatch/assets/dead-account/weilersbach_bot.png
+
+  npcs:
+    # === Jonas's Inner Circle ===
+    jonas:
+      name: "Jonas Müller"
+      bio: "kunstschreiner | schwarzwälder handwerk | holz lügt nicht"
+      avatar: avatars/jonas.jpg
+    lena:
+      name: "Lena Müller"
+      bio: "jonas' schwester | lehrerin an der grundschule | weilersbach born & raised"
+      avatar: avatars/lena.jpg
+    felix:
+      name: "Felix Brenner"
+      bio: "lehrling bei jonas | holzhandwerk ist mein leben | meisterstück in arbeit"
+      avatar: avatars/felix.jpg
+    annika:
+      name: "Annika Weiß"
+      bio: "freundin von jonas | designerin | freiburg ↔ weilersbach | er fehlt"
+      avatar: avatars/annika.jpg
+
+    # === Local Government ===
+    klaus:
+      name: "Klaus Hartmann"
+      bio: "Bürgermeister von Weilersbach | Für die Gemeinde seit 2016 | #WeilersVoran"
+      avatar: avatars/klaus.jpg
+    maren:
+      name: "Maren Schuster"
+      bio: "Gemeinderätin | Umwelt & Forst | Weilersbach | Nachhaltigkeit ist kein Luxus"
+      avatar: avatars/maren.jpg
+    gemeinde:
+      name: "Gemeinde Weilersbach"
+      bio: "Offizieller Account | Gemeindenachrichten | Mo-Fr 8-16 Uhr"
+      avatar: avatars/gemeinde.jpg
+
+    # === Local Business & Community ===
+    hilde:
+      name: "Hilde Bergmann"
+      bio: "Gasthaus Zum Hirsch | Schwarzwälder Küche seit 1962 | Stammtisch Mittwochs"
+      avatar: avatars/hilde.jpg
+    gasthaus:
+      name: "Gasthaus Zum Hirsch"
+      bio: "Traditionelle Küche | Hausbier | Biergarten | Das Herz von Weilersbach"
+      avatar: avatars/gasthaus.jpg
+    gerhard:
+      name: "Gerhard Ott"
+      bio: "förster a.D. | 38 jahre im wald | der wald vergisst nichts"
+      avatar: avatars/gerhard.jpg
+    ralf:
+      name: "Ralf Zimmermann"
+      bio: "sägewerk zimmermann | schnittholz & balken | seit 3 generationen"
+      avatar: avatars/ralf.jpg
+    petra:
+      name: "Petra Vogt"
+      bio: "apotheke am markt | weilersbach | gesundheit & beratung | auch sonntags"
+      avatar: avatars/petra.jpg
+    sabine:
+      name: "Sabine Krämer"
+      bio: "bäckerei krämer | brot & schwarzwälder kirsch | ab 5 uhr morgens"
+      avatar: avatars/sabine.jpg
+    tobias:
+      name: "Tobias Lehmann"
+      bio: "revierförster | forstverwaltung südschwarzwald | der wald braucht schutz"
+      avatar: avatars/tobias.jpg
+
+    # === Journalist ===
+    nico:
+      name: "Nico Falk"
+      bio: "freier journalist | schwarzwald-kurier | umwelt & lokales | tips: nico@falk-presse.de"
+      avatar: avatars/nico.jpg
+
+    # === Schwarzwald-Holz GmbH (logging company) ===
+    schwarzwaldholz:
+      name: "Schwarzwald-Holz GmbH"
+      bio: "Forstwirtschaft & Holzhandel | Standort Weilersbach | FSC-zertifiziert"
+      avatar: avatars/schwarzwaldholz.jpg
+    dieter:
+      name: "Dieter Krause"
+      bio: "Geschäftsführer Schwarzwald-Holz GmbH | Tradition & Wirtschaft"
+      avatar: avatars/dieter.jpg
+    uli:
+      name: "Uli Brandt"
+      bio: "Rechtsanwalt | Kanzlei Brandt & Partner | Wirtschaftsrecht | Freiburg"
+      avatar: avatars/uli.jpg
+
+    # === Teens ===
+    tim:
+      name: "Tim"
+      bio: "16 | mountainbike | weilersbach 4 life | der wald ist mein zuhause digga"
+      avatar: avatars/tim.jpg
+    sophie:
+      name: "Sophie"
+      bio: "17 | fotografie & natur | schwarzwald in schwarz-weiß | jonas war der beste"
+      avatar: avatars/sophie.jpg
+    lisa:
+      name: "Lisa"
+      bio: "15 | skaten & zeichnen | weilersbach ist klein aber oho"
+      avatar: avatars/lisa.jpg
+
+    # === Media & Community ===
+    weilersbach_aktuell:
+      name: "Weilersbach Aktuell"
+      bio: "Nachrichten aus Weilersbach und dem Schwarzwald | redaktion@weilersbach-aktuell.de"
+      avatar: avatars/weilersbach_aktuell.jpg
+    waldverein:
+      name: "Schwarzwaldverein Weilersbach"
+      bio: "Wandern | Naturschutz | Heimatpflege | Jeden Sonntag Wanderung"
+      avatar: avatars/waldverein.jpg
+
+    # === Suspicious / Other ===
+    jens:
+      name: "Jens Maurer"
+      bio: "holzfäller | schwarzwald-holz | ich mach meinen job, fertig"
+      avatar: avatars/jens.jpg
+    tanja:
+      name: "Tanja Wolf"
+      bio: "."
+      avatar: avatars/anon.jpg
+    monika:
+      name: "Monika Engel"
+      bio: "notarin | weilersbach | grundstücke & verträge"
+      avatar: avatars/monika.jpg
+    hauptkomm:
+      name: "Hauptkommissar Wendt"
+      bio: "Polizeiposten Weilersbach | Notruf 110"
+      avatar: avatars/hauptkomm.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN WEILERSBACH
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Weilersbach.social — the community Mastodon instance for
+      the village of Weilersbach, deep in the Black Forest.
+
+      The local feed is heavy today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you see the same name over and over:
+      @jonas_mueller.
+
+      A craft woodworker. Traditional Schwarzwald joinery. He documented
+      the forest, the old techniques, the trees. People are devastated.
+      He was found dead in his workshop three days ago.
+    choices:
+      - Look at his profile -> jonas_profile
+
+  jonas_profile:
+    type: tweet
+    from: jonas
+    text: "Im Bannwald oben wird gefällt. Nachts. Ohne Genehmigung. Ich hab Fotos. Das geht nicht so weiter."
+    choices:
+      - That's his last real post... -> workshop_scene
+
+  workshop_scene:
+    type: message
+    text: >
+      Two days after that post, Jonas was found on the floor of his
+      workshop. Head trauma. The police say he fell from a scaffolding
+      while staining a ceiling beam. An accident, they say.
+
+      His friends say Jonas never worked on scaffolding alone. His sister
+      says tools are missing from the workshop. His apprentice hasn't
+      spoken a word since it happened.
+
+      Something doesn't add up.
+    choices:
+      - Read the police statement -> polizei_statement
+      - Look at what people are saying -> community_reaction
+
+  polizei_statement:
+    type: tweet
+    from: hauptkomm
+    text: >
+      Am Dienstag wurde ein 32-jähriger Mann leblos in seiner Werkstatt
+      in Weilersbach aufgefunden. Nach ersten Erkenntnissen handelt es
+      sich um einen Arbeitsunfall. Die Ermittlungen dauern an.
+      Hinweise bitte an die Polizei unter 110.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are raw. His sister @lena_mueller is furious. His
+      girlfriend @annika_weiss drove in from Freiburg, destroyed. His
+      apprentice @felix_brenner has gone silent — no posts since
+      the body was found.
+
+      The retired forester @gerhard_ott says Jonas was right about the
+      illegal logging. The sawmill owner @ralf_zimmermann looks nervous.
+      And the journalist @nico_falk is asking questions nobody wants
+      to answer.
+
+      Nobody in Weilersbach believes this was an accident.
+    effects: { trust_lena: "+5", trust_annika: "+5" }
+    choices:
+      - Start following Jonas's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Weilersbach. Follow Jonas's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Hilde (Gasthaus owner, knows everyone) -> hilde_intro
+      - Talk to Gerhard (retired forester, saw the logging) -> gerhard_intro
+      - Talk to Tim (teen mountain biker, seems upset) -> tim_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes grief for Jonas with the rhythms of a Black Forest
+      village: hiking routes, bakery specials, weather warnings for
+      the mountain passes.
+
+      Key names surface: Lena (sister, schoolteacher), Felix (apprentice,
+      eerily silent), Annika (girlfriend, devastated), and the teens —
+      Tim, Sophie, Lisa — who loved Jonas's woodworking workshops for
+      kids.
+
+      Also prominent: Schwarzwald-Holz GmbH, the logging company at
+      the edge of the forest. Their posts are corporate greenwash.
+      Jonas's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Hilde -> hilde_intro
+      - Talk to Gerhard -> gerhard_intro
+      - Talk to Tim -> tim_intro
+
+  # --- Hilde (social map) ---
+
+  hilde_intro:
+    type: tweet
+    from: hilde
+    text: >
+      Das Gasthaus ist offen aber die Stimmung ist am Boden.
+      @jonas_mueller, dein Stammplatz bleibt frei. Für immer.
+    effects: { trust_hilde: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Hilde -> hilde_talk
+
+  hilde_talk:
+    type: message
+    text: >
+      HILDE: Ah, you're new here? Bad timing, Schätzle. The whole
+      village is in mourning.
+
+      Let me tell you who's who. Lena is Jonas's younger sister —
+      teaches at the primary school, tough woman, completely wrecked
+      right now. Annika is his girlfriend from Freiburg — they've been
+      together two years, she's driving back and forth.
+
+      Felix Brenner is — was — Jonas's apprentice. Three years now.
+      That boy worshipped Jonas. I mean truly worshipped him. Since
+      Jonas died, Felix hasn't come to the Gasthaus, hasn't answered
+      anyone. It's like he shut down.
+
+      And then there's the forest thing. Jonas was documenting illegal
+      logging up in the Bannwald. Protected forest. Someone was cutting
+      old-growth trees at night. Schwarzwald-Holz denies everything,
+      but Gerhard Ott — the old forester — he backed Jonas up.
+    effects: { trust_hilde: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Felix -> hilde_felix
+      - Ask about Schwarzwald-Holz -> hilde_logging
+      - Thank her and move on -> quest1_hub
+
+  hilde_felix:
+    type: message
+    text: >
+      HILDE: Felix? Ach, the boy is... intense. Jonas took him on when
+      nobody else would. Felix had a rough time in school — angry kid,
+      no friends, trouble at home. Jonas gave him a purpose. Taught him
+      to carve, to join, to respect the wood.
+
+      But it became everything to Felix. His whole identity. He wanted
+      to be Jonas. He'd copy his clothes, his speech, even his
+      handwriting. Jonas told me once: "The boy needs his own life,
+      not mine."
+
+      After Jonas started the logging investigation, Felix got
+      possessive. Didn't want Jonas working with the journalist or
+      the forester. Wanted Jonas all to himself in the workshop.
+      Like sharing Jonas was a betrayal.
+    effects: { trust_hilde: "+5" }
+    choices:
+      - Ask about Schwarzwald-Holz -> hilde_logging
+      - Move on -> quest1_hub
+
+  hilde_logging:
+    type: message
+    text: >
+      HILDE: That company has been here twenty years. They have the
+      logging contract for the municipal forest — legal, approved, all
+      proper. But the Bannwald above the village? That's protected.
+      Nobody is allowed to fell there.
+
+      Jonas went hiking up there and found fresh stumps. Old oaks, two
+      hundred years old, cut clean. No markings, no permits. He
+      photographed everything. He said the stumps matched
+      Schwarzwald-Holz cutting patterns.
+
+      Dieter Krause — the company boss — laughed it off. "Conspiracy
+      theories from a carpenter," he said. Two weeks later Jonas is
+      dead on his workshop floor.
+
+      Scheiße, I shouldn't have said that. Forget I said that.
+    effects: { trust_hilde: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Gerhard (the forest, witness tease) ---
+
+  gerhard_intro:
+    type: tweet
+    from: gerhard
+    text: >
+      38 jahre förster. ich kenne jeden baum im bannwald. und ich sage
+      euch: da oben wird illegal geholzt. @jonas_mueller hatte recht.
+      jetzt ist er tot. denkt drüber nach.
+    effects: { trust_gerhard: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Gerhard -> gerhard_talk
+
+  gerhard_talk:
+    type: message
+    text: >
+      GERHARD: I walked every metre of that forest for nearly four
+      decades. I know when a tree has been felled legally and when
+      it hasn't. Up in the Bannwald there are stumps — fresh, clean
+      cuts — where two-hundred-year-old oaks stood. No forestry
+      markings. No permit numbers. Just stumps.
+
+      Jonas and I went up together. He photographed them all, measured
+      the rings, documented the species. He built a case. He said it
+      was Schwarzwald-Holz — the cutting angle, the equipment marks,
+      the truck tracks.
+
+      They're selling protected old-growth timber. That wood is worth
+      a fortune — veneer quality, musical instruments, specialty
+      furniture. Tens of thousands per tree.
+
+      Jonas threatened to go public. And now Jonas is dead.
+    effects: { trust_gerhard: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> gerhard_night
+      - Move on -> quest1_hub
+
+  gerhard_night:
+    type: message
+    text: >
+      GERHARD: The night before they found him — I couldn't sleep,
+      I went for a walk. Around midnight. I saw a truck on the
+      forest road above the village. No lights. A Schwarzwald-Holz
+      truck — I'd recognise that silhouette anywhere.
+
+      It came down from the Bannwald direction, turned onto the
+      logging road, and disappeared toward the sawmill. At midnight.
+      With no lights.
+
+      I noted the time. Old habit. A forester never stops being a
+      forester.
+    effects: { trust_gerhard: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Tim (teen mountain biker, witness tease) ---
+
+  tim_intro:
+    type: tweet
+    from: tim
+    text: >
+      alter ich raff das nicht. @jonas_mueller hat mir holzschnitzen
+      beigebracht. der war so ein ehrenmann digga. ein UNFALL?? ja ne
+      is klar. wenn jemand was weiß bitte meldet euch
+    effects: { trust_tim: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tim -> tim_talk_early
+
+  tim_talk_early:
+    type: message
+    text: >
+      TIM: ey du bist neu hier oder? krasses timing alter. jonas war
+      halt echt der beste mensch im ganzen dorf. hat workshops für uns
+      gemacht, holzschnitzen, möbel bauen, alles. hat nie geld genommen
+      dafür.
+
+      und jetzt sagen die es war ein unfall. alter was zum fick. jonas
+      ist nie allein aufs gerüst. das war seine regel nummer eins. das
+      weiß jeder hier.
+
+      und sophie hat was gesehen die nacht davor aber sie traut sich
+      nicht das zu erzählen. irgendwas mit felix und der werkstatt.
+      frag sie mal aber sei vorsichtig die ist mega schüchtern digga
+    effects: { trust_tim: "+10" }
+    choices:
+      - What did Sophie see? -> tim_sophie_hint
+      - Move on -> quest1_hub
+
+  tim_sophie_hint:
+    type: message
+    text: >
+      TIM: keine ahnung genau. sie war abends unterwegs mit der kamera
+      — die knipst immer nachts am waldrand — und hat gesehen wie
+      felix aus der werkstatt gerannt ist. so gegen 23 uhr oder so.
+      sie sagt der sah aus als hätte er geheult. oder als wäre er
+      mega wütend. beides vielleicht.
+
+      sie will halt nicht petzen oder so. aber alter das ist nicht
+      petzen wenn jemand tot ist. scheiße ey.
+    effects: { trust_tim: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Weilersbach. A Black Forest village
+      built around the forest. A woodworker who was exposing illegal
+      logging. A death nobody believes was an accident.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lena (Jonas's sister) -> lena_q1
+      - Talk to Felix (Jonas's apprentice) -> felix_q1
+      - Check what Annika (Jonas's girlfriend) is saying -> annika_q1
+      - I'm ready to investigate the night he died -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lena Q1 ---
+
+  lena_q1:
+    type: tweet
+    from: lena
+    text: >
+      mein bruder hatte KEIN gerüst aufgebaut. seine stempeluhr zeigt
+      feierabend um 18 uhr. warum war er nachts in der werkstatt?
+      @polizei_weilersbach macht euren JOB.
+    effects: { trust_lena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lena -> lena_q1_talk
+
+  lena_q1_talk:
+    type: message
+    text: >
+      LENA: I don't know you. But I'm desperate enough to talk to
+      anyone who's actually listening.
+
+      Jonas clocked out at 6pm that day. His routine was dinner at the
+      Gasthaus, then home. He never worked at night. Never. So why
+      was he in the workshop at — what, midnight? 1am? The police
+      won't tell me the exact time of death.
+
+      And his carving chisels are missing. His best set — the Japanese
+      ones he imported himself. Gone. Nothing else was taken. Just
+      the chisels.
+    effects: { trust_lena: "+10" }
+    choices:
+      - Who would take the chisels? -> lena_chisels
+      - Move on -> quest1_hub
+
+  lena_chisels:
+    type: message
+    text: >
+      LENA: Only someone who knows their value. Those chisels cost
+      two thousand euros. Jonas kept them in a locked drawer. You'd
+      have to know which drawer and where he kept the key.
+
+      Felix knew. Felix used them every day. But that's — no. Felix
+      loved Jonas. He wouldn't —
+
+      I don't know what to think anymore.
+    effects: { trust_lena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Felix Q1 ---
+
+  felix_q1:
+    type: tweet
+    from: felix
+    text: >
+      ...
+    effects: { trust_felix: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Felix -> felix_q1_talk
+
+  felix_q1_talk:
+    type: message
+    text: >
+      FELIX: I don't want to talk. Jonas is dead. That's all there is.
+
+      [Felix has completely shut down. His profile is empty — he's
+      deleted every post since Jonas died. He's online but silent.
+      You'll need to build more trust before he opens up.]
+    effects: { trust_felix: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Annika Q1 ---
+
+  annika_q1:
+    type: tweet
+    from: annika
+    text: >
+      ich bin 2 stunden hin und 2 stunden zurück gefahren jeden tag
+      um bei jonas zu sein. und jetzt fahr ich hin um seine sachen
+      einzupacken. das ist nicht real. das ist einfach nicht real.
+    effects: { trust_annika: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Annika -> annika_q1_talk
+
+  annika_q1_talk:
+    type: message
+    text: >
+      ANNIKA: Jonas called me that evening. Around 8pm. He sounded
+      stressed. He said he'd had a fight with Felix — a bad one.
+      Felix found out that Jonas was planning to take on a second
+      apprentice. Felix lost it. Screamed at him, said Jonas was
+      "replacing" him.
+
+      Jonas said Felix stormed out. He said "I think I need to let
+      him go." Those were his last words to me.
+
+      And then at some point in the night, he went back to the
+      workshop. Why?
+    effects: { trust_annika: "+10" }
+    choices:
+      - What was the fight about exactly? -> annika_fight
+      - Move on -> quest1_hub
+
+  annika_fight:
+    type: message
+    text: >
+      ANNIKA: Felix was obsessed with being Jonas's only student.
+      He saw himself as the heir — the one who'd carry on Jonas's
+      legacy. When Jonas mentioned a second apprentice, Felix
+      took it as a personal betrayal.
+
+      But it went deeper than that. Jonas told me Felix had been
+      copying his designs and selling them online as his own. Jonas
+      confronted him about it. That's when the real explosion
+      happened.
+
+      The logging thing too — Felix hated that Jonas spent time on
+      the investigation instead of teaching him. He'd say things
+      like "the forest is stealing you from the workshop."
+    effects: { trust_annika: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Jonas died. Multiple people saw or
+      heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Sophie (was out photographing, saw Felix) -> sophie_interview
+      - Find Ralf (sawmill owner, heard the truck) -> ralf_interview
+      - Find Sabine (baker, starts at 5am, saw lights) -> sabine_interview
+      - Find Tobias (forester, found tracks) -> tobias_interview
+
+  # --- Sophie (saw Felix at the workshop) ---
+
+  sophie_interview:
+    type: tweet
+    from: sophie
+    text: >
+      ich war die nacht draußen mit meiner kamera. mondlicht über dem
+      schwarzwald. es war so still. fast zu still.
+    effects: { trust_sophie: "+5" }
+    choices:
+      - Ask Sophie about that evening -> sophie_talk
+
+  sophie_talk:
+    type: message
+    text: >
+      SOPHIE: ok alter bitte sag das nicht weiter. ich war auf dem
+      waldweg mit meiner kamera, so gegen 23 uhr. und ich hab felix
+      gesehen. er ist aus jonas' werkstatt gerannt. nicht normal
+      gegangen — GERANNT. der sah scheiße aus, total aufgelöst,
+      hat geheult oder geschrien, ich weiß nicht.
+
+      und er hatte was in der hand. so ein beutel oder eine rolle.
+      ich hab mich hinter einem baum versteckt weil ich angst hatte.
+      er ist in richtung wald gelaufen. nicht nach hause. in den wald.
+
+      am nächsten morgen war jonas tot. ich hab seitdem nicht geschlafen.
+    effects:
+      trust_sophie: "+10"
+      night_witnesses: "+1"
+      apprentice_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Ralf (sawmill owner, heard the truck) ---
+
+  ralf_interview:
+    type: tweet
+    from: ralf
+    text: >
+      Das Sägewerk läuft normal weiter. Wir haben Aufträge. Punkt.
+      Über den Rest rede ich nicht.
+    effects: { trust_ralf: "+5" }
+    choices:
+      - Ask Ralf what he heard -> ralf_talk
+
+  ralf_talk:
+    type: message
+    text: >
+      RALF: Look, I run the sawmill. Schwarzwald-Holz is my biggest
+      client. I process their timber. I don't ask where it comes from
+      — that's their business, their permits, their problem.
+
+      But that night — yes, a truck came in around 1am. Dropped off
+      logs. No paperwork. The driver said Krause authorised it and to
+      process them first thing in the morning. Before anyone could see.
+
+      The logs were old-growth oak. No forestry stamps. No markings at
+      all. I've been in timber my whole life — those trees were
+      Bannwald quality. Protected.
+
+      I processed them. God help me, I processed them.
+    effects:
+      trust_ralf: "+10"
+      night_witnesses: "+1"
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sabine (baker, saw lights in the workshop) ---
+
+  sabine_interview:
+    type: tweet
+    from: sabine
+    text: >
+      Brezeln sind fertig, Brot ist im Ofen. Normaler Morgen.
+      Aber nichts ist normal seit Dienstag.
+    effects: { trust_sabine: "+5" }
+    choices:
+      - Ask Sabine what she saw -> sabine_talk
+
+  sabine_talk:
+    type: message
+    text: >
+      SABINE: I start at 4am every day. That morning — the morning
+      they found him — I was opening the shutters and I saw light in
+      Jonas's workshop. That's across the square from my bakery. At 4am
+      the light was on. Strange, because Jonas never works before
+      sunrise.
+
+      Then around 4:30 I saw someone come out the side door. Not Jonas.
+      Shorter, thinner. They walked quickly toward the Schwarzwald-Holz
+      compound. Not running, but fast. Purposeful.
+
+      I couldn't see the face. It was still dark. But the build —
+      it wasn't Jonas. Jonas was broad, tall. This person was slight.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_sabine: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tobias (forester, found tracks) ---
+
+  tobias_interview:
+    type: tweet
+    from: tobias
+    text: >
+      Routinekontrolle im Bannwald. Frische Reifenspuren auf dem
+      gesperrten Forstweg. Schwere Maschinen. Werde Anzeige erstatten.
+    effects: { trust_tobias: "+5" }
+    choices:
+      - Ask Tobias what he found -> tobias_talk
+
+  tobias_talk:
+    type: message
+    text: >
+      TOBIAS: I'm the district forester. I'm responsible for the
+      Bannwald above Weilersbach. That forest is strictly protected —
+      no logging, no vehicles, no machinery.
+
+      The morning after Jonas died, I found fresh tire tracks on the
+      sealed forest road. Heavy truck, dual axle. They led to a
+      clearing where three old oaks had been felled. Freshly cut —
+      sawdust still white. The stumps matched what Jonas had been
+      documenting.
+
+      And I found something else: Jonas's camera. Smashed. On the
+      ground near the stumps. Like someone had stomped on it.
+
+      Jonas was up there that night. He caught them in the act. I'm
+      sure of it.
+    effects:
+      trust_tobias: "+10"
+      night_witnesses: "+1"
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lena (sister) and
+      Lisa (saw Felix behaving strangely at the forest edge).
+    choices:
+      - Talk to Lena about that night -> lena_interview
+      - Talk to Lisa -> lisa_interview
+      - Find Sophie -> sophie_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Ralf -> ralf_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sabine -> sabine_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Tobias -> tobias_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lena (found things in the workshop) ---
+
+  lena_interview:
+    type: tweet
+    from: lena
+    text: >
+      ich war in jonas' werkstatt. die polizei hat sie freigegeben.
+      irgendetwas stimmt nicht mit dem gerüst. die schrauben waren
+      LOCKER. jonas hat NIE lockere schrauben hinterlassen.
+    effects: { trust_lena: "+5" }
+    choices:
+      - DM Lena -> lena_talk_low
+        when:
+          state: trust_lena
+          lt: 50
+      - DM Lena -> lena_talk_high
+        when:
+          state: trust_lena
+          gte: 50
+
+  lena_talk_low:
+    type: message
+    text: >
+      LENA: I appreciate your concern but who are you exactly? I've
+      had enough strangers messaging me.
+
+      [Lena needs to trust you more. Show her you're investigating
+      seriously.]
+    effects: { trust_lena: "+5" }
+    choices:
+      - Share what you've learned about the night -> lena_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lena_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the truck in the Bannwald, the
+      smashed camera, the figure leaving the workshop at 4:30am. Lena
+      is quiet for a long time.
+
+      LENA: You're actually investigating. Okay. I'll tell you what
+      I found.
+    effects: { trust_lena: "+25" }
+    choices:
+      - What did you find? -> lena_talk_high
+
+  lena_talk_high:
+    type: message
+    text: >
+      LENA: The scaffolding in the workshop — the one they say he fell
+      from. I checked the bolts. Two of the four support bolts were
+      loosened. Not missing — loosened. Like someone wanted it to
+      collapse when weight was put on it.
+
+      Jonas would never leave bolts loose. That man was precision
+      incarnate. Every joint, every dowel, every screw — perfect.
+      It's how he lived.
+
+      And his laptop is gone. He had a backup drive in a drawer —
+      that's gone too. The drawer was forced open. Someone took his
+      evidence.
+
+      And — this is the worst part — there were two sets of
+      footprints in the sawdust. Two. Jonas's boots and someone
+      in trainers. Size 42. Felix wears size 42.
+    effects:
+      trust_lena: "+15"
+      night_witnesses: "+1"
+      apprentice_evidence: "+1"
+      logging_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Lisa (saw Felix at the forest edge) ---
+
+  lisa_interview:
+    type: message
+    text: >
+      LISA: alter ok ich hab eigentlich nichts gesehen. nur —
+      felix war am waldrand. so gegen mitternacht. ich konnte
+      nicht schlafen und hab aus dem fenster geguckt. er stand
+      einfach da. am waldrand. hat in richtung werkstatt gestarrt.
+
+      dann ist er reingegangen. in die werkstatt. mitten in der
+      nacht. warum geht man nachts in die werkstatt von seinem
+      chef? das ist doch creepy oder bin ich verrückt?
+    effects:
+      trust_lisa: "+10"
+      apprentice_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      ~20:00 — Jonas calls Annika, reports fight with Felix (Annika)
+      ~23:00 — Felix seen running from workshop, carrying something (Sophie)
+      ~00:00 — Schwarzwald-Holz truck on Bannwald road, no lights (Gerhard)
+      ~00:00 — Felix standing at forest edge, then enters workshop (Lisa)
+      ~01:00 — Truck delivers unmarked old-growth logs to sawmill (Ralf)
+      ~04:00 — Light still on in workshop. Unknown figure leaves toward
+               Schwarzwald-Holz compound (Sabine)
+      ~04:30 — Jonas's smashed camera found near fresh stumps in Bannwald (Tobias)
+      Morning — Jonas found dead on workshop floor.
+
+      Two events overlapping: illegal logging in the Bannwald AND
+      something between Felix and Jonas at the workshop. Connected?
+
+      Two threads to pull:
+      — The illegal logging: What is Schwarzwald-Holz doing in the
+        Bannwald? Who killed Jonas's investigation?
+      — The obsession: What did Felix do that night? Why did he run?
+    choices:
+      - Investigate the illegal logging -> logging_hub
+      - Investigate Felix -> apprentice_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      LOGGING THREAD: Evidence collected: ${logging_evidence}
+      APPRENTICE THREAD: Evidence collected: ${apprentice_evidence}
+    choices:
+      - Work on the logging thread -> logging_hub
+      - Work on the apprentice thread -> apprentice_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: apprentice_evidence, gte: 5 }
+            - { state: logging_evidence, gte: 3 }
+
+  # =====================================================================
+  # ILLEGAL LOGGING THREAD
+  # =====================================================================
+
+  logging_hub:
+    type: message
+    text: >
+      THE LOGGING THREAD
+
+      Schwarzwald-Holz is harvesting protected old-growth forest. Jonas
+      had proof. Now he's dead and his evidence is missing.
+
+      Logging evidence: ${logging_evidence}
+    choices:
+      - Search Jonas's documented evidence -> jonas_evidence
+      - Talk to Nico the journalist -> nico_interview
+      - Talk to Jens (Schwarzwald-Holz worker) -> jens_interview
+      - Talk to Maren (environment councillor) -> maren_interview
+      - Check the Schwarzwaldverein records -> waldverein_investigation
+      - Talk to Gerhard about the timber trade -> gerhard_timber
+      - Back to hub -> investigation_hub
+
+  # --- Jonas's Evidence ---
+
+  jonas_evidence:
+    type: message
+    text: >
+      Jonas's workshop has been released by the police. His laptop and
+      backup drive are gone — Lena confirmed that. But his public posts
+      on Weilersbach.social remain. Scrolling back through months of
+      posts:
+
+      GPS coordinates of fresh stumps in the Bannwald. Photos of
+      illegally felled trees — massive oaks, some over 200 years old.
+      Close-ups of chainsaw marks matching Schwarzwald-Holz equipment.
+      Truck tire tracks matching their fleet. A spreadsheet estimating
+      the volume of timber taken: over 300 cubic metres in six months.
+
+      The last entry in his public log: "Hab die zweite Zufahrt
+      gefunden. Sie benutzen den alten Kohlenmeilerweg. Fotos folgen."
+
+      The photos never came.
+    effects:
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> logging_hub
+
+  # --- Nico ---
+
+  nico_interview:
+    type: message
+    text: >
+      NICO: I don't reveal sources. Ever.
+    effects: { trust_nico: "+5" }
+    choices:
+      - Show Nico the evidence you have -> nico_with_evidence
+        when:
+          state: logging_evidence
+          gte: 3
+      - Back to logging thread -> logging_hub
+
+  nico_with_evidence:
+    type: message
+    text: >
+      NICO: ...you have more than I expected.
+
+      Okay. Jonas and I were working together on a story. He had
+      evidence that Schwarzwald-Holz was systematically harvesting
+      the Bannwald — protected forest, old-growth trees, massive
+      ecological value. The wood was being sold to specialty dealers
+      in Switzerland and Austria for veneer and instrument-making.
+      Premium prices. Hundreds of thousands of euros.
+
+      Jonas had photos, GPS data, timber volume estimates. We were
+      weeks from publishing. Then he died.
+
+      And three days after his death, someone broke into my office
+      and stole my notes. Just the Jonas file. Nothing else.
+
+      Jonas is dead. But someone contacted me — anonymously — and
+      said there's a second copy of everything. Jonas hid it
+      somewhere in the village. He didn't trust digital storage alone.
+    effects:
+      trust_nico: "+25"
+      logging_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who contacted you? -> nico_hint
+      - Back to investigation hub -> investigation_hub
+
+  nico_hint:
+    type: message
+    text: >
+      NICO: I genuinely don't know. Anonymous message through the
+      instance. But they knew details only someone close to Jonas
+      would know. They said "Look where the wood talks." That's
+      something Jonas used to say.
+
+      And there's something else. The night Jonas died, Dieter
+      Krause — the Schwarzwald-Holz boss — was not at home. His
+      wife told a neighbour he was "handling a situation in the
+      forest." At midnight.
+
+      Jonas went up to the Bannwald that night with his camera. He
+      caught them logging. And someone made sure he wouldn't talk.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Jens (Schwarzwald-Holz worker) ---
+
+  jens_interview:
+    type: message
+    text: >
+      JENS: I fell trees. That's my job. I go where Krause tells me
+      and I cut what he marks. That's it.
+
+      But the night shifts... nobody asks about the night shifts.
+    effects: { trust_jens: "+10" }
+    choices:
+      - What night shifts? -> jens_detail
+
+  jens_detail:
+    type: message
+    text: >
+      JENS: Twice a month Krause calls a crew — me, two others — for
+      "special operations." Always at night. Always in the Bannwald.
+      No headlights, no forestry stamps, no paperwork.
+
+      We fell whatever he marks. Old trees, big ones. We load them
+      on the truck and they go straight to the sawmill. Processed
+      before dawn. By morning, those trees are planks with no
+      traceable origin.
+
+      I know it's illegal. I have a family. Krause pays triple for
+      night work. I kept my mouth shut.
+
+      Until Jonas died. Now I can't sleep. Because the night Jonas
+      died, we were in the Bannwald. And Krause got a phone call.
+      He left. Came back an hour later. Said "Problem solved." And
+      we kept cutting.
+    effects:
+      trust_jens: "+15"
+      logging_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to logging thread -> logging_hub
+
+  # --- Maren ---
+
+  maren_interview:
+    type: message
+    text: >
+      MAREN: As environment councillor, I take forest protection
+      seriously. But the Bürgermeister controls the agenda. Klaus
+      Hartmann has blocked every motion I've brought to investigate
+      Schwarzwald-Holz. Every single one.
+
+      Off the record? Klaus's brother-in-law works for
+      Schwarzwald-Holz. The company donates to the volunteer fire
+      brigade, sponsors the Dorffest, pays for the football pitch.
+      They've bought goodwill. And Klaus protects them.
+
+      Jonas came to me with his evidence. I told him to go to the
+      Landratsamt — the district authority — directly. Bypass Klaus
+      entirely. I think that's what got him killed. Someone tipped
+      Schwarzwald-Holz off.
+    effects:
+      trust_maren: "+10"
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to logging thread -> logging_hub
+
+  # --- Schwarzwaldverein ---
+
+  waldverein_investigation:
+    type: tweet
+    from: waldverein
+    text: >
+      HINWEIS: Im Bannwald oberhalb Weilersbach wurden frische
+      Baumfällungen festgestellt. Der Schwarzwaldverein fordert eine
+      sofortige Untersuchung durch das Forstamt.
+    choices:
+      - Check their records -> waldverein_data
+
+  waldverein_data:
+    type: message
+    text: >
+      The Schwarzwaldverein — the local hiking and nature conservation
+      club — has been tracking the Bannwald for years. Their volunteers
+      do monthly tree counts. The data is devastating:
+
+      In the past 18 months, 47 old-growth trees have disappeared from
+      the Bannwald. All oaks and beeches. All in areas accessible by
+      the old charcoal-burner's path — the route Jonas identified.
+
+      The estimated value of the timber: over 400,000 euros.
+
+      The club filed complaints with the Gemeinde. Klaus Hartmann
+      responded that "natural storm damage" was responsible. There
+      were no storms in the relevant periods.
+    effects:
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to logging thread -> logging_hub
+
+  # --- Gerhard timber trade ---
+
+  gerhard_timber:
+    type: message
+    text: >
+      GERHARD: Let me tell you how this works. Old-growth Black Forest
+      oak is some of the most valuable timber in Europe. A single tree
+      can be worth 10,000 to 30,000 euros — for veneer, musical
+      instruments, high-end furniture.
+
+      Schwarzwald-Holz has legitimate contracts for municipal forest.
+      But that timber is worth maybe 200 euros per cubic metre. The
+      Bannwald trees? Ten times that. Maybe more.
+
+      Krause has contacts in Switzerland — timber brokers who don't
+      ask questions. The wood crosses the border, gets new paperwork,
+      and disappears into the luxury market.
+
+      Jonas traced one shipment. A 250-year-old oak from our Bannwald
+      ended up as a boardroom table in Zürich. He had the photos and
+      the grain match to prove it.
+    effects:
+      trust_gerhard: "+10"
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # APPRENTICE OBSESSION THREAD
+  # =====================================================================
+
+  apprentice_hub:
+    type: message
+    text: >
+      THE APPRENTICE THREAD
+
+      Felix Brenner. Apprentice. Devoted student. Something more?
+      Someone was in the workshop that night. Someone ran. Someone
+      took the chisels.
+
+      Apprentice evidence: ${apprentice_evidence}
+    choices:
+      - Check Felix's deleted posts -> felix_posts
+      - Talk to Annika about Felix -> annika_felix
+        when:
+          state: trust_annika
+          gte: 20
+      - Talk to Sophie (more detail on what she saw) -> sophie_detail
+      - Talk to Petra the pharmacist -> petra_interview
+      - Check the anonymous account @tanja_wolf -> tanja_investigation
+      - Talk to Monika the notary -> monika_interview
+        when:
+          state: trust_monika
+          gte: 40
+      - Talk to Hauptkommissar Wendt -> hauptkomm_interview
+        when:
+          state: trust_hauptkomm
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Felix's Deleted Posts ---
+
+  felix_posts:
+    type: message
+    text: >
+      Felix deleted his posts, but cached versions exist in the
+      instance archives. Scrolling back through months:
+
+      Month 1: "Erster Tag in der Werkstatt! Jonas ist der beste
+      Meister den man sich vorstellen kann!"
+      Month 4: "Mein erstes Gesellenstück. Jonas sagt es ist gut.
+      GUT. Nicht perfekt. Ich muss besser werden."
+      Month 8: "Jonas arbeitet schon wieder am Wald-Projekt. Die
+      Werkstatt ist leer ohne ihn."
+      Month 10: "Warum braucht er einen zweiten Lehrling? Bin ich
+      nicht gut genug?"
+      Month 11: "Er hat meine Entwürfe gefunden. Er versteht nicht.
+      Ich hab sie nicht gestohlen. Ich hab sie WEITERENTWICKELT."
+      Month 12 (last post before deletion): "Wenn er mich rausschmeißt
+      ist alles vorbei."
+    effects:
+      apprentice_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to apprentice thread -> apprentice_hub
+
+  # --- Annika on Felix ---
+
+  annika_felix:
+    type: message
+    text: >
+      ANNIKA: Felix scared me, honestly. The way he looked at Jonas —
+      not like a student looks at a teacher. Like a disciple looks at
+      a prophet. He studied Jonas's movements, his habits, his
+      mannerisms. He started dressing like Jonas. Speaking like Jonas.
+
+      Jonas found Felix's sketchbook once. It was full of Jonas's
+      designs — not copies, but obsessive variations. Every page.
+      Hundreds of drawings. All Jonas's work, remixed and claimed.
+
+      When Jonas confronted him, Felix cried and said he couldn't
+      help it. That Jonas's work was "inside him." Jonas felt sorry
+      for the boy. I told him that's not normal. He said "He just
+      needs guidance."
+
+      Guidance. Scheiße. He needed a therapist.
+    effects:
+      trust_annika: "+10"
+      apprentice_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to apprentice thread -> apprentice_hub
+
+  # --- Sophie detail ---
+
+  sophie_detail:
+    type: message
+    text: >
+      SOPHIE: ok krass also. was ich nicht gesagt hab — als felix aus
+      der werkstatt gerannt ist, hab ich auch was gehört. so ein
+      scheppern. wie wenn was umfällt. metall auf holz. laut.
+
+      und felix hat geschrien. nicht worte sondern einfach — geschrien.
+      so ein wutkrampf. dann war's still. dann ist er gerannt.
+
+      und der beutel den er hatte — jetzt wo ich drüber nachdenke —
+      der war lang und schmal. wie eine werkzeugrolle. so wie jonas
+      seine meißel aufbewahrt hat.
+
+      alter ich hab mega schiss. was wenn er — nein. ich will nicht
+      drüber nachdenken.
+    effects:
+      trust_sophie: "+10"
+      apprentice_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to apprentice thread -> apprentice_hub
+
+  # --- Petra ---
+
+  petra_interview:
+    type: message
+    text: >
+      PETRA: This is confidential, but — Felix Brenner has been coming
+      in regularly. He buys things that worry me. Sleep medication,
+      anxiety pills — over-the-counter, but in quantities that aren't
+      healthy. The pattern is someone whose mental state is
+      deteriorating.
+
+      He also asked me two weeks ago about fingerprint-resistant
+      gloves. I said "We have examination gloves, this is a pharmacy."
+      He bought three boxes. At the time I thought nothing of it.
+    effects:
+      trust_petra: "+10"
+      apprentice_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to apprentice thread -> apprentice_hub
+
+  # --- Tanja Wolf (anonymous account) ---
+
+  tanja_investigation:
+    type: tweet
+    from: tanja
+    text: >
+      Er hätte auf mich hören sollen. Ich wollte ihn schützen. Niemand
+      hat sein Werk so verstanden wie ich.
+    choices:
+      - Look at this account's history -> tanja_posts
+
+  tanja_posts:
+    type: message
+    text: >
+      @tanja_wolf: account created 6 months ago. Posts are all about
+      Jonas's work. Comments on every finished piece, every workshop
+      photo, every craft technique. The tone shifts:
+
+      Month 1: "Unglaubliche Handwerkskunst. Du bist der letzte echte
+      Meister."
+      Month 3: "Warum antwortest du nicht? Ich will nur zusammen
+      arbeiten."
+      Month 4: "Ich sehe dich mit der Journalistin. Für den Wald hast
+      du Zeit. Für die Werkstatt nicht."
+      Month 5: "Ich kenne deinen Rhythmus. Ich weiß wann du kommst
+      und gehst. Ich bin immer in der Nähe."
+      Month 6: "Wenn du mich rausschmeißt, nehme ich alles mit was
+      ich gelernt habe. Alles."
+
+      The account has no personal photos. Just Jonas. Only Jonas.
+    effects:
+      apprentice_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> tanja_style
+
+  tanja_style:
+    type: message
+    text: >
+      Comparing @tanja_wolf with @felix_brenner's cached posts:
+
+      Same woodworking terminology — the specific German compound nouns
+      Felix uses. Same misspelling of "Fingerzinken" as "Fingerzingen."
+      Same knowledge of Jonas's workshop schedule that only an
+      apprentice would have.
+
+      And one post from @tanja_wolf: "Dein Stück aus der Schwarzkirsche
+      ist dein bestes." That piece was a private commission. Never posted
+      publicly. Only someone in the workshop would know about it.
+
+      It's Felix. The anonymous account is Felix.
+    effects:
+      apprentice_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to apprentice thread -> apprentice_hub
+
+  # --- Monika ---
+
+  monika_interview:
+    type: message
+    text: >
+      MONIKA: I'm a notary. I handle property and contracts. Jonas came
+      to me a week before he died. He wanted to formally dissolve Felix's
+      apprenticeship contract. He said Felix had violated the terms —
+      copying designs, insubordination, threatening behaviour.
+
+      He also wanted to register his forest evidence with me as a
+      notarised document — a legal timestamp. I prepared the papers.
+      He was supposed to come back and sign them the day after he died.
+
+      The evidence package he described: photos, GPS data, timber
+      analysis, witness statements. All on a USB drive. He said he'd
+      hidden the original "where the wood talks."
+    effects:
+      trust_monika: "+10"
+      evidence_total: "+1"
+    choices:
+      - Where the wood talks? -> monika_clue
+
+  monika_clue:
+    type: message
+    text: >
+      MONIKA: That's what he said. "Where the wood talks." I assumed
+      it was the workshop, but the police already searched there.
+      Jonas was poetic about his craft — "wood talks if you listen,"
+      he always said.
+
+      Maybe it's literal. Maybe it's in a piece of wood.
+
+      His masterpiece — a Black Forest cuckoo clock, hand-carved,
+      in the Gasthaus. He made it for Hilde. It's a working clock.
+      With a hidden compartment. Traditional technique.
+    effects:
+      logging_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Hauptkommissar Wendt ---
+
+  hauptkomm_interview:
+    type: message
+    text: >
+      HAUPTKOMMISSAR WENDT: Off the record — completely off the
+      record — I wanted to investigate this as a suspicious death.
+      My superior at the Kripo told me to close it as an accident.
+      He said there was "insufficient evidence of foul play."
+
+      The scaffolding bolts, the missing laptop, the footprints in
+      sawdust — I documented all of it. I was told those were
+      "consistent with an accident scenario." Scheiße, they're not.
+
+      If you bring me solid evidence — either on the logging or on
+      whoever was in that workshop — I can reopen the case. But it
+      has to be solid. I've already been warned once.
+    effects:
+      trust_hauptkomm: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to apprentice thread -> apprentice_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Jonas Müller than anyone in Weilersbach. Who is responsible?
+    choices:
+      - Confront Felix Brenner (the obsessive apprentice) -> confront_felix
+        when:
+          state: apprentice_evidence
+          gte: 5
+      - Confront Dieter Krause (the logging boss) -> confront_dieter
+        when:
+          state: logging_evidence
+          gte: 3
+      - Confront Bürgermeister Hartmann (political protection) -> confront_klaus
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Felix (Best Ending) ---
+
+  confront_felix:
+    type: message
+    text: >
+      You present your evidence to Felix:
+
+      "I know @tanja_wolf is your account. I know you were in the
+      workshop that night. I know you took the chisels. I know you
+      ran into the forest at 23:00. I have witnesses and I have
+      your deleted posts."
+    choices:
+      - Send -> felix_response
+
+  felix_response:
+    type: message
+    text: >
+      Felix doesn't reply for hours. Then:
+
+      FELIX: Du verstehst das nicht. Jonas war alles für mich. ALLES.
+      Er war der einzige Mensch der je an mich geglaubt hat. Und dann
+      wollte er mich rauswerfen. Einen ZWEITEN Lehrling nehmen. Meine
+      Entwürfe hat er "Diebstahl" genannt.
+
+      Ich bin in die Werkstatt gegangen um zu reden. Es ist eskaliert.
+      Er hat gesagt ich soll gehen. Ich hab das Gerüst geschoben. Ich
+      wollte ihm Angst machen, nicht — ich wollte nicht dass er —
+
+      Die Meißel hab ich mitgenommen. Weil er mir nie eigene gegeben
+      hätte. Das war alles was ich hatte.
+
+      That's not devotion. That's destruction.
+
+      You've already sent the evidence to Hauptkommissar Wendt. And
+      to Nico Falk.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE APPRENTICE
+
+      Three things happen in quick succession.
+
+      Hauptkommissar Wendt reopens the case. With your evidence — the
+      anonymous account, the witness testimonies, the deleted posts,
+      the pharmacist's statement — Felix Brenner is arrested for
+      manslaughter. He confesses. The loosened scaffolding bolts were
+      deliberate. He wanted the scaffolding to collapse when Jonas
+      climbed it — to scare him, he says. Jonas fell. Felix panicked.
+      He took the chisels, deleted his posts, and ran.
+
+      Nico Falk, with the evidence from the hidden compartment in
+      Jonas's cuckoo clock at the Gasthaus, publishes the
+      Schwarzwald-Holz story in the Badische Zeitung. The Forstamt
+      orders an immediate investigation. Dieter Krause faces criminal
+      charges for illegal logging in a protected forest. The Bannwald
+      is placed under emergency conservation.
+
+      And Lena Müller, standing in her brother's empty workshop, opens
+      the clock and finds the USB drive. She uploads everything to
+      Weilersbach.social.
+
+      Jonas's evidence speaks from beyond the workshop floor.
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: lena
+    text: >
+      jonas hat gesagt: holz lügt nicht. er hatte recht. der wald
+      wird geschützt. der mörder meines bruders steht vor gericht.
+      danke an alle die nicht aufgegeben haben.
+
+      ruhe in frieden, großer bruder.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Dieter (Partial Ending) ---
+
+  confront_dieter:
+    type: message
+    text: >
+      You present the logging evidence to Dieter Krause:
+
+      "I have photos of the Bannwald stumps. I have GPS coordinates.
+      I have your worker's confession about night shifts. I have the
+      sawmill records. I have Jonas's timber trace to Switzerland."
+    choices:
+      - Send -> dieter_response
+
+  dieter_response:
+    type: message
+    text: >
+      DIETER: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. Schwarzwald-Holz operates within all
+      applicable forestry regulations.
+
+      But it's too late. You've sent the evidence to Nico, to the
+      Schwarzwaldverein, and to the Forstamt.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE LOGGING BOSS
+
+      The logging story breaks. Schwarzwald-Holz is ordered to halt
+      all operations pending investigation. The Bannwald is placed
+      under emergency protection. Dieter Krause faces criminal
+      charges. The village is divided — jobs versus the forest.
+
+      But Jonas?
+
+      Without the apprentice evidence, Felix is never investigated.
+      He leaves Weilersbach quietly. Moves to another town. Takes
+      up woodworking under a different name. The chisels go with
+      him. Jonas's death remains officially an accident.
+
+      Six months later, Felix takes on an apprentice of his own.
+      A young man, eager, devoted. Felix tells him: "I learned
+      from the best. He gave me everything."
+
+      The forest is saved. But the person who killed Jonas walks
+      free, carrying his stolen legacy.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: lena
+    text: "der wald ist sicher. aber mein bruder hat keine gerechtigkeit. noch nicht."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_klaus:
+    type: message
+    text: >
+      You confront Bürgermeister Hartmann with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> klaus_response
+
+  klaus_response:
+    type: tweet
+    from: uli
+    text: >
+      Mein Mandant nimmt Ihre Anschuldigungen zur Kenntnis. Jede
+      öffentliche Verbreitung verleumderischer Aussagen wird
+      unverzüglich rechtlich verfolgt. — Kanzlei Brandt & Partner,
+      Freiburg
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Hartmann and the illegal logging — and there
+      isn't one beyond political protection — your evidence targets
+      the wrong person.
+
+      Schwarzwald-Holz continues to operate. Felix remains free.
+      The Bannwald continues to shrink, tree by tree, night by night.
+
+      A year later, another old-growth oak falls in silence.
+      Nobody photographs the stump. Nobody even notices.
+
+      And in Jonas's empty workshop, sawdust settles on tools that
+      will never be used again.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: WEILERSBACH — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Logging evidence: ${logging_evidence}
+      Apprentice evidence: ${apprentice_evidence}
+
+      Thank you for playing. Jonas's story explores themes of
+      environmental crime, obsessive devotion, craft and legacy,
+      village silence, and the cost of speaking up.
+
+      If you or someone you know is experiencing stalking, harassment,
+      or threats, help is available:
+      Hilfetelefon Gewalt gegen Frauen: 116 016 (kostenlos, 24/7)
+      Telefonseelsorge: 0800 111 0 111 (kostenlos, 24/7)
+      Polizei Notruf: 110
+      Umweltkriminalität melden: Landesforstverwaltung oder BUND

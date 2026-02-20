@@ -1,0 +1,1642 @@
+# DEAD ACCOUNT — Story 082: Kalkenberg (Netherlands — Limburg)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-082.yml
+#
+# Player investigates the disappearance of young mural painter Jesse van Hoof
+# in the fictional Limburg hill village of Kalkenberg.
+
+meta:
+  title: "Dead Account — Kalkenberg"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_lieke: 0
+    trust_daan: 0
+    trust_evi: 0
+    trust_stijn: 0
+    trust_femke: 0
+    trust_bram: 0
+    trust_noor: 0
+    trust_wim: 0
+    trust_marloes: 0
+    trust_joep: 0
+    trust_thijs: 0
+    trust_sanne: 0
+    trust_pieter: 0
+    trust_anke: 0
+    trust_roel: 0
+    trust_maud: 0
+    trust_lars: 0
+    trust_tessa: 0
+    trust_brigadier: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "net verhuisd naar kalkenberg. heuvels ontdekken een dal per keer"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Kalkenberg.social"
+    description: "Welkom op de community-instance van Kalkenberg, Zuid-Limburg"
+    avatar_url: /gamepatch/assets/dead-account/kalkenberg_bot.png
+
+  npcs:
+    # === Jesse's Inner Circle ===
+    jesse:
+      name: "Jesse van Hoof"
+      bio: "muurschilder | kalkenberg is mijn canvas | de heuvels vertellen verhalen"
+      avatar: avatars/jesse.jpg
+    lieke:
+      name: "Lieke Willems"
+      bio: "jesse's vriendin | verpleegkundige maastricht UMC | ik ga hem vinden"
+      avatar: avatars/lieke.jpg
+    daan:
+      name: "Daan van Hoof"
+      bio: "jesse's broer | elektricien | heerlen | dit is niks voor hem"
+      avatar: avatars/daan.jpg
+    evi:
+      name: "Evi Coenen"
+      bio: "beste vriendin van jesse | keramiste | atelier in de oude mergelgroeve"
+      avatar: avatars/evi.jpg
+
+    # === Local Government ===
+    stijn:
+      name: "Stijn Habets"
+      bio: "Wethouder ruimtelijke ordening | Gemeente Kalkenberg | #KalkenbergGroeit"
+      avatar: avatars/stijn.jpg
+    femke:
+      name: "Femke Dreessen"
+      bio: "Wethouder cultuur & milieu | Gemeente Kalkenberg | erfgoed beschermen"
+      avatar: avatars/femke.jpg
+    gemeente:
+      name: "Gemeente Kalkenberg"
+      bio: "Officieel account | Gemeentenieuws | Ma-Vr 9:00-17:00"
+      avatar: avatars/gemeente.jpg
+
+    # === Local Business & Community ===
+    bram:
+      name: "Bram Janssen"
+      bio: "Café De Heuvel | vlaai | koffie | bier | het hart van kalkenberg sinds 1962"
+      avatar: avatars/bram.jpg
+    cafe_heuvel:
+      name: "Café De Heuvel"
+      bio: "Limburgse vlaai | lokaal bier | livemuziek op vrijdag | het dorpsplein"
+      avatar: avatars/cafe_heuvel.jpg
+    wim:
+      name: "Wim Beckers"
+      bio: "boer | fruitboomgaard | deze heuvels zijn van ons, niet van de grindboeren"
+      avatar: avatars/wim.jpg
+    marloes:
+      name: "Marloes Hendriks"
+      bio: "apotheek kalkenberg | gezondheid & advies | ook op zaterdag open"
+      avatar: avatars/marloes.jpg
+    joep:
+      name: "Joep Meertens"
+      bio: "oud-mijnwerker | gids mergel grotten | 73 jaar | ken elke gang"
+      avatar: avatars/joep.jpg
+    pieter:
+      name: "Pieter Crijns"
+      bio: "bakker | ambachtelijk brood | krentenwegge | elke ochtend om 5 uur"
+      avatar: avatars/pieter.jpg
+    anke:
+      name: "Anke Paulissen"
+      bio: "boekhandel De Kalksteen | boeken & koffie | leesclub op woensdag"
+      avatar: avatars/anke.jpg
+
+    # === Journalist ===
+    roel:
+      name: "Roel Smeets"
+      bio: "journalist | De Limburger freelance | milieu & lokale politiek | tips welkom"
+      avatar: avatars/roel.jpg
+
+    # === Grindwinning (corporate/industrial) ===
+    kalkgrind:
+      name: "KalkGrind BV"
+      bio: "Grindwinning & grondstoffenwinning | Locatie Kalkenberg | ISO gecertificeerd"
+      avatar: avatars/kalkgrind.jpg
+    lars:
+      name: "Lars Vossen"
+      bio: "directeur KalkGrind BV vestiging Kalkenberg | duurzame grondstoffen"
+      avatar: avatars/lars.jpg
+    maud:
+      name: "Maud Scholten"
+      bio: "Advocaat | Scholten & Partners | ondernemingsrecht | Maastricht"
+      avatar: avatars/maud.jpg
+
+    # === Teens ===
+    noor:
+      name: "Noor"
+      bio: "16 | skater | kalkenberg geboren | jesse heeft me leren spuiten sws de goat"
+      avatar: avatars/noor.jpg
+    thijs:
+      name: "Thijs"
+      bio: "17 | mtb & graffiti | de heuvels zijn mijn playground | jesse = legend"
+      avatar: avatars/thijs.jpg
+    sanne:
+      name: "Sanne"
+      bio: "15 | fotografie & tekenen | jesse's murals zijn kunst frr"
+      avatar: avatars/sanne.jpg
+
+    # === Media & Community ===
+    actu_kalkenberg:
+      name: "Kalkenberg Nieuws"
+      bio: "Lokaal nieuws uit Kalkenberg en omgeving | Tips: redactie@kalkenbergnieuws.nl"
+      avatar: avatars/actu_kalkenberg.jpg
+    weer_limburg:
+      name: "Weer Kalkenberg"
+      bio: "Weersverwachting & waarschuwingen | Automatisch station | Elk uur bijgewerkt"
+      avatar: avatars/weer_limburg.jpg
+    erfgoed_limburg:
+      name: "Stichting Heuvelland Erfgoed"
+      bio: "Bescherming mergelgrotten & kalksteenlandschap | Vrijwilligers | Meldpunt"
+      avatar: avatars/erfgoed_limburg.jpg
+
+    # === Suspicious / Other ===
+    tessa:
+      name: "Tessa Kuipers"
+      bio: "grafisch ontwerper | kalkenberg | ik waardeer goed vakmanschap"
+      avatar: avatars/tessa.jpg
+    anon_opdrachtgever:
+      name: "KunstPatron_LB"
+      bio: "."
+      avatar: avatars/anon.jpg
+    brigadier:
+      name: "Brigadier de Graaf"
+      bio: "Politie Kalkenberg | Basisteam Heuvelland | noodgevallen: 112"
+      avatar: avatars/brigadier.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN KALKENBERG
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to kalkenberg.social — the community Mastodon instance for
+      the hill village of Kalkenberg, South Limburg.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @jesse_vanhoof.
+
+      A mural painter. Street artist. He turned Kalkenberg's old limestone
+      walls into canvases — enormous, vivid murals that told the history
+      of the village. People adored him. He hasn't posted in six days.
+    choices:
+      - Look at his profile -> jesse_profile
+
+  jesse_profile:
+    type: tweet
+    from: jesse
+    text: "nieuwe mural bijna af. de mergelgroeve vertelt zijn eigen verhaal. maar iemand wil dat verhaal stilhouden."
+    choices:
+      - That's his last real post... -> grey_wall
+
+  grey_wall:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a grey wall. Blank limestone. No paint, no colour. Posted at 4am.
+      No caption.
+
+      His friends say that's not his style. Jesse never posted without a
+      story. The politie says he probably went travelling. Something
+      doesn't add up.
+    choices:
+      - Read the politie statement -> politie_statement
+      - Look at what people are saying -> community_reaction
+
+  politie_statement:
+    type: tweet
+    from: brigadier
+    text: >
+      Wij hebben een melding ontvangen betreffende een inwoner van
+      Kalkenberg. Op dit moment zijn er geen aanwijzingen voor een
+      misdrijf. Informatie kan worden gedeeld via 0900-8844 of het
+      basisteam.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His girlfriend @lieke_willems is
+      desperate. His brother @daan_vanhoof is driving down from Heerlen.
+      His best friend @evi_coenen is posting worried messages. The old
+      cave guide @joep_meertens says Jesse found something in the
+      tunnels.
+
+      And the journalist @roel_smeets is strangely silent.
+
+      Nobody buys the politie's line. Nobody thinks Jesse just
+      "went travelling."
+    effects: { trust_lieke: "+5", trust_daan: "+5" }
+    choices:
+      - Start following Jesse's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Kalkenberg. Follow Jesse's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Bram (café owner, knows everyone) -> bram_intro
+      - Talk to Wim (farmer, angry about the gravel mining) -> wim_intro
+      - Talk to Noor (teen skater, seems upset) -> noor_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Jesse with the rhythms of a Limburg
+      hill village: weather warnings, the bakery's vlaai of the day,
+      cycling routes through the heuvels.
+
+      Key names surface: Lieke (girlfriend, nurse), Evi (best friend,
+      ceramicist, seems rattled), Roel (journalist, oddly quiet), and
+      the teens — Noor, Thijs, Sanne — who idolised Jesse's street art.
+
+      Also prominent: KalkGrind BV, the gravel mining company at the
+      edge of town. Their posts are corporate PR. Jesse's murals were
+      the opposite — one of them literally depicted a machine eating
+      a hillside.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Bram -> bram_intro
+      - Talk to Wim -> wim_intro
+      - Talk to Noor -> noor_intro
+
+  # --- Bram (social map) ---
+
+  bram_intro:
+    type: tweet
+    from: bram
+    text: >
+      Café is open maar het voelt niet hetzelfde. @jesse_vanhoof, je
+      kruk staat klaar jong. Kom terug.
+    effects: { trust_bram: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Bram -> bram_talk
+
+  bram_talk:
+    type: message
+    text: >
+      BRAM: Ah, nieuw hier? Welkom. Kutmoment om aan te komen. Iedereen
+      is gestrest over Jesse.
+
+      Laat me je even bijpraten. Lieke is zijn vriendin — verpleegkundige
+      in Maastricht, helemaal kapot nu. Evi Coenen is zijn beste vriendin,
+      keramiste, heeft een atelier in de oude mergelgroeve. Daan is Jesse's
+      oudere broer, komt uit Heerlen.
+
+      En Roel Smeets — de journalist — hij en Jesse werkten ergens samen
+      aan. Iets over de grindwinning. Roel heeft niks gezegd sinds Jesse
+      weg is. Dat is niet normaal voor hem.
+
+      Oh ja, en er was iemand die Jesse anoniem opdrachten gaf. Steeds
+      grotere murals, steeds meer geld. Jesse vond het eerst vet maar de
+      laatste weken werd het... raar. Dwingend.
+    effects: { trust_bram: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about the anonymous commissioner -> bram_commissioner
+      - Ask about KalkGrind -> bram_kalkgrind
+      - Thank him and move on -> quest1_hub
+
+  bram_commissioner:
+    type: message
+    text: >
+      BRAM: Ja man, dat was echt creepy. Jesse kreeg berichten via een
+      anoniem account — @KunstPatron_LB — die hem opdrachten gaf. Eerst
+      gewoon: "maak een mural van het dal," "schilder de oude mijn."
+      Betaalde goed.
+
+      Maar de laatste maanden werd het anders. Specifieke eisen. "Ik wil
+      dat je dit gebouw schildert." "Ik wil dat je 's avonds werkt zodat
+      niemand het ziet." En als Jesse nee zei, kwamen er dreigementen.
+      Niet direct, meer zo van... "ik weet waar je atelier is."
+
+      Jesse zei tegen me: "Die gast is niet goed in z'n hoofd." Maar hij
+      bleef het geld aannemen. Kunstenaars moeten ook eten hè.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Ask about KalkGrind -> bram_kalkgrind
+      - Move on -> quest1_hub
+
+  bram_kalkgrind:
+    type: message
+    text: >
+      BRAM: KalkGrind is al tien jaar bezig hier. Ze graven grind en
+      kalksteen. Prima, banen zijn banen. Maar de laatste twee jaar
+      graven ze steeds dieper. De mergelgrotten — die zijn eeuwen oud,
+      cultureel erfgoed — worden aangetast. Scheuren in de wanden,
+      gangen die instorten.
+
+      Jesse schilderde een mural op de Oude Kerkstraat: een graafmachine
+      die de heuvels opvrat, met de woorden "WIE GRAAFT ONS GRAF?"
+
+      Twee weken later was de mural overgeschilderd. Door wie denk je?
+      De gemeente. Wethouder Habets gaf de opdracht persoonlijk. En raad
+      eens wie er in de Raad van Advies van KalkGrind zit? Stijn Habets.
+
+      Godverdomme, het is zo doorzichtig.
+    effects: { trust_bram: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Wim (farmer, witness tease) ---
+
+  wim_intro:
+    type: tweet
+    from: wim
+    text: >
+      veertig jaar dat ik deze heuvels bewerk. de grond trilt nu van de
+      machines. @jesse_vanhoof had gelijk. en nu is hij weg. trek je
+      conclusies.
+    effects: { trust_wim: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Wim -> wim_talk
+
+  wim_talk:
+    type: message
+    text: >
+      WIM: Ik boer hier al m'n hele leven. Appels, peren, kersen. Deze
+      heuvels zijn vruchtbaar, altijd geweest. Maar sinds KalkGrind is
+      begonnen met uitbreiden droogt de grond uit. Ze graven te diep.
+      Het grondwater zakt.
+
+      Jesse maakte foto's in de grotten. Scheuren die er vorig jaar nog
+      niet waren. Hele gangen die zijn ingestort. Hij liet het me zien
+      en ik zei: "Jong, dit is gevaarlijk, niet alleen voor de grotten
+      maar voor het hele dorp."
+
+      Hij zei dat hij bewijs aan het verzamelen was. Samen met die
+      journalist. En toen — poef — weg.
+
+      Denk je dat dat toeval is? Ik geloof niet in toeval.
+    effects: { trust_wim: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> wim_night
+      - Move on -> quest1_hub
+
+  wim_night:
+    type: message
+    text: >
+      WIM: De avond voordat hij verdween — ik was laat op m'n land, de
+      irrigatie checken. Rond middernacht. Ik zag licht in de oude
+      mergelgroeve, bij Jesse's atelier. Niet raar, hij werkte vaak
+      laat. Maar er stond een auto die ik niet kende. Donkere SUV.
+      Geen nummerplaat die ik kon lezen.
+
+      En er was nog iemand. Iemand die op de heuvel stond, richting
+      het atelier keek. Gewoon stond. In het donker. Dat was pas echt
+      tering eng.
+    effects: { trust_wim: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Noor (teen skater, witness tease) ---
+
+  noor_intro:
+    type: tweet
+    from: noor
+    text: >
+      ik ben echt nie oké rn. @jesse_vanhoof is gwn de beste persoon
+      van dit hele kutkdorp en nu is ie weg?? als iemand iets weet
+      sws dm me want dit kan echt nie
+    effects: { trust_noor: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Noor -> noor_talk_early
+
+  noor_talk_early:
+    type: message
+    text: >
+      NOOR: lol wie ben jij? nieuw hier? kanker slecht moment om te
+      komen. jesse is gwn de liefste gast ever. hij leerde ons spuiten
+      — graffiti hè niet drugs lmao — en hij maakte van dit saaie dorp
+      iets moois.
+
+      en nu is ie weg en niemand doet er iets aan. de politie zegt
+      "hij is vast op reis" maar echt nie man. jesse gaat niet zomaar
+      weg zonder iets te zeggen.
+
+      en thijs heeft iets gezien bij het atelier maar hij wil niet
+      praten. hij zegt dat het niks is maar ik ken hem en het is sws
+      niet niks.
+    effects: { trust_noor: "+10" }
+    choices:
+      - What did Thijs see? -> noor_thijs_hint
+      - Move on -> quest1_hub
+
+  noor_thijs_hint:
+    type: message
+    text: >
+      NOOR: weet ik niet precies. hij was aan het mountainbiken bij de
+      groeve en hij zag iemand bij jesse's atelier die er niet hoorde.
+      iemand die gwn fotos stond te maken van het atelier en van jesse's
+      spullen. tering creepy.
+
+      thijs flipte maar hij durft niks te zeggen want die persoon zag
+      hem ook. probeer je eerst chill te doen over fietsen ofzo, anders
+      klapt hij dicht. die gast vertrouwt niemand lol
+    effects: { trust_noor: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Kalkenberg. A Limburg hill village
+      built on limestone and old mining tunnels. A mural painter who
+      was exposing the destruction of the caves. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Lieke (Jesse's girlfriend) -> lieke_q1
+      - Talk to Evi (Jesse's best friend) -> evi_q1
+      - Check what Daan (Jesse's brother) is saying -> daan_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Lieke Q1 ---
+
+  lieke_q1:
+    type: tweet
+    from: lieke
+    text: >
+      als iemand iets weet over @jesse_vanhoof bel me alsjeblieft. zijn
+      atelier is onafgesloten. zijn verf staat er nog. zijn telefoon is
+      uit. hij gaat NOOIT ergens heen zonder zijn telefoon.
+    effects: { trust_lieke: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Lieke -> lieke_q1_talk
+
+  lieke_q1_talk:
+    type: message
+    text: >
+      LIEKE: Ik waardeer het maar ik ken je niet. Jesse heeft veel
+      vrienden hier. Ik weet zeker dat hij terugkomt.
+
+      ...Ik blijf dat zeggen. Ik geloof het zelf niet meer.
+
+      [Lieke is on guard. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_lieke: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Evi Q1 ---
+
+  evi_q1:
+    type: tweet
+    from: evi
+    text: >
+      Jesse's atelier in de groeve is leeg. Zijn schetsen liggen er
+      nog. Zijn nieuwste ontwerp — half af — hangt aan de muur. Hij
+      zou NOOIT een werk onafgemaakt achterlaten. Er is iets gebeurd.
+    effects: { trust_evi: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Evi -> evi_q1_talk
+
+  evi_q1_talk:
+    type: message
+    text: >
+      EVI: Jesse en ik delen dat atelier al drie jaar. Hij is er elke
+      dag. ELKE dag. Ik ken niemand die zo gepassioneerd is.
+
+      De laatste weken was hij gestrest. Die anonieme opdrachtgever
+      stuurde steeds meer berichten. En hij had iets ontdekt in de
+      grotten — scheuren, instortingen, bewijs dat KalkGrind te diep
+      graaft. Hij was er samen met Roel mee bezig.
+
+      Maar er was nog iets. Iemand volgde hem. Hij zei dat hij het
+      gevoel had dat iemand hem in de gaten hield. Ik dacht dat hij
+      paranoia was. Nu weet ik niet meer wat ik moet denken.
+
+      [Evi seems genuine. Or is she hiding something?]
+    effects: { trust_evi: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Daan Q1 ---
+
+  daan_q1:
+    type: tweet
+    from: daan
+    text: >
+      mijn broer is VERDWENEN en de politie zegt dat hij misschien op
+      vakantie is??? HIJ GAAT NIET OP VAKANTIE ZONDER HET TE ZEGGEN.
+      ik kom uit heerlen. iemand gaat me uitleggen wat er is gebeurd.
+    effects: { trust_daan: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Daan -> daan_q1_talk
+
+  daan_q1_talk:
+    type: message
+    text: >
+      DAAN: Wie ben jij? Nog iemand die me gaat vertellen dat ik rustig
+      moet blijven? Jesse belde me de avond voordat hij verdween. Hij
+      zei dat hij iets groots had. Hij zei "als er iets gebeurt, kijk
+      naar KalkGrind." En toen zei hij nog iets — "die opdrachtgever
+      wordt steeds gekker."
+
+      Dat is het laatste wat ik van hem gehoord heb.
+    effects: { trust_daan: "+10" }
+    choices:
+      - What do you think happened? -> daan_theory
+      - Move on -> quest1_hub
+
+  daan_theory:
+    type: message
+    text: >
+      DAAN: Ik denk twee dingen. Één: KalkGrind verwoest de grotten en
+      Jesse had het bewijs. Die willen hem stil hebben. En twee: die
+      anonieme opdrachtgever is een gestoord persoon die geobsedeerd is
+      met Jesse's kunst.
+
+      Jesse vertelde me maanden geleden dat die persoon wist waar hij
+      woonde, waar hij werkte, welke routes hij fietste. Dat is geen
+      normaal opdrachtgeverschap. Dat is stalking.
+
+      En weet je wat me het meest bang maakt? Jesse zei: "Die gast kent
+      details die ik nooit online heb gezet."
+    effects: { trust_daan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Jesse went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Thijs (was mountain biking near the quarry) -> thijs_interview
+      - Find Joep (cave guide, heard something underground) -> joep_interview
+      - Find Pieter (baker, starts at 5am, saw something) -> pieter_interview
+      - Find Wim (farmer, was checking irrigation late) -> wim_interview_q2
+
+  # --- Thijs (saw someone photographing the studio) ---
+
+  thijs_interview:
+    type: tweet
+    from: thijs
+    text: >
+      tering goede session vandaag maar de vibe bij de groeve is gwn
+      niet chill meer. idk man er klopt iets niet daar
+    effects: { trust_thijs: "+5" }
+    choices:
+      - Ask Thijs about that evening -> thijs_talk
+
+  thijs_talk:
+    type: message
+    text: >
+      THIJS: oké maar je zegt dit tegen niemand hè. ik was aan het
+      biken bij de groeve rond 18u en ik zag iemand bij jesse's
+      atelier. niet jesse zelf, iemand anders. die persoon maakte
+      foto's. van alles — de deur, de ramen, jesse's schetsen die
+      buiten hingen.
+
+      en toen pakte die gast een sleutel en ging NAAR BINNEN. alsof
+      ie er gwn hoorde. ik schrok me kanker dood maar ik durfde niks
+      te zeggen want die persoon keek mijn kant op.
+
+      het was een vrouw. kort haar. ik kende haar niet maar ze leek
+      echt nie normaal. wie doet dat sws. gwn iemands atelier
+      binnenlopen.
+    effects:
+      trust_thijs: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Joep (cave guide, heard confrontation underground) ---
+
+  joep_interview:
+    type: tweet
+    from: joep
+    text: >
+      Vijftig jaar geef ik rondleidingen in de mergelgrotten. Ze zijn
+      nooit zo onstabiel geweest als nu. En wat ik gisteravond hoorde
+      in gang 7 was geen echo.
+    effects: { trust_joep: "+5" }
+    choices:
+      - Ask Joep what he heard -> joep_talk
+
+  joep_talk:
+    type: message
+    text: >
+      JOEP: Ik maak elke avond een rondje door de grotten. Veiligheid
+      checken — nieuwe scheuren, instortingsgevaar. Rond 22 uur was
+      ik in gang 7, vlakbij waar Jesse zijn atelier heeft.
+
+      Ik hoorde stemmen. Luid. Een man en een vrouw. De man was Jesse,
+      die stem herken ik overal. Hij schreeuwde: "Laat me met rust!
+      Ik werk niet meer voor je!"
+
+      De vrouw zei iets wat ik niet kon verstaan. Toen hoorde ik
+      een klap. Alsof iemand iets liet vallen. Of iemand viel.
+
+      Daarna stilte. Ik riep maar niemand antwoordde. De volgende
+      ochtend was Jesse weg.
+    effects:
+      trust_joep: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Pieter (baker, saw car at dawn) ---
+
+  pieter_interview:
+    type: tweet
+    from: pieter
+    text: >
+      Brood gebakken om 5 uur zoals altijd. Maar die ochtend reed er
+      iemand veel te hard over de Dalweg. Midden in de nacht.
+    effects: { trust_pieter: "+5" }
+    choices:
+      - Ask Pieter what he saw -> pieter_talk
+
+  pieter_talk:
+    type: message
+    text: >
+      PIETER: Ik begin elke dag om 5 uur. Die ochtend deed ik de luiken
+      open en er scheurde een auto voorbij — veel te hard voor de
+      Dalweg. Donkere SUV. En misschien vijf minuten later een tweede
+      auto. Kleiner. Leek op Jesse's oude Polo.
+
+      De SUV ging richting de snelweg. De Polo ging richting de
+      mergelgrotten. Of eigenlijk... de Polo stopte halverwege. Ik
+      zag de lichten uitgaan bij de Oude Kalkoven.
+
+      Ik heb het aan de politie verteld. Ze schreven het op. Dat was
+      het.
+    effects:
+      trust_pieter: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Wim Q2 (saw someone watching the studio) ---
+
+  wim_interview_q2:
+    type: tweet
+    from: wim
+    text: >
+      weer een nacht zonder slapen. als ik mijn ogen dichtdoe zie ik
+      dat licht bij de groeve. had ik maar iets gedaan.
+    effects: { trust_wim: "+5" }
+    choices:
+      - Ask Wim for more detail -> wim_talk_q2
+
+  wim_talk_q2:
+    type: message
+    text: >
+      WIM: Ik vertelde je al over die avond. Maar er is meer. Die
+      persoon op de heuvel die naar het atelier keek — ik ben
+      dichterbij gegaan. Het was een vrouw. Ze had een camera.
+      Niet een telefoon, een echte camera met telelens. Ze was
+      Jesse aan het fotograferen terwijl hij werkte.
+
+      Toen ze mij zag, rende ze weg richting de parkeerplaats bij
+      de groeve. Ik hoorde een auto starten. Geen kenteken gezien,
+      te donker.
+
+      Maar ik zag wel iets. Op haar jas zat een badge. Iets met
+      een logo. Ik kon het niet lezen maar het was groen en wit.
+    effects:
+      trust_wim: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Lieke (girlfriend)
+      and Sanne (saw something at Jesse's flat).
+    choices:
+      - Talk to Lieke about that night -> lieke_interview
+      - Talk to Sanne -> sanne_interview
+      - Find Thijs -> thijs_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Joep -> joep_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Pieter -> pieter_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Wim -> wim_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Lieke (last to see Jesse) ---
+
+  lieke_interview:
+    type: tweet
+    from: lieke
+    text: >
+      die foto op jesse's account. dat is hij niet. jesse post nooit
+      zonder tekst. jesse post niet om 4 uur 's nachts. iemand anders
+      heeft dat gedaan.
+    effects: { trust_lieke: "+5" }
+    choices:
+      - DM Lieke -> lieke_talk_low
+        when:
+          state: trust_lieke
+          lt: 50
+      - DM Lieke -> lieke_talk_high
+        when:
+          state: trust_lieke
+          gte: 50
+
+  lieke_talk_low:
+    type: message
+    text: >
+      LIEKE: Ik waardeer je bezorgdheid maar ik wil nu echt niet met
+      vreemden praten hierover.
+
+      [Lieke needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_lieke: "+5" }
+    choices:
+      - Share what you've learned about the night -> lieke_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  lieke_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the person at the studio, the
+      voices underground, the cars in the night. Lieke is silent for
+      a while.
+
+      LIEKE: Je probeert hem echt te vinden. Oké. Ik praat.
+    effects: { trust_lieke: "+25" }
+    choices:
+      - What happened that night? -> lieke_talk_high
+
+  lieke_talk_high:
+    type: message
+    text: >
+      LIEKE: Hij kwam rond 23 uur thuis. Ik had nachtdienst dus ik
+      was me aan het klaarmaken. Hij was bleek, trilde. Hij zei "ze
+      weten wat ik heb." Hij pakte zijn laptop en zijn harde schijven
+      met foto's.
+
+      Ik vroeg wie. Hij zei "KalkGrind. Ze hebben iemand gestuurd."
+      Toen zei hij nog iets — "en zij was er ook weer. Ze is er
+      altijd."
+
+      Hij wilde niet zeggen wie "zij" was. Hij omhelsde me, zei
+      "maak je geen zorgen," en vertrok met een tas. Dat was het.
+      De volgende ochtend was zijn auto weg en stond die grijze
+      foto op zijn account.
+    effects:
+      trust_lieke: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sanne (saw someone watching Jesse's flat) ---
+
+  sanne_interview:
+    type: message
+    text: >
+      SANNE: oké dit klinkt echt creepy maar ik heb het gezien. er
+      was iemand — een vrouw — die 's avonds voor jesse's flat stond.
+      gewoon staan kijken naar de ramen. drie keer in de laatste
+      maand.
+
+      de laatste keer was twee dagen voor hij verdween. ze zat in
+      een auto aan de overkant. motor uit. lichten uit. gewoon
+      zitten staren.
+
+      ik ken haar niet maar ze had kort donker haar en ze droeg altijd
+      dezelfde groene jas. tering eng man. wie doet zoiets sws.
+    effects:
+      trust_sanne: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      18:00 — Unknown woman enters Jesse's studio with a key, photographs everything (Thijs)
+      20:00 — Woman with camera watching Jesse's studio from the hill (Wim)
+      22:00 — Loud argument underground — Jesse and a woman. A crash. Silence. (Joep)
+      23:00 — Jesse arrives home, shaken, grabs laptop and drives (Lieke)
+      05:00 — SUV speeding toward highway, Jesse's Polo stops at Oude Kalkoven (Pieter)
+
+      KalkGrind sent someone to confront Jesse. He fled home, grabbed his
+      evidence, and ran. Someone chased him.
+
+      But there are two threats: the mining company AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is KalkGrind hiding? Who ordered the
+        confrontation? Why is the wethouder involved?
+      — The obsession: Who is the anonymous commissioner? Why does she
+        have a key to Jesse's studio? Why is she watching him?
+    choices:
+      - Investigate the mining cover-up -> corruption_hub
+      - Investigate the anonymous commissioner -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      KalkGrind is hiding something. Jesse had proof the gravel mining
+      was destroying the limestone caves. Now he's gone and his evidence
+      is missing from the studio.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search Jesse's studio records -> studio_records
+      - Talk to Roel the journalist -> roel_interview
+      - Talk to Femke (culture & environment wethouder) -> femke_interview
+      - Check the Heuvelland Erfgoed foundation -> erfgoed_investigation
+      - Talk to Joep about the cave damage -> joep_caves
+      - Investigate wethouder Habets -> habets_investigation
+      - Back to hub -> investigation_hub
+
+  # --- Studio Records ---
+
+  studio_records:
+    type: message
+    text: >
+      Jesse's studio in the old quarry is partly accessible. His public
+      portfolio shows his recent work: murals documenting Kalkenberg's
+      history. But his sketchbook — left open on his desk — tells a
+      different story.
+
+      Pages of diagrams. Cross-sections of the limestone caves. Red marks
+      where new cracks have appeared. Annotations: "KalkGrind blast zone
+      expanding south — gallery 4 at risk." "Water table dropping 2m in
+      six months." "Illegal depth — exceeds permit by 15 meters."
+
+      The last page: a photograph taped in. The wethouder Stijn Habets
+      shaking hands with Lars Vossen at what looks like a private dinner.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Roel ---
+
+  roel_interview:
+    type: message
+    text: >
+      ROEL: Ik praat niet over bronnen. Punt.
+    effects: { trust_roel: "+5" }
+    choices:
+      - Show Roel the evidence you have -> roel_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  roel_with_evidence:
+    type: message
+    text: >
+      ROEL: ...je hebt meer dan ik dacht.
+
+      Oké. Jesse en ik werkten samen. Hij had foto's van de grotten —
+      schade die KalkGrind veroorzaakt maar niet rapporteert. Hij had
+      meetgegevens die bewezen dat ze dieper graven dan hun vergunning
+      toestaat. En hij had die foto van Habets en Vossen samen.
+
+      We zouden het samen publiceren. Toen werd Jesse stil. En twee
+      dagen later is er ingebroken in mijn auto. Mijn laptop gestolen.
+
+      Jesse leeft. Hij heeft me één keer gebeld, vanaf een prepaid
+      telefoon. Hij zei dat hij ondergedoken zit. Hij zei "ze hebben
+      me bedreigd bij het atelier en die ander laat me niet met rust."
+
+      Ik kan niet zeggen waar hij is. Maar met genoeg bewijs kan ik
+      publiceren en is het veilig voor hem om terug te komen.
+    effects:
+      trust_roel: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> roel_hint
+      - Back to investigation hub -> investigation_hub
+
+  roel_hint:
+    type: message
+    text: >
+      ROEL: KalkGrind stuurde hun directeur — Vossen — en een advocaat
+      naar het atelier die avond. Ze zeiden tegen Jesse dat hij alles
+      moest inleveren of juridische gevolgen zou ondervinden.
+      Intimidatie verpakt als juridisch proces.
+
+      Maar hij zei ook iets over iemand anders. Iemand die zijn
+      bestanden had bekeken. Iemand die altijd leek te weten waar
+      hij was. Dat is een ander probleem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Femke (environment wethouder) ---
+
+  femke_interview:
+    type: message
+    text: >
+      FEMKE: Als wethouder milieu neem ik deze beschuldigingen serieus.
+      Maar KalkGrind geeft werk aan 150 mensen in deze gemeente. De
+      burgemeester houdt vast aan "dialoog."
+
+      Tussen ons? Ik heb de inspectierapporten van de provincie gezien.
+      KalkGrind slaagt elke keer. Maar die inspecties worden twee weken
+      van tevoren aangekondigd. Ze ruimen op voor de inspecteurs komen.
+
+      Jesse had onaangekondigde data. Dáár zit het gevaar.
+
+      En mijn collega Habets — ik zeg niet dat hij corrupt is. Maar
+      hij heeft net een nieuw huis gekocht. En zijn salaris als
+      wethouder kan dat niet verklaren. Godverdomme, trek je eigen
+      conclusies.
+    effects:
+      trust_femke: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Heuvelland Erfgoed ---
+
+  erfgoed_investigation:
+    type: tweet
+    from: erfgoed_limburg
+    text: >
+      ALERT: Nieuwe instorting gemeld in mergelgang 12, nabij de
+      KalkGrind-locatie. Foto's en metingen worden uitgevoerd. Wij
+      eisen een onaangekondigde inspectie van de groeve.
+    choices:
+      - Check their data -> erfgoed_data
+
+  erfgoed_data:
+    type: message
+    text: >
+      Stichting Heuvelland Erfgoed heeft drie jaar lang de toestand
+      van de mergelgrotten gedocumenteerd. Hun data toont een duidelijk
+      patroon: scheuren en instortingen die corresponderen met het
+      boorschema van KalkGrind. Meer schade op werkdagen, minder in
+      het weekend. Meer als er gesprengd wordt, minder in rustperiodes.
+
+      Het patroon is onmiskenbaar. Dit is voortdurende, opzettelijke
+      vernieling van cultureel erfgoed door illegale diepe winning.
+
+      Jesse was vrijwilliger. Hij maakte het meeste fotografische
+      materiaal.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Joep caves ---
+
+  joep_caves:
+    type: message
+    text: >
+      JOEP: Kom mee, ik laat je iets zien. Vijftig jaar geef ik
+      rondleidingen. Ik ken elke gang, elke steen. En dit — dit is
+      nieuw.
+
+      Hij wijst naar een scheur in de wand, twee meter lang, die
+      dwars door een middeleeuws houtskooltekening loopt.
+
+      JOEP: Vorige maand was die scheur er niet. KalkGrind heeft
+      gesprengd en de trillingen hebben dit gedaan. Zeshonderd jaar
+      oude tekeningen, verwoest. Jesse fotografeerde dit alles. Hij
+      noemde het "de moord op het geheugen."
+
+      En weet je wat het ergste is? Ik heb een document gevonden in
+      het gemeentearchief. De oorspronkelijke vergunning staat
+      winning toe tot 40 meter diep. KalkGrind zit op 55 meter.
+      Illegaal. En wethouder Habets heeft de handhavingsrapporten
+      laten verdwijnen.
+    effects:
+      trust_joep: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Habets investigation ---
+
+  habets_investigation:
+    type: message
+    text: >
+      Digging into wethouder Stijn Habets. Public records show:
+
+      — Appointed wethouder ruimtelijke ordening three years ago.
+      — KalkGrind expanded its permit application two years ago. Habets
+        signed the approval.
+      — Habets sits on the "Raad van Advies" of KalkGrind BV. This is
+        listed in small print on the company's annual report.
+      — Property records: Habets bought a villa in Valkenburg last year
+        for €680,000. His declared income as wethouder: €62,000/year.
+      — Jesse's anti-mining mural on Oude Kerkstraat was removed by
+        municipal order. Signed: S. Habets.
+
+      The picture is clear. Habets is profiting from KalkGrind while
+      using his position to silence opposition.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      The anonymous commissioner. @KunstPatron_LB. Started as an art
+      patron. Became something else. Someone has a key to Jesse's studio.
+      Someone is watching him. Someone is photographing his life.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate the anonymous account -> anon_investigation
+      - Talk to Lieke about the commissioner -> lieke_commissioner
+        when:
+          state: trust_lieke
+          gte: 20
+      - Talk to Thijs (more detail on the woman at the studio) -> thijs_detail
+      - Talk to Marloes the pharmacist -> marloes_interview
+      - Check Tessa Kuipers (graphic designer, new in town) -> tessa_investigation
+      - Talk to Anke the bookseller -> anke_interview
+        when:
+          state: trust_anke
+          gte: 40
+      - Talk to Brigadier de Graaf -> brigadier_interview
+        when:
+          state: trust_brigadier
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Anonymous Account ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_opdrachtgever
+    text: >
+      Echte kunst verdient een beschermheer. Hij begrijpt het niet.
+      Maar dat komt nog.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @KunstPatron_LB: account aangemaakt 10 maanden geleden. Posts
+      gaan uitsluitend over Jesse's werk. Reacties op elke mural,
+      elke schets, elke update. De toon verschuift over tijd:
+
+      Maand 1: "Prachtig werk. Je hebt een zeldzaam talent."
+      Maand 3: "Waarom reageer je niet op mijn berichten? Ik wil
+      alleen samenwerken."
+      Maand 6: "Ik heb je atelier bezocht terwijl je weg was.
+      Je nieuwe werk is adembenemend."
+      Maand 8: "Ik ken je schema. Ik weet waar je bent. Je kunt
+      me niet negeren."
+      Maand 9: "Als je niet voor mij schildert, schilder je voor
+      niemand."
+
+      Het account heeft geen foto's, geen persoonlijke details.
+      Alleen Jesse. Altijd Jesse.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Analyze the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @KunstPatron_LB with public accounts in Kalkenberg:
+
+      The writing is formal, carefully composed. Uses art terminology
+      that suggests professional training — "chiaroscuro," "negative
+      space," "gestural quality." Not a casual art fan.
+
+      One post stands out: "Je ontwerp voor de Kalkoven-mural is
+      beter dan wat je Evi hebt laten zien." The Kalkoven sketch was
+      in Jesse's private sketchbook. Not posted online. Not shown to
+      anyone except...
+
+      Someone who had access to the studio.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Lieke on the commissioner ---
+
+  lieke_commissioner:
+    type: message
+    text: >
+      LIEKE: Die anonieme opdrachtgever? Die maakte Jesse gek. Het
+      begon leuk — goed betaalde opdrachten, iemand die zijn kunst
+      waardeerde. Maar het werd dwingend.
+
+      Jesse moest op specifieke tijden werken. Specifieke plekken
+      schilderen. En als hij nee zei kwamen er berichten die...
+      persoonlijk waren. "Ik zag je gisteren bij Café De Heuvel."
+      "Mooie trui vandaag."
+
+      Hij voelde zich bespied. Twee maanden geleden vond hij dat
+      iemand in zijn atelier was geweest terwijl hij weg was.
+      Dingen waren verplaatst. Zijn schetsenboek lag open op een
+      andere pagina.
+
+      En vorige maand vond hij een camera. Een tering kleine camera,
+      verstopt in een ventilatierooster in het atelier. Iemand
+      keek mee.
+    effects:
+      trust_lieke: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Thijs detail ---
+
+  thijs_detail:
+    type: message
+    text: >
+      THIJS: oké man ik heb niet alles gezegd. die vrouw bij het
+      atelier — toen ze naar buiten kwam had ze iets bij zich. een
+      map. zo'n dikke map met tekeningen erin. en ze had een usb
+      stick in haar hand.
+
+      ze liep naar haar auto — een grijze Audi, best nieuw — en ik
+      zag iets op de achterbank liggen. printen. van jesse's murals.
+      tientallen printen. alsof ze elke mural had gefotografeerd en
+      uitgeprint.
+
+      en er lag nog iets. een plattegrond. van kalkenberg. met
+      rondjes erop. ik kon het niet goed zien maar het leken plekken
+      waar jesse vaak kwam.
+
+      tering creepy sws. ik had de politie moeten bellen maar ja.
+      kanker bang was ik.
+    effects:
+      trust_thijs: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marloes ---
+
+  marloes_interview:
+    type: message
+    text: >
+      MARLOES: Dit is vertrouwelijk maar ik ben apotheker, geen
+      priester. Er is een vrouw die hier regelmatig komt. Tessa
+      Kuipers. Ze koopt dingen die... wijzen op slaapproblemen.
+      Slaapmiddelen, kalmerende middelen, energiesupplementen.
+      Het patroon van iemand onder extreme stress.
+
+      Ze vroeg me ook een keer, heel terloops, of wij GPS-trackers
+      verkochten. Ik zei "dit is een apotheek, geen Mediamarkt."
+      Ze lachte het weg.
+
+      En nog iets — ze kocht een keer een sleutelkopie-set. Zo'n
+      doe-het-zelf pakket. Dat verkopen we normaal niet maar ze
+      bestelde het speciaal.
+    effects:
+      trust_marloes: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Tessa investigation ---
+
+  tessa_investigation:
+    type: message
+    text: >
+      Tessa Kuipers. Grafisch ontwerper. Verhuisd naar Kalkenberg
+      11 maanden geleden — één maand voor het @KunstPatron_LB
+      account werd aangemaakt.
+
+      Haar online portfolio toont professioneel grafisch werk.
+      Maar haar persoonlijke blog — half verborgen op haar website —
+      bevat pagina's over straatkunst. Over muralisme. Over de
+      "spirituele band tussen kunstenaar en beschermheer."
+
+      Eén blogpost, zes maanden oud: "Ik heb de perfecte kunstenaar
+      gevonden. Hij weet het nog niet. Maar ik zal zijn werk naar
+      een hoger niveau tillen. Of het nu wil of niet."
+
+      The green-and-white badge Wim saw? Tessa's company logo.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Dig deeper into Tessa -> tessa_deeper
+
+  tessa_deeper:
+    type: message
+    text: >
+      More digging reveals a pattern. Before Kalkenberg, Tessa lived
+      in Nijmegen. A local street artist there — Kevin Blom — filed
+      a police report 18 months ago. Stalking. Unwanted contact.
+      Breaking into his workspace. The case was dropped when Kevin
+      moved to Berlin.
+
+      Before Nijmegen: Groningen. Another artist. Another police
+      report. Same pattern.
+
+      Tessa Kuipers doesn't commission art. She latches onto artists.
+      Studies them. Infiltrates their lives. And when they try to
+      leave, she can't let go.
+
+      She moved to Kalkenberg for Jesse. She built her life around
+      his.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anke ---
+
+  anke_interview:
+    type: message
+    text: >
+      ANKE: Jesse heeft iets bij mij achtergelaten. Een waterdichte
+      koffer. Hij zei: "als iemand vraagt naar de grotten, geef ze
+      dit."
+
+      Hij was bang. Hij zei dat hij kopieën had gemaakt van alles
+      maar dat hij een set nodig had buiten zijn studio, ergens
+      waar niemand zou zoeken. Een boekwinkel leek perfect.
+    effects: { trust_anke: "+10" }
+    choices:
+      - What's in the caves? -> anke_case
+
+  anke_case:
+    type: message
+    text: >
+      Anke bukt achter de toonbank en haalt een waterdichte Pelican
+      koffer tevoorschijn.
+
+      ANKE: Hij zei dat je zou komen. Neem het mee.
+
+      Erin: een USB-stick en een set geprinte foto's. De foto's tonen
+      de schade aan de mergelgrotten — ingestorte gangen, gebarsten
+      wanden, verwoeste middeleeuwse tekeningen. De USB bevat
+      meetgegevens, geologische analyses, en Jesse's gedetailleerde
+      rapport over illegale diepe winning door KalkGrind.
+
+      En een document: de oorspronkelijke vergunning naast de
+      werkelijke boordieptes. Het verschil is schokkend.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Brigadier de Graaf ---
+
+  brigadier_interview:
+    type: message
+    text: >
+      BRIGADIER DE GRAAF: Niet officieel — en ik meen het, volledig
+      niet officieel — ik wilde KalkGrind onderzoeken. Mijn
+      leidinggevende zei dat ik moest stoppen. Hij zei dat de provincie
+      "jurisdictie" had. Dat is code voor "blijf ervanaf."
+
+      De stalking-situatie is anders. Daar wist ik niks van tot nu.
+      Als je bewijs hebt van stalking kan ik daar mee aan de slag.
+      Dat is duidelijk mijn jurisdictie.
+
+      Breng me iets stevigs en ik heropen de zaak.
+    effects:
+      trust_brigadier: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Jesse than anyone in Kalkenberg. Who is responsible?
+    choices:
+      - Confront Tessa Kuipers (the obsessive commissioner) -> confront_tessa
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Lars Vossen (the KalkGrind director) -> confront_lars
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Wethouder Habets (political protection) -> confront_habets
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Tessa (Best Ending) ---
+
+  confront_tessa:
+    type: message
+    text: >
+      You present your evidence to Tessa:
+
+      "Ik weet dat @KunstPatron_LB jouw account is. Ik weet dat je
+      een sleutel hebt laten namaken voor Jesse's atelier. Ik weet dat
+      je een camera in zijn studio hebt verstopt. Ik weet dat je hem
+      volgde, fotografeerde, zijn leven in kaart bracht. En ik weet
+      dat je dit eerder hebt gedaan — in Nijmegen en in Groningen.
+
+      Ik heb getuigen en ik heb het bewijs."
+    choices:
+      - Send -> tessa_response
+
+  tessa_response:
+    type: message
+    text: >
+      Tessa reageert niet meteen. Dan:
+
+      TESSA: Je begrijpt het niet. Ik was zijn beschermheer. Zijn
+      kunst heeft iemand nodig die het begrijpt, die het beschermt.
+      Hij was in gevaar door KalkGrind en hij wilde mijn hulp niet
+      aannemen. Ik moest dichtbij blijven. Alles wat ik deed was
+      omdat ik om zijn kunst geef. Om hem.
+
+      Dat is geen zorg. Dat is obsessie.
+
+      Je hebt het bewijs al naar Brigadier de Graaf gestuurd. En
+      naar Roel Smeets.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Brigadier de Graaf heropent de zaak. Met jouw bewijs — het
+      anonieme account, de verborgen camera, de nagekaakte sleutel,
+      de getuigenverklaringen, het patroon uit Nijmegen en Groningen
+      — wordt Tessa Kuipers aangehouden voor stalking en bedreiging.
+      In haar appartement vindt de politie een muur vol foto's van
+      Jesse. Honderden. Sommige genomen door ramen.
+
+      Roel Smeets publiceert het KalkGrind-verhaal in De Limburger.
+      De provincie gelast een onaangekondigde inspectie. De groeve
+      wordt gesloten hangende milieuonderzoek. Lars Vossen wordt
+      vervolgd voor illegale winning. Wethouder Habets treedt af
+      wanneer zijn financiële banden met KalkGrind openbaar worden.
+
+      En Jesse van Hoof, die het artikel leest vanuit het huis van
+      een vriend in Maastricht, belt zijn broer voor het eerst in
+      negen dagen.
+
+      "Ik kom naar huis."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: jesse
+    text: >
+      de heuvels staan er nog. de grotten ademen weer. en kalkenberg
+      heeft zijn verhalen terug. dank voor het niet opgeven.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Lars Vossen (Partial Ending) ---
+
+  confront_lars:
+    type: message
+    text: >
+      You present the mining evidence to Lars Vossen:
+
+      "Ik heb foto's van de schade aan de mergelgrotten. Ik heb
+      metingen die bewijzen dat jullie 15 meter dieper graven dan
+      de vergunning toestaat. Ik heb de originele inspectierapporten.
+      Ik heb het document dat wethouder Habets de handhaving heeft
+      tegengehouden."
+    choices:
+      - Send -> lars_response
+
+  lars_response:
+    type: message
+    text: >
+      LARS: Dit gesprek wordt doorgestuurd naar onze juridische
+      afdeling. Elke publicatie van lasterlijk materiaal zal
+      onmiddellijk juridisch worden beantwoord. KalkGrind BV
+      opereert binnen alle geldende regelgeving.
+
+      Maar het is te laat. Je hebt het bewijs naar Roel, naar de
+      Stichting Heuvelland Erfgoed, en naar de provincie gestuurd.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      Het grindwinning-verhaal breekt. KalkGrind krijgt een bevel
+      tot stillegging hangende onderzoek. De groeve sluit misschien
+      voorgoed. Honderdvijftig banen hangen in de balans. Het dorp
+      is verdeeld.
+
+      Maar Jesse?
+
+      Zonder het stalking-bewijs wordt Tessa nooit onderzocht. Ze
+      verhuist stilletjes naar een ander dorp. Ze vindt een andere
+      kunstenaar. Ze maakt een nieuw anoniem account. Het patroon
+      herhaalt zich.
+
+      Drie maanden later leest Jesse over KalkGrind online. Hij
+      keert stil terug. Hij verhuist zijn atelier. Hij werkt niet
+      meer 's avonds. Hij checkt elke ochtend of iemand hem volgt.
+
+      De corporatie is ontmaskerd. Maar de persoon die Jesse
+      terroriseerde loopt vrij rond.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: jesse
+    text: "ik ben terug. de heuvels zijn veilig. de rest... we zien wel."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Wethouder Habets (Wrong Ending) ---
+
+  confront_habets:
+    type: message
+    text: >
+      You confront wethouder Habets with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> habets_response
+
+  habets_response:
+    type: tweet
+    from: maud
+    text: >
+      Mijn cliënt neemt kennis van uw beschuldigingen. Elke publieke
+      verspreiding van lasterlijke uitspraken zal onmiddellijk
+      juridisch worden vervolgd. — Scholten & Partners, Maastricht
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      De advocaat van de wethouder begraaft je beschuldiging. Zonder
+      direct bewijs van persoonlijke verrijking door Habets — en dat
+      heb je niet los van de politieke bescherming — is je bewijs
+      onvoldoende.
+
+      KalkGrind blijft opereren. Tessa blijft kijken. Jesse blijft
+      ondergedoken.
+
+      Zes maanden later maakt @KunstPatron_LB een nieuw account aan.
+      Het volgt Jesse's broer.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: KALKENBERG — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Jesse's story explores themes of
+      corporate greed, environmental destruction, obsessive behaviour,
+      the erasure of cultural heritage, and community solidarity.
+
+      If you or someone you know is experiencing stalking,
+      harassment, or mental health difficulties, help is available:
+      113 Zelfmoordpreventie: 113
+      Slachtofferhulp Nederland: 0900-0101
+      Politie (niet-spoed): 0900-8844

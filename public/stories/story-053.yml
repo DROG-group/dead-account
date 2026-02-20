@@ -1,0 +1,1601 @@
+# DEAD ACCOUNT — Story 053: Bran Vechi (Romania, Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-053.yml
+#
+# Player investigates the disappearance of folk weaver Maria Ionescu
+# in the fictional Transylvanian village of Bran Vechi.
+
+meta:
+  title: "Dead Account — Bran Vechi"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_anca: 0
+    trust_radu: 0
+    trust_elena: 0
+    trust_gheorghe: 0
+    trust_dana: 0
+    trust_mihai: 0
+    trust_cristina: 0
+    trust_florin: 0
+    trust_vasile: 0
+    trust_luminita: 0
+    trust_bogdan: 0
+    trust_petru: 0
+    trust_ioana: 0
+    trust_stefan: 0
+    trust_adrian: 0
+    trust_doina: 0
+    trust_liviu: 0
+    trust_sergiu: 0
+    trust_andrei: 0
+    trust_marta: 0
+    trust_comisar: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "m-am mutat recent in bran vechi. descopar carpatii pas cu pas"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "BranVechi.social"
+    description: "Bine ati venit pe instanta comunitara a satului Bran Vechi"
+    avatar_url: /gamepatch/assets/dead-account/branvechi_bot.png
+
+  npcs:
+    # === Maria's Inner Circle ===
+    maria:
+      name: "Maria Ionescu"
+      bio: "tesatoare | arta textila traditionala | carpatii sunt in fiecare fir"
+      avatar: avatars/maria.jpg
+    anca:
+      name: "Anca Popescu"
+      bio: "cea mai buna prietena a Mariei | profesoara la scoala din sat | ceai si povesti"
+      avatar: avatars/anca.jpg
+    radu:
+      name: "Radu Ionescu"
+      bio: "fratele Mariei | cioban pe munte | brasov | nu cred ca a plecat singura"
+      avatar: avatars/radu.jpg
+    elena:
+      name: "Elena Dragomir"
+      bio: "ucenita Mariei la tesut | 22 ani | vreau sa pastrez traditia vie"
+      avatar: avatars/elena.jpg
+
+    # === Local Government ===
+    gheorghe:
+      name: "Gheorghe Moldovan"
+      bio: "Primar al satului Bran Vechi | in slujba comunitatii din 2016 | #BranVechiMerge"
+      avatar: avatars/gheorghe.jpg
+    luminita:
+      name: "Luminita Barbu"
+      bio: "Viceprimara pentru mediu si cultura | Comuna Bran Vechi | patrimoniu si paduri"
+      avatar: avatars/luminita.jpg
+    primaria:
+      name: "Primaria Bran Vechi"
+      bio: "Cont oficial | Stiri locale | Program: Lun-Vin 8-16"
+      avatar: avatars/primaria.jpg
+
+    # === Local Business & Community ===
+    dana:
+      name: "Dana Munteanu"
+      bio: "Pensiunea La Stejari | ciorba de burta | tuica de casa | deschis din 1994"
+      avatar: avatars/dana.jpg
+    pensiune:
+      name: "Pensiunea La Stejari"
+      bio: "Cazare traditionala | Bucatarie ardeleneasca | Drumetii | Inima Bran Vechi"
+      avatar: avatars/pensiune.jpg
+    vasile:
+      name: "Vasile Rus"
+      bio: "padurar | 35 de ani in padure | acesti munti sunt viata mea"
+      avatar: avatars/vasile.jpg
+    florin:
+      name: "Florin Constantinescu"
+      bio: "preot paroh | Biserica din Bran Vechi | slujba duminica 10:00"
+      avatar: avatars/florin.jpg
+    bogdan:
+      name: "Bogdan Stoica"
+      bio: "fierar | atelierul din centru | porti forjate | fier si foc din tata in fiu"
+      avatar: avatars/bogdan.jpg
+    petru:
+      name: "Petru Lazar"
+      bio: "apicultor | miere de munte | stupina Lazar | floarea e totul"
+      avatar: avatars/petru.jpg
+    ioana:
+      name: "Ioana Rusu"
+      bio: "farmacista | Bran Vechi | sanatate si sfat | deschis si sambata dimineata"
+      avatar: avatars/ioana.jpg
+
+    # === Journalist ===
+    doina:
+      name: "Doina Vasilescu"
+      bio: "jurnalista independenta | mediu si patrimoniu | tips: doina@vasilescu-presa.ro"
+      avatar: avatars/doina.jpg
+
+    # === CarpatiLemn (corporate) ===
+    carpatilemn:
+      name: "CarpatiLemn SRL"
+      bio: "Exploatare forestiera durabila | Punct de lucru Bran Vechi | Certificat FSC"
+      avatar: avatars/carpatilemn.jpg
+    liviu:
+      name: "Liviu Negru"
+      bio: "director CarpatiLemn punct Bran Vechi | industrie si comunitate"
+      avatar: avatars/liviu.jpg
+    sergiu:
+      name: "Sergiu Popa"
+      bio: "Avocat | Cabinet Popa & Asociatii | Drept comercial | Brasov"
+      avatar: avatars/sergiu.jpg
+
+    # === Teens ===
+    mihai:
+      name: "Mihai"
+      bio: "16 | mountainbike | bran vechi born | muntii sunt viata frate"
+      avatar: avatars/mihai.jpg
+    cristina:
+      name: "Cristina"
+      bio: "17 | foto & desen | carpatii in alb-negru | maria e inspiratia mea"
+      avatar: avatars/cristina.jpg
+    adrian:
+      name: "Adrian"
+      bio: "15 | gaming & hiking | weekendu pe munte | ce-i al meu e al meu"
+      avatar: avatars/adrian.jpg
+
+    # === Media & Community ===
+    stiri_bran:
+      name: "Stiri Bran Vechi"
+      bio: "Actualitati din Bran Vechi si imprejurimi | Tips: redactia@stiri-branvechi.ro"
+      avatar: avatars/stiri_bran.jpg
+    meteo_carpati:
+      name: "Meteo Bran Vechi"
+      bio: "Prognoza si alerte | Statie automata | Actualizare la fiecare ora"
+      avatar: avatars/meteo_carpati.jpg
+    asso_padure:
+      name: "Asociatia Pazitorii Padurii"
+      bio: "Protectia padurilor carpatine | Voluntari | Semnalari taieri ilegale"
+      avatar: avatars/asso_padure.jpg
+
+    # === Suspicious / Other ===
+    stefan:
+      name: "Stefan Hartmann"
+      bio: "colectionar textile | Viena | arta populara est-europeana este pasiunea mea"
+      avatar: avatars/stefan.jpg
+    andrei:
+      name: "Andrei Matei"
+      bio: "."
+      avatar: avatars/anon.jpg
+    marta:
+      name: "Marta Kovacs"
+      bio: "tehniciana laborator | CarpatiLemn | imi fac treaba si atat"
+      avatar: avatars/marta.jpg
+    comisar:
+      name: "Comisar Dinu"
+      bio: "Politia Bran Vechi | Sectia rurala | urgente: 112"
+      avatar: avatars/comisar.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN BRAN VECHI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to BranVechi.social — the community Mastodon instance for
+      the village of Bran Vechi, in the Carpathian Mountains of
+      Transylvania.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @maria_ionescu.
+
+      A folk weaver. Textile artist. She documented traditional
+      Transylvanian patterns passed down through generations. People
+      are worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> maria_profile
+
+  maria_profile:
+    type: tweet
+    from: maria
+    text: "Cineva a fost din nou in atelierul meu noaptea. Lipsesc mostre. Lipsesc fotografii ale tiparelor vechi. Stiu cine e. Am dovezi."
+    choices:
+      - That's her last real post... -> loom_photo
+
+  loom_photo:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photograph of an empty loom. Shot from a strange angle.
+      Posted at 2am. No caption.
+
+      Her friends say that's not her style. Maria always wrote long
+      captions about the history of each pattern. The police say she
+      probably went to visit relatives. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: comisar
+    text: >
+      Am primit un semnal referitor la o locuitorare din Bran Vechi.
+      In acest moment, niciun element nu indica un act infractional.
+      Orice informatie utila poate fi comunicata la 112 sau la sediul
+      sectiei.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @anca_popescu is
+      desperate. Her brother @radu_ionescu is coming from the mountain
+      pastures. Her apprentice @elena_dragomir is posting frantic
+      messages. The forester @vasile_rus says he saw strange vehicles
+      on the forest road at night.
+
+      And the journalist @doina_vasilescu is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Maria just "went
+      to visit relatives."
+    effects: { trust_anca: "+5", trust_radu: "+5" }
+    choices:
+      - Start following Maria's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Bran Vechi. Follow Maria's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Dana (pensiune owner, knows everyone) -> dana_intro
+      - Talk to Vasile (forester, saw vehicles on the road) -> vasile_intro
+      - Talk to Mihai (teen biker, seems shaken) -> mihai_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Maria with the rhythms of a small
+      mountain village: weather warnings, the priest's Sunday service
+      reminders, honey harvest updates from the beekeeper.
+
+      Key names surface: Anca (best friend, teacher), Elena
+      (apprentice, seems frightened), Doina (journalist, oddly quiet),
+      and the teens — Mihai, Cristina, Adrian — who admired Maria's
+      traditional art.
+
+      Also prominent: CarpatiLemn SRL, the logging company at the
+      edge of the forest. Their posts are corporate PR about
+      "sustainable forestry." Maria's posts told a different story.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Dana -> dana_intro
+      - Talk to Vasile -> vasile_intro
+      - Talk to Mihai -> mihai_intro
+
+  # --- Dana (social map) ---
+
+  dana_intro:
+    type: tweet
+    from: dana
+    text: >
+      Pensiunea e deschisa dar nu am chef de nimic. @maria_ionescu,
+      locul tau la masa te asteapta. Intoarce-te repede.
+    effects: { trust_dana: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dana -> dana_talk
+
+  dana_talk:
+    type: message
+    text: >
+      DANA: Ah, esti nou pe-aici? Bine ai venit. Momentul e prost,
+      toata lumea e pe jar din cauza Mariei.
+
+      Let me tell you who's who. Anca is Maria's best friend — they
+      grew up together, live two houses apart. Sweet woman, completely
+      devastated. Elena Dragomir is Maria's apprentice at the loom.
+      Only 22, learning the old patterns. Radu is Maria's brother, a
+      shepherd up on the mountain pastures, he's coming down.
+
+      And Doina Vasilescu — the journalist — she and Maria were working
+      on something together. Something about the forest. Doina hasn't
+      said a word since Maria vanished. That's not like her.
+
+      Oh, and ignore CarpatiLemn's posts about "sustainable" this and
+      "certified" that. They're cutting old-growth forest and everyone
+      knows it.
+    effects: { trust_dana: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Stefan Hartmann -> dana_stefan
+      - Ask about CarpatiLemn -> dana_carpatilemn
+      - Thank her and move on -> quest1_hub
+
+  dana_stefan:
+    type: message
+    text: >
+      DANA: Stefan Hartmann? The Austrian? He's been coming here for
+      two years now. Says he's a collector of folk textiles. Stays at
+      my pensiune every time. Polite man, always asking about Maria's
+      work.
+
+      But lately it's been... mai nasol. He showed up three times in
+      the last month. Always wanted to see Maria. Offered to buy her
+      oldest pieces — the ones her grandmother made. Maria said no.
+      Every time, no. He didn't take it well.
+
+      She told me once: "That man looks at my covoare like a wolf
+      looks at sheep." I thought she was being dramatic. Now I'm not
+      so sure.
+    effects: { trust_dana: "+5" }
+    choices:
+      - Ask about CarpatiLemn -> dana_carpatilemn
+      - Move on -> quest1_hub
+
+  dana_carpatilemn:
+    type: message
+    text: >
+      DANA: CarpatiLemn has been cutting in the forests above the
+      village for three years. They have permits — or say they do.
+      But the old forest behind the church? The one with trees that
+      are 300 years old? They're eyeing that next.
+
+      Maria was fighting them. She said the old forest was where the
+      plants for natural dyes grew. Without that forest, the
+      traditional colours of the textiles would be lost forever. She
+      documented everything — the trees, the plants, the erosion on
+      the slopes where they already cut.
+
+      Two weeks later she's gone.
+    effects: { trust_dana: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Vasile (the forest, witness tease) ---
+
+  vasile_intro:
+    type: tweet
+    from: vasile
+    text: >
+      35 de ani de padurit. padurea nu mai e ce era.
+      @maria_ionescu avea dreptate. si acum a disparut.
+      faceti legatura.
+    effects: { trust_vasile: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Vasile -> vasile_talk
+
+  vasile_talk:
+    type: message
+    text: >
+      VASILE: I've walked these forests since I was a boy. I know
+      every trail, every clearing, every sound. And I'm telling you —
+      the cutting above the village is not what CarpatiLemn reports.
+      They say "selective harvest." I see clear-cuts hidden behind
+      buffer strips. Whole slopes stripped bare.
+
+      Maria photographed everything. She hiked up there with her
+      camera and mapped the damage. She found stumps of trees that
+      were marked as "standing" in CarpatiLemn's inventory reports.
+      Phantom trees. Hundreds of them.
+
+      You think that's a coincidence? La naiba, nu exista
+      coincidente in padure.
+    effects: { trust_vasile: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> vasile_night
+      - Move on -> quest1_hub
+
+  vasile_night:
+    type: message
+    text: >
+      VASILE: The night before she vanished — I was on patrol, around
+      midnight. I saw lights on the forest road above the village.
+      Not unusual — poachers use that road sometimes. But there were
+      two vehicles. One was a black SUV with CarpatiLemn markings.
+      The other was a rental car with Brasov plates.
+
+      At midnight. On the forest road above Maria's house.
+
+      I noted it in my patrol log. Nobody's asked to see it.
+    effects: { trust_vasile: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mihai (teen biker, witness tease) ---
+
+  mihai_intro:
+    type: tweet
+    from: mihai
+    text: >
+      sunt terminat frate @maria_ionescu ea m-a invatat sa respect
+      muntii gen ce pula mea nu e posibil sa fi plecat asa. daca stie
+      cineva ceva ziceti va rog
+    effects: { trust_mihai: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Mihai -> mihai_talk_early
+
+  mihai_talk_early:
+    type: message
+    text: >
+      MIHAI: mda esti nou pe-aici? e nasol ca timing. in real maria
+      e gen cea mai tare persoana din sat. ne-a aratat plantele din
+      padure, ne-a invatat de unde vin culorile din covoare. mega
+      misto.
+
+      si acum sunt stresat ca adrian a vazut un tip ciudat langa
+      atelierul Mariei noaptea dar nu vrea sa zica nimic. zice ca
+      nu-i nimic dar gen... nu e nimic futu-i
+    effects: { trust_mihai: "+10" }
+    choices:
+      - What did Adrian see? -> mihai_adrian_hint
+      - Move on -> quest1_hub
+
+  mihai_adrian_hint:
+    type: message
+    text: >
+      MIHAI: nu stiu exact. era pe bicicleta noaptea si a vazut gen
+      pe cineva care intra in atelierul Mariei?? sau ceva de genul.
+      se caca pe el de frica nu vrea sa vorbeasca. trebuie sa-l
+      intrebi direct dar e mefiant cu strainii. incearca sa-i
+      vorbesti de gaming mai intai bags pula
+    effects: { trust_mihai: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Bran Vechi. A Transylvanian village
+      nestled in the Carpathians. A folk weaver who was fighting to
+      protect the old forest. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Anca (Maria's best friend) -> anca_q1
+      - Talk to Elena (Maria's apprentice) -> elena_q1
+      - Check what Radu (Maria's brother) is saying -> radu_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Anca Q1 ---
+
+  anca_q1:
+    type: tweet
+    from: anca
+    text: >
+      daca cineva are vesti de @maria_ionescu sunati-ma va rog.
+      razboiul ei e in atelier. sacul cu plante de vopsit e acolo.
+      nu ar fi plecat niciodata fara materialele ei.
+    effects: { trust_anca: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Anca -> anca_q1_talk
+
+  anca_q1_talk:
+    type: message
+    text: >
+      ANCA: I appreciate your concern but I don't know you. Maria has
+      many friends in the village. I'm sure she'll come back.
+
+      ...I keep telling myself that. I don't believe it anymore.
+
+      [Anca is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_anca: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Elena Q1 ---
+
+  elena_q1:
+    type: tweet
+    from: elena
+    text: >
+      Atelierul e gol fara @maria_ionescu. Razboiul e neprins. Firele
+      sunt inca intinse. Nu ar fi lasat niciodata o lucrare neterminata.
+      S-a intamplat ceva.
+    effects: { trust_elena: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Elena -> elena_q1_talk
+
+  elena_q1_talk:
+    type: message
+    text: >
+      ELENA: Maria and I have worked together for two years. She's the
+      most dedicated artist I know. This fight for the forest — it was
+      everything to her. She had photographs, soil samples, maps of the
+      illegal cuts. She was so close to going public.
+
+      That Austrian man — Stefan Hartmann — he kept coming. Every time
+      more insistent. She showed me the messages he sent. "Name your
+      price." "Everything has a value." She said some things in this
+      world have no price.
+
+      [Elena seems earnest. She's frightened.]
+    effects: { trust_elena: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Radu Q1 ---
+
+  radu_q1:
+    type: tweet
+    from: radu
+    text: >
+      sora mea a DISPARUT si politia imi spune ca poate a plecat la
+      rude??? EA NU PLEACA FARA SA SPUNA. cobor de pe munte. cineva
+      o sa-mi explice.
+    effects: { trust_radu: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Radu -> radu_q1_talk
+
+  radu_q1_talk:
+    type: message
+    text: >
+      RADU: Who are you? Another person from the village who's going to
+      tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "if anything
+      happens, look at CarpatiLemn." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_radu: "+10" }
+    choices:
+      - What do you think happened? -> radu_theory
+      - Move on -> quest1_hub
+
+  radu_theory:
+    type: message
+    text: >
+      RADU: I think she found proof that CarpatiLemn is doing illegal
+      clear-cuts and they shut her up. But I also think that collector
+      from Vienna — Stefan Hartmann — is mixed up in this. The way he
+      talks about her textiles... it's not just appreciation. It's
+      hunger. Obsession.
+
+      Maria told me months ago that someone was breaking into her
+      workshop at night. Samples disappearing. Photographs of old
+      patterns gone. She thought it was kids at first. Now I don't
+      think it was kids.
+    effects: { trust_radu: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Maria went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Adrian (was biking at night near the workshop) -> adrian_interview
+      - Find Vasile (forester, patrols at night) -> vasile_interview
+      - Find Petru (beekeeper, tends hives at dawn) -> petru_interview
+      - Find Bogdan (blacksmith, works late into the night) -> bogdan_interview
+
+  # --- Adrian (saw someone at the workshop) ---
+
+  adrian_interview:
+    type: tweet
+    from: adrian
+    text: >
+      am fost afara aseara dar vibe-u in sat e nasol rau. gen e ceva
+      in neregula. nu stiu cum sa explic
+    effects: { trust_adrian: "+5" }
+    choices:
+      - Ask Adrian about that evening -> adrian_talk
+
+  adrian_talk:
+    type: message
+    text: >
+      ADRIAN: ce pula mea ok dar sa nu zici la nimeni da? eram pe
+      bicicleta pe la 21 si am vazut tipul ala strain — stefan cum
+      ii zice — langa atelierul mariei. avea o geanta mare si un
+      telefon cu lanterna. incerca usa. cand m-a vazut a fugit la
+      masina lui de lux si a plecat.
+
+      gen eu n-am zis nimic ca cine ma crede pe mine? un pusti care
+      zice ca un strain bogat sparge ateliere. la naiba nimeni
+    effects:
+      trust_adrian: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Vasile (saw meeting on forest road) ---
+
+  vasile_interview:
+    type: tweet
+    from: vasile
+    text: >
+      Reamintire: accesul pe drumul forestier este interzis intre 22
+      si 6. Am constatat treceri neautorizate in ultimele nopti.
+    effects: { trust_vasile: "+5" }
+    choices:
+      - Ask Vasile what he saw -> vasile_talk_q2
+
+  vasile_talk_q2:
+    type: message
+    text: >
+      VASILE: I was on patrol around midnight. I saw the CarpatiLemn
+      SUV parked at the clearing above the village. And a rental car
+      next to it — Brasov plates. Two men were standing by the
+      forestry gate. One of them I recognised: Liviu Negru, the
+      CarpatiLemn director.
+
+      At midnight. On the forest road. That's not normal.
+
+      I noted it in my patrol log. Nobody's asked to see it.
+    effects:
+      trust_vasile: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petru (saw Maria fleeing) ---
+
+  petru_interview:
+    type: tweet
+    from: petru
+    text: >
+      sculat la 4 pentru stupi. drumul din sat nu era gol in dimineata
+      aia. alerga cineva pe poteca spre padure. in intuneric. nu era
+      un alergator.
+    effects: { trust_petru: "+5" }
+    choices:
+      - Ask Petru what he saw -> petru_talk
+
+  petru_talk:
+    type: message
+    text: >
+      PETRU: I get up at 4am for the hives. That morning — the morning
+      after Maria's last post — I saw someone on the trail toward the
+      old forest. Running. A woman, carrying a bag, heading toward the
+      shepherd's cabin above the treeline. It was still dark. She was
+      moving fast, like she was afraid.
+
+      I called out but she didn't stop. I figured it was some hiker
+      starting early but... who hikes at 4am with a woven shoulder
+      bag?
+
+      When I heard about Maria, I put it together. I think that was
+      her. Running from something.
+    effects:
+      trust_petru: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Bogdan (heard car chase) ---
+
+  bogdan_interview:
+    type: tweet
+    from: bogdan
+    text: >
+      Lucram in atelier pana tarziu ca de obicei. Dar in noaptea aia
+      o masina a trecut prin sat mult prea repede. Apoi inca una.
+    effects: { trust_bogdan: "+5" }
+    choices:
+      - Ask Bogdan what he heard -> bogdan_talk
+
+  bogdan_talk:
+    type: message
+    text: >
+      BOGDAN: I work the forge late, it's cooler at night. That night
+      I was hammering around 1am when a car went past — fast, much too
+      fast for the village road. Dark SUV. Then maybe three minutes
+      later a second car. Smaller, lighter coloured. Following?
+
+      The second car turned off toward the old monastery path. The
+      first kept going toward the main road to Brasov.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_bogdan: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Anca (best friend)
+      and Cristina (saw Stefan photographing the workshop).
+    choices:
+      - Talk to Anca about that night -> anca_interview
+      - Talk to Cristina -> cristina_interview
+      - Find Adrian -> adrian_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Vasile -> vasile_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Petru -> petru_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Bogdan -> bogdan_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Anca (last to see Maria) ---
+
+  anca_interview:
+    type: tweet
+    from: anca
+    text: >
+      fotografia aia de pe contul mariei. nu e ea. maria nu posteaza
+      fara legenda. maria nu posteaza la 2 noaptea. altcineva a
+      facut asta.
+    effects: { trust_anca: "+5" }
+    choices:
+      - DM Anca -> anca_talk_low
+        when:
+          state: trust_anca
+          lt: 50
+      - DM Anca -> anca_talk_high
+        when:
+          state: trust_anca
+          gte: 50
+
+  anca_talk_low:
+    type: message
+    text: >
+      ANCA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Anca needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_anca: "+5" }
+    choices:
+      - Share what you've learned about the night -> anca_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  anca_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the stranger at the workshop,
+      the company SUV on the forest road, the running figure at dawn.
+      Anca is silent for a while.
+
+      ANCA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_anca: "+25" }
+    choices:
+      - What happened that night? -> anca_talk_high
+
+  anca_talk_high:
+    type: message
+    text: >
+      ANCA: She came to my house around 23h. I was grading papers. She
+      was pale, shaking. She said "they know what I have." She grabbed
+      the backup hard drive she kept at my place — all her photographs
+      and documentation.
+
+      I asked who. She said "the logging company. They sent people."
+      Then she said something else — "and he was at the workshop again.
+      He's always at the workshop."
+
+      She wouldn't say who "he" was. She hugged me, said "don't
+      worry," and left with a bag. By morning her house was dark and
+      the blurred photo was on her account.
+    effects:
+      trust_anca: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Cristina (saw Stefan photographing workshop) ---
+
+  cristina_interview:
+    type: message
+    text: >
+      CRISTINA: ok gen e ciudat ce zic da am vazut tipul ala strain —
+      stefan — de 3 ori langa atelierul mariei seara. justa sta acolo
+      si facea poze la ferestre. mega creepy futu-i.
+
+      ultima data a fost gen 2 zile inainte sa dispara maria. era in
+      masina lui de lux parcata vizavi. justa statea. farurile stinse.
+    effects:
+      trust_cristina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Stefan Hartmann seen trying the workshop door (Adrian)
+      00:00 — CarpatiLemn SUV and rental car at forest clearing (Vasile)
+      23:00 — Maria arrives at Anca's, shaken, grabs backup drive (Anca)
+      04:00 — Woman running on trail toward shepherd's cabin (Petru)
+      01:00 — Two cars speeding through village, one toward monastery (Bogdan)
+
+      CarpatiLemn confronted Maria about her evidence. The collector
+      was prowling her workshop. She fled with her documentation and
+      ran for the mountains.
+
+      But there are two threats: the corporation AND someone obsessed.
+
+      Two threads to pull:
+      — The cover-up: What is CarpatiLemn hiding? Who ordered the
+        intimidation?
+      — The obsession: What is Stefan Hartmann really doing? Why
+        does he keep breaking into her workshop?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Stefan Hartmann -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      CarpatiLemn is hiding something. Maria had proof of illegal
+      deforestation. Now she's gone and her workshop has been
+      searched.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the forestry records -> forest_records
+      - Talk to Doina the journalist -> doina_interview
+      - Talk to Marta (CarpatiLemn technician) -> marta_interview
+      - Talk to Luminita (environment deputy) -> luminita_interview
+      - Check the Pazitorii Padurii association -> asso_investigation
+      - Talk to Vasile about the illegal cutting -> vasile_cutting
+      - Back to hub -> investigation_hub
+
+  # --- Forest Records ---
+
+  forest_records:
+    type: message
+    text: >
+      CarpatiLemn's public forestry reports filed with the Inspectorat
+      Silvic show "selective harvesting" in Parcela 47 — the old-growth
+      forest above the village. The reports claim 200 cubic metres
+      harvested per year, all within permit limits.
+
+      Maria's documentation, shared with the Pazitorii Padurii
+      association, tells a different story. Satellite images show
+      clear-cut areas hidden behind thin strips of standing trees.
+      Her ground-level photographs show hundreds of fresh stumps in
+      areas marked as "unharvested" in CarpatiLemn's inventory.
+
+      Her last field note: "Parcela 47 is gutted. They leave a mask
+      of trees along the road so nobody sees. But behind the mask,
+      there is nothing left."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Doina ---
+
+  doina_interview:
+    type: message
+    text: >
+      DOINA: I don't talk about sources. Period.
+    effects: { trust_doina: "+5" }
+    choices:
+      - Show Doina the evidence you have -> doina_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  doina_with_evidence:
+    type: message
+    text: >
+      DOINA: ...you have more than I expected.
+
+      Okay. Maria and I were working together. She had satellite
+      images, ground photography, GPS coordinates of every illegal
+      stump. She documented 1,400 trees cut without permits in
+      Parcela 47 alone. Old-growth beech and oak. Some over 300
+      years old.
+
+      We were going to publish together. Then she went dark. And
+      two days later, someone broke into my office and stole my
+      backup drive.
+
+      Maria is alive. She contacted me once, from a neighbour's
+      phone in another village. She said she was hiding in the
+      mountains. She said "they threatened me and the collector
+      won't stop."
+
+      I can't tell you where she is. But with enough evidence, I
+      can publish and make it safe for her to come back.
+    effects:
+      trust_doina: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> doina_hint
+      - Back to investigation hub -> investigation_hub
+
+  doina_hint:
+    type: message
+    text: >
+      DOINA: The logging company sent their director — Liviu Negru —
+      and some lawyer to her house that evening. They told her to hand
+      over all her documentation or face legal action for "trespassing
+      on company land." Intimidation dressed up as legality.
+
+      But she also said something about the Austrian collector.
+      Someone who had been cataloguing her workshop's contents
+      without permission. Someone who always knew which pieces
+      she was working on. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Marta (CarpatiLemn whistleblower) ---
+
+  marta_interview:
+    type: message
+    text: >
+      MARTA: I work at CarpatiLemn. I'm just a technician. I process
+      the harvest reports, I file the inventory.
+
+      But the inventory I file... is not always the inventory that
+      gets sent to the Inspectorat.
+    effects: { trust_marta: "+10" }
+    choices:
+      - What do you mean? -> marta_detail
+
+  marta_detail:
+    type: message
+    text: >
+      MARTA: I count trees. Standing timber, harvested volume, replanted
+      seedlings. My numbers go to my supervisor. Somewhere between my
+      desk and the official filing, they change. Lower harvested
+      volumes. More standing timber. Always.
+
+      Maria's photographs from the field matched MY original numbers,
+      not the ones in the official reports. She had independent proof
+      that CarpatiLemn is falsifying their forestry inventory.
+
+      I'm scared. I have children. But I kept copies of my original
+      reports. If someone can protect me, I'll share them.
+    effects:
+      trust_marta: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Luminita ---
+
+  luminita_interview:
+    type: message
+    text: >
+      LUMINITA: As deputy mayor for environment and culture, I take
+      these accusations seriously. But CarpatiLemn employs 80 people
+      in this commune. The mayor insists we need to "maintain
+      dialogue."
+
+      Off the record? I've seen the Inspectorat Silvic reports.
+      CarpatiLemn passes every time. But those inspections are
+      announced weeks in advance. They replant saplings in the
+      cleared areas before the inspectors arrive. From the road it
+      looks fine.
+
+      Maria had unannounced documentation. GPS-tagged stumps.
+      Satellite comparisons. That's what makes it dangerous.
+    effects:
+      trust_luminita: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Pazitorii Padurii ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_padure
+    text: >
+      ALERTA: Semnalare de taieri ilegale in Parcela 47, padurea
+      seculara din Bran Vechi. Fotografii si coordonate GPS in curs
+      de documentare. Cerem inspectie neanuntata la CarpatiLemn.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      The Pazitorii Padurii have been documenting forest loss for
+      five years. Their satellite data shows a clear pattern: forest
+      cover in Parcela 47 has decreased by 40% while CarpatiLemn's
+      reports show only 8% harvest. The cutting intensifies at night
+      and on weekends when the Inspectorat Silvic doesn't operate.
+
+      The pattern is unmistakable. This is ongoing, deliberate
+      illegal logging designed to avoid detection.
+
+      Maria was their most active volunteer. She contributed most of
+      the ground-level photography and GPS data.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Vasile cutting ---
+
+  vasile_cutting:
+    type: message
+    text: >
+      VASILE: I'll show you something. Last month I found fresh stumps
+      deep in Parcela 47, behind the road buffer. Massive beech trees
+      — 250 years old minimum. Cut at night. The sawdust was still
+      fresh. And I found something else: a logging tag with a
+      CarpatiLemn serial number. They're supposed to tag standing
+      trees, not stumps.
+
+      I photographed everything and sent it to Maria. She said it was
+      the missing piece — proof the trees in the "standing inventory"
+      were actually being felled and sold. Ghost trees on paper,
+      stumps in reality.
+
+      I still have the photographs. And the tag.
+    effects:
+      trust_vasile: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Stefan Hartmann. Collector from Vienna. Something more?
+      Someone was breaking into Maria's workshop. Someone was
+      cataloguing her textiles. Someone was photographing through
+      her windows.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Stefan's travel records -> travel_records
+      - Talk to Anca about Stefan -> anca_stefan
+        when:
+          state: trust_anca
+          gte: 20
+      - Talk to Adrian (more detail on the workshop break-in) -> adrian_detail
+      - Talk to Ioana the pharmacist -> ioana_interview
+      - Check the anonymous account @andrei_matei -> andrei_investigation
+      - Talk to Florin the priest -> florin_interview
+        when:
+          state: trust_florin
+          gte: 40
+      - Talk to Comisar Dinu -> comisar_interview
+        when:
+          state: trust_comisar
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Travel Records ---
+
+  travel_records:
+    type: message
+    text: >
+      Stefan Hartmann's social media presence is carefully curated:
+      a collector's portfolio of East European folk textiles. But
+      cross-referencing his posts with Dana's pensiune records tells
+      a story.
+
+      He's visited Bran Vechi 14 times in two years. His stated
+      interest: "documenting living textile traditions." His pattern:
+      every visit coincides with Maria's workshop being open. He
+      arrives the day she starts a new piece and leaves when she
+      finishes.
+
+      He knows her schedule. Better than her neighbours do.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Anca on Stefan ---
+
+  anca_stefan:
+    type: message
+    text: >
+      ANCA: Stefan Hartmann? He made Maria's skin crawl. He'd show up
+      at the workshop unannounced. He'd compliment every thread, every
+      colour, every pattern — like he was appraising her life's work
+      for auction. He offered enormous sums. €5,000 for a single
+      covor that Maria said was priceless.
+
+      She told him no. Clearly, firmly. He said he understood. Then
+      nothing changed. He just... kept coming. Always with a bigger
+      offer. Always with that smile.
+
+      A month ago she found that someone had entered the workshop at
+      night. Thread samples were missing. Photographs she'd taken of
+      grandmother's patterns — gone from the wall. She suspected
+      Stefan but couldn't prove it.
+    effects:
+      trust_anca: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Adrian detail ---
+
+  adrian_detail:
+    type: message
+    text: >
+      ADRIAN: ok frate in real n-am zis tot. cand l-am vazut pe stefan
+      la atelier nu doar incerca usa. avea ceva in mana. gen un aparat
+      mic. l-a lipit de peretele atelierului, langa fereastra. gen
+      ascuns sub streesina.
+
+      mie mi s-a parut gen camera ascunsa futu-i. gen cacatu ala
+      din filme de spioni. de aia n-am zis nimic ca cine ma crede.
+      un pusti care zice ca un colectionar bogat pune camere ascunse
+      in sat. ce pula mea nimeni
+    effects:
+      trust_adrian: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Ioana ---
+
+  ioana_interview:
+    type: message
+    text: >
+      IOANA: This is confidential but I'm a pharmacist, not a priest.
+      That Austrian man — Hartmann — he comes in when he visits. He's
+      been buying sedatives. Strong ones. And he asked me once about
+      chemical solvents for "textile preservation."
+
+      I said "this is a pharmacy, not a chemistry lab." He laughed.
+      But the combination — sedatives and solvents? That's not the
+      toolkit of a casual collector. That's someone prepared to do
+      something.
+
+      He also asked me, very casually, if we sold small cameras. For
+      "documenting textiles in situ," he said. I told him to try an
+      electronics shop in Brasov.
+    effects:
+      trust_ioana: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Andrei (anonymous account) ---
+
+  andrei_investigation:
+    type: tweet
+    from: andrei
+    text: >
+      She should have sold. I was trying to preserve her work for the
+      world. Nobody else understands what those textiles are worth.
+    choices:
+      - Look at this account's history -> andrei_posts
+
+  andrei_posts:
+    type: message
+    text: >
+      @andrei_matei: account created 10 months ago. Posts are all
+      about Maria's textiles. Comments on every photograph she shares,
+      every workshop update, every new pattern. The tone shifts over
+      time:
+
+      Month 1: "Extraordinary work. These patterns must be preserved
+      for future generations."
+      Month 3: "Why won't you respond to my offers? I can give your
+      art the audience it deserves."
+      Month 6: "I was at the workshop today. You weren't there. I
+      waited three hours."
+      Month 8: "I know every piece in your collection. I've catalogued
+      them. They belong in a museum. MY museum."
+
+      The account has no personal photos. Just Maria's textiles. Only
+      Maria's textiles.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> andrei_style
+
+  andrei_style:
+    type: message
+    text: >
+      Comparing @andrei_matei with Stefan Hartmann's public collector
+      profile:
+
+      Same use of textile terminology — specific German-influenced
+      terms for weaving techniques. Same obsessive cataloguing style.
+      Same knowledge of Maria's inventory that only someone who had
+      been inside the workshop would have.
+
+      And one post from @andrei_matei: "The piece with the double
+      cross-stitch border in cochineal red is deteriorating. It needs
+      proper conservation." That piece hangs in Maria's private room.
+      Not in the workshop. Not visible from outside.
+
+      It's Stefan. The anonymous account is Stefan Hartmann.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Florin ---
+
+  florin_interview:
+    type: message
+    text: >
+      FLORIN: Maria left something with me. A sealed wooden box. She
+      said "Father, if someone asks about the old forest, give them
+      this."
+
+      She looked frightened. She said she'd made copies of everything
+      but needed one set somewhere sacred, somewhere nobody would
+      think to search. A church seemed perfect.
+    effects: { trust_florin: "+10" }
+    choices:
+      - What's in the box? -> florin_box
+
+  florin_box:
+    type: message
+    text: >
+      Father Florin reaches behind the altar and produces a sealed
+      wooden box carved with traditional motifs.
+
+      FLORIN: She said you'd come. Take it.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show clear-cut devastation behind CarpatiLemn's buffer
+      strips — acre after acre of stumps where their reports show
+      standing forest. The USB drive contains satellite imagery,
+      GPS coordinates of every illegal stump, and Maria's detailed
+      report mapping the fraud.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Comisar Dinu ---
+
+  comisar_interview:
+    type: message
+    text: >
+      COMISAR DINU: Off the record — and I mean completely off the
+      record — I wanted to investigate CarpatiLemn. My superior told
+      me to stand down. He said the Inspectorat had "jurisdiction."
+      That's code for "don't touch it."
+
+      The Hartmann situation is different. I didn't even know about
+      that until now. If you have evidence of stalking and break-ins,
+      I can act on that. A foreign national committing crimes on
+      Romanian soil — that's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_comisar: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Maria than anyone in Bran Vechi. Who is responsible?
+    choices:
+      - Confront Stefan Hartmann (the obsessive collector) -> confront_stefan
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Liviu Negru (the logging company director) -> confront_liviu
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Moldovan (political protection) -> confront_gheorghe
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Stefan (Best Ending) ---
+
+  confront_stefan:
+    type: message
+    text: >
+      You present your evidence to Stefan Hartmann:
+
+      "I know @andrei_matei is your account. I know you installed a
+      hidden camera at Maria's workshop. I know you broke in and
+      stole thread samples and photographs. I know you were at the
+      workshop the night she disappeared. I have witnesses and I have
+      your travel records."
+    choices:
+      - Send -> stefan_response
+
+  stefan_response:
+    type: message
+    text: >
+      Stefan doesn't reply for a long time. Then:
+
+      STEFAN: You don't understand. I was preserving her work. Those
+      textiles are priceless cultural heritage and she was letting
+      them rot in a village workshop. I catalogued everything because
+      someone had to. Everything I did was because I care about the
+      art. About HER art.
+
+      That's not preservation. That's obsession.
+
+      You've already sent the evidence to Comisar Dinu. And to Doina
+      Vasilescu.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE COLLECTOR
+
+      Three things happen in quick succession.
+
+      Comisar Dinu reopens the case. With your evidence — the
+      anonymous account, the hidden camera, the break-ins, the
+      witness testimonies — Stefan Hartmann is arrested at the
+      Brasov airport trying to leave the country. A hidden camera is
+      recovered from Maria's workshop. His Vienna apartment contains
+      an entire room dedicated to cataloguing Maria's textiles from
+      the surveillance footage — patterns recreated, colours
+      analysed, every piece documented without her knowledge or
+      consent.
+
+      Doina Vasilescu, finally in possession of Maria's full evidence
+      package, publishes the CarpatiLemn story in Libertatea. The
+      Inspectorat Silvic orders an unannounced inspection with drone
+      surveys. The cutting permit for Parcela 47 is revoked. Liviu
+      Negru faces criminal charges for falsifying forestry reports.
+
+      And Maria Ionescu, reading the story from a shepherd's cabin
+      high in the Carpathians, calls her brother for the first time
+      in nine days.
+
+      "Radu, cobor acasa."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: maria
+    text: >
+      padurea nu minte. si oamenii din bran vechi nici. multumesc ca
+      nu ati renuntat.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Liviu (Partial Ending) ---
+
+  confront_liviu:
+    type: message
+    text: >
+      You present the deforestation evidence to Liviu Negru:
+
+      "I have satellite images of the clear-cuts behind your buffer
+      strips. I have GPS coordinates of 1,400 illegal stumps. I have
+      your original inventory reports showing the data was falsified.
+      I have the logging tag from a tree that's still listed as
+      standing in your records."
+    choices:
+      - Send -> liviu_response
+
+  liviu_response:
+    type: message
+    text: >
+      LIVIU: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. CarpatiLemn has always operated within
+      the terms of its forestry permits.
+
+      But it's too late. You've sent the evidence to Doina, to the
+      Pazitorii Padurii, and to the Inspectorat Silvic.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The deforestation story breaks. CarpatiLemn is ordered to halt
+      all cutting pending investigation. Eighty jobs hang in the
+      balance. The village is divided — some curse the company, others
+      curse the investigation.
+
+      But Maria?
+
+      Without the stalking evidence, Stefan Hartmann is never
+      investigated. He returns to Vienna. He continues to monitor
+      Maria's accounts. He creates a new anonymous profile. He plans
+      his next visit.
+
+      Three months later, Maria reads about CarpatiLemn online. She
+      returns quietly. She reinforces the workshop door. She covers
+      the windows. She stops working alone. She checks the walls for
+      cameras every morning.
+
+      The corporation is exposed. But the man who terrorised Maria
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: maria
+    text: "m-am intors. padurea se reface. restul... vom vedea."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_gheorghe:
+    type: message
+    text: >
+      You confront Mayor Moldovan with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> gheorghe_response
+
+  gheorghe_response:
+    type: tweet
+    from: sergiu
+    text: >
+      Clientul meu ia act de acuzatiile dumneavoastra. Orice
+      publicare de materiale defaimatoare va face obiectul unor
+      actiuni judiciare imediate. — Cabinet Popa & Asociatii, Brasov
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Moldovan and CarpatiLemn's illegal cutting — and
+      there isn't one beyond political protection — your evidence is
+      insufficient.
+
+      CarpatiLemn continues to cut. Stefan Hartmann continues to
+      watch. Maria stays in hiding.
+
+      Six months later, @andrei_matei creates a new account. It
+      follows Maria's apprentice.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: BRAN VECHI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Maria's story explores themes of
+      cultural patrimony theft, environmental destruction, obsessive
+      behaviour, community solidarity, and the courage to protect
+      what cannot be replaced.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Telefonul Sufletului (harcuire si violenta): 116 123
+      Numarul unic de urgenta: 112
+      Garda Forestiera (taieri ilegale): 0800 800 508
+      Asociatia ANAIS (violenta domestica): 0256 222 234

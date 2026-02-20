@@ -1,0 +1,1568 @@
+# DEAD ACCOUNT — Story 048: Siguldas Meži (Latvia Round 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-048.yml
+#
+# Player investigates the disappearance of folk dancer Elīna Kalniņa
+# in the fictional Gauja valley village of Siguldas Meži.
+
+meta:
+  title: "Dead Account — Siguldas Meži"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_marta: 0
+    trust_edgars: 0
+    trust_kristaps: 0
+    trust_liga: 0
+    trust_janis: 0
+    trust_ilze: 0
+    trust_sandris: 0
+    trust_daina: 0
+    trust_guntis: 0
+    trust_zane: 0
+    trust_andris: 0
+    trust_inga: 0
+    trust_maris: 0
+    trust_raimonds: 0
+    trust_agnese: 0
+    trust_arturs: 0
+    trust_laura: 0
+    trust_roberts: 0
+    trust_sintija: 0
+    trust_inspektors: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "tikko pārcēlos uz siguldas mežiem. atklāju gauju soli pa solim"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "SiguldasMezi.social"
+    description: "Laipni lūgti Siguldas Mežu kopienas Mastodon instancē"
+    avatar_url: /gamepatch/assets/dead-account/siguldasmezi_bot.png
+
+  npcs:
+    # === Elīna's Inner Circle ===
+    elina:
+      name: "Elīna Kalniņa"
+      bio: "tautas deju kolektīvs 'Gauja' | mežs ir mājas | tradīcijas nav pagātne, tās ir tagadne"
+      avatar: avatars/elina.jpg
+    marta:
+      name: "Marta Bērziņa"
+      bio: "elīnas labākā draudzene | medmāsa siguldas poliklīnikā | kafija un meža gaiss"
+      avatar: avatars/marta.jpg
+    edgars:
+      name: "Edgars Kalniņš"
+      bio: "elīnas brālis | strādā rīgā IT | māsa nepazūd vienkārši tā"
+      avatar: avatars/edgars.jpg
+    kristaps:
+      name: "Kristaps Liepiņš"
+      bio: "tautas deju kolektīva 'Gauja' vadītājs | horeogrāfs | 15 gadus kopā ar deju"
+      avatar: avatars/kristaps.jpg
+
+    # === Local Government ===
+    janis:
+      name: "Jānis Ozols"
+      bio: "Siguldas Mežu pagasta priekšsēdētājs | kalpoju kopienai kopš 2017 | #MežiAug"
+      avatar: avatars/janis.jpg
+    liga:
+      name: "Līga Vītola"
+      bio: "Vides aizsardzības speciāliste | Siguldas Mežu pagasts | Gaujas nacionālais parks ir svēts"
+      avatar: avatars/liga.jpg
+    pagasts:
+      name: "Siguldas Mežu pagasts"
+      bio: "Oficiālais konts | Jaunumi un pakalpojumi | Darba laiks: P-Pk 8:30-17:00"
+      avatar: avatars/pagasts.jpg
+
+    # === Local Business & Community ===
+    ilze:
+      name: "Ilze Kreicberga"
+      bio: "kafejnīca 'Pie Gaujas' | mājas kūkas | zāļu tējas | atvērts kopš 1998"
+      avatar: avatars/ilze.jpg
+    kafejnica:
+      name: "Kafejnīca Pie Gaujas"
+      bio: "Mājas ēdiens | Zāļu tējas | Dzīvā mūzika piektdienās | Siguldas Meži sirds"
+      avatar: avatars/kafejnica.jpg
+    sandris:
+      name: "Sandris Kļaviņš"
+      bio: "mežsargs | gaujas nacionālais parks | šis mežs ir mana dzīve"
+      avatar: avatars/sandris.jpg
+    guntis:
+      name: "Guntis Balodis"
+      bio: "lauksaimnieks | bioloģiskā saimniecība pie gaujas | medus un siers"
+      avatar: avatars/guntis.jpg
+    daina:
+      name: "Daina Skujiņa"
+      bio: "aptiekāre | Siguldas Meži | veselība un padoms | arī svētdien no rīta"
+      avatar: avatars/daina.jpg
+    andris:
+      name: "Andris Ābols"
+      bio: "galdnieks | koka izstrādājumi | restaurēju vecās ēkas | katru dienu no 6 rītā"
+      avatar: avatars/andris.jpg
+    inga:
+      name: "Inga Purviņa"
+      bio: "keramiķe | darbnīca 'Māla stāsti' | roku darbs no gaujas māla"
+      avatar: avatars/inga.jpg
+    maris:
+      name: "Māris Grants"
+      bio: "grāmatnīca 'Mežs un vārds' | jaunas un lietotas grāmatas | lasīšanas vakari trešdienās"
+      avatar: avatars/maris.jpg
+
+    # === Journalist ===
+    zane:
+      name: "Zane Priede"
+      bio: "neatkarīga žurnāliste | vide un kultūra | tips: zane@priede-prese.lv"
+      avatar: avatars/zane.jpg
+
+    # === GreenValley Development (corporate) ===
+    greenvalley:
+      name: "GreenValley Golf & Spa SIA"
+      bio: "Premium golfa laukumi | SPA kompleksi | Investīcijas dabā | ISO 14001"
+      avatar: avatars/greenvalley.jpg
+    raimonds:
+      name: "Raimonds Kalējs"
+      bio: "GreenValley Golf & Spa direktors | Siguldas Meži projekts | sports un daba"
+      avatar: avatars/raimonds.jpg
+    arturs:
+      name: "Artūrs Vanags"
+      bio: "Advokāts | Birojs Vanags & Partneri | Komerctiesības | Rīga"
+      avatar: avatars/arturs.jpg
+
+    # === Teens ===
+    agnese:
+      name: "Agnese"
+      bio: "16 | dejotāja | siguldas meži born | elīna ir mana elpa frr"
+      avatar: avatars/agnese.jpg
+    laura:
+      name: "Laura"
+      bio: "17 | foto & video | mežs melnbaltā | elīna iemācīja dejot no sirds"
+      avatar: avatars/laura.jpg
+    roberts:
+      name: "Roberts"
+      bio: "15 | skate & BMX | gauja ir brīvība | nu bļe kur ir elīna"
+      avatar: avatars/roberts.jpg
+
+    # === Media & Community ===
+    ziņas_meži:
+      name: "Ziņas Siguldas Meži"
+      bio: "Jaunumi no Siguldas Mežiem un Gaujas ielejas | Tips: redakcija@zinas-mezi.lv"
+      avatar: avatars/zinas_mezi.jpg
+    laika_gauja:
+      name: "Laikapstākļi Gauja"
+      bio: "Prognozes un brīdinājumi | Automātiskā stacija | Atjaunots katru stundu"
+      avatar: avatars/laika_gauja.jpg
+    biedriba_gauja:
+      name: "Biedrība 'Gaujas Sargi'"
+      bio: "Gaujas nacionālā parka aizsardzība | Brīvprātīgie | Ziņojumi par pārkāpumiem"
+      avatar: avatars/biedriba_gauja.jpg
+
+    # === Suspicious / Other ===
+    sintija:
+      name: "Sintija Meža"
+      bio: "."
+      avatar: avatars/anon.jpg
+    inspektors:
+      name: "Inspektors Bērziņš"
+      bio: "Valsts policija | Siguldas iecirknis | neatliekamie: 110"
+      avatar: avatars/inspektors.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SIGULDAS MEŽI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to SiguldasMezi.social — the community Mastodon instance for
+      the village of Siguldas Meži, nestled in the Gauja valley, Latvia.
+
+      The local feed is uneasy today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @elina_kalnina.
+
+      A folk dancer. Tradition keeper. She led the village dance group
+      'Gauja' and fought to protect the old-growth forest clearing where
+      they rehearsed. People are worried. She hasn't posted in six days.
+    choices:
+      - Look at her profile -> elina_profile
+
+  elina_profile:
+    type: tweet
+    from: elina
+    text: "Šī izcirtuma vieta ir svēta. Te dejoja mūsu vecvecāki. GreenValley nedrīkst to aizskart. Man ir pierādījumi."
+    choices:
+      - That's her last real post... -> grey_forest
+
+  grey_forest:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurred photo of tree trunks in fog. Posted at 4am. No caption.
+
+      Her friends say that's not her style. Elīna always wrote long
+      captions about traditions and nature. The police say she probably
+      went to Rīga. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: inspektors
+    text: >
+      Ir saņemts iesniegums par Siguldas Mežu iedzīvotāju. Šobrīd nav
+      pamata uzskatīt, ka noticis noziedzīgs nodarījums. Jebkādu
+      noderīgu informāciju lūdzam sniegt pa tālruni 110 vai iecirknī.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @marta_berzina is
+      desperate. Her brother @edgars_kalnins is driving from Rīga.
+      Her dance group leader @kristaps_liepins is posting worried
+      messages but they feel oddly performative.
+
+      The forestry guard @sandris_klavins says she was right about
+      the clearing.
+
+      And the journalist @zane_priede is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Elīna just "went
+      to Rīga."
+    effects: { trust_marta: "+5", trust_edgars: "+5" }
+    choices:
+      - Start following Elīna's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Siguldas Meži. Follow Elīna's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Ilze (café owner, knows everyone) -> ilze_intro
+      - Talk to Sandris (forestry guard, knows the clearing) -> sandris_intro
+      - Talk to Agnese (teen dancer, seems shaken) -> agnese_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Elīna with the rhythms of a small
+      Gauja valley village: mushroom foraging schedules, Daina's pharmacy
+      hours, weather warnings about early frost.
+
+      Key names surface: Marta (best friend, nurse), Kristaps (dance
+      group leader, seems rattled), Zane (journalist, oddly quiet),
+      and the teens — Agnese, Laura, Roberts — who adored Elīna's
+      dance classes.
+
+      Also prominent: GreenValley Golf & Spa SIA, the development
+      company planning to build a golf course on the old-growth forest
+      clearing. Their posts are corporate PR. Elīna's posts were the
+      opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Ilze -> ilze_intro
+      - Talk to Sandris -> sandris_intro
+      - Talk to Agnese -> agnese_intro
+
+  # --- Ilze (social map) ---
+
+  ilze_intro:
+    type: tweet
+    from: ilze
+    text: >
+      Kafejnīca atvērta, bet sirds nav priekā. @elina_kalnina, tavs
+      galds tevi gaida. Atgriezies, mīļā.
+    effects: { trust_ilze: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ilze -> ilze_talk
+
+  ilze_talk:
+    type: message
+    text: >
+      ILZE: Oh, you're new here? Welcome. Terrible timing though.
+      Everyone's sick with worry about Elīna.
+
+      Let me tell you who's who. Marta is Elīna's best friend — they
+      share a flat above Daina's pharmacy. Kristaps Liepiņš runs the
+      dance group with Elīna. Well... he runs it, she's the soul of
+      it. He's been strange about her for years. Too close. She tried
+      to set boundaries, but he's the choreographer, so...
+
+      Edgars is Elīna's brother, he's driving from Rīga. And Zane
+      Priede, the journalist — she and Elīna were working on something
+      together. Something about the clearing and GreenValley. Zane has
+      gone completely silent.
+
+      Oh, and don't believe a word of GreenValley's "sustainable
+      development" bullshit. Viņi grib visu nocirst.
+    effects: { trust_ilze: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Kristaps -> ilze_kristaps
+      - Ask about GreenValley -> ilze_greenvalley
+      - Thank her and move on -> quest1_hub
+
+  ilze_kristaps:
+    type: message
+    text: >
+      ILZE: Kristaps? Nu bļe, where do I start. He founded the dance
+      group fifteen years ago. It was his thing. Then Elīna joined five
+      years back and suddenly she was the star. She's twenty-three, full
+      of fire, the kids love her. He's forty-one and... didn't handle it
+      well.
+
+      He started wanting her at every rehearsal, every performance,
+      every festival. If she danced with someone else, he'd rework the
+      choreography to pair them together. She told me once, "Viņš
+      neļauj man elpot." He doesn't let me breathe.
+
+      After she started the fight against GreenValley, he got worse.
+      Followed her to meetings, showed up at her flat uninvited. She
+      tried to leave the group twice. Both times he begged her back.
+    effects: { trust_ilze: "+5" }
+    choices:
+      - Ask about GreenValley -> ilze_greenvalley
+      - Move on -> quest1_hub
+
+  ilze_greenvalley:
+    type: message
+    text: >
+      ILZE: GreenValley Golf & Spa. Rīga money. They want to build an
+      eighteen-hole golf course in the old-growth clearing by the Gauja.
+      That clearing has been there for hundreds of years — it's where
+      the village has held midsummer celebrations, where the dance group
+      rehearses, where the old oaks stand.
+
+      The pagasts council approved the environmental impact assessment
+      last month. But Elīna found problems. She said the assessment was
+      faked — they used data from a different site. She had documents.
+      Photos of protected species in the clearing that weren't in the
+      report.
+
+      Two weeks later, she vanishes. Sūds, it makes you think.
+    effects: { trust_ilze: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sandris (forestry guard, witness tease) ---
+
+  sandris_intro:
+    type: tweet
+    from: sandris
+    text: >
+      trīsdesmit gadus sargāju šo mežu. @elina_kalnina bija vienīgā
+      kas saprata ko šī vieta nozīmē. un tagad viņas nav. padomājiet.
+    effects: { trust_sandris: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sandris -> sandris_talk
+
+  sandris_talk:
+    type: message
+    text: >
+      SANDRIS: I've guarded this forest for thirty years. I know every
+      trail, every clearing, every old oak. And I'm telling you — the
+      clearing where Elīna danced, where we celebrate Jāņi, that's
+      irreplaceable. There are trees there older than the Latvian state.
+
+      Elīna documented everything. She found great crested newts and
+      Eurasian lynx tracks in the clearing — both protected species.
+      That should have killed the GreenValley project dead. She sent
+      the evidence to the Vides pārvalde.
+
+      Then — poof. Gone.
+
+      You think that's a coincidence? I've spent my life in the forest.
+      I know when something is being hunted.
+    effects: { trust_sandris: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> sandris_night
+      - Move on -> quest1_hub
+
+  sandris_night:
+    type: message
+    text: >
+      SANDRIS: The night before she vanished — I was doing a late patrol,
+      around midnight. I saw lights at the clearing. Not unusual, sometimes
+      teenagers go there. But there were two vehicles on the forest road.
+      One was Elīna's grey Volkswagen. The other was a black SUV with
+      Rīga plates.
+
+      At midnight. In the clearing.
+
+      I didn't approach — I thought it was a meeting, maybe with
+      environmentalists. Now I can't stop thinking about it.
+    effects: { trust_sandris: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Agnese (teen dancer, witness tease) ---
+
+  agnese_intro:
+    type: tweet
+    from: agnese
+    text: >
+      man ir tik sūdīgi nu bļe @elina_kalnina viņa mums iemācīja
+      dejot no sirds nevis no galvas. viņa nekad tā vienkārši neaizietu.
+      ja kāds kaut ko zina pls sakiet
+    effects: { trust_agnese: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Agnese -> agnese_talk_early
+
+  agnese_talk_early:
+    type: message
+    text: >
+      AGNESE: tu esi jauns te? nu bļe slikts laiks ierasties. elīna ir
+      literally labākais cilvēks šajā ciemā. viņa mums mācīja dejot,
+      viņa stāstīja par vecajām tradīcijām, viņa bija kā vecākā māsa
+      mums visiem.
+
+      un tagad es esmu nobijusies jo laura redzēja kaut ko dīvainu
+      tajā vakarā pie deju zāles bet viņa negrib runāt. saka ka nav
+      nekas bet nu bļe... tas nav nekas sah
+    effects: { trust_agnese: "+10" }
+    choices:
+      - What did Laura see? -> agnese_laura_hint
+      - Move on -> quest1_hub
+
+  agnese_laura_hint:
+    type: message
+    text: >
+      AGNESE: nu tā es precīzi nezinu. viņa bija pie deju zāles vakarā
+      un redzēja kādu pie elīnas auto?? vai kaut ko tādu. viņa ir
+      nobijusies un negrib runāt ar svešiem. pamēģini vispirms
+      parunāties par deju vai foto ar viņu lol
+    effects: { trust_agnese: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Siguldas Meži. A Gauja valley village
+      built around the forest. A folk dancer who was fighting to protect
+      the old-growth clearing. A disappearance nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Marta (Elīna's best friend) -> marta_q1
+      - Talk to Kristaps (dance group leader) -> kristaps_q1
+      - Check what Edgars (Elīna's brother) is saying -> edgars_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marta Q1 ---
+
+  marta_q1:
+    type: tweet
+    from: marta
+    text: >
+      ja kādam ir ziņas par @elina_kalnina lūdzu zvaniet man. viņas
+      istaba ir tāda kā bija. viņas deju kurpes ir te. viņa nekad
+      nebūtu aizgājusi bez tām.
+    effects: { trust_marta: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marta -> marta_q1_talk
+
+  marta_q1_talk:
+    type: message
+    text: >
+      MARTA: I appreciate you writing but I don't know you. Elīna has
+      a lot of people who care about her. I'm sure she'll come back.
+
+      ...I keep saying that. I don't believe it anymore.
+
+      [Marta is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_marta: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kristaps Q1 ---
+
+  kristaps_q1:
+    type: tweet
+    from: kristaps
+    text: >
+      Kolektīvs 'Gauja' bez @elina_kalnina nav iedomājams. Viņas
+      horeogrāfija, viņas enerģija — mums viņa ir vajadzīga. Lūdzu
+      atgriezies pie mums. Pie manis.
+    effects: { trust_kristaps: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Kristaps -> kristaps_q1_talk
+
+  kristaps_q1_talk:
+    type: message
+    text: >
+      KRISTAPS: Elīna and I have built this dance group together for
+      five years. She's the most talented dancer I've worked with. This
+      GreenValley fight — it consumed her. She was spending all her time
+      on environmental documents instead of rehearsing.
+
+      I tried to help her. Many times. I offered to go to meetings with
+      her, to be there. She said she had it handled. She was working
+      with some journalist. I just wanted to support her.
+
+      [Kristaps seems earnest. Or obsessive?]
+    effects: { trust_kristaps: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Edgars Q1 ---
+
+  edgars_q1:
+    type: tweet
+    from: edgars
+    text: >
+      mana māsa ir PAZUDUSI un policija man saka ka viņa varbūt
+      aizbrauca uz rīgu??? VIŅA NEBRAUC UZ RĪGU NEBRĪDINOT. es braucu
+      no rīgas. kāds man paskaidros kas ellē notiek.
+    effects: { trust_edgars: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Edgars -> edgars_q1_talk
+
+  edgars_q1_talk:
+    type: message
+    text: >
+      EDGARS: Who are you? Another person from that village who's going
+      to tell me to calm down? My sister called me the night before she
+      disappeared. She said she had something big. She said "ja kaut
+      kas notiek, skaties uz GreenValley." Then she hung up.
+
+      That's the last I heard from her.
+    effects: { trust_edgars: "+10" }
+    choices:
+      - What do you think happened? -> edgars_theory
+      - Move on -> quest1_hub
+
+  edgars_theory:
+    type: message
+    text: >
+      EDGARS: I think she found proof that GreenValley's environmental
+      assessment was fraudulent and they shut her up. But I also think
+      that creepy dance leader — Kristaps — knows more than he's saying.
+      The way he talks about her... that's not professional concern.
+      That's something else.
+
+      Elīna told me months ago that someone was going through her things
+      at the dance studio. Her notes, her USB drives. She thought it
+      was nothing. Piz*ec, I don't think it was nothing.
+    effects: { trust_edgars: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Elīna went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Laura (was at the dance hall that evening) -> laura_interview
+      - Find Guntis (farmer, passes the clearing early morning) -> guntis_interview
+      - Find Andris (carpenter, starts at 6am, saw something) -> andris_interview
+      - Find Sandris (forestry guard, late patrol) -> sandris_interview_q2
+
+  # --- Laura (saw someone at Elīna's car) ---
+
+  laura_interview:
+    type: tweet
+    from: laura
+    text: >
+      nu bļe es negribu filmēt tajā vakarā bet tagad es domāju ka
+      vajadzēja. kaut kas bija ne tā pie deju zāles. ellē.
+    effects: { trust_laura: "+5" }
+    choices:
+      - Ask Laura about that evening -> laura_talk
+
+  laura_talk:
+    type: message
+    text: >
+      LAURA: ok bet tu nesaki nevienam labi? es biju pie deju zāles
+      ap 19 vakarā, gribēju uzfilmēt saulrietu. un es redzēju
+      kristaps — deju vadītājs — pie elīnas auto. viņš kaut ko
+      darīja tur, kā meklēja vai lika kaut ko iekšā. kad viņš mani
+      ieraudzīja, aizgāja piz*ec ātri.
+
+      nu bļe es neko neteicu jo kas man ticēs? pusaudze pret
+      horeogrāfu. sūds.
+    effects:
+      trust_laura: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Guntis (farmer, saw car chase on forest road) ---
+
+  guntis_interview:
+    type: tweet
+    from: guntis
+    text: >
+      Rīta agrumā uz parkiem kā vienmēr. Bet tajā rītā meža ceļš
+      nebija tukšs. Kāds brauca pārāk ātri.
+    effects: { trust_guntis: "+5" }
+    choices:
+      - Ask Guntis what he saw -> guntis_talk
+
+  guntis_talk:
+    type: message
+    text: >
+      GUNTIS: I'm up at 4:30 every morning for the animals. That
+      morning I was driving toward the pasture on the forest road and
+      a car went past — fast, way too fast for a gravel road. Black
+      SUV. Then maybe a minute later, a smaller car. Grey. Chasing?
+      I don't know.
+
+      The grey car turned off toward the old mill by the river. The
+      SUV kept going toward the A2 highway.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_guntis: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Andris (carpenter, early morning, saw figure in forest) ---
+
+  andris_interview:
+    type: tweet
+    from: andris
+    text: >
+      Katru rītu 6os darbnīcā. Bet tajā rītā mežā bija kāds. Skrēja
+      pa taku. Tumsā. Tas nebija skrējējs.
+    effects: { trust_andris: "+5" }
+    choices:
+      - Ask Andris what he saw -> andris_talk
+
+  andris_talk:
+    type: message
+    text: >
+      ANDRIS: I start work at 6am every day. My workshop is at the
+      edge of the forest. That morning — the morning after Elīna's
+      last post — I saw someone on the forest trail. Running. A woman,
+      carrying a bag, heading toward the river. It was still dark.
+      She was moving fast, like she was scared.
+
+      I called out but she didn't stop. I figured maybe a jogger
+      but... who jogs at 5am through the forest with a messenger bag?
+
+      When I heard about Elīna, I put it together. I think that was
+      her. Running from something.
+    effects:
+      trust_andris: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Sandris Q2 (late patrol, saw meeting at clearing) ---
+
+  sandris_interview_q2:
+    type: tweet
+    from: sandris
+    text: >
+      Atgādinājums: mežā aizliegts uzturēties pēc tumsas iestāšanās
+      bez atļaujas. Pēdējās naktīs konstatēti nesankcionēti braucieni.
+    effects: { trust_sandris: "+5" }
+    choices:
+      - Ask Sandris what he saw that night -> sandris_talk_q2
+
+  sandris_talk_q2:
+    type: message
+    text: >
+      SANDRIS: I was doing my midnight patrol. At the clearing I saw
+      Elīna's grey Volkswagen and a black SUV — Rīga plates. Two men
+      were standing by the clearing entrance. One of them I recognised:
+      Raimonds Kalējs, the GreenValley director.
+
+      At midnight. At the clearing. That's not a business meeting.
+
+      I logged it in my patrol book. Nobody has asked to see it.
+    effects:
+      trust_sandris: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marta (best friend)
+      and Roberts (saw Kristaps watching the flat).
+    choices:
+      - Talk to Marta about that night -> marta_interview
+      - Talk to Roberts -> roberts_interview
+      - Find Laura -> laura_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Guntis -> guntis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Andris -> andris_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Sandris -> sandris_interview_q2
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marta (last to see Elīna) ---
+
+  marta_interview:
+    type: tweet
+    from: marta
+    text: >
+      tā bilde elīnas kontā. tā nav viņa. elīna nekad neliek bildes
+      bez paraksta. elīna nepostē 4 no rīta. kāds cits to izdarīja.
+    effects: { trust_marta: "+5" }
+    choices:
+      - DM Marta -> marta_talk_low
+        when:
+          state: trust_marta
+          lt: 50
+      - DM Marta -> marta_talk_high
+        when:
+          state: trust_marta
+          gte: 50
+
+  marta_talk_low:
+    type: message
+    text: >
+      MARTA: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Marta needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_marta: "+5" }
+    choices:
+      - Share what you've learned about the night -> marta_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marta_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the SUV at the clearing, the
+      company men, the running figure. Marta is silent for a while.
+
+      MARTA: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_marta: "+25" }
+    choices:
+      - What happened that night? -> marta_talk_high
+
+  marta_talk_high:
+    type: message
+    text: >
+      MARTA: She came home around midnight. I was getting ready for the
+      early shift. She was white as a sheet, shaking. She said "viņi
+      zina ko es esmu atradusi." They know what I've found.
+
+      She grabbed her laptop and her camera drives. I asked who. She
+      said "the developers. They sent people to the clearing." Then
+      she said something else — "un viņš atkal bija tur. Viņš vienmēr
+      ir tur." And he was there again. He's always there.
+
+      She wouldn't say who "he" was. She hugged me, said "neuztraucies,"
+      and left with a bag. By morning her car was gone and the blurred
+      photo was on her account.
+    effects:
+      trust_marta: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Roberts (saw Kristaps watching the flat) ---
+
+  roberts_interview:
+    type: message
+    text: >
+      ROBERTS: nu bļe ok es tev pastāstīšu bet tā ir čau. tas deju
+      vadītājs — kristaps — es viņu redzēju kādas 3 reizes vakaros
+      pie elīnas dzīvokļa. vienkārši stāv un skatās uz logiem. tāds
+      creepy sūds sah.
+
+      pēdējo reizi kādas 2 dienas pirms viņa pazuda. sēdēja savā
+      mašīnā iepretī. vienkārši sēdēja. lukturi izslēgti. ellē.
+    effects:
+      trust_roberts: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Kristaps seen at Elīna's car at the dance hall (Laura)
+      00:00 — GreenValley SUV at the clearing, Raimonds Kalējs present (Sandris)
+      00:15 — Elīna arrives home shaken, grabs laptop and drives (Marta)
+      05:00 — Woman running on forest trail toward the river (Andris)
+      05:15 — Two cars speeding on forest road, one toward the old mill (Guntis)
+
+      GreenValley confronted Elīna at the clearing. She fled home,
+      grabbed her evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is GreenValley hiding? Who ordered the
+        confrontation at the clearing?
+      — The obsession: What is Kristaps really doing? Why was he
+        at her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Kristaps -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      GreenValley Golf & Spa is hiding something. Elīna had proof the
+      environmental assessment was fraudulent. Now she's gone and her
+      evidence is missing from the dance studio.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the environmental assessment files -> eia_records
+      - Talk to Zane the journalist -> zane_interview
+      - Talk to Līga (environment specialist) -> liga_interview
+      - Check the Gaujas Sargi association -> biedriba_investigation
+      - Talk to Sandris about the clearing -> sandris_clearing
+      - Talk to Inga the ceramicist (knows the old oaks) -> inga_interview
+      - Back to hub -> investigation_hub
+
+  # --- Environmental Assessment Records ---
+
+  eia_records:
+    type: message
+    text: >
+      The pagasts council's public website hosts the GreenValley
+      environmental impact assessment. It lists the clearing as
+      "degraded secondary forest with no protected species." The
+      biodiversity survey is dated six months ago.
+
+      But Elīna's social media posts from the same period show photos
+      of great crested newts, a lynx den, and orchids — all protected
+      under EU Habitats Directive. She tagged the photos with GPS
+      coordinates. They're in the clearing.
+
+      The assessment either missed these species or deliberately
+      omitted them.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Zane ---
+
+  zane_interview:
+    type: message
+    text: >
+      ZANE: I don't talk about sources. Period.
+    effects: { trust_zane: "+5" }
+    choices:
+      - Show Zane the evidence you have -> zane_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  zane_with_evidence:
+    type: message
+    text: >
+      ZANE: ...you have more than I expected.
+
+      Okay. Elīna and I were working together. She had documentation
+      proving the environmental assessment was conducted at a different
+      site — a degraded pine plantation 40 kilometers away. The GPS
+      data in the assessment doesn't match the clearing. It's outright
+      fraud.
+
+      She also had trail camera footage of the lynx den. Protected
+      species, protected habitat — the whole project should have been
+      blocked at EU level.
+
+      We were going to publish together. Then she went dark. And two
+      days later, someone broke into my car and stole my laptop bag.
+
+      Elīna is alive. She contacted me once, from a burner phone.
+      She said she was hiding. She said "viņi man draudēja izcirtumā
+      un kāds cits mani neatlaiž."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_zane: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> zane_hint
+      - Back to investigation hub -> investigation_hub
+
+  zane_hint:
+    type: message
+    text: >
+      ZANE: GreenValley sent their director — Kalējs — and some lawyer
+      to the clearing that night. They told her to hand over everything
+      or face legal consequences. Intimidation dressed up as cease and
+      desist.
+
+      But she also said something about someone from the dance group.
+      Someone who'd been going through her things. Someone who always
+      seemed to know where she'd be. That's a different problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Līga (environment specialist, local government) ---
+
+  liga_interview:
+    type: message
+    text: >
+      LĪGA: As the pagasts environment specialist, I have serious
+      concerns about this project. But the pagasta priekšsēdētājs
+      Ozols insists we need "investment and jobs."
+
+      Off the record? I reviewed the environmental assessment myself.
+      The methodology section references soil types that don't exist
+      in the Gauja valley. Sandy loam where we have clay. The report
+      was written for a different location.
+
+      Elīna noticed it too. She was the first to cross-reference the
+      GPS coordinates. She proved the survey was done at a different
+      site. That's criminal fraud.
+    effects:
+      trust_liga: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Gaujas Sargi (environmental association) ---
+
+  biedriba_investigation:
+    type: tweet
+    from: biedriba_gauja
+    text: >
+      TRAUKSME: Gaujas nacionālā parka buferzonā plānota izcirtuma
+      likvidēšana golfa laukuma izbūvei. Mēs pieprasām neatkarīgu
+      ietekmes uz vidi novērtējumu.
+    choices:
+      - Check their data -> biedriba_data
+
+  biedriba_data:
+    type: message
+    text: >
+      The Gaujas Sargi have been documenting the clearing for ten years.
+      Their species counts show a thriving ecosystem: 47 bird species,
+      12 mammal species, 3 EU-protected amphibian species. The clearing
+      is one of the most biodiverse sites in the Gauja National Park
+      buffer zone.
+
+      GreenValley's assessment lists 11 bird species and 2 mammals.
+      No protected species at all.
+
+      The discrepancy is not an error. It's a lie.
+
+      Elīna was an active member. She contributed most of the trail
+      camera footage and species identification.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Sandris on the clearing ---
+
+  sandris_clearing:
+    type: message
+    text: >
+      SANDRIS: Let me show you something. I've been photographing the
+      old oaks in the clearing for thirty years. Some of them are over
+      four hundred years old. They're registered in the national
+      heritage tree database.
+
+      GreenValley's plan shows every single one of them being felled.
+      They claim the trees are "diseased and dangerous." I'm a
+      certified arborist. Those trees are healthier than I am.
+
+      Elīna brought a dendrochronologist from the university. They
+      dated the oldest oak to 1587. That tree was standing when the
+      Swedes ruled Latvia.
+
+      Cutting it down for a putting green. Sūds, it makes my blood boil.
+    effects:
+      trust_sandris: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inga the ceramicist ---
+
+  inga_interview:
+    type: message
+    text: >
+      INGA: I make ceramics from Gauja clay. That clearing is where I
+      dig. But more than that — Elīna left something with me. A
+      waterproof case. She said "ja kāds jautā par izcirtumu, dod
+      viņam šo."
+
+      She looked scared. She said she'd made copies of everything
+      but needed one set somewhere nobody would think to look. A
+      ceramics workshop seemed perfect.
+    effects: { trust_inga: "+10" }
+    choices:
+      - What's in the case? -> inga_case
+
+  inga_case:
+    type: message
+    text: >
+      Inga reaches behind a shelf of unfired bowls and produces a
+      waterproof Pelican case.
+
+      INGA: She said you'd come. Take it.
+
+      Inside: a USB drive and printed photographs. The photos show the
+      clearing with GPS-tagged images of protected species, the lynx
+      den, and the ancient oaks. The USB drive contains the original
+      environmental assessment GPS data — proving it was collected 40km
+      away — and Elīna's detailed report, including forged signatures
+      on the biodiversity survey.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Kristaps Liepiņš. Choreographer. Dance partner. Something more?
+      Someone was going through Elīna's things at the studio. Someone
+      was watching her flat. Someone was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate the dance studio sign-in logs -> studio_logs
+      - Talk to Marta about Kristaps -> marta_kristaps
+        when:
+          state: trust_marta
+          gte: 20
+      - Talk to Laura (more detail on the car incident) -> laura_detail
+      - Talk to Daina the pharmacist -> daina_interview
+      - Check the anonymous account @sintija_meza -> sintija_investigation
+      - Talk to Māris the bookseller -> maris_interview
+        when:
+          state: trust_maris
+          gte: 40
+      - Talk to Inspektors Bērziņš -> inspektors_interview
+        when:
+          state: trust_inspektors
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Studio Sign-In Logs ---
+
+  studio_logs:
+    type: message
+    text: >
+      The dance studio uses a key-card system for after-hours access.
+      Elīna's card was used 38 times last month — rehearsals, private
+      practice, youth classes.
+
+      Kristaps's card: 71 times. Nearly double.
+
+      Cross-referencing: on 28 of Kristaps's 71 entries, he accessed
+      the studio within 20 minutes of Elīna. He arrived after her and
+      left after her. Every time.
+
+      His own rehearsals are on different days.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marta on Kristaps ---
+
+  marta_kristaps:
+    type: message
+    text: >
+      MARTA: Kristaps? Nu bļe, he made Elīna's life hell. He'd show
+      up at the café when she was there. He'd offer to drive her home
+      after every rehearsal. He'd comment on every single one of her
+      posts within minutes.
+
+      She told him she wanted professional distance. Clearly, kindly.
+      He said he understood. Then nothing changed. He just... kept
+      orbiting her. Always there.
+
+      Two months ago she found her notebooks moved in the studio. Her
+      USB drives had been opened. She suspected Kristaps but couldn't
+      prove it. She started keeping everything important at Inga's
+      workshop.
+    effects:
+      trust_marta: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Laura detail ---
+
+  laura_detail:
+    type: message
+    text: >
+      LAURA: ok nu bļe es tev visu pastāstīšu. kad es redzēju kristaps
+      pie elīnas auto viņam bija kaut kas rokā. tāda maza kastīte.
+      viņš to pielīmēja zem mašīnas. pie vadītāja puses.
+
+      es neesmu eksperte bet tas izskatījās kā gps izsekotājs. nu
+      tāds ko filmās rāda.
+
+      man vajadzēja kaut ko teikt bet piz*ec kas man noticētu. pusaudze
+      pret horeogrāfu. ej dirst, neviens nenoticētu.
+    effects:
+      trust_laura: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Daina ---
+
+  daina_interview:
+    type: message
+    text: >
+      DAINA: This is confidential but I'm a pharmacist, not a priest.
+      Kristaps Liepiņš comes in regularly. He's been buying things that
+      suggest he's not sleeping. Anxiety medication, sleeping pills,
+      energy supplements. The pattern is someone under extreme stress.
+
+      He also asked me once, very casually, if we sold tracking devices.
+      I said "this is a pharmacy, not Elgiganten." He laughed it off.
+      I didn't think about it again until Elīna disappeared.
+    effects:
+      trust_daina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Sintija (anonymous account) ---
+
+  sintija_investigation:
+    type: tweet
+    from: sintija
+    text: >
+      Viņai vajadzēja klausīt. Es mēģināju viņu pasargāt. Neviens
+      cits nesaprata viņas mākslu kā es.
+    choices:
+      - Look at this account's history -> sintija_posts
+
+  sintija_posts:
+    type: message
+    text: >
+      @sintija_meza: account created 10 months ago. Posts are all
+      about Elīna's dancing and activism. Comments on every performance
+      video, every rehearsal photo, every GreenValley protest update.
+      The tone shifts over time:
+
+      Month 1: "Incredible dancing. You move like the forest breathes."
+      Month 3: "Why won't you respond to my messages? I just want to
+      choreograph together."
+      Month 6: "I see you at the café with other people. You have
+      time for them but not for me?"
+      Month 8: "I know where you go. I know your schedule. I am
+      always near."
+
+      The account has no photos, no personal details. Just Elīna.
+      Only Elīna.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> sintija_style
+
+  sintija_style:
+    type: message
+    text: >
+      Comparing @sintija_meza with @kristaps_liepins:
+
+      Same use of dance terminology — specific Latvian folk dance
+      vocabulary that only a trained choreographer would know. Same
+      way of structuring sentences — short, rhythmic, like dance
+      counts. Same knowledge of Elīna's rehearsal schedule that only
+      someone with studio access would have.
+
+      And one post from @sintija_meza: "Your solo in Sequence 14B was
+      perfect." Sequence 14B is an internal rehearsal designation.
+      Not public.
+
+      It's Kristaps. The anonymous account is Kristaps.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Māris ---
+
+  maris_interview:
+    type: message
+    text: >
+      MĀRIS: Elīna was a regular at the bookshop. She'd come in for
+      Latvian folklore collections, environmental law textbooks, anything
+      about heritage trees. Smart woman. Passionate.
+
+      Last week Kristaps came in. He asked what books Elīna had been
+      buying. I told him that's none of his business. He got angry —
+      said he needed to "understand what she was working on" so he
+      could "support her better." I told him to leave.
+
+      He stood outside my shop for twenty minutes after. Just standing
+      there. Staring at the door. Sūds, it gave me chills.
+    effects:
+      trust_maris: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Inspektors Bērziņš ---
+
+  inspektors_interview:
+    type: message
+    text: >
+      INSPEKTORS BĒRZIŅŠ: Off the record — and I mean completely off
+      the record — I wanted to investigate GreenValley. My superior
+      told me to stand down. He said the Vides pārvalde had
+      "jurisdiction." That's code for "don't touch it."
+
+      The Liepiņš situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_inspektors: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened to
+      Elīna than anyone in Siguldas Meži. Who is responsible?
+    choices:
+      - Confront Kristaps Liepiņš (the obsessive choreographer) -> confront_kristaps
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Raimonds Kalējs (the GreenValley director) -> confront_raimonds
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Jānis Ozols (political protection) -> confront_janis
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Kristaps (Best Ending) ---
+
+  confront_kristaps:
+    type: message
+    text: >
+      You present your evidence to Kristaps:
+
+      "I know @sintija_meza is your account. I know you put a GPS
+      tracker on Elīna's car. I know you accessed the studio every
+      time she was there. I know you were watching her flat. I have
+      witnesses and I have the access logs."
+    choices:
+      - Send -> kristaps_response
+
+  kristaps_response:
+    type: message
+    text: >
+      Kristaps doesn't reply for a long time. Then:
+
+      KRISTAPS: You don't understand. I was protecting her. She was
+      in danger from GreenValley and she wouldn't let me help. I
+      needed to know she was safe. Everything I did was because she
+      is... she is the dance. Without her, the group is nothing. I
+      am nothing.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Inspektors Bērziņš. And to
+      Zane Priede.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektors Bērziņš reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the witness
+      testimonies — Kristaps is arrested for stalking and harassment.
+      A GPS tracker is recovered from under Elīna's car at the old
+      mill by the river.
+
+      Zane Priede, finally in possession of Elīna's full evidence
+      package, publishes the GreenValley fraud story in Diena and
+      Re:Baltica. The Vides pārvalde orders an independent assessment.
+      The golf course project is blocked. Raimonds Kalējs faces
+      criminal charges for environmental assessment fraud. The forged
+      signatures are traced to a consultancy firm in Rīga.
+
+      And Elīna Kalniņa, reading the story from a cousin's farmhouse
+      in Kurzeme, calls her brother for the first time in nine days.
+
+      "Es braucu mājās."
+
+      If you or someone you know is experiencing stalking or harassment:
+      Krīzes tālrunis: 116 006 (bezmaksas, 24/7)
+      Sieviešu tiesību institūts: 67 222 922
+      Valsts policija: 110
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: elina
+    text: >
+      mežs neslēpj melus. un siguldas mežu cilvēki arī ne. paldies
+      ka nepadevāties.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Raimonds (Partial Ending) ---
+
+  confront_raimonds:
+    type: message
+    text: >
+      You present the environmental fraud evidence to Raimonds Kalējs:
+
+      "I have proof the environmental assessment was conducted at a
+      different site. I have GPS data showing the survey location was
+      40km away. I have photographs of protected species in the
+      clearing. I have the forged signatures. I have the original
+      biodiversity data."
+    choices:
+      - Send -> raimonds_response
+
+  raimonds_response:
+    type: message
+    text: >
+      RAIMONDS: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. GreenValley Golf & Spa has always
+      operated within all regulatory requirements.
+
+      But it's too late. You've sent the evidence to Zane, to the
+      Gaujas Sargi, and to the Vides pārvalde.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The fraud story breaks. GreenValley's permits are suspended
+      pending an independent environmental assessment. The golf course
+      may never be built. The clearing is saved — for now.
+
+      But Elīna?
+
+      Without the stalking evidence, Kristaps is never investigated.
+      He continues to run the dance group. He continues to monitor
+      her accounts. He creates a new anonymous profile.
+
+      Three months later, Elīna reads about GreenValley online. She
+      returns quietly. She leaves the dance group. She stops walking
+      in the forest alone. She checks her car every morning.
+
+      The clearing is protected. But the person who terrorised Elīna
+      walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: elina
+    text: "es esmu mājās. mežs ir drošībā. pārējais... redzēsim."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Jānis Ozols (Wrong Ending) ---
+
+  confront_janis:
+    type: message
+    text: >
+      You confront pagasta priekšsēdētājs Jānis Ozols with your
+      evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> janis_response
+
+  janis_response:
+    type: tweet
+    from: arturs
+    text: >
+      Mans klients pieņem zināšanai Jūsu apgalvojumus. Jebkāda
+      publiska apmelojošu materiālu izplatīšana izraisīs tūlītēju
+      tiesvedību. — Birojs Vanags & Partneri, Rīga
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The pagasta priekšsēdētājs's lawyer buries your accusation.
+      Without a direct link between Ozols and GreenValley's fraud —
+      and there isn't one beyond political protection — your evidence
+      is insufficient.
+
+      GreenValley continues to push the project. Kristaps continues
+      to watch. Elīna stays in hiding.
+
+      Six months later, @sintija_meza creates a new account. It
+      follows Elīna's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SIGULDAS MEŽI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Elīna's story explores themes of
+      corporate greed destroying natural heritage, obsessive behaviour
+      disguised as devotion, community solidarity, and the courage to
+      fight for what matters.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Krīzes tālrunis: 116 006 (bezmaksas, 24/7)
+      Sieviešu tiesību institūts: 67 222 922
+      Valsts policija: 110
+      Vides pārkāpumu ziņošana: 8787 (Vides SOS)

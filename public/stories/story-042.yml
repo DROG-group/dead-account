@@ -1,0 +1,1507 @@
+# DEAD ACCOUNT — A TactCheck Gamepatch Scenario
+# Story 042: Denmark 2 — Havoe
+# An investigation game on a simulated Mastodon instance
+#
+# Player investigates the disappearance of ceramicist Sofie Andersen
+# on the fictional island town of Havoe, off the coast of Funen.
+
+meta:
+  title: "Dead Account"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_mikkel: 0
+    trust_astrid: 0
+    trust_jorgen: 0
+    trust_birthe: 0
+    trust_noah: 0
+    trust_alma: 0
+    trust_oscar: 0
+    trust_frederik: 0
+    trust_karen: 0
+    trust_lars: 0
+    trust_inger: 0
+    trust_thomas: 0
+    trust_nils: 0
+    trust_signe: 0
+    trust_peter: 0
+    trust_henrik: 0
+    trust_mette: 0
+    trust_viggo: 0
+    trust_jakob: 0
+    trust_anette: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    fraud_evidence: 0
+    harassment_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just moved to havoe. settling in on the island"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Havoe.social"
+    description: "Welcome to the Havoe island community instance"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    # === Sofie's Inner Circle ===
+    sofie:
+      name: "Sofie Andersen"
+      bio: "ceramicist & craft influencer | havoe keramik | clay and salt air"
+      avatar: avatars/sofie.jpg
+    mikkel:
+      name: "Mikkel Holm"
+      bio: "fisker | havoe havn | sofie's kæreste | the sea gives and takes"
+      avatar: avatars/mikkel.jpg
+    astrid:
+      name: "Astrid Lindqvist"
+      bio: "textile designer | havoe collective | sofie's bestie since school"
+      avatar: avatars/astrid.jpg
+    jorgen:
+      name: "Jorgen Petersen"
+      bio: "retired harbour master | 40 years on havoe | i remember when"
+      avatar: avatars/jorgen.jpg
+    karen:
+      name: "Karen Andersen"
+      bio: "sofie's sister | copenhagen | WHERE IS MY SISTER"
+      avatar: avatars/karen.jpg
+
+    # === Town / Government ===
+    frederik:
+      name: "Frederik Møller"
+      bio: "Borgmester | Havoe Kommune | Bæredygtig udvikling for alle"
+      avatar: avatars/frederik.jpg
+    lars:
+      name: "Lars Vestergaard"
+      bio: "Kommunaldirektør | Havoe | EU-projekter & infrastruktur"
+      avatar: avatars/lars.jpg
+    inger:
+      name: "Inger Dahl"
+      bio: "Havoe Kommune | sekretær | kaffe og kontorarbejde"
+      avatar: avatars/inger.jpg
+    politi:
+      name: "Fyns Politi — Havoe"
+      bio: "Officiel konto | Alarmcentral: 112 | Anmeld: 114"
+      avatar: avatars/politi.jpg
+    nils:
+      name: "Nils Bak"
+      bio: "Politibetjent | Havoe station | Træffetid: ons 10-12"
+      avatar: avatars/nils.jpg
+
+    # === Wellness Retreat / PR ===
+    thomas:
+      name: "Thomas Witt"
+      bio: "PR Manager | Havoe Wellness Haven | communication is everything"
+      avatar: avatars/thomas.jpg
+    havoe_wellness:
+      name: "Havoe Wellness Haven"
+      bio: "Luxury wellness | Sustainable living | Island retreat | Book now"
+      avatar: avatars/havoe_wellness.jpg
+    henrik:
+      name: "Henrik Juul"
+      bio: "Advokat | Juul & Partners | Erhvervsret & kommunikation"
+      avatar: avatars/henrik.jpg
+
+    # === Local Business / Community ===
+    birthe:
+      name: "Mormor Birthe"
+      bio: "82 på havoe | husker da øen var fiskere og bønder | kage hver søndag"
+      avatar: avatars/birthe.jpg
+    signe:
+      name: "Signe Krogh"
+      bio: "apotek havoe | sundhed først | havluft er den bedste medicin"
+      avatar: avatars/signe.jpg
+    peter:
+      name: "Peter Friis"
+      bio: "tømrer | havoe byggeri | alt fra båd til bord"
+      avatar: avatars/peter.jpg
+    mette:
+      name: "Mette Nørgaard"
+      bio: "journalist | Fyns Avis | tips: mette@fynsavis.dk"
+      avatar: avatars/mette.jpg
+    viggo:
+      name: "Viggo Hansen"
+      bio: "bager | havoe bageri | rugbrød og kanelsnegle siden 1985"
+      avatar: avatars/viggo.jpg
+    jakob:
+      name: "Jakob Sørensen"
+      bio: "automekanikerr | færge & fiskerbåde | havoe havn"
+      avatar: avatars/jakob.jpg
+    anette:
+      name: "Anette Lund"
+      bio: "bibliotekar | havoe bibliotek | bøger og havudsigt"
+      avatar: avatars/anette.jpg
+
+    # === Teens ===
+    noah:
+      name: "Noah"
+      bio: "16 | skater | havoe havn er sygt nice spot | sgu fedt"
+      avatar: avatars/noah.jpg
+    alma:
+      name: "Alma"
+      bio: "17 | keramik elev | @sofie_keramik er bare mega inspirerende"
+      avatar: avatars/alma.jpg
+    oscar:
+      name: "Oscar"
+      bio: "15 | fisker junior | drone footage | fangede noget vildt"
+      avatar: avatars/oscar.jpg
+
+    # === Media / Misc ===
+    havoe_nyt:
+      name: "Havoe Nyt"
+      bio: "Lokale nyheder | Tips: redaktion@havoenyt.dk"
+      avatar: avatars/havoe_nyt.jpg
+    vejret:
+      name: "Vejr Havoe"
+      bio: "Automatisk vejrstation | Opdatering hver time"
+      avatar: avatars/vejret.jpg
+    havoe_bibl:
+      name: "Havoe Bibliotek"
+      bio: "Bøger | Arrangementer | Wifi | Viden til alle"
+      avatar: avatars/havoe_bibl.jpg
+    tipster:
+      name: "Anonym"
+      bio: "."
+      avatar: avatars/anon.jpg
+    havoe_laug:
+      name: "Havoe Håndværkerlaug"
+      bio: "Håndværk & kunsthåndværk | Lokale traditioner | Fællesskab"
+      avatar: avatars/havoe_laug.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING ON HAVOE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to havoe.social — the community Mastodon instance for
+      the island of Havoe, off the coast of Funen.
+
+      The local feed is frantic. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, one name keeps appearing: @sofie_keramik.
+
+      A local ceramicist and craft influencer. She ran a studio on the
+      harbour, made beautiful stoneware glazed with island clay. She had
+      twenty thousand followers. Now she hasn't posted in ten days.
+    choices:
+      - Look at her profile -> sofie_profile
+
+  sofie_profile:
+    type: tweet
+    from: sofie
+    text: "Found the receipts. Literally. EU healthcare funds going to spa pools. This island deserves to know."
+    choices:
+      - That's her last real post... -> black_square
+
+  black_square:
+    type: message
+    text: >
+      Two days after that post, her account shared a single image:
+      a solid black square. No caption. Posted at 4am.
+
+      Her friends say that's not Sofie. The police say there's no crime.
+      But a ceramicist doesn't vanish after posting about EU fund fraud.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: politi
+    text: >
+      Vi har modtaget en anmeldelse vedrørende en borger fra Havoe.
+      Der er på nuværende tidspunkt ingen tegn på kriminalitet.
+      Information: 114.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The feed is chaos. Her boyfriend @mikkel_fisker is posting
+      desperate appeals. Her best friend @astrid_tekstil is calling out
+      the police. Her sister @karen_andersen is threatening to come from
+      Copenhagen with lawyers.
+
+      And old Mormor Birthe keeps posting about how "that wellness place
+      took the money meant for our health clinic."
+
+      Nobody believes Sofie just left. She was exposing something.
+    effects: { trust_mikkel: "+5", trust_karen: "+5" }
+    choices:
+      - Start following Sofie's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Havoe. Follow Sofie's contacts and read their posts.
+      The more you engage, the more the islanders will trust you.
+    choices:
+      - Talk to Mormor Birthe (she knows everything) -> birthe_intro
+      - Talk to Jorgen (retired harbour master) -> jorgen_intro
+      - Talk to Noah (teen skater, says he saw something) -> noah_intro
+      - Browse the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is split between worried posts about Sofie and everyday
+      island life. Ferry schedules, fishing reports, weather.
+
+      Key names: Mikkel (fisherman, Sofie's boyfriend), Astrid (textile
+      designer, Sofie's best friend), Jorgen (retired harbour master,
+      community elder), Mette (journalist, suspiciously quiet).
+
+      And Havoe Wellness Haven — the luxury retreat that just opened.
+      Their PR account posts about "sustainable luxury" and "island
+      healing." Some islanders love it. Most seem... sceptical.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Mormor Birthe -> birthe_intro
+      - Talk to Jorgen -> jorgen_intro
+      - Talk to Noah -> noah_intro
+
+  # --- Mormor Birthe (history, social map) ---
+
+  birthe_intro:
+    type: tweet
+    from: birthe
+    text: >
+      vi skulle have et sundhedscenter. det var det vi stemte for.
+      i stedet fik vi spa for rige turister og sofie forsvandt da hun
+      sagde det højt. sgu ikke i orden.
+    effects: { trust_birthe: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Mormor Birthe -> birthe_talk
+
+  birthe_talk:
+    type: message
+    text: >
+      BIRTHE: You're new! Welcome to the island. Terrible timing.
+
+      Let me tell you what happened. Five years ago, the kommune applied
+      for EU funds to build a public healthcare centre. Island people
+      need healthcare too, you know. The nearest hospital is a ferry
+      ride and an hour's drive away.
+
+      We got the money. 28 million kroner. Then somehow a "wellness
+      retreat" got built instead. Same plot of land. Same architect.
+      Different purpose entirely. Rich people come for weekends. We
+      still take the ferry when we're sick.
+
+      Sofie found the paper trail. Now she's gone.
+    effects: { trust_birthe: "+10", contacts_followed: "+2" }
+    choices:
+      - Who's behind the wellness retreat? -> birthe_retreat
+      - Who runs things on the island? -> birthe_politics
+      - Thank her and move on -> quest1_hub
+
+  birthe_retreat:
+    type: message
+    text: >
+      BIRTHE: Lars Vestergaard — the municipal director. He wrote the EU
+      application for the health centre. Then he changed the project
+      scope after the funding was approved. "Wellness and preventive
+      health" he called it. Nobody on the council objected because Lars
+      handles all the paperwork and nobody reads it.
+
+      The retreat is run by a company from Copenhagen. Thomas Witt is
+      their PR man here on the island. Smooth talker. Always at the
+      borgmester's table at the kro.
+    effects: { trust_birthe: "+5" }
+    choices:
+      - Who runs things on the island? -> birthe_politics
+      - Move on -> quest1_hub
+
+  birthe_politics:
+    type: message
+    text: >
+      BIRTHE: Frederik Møller is the borgmester. Nice man. Weak man.
+      Lars Vestergaard is the real power — he's been kommunaldirektør
+      for fifteen years. Handles all the EU funding applications, all
+      the contracts. Frederik signs whatever Lars puts in front of him.
+
+      Thomas Witt is the PR manager for the wellness place. He's the
+      one who came to Sofie's studio. Twice. Alma told me about it.
+      First time he was "friendly." Second time he wasn't.
+
+      And Mette at the newspaper? She knows everything but writes
+      nothing. Her paper gets advertising from the wellness retreat.
+    effects: { trust_birthe: "+10", contacts_followed: "+2" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Jorgen (retired harbour master) ---
+
+  jorgen_intro:
+    type: tweet
+    from: jorgen
+    text: >
+      fyrre år på denne havn. jeg har set alt. men en ung kvinde der
+      forsvinder efter hun siger sandheden? det har jeg aldrig set.
+    effects: { trust_jorgen: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Jorgen -> jorgen_talk
+
+  jorgen_talk:
+    type: message
+    text: >
+      JORGEN: I retired from the harbour five years ago. I watched them
+      build that wellness place. They broke ground while we were still
+      arguing about whether it should be a health centre or not.
+
+      Lars had the contracts signed before the council voted. I saw the
+      construction trucks on the ferry before the building permit was
+      public. That's not how things are supposed to work.
+
+      Sofie asked me about the timeline. I told her everything. Three
+      days later she posted about "EU receipts" and then she was gone.
+    effects: { trust_jorgen: "+10", contacts_followed: "+1" }
+    choices:
+      - Ask about the construction timeline -> jorgen_timeline
+      - Move on -> quest1_hub
+
+  jorgen_timeline:
+    type: message
+    text: >
+      JORGEN: The EU fund approval came in March. The council vote on
+      "project scope modification" was in September. But the construction
+      company was on the ferry in June. Three months before the council
+      approved the change.
+
+      Someone ordered construction before the vote. That means someone
+      knew the vote would pass. Or didn't care.
+    effects: { trust_jorgen: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Noah (teen witness) ---
+
+  noah_intro:
+    type: tweet
+    from: noah
+    text: >
+      sgu okay så jeg så noget ved sofies værksted den aften. skal
+      jeg gå til politiet?? de tager mig bare aldrig seriøst altså
+    effects: { trust_noah: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Noah -> noah_talk_early
+
+  noah_talk_early:
+    type: message
+    text: >
+      NOAH: okay så jeg var nede ved havnen og skate den aften ik?
+      og der holder en bil ved sofies værksted. en fyr går ind. han
+      var der i tyve minutter måske. da han kom ud bar han kasser.
+      som arkivkasser. han smed dem i bilen og kørte mod færgen.
+
+      sofie var der ikke. hendes bil var der ikke. men nogen var inde
+      i hendes værksted midt om natten. det er sgu da vildt.
+    effects: { trust_noah: "+10" }
+    choices:
+      - Can you describe the man? -> noah_describe
+      - Thanks Noah, I'll come back to this -> quest1_hub
+
+  noah_describe:
+    type: message
+    text: >
+      NOAH: pænt tøj. sådan skjorte-type. ikke en fisker altså. han
+      havde en nøgle — han låste op som om det var hans eget sted.
+      mellembygning, mørkt hår, den der type der altid smiler for
+      meget.
+
+      og bilen var en af de der wellness-sted biler. med logoet på
+      siden. det er bare mega sketchy.
+    effects: { trust_noah: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Havoe. A small island community.
+      A ceramicist who found out their health centre money went to a
+      luxury spa. An EU funding scheme that doesn't add up. And now
+      the whistleblower is gone.
+    choices:
+      - Talk to Mikkel (Sofie's boyfriend) -> mikkel_q1
+      - Talk to Astrid (Sofie's best friend) -> astrid_q1
+      - Check what Karen (Sofie's sister) is saying -> karen_q1
+      - I'm ready to investigate the night Sofie disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Mikkel Q1 ---
+
+  mikkel_q1:
+    type: tweet
+    from: mikkel
+    text: >
+      sofie har ikke ringet. har ikke skrevet. hun ville aldrig bare
+      forsvinde. noget er galt. virkelig galt. hjælp os.
+    effects: { trust_mikkel: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mikkel -> mikkel_q1_talk
+
+  mikkel_q1_talk:
+    type: message
+    text: >
+      MIKKEL: I don't know you. But I'll talk to anyone at this point.
+      Sofie wouldn't just leave without telling me. We've been together
+      for three years. We tell each other everything.
+
+      Except... the last few weeks, she was pulling away. Working late.
+      Meeting someone she wouldn't name. She said "the less you know,
+      the safer you are." That terrified me more than anything.
+    effects: { trust_mikkel: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Astrid Q1 ---
+
+  astrid_q1:
+    type: tweet
+    from: astrid
+    text: >
+      min bedste veninde er væk og politiet siger "ingen tegn på
+      kriminalitet." hvad skal der til?? et lig?? undskyld sproget
+      men jeg er SÅ vred.
+    effects: { trust_astrid: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Astrid -> astrid_q1_talk
+
+  astrid_q1_talk:
+    type: message
+    text: >
+      ASTRID: Sofie was scared the last two weeks. She told me someone
+      had been "visiting" her studio. A man from the wellness place.
+      First time he brought her flowers and talked about "partnership
+      opportunities." Second time he came without flowers and told her
+      she was "making a mistake she couldn't undo."
+
+      She didn't report it because what do you report? A man with
+      flowers? A vague warning? The police would laugh.
+    effects: { trust_astrid: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Karen Q1 ---
+
+  karen_q1:
+    type: tweet
+    from: karen
+    text: >
+      min søster er FORSVUNDET fra den ø og politiet gør INGENTING.
+      jeg kører til havoe i morgen med en advokat. nogen skal svare.
+    effects: { trust_karen: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Karen -> karen_q1_talk
+
+  karen_q1_talk:
+    type: message
+    text: >
+      KAREN: Who are you? Another island person with "thoughts and
+      prayers"? My sister told me last week she was worried. She said
+      someone was pressuring her to delete posts. She wouldn't say who.
+
+      She called me from a number I didn't recognise. A landline. She
+      said "if anything happens, look at the wellness centre funding."
+      Then the call dropped and I haven't heard from her since.
+    effects: { trust_karen: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Sofie went silent. Piece together
+      the timeline from at least 4 witnesses.
+    choices:
+      - Find Mikkel (was at home waiting for Sofie) -> mikkel_interview
+      - Find Jakob (mechanic, works late at the harbour) -> jakob_interview
+      - Find Viggo (baker, starts early, saw something) -> viggo_interview
+      - Find Peter (carpenter, lives near the studio) -> peter_interview
+
+  # --- Mikkel (waited all night) ---
+
+  mikkel_interview:
+    type: message
+    text: >
+      MIKKEL: She said she was going to the studio after dinner. Around
+      20:00. Said she needed to "sort something out." She took her
+      laptop and a folder she'd been carrying everywhere for two weeks.
+      The folder had a red elastic band around it.
+
+      She didn't come home. By midnight I walked to the studio. It was
+      dark. Locked. Her car was gone. I called her — straight to
+      voicemail. I called the police at 2am.
+    effects:
+      trust_mikkel: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Jakob (saw someone at the studio) ---
+
+  jakob_interview:
+    type: tweet
+    from: jakob
+    text: >
+      arbejdede sent på en motor i går. der var lys i sofies værksted
+      kl 22. og en bil jeg ikke genkendte. ikke hendes.
+    effects: { trust_jakob: "+5" }
+    choices:
+      - Ask Jakob what he saw -> jakob_talk
+
+  jakob_talk:
+    type: message
+    text: >
+      JAKOB: I was in the workshop until late. Around 22:00 I saw light
+      in Sofie's studio. And a car parked outside — not her Volvo. A
+      dark Audi. The wellness centre people drive dark Audis. I've
+      serviced their boats enough times to know their vehicles.
+
+      Thirty minutes later the light went off. The Audi left toward
+      the ferry terminal. Then another car — Sofie's Volvo — went the
+      other direction. Toward the north end of the island. Fast.
+
+      Why would Sofie drive north at half ten at night? There's nothing
+      there but the lighthouse and Jorgen's old cottage.
+    effects:
+      trust_jakob: "+10"
+      night_witnesses: "+1"
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Viggo (baker, early morning) ---
+
+  viggo_interview:
+    type: message
+    text: >
+      VIGGO: I start baking at 4am. That morning, walking to the
+      bakery, I passed Sofie's studio. The door was ajar. I looked in —
+      the place was a mess. Shelves pulled down. Her glazing station
+      overturned. Papers everywhere.
+
+      But the strange thing: her kiln was still on. Sofie would never
+      leave the kiln running. She treats that kiln like a child. That's
+      when I knew something was wrong.
+
+      I called Mikkel. He hadn't slept.
+    effects:
+      trust_viggo: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Peter (heard an argument) ---
+
+  peter_interview:
+    type: message
+    text: >
+      PETER: I live two doors from Sofie's studio. Around 21:30 I heard
+      voices. A man and a woman. The man was doing most of the talking.
+      Not shouting exactly — more like... controlled aggression. That
+      voice you use when you want someone to know you're serious.
+
+      He said something like "You have no idea what you're playing with."
+      She said "I know exactly what I'm doing." Then a door slammed.
+
+      Twenty minutes later, silence. Then a car started and drove off
+      fast.
+    effects:
+      trust_peter: "+15"
+      night_witnesses: "+1"
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+    choices:
+      - Talk to Alma (Sofie's student, has information) -> alma_interview
+      - Talk to Oscar (teen, drone footage of the wellness site) -> oscar_interview
+      - Find Mikkel -> mikkel_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Jakob the mechanic -> jakob_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Viggo the baker -> viggo_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Find Peter the carpenter -> peter_interview
+        when:
+          state: night_witnesses
+          lt: 4
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Alma (student, extra info) ---
+
+  alma_interview:
+    type: tweet
+    from: alma
+    text: >
+      sofie gav mig noget dagen før hun forsvandt. hun sagde "gem
+      det" og "giv det kun til nogen du stoler på." jeg er bare mega
+      bange altså.
+    effects: { trust_alma: "+5" }
+    choices:
+      - Ask Alma what Sofie gave her -> alma_item
+        when:
+          state: trust_alma
+          gte: 5
+
+  alma_item:
+    type: message
+    text: >
+      ALMA: det er et USB-stik. sofie så mig ind i øjnene og sagde
+      "der er dokumenter på det der som viser hvad de har gjort med
+      sundhedspengene. hvis noget sker med mig, giv det til mette
+      nørgaard. kun hende."
+
+      jeg har ikke åbnet det. jeg er sygt bange. men hvis du tror du
+      kan hjælpe sofie...
+    effects:
+      trust_alma: "+15"
+      fraud_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Oscar (drone footage) ---
+
+  oscar_interview:
+    type: tweet
+    from: oscar
+    text: >
+      fløj min drone over wellness stedet i weekenden. det er vildt
+      hvad de bygger dernede. det ligner slet ikke et sundhedscenter
+    effects: { trust_oscar: "+5" }
+    choices:
+      - Ask Oscar about the footage -> oscar_footage
+
+  oscar_footage:
+    type: message
+    text: >
+      OSCAR: okay se her. de siger det er "wellness og forebyggende
+      sundhed" ik? men kig på hvad der er: spaanlæg med infinity pool.
+      privatboliger. en helikopterlandingsplads. en golfbane under
+      anlæggelse.
+
+      der er ingen klinik. ingen lægerum. ingen ambulanceadgang.
+      det er et ferie-resort for rige mennesker og det er bygget med
+      penge beregnet til vores sundhedscenter.
+
+      sofie så det samme. hun fotograferede byggetilladelserne og
+      sammenlignede dem med EU-ansøgningen.
+    effects:
+      trust_oscar: "+10"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      20:00 — Sofie leaves home with laptop and folder (Mikkel)
+      21:30 — Argument at studio: man says "you have no idea" (Peter)
+      22:00 — Light in studio, unknown Audi parked outside (Jakob)
+      22:30 — Audi leaves toward ferry. Sofie's Volvo goes north (Jakob)
+      04:00 — Studio found ransacked, kiln still on (Viggo)
+
+      Someone confronted Sofie at her studio. They argued. She fled
+      north — toward the lighthouse end of the island. Her studio was
+      searched and trashed.
+
+      Two threads to pull:
+      — The fraud: What did Sofie find? Where are the EU documents?
+      — The harassment: Who confronted her? Who sent them?
+    choices:
+      - Investigate the EU fraud thread -> fraud_hub
+      - Investigate the harassment thread -> harassment_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      FRAUD THREAD: Evidence collected: ${fraud_evidence}
+      HARASSMENT THREAD: Evidence collected: ${harassment_evidence}
+    choices:
+      - Work on the fraud thread -> fraud_hub
+      - Work on the harassment thread -> harassment_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: fraud_evidence, gte: 5 }
+            - { state: harassment_evidence, gte: 3 }
+
+  # =====================================================================
+  # EU FRAUD THREAD
+  # =====================================================================
+
+  fraud_hub:
+    type: message
+    text: >
+      THE FRAUD THREAD
+
+      EU healthcare funds were diverted to build a luxury wellness
+      retreat. Sofie found the paper trail. Where is the evidence?
+
+      Fraud evidence: ${fraud_evidence}
+    choices:
+      - Check the EU funding application -> eu_application
+      - Talk to Jorgen about the construction timeline -> jorgen_construction
+      - Talk to Mormor Birthe about the health centre vote -> birthe_vote
+      - Check the anonymous tip account -> tipster_investigation
+      - Talk to Mette (journalist) -> mette_investigation
+      - Talk to Anette (librarian, has public records) -> anette_investigation
+      - Back to hub -> investigation_hub
+
+  # --- EU Application ---
+
+  eu_application:
+    type: message
+    text: >
+      The EU Structural Fund application (filed 2021) is a public
+      document. It clearly requests funding for "Havoe Sundhedscenter
+      — integrated primary healthcare facility for island communities."
+
+      The approved budget: 28 million DKK. Purpose: medical clinic,
+      emergency room, dental practice, rehabilitation centre, and
+      mental health services.
+
+      The building that actually got built: Havoe Wellness Haven.
+      Spa. Private suites. Restaurant. Helipad. No medical facilities
+      whatsoever.
+
+      The project modification was filed as an "addendum" to the
+      original application. Signed by Lars Vestergaard.
+    effects:
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Jorgen (construction timeline) ---
+
+  jorgen_construction:
+    type: message
+    text: >
+      JORGEN: I logged every ferry for forty years. It's a habit.
+      I still do it.
+
+      The first construction materials arrived on June 14th. The
+      council vote to modify the project was September 3rd. The
+      building permit was issued August 28th — five days before the
+      vote.
+
+      Everything was decided before the vote happened. The vote was
+      theatre. Lars had the contracts signed in June.
+    effects:
+      trust_jorgen: "+10"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Birthe (vote) ---
+
+  birthe_vote:
+    type: message
+    text: >
+      BIRTHE: I was at that council meeting. Lars presented the
+      "modification" as a small change — "expanding the wellness
+      component of the health centre." He made it sound like we'd
+      still get the clinic plus a spa.
+
+      Nobody read the actual documents. Frederik nodded along. The
+      vote was unanimous. Only afterwards did we realise the clinic
+      was gone entirely.
+
+      Sofie got copies of the meeting minutes. She compared the
+      original EU application with the modification. She said the
+      numbers didn't match by millions.
+    effects:
+      trust_birthe: "+10"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Tipster ---
+
+  tipster_investigation:
+    type: tweet
+    from: tipster
+    text: >
+      EU-ansøgning 2021: sundhedscenter. Byggetilladelse 2022:
+      wellness resort. Samme budget. Forskellige bygninger. Hvem
+      tjente på forskellen?
+    choices:
+      - Look at this account's other posts -> tipster_posts
+
+  tipster_posts:
+    type: message
+    text: >
+      @anonym posts between 18:00 and 20:00 every few days:
+
+      "Lars Vestergaard har en lejlighed i Wellness Haven. Gratis."
+      "Byggefirmaet er registreret i Luxembourg. Ejeren er anonym."
+      "Det originale projekt var 28 mio. Budgetoverskridelsen er 11 mio.
+      Hvem betalte de 11 mio?"
+      "Spørg Inger Dahl hvad hun har i den låste skuffe."
+
+      This is someone who knows the kommune's internal workings.
+      Posting hours suggest an employee posting after hours.
+    choices:
+      - Check Inger Dahl (the municipal secretary) -> inger_connection
+      - Back to fraud thread -> fraud_hub
+
+  inger_connection:
+    type: message
+    text: >
+      Comparing @anonym with Inger Dahl's patterns: same posting hours,
+      same knowledge of filing systems, same quiet frustration.
+
+      Inger once posted: "Sometimes I wonder if anyone reads the
+      documents they sign." The tipster's tone is identical.
+
+      It's Inger. The municipal secretary is the anonymous leaker.
+    choices:
+      - Confront Inger -> inger_confront
+
+  inger_confront:
+    type: message
+    text: >
+      You DM Inger, mentioning "the locked drawer."
+
+      INGER: ...how do you know about that?
+
+      Long silence.
+
+      INGER: Yes. I have copies of everything. The original EU
+      application. The modification Lars wrote. The building contracts
+      signed three months before the council vote. The invoices that
+      don't match. And Lars's private agreement with the wellness
+      company — he gets a free apartment and 2% of revenue.
+
+      If Lars finds out it was me, I'm finished. But Sofie is
+      missing and I can't stay quiet anymore.
+    effects:
+      trust_inger: "+30"
+      fraud_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Keep them safe. I'll come back when ready -> investigation_hub
+
+  # --- Mette (journalist) ---
+
+  mette_investigation:
+    type: message
+    text: >
+      METTE: I know what you're going to ask. Why haven't I written
+      about this?
+
+      My editor runs ads from Wellness Haven. Every story I pitch
+      about the funding gets killed. "Not enough evidence." "We could
+      get sued." "Think about the island's reputation."
+
+      I've been building a file for two years. Sofie was working with
+      me. She had the documents I couldn't get. If you can find what
+      she gathered, I can get it published nationally. Fyns Avis won't
+      touch it. But Politiken will.
+    effects:
+      trust_mette: "+15"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # --- Anette (librarian, records) ---
+
+  anette_investigation:
+    type: message
+    text: >
+      ANETTE: Public records are my speciality. Here's what I found:
+
+      The building company — NordBau ApS — was registered six weeks
+      before the EU application was filed. It has one project: Havoe
+      Wellness Haven. Its registered address is a mailbox in Luxembourg.
+      The beneficial owner is hidden behind a holding company.
+
+      The architect listed on both the health centre application and
+      the wellness retreat plans is the same person. Lars's brother-in-law.
+
+      Sofie spent three days in this library going through company
+      registries. She found things I hadn't thought to look for.
+    effects:
+      trust_anette: "+10"
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to fraud thread -> fraud_hub
+
+  # =====================================================================
+  # HARASSMENT THREAD
+  # =====================================================================
+
+  harassment_hub:
+    type: message
+    text: >
+      THE HARASSMENT THREAD
+
+      Someone confronted Sofie. Someone trashed her studio. Someone
+      posted the black square from her account. Who?
+
+      Harassment evidence: ${harassment_evidence}
+    choices:
+      - Investigate Thomas Witt (PR manager) -> thomas_investigation
+      - Talk to Astrid about the studio visits -> astrid_studio
+        when:
+          state: trust_astrid
+          gte: 15
+      - Talk to Mikkel about the last weeks -> mikkel_lastweeks
+        when:
+          state: trust_mikkel
+          gte: 20
+      - Visit Sofie's studio -> studio_visit
+      - Talk to Nils (police officer) -> nils_interview
+        when:
+          state: trust_nils
+          gte: 20
+      - Check the wellness centre PR posts -> wellness_posts
+      - Talk to Signe (pharmacist) -> signe_interview
+      - Back to hub -> investigation_hub
+
+  # --- Thomas Investigation ---
+
+  thomas_investigation:
+    type: tweet
+    from: thomas
+    text: >
+      Havoe Wellness Haven values its relationship with the local
+      community. We welcome dialogue and reject all forms of
+      misinformation about our project.
+    choices:
+      - Check Thomas's post history -> thomas_posts
+
+  thomas_posts:
+    type: message
+    text: >
+      Thomas Witt's posts are corporate smooth. But the timing reveals
+      a pattern:
+
+      Every time Sofie posted about the wellness centre, Thomas posted
+      a "clarification" within the hour. Not engaging directly — just
+      muddying the waters with corporate language.
+
+      Two weeks before Sofie disappeared: "Some individuals choose to
+      spread misinformation rather than engage constructively."
+
+      One week before: "We have engaged legal counsel regarding
+      defamatory statements made on this platform."
+
+      Three days before: "Sometimes the best communication strategy
+      is direct conversation." — posted at 21:47. The same evening
+      Peter heard the argument at Sofie's studio.
+    effects:
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to harassment thread -> harassment_hub
+
+  # --- Astrid (studio visits) ---
+
+  astrid_studio:
+    type: message
+    text: >
+      ASTRID: Thomas Witt came to the studio twice. The first time he
+      brought flowers and a proposal: "Partnership. Wellness Haven
+      sells Sofie's ceramics in their gift shop. Good money." Sofie
+      said no.
+
+      The second visit was different. No flowers. He stood in the
+      doorway and said: "You're going to regret what you're posting.
+      We know people. Powerful people. Your little pottery shop could
+      have a very bad year."
+
+      Sofie recorded it on her phone. She played it for me. Cold,
+      controlled, threatening. But legally? Just a man expressing an
+      opinion about business risk.
+    effects:
+      trust_astrid: "+15"
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Does Sofie still have the recording? -> astrid_recording
+      - Back to harassment thread -> harassment_hub
+
+  astrid_recording:
+    type: message
+    text: >
+      ASTRID: It was on her phone. If they have her phone, they have
+      the recording. Or they've deleted it.
+
+      But Sofie backed everything up. She was smart about it. She said
+      "If they come for my phone, I want copies somewhere they can't
+      reach." She mentioned a cloud backup. Mikkel might know the
+      details.
+    effects:
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to harassment thread -> harassment_hub
+
+  # --- Mikkel (last weeks) ---
+
+  mikkel_lastweeks:
+    type: message
+    text: >
+      MIKKEL: The last two weeks were bad. Sofie stopped sleeping
+      properly. She'd get up at 3am and check the locks. She said
+      someone was watching the studio — a car parked across the road
+      with someone in it, engine running.
+
+      She got messages from accounts she didn't recognise. Not
+      threatening exactly — more like "we know what you're doing" type
+      stuff. She blocked them but new ones kept appearing.
+
+      The night before she disappeared, she backed up her phone to
+      cloud storage. She gave me the password. She said "If anything
+      happens, this is the evidence."
+    effects:
+      trust_mikkel: "+15"
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Does the cloud backup still exist? -> mikkel_backup
+      - Back to harassment thread -> harassment_hub
+
+  mikkel_backup:
+    type: message
+    text: >
+      MIKKEL: I haven't looked. I've been too scared. But yes — the
+      password is in our shared notes. Everything on her phone should
+      be there. The recordings. The photos of documents. The threatening
+      messages.
+
+      If you think it can help bring her back... take it. Take all of
+      it. I just want her home.
+    effects:
+      harassment_evidence: "+1"
+      fraud_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Studio Visit ---
+
+  studio_visit:
+    type: message
+    text: >
+      SOFIE'S STUDIO
+
+      A harbour-side workshop. Pottery wheel, kilns, shelves of
+      beautiful stoneware. But the back room is wrecked. Filing cabinet
+      open. Papers scattered. Her desk drawers pulled out and emptied.
+
+      The kiln is cold now. Her apron hangs on a hook. A mug of tea
+      sits cold and untouched on the workbench.
+
+      On the wall: a corkboard with photos and notes. Most have been
+      torn down, but one remains — a photo of the wellness centre
+      construction site with "June 2022" written on it. Three months
+      before the council vote.
+    effects:
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Look more carefully at the corkboard -> studio_corkboard
+      - Examine the desk -> studio_desk
+      - Back to harassment thread -> harassment_hub
+
+  studio_corkboard:
+    type: message
+    text: >
+      The corkboard has pushpin holes where documents were attached.
+      Someone ripped them off in a hurry. But they missed one: a
+      printed email from Lars Vestergaard to NordBau ApS, dated three
+      weeks before the council vote.
+
+      "Proceeding as discussed. Building permit to follow. Council
+      formality in September. No obstacles anticipated."
+
+      Lars knew the vote was a rubber stamp. The decision was made
+      months earlier.
+    effects:
+      fraud_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Examine the desk -> studio_desk
+      - Back to harassment thread -> harassment_hub
+
+  studio_desk:
+    type: message
+    text: >
+      Under a stack of ceramic samples: a notebook. Sofie's handwriting.
+
+      "Thomas W. — second visit. Threatened my business. Recording
+      saved to cloud + USB (with Alma)."
+      "Lars V. — signed contracts before vote. Email proof pinned."
+      "NordBau — Luxembourg shell. Architect = Lars's brother-in-law."
+      "Mette has the background. I have the documents. Together = story."
+      "Mikkel has cloud password. Alma has USB. Mette has context."
+
+      Sofie was building an evidence chain. And she distributed the
+      pieces so nobody could destroy all of it.
+    effects:
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Nils (police officer) ---
+
+  nils_interview:
+    type: message
+    text: >
+      NILS: Between us? Sofie filed a report about the studio visits.
+      I took her statement. Thomas Witt — two visits, escalating
+      threats. I filed it properly.
+
+      Then Lars Vestergaard called the station. Said Sofie was
+      "harassing a legitimate business" and the complaint was
+      "politically motivated." My boss told me to reclassify it as
+      "civil dispute — no action required."
+
+      If you can get enough evidence to go to the regional
+      prosecutor... that's the only way around the local blockage.
+    effects:
+      trust_nils: "+15"
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to harassment thread -> harassment_hub
+
+  # --- Wellness Posts ---
+
+  wellness_posts:
+    type: tweet
+    from: havoe_wellness
+    text: >
+      Havoe Wellness Haven — where island tranquility meets luxury
+      wellness. Book your transformative retreat today. Healing begins
+      here.
+    choices:
+      - Check the comments -> wellness_comments
+
+  wellness_comments:
+    type: message
+    text: >
+      Under the Wellness Haven posts, a pattern emerges. Islanders are
+      angry:
+
+      "This was supposed to be our health centre." — Birthe
+      "28 million in health funds and we still take the ferry for a
+      doctor." — Jorgen
+      "Delete this. Just delete this." — Astrid
+
+      But there are also suspiciously positive accounts — created
+      recently, no island connections, praising the retreat. Astroturfed
+      reviews to drown out the criticism.
+
+      Thomas Witt's fingerprints are all over the narrative management.
+    effects:
+      harassment_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to harassment thread -> harassment_hub
+
+  # --- Signe (pharmacist) ---
+
+  signe_interview:
+    type: message
+    text: >
+      SIGNE: Sofie came in for sleep tablets two weeks before she
+      disappeared. She looked exhausted. She said she hadn't slept
+      properly in days.
+
+      She also asked me — quietly, at the counter — if I knew anything
+      about the health centre funding. My mother was on the committee
+      that applied for the EU grant. She was devastated when the clinic
+      never materialised.
+
+      Everyone on this island knows the money was stolen. Nobody says
+      it out loud because Lars controls the contracts and Frederik
+      signs whatever Lars gives him.
+    effects:
+      trust_signe: "+10"
+      evidence_total: "+1"
+    choices:
+      - Back to harassment thread -> harassment_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence about the EU fraud and the harassment.
+      Who is responsible for Sofie's disappearance?
+    choices:
+      - Confront Thomas Witt (the PR manager) -> confront_thomas
+        when:
+          state: harassment_evidence
+          gte: 3
+      - Confront Lars Vestergaard (the municipal director) -> confront_lars
+        when:
+          state: fraud_evidence
+          gte: 5
+      - Confront Frederik Moller (the mayor) -> confront_frederik
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Thomas (Best Ending) ---
+
+  confront_thomas:
+    type: message
+    text: >
+      You present your evidence publicly:
+
+      "Thomas Witt visited Sofie Andersen's studio twice. The second
+      time he threatened her business. He was at her studio the night
+      she disappeared. His car was identified at the scene. He or
+      someone he sent ransacked her workspace. I have witness
+      statements, the recorded threat, and documents connecting
+      the harassment to the wellness centre's interests."
+    choices:
+      - Post it -> thomas_response
+
+  thomas_response:
+    type: message
+    text: >
+      Thomas doesn't respond directly. His lawyer does:
+
+      HENRIK: My client categorically denies all allegations and will
+      pursue legal action for defamation.
+
+      But you've already sent the evidence to Nils at the local
+      police, the regional prosecutor, and a national journalist Mette
+      connected you with. Sofie's cloud backup — the recordings, the
+      threatening messages, the document photos — is the key.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE FIXER
+
+      The regional prosecutor opens an investigation. Thomas Witt is
+      arrested for harassment and breaking and entering. Under
+      questioning, he cooperates — he was following Lars Vestergaard's
+      orders to "neutralise the threat" from Sofie's posts.
+
+      Lars Vestergaard is charged with EU fund fraud, abuse of office,
+      and conspiracy. Inger Dahl's documents prove the full extent of
+      the scheme. The wellness retreat is seized pending investigation.
+
+      And Sofie Andersen? She's found alive. She'd been hiding at
+      Jorgen's old cottage on the north end of the island since that
+      night. Astrid had driven her there and brought supplies every
+      few days. Sofie had been too scared to surface without knowing
+      the evidence was secure.
+
+      Politiken publishes the full story. "The Island's Stolen Health
+      Centre" leads to an EU investigation into structural fund fraud
+      across Denmark.
+
+      Sofie returns to her studio. Her first post:
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: sofie
+    text: >
+      the kiln is back on. the clay is waiting. and this island is
+      getting its health centre. tak for alt.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Lars (Partial Ending) ---
+
+  confront_lars:
+    type: message
+    text: >
+      You present the fraud evidence to Lars Vestergaard:
+
+      "You diverted 28 million kroner in EU healthcare funds to build a
+      luxury spa. You signed contracts before the council voted. The
+      architect is your brother-in-law. The building company is a shell.
+      You receive a free apartment and revenue share. I have the
+      documents."
+    choices:
+      - Send -> lars_response
+
+  lars_response:
+    type: message
+    text: >
+      LARS: These allegations are baseless and will be addressed through
+      proper legal channels. The project modification was approved by
+      the full council.
+
+      But the evidence is already with the EU's anti-fraud office and a
+      national journalist.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE BUREAUCRAT
+
+      The fraud story breaks. Lars resigns. The EU freezes the project
+      funds. An audit begins. The wellness retreat closes pending
+      investigation.
+
+      But without the harassment evidence, Thomas Witt is never charged.
+      He leaves the island quietly. Nobody is held accountable for what
+      happened to Sofie personally.
+
+      Sofie reads about Lars's downfall online. She returns to Havoe two
+      months later. She reopens her studio but installs security cameras.
+      She doesn't work late anymore.
+
+      The health centre is eventually built — three years later.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: sofie
+    text: "jeg er hjemme. det er nok for nu."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Frederik (Wrong Ending) ---
+
+  confront_frederik:
+    type: message
+    text: >
+      You confront Mayor Frederik Møller with your evidence.
+
+      Frederik looks panicked but calls his lawyer immediately.
+    choices:
+      - Read the response -> henrik_response
+
+  henrik_response:
+    type: tweet
+    from: henrik
+    text: >
+      Min klient afviser alle anklager og forbeholder sig retten til
+      retsforfølgelse for injurier. Alle henvendelser via Juul &
+      Partners. — Henrik Juul
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE MAYOR
+
+      Frederik is a figurehead. He signed what Lars told him to sign.
+      He doesn't have detailed knowledge and can't meaningfully respond
+      to specific allegations about contracts and shell companies.
+
+      Without targeting Lars directly for the fraud and Thomas for the
+      harassment, your evidence dissipates. The lawyer buries the
+      complaint. The wellness centre issues a press release about
+      "baseless attacks on island development."
+
+      Sofie stays hidden. The spa stays open. A year later, the EU
+      quietly closes its funding review. "Insufficient evidence of
+      irregularity."
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      EU fraud evidence: ${fraud_evidence}
+      Harassment evidence: ${harassment_evidence}
+
+      Thank you for playing. Sofie's story explores themes of EU fund
+      fraud, institutional corruption, harassment of whistleblowers,
+      and the struggle for public healthcare in small communities.
+
+      If you or someone you know is experiencing threats or harassment,
+      help is available:
+      Offerrådgivningen: 70 20 30 82
+      Politi: 114
+      Livslinien (crisis support): 70 201 201

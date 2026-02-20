@@ -1,0 +1,1584 @@
+# DEAD ACCOUNT — Story 017: Savukoski (Finland)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-017.yml
+#
+# Player investigates the disappearance of reindeer herder Elina Mäkinen
+# in the fictional Lapland village of Savukoski.
+
+meta:
+  title: "Dead Account — Savukoski"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_aino: 0
+    trust_mikael: 0
+    trust_sirkka: 0
+    trust_juhani: 0
+    trust_veera: 0
+    trust_niko: 0
+    trust_liisa: 0
+    trust_pentti: 0
+    trust_arto: 0
+    trust_hannele: 0
+    trust_matias: 0
+    trust_tuulia: 0
+    trust_kaisa: 0
+    trust_eero: 0
+    trust_paavo: 0
+    trust_reetta: 0
+    trust_seppo: 0
+    trust_ville: 0
+    trust_outi: 0
+    trust_konsta: 0
+    trust_ylikonstaapeli: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Uusi Asukas
+    bio: "just moved to savukoski. learning lapland one aurora at a time"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Savukoski.social"
+    description: "Tervetuloa Savukosken yhteisön Mastodon-instanssille"
+    avatar_url: /gamepatch/assets/dead-account/savukoski_bot.png
+
+  npcs:
+    # === Elina's Inner Circle ===
+    elina:
+      name: "Elina Mäkinen"
+      bio: "poronhoitaja | tunturikuvat | luonto ei valehtele"
+      avatar: avatars/elina.jpg
+    aino:
+      name: "Aino Korhonen"
+      bio: "elinan paras kaveri | kätilö terveyskeskuksessa | kahvi ensin aina"
+      avatar: avatars/aino.jpg
+    mikael:
+      name: "Mikael Mäkinen"
+      bio: "elinan isoveli | metsuri | rovaniemi | sisko ei katoa vaan noin"
+      avatar: avatars/mikael.jpg
+    matias:
+      name: "Matias Lehtonen"
+      bio: "luontokuvaaja | freelance | arktinen luonto | elinan yhteistyökumppani"
+      avatar: avatars/matias.jpg
+
+    # === Local Government ===
+    pentti:
+      name: "Pentti Karjalainen"
+      bio: "Savukosken kunnanjohtaja | palvellut kuntaa vuodesta 2016 | #SavukoskiKehittyy"
+      avatar: avatars/pentti.jpg
+    hannele:
+      name: "Hannele Virtanen"
+      bio: "ympäristösihteeri | Savukosken kunta | luonnonsuojelu & kaavoitus"
+      avatar: avatars/hannele.jpg
+    kunta:
+      name: "Savukosken kunta"
+      bio: "Virallinen tili | Kunta-asiat | Avoinna: Ma-Pe 8-16"
+      avatar: avatars/kunta.jpg
+
+    # === Local Business & Community ===
+    sirkka:
+      name: "Sirkka Niskanen"
+      bio: "Tunturin Tupa | kahvila & lounas | poronkäristys | avattu 1991"
+      avatar: avatars/sirkka.jpg
+    tunturintupa:
+      name: "Tunturin Tupa"
+      bio: "Perinteistä lappilaista ruokaa | Kahvit & leivonnaiset | Savukosken sydän"
+      avatar: avatars/tunturintupa.jpg
+    juhani:
+      name: "Juhani Heikkinen"
+      bio: "poronhoitaja | 45 vuotta tunturissa | tää maa on mun elämä"
+      avatar: avatars/juhani.jpg
+    arto:
+      name: "Arto Savolainen"
+      bio: "kalastusopas | Savukoski | lohta & taimenta | kesät & talvet"
+      avatar: avatars/arto.jpg
+    liisa:
+      name: "Liisa Rautio"
+      bio: "apteekkari | Savukoski | terveys & neuvonta | auki myös lauantaisin"
+      avatar: avatars/liisa.jpg
+    seppo:
+      name: "Seppo Kinnunen"
+      bio: "puuseppä | Savukosken käsityöpaja | perinteinen puutyö | tilaustyöt"
+      avatar: avatars/seppo.jpg
+    paavo:
+      name: "Paavo Rantanen"
+      bio: "moottorikelkkahuolto | Rantasen korjaamo | Savukoski | auki ympäri vuoden"
+      avatar: avatars/paavo.jpg
+    eero:
+      name: "Eero Mikkola"
+      bio: "kirjastonhoitaja | Savukosken kirjasto | kirjoja & lainauksia | lukupiiri keskiviikkoisin"
+      avatar: avatars/eero.jpg
+
+    # === Journalist ===
+    kaisa:
+      name: "Kaisa Torvinen"
+      bio: "freelance-toimittaja | ympäristö & Lappi | vihjeet: kaisa@torvinen-media.fi"
+      avatar: avatars/kaisa.jpg
+
+    # === LapinMetsa Oy (corporate) ===
+    lapinmetsa:
+      name: "LapinMetsä Oy"
+      bio: "Metsäteollisuusyritys | Savukosken toimipiste | FSC-sertifioitu"
+      avatar: avatars/lapinmetsa.jpg
+    ville:
+      name: "Ville Laaksonen"
+      bio: "toimitusjohtaja LapinMetsä Oy Savukoski | teollisuutta & aluekehitystä"
+      avatar: avatars/ville.jpg
+    outi:
+      name: "Outi Hakala"
+      bio: "Lakiasiaintoimisto Hakala | Yhtiöoikeus | Rovaniemi"
+      avatar: avatars/outi.jpg
+
+    # === Teens ===
+    veera:
+      name: "Veera"
+      bio: "16 | lautailija | savukoski syntyny | luonto on kaikki fr"
+      avatar: avatars/veera.jpg
+    niko:
+      name: "Niko"
+      bio: "17 | moottorikelkka & kalastus | revontulet on sairaan siistei"
+      avatar: avatars/niko.jpg
+    tuulia:
+      name: "Tuulia"
+      bio: "15 | valokuvaus & piirtäminen | lappi mustavalkoisena | elina on mun inspis"
+      avatar: avatars/tuulia.jpg
+
+    # === Media & Community ===
+    actu_savukoski:
+      name: "Savukosken Uutiset"
+      bio: "Savukosken & Lapin uutiset | Vihjeet: toimitus@savukoski-uutiset.fi"
+      avatar: avatars/actu_savukoski.jpg
+    saa_lappi:
+      name: "Sää Savukoski"
+      bio: "Ennusteet ja varoitukset | Automaattiasema | Päivittyy tunneittain"
+      avatar: avatars/saa_lappi.jpg
+    paliskunnat:
+      name: "Savukosken Paliskunta"
+      bio: "Poronhoitoa vuodesta 1898 | Perinne & elinkeino | Ilmoitukset & tapahtumat"
+      avatar: avatars/paliskunnat.jpg
+
+    # === Suspicious / Other ===
+    reetta:
+      name: "Reetta Nieminen"
+      bio: "metsäinsinööri | LapinMetsä Oy | teen vaan työtäni"
+      avatar: avatars/reetta.jpg
+    konsta:
+      name: "Konsta Laine"
+      bio: "."
+      avatar: avatars/anon.jpg
+    ylikonstaapeli:
+      name: "Ylikonstaapeli Järvinen"
+      bio: "Savukosken poliisiasema | Hätänumero: 112"
+      avatar: avatars/ylikonstaapeli.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN SAVUKOSKI
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Savukoski.social — the community Mastodon instance for
+      the village of Savukoski, Finnish Lapland.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @elina_makinen.
+
+      A reindeer herder. Wilderness photographer. She documented the
+      fells and the herds. People are worried. She hasn't posted in
+      six days.
+    choices:
+      - Look at her profile -> elina_profile
+
+  elina_profile:
+    type: tweet
+    from: elina
+    text: "Avohakkuualue laajenee Korvatunturin juurelle. Porojen laidunmaat tuhoutuu. Mulla on todisteet."
+    choices:
+      - That's her last real post... -> grey_sky
+
+  grey_sky:
+    type: message
+    text: >
+      Two days after that post, her account uploaded a single image:
+      a grey sky over snow. Blurred, overexposed, shot from a strange
+      angle. Posted at 2am. No caption.
+
+      Her friends say that's not her style. The police say she probably
+      went on a hiking trip. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: ylikonstaapeli
+    text: >
+      Olemme vastaanottaneet ilmoituksen Savukosken asukkaasta. Tässä
+      vaiheessa mikään ei viittaa rikokseen. Kaikki hyödylliset tiedot
+      voi ilmoittaa numeroon 112 tai poliisiasemalle.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her best friend @aino_korhonen is
+      desperate. Her brother @mikael_makinen is driving down from
+      Rovaniemi. Her photography partner @matias_lehtonen is posting
+      frantic messages. The old herder @juhani_heikkinen says she was
+      right about the clear-cuts.
+
+      And the journalist @kaisa_torvinen is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Elina just "went
+      hiking."
+    effects: { trust_aino: "+5", trust_mikael: "+5" }
+    choices:
+      - Start following Elina's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Savukoski. Follow Elina's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Sirkka (café owner, knows everyone) -> sirkka_intro
+      - Talk to Juhani (old herder, saw the clear-cuts) -> juhani_intro
+      - Talk to Veera (teen, seems shaken) -> veera_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Elina with the rhythms of a tiny
+      Lapland village: aurora forecasts, the café's lunch menu,
+      snowmobile trail conditions.
+
+      Key names surface: Aino (best friend, midwife), Matias (photography
+      partner, seems rattled), Kaisa (journalist, oddly quiet), and the
+      teens — Veera, Niko, Tuulia — who worshipped Elina's wilderness
+      photography.
+
+      Also prominent: LapinMetsä Oy, the logging company with clear-cut
+      permits at the edge of the reindeer pastures. Their posts are
+      corporate PR. Elina's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Sirkka -> sirkka_intro
+      - Talk to Juhani -> juhani_intro
+      - Talk to Veera -> veera_intro
+
+  # --- Sirkka (social map) ---
+
+  sirkka_intro:
+    type: tweet
+    from: sirkka
+    text: >
+      Tupa on auki mut ei oo sama fiilis. @elina_makinen, sun pöytä
+      odottaa. Tuu takas.
+    effects: { trust_sirkka: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sirkka -> sirkka_talk
+
+  sirkka_talk:
+    type: message
+    text: >
+      SIRKKA: You're new here? Welcome. Bad time to show up. Everyone's
+      losing it over Elina.
+
+      Let me give you the lay of the land. Aino is Elina's best friend —
+      they share a cabin near the river. Sweet woman, in pieces right
+      now. Matias Lehtonen is this wildlife photographer who came to
+      Savukoski two years ago. Works with Elina on documenting the
+      reindeer. Smart guy but... something about him gives me the
+      creeps. Mikael is Elina's brother, coming from Rovaniemi.
+
+      And Kaisa Torvinen — the journalist — she and Elina were working
+      on something. An article about the logging. Kaisa hasn't said a
+      word since Elina vanished. That's not like her at all.
+
+      Oh, and don't believe a word of LapinMetsä's "sustainable
+      forestry" posts. Vittu, those people lie like they breathe.
+    effects: { trust_sirkka: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Matias -> sirkka_matias
+      - Ask about LapinMetsä -> sirkka_lapinmetsa
+      - Thank her and move on -> quest1_hub
+
+  sirkka_matias:
+    type: message
+    text: >
+      SIRKKA: Matias? He showed up two years ago. Said he was a wildlife
+      photographer doing a book on Lapland reindeer. Talented, sure. But
+      he attached himself to Elina like a tick on a dog. At the café
+      every time she was there. Always offering to go with her on the
+      fell. She was polite about it but I could see it bothered her.
+
+      After she started documenting the clear-cuts, he got worse.
+      Wanted to co-author everything. She told me once, "hän ei tajua
+      sanaa ei." She meant professionally. I'm starting to think she
+      meant more.
+    effects: { trust_sirkka: "+5" }
+    choices:
+      - Ask about LapinMetsä -> sirkka_lapinmetsa
+      - Move on -> quest1_hub
+
+  sirkka_lapinmetsa:
+    type: message
+    text: >
+      SIRKKA: That company's been logging here since the 90s. They
+      have permits for "selective cutting" but what they do is
+      clear-cut. Whole hillsides stripped bare. The reindeer can't
+      find lichen under the stumps. The herders have been fighting
+      them for years — it goes to court, LapinMetsä wins, repeat.
+
+      Elina was the first person to fly a drone over their sites and
+      photograph what they actually do versus what they report. She
+      had satellite images, GPS coordinates, the works. Real proof
+      that the permits don't match reality.
+
+      Two weeks later she's gone. Perkele.
+    effects: { trust_sirkka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Juhani (the herder, witness tease) ---
+
+  juhani_intro:
+    type: tweet
+    from: juhani
+    text: >
+      neljäkymmentäviis vuotta oon poroja hoitanu. mettä ei oo enää
+      sama. @elina_makinen oli oikeessa. ja nyt se on kadonnu.
+      yhdistäkää pisteet.
+    effects: { trust_juhani: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Juhani -> juhani_talk
+
+  juhani_talk:
+    type: message
+    text: >
+      JUHANI: I've herded reindeer on these fells since I was a boy.
+      Forty-five years. I know every path, every lichen field, every
+      calving ground. And I'm telling you — the forest northwest of
+      Korvatunturi is destroyed. LapinMetsä's "selective cutting" is
+      a joke. They take everything.
+
+      Elina flew her drone. She mapped every clear-cut against the
+      permit boundaries. They're logging outside their permits. They're
+      destroying old-growth forest that's supposed to be protected.
+      She had the coordinates, the photos, everything.
+
+      You think she just went for a walk in the fell? Saatana. Nobody
+      believes that.
+    effects: { trust_juhani: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> juhani_night
+      - Move on -> quest1_hub
+
+  juhani_night:
+    type: message
+    text: >
+      JUHANI: The night before she vanished — I was out checking the
+      herd, around midnight. The aurora was strong. I saw headlights
+      on the logging road. Two vehicles. One was Elina's old Hilux —
+      I know that truck, it rattles from 500 meters. The other was a
+      company SUV. White, LapinMetsä logo on the door.
+
+      At midnight. On a logging road in the middle of nowhere.
+
+      I didn't think much of it. She goes out at night to photograph
+      the aurora with the reindeer. But that company car — that's not
+      normal.
+    effects: { trust_juhani: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Veera (teen, witness tease) ---
+
+  veera_intro:
+    type: tweet
+    from: veera
+    text: >
+      vittu mä en kestä tätä @elina_makinen se opetti mulle kaiken
+      luonnosta se ei ois lähteny kertomatta. jos joku tietää jotain
+      nii kertokaa nyt
+    effects: { trust_veera: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Veera -> veera_talk_early
+
+  veera_talk_early:
+    type: message
+    text: >
+      VEERA: oot uus täällä? aika huono timing lol. mut siis elina
+      on niinku paras ihminen tässä kylässä. se opetti meille
+      luontokuvaamista, vei meiät tunturiin, näytti porojen jäljet
+      lumessa. ihan sairaan siistii.
+
+      ja nyt mua pelottaa koska niko näki jotain outoo sinä iltana
+      mut se ei suostu puhuu siitä. sanoo et ei oo mitään mut kyl
+      mä nään et se valehtelee vittu
+    effects: { trust_veera: "+10" }
+    choices:
+      - What did Niko see? -> veera_niko_hint
+      - Move on -> quest1_hub
+
+  veera_niko_hint:
+    type: message
+    text: >
+      VEERA: en mä tarkkaan tiiä. se oli kelkkailemassa myöhään ja
+      näki jonku elinan mökin lähellä?? tai jotain sellasta. se
+      flippaa ihan täysin eikä haluu puhuu. sun pitäis jutella sille
+      mut se on tosi varovainen tuntemattomien kaa. puhu ensin
+      kelkoista tai kalastuksesta ni se rentoutuu lol
+    effects: { trust_veera: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Savukoski. A tiny Lapland village
+      built around reindeer herding and the fells. A herder who was
+      exposing illegal logging. A disappearance nobody believes is
+      voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Aino (Elina's best friend) -> aino_q1
+      - Talk to Matias (Elina's photography partner) -> matias_q1
+      - Check what Mikael (Elina's brother) is saying -> mikael_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Aino Q1 ---
+
+  aino_q1:
+    type: tweet
+    from: aino
+    text: >
+      jos jollain on tietoa @elina_makinen soittakaa mulle. sen
+      tavarat on mökillä. sukset on naulakossa. se ei ois lähteny
+      ilman suksia. ei ikinä.
+    effects: { trust_aino: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Aino -> aino_q1_talk
+
+  aino_q1_talk:
+    type: message
+    text: >
+      AINO: Thanks for reaching out but I don't know you. Elina has
+      plenty of friends here. I'm sure she'll come back.
+
+      ...I keep telling myself that. I don't believe it anymore.
+
+      [Aino is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_aino: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Matias Q1 ---
+
+  matias_q1:
+    type: tweet
+    from: matias
+    text: >
+      The fells are empty without @elina_makinen. Her memory cards
+      are in the cabin. Her drone batteries are charged. She would
+      never leave a project unfinished. Something happened.
+    effects: { trust_matias: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Matias -> matias_q1_talk
+
+  matias_q1_talk:
+    type: message
+    text: >
+      MATIAS: Elina and I have worked together for almost two years.
+      She's the most passionate person I know about this land. The
+      logging investigation — it was everything to her. She had drone
+      footage, satellite comparisons, GPS tracks of illegal cutting
+      zones. She was so close to publishing.
+
+      I offered to help. Many times. She said she had it under
+      control. She said she was working with a journalist. I just
+      wanted to be part of it.
+
+      [Matias seems earnest. Or obsessive?]
+    effects: { trust_matias: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mikael Q1 ---
+
+  mikael_q1:
+    type: tweet
+    from: mikael
+    text: >
+      mun sisko on KADONNU ja poliisi sanoo et se on ehkä vaeltamassa???
+      SE EI LÄHDE VAELTAMAAN SANOMATTA. tuun rovaniemeltä nyt. joku
+      selittää mulle mitä helvettiä täällä tapahtuu.
+    effects: { trust_mikael: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Mikael -> mikael_q1_talk
+
+  mikael_q1_talk:
+    type: message
+    text: >
+      MIKAEL: Who the hell are you? Another person from that village
+      who's going to tell me to calm down? My sister called me the
+      night before she disappeared. She said she had something huge.
+      She said "jos mulle käy jotain, katso LapinMetsää." Then she
+      hung up.
+
+      That's the last I heard from her.
+    effects: { trust_mikael: "+10" }
+    choices:
+      - What do you think happened? -> mikael_theory
+      - Move on -> quest1_hub
+
+  mikael_theory:
+    type: message
+    text: >
+      MIKAEL: I think she found proof that LapinMetsä is logging
+      illegally on protected land and they shut her up. But I also
+      think that creepy photographer — Matias — knows more than he's
+      saying. The way he talks about her... it's not professional
+      concern. It's something else.
+
+      Elina told me months ago someone was going through her cabin
+      when she was out with the herd. Things moved, her laptop opened.
+      She thought it was nothing. I don't think it was nothing.
+    effects: { trust_mikael: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Elina went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Niko (was out snowmobiling late) -> niko_interview
+      - Find Arto (fishing guide, was at the river) -> arto_interview
+      - Find Paavo (mechanic, heard engines at night) -> paavo_interview
+      - Find Seppo (woodworker, early morning at his workshop) -> seppo_interview
+
+  # --- Niko (saw someone at Elina's cabin) ---
+
+  niko_interview:
+    type: tweet
+    from: niko
+    text: >
+      hyvä lenkki kelkalla mut tunnelma kylässä on ihan outo.
+      jotain on pielessä. en osaa selittää
+    effects: { trust_niko: "+5" }
+    choices:
+      - Ask Niko about that evening -> niko_talk
+
+  niko_talk:
+    type: message
+    text: >
+      NIKO: okei mut sä et kerro kellekää. mä olin kelkkailemassa
+      noin yhdeksältä illalla ja ajoin elinan mökin ohi. ja mä
+      näin sen valokuvaajan — matias — elinan pihalla. se tutki
+      elinan autoo tai laitto jotain sinne. ku se näki mun
+      kelkan valot ni se häipy ihan vitun nopeesti.
+
+      siis mä en sanonu mitään koska ketä uskois teiniä vs joku
+      aikuinen tutkija. mut se oli ihan sairaan sketchy jumalauta
+    effects:
+      trust_niko: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Arto (fishing guide, saw late-night meeting) ---
+
+  arto_interview:
+    type: tweet
+    from: arto
+    text: >
+      Muistutus: jokialue on rauhoitettu klo 22-06. Olen havainnut
+      luvatonta liikennettä metsätiellä useana yönä.
+    effects: { trust_arto: "+5" }
+    choices:
+      - Ask Arto what he saw -> arto_talk
+
+  arto_talk:
+    type: message
+    text: >
+      ARTO: I was at my fishing cabin on the Tana road, about 23h.
+      Cleaning gear for the morning. Two vehicles came down the
+      logging road — one was that LapinMetsä company SUV, the white
+      one with the logo. The other was a dark sedan I didn't
+      recognise.
+
+      They stopped at the gate to the clear-cut zone. Two men got
+      out. One of them I recognised: Ville Laaksonen, the LapinMetsä
+      director. At 23h. On a logging road.
+
+      I wrote it in my guide log. Nobody's asked to see it.
+    effects:
+      trust_arto: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Paavo (mechanic, heard chase) ---
+
+  paavo_interview:
+    type: tweet
+    from: paavo
+    text: >
+      heräsin kolmelta yöllä ku joku ajo metsätietä ihan helvetin
+      lujaa. ei normaalia liikennettä tollaseen aikaan.
+    effects: { trust_paavo: "+5" }
+    choices:
+      - Ask Paavo what he heard -> paavo_talk
+
+  paavo_talk:
+    type: message
+    text: >
+      PAAVO: I live next to the workshop, right by the logging road
+      junction. At about 3am I woke up — engines, going way too fast
+      for a gravel road in winter. First one vehicle, heavy, diesel —
+      sounded like an SUV. Then maybe a minute later, a second one.
+      Lighter. That old Hilux rattle.
+
+      The first one turned toward the E75. The second one — Elina's
+      truck, I'd bet my workshop on it — went the other way, toward
+      the fell road. Past Korvatunturi.
+
+      I told the police. They wrote it down. That was it.
+    effects:
+      trust_paavo: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Seppo (woodworker, saw figure in dawn) ---
+
+  seppo_interview:
+    type: tweet
+    from: seppo
+    text: >
+      pajalla kuudelta niinku aina. mut tänä aamuna joku käveli
+      tunturiin päin pimeässä. rinkka selässä. ei retkeilijä.
+    effects: { trust_seppo: "+5" }
+    choices:
+      - Ask Seppo what he saw -> seppo_talk
+
+  seppo_talk:
+    type: message
+    text: >
+      SEPPO: I start at the workshop at 6am every day. That morning —
+      the morning after Elina's last post — I saw someone on the fell
+      trail. Walking fast. A woman, carrying a big backpack, heading up
+      toward the wilderness. It was barely light — the polar twilight,
+      you know. She was moving like she was afraid.
+
+      I called out but she didn't stop. I thought maybe a hiker, but
+      who starts a fell trek at 6am in November carrying a rucksack
+      that heavy?
+
+      When I heard about Elina, I put it together. That was her.
+      Running from something.
+    effects:
+      trust_seppo: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Aino (best friend)
+      and Tuulia (saw Matias watching the cabin).
+    choices:
+      - Talk to Aino about that night -> aino_interview
+      - Talk to Tuulia -> tuulia_interview
+      - Find Niko -> niko_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Arto -> arto_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Paavo -> paavo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Seppo -> seppo_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Aino (last to see Elina) ---
+
+  aino_interview:
+    type: tweet
+    from: aino
+    text: >
+      toi kuva elinan tilillä. se ei oo sen ottama. elina ei ikinä
+      postaa ilman tekstiä. elina ei postaa kahelta yöllä. joku muu
+      teki ton.
+    effects: { trust_aino: "+5" }
+    choices:
+      - DM Aino -> aino_talk_low
+        when:
+          state: trust_aino
+          lt: 50
+      - DM Aino -> aino_talk_high
+        when:
+          state: trust_aino
+          gte: 50
+
+  aino_talk_low:
+    type: message
+    text: >
+      AINO: I appreciate the concern but I really don't want to talk
+      to strangers about this right now.
+
+      [Aino needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_aino: "+5" }
+    choices:
+      - Share what you've learned about the night -> aino_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  aino_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the company SUV on the logging
+      road, the vehicles at night, the running figure on the fell.
+      Aino is silent for a while.
+
+      AINO: You're actually trying to find her. Okay. I'll talk.
+    effects: { trust_aino: "+25" }
+    choices:
+      - What happened that night? -> aino_talk_high
+
+  aino_talk_high:
+    type: message
+    text: >
+      AINO: She came back to the cabin around midnight. I was getting
+      ready for my night shift at the health centre. She was white as
+      snow, shaking. She said "ne tietää mitä mulla on."
+
+      I asked who. She said "the company. They sent people to the
+      clear-cut." Then she said something else — "ja hän oli siellä
+      taas. hän on aina siellä."
+
+      She wouldn't say who "he" was. She hugged me, said "älä huoli,"
+      grabbed her laptop and hard drives, and left with a backpack.
+      That was it. By morning her truck was gone and that grey photo
+      was on her account.
+    effects:
+      trust_aino: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Tuulia (saw Matias watching the cabin) ---
+
+  tuulia_interview:
+    type: message
+    text: >
+      TUULIA: okei siis tää on ihan creepy mut se valokuvaaja —
+      matias — mä oon nähny sen elinan mökin lähellä niinku kolme
+      kertaa illalla. vaan istuu autossa ja tuijottaa. valot pois
+      päältä. vittu miten ahistavaa.
+
+      viimeks kaks päivää ennen ku elina katos. se istu siinä
+      metsätien varressa. vaan istu. pimeessä.
+    effects:
+      trust_tuulia: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Matias seen at Elina's truck in her yard (Niko)
+      23:00 — LapinMetsä SUV and sedan at clear-cut gate, Ville Laaksonen present (Arto)
+      00:00 — Elina arrives at cabin, shaken, grabs laptop and flees (Aino)
+      03:00 — Two vehicles on logging road at high speed (Paavo)
+      06:00 — Woman with heavy backpack heading up the fell trail (Seppo)
+
+      LapinMetsä confronted Elina at the clear-cut. She fled home,
+      grabbed her evidence, and ran into the wilderness.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is LapinMetsä hiding? Who ordered
+        the confrontation?
+      — The obsession: What is Matias really doing? Why was he
+        at her truck?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Matias -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      LapinMetsä is hiding something. Elina had proof. Now she's
+      gone and her drone footage is missing from the cabin.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search the permit records -> permit_records
+      - Talk to Kaisa the journalist -> kaisa_interview
+      - Talk to Reetta (LapinMetsä engineer) -> reetta_interview
+      - Talk to Hannele (environment secretary) -> hannele_interview
+      - Check the Paliskunta association -> paliskunnat_investigation
+      - Talk to Juhani about the old-growth forest -> juhani_forest
+      - Back to hub -> investigation_hub
+
+  # --- Permit Records ---
+
+  permit_records:
+    type: message
+    text: >
+      The regional forestry centre's public database shows LapinMetsä's
+      cutting permits for the Savukoski area. The permit for the
+      Korvatunturi zone covers 200 hectares of "selective thinning."
+
+      Elina's drone maps, shared with the paliskunta for herding
+      routes, show the actual clear-cut extends to 450 hectares —
+      more than double the permit. And the cut area overlaps with a
+      Natura 2000 protected zone that should be completely off-limits.
+
+      Her last survey log: "Flew over Section 7. They've crossed into
+      the protected zone. Old-growth pine, 400 years old, gone.
+      Satellite confirms. This is criminal."
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Kaisa ---
+
+  kaisa_interview:
+    type: message
+    text: >
+      KAISA: I don't talk about sources. Period.
+    effects: { trust_kaisa: "+5" }
+    choices:
+      - Show Kaisa the evidence you have -> kaisa_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  kaisa_with_evidence:
+    type: message
+    text: >
+      KAISA: ...you have more than I expected.
+
+      Okay. Elina and I were working together. She had drone footage
+      and satellite images showing LapinMetsä is clear-cutting inside
+      a Natura 2000 protected area. Old-growth forest, reindeer
+      calving grounds, everything. The permits are fraudulent — the
+      actual cut area is double what's declared.
+
+      We were going to publish in Yle together. Then she went dark.
+      And a day later, someone broke into my car at the Sodankylä
+      petrol station and stole my backup drive.
+
+      Elina is alive. She contacted me once, from a prepaid phone.
+      She said she was hiding in a fell cabin. She said "ne uhkasivat
+      mua hakkuualueella ja joku muu ei jätä mua rauhaan."
+
+      I can't tell you where she is. But with enough evidence, I can
+      publish and make it safe for her to come back.
+    effects:
+      trust_kaisa: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> kaisa_hint
+      - Back to investigation hub -> investigation_hub
+
+  kaisa_hint:
+    type: message
+    text: >
+      KAISA: The company sent their director — Laaksonen — and some
+      lawyer to the clear-cut that night. They told her to hand over
+      all her footage and data or face legal action for trespassing
+      on a logging site. Intimidation dressed up as property law.
+
+      But she also mentioned someone else. Someone who always seemed
+      to know where she was going. Someone who showed up wherever
+      she went. That's a different problem entirely.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Reetta (LapinMetsä whistleblower) ---
+
+  reetta_interview:
+    type: message
+    text: >
+      REETTA: I work at LapinMetsä. I'm just a forest engineer. I
+      mark trees, I file cutting plans.
+
+      But the cutting plans I file... are not always the cutting
+      plans that get executed.
+    effects: { trust_reetta: "+10" }
+    choices:
+      - What do you mean? -> reetta_detail
+
+  reetta_detail:
+    type: message
+    text: >
+      REETTA: I mark the boundaries on GPS. My boundary lines go to
+      my supervisor. Somewhere between my desk and the machine
+      operators, they change. Wider. Always wider.
+
+      Elina's drone maps matched MY original boundary markings, not
+      the ones the operators followed. She had independent proof that
+      LapinMetsä is systematically exceeding their permits.
+
+      I'm scared. I have a family. But I kept copies of my original
+      plans. If someone can protect me, I'll share them.
+    effects:
+      trust_reetta: "+15"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Hannele ---
+
+  hannele_interview:
+    type: message
+    text: >
+      HANNELE: As the municipal environment secretary, I take these
+      allegations seriously. But LapinMetsä employs 80 people in this
+      area. The kunnanjohtaja insists we need to "maintain dialogue."
+
+      Off the record? I've seen the regional forestry inspections.
+      LapinMetsä passes every time. But those inspections are
+      announced a month in advance. They replant saplings in the
+      visible areas before the inspectors arrive.
+
+      Elina had unannounced data. Drone footage from random dates.
+      That's what makes it dangerous.
+    effects:
+      trust_hannele: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Paliskunta ---
+
+  paliskunnat_investigation:
+    type: tweet
+    from: paliskunnat
+    text: >
+      HÄLYTYS: Porojen talvilaidunalue Korvatunturin luoteispuolella
+      tuhoutunut avohakkuussa. Laidunta menetetty arviolta 250
+      hehtaaria. Vaadimme välitöntä hakkuukieltoa.
+    choices:
+      - Check their data -> paliskunnat_data
+
+  paliskunnat_data:
+    type: message
+    text: >
+      The paliskunta has been documenting reindeer grazing impacts
+      for decades. Their data shows a clear pattern: as LapinMetsä's
+      cutting expanded, reindeer mortality in the Korvatunturi area
+      increased by 40%. Calves can't find lichen. The herd is
+      starving.
+
+      GPS collar data from the reindeer shows the animals avoiding
+      clear-cut zones completely — the herd has been compressed into
+      half its traditional range.
+
+      Elina contributed the drone mapping. Without her, the
+      paliskunta's case to the regional authority is incomplete.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Juhani old-growth ---
+
+  juhani_forest:
+    type: message
+    text: >
+      JUHANI: I'll show you something. Last month I walked to the
+      edge of the Korvatunturi protected zone. The boundary markers
+      are still there — the metal posts from the 1990s. But the
+      trees behind them are gone. LapinMetsä cut past the markers.
+
+      I photographed the stumps. Some of those pines were 400 years
+      old — you can count the rings. They survived four centuries and
+      LapinMetsä killed them in an afternoon.
+
+      I sent the photos to Elina. She said they were the missing
+      piece — proof of cutting inside the protected area, not just
+      outside the permit boundary. Criminal offence.
+
+      I still have those photos. And the GPS coordinates.
+    effects:
+      trust_juhani: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Matias Lehtonen. Photography partner. Wildlife photographer.
+      Something more? Someone was entering Elina's cabin. Someone
+      was watching from the road. Someone was at her truck.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Matias's photo archive -> photo_archive
+      - Talk to Aino about Matias -> aino_matias
+        when:
+          state: trust_aino
+          gte: 20
+      - Talk to Niko (more detail on the truck incident) -> niko_detail
+      - Talk to Liisa the pharmacist -> liisa_interview
+      - Check the anonymous account @konsta_laine -> konsta_investigation
+      - Talk to Eero the librarian -> eero_interview
+        when:
+          state: trust_eero
+          gte: 40
+      - Talk to Ylikonstaapeli Järvinen -> ylikonstaapeli_interview
+        when:
+          state: trust_ylikonstaapeli
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Photo Archive ---
+
+  photo_archive:
+    type: message
+    text: >
+      Matias's public photo archive on Savukoski.social contains 2,300
+      images over two years. Most are wildlife: reindeer, wolverines,
+      golden eagles, arctic foxes. Professional quality.
+
+      But a deeper look reveals something else. 847 of those photos
+      feature Elina. Not posed portraits — candid shots. Elina
+      from behind. Elina from across a field. Elina at her cabin,
+      through a window. Elina sleeping in a tent during a herding
+      trip.
+
+      The metadata shows many were taken with a telephoto lens, from
+      distances of 200-500 meters. She didn't know she was being
+      photographed.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Aino on Matias ---
+
+  aino_matias:
+    type: message
+    text: >
+      AINO: Matias? He made Elina really uncomfortable. He'd show up
+      on the fell when she was herding. He'd offer to drive her home.
+      He'd comment on every single post within minutes — like he was
+      just sitting there refreshing her profile.
+
+      She told him she wasn't interested. Clearly, firmly. He said
+      he understood. Then nothing changed. He just... kept being
+      there. On the trail. At the café. Outside the cabin.
+
+      A month ago she found that someone had been in the cabin while
+      she was out. Her laptop had been opened, her photo files
+      browsed. She suspected Matias but couldn't prove it.
+    effects:
+      trust_aino: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Niko detail ---
+
+  niko_detail:
+    type: message
+    text: >
+      NIKO: okei siis en mä kertonu kaikkee. ku mä näin matiaksen
+      elinan auton luona ni sillä oli kädessä joku pieni laite.
+      se kiinnitti sen auton alle. niinku liimasi tai magneetilla
+      tai jotain.
+
+      siis mä en oo mikään asiantuntija mut se näytti ihan
+      gps-seuraimelta. semmonen mitä näkee leffoissa vittu.
+
+      mun ois pitäny sanoo jotain mut kuka uskois teiniä ku
+      syyttää aikuista. mitä helvettiä mä oisin voinu tehä
+    effects:
+      trust_niko: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Liisa ---
+
+  liisa_interview:
+    type: message
+    text: >
+      LIISA: This is confidential but I'm a pharmacist, not a priest.
+      Matias Lehtonen is a regular customer. He's been buying things
+      that... suggest he's not doing well. Sleeping pills, anxiety
+      medication, caffeine tablets. The pattern is someone who doesn't
+      sleep.
+
+      He also asked me once, very casually, if we sold GPS tracking
+      devices. I said "this is a pharmacy, not Verkkokauppa." He
+      laughed. I didn't think about it again until Elina disappeared.
+    effects:
+      trust_liisa: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Konsta (anonymous account) ---
+
+  konsta_investigation:
+    type: tweet
+    from: konsta
+    text: >
+      Sen olisi pitänyt kuunnella. Yritin suojella häntä. Kukaan muu
+      ei ymmärrä hänen työtään niinkuin minä.
+    choices:
+      - Look at this account's history -> konsta_posts
+
+  konsta_posts:
+    type: message
+    text: >
+      @konsta_laine: account created 14 months ago. Posts are all
+      about Elina's work. Comments on every reindeer photo, every
+      fell landscape, every herding update. The tone shifts over time:
+
+      Month 1: "Incredible work. You capture the wilderness like
+      nobody else."
+      Month 4: "Why won't you respond to my messages? I just want
+      to collaborate."
+      Month 8: "I see you at the café with other people. You have
+      time for them but not for me?"
+      Month 12: "I know your routes. I know your schedule. I'm
+      always close."
+
+      The account has no photos, no personal details. Just Elina.
+      Only Elina.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> konsta_style
+
+  konsta_style:
+    type: message
+    text: >
+      Comparing @konsta_laine with @matias_lehtonen:
+
+      Same use of wildlife photography terminology. Same Finnish
+      spelling quirks — the specific way he describes light conditions
+      using cinematographer terms instead of standard Finnish. Same
+      knowledge of Elina's herding routes that only someone who
+      followed her would have.
+
+      And one post from @konsta_laine: "Your shots from Route 7
+      were stunning." Route 7 is Elina's private herding route
+      designation, shared only with the paliskunta. Not public.
+
+      It's Matias. The anonymous account is Matias.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Eero ---
+
+  eero_interview:
+    type: message
+    text: >
+      EERO: Elina left something with me. A waterproof Pelican case.
+      She said "if someone asks about what's happening at Korvatunturi,
+      give them this."
+
+      She looked frightened. She said she'd made copies of everything
+      but needed one set somewhere nobody would look. A village
+      library seemed perfect.
+    effects: { trust_eero: "+10" }
+    choices:
+      - What's happening at Korvatunturi? -> eero_case
+
+  eero_case:
+    type: message
+    text: >
+      Eero reaches under the returns desk and produces a waterproof
+      Pelican case.
+
+      EERO: She said someone would come. Take it.
+
+      Inside: a USB drive and a set of printed satellite images. The
+      images show the clear-cut expansion over 18 months — from
+      within the permit boundary to far beyond it, into the Natura
+      2000 protected zone. The USB drive contains drone footage, GPS
+      coordinates, and Elina's detailed report with stump-ring counts
+      proving old-growth destruction.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Ylikonstaapeli Järvinen ---
+
+  ylikonstaapeli_interview:
+    type: message
+    text: >
+      YLIKONSTAAPELI JÄRVINEN: Off the record — and I mean completely
+      off the record — I wanted to investigate LapinMetsä. My superior
+      in Sodankylä told me to stand down. He said the regional
+      authority had "jurisdiction." That's code for "don't touch it."
+
+      The Lehtonen situation is different. I didn't even know about
+      that until now. If you have evidence of stalking, I can act on
+      that. That's clearly my jurisdiction.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_ylikonstaapeli: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Elina than anyone in Savukoski. Who is responsible?
+    choices:
+      - Confront Matias Lehtonen (the obsessive photographer) -> confront_matias
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Ville Laaksonen (the company director) -> confront_ville
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Kunnanjohtaja Karjalainen (political protection) -> confront_pentti
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Matias (Best Ending) ---
+
+  confront_matias:
+    type: message
+    text: >
+      You present your evidence to Matias:
+
+      "I know @konsta_laine is your account. I know you put a GPS
+      tracker on Elina's truck. I know you entered her cabin and
+      went through her files. I know you watched her from the road.
+      I have witnesses and I have the photo metadata."
+    choices:
+      - Send -> matias_response
+
+  matias_response:
+    type: message
+    text: >
+      Matias doesn't reply for a long time. Then:
+
+      MATIAS: You don't understand. I was protecting her. She was in
+      danger from LapinMetsä and she wouldn't let me help. I needed
+      to know she was safe. Everything I did was because I care about
+      her work. About her.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Ylikonstaapeli Järvinen.
+      And to Kaisa Torvinen.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Ylikonstaapeli Järvinen reopens the case. With your evidence —
+      the anonymous account, the GPS tracker, the photo metadata, the
+      cabin intrusions, the witness testimonies — Matias is arrested
+      for stalking and harassment. A GPS tracker is recovered from
+      under Elina's Hilux, abandoned on the fell road past
+      Korvatunturi.
+
+      Kaisa Torvinen, finally in possession of Elina's full evidence
+      package, publishes the LapinMetsä story on Yle. The regional
+      authority orders an unannounced forestry inspection. All cutting
+      permits in the Savukoski area are suspended pending
+      investigation. Ville Laaksonen faces criminal charges for
+      permit fraud and destruction of a protected Natura 2000 site.
+
+      And Elina Mäkinen, reading the story from a friend's cabin
+      in Inari, calls her brother for the first time in nine days.
+
+      "Mä tuun kotiin."
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Nollalinja (väkivalta & uhkailu): 080 005 005 (maksuton)
+      Rikosuhripäivystys: 116 006
+      Ympäristörikosvihjeet: poliisi 0295 480 181
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: elina
+    text: >
+      luonto ei valehtele. eikä Savukosken ihmiset. kiitos ettette
+      luovuttanu.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Ville (Partial Ending) ---
+
+  confront_ville:
+    type: message
+    text: >
+      You present the logging evidence to Ville Laaksonen:
+
+      "I have drone footage showing clear-cutting inside a Natura
+      2000 protected zone. I have satellite images proving the cut
+      area is double the permit. I have your original boundary plans
+      showing the data was falsified. I have photos of 400-year-old
+      stumps inside the protected area."
+    choices:
+      - Send -> ville_response
+
+  ville_response:
+    type: message
+    text: >
+      VILLE: This conversation is being forwarded to our legal
+      department. Any publication of defamatory material will result
+      in immediate proceedings. LapinMetsä Oy has always operated
+      within its cutting permits.
+
+      But it's too late. You've sent the evidence to Kaisa, to the
+      paliskunta, and to the regional forestry authority.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The logging story breaks. LapinMetsä is ordered to halt all
+      cutting in the Savukoski area pending investigation. The
+      company may lose its FSC certification. Eighty jobs hang in
+      the balance. The village is divided.
+
+      But Elina?
+
+      Without the stalking evidence, Matias is never investigated.
+      He continues to roam the fells. He continues to monitor her
+      accounts. He creates a new anonymous profile.
+
+      Three months later, Elina reads about LapinMetsä online. She
+      returns quietly. She changes her herding routes. She stops
+      going out alone. She checks her truck every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Elina walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: elina
+    text: "mä oon takaisin. metsä toipuu. muu... kattoo ny."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Kunnanjohtaja (Wrong Ending) ---
+
+  confront_pentti:
+    type: message
+    text: >
+      You confront Kunnanjohtaja Karjalainen with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> pentti_response
+
+  pentti_response:
+    type: tweet
+    from: outi
+    text: >
+      Päämieheni on ottanut vastaan väitteenne. Mikäli julkaisette
+      herjaavaa materiaalia, ryhdymme välittömiin oikeustoimiin.
+      — Lakiasiaintoimisto Hakala, Rovaniemi
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The kunnanjohtaja's lawyer buries your accusation. Without a
+      direct link between Karjalainen and LapinMetsä's illegal
+      cutting — and there isn't one beyond political protection —
+      your evidence is insufficient.
+
+      LapinMetsä continues to cut. Matias continues to watch. Elina
+      stays in hiding in the wilderness.
+
+      Six months later, @konsta_laine creates a new account. It
+      follows Elina's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: SAVUKOSKI — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Elina's story explores themes of
+      corporate destruction of wilderness, illegal logging, obsessive
+      behaviour, community solidarity in remote places, and the
+      courage to protect the land.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Nollalinja (väkivalta & uhkailu): 080 005 005 (maksuton)
+      Rikosuhripäivystys: 116 006
+      Ympäristörikosvihjeet: poliisi 0295 480 181

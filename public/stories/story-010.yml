@@ -1,0 +1,1541 @@
+# DEAD ACCOUNT — Story 010: Thalassa (Greece)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-010.yml
+#
+# Player investigates the disappearance of archaeology student Elena
+# Papadopoulos in the fictional Aegean island town of Thalassa.
+
+meta:
+  title: "Dead Account"
+  state:
+    trust_nikos: 0
+    trust_maria: 0
+    trust_kostas: 0
+    trust_yiayia: 0
+    trust_dimitris: 0
+    trust_iro: 0
+    trust_stefanos: 0
+    trust_andreas: 0
+    trust_sophia: 0
+    trust_petros: 0
+    trust_eleftheria: 0
+    trust_giorgos: 0
+    trust_katerina: 0
+    trust_thanasis: 0
+    trust_marina: 0
+    trust_vassilis: 0
+    trust_lydia: 0
+    trust_alexis: 0
+    trust_chrysa: 0
+    trust_manolis: 0
+    contacts_followed: 0
+    night_witnesses: 0
+    trafficking_evidence: 0
+    rival_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just arrived on the island. discovering thalassa"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Thalassa.social"
+    description: "Welcome to the Thalassa island community instance - Aegean Sea"
+    avatar_url: /gamepatch/assets/dead-account/bot.png
+
+  npcs:
+    elena:
+      name: "Elena Papadopoulos"
+      bio: "archaeology student | walking tour TikTok | this island's history is alive | @thalassa_walks"
+      avatar: avatars/elena.jpg
+    nikos:
+      name: "Nikos Papadopoulos"
+      bio: "elena's father | fisherman | 30 years on this sea | MY DAUGHTER IS MISSING"
+      avatar: avatars/nikos.jpg
+    maria:
+      name: "Maria Konstantinou"
+      bio: "taverna owner | To Kyma | best octopus on the island | elena is family"
+      avatar: avatars/maria.jpg
+    kostas:
+      name: "Kostas Stavridis"
+      bio: "mayor | Dimos Thalassas | tourism & development | #ThalassaGrows"
+      avatar: avatars/kostas.jpg
+    yiayia:
+      name: "Yiayia Eleni Papadopoulos"
+      bio: "elena's grandmother | 82 years on this island | she knows everything"
+      avatar: avatars/yiayia.jpg
+    dimitris:
+      name: "Dimitris"
+      bio: "17 | re malaka ti ginetai | elena was teleia | someone talk"
+      avatar: avatars/dimitris.jpg
+    iro:
+      name: "Iro"
+      bio: "16 | art & history | elena inspired me poli | tpt makes sense anymore"
+      avatar: avatars/iro.jpg
+    stefanos:
+      name: "Stefanos"
+      bio: "15 | gaming & boats | re paidia ti ginetai me tin elena"
+      avatar: avatars/stefanos.jpg
+    andreas:
+      name: "Andreas Stavridis"
+      bio: "shop owner | Aegean Treasures | souvenirs & antiques | the mayor's son"
+      avatar: avatars/andreas.jpg
+    sophia:
+      name: "Dr. Sophia Alexiou"
+      bio: "professor | University of Athens | Classical Archaeology | Elena's supervisor"
+      avatar: avatars/sophia.jpg
+    petros:
+      name: "Petros Doukas"
+      bio: "journalist | Nea Thalassa | island news | independent since 1995"
+      avatar: avatars/petros.jpg
+    eleftheria:
+      name: "Eleftheria Vlachou"
+      bio: "teacher | Gymnasio Thalassas | history & culture | walking tours volunteer"
+      avatar: avatars/eleftheria.jpg
+    giorgos:
+      name: "Giorgos Makris"
+      bio: "harbour master | Limenarchis | maritime safety & port authority"
+      avatar: avatars/giorgos.jpg
+    katerina:
+      name: "Katerina Nikolaou"
+      bio: "archaeologist | rival academic | Thessaloniki | same thesis topic"
+      avatar: avatars/katerina.jpg
+    thanasis:
+      name: "Thanasis Raptis"
+      bio: "police sergeant | Thalassa station | community safety"
+      avatar: avatars/thanasis.jpg
+    marina:
+      name: "Marina Pappas"
+      bio: "pharmacist | Farmakeio Thalassa | open daily | health advice"
+      avatar: avatars/marina.jpg
+    vassilis:
+      name: "Vassilis Tsakiris"
+      bio: "antiquities dealer | Athens connections | collector & middleman"
+      avatar: avatars/vassilis.jpg
+    lydia:
+      name: "Lydia Fotou"
+      bio: "museum curator | Mouseio Thalassas | protecting our heritage"
+      avatar: avatars/lydia.jpg
+    alexis:
+      name: "Alexis"
+      bio: "."
+      avatar: avatars/anon.jpg
+    chrysa:
+      name: "Chrysa Economou"
+      bio: "librarian | Dimotiki Vivliothiki | books & island history | research help"
+      avatar: avatars/chrysa.jpg
+    manolis:
+      name: "Manolis Christodoulou"
+      bio: "boat captain | daily tours | sunset cruises | knows every cove"
+      avatar: avatars/manolis.jpg
+    astynomia:
+      name: "Astynomia Thalassas"
+      bio: "Hellenic Police | Emergencies: 100 | Tourist Police: 171"
+      avatar: avatars/astynomia.jpg
+    dimos:
+      name: "Dimos Thalassas"
+      bio: "Official municipal account | Services | News | #Thalassa"
+      avatar: avatars/dimos.jpg
+    thalassa_walks:
+      name: "Thalassa Walks"
+      bio: "Historical walking tours | TikTok | 3000 years of history under your feet"
+      avatar: avatars/thalassa_walks.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN THALASSA
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to thalassa.social — the community Mastodon instance for
+      Thalassa, a small island in the Aegean Sea. White houses, blue
+      domes, ancient ruins, and a secret nobody wants exposed.
+
+      The local feed is troubled. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      One name is everywhere: @elena_papadopoulos.
+
+      An archaeology student who ran historical walking tours and
+      a popular TikTok about the island's 3,000-year history. She
+      made the ancient world come alive for tourists and locals alike.
+
+      She hasn't posted in eight days.
+    choices:
+      - Look at her profile -> elena_profile
+
+  elena_profile:
+    type: tweet
+    from: elena
+    text: "Found something extraordinary today. This changes everything we know about the Classical period on Thalassa. Full video coming tomorrow."
+    choices:
+      - Tomorrow never came... -> dead_post
+
+  dead_post:
+    type: message
+    text: >
+      The video never appeared. Two days later, her account posted:
+      "Apologies for the delay. The find was less significant than
+      initially thought. Taking a short break from content creation."
+
+      Elena's father says those words are not hers. Elena does not
+      say "content creation." She says "storytelling." Elena does
+      not downplay finds. Elena gets excited and stays excited.
+
+      Her room above the taverna is untouched. Her notebooks are
+      gone. Her laptop is gone.
+    choices:
+      - Read the police statement -> police_statement
+      - See what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: astynomia
+    text: >
+      The Hellenic Police Thalassa station has received a report
+      regarding a local resident. The individual has communicated
+      via social media. There is currently no indication of criminal
+      activity. Contact the station with any information.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The island is buzzing. Nikos, her father, is going boat to
+      boat asking fishermen if they've seen her. Maria at the taverna
+      says Elena's room looks like someone searched it. Yiayia Eleni
+      sits by the harbour crossing herself.
+
+      And an anonymous account, @alexis, posts strange messages:
+      "Some treasures are better left buried. She should have
+      understood that."
+
+      The mayor's office is suspiciously quiet. The mayor's son
+      runs a souvenir shop that sells "antiques."
+    effects: { trust_nikos: "+5", trust_maria: "+5" }
+    choices:
+      - Start following Elena's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Thalassa. A beautiful island with an ugly secret
+      hiding beneath the whitewashed walls. Follow Elena's contacts
+      and understand what she discovered.
+    choices:
+      - Talk to Maria at the taverna -> maria_intro
+      - Talk to Yiayia Eleni -> yiayia_intro
+      - Check what the teens are saying -> dimitris_intro
+      - Browse the feed -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed is a mix of sunset photos, ferry schedules, taverna
+      specials, and worry about Elena. Tourism is the island's
+      lifeblood. The walking tours were popular. Now they've stopped.
+
+      Key names: Nikos (her father, desperate), Sophia (her professor
+      in Athens, concerned), Petros (island journalist, investigating),
+      Andreas (mayor's son, runs the antique shop), Katerina (academic
+      rival from Thessaloniki).
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Maria -> maria_intro
+      - Talk to Yiayia Eleni -> yiayia_intro
+      - Check the teens -> dimitris_intro
+
+  # --- Maria (social map) ---
+
+  maria_intro:
+    type: tweet
+    from: maria
+    text: >
+      To Kyma is open but the heart is missing. Elena's chair at the
+      corner table is empty. Her favourite frappe sits undrunk in my
+      imagination. Come sit. We need to talk.
+    effects: { trust_maria: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Maria -> maria_talk
+
+  maria_talk:
+    type: message
+    text: >
+      MARIA: Ela, sit. You're new? Welcome to Thalassa. Bad timing,
+      but sit.
+
+      Elena lived above my taverna. She rented the room three years
+      ago when she started her thesis research. Every morning she'd
+      come down, drink her frappe, spread her maps on the table, and
+      plan her walking tours.
+
+      She made this island's history come alive. Tourists would cry
+      listening to her tell the story of the Classical temple. She
+      had a gift.
+
+      Then she found something. She wouldn't tell me what, but she
+      was excited. Poli excited. And scared. I'd never seen her
+      scared before.
+    effects: { trust_maria: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Andreas's shop -> maria_andreas
+      - Ask about Elena's room -> maria_room
+      - Move on -> quest1_hub
+
+  maria_andreas:
+    type: message
+    text: >
+      MARIA: Aegean Treasures. Andreas Stavridis. The mayor's son.
+      He sells souvenirs to tourists — ceramics, jewellery, replicas.
+      But in the back room... Elena told me she saw things that
+      shouldn't be there.
+
+      Ancient pottery. Real pottery. Not replicas. With museum
+      catalogue numbers scratched off. She photographed them through
+      the window at night.
+
+      She said "Maria, the mayor's son is selling stolen antiquities."
+      I told her to be careful. This is a small island. The Stavridis
+      family owns half of it.
+    effects: { trust_maria: "+10" }
+    choices:
+      - Ask about the room -> maria_room
+      - Move on -> quest1_hub
+
+  maria_room:
+    type: message
+    text: >
+      MARIA: Someone went through Elena's room. The night she
+      disappeared, I heard footsteps upstairs. I thought it was her
+      coming home late. But in the morning the door was open and
+      things were moved. Her notebooks — she kept three of them, full
+      of sketches and measurements — all gone. Her laptop, gone.
+
+      But they missed something. Under the floorboard by the window —
+      Elena showed me once — there is a space. She kept her important
+      things there. I haven't checked. I'm afraid to.
+    effects: { trust_maria: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Yiayia Eleni ---
+
+  yiayia_intro:
+    type: tweet
+    from: yiayia
+    text: >
+      My Elena. My koritsaki. Eighty-two years on this island and
+      I have never been so afraid. God protect her.
+    effects: { trust_yiayia: "+5", contacts_followed: "+1" }
+    choices:
+      - Talk to Yiayia -> yiayia_talk
+
+  yiayia_talk:
+    type: message
+    text: >
+      YIAYIA: Ela, paidi mou. Sit with an old woman.
+
+      My granddaughter has the fire of her grandfather. He fought in
+      the resistance. She fights with a camera and a notebook.
+
+      She told me something last month. She said "Yiayia, they are
+      selling our history. Piece by piece. Through the mayor's son's
+      shop." I told her to be careful. The Stavridis family has been
+      powerful on this island since before I was born.
+
+      She said "Someone has to stop them." That is what her grandfather
+      would have said. That is what worries me.
+    effects: { trust_yiayia: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Dimitris (teen witness) ---
+
+  dimitris_intro:
+    type: tweet
+    from: dimitris
+    text: >
+      re paidia ti ginetai. i elena afantisti kai kanenas den kanei
+      tpt. oles oi tours stamataisan. o stefanos eide kati sto limani
+      alla fovate na milisi. teleia
+    effects: { trust_dimitris: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Dimitris -> dimitris_talk
+
+  dimitris_talk:
+    type: message
+    text: >
+      DIMITRIS: re eisai neos? welcome. katalavaineis ti ginetai?
+      i elena itan teleia. ekane ta tours kai oloi oi tourisites tin
+      agapousan. kai emeis ta paidia tin agapousame giati mas empaize
+      tin istoria tou nisiou san paramithi.
+
+      i iro exei screenshots apo to kiniton tis elenas. i elena tis
+      edeixe. kaneis anonimon tis esteile minima: "stamata na
+      psaxneis. den tha sou aresei ti tha vreis."
+
+      kai o stefanos eide ena skafo sto limani sta misanixta pou
+      den itan apo do. exei kapoies fwtografies sto kiniton tou.
+
+      re malaka kanenas den akoui paidia sta 15
+    effects: { trust_dimitris: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      Thalassa is an island where beauty hides something dark. An
+      archaeology student found evidence of antiquities trafficking.
+      Now she's gone and her notebooks are missing.
+    choices:
+      - Talk to Nikos (Elena's father) -> nikos_q1
+      - Talk to Dr. Sophia (her professor) -> sophia_q1
+      - Talk to Petros (island journalist) -> petros_q1
+      - I'm ready to investigate the night she vanished -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Nikos Q1 ---
+
+  nikos_q1:
+    type: tweet
+    from: nikos
+    text: >
+      8 days. I have searched every beach, every cove, every chapel
+      on this island. My daughter is not here. Someone took her and
+      the police are doing NOTHING.
+    effects: { trust_nikos: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nikos -> nikos_q1_talk
+
+  nikos_q1_talk:
+    type: message
+    text: >
+      NIKOS: You want to help? Then listen. My daughter found stolen
+      antiquities being sold through the mayor's son's shop. She
+      documented everything. And now she's gone and her evidence
+      is gone.
+
+      The police sergeant — Thanasis — says there's "no crime." The
+      mayor says she's "traveling." She is not traveling. Her passport
+      is in her drawer. I checked.
+
+      Someone on this island made my daughter disappear. And I think
+      the people who should be investigating are the same people who
+      benefit from the traffic.
+    effects: { trust_nikos: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Sophia Q1 ---
+
+  sophia_q1:
+    type: tweet
+    from: sophia
+    text: >
+      I am deeply concerned about my student Elena Papadopoulos.
+      Her thesis research was groundbreaking. She had identified
+      artifacts that belong in a museum, not in a souvenir shop.
+      I urge the authorities to act.
+    effects: { trust_sophia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Sophia -> sophia_q1_talk
+
+  sophia_q1_talk:
+    type: message
+    text: >
+      SOPHIA: Elena's research was extraordinary. She identified a
+      previously undocumented Classical-period sanctuary on Thalassa.
+      The artifacts she found — pottery, figurines, inscriptions —
+      are museum-quality pieces.
+
+      But some of those artifacts are appearing on the black market.
+      Elena traced several pieces from her site to Andreas Stavridis's
+      shop and from there to collectors in Athens and abroad.
+
+      She was documenting a trafficking pipeline. From the ground on
+      Thalassa to private collections across Europe. And the pipeline
+      runs through the mayor's family.
+
+      I should add — another student, Katerina Nikolaou, is working
+      on the same thesis topic. There has been... academic tension.
+    effects: { trust_sophia: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Petros Q1 ---
+
+  petros_q1:
+    type: tweet
+    from: petros
+    text: >
+      Nea Thalassa asks: where is Elena Papadopoulos? This newspaper
+      will not stop asking until we have answers. The island deserves
+      the truth.
+    effects: { trust_petros: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Petros -> petros_q1_talk
+
+  petros_q1_talk:
+    type: message
+    text: >
+      PETROS: I've been a journalist on this island for thirty years.
+      I've seen the Stavridis family do many things. But this — if
+      Elena's evidence is real — this is the biggest scandal in the
+      island's modern history.
+
+      Elena shared some of her findings with me two weeks before she
+      disappeared. Photographs of artifacts in Andreas's shop. Catalog
+      numbers that match items reported missing from regional museums.
+      Shipping receipts from the harbour master's records.
+
+      She was close to publishing everything. Her walking tour videos
+      were going to include the trafficking story. That's when she
+      disappeared.
+
+      I need her full documentation to publish. Without it, I have
+      allegations against the most powerful family on the island.
+    effects: { trust_petros: "+10" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Elena was last seen at To Kyma taverna at 21:00. She was working
+      on her laptop, editing video. She told Maria she was "going to
+      check something at the site." She left on foot heading toward
+      the ruins.
+
+      Collect witness accounts. You need at least 4.
+    choices:
+      - Find Stefanos (was at the harbour) -> stefanos_interview
+      - Find Manolis (boat captain, was out late) -> manolis_interview
+      - Find Eleftheria (teacher, lives near the ruins) -> eleftheria_interview
+      - Find Marina (pharmacist, was closing late) -> marina_interview
+
+  # --- Stefanos (saw the boat) ---
+
+  stefanos_interview:
+    type: tweet
+    from: stefanos
+    text: >
+      re ego eida ena skafo sto limani tetia wra pou den eprepe na
+      einai ekei. den itan apo do. kai feugan me koutia
+    effects: { trust_stefanos: "+5" }
+    choices:
+      - Ask Stefanos what he saw -> stefanos_talk
+
+  stefanos_talk:
+    type: message
+    text: >
+      STEFANOS: re eixa parei psari sto limani me ton patera mou
+      kai vlepw ena skafo na mpainei. den itan apo do. megalo,
+      taxyploo. tria atoma. kai evgazan koutia apo ena amaksi kai
+      ta evasan sto skafo.
+
+      ta koutia itan mikra alla varetia. san ta koutia pou exei o
+      andreas sto magazi tou otan tou fernoun pragmata.
+
+      to amaksi itan tou dimarchou. to anagnwrisa apo tis pinakides.
+
+      to skafo efyge pros ta mesanixta. xwris fota. pros tin
+      tourkiki akti.
+    effects:
+      trust_stefanos: "+10"
+      night_witnesses: "+1"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Manolis (saw Elena near the ruins) ---
+
+  manolis_interview:
+    type: tweet
+    from: manolis
+    text: >
+      I passed the ruins on my way back from a sunset cruise. I saw
+      Elena. She was not alone.
+    effects: { trust_manolis: "+5" }
+    choices:
+      - Ask Manolis what he saw -> manolis_talk
+
+  manolis_talk:
+    type: message
+    text: >
+      MANOLIS: Around ten o'clock I was walking back from the harbour.
+      The path goes past the ruins. I saw Elena near the old temple
+      with a torch. She was photographing something.
+
+      Then I saw someone else. On the path above the ruins. Watching
+      her. A woman. Dark hair, about Elena's age. She was taking
+      photos too — but of Elena, not of the ruins.
+
+      Elena didn't see her. The woman slipped away when I came close.
+      I didn't think much of it. Maybe another researcher.
+
+      But now I wonder: was she being watched?
+    effects:
+      trust_manolis: "+10"
+      night_witnesses: "+1"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Eleftheria (heard the argument) ---
+
+  eleftheria_interview:
+    type: tweet
+    from: eleftheria
+    text: >
+      My house overlooks the path to the ruins. I heard voices that
+      night. Raised voices. A man telling a woman to "forget what
+      she saw."
+    effects: { trust_eleftheria: "+5" }
+    choices:
+      - Ask Eleftheria what she heard -> eleftheria_talk
+
+  eleftheria_talk:
+    type: message
+    text: >
+      ELEFTHERIA: Around eleven I was reading on my terrace. I heard
+      two people on the path below. A man and a woman.
+
+      The man said: "You don't understand what you're doing. This
+      involves people who will not tolerate interference."
+
+      She said: "I don't care who they are. Those artifacts belong
+      to Greece, not to some collector in Geneva."
+
+      He said: "Walk away. This is your last warning."
+
+      She said something I couldn't hear. Then footsteps, fast.
+      Running. Then a car engine from the lower road.
+
+      I recognised the man's voice. It was Andreas. The mayor's son.
+    effects:
+      trust_eleftheria: "+10"
+      night_witnesses: "+1"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Marina (saw someone searching) ---
+
+  marina_interview:
+    type: tweet
+    from: marina
+    text: >
+      I was closing the pharmacy late. I saw someone going into the
+      taverna building through the back entrance. The one that leads
+      to Elena's room.
+    effects: { trust_marina: "+5" }
+    choices:
+      - Ask Marina what she saw -> marina_talk
+
+  marina_talk:
+    type: message
+    text: >
+      MARINA: Around midnight. I was doing inventory in the pharmacy.
+      Through the back window I saw a figure go up the external stairs
+      to Elena's room. Not Elena — a man. Taller, heavier.
+
+      He was inside for maybe twenty minutes. When he came out, he
+      was carrying a bag. Elena's laptop bag — the blue one she always
+      carried. And something else, notebooks maybe.
+
+      He got into a car on the back street. I couldn't see the plate
+      clearly but the car was a black Range Rover. The mayor drives
+      a black Range Rover.
+    effects:
+      trust_marina: "+10"
+      night_witnesses: "+1"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      Keep collecting testimonies.
+    choices:
+      - Find Stefanos -> stefanos_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Manolis -> manolis_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Eleftheria -> eleftheria_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Marina -> marina_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Talk to Iro (has Elena's screenshots) -> iro_early
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Iro early ---
+
+  iro_early:
+    type: tweet
+    from: iro
+    text: >
+      i elena mou edeixe to kiniton tis prin exafanistei. eixe
+      minima pou elege "stamata na psaxneis i tha metaniwseis."
+      kai alla apo mia kopela pou tin antagwnizotane
+    effects: { trust_iro: "+5" }
+    choices:
+      - Ask Iro about the messages -> iro_messages
+      - Come back later -> quest2_hub
+
+  iro_messages:
+    type: message
+    text: >
+      IRO: i elena mou edeixe duo tipou minimatwn. ta prota itan
+      apo ton alexis — anwnimo account. pragmata opws "min anakateuesai"
+      kai "den ksereis me poious ta vazeis."
+
+      alla ta alla itan apo mia kopela. katerina nikolaou. apo
+      thessaloniki. kai ta dikia tis itan diaforetika. tipo "i thesis
+      einai diki mou" kai "tha kanw ta panta gia na se stamatiso" kai
+      "i epistimoni tha mathoun ti ekanes."
+
+      san na ligoura tin elena giati vrike prwti tin thesi.
+      o fthonos itan... poli. ekei to prosopo mou.
+
+      i elena den fovotane ton andrea. fovotane tin katerina.
+    effects:
+      trust_iro: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      21:00 — Elena leaves To Kyma taverna, heads for the ruins
+      22:00 — Elena photographing at the ruins. Woman watching her. (Manolis)
+      23:00 — Andreas argues with Elena on the path. "Your last warning." (Eleftheria)
+      23:00 — Boxes loaded onto speedboat at harbour using mayor's car (Stefanos)
+      23:30 — Elena's phone goes dark
+      00:00 — Someone enters Elena's room, takes laptop and notebooks (Marina)
+      00:30 — Speedboat leaves without lights, heading toward Turkish coast (Stefanos)
+
+      Two threads to pull:
+      - Antiquities trafficking: The mayor's family pipeline
+      - Academic rival: Katerina Nikolaou's obsession
+    choices:
+      - Investigate the trafficking -> trafficking_hub
+      - Investigate Katerina -> rival_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      TRAFFICKING THREAD: Evidence collected: ${trafficking_evidence}
+      RIVAL THREAD: Evidence collected: ${rival_evidence}
+    choices:
+      - Work on the trafficking thread -> trafficking_hub
+      - Work on the rival thread -> rival_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: trafficking_evidence, gte: 5 }
+            - { state: rival_evidence, gte: 3 }
+
+  # =====================================================================
+  # TRAFFICKING THREAD
+  # =====================================================================
+
+  trafficking_hub:
+    type: message
+    text: >
+      THE TRAFFICKING THREAD
+
+      Antiquities moving from excavation sites through a souvenir
+      shop to international collectors via speedboat. The mayor's
+      family at the center.
+
+      Trafficking evidence: ${trafficking_evidence}
+    choices:
+      - Investigate Andreas's shop -> andreas_investigation
+      - Check the harbour records -> harbour_investigation
+      - Talk to Lydia (museum curator) -> lydia_interview
+      - Talk to Giorgos (harbour master) -> giorgos_interview
+      - Check Elena's hiding spot -> hiding_spot
+        when:
+          state: trust_maria
+          gte: 20
+      - Check @alexis posts -> alexis_investigation
+      - Talk to Vassilis (the dealer) -> vassilis_interview
+      - Talk to Nikos about the boats -> nikos_deeper
+        when:
+          state: trust_nikos
+          gte: 20
+      - Talk to Yiayia about the temple -> yiayia_deeper
+        when:
+          state: trust_yiayia
+          gte: 20
+      - Talk to Petros about the Stavridis family -> petros_deeper
+      - Check Dimitris's photos -> dimitris_deeper
+        when:
+          state: trust_dimitris
+          gte: 20
+      - Back to hub -> investigation_hub
+
+  # --- Andreas Investigation ---
+
+  andreas_investigation:
+    type: message
+    text: >
+      Aegean Treasures looks like a typical souvenir shop from the
+      front. Ceramic replicas, postcards, olive wood carvings.
+
+      But public records tell a different story. Andreas imports
+      "decorative items" from suppliers in Athens. The shipping
+      manifests list weights that don't match decorative ceramics.
+      Too heavy. And the import declarations consistently undervalue
+      the goods.
+
+      Elena's walking tour TikTok from three months ago includes a
+      shot panning past the shop window. In the background, clearly
+      visible, is a red-figure kylix — a drinking cup. It matches
+      an item reported stolen from the Thessaloniki museum two years
+      ago.
+    effects:
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Harbour Records ---
+
+  harbour_investigation:
+    type: message
+    text: >
+      The harbour records show regular nighttime departures of a
+      speedboat registered to a company called "Aegean Maritime
+      Services." The company's registered address is the same as
+      Andreas Stavridis's shop.
+
+      Destinations listed: "fishing." But the boat has no fishing
+      license and carries no nets.
+
+      Cross-referencing with international customs alerts: Turkish
+      customs flagged suspicious shipments from the same registration
+      number three times in the past year. Each time, the shipment
+      was cleared after "diplomatic intervention."
+
+      This is a pipeline. Artifacts leave Thalassa by speedboat, enter
+      Turkey, and from there reach collectors across Europe and the
+      Gulf states.
+    effects:
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Lydia ---
+
+  lydia_interview:
+    type: message
+    text: >
+      LYDIA: As museum curator, I maintain the register of known
+      archaeological sites and documented artifacts on Thalassa.
+
+      Elena came to me four months ago with photographs. Pottery,
+      figurines, inscriptions — from a site she had identified.
+      Classical period, possibly 5th century. The quality was
+      remarkable.
+
+      I registered the finds provisionally. Three weeks later, two
+      of the items Elena photographed appeared in an online auction
+      catalogue. Listed by a dealer in Geneva. Reserve price: 40,000
+      euros.
+
+      Someone removed them from the site between Elena's documentation
+      and my registration. The only people who knew about the finds
+      were Elena, myself, her professor Sophia, and — unfortunately —
+      Katerina Nikolaou, who accessed Elena's preliminary report
+      through the university server.
+    effects:
+      trust_lydia: "+15"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Giorgos ---
+
+  giorgos_interview:
+    type: message
+    text: >
+      GIORGOS: As harbour master, I log all departures. The speedboat
+      you're asking about is registered to a legitimate company. I
+      process the paperwork as filed.
+
+      Do I question every departure? No. I have 200 vessels using
+      this harbour. I process the forms. The coast guard handles
+      enforcement.
+
+      If someone is using a vessel for... purposes beyond what is
+      declared... that is a coast guard matter. Not mine.
+
+      [Giorgos seems nervous. He processes the paperwork but doesn't
+      ask questions. Is he complicit or just negligent?]
+    effects:
+      trust_giorgos: "+5"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Hiding Spot ---
+
+  hiding_spot:
+    type: message
+    text: >
+      Maria takes you to Elena's room above the taverna. Under the
+      floorboard by the window, as Maria described, there is a space.
+
+      Inside: a USB drive and a handwritten list.
+
+      The USB contains photographs — hundreds of them. Artifacts in
+      situ at the excavation. The same artifacts in Andreas's shop.
+      The same artifacts in auction catalogues. A clear chain from
+      ground to market.
+
+      The handwritten list names every piece, its catalogue number,
+      where Elena found it, where it turned up, and who handled it.
+      Andreas. Vassilis. Two names in Athens. One in Geneva.
+
+      And a note: "If I disappear, give this to Petros. Or to
+      Dr. Alexiou."
+    effects:
+      trafficking_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Alexis ---
+
+  alexis_investigation:
+    type: tweet
+    from: alexis
+    text: >
+      Some treasures are worth more underground. She didn't understand
+      the business. Now she understands the consequences.
+    choices:
+      - Investigate @alexis -> alexis_analysis
+
+  alexis_analysis:
+    type: message
+    text: >
+      @alexis is not a random account. The posts use specific
+      archaeological terminology. And one reference is revealing:
+      "The kylix she photographed belongs to a private collection
+      now. It will never be exhibited. That is the point."
+
+      Only someone involved in the trafficking would know which
+      specific piece Elena photographed. The kylix was not mentioned
+      in any public post.
+
+      The account posts during business hours. The language alternates
+      between Greek and English with academic precision. This is
+      someone with archaeological knowledge who is connected to the
+      trafficking network.
+
+      Not Andreas — he doesn't have the vocabulary. Someone else.
+      Someone academic.
+    effects:
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Vassilis ---
+
+  vassilis_interview:
+    type: message
+    text: >
+      VASSILIS: I am a legitimate antiquities dealer. I work with
+      verified provenance documentation. Every piece I handle has a
+      paper trail.
+
+      If you are suggesting something else, you are mistaken.
+
+      [Vassilis is the middleman between Thalassa and international
+      buyers. He is careful, professional, and well-lawyered. You
+      won't get a confession, but his name appears on Elena's list.]
+    effects: { trust_vassilis: "+5" }
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Nikos (deeper testimony) ---
+
+  nikos_deeper:
+    type: message
+    text: >
+      NIKOS: I am a fisherman. I know the sea. I know the boats. And
+      I know which boats go out at night and which ones stay.
+
+      The speedboat from Andreas's company — I've seen it leave at
+      midnight. It goes south-east. Toward the Turkish coast. Two
+      hours there, two hours back. No nets, no rods, no ice for fish.
+      Just boxes.
+
+      Elena asked me to note the dates. I have them written in my
+      fishing log. Fourteen nighttime departures in six months. Each
+      one within a week of Elena documenting new finds at the site.
+
+      They wait for her to find things. Then they take them. She
+      does the archaeology, they do the looting. And they have the
+      nerve to call it business.
+    effects:
+      trust_nikos: "+15"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Maria (deeper testimony about the night) ---
+
+  maria_deeper:
+    type: message
+    text: >
+      MARIA: I should tell you something I haven't told anyone.
+
+      That night, before Elena left, she was on the phone. I was
+      clearing tables and I heard her say: "I know you accessed my
+      files. I know it was you. And I have proof."
+
+      She was angry. Cold angry, not hot angry. The kind of anger
+      you have when you've caught someone.
+
+      When she hung up she looked at me and said "Maria, everything
+      is about to change on this island. By tomorrow everyone will
+      know."
+
+      Tomorrow never came. But whoever she called — whoever accessed
+      her files — they knew she was about to expose them. That phone
+      call was a warning. And the other person acted first.
+    effects:
+      trust_maria: "+15"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> rival_hub
+
+  # --- Yiayia (deeper testimony) ---
+
+  yiayia_deeper:
+    type: message
+    text: >
+      YIAYIA: My Elena told me something the last time I saw her.
+      She said "Yiayia, I found the temple."
+
+      Not a temple anyone knew about. A new one. Under the olive
+      grove near Agios Nikolaos chapel. She found inscriptions, she
+      said. Dedications to Athena. Fifth century before Christ.
+
+      She was so excited. She said it would be the most important
+      discovery on the island in a hundred years. She said her
+      thesis would prove that Thalassa was a major sanctuary site,
+      not a minor island.
+
+      And then she said something that scared me. She said: "But
+      someone else wants it more than the museum does."
+
+      I asked who. She just shook her head and said: "Someone who
+      has already started selling what isn't hers."
+    effects:
+      trust_yiayia: "+10"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Petros (deeper investigation) ---
+
+  petros_deeper:
+    type: message
+    text: >
+      PETROS: I have been a journalist on this island for thirty years.
+      Let me tell you what I know about the Stavridis family.
+
+      Kostas Stavridis became mayor twelve years ago. Before that,
+      this island had strict heritage protections. Archaeological
+      sites were fenced, patrolled, maintained. After Kostas — the
+      fences came down. The patrol budget was cut. The heritage
+      officer position was eliminated.
+
+      His son Andreas opened "Aegean Treasures" five years ago.
+      Within a year, items started appearing on international auction
+      sites that matched descriptions of artifacts from Thalassa's
+      known sites.
+
+      Elena was the first person to connect the dots. She had the
+      archaeological training to identify the pieces. She had the
+      patience to match them to auction catalogues. And she had the
+      courage to keep going when the threats started.
+
+      My newspaper will publish this story. I need Elena's
+      documentation — the photographs, the catalogue numbers, the
+      chain from ground to market. With that evidence, even the
+      Stavridis family cannot silence the truth.
+    effects:
+      trust_petros: "+15"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # --- Dimitris (deeper teen testimony) ---
+
+  dimitris_deeper:
+    type: tweet
+    from: dimitris
+    text: >
+      re paidia exw kai alla. o stefanos kai ego piame sto magazi
+      tou andrea mia nixta kai vidame apo to parathiro. eixe pragmata
+      pou den prepei na einai se magazi. archaia. alithina.
+    effects: { trust_dimitris: "+5" }
+    choices:
+      - Ask Dimitris what they saw -> dimitris_deeper_talk
+
+  dimitris_deeper_talk:
+    type: message
+    text: >
+      DIMITRIS: re mia nixta pigame me ton stefano sto magazi.
+      koitaxame apo to piso parathiro. mesa eixe koutia anoixta
+      me pragmata mesa. vazo. agalmatio. kai ena pragma pou efaine
+      san xriso. i elena tha trelenote an to evlepe.
+
+      o andrea itan mesa me enan allo tipo. elegane timeis. "afto
+      pane 30 xiliades" kai "o pelatis sti geneva to thelei tin
+      epomeni evdomada."
+
+      geneva re malaka. poulan tin istoria mas sti geneva.
+
+      pirame fwtografia me to kinito tou stefanou. den einai
+      kali poiotita alla fainetai ti einai. kai fainetai to prosopo
+      tou andrea.
+
+      i elena tha itan periafani gia emas. elpizo na girisei gia
+      na tis to poume.
+    effects:
+      trust_dimitris: "+15"
+      trafficking_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to trafficking thread -> trafficking_hub
+
+  # =====================================================================
+  # RIVAL THREAD
+  # =====================================================================
+
+  rival_hub:
+    type: message
+    text: >
+      THE RIVAL THREAD
+
+      Katerina Nikolaou is working on the same thesis topic. She
+      accessed Elena's research. She has been sending threatening
+      messages. And she was seen watching Elena at the ruins.
+
+      But is she connected to the trafficking — or just to the
+      academic competition?
+
+      Rival evidence: ${rival_evidence}
+    choices:
+      - Investigate Katerina's access to Elena's research -> katerina_research
+      - Talk to Sophia about academic competition -> sophia_rival
+      - Check Katerina's social media -> katerina_social
+      - Talk to Chrysa (librarian, saw Katerina) -> chrysa_interview
+      - Talk to Maria about the phone call -> maria_deeper
+      - Talk to Thanasis (police) -> thanasis_interview
+        when:
+          state: trust_thanasis
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Katerina research ---
+
+  katerina_research:
+    type: message
+    text: >
+      Katerina Nikolaou is a PhD candidate at the Aristotle University
+      of Thessaloniki. Her thesis: Classical-period sanctuaries in
+      the Aegean. The same topic as Elena's.
+
+      University records show Katerina accessed Elena's preliminary
+      research files through a shared server. She downloaded the site
+      coordinates, the artifact catalogue, and the preliminary
+      analysis. This was unauthorized.
+
+      She published a conference abstract three weeks later using
+      data that closely mirrors Elena's unpublished findings. Elena
+      filed an academic integrity complaint. It was pending review.
+    effects:
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> rival_hub
+
+  # --- Sophia rival ---
+
+  sophia_rival:
+    type: message
+    text: >
+      SOPHIA: Katerina is... ambitious. In ways that concern me. She
+      approached me last year wanting to supervise her thesis. I
+      declined. She has talent but lacks ethics.
+
+      When Elena's preliminary findings became known within the
+      department, Katerina reacted badly. She accused Elena of
+      "stealing her research" — which is absurd, since Elena began
+      work on Thalassa a full year before Katerina expressed interest.
+
+      The academic integrity complaint Elena filed was serious.
+      Katerina could lose her PhD candidacy. The hearing was scheduled
+      for next month. With Elena absent, the complaint cannot proceed.
+
+      I want to be clear: I believe this is academic jealousy, not
+      something darker. But I cannot explain why Katerina was on
+      Thalassa the night Elena disappeared.
+    effects:
+      trust_sophia: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> rival_hub
+
+  # --- Katerina social ---
+
+  katerina_social:
+    type: tweet
+    from: katerina
+    text: >
+      The academic community should be aware that certain claims about
+      Aegean sanctuary sites are based on undocumented fieldwork with
+      no peer review. Methodology matters. Provenance matters.
+    choices:
+      - Analyse Katerina's posts -> katerina_analysis
+
+  katerina_analysis:
+    type: message
+    text: >
+      Katerina's posts are carefully worded but revealing. She
+      attacks Elena's methodology without naming her. She questions
+      the provenance of Elena's finds. She implies Elena fabricated
+      data.
+
+      But the @alexis account is different. Cross-referencing the
+      linguistic patterns: @alexis uses the same unusual transliteration
+      of Greek archaeological terms that Katerina uses in her
+      publications. The same obscure abbreviations.
+
+      And one @alexis post references a specific page number from an
+      unpublished conference paper — Katerina's paper.
+
+      @alexis is Katerina Nikolaou. The academic rival is also the
+      anonymous voice threatening Elena. And she has specific knowledge
+      of which artifacts were trafficked. She is not just jealous —
+      she is involved.
+    effects:
+      rival_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to rival thread -> rival_hub
+
+  # --- Chrysa ---
+
+  chrysa_interview:
+    type: message
+    text: >
+      CHRYSA: A young woman came to the library last month. She said
+      she was researching Classical-period sites on Thalassa. She
+      wanted to see Elena's research notes — she said Elena had
+      donated copies to the library.
+
+      Elena had not donated anything. This woman was trying to access
+      Elena's work through me. When I told her we had nothing, she
+      became agitated. She said "Elena Papadopoulos is committing
+      academic fraud and I need to prove it."
+
+      I asked her name. Katerina Nikolaou, she said. From Thessaloniki.
+
+      She was on the island. She was looking for Elena's evidence.
+      And she was very, very angry.
+    effects:
+      trust_chrysa: "+10"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to rival thread -> rival_hub
+
+  # --- Thanasis ---
+
+  thanasis_interview:
+    type: message
+    text: >
+      THANASIS: Between us? I wanted to investigate properly. But
+      the mayor called me personally. He said Elena left voluntarily
+      and that my job is to maintain order, not create problems.
+
+      My job. On an island where the mayor's family is my employer
+      and the main economic force. You understand the pressure.
+
+      But I did note something: the night Elena disappeared, a woman
+      matching Katerina Nikolaou's description arrived on the evening
+      ferry. She left on the morning ferry. That's a six-hour visit
+      on an island with no nightlife worth that journey.
+
+      She was here for Elena. Not for tourism.
+
+      If you have evidence that ties her to Elena's disappearance,
+      I can forward it to the Hellenic Police in Athens. They're
+      outside the mayor's influence.
+    effects:
+      trust_thanasis: "+15"
+      rival_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      Two forces converged on Elena: a trafficking network protecting
+      its profits, and a jealous rival protecting her academic career.
+      Who do you pursue?
+    choices:
+      - Present full case: trafficking + rival -> confront_both
+        when:
+          all:
+            - { state: trafficking_evidence, gte: 5 }
+            - { state: rival_evidence, gte: 3 }
+      - Expose the trafficking (artifacts case) -> confront_trafficking
+        when:
+          state: trafficking_evidence
+          gte: 5
+      - Confront Katerina (academic rival) -> confront_katerina
+        when:
+          state: rival_evidence
+          gte: 3
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Both (Best Ending) ---
+
+  confront_both:
+    type: message
+    text: >
+      You compile everything. Elena's USB evidence goes to Petros
+      at Nea Thalassa, to Dr. Sophia at the University of Athens,
+      and to the Hellenic Police's art crime unit. The rival evidence
+      and @alexis analysis go to Thanasis for forwarding to Athens.
+
+      You send it all at once. The island, the university, and the
+      national police all receive the evidence simultaneously. Nobody
+      can suppress it.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE FULL PICTURE
+
+      The Hellenic Police art crime unit arrives on Thalassa within
+      48 hours. Andreas Stavridis's shop is raided. Forty-seven
+      artifacts are recovered, including the red-figure kylix from
+      Thessaloniki. Vassilis is arrested in Athens.
+
+      Mayor Kostas Stavridis resigns. His connection to the trafficking
+      pipeline is documented in Elena's meticulous records. The harbour
+      master is charged with facilitating illegal exports.
+
+      Katerina Nikolaou is identified as @alexis. Her connection to
+      the trafficking is revealed: she provided archaeological expertise
+      to the network in exchange for exclusive access to looted finds
+      for her thesis. She tipped Andreas off about Elena's research.
+      She is expelled from her programme and faces criminal charges.
+
+      And Elena? She is alive. She fled to Athens the night Andreas
+      threatened her, taking the midnight ferry under a friend's name.
+      She has been staying with Dr. Sophia, afraid to return while the
+      Stavridis family controlled the island.
+
+      With the arrests made, Elena calls her father from the Piraeus
+      ferry terminal.
+
+      "Baba, I'm on the boat. I'm coming home."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: elena
+    text: >
+      the sanctuary is safe. the artifacts will return to thalassa.
+      every piece belongs here, where it was made 2,500 years ago.
+      the walking tours resume next week. this island's story is
+      not over.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Trafficking Only (Partial Ending) ---
+
+  confront_trafficking:
+    type: message
+    text: >
+      You present the trafficking evidence to the art crime unit.
+      The Stavridis pipeline is exposed. Andreas and Vassilis are
+      arrested. The artifacts begin coming home.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE PIPELINE
+
+      The trafficking network is dismantled. Artifacts are recovered.
+      The mayor resigns.
+
+      But Katerina is never exposed. She publishes her thesis using
+      Elena's stolen data. She receives academic recognition for
+      discoveries Elena made. The academic fraud complaint is
+      dismissed in Elena's absence.
+
+      Elena returns to Thalassa. She sees Katerina's published paper
+      and feels a defeat worse than the trafficking. Her discoveries
+      — her life's work — attributed to someone else.
+
+      She continues her walking tours. But she never finishes her
+      thesis.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: elena
+    text: "the artifacts came home. my work didn't. some things don't get justice."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Katerina Only (Wrong Ending) ---
+
+  confront_katerina:
+    type: message
+    text: >
+      You confront Katerina with the rival evidence and the @alexis
+      connection.
+    choices:
+      - Wait for the result -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE RIVAL
+
+      Katerina is exposed as @alexis and expelled from her programme.
+      The academic fraud is confirmed.
+
+      But without the trafficking evidence, the Stavridis family
+      continues. Andreas closes the shop briefly, then reopens
+      under a different name. Artifacts continue to disappear from
+      the island's sites.
+
+      Elena returns. She starts new research. But every time she
+      finds something significant, it vanishes before she can
+      register it. The pipeline adapts. The mayor's family remains
+      in power.
+
+      The academic rival is gone. But the real enemy — the network
+      destroying the island's heritage — continues to operate.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Trafficking evidence: ${trafficking_evidence}
+      Rival evidence: ${rival_evidence}
+
+      Thank you for playing. Elena's story explores themes of cultural
+      heritage theft, academic integrity, small-town power dynamics,
+      and the value of preserving the past for the future.
+
+      If you or someone you know is experiencing threats or has
+      information about antiquities trafficking, help is available:
+      Hellenic Police: 100
+      Tourist Police: 171
+      Ministry of Culture: report looted artifacts at yppo.gr
+      Emergency: 112

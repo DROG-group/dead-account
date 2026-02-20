@@ -1,0 +1,1653 @@
+# DEAD ACCOUNT — Story 029: Valensole-sur-Laye (France 2)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-029.yml
+#
+# Player investigates the disappearance of young organic lavender farmer
+# Aurélien Roux in the fictional Provençal village of Valensole-sur-Laye.
+
+meta:
+  title: "Dead Account — Valensole-sur-Laye"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_camille: 0
+    trust_bastien: 0
+    trust_remi: 0
+    trust_leonie: 0
+    trust_nadia: 0
+    trust_marcel: 0
+    trust_sandrine: 0
+    trust_philippe: 0
+    trust_dominique: 0
+    trust_yasmina: 0
+    trust_vincent: 0
+    trust_claire: 0
+    trust_thierry: 0
+    trust_marius: 0
+    trust_hélène: 0
+    trust_kevin: 0
+    trust_luna: 0
+    trust_enzo: 0
+    trust_adjudant: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    corporate_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: New Resident
+    bio: "just arrived in valensole-sur-laye. lavender fields & cicadas"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Valensole.social"
+    description: "Bienvenue sur l'instance communautaire de Valensole-sur-Laye"
+    avatar_url: /gamepatch/assets/dead-account/valensole_bot.png
+
+  npcs:
+    # === Aurélien's Inner Circle ===
+    aurelien:
+      name: "Aurélien Roux"
+      bio: "lavandier bio | apiculteur | la terre ne ment pas | valensole-sur-laye"
+      avatar: avatars/aurelien.jpg
+    camille:
+      name: "Camille Blanc"
+      bio: "coloc d'aurélien | aide-soignante | café & lavande | valensole forever"
+      avatar: avatars/camille.jpg
+    bastien:
+      name: "Bastien Roux"
+      bio: "le frère d'aurélien | marseille | brasseur artisanal | il est où mon frère putain"
+      avatar: avatars/bastien.jpg
+    nadia:
+      name: "Nadia Ferhat"
+      bio: "amie d'aurélien | prof de SVT au collège | biodiversité & pédagogie"
+      avatar: avatars/nadia.jpg
+
+    # === Local Government ===
+    philippe:
+      name: "Philippe Auriol"
+      bio: "Maire de Valensole-sur-Laye | Au service du village depuis 2008 | #ValensoleEnMarche"
+      avatar: avatars/philippe.jpg
+    dominique:
+      name: "Dominique Vidal"
+      bio: "Adjointe à l'agriculture | Commune de Valensole-sur-Laye | développement rural"
+      avatar: avatars/dominique.jpg
+    mairie_valensole:
+      name: "Mairie de Valensole-sur-Laye"
+      bio: "Compte officiel | Actualités communales | Horaires: Lun-Ven 8h30-12h / 14h-16h30"
+      avatar: avatars/mairie_valensole.jpg
+
+    # === Local Business & Community ===
+    sandrine:
+      name: "Sandrine Castellan"
+      bio: "Café de la Fontaine | pastis | tapenade | terrasse ombragée | depuis 1962"
+      avatar: avatars/sandrine.jpg
+    cafe_fontaine:
+      name: "Café de la Fontaine"
+      bio: "Terrasse sous les platanes | Pastis & tapenade | Le cœur de Valensole"
+      avatar: avatars/cafe_fontaine.jpg
+    marcel:
+      name: "Marcel Bonnard"
+      bio: "lavandier retraité | 45 ans dans les champs | cette terre c'est ma vie"
+      avatar: avatars/marcel.jpg
+    remi:
+      name: "Rémi Delorme"
+      bio: "voisin d'aurélien | propriétaire foncier | les bonnes clôtures font les bons voisins"
+      avatar: avatars/remi.jpg
+    yasmina:
+      name: "Yasmina Benali"
+      bio: "épicerie-tabac Benali | fruits & légumes | ouverte 7j/7 | le village sans moi c'est rien lol"
+      avatar: avatars/yasmina.jpg
+    vincent:
+      name: "Vincent Fabre"
+      bio: "apiculteur | miel de lavande | transhumance | les abeilles savent tout"
+      avatar: avatars/vincent.jpg
+    claire:
+      name: "Claire Moulin"
+      bio: "boulangerie Moulin | fougasse | navettes | 5h du mat tous les jours"
+      avatar: avatars/claire.jpg
+    thierry:
+      name: "Thierry Gasquet"
+      bio: "plombier & bricoleur | Valensole-sur-Laye | dépannage 7j/7 même le 15 août"
+      avatar: avatars/thierry.jpg
+
+    # === Journalist ===
+    hélène:
+      name: "Hélène Caron"
+      bio: "journaliste indépendante | agriculture & environnement | tips: helene@caron-presse.fr"
+      avatar: avatars/helene.jpg
+
+    # === AgroSynth (corporate) ===
+    agrosynth:
+      name: "AgroSynth Provence"
+      bio: "Solutions phytosanitaires | Protection des cultures | Partenaire du monde agricole"
+      avatar: avatars/agrosynth.jpg
+    marius:
+      name: "Marius Estienne"
+      bio: "directeur régional AgroSynth Provence | industrie & agriculture | progrès & rendement"
+      avatar: avatars/marius.jpg
+
+    # === Teens ===
+    kevin:
+      name: "Kévin"
+      bio: "16 | motocross & soleil | valensole born | aurélien c'est le goat frr"
+      avatar: avatars/kevin.jpg
+    luna:
+      name: "Luna"
+      bio: "17 | photo & nature | les champs en doré | aurélien m'a appris les abeilles"
+      avatar: avatars/luna.jpg
+    enzo:
+      name: "Enzo"
+      bio: "15 | skate & musique | c'est mort ici sans aurélien wesh"
+      avatar: avatars/enzo.jpg
+
+    # === Media & Community ===
+    actu_valensole:
+      name: "Actu Valensole"
+      bio: "Actualités de Valensole-sur-Laye et du plateau | Tips: redaction@actu-valensole.fr"
+      avatar: avatars/actu_valensole.jpg
+    meteo_provence:
+      name: "Météo Valensole"
+      bio: "Prévisions et alertes | Station automatique plateau de Valensole | Mistral & soleil"
+      avatar: avatars/meteo_provence.jpg
+    asso_terre:
+      name: "Association Terre de Lavande"
+      bio: "Protection des sols & biodiversité | Plateau de Valensole | Bénévoles bienvenus"
+      avatar: avatars/asso_terre.jpg
+
+    # === Suspicious / Other ===
+    leonie:
+      name: "Léonie Pasquier"
+      bio: "notaire | étude Pasquier | Valensole-sur-Laye | rendez-vous sur demande"
+      avatar: avatars/leonie.jpg
+    anon_lavande:
+      name: "LavandeSauvage"
+      bio: "."
+      avatar: avatars/anon.jpg
+    adjudant:
+      name: "Adjudant Martel"
+      bio: "Gendarmerie de Valensole-sur-Laye | Brigade territoriale | urgences: 17"
+      avatar: avatars/adjudant.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN VALENSOLE-SUR-LAYE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to valensole.social — the community Mastodon instance for
+      the village of Valensole-sur-Laye, Provence.
+
+      The local feed is agitated today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice one name everywhere:
+      @aurelien_roux.
+
+      A young organic lavender farmer and beekeeper. He documented
+      the plateau, the bees, the soil. People are worried. He hasn't
+      posted in six days.
+    choices:
+      - Look at his profile -> aurelien_profile
+
+  aurelien_profile:
+    type: tweet
+    from: aurelien
+    text: "Les abeilles crèvent par centaines sur la parcelle nord. Quelqu'un épand un truc interdit la nuit. J'ai des photos et des prélèvements. C'est terminé le silence."
+    choices:
+      - That's his last real post... -> dead_bees
+
+  dead_bees:
+    type: message
+    text: >
+      Three days after that post, his account uploaded a single image:
+      a blurry photo of an empty lavender field at dawn. No caption.
+      Posted at 4am. The colours are wrong — washed out, almost grey.
+
+      His friends say that's not his style. Aurélien always captioned
+      everything. The gendarmerie says he probably went hiking in the
+      Luberon. Nobody buys it.
+    choices:
+      - Read the gendarmerie statement -> gendarmerie_statement
+      - Look at what people are saying -> community_reaction
+
+  gendarmerie_statement:
+    type: tweet
+    from: adjudant
+    text: >
+      Nous avons reçu un signalement concernant un résident de
+      Valensole-sur-Laye. À ce stade, aucun élément ne permet de
+      conclure à un acte délictueux. L'intéressé est majeur et libre
+      de ses déplacements. Toute information utile: 17 ou brigade.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. His housemate @camille_blanc is
+      desperate. His brother @bastien_roux is driving up from Marseille.
+      His friend @nadia_ferhat is asking everyone to share his photo.
+      Old Marcel the retired lavender farmer says Aurélien was right
+      about the pesticides.
+
+      And the journalist @helene_caron hasn't posted since Aurélien
+      vanished. Strange.
+
+      Nobody believes he went hiking. Aurélien was in the middle of
+      harvest prep. You don't walk away from lavender in June.
+    effects: { trust_camille: "+5", trust_bastien: "+5" }
+    choices:
+      - Start following Aurélien's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Valensole-sur-Laye. Follow Aurélien's contacts and
+      read their posts. The more you engage with the community, the
+      more they'll trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Sandrine (café owner, knows everyone) -> sandrine_intro
+      - Talk to Marcel (retired farmer, knows the land) -> marcel_intro
+      - Talk to Kévin (teen, seems rattled) -> kevin_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes worry about Aurélien with village life: lavender
+      harvest forecasts, complaints about the mistral, Yasmina's
+      grocery specials, the fête de la lavande planning.
+
+      Key names surface: Camille (housemate, aide-soignante), Nadia
+      (friend, biology teacher), Rémi Delorme (neighbour, wanted
+      Aurélien's land), and the teens — Kévin, Luna, Enzo — who
+      looked up to Aurélien.
+
+      Also prominent: AgroSynth Provence, the agro-chemical company
+      that's been pushing into the region. Their posts are glossy
+      corporate PR. Aurélien's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Sandrine -> sandrine_intro
+      - Talk to Marcel -> marcel_intro
+      - Talk to Kévin -> kevin_intro
+
+  # --- Sandrine (social map) ---
+
+  sandrine_intro:
+    type: tweet
+    from: sandrine
+    text: >
+      Le café est ouvert mais c'est pas pareil sans @aurelien_roux
+      au comptoir le matin. Son pastis l'attend. Reviens mon petit.
+    effects: { trust_sandrine: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Sandrine -> sandrine_talk
+
+  sandrine_talk:
+    type: message
+    text: >
+      SANDRINE: Ah, you're new? Bienvenue. Putain, what a time to
+      arrive. Everyone's on edge about Aurélien.
+
+      Let me tell you who's who. Camille is his housemate — she's
+      devastated, she can't eat, she can't sleep. Nadia Ferhat is
+      his friend, the biology teacher at the collège — smart woman,
+      they worked together on soil samples. Bastien is his older
+      brother, coming up from Marseille.
+
+      And then there's Rémi Delorme. His neighbour. The one who's
+      been trying to buy Aurélien's land for two years. Offered him
+      good money, then bad money, then threats. Aurélien wouldn't
+      sell. Rémi took it personally.
+
+      Oh, and AgroSynth? Don't get me started. Bordel de merde,
+      those people are poisoning the plateau and the mayor lets them.
+    effects: { trust_sandrine: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Rémi -> sandrine_remi
+      - Ask about AgroSynth -> sandrine_agrosynth
+      - Thank her and move on -> quest1_hub
+
+  sandrine_remi:
+    type: message
+    text: >
+      SANDRINE: Rémi Delorme. He inherited the big property next to
+      Aurélien's three years ago. He's not a farmer — he's a property
+      speculator from Aix. He wants to combine the parcels and sell
+      to a developer for holiday gîtes. Aurélien's organic farm was
+      in the way.
+
+      The offers kept coming. Then the fence disputes started. Then
+      Aurélien's irrigation was cut — "accidentally." Then his beehives
+      were knocked over one night. Always deniable. Always escalating.
+
+      Aurélien told me once: "Ce fdp me lâchera jamais." He was scared,
+      but he wouldn't give up the land. It was his grandmother's.
+    effects: { trust_sandrine: "+5" }
+    choices:
+      - Ask about AgroSynth -> sandrine_agrosynth
+      - Move on -> quest1_hub
+
+  sandrine_agrosynth:
+    type: message
+    text: >
+      SANDRINE: AgroSynth Provence moved into the region five years
+      ago. They sell pesticides, herbicides, "phytosanitaires" — putain,
+      fancy words for poison. Half the conventional farmers on the
+      plateau use their products now.
+
+      The problem? Aurélien's bees were dying. His organic certification
+      depends on zero pesticide exposure. He found residues on his
+      lavender — neonicotinoids, banned substances. Someone was
+      spraying at night, and the drift was killing his bees.
+
+      He started documenting. Soil samples, dead bee counts, photos
+      of trucks at 2am. He was building a dossier. Two weeks later
+      he's gone.
+    effects: { trust_sandrine: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Marcel (retired farmer, the land) ---
+
+  marcel_intro:
+    type: tweet
+    from: marcel
+    text: >
+      quarante-cinq ans que je cultive cette terre. les abeilles
+      crevaient pas comme ça avant. @aurelien_roux avait raison.
+      et maintenant il a disparu. faites le lien.
+    effects: { trust_marcel: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Marcel -> marcel_talk
+
+  marcel_talk:
+    type: message
+    text: >
+      MARCEL: I've farmed lavender on this plateau since I was
+      seventeen. I know every parcelle, every source, every mistral
+      current. And I'm telling you — something is wrong with the soil.
+
+      The bees know first. Always. When the bees die, the land
+      is sick. Aurélien understood that. He was the only young farmer
+      who gave a shit about the old ways. Organic, natural, patient.
+
+      He found dead bees by the hundreds. He sent samples to the lab
+      in Marseille. Neonicotinoids. Banned since 2018. Someone is
+      using them anyway, at night, when nobody's watching.
+
+      And then he disappears? Putain, I wasn't born yesterday.
+    effects: { trust_marcel: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> marcel_night
+      - Move on -> quest1_hub
+
+  marcel_night:
+    type: message
+    text: >
+      MARCEL: The night before he vanished — I couldn't sleep, the
+      mistral was blowing. Around 1am I went outside. I saw headlights
+      on the chemin des Romarins — that's the dirt road between
+      Aurélien's farm and the parcelles north. A truck. Big one. No
+      markings visible in the dark, but the shape... it looked like
+      the AgroSynth delivery trucks I've seen at the coopérative.
+
+      Coming from Aurélien's direction. At 1am.
+
+      I told the gendarmes. They said "noted." Enculés.
+    effects: { trust_marcel: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Kévin (teen, witness tease) ---
+
+  kevin_intro:
+    type: tweet
+    from: kevin
+    text: >
+      wesh frr @aurelien_roux c'est lui qui m'a appris à respecter
+      les abeilles genre avant jpensais que c'était des insectes de
+      merde et en vrai c'est incroyable. si qqn sait qqch dites svp
+      jpeux pas accepter ça
+    effects: { trust_kevin: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Kévin -> kevin_talk_early
+
+  kevin_talk_early:
+    type: message
+    text: >
+      KÉVIN: wesh t'es nouveau ici? c chaud comme timing genre.
+      en vrai aurélien c'est le goat de ce village. il nous apprenait
+      des trucs sur les abeilles, il nous laissait conduire son
+      tracteur, il nous payait pour l'aider à la récolte. un gars
+      en or frr.
+
+      et la jsuis flippé pcq luna elle a vu un truc chelou l'autre
+      soir chez rémi mais elle veut pas en parler. elle dit que
+      c rien mais genre... c'est clairement pas rien sah
+    effects: { trust_kevin: "+10" }
+    choices:
+      - What did Luna see? -> kevin_luna_hint
+      - Move on -> quest1_hub
+
+  kevin_luna_hint:
+    type: message
+    text: >
+      KÉVIN: jsp exactement. elle prenait des photos de nuit pour
+      son projet et elle a vu genre qqn dans les champs d'aurélien??
+      à genre minuit. et elle a flippé et elle est partie. mais elle
+      m'a dit que c'était pas aurélien. c'était qqn d'autre.
+
+      faut lui demander direct mais elle est méfiante avec les gens
+      qu'elle connaît pas. essaie de lui parler nature et photo
+      d'abord ptdr. genre elle est passionnée par ça
+    effects: { trust_kevin: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Valensole-sur-Laye. A Provençal
+      village built around lavender and honey. A young organic farmer
+      who was exposing illegal pesticide spraying. A disappearance
+      nobody believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Camille (Aurélien's housemate) -> camille_q1
+      - Talk to Nadia (Aurélien's friend, bio teacher) -> nadia_q1
+      - Check what Bastien (Aurélien's brother) is saying -> bastien_q1
+      - I'm ready to investigate the night he disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Camille Q1 ---
+
+  camille_q1:
+    type: tweet
+    from: camille
+    text: >
+      si quelqu'un a des nouvelles de @aurelien_roux appelez moi svp.
+      ses ruches sont là. ses outils sont là. son chien est là. il
+      serait JAMAIS parti sans son chien. jamais.
+    effects: { trust_camille: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Camille -> camille_q1_talk
+
+  camille_q1_talk:
+    type: message
+    text: >
+      CAMILLE: I appreciate you reaching out but I don't know you.
+      Aurélien has a lot of friends here. I'm sure he'll come back.
+
+      ...putain, I keep saying that. I don't believe it anymore.
+
+      [Camille is guarded. You'll need to build more trust before
+      she opens up.]
+    effects: { trust_camille: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Nadia Q1 ---
+
+  nadia_q1:
+    type: tweet
+    from: nadia
+    text: >
+      Les résultats du labo de Marseille sont arrivés. Les
+      prélèvements d'@aurelien_roux montrent des néonicotinoïdes
+      à des taux 15 fois supérieurs au seuil légal. QUINZE FOIS.
+      Où sont les autorités?
+    effects: { trust_nadia: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Nadia -> nadia_q1_talk
+
+  nadia_q1_talk:
+    type: message
+    text: >
+      NADIA: I'm a biology teacher. Aurélien and I worked together
+      on soil analysis. He'd bring me samples, I'd help him
+      understand the chemistry. What we found was terrifying.
+
+      Neonicotinoids — banned in France since 2018. Someone is still
+      using them on the plateau. At night. The drift kills Aurélien's
+      bees and contaminates his organic lavender.
+
+      He was building a case. Methodical, rigorous. Soil samples,
+      water tests, dead bee counts, GPS-tagged photos with timestamps.
+      He had everything. And now he's gone and his laptop is missing
+      from the farm.
+
+      [Nadia seems genuinely frightened.]
+    effects: { trust_nadia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Bastien Q1 ---
+
+  bastien_q1:
+    type: tweet
+    from: bastien
+    text: >
+      mon frère a DISPARU et la gendarmerie me dit qu'il fait
+      peut-être une rando??? PUTAIN MAIS VOUS ÊTES SÉRIEUX???
+      il avait de la lavande à récolter dans 3 semaines. il part
+      pas en rando. j'arrive de marseille. qqn va m'expliquer.
+    effects: { trust_bastien: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Bastien -> bastien_q1_talk
+
+  bastien_q1_talk:
+    type: message
+    text: >
+      BASTIEN: Who are you? Another person from that village who's
+      going to tell me to calm down? Nique ta mère to anyone who
+      says "calm down."
+
+      My brother called me two nights before he disappeared. He said
+      "Bastien, j'ai des preuves de ouf. Si il m'arrive un truc,
+      regarde du côté d'AgroSynth. Et de Rémi." Then he hung up.
+
+      That's the last I heard from him.
+    effects: { trust_bastien: "+10" }
+    choices:
+      - What do you think happened? -> bastien_theory
+      - Move on -> quest1_hub
+
+  bastien_theory:
+    type: message
+    text: >
+      BASTIEN: I think he found proof that AgroSynth is spraying
+      banned shit and the mayor is covering it up. And I think that
+      enculé de Rémi saw an opportunity in the chaos. The guy wants
+      the land. He's always wanted the land.
+
+      Aurélien told me months ago that someone had been coming onto
+      his property at night. Moving things. Opening gates. Letting
+      his goats out. Cutting fence wire. He thought it was Rémi
+      trying to push him out. Harassment campagne style.
+
+      Genre the guy is obsessed with that land. It's not normal.
+    effects: { trust_bastien: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Aurélien went silent. Multiple
+      people saw or heard things. Piece together the timeline from
+      witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Luna (was photographing at night near the farms) -> luna_interview
+      - Find Vincent (beekeeper, checks hives at dawn) -> vincent_interview
+      - Find Claire (baker, starts at 4am, saw something) -> claire_interview
+      - Find Thierry (plumber, was on a late emergency call) -> thierry_interview
+
+  # --- Luna (saw someone on Aurélien's land) ---
+
+  luna_interview:
+    type: tweet
+    from: luna
+    text: >
+      jsuis sortie faire des photos de nuit l'autre soir et genre
+      l'ambiance dans les champs c'était pas normal. y'avait des
+      lumières là où y'en a jamais. jpeux pas expliquer
+    effects: { trust_luna: "+5" }
+    choices:
+      - Ask Luna about that evening -> luna_talk
+
+  luna_talk:
+    type: message
+    text: >
+      LUNA: wesh ok mais tu le dis à personne stp. j'étais dans les
+      champs vers 23h, je faisais des photos de la voie lactée
+      au-dessus de la lavande. et j'ai vu genre une silhouette sur
+      la parcelle d'aurélien. pas aurélien — qqn de plus grand, plus
+      costaud. il marchait entre les rangées de lavande avec une
+      lampe torche.
+
+      et genre le pire c'est que quand il est reparti, il est allé
+      vers chez rémi. direct. par le chemin entre les deux
+      propriétés. genre c'était clairement rémi ou qqn de chez rémi.
+
+      jpeux pas frr j'ai trop flippé j'ai couru. putain j'aurais
+      dû filmer
+    effects:
+      trust_luna: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Vincent (beekeeper, dawn witness) ---
+
+  vincent_interview:
+    type: tweet
+    from: vincent
+    text: >
+      Levé à 4h30 pour les ruches de transhumance. Le chemin des
+      Romarins puait le produit chimique. Pas normal. Pas du tout.
+    effects: { trust_vincent: "+5" }
+    choices:
+      - Ask Vincent what he saw -> vincent_talk
+
+  vincent_talk:
+    type: message
+    text: >
+      VINCENT: I was heading to my hives at 4h30 — before dawn, when
+      it's cool enough to move the frames. The chemin des Romarins
+      stank. Chemical smell. Strong. Like industrial pesticide, not
+      the usual agricultural stuff.
+
+      And on the road — fresh tire tracks. Heavy vehicle. Not a
+      tractor — the tracks were too wide. A truck. Going toward the
+      parcelles north of Aurélien's farm.
+
+      At the edge of Aurélien's property, I found dead bees scattered
+      on the ground. Fresh. Hundreds of them. Whatever was sprayed
+      that night, it drifted right onto his hives.
+
+      I photographed everything. Nobody's asked to see it.
+    effects:
+      trust_vincent: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Claire (baker, saw vehicles) ---
+
+  claire_interview:
+    type: tweet
+    from: claire
+    text: >
+      Fournée à 4h comme d'habitude. Mais ce matin-là, un camion
+      est passé sur la départementale direction Manosque. Sans
+      phares. À 4h du matin. Sans phares.
+    effects: { trust_claire: "+5" }
+    choices:
+      - Ask Claire what she saw -> claire_talk
+
+  claire_talk:
+    type: message
+    text: >
+      CLAIRE: I start baking at 4am every single day. That morning
+      I was opening the shutters and a truck went past — a big one,
+      maybe a citerne or a pulvérisateur. Going fast, heading
+      toward Manosque on the D6. And here's the thing: no headlights.
+      At 4am, pitch black, and the truck had its lights off.
+
+      Then maybe ten minutes later, a car. Aurélien's little white
+      Kangoo. Going the other direction — toward the garrigue, the
+      hills. Also fast. Like he was running.
+
+      I told the gendarmes. They wrote it down. That's all.
+    effects:
+      trust_claire: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Thierry (saw confrontation) ---
+
+  thierry_interview:
+    type: tweet
+    from: thierry
+    text: >
+      Appelé pour une fuite d'eau chez les Gauthier à 23h. En
+      rentrant j'ai vu du mouvement devant chez Aurélien. C'était
+      pas normal.
+    effects: { trust_thierry: "+5" }
+    choices:
+      - Ask Thierry what he saw -> thierry_talk
+
+  thierry_talk:
+    type: message
+    text: >
+      THIERRY: I was coming back from a plumbing emergency around
+      midnight. Passing Aurélien's farm, I saw two cars in the
+      driveway — his Kangoo and a dark SUV. Didn't recognize the
+      SUV but it had a company look to it. Sleek. Not a farmer's
+      car.
+
+      Two men were standing by the front door. Aurélien was in the
+      doorway. Body language was bad — one of the men was leaning
+      in, pointing. Aurélien had his arms crossed.
+
+      I slowed down. One of the men looked at me. I kept driving.
+      Putain, I should have stopped.
+
+      Twenty minutes later, when I passed again, the SUV was gone.
+      Aurélien's lights were still on. By morning, his Kangoo was
+      gone too.
+    effects:
+      trust_thierry: "+10"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Camille
+      (housemate) and Luna (saw someone on the property).
+    choices:
+      - Talk to Camille about that night -> camille_interview
+      - Talk to Yasmina (saw Rémi acting strange) -> yasmina_interview
+      - Find Luna -> luna_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Vincent -> vincent_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Claire -> claire_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Thierry -> thierry_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Camille (last to see Aurélien) ---
+
+  camille_interview:
+    type: tweet
+    from: camille
+    text: >
+      cette photo sur le compte d'aurélien. c'est pas lui. aurélien
+      poste jamais sans légende. il poste pas à 4h du matin. quelqu'un
+      d'autre a accédé à son compte. qqn. d'autre.
+    effects: { trust_camille: "+5" }
+    choices:
+      - DM Camille -> camille_talk_low
+        when:
+          state: trust_camille
+          lt: 50
+      - DM Camille -> camille_talk_high
+        when:
+          state: trust_camille
+          gte: 50
+
+  camille_talk_low:
+    type: message
+    text: >
+      CAMILLE: I appreciate the concern but I really don't want to
+      talk to strangers about this right now.
+
+      [Camille needs to trust you more. Show her you're investigating
+      seriously.]
+    effects: { trust_camille: "+5" }
+    choices:
+      - Share what you've learned about the night -> camille_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  camille_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the truck without headlights,
+      the men at the door, the chemical smell, the dead bees.
+      Camille is silent for a long time.
+
+      CAMILLE: Putain... you're actually trying to find him. Okay.
+      I'll talk.
+    effects: { trust_camille: "+25" }
+    choices:
+      - What happened that night? -> camille_talk_high
+
+  camille_talk_high:
+    type: message
+    text: >
+      CAMILLE: He came inside around midnight. I was getting ready
+      for my early shift. He was white as a sheet. He said "ils
+      savent ce que j'ai." He grabbed his laptop, his hard drives,
+      and the box of soil samples from the shed.
+
+      I asked who. He said "AgroSynth. They sent people. Two guys in
+      suits, at midnight, bordel." Then he said something else —
+      "and the other one was there again. On my land. He never stops."
+
+      He wouldn't say who "the other one" was. He hugged me, said
+      "don't worry, I'll be back in a few days," and left with
+      the dog in the Kangoo.
+
+      That was it. By morning his account had that weird photo and
+      I knew it wasn't him.
+    effects:
+      trust_camille: "+15"
+      night_witnesses: "+1"
+      corporate_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Yasmina (saw Rémi acting strange) ---
+
+  yasmina_interview:
+    type: message
+    text: >
+      YASMINA: Rémi Delorme was in my shop the morning after
+      Aurélien disappeared. He bought a newspaper, a pack of
+      Gauloises, and asked me if I'd "heard the news." He was
+      smiling.
+
+      Who smiles when their neighbour is missing? This guy, that's
+      who. And he said — I swear on my mother — he said "c'est
+      peut-être mieux comme ça. La terre va pouvoir respirer."
+
+      Better this way? La terre va respirer? Putain, what kind of
+      person says that? He wants that land. He's always wanted it.
+      And now the man who stood in his way is gone and he's smiling
+      at my counter.
+    effects:
+      trust_yasmina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      23:00 — Someone on Aurélien's land with a torch, goes back
+      toward Rémi's property (Luna)
+      23:00-00:00 — A truck sprays pesticide on the parcelles
+      north (chemical smell, dead bees — Vincent)
+      00:00 — Two men in SUV at Aurélien's door, confrontation
+      (Thierry)
+      00:30 — Aurélien comes inside, shaken, grabs evidence and
+      flees (Camille)
+      04:00 — Truck without headlights heading to Manosque,
+      Aurélien's Kangoo heading to the garrigue (Claire)
+
+      AgroSynth confronted Aurélien at home. He fled with his
+      evidence. Someone else was on his land that same night.
+
+      Two threats. Two threads:
+      — The cover-up: What is AgroSynth hiding? Who ordered
+        the midnight spraying? Why is the mayor silent?
+      — The obsession: What is Rémi really doing? How far
+        does his land hunger go?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Rémi Delorme -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${corporate_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: corporate_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      AgroSynth Provence is selling banned pesticides. Someone is
+      spraying at night. The mayor is silent. Aurélien had proof.
+
+      Corporate evidence: ${corporate_evidence}
+    choices:
+      - Search Aurélien's published data -> farm_records
+      - Talk to Hélène the journalist -> helene_interview
+      - Talk to Dominique (agriculture deputy) -> dominique_interview
+      - Talk to Vincent about the spraying pattern -> vincent_spraying
+      - Check the Terre de Lavande association -> asso_investigation
+      - Talk to Marcel about the old ways -> marcel_land
+      - Back to hub -> investigation_hub
+
+  # --- Farm Records ---
+
+  farm_records:
+    type: message
+    text: >
+      Aurélien shared some of his data publicly through the Terre
+      de Lavande association. His bee mortality records show a clear
+      pattern: mass die-offs every 10-14 days, always after windless
+      nights — exactly when aerial drift from spraying would be worst.
+
+      His soil samples, sent to a certified lab in Marseille, show
+      imidacloprid and clothianidin at levels 15 times the legal
+      threshold. Both are banned neonicotinoids.
+
+      His GPS-tagged photos show tire tracks on the chemin des
+      Romarins matching heavy agricultural spraying equipment. The
+      tracks appear every 10-14 days. Same interval as the bee
+      deaths.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Hélène ---
+
+  helene_interview:
+    type: message
+    text: >
+      HÉLÈNE: I don't talk about sources. Point final.
+    effects: { trust_hélène: "+5" }
+    choices:
+      - Show Hélène the evidence you have -> helene_with_evidence
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  helene_with_evidence:
+    type: message
+    text: >
+      HÉLÈNE: ...you have more than I expected. Putain.
+
+      Okay. Aurélien and I were working together. He had lab results,
+      photos, GPS data, timestamps. A bulletproof dossier proving
+      AgroSynth is distributing banned neonicotinoids to conventional
+      farmers on the plateau and the spraying is done at night to
+      avoid detection.
+
+      We were going to publish in Mediapart. Then he went dark. And
+      someone broke into my car at the Manosque supermarket and took
+      my backup USB.
+
+      Aurélien is alive. He contacted me once, from a phone I didn't
+      recognize. He said he's hiding in the garrigue with a friend.
+      He said "they came to the farm and the other one won't leave
+      me alone."
+
+      I can't tell you where he is. But with enough evidence, I can
+      publish and make it safe for him to come home.
+    effects:
+      trust_hélène: "+25"
+      corporate_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened him? -> helene_hint
+      - Back to investigation hub -> investigation_hub
+
+  helene_hint:
+    type: message
+    text: >
+      HÉLÈNE: AgroSynth sent their regional director — Marius
+      Estienne — and some corporate fixer to the farm that night.
+      They told Aurélien to hand over everything or face "legal
+      consequences for defamation." Intimidation pure. At midnight.
+      At his home.
+
+      But Aurélien also mentioned someone else. Someone who kept
+      coming onto his land. Someone who knew his movements. That's
+      a different problem — and I think it's connected to the land
+      dispute.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Dominique (agriculture deputy) ---
+
+  dominique_interview:
+    type: message
+    text: >
+      DOMINIQUE: As deputy mayor for agriculture, I'm caught in
+      the middle. The organic farmers are complaining about drift.
+      The conventional farmers say they need AgroSynth's products
+      to compete. The mayor says we need "balance."
+
+      Off the record? I've seen the DRAAF inspection reports.
+      AgroSynth passes every time. But those inspections are
+      announced a month in advance. They clean the warehouses,
+      remove the banned products, and bring them back after the
+      inspectors leave.
+
+      Aurélien had unannounced evidence. That's what made it
+      dangerous. The mayor told me to stop talking about it.
+      He said AgroSynth is "a partner of the commune." Partner
+      — putain, that's a funny word for poisoner.
+    effects:
+      trust_dominique: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Vincent spraying pattern ---
+
+  vincent_spraying:
+    type: message
+    text: >
+      VINCENT: I'm a beekeeper. My hives are on the east side of
+      the plateau, upwind from the spraying zone. I've been
+      documenting the pattern for two years.
+
+      Every 10 to 14 days, on a windless night, a truck comes up
+      the chemin des Romarins around midnight. It sprays the
+      conventional parcelles to the north. The drift floats south
+      over Aurélien's organic fields and my hives.
+
+      I've lost 40% of my colonies in two years. Aurélien lost
+      more. The product is imidacloprid — I can smell it now. That
+      distinctive sweet chemical smell. You never forget it once
+      you've lost bees to it.
+
+      And the truck? It comes from the direction of the AgroSynth
+      depot on the D6 between here and Manosque. I couldn't read
+      the plates in the dark, but Aurélien said he had photos.
+    effects:
+      trust_vincent: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Terre de Lavande ---
+
+  asso_investigation:
+    type: tweet
+    from: asso_terre
+    text: >
+      ALERTE: Mortalité massive d'abeilles signalée sur le plateau
+      de Valensole. Analyses en cours. Nous demandons une inspection
+      non annoncée du dépôt AgroSynth Provence.
+    choices:
+      - Check their data -> asso_data
+
+  asso_data:
+    type: message
+    text: >
+      Terre de Lavande has been monitoring soil and bee health on the
+      plateau for five years. Their data shows a devastating trend:
+      bee mortality has tripled since AgroSynth opened their regional
+      depot three years ago.
+
+      The correlation is undeniable. Mortality spikes every 10-14
+      days. Soil contamination follows the same cycle. And the
+      contaminated zone expands each year — drifting south with the
+      prevailing wind.
+
+      Aurélien was their most active volunteer. He contributed the
+      most detailed field data, the GPS-tagged photos, the lab
+      analyses.
+
+      Their annual report, submitted to the prefecture, was ignored.
+      Twice.
+    effects:
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Marcel land ---
+
+  marcel_land:
+    type: message
+    text: >
+      MARCEL: Let me tell you something about that land. Aurélien's
+      parcelle belonged to his grandmother, Marie Roux. She farmed
+      it for fifty years. Organic before anyone used the word.
+      She left it to Aurélien because he was the only one in the
+      family who cared about the land.
+
+      That parcelle sits right between Rémi's property and the
+      chemin des Romarins — the only access road to the north
+      fields. Without Aurélien's land, there's no easy way to
+      reach the spraying zone with heavy equipment.
+
+      You understand? AgroSynth's trucks need that road. And Rémi
+      wants to own both sides of it. It's not just about gîtes.
+      It's about access. Control.
+
+      I have Marie's old cadastral maps. They show an easement
+      that Aurélien was about to revoke.
+    effects:
+      trust_marcel: "+10"
+      corporate_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Rémi Delorme. Neighbour. Property speculator. Someone has been
+      trespassing on Aurélien's land. Someone has been sabotaging
+      his farm. Someone wants him gone.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate the property records -> property_records
+      - Talk to Camille about Rémi -> camille_remi
+        when:
+          state: trust_camille
+          gte: 20
+      - Talk to Luna (more detail about what she saw) -> luna_detail
+      - Talk to Yasmina (Rémi's shopping habits) -> yasmina_remi
+      - Check the anonymous account @LavandeSauvage -> anon_investigation
+      - Talk to Léonie the notaire -> leonie_interview
+        when:
+          state: trust_leonie
+          gte: 40
+      - Talk to Adjudant Martel -> adjudant_interview
+        when:
+          state: trust_adjudant
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Property Records ---
+
+  property_records:
+    type: message
+    text: >
+      The cadastral records for Valensole-sur-Laye are partially
+      public. Rémi Delorme purchased his property — 12 hectares
+      of lavender fields and a mas — three years ago. Purchase
+      price: €380,000. Current estimated value: €520,000.
+
+      But with Aurélien's adjacent 8 hectares? Combined, the
+      property would be worth over €1.2 million as a development
+      site. Planning permission for rural gîtes was filed six
+      months ago by a company called "Provence Horizons SARL."
+      The sole director: Rémi Delorme.
+
+      The planning application requires access to the chemin des
+      Romarins. That access runs through Aurélien's land.
+
+      Rémi made three offers to purchase. All declined. The third
+      offer, four months ago, included a handwritten note: "You'll
+      regret this."
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Camille on Rémi ---
+
+  camille_remi:
+    type: message
+    text: >
+      CAMILLE: Rémi? He makes Aurélien's life hell. It started
+      with the offers — polite, then insistent, then threatening.
+      When Aurélien said no for the third time, things got physical.
+
+      Someone poisoned our goats' water trough. Aurélien's
+      irrigation pipes were cut — "vandals," Rémi said. The beehives
+      were knocked over twice. And Aurélien found footprints on his
+      land at night — size 45, same boots Rémi wears.
+
+      A month ago, Aurélien found that someone had opened the gate
+      to his lavender distillery shed and stolen two of his essential
+      oil drums. He had security camera footage. The figure was
+      wearing a balaclava, but the build, the walk — Aurélien said
+      "c'est Rémi, je le reconnais à sa démarche."
+
+      He didn't go to the gendarmes. He said "they won't do
+      anything about a neighbour dispute."
+    effects:
+      trust_camille: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Luna detail ---
+
+  luna_detail:
+    type: message
+    text: >
+      LUNA: ok frr en vrai j'ai pas tout dit. quand j'ai vu la
+      silhouette sur le terrain d'aurélien, le mec avait un truc
+      à la main. genre un outil. une pince ou un truc comme ça.
+      il était devant les ruches. et il a fait qqch — genre il a
+      ouvert une des ruches et versé un truc dedans.
+
+      putain j'ai compris que plus tard. le mec empoisonnait les
+      abeilles. directement dans les ruches. c'est pas que le
+      drift des pesticides — qqn les sabote en plus.
+
+      et quand il est reparti vers chez rémi, j'ai vu la lumière
+      de son téléphone. il a pris des photos. genre il prenait
+      des photos des ruches mortes. COMME SI C'ÉTAIT UN TROPHÉE.
+
+      jsuis désolée j'aurais dû parler avant. jpeux pas croire
+      que j'ai rien fait putain
+    effects:
+      trust_luna: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Yasmina on Rémi ---
+
+  yasmina_remi:
+    type: message
+    text: >
+      YASMINA: Rémi shops here every day. I know what he buys. For
+      the past six months, he's been buying things that make no
+      sense for a man who doesn't farm: herbicide concentrate,
+      industrial gloves, face masks. Not the COVID kind — the
+      chemical kind.
+
+      He also asked me to order "Ratiboiseur" — an industrial-grade
+      product that kills everything. Insects, plants, soil microbes.
+      I said "this is an épicerie, not a farm supply store." He
+      got angry. Said he needed it for "les ronces" — the brambles.
+
+      Bordel. Nobody needs Ratiboiseur for brambles. That stuff
+      kills bees. And he knows Aurélien keeps bees right next door.
+    effects:
+      trust_yasmina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- LavandeSauvage (anonymous account) ---
+
+  anon_investigation:
+    type: tweet
+    from: anon_lavande
+    text: >
+      Il aurait dû vendre. Maintenant la terre va être libre.
+      La nature reprend toujours ses droits.
+    choices:
+      - Look at this account's history -> anon_posts
+
+  anon_posts:
+    type: message
+    text: >
+      @LavandeSauvage: account created 5 months ago. Posts are all
+      about land, property, and Aurélien's farm. The tone shifts:
+
+      Month 1: "Beautiful plateau. So much potential wasted on one
+      small organic farm."
+      Month 2: "Some people don't deserve the land they inherited.
+      They just got lucky."
+      Month 3: "The bees are dying because of bad farming, not
+      pesticides. He doesn't know what he's doing."
+      Month 4: "I know every metre of that land. I walk it every
+      night. He doesn't even notice."
+      Month 5: "Soon. Very soon."
+
+      The account has no personal details. Just land. Just
+      Aurélien's land.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> anon_style
+
+  anon_style:
+    type: message
+    text: >
+      Comparing @LavandeSauvage with Rémi Delorme's known posts:
+
+      Same use of property terminology — "parcelle," "cadastre,"
+      "servitude de passage." Same obsessive focus on land value.
+      Same spelling habit of writing "metre" without the accent.
+
+      And one post from @LavandeSauvage: "The easement on the
+      chemin des Romarins expires in 18 months." That's not public
+      information. Only someone who's been through the notaire's
+      records would know the exact timeline.
+
+      It's Rémi. The anonymous account is Rémi.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Léonie (notaire) ---
+
+  leonie_interview:
+    type: message
+    text: >
+      LÉONIE: I am bound by professional secrecy. But I can tell
+      you what's in the public record.
+
+      Rémi Delorme has filed three requests for a "servitude de
+      passage forcée" — a forced right of way — through Aurélien's
+      land. All three were denied because Aurélien's property
+      predates Rémi's.
+
+      What I can't tell you officially — but what you should know —
+      is that Rémi came to my office the week before Aurélien
+      disappeared. He asked about "the procedure for acquiring
+      adjacent land when the owner is declared absent." Absent.
+      Not dead. Not sold. Absent.
+
+      He was planning for Aurélien's disappearance before it
+      happened.
+    effects:
+      trust_leonie: "+15"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Adjudant Martel ---
+
+  adjudant_interview:
+    type: message
+    text: >
+      ADJUDANT MARTEL: Off the record — completely off the record —
+      I wanted to investigate AgroSynth. My commander told me to
+      stand down. He said the DRAAF had "jurisdiction." Code for
+      "don't touch it, the prefecture is protecting them."
+
+      The Delorme situation is different. I didn't know the full
+      extent until now. If you have evidence of harassment,
+      trespassing, property damage, and sabotage — that's my
+      jurisdiction. That's criminal.
+
+      Bring me something solid and I'll reopen the case.
+    effects:
+      trust_adjudant: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Aurélien than anyone in Valensole-sur-Laye. Who is
+      responsible?
+    choices:
+      - Confront Rémi Delorme (the obsessive neighbour) -> confront_remi
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Marius Estienne (AgroSynth director) -> confront_marius
+        when:
+          state: corporate_evidence
+          gte: 3
+      - Confront Mayor Auriol (political protection) -> confront_philippe
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Rémi (Best Ending) ---
+
+  confront_remi:
+    type: message
+    text: >
+      You present your evidence to Rémi Delorme:
+
+      "I know @LavandeSauvage is your account. I know you were on
+      Aurélien's land the night he disappeared. I know you poisoned
+      his beehives. I know you asked the notaire about acquiring
+      land from an absent owner — before he was even missing. I have
+      witnesses, photos, and property records."
+    choices:
+      - Send -> remi_response
+
+  remi_response:
+    type: message
+    text: >
+      Rémi doesn't reply for a long time. Then:
+
+      RÉMI: You don't understand anything about land. That property
+      is wasted on him. Organic lavender — putain, what a joke. I
+      offered him fair value. More than fair. He refused out of
+      sentiment. The land needs development, investment, a future.
+      Everything I did was for the good of this village.
+
+      That's not community spirit. That's obsession.
+
+      You've already sent the evidence to Adjudant Martel. And to
+      Hélène Caron.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Adjudant Martel reopens the case. With your evidence — the
+      anonymous account, the beehive sabotage, the trespassing,
+      the property records, the notaire's testimony — Rémi Delorme
+      is arrested for harassment, property destruction, and animal
+      cruelty. His planning application for Provence Horizons SARL
+      is suspended.
+
+      Hélène Caron, armed with Aurélien's complete pesticide
+      dossier, publishes the AgroSynth story in Mediapart. The
+      DRAAF orders an unannounced inspection of the depot. Banned
+      neonicotinoids are found in the warehouse. Marius Estienne
+      faces criminal charges for trafficking in prohibited
+      substances. The mayor is questioned about his role in
+      blocking inspections.
+
+      And Aurélien Roux, reading the story from a friend's mas
+      in the Luberon hills, calls his brother for the first time
+      in nine days.
+
+      "Je rentre à la maison. Les abeilles m'attendent."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: aurelien
+    text: >
+      la terre ne ment pas. les abeilles non plus. merci de ne
+      pas avoir lâché. la lavande va refleurir.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Marius (Partial Ending) ---
+
+  confront_marius:
+    type: message
+    text: >
+      You present the pesticide evidence to Marius Estienne:
+
+      "I have lab results showing banned neonicotinoids at 15 times
+      the legal threshold. I have GPS-tagged photos of your trucks
+      on the chemin des Romarins at night. I have soil samples,
+      bee mortality data, and a witness who smelled the chemicals
+      at dawn. I have the association's five-year dataset showing
+      the contamination started when your depot opened."
+    choices:
+      - Send -> marius_response
+
+  marius_response:
+    type: message
+    text: >
+      MARIUS: AgroSynth Provence operates in full compliance with
+      all phytosanitary regulations. These allegations are defamatory
+      and will be addressed through appropriate legal channels. Our
+      counsel has been notified.
+
+      But it's too late. You've sent the evidence to Hélène, to
+      Terre de Lavande, and to the DRAAF directly.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The pesticide story breaks. AgroSynth's depot is raided. Banned
+      products are seized. The conventional farmers who bought them
+      face fines. The plateau's reputation as an organic lavender
+      region is damaged. The village is divided.
+
+      But Aurélien?
+
+      Without the harassment evidence, Rémi Delorme is never
+      investigated. He continues to live next door. He continues
+      to walk Aurélien's land at night. He creates a new anonymous
+      account. He files a fourth offer to purchase.
+
+      Two months later, Aurélien reads about AgroSynth online. He
+      returns quietly. He repairs his beehives. He installs cameras.
+      He locks his gates every night. He sleeps with his dog in the
+      barn.
+
+      The corporation is exposed. But the man who terrorised
+      Aurélien walks free next door.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: aurelien
+    text: "je suis rentré. les abeilles reviennent. le reste... on verra."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_philippe:
+    type: message
+    text: >
+      You confront Mayor Auriol with your evidence.
+
+      Within the hour, you receive a message from a Manosque
+      law firm:
+    choices:
+      - Read the response -> philippe_response
+
+  philippe_response:
+    type: tweet
+    from: mairie_valensole
+    text: >
+      La Mairie de Valensole-sur-Laye prend note des allégations
+      portées à la connaissance de M. le Maire. Toute diffusion
+      publique de propos diffamatoires fera l'objet de poursuites.
+      — Cabinet juridique Gontard & Associés, Manosque
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Auriol and AgroSynth's illegal activities — and
+      there isn't one beyond political protection — your evidence
+      is misdirected.
+
+      AgroSynth continues to spray. Rémi continues to harass.
+      Aurélien stays in hiding.
+
+      Six months later, @LavandeSauvage creates a new account.
+      It follows Aurélien's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: VALENSOLE-SUR-LAYE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${corporate_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Aurélien's story explores themes of
+      corporate impunity, environmental crime, obsessive harassment,
+      land disputes, community solidarity, and the courage to
+      protect the earth.
+
+      If you or someone you know is experiencing harassment or
+      is in distress, help is available:
+      SOS Amitié: 09 72 39 40 50
+      Violences Femmes Info: 3919 (appel gratuit)
+      Signalement environnemental: 0 800 130 000

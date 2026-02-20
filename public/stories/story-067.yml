@@ -1,0 +1,1538 @@
+# DEAD ACCOUNT — Story 067: Podmorje (Croatia)
+# A TactCheck Gamepatch Scenario
+# Import: bin/gamepatch import story-067.yml
+#
+# Player investigates the disappearance of diving instructor Ana Kovačić
+# in the fictional Dalmatian coastal village of Podmorje.
+
+meta:
+  title: "Dead Account — Podmorje"
+  state:
+    # Trust levels per NPC (0-100)
+    trust_luka: 0
+    trust_marina: 0
+    trust_ivan: 0
+    trust_tonka: 0
+    trust_roko: 0
+    trust_mia: 0
+    trust_dino: 0
+    trust_ante: 0
+    trust_jadranka: 0
+    trust_zvonko: 0
+    trust_katarina: 0
+    trust_petar: 0
+    trust_niko: 0
+    trust_sanja: 0
+    trust_borna: 0
+    trust_filip: 0
+    trust_maja: 0
+    trust_darko: 0
+    trust_elena: 0
+    trust_inspektor: 0
+    trust_anon: 0
+    # Progress counters
+    contacts_followed: 0
+    night_witnesses: 0
+    marina_evidence: 0
+    obsession_evidence: 0
+    evidence_total: 0
+
+  player:
+    name: Novi Stanovnik
+    bio: "upravo se doselio/la u podmorje. otkrivam dalmaciju zaronijem po zaronjaj"
+    avatar: avatars/default_citizen.png
+
+  bot:
+    display_name: "Podmorje.social"
+    description: "Dobrodošli na zajedničku instancu sela Podmorje"
+    avatar_url: /gamepatch/assets/dead-account/podmorje_bot.png
+
+  npcs:
+    # === Ana's Inner Circle ===
+    ana:
+      name: "Ana Kovačić"
+      bio: "instruktorica ronjenja | podvodni svijet je moj dom | more ne laže"
+      avatar: avatars/ana.jpg
+    marina:
+      name: "Marina Jurić"
+      bio: "cimerica ane | konobarica u konoba lučica | kava i gemišt prije svega"
+      avatar: avatars/marina.jpg
+    luka:
+      name: "Luka Kovačić"
+      bio: "brat od ane | mehaničar brodova | split | ne nestaje ona tek tako"
+      avatar: avatars/luka.jpg
+    roko:
+      name: "Roko Perić"
+      bio: "biolog mora | ronilačka baza podmorje | kolega ane"
+      avatar: avatars/roko.jpg
+
+    # === Local Government ===
+    ante:
+      name: "Ante Bašić"
+      bio: "Načelnik općine Podmorje | Za naše selo od 2017. | #PodmorjeNaprijed"
+      avatar: avatars/ante.jpg
+    jadranka:
+      name: "Jadranka Vlašić"
+      bio: "Zamjenica za okoliš | Općina Podmorje | zaštita obale i mora"
+      avatar: avatars/jadranka.jpg
+    opcina:
+      name: "Općina Podmorje"
+      bio: "Službeni račun | Općinske vijesti | Pon-Pet 8-16h"
+      avatar: avatars/opcina.jpg
+
+    # === Local Business & Community ===
+    tonka:
+      name: "Tonka Miletić"
+      bio: "Konoba Lučica | domaća janjetina | crno vino | pogled na more | od 1991."
+      avatar: avatars/tonka.jpg
+    konoba:
+      name: "Konoba Lučica"
+      bio: "Dalmatinska kuhinja | Domaće vino | Muzika petkom | Srce Podmorja"
+      avatar: avatars/konoba.jpg
+    ivan:
+      name: "Ivan Tomić"
+      bio: "ribar | 35 godina na moru | ova obala mi je život"
+      avatar: avatars/ivan.jpg
+    zvonko:
+      name: "Zvonko Šarić"
+      bio: "lučki kapetan | Podmorje | dežurstvo uto-sub"
+      avatar: avatars/zvonko.jpg
+    katarina:
+      name: "Katarina Knežević"
+      bio: "ljekarna | Podmorje | zdravlje i savjeti | otvoreno i nedjeljom ujutro"
+      avatar: avatars/katarina.jpg
+    petar:
+      name: "Petar Barić"
+      bio: "pekara Barić | kroštule | kruh pod pekom | od 4 ujutro svaki dan"
+      avatar: avatars/petar.jpg
+    niko:
+      name: "Niko Babić"
+      bio: "maslinara Babić | ekstra djevičansko | berba svake jeseni | obitelj od 1920."
+      avatar: avatars/niko.jpg
+
+    # === Journalist ===
+    sanja:
+      name: "Sanja Dragović"
+      bio: "novinarka | slobodna | okoliš & obala | dojave: sanja@dragovic-press.hr"
+      avatar: avatars/sanja.jpg
+
+    # === Dalmatia Riviera Development (corporate) ===
+    drd:
+      name: "Dalmatia Riviera Development d.o.o."
+      bio: "Turistički razvoj | Projekt Marina Podmorje | Održivi turizam za budućnost"
+      avatar: avatars/drd.jpg
+    darko:
+      name: "Darko Marinković"
+      bio: "direktor projekta DRD | marina Podmorje | investicije i razvoj"
+      avatar: avatars/darko.jpg
+    elena:
+      name: "Elena Horvat"
+      bio: "Odvjetnica | Ured Horvat & Partneri | Pravo nekretnina | Zagreb"
+      avatar: avatars/elena.jpg
+
+    # === Teens ===
+    mia:
+      name: "Mia"
+      bio: "16 | ronjenje | podmorje born | more je život brate"
+      avatar: avatars/mia.jpg
+    dino:
+      name: "Dino"
+      bio: "17 | surf & kajak | session izlazak sunca | more liječi sve"
+      avatar: avatars/dino.jpg
+    borna:
+      name: "Borna"
+      bio: "15 | foto & video | obala u slow motion | ana mi je uzor"
+      avatar: avatars/borna.jpg
+
+    # === Media & Community ===
+    vijesti_podmorje:
+      name: "Vijesti Podmorje"
+      bio: "Lokalne vijesti Podmorja i okolice | Dojave: redakcija@vijesti-podmorje.hr"
+      avatar: avatars/vijesti_podmorje.jpg
+    meteo_dalmacija:
+      name: "Meteo Podmorje"
+      bio: "Prognoza i upozorenja | Automatska stanica | Ažuriranje svaki sat"
+      avatar: avatars/meteo_dalmacija.jpg
+    udruga_obala:
+      name: "Udruga Čuvari Obale"
+      bio: "Zaštita dalmatinske obale | Volonteri | Prijave onečišćenja"
+      avatar: avatars/udruga_obala.jpg
+
+    # === Suspicious / Other ===
+    filip:
+      name: "Filip Novak"
+      bio: "turist | fotograf | ljetuje u podmorju | zaljubljen u dalmaciju zauvijek"
+      avatar: avatars/filip.jpg
+    maja:
+      name: "Maja Morić"
+      bio: "."
+      avatar: avatars/anon.jpg
+    inspektor:
+      name: "Inspektor Babić"
+      bio: "Policijska postaja Podmorje | Krim policija | hitno: 192"
+      avatar: avatars/inspektor.jpg
+
+entry: welcome
+
+nodes:
+
+  # =====================================================================
+  # PROLOGUE — ARRIVING IN PODMORJE
+  # =====================================================================
+
+  welcome:
+    type: message
+    text: >
+      Welcome to Podmorje.social — the community Mastodon instance for
+      the Dalmatian coastal village of Podmorje, Croatia.
+
+      The local feed is restless today. Something has happened.
+    choices:
+      - Check the feed -> feed_intro
+
+  feed_intro:
+    type: message
+    text: >
+      Scrolling through the feed, you notice the same name everywhere:
+      @ana_kovacic.
+
+      A diving instructor. Underwater photographer. She documented the
+      reefs and the seabed. People are worried. She hasn't posted in
+      six days.
+    choices:
+      - Look at her profile -> ana_profile
+
+  ana_profile:
+    type: tweet
+    from: ana
+    text: "Dno kod Rta Zmajeva nije kako treba. Netko kopa. Netko uništava koraljne grebene za betonsku marinu. Imam dokaze."
+    choices:
+      - That's her last real post... -> grey_wave
+
+  grey_wave:
+    type: message
+    text: >
+      Three days after that post, her account uploaded a single image:
+      a blurry photo of dark water. Shot from an odd angle. Posted at
+      4am. No caption.
+
+      Her friends say that's not her style. Ana always wrote long
+      captions about the sea. The police say she probably left for the
+      mainland. Something doesn't add up.
+    choices:
+      - Read the police statement -> police_statement
+      - Look at what people are saying -> community_reaction
+
+  police_statement:
+    type: tweet
+    from: inspektor
+    text: >
+      Zaprimljena je prijava nestanka stanovnice Podmorja. U ovom
+      trenutku nema elemenata koji upućuju na kazneno djelo. Sve
+      korisne informacije mogu se dojaviti na 192 ili u postaju.
+    choices:
+      - What are people saying? -> community_reaction
+
+  community_reaction:
+    type: message
+    text: >
+      The reactions are chaotic. Her roommate @marina_juric is
+      desperate. Her brother @luka_kovacic is driving down from Split.
+      Her colleague @roko_peric is posting worried messages. The
+      fisherman @ivan_tomic says she was right about the seabed.
+
+      And the journalist @sanja_dragovic is strangely silent.
+
+      Nobody buys the police line. Nobody thinks Ana just
+      "left for the mainland."
+    effects: { trust_marina: "+5", trust_luka: "+5" }
+    choices:
+      - Start following Ana's contacts -> quest1_start
+
+  # =====================================================================
+  # QUEST 1: FIRST IMPRESSIONS
+  # =====================================================================
+
+  quest1_start:
+    type: message
+    text: >
+      QUEST: FIRST IMPRESSIONS
+
+      Get to know Podmorje. Follow Ana's contacts and read their
+      posts. The more you engage with the community, the more they'll
+      trust you.
+
+      Start with the people who seem most willing to talk.
+    choices:
+      - Talk to Tonka (konoba owner, knows everyone) -> tonka_intro
+      - Talk to Ivan (fisherman, saw the seabed) -> ivan_intro
+      - Talk to Mia (teen diver, seems shaken) -> mia_intro
+      - Check the local feed first -> feed_browse
+
+  feed_browse:
+    type: message
+    text: >
+      The feed mixes panic about Ana with the rhythms of a small
+      Dalmatian village: tide schedules, the bakery's daily specials,
+      weather warnings for bura wind.
+
+      Key names surface: Marina (roommate, waitress), Roko (diving
+      colleague, seems rattled), Sanja (journalist, oddly quiet),
+      and the teens — Mia, Dino, Borna — who worshipped Ana's
+      underwater work.
+
+      Also prominent: Dalmatia Riviera Development d.o.o., the
+      company building a luxury marina at the edge of the village.
+      Their posts are corporate PR. Ana's posts were the opposite.
+    effects: { contacts_followed: "+3" }
+    choices:
+      - Talk to Tonka -> tonka_intro
+      - Talk to Ivan -> ivan_intro
+      - Talk to Mia -> mia_intro
+
+  # --- Tonka (social map) ---
+
+  tonka_intro:
+    type: tweet
+    from: tonka
+    text: >
+      Konoba je otvorena al srce nije tu. @ana_kovacic, tvoj stol
+      te čeka. Vrati se brzo.
+    effects: { trust_tonka: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Tonka -> tonka_talk
+
+  tonka_talk:
+    type: message
+    text: >
+      TONKA: A, ti si novi? Dobrodošao. Grozno vrijeme za doći.
+      Svi su na iglama zbog Ane.
+
+      Da ti kažem tko je tko. Marina je Anina cimerica — dijele stan
+      iznad ljekarne. Dobra cura, slomljena sad. Roko Perić radi s
+      Anom u ronilačkoj bazi. Pametan čovjek, ali... intenzivan oko
+      nje. Luka je Anin stariji brat, dolazi iz Splita.
+
+      I Sanja Dragović — novinarka — ona i Ana su radile na nečemu
+      zajedno. Nešto o dnu mora. Sanja nije rekla ni riječ otkad je
+      Ana nestala. To joj ne liči.
+
+      Ah, i nemoj čitati PR objave od DRD-a. Laži umotane u
+      "održivi turizam."
+    effects: { trust_tonka: "+10", contacts_followed: "+2" }
+    choices:
+      - Ask about Roko -> tonka_roko
+      - Ask about the marina construction -> tonka_marina
+      - Thank her and move on -> quest1_hub
+
+  tonka_roko:
+    type: message
+    text: >
+      TONKA: Roko? On je tu dvije godine duže od Ane. Odličan ronilac.
+      Ali otkad je ona došla, on... kruži oko nje. U konobi svaki put
+      kad je ona bila tu. Nudio se pomoći na svakom projektu. Ona je
+      bila pristojna ali vidjela sam da joj smeta.
+
+      Kad je počela istraživati dno kod Rta, on je bio još gori.
+      Htio je biti dio svega. Rekla mi je jednom, "On ne prihvaća
+      ne." Mislila sam da govori o poslu. Sad nisam sigurna.
+    effects: { trust_tonka: "+5" }
+    choices:
+      - Ask about the marina -> tonka_marina
+      - Move on -> quest1_hub
+
+  tonka_marina:
+    type: message
+    text: >
+      TONKA: Ta marina... Jebote, to je katastrofa. DRD je došao
+      prije godinu dana s velikim planovima. Luksuzna marina, 200
+      vezova, hotel, restorani. Načelnik Bašić im je dao zeleno
+      svjetlo jer obećavaju radna mjesta.
+
+      Ali Ana je zaronila tamo. Vidjela je što rade ispod vode.
+      Bageri razbijaju koraljne grebene. Posidonia livade uništene.
+      Dno izgleda kao ratna zona. A sve to bez pravih ekoloških
+      dozvola.
+
+      Ana je imala snimke, uzorke, sve. Dva tjedna kasnije —
+      nestala.
+    effects: { trust_tonka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Ivan (the seabed, witness tease) ---
+
+  ivan_intro:
+    type: tweet
+    from: ivan
+    text: >
+      trideset i pet godina pecam tu. dno više nije isto.
+      @ana_kovacic je imala pravo. a sad je nestala.
+      povežite stvari.
+    effects: { trust_ivan: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Ivan -> ivan_talk
+
+  ivan_talk:
+    type: message
+    text: >
+      IVAN: Pecam ovu obalu otkad sam bio klinac. Znam svaku struju,
+      svaku boju mora. I govorim ti — dno kod Rta Zmajeva je uništeno.
+      Već mjesecima. Mreže mi dolaze pune mrtvih školjki. Morsko dno
+      smrdi na cement i naftu.
+
+      Ana je uzimala uzorke. Zaronila je do gradilišta. Fotografirala
+      sve. Gradila je slučaj. I onda — puf — nestala.
+
+      Misliš da je to slučajnost? Ja ne vjerujem u slučajnosti
+      na moru.
+    effects: { trust_ivan: "+10" }
+    choices:
+      - Did you see anything unusual recently? -> ivan_night
+      - Move on -> quest1_hub
+
+  ivan_night:
+    type: message
+    text: >
+      IVAN: Noć prije nego je nestala — vraćao sam se s noćnog
+      pecanja, oko 1 ujutro. Vidio sam svjetla kod ronilačke baze.
+      Nije neobično, ronioci ponekad rade kasno. Ali bila su dva
+      auta na parkingu. Jedan je bio Anin mali bijeli Fiat. Drugi
+      je bio crni SUV s DRD logom na vratima.
+
+      U 1 ujutro. Kod ronilačke baze.
+
+      Nisam puno razmišljao o tome tada. Sad razmišljam
+      neprestano.
+    effects: { trust_ivan: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Mia (teen diver, witness tease) ---
+
+  mia_intro:
+    type: tweet
+    from: mia
+    text: >
+      jebote ne mogu vjerovat @ana_kovacic ona me naučila ronit
+      i poštovat more alo nije moguće da je otišla tek tako.
+      ak neko zna nešto recite molim vas
+    effects: { trust_mia: "+5", contacts_followed: "+1" }
+    choices:
+      - Reply to Mia -> mia_talk_early
+
+  mia_talk_early:
+    type: message
+    text: >
+      MIA: ej novi si tu? koji kurac od tajminga. al ozbiljno
+      ana je tipa najbolja osoba u ovom selu. učila nas ronit,
+      pokazivala nam podvodni svijet kamerom. predobro.
+
+      i sad sam u strahu jer dino je vidio nešto čudno onu večer
+      u luci al neće pričat o tome. kaže da je ništa al ono...
+      majke mi nije ništa
+    effects: { trust_mia: "+10" }
+    choices:
+      - What did Dino see? -> mia_dino_hint
+      - Move on -> quest1_hub
+
+  mia_dino_hint:
+    type: message
+    text: >
+      MIA: nemam pojma točno. bio je na kajaku kod zalaska sunca
+      u luci i vidio nekoga tipa kod aninog auta?? il tak nešto.
+      on se previše boji da priča. moraš ga pitat direktno al
+      je sumnjičav prema stranima. probaj pričat o surfanju
+      s njim prvo haha
+    effects: { trust_mia: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Quest 1 Hub ---
+
+  quest1_hub:
+    type: message
+    text: >
+      You're getting a picture of Podmorje. A Dalmatian coastal
+      village built around the sea. A diving instructor who was
+      exposing illegal marina construction. A disappearance nobody
+      believes is voluntary.
+
+      You've made contacts. Now dig deeper.
+    choices:
+      - Talk to Marina (Ana's roommate) -> marina_q1
+      - Talk to Roko (Ana's colleague) -> roko_q1
+      - Check what Luka (Ana's brother) is saying -> luka_q1
+      - I'm ready to investigate the night she disappeared -> quest2_start
+        when:
+          state: contacts_followed
+          gte: 3
+
+  # --- Marina Q1 ---
+
+  marina_q1:
+    type: tweet
+    from: marina
+    text: >
+      ako netko ima vijesti o @ana_kovacic nazovite me molim vas.
+      soba joj je netaknuta. ronilačka oprema je tu. nikad ne bi
+      otišla bez opreme.
+    effects: { trust_marina: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Marina -> marina_q1_talk
+
+  marina_q1_talk:
+    type: message
+    text: >
+      MARINA: Hvala ti što se javljaš ali te ne poznajem. Ana ima
+      puno prijatelja tu. Sigurna sam da će se vratiti.
+
+      ...To si stalno govorim. Više ne vjerujem u to.
+
+      [Marina is guarded. You'll need to build more trust before she
+      opens up.]
+    effects: { trust_marina: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Roko Q1 ---
+
+  roko_q1:
+    type: tweet
+    from: roko
+    text: >
+      Baza je prazna bez @ana_kovacic. Njeni uzorci su još u
+      hladnjaku. Dnevnici ronjenja na stolu. Nikad ne bi
+      napustila istraživanje u tijeku. Nešto se dogodilo.
+    effects: { trust_roko: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Roko -> roko_q1_talk
+
+  roko_q1_talk:
+    type: message
+    text: >
+      ROKO: Ana i ja radimo zajedno preko godinu dana. Ona je
+      najposvećeniji ronilac kojeg znam. Ovo istraživanje
+      uništavanja dna — bilo joj je sve. Imala je snimke, uzorke,
+      kemijske analize. Bila je tako blizu da sve objavi.
+
+      Nudio sam joj pomoć. Mnogo puta. Rekla je da ima sve pod
+      kontrolom. Rekla je da radi s novinkom. Samo sam joj htio
+      pomoći.
+
+      [Roko seems earnest. Or obsessive?]
+    effects: { trust_roko: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # --- Luka Q1 ---
+
+  luka_q1:
+    type: tweet
+    from: luka
+    text: >
+      sestra mi je NESTALA i policija mi govori da je možda otišla
+      na odmor??? ONA NE IDE NA ODMOR BEZ DA JAVI. dolazim iz splita.
+      netko će mi objasniti.
+    effects: { trust_luka: "+5", contacts_followed: "+1" }
+    choices:
+      - DM Luka -> luka_q1_talk
+
+  luka_q1_talk:
+    type: message
+    text: >
+      LUKA: Tko si ti? Još jedan iz tog sela koji će mi reći da se
+      smirim? Sestra me nazvala noć prije nego je nestala. Rekla je
+      da ima nešto veliko. Rekla je "ako se nešto dogodi, gledaj
+      DRD." Onda je prekinula.
+
+      To je zadnje što sam čuo od nje.
+    effects: { trust_luka: "+10" }
+    choices:
+      - What do you think happened? -> luka_theory
+      - Move on -> quest1_hub
+
+  luka_theory:
+    type: message
+    text: >
+      LUKA: Mislim da je našla dokaze da DRD ilegalno uništava
+      morsko dno za svoju marinu i da su je ušutkali. Ali mislim
+      i da onaj jezivi kolega — Roko — zna više nego što govori.
+      Način na koji priča o njoj... nije samo profesionalna briga.
+      To je nešto drugo.
+
+      Ana mi je rekla prije mjesec dana da joj netko u bazi
+      pregledava datoteke. Mislila je da je ništa. Ja ne mislim
+      da je ništa.
+    effects: { trust_luka: "+5" }
+    choices:
+      - Move on -> quest1_hub
+
+  # =====================================================================
+  # QUEST 2: THE LAST NIGHT
+  # =====================================================================
+
+  quest2_start:
+    type: message
+    text: >
+      QUEST: THE LAST NIGHT
+
+      Something happened the night Ana went silent. Multiple people
+      saw or heard things. Piece together the timeline from witnesses.
+
+      You need accounts from at least 4 people.
+    choices:
+      - Find Dino (was kayaking at sunset near the port) -> dino_interview
+      - Find Zvonko (harbour master, works late) -> zvonko_interview
+      - Find Niko (olive farmer, early morning at the shore) -> niko_interview
+      - Find Petar (baker, starts at 4am, saw something) -> petar_interview
+
+  # --- Dino (saw someone at Ana's car) ---
+
+  dino_interview:
+    type: tweet
+    from: dino
+    text: >
+      dobra sesija danas al atmosfera u luci je čudna u zadnje
+      vrijeme. tipa nešto ne štima. ne znam kak objasnit
+    effects: { trust_dino: "+5" }
+    choices:
+      - Ask Dino about that evening -> dino_talk
+
+  dino_talk:
+    type: message
+    text: >
+      DINO: ej brate ok al ne govori nikom jel. bio sam u luci oko
+      19h, kajak sesija. i vidio sam onog lika iz baze — roka —
+      kod aninog auta. izgledalo je kao da pretražuje il tipa stavlja
+      nešto unutra. kad me vidio otišo je prebrzo.
+
+      ono ja nisam ništa reko jer nisam htio probleme al sad je
+      u pičku materinu ozbiljno. nije normalno njegovo ponašanje
+      majke mi
+    effects:
+      trust_dino: "+10"
+      night_witnesses: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Zvonko (harbour master, saw late-night meeting) ---
+
+  zvonko_interview:
+    type: tweet
+    from: zvonko
+    text: >
+      Podsjetnik: luka je zabranjena za pristup između 22h i 6h.
+      Primijećeni su neovlašteni prolasci posljednjih noći.
+    effects: { trust_zvonko: "+5" }
+    choices:
+      - Ask Zvonko what he saw -> zvonko_talk
+
+  zvonko_talk:
+    type: message
+    text: >
+      ZVONKO: Zaključavao sam lučki ured oko 22:30. Vidio sam Anin
+      auto još na parkingu baze. I crni SUV — s DRD logom — parkiran
+      pokraj. Dva čovjeka su stajala kod ulaza u bazu. Jednog sam
+      prepoznao: Darko Marinković, direktor projekta.
+
+      U 22:30. Kod ronilačke baze. To nije normalno.
+
+      Zapisao sam to u lučki dnevnik. Nitko nije tražio da ga
+      vidi.
+    effects:
+      trust_zvonko: "+10"
+      night_witnesses: "+1"
+      marina_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Niko (saw Ana fleeing) ---
+
+  niko_interview:
+    type: tweet
+    from: niko
+    text: >
+      ustao u 4 za masline. plaža nije bila prazna jutros. netko
+      je trčao obalnim putem. u mraku. nije bio trkač.
+    effects: { trust_niko: "+5" }
+    choices:
+      - Ask Niko what he saw -> niko_talk
+
+  niko_talk:
+    type: message
+    text: >
+      NIKO: Ustajem u 4 za maslinike. To jutro — jutro nakon
+      Aninog zadnjeg posta — vidio sam nekoga na obalnoj stazi.
+      Trčao je. Žena, nosi torbu, ide prema Rtu Zmajeva. Još je
+      bio mrak. Kretala se brzo, kao da se nečeg boji.
+
+      Doviknuo sam ali se nije zaustavila. Mislio sam da je
+      trkačica ali... tko trči u 4 ujutro s torbom za laptop?
+
+      Kad sam čuo za Anu, spojio sam kockice. Mislim da je to
+      bila ona. Bježala od nečega.
+    effects:
+      trust_niko: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Petar (saw car chase) ---
+
+  petar_interview:
+    type: tweet
+    from: petar
+    text: >
+      Prva fila u 4 kao i uvijek. Ali to jutro, jedno vozilo
+      je jurilo prebrzo obalnom cestom.
+    effects: { trust_petar: "+5" }
+    choices:
+      - Ask Petar what he saw -> petar_talk
+
+  petar_talk:
+    type: message
+    text: >
+      PETAR: Počinjem peći u 4 svaki dan. To jutro otvaram rolete
+      i auto proleti — brzo, prebrzo za obalnu cestu. Tamni SUV.
+      Onda možda dvije minute kasnije, drugi auto. Manji, bijeli.
+      Juri za njim? Ne znam.
+
+      Drugi auto je skrenuo prema starim ribogojilištima kod Rta.
+      Prvi je nastavio prema magistrali.
+
+      Rekao sam policiji. Zapisali su. I to je bilo to.
+    effects:
+      trust_petar: "+10"
+      night_witnesses: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Quest 2 Hub ---
+
+  quest2_hub:
+    type: message
+    text: >
+      Witnesses found: ${night_witnesses} of 4 needed.
+
+      You can keep collecting testimonies or talk to Marina (roommate)
+      and Borna (saw Roko watching the flat).
+    choices:
+      - Talk to Marina about that night -> marina_interview
+      - Talk to Borna -> borna_interview
+      - Find Dino -> dino_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Zvonko -> zvonko_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Niko -> niko_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Find Petar -> petar_interview
+        when:
+          all:
+            - { state: night_witnesses, lt: 4 }
+      - Assemble the timeline -> quest2_timeline
+        when:
+          state: night_witnesses
+          gte: 4
+
+  # --- Marina (last to see Ana) ---
+
+  marina_interview:
+    type: tweet
+    from: marina
+    text: >
+      ta slika na aninom profilu. to nije ona. ana nikad ne objavi
+      bez teksta. ana ne objavljuje u 4 ujutro. netko drugi je to
+      napravio.
+    effects: { trust_marina: "+5" }
+    choices:
+      - DM Marina -> marina_talk_low
+        when:
+          state: trust_marina
+          lt: 50
+      - DM Marina -> marina_talk_high
+        when:
+          state: trust_marina
+          gte: 50
+
+  marina_talk_low:
+    type: message
+    text: >
+      MARINA: Hvala ti na brizi ali stvarno ne želim pričati sa
+      strancima o tome sad.
+
+      [Marina needs to trust you more. Show her you're investigating
+      seriously, not just gossiping.]
+    effects: { trust_marina: "+5" }
+    choices:
+      - Share what you've learned about the night -> marina_trust_build
+        when:
+          state: night_witnesses
+          gte: 2
+      - Come back later -> quest2_hub
+
+  marina_trust_build:
+    type: message
+    text: >
+      You share the witness accounts — the car at the base, the
+      company men, the running figure. Marina is silent for a while.
+
+      MARINA: Ti stvarno pokušavaš naći je. Ok. Pričat ću.
+    effects: { trust_marina: "+25" }
+    choices:
+      - What happened that night? -> marina_talk_high
+
+  marina_talk_high:
+    type: message
+    text: >
+      MARINA: Došla je kući oko 23h. Ja sam se spremala za smjenu
+      u konobi. Bila je blijeda, tresla se. Rekla je "znaju što
+      imam." Zgrabila je laptop i hard diskove s kamerama.
+
+      Pitala sam je tko. Rekla je "firma. Poslali su ljude u bazu."
+      Onda je rekla još nešto — "i on je bio tamo. On je uvijek
+      tamo."
+
+      Nije htjela reći tko je "on." Zagrlila me, rekla "ne brini,"
+      i otišla s torbom. To je bilo to. Ujutro joj auto nije bio
+      tu a ona siva slika se pojavila na profilu.
+    effects:
+      trust_marina: "+15"
+      night_witnesses: "+1"
+      marina_evidence: "+1"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Borna (saw Roko watching the flat) ---
+
+  borna_interview:
+    type: message
+    text: >
+      BORNA: alo ok u pičku materinu ovo što ću reć je čudno al
+      ozbiljno lik iz baze — roko — vidio sam ga tipa 3 puta
+      ispred aninog stana navečer. samo stoji i gleda prozore.
+      prestrašno brate.
+
+      zadnji put je bilo tipa 2 dana prije nego je nestala. bio je
+      u autu parkiran nasuprot. samo sjedi. svijetla ugašena.
+    effects:
+      trust_borna: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue investigating -> quest2_hub
+
+  # --- Timeline Assembly ---
+
+  quest2_timeline:
+    type: message
+    text: >
+      TIMELINE ASSEMBLED
+
+      19:00 — Roko seen at Ana's car at the port (Dino)
+      22:30 — DRD car at the diving base, Darko Marinković present (Zvonko)
+      23:00 — Ana arrives home, shaken, grabs laptop and drives (Marina)
+      04:00 — Woman running on coastal path toward the Point (Niko)
+      05:00 — Two cars speeding on coast road, one toward the Point (Petar)
+
+      DRD confronted Ana at the base. She fled home, grabbed her
+      evidence, and ran. Someone chased her.
+
+      But there are two threats: the corporation AND someone closer.
+
+      Two threads to pull:
+      — The cover-up: What is DRD hiding? Who ordered the
+        confrontation?
+      — The obsession: What is Roko really doing? Why was he
+        at her car?
+    choices:
+      - Investigate the corporate cover-up -> corruption_hub
+      - Investigate Roko -> stalker_hub
+      - Pursue both -> investigation_hub
+
+  # =====================================================================
+  # INVESTIGATION HUB — PARALLEL THREADS
+  # =====================================================================
+
+  investigation_hub:
+    type: message
+    text: >
+      Two investigations running in parallel.
+
+      CORPORATE THREAD: Evidence collected: ${marina_evidence}
+      OBSESSION THREAD: Evidence collected: ${obsession_evidence}
+    choices:
+      - Work on the corporate thread -> corruption_hub
+      - Work on the obsession thread -> stalker_hub
+      - Confront a suspect -> quest4_start
+        when:
+          any:
+            - { state: obsession_evidence, gte: 5 }
+            - { state: marina_evidence, gte: 3 }
+
+  # =====================================================================
+  # CORPORATE COVER-UP THREAD
+  # =====================================================================
+
+  corruption_hub:
+    type: message
+    text: >
+      THE CORPORATE THREAD
+
+      Dalmatia Riviera Development is hiding something. Ana had proof.
+      Now she's gone and her evidence is missing from the base.
+
+      Corporate evidence: ${marina_evidence}
+    choices:
+      - Search the dive base records -> base_records
+      - Talk to Sanja the journalist -> sanja_interview
+      - Talk to Filip the tourist -> filip_interview
+      - Talk to Jadranka (environment deputy) -> jadranka_interview
+      - Check the Čuvari Obale association -> udruga_investigation
+      - Talk to Ivan about the seabed destruction -> ivan_seabed
+      - Back to hub -> investigation_hub
+
+  # --- Base Records ---
+
+  base_records:
+    type: message
+    text: >
+      The diving base's public log shows Ana's recent work: seabed
+      surveys from six sites along the coast. The data for Rt Zmajeva
+      is marked "NA ČEKANJU" — the only site with that status.
+
+      Her dive log, shared with the base for safety, shows she made
+      14 dives near the DRD construction site in the past month.
+      The last entry: "Fotografirala bagersko uništavanje koralja.
+      Nelegalni iskopi. Posidonia potpuno uklonjena. Ovo nije u
+      dozvoli."
+    effects:
+      marina_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Continue -> corruption_hub
+
+  # --- Sanja ---
+
+  sanja_interview:
+    type: message
+    text: >
+      SANJA: Ne pričam o izvorima. Točka.
+    effects: { trust_sanja: "+5" }
+    choices:
+      - Show Sanja the evidence you have -> sanja_with_evidence
+        when:
+          state: marina_evidence
+          gte: 3
+      - Back to corporate thread -> corruption_hub
+
+  sanja_with_evidence:
+    type: message
+    text: >
+      SANJA: ...imaš više nego što sam očekivala.
+
+      Ok. Ana i ja smo radile zajedno. Imala je snimke nelegalnog
+      uništavanja morskog dna — DRD bageri razbijaju koraljne
+      grebene koji su zaštićeni po zakonu. Imala je uzorke
+      sedimenta koji dokazuju ispuštanje betona i goriva u more.
+
+      Htjele smo zajedno objaviti. Onda je nestala. I dva dana
+      kasnije, netko mi je provalio u auto i ukrao backup disk.
+
+      Ana je živa. Javila mi se jednom, s prepaid broja. Rekla je
+      da se skriva. Rekla je "prijetili su mi u bazi i netko
+      drugi me neće pustiti na miru."
+
+      Ne mogu ti reći gdje je. Ali s dovoljno dokaza, mogu
+      objaviti i napraviti da bude sigurno da se vrati.
+    effects:
+      trust_sanja: "+25"
+      marina_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Who threatened her? -> sanja_hint
+      - Back to investigation hub -> investigation_hub
+
+  sanja_hint:
+    type: message
+    text: >
+      SANJA: Firma je poslala svog direktora — Marinkovića — i
+      nekog odvjetnika u bazu tu noć. Rekli su joj da preda sve
+      ili da se suoči s pravnim posljedicama. Zastrašivanje
+      maskirano u pravni postupak.
+
+      Ali rekla je i nešto o nekome u bazi. Nekome tko joj je
+      pristupao datotekama. Nekome tko je uvijek znao gdje je.
+      To je drugi problem.
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Filip (tourist witness / suspicious presence) ---
+
+  filip_interview:
+    type: message
+    text: >
+      FILIP: Ja sam samo fotograf na odmoru. Dolazim u Podmorje
+      svako ljeto. Ali ove godine sam primijetio nešto kod Rta
+      Zmajeva. Veliki brodovi noću. Bageri koji rade pod vodom
+      bez ikakve signalizacije. Nisam siguran jel to legalno.
+
+      Ana me kontaktirala kad je vidjela moje fotografije na
+      instanci. Rekla je da su moje noćne fotke dokaz da DRD radi
+      noću, kad nitko ne gleda, da izbjegnu inspekcije.
+    effects:
+      trust_filip: "+10"
+      marina_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Do you have those photos? -> filip_photos
+
+  filip_photos:
+    type: message
+    text: >
+      FILIP: Imam. Noćne snimke s datumom i GPS koordinatama.
+      Brodovi s DRD zastavicama, bageri u radu, mutno more
+      posvuda. Sve u 2-3 ujutro.
+
+      Ana ih je kopirala. Rekla je da su ključni jer dokazuju
+      da radovi idu i noću — što nije u dozvoli. Dozvola kaže
+      radovi samo od 7 do 19h.
+    effects:
+      marina_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Jadranka ---
+
+  jadranka_interview:
+    type: message
+    text: >
+      JADRANKA: Kao zamjenica za okoliš, ozbiljno shvaćam ove
+      optužbe. Ali DRD zapošljava ljude i obećava 150 radnih
+      mjesta. Načelnik inzistira da moramo "održati dijalog."
+
+      Neslužbeno? Vidjela sam inspekcijske izvještaje. DRD
+      prolazi svaki put. Ali te inspekcije su najavljene dva
+      tjedna unaprijed. Oni očiste sve prije nego inspektori
+      dođu.
+
+      Ana je imala nenajavljene podatke. To je ono što je
+      opasno.
+    effects:
+      trust_jadranka: "+10"
+      marina_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Čuvari Obale ---
+
+  udruga_investigation:
+    type: tweet
+    from: udruga_obala
+    text: >
+      UPOZORENJE: Prijava uništavanja morskog dna kod Rta Zmajeva.
+      Fotografije i uzorci u tijeku. Tražimo nenajavljenu inspekciju
+      gradilišta marine DRD.
+    choices:
+      - Check their data -> udruga_data
+
+  udruga_data:
+    type: message
+    text: >
+      The Čuvari Obale have been documenting seabed quality for two
+      years. Their data shows a clear pattern: coral cover at Rt
+      Zmajeva has dropped 80% since DRD construction began. Posidonia
+      meadows are gone. Sediment samples show concrete dust and
+      diesel contamination.
+
+      The destruction follows the construction schedule. Worse on
+      work days. Much worse at night, when the heavy machinery runs
+      without observers.
+
+      Ana was a member. She contributed most of the underwater
+      photography.
+    effects:
+      marina_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to corporate thread -> corruption_hub
+
+  # --- Ivan seabed ---
+
+  ivan_seabed:
+    type: message
+    text: >
+      IVAN: Pokazat ću ti nešto. Prošli mjesec izvukao sam mrežu
+      kod Rta i u njoj je bio komad koralja — živ koraljni greben,
+      iščupan iz dna. S tragovima bagerskog reza. I komadi
+      betonske smjese zalijepljeni za njega.
+
+      Fotografirao sam sve i poslao Ani. Rekla je da je to
+      nedostajući dio — dokaz da ne samo da kopaju, nego bacaju
+      građevinski otpad na morsko dno. Zatrpavaju koraljne
+      grebene betonom.
+
+      Još imam fotke. I GPS koordinate.
+    effects:
+      trust_ivan: "+10"
+      marina_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # =====================================================================
+  # OBSESSION THREAD
+  # =====================================================================
+
+  stalker_hub:
+    type: message
+    text: >
+      THE OBSESSION THREAD
+
+      Roko Perić. Colleague. Diver. Something more? Someone was
+      accessing Ana's files. Someone was watching her flat. Someone
+      was at her car.
+
+      Obsession evidence: ${obsession_evidence}
+    choices:
+      - Investigate Roko's base access logs -> base_access
+      - Talk to Marina about Roko -> marina_roko
+        when:
+          state: trust_marina
+          gte: 20
+      - Talk to Dino (more detail on the car incident) -> dino_detail
+      - Talk to Katarina the pharmacist -> katarina_interview
+      - Check the anonymous account @maja_moric -> maja_investigation
+      - Talk to Niko the olive farmer -> niko_roko
+        when:
+          state: trust_niko
+          gte: 40
+      - Talk to Inspektor Babić -> inspektor_interview
+        when:
+          state: trust_inspektor
+          gte: 30
+      - Back to hub -> investigation_hub
+
+  # --- Base Access Logs ---
+
+  base_access:
+    type: message
+    text: >
+      The diving base door access system is logged electronically.
+      Ana's card was used 52 times last month. Roko's card: 91
+      times. Nearly double.
+
+      Cross-referencing: on 38 of Roko's 91 entries, he accessed
+      the base within 15 minutes of Ana. He arrived after her and
+      left after her. Every time.
+
+      His own equipment locker is in a different section.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Marina on Roko ---
+
+  marina_roko:
+    type: message
+    text: >
+      MARINA: Roko? On je Anu činio nelagodnom. Pojavljivao se u
+      konobi kad je ona bila tamo. Nudio se da je prati kući.
+      Komentirao svaku njenu objavu u roku od minute.
+
+      Rekla mu je da nije zainteresirana. Jasno, ljubazno. On je
+      rekao da razumije. Onda se ništa nije promijenilo. Samo
+      je... nastavio biti tu. Uvijek tu.
+
+      Prije mjesec dana otkrila je da joj je netko pristupio
+      računalu u bazi nakon radnog vremena. Istraživačke datoteke
+      su bile otvorene. Sumnjala je na Roka ali nije mogla
+      dokazati.
+    effects:
+      trust_marina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Dino detail ---
+
+  dino_detail:
+    type: message
+    text: >
+      DINO: ok brate u pičku materinu nisam sve rekao. kad sam vidio
+      roka kod aninog auta imao je nešto u ruci. tipa mali uređaj.
+      stavio ga je ispod auta, sa strane vozača. tipa zalijepio
+      ispod.
+
+      ja nisam stručnjak al to je izgledalo ko GPS tracker stari.
+      ko u filmovima.
+
+      trebao sam nešto reć al tipa kome bi vjerovali. tinejdžer
+      optužuje istraživača. koji kurac. ne.
+    effects:
+      trust_dino: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Katarina ---
+
+  katarina_interview:
+    type: message
+    text: >
+      KATARINA: Ovo je povjerljivo ali ja sam ljekarnica, ne
+      svećenica. Roko Perić dolazi redovito. Kupuje stvari koje...
+      sugeriraju da ne spava. Lijekovi protiv anksioznosti,
+      tablete za spavanje, energetski dodaci. Obrazac nekoga
+      pod ekstremnim stresom.
+
+      Jednom me pitao, sasvim usputno, prodajemo li GPS trackere.
+      Rekla sam "ovo je ljekarna, ne Elipso." Nasmijao se. Nisam
+      više razmišljala o tome dok Ana nije nestala.
+    effects:
+      trust_katarina: "+10"
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Maja (anonymous account) ---
+
+  maja_investigation:
+    type: tweet
+    from: maja
+    text: >
+      Trebala je slušati. Pokušavao sam je zaštititi. Nitko drugi
+      nije razumio njen rad kao ja.
+    choices:
+      - Look at this account's history -> maja_posts
+
+  maja_posts:
+    type: message
+    text: >
+      @maja_moric: account created 9 months ago. Posts are all about
+      Ana's work. Comments on every dive photo, every seabed sample,
+      every research update. The tone shifts over time:
+
+      Month 1: "Nevjerojatan rad. Radiš ono što se nitko ne usudi."
+      Month 3: "Zašto ne odgovaraš na moje poruke? Samo želim
+      surađivati."
+      Month 6: "Vidim te u konobi s drugim ljudima. Imaš vremena
+      za njih ali ne za mene?"
+      Month 8: "Znam gdje ideš. Znam tvoj raspored. Uvijek sam
+      blizu."
+
+      The account has no photos, no personal details. Just Ana.
+      Only Ana.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Check the writing style -> maja_style
+
+  maja_style:
+    type: message
+    text: >
+      Comparing @maja_moric with @roko_peric:
+
+      Same use of marine biology terminology. Same Croatian spelling
+      conventions — the specific way he uses diving jargon and
+      Dalmatian expressions. Same knowledge of Ana's research that
+      only a diving colleague would have.
+
+      And one post from @maja_moric: "Tvoj zaronjaj na Lokaciji 4
+      je bio prekrasan." Lokacija 4 is an internal base designation.
+      Not public.
+
+      It's Roko. The anonymous account is Roko.
+    effects:
+      obsession_evidence: "+1"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # --- Niko on Roko ---
+
+  niko_roko:
+    type: message
+    text: >
+      NIKO: Ana mi je nešto ostavila. Zapečaćenu vodootpornu
+      kutiju. Rekla je "ako netko pita što je ispod mora kod Rta,
+      daj mu ovo."
+
+      Izgledala je prestrašeno. Rekla je da je napravila kopije
+      svega ali joj treba jedan set izvan baze, negdje gdje nitko
+      neće pogledati. Maslinara se činila savršeno.
+    effects: { trust_niko: "+10" }
+    choices:
+      - What's under the sea at the Point? -> niko_case
+
+  niko_case:
+    type: message
+    text: >
+      Niko reaches under the counter and produces a waterproof
+      Pelican case.
+
+      NIKO: Rekla je da ćeš doći. Uzmi.
+
+      Inside: a USB drive and a set of printed photographs. The
+      photos show the seabed at Rt Zmajeva — destroyed coral reefs,
+      heavy machinery tracks, concrete dumped over posidonia meadows,
+      and an oil slick from construction vessels. The USB drive
+      contains seabed surveys, sediment analysis, and Ana's detailed
+      report.
+    effects:
+      marina_evidence: "+1"
+      evidence_total: "+2"
+    choices:
+      - Back to investigation hub -> investigation_hub
+
+  # --- Inspektor Babić ---
+
+  inspektor_interview:
+    type: message
+    text: >
+      INSPEKTOR BABIĆ: Neslužbeno — i mislim potpuno neslužbeno —
+      htio sam istražiti DRD. Nadređeni mi je rekao da stanem.
+      Rekao je da županija ima "nadležnost." To je šifra za
+      "ne diraj."
+
+      Situacija s Perićem je druga stvar. Za to nisam ni znao
+      do sad. Ako imaš dokaze o uhođenju, mogu djelovati.
+      To je jasno moja nadležnost.
+
+      Donesi mi nešto solidno i ponovo ću otvoriti slučaj.
+    effects:
+      trust_inspektor: "+15"
+      evidence_total: "+1"
+    choices:
+      - Back to obsession thread -> stalker_hub
+
+  # =====================================================================
+  # QUEST 4: CONFRONTATION
+  # =====================================================================
+
+  quest4_start:
+    type: message
+    text: >
+      THE ACCUSATION
+
+      You've gathered evidence. You know more about what happened
+      to Ana than anyone in Podmorje. Who is responsible?
+    choices:
+      - Confront Roko Perić (the obsessive colleague) -> confront_roko
+        when:
+          state: obsession_evidence
+          gte: 5
+      - Confront Darko Marinković (the project director) -> confront_darko
+        when:
+          state: marina_evidence
+          gte: 3
+      - Confront Mayor Bašić (political protection) -> confront_ante
+      - I need more evidence -> investigation_hub
+
+  # --- ENDING A: Roko (Best Ending) ---
+
+  confront_roko:
+    type: message
+    text: >
+      You present your evidence to Roko:
+
+      "I know @maja_moric is your account. I know you put a GPS
+      tracker on Ana's car. I know you accessed her files at the
+      base. I know you were watching her flat. I have witnesses and
+      I have the access logs."
+    choices:
+      - Send -> roko_response
+
+  roko_response:
+    type: message
+    text: >
+      Roko doesn't reply for a long time. Then:
+
+      ROKO: Ne razumiješ. Štitio sam je. Bila je u opasnosti od
+      DRD-a i nije me pustila da pomognem. Morao sam znati da je
+      sigurna. Sve što sam napravio bilo je jer mi je stalo do nje.
+
+      That's not care. That's obsession.
+
+      You've already sent the evidence to Inspektor Babić. And to
+      Sanja Dragović.
+    choices:
+      - Wait for the result -> ending_a
+
+  ending_a:
+    type: message
+    text: >
+      ENDING A: THE OBSESSION
+
+      Three things happen in quick succession.
+
+      Inspektor Babić reopens the case. With your evidence — the
+      anonymous account, the GPS tracker, the access logs, the
+      witness testimonies — Roko is arrested for stalking and
+      harassment. A GPS tracker is recovered from under Ana's car
+      at the old fish farm buildings near Rt Zmajeva.
+
+      Sanja Dragović, finally in possession of Ana's full evidence
+      package, publishes the DRD story in Jutarnji list. The county
+      orders an unannounced inspection. The marina construction is
+      halted pending environmental remediation. Darko Marinković
+      faces criminal charges for destruction of protected marine
+      habitat and falsifying environmental permits.
+
+      And Ana Kovačić, reading the story from a friend's house in
+      Zadar, calls her brother for the first time in nine days.
+
+      "Dolazim kući."
+    choices:
+      - See the epilogue -> ending_a_epilogue
+
+  ending_a_epilogue:
+    type: tweet
+    from: ana
+    text: >
+      more ne laže. i ljudi podmorja ne lažu. hvala što niste
+      odustali.
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING B: Darko (Partial Ending) ---
+
+  confront_darko:
+    type: message
+    text: >
+      You present the construction evidence to Darko Marinković:
+
+      "I have photographs of illegal seabed destruction. I have
+      sediment samples showing concrete and diesel contamination.
+      I have nighttime construction photos with timestamps proving
+      you work outside permitted hours. I have the coral fragments
+      in fishing nets."
+    choices:
+      - Send -> darko_response
+
+  darko_response:
+    type: message
+    text: >
+      DARKO: Ovaj razgovor se prosljeđuje našem pravnom odjelu.
+      Svaka objava klevete rezultirat će trenutačnim postupkom.
+      DRD je uvijek poslovao u skladu s dozvolama.
+
+      But it's too late. You've sent the evidence to Sanja, to
+      the Čuvari Obale, and to the county environmental office.
+    choices:
+      - Wait for the result -> ending_b
+
+  ending_b:
+    type: message
+    text: >
+      ENDING B: THE CORPORATION
+
+      The construction story breaks. DRD is ordered to halt all
+      works pending investigation. The marina project may be
+      cancelled. The promised jobs evaporate. The village is
+      divided.
+
+      But Ana?
+
+      Without the stalking evidence, Roko is never investigated.
+      He continues to work at the base. He continues to monitor
+      her accounts. He creates a new anonymous profile.
+
+      Three months later, Ana reads about DRD online. She returns
+      quietly. She changes diving bases. She stops diving alone.
+      She checks her car every morning.
+
+      The corporation is exposed. But the person who terrorised
+      Ana walks free.
+    choices:
+      - See the epilogue -> ending_b_epilogue
+
+  ending_b_epilogue:
+    type: tweet
+    from: ana
+    text: "vratila sam se. more je čistije. ostalo... vidjet ćemo."
+    choices:
+      - The End -> game_complete
+
+  # --- ENDING C: Mayor (Wrong Ending) ---
+
+  confront_ante:
+    type: message
+    text: >
+      You confront načelnik Bašić with your evidence.
+
+      Within the hour, you receive a message from his office:
+    choices:
+      - Read the response -> ante_response
+
+  ante_response:
+    type: tweet
+    from: elena
+    text: >
+      Moj klijent prima na znanje Vaše navode. Svaka javna objava
+      klevete rezultirat će trenutačnim pravnim postupkom. —
+      Ured Horvat & Partneri, Zagreb
+    choices:
+      - What happens next? -> ending_c
+
+  ending_c:
+    type: message
+    text: >
+      ENDING C: THE POLITICIAN
+
+      The mayor's lawyer buries your accusation. Without a direct
+      link between Bašić and DRD's destruction — and there isn't
+      one beyond political protection — your evidence is
+      insufficient.
+
+      DRD continues to build. Roko continues to watch. Ana stays
+      in hiding.
+
+      Six months later, @maja_moric creates a new account. It
+      follows Ana's brother.
+    choices:
+      - The End -> game_complete
+
+  # =====================================================================
+  # GAME COMPLETE
+  # =====================================================================
+
+  game_complete:
+    type: message
+    text: >
+      DEAD ACCOUNT: PODMORJE — GAME COMPLETE
+
+      Evidence collected: ${evidence_total}
+      Corporate evidence: ${marina_evidence}
+      Obsession evidence: ${obsession_evidence}
+
+      Thank you for playing. Ana's story explores themes of
+      corporate destruction of marine ecosystems, obsessive
+      behaviour, community solidarity, and the courage to speak up.
+
+      If you or someone you know is experiencing stalking or
+      harassment, help is available:
+      Nacionalni pozivni centar za žrtve: 116 006 (besplatno)
+      Hrabri telefon (mladi): 116 111
+      Prijava uništavanja okoliša: 0800 200 171
