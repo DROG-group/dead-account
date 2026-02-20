@@ -13,6 +13,7 @@ interface StoryManifestEntry {
   victim: string;
   role: string;
   threads: string[];
+  title: string;
 }
 
 interface Manifest {
@@ -157,20 +158,20 @@ export default function StoriesPage() {
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0">
                             <p className="text-text-primary text-sm font-medium truncate">
-                              {s.victim}
+                              {s.title}
                             </p>
                             <p className="text-text-muted text-xs truncate">
-                              {s.role} &middot; {s.town}
+                              {s.victim} &middot; {s.role}
                             </p>
                             <p className="text-text-muted text-xs mt-1 truncate">
-                              {s.instance}
+                              {s.town} &middot; {s.instance}
                             </p>
                           </div>
                           <div className="shrink-0">
                             {isPlayed ? (
                               <span className="text-success text-xs">&#10003; Done</span>
                             ) : (
-                              <span className="text-accent text-xs">{s.town}</span>
+                              <span className="text-accent text-xs">Play</span>
                             )}
                           </div>
                         </div>
