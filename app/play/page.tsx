@@ -80,23 +80,12 @@ function PlayContent() {
   if (!story || !state) return null;
 
   return (
-    <div>
-      {/* Top bar with restart */}
-      <div className="fixed top-0 right-0 z-20 p-2">
-        <button
-          onClick={handleRestart}
-          className="text-text-muted hover:text-text-secondary text-xs bg-bg-surface/80 backdrop-blur border border-border rounded px-2 py-1 cursor-pointer"
-        >
-          Restart
-        </button>
-      </div>
-      <StoryRenderer
-        story={story}
-        storyId={storyId}
-        initialState={state}
-        onComplete={() => {}}
-      />
-    </div>
+    <StoryRenderer
+      story={story}
+      storyId={storyId}
+      initialState={state}
+      onComplete={() => {}}
+    />
   );
 }
 
