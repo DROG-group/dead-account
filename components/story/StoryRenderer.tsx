@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   YamlStory,
   StoryState,
@@ -66,23 +67,21 @@ interface StoryRendererProps {
   onComplete?: () => void;
 }
 
+function buildHistory(story: YamlStory, state: StoryState): HistoryEntry[] {
+  return state.history.flatMap((nodeId) => {
+    const node = story.nodes[nodeId];
+    return node ? [{ node }] : [];
+  });
+}
+
 export function StoryRenderer({ story, storyId, initialState, onComplete }: StoryRendererProps) {
+  const router = useRouter();
   const [state, setState] = useState<StoryState>(initialState);
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [history, setHistory] = useState<HistoryEntry[]>(() => buildHistory(story, initialState));
   const [isTyping, setIsTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const currentNode = story.nodes[state.currentNodeId];
-
-  useEffect(() => {
-    const entries: HistoryEntry[] = [];
-    for (let i = 0; i < state.history.length; i++) {
-      const nodeId = state.history[i];
-      const node = story.nodes[nodeId];
-      if (node) entries.push({ node });
-    }
-    setHistory(entries);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -164,7 +163,7 @@ export function StoryRenderer({ story, storyId, initialState, onComplete }: Stor
             <div className="text-xs text-evidence">Evidence collected: {evidenceCount}</div>
           )}
           <button
-            onClick={() => window.location.href = '/stories'}
+            onClick={() => router.push('/stories')}
             className="mt-3 text-xs text-text-muted hover:text-text-secondary bg-transparent border-none cursor-pointer p-0"
           >
             &larr; All Stories
@@ -179,7 +178,7 @@ export function StoryRenderer({ story, storyId, initialState, onComplete }: Stor
           <div className="sticky top-0 z-10 bg-bg-primary/90 backdrop-blur border-b border-border px-4 py-3">
             <div className="flex items-center gap-3">
               <button
-                onClick={() => window.location.href = '/stories'}
+                onClick={() => router.push('/stories')}
                 className="md:hidden text-text-muted hover:text-text-primary bg-transparent border-none cursor-pointer text-sm p-0"
               >
                 &larr;
@@ -222,7 +221,7 @@ export function StoryRenderer({ story, storyId, initialState, onComplete }: Stor
                   You&apos;ve finished this investigation.
                 </p>
                 <button
-                  onClick={() => window.location.href = '/stories'}
+                  onClick={() => router.push('/stories')}
                   className="mastodon-btn"
                 >
                   Back to Stories

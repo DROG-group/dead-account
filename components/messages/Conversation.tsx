@@ -7,10 +7,20 @@ import { Button } from '@/components/ui/Button';
 import { useGame } from '@/contexts/GameContext';
 import { getDialogueTree, getEntryNode, getNode } from '@/data/dialogues/index';
 import { getAvailableChoices } from '@/engine/selectors';
-import { DialogueChoice } from '@/types/dialogue';
+import { ConversationMessage, DialogueChoice } from '@/types/dialogue';
 
 interface ConversationProps {
   npc: Npc;
+}
+
+function createMessage(
+  prefix: string,
+  text: string,
+  fromPlayer: boolean,
+  timestampOffset = 0,
+): ConversationMessage {
+  const timestamp = Date.now() + timestampOffset;
+  return { id: `${prefix}-${timestamp}`, fromPlayer, text, timestamp };
 }
 
 export function Conversation({ npc }: ConversationProps) {
@@ -57,7 +67,7 @@ export function Conversation({ npc }: ConversationProps) {
             currentNodeId: entry.id,
             messages: [
               ...convState.messages,
-              { id: `npc-${Date.now()}`, fromPlayer: false, text: entry.text, timestamp: Date.now() },
+              createMessage('npc', entry.text, false),
             ],
           },
         },
@@ -71,7 +81,7 @@ export function Conversation({ npc }: ConversationProps) {
     const currentMessages = state.conversations[npc.id]?.messages || [];
 
     // Add player message
-    const playerMsg = { id: `p-${Date.now()}`, fromPlayer: true, text: choice.text, timestamp: Date.now() };
+    const playerMsg = createMessage('p', choice.text, true);
     const newMessages = [...currentMessages, playerMsg];
 
     // Apply effects
@@ -95,10 +105,10 @@ export function Conversation({ npc }: ConversationProps) {
         // Check if player meets requirements for this node
         const trust = state.trust[npc.id] || 0;
         if (nextNode.requiresTrust && trust + (choice.trustChange || 0) < nextNode.requiresTrust) {
-          npcMsg = { id: `npc-${Date.now()}`, fromPlayer: false, text: 'I\'m not sure I trust you enough to share that yet.', timestamp: Date.now() + 1 };
+          npcMsg = createMessage('npc', 'I\'m not sure I trust you enough to share that yet.', false, 1);
           nextNodeId = null;
         } else {
-          npcMsg = { id: `npc-${Date.now()}`, fromPlayer: false, text: nextNode.text, timestamp: Date.now() + 1 };
+          npcMsg = createMessage('npc', nextNode.text, false, 1);
         }
       }
     }

@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { Npc } from '@/types/npc';
 import { Avatar } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
@@ -12,6 +13,7 @@ interface ProfileHeaderProps {
 }
 
 export function ProfileHeader({ npc, postCount }: ProfileHeaderProps) {
+  const router = useRouter();
   const { state, dispatch } = useGame();
   const isFollowing = state.followedNpcs.includes(npc.id);
   const trust = state.trust[npc.id] || 0;
@@ -39,7 +41,7 @@ export function ProfileHeader({ npc, postCount }: ProfileHeaderProps) {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => window.location.href = `/messages/${npc.handle}`}
+                onClick={() => router.push(`/messages/${npc.handle}`)}
               >
                 Message
               </Button>

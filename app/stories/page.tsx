@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { getPlayedStories, resetPlayHistory } from '@/lib/yaml-story';
 
 interface StoryManifestEntry {
@@ -34,12 +35,15 @@ const countryFlags: Record<string, string> = {
 };
 
 export default function StoriesPage() {
+  const router = useRouter();
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [played, setPlayed] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPlayed(getPlayedStories());
+    // Defer the browser-only localStorage read until after the first render so
+    // the server and client produce identical hydration markup.
+    queueMicrotask(() => setPlayed(getPlayedStories()));
     fetch('/stories/manifest.json')
       .then(r => r.json())
       .then(data => {
@@ -54,7 +58,7 @@ export default function StoriesPage() {
     const unplayed = manifest.stories.filter(s => !played.includes(s.id));
     const pool = unplayed.length > 0 ? unplayed : manifest.stories;
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    window.location.href = `/play?story=${pick.id}`;
+    router.push(`/play?story=${pick.id}`);
   };
 
   const handleReset = () => {
