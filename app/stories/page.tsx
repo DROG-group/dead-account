@@ -39,10 +39,10 @@ export default function StoriesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPlayed(getPlayedStories());
     fetch('/stories/manifest.json')
       .then(r => r.json())
       .then(data => {
+        setPlayed(getPlayedStories());
         setManifest(data);
         setLoading(false);
       })

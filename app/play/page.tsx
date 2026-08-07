@@ -6,7 +6,6 @@ import {
   parseStory,
   createInitialState,
   loadStoryProgress,
-  clearStoryProgress,
   YamlStory,
   StoryState,
 } from '@/lib/yaml-story';
@@ -46,12 +45,6 @@ function PlayContent() {
         setLoading(false);
       });
   }, [storyId]);
-
-  const handleRestart = () => {
-    if (!story) return;
-    clearStoryProgress(storyId);
-    setState(createInitialState(story));
-  };
 
   if (loading) {
     return (

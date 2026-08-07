@@ -68,21 +68,16 @@ interface StoryRendererProps {
 
 export function StoryRenderer({ story, storyId, initialState, onComplete }: StoryRendererProps) {
   const [state, setState] = useState<StoryState>(initialState);
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [history, setHistory] = useState<HistoryEntry[]>(() =>
+    initialState.history.flatMap(nodeId => {
+      const node = story.nodes[nodeId];
+      return node ? [{ node }] : [];
+    }),
+  );
   const [isTyping, setIsTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const currentNode = story.nodes[state.currentNodeId];
-
-  useEffect(() => {
-    const entries: HistoryEntry[] = [];
-    for (let i = 0; i < state.history.length; i++) {
-      const nodeId = state.history[i];
-      const node = story.nodes[nodeId];
-      if (node) entries.push({ node });
-    }
-    setHistory(entries);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
