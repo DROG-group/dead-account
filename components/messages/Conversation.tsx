@@ -46,6 +46,7 @@ export function Conversation({ npc }: ConversationProps) {
     const convState = state.conversations[npc.id] || {
       messages: [], currentNodeId: entry.id, completed: false, unlockedNodes: [],
     };
+    const entryTimestamp = (convState.messages.at(-1)?.timestamp ?? 0) + 1;
     dispatch({
       type: 'LOAD_STATE',
       state: {
@@ -57,7 +58,12 @@ export function Conversation({ npc }: ConversationProps) {
             currentNodeId: entry.id,
             messages: [
               ...convState.messages,
-              { id: `npc-${Date.now()}`, fromPlayer: false, text: entry.text, timestamp: Date.now() },
+              {
+                id: `npc-${npc.id}-${entryTimestamp}`,
+                fromPlayer: false,
+                text: entry.text,
+                timestamp: entryTimestamp,
+              },
             ],
           },
         },
@@ -69,9 +75,15 @@ export function Conversation({ npc }: ConversationProps) {
     if (!tree) return;
 
     const currentMessages = state.conversations[npc.id]?.messages || [];
+    const playerTimestamp = (currentMessages.at(-1)?.timestamp ?? 0) + 1;
 
     // Add player message
-    const playerMsg = { id: `p-${Date.now()}`, fromPlayer: true, text: choice.text, timestamp: Date.now() };
+    const playerMsg = {
+      id: `p-${npc.id}-${playerTimestamp}`,
+      fromPlayer: true,
+      text: choice.text,
+      timestamp: playerTimestamp,
+    };
     const newMessages = [...currentMessages, playerMsg];
 
     // Apply effects
@@ -94,11 +106,22 @@ export function Conversation({ npc }: ConversationProps) {
       if (nextNode) {
         // Check if player meets requirements for this node
         const trust = state.trust[npc.id] || 0;
+        const npcTimestamp = playerTimestamp + 1;
         if (nextNode.requiresTrust && trust + (choice.trustChange || 0) < nextNode.requiresTrust) {
-          npcMsg = { id: `npc-${Date.now()}`, fromPlayer: false, text: 'I\'m not sure I trust you enough to share that yet.', timestamp: Date.now() + 1 };
+          npcMsg = {
+            id: `npc-${npc.id}-${npcTimestamp}`,
+            fromPlayer: false,
+            text: 'I\'m not sure I trust you enough to share that yet.',
+            timestamp: npcTimestamp,
+          };
           nextNodeId = null;
         } else {
-          npcMsg = { id: `npc-${Date.now()}`, fromPlayer: false, text: nextNode.text, timestamp: Date.now() + 1 };
+          npcMsg = {
+            id: `npc-${npc.id}-${npcTimestamp}`,
+            fromPlayer: false,
+            text: nextNode.text,
+            timestamp: npcTimestamp,
+          };
         }
       }
     }

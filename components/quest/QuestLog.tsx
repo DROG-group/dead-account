@@ -66,12 +66,12 @@ export function QuestLog() {
           </p>
           <ul className="text-text-secondary text-sm mt-2 space-y-1">
             {state.counters.stalkingEvidence >= 6 && (
-              <li>\u2022 <strong>Thomas Groot</strong> - Present stalking evidence (Best outcome)</li>
+              <li>&bull; <strong>Thomas Groot</strong> - Present stalking evidence (Best outcome)</li>
             )}
             {state.counters.corruptionEvidence >= 5 && (
-              <li>\u2022 <strong>Hans de Vries</strong> - Present corruption evidence</li>
+              <li>&bull; <strong>Hans de Vries</strong> - Present corruption evidence</li>
             )}
-            <li className="text-text-muted">\u2022 Marco van Bergen - Accuse the developer (risky)</li>
+            <li className="text-text-muted">&bull; Marco van Bergen - Accuse the developer (risky)</li>
           </ul>
         </div>
       )}

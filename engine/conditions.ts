@@ -3,7 +3,6 @@ import {
   canCompleteQuest1,
   canCompleteQuest2,
   canCompleteQuest3,
-  canCompleteQuest4,
   getStalkingComplete,
   getCorruptionComplete,
 } from './selectors';
